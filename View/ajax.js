@@ -1,0 +1,1096 @@
+function CriaRequest() {
+
+     try{
+
+         request = new XMLHttpRequest();        
+
+     }catch (IEAtual){
+
+          
+ 
+         try{
+
+             request = new ActiveXObject("Msxml2.XMLHTTP");       
+
+         }catch(IEAntigo){
+
+          
+
+             try{
+
+                 request = new ActiveXObject("Microsoft.XMLHTTP");          
+
+             }catch(falha){
+
+                 request = false;
+
+             }
+
+         }
+
+     }
+
+      
+
+     if (!request) 
+
+         alert("Seu Navegador não suporta Ajax!");
+
+     else
+
+         return request;
+
+ }
+
+
+
+
+function chamando_notificacoes(){
+  var xmlreq = CriaRequest();   
+   xmlreq.open("GET", "notificacoes.php", true);
+    xmlreq.onreadystatechange = function(){      
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {                
+              var result = document.getElementById("log_conexao");        
+              result.innerHTML += "chamando_notificacoes<br>";
+            }else{
+                console.log('erro chamando notificacões')
+                   
+                
+                
+            }
+        }
+    };
+    xmlreq.send(null);
+}
+
+
+function notificacao_mural_whatsapp(cont){
+  var turma_id=document.getElementById("turma_id"+cont).value;
+  var serie_id=document.getElementById("serie_id"+cont).value;
+  var escola_id=document.getElementById("escola_id"+cont).value;
+
+  var xmlreq = CriaRequest();   
+   xmlreq.open("GET", "../Controller/Notificacao_mural_whatsapp.php?turma_id="+turma_id+"&escola_id="+escola_id+"&serie_id="+serie_id, true);
+    xmlreq.onreadystatechange = function(){      
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {                
+                   
+                
+            }else{
+                  var result = document.getElementById("log_conexao");        
+                  result.innerHTML += "erro mural<br>";
+                
+            }
+        }
+    };
+    xmlreq.send(null);
+}
+
+function notificacao_trabalho_whatsapp(cont){
+  var turma_id=document.getElementById("turma_id"+cont).value;
+  var serie_id=document.getElementById("serie_id"+cont).value;
+  var escola_id=document.getElementById("escola_id"+cont).value;
+
+  var xmlreq = CriaRequest();   
+   xmlreq.open("GET", "../Controller/Notificacao_trabalho_whatsapp.php?turma_id="+turma_id+"&escola_id="+escola_id+"&serie_id="+serie_id, true);
+    xmlreq.onreadystatechange = function(){      
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {                
+                   
+                
+            }else{
+                 var result = document.getElementById("log_conexao");        
+                  result.innerHTML += "erro trabalho<br>";
+                
+                
+            }
+        }
+    };
+    xmlreq.send(null);
+}
+
+function notificacao_video_whatsapp(cont){
+  var turma_id=document.getElementById("turma_id"+cont).value;
+  var serie_id=document.getElementById("serie_id"+cont).value;
+  var escola_id=document.getElementById("escola_id"+cont).value;
+
+  var xmlreq = CriaRequest();   
+   xmlreq.open("GET", "../Controller/Notificacao_video_whatsapp.php?turma_id="+turma_id+"&escola_id="+escola_id+"&serie_id="+serie_id, true);
+    xmlreq.onreadystatechange = function(){      
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {                
+                   
+                
+            }else{
+                   var result = document.getElementById("log_conexao");        
+                   result.innerHTML += "erro video<br>";
+                
+                
+                
+            }
+        }
+    };
+    xmlreq.send(null);
+}
+
+// ******************************************************************************
+
+
+function lista_de_turmas(id){
+  var result = document.getElementById("lista_de_turmas");
+  var xmlreq = CriaRequest();   
+  result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
+
+   xmlreq.open("GET", "../Controller/Lista_de_turmas_por_serie.php?serie_id="+id, true);
+    xmlreq.onreadystatechange = function(){      
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {
+
+                   result.innerHTML =  xmlreq.responseText;
+                
+            }else{
+                   result.innerHTML = "Erro ao pesquisar";
+                
+                
+            }
+        }
+    };
+    xmlreq.send(null);
+}
+
+function listar_opcao_associacao_coordenador(id){
+  var result = document.getElementById("tabela_pesquisa_coordenador");
+  var xmlreq = CriaRequest();   
+  result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
+
+   xmlreq.open("GET", "../Controller/View_associar_coordenador_a_escola.php?idcoordenador="+id, true);
+    xmlreq.onreadystatechange = function(){      
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {                
+                   result.innerHTML =  xmlreq.responseText;
+                
+            }else{
+                   result.innerHTML = "Erro ao pesquisar";
+                
+                
+            }
+        }
+    };
+    xmlreq.send(null);
+}
+
+function listar_opcao_associacao_professor(id){
+  var result = document.getElementById("tabela_pesquisa_professor");
+  var xmlreq = CriaRequest();   
+  result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
+
+   xmlreq.open("GET", "../Controller/View_associar_professor_turma_disciplina.php?idprofessor="+id, true);
+    xmlreq.onreadystatechange = function(){      
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {                
+                   result.innerHTML =  xmlreq.responseText;
+                
+            }else{
+                   result.innerHTML = "Erro ao pesquisar";
+                
+                
+            }
+        }
+    };
+    xmlreq.send(null);
+}
+
+function pesquisar_coordenador_associacao(){
+  var pesquisa = document.getElementById("pesquisa_coordenador").value;
+  var result = document.getElementById("tabela_pesquisa_coordenador");
+  var xmlreq = CriaRequest();   
+  result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
+
+   xmlreq.open("GET", "../Controller/Pesquisar_coordenador_associacao.php?pesquisa="+pesquisa, true);
+    xmlreq.onreadystatechange = function(){      
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {                
+                   result.innerHTML =  xmlreq.responseText;
+                
+            }else{
+                   result.innerHTML = "Erro ao pesquisar";
+                
+                
+            }
+        }
+    };
+    xmlreq.send(null);
+}
+
+function pesquisar_professor_associacao(pesquisa){
+  var result = document.getElementById("tabela_pesquisa_professor");
+  var xmlreq = CriaRequest();   
+  result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
+
+   xmlreq.open("GET", "../Controller/Pesquisar_professor_associacao.php?pesquisa="+pesquisa, true);
+    xmlreq.onreadystatechange = function(){      
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {                
+                   result.innerHTML =  xmlreq.responseText;
+                
+            }else{
+                   result.innerHTML = "Erro ao pesquisar";
+                
+                
+            }
+        }
+    };
+    xmlreq.send(null);
+}
+
+
+function alterar_status_questionario(id,status) {
+  Swal.fire({
+    title: 'Deseja continuar com essa ação?',
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: `Sim`,
+    denyButtonText: `Não`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      window.location.href = "../Controller/Alterar_status_questionario.php?id="+id+"&status="+status+"";
+    } else if (result.isDenied) {
+      Swal.fire('Ação cancelada', '', 'info')
+    }
+  })
+}
+
+
+function excluir_coordenador(id) {
+  Swal.fire({
+    title: 'Deseja continuar com essa ação?',
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: `Sim`,
+    denyButtonText: `Não`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      window.location.href = "../Controller/Excluir_coordenador.php?id="+id+"";
+    } else if (result.isDenied) {
+      //Swal.fire('Ação não concluída', '', 'info')
+    }
+  })
+}
+
+function cancelar_associacao_professor(id) {
+  Swal.fire({
+    title: 'Deseja continuar com essa ação?',
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: `Sim`,
+    denyButtonText: `Não`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      window.location.href = "../Controller/Desassociar_professor.php?id="+id+"";
+    } else if (result.isDenied) {
+      //Swal.fire('Ação não concluída', '', 'info')
+    }
+  })
+}
+
+
+function excluir_trabalho(id) {
+  Swal.fire({
+    title: 'Deseja continuar com essa ação?',
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: `Sim`,
+    denyButtonText: `Não`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      window.location.href = "../Controller/Excluir_trabalho.php?id="+id+"";
+    } else if (result.isDenied) {
+      Swal.fire('Não foi excluido', '', 'info')
+    }
+  })
+}
+
+
+
+
+
+
+
+
+ function resultado_questao() {
+
+    var result = document.getElementById("resultado_questao");
+    result.innerHTML="<img src='imagens/carregando.gif'>";
+
+    var questionario = document.getElementById("questionario").value;
+    var aluno = document.getElementById("aluno").value;
+    
+    var disciplina_id = document.getElementById("disciplina_id").value;
+    var turma_id = document.getElementById("turma_id").value;
+
+
+    var xmlreq = CriaRequest();   
+    xmlreq.open("GET", "../Controller/Resultado_questao.php?aluno="+aluno+"&questionario="+questionario+"&disciplina_id="+disciplina_id+"&turma_id="+turma_id, true);
+
+
+    xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                 result.innerHTML =  xmlreq.responseText;
+                 
+                 
+             }else{
+
+                alert('Erro');
+                 
+             }
+         }
+     };
+     xmlreq.send(null);
+ }
+
+
+   function resposta_discursiva(id) {
+
+     var result = document.getElementById("rd"+id);
+     var nao_salvo = document.getElementById("erro_rd"+id);
+     
+     result.innerHTML='Editando..';
+
+     var idalternativa =id;
+     var texto = document.getElementById(id).value;
+
+    var turma_id= document.getElementById('idturma').value;
+    
+    var disciplina_id =  document.getElementById('iddisciplina').value;
+     
+     var questao_id =  document.getElementById('questao_id'+id).value;
+
+     
+      var xmlreq = CriaRequest();   
+
+      xmlreq.open("GET", "../Controller/Responder_questionario_discursiva.php?texto="+texto+"&id="+idalternativa+"&disciplina_id="+disciplina_id+"&turma_id="+turma_id+"&questao_id="+questao_id, true);
+      xmlreq.onreadystatechange = function(){
+       
+          if (xmlreq.readyState == 4) {
+              if (xmlreq.status == 200) {
+                  result.innerHTML = "Salvo";
+                  nao_salvo.innerHTML = "";
+                  // result.innerHTML = "" + xmlreq.statusText;
+                 
+                  
+              }else{
+                  nao_salvo.innerHTML = "Erro ao Salvar, verifique sua conexão com a internet!";
+                  result.innerHTML = "";
+
+                 //alert('Erro');
+                  
+              }
+          }
+      };
+      xmlreq.send(null);
+  }
+
+
+
+   function resposta_multipla(id) {
+     
+     var idalternativa =id;
+    var result = document.getElementById("rd"+id);
+     
+
+    var turma_id= document.getElementById('idturma').value;
+    var disciplina_id =  document.getElementById('iddisciplina').value;
+    
+    var questao_id =  document.getElementById('questao_id'+id).value;
+
+     var texto = " ";
+      
+
+      var xmlreq = CriaRequest();
+      xmlreq.open("GET", "../Controller/Responder_questionario_discursiva.php?texto="+texto+"&id="+idalternativa+"&disciplina_id="+disciplina_id+"&turma_id="+turma_id+"&questao_id="+questao_id, true);
+      
+      xmlreq.onreadystatechange = function(){
+       
+          if (xmlreq.readyState == 4) {
+              if (xmlreq.status == 200) {
+                  Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Ação Concluída',
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                  
+              }else{
+                 Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Alguma Coisa deu Errado!',
+                  
+                });
+                  
+              }
+          }
+      };
+      xmlreq.send(null);
+  } 
+  
+  function resposta_justificada(id) {
+     
+     var idalternativa =id;
+    var result = document.getElementById("rd"+id);
+     
+
+    var turma_id= document.getElementById('idturma').value;
+    var disciplina_id =  document.getElementById('iddisciplina').value;
+     
+    var questao_id =  document.getElementById('questao_id'+id).value;
+
+     var texto = document.getElementById(id).value;
+      
+
+      var xmlreq = CriaRequest();
+      xmlreq.open("GET", "../Controller/Responder_questionario_discursiva.php?texto="+texto+"&id="+idalternativa+"&disciplina_id="+disciplina_id+"&turma_id="+turma_id+"&questao_id="+questao_id, true);
+      
+      xmlreq.onreadystatechange = function(){
+       
+          if (xmlreq.readyState == 4) {
+              if (xmlreq.status == 200) {
+                 //alert("Alternativa Marcada");
+                  
+              }else{
+                 alert('Erro');
+                  
+              }
+          }
+      };
+      xmlreq.send(null);
+  }
+
+  
+  
+function alterar_data_questionario(id) {
+    var data = document.getElementById("data"+id).value;
+    var result = document.getElementById("resposta_alteracao_data");
+    
+    var xmlreq = CriaRequest();   
+    xmlreq.open("GET", "../Controller/Alterar_data_questionario.php?id="+id+"&data="+data, true);
+
+    xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                 alert('Data alterada');
+                 result.innerHTML =  "Ação concluída!";
+                 
+             }else{
+                // alert('Erro');
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Alguma Coisa deu Errado!',
+                  
+                });
+             }
+         }
+     };
+     xmlreq.send(null);
+ }
+
+
+ function alterar_horario_individual_questionario(idaluno) {
+
+    var result= document.getElementById("horario_alterado"+idaluno);
+    var idquestionario= document.getElementById("idquestionario").value;
+    var hora_inicio= document.getElementById("hora_inicio"+idaluno).value;
+    var hora_fim= document.getElementById("hora_fim"+idaluno).value;
+    result.innerHTML="";
+    var url = "idaluno="+idaluno+"&hora_inicio="+hora_inicio+"&hora_fim="+hora_fim+"&idquestionario="+idquestionario;
+     
+     var xmlreq = CriaRequest();
+     xmlreq.open("GET", "../Controller/Alterar_horario_individual_questionario.php?"+url, true);     
+     xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                result.innerHTML="<b class='text-success'>Alterado</b><br>";
+                 
+             }else{
+                result.innerHTML="<b class='text-danger'>Erro ao alterar horário</b><br>";
+                
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Alguma Coisa deu Errado!',
+                  
+                });
+                 
+             }
+         }
+     };
+     xmlreq.send(null);
+ }
+
+
+  function cadastra_horario_individual_questionario(idaluno) {
+
+    var idquestionario= document.getElementById("idquestionario").value;
+
+    var hora_inicio= document.getElementById("hora_inicio"+idaluno).value;
+    var hora_fim= document.getElementById("hora_fim"+idaluno).value;
+    
+    var url = "idaluno="+idaluno+"&hora_inicio="+hora_inicio+"&hora_fim="+hora_fim+"&idquestionario="+idquestionario;
+    
+
+    var xmlreq = CriaRequest();
+     xmlreq.open("GET", "../Controller/Cadastrar_horario_individual_questionario.php?idaluno="+idaluno+"&hora_inicio="+hora_inicio+"&hora_fim="+hora_fim+"&idquestionario="+idquestionario, true);
+     xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                //alert('Alterado Com Sucesso');          
+                 
+             }else{
+                alert('erro' );
+                 
+             }
+         }
+     };
+     xmlreq.send(null);
+ }
+
+
+
+
+function alterar_pergunta_discursiva(id) {
+
+    var result = document.getElementById('res'+id);
+    var texto_questao = document.getElementById(id).value;  
+
+    
+     var xmlreq = CriaRequest();   
+
+     xmlreq.open("GET", "../Controller/Alterar_pergunta_discursiva.php?texto_questao="+texto_questao+"&id="+id, true);
+     xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                 result.innerHTML = "<b class='alert alert-success'>Editado com Sucesso!</b>";                
+             }else{
+                //alert('Erro');
+             }
+         }
+     };
+     xmlreq.send(null);
+ }
+
+
+function gerar_questao(tipo) {
+    var result = document.getElementById("gerar_questao");
+    
+
+    if (tipo=="multipla") {
+
+          // result.innerHTML = " <div class='card card-outline card-info'>"+
+          //   "<div class='card-header'>"+
+          //     "<h3 >"+
+          //    "Alternativa 1"+
+          //    " </h3>"+
+          //   "</div>"+
+          //   "<div class='card-body'>"+
+          //    " <textarea name='alternativa1' id='summernote' style='height: 245.719px;'></textarea>"+
+          //   "</div>"+
+          //   "<div class='card-footer'>"+
+          //  " </div>"+
+          // "</div>";
+
+        result.innerHTML = "<div class='form-group'>"+
+        "<h2 >Múltipla Escolha </h2>"+
+            "<h5 >Alternativa 1</h5>"+
+            "<input type='text' name='alternativa1' placeholder='Alternativa 1' class='form-control' required>"+
+
+             "<h5 >Alternativa 2</h5>"+
+            "<input type='text' name='alternativa2' placeholder='Alternativa 2' class='form-control' required>"+
+
+             "<h5 >Alternativa 3</h5>"+
+            "<input type='text' name='alternativa3' placeholder='Alternativa 3' class='form-control' required>"+
+
+             "<h5 >Alternativa 4</h5>"+
+            "<input type='text' name='alternativa4' placeholder='Alternativa 4' class='form-control' required>"+
+
+             "<h5 >Alternativa 5</h5>"+
+            "<input type='text' name='alternativa5' placeholder='Alternativa 5' class='form-control' required>"+
+
+        "</div>";
+
+    }else if (tipo=="multipla_justificada"){
+
+         result.innerHTML = "<div class='form-group'>"+
+         "<h2 >Múltipla Escolha Justificada </h2>"+
+            "<h5 >Alternativa 1 </h5>"+
+            "<input type='text' name='alternativa1' placeholder='Alternativa 1' class='form-control' required>"+
+
+             "<h5 >Alternativa 2</h5>"+
+            "<input type='text' name='alternativa2' placeholder='Alternativa 2' class='form-control' required>"+
+
+             "<h5 >Alternativa 3</h5>"+
+            "<input type='text' name='alternativa3' placeholder='Alternativa 3' class='form-control' required>"+
+
+             "<h5 >Alternativa 4</h5>"+
+            "<input type='text' name='alternativa4' placeholder='Alternativa 4' class='form-control' required>"+
+
+             "<h5 >Alternativa 5</h5>"+
+            "<input type='text' name='alternativa5' placeholder='Alternativa 5' class='form-control' required>"+
+
+        "</div>";
+
+    }else{
+        result.innerHTML = "";
+    }
+
+ 
+ } 
+
+
+ function relatorio_de_visualizacao_video_coordenador(idaluno) {
+     
+     var result = document.getElementById("relatorio_de_visualizacao_video"+idaluno);
+      result.innerHTML = "";
+
+    
+     var xmlreq = CriaRequest();
+
+     aguarde();
+
+     xmlreq.open("GET", "../Controller/Relatorio_de_visualizacao_video_coordenador.php?idaluno="+idaluno, true);     
+     xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                result.innerHTML = xmlreq.responseText;
+                
+             }else{
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Alguma Coisa deu Errado!',
+                  
+                });
+                 
+             }
+         }
+     };
+     xmlreq.send(null);
+ }
+
+
+
+
+function relatorio_de_visualizacao_video(idaluno,idturma,iddisciplina) {
+     
+     var result = document.getElementById("relatorio_de_visualizacao_video"+idaluno);
+      result.innerHTML = "<center> <img src='imagens/carregando.gif'> </center> ";
+
+    
+     var xmlreq = CriaRequest();
+
+     aguarde();
+
+     xmlreq.open("GET", "../Controller/Relatorio_de_visualizacao_video.php?idaluno="+idaluno+"&idturma="+idturma+"&iddisciplina="+iddisciplina, true);     
+     xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                result.innerHTML = xmlreq.responseText;
+             }else{
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Alguma Coisa deu Errado!',
+                  
+                });
+                 
+             }
+         }
+     };
+     xmlreq.send(null);
+ }
+
+
+
+
+
+  function visualizacao_video(idvideo,id_aluno) {
+ 
+    var xmlreq = CriaRequest();   
+    xmlreq.open("GET", "../Controller/Visualizacao_video.php?idvideo="+idvideo+"&id_aluno="+id_aluno, true);
+
+    xmlreq.onreadystatechange = function(){
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                console.log(idvideo+',alu '+id_aluno);
+                 // result.innerHTML =  xmlreq.responseText;                
+             }else{
+                //alert('Erro');
+             }
+         }
+     };
+     xmlreq.send(null);
+ }
+
+
+
+
+ function listar_alunos_trabalho(idtrabalho,idturma,iddisciplina) {
+     
+     var result = document.getElementById("listar_alunos");
+      result.innerHTML = "";
+
+    
+     var xmlreq = CriaRequest();
+
+     aguarde();
+
+     xmlreq.open("GET", "../Controller/Listar_alunos_trabalho.php?idtrabalho="+idtrabalho+"&idturma="+idturma+"&iddisciplina="+iddisciplina, true);     
+     xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                result.innerHTML = xmlreq.responseText;
+             }else{
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Alguma Coisa deu Errado!',
+                  
+                });
+                 
+             }
+         }
+     };
+     xmlreq.send(null);
+ }
+
+
+  function aguarde(){
+         let timerInterval
+         Swal.fire({
+           title: 'Aguarde, sua ação está sendo realizada!',
+           html: ' ',
+           timer: 3000,
+           timerProgressBar: true,
+           didOpen: () => {
+             Swal.showLoading()
+             timerInterval = setInterval(() => {
+               const content = Swal.getContent()
+               if (content) {
+                 const b = content.querySelector('b')
+                 if (b) {
+                   b.textContent = Swal.getTimerLeft()
+                 }
+               }
+             }, 100)
+           },
+           willClose: () => {
+             clearInterval(timerInterval)
+           }
+         }).then((result) => {
+           /* Read more about handling dismissals below */
+           if (result.dismiss === Swal.DismissReason.timer) {
+             console.log('I was closed by the timer')
+           }
+         })
+   }
+
+
+
+ function atualiza_data_hora_video(idvideo) {
+     
+     var result = document.getElementById(idvideo);
+
+     var data = document.getElementById("data"+idvideo).value;
+     var hora = document.getElementById("hora"+idvideo).value;
+     
+     var xmlreq = CriaRequest();
+
+     aguarde();
+
+     xmlreq.open("GET", "../Controller/Alterar_data_video.php?idvideo="+idvideo+"&data="+data+"&hora="+hora, true);     
+     xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                Swal.fire({
+                  position: 'center',
+                  icon: 'success',
+                  title: 'Ação Concluída',
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+                 
+             }else{
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Alguma Coisa deu Errado!',
+                  
+                });
+                 
+             }
+         }
+     };
+     xmlreq.send(null);
+ }
+
+
+
+ function mudar_status_aluno(status,id) {
+     var result = document.getElementById("customSwitch3"+id);
+     var xmlreq = CriaRequest();
+
+         xmlreq.open("GET", "../Controller/Mudar_status_aluno.php?id=" + id+"&status="+status, true);
+     xmlreq.onreadystatechange = function(){
+         // Verifica se foi concluído com sucesso e a conexão fechada (readyState=4)
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+
+                    Swal.fire(
+
+                      'Ação concluída',
+
+                      '.',
+
+                      'success'
+                    )            
+                    // result.innerHTML ="";
+             }else{
+                 Swal.fire({
+                   icon: 'error',
+                   title: 'Oops...',
+                   text: 'Alguma Coisa deu Errado!',
+                   
+                 })
+
+             }
+
+         }
+
+     };
+
+     xmlreq.send(null);
+
+ }
+
+
+
+
+ function pesquisa_cliente(pesquisa) {
+     var result = document.getElementById("resposta_pesquisa");
+     var xmlreq = CriaRequest();
+       
+        result.innerHTML ="<center><div class='overlay'><i class='fas fa-3x fa-sync-alt'></i></div></center>";
+
+     xmlreq.open("GET", "../Controller/Pesquisa_cliente.php?pesquisa=" + pesquisa, true);
+
+     xmlreq.onreadystatechange = function(){
+         // Verifica se foi concluído com sucesso e a conexão fechada (readyState=4)
+
+         if (xmlreq.readyState == 4) {
+
+              
+
+             // Verifica se o arquivo foi encontrado com sucesso
+
+             if (xmlreq.status == 200) {
+                 result.innerHTML = xmlreq.responseText;
+
+             }else{
+
+                 // result.innerHTML = "Erro: " + xmlreq.responseText;;
+                 Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Alguma Coisa deu Errado!',
+                  
+                });
+
+             }
+
+         }
+
+     };
+
+     xmlreq.send(null);
+
+ }
+
+ function pesquisa_funcionario(pesquisa) {
+     var result = document.getElementById("resposta_pesquisa");
+     var xmlreq = CriaRequest();  
+        result.innerHTML ="<center><div class='overlay'><i class='fas fa-3x fa-sync-alt'></i></div></center>";
+
+     xmlreq.open("GET", "../Controller/Pesquisa_funcionario.php?pesquisa=" + pesquisa, true);
+
+     xmlreq.onreadystatechange = function(){
+         // Verifica se foi concluído com sucesso e a conexão fechada (readyState=4)
+
+         if (xmlreq.readyState == 4) {
+
+             // Verifica se o arquivo foi encontrado com sucesso
+
+             if (xmlreq.status == 200) {
+                 result.innerHTML = xmlreq.responseText;
+
+             }else{
+
+                 result.innerHTML = "Erro: " + xmlreq.responseText;;
+
+             }
+
+         }
+
+     };
+
+     xmlreq.send(null);
+
+ }
+
+
+  function pesquisa_produto(pesquisa) {
+     var result = document.getElementById("resposta_pesquisa");
+     var xmlreq = CriaRequest();  
+        result.innerHTML ="<center><div class='overlay'><i class='fas fa-3x fa-sync-alt'></i></div></center>";
+
+     xmlreq.open("GET", "../Controller/Pesquisa_produto.php?pesquisa=" + pesquisa, true);
+
+     xmlreq.onreadystatechange = function(){
+         // Verifica se foi concluído com sucesso e a conexão fechada (readyState=4)
+
+         if (xmlreq.readyState == 4) {
+
+             // Verifica se o arquivo foi encontrado com sucesso
+
+             if (xmlreq.status == 200) {
+                 result.innerHTML = xmlreq.responseText;
+
+             }else{
+
+                 result.innerHTML = "Erro: " + xmlreq.responseText;;
+
+             }
+
+         }
+
+     };
+
+     xmlreq.send(null);
+
+ }
+
+
+// ***********************************************************************************************
+ function chat_receber() {
+
+    var result = document.getElementById("messages");
+    var id_mensagem = document.getElementById("id_mensagem");
+    
+    var xmlreq = CriaRequest();   
+    xmlreq.open("GET", "../Controller/Chat_receber.php", true);
+
+    xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                var recebe=xmlreq.responseText;
+                var vetor=recebe.split("#§");
+                if (id_mensagem.value != vetor[1]) {
+                 result.innerHTML = result.innerHTML+""+vetor[0];
+                 id_mensagem.value=vetor[1];
+                 rolar();
+                 if (vetor[2]==0) {
+                    playaudio();
+                 }
+
+
+                }
+             }else{
+
+                 result.innerHTML ="Erro ao receber mensagens";
+               
+                 
+             }
+         }
+     };
+     xmlreq.send(null);
+ }
+
+
+
+ function chat_enviar() {
+
+    var result = document.getElementById("messages");
+    var mensagem_enviar = document.getElementById("mensagem_enviar").value;
+    var xmlreq = CriaRequest();   
+    xmlreq.open("GET", "../Controller/Chat_enviar.php?mensagem="+mensagem_enviar, true);
+
+
+    xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                 result.innerHTML = xmlreq.responseText;
+                 document.getElementById("mensagem_enviar").value="";
+                 chat_receber();
+                 rolar();
+             }else{
+
+                 result.innerHTML ="Erro ao receber mensagens";
+               
+                 
+             }
+         }
+     };
+     xmlreq.send(null);
+ }
+
+
+function rolar() {
+    var objDiv = document.getElementById("messages");
+    objDiv.scrollTop = objDiv.scrollHeight;
+}
+
+ function playaudio() {
+    document.getElementById('myAudio').play();
+}
+
+
+ function listar_turmas_coordenador(idescola) {
+    var result = document.getElementById("accordion");
+    var xmlreq = CriaRequest();   
+    result.innerHTML="<img src='imagens/carregando.gif'>";
+    xmlreq.open("GET", "../Controller/Listar_turmas_coordenador.php?idescola="+idescola, true);
+
+
+    xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                 result.innerHTML = xmlreq.responseText;
+                 
+             }else{
+
+                 result.innerHTML ="Verifique sua conexão com a internet!";
+               
+                 
+             }
+         }
+     };
+     xmlreq.send(null);
+ }

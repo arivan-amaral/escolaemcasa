@@ -1,0 +1,71 @@
+<?php
+session_start();
+include '../Model/Conexao.php';
+include '../Model/Video.php';
+
+try {
+
+	$link = $_POST['link'];
+	$titulo = $_POST['titulo'];
+	$descricao = $_POST['descricao'];
+	$hora = $_POST['hora'];
+	if (isset($_SESSION['idprofessor'])) {
+		$id_funcionario = $_SESSION['idprofessor'];
+		
+	}else {
+		$id_funcionario="NULL";
+	}
+	if (isset($_POST['idturma'])) {
+		$idturma = $_POST['idturma'];
+		$turma = $_POST['idturma'];
+	}else{
+		$idturma ="NULL";
+		$turma = "NULL";
+	}
+
+	if (isset($_POST['idserie'])) {
+		$idserie = $_POST['idserie'];
+		
+	}else{
+		$idserie = "NULL";
+		
+	}
+
+	$iddisciplina = $_POST['iddisciplina'];	
+	$idescola = $_POST['idescola'];
+	$idserie = $_POST['idserie'];
+	$disciplina = $_POST['iddisciplina'];
+	
+
+	$data_visivel = $_POST['data_visivel']." ".$hora;
+	$id_video=0;
+
+	$termos = array('https://youtu.be/', 'http://youtu.be/', 'https://youtube.com/', 'http://youtube.com/','https://www.youtube.com/watch?v=','http://www.youtube.com/watch?v=');
+
+
+	$link = str_replace($termos, '', $link);
+
+	cadastrar_video($conexao,$link, $titulo, $descricao, $id_funcionario,$idturma,$iddisciplina,$data_visivel,$hora,$idescola,$idserie);
+
+
+	$_SESSION['status']=1;
+	
+	if($idserie=="NULL"){
+		header("location:../View/cadastro_video.php?status=1&disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie");
+	}else{
+		header("location:../View/cadastro_video_gt.php?status=1&disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie");
+
+	}
+} catch (Exception $e) {
+	
+	$_SESSION['status']=0;
+	 if($idserie=="NULL"){
+		header("location:../View/cadastro_video.php?status=1&disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie");
+	}else{
+		header("location:../View/cadastro_video_gt.php?status=1&disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie");
+
+	}
+	
+}
+
+?>

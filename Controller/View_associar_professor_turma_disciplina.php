@@ -1,0 +1,149 @@
+<?php 
+  include '../Model/Conexao.php';
+  include '../Model/Escola.php';
+  include '../Model/Turma.php';
+  include '../Model/Disciplina.php';
+  include '../Model/Professor.php';
+  $idprofessor=$_GET['idprofessor'];
+  $res=pesquisar_professor_por_id($conexao,$idprofessor);
+  foreach ($res as $key => $value) {
+    $idprofessor=$value['idfuncionario'];
+    $professor=$value['nome'];
+  }
+?>
+<br>
+<br>
+      <div class="row">
+
+        <div class="col-md-1">
+
+        </div>
+
+         <div class="col-md-10">
+
+            <div class="card card-primary">
+
+                  <div class="card-header">
+
+                    <h3 class="card-title">ASSOCIAÇÕES DO FÚNCIONÁRIO: <span class="text-warning"><?=$professor?></span></h3>
+
+                  </div>
+
+                  
+
+                  <form action="../Controller/Associar_professor__turma_disciplina.php" method="post">
+                    <input type="hidden" name="professor_id" value="<?php echo $idprofessor; ?>">
+                    <div class='card-body'>
+
+                      <label>Selecione a escola</label>
+
+                      <select name='escola'  class="custom-select rounded-0" required>
+
+                        <option></option>
+
+                        <?php
+
+                        $res_turma=lista_escola($conexao); 
+
+                        foreach ($res_turma as $key => $value) {
+
+                            $idescola= $value['idescola'];
+
+                            $nome = ($value['nome_escola']);
+
+                            echo "<option value='$idescola' class='text-black'>$nome</option>";
+
+                          
+
+                        }
+
+
+
+                        ?>
+
+                      </select>
+
+
+                      
+
+
+
+                     <label>Selecione a Disciplina </label>
+
+                      <select name='disciplina'  class="custom-select rounded-0" required>
+
+                        <option></option>
+
+                        <?php
+
+                        $res_disciplina=lista_disciplina($conexao); 
+
+                        foreach ($res_disciplina as $key => $value) {
+
+                            $iddisciplina = $value['iddisciplina'];
+
+                            $disciplina = ($value['nome_disciplina']);
+
+                            echo "<option value='$iddisciplina' class='text-black'>$disciplina</option>";
+
+                          
+
+                        }
+
+
+
+                        ?>
+
+                      </select>
+
+                       
+
+
+                      <label>Selecione a série</label>
+
+                      <select name='serie'  class="custom-select rounded-0" onchange="lista_de_turmas(this.value);" required>
+
+                        <option></option>
+
+                        <?php
+
+                        $res_serie=lista_serie($conexao); 
+
+                        foreach ($res_serie as $key => $value) {
+
+                            $id = $value['id'];
+
+                            $nome_serie = ($value['nome']);
+
+                            echo "<option value='$id' class='text-black'>$nome_serie</option>";
+
+                          
+
+                        }
+
+
+
+                        ?>
+
+                      </select>
+
+                                
+                      <div id="lista_de_turmas">
+                        
+                      </div>
+
+                      
+
+
+
+                    </div>
+
+                </form>
+
+
+
+                </div>
+
+             </div> <!-- </div> class=col- 10 -->
+
+      </div> <!-- </div> row  -->
