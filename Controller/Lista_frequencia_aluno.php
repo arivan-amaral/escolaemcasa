@@ -55,8 +55,8 @@ try {
                      
                       <td> 
                       <div class='custom-control custom-checkbox'>
-                          <input class='custom-control-input' name='presenca$id' type='checkbox' id='customCheckbox2' value='1' $marcado>
-                          <label for='customCheckbox2' class='custom-control-label'>Presença</label>
+                          <input class='custom-control-input' name='presenca$id' type='checkbox' id='customCheckbox$id' value='1' $marcado>
+                          <label for='customCheckbox$id' class='custom-control-label'>Presença</label>
                         </div>
                       </td>
 
