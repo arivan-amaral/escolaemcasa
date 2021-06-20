@@ -5,4 +5,9 @@
 *View/material_apoio/
 *View/trabalho_entregue/
 *View/video/
-*View/trabalho/
+Model/Conexao.php
+Controller/Login.php
+View/index.php
+index.php
+Model/Conexao.php
+Controller/Login.php

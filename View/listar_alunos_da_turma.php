@@ -28,7 +28,7 @@ if (!isset($_SESSION['idcoordenador'])) {
 
 
 
-<script src="ajax.js"></script>
+<script src="ajax.js?<?php echo rand(); ?>"></script>
 
 
 
@@ -54,7 +54,7 @@ if (!isset($_SESSION['idcoordenador'])) {
 
              <?php if (isset($_SESSION['nome'])) {
 
-              echo " - ".$_SESSION['nome'];  
+              echo " ".$_SESSION['nome'];  
 
             } 
 

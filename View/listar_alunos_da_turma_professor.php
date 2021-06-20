@@ -51,7 +51,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
              if (isset($_SESSION['nome'])) {
 
-              echo " - ".$_SESSION['nome'];  
+              echo " ".$_SESSION['nome'];  
 
             } 
 

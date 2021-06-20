@@ -404,6 +404,31 @@ if (!isset($_SESSION['idprofessor'])) {
                                        MATERIAL DE APOIO
                                      </a> 
 
+
+
+                                     <a class='btn btn-info btn-block btn-flat'
+
+                                            href='diario.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie' >
+
+
+
+                                             <font style='vertical-align: inherit;'>
+
+                                               <font style='vertical-align: inherit;'> 
+
+                                                   <i class='fa fa-calendar'></i>
+
+                                                    Diário     
+
+                                                 </font>
+
+                                             </font>
+
+                                           </a> 
+
+
+
+
                                      <a class='btn btn-info btn-block btn-flat'
 
                                             href='#' onclick=alert('chat desabilitado');>

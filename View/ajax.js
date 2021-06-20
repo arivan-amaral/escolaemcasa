@@ -135,6 +135,46 @@ function notificacao_video_whatsapp(cont){
 }
 
 // ******************************************************************************
+function data_frequencia_ja_cadastrada(data){
+  var data_frequencia = document.getElementById("data_frequencia").value=data;
+  lista_frequencia_aluno();
+}
+function limpa_data_frequencia_ja_cadastrada(){
+  var data_frequencia = document.getElementById("data_ja_lancada").value='';
+}
+
+function lista_frequencia_aluno(){
+  var botao_continuar = document.getElementById("botao_continuar");
+  var result = document.getElementById("listagem_frequencia");
+  var xmlreq = CriaRequest();   
+  result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
+
+  var data_frequencia = document.getElementById("data_frequencia").value;
+  var idescola = document.getElementById("idescola").value;
+  var idturma = document.getElementById("idturma").value;
+  var iddisciplina = document.getElementById("iddisciplina").value;
+
+  var url="data_frequencia="+data_frequencia+"&idescola="+idescola+"&idturma="+idturma+"&iddisciplina="+iddisciplina;
+   xmlreq.open("GET", "../Controller/Lista_frequencia_aluno.php?"+url, true);
+    xmlreq.onreadystatechange = function(){      
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {
+                result.innerHTML =  xmlreq.responseText;
+                botao_continuar.innerHTML=""+
+                "<div class='col-sm-1'></div>"+
+                "<div class='col-sm-10'>"+
+                  "<button type='submit' class='btn btn-block btn-primary'>Concluír</button>"+
+                "</div>";
+                
+            }else{
+                   result.innerHTML = xmlreq.responseText;
+                
+                
+            }
+        }
+    };
+    xmlreq.send(null);
+}
 
 
 function lista_de_turmas(id){

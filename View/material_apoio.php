@@ -25,7 +25,7 @@
 
 
 
-<script src="ajax.js"></script>
+<script src="ajax.js?<?php echo rand(); ?>"></script>
 
 
 
@@ -51,7 +51,7 @@
 
              <?php if (isset($_SESSION['nome'])) {
 
-              echo " - ".$_SESSION['nome'];  
+              echo " ".$_SESSION['nome'];  
 
             } 
 

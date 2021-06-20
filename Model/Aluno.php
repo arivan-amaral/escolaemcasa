@@ -1,4 +1,71 @@
 <?php
+
+
+function cadastro_conteudo_aula($conexao,$descricao, $disciplina_id, $turma_id, $escola_id, $professor_id, $data) {
+    $conexao->exec("INSERT INTO conteudo_aula(descricao, disciplina_id, turma_id, escola_id, professor_id, data) VALUES ('$descricao', $disciplina_id, $turma_id, $escola_id, $professor_id, '$data')");
+    return $conexao;
+}
+
+function limpa_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $professor_id, $data) {
+    $conexao->exec("DELETE FROM conteudo_aula WHERE
+      professor_id=$professor_id and 
+      data='$data' and 
+      disciplina_id=$iddisciplina and 
+      escola_id=$idescola and 
+      turma_id=$idturma");
+  
+}
+
+function listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $professor_id) {
+    $resultado=$conexao->query("SELECT * FROM conteudo_aula WHERE
+      professor_id=$professor_id and 
+      disciplina_id=$iddisciplina and 
+      escola_id=$idescola and 
+      turma_id=$idturma order by data");
+  return $resultado;
+}
+
+function verificar_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $professor_id, $data) {
+    $resultado=$conexao->query("SELECT * FROM conteudo_aula WHERE
+      professor_id=$professor_id and 
+      data='$data' and 
+      disciplina_id=$iddisciplina and 
+      escola_id=$idescola and 
+      turma_id=$idturma");
+  return $resultado;
+}
+
+
+function cadastro_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$aluno_id,$data_frequencia,$conteudo_aula_id,$presenca) {
+    $conexao->exec(" INSERT INTO frequencia( aluno_id,turma_id, professor_id, data_frequencia, conteudo_aula_id, disciplina_id, escola_id,presenca) VALUES (
+    	$aluno_id,$idturma, $professor_id, '$data_frequencia', $conteudo_aula_id, $iddisciplina, $idescola,$presenca
+)");
+    return $conexao;
+}
+
+function limpar_cadastro_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data_frequencia) {
+    $conexao->exec(" DELETE FROM frequencia WHERE
+      professor_id=$professor_id and 
+      data_frequencia='$data_frequencia' and 
+      disciplina_id=$iddisciplina and 
+      escola_id=$idescola and 
+      turma_id=$idturma ");
+    return $conexao;
+}
+
+function verificar_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data_frequencia,$aluno_id) {
+    $resultado=$conexao->query(" SELECT * FROM frequencia WHERE
+      professor_id=$professor_id and 
+      data_frequencia='$data_frequencia' and 
+      disciplina_id=$iddisciplina and 
+      escola_id=$idescola and 
+      turma_id=$idturma and aluno_id=$aluno_id and presenca=1");
+    return $resultado;
+}
+
+
+
+// ********************************************************************************
     function pesquisar_imagem_aluno($conexao, $id) {
     	$result=$conexao->query("SELECT * FROM imagem WHERE id_aluno=$id ");
     	return $result ;

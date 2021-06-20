@@ -38,6 +38,9 @@ function data($data){
 function data_simples($data){
     return date("Y-m-d", strtotime($data));
 }
+function converte_data($data){
+    return date("d/m/Y", strtotime($data));
+}
 	
 
 ?>
