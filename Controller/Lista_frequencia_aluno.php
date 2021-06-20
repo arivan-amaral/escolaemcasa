@@ -21,7 +21,13 @@ try {
             <tr>
               <th style='width: 10px'>#</th>
               <th>Aluno</th>
-              <th>Presença</th>
+              <th>
+              <div class='custom-control custom-checkbox' >
+
+                  <input class='custom-control-input'  type='checkbox' id='marcartodos' onclick='marcarDesmarcarChecbox();' >
+                  <label for='marcartodos' class='custom-control-label' onclick='marcarDesmarcarChecbox();'></label>
+                </div>
+              </th>
             </tr>
           </thead>
           <tbody>";
@@ -55,7 +61,7 @@ try {
                      
                       <td> 
                       <div class='custom-control custom-checkbox'>
-                          <input class='custom-control-input' name='presenca$id' type='checkbox' id='customCheckbox$id' value='1' $marcado>
+                          <input class='custom-control-input checkbox1' name='presenca$id' type='checkbox' id='customCheckbox$id' value='1' $marcado>
                           <label for='customCheckbox$id' class='custom-control-label'>Presença</label>
                         </div>
                       </td>
@@ -83,6 +89,9 @@ foreach ($res_conteu as $key => $value) {
             <textarea class='form-control' id='exampleInputEmail1' rows='5' name='descricao' required>$conteudo_aula</textarea>
           </div>
         </div>
+        <script type='text/javascript'>
+  setTimeout('marcarDesmarcarChecbox()',100);
+</script>
       ";
 
       echo $result;

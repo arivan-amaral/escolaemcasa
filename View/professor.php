@@ -418,7 +418,27 @@ if (!isset($_SESSION['idprofessor'])) {
 
                                                    <i class='fa fa-calendar'></i>
 
-                                                    Diário     
+                                                    Diário frequência    
+
+                                                 </font>
+
+                                             </font>
+
+                                           </a> 
+
+                                     <a class='btn btn-info btn-block btn-flat'
+
+                                            href='nota.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie' >
+
+
+
+                                             <font style='vertical-align: inherit;'>
+
+                                               <font style='vertical-align: inherit;'> 
+
+                                                   <i class='fa fa-calendar'></i>
+
+                                                    Diário frequência    
 
                                                  </font>
 
