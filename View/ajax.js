@@ -186,7 +186,7 @@ function lista_avaliacao_ja_cadastrada_por_periodo(periodo){
                 botao_continuar.innerHTML=""+
                 "<div class='col-sm-1'></div>"+
                 "<div class='col-sm-10'>"+
-                  "<button type='submit' class='btn btn-block btn-primary'>Concluír</button>"+
+                  "<button type='submit' class='btn btn-block btn-primary'>Concluir</button>"+
                 "</div>";
                 
             }else{
@@ -229,7 +229,7 @@ function lista_ocorrencia_aluno(){
                 botao_continuar.innerHTML=""+
                 "<div class='col-sm-1'></div>"+
                 "<div class='col-sm-10'>"+
-                  "<button type='submit' class='btn btn-block btn-primary'>Concluír</button>"+
+                  "<button type='submit' class='btn btn-block btn-primary'>Concluir</button>"+
                 "</div>";
                 
             }else{
@@ -263,7 +263,7 @@ function lista_frequencia_aluno(){
                 botao_continuar.innerHTML=""+
                 "<div class='col-sm-1'></div>"+
                 "<div class='col-sm-10'>"+
-                  "<button type='submit' class='btn btn-block btn-primary'>Concluír</button>"+
+                  "<button type='submit' class='btn btn-block btn-primary'>Concluir</button>"+
                 "</div>";
                 
             }else{
@@ -303,7 +303,7 @@ function lista_avaliacao_aluno_por_data(){
                         botao_continuar.innerHTML=""+
                         "<div class='col-sm-1'></div>"+
                         "<div class='col-sm-10'>"+
-                          "<button type='submit' class='btn btn-block btn-primary'>Concluír</button>"+
+                          "<button type='submit' class='btn btn-block btn-primary'>Concluir</button>"+
                         "</div>";
                         
                     }else{
