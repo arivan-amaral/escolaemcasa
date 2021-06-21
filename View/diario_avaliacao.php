@@ -94,20 +94,21 @@ if (!isset($_SESSION['idprofessor'])) {
           
        
       <div class="row">
+
         <div class="col-sm-1"></div>
         
-        <div class="col-sm-5">
+        <div class="col-sm-3">
           <div class="form-group">
             <label for="exampleInputEmail1">Data da avaliação</label>
-            <input type="date" class="form-control" name="data_avaliacao" id="data_avaliacao" required="" onchange="lista_avaliacao_aluno_por_data();">
+            <input type="date" class="form-control" name="data_avaliacao" id="data_avaliacao" onchange='lista_avaliacao_aluno_por_data();' required="">
           </div>
         </div>   
 
-        <div class="col-sm-5">
+        <div class="col-sm-3">
           <div class="form-group">
             <label for="exampleInputEmail1">Período</label>
 
-            <select class="form-control" id='periodo' name='periodo' onchange='lista_avaliacao_aluno_por_data();' required="">
+            <select class="form-control" id='periodo' name='periodo' onchange='lista_avaliacao_aluno_por_data();'  required="">
               <option></option>
               <?php 
                 $resultado=listar_trimestre($conexao);
@@ -119,6 +120,21 @@ if (!isset($_SESSION['idprofessor'])) {
                 }
 
                ?>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-2">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Avaliação/Parecer</label>
+
+            <select class="form-control" id='avaliacao' name='avaliacao' onchange='lista_avaliacao_aluno_por_data();' required="">
+              <option></option>
+              <option value="av1">AV1 / Parecer</option>
+              <option value="av2">AV2 / Parecer</option>
+              <option value="av3">AV3 / Parecer</option>
+              <option value="RP">RECUPERAÇÃO</option>
+             
             </select>
           </div>
         </div>

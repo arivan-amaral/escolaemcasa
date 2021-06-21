@@ -2,7 +2,9 @@
 
 
 
-function limpa_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$data_nota,$parecer_disciplina_id){
+// ***********************************************************************************************
+
+function limpa_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$data_nota,$parecer_disciplina_id,$avaliacao){
     $resultado=$conexao->exec(" DELETE FROM nota WHERE
     	escola_id=$idescola and 
     	turma_id=$idturma and 
@@ -10,26 +12,28 @@ function limpa_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id
     	aluno_id=$idaluno and
     	periodo_id=$idperiodo and 
     	parecer_disciplina_id=$parecer_disciplina_id and 
+    	avaliacao='$avaliacao' and 
 
     	data_nota='$data_nota'
     	");
     return $resultado;
 }
 
-function limpa_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$data_nota){
+function limpa_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$data_nota,$avaliacao){
     $resultado=$conexao->exec(" DELETE FROM nota WHERE
     	escola_id=$idescola and 
     	turma_id=$idturma and 
     	disciplina_id=$iddisciplina and
     	aluno_id=$idaluno and
     	periodo_id=$idperiodo and 
+    	avaliacao='$avaliacao' and 
     	data_nota='$data_nota'
     	");
     return $resultado;
 }
 
 
-function verifica_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$data_nota,$parecer_disciplina_id){
+function verifica_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$data_nota,$parecer_disciplina_id,$avaliacao){
     $resultado=$conexao->query(" SELECT * FROM nota WHERE
     	escola_id=$idescola and 
     	turma_id=$idturma and 
@@ -37,20 +41,22 @@ function verifica_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,
     	aluno_id=$idaluno and
     	periodo_id=$idperiodo and 
     	parecer_disciplina_id=$parecer_disciplina_id and 
+    	avaliacao='$avaliacao' and 
 
     	data_nota='$data_nota'
     	");
     return $resultado;
 }
 
-function verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$data_nota){
+function verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$data_nota,$avaliacao){
     $resultado=$conexao->query(" SELECT * FROM nota WHERE
     	escola_id=$idescola and 
     	turma_id=$idturma and 
     	disciplina_id=$iddisciplina and
     	aluno_id=$idaluno and
     	periodo_id=$idperiodo and 
-    	data_nota='$data_nota'
+    	data_nota='$data_nota' and 
+    	avaliacao ='$avaliacao'
     	");
     return $resultado;
 }
@@ -64,8 +70,8 @@ function listar_parecer_disciplina($conexao,$iddisciplina){
 }
 
 
-function cadastro_nota($conexao,$nota, $parecer_disciplina_id, $parecer_descritivo, $sigla, $escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, $data_nota) {
-    $conexao->exec("INSERT INTO nota(nota, parecer_disciplina_id, parecer_descritivo, sigla, escola_id, turma_id, disciplina_id, aluno_id, periodo_id, data_nota) VALUES ($nota, $parecer_disciplina_id, '$parecer_descritivo', '$sigla', $escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, '$data_nota')");
+function cadastro_nota($conexao,$nota, $parecer_disciplina_id, $parecer_descritivo, $sigla, $escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, $data_nota,$avaliacao) {
+    $conexao->exec("INSERT INTO nota(nota, parecer_disciplina_id, parecer_descritivo, sigla, escola_id, turma_id, disciplina_id, aluno_id, periodo_id, data_nota,avaliacao) VALUES ($nota, $parecer_disciplina_id, '$parecer_descritivo', '$sigla', $escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, '$data_nota','$avaliacao')");
     return $conexao;
 }
 

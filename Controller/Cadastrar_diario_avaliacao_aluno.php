@@ -14,6 +14,7 @@ try {
 
     $periodo=$_POST['periodo'];
     $data=$_POST['data_avaliacao'];
+    $avaliacao=$_POST['avaliacao'];
 
     $sigla=null;
     $parecer_disciplina_id=0;
@@ -28,7 +29,7 @@ $conteudo_aula_id= $conexao->lastInsertId();
 foreach ($_POST['aluno_id'] as $key => $value) {
       $aluno_id=$_POST['aluno_id'][$key];
 
-    limpa_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$aluno_id,$periodo,$data);
+    limpa_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$aluno_id,$periodo,$data,$avaliacao);
 
 
       $parecer_descritivo='';
@@ -58,15 +59,15 @@ foreach ($_POST['aluno_id'] as $key => $value) {
                 $parecer_disciplina_id=$_POST["descricao_parecer$aluno_id"][$key];
               }
 
-    limpa_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$aluno_id,$periodo,$data,$parecer_disciplina_id);
+    limpa_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$aluno_id,$periodo,$data,$parecer_disciplina_id,$avaliacao);
 
               cadastro_nota($conexao,$nota, 
-                $parecer_disciplina_id, $parecer_descritivo, $sigla,$idescola, $idturma, $iddisciplina, $aluno_id, $periodo, $data);
+                $parecer_disciplina_id, $parecer_descritivo, $sigla,$idescola, $idturma, $iddisciplina, $aluno_id, $periodo, $data,$avaliacao);
           }
 
     }else{
         cadastro_nota($conexao,$nota, 
-                $parecer_disciplina_id, $parecer_descritivo, $sigla,$idescola, $idturma, $iddisciplina, $aluno_id, $periodo, $data);
+                $parecer_disciplina_id, $parecer_descritivo, $sigla,$idescola, $idturma, $iddisciplina, $aluno_id, $periodo, $data,$avaliacao);
     }
 
     

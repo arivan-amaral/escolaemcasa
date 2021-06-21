@@ -22,24 +22,25 @@ require_once "recaptchalib.php";
           }else if ($_POST["g-recaptcha-response"] =="" ) {
               $_SESSION['status']=0;
               $_SESSION['mensagem']="Selecione a caixa que comprova que você não é um robô!";
-              header("location:../View/index.php?tokem=1"); 
+              //header("location:../View/index.php?tokem=1"); 
           }else{
               $_SESSION['status']=0;
 
              $_SESSION['mensagem']="Selecione a caixa que comprova que você não é um robô!";
-              header("location:../View/index.php?tokem=2"); 
+              //header("location:../View/index.php?tokem=2"); 
           }
 
 
-          // foreach ($_POST as $key => $value) {
-          //   echo "$key =". $value."</br>";
-          // }
 
     //************************************************************
 
+ //comentar apos colocar em produção
+$response = true;
+ $response->success=true;
+ //comentar apos colocar em produção =>  \^/
 
+  if(isset($_POST["email"]) ){  //&& $response != null && $response->success==true){
 
-  if(isset($_POST["email"]) && $response != null && $response->success==true){
       $email = $_POST["email"];
        $email=strtolower($email);
        $senha = $_POST["senha"];
@@ -144,6 +145,7 @@ require_once "recaptchalib.php";
 
       header("Location:../View/?status=0");
     }
+
 
 }else{
   $_SESSION['status']=0;

@@ -13,9 +13,11 @@ try {
     $iddisciplina=$_GET['iddisciplina'];
     $data=$_GET['data_avaliacao'];
     $idperiodo=$_GET['idperiodo'];
+    $avaliacao=$_GET['avaliacao'];
  
 
       $result="
+
        <div class='card-body'>
         <table class='table table-bordered'>
           <thead>
@@ -37,19 +39,14 @@ try {
                 $status_aluno=$value['status_aluno'];
                 $email=$value['email'];
                 $senha=$value['senha'];
-                $marcado="";
-
-                  $resultado=verificar_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data,$id);
-                    foreach ($resultado as $key2 => $value2) {
-                      $marcado='checked';
-                    }
+                
 
                     if ($cont%2==0) {
                       $cor_tabela='table-primary';
                     }else {
                       $cor_tabela='table-secondary';
                     }
-                     $result_verifica=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,$data);
+                     $result_verifica=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,$data,$avaliacao);
                      $nota='';
                      $descricao_parecer='';
                      foreach ($result_verifica as $key => $value) {
@@ -71,7 +68,7 @@ try {
                          
                        <tr class='$cor_tabela'>";
 
-                          if ($idperiodo !=6) {
+                          if ($idperiodo !=6) {//se for diferente de diagnostico inicial
                               
                              $result.="<td>
                               <label for='exampleInputEmail1'>Parecer descritivo</label>
@@ -112,7 +109,7 @@ try {
                   foreach ($res_par as $key => $value) {
                     $idparecer=$value['id'];
                     $descricao_parecer=$value['descricao'];
-                    $res_verif_parece=verifica_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,$data,$idparecer);
+                    $res_verif_parece=verifica_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,$data,$idparecer,$avaliacao);
                     $sigla="";
                     foreach ($res_verif_parece as $key => $value) {
                       $sigla=$value['sigla'];
