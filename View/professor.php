@@ -408,7 +408,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
                                      <a class='btn btn-info btn-block btn-flat'
 
-                                            href='diario.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie' >
+                                            href='diario_frequencia.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie' >
 
 
 
@@ -428,7 +428,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
                                      <a class='btn btn-info btn-block btn-flat'
 
-                                            href='nota.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie' >
+                                            href='diario_avaliacao.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie' >
 
 
 
@@ -436,9 +436,9 @@ if (!isset($_SESSION['idprofessor'])) {
 
                                                <font style='vertical-align: inherit;'> 
 
-                                                   <i class='fa fa-calendar'></i>
+                                                   <ion-icon name='stats-chart-outline'></ion-icon>
 
-                                                    Diário frequência    
+                                                    Diário de avaliação    
 
                                                  </font>
 

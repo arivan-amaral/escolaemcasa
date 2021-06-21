@@ -161,6 +161,51 @@ function limpa_data_frequencia_ja_cadastrada(){
   var data_frequencia = document.getElementById("data_ja_lancada").value='';
 }
 
+
+function lista_avaliacao_ja_cadastrada_por_periodo(periodo){
+  document.getElementById("data_frequencia").value='';
+
+  var botao_continuar = document.getElementById("botao_continuar");
+  var result = document.getElementById("listagem_frequencia");
+  var xmlreq = CriaRequest();   
+  result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
+
+  var idescola = document.getElementById("idescola").value;
+  var idturma = document.getElementById("idturma").value;
+  var iddisciplina = document.getElementById("iddisciplina").value;
+
+  var url="periodo="+periodo+"&idescola="+idescola+"&idturma="+idturma+"&iddisciplina="+iddisciplina;
+   xmlreq.open("GET", "../Controller/Lista_avaliacao_aluno_por_periodo.php?"+url, true);
+    xmlreq.onreadystatechange = function(){      
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {
+                result.innerHTML =  xmlreq.responseText;
+                botao_continuar.innerHTML=""+
+                "<div class='col-sm-1'></div>"+
+                "<div class='col-sm-10'>"+
+                  "<button type='submit' class='btn btn-block btn-primary'>Concluír</button>"+
+                "</div>";
+                
+            }else{
+                   result.innerHTML = xmlreq.responseText;
+                
+                
+            }
+        }
+    };
+    xmlreq.send(null);
+}
+
+
+
+
+
+// function limpa_periodo_avaliacao_ja_cadastrada(){
+//    document.getElementById("periodo").value='';
+// }
+// *********************************************************
+
+
 function lista_frequencia_aluno(){
   var botao_continuar = document.getElementById("botao_continuar");
   var result = document.getElementById("listagem_frequencia");
@@ -192,6 +237,52 @@ function lista_frequencia_aluno(){
         }
     };
     xmlreq.send(null);
+}
+
+function lista_avaliacao_aluno_por_data(){
+
+  var botao_continuar = document.getElementById("botao_continuar");
+  var result = document.getElementById("listagem_avaliacao");
+  var xmlreq = CriaRequest();   
+
+  var idescola = document.getElementById("idescola").value;
+  var idturma = document.getElementById("idturma").value;
+  var iddisciplina = document.getElementById("iddisciplina").value;
+
+  var data_avaliacao = document.getElementById("data_avaliacao").value;
+  var idperiodo = document.getElementById("periodo").value;
+
+   if (data_avaliacao !="" && idperiodo !="") {
+        result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
+          var url="idperiodo="+idperiodo+"&data_avaliacao="+data_avaliacao+"&idescola="+idescola+"&idturma="+idturma+"&iddisciplina="+iddisciplina;
+           xmlreq.open("GET", "../Controller/Lista_avaliacao_aluno_por_data.php?"+url, true);
+            xmlreq.onreadystatechange = function(){      
+                if (xmlreq.readyState == 4) {
+                    if (xmlreq.status == 200) {
+                        result.innerHTML =  xmlreq.responseText;
+                        botao_continuar.innerHTML=""+
+                        "<div class='col-sm-1'></div>"+
+                        "<div class='col-sm-10'>"+
+                          "<button type='submit' class='btn btn-block btn-primary'>Concluír</button>"+
+                        "</div>";
+                        
+                    }else{
+                           result.innerHTML = xmlreq.responseText;
+                        
+                        
+                    }
+                }
+            };
+        xmlreq.send(null);
+
+    }else{
+        Swal.fire({
+                  icon: 'info',
+                  title: 'Atenção...',
+                  text: 'Selecione a data e o período, para poder continuar!',
+                  
+                });
+    }
 }
 
 

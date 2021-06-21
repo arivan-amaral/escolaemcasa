@@ -34,10 +34,10 @@ foreach ($_POST['aluno_id'] as $key => $value) {
 }
 
     $_SESSION['status']=1;
-    header("location: ../View/diario.php?$url_get");;
+    header("location: ../View/diario_frequencia.php?$url_get");;
 } catch (Exception $e) {
     $_SESSION['status']=0;
-    header("location: ../View/diario.php?$url_get");;
+    header("location: ../View/diario_frequencia.php?$url_get");;
 
 }
 ?>

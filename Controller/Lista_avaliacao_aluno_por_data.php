@@ -1,0 +1,147 @@
+<?php
+  session_start();
+    include("../Model/Conexao.php");
+    include("../Model/Aluno.php");
+    
+
+try {
+
+    $professor_id=$_SESSION['idfuncionario'];
+
+    $idescola=$_GET['idescola'];
+    $idturma=$_GET['idturma'];
+    $iddisciplina=$_GET['iddisciplina'];
+    $data=$_GET['data_avaliacao'];
+    $idperiodo=$_GET['idperiodo'];
+ 
+
+      $result="
+       <div class='card-body'>
+        <table class='table table-bordered'>
+          <thead>
+            <tr>
+              <th style='width: 10px'>#</th>
+              <th>Aluno</th>
+        
+            </tr>
+          </thead>
+          <tbody>";
+
+               $result_aluno= listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
+               $cont=1;
+               $cor_tabela='table-primary';
+               foreach ($result_aluno as $key => $value) {
+                $nome_aluno=utf8_decode($value['nome_aluno']);
+                $nome_turma=($value['nome_turma']);
+                $id=$value['idaluno'];
+                $status_aluno=$value['status_aluno'];
+                $email=$value['email'];
+                $senha=$value['senha'];
+                $marcado="";
+
+                  $resultado=verificar_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data,$id);
+                    foreach ($resultado as $key2 => $value2) {
+                      $marcado='checked';
+                    }
+
+                    if ($cont%2==0) {
+                      $cor_tabela='table-primary';
+                    }else {
+                      $cor_tabela='table-secondary';
+                    }
+                     $result_verifica=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,$data);
+                     $nota='';
+                     $descricao_parecer='';
+                     foreach ($result_verifica as $key => $value) {
+                        $nota=$value['nota'];
+                        $descricao_parecer=$value['parecer_descritivo'];
+                     }
+
+                  $result.="
+                     <tr  class='$cor_tabela'>
+                      <td  colspan='2'>
+              
+                      <div class='col-sm-12'>
+
+                        <b class='text-success'> $nome_aluno </b> 
+                        <input type='hidden' name='aluno_id[]' value='$id'><br>
+                      </div
+                      
+                      <br>
+                         
+                       <tr class='$cor_tabela'>
+                              <td>
+                              <label for='exampleInputEmail1'> Parecer descritivo</label>
+                              <textarea class='form-control-sm' name='parecer_descritivo$id'>$descricao_parecer</textarea>
+                              </td>
+                            
+                              <td>
+                                                  
+                              <label for='exampleInputEmail1'>Nota</label><br>
+                              <input type='text'  name='nota$id' value='$nota' style='min-width:60px;'>
+                              </td>
+
+                        </tr>
+                         
+                        </td>
+                      </tr>";
+              
+              $res_par=listar_parecer_disciplina($conexao,$iddisciplina,$idturma);
+                  foreach ($res_par as $key => $value) {
+                    $idparecer=$value['id'];
+                    $descricao_parecer=$value['descricao'];
+                    $res_verif_parece=verifica_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,$data,$idparecer);
+                    $sigla="";
+                    foreach ($res_verif_parece as $key => $value) {
+                      $sigla=$value['sigla'];
+                    }
+
+                    $result.="<tr class='$cor_tabela'>
+                        <td colspan='2'>
+                        <div class='col-12'>
+                              <label for='exampleInputEmail1'>Parecer da disciplina</label><BR>
+                             ";
+                               
+                                  $result.="<p class='text-justify'>$descricao_parecer";
+                                
+                                
+                               $result.="                            
+                                  <input type='hidden' name='descricao_parecer".$id."[]' value='$idparecer'>
+                              <select  name='parecer_sigla".$id."[]'>
+                                <option value='$sigla'>$sigla</option>
+                                <option value='S'>S</option>
+                                <option value='N'>N</option>
+                                <option value='D'>D</option>
+                                <option value='NT'>NT</option>
+                               
+                              </select>
+                            </p>
+
+                          </div>   
+                        </td>
+                        </tr>
+                  ";
+                }
+
+
+                  $cont++;
+               }
+
+// $res_conteu=verificar_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $professor_id, $data);
+
+// $conteudo_aula="";
+// foreach ($res_conteu as $key => $value) {
+//   $conteudo_aula=$value['descricao'];
+// }
+
+          $result.="</tbody>
+          </table>
+        </div>
+      ";
+
+      echo $result;
+  }catch (Exception $e) {
+      echo "VERIFIQUE SUA CONEXÃO COM A INTERNET";
+  }
+
+?>

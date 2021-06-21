@@ -1,6 +1,49 @@
 <?php
 
 
+
+function verifica_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$data_nota,$parecer_disciplina_id){
+    $resultado=$conexao->query(" SELECT * FROM nota WHERE
+    	escola_id=$idescola and 
+    	turma_id=$idturma and 
+    	disciplina_id=$iddisciplina and
+    	aluno_id=$idaluno and
+    	periodo_id=$idperiodo and 
+    	parecer_disciplina_id=$parecer_disciplina_id and 
+    	
+    	data_nota='$data_nota'
+    	");
+    return $resultado;
+}
+
+function verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$data_nota){
+    $resultado=$conexao->query(" SELECT * FROM nota WHERE
+    	escola_id=$idescola and 
+    	turma_id=$idturma and 
+    	disciplina_id=$iddisciplina and
+    	aluno_id=$idaluno and
+    	periodo_id=$idperiodo and 
+    	data_nota='$data_nota'
+    	");
+    return $resultado;
+}
+
+// ************************************************************************
+
+function listar_parecer_disciplina($conexao,$iddisciplina){
+    $resultado=$conexao->query(" SELECT * FROM parecer_disciplina WHERE
+       disciplina_id =$iddisciplina  and status=1");
+    return $resultado;
+}
+
+
+function cadastro_nota($conexao,$nota, $parecer_disciplina_id, $parecer_descritivo, $sigla, $escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, $data_nota) {
+    $conexao->exec("INSERT INTO nota(nota, parecer_disciplina_id, parecer_descritivo, sigla, escola_id, turma_id, disciplina_id, aluno_id, periodo_id, data_nota) VALUES ($nota, '$parecer_disciplina_id', '$parecer_descritivo', '$sigla', $escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, '$data_nota')");
+    return $conexao;
+}
+
+// ********************************************************************************
+
 function cadastro_conteudo_aula($conexao,$descricao, $disciplina_id, $turma_id, $escola_id, $professor_id, $data) {
     $conexao->exec("INSERT INTO conteudo_aula(descricao, disciplina_id, turma_id, escola_id, professor_id, data) VALUES ('$descricao', $disciplina_id, $turma_id, $escola_id, $professor_id, '$data')");
     return $conexao;
@@ -14,6 +57,11 @@ function limpa_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $prof
       escola_id=$idescola and 
       turma_id=$idturma");
   
+}
+
+function listar_trimestre($conexao) {
+    $resultado=$conexao->query("SELECT * FROM periodo");
+  return $resultado;
 }
 
 function listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $professor_id) {
@@ -52,6 +100,29 @@ function limpar_cadastro_frequencia($conexao,$idescola,$idturma,$iddisciplina,$p
       turma_id=$idturma ");
     return $conexao;
 }
+
+// ****************************************************************************************
+
+function verificar_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data_frequencia,$aluno_id) {
+    $resultado=$conexao->query(" SELECT * FROM frequencia WHERE
+      professor_id=$professor_id and 
+      data_frequencia='$data_frequencia' and 
+      disciplina_id=$iddisciplina and 
+      escola_id=$idescola and 
+      turma_id=$idturma and aluno_id=$aluno_id and presenca=1");
+    return $resultado;
+}
+
+function verificar_nota_por_data($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data_frequencia,$aluno_id) {
+    $resultado=$conexao->query(" SELECT * FROM frequencia WHERE
+      professor_id=$professor_id and 
+      data_frequencia='$data_frequencia' and 
+      disciplina_id=$iddisciplina and 
+      escola_id=$idescola and 
+      turma_id=$idturma and aluno_id=$aluno_id and presenca=1");
+    return $resultado;
+}
+// ****************************************************************************************
 
 function verificar_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data_frequencia,$aluno_id) {
     $resultado=$conexao->query(" SELECT * FROM frequencia WHERE
