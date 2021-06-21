@@ -63,6 +63,9 @@ function marcarDesmarcarChecbox(){
 }
 
 
+
+
+
 function chamando_notificacoes(){
   var xmlreq = CriaRequest();   
    xmlreq.open("GET", "notificacoes.php", true);
@@ -206,6 +209,40 @@ function lista_avaliacao_ja_cadastrada_por_periodo(periodo){
 // *********************************************************
 
 
+function lista_ocorrencia_aluno(){
+  var botao_continuar = document.getElementById("botao_continuar");
+  var result = document.getElementById("listagem_ocorrencia");
+  var xmlreq = CriaRequest();   
+  result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
+
+  var data_ocorrencia = document.getElementById("data_ocorrencia").value;
+  var idescola = document.getElementById("idescola").value;
+  var idturma = document.getElementById("idturma").value;
+  var iddisciplina = document.getElementById("iddisciplina").value;
+
+  var url="data_ocorrencia="+data_ocorrencia+"&idescola="+idescola+"&idturma="+idturma+"&iddisciplina="+iddisciplina;
+   xmlreq.open("GET", "../Controller/Lista_ocorrencia_aluno.php?"+url, true);
+    xmlreq.onreadystatechange = function(){      
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {
+                result.innerHTML =  xmlreq.responseText;
+                botao_continuar.innerHTML=""+
+                "<div class='col-sm-1'></div>"+
+                "<div class='col-sm-10'>"+
+                  "<button type='submit' class='btn btn-block btn-primary'>Concluír</button>"+
+                "</div>";
+                
+            }else{
+                   result.innerHTML = xmlreq.responseText;
+                
+                
+            }
+        }
+    };
+    xmlreq.send(null);
+}
+
+
 function lista_frequencia_aluno(){
   var botao_continuar = document.getElementById("botao_continuar");
   var result = document.getElementById("listagem_frequencia");
@@ -238,6 +275,9 @@ function lista_frequencia_aluno(){
     };
     xmlreq.send(null);
 }
+
+
+
 
 function lista_avaliacao_aluno_por_data(){
 
@@ -274,6 +314,7 @@ function lista_avaliacao_aluno_por_data(){
                 }
             };
         xmlreq.send(null);
+  
 
     }else{
         Swal.fire({

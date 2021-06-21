@@ -90,7 +90,7 @@ if (!isset($_SESSION['idprofessor'])) {
       <div class="container-fluid">
         <!-- Info boxes -->
         <!-- .row -->
-  <form action="../Controller/Cadastrar_diario_avaliacao_aluno.php" method="post">
+  <form action="../Controller/Cadastrar_frequencia.php" method="post">
           
        
       <div class="row">
@@ -98,23 +98,22 @@ if (!isset($_SESSION['idprofessor'])) {
         
         <div class="col-sm-5">
           <div class="form-group">
-            <label for="exampleInputEmail1">Data da avaliação</label>
-            <input type="date" class="form-control" name="data_avaliacao" id="data_avaliacao" required="" onchange="lista_avaliacao_aluno_por_data();">
+            <label for="exampleInputEmail1">Data da ocorrência</label>
+            <input type="date" class="form-control" name="data_ocorrencia" id="data_ocorrencia" required="" onchange="lista_ocorrencia_aluno();">
           </div>
         </div>   
 
         <div class="col-sm-5">
           <div class="form-group">
-            <label for="exampleInputEmail1">Período</label>
+            <label for="exampleInputEmail1">Datas das ocorrências</label>
 
-            <select class="form-control" id='periodo' name='periodo' onchange='lista_avaliacao_aluno_por_data();' required="">
+            <select class="form-control" id='data_ja_lancada' onchange='data_frequencia_ja_cadastrada(this.value);'>
               <option></option>
               <?php 
-                $resultado=listar_trimestre($conexao);
+                $resultado=listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $idprofessor);
                 foreach ($resultado as $key => $value) {
-                  $idperiodo=$value['id'];
-                  $descricao=$value['descricao'];
-                  echo"<option value='$idperiodo'>$descricao</option>";
+                  $data=$value['data'];
+                  echo"<option value='$data'>".converte_data($data)."</option>";
                   
                 }
 
@@ -124,7 +123,7 @@ if (!isset($_SESSION['idprofessor'])) {
         </div>
 
       </div>
-  <div id="listagem_avaliacao">
+  <div class="row" id="listagem_ocorrencia">
 
 
   </div>

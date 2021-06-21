@@ -408,6 +408,25 @@ if (!isset($_SESSION['idprofessor'])) {
 
                                      <a class='btn btn-info btn-block btn-flat'
 
+                                            href='acompanhamento_pedagogico.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie' >
+
+
+
+                                             <font style='vertical-align: inherit;'>
+
+                                               <font style='vertical-align: inherit;'> 
+
+                                                   <ion-icon name='clipboard-outline'></ion-icon>
+                                                    Ocorrências (acompanhamento pedagógico)    
+
+                                                 </font>
+
+                                             </font>
+
+                                           </a> 
+
+                                     <a class='btn btn-info btn-block btn-flat'
+
                                             href='diario_frequencia.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie' >
 
 

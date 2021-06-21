@@ -15,19 +15,22 @@ try {
     $periodo=$_POST['periodo'];
     $data=$_POST['data_avaliacao'];
 
-
-
+    $sigla=null;
+    $parecer_disciplina_id=0;
+      $nota=0;
 
     $url_get=$_POST['url_get'];
    	
-//limpar_cadastro_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data);
-//limpa_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $professor_id, $data);
 
 $conteudo_aula_id= $conexao->lastInsertId();
 
 
 foreach ($_POST['aluno_id'] as $key => $value) {
       $aluno_id=$_POST['aluno_id'][$key];
+
+    limpa_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$aluno_id,$periodo,$data);
+
+
       $parecer_descritivo='';
       if (isset($_POST["parecer_descritivo$aluno_id"])) {
         $parecer_descritivo=$_POST["parecer_descritivo$aluno_id"];
@@ -42,21 +45,29 @@ foreach ($_POST['aluno_id'] as $key => $value) {
         }
       }
 
-  foreach ($_POST["parecer_sigla$aluno_id"] as $key => $value) {
-      $sigla='';
-      if (isset($_POST["parecer_sigla$aluno_id"][$key])) {
-        $sigla=$_POST["parecer_sigla$aluno_id"][$key];
-      }      
+      if (isset($_POST["parecer_sigla$aluno_id"])) {
+         
+          foreach ($_POST["parecer_sigla$aluno_id"] as $key => $value) {
+              $sigla=null;
+              if (isset($_POST["parecer_sigla$aluno_id"][$key])) {
+                $sigla=$_POST["parecer_sigla$aluno_id"][$key];
+              }      
 
-      $parecer_disciplina_id='';
-      if (isset($_POST["descricao_parecer$aluno_id"][$key])) {
-        $parecer_disciplina_id=$_POST["descricao_parecer$aluno_id"][$key];
-      }
+              $parecer_disciplina_id=0;
+              if (isset($_POST["descricao_parecer$aluno_id"][$key])) {
+                $parecer_disciplina_id=$_POST["descricao_parecer$aluno_id"][$key];
+              }
 
+    limpa_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$aluno_id,$periodo,$data,$parecer_disciplina_id);
 
-      cadastro_nota($conexao,$nota, 
-        $parecer_disciplina_id, $parecer_descritivo, $sigla,$idescola, $idturma, $iddisciplina, $aluno_id, $periodo, $data);
-  }
+              cadastro_nota($conexao,$nota, 
+                $parecer_disciplina_id, $parecer_descritivo, $sigla,$idescola, $idturma, $iddisciplina, $aluno_id, $periodo, $data);
+          }
+
+    }else{
+        cadastro_nota($conexao,$nota, 
+                $parecer_disciplina_id, $parecer_descritivo, $sigla,$idescola, $idturma, $iddisciplina, $aluno_id, $periodo, $data);
+    }
 
     
 }
@@ -64,9 +75,9 @@ foreach ($_POST['aluno_id'] as $key => $value) {
     $_SESSION['status']=1;
     header("location: ../View/diario_avaliacao.php?$url_get");
 } catch (Exception $e) {
+
     $_SESSION['status']=0;
-    echo $e;
-    //header("location: ../View/diario_avaliacao.php?$url_get");;
+    header("location: ../View/diario_avaliacao.php?$url_get");;
 
 }
 ?>

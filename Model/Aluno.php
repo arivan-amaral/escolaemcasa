@@ -2,6 +2,33 @@
 
 
 
+function limpa_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$data_nota,$parecer_disciplina_id){
+    $resultado=$conexao->exec(" DELETE FROM nota WHERE
+    	escola_id=$idescola and 
+    	turma_id=$idturma and 
+    	disciplina_id=$iddisciplina and
+    	aluno_id=$idaluno and
+    	periodo_id=$idperiodo and 
+    	parecer_disciplina_id=$parecer_disciplina_id and 
+
+    	data_nota='$data_nota'
+    	");
+    return $resultado;
+}
+
+function limpa_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$data_nota){
+    $resultado=$conexao->exec(" DELETE FROM nota WHERE
+    	escola_id=$idescola and 
+    	turma_id=$idturma and 
+    	disciplina_id=$iddisciplina and
+    	aluno_id=$idaluno and
+    	periodo_id=$idperiodo and 
+    	data_nota='$data_nota'
+    	");
+    return $resultado;
+}
+
+
 function verifica_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$data_nota,$parecer_disciplina_id){
     $resultado=$conexao->query(" SELECT * FROM nota WHERE
     	escola_id=$idescola and 
@@ -10,7 +37,7 @@ function verifica_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,
     	aluno_id=$idaluno and
     	periodo_id=$idperiodo and 
     	parecer_disciplina_id=$parecer_disciplina_id and 
-    	
+
     	data_nota='$data_nota'
     	");
     return $resultado;
@@ -38,7 +65,7 @@ function listar_parecer_disciplina($conexao,$iddisciplina){
 
 
 function cadastro_nota($conexao,$nota, $parecer_disciplina_id, $parecer_descritivo, $sigla, $escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, $data_nota) {
-    $conexao->exec("INSERT INTO nota(nota, parecer_disciplina_id, parecer_descritivo, sigla, escola_id, turma_id, disciplina_id, aluno_id, periodo_id, data_nota) VALUES ($nota, '$parecer_disciplina_id', '$parecer_descritivo', '$sigla', $escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, '$data_nota')");
+    $conexao->exec("INSERT INTO nota(nota, parecer_disciplina_id, parecer_descritivo, sigla, escola_id, turma_id, disciplina_id, aluno_id, periodo_id, data_nota) VALUES ($nota, $parecer_disciplina_id, '$parecer_descritivo', '$sigla', $escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, '$data_nota')");
     return $conexao;
 }
 

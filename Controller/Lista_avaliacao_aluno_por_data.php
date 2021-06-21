@@ -69,24 +69,46 @@ try {
                       
                       <br>
                          
-                       <tr class='$cor_tabela'>
-                              <td>
-                              <label for='exampleInputEmail1'> Parecer descritivo</label>
+                       <tr class='$cor_tabela'>";
+
+                          if ($idperiodo !=6) {
+                              
+                             $result.="<td>
+                              <label for='exampleInputEmail1'>Parecer descritivo</label>
                               <textarea class='form-control-sm' name='parecer_descritivo$id'>$descricao_parecer</textarea>
+
                               </td>
                             
                               <td>
                                                   
                               <label for='exampleInputEmail1'>Nota</label><br>
                               <input type='text'  name='nota$id' value='$nota' style='min-width:60px;'>
+                              </td>";
+                            }else{
+                              
+                             $result.="<td>
+                              <label for='exampleInputEmail1'> Diagnóstico inicial</label>
+                              <textarea class='form-control-sm' rows='5' name='parecer_descritivo$id'>$descricao_parecer</textarea>
                               </td>
 
-                        </tr>
+                              <td>
+                                                  
+                              <label for='exampleInputEmail1' style='display: none;'>Nota</label><br>
+                              <input type='text'  name='nota$id' value='$nota' style='display: none;'>
+                              </td>";
+                            }
+
+
+
+
+                        $result.="</tr>
                          
                         </td>
                       </tr>";
-              
-              $res_par=listar_parecer_disciplina($conexao,$iddisciplina,$idturma);
+            
+            if ($idperiodo!=6) {
+             
+                 $res_par=listar_parecer_disciplina($conexao,$iddisciplina,$idturma);
                   foreach ($res_par as $key => $value) {
                     $idparecer=$value['id'];
                     $descricao_parecer=$value['descricao'];
@@ -123,9 +145,11 @@ try {
                   ";
                 }
 
+              }//fim if
 
-                  $cont++;
-               }
+
+            $cont++;
+          }
 
 // $res_conteu=verificar_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $professor_id, $data);
 
