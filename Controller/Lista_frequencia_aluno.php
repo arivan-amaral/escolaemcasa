@@ -85,7 +85,7 @@ foreach ($res_conteu as $key => $value) {
       
         <div class='col-sm-12'>
           <div class='form-group'>
-            <label for='exampleInputEmail1'>Contéudo da aula</label>
+            <label for='exampleInputEmail1'>Conteúdo da aula</label>
             <textarea class='form-control' id='exampleInputEmail1' rows='5' name='descricao' required>$conteudo_aula</textarea>
           </div>
         </div>

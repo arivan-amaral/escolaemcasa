@@ -437,7 +437,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
                                                    <i class='fa fa-calendar'></i>
 
-                                                    Diário frequência    
+                                                    Diário frequência e conteúdo   
 
                                                  </font>
 
