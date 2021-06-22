@@ -90,7 +90,7 @@ if (!isset($_SESSION['idprofessor'])) {
       <div class="container-fluid">
         <!-- Info boxes -->
         <!-- .row -->
-  <form action="../Controller/Cadastrar_frequencia.php" method="post">
+  <form action="../Controller/Cadastrar_ocorrencia.php" method="post">
           
        
       <div class="row">
@@ -107,13 +107,13 @@ if (!isset($_SESSION['idprofessor'])) {
           <div class="form-group">
             <label for="exampleInputEmail1">Datas das ocorrências</label>
 
-            <select class="form-control" id='data_ja_lancada' onchange='data_frequencia_ja_cadastrada(this.value);'>
+            <select class="form-control" name="data_ocorrencia_lancada" id='data_ocorrencia_lancada' onchange='lista_ocorrencia_aluno();'>
               <option></option>
               <?php 
-                $resultado=listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $idprofessor);
+                $resultado=listar_ocorrencia_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $idprofessor);
                 foreach ($resultado as $key => $value) {
-                  $data=$value['data'];
-                  echo"<option value='$data'>".converte_data($data)."</option>";
+                  $data_ocorrencia=$value['data_ocorrencia'];
+                  echo"<option value='$data_ocorrencia'>".converte_data($data_ocorrencia)."</option>";
                   
                 }
 

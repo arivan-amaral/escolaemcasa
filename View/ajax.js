@@ -216,11 +216,18 @@ function lista_ocorrencia_aluno(){
   result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
 
   var data_ocorrencia = document.getElementById("data_ocorrencia").value;
+  var data_ocorrencia_lancada = document.getElementById("data_ocorrencia_lancada").value;
+  document.getElementById("data_ocorrencia_lancada").value="";
+
+  if (data_ocorrencia_lancada !="") {
+     document.getElementById("data_ocorrencia").value=data_ocorrencia_lancada;
+  }
+
   var idescola = document.getElementById("idescola").value;
   var idturma = document.getElementById("idturma").value;
   var iddisciplina = document.getElementById("iddisciplina").value;
 
-  var url="data_ocorrencia="+data_ocorrencia+"&idescola="+idescola+"&idturma="+idturma+"&iddisciplina="+iddisciplina;
+  var url="data_ocorrencia_lancada="+data_ocorrencia_lancada+"&data_ocorrencia="+data_ocorrencia+"&idescola="+idescola+"&idturma="+idturma+"&iddisciplina="+iddisciplina;
    xmlreq.open("GET", "../Controller/Lista_ocorrencia_aluno.php?"+url, true);
     xmlreq.onreadystatechange = function(){      
         if (xmlreq.readyState == 4) {

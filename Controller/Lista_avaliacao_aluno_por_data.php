@@ -58,13 +58,12 @@ try {
                      <tr  class='$cor_tabela'>
                       <td  colspan='2'>
               
-                      <div class='col-sm-12'>
-
+                      <div class='col-sm-6'>
                         <b class='text-success'> $nome_aluno </b> 
                         <input type='hidden' name='aluno_id[]' value='$id'><br>
-                      </div
-                      
+                      </div>                      
                       <br>
+
                          
                        <tr class='$cor_tabela'>";
 
@@ -72,8 +71,8 @@ try {
                               
                              $result.="<td>
                               <label for='exampleInputEmail1'>Parecer descritivo</label>
-                              <textarea class='form-control-sm' name='parecer_descritivo$id'>$descricao_parecer</textarea>
-
+                              <textarea class='form-control-sm' name='parecer_descritivo$id'>$descricao_parecer</textarea><br>
+<B>Parecer(es)</b>
                               </td>
                             
                               <td>
@@ -101,6 +100,7 @@ try {
                         $result.="</tr>
                          
                         </td>
+                     
                       </tr>";
             
             if ($idperiodo!=6) {
@@ -118,10 +118,10 @@ try {
                     $result.="<tr class='$cor_tabela'>
                         <td colspan='2'>
                         <div class='col-12'>
-                              <label for='exampleInputEmail1'>Parecer da disciplina</label><BR>
+                              
                              ";
                                
-                                  $result.="<p class='text-justify'>$descricao_parecer";
+                              $result.="<p class='text-justify'>$descricao_parecer";
                                 
                                 
                                $result.="                            

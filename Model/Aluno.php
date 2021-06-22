@@ -1,6 +1,54 @@
 <?php
 
+function cadastro_ocorrencia($conexao,$escola_id, $turma_id, $disciplina_id, $professor_id, $aluno_id, $descricao, $data_ocorrencia){
 
+	$resultado=$conexao->exec(" INSERT INTO ocorrencia_pedagogica(escola_id, turma_id, disciplina_id, professor_id, aluno_id, descricao, data_ocorrencia) VALUES ($escola_id, $turma_id, $disciplina_id, $professor_id, $aluno_id, '$descricao', '$data_ocorrencia')		
+		");	
+}
+
+function verifica_ocorrencia_cadastrada($conexao, $iddisciplina, $idturma, $idescola, $idprofessor,$data_ocorrencia,$aluno_id){
+
+	$resultado=$conexao->query(" SELECT * FROM ocorrencia_pedagogica WHERE
+		escola_id=$idescola and 
+		turma_id=$idturma and 
+		disciplina_id=$iddisciplina and
+		aluno_id=$aluno_id and
+		data_ocorrencia='$data_ocorrencia' and
+		professor_id=$idprofessor
+		
+		");
+	return $resultado;
+	
+}
+
+function limpar_ocorrencia_cadastrada($conexao, $iddisciplina, $idturma, $idescola, $idprofessor,$data_ocorrencia,$aluno_id){
+
+	$resultado=$conexao->query(" DELETE FROM ocorrencia_pedagogica WHERE
+		escola_id=$idescola and 
+		turma_id=$idturma and 
+		disciplina_id=$iddisciplina and
+		aluno_id=$aluno_id and
+		data_ocorrencia='$data_ocorrencia' and
+		professor_id=$idprofessor
+		
+		");
+	return $resultado;
+	
+}
+
+
+function listar_ocorrencia_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $idprofessor){
+
+	$resultado=$conexao->query(" SELECT * FROM ocorrencia_pedagogica WHERE
+		escola_id=$idescola and 
+		turma_id=$idturma and 
+		disciplina_id=$iddisciplina and
+		professor_id=$idprofessor GROUP BY data_ocorrencia
+		
+		");
+	return $resultado;
+	
+}
 
 // ***********************************************************************************************
 
