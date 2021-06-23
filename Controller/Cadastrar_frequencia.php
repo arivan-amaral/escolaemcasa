@@ -14,12 +14,14 @@ try {
 
     $data=$_POST['data_frequencia'];
     $descricao=$_POST['descricao'];
+    $aula=$_POST['aula'];
     $url_get=$_POST['url_get'];
    	
-limpar_cadastro_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data);
-limpa_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $professor_id, $data);
+limpar_cadastro_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data,$aula);
 
-    cadastro_conteudo_aula($conexao,$descricao, $iddisciplina, $idturma, $idescola, $professor_id, $data);
+limpa_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula);
+
+cadastro_conteudo_aula($conexao,$descricao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula);
 $conteudo_aula_id= $conexao->lastInsertId();
 
 
@@ -30,7 +32,7 @@ foreach ($_POST['aluno_id'] as $key => $value) {
     if (isset($_POST["presenca$aluno_id"])) {
         $presenca=1;
     }
-    cadastro_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$aluno_id,$data,$conteudo_aula_id,$presenca);
+    cadastro_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$aluno_id,$data,$conteudo_aula_id,$presenca,$aula);
 }
 
     $_SESSION['status']=1;

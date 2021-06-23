@@ -91,29 +91,52 @@ if (!isset($_SESSION['idprofessor'])) {
         <!-- Info boxes -->
         <!-- .row -->
   <form action="../Controller/Cadastrar_frequencia.php" method="post">
-          
+          <input type="hidden" name="url_get" value="<?php echo $url_get; ?>">
+
+          <input type="hidden" name="idescola" id="idescola" value="<?php echo $idescola; ?>">
+          <input type="hidden" name="idturma" id="idturma" value="<?php echo $idturma; ?>">
+          <input type="hidden" name="iddisciplina" id="iddisciplina" value="<?php echo $iddisciplina; ?>">
+
        
       <div class="row">
         <div class="col-sm-1"></div>
         
-        <div class="col-sm-5">
+        <div class="col-sm-4">
           <div class="form-group">
             <label for="exampleInputEmail1">Data da aula</label>
-            <input type="date" class="form-control" name="data_frequencia" id="data_frequencia" required="" onchange="limpa_data_frequencia_ja_cadastrada();lista_frequencia_aluno();">
+            <input type="date" class="form-control" name="data_frequencia" id="data_frequencia" required="" onchange="lista_frequencia_aluno();">
           </div>
         </div>   
 
-        <div class="col-sm-5">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Escolha a aula</label>
+
+            <select class="form-control" id='aula' required  name='aula' onchange="lista_frequencia_aluno();">
+              <option></option>
+              <option value="AULA-1">AULA-1</option>
+              <option value="AULA-2">AULA-2</option>
+              <option value="AULA-3">AULA-3</option>
+              
+            </select>
+          </div>
+        </div>
+
+
+
+
+        <div class="col-sm-3">
           <div class="form-group">
             <label for="exampleInputEmail1">Datas já lançadas</label>
 
-            <select class="form-control" id='data_ja_lancada' onchange='data_frequencia_ja_cadastrada(this.value);'>
+            <select class="form-control" id="data_ja_lancada" onchange="data_frequencia_ja_cadastrada(this.value);" >
               <option></option>
               <?php 
                 $resultado=listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $idprofessor);
                 foreach ($resultado as $key => $value) {
                   $data=$value['data'];
-                  echo"<option value='$data'>".converte_data($data)."</option>";
+                  $aula=$value['aula'];
+                  echo"<option value='$data' >".converte_data($data)." - $aula </option>";
                   
                 }
 
@@ -122,18 +145,15 @@ if (!isset($_SESSION['idprofessor'])) {
           </div>
         </div>
 
+
       </div>
+
   <div class="row" id="listagem_frequencia">
 
 
   </div>
 
    
-<input type="hidden" name="url_get" value="<?php echo $url_get; ?>">
-
-<input type="hidden" name="idescola" id="idescola" value="<?php echo $idescola; ?>">
-<input type="hidden" name="idturma" id="idturma" value="<?php echo $idturma; ?>">
-<input type="hidden" name="iddisciplina" id="iddisciplina" value="<?php echo $iddisciplina; ?>">
 
       <div class="row" id="botao_continuar">
         

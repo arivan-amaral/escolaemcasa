@@ -12,6 +12,7 @@ try {
     $idturma=$_GET['idturma'];
     $iddisciplina=$_GET['iddisciplina'];
     $data=$_GET['data_frequencia'];
+    $aula=$_GET['aula'];
  
 
       $result="
@@ -25,7 +26,7 @@ try {
               <div class='custom-control custom-checkbox' >
 
                   <input class='custom-control-input'  type='checkbox' id='marcartodos' onclick='marcarDesmarcarChecbox();' >
-                  <label for='marcartodos' class='custom-control-label' onclick='marcarDesmarcarChecbox();'></label>
+                  <label for='marcartodos' class='custom-control-label' onclick='marcarDesmarcarChecbox();'>Presença ( $aula )</label>
                 </div>
               </th>
             </tr>
@@ -44,7 +45,7 @@ try {
                 $senha=$value['senha'];
                 $marcado="";
 
-                  $resultado=verificar_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data,$id);
+                  $resultado=verificar_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data,$id,$aula);
                     foreach ($resultado as $key2 => $value2) {
                       $marcado='checked';
                     }
@@ -62,7 +63,7 @@ try {
                       <td> 
                       <div class='custom-control custom-checkbox'>
                           <input class='custom-control-input checkbox1' name='presenca$id' type='checkbox' id='customCheckbox$id' value='1' $marcado>
-                          <label for='customCheckbox$id' class='custom-control-label'>Presença</label>
+                          <label for='customCheckbox$id' class='custom-control-label'>Presença ( $aula )</label>
                         </div>
                       </td>
 
@@ -71,7 +72,7 @@ try {
                   $cont++;
                }
 
-$res_conteu=verificar_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $professor_id, $data);
+$res_conteu=verificar_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula);
 
 $conteudo_aula="";
 foreach ($res_conteu as $key => $value) {
