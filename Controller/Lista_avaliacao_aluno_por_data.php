@@ -14,6 +14,7 @@ try {
     $data=$_GET['data_avaliacao'];
     $idperiodo=$_GET['idperiodo'];
     $avaliacao=$_GET['avaliacao'];
+    $idserie=$_GET['idserie'];
  
 
       $result="
@@ -108,6 +109,8 @@ try {
                  $res_par=listar_parecer_disciplina($conexao,$iddisciplina,$idturma);
                   foreach ($res_par as $key => $value) {
                     $idparecer=$value['id'];
+                    $serie_id=$value['serie_id'];
+
                     $descricao_parecer=$value['descricao'];
                     $res_verif_parece=verifica_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,$data,$idparecer,$avaliacao);
                     $sigla="";
@@ -115,31 +118,61 @@ try {
                       $sigla=$value['sigla'];
                     }
 
-                    $result.="<tr class='$cor_tabela'>
-                        <td colspan='2'>
-                        <div class='col-12'>
-                              
-                             ";
-                               
-                              $result.="<p class='text-justify'>$descricao_parecer";
-                                
-                                
-                               $result.="                            
-                                  <input type='hidden' name='descricao_parecer".$id."[]' value='$idparecer'>
-                              <select  name='parecer_sigla".$id."[]'>
-                                <option value='$sigla'>$sigla</option>
-                                <option value='S'>S</option>
-                                <option value='N'>N</option>
-                                <option value='D'>D</option>
-                                <option value='NT'>NT</option>
-                               
-                              </select>
-                            </p>
+              
 
-                          </div>   
-                        </td>
-                        </tr>
-                  ";
+                    if ($serie_id == $idserie) {
+                       $result.="<tr class='$cor_tabela'>
+                            <td colspan='2'>
+                            <div class='col-12'>
+                                  
+                                 ";
+                                   
+                                  $result.="<p class='text-justify'>$descricao_parecer";
+                                    
+                                    
+                                   $result.="                            
+                                      <input type='hidden' name='descricao_parecer".$id."[]' value='$idparecer'>
+                                  <select  name='parecer_sigla".$id."[]'>
+                                    <option value='$sigla'>$sigla</option>
+                                    <option value='S'>S</option>
+                                    <option value='N'>N</option>
+                                    <option value='D'>D</option>
+                                    <option value='NT'>NT</option>
+                                   
+                                  </select>
+                                </p>
+
+                              </div>   
+                            </td>
+                            </tr>";
+                    }else if ($serie_id =="" && $idserie <8) {
+                       $result.="<tr class='$cor_tabela'>
+                            <td colspan='2'>
+                            <div class='col-12'>
+                                  
+                                 ";
+                                   
+                                  $result.="<p class='text-justify'>$descricao_parecer";
+                                    
+                                    
+                                   $result.="                            
+                                      <input type='hidden' name='descricao_parecer".$id."[]' value='$idparecer'>
+                                  <select  name='parecer_sigla".$id."[]'>
+                                    <option value='$sigla'>$sigla</option>
+                                    <option value='S'>S</option>
+                                    <option value='N'>N</option>
+                                    <option value='D'>D</option>
+                                    <option value='NT'>NT</option>
+                                   
+                                  </select>
+                                </p>
+
+                              </div>   
+                            </td>
+                            </tr>";
+                    }
+
+
                 }
 
               }//fim if

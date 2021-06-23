@@ -21,6 +21,7 @@ if (!isset($_SESSION['idprofessor'])) {
   include '../Model/Aluno.php';
   include '../Model/Professor.php';
 
+  $idserie=$_GET['idserie']; 
   $idescola=$_GET['idescola']; 
   $idturma=$_GET['turm']; 
   $iddisciplina=$_GET['disc']; 
@@ -148,6 +149,7 @@ if (!isset($_SESSION['idprofessor'])) {
    
 <input type="hidden" name="url_get" value="<?php echo $url_get; ?>">
 
+<input type="hidden" name="idserie" id="idserie" value="<?php echo $idserie; ?>">
 <input type="hidden" name="idescola" id="idescola" value="<?php echo $idescola; ?>">
 <input type="hidden" name="idturma" id="idturma" value="<?php echo $idturma; ?>">
 <input type="hidden" name="iddisciplina" id="iddisciplina" value="<?php echo $iddisciplina; ?>">
