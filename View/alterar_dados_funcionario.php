@@ -39,7 +39,7 @@ if (!isset($_SESSION['idprofessor']) && !isset($_SESSION['idcoordenador']) ) {
               ?>
               
              <?php if (isset($_SESSION['nome'])) {
-              echo " - ".$_SESSION['nome'];  
+              echo " ".$_SESSION['nome'];  
             } 
              ?></b></h1>
           </div><!-- /.col -->
@@ -69,7 +69,7 @@ if (!isset($_SESSION['idprofessor']) && !isset($_SESSION['idcoordenador']) ) {
 
             <form class="mt-12" action="../Controller/Alterar_dados_funcionario.php" method="post"  enctype="multipart/form-data">
               <?php 
-                  $result=dados_professor($conexao,$idfuncionario);
+                  $result=listar_dados_professor($conexao,$idfuncionario);
                   foreach ($result as $key => $value) {
                     $nome=$value['nome'];
                     $email=$value['email'];

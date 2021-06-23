@@ -437,7 +437,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
                                                    <i class='fa fa-calendar'></i>
 
-                                                    Diário frequência e conteúdo   
+                                                    Diário - Frequência e conteúdo   
 
                                                  </font>
 
@@ -457,7 +457,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
                                                    <ion-icon name='stats-chart-outline'></ion-icon>
 
-                                                    Diário de avaliação    
+                                                    Diário - Avaliação    
 
                                                  </font>
 

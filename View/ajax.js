@@ -221,6 +221,7 @@ function lista_ocorrencia_aluno(){
 
   if (data_ocorrencia_lancada !="") {
      document.getElementById("data_ocorrencia").value=data_ocorrencia_lancada;
+     data_ocorrencia=data_ocorrencia_lancada;//EDITADO
   }
 
   var idescola = document.getElementById("idescola").value;

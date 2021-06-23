@@ -36,6 +36,19 @@
 		
 	}
 
+
+	function listar_dados_professor($conexao,$idprofessor){
+		$res=$conexao->query("SELECT 
+			
+			funcionario.nome as 'nome',
+			funcionario.email,
+			funcionario.senha,
+			funcionario.whatsapp
+		 	FROM funcionario where  idfuncionario = $idprofessor");
+
+		return $res;
+	}
+
 	function dados_professor($conexao,$idprofessor){
 		$res=$conexao->query("SELECT 
 			imagem.nome as 'foto',

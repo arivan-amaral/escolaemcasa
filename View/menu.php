@@ -78,7 +78,7 @@
                   echo "
                               <ul class='nav nav-treeview'>
                                 <li class='nav-item'>
-                                  <a href='minhas_turmas.php' class='nav-link'>
+                                  <a href='professor.php' class='nav-link'>
                                     <i class='far fa-circle nav-icon text-success'></i>
                                     <p>Minhas Turmas</p>
                                   </a>
