@@ -78,7 +78,7 @@ foreach ($_POST['aluno_id'] as $key => $value) {
 } catch (Exception $e) {
 
     $_SESSION['status']=0;
-    header("location: ../View/diario_avaliacao.php?$url_get");;
+   header("location: ../View/diario_avaliacao.php?$url_get");;
 
 }
 ?>

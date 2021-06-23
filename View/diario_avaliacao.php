@@ -131,6 +131,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
             <select class="form-control" id='avaliacao' name='avaliacao' onchange='lista_avaliacao_aluno_por_data();' required="">
               <option></option>
+              <option value="DIAGNÓSTICO INICIAL">DIAGNÓSTICO INICIAL</option>
               <option value="av1">AV1 / Parecer</option>
               <option value="av2">AV2 / Parecer</option>
               <option value="av3">AV3 / Parecer</option>
