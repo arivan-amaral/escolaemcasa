@@ -3,8 +3,8 @@
 	// include '../Model/Conexao.php';
 	// $pdo;
 	// $res=listar_alunos($pdo);
-	$indice=800;
-	$limite=200;
+	$indice=0;
+	$limite=250;
 
 	if (isset($_GET['indice'])) {
 		$indice=$_GET['indice'];
@@ -14,7 +14,7 @@ try {
 	
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "200120022003";
 	//instancia objeto PDO, conectando no MySQL
     $conexao = new PDO("mysql:host=$servername;dbname=educalem", $username, $password);
     // apresenta o erro PDO 
@@ -65,6 +65,8 @@ order by  ed47_i_codigo asc,ed60_i_turma asc  offset $indice  limit 400");
 		if ($whatsapp=="") {
 			$whatsapp=$telefone;
 		}
+		$whatsapp=str_replace("'","",$nome_turma);
+
 
 		$array = explode('-', $nome_turma);
 		$array_aluno = explode(' ', $nome_aluno);
@@ -85,6 +87,7 @@ order by  ed47_i_codigo asc,ed60_i_turma asc  offset $indice  limit 400");
 				$c_a=1;
 			}
 			if ($c_a==0) {
+				echo "$idaluno,$nome_aluno, $primeiro_nome,$senha, $whatsapp,$sexo,$data_nascimento";
 				$conexao->exec(" INSERT INTO aluno
 				 (idaluno,nome, email,  senha, whatsapp,sexo,data_nascimento) values
 				 ($idaluno,'$nome_aluno', '$primeiro_nome','$senha', '$whatsapp','$sexo','$data_nascimento')");

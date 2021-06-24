@@ -135,7 +135,15 @@
           if (isset($_SESSION['cargo'])) {
                         if ($_SESSION['cargo']=='Coordenador' || $_SESSION['cargo']=='Coordenadora' ){
 
-
+                          echo "
+                           <ul class='nav nav-treeview'>
+                              <li class='nav-item'>
+                                <a href='alterar_dados_funcionario.php' class='nav-link'>
+                                  <i class='far fa-circle nav-icon text-primary'></i>
+                                  <p>Aletrar Meus Dados</p>
+                                </a>
+                              </li>
+                            </ul>";
 
 
                               echo"<li class='nav-item menu'>
