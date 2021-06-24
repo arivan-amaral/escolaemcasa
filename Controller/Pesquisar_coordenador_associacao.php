@@ -54,6 +54,7 @@ foreach ($result as $key => $value) {
       $result_pesquisa =escola_associada($conexao,$idfuncionario);
        foreach ($result_pesquisa as $key => $value) {
     
+          $idrelacionamento_funcionario_escola = $value['idrelacionamento_funcionario_escola'];
           $nome_escola = $value['nome_escola'];
           
           
@@ -63,6 +64,10 @@ foreach ($result as $key => $value) {
                         
                           <br>
                              
+                          </td>
+
+                          <td>
+                           <a onclick='cancelar_associacao_coordenador($idrelacionamento_funcionario_escola);' class='btn btn-danger'> Cancelar </a> 
                           </td>
                     </tr>
                           ";

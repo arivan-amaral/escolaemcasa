@@ -569,6 +569,22 @@ function excluir_coordenador(id) {
   })
 }
 
+function cancelar_associacao_coordenador(id) {
+  Swal.fire({
+    title: 'Deseja continuar com essa ação?',
+    showDenyButton: true,
+    confirmButtonText: `Sim`,
+    denyButtonText: `Não`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      window.location.href = "../Controller/Desassociar_coordenador.php?idrelacionamento_funcionario_escola="+id+"";
+    } else if (result.isDenied) {
+      //Swal.fire('Ação não concluída', '', 'info')
+    }
+  })
+}
+
 function cancelar_associacao_professor(id) {
   Swal.fire({
     title: 'Deseja continuar com essa ação?',

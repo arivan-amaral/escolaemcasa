@@ -25,7 +25,7 @@ if (!isset($_SESSION['idprofessor']) && !isset($_SESSION['idcoordenador']) ) {
 
 ?>
 
-<script src="ajax.js"></script>
+<script src="ajax.js?<?php echo rand(); ?>"></script>
 
 <div class="content-wrapper" style="min-height: 529px;">
     <!-- Content Header (Page header) -->
@@ -41,7 +41,7 @@ if (!isset($_SESSION['idprofessor']) && !isset($_SESSION['idcoordenador']) ) {
               ?>
               
              <?php if (isset($_SESSION['nome'])) {
-              echo " - ".$_SESSION['nome'];  
+              echo " ".$_SESSION['nome'];  
             } 
              ?></b></h1>
           </div><!-- /.col -->
