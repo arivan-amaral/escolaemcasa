@@ -1,9 +1,10 @@
 <?php 
-session_start();
-include '../Model/Conexao.php';
-include '../Model/Professor.php';
+ session_start();
+
+ include '../Model/Conexao.php';
+ include '../Model/Professor.php';
  
-try {
+ try {
 $idfuncionario=$_SESSION['idfuncionario'];
 
 $nome=$_POST['nome'];
@@ -13,12 +14,12 @@ $whatsapp=$_POST['whatsapp'];
 
 
 
-	alterar_dados_professor($conexao,$nome, $email, $senha,$whatsapp,$idfuncionario);
-	$_SESSION['status']=1;
+alterar_dados_professor($conexao,$nome, $email, $senha,$whatsapp,$idfuncionario);
+ 	$_SESSION['status']=1;
 
-	header("../View/alterar_dados_funcionario.php");
+header("Location:../View/alterar_dados_funcionario.php?status=0");
 } catch (Exception $e) {
 	$_SESSION['status']=0;
-	header("../View/alterar_dados_funcionario.php?status=0");
-}
+header("../View/alterar_dados_funcionario.php?status=0");
+ }
 ?>

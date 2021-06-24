@@ -45,22 +45,37 @@ function CriaRequest() {
 
 
 
-function marcarDesmarcarChecbox(){
-    $(document).ready(function() {
-    $('#marcartodos').click(function(event) {  //on click 
-        if(this.checked) { // check select status
-            $('.checkbox1').each(function() { //loop through each checkbox
-                this.checked = true;  //select all checkboxes with class "checkbox1"               
-            });
-        }else{
-            $('.checkbox1').each(function() { //loop through each checkbox
-                this.checked = false; //deselect all checkboxes with class "checkbox1"                       
-            });         
-        }
-    });
+function seleciona_tudo(){
+    var presenca = document.getElementById("presenca"); 
+    for (var i = 0, l = presenca.length; i < l; i++) {
+      console.log(presenca[i]);
+    }
+    //presenca.checked=       
     
-}); 
+   
 }
+
+
+
+
+
+
+// function marcarDesmarcarChecbox(){
+//     $(document).ready(function() {
+//     $('#marcartodos').click(function(event) {  //on click 
+//         if(this.checked) { // check select status
+//             $('.checkbox1').each(function() { //loop through each checkbox
+//                 this.checked = true;  //select all checkboxes with class "checkbox1"               
+//             });
+//         }else{
+//             $('.checkbox1').each(function() { //loop through each checkbox
+//                 this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+//             });         
+//         }
+//     });
+    
+// }); 
+// }
 
 
 
