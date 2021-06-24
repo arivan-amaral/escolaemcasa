@@ -300,59 +300,6 @@ if (!isset($_SESSION['idcoordenador'])) {
 
         <!-- .row -->
 
-        
-
-    <div class="row">
-        <div class="col-md-1"></div>
-
-      
-
-            <script type="text/javascript">
-              google.charts.load('current', {'packages':['corechart']});
-              google.charts.setOnLoadCallback(drawChart);
-
-              function drawChart() {
-
-                var data = google.visualization.arrayToDataTable([
-                  <?php 
-                      $result_ativos=$conexao->query("SELECT COUNT(*) AS ativo FROM aluno where status like 'Ativo' ");
-                      $ativo=0;
-                      foreach ($result_ativos as $key => $value) {
-                        $ativo=$value['ativo'];
-                      }
-
-                      $result_bloqueado=$conexao->query("SELECT COUNT(*) AS bloqueado FROM aluno where status like 'Desativado' ");
-                      $bloqueado=0;
-                      foreach ($result_bloqueado as $key => $value) {
-                        $bloqueado=$value['bloqueado'];
-                      }
-                    
-                    echo "
-                    ['Task', 'Hours per Day'],
-                    ['Ativos',     $ativo],
-                    ['Bloqueados',  $bloqueado]
-                    ";
-
-                  ?>
-                ]);
-
-                var options = {
-                  title: 'GRÁFICO DE ALUNOS'
-                };
-
-                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-                chart.draw(data, options);
-              }
-            </script>
-        <div class="col-md-6">
-
-              <div id="piechart" ></div>
-        </div>
-
-       
-    </div>        
-
 
 
 
