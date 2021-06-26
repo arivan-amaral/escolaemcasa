@@ -151,18 +151,20 @@ include "alertas.php";
 
              
              <?php
-               $res_mural_secret=$conexao->query("SELECT * FROM mural where setor='Secretaria' order by id desc");
+               $res_mural_secret=$conexao->query("SELECT * FROM mural,serie where serie_id=serie.id and setor='Secretaria' group by serie_id order by mural.id desc");
 
                foreach ($res_mural_secret as $key => $value) {
                  $idtrabalho=$value['id'];
                  $titulo=$value['titulo'];
                  $descricao=$value['descricao'];
+                 $nome=$value['nome'];
                
              
                    echo"<div class='card-body'>
                      <div class='callout callout-danger'>
                        <h5>$titulo</h5>
-                       <p>$descricao</p>
+                       <p>$descricao</p><br>
+                       <p>$nome</p>
                        <span class='text-info'> Postado pela secretaria.</span>
                      </div>
                      </div>";
