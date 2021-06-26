@@ -39,7 +39,7 @@ from matricula
   inner join escola on escola.ed18_i_codigo = turma.ed57_i_escola
   inner join calendario on calendario.ed52_i_codigo = turma.ed57_i_calendario
 where calendario.ed52_i_ano = 2021 and matricula.ed60_c_situacao = 'MATRICULADO'
-order by  ed47_i_codigo asc,ed60_i_turma asc  offset $indice  limit 400");
+order by  ed47_i_codigo asc,ed60_i_turma asc  offset $indice  limit $limite");
 		
 		$endereco="";
 		$telefone="";
@@ -87,7 +87,7 @@ order by  ed47_i_codigo asc,ed60_i_turma asc  offset $indice  limit 400");
 				$c_a=1;
 			}
 			if ($c_a==0) {
-				echo "$idaluno,$nome_aluno, $primeiro_nome,$senha, $whatsapp,$sexo,$data_nascimento";
+				echo "$idaluno,$nome_aluno, $primeiro_nome,$senha, $whatsapp,$sexo,$data_nascimento <bR>";
 				$conexao->exec(" INSERT INTO aluno
 				 (idaluno,nome, email,  senha, whatsapp,sexo,data_nascimento) values
 				 ($idaluno,'$nome_aluno', '$primeiro_nome','$senha', '$whatsapp','$sexo','$data_nascimento')");
