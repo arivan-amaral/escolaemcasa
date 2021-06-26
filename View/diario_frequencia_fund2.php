@@ -1,3 +1,10 @@
+<?php 
+  include"../Model/Conexao.php";
+  include"../Model/Coordenador.php";
+  include"../Model/Aluno.php";
+  $idturma=6128;
+  $idescola=25;
+?>
 <html xmlns:v="urn:schemas-microsoft-com:vml"
 xmlns:o="urn:schemas-microsoft-com:office:office"
 xmlns:w="urn:schemas-microsoft-com:office:word"
@@ -774,8 +781,20 @@ div.WordSection1
 
 <!-- ************************************************ARIVAN COMECO DAS LINHAS******************************************* -->
 
- <tr style='mso-yfti-irow:13;height:13.5pt'>
+ 
+<?php
+  $result= listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola);
+  $conta=1;
+              foreach ($result as $key => $value) {
+                $nome_aluno=utf8_decode($value['nome_aluno']);
+                $nome_turma=($value['nome_turma']);
+                $id=$value['idaluno'];
+                $status_aluno=$value['status_aluno'];
+                $email=$value['email'];
+                $senha=$value['senha'];
+?>
 
+<tr style='mso-yfti-irow:13;height:13.5pt'>
   <td width=21 style='width:15.4pt;border:solid windowtext 1.0pt;border-top:
   none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
   mso-border-right-alt:solid windowtext 1.0pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
@@ -783,7 +802,12 @@ div.WordSection1
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><span style='font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-  color:black;mso-fareast-language:PT-BR'>1<o:p></o:p></span></p>
+  color:black;mso-fareast-language:PT-BR'>
+
+
+  <?php echo "$conta"; ?> 
+
+  <o:p></o:p></span></p>
   </td>
 
   <td width=261 nowrap valign=bottom style='width:195.55pt;border:none;
@@ -791,7 +815,8 @@ div.WordSection1
   mso-border-left-alt:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext 1.0pt;
   mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
   padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
-  ARIVAN DO AMARAL LISBOA  
+
+  <?php echo "$nome_aluno"; ?> 
   </td>
 
 
@@ -814,6 +839,9 @@ div.WordSection1
   
 <?php
  }  
+ echo"</tr>";
+ $conta++;
+}
 ?>
    
 
@@ -821,7 +849,7 @@ div.WordSection1
 
   
 
- </tr>
+
 
 
 
