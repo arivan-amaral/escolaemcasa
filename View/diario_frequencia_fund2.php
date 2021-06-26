@@ -814,15 +814,21 @@ div.WordSection1
   border-bottom:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext 1.0pt;
   mso-border-left-alt:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext 1.0pt;
   mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
+  padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt;font-size:9.0pt'>
 
   <?php echo "$nome_aluno"; ?> 
   </td>
 
 
 <?php
-
+$presenca="P";
   for ($i=1; $i < 25 ; $i++) { 
+    if ($i%5==0) {
+      $presenca="F";
+    }else{
+      $presenca="P";
+
+    }
    
   ?>
   
@@ -834,7 +840,7 @@ div.WordSection1
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-  color:black;mso-fareast-language:PT-BR'>&nbsp;<?php echo $i; ?><o:p></o:p></span></b></p>
+  color:black;mso-fareast-language:PT-BR'>&nbsp;<?php echo $presenca; ?><o:p></o:p></span></b></p>
   </td>
   
 <?php
