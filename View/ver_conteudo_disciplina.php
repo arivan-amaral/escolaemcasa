@@ -23,6 +23,7 @@ if (!isset($_SESSION['idcoordenador'])) {
   $idturma=$_GET['idturma'];
 
   $iddisciplina=$_GET['iddisciplina'];
+  
   $idescola=$_GET['idescola'];
   $idserie=$_GET['idserie'];
   $nome_turma=$_GET['nome_turma'];
@@ -111,7 +112,7 @@ if (!isset($_SESSION['idcoordenador'])) {
 
                       <div class="card-header">
 
-                        <h3 class="card-title">Clique na Disciplina Desejada</h3>
+                        <!-- <h3 class="card-title">Clique na Disciplina Desejada</h3> -->
 
                       </div>
 
@@ -158,7 +159,7 @@ if (!isset($_SESSION['idcoordenador'])) {
                                       
                                 <a class='btn btn-info btn-block btn-flat'
 
-                                       href='cadastro_video.php?disc=$iddisciplina&turm=$idturma&idescola=$idescola&idserie=$idserie' >
+                                       href='video_aula_disciplina_coordenado.php?disc=$iddisciplina&turm=$idturma&idescola=$idescola&idserie=$idserie' >
 
 
 
@@ -177,15 +178,15 @@ if (!isset($_SESSION['idcoordenador'])) {
                                       </a> 
 
 
-                                   <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat'>
+                                   <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-info btn-block btn-flat'>
                                      <i class='fa fa-calendar'></i> 
                                      FICHA DE RENDIMENTO TRI I
                                    </a>   
-                                   <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat'>
+                                   <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=2' class='btn btn-info btn-block btn-flat'>
                                      <i class='fa fa-calendar'></i> 
                                      FICHA DE RENDIMENTO TRI II
                                    </a>   
-                                   <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat'>
+                                   <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=3' class='btn btn-info btn-block btn-flat'>
                                      <i class='fa fa-calendar'></i> 
                                      FICHA DE RENDIMENTO TRI II
                                    </a>      

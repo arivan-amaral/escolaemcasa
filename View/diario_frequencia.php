@@ -91,11 +91,6 @@ if (!isset($_SESSION['idprofessor'])) {
         <!-- Info boxes -->
         <!-- .row -->
   <form action="../Controller/Cadastrar_frequencia.php" method="post">
-          <input type="hidden" name="url_get" value="<?php echo $url_get; ?>">
-
-          <input type="hidden" name="idescola" id="idescola" value="<?php echo $idescola; ?>">
-          <input type="hidden" name="idturma" id="idturma" value="<?php echo $idturma; ?>">
-          <input type="hidden" name="iddisciplina" id="iddisciplina" value="<?php echo $iddisciplina; ?>">
 
        
       <div class="row">
@@ -199,7 +194,13 @@ if (!isset($_SESSION['idprofessor'])) {
 
   </div>
 
+
    
+          <input type="hidden" name="url_get" value="<?php echo $url_get; ?>">
+
+          <input type="hidden" name="idescola" id="idescola" value="<?php echo $idescola; ?>">
+          <input type="hidden" name="idturma" id="idturma" value="<?php echo $idturma; ?>">
+          <input type="hidden" name="iddisciplina" id="iddisciplina" value="<?php echo $iddisciplina; ?>">
 
       <div class="row" id="botao_continuar">
         
@@ -224,7 +225,44 @@ if (!isset($_SESSION['idprofessor'])) {
   </section>
 
 </div>
+<script type="text/javascript">
 
+  function seleciona_tudo(){
+
+      var checkBoxes = document.querySelectorAll('.checkbox');
+      var selecionados = 0;
+      checkBoxes.forEach(function(el) {
+         if(el.checked) {
+             //selecionados++;
+            el.checked=false;
+         }else{
+           
+            el.checked=true;
+         }
+        
+      });
+      console.log(selecionados);
+
+    }
+
+// $("#checkTodos__").change(function () {
+//     $("input:checkbox").prop('checked', $(this).prop("checked"));
+// });
+
+// $("#checkTodos__").click(function(){
+//     $('input:checkbox').not(this).prop('checked', this.checked);
+// });
+
+// var checkTodos = $("#checkTodos");
+// checkTodos.click(function () {
+//   if ( $(this).is(':checked') ){
+//     $('input:checkbox').prop("checked", true);
+//   }else{
+//     $('input:checkbox').prop("checked", false);
+//   }
+// });
+
+</script>
 
  <?php 
 

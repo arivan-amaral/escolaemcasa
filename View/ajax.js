@@ -97,15 +97,6 @@ function excluir_avaliacao(id) {
 
 
 
-function seleciona_tudo(){
-    var presenca = document.getElementById("presenca"); 
-    for (var i = 0, l = presenca.length; i < l; i++) {
-      console.log(presenca[i]);
-    }
-    //presenca.checked=       
-    
-   
-}
 
 
 
