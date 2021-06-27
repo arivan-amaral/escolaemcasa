@@ -164,6 +164,57 @@ function listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $ide
   return $resultado;
 }
 
+function excluir_frequencia_lancada($conexao,$conteudo_aula_id) {
+    $conexao->exec("DELETE FROM frequencia WHERE conteudo_aula_id=$conteudo_aula_id
+      ");
+    $conexao->exec("DELETE FROM conteudo_aula WHERE
+       id=$conteudo_aula_id
+      ");
+
+
+}
+
+// function excluir_frequencia_lancada($conexao,$escola_id,$turma_id,$disciplina_id,$data,$aula) {
+//     $conexao->exec("DELETE FROM conteudo_aula WHERE
+//       professor_id=$professor_id and 
+//       disciplina_id=$iddisciplina and 
+//       escola_id=$idescola and 
+//       turma_id=$idturma and data='$data' and aula='$aula'
+//       ");
+
+//     $conexao->exec("DELETE FROM frequencia WHERE
+//       professor_id=$professor_id and 
+//       disciplina_id=$iddisciplina and 
+//       escola_id=$idescola and 
+//       turma_id=$idturma and data_frequencia='$data' and aula='$aula'
+//       ");
+
+// }
+
+
+
+function excluir_avaliacao_lancada($conexao,$escola_id,$turma_id,$disciplina_id,$periodo_id,$data_nota,$avaliacao) {
+    $conexao->exec(" DELETE FROM nota WHERE
+      disciplina_id=$disciplina_id and 
+      escola_id=$escola_id and 
+      turma_id=$turma_id and
+      data_nota='$data_nota' and 
+      periodo_id =$periodo_id and 
+      avaliacao='$avaliacao'
+      ");
+    
+}
+
+
+function listar_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplina) {
+    $resultado=$conexao->query(" SELECT * FROM nota WHERE
+     
+      disciplina_id=$iddisciplina and 
+      escola_id=$idescola and 
+      turma_id=$idturma GROUP BY data_nota,periodo_id ");
+    return $resultado;
+}
+
 function verificar_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula) {
     $resultado=$conexao->query("SELECT * FROM conteudo_aula WHERE
       professor_id=$professor_id and 

@@ -25,6 +25,8 @@ if (!isset($_SESSION['idcoordenador'])) {
   $iddisciplina=$_GET['iddisciplina'];
   $idescola=$_GET['idescola'];
   $idserie=$_GET['idserie'];
+  $nome_turma=$_GET['nome_turma'];
+  $nome_disciplina=$_GET['nome_disciplina'];
 
   
 
@@ -84,260 +86,206 @@ if (!isset($_SESSION['idcoordenador'])) {
 
     </div>
 
-    <!-- /.content-header -->
 
 
+<section class="content">
+    <div class="container-fluid">
 
-    <!-- Main content -->
 
 
 
-            </section>
 
 
 
-            <!-- Main content -->
+        
 
-            <section class="content">
+    <div class="row">
 
-              <div class="container-fluid">
+        <div class="col-md-1"></div>
 
 
 
-                <!-- Timelime example  -->
+        <div class="col-md-10">
 
-               <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-4">
-                    <!-- The time line -->
+                    <div class="card">
 
+                      <div class="card-header">
 
+                        <h3 class="card-title">Clique na Disciplina Desejada</h3>
 
-
-
-
-
-
-
-                    <div class="timeline">
-
-                      <!-- timeline time label -->
-
-
-
-                  
-
-                    <?php 
-
-                      $result=listar_video_coordenador_por_serie($conexao,$iddisciplina,$idserie);
-
-
-
-                      foreach ($result as $key => $linha) {
-
-                           $idvideo=$linha['id'];
-
-                           $link=$linha['link'];
-
-                           $titulo=$linha['titulo'];
-
-                           $descricao=$linha['descricao'];
-
-                           $data_visivel=data($linha['data_visivel']);
-
-                           echo"
-
-                           <div class='time-label'>
-
-                             <span class='bg-blue'>$data_visivel</span>
-
-                           </div>
-
-                           <div>
-
-                                           <i class='fas fa-video bg-maroon'></i>
-
-
-
-                                           <div class='timeline-item'>
-
-                                             <span class='time'><i class='fas fa-clock'></i>$data_visivel</span>
-
-
-
-                                             <h3 class='timeline-header'>id: $idvideo - <a href='#'> $titulo</a> $descricao</h3>
-
-
-
-                                             <div class='timeline-body'>
-
-                                               <div class='embed-responsive embed-responsive-16by9'>
-
-                                                 <iframe class='embed-responsive-item' src='https://www.youtube.com/embed/$link' allowfullscreen></iframe>
-
-                                               </div>
-
-                                             </div>
-
-                                             <div class='timeline-footer'>
-
-                                                <!--<a href='#' class='btn btn-sm bg-maroon'>Comentar</a>-->
-
-                                             </div>
-
-                                           </div>
-
-                                         </div>
-
-                                         <!-- END timeline item -->
-
-                                         
-
-
-
-                           ";
-
-                      }
-
-               
-
-                      $result_normal=listar_video_coordenador($conexao, $idturma,$iddisciplina,$idescola);
-
-
-
-                      foreach ($result_normal as $key => $linha) {
-
-                           $idvideo=$linha['id'];
-
-                           $link=$linha['link'];
-
-                           $titulo=$linha['titulo'];
-
-                           $descricao=$linha['descricao'];
-
-                           $data_visivel=data($linha['data_visivel']);
-
-                           echo"
-
-                           <div class='time-label'>
-
-                             <span class='bg-blue'>$data_visivel</span>
-
-                           </div>
-
-                           <div>
-
-                                           <i class='fas fa-video bg-maroon'></i>
-
-
-
-                                           <div class='timeline-item'>
-
-                                             <span class='time'><i class='fas fa-clock'></i>$data_visivel</span>
-
-
-
-                                             <h3 class='timeline-header'>id: $idvideo - <a href='#'> $titulo</a> $descricao</h3>
-
-
-
-                                             <div class='timeline-body'>
-
-                                               <div class='embed-responsive embed-responsive-16by9'>
-
-                                                 <iframe class='embed-responsive-item' src='https://www.youtube.com/embed/$link' allowfullscreen></iframe>
-
-                                               </div>
-
-                                             </div>
-
-                                             <div class='timeline-footer'>
-
-                                                <!--<a href='#' class='btn btn-sm bg-maroon'>Comentar</a>-->
-
-                                             </div>
-
-                                           </div>
-
-                                         </div>
-
-                                         <!-- END timeline item -->
-
-                                         
-
-
-
-                           ";
-
-                      }
-
-                    ?>
-
-                      <div>
-                        <i class='fas fa-clock bg-gray'></i>
                       </div>
+
+                      <!-- /.card-header -->
+
+                      <div class="card-body">
+
+                        <!-- we are adding the accordion ID so Bootstrap's collapse plugin detects it -->
+
+                        <div id="accordion">
+
+
+
+                          <?php 
+
+
+                              echo "
+
+                              <div class='card card-secondary'>
+
+                                <div class='card-header'>
+
+                                  <h4 class='card-title w-100'>
+
+
+
+                                    <a class='d-block w-100 collapsed' data-toggle='collapse show' href='#collapseOne$iddisciplina$idturma$idescola' aria-expanded='true'><b class='text-warning'></b> VER CONTEÚDO - $nome_turma - $nome_disciplina
+
+                                    </a>
+
+                                  </h4>
+
+                                </div>
+
+                                <div id='collapseOne$iddisciplina$idturma$idescola' class='collapse show' data-parent='#accordion' style=''>
+
+                                  <div class='card-body'>
+    
+                                
+                                   <a   href='listar_alunos_da_turma.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat'>
+                                     <i class='fa fa-users'></i> 
+                                     Lista de alunos
+                                   </a>      
+                                      
+                                <a class='btn btn-info btn-block btn-flat'
+
+                                       href='cadastro_video.php?disc=$iddisciplina&turm=$idturma&idescola=$idescola&idserie=$idserie' >
+
+
+
+                                        <font style='vertical-align: inherit;'>
+
+                                          <font style='vertical-align: inherit;'> 
+
+                                              <i class='fa fa-play'></i>
+
+                                                Videoaulas     
+
+                                            </font>
+
+                                        </font>
+
+                                      </a> 
+
+
+                                   <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat'>
+                                     <i class='fa fa-calendar'></i> 
+                                     FICHA DE RENDIMENTO TRI I
+                                   </a>   
+                                   <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat'>
+                                     <i class='fa fa-calendar'></i> 
+                                     FICHA DE RENDIMENTO TRI II
+                                   </a>   
+                                   <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat'>
+                                     <i class='fa fa-calendar'></i> 
+                                     FICHA DE RENDIMENTO TRI II
+                                   </a>      
+                                      
+
+
+
+
+
+
+
+
+                                      <a  href='cadastro_trabalho.php?disc=$iddisciplina&turm=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat'>
+
+                                              <i class='fa fa-book'></i>
+
+                                                Trabalhos/Atividades                                           
+
+                                      </a> 
+
+
+
+                                     <a class='btn btn-info btn-block btn-flat'
+
+                                            href='#' >
+
+
+
+                                             <font style='vertical-align: inherit;'>
+
+                                               <font style='vertical-align: inherit;'> 
+
+                                                   <ion-icon name='clipboard-outline'></ion-icon>
+                                                    Ocorrências (acompanhamento pedagógico)    
+
+                                                 </font>
+
+                                             </font>
+
+                                      </a> 
+
+                         
+
+                                        
+
+                                  </div>
+
+                                </div>
+
+                              </div>
+
+                              ";
+
+                            
+
+                           ?>
+
+                              
+
+
+
+                        </div>
+
+                      </div>
+
+
+
+                      <!-- /.card-body -->
+
                     </div>
 
-                      
+                    <!-- /.card -->
+
+                  </div>
+
+            </div>
 
 
 
-            <!-- /.content -->
 
-          </div>        
+
+ 
+
+        <!-- Main row -->
+
+        <!-- /.row -->
 
       </div>
 
+
+
+
+
+
+
+
+
     </div>
-
   </section>
-
 </div>
-
-<aside class="control-sidebar control-sidebar-dark">
-
-  <!-- Control sidebar content goes here -->
-
-</aside>
-
-  <!-- /.control-sidebar -->
-
-  <script type="text/javascript">
-
-    /* Máscaras ER */
-
-    function mascara(o,f){
-
-        v_obj=o
-
-        v_fun=f
-
-        setTimeout("execmascara()",1)
-
-    }
-
-    function execmascara(){
-
-        v_obj.value=v_fun(v_obj.value)
-
-    }
-
-    function mtel(v){
-
-        v=v.replace(/\D/g,"");             //Remove tudo o que não é dígito
-
-        v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
-
-        v=v.replace(/(\d)(\d{4})$/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
-
-        return v;
-
-    }
-
-
-
-  </script>
-
 
 
  <?php 

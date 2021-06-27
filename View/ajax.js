@@ -45,6 +45,58 @@ function CriaRequest() {
 
 
 
+
+
+function excluir_frequencia(id) {
+    var conteudo_aula_id = document.getElementById("conteudo_aula_id"+id).value;  
+    var url_get = document.getElementById("url_get").value; 
+
+    var url="conteudo_aula_id="+conteudo_aula_id+"&"+url_get;
+  Swal.fire({
+    title: 'Deseja continuar com a exclusão?',
+    showDenyButton: true,
+    confirmButtonText: `Sim`,
+    denyButtonText: `Não`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      window.location.href = "../Controller/Excluir_frequencia.php?"+url+"";
+    } else if (result.isDenied) {
+     // Swal.fire('Ação cancelada', '', 'info')
+    }
+  })
+}
+
+
+function excluir_avaliacao(id) {
+    var data_nota = document.getElementById("data_nota"+id).value; 
+    var turma_id = document.getElementById("turma_id"+id).value; 
+    var disciplina_id = document.getElementById("disciplina_id"+id).value; 
+    var escola_id = document.getElementById("escola_id"+id).value; 
+    var periodo_id = document.getElementById("periodo_id"+id).value; 
+    var avaliacao = document.getElementById("avaliacao"+id).value; 
+    var url_get = document.getElementById("url_get").value; 
+
+    var url="data_nota="+data_nota+"&turma_id="+turma_id
+    +"&disciplina_id="+disciplina_id+"&escola_id="+escola_id+"&periodo_id="+periodo_id+"&avaliacao="+avaliacao+"&"+url_get;
+  Swal.fire({
+    title: 'Deseja continuar com a exclusão?',
+    showDenyButton: true,
+    confirmButtonText: `Sim`,
+    denyButtonText: `Não`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      window.location.href = "../Controller/Excluir_avaliacao.php?"+url+"";
+    } else if (result.isDenied) {
+     // Swal.fire('Ação cancelada', '', 'info')
+    }
+  })
+}
+
+
+
+
 function seleciona_tudo(){
     var presenca = document.getElementById("presenca"); 
     for (var i = 0, l = presenca.length; i < l; i++) {

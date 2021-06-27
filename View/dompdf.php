@@ -19,18 +19,16 @@ $dompdf = new Dompdf($options);
 
 //CARREGA O HTML PARA DENTRO DA CLASSE
 
-$dompdf->loadHtmlFile(__DIR__.'/nota_l_unidade.html');
-
-
+$dompdf->loadHtmlFile(__DIR__.'/teste.html');
 
 $dompdf->setPaper ('A3','landscape');
-
-
 
 $dompdf->render();
 
 //IMPRIME D CONTELIDO DO ARQUIVO PDF NA TELA 
-header ("Content-type: application/pdf");
+// header ("Content-type: application/pdf");
 
-echo $dompdf->output();
+// echo $dompdf->output();
+
+$dompdf->stream("arquivo.pdf");
 ?>

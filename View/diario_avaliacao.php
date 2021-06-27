@@ -142,13 +142,69 @@ if (!isset($_SESSION['idprofessor'])) {
         </div>
 
       </div>
+
+
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+
+         <table class='table table-primary'>
+              <thead>
+                <tr>
+                  <th style='width: 10px'>#</th>
+                  <th>Avaliações</th>
+                  <th>
+                  Opções
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php 
+                $resultado=listar_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplina);
+                      $conta=1;
+                    foreach ($resultado as $key => $value) {
+                      $data_nota=$value['data_nota'];
+                      $turma_id  =$value['turma_id'];
+                      $disciplina_id  =$value['disciplina_id'];
+                      $escola_id=$value['escola_id'];
+                      $avaliacao=$value['avaliacao'];
+                      $periodo_id=$value['periodo_id'];
+                      
+                      echo"
+                      <tr>
+                      <td>
+                      $conta
+                      
+<input type='hidden' id='data_nota$conta' value='$data_nota'>
+<input type='hidden' id='turma_id$conta' value='$turma_id'>
+<input type='hidden' id='disciplina_id$conta' value='$disciplina_id'>
+<input type='hidden' id='escola_id$conta' value='$escola_id'>
+<input type='hidden' id='avaliacao$conta' value='$avaliacao'>
+<input type='hidden' id='periodo_id$conta' value='$periodo_id'>
+
+ 
+                      </td>
+                        <td>Avaliação $avaliacao - ".converte_data($data_nota)."</td>
+                        <td><a onclick='excluir_avaliacao($conta);' class='btn btn-danger'>EXCLUIR AVALIAÇÃO</a></td>
+                      </tr>";
+                      $conta++;
+                    }
+
+
+                ?>
+
+              </tbody>
+        </table>
+    </div>
+  </div>
+
   <div id="listagem_avaliacao">
 
 
   </div>
 
    
-<input type="hidden" name="url_get" value="<?php echo $url_get; ?>">
+<input type="hidden" name="url_get" id="url_get" value="<?php echo $url_get; ?>">
 
 <input type="hidden" name="idserie" id="idserie" value="<?php echo $idserie; ?>">
 <input type="hidden" name="idescola" id="idescola" value="<?php echo $idescola; ?>">
