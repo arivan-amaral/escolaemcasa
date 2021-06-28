@@ -218,7 +218,7 @@ if (!isset($_SESSION['idcoordenador'])) {
 
                                      <a class='btn btn-info btn-block btn-flat'
 
-                                            href='#' >
+                                            href='diario_acompanhamento.php?disc=$iddisciplina&turm=$idturma&idescola=$idescola&idserie=$idserie' >
 
 
 
