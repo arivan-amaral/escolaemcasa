@@ -178,10 +178,17 @@ if (!isset($_SESSION['idcoordenador'])) {
                                       </a> 
 
 
+                                   <a   href='diario_rendimento.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-info btn-block btn-flat'>
+                                     <i class='fa fa-calendar'></i> 
+                                     RESULTADO FINAL
+                                   </a>
+
+
                                    <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-info btn-block btn-flat'>
                                      <i class='fa fa-calendar'></i> 
                                      FICHA DE RENDIMENTO TRI I
-                                   </a>   
+                                   </a> 
+
                                    <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=2' class='btn btn-info btn-block btn-flat'>
                                      <i class='fa fa-calendar'></i> 
                                      FICHA DE RENDIMENTO TRI II
