@@ -112,6 +112,7 @@ if (!isset($_SESSION['idprofessor'])) {
               <option value="AULA-1">AULA-1</option>
               <option value="AULA-2">AULA-2</option>
               <option value="AULA-3">AULA-3</option>
+              <option value="AULA-4">AULA-4</option>
               
             </select>
           </div>
