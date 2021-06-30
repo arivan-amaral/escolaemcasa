@@ -377,7 +377,7 @@ foreach ($result_escola as $key => $value) {
 
  </tr>
 
- <tr style='mso-yfti-irow:11;height:48.75pt'>
+ <tr style='mso-yfti-irow:11;height:58.75pt'>
 
 
   <?php
@@ -400,24 +400,24 @@ foreach ($result_data_aula as $key => $value) {
      
   ?>
   
-  <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
+  <td style='border:solid windowtext 1.0pt;
       border-left:none;background:#D9D9D9;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
       solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
       <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-      line-height:normal'><div class="Namerotate"><span style='font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+      line-height:normal'><div class="Namerotate"><span style='font-size:6.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-      color:black;mso-fareast-language:PT-BR'><?php echo converte_data($data_frequencia); ?> </div></span></p>
+      color:black;mso-fareast-language:PT-BR'><?php echo "".converte_data($data_frequencia); ?> </div></span></p>
   </td>
   
 <?php
   } else{ 
 ?>
   
-  <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
+  <td style='border:solid windowtext 1.0pt;
       border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
       solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
       <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-      line-height:normal'><div class="Namerotate"><span style='font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+      line-height:normal'><div class="Namerotate"><span style='font-size:6.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
       color:black;mso-fareast-language:PT-BR'><?php echo converte_data($data_frequencia); ?></div></span></p>
   </td>
@@ -567,7 +567,7 @@ foreach ($result_aula as $key => $value) {
       solid windowtext 1.0pt;background:
   #D9D9D9;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
       <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-      line-height:normal'><div class="Namerotate"><span style='font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+      line-height:normal'><div class="Namerotate"><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
       color:black;mso-fareast-language:PT-BR'><?php echo "Aula $conta_aula"; ?> </div></span></p>
   </td>
@@ -576,11 +576,11 @@ foreach ($result_aula as $key => $value) {
 <?php
   }else{
 ?>
- <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
+ <td  style='border:solid windowtext 1.0pt;
       border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
       solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
       <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-      line-height:normal'><div class="Namerotate"><span style='font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+      line-height:normal'><div class="Namerotate"><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
       color:black;mso-fareast-language:PT-BR'><?php echo "Aula $conta_aula"; ?> </div></span></p>
   </td>
@@ -601,9 +601,9 @@ for ($i=$conta_aula; $i < $limite_aula ; $i++) {
  <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
       border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
       solid windowtext 1.0pt;background:
-  #D9D9D9;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
+  #D9D9D9;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:.25pt'>
       <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-      line-height:normal'><div class="Namerotate"><span style='font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+      line-height:normal'><div class="Namerotate"><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
       color:black;mso-fareast-language:PT-BR'><?php echo "Aula $conta_aula"; ?> </div></span></p>
   </td>
@@ -616,7 +616,7 @@ for ($i=$conta_aula; $i < $limite_aula ; $i++) {
       border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
       solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
       <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-      line-height:normal'><div class="Namerotate"><span style='font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+      line-height:normal'><div class="Namerotate"><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
       color:black;mso-fareast-language:PT-BR'><?php echo "Aula $conta_aula"; ?> </div></span></p>
   </td>
@@ -710,7 +710,7 @@ for ($i=$conta_aula; $i < $limite_aula ; $i++) {
 
 
 <?php
-$presenca="P";
+$presenca=".";
 $conta_presenca=1;
  foreach ($array_aula as $key => $value) {
     $aula=$array_aula[$key];
@@ -719,7 +719,7 @@ $conta_presenca=1;
     $res_pre=$conexao->query("SELECT presenca from frequencia where presenca=1 and aluno_id=$idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and data_frequencia='$data_frequencia' and aula='$aula' ");
      
     if ($res_pre->rowCount()>0) {
-      $presenca="P";
+      $presenca=".";
     }else{
       $presenca="F";
 
@@ -728,11 +728,11 @@ $conta_presenca=1;
   ?>
   
 
-  <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
+  <td width=10 nowrap valign=top style='border:solid windowtext 1.0pt;
     border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
     solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
-    white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
-    <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+    white;height:13.5pt'>
+    <p class=MsoNormal align=center style='margin-bottom:0cm;
     line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
     mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
     color:black;mso-fareast-language:PT-BR'><?php echo $presenca; ?></span></b></p>
@@ -749,14 +749,14 @@ $conta_presenca=1;
   ?>
   
 
-  <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
+  <td width=10 nowrap valign=top style='border:solid windowtext 1.0pt;
     border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
     solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
-    white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
+    white;height:13.5pt'>
     <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
     line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
     mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-    color:black;mso-fareast-language:PT-BR'> . </span></b></p>
+    color:black;mso-fareast-language:PT-BR'>  </span></b></p>
   </td>
     
   <?php
@@ -802,7 +802,7 @@ for ($i=$conta_nota_av; $i < 4; $i++) {
          <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
          line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
          mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-         color:black;mso-fareast-language:PT-BR'> . </span></b></p>
+         color:black;mso-fareast-language:PT-BR'>  </span></b></p>
        </td>
 <?php
 }
@@ -841,7 +841,7 @@ $result_nota_avaliacao_rp=$conexao->query("
                <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
                line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
                mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-               color:black;mso-fareast-language:PT-BR'> . </span></b></p>
+               color:black;mso-fareast-language:PT-BR'>  </span></b></p>
              </td>
       <?php
           $nota_ava++;
@@ -855,7 +855,7 @@ $result_nota_avaliacao_rp=$conexao->query("
                <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
                line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
                mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-               color:black;mso-fareast-language:PT-BR'> . </span></b></p>
+               color:black;mso-fareast-language:PT-BR'>  </span></b></p>
           </td>
 
               <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
@@ -865,7 +865,7 @@ $result_nota_avaliacao_rp=$conexao->query("
                <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
                line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
                mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-               color:black;mso-fareast-language:PT-BR'> . </span></b></p>
+               color:black;mso-fareast-language:PT-BR'>  </span></b></p>
              </td>
       <?php
 
