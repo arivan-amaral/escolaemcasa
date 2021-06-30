@@ -26,6 +26,16 @@ if (!isset($_SESSION['idprofessor'])) {
   $iddisciplina=$_GET['disc']; 
  $array_url=explode('p?', $_SERVER["REQUEST_URI"]);
  $url_get=$array_url[1];
+
+ $nome_turma='';
+ $nome_disciplina='';
+ if (isset($_GET['turma'])) {
+   $nome_turma=$_GET['turma'];
+ } 
+ if (isset($_GET['disciplina'])) {
+    $nome_disciplina=$_GET['disciplina'];
+
+ }
 ?>
 
 
@@ -95,6 +105,27 @@ if (!isset($_SESSION['idprofessor'])) {
        
       <div class="row">
         <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <button class="btn btn-block btn-lg btn-secondary"><?php
+
+            $nome_turma='';
+            $nome_disciplina='';
+            if (isset($_GET['turma'])) {
+              $nome_turma=$_GET['turma'];
+            } 
+            if (isset($_GET['disciplina'])) {
+               $nome_disciplina=$_GET['disciplina'];
+
+            }
+
+             echo $nome_turma ." - ". $nome_disciplina; ?></button>
+        </div>
+      </div>
+      <br>
+      <br>
+
+      <div class="row">
+        <div class="col-sm-1"></div>
         
         <div class="col-sm-4">
           <div class="form-group">
@@ -123,7 +154,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
         <div class="col-sm-3">
           <div class="form-group">
-            <label for="exampleInputEmail1">Datas já lançadas</label>
+            <label for="exampleInputEmail1">Aulas já lançadas</label>
 
             <select class="form-control" id="data_ja_lancada" onchange="data_frequencia_ja_cadastrada(this.value);" >
               <option></option>
