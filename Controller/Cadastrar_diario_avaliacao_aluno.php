@@ -40,7 +40,8 @@ foreach ($_POST['aluno_id'] as $key => $value) {
       $nota=0;
       if (isset($_POST["nota$aluno_id"])) {
         if ($_POST["nota$aluno_id"] !="") {
-            $nota=$_POST["nota$aluno_id"];
+            $nota=trim($_POST["nota$aluno_id"]);
+            $nota=str_replace(',','.',$nota);
         }else{
 
         }
