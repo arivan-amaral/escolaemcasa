@@ -68,12 +68,12 @@ try {
                          
                        <tr class='$cor_tabela'>";
 
-                          if ($idperiodo !=6) {//se for diferente de diagnostico inicial
+                          if ($idperiodo !=6 ) {//se for diferente de diagnostico inicial
                               
                              $result.="<td>
                               <label for='exampleInputEmail1'>Parecer descritivo</label>
                               <textarea class='form-control-sm' name='parecer_descritivo$id'>$descricao_parecer</textarea><br>
-<B>Parecer(es)</b>
+                                <B>HABILIDADES</b>
                               </td>
                             
                               <td>
@@ -120,7 +120,7 @@ try {
 
               
 
-                    if ($serie_id == $idserie) {
+                    if ($serie_id == $idserie && $avaliacao=='av3') {
                        $result.="<tr class='$cor_tabela'>
                             <td colspan='2'>
                             <div class='col-12'>
