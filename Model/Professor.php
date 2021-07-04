@@ -1,17 +1,23 @@
 <?php 
 
+	function desativar_professor($conexao,$idfuncionario) {
+    	$conexao->exec("UPDATE funcionario set status=0 WHERE idfuncionario=$idfuncionario ");
+    
+	}	
+
+
 	function pesquisar_professor_por_id($conexao,$idfuncionario) {
-    	$result=$conexao->query("SELECT * FROM funcionario WHERE idfuncionario=$idfuncionario ");
+    	$result=$conexao->query("SELECT * FROM funcionario WHERE idfuncionario=$idfuncionario   and funcionario.status=1 ");
     	return $result ;
 	}
 
 	function pesquisar_professor_associacao($conexao,$pesquisa) {
-    	$result=$conexao->query("SELECT * FROM funcionario WHERE descricao_funcao !='Coordenador' AND descricao_funcao !='Coordenadora' and nome like '%$pesquisa%' ");
+    	$result=$conexao->query("SELECT * FROM funcionario WHERE descricao_funcao !='Coordenador' AND descricao_funcao !='Coordenadora' and nome like '%$pesquisa%'  and funcionario.status=1 ");
     	return $result ;
 	}
 
 	function pesquisar_imagem_professor($conexao, $id) {
-    	$result=$conexao->query("SELECT * FROM imagem WHERE id_funcionario=$id ");
+    	$result=$conexao->query("SELECT * FROM imagem WHERE id_funcionario=$id  and funcionario.status=1 ");
     	return $result ;
 	}
 
@@ -44,7 +50,7 @@
 			funcionario.email,
 			funcionario.senha,
 			funcionario.whatsapp
-		 	FROM funcionario where  idfuncionario = $idprofessor");
+		 	FROM funcionario where  idfuncionario = $idprofessor and  and funcionario.status=1 ");
 
 		return $res;
 	}
@@ -56,7 +62,7 @@
 			funcionario.email,
 			funcionario.senha,
 			funcionario.whatsapp
-		 	FROM funcionario,imagem where  id_funcionario=idfuncionario and idfuncionario = $idprofessor");
+		 	FROM funcionario,imagem where  id_funcionario=idfuncionario and idfuncionario = $idprofessor  and funcionario.status=1 ");
 
 		return $res;
 	}
@@ -67,7 +73,7 @@
                           ministrada.escola_id=escola.idescola AND
                           ministrada.disciplina_id=disciplina.iddisciplina AND
                           ministrada.professor_id=funcionario.idfuncionario AND
-                          funcionario.idfuncionario = $idprofessor order by nome_escola asc, nome_turma asc");
+                          funcionario.idfuncionario = $idprofessor and funcionario.status=1 order by nome_escola asc, nome_turma asc");
 
 		return $res;
 	}

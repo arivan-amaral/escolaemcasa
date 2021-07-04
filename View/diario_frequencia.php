@@ -154,7 +154,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
         <div class="col-sm-3">
           <div class="form-group">
-            <label for="exampleInputEmail1">Aulas já lançadas</label>
+            <label for="exampleInputEmail1">Datas das aulas lançadas</label>
 
             <select class="form-control" id="data_ja_lancada" onchange="data_frequencia_ja_cadastrada(this.value);" >
               <option></option>

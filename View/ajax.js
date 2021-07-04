@@ -555,8 +555,9 @@ function pesquisar_coordenador_associacao(){
     xmlreq.send(null);
 }
 
-function pesquisar_professor_associacao(pesquisa){
+function pesquisar_professor_associacao(){
   var result = document.getElementById("tabela_pesquisa_professor");
+  var pesquisa = document.getElementById("pesquisa").value;
   var xmlreq = CriaRequest();   
   result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
 
@@ -594,6 +595,25 @@ function alterar_status_questionario(id,status) {
   })
 }
 
+
+function excluir_professor(id) {
+  var nome_professor = document.getElementById("nome_professor"+id).value;
+
+  Swal.fire({
+    title: 'Tem certeza que deseja EXCLUIR o professor(a): '+nome_professor+'?',
+
+    showDenyButton: true,
+    confirmButtonText: `Sim`,
+    denyButtonText: `Não`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      window.location.href = "../Controller/Excluir_professor.php?id="+id+"";
+    } else if (result.isDenied) {
+      //Swal.fire('Ação não concluída', '', 'info')
+    }
+  })
+}
 
 function excluir_coordenador(id) {
   Swal.fire({

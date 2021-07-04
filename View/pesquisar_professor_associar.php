@@ -53,15 +53,18 @@ if (!isset($_SESSION['idcoordenador'])) {
     <!-- Main content -->
 
         <div class="row">
-           <div class="col-md-1"></div> 
-           <div class="col-md-10"> 
-                            <label for="exampleInputEmail1">Pesquise o professor a ser associado</label>
-            
-                <input type="search" class="form-control form-control" 
-                onkeyup ="pesquisar_professor_associacao(this.value);" value="" placeholder="Pesquise o professor a ser associado">
+           <div class="col-sm-1"></div> 
+           <div class="col-sm-8"> 
+              <label for="exampleInputEmail1">Pesquise o professor a ser associado</label>
+                <input type="search" id="pesquisa" class="form-control form-control" 
+               value="" placeholder="Pesquise o professor a ser associado">
               
-
            </div>
+
+              <div class="col-sm-2"> 
+                <label><br></label><br>
+               <a class="btn btn-primary" onclick="pesquisar_professor_associacao();">Buscar</a>
+              </div>
          </div> 
 
 <div id='tabela_pesquisa_professor'>

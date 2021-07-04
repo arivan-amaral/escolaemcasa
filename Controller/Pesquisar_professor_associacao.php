@@ -23,7 +23,9 @@ $return="
                 <tr>
                   
                   <th>Professor</th>
-                  <th>Opção</th>
+                  <th>Associações</th>
+                  <th>Editar</th>
+                  <th>Excluir</th>
                 </tr>
               </thead>
 
@@ -45,10 +47,19 @@ foreach ($result as $key => $value) {
 
       <td>
 
-       <a href='#fica$idfuncionario' onclick='listar_opcao_associacao_professor($idfuncionario);' name='fica$idfuncionario' class='btn btn-primary'>Associar a turmas</a>
+       <a href='#asso$idfuncionario' onclick='listar_opcao_associacao_professor($idfuncionario);' name='asso$idfuncionario' class='btn btn-primary'>Associar a turmas</a>
+       </td>
+
+       <td>
+       <a href='alterar_dados_funcionario_administracao.php?idfuncionario=$idfuncionario'  class='btn btn-warning'>Editar dados</a>
+
        <br>
        <br>
-       <a href='alterar_dados_funcionario_administracao.php?idfuncionario=$idfuncionario'  name='fica$idfuncionario' class='btn btn-warning'>Editar dados</a>
+       </td>
+
+       <td>
+       <input id='nome_professor$idfuncionario' hidden value='$nome_professor'>
+       <a  onclick='excluir_professor($idfuncionario);' name='pro$idfuncionario' class='btn btn-danger'>Excluir professor</a>
       </td>
       
     </tr>
