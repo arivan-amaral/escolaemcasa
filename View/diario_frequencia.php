@@ -175,50 +175,140 @@ if (!isset($_SESSION['idprofessor'])) {
 
       </div>
 
+<!-- ####################################################################### -->
+
+
+<div class="row">
+
+    <div class="col-md-1"></div>
 
 
 
-  <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-10">
+    <div class="col-md-10">
 
-         <table class='table table-primary'>
-              <thead>
-                <tr>
-                  <th style='width: 10px'>#</th>
-                  <th>Avaliações</th>
-                  <th>
-                  Opções
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php 
-                $resultado=listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $idprofessor);
-                      $conta=1;
-                    foreach ($resultado as $key => $value) {
-                      $conteudo_aula_id=$value['id'];
-                      $data=$value['data'];
-                      $aula=$value['aula'];
-                      echo"
-                      <tr>
-                      <td>
-                      $conta
-                      <input type='hidden' id='conteudo_aula_id$conta' value='$conteudo_aula_id'>
-                      </td>
-                        <td>$aula - ".converte_data($data)."</td>
-                        <td><a onclick='excluir_frequencia($conta);' class='btn btn-danger'>EXCLUIR FREQUÊNCIA</a></td>
-                      </tr>";
-                      $conta++;
-                    }
+                <div class="card">
+
+                  <div class="card-header">
+
+                    <h3 class="card-title">FREQUÊNCIAS CADASTRADAS</h3>
+
+                  </div>
+
+                  <!-- /.card-header -->
+
+                  <div class="card-body">
+
+                    <!-- we are adding the accordion ID so Bootstrap's collapse plugin detects it -->
+
+                    <div id="accordion">
 
 
-                ?>
 
-              </tbody>
-        </table>
-    </div>
+       
+
+                          <div class='card card-primary'>
+
+                            <div class='card-header'>
+
+                              <h4 class='card-title w-100'>
+
+
+
+                                <a class='d-block w-100 collapsed' data-toggle='collapse' href='#collapseOne' aria-expanded='false'><b class='text-warning'>
+                                    CLIQUE AQUI PARA VER AS FREQUÊNCIAS CADASTRADAS 
+                                  </b>
+
+                                </a>
+
+                              </h4>
+
+                            </div>
+
+                            <div id='collapseOne' class='collapse' data-parent='#accordion' style=''>
+
+                              <div class='card-body'>
+
+
+                          
+
+                                       <table class='table table-primary'>
+                                            <thead>
+                                              <tr>
+                                                <th style='width: 10px'>#</th>
+                                                <th>Avaliações</th>
+                                                <th>
+                                                Opções
+                                                </th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <?php 
+                                              $resultado=listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $idprofessor);
+                                                    $conta=1;
+                                                  foreach ($resultado as $key => $value) {
+                                                    $conteudo_aula_id=$value['id'];
+                                                    $data=$value['data'];
+                                                    $aula=$value['aula'];
+                                                    echo"
+                                                    <tr>
+                                                    <td>
+                                                    $conta
+                                                    <input type='hidden' id='conteudo_aula_id$conta' value='$conteudo_aula_id'>
+                                                    </td>
+                                                      <td>$aula - ".converte_data($data)."</td>
+                                                      <td><a onclick='excluir_frequencia($conta);' class='btn btn-danger'>EXCLUIR FREQUÊNCIA</a></td>
+                                                    </tr>";
+                                                    $conta++;
+                                                  }
+
+
+                                              ?>
+
+                                            </tbody>
+                                      </table>
+                                  
+              
+
+                            </div>
+
+                          </div>
+
+                               
+
+
+
+                    </div>
+
+                  </div>
+
+
+
+                  <!-- /.card-body -->
+
+                </div>
+
+                <!-- /.card -->
+
+              </div>
+
+        </div>
+
+
+
+
+
+
+
+    <!-- Main row -->
+
+    <!-- /.row -->
+
   </div>
+
+
+<!-- ####################################################################### -->
+
+
 <input type="hidden" id="url_get" value="<?php echo $url_get; ?>">
 
   <div class="row" id="listagem_frequencia">

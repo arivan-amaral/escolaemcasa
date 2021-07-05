@@ -163,59 +163,159 @@ if (!isset($_SESSION['idprofessor'])) {
       </div>
 
 
-  <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-10">
-
-         <table class='table table-primary'>
-              <thead>
-                <tr>
-                  <th style='width: 10px'>#</th>
-                  <th>Avaliações</th>
-                  <th>
-                  Opções
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php 
-                $resultado=listar_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplina);
-                      $conta=1;
-                    foreach ($resultado as $key => $value) {
-                      $data_nota=$value['data_nota'];
-                      $turma_id  =$value['turma_id'];
-                      $disciplina_id  =$value['disciplina_id'];
-                      $escola_id=$value['escola_id'];
-                      $avaliacao=$value['avaliacao'];
-                      $periodo_id=$value['periodo_id'];
-                      
-                      echo"
-                      <tr>
-                      <td>
-                      $conta
-                      
-<input type='hidden' id='data_nota$conta' value='$data_nota'>
-<input type='hidden' id='turma_id$conta' value='$turma_id'>
-<input type='hidden' id='disciplina_id$conta' value='$disciplina_id'>
-<input type='hidden' id='escola_id$conta' value='$escola_id'>
-<input type='hidden' id='avaliacao$conta' value='$avaliacao'>
-<input type='hidden' id='periodo_id$conta' value='$periodo_id'>
-
- 
-                      </td>
-                        <td>Avaliação $avaliacao - ".converte_data($data_nota)."</td>
-                        <td><a onclick='excluir_avaliacao($conta);' class='btn btn-danger'>EXCLUIR AVALIAÇÃO</a></td>
-                      </tr>";
-                      $conta++;
-                    }
 
 
-                ?>
 
-              </tbody>
-        </table>
-    </div>
+
+<!-- ####################################################################### -->
+
+
+<div class="row">
+
+    <div class="col-md-1"></div>
+
+
+
+    <div class="col-md-10">
+
+                <div class="card">
+
+                  <div class="card-header">
+
+                    <h3 class="card-title">AVALIAÇÕES CADASTRADAS</h3>
+
+                  </div>
+
+                  <!-- /.card-header -->
+
+                  <div class="card-body">
+
+                    <!-- we are adding the accordion ID so Bootstrap's collapse plugin detects it -->
+
+                    <div id="accordion">
+
+
+
+       
+
+                          <div class='card card-primary'>
+
+                            <div class='card-header'>
+
+                              <h4 class='card-title w-100'>
+
+
+
+                                <a class='d-block w-100 collapsed' data-toggle='collapse' href='#collapseOne' aria-expanded='false'><b class='text-warning'>
+                                    CLIQUE AQUI PARA VER AS AVALIAÇÕES CADASTRADAS 
+                                  </b>
+
+                                </a>
+
+                              </h4>
+
+                            </div>
+
+                            <div id='collapseOne' class='collapse' data-parent='#accordion' style=''>
+
+                              <div class='card-body'>
+
+
+                          
+                                         <table class='table table-primary'>
+                                              <thead>
+                                                <tr>
+                                                  <th style='width: 10px'>#</th>
+                                                  <th>Avaliações</th>
+                                                  <th>
+                                                  Opções
+                                                  </th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                                <?php 
+                                                $resultado=listar_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplina);
+                                                      $conta=1;
+                                                    foreach ($resultado as $key => $value) {
+                                                      $data_nota=$value['data_nota'];
+                                                      $turma_id  =$value['turma_id'];
+                                                      $disciplina_id  =$value['disciplina_id'];
+                                                      $escola_id=$value['escola_id'];
+                                                      $avaliacao=$value['avaliacao'];
+                                                      $periodo_id=$value['periodo_id'];
+                                                      
+                                                      echo"
+                                                      <tr>
+                                                      <td>
+                                                      $conta
+                                                      
+                                <input type='hidden' id='data_nota$conta' value='$data_nota'>
+                                <input type='hidden' id='turma_id$conta' value='$turma_id'>
+                                <input type='hidden' id='disciplina_id$conta' value='$disciplina_id'>
+                                <input type='hidden' id='escola_id$conta' value='$escola_id'>
+                                <input type='hidden' id='avaliacao$conta' value='$avaliacao'>
+                                <input type='hidden' id='periodo_id$conta' value='$periodo_id'>
+
+                                 
+                                                      </td>
+                                                        <td>Avaliação $avaliacao - ".converte_data($data_nota)."</td>
+                                                        <td><a onclick='excluir_avaliacao($conta);' class='btn btn-danger'>EXCLUIR AVALIAÇÃO</a></td>
+                                                      </tr>";
+                                                      $conta++;
+                                                    }
+
+
+                                                ?>
+
+                                              </tbody>
+                                        </table>
+              
+
+                            </div>
+
+                          </div>
+
+                               
+
+
+
+                    </div>
+
+                  </div>
+
+
+
+                  <!-- /.card-body -->
+
+                </div>
+
+                <!-- /.card -->
+
+              </div>
+
+        </div>
+
+
+
+
+
+
+
+    <!-- Main row -->
+
+    <!-- /.row -->
+
   </div>
+
+
+<!-- ####################################################################### -->
+
+
+
+
+
+
+
 
   <div id="listagem_avaliacao">
 

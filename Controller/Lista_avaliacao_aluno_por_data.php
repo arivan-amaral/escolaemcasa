@@ -73,7 +73,7 @@ try {
                              $result.="<td>
                               <label for='exampleInputEmail1'>Parecer descritivo</label>
                               <textarea class='form-control-sm' name='parecer_descritivo$id'>$descricao_parecer</textarea><br>
-                                <B>HABILIDADES</b>
+                                <B></b>
                               </td>
                             
                               <td>
