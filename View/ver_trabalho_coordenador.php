@@ -6,7 +6,7 @@ if (!isset($_SESSION['idprofessor']) && !isset($_SESSION['idcoordenador'])) {
 
 }else{
 
-  $idprofessor=$_SESSION['idprofessor'];
+  $idprofessor=$_SESSION['idcoordenador'];
 
 }
 include "cabecalho.php";
@@ -32,7 +32,7 @@ include "alertas.php";
 
 
 
-<script src="ajax.js"></script>
+<script src="ajax.js?<?php echo rand(); ?>"></script>
 
 
 
@@ -101,63 +101,6 @@ include "alertas.php";
             <section class="content">
 
               <div class="container-fluid">
-
-
-                <div class="row">
-                  <div class="col-md-12">
-              
-
-
-                    <button type="button" class="btn btn-block  btn-success"><?php echo $_GET['turma']."  - ".$_GET['disciplina']; ?></button>
-                    <br>
-                    <form class="mt-12" action="../Controller/Cadastro_trabalho.php" method="post" enctype="multipart/form-data">
-
-
-
-                        <h4 class="card-title">Título da Atividade</h4>
-                        <div class="form-group">
-                            <input type="text" name="titulo" class="form-control" autocomplete="off"  required="">
-                        </div>
-
-                        <h4 class="card-title">Arquivo</h4>
-                        <div class="form-group">
-                            <input type="file" name="arquivo" class="form-control" >
-                        </div>
-                      
-                      <h4 class="card-title">Dia para ficar visível</h4>
-                        <div class="form-group">
-                            <input type="date" name="data_visivel" class="form-control"  required="">
-                        </div>
-
-                        <h4 class="card-title">Hora para ficar visível</h4>
-                        <div class="form-group">
-                            <input type="time" name="hora_visivel" class="form-control"  required="">
-                        </div>
-
-
-                        <h4 class="card-title">Descrição da Atividade</h4>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="3" name="descricao" placeholder="Descrição da Atividade" required=""></textarea>
-                        </div>
-
-                        <h4 class="card-title">Data de Entrega</h4>
-                        <div class="form-group">
-                            <input type="date" name="data_entrega" class="form-control"  required="">
-
-                        </div>
-
-                        <input type="hidden" name="idescola" value="<?php echo $_GET['idescola']; ?>" class="form-control" required="">
-                        <input type="hidden" name="turma_id" value="<?php echo $_GET['turm']; ?>" class="form-control" required="">
-
-                        <input type="hidden" name="disciplina_id" value="<?php echo $_GET['disc']; ?>" class="form-control" required="">
-
-                        <button type="submit" class="btn waves-effect waves-light btn-lg btn-primary">Enviar Atividade</button>
-
-                    </form>
-
-                                        
-                  </div>
-                </div>
 
 
 

@@ -477,17 +477,25 @@ foreach ($result as $key => $value) {
   foreach ($result_ocorrencia as $key => $value) {
     $descricao=$value['descricao'];
     $data_ocorrencia=converte_data($value['data_ocorrencia']);
+
+
+echo "
+
+<tr height=0>
+ <td width=77 style='border:1px solid;'> $conta </td>
+ <td width=225 style='border:1px solid'> $data_ocorrencia </td>
+ <td width=168 colspan='2' style='border-bottom:1px solid;font-size:8.0pt; '>$nome_aluno</td>
+
+ <td width=462 style='border:1px solid'>  $descricao </td>
+</tr>
+
+";
+
   }
 ?>
 
  
- <tr height=0>
-  <td width=77 style='border:1px solid;'><?php echo "$conta"; ?></td>
-  <td width=225 style='border:1px solid'><?php echo ($data_ocorrencia); ?></td>
-  <td width=168 colspan="2" style='border-bottom:1px solid;font-size:8.0pt; '><?php echo "$nome_aluno"; ?></td>
-
-  <td width=462 style='border:1px solid'><?php echo $descricao; ?></td>
- </tr>
+ 
 
 <?php 
 $conta++;

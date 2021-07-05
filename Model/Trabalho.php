@@ -2,7 +2,9 @@
 
 	function listar_trabalho($conexao, $id_funcionario,$id_turma,$id_disciplina,$idescola) {
 
-	    $result = $conexao->query("SELECT * FROM trabalho where professor_id=$id_funcionario and turma_id=$id_turma and disciplina_id=$id_disciplina and escola_id=$idescola order by id  desc   ");
+	    $result = $conexao->query("SELECT * FROM trabalho where  turma_id=$id_turma and disciplina_id=$id_disciplina and escola_id=$idescola order by id  desc   ");
+
+// $result = $conexao->query("SELECT * FROM trabalho where professor_id=$id_funcionario and turma_id=$id_turma and disciplina_id=$id_disciplina and escola_id=$idescola order by id  desc   ");
 
 	    return $result;
 

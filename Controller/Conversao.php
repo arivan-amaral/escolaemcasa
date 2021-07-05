@@ -26,6 +26,7 @@ date_default_timezone_set('America/Bahia');
 	  return $texto;
 
 	}
+	
 function hora($data){
    	return date("H:i", strtotime($data));
 } 

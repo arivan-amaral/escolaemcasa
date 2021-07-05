@@ -206,7 +206,7 @@ if (!isset($_SESSION['idcoordenador'])) {
 
 
 
-                                      <a  href='cadastro_trabalho.php?disc=$iddisciplina&turm=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat'>
+                                      <a  href='ver_trabalho_coordenador.php?turma=$nome_turma&disciplina=$nome_disciplina&disc=$iddisciplina&turm=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat'>
 
                                               <i class='fa fa-book'></i>
 
