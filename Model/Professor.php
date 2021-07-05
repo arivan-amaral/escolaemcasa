@@ -50,7 +50,7 @@
 			funcionario.email,
 			funcionario.senha,
 			funcionario.whatsapp
-		 	FROM funcionario where  idfuncionario = $idprofessor and  and funcionario.status=1 ");
+		 	FROM funcionario where  idfuncionario = $idprofessor and funcionario.status=1 ");
 
 		return $res;
 	}
