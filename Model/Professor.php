@@ -17,7 +17,7 @@
 	}
 
 	function pesquisar_imagem_professor($conexao, $id) {
-    	$result=$conexao->query("SELECT * FROM imagem WHERE id_funcionario=$id  and funcionario.status=1 ");
+    	$result=$conexao->query("SELECT * FROM imagem WHERE id_funcionario=$id ");
     	return $result ;
 	}
 
