@@ -22,6 +22,7 @@ $return="
               <thead>
                 <tr>
                   
+                  <th>#</th>
                   <th>Professor</th>
                   <th>Associações</th>
                   <th>Editar</th>
@@ -33,12 +34,17 @@ $return="
 
               
 ";
+$conta=1;
 foreach ($result as $key => $value) {
   $idfuncionario=$value['idfuncionario'];
   $nome_professor=$value['nome'];
   $login=$value['email'];
   $return.="
     <tr style='background-color:#BDB76B'>
+      <td>
+        <b>$conta</b><br>
+      </td> 
+
       <td>
         <b>$nome_professor</b><br>
         $login
@@ -85,9 +91,9 @@ foreach ($result as $key => $value) {
                            <a onclick='cancelar_associacao_professor($idministrada);' class='btn btn-danger'> Cancelar </a> 
                           </td>
 
-                    </tr>
-                          ";
+                    </tr> ";
       } 
+                    $conta++;
 }
 
 $return.="
