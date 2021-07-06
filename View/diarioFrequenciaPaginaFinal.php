@@ -770,7 +770,7 @@ $conta_presenca=1;
      escola_id=$idescola and
      turma_id=$idturma and
      disciplina_id=$iddisciplina and 
-     periodo_id=$periodo_id and data_nota='$data_nota' and avaliacao='$avaliacao' and aluno_id=$idaluno ORDER  BY avaliacao DESC");
+     periodo_id=$periodo_id and data_nota='$data_nota' and avaliacao='$avaliacao' and aluno_id=$idaluno   group by avaliacao,periodo_id ORDER  BY avaliacao DESC");
      $nota_ava=0;
      foreach ($result_nota_avaliacao as $key => $value) {
       $nota=$value['nota'];
@@ -811,7 +811,7 @@ $result_nota_avaliacao_rp=$conexao->query("
      escola_id=$idescola and
      turma_id=$idturma and
      disciplina_id=$iddisciplina and 
-     periodo_id=$periodo_id  and avaliacao='RP' and aluno_id=$idaluno");
+     periodo_id=$periodo_id  and avaliacao='RP' and aluno_id=$idaluno  group by avaliacao,periodo_id");
      $nota_ava=0;
      foreach ($result_nota_avaliacao_rp as $key => $value) {
          $nota=$value['nota'];
