@@ -736,7 +736,7 @@ SELECT * FROM nota WHERE
 escola_id=$idescola and
 turma_id=$idturma and
 disciplina_id=$iddisciplina and 
-periodo_id=1 and aluno_id=$idaluno ");
+periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
 
 
 $nota_tri_1=0;
@@ -794,7 +794,7 @@ SELECT * FROM nota WHERE
 escola_id=$idescola and
 turma_id=$idturma and
 disciplina_id=$iddisciplina and 
-periodo_id=2 and aluno_id=$idaluno ");
+periodo_id=2 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
 
 
 $nota_tri_2=0;
@@ -853,13 +853,13 @@ SELECT * FROM nota WHERE
 escola_id=$idescola and
 turma_id=$idturma and
 disciplina_id=$iddisciplina and 
-periodo_id=3 and aluno_id=$idaluno ");
+periodo_id=3 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
 
 
 $nota_tri_3=0;
 foreach ($result_nota_aula2 as $key => $value) {
   if ($value['avaliacao']!='RP') {
-    $nota_tri_3+=$value['nota'];
+     $nota_tri_3+=$value['nota'];
   }
 }
 echo "$nota_tri_3";
