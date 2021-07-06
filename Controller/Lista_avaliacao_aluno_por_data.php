@@ -149,7 +149,7 @@ try {
                               </div>   
                             </td>
                             </tr>";
-                    }else if ($serie_id =="" && $idserie <8) {
+                    }else if ($serie_id =="" && $idserie <8 && $avaliacao=='av3') {
                        $result.="<tr class='$cor_tabela'>
                             <td colspan='2'>
                             <div class='col-12'>
