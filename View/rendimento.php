@@ -741,7 +741,10 @@ periodo_id=1 and aluno_id=$idaluno ");
 
 $nota_tri_1=0;
 foreach ($result_nota_aula1 as $key => $value) {
-  $nota_tri_1+=$value['nota'];
+
+  if ($value['avaliacao']!='RP') {
+    $nota_tri_1+=$value['nota'];
+  }
 }
 echo "$nota_tri_1";
 ?>
@@ -796,7 +799,9 @@ periodo_id=2 and aluno_id=$idaluno ");
 
 $nota_tri_2=0;
 foreach ($result_nota_aula2 as $key => $value) {
-  $nota_tri_2+=$value['nota'];
+  if ($value['avaliacao']!='RP') {
+    $nota_tri_2+=$value['nota'];
+  }
 }
 echo "$nota_tri_2";
 ?>
@@ -853,7 +858,9 @@ periodo_id=3 and aluno_id=$idaluno ");
 
 $nota_tri_3=0;
 foreach ($result_nota_aula2 as $key => $value) {
-  $nota_tri_3+=$value['nota'];
+  if ($value['avaliacao']!='RP') {
+    $nota_tri_3+=$value['nota'];
+  }
 }
 echo "$nota_tri_3";
 ?>

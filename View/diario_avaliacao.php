@@ -249,17 +249,21 @@ if (!isset($_SESSION['idprofessor'])) {
                                                       <td>
                                                       $conta
                                                       
-                                <input type='hidden' id='data_nota$conta' value='$data_nota'>
-                                <input type='hidden' id='turma_id$conta' value='$turma_id'>
-                                <input type='hidden' id='disciplina_id$conta' value='$disciplina_id'>
-                                <input type='hidden' id='escola_id$conta' value='$escola_id'>
-                                <input type='hidden' id='avaliacao$conta' value='$avaliacao'>
-                                <input type='hidden' id='periodo_id$conta' value='$periodo_id'>
+                                            <input type='hidden' id='data_nota$conta' value='$data_nota'>
+                                            <input type='hidden' id='turma_id$conta' value='$turma_id'>
+                                            <input type='hidden' id='disciplina_id$conta' value='$disciplina_id'>
+                                            <input type='hidden' id='escola_id$conta' value='$escola_id'>
+                                            <input type='hidden' id='avaliacao$conta' value='$avaliacao'>
+                                            <input type='hidden' id='periodo_id$conta' value='$periodo_id'>
 
                                  
                                                       </td>
                                                         <td>Avaliação $avaliacao - ".converte_data($data_nota)."</td>
                                                         <td><a onclick='excluir_avaliacao($conta);' class='btn btn-danger'>EXCLUIR AVALIAÇÃO</a></td>
+                                                        <td>
+                                                          <a href='#listaAlunos' onclick='editar_avaliacao_aluno_por_data($conta);' class='btn btn-primary'>EDITAR AVALIAÇÃO</a>
+                                                        </td>
+
                                                       </tr>";
                                                       $conta++;
                                                     }
@@ -316,7 +320,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
 
 
-
+<a name="listaAlunos"></a>
   <div id="listagem_avaliacao">
 
 

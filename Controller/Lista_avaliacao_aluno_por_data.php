@@ -2,6 +2,7 @@
   session_start();
     include("../Model/Conexao.php");
     include("../Model/Aluno.php");
+    include("../Controller/Conversao.php");
     
 
 try {
@@ -60,7 +61,10 @@ try {
                       <td  colspan='2'>
               
                       <div class='col-sm-6'>
-                        <b class='text-success'> $nome_aluno </b> 
+                        <b class='text-success'> $nome_aluno </b>
+                        <br>
+                      <b>DATA: ".converte_data($data)."</b>
+
                         <input type='hidden' name='aluno_id[]' value='$id'><br>
                       </div>                      
                       <br>
