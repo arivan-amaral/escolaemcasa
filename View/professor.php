@@ -1,5 +1,6 @@
 <?php
 session_start();
+setcookie('ajuda2', '1', (time()+(300*24*3600)));
 if (!isset($_SESSION['idprofessor'])) {
 
        header("location:index.php?status=0");
@@ -20,9 +21,22 @@ if (!isset($_SESSION['idprofessor'])) {
 
   include '../Model/Professor.php';
 
+if (!isset($_COOKIE['ajuda2'])) {
+
+    echo"<script type='text/javascript'>
+
+      function modal_ajuda() {
+          $(document).ready(function() {
+              $('#modal-ajuda').modal('show');
+            });
+      }
+
+      setTimeout('modal_ajuda();',1000);
+      
+    </script>";
+}
+
 ?>
-
-
 
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 
@@ -552,43 +566,62 @@ if (!isset($_SESSION['idprofessor'])) {
 
   <!-- /.control-sidebar -->
 
-  <script type="text/javascript">
-
-    /* Máscaras ER */
-
-    function mascara(o,f){
-
-        v_obj=o
-
-        v_fun=f
-
-        setTimeout("execmascara()",1)
-
-    }
-
-    function execmascara(){
-
-        v_obj.value=v_fun(v_obj.value)
-
-    }
-
-    function mtel(v){
-
-        v=v.replace(/\D/g,"");             //Remove tudo o que não é dígito
-
-        v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
-
-        v=v.replace(/(\d)(\d{4})$/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
-
-        return v;
-
-    }
 
 
 
-  </script>
+  <style> #imagem_whats{position:fixed;right:0;bottom:0;display:block;cursor:pointer;z-index:9999999;float:right} #imagem_whats2{position:fixed;right:0;bottom:0;display:block;cursor:pointer;z-index:9999999;float:right;display:none} @media only screen and (max-width: 999px) and (min-width: 100px){#imagem_whats{display:none}#imagem_whats2{display:block}}</style><img id="imagem_whats" src="https://www.ellodigital.com.br/images/whatsapp.png" onClick="window.open('https://web.whatsapp.com/send?phone=+557799323906&amp;text=OLÁ, PODE ME AJUDAR COM A PLATAFORMA EDUCA LEM?!', '_blank');"><img id="imagem_whats2" src="https://www.ellodigital.com.br/images/whatsapp.png" onClick="window.open('https://api.whatsapp.com/send?phone=+557799323906&amp;text=OLÁ, PODE ME AJUDAR COM A PLATAFORMA EDUCA LEM?!', '_blank');"><div class="preloader"> <div class="preloaderimg"></div></div>
 
 
+  <div class="modal fade" id="modal-ajuda">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">AVISO!</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+          <div class="modal-body">
+         <!-- INICIO CORPO -->
+      
+         <div class="row">
+
+          <div class="col-md-12">
+
+
+
+            <div class="card card-default">
+              <div class="card-header callout callout-danger">
+                <h3 class="card-title">
+                  <i class="fas fa-bullhorn"></i>
+                  ATENÇÃO, CASO ESTEJA PASSANDO POR ALGUMA DIFICULDADE ENTRE EM CONTATO DIRETO COM O SUPORTE PELO WHATSAPP LOGO ABAIXO E AGUARDE SUA RESPOSTA!
+                </h3>
+              </div>
+
+        <!--       <div class='card-body'>
+                <a href='trabalho_individual.php?idtrabalho=$idtrabalho&idturma=$idturma&iddisciplina=$iddisciplina&idescola=$idescola'>
+
+                  <div class='callout callout-danger'>
+                    <h5></h5>
+                    
+                  </div>
+                </a>
+              </div> -->
+
+
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>        
+        </div>
+
+         <!-- FIM CORPO -->
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
 
  <?php 
 

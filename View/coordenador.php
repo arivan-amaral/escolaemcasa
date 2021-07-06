@@ -218,7 +218,7 @@ if (!isset($_SESSION['idcoordenador'])) {
 
                               <h3 class='widget-user-username text-right'>".$_SESSION['nome']."</h3>
 
-                              <h5 class='widget-user-desc text-right'>Professor(a) </h5>
+                              <h5 class='widget-user-desc text-right'>Coordenador(a) </h5>
 
                             </div>
 
