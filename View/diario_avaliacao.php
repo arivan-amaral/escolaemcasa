@@ -1,6 +1,6 @@
 <?php 
-setcookie('video', 1, (time()+(300*24*3600)));
 session_start();
+setcookie('video', 1, (time()+(300*24*3600)));
  if (!isset($_COOKIE['video'])) {
 
     echo"<script type='text/javascript'>
