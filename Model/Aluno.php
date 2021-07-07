@@ -211,7 +211,7 @@ function listar_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplina) {
      
       disciplina_id=$iddisciplina and 
       escola_id=$idescola and 
-      turma_id=$idturma GROUP BY data_nota,periodo_id ");
+      turma_id=$idturma GROUP BY avaliacao,periodo_id ");
     return $resultado;
 }
 
