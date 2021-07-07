@@ -3,9 +3,6 @@
     include("../Model/Conexao.php");
     include("../Model/Aluno.php");
     
-
-try {
-
     $professor_id=$_SESSION['idfuncionario'];
 
     $idescola=$_POST['idescola'];
@@ -16,6 +13,9 @@ try {
     $data=$_POST['data_avaliacao'];
     $avaliacao=$_POST['avaliacao'];
 
+try {
+
+
     $sigla=null;
     $parecer_disciplina_id=0;
       $nota=0;
@@ -23,7 +23,7 @@ try {
     $url_get=$_POST['url_get'];
     
 
-$conteudo_aula_id= $conexao->lastInsertId();
+//$conteudo_aula_id= $conexao->lastInsertId();
 
 
 foreach ($_POST['aluno_id'] as $key => $value) {
