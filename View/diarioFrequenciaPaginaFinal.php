@@ -775,6 +775,7 @@ $conta_presenca=1;
      foreach ($result_nota_avaliacao as $key => $value) {
       $nota=$value['nota'];
 
+
   ?>
        <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
          border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
@@ -783,7 +784,7 @@ $conta_presenca=1;
          <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
          line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
          mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-         color:black;mso-fareast-language:PT-BR'> <?php echo $nota ?> </span></b></p>
+         color:black;mso-fareast-language:PT-BR'> <?php echo"". $nota ?> </span></b></p>
        </td>
   <?php
      $conta_nota_av++;
@@ -800,7 +801,7 @@ for ($i=$conta_nota_av; $i < 4; $i++) {
          <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
          line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
          mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-         color:black;mso-fareast-language:PT-BR'>  </span></b></p>
+         color:black;mso-fareast-language:PT-BR'> <?php echo ""; ?></span></b></p>
        </td>
 <?php
 }
