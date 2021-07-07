@@ -1,7 +1,7 @@
 <?php 
 session_start();
 setcookie('video', 1, (time()+(300*24*3600)));
- //if (!isset($_COOKIE['video'])) {
+ if (!isset($_COOKIE['video'])) {
 
     echo"<script type='text/javascript'>
       function modal_video() {
@@ -14,7 +14,7 @@ setcookie('video', 1, (time()+(300*24*3600)));
       
     </script>";
   $_COOKIE['video']=$_COOKIE['video']+1;
-//}
+}
 
 if (!isset($_SESSION['idprofessor'])) {
        header("location:index.php?status=0");
@@ -394,8 +394,8 @@ if (!isset($_SESSION['idprofessor'])) {
               <!-- /corpo -->
           <center>
 
-            <h1>ATENÇÃO, NÃO LANÇAR NOTA ANTES DAS 20:30, <font color="RED">SERVIDOR EM MANUTENÇÃO</font></h1>
-            <!--  <iframe width="400" height="315" src="https://www.youtube.com/embed/dNihxQto4Hg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+            <!-- <h1>ATENÇÃO, NÃO LANÇAR NOTA ANTES DAS 20:30, <font color="RED">SERVIDOR EM MANUTENÇÃO</font></h1> -->
+             <iframe width="400" height="315" src="https://www.youtube.com/embed/dNihxQto4Hg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </center>
 
               <!-- /corpo -->
