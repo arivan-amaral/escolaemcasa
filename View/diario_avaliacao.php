@@ -13,7 +13,6 @@ session_start();
       setTimeout('modal_video();',1000);
       
     </script>";
-}else{
   $_COOKIE['video']=$_COOKIE['video']+1;
 }
 
