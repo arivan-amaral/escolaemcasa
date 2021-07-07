@@ -1,7 +1,7 @@
 <?php 
 session_start();
 setcookie('video', 1, (time()+(300*24*3600)));
- if (!isset($_COOKIE['video'])) {
+ //if (!isset($_COOKIE['video'])) {
 
     echo"<script type='text/javascript'>
       function modal_video() {
@@ -14,7 +14,7 @@ setcookie('video', 1, (time()+(300*24*3600)));
       
     </script>";
   $_COOKIE['video']=$_COOKIE['video']+1;
-}
+//}
 
 if (!isset($_SESSION['idprofessor'])) {
        header("location:index.php?status=0");
@@ -346,10 +346,10 @@ if (!isset($_SESSION['idprofessor'])) {
    
 <input type="hidden" name="url_get" id="url_get" value="<?php echo $url_get; ?>">
 
-<input type="text" name="idserie" id="idserie" value="<?php echo $idserie; ?>" >
-<input type="text" name="idescola" id="idescola" value="<?php echo $idescola; ?>">
-<input type="text" name="idturma" id="idturma" value="<?php echo $idturma; ?>">
-<input type="text" name="iddisciplina" id="iddisciplina" value="<?php echo $iddisciplina; ?>">
+<input type="hidden" name="idserie" id="idserie" value="<?php echo $idserie; ?>" >
+<input type="hidden" name="idescola" id="idescola" value="<?php echo $idescola; ?>">
+<input type="hidden" name="idturma" id="idturma" value="<?php echo $idturma; ?>">
+<input type="hidden" name="iddisciplina" id="iddisciplina" value="<?php echo $iddisciplina; ?>">
 
       <div class="row" id="botao_continuar">
         
@@ -393,7 +393,9 @@ if (!isset($_SESSION['idprofessor'])) {
           <div class="modal-body">
               <!-- /corpo -->
           <center>
-             <iframe width="400" height="315" src="https://www.youtube.com/embed/dNihxQto4Hg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+            <h1>ATENÇÃO, NÃO LANÇAR NOTA ANTES DA 16:30, <font color="RED">SERVIDO EM MANUTENÇÃO</font></h1>
+            <!--  <iframe width="400" height="315" src="https://www.youtube.com/embed/dNihxQto4Hg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
           </center>
 
               <!-- /corpo -->

@@ -101,7 +101,7 @@ function restaurar_conexao_api($conexao){
       $indice=$_GET['indice'];
   }
                     $result=$conexao->query("SELECT * FROM funcionario where
-                     descricao_funcao='Professor' or descricao_funcao='Professora' ORDER BY $indice, $limite ");
+                     descricao_funcao like 'Professor' or descricao_funcao like 'Professora' ORDER BY $indice, $limite ");
 
                     foreach ($result as $key4 => $value4) {
                         $numero=$value4['whatsapp'];

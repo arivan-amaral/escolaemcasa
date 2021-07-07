@@ -68,7 +68,7 @@ function limpa_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id
 }
 
 function limpa_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$data_nota,$avaliacao){
-    $resultado=$conexao->exec(" DELETE FROM nota WHERE
+    $conexao->exec(" DELETE FROM nota WHERE
     	escola_id=$idescola and 
     	turma_id=$idturma and 
     	disciplina_id=$iddisciplina and
