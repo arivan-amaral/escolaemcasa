@@ -14,7 +14,7 @@ try {
 	
 $servername = "localhost";
 $username = "root";
-$password = "200120022003";
+$password = "UQ2K2V3cfV6F";
 	//instancia objeto PDO, conectando no MySQL
     $conexao = new PDO("mysql:host=$servername;dbname=educalem", $username, $password);
     // apresenta o erro PDO 
