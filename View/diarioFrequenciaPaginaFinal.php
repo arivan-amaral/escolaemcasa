@@ -760,51 +760,171 @@ $conta_presenca=1;
   <?php
    } 
 
-   $conta_nota_av=1;
-   foreach ($array_data_nota as $key => $value) {
-     $data_nota=$array_data_nota[$key];
-     $avaliacao=$array_avaliacao[$key];
+$conta_nota_av=1;
 
+$conta_nota_av1=0;
+$conta_nota_av2=0;
+$conta_nota_av3=0;
+
+  // ******************************************************
      $result_nota_avaliacao=$conexao->query("
      SELECT * FROM nota WHERE
      escola_id=$idescola and
      turma_id=$idturma and
      disciplina_id=$iddisciplina and 
-     periodo_id=$periodo_id and data_nota='$data_nota' and avaliacao='$avaliacao' and aluno_id=$idaluno   group by avaliacao,periodo_id ORDER  BY avaliacao DESC");
+     periodo_id=$periodo_id  and aluno_id=$idaluno
+     and  avaliacao='av1'
+     group by avaliacao,periodo_id ORDER  BY avaliacao DESC");
      $nota_ava=0;
-     foreach ($result_nota_avaliacao as $key => $value) {
-      $nota=$value['nota'];
+    foreach ($result_nota_avaliacao as $key => $value) {
+          $nota=$value['nota'];
 
+            ?>
+           <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
+             border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
+             solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
+             white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
+             <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+             line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+             mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+             color:black;mso-fareast-language:PT-BR'> <?php echo"". $nota ?> </span></b></p>
+           </td>
+            <?php
+          
+        $conta_nota_av1++;
+        $conta_nota_av++;
 
-  ?>
-       <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
-         border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
-         solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
-         white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
-         <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-         line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-         mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-         color:black;mso-fareast-language:PT-BR'> <?php echo"". $nota ?> </span></b></p>
-       </td>
-  <?php
-     $conta_nota_av++;
     }
-  }
+
+    
+    if ($conta_nota_av1==0) {
+  ?>
+
+      <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
+            border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
+            solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
+            white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+            line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+            mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+            color:black;mso-fareast-language:PT-BR'> </span></b></p>
+          </td>
+  <?php 
+    }
+
+  
+// ******************************************************
 
 
-for ($i=$conta_nota_av; $i < 4; $i++) { 
-?>
-   <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
-         border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
-         solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
-         white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
-         <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-         line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-         mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-         color:black;mso-fareast-language:PT-BR'> <?php echo ""; ?></span></b></p>
-       </td>
-<?php
-}
+  // ******************************************************
+     $result_nota_avaliacao=$conexao->query("
+     SELECT * FROM nota WHERE
+     escola_id=$idescola and
+     turma_id=$idturma and
+     disciplina_id=$iddisciplina and 
+     periodo_id=$periodo_id   and aluno_id=$idaluno
+     and  avaliacao='av2'
+     group by avaliacao,periodo_id ORDER  BY avaliacao DESC");
+     $nota_ava=0;
+    foreach ($result_nota_avaliacao as $key => $value) {
+          $nota=$value['nota'];
+            ?>
+           <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
+             border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
+             solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
+             white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
+             <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+             line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+             mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+             color:black;mso-fareast-language:PT-BR'> <?php echo"". $nota ?> </span></b></p>
+           </td>
+            <?php
+          
+$conta_nota_av2++;
+        $conta_nota_av++;
+    }
+
+
+
+    if ($conta_nota_av2==0) {
+  ?>
+
+      <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
+            border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
+            solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
+            white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+            line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+            mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+            color:black;mso-fareast-language:PT-BR'> </span></b></p>
+          </td>
+  <?php 
+    }
+  
+// ******************************************************
+
+
+
+  // ******************************************************
+     $result_nota_avaliacao=$conexao->query("
+     SELECT * FROM nota WHERE
+     escola_id=$idescola and
+     turma_id=$idturma and
+     disciplina_id=$iddisciplina and 
+     periodo_id=$periodo_id and aluno_id=$idaluno
+     and  avaliacao='av3'
+     group by avaliacao,periodo_id ORDER  BY avaliacao DESC");
+     $nota_ava=0;
+    foreach ($result_nota_avaliacao as $key => $value) {
+          $nota=$value['nota'];
+
+
+            ?>
+           <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
+             border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
+             solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
+             white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
+             <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+             line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+             mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+             color:black;mso-fareast-language:PT-BR'> <?php echo"". $nota ?> </span></b></p>
+           </td>
+            <?php
+          
+$conta_nota_av3++;
+        $conta_nota_av++;
+    }
+
+
+    if ($conta_nota_av3==0) {
+  ?>
+
+      <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
+            border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
+            solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
+            white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+            line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+            mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+            color:black;mso-fareast-language:PT-BR'> </span></b></p>
+          </td>
+  <?php 
+    }
+  
+// ******************************************************
+
+
+
+
+
+
+
+
+##########################################################################
+
+
+
+
 
 
 $result_nota_avaliacao_rp=$conexao->query("
