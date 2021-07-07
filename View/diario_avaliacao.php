@@ -1,5 +1,22 @@
 <?php 
+setcookie('video', 1, (time()+(300*24*3600)));
 session_start();
+ if ($_COOKIE['video']<4) {
+
+    echo"<script type='text/javascript'>
+      function modal_video() {
+          $(document).ready(function() {
+              $('#modal-video').modal('show');
+            });
+      }
+
+      setTimeout('modal_video();',1000);
+      
+    </script>";
+}else{
+  $_COOKIE['video']++;
+}
+
 if (!isset($_SESSION['idprofessor'])) {
        header("location:index.php?status=0");
 
@@ -355,6 +372,39 @@ if (!isset($_SESSION['idprofessor'])) {
   </section>
 
 </div>
+
+
+
+
+
+
+
+
+<div class="modal fade" id="modal-video">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">VEJA O QUE MUDOU</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+
+          <div class="modal-body">
+              <!-- /corpo -->
+              <iframe src="https://youtu.be/dNihxQto4Hg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+              <!-- /corpo -->
+        </div>
+      <button type="button" class="btn btn-default" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fechar</font></font></button>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+
 
 
  <?php 
