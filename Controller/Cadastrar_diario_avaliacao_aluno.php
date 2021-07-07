@@ -5,9 +5,9 @@
     
     $professor_id=$_SESSION['idfuncionario'];
 
-    $idescola=$_POST['idescola'];
-    $idturma=$_POST['idturma'];
-    $iddisciplina=$_POST['iddisciplina'];
+    $idescola=$_POST['idescola2'];
+    $idturma=$_POST['idturma2'];
+    $iddisciplina=$_POST['iddisciplina2'];
 
     $periodo=$_POST['periodo'];
     $data=$_POST['data_avaliacao'];
@@ -21,7 +21,7 @@ try {
       $nota=0;
 
     $url_get=$_POST['url_get'];
-    
+    echo"$url_get <br>";
 
 //$conteudo_aula_id= $conexao->lastInsertId();
 
