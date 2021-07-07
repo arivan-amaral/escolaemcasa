@@ -130,7 +130,8 @@ if (!isset($_SESSION['idprofessor'])) {
         <div class="col-sm-4">
           <div class="form-group">
             <label for="exampleInputEmail1">Data da aula</label>
-            <input type="date" class="form-control" name="data_frequencia" id="data_frequencia" required="" onchange="lista_frequencia_aluno();">
+            <input type="date" class="form-control" name="data_frequencia" id="data_frequencia" required="" >
+            <!-- <input type="date" class="form-control" name="data_frequencia" id="data_frequencia" required="" onchange="lista_frequencia_aluno();"> -->
           </div>
         </div>   
 
