@@ -394,7 +394,7 @@ if (!isset($_SESSION['idprofessor'])) {
               <!-- /corpo -->
           <center>
 
-            <h1>ATENÇÃO, NÃO LANÇAR NOTA ANTES DA 16:30, <font color="RED">SERVIDO EM MANUTENÇÃO</font></h1>
+            <h1>ATENÇÃO, NÃO LANÇAR NOTA ANTES DA 16:30, <font color="RED">SERVIDOR EM MANUTENÇÃO</font></h1>
             <!--  <iframe width="400" height="315" src="https://www.youtube.com/embed/dNihxQto4Hg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
           </center>
 
