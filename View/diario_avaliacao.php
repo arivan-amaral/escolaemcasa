@@ -1,7 +1,7 @@
 <?php 
 setcookie('video', 1, (time()+(300*24*3600)));
 session_start();
- if ($_COOKIE['video']<2) {
+ if (!isset($_COOKIE['video'])) {
 
     echo"<script type='text/javascript'>
       function modal_video() {
@@ -392,8 +392,9 @@ if (!isset($_SESSION['idprofessor'])) {
 
           <div class="modal-body">
               <!-- /corpo -->
+          <center>
              <iframe width="400" height="315" src="https://www.youtube.com/embed/dNihxQto4Hg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+          </center>
 
               <!-- /corpo -->
         </div>
