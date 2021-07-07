@@ -31,6 +31,7 @@ foreach ($_POST['aluno_id'] as $key => $value) {
 
     limpa_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$aluno_id,$periodo,$data,$avaliacao);
 
+echo "e: $idescola,t: $idturma,d: $iddisciplina,a: $aluno_id,p: $periodo,d: $data,a: $avaliacao";
 
       $parecer_descritivo='';
       if (isset($_POST["parecer_descritivo$aluno_id"])) {
@@ -77,7 +78,7 @@ foreach ($_POST['aluno_id'] as $key => $value) {
     $_SESSION['status']=1;
     header("location: ../View/diario_avaliacao.php?$url_get");
 } catch (Exception $e) {
-echo "<h1>sistema está em manuteção previsão de normalização 15:15</h1><br>
+echo "<h1>sistema está em manuteção previsão de normalização 17:00</h1><br>
 $e";
     $_SESSION['status']=0;
    //header("location: ../View/diario_avaliacao.php?$url_get");;
