@@ -1,5 +1,5 @@
 <?php
-	session_start();
+  session_start();
     include("../Model/Conexao.php");
     include("../Model/Aluno.php");
     
@@ -9,7 +9,7 @@ try {
     $professor_id=$_SESSION['idfuncionario'];
 
     $idescola=$_POST['idescola'];
-   	$idturma=$_POST['idturma'];
+    $idturma=$_POST['idturma'];
     $iddisciplina=$_POST['iddisciplina'];
 
     $periodo=$_POST['periodo'];
@@ -21,7 +21,7 @@ try {
       $nota=0;
 
     $url_get=$_POST['url_get'];
-   	
+    
 
 $conteudo_aula_id= $conexao->lastInsertId();
 
@@ -30,8 +30,6 @@ foreach ($_POST['aluno_id'] as $key => $value) {
       $aluno_id=$_POST['aluno_id'][$key];
 
     limpa_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$aluno_id,$periodo,$data,$avaliacao);
-
-echo "e: $idescola,t: $idturma,d: $iddisciplina,a: $aluno_id,p: $periodo,d: $data,a: $avaliacao";
 
       $parecer_descritivo='';
       if (isset($_POST["parecer_descritivo$aluno_id"])) {
@@ -78,8 +76,10 @@ echo "e: $idescola,t: $idturma,d: $iddisciplina,a: $aluno_id,p: $periodo,d: $dat
     $_SESSION['status']=1;
     header("location: ../View/diario_avaliacao.php?$url_get");
 } catch (Exception $e) {
+
 echo "<h1>sistema está em manuteção previsão de normalização 17:00</h1><br>
 $e";
+echo "e: $idescola,t: $idturma,d: $iddisciplina,a: $aluno_id,p: $periodo,d: $data,a: $avaliacao <br>";
     $_SESSION['status']=0;
    //header("location: ../View/diario_avaliacao.php?$url_get");;
 
