@@ -77,7 +77,7 @@ foreach ($_POST['aluno_id'] as $key => $value) {
     header("location: ../View/diario_avaliacao.php?$url_get");
 } catch (Exception $e) {
 
-echo "<h1>sistema está em manuteção previsão de normalização 17:00</h1><br>
+echo "<h1>sistema está em manuteção previsão de normalização 17:00 turma: $idturma</h1><br>
 $e";
 echo "e: $idescola,t: $idturma,d: $iddisciplina,a: $aluno_id,p: $periodo,d: $data,a: $avaliacao <br>";
     $_SESSION['status']=0;
