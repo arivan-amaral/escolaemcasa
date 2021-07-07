@@ -1,7 +1,7 @@
 <?php 
 setcookie('video', 1, (time()+(300*24*3600)));
 session_start();
- if ($_COOKIE['video']<4) {
+ if ($_COOKIE['video']<2) {
 
     echo"<script type='text/javascript'>
       function modal_video() {
@@ -392,12 +392,12 @@ if (!isset($_SESSION['idprofessor'])) {
 
           <div class="modal-body">
               <!-- /corpo -->
-             <iframe width="390" height="315" src="https://www.youtube.com/embed/dNihxQto4Hg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+             <iframe width="400" height="315" src="https://www.youtube.com/embed/dNihxQto4Hg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
               <!-- /corpo -->
         </div>
-      <button type="button" class="btn btn-default" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><?php echo $_COOKIE['video']; ?>Fechar</font></font></button>
+      <button type="button" class="btn btn-default" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fechar</font></font></button>
       </div>
       <!-- /.modal-content -->
     </div>
