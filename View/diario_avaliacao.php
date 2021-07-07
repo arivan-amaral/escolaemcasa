@@ -185,7 +185,7 @@ if (!isset($_SESSION['idprofessor'])) {
 <input type="hidden" name="idserie" id="idserie" value="<?php echo $idserie; ?>" >
 <input type="hidden" name="idescola" id="idescola" value="<?php echo $idescola; ?>">
 <input type="hidden" name="idturma" id="idturma" value="<?php echo $idturma; ?>">
-<input type="text" name="iddisciplina" id="iddisciplina" value="<?php echo $iddisciplina; ?>" readonly>
+<input type="hidden" name="iddisciplina" id="iddisciplina" value="<?php echo $iddisciplina; ?>" readonly>
 
 
 

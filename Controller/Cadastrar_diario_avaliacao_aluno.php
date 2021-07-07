@@ -18,8 +18,7 @@ try {
 
     $sigla=null;
     $parecer_disciplina_id=0;
-      $nota=0;
-
+    $nota=0;
     $url_get=$_POST['url_get'];
 
 
