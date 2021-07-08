@@ -1,6 +1,21 @@
 <?php 
 date_default_timezone_set('America/Bahia');
 
+
+ function converte_telefone($whatsapp){
+      $whatsapp= trim($whatsapp);
+	 $whatsapp= str_replace(' ', '', $whatsapp);
+ 	 $whatsapp= str_replace('(', '', $whatsapp);
+ 	 $whatsapp= str_replace(')', '', $whatsapp);
+ 	 $whatsapp= str_replace('-', '', $whatsapp);
+   
+     $whatsapp= str_replace('.', '', $whatsapp);
+     $whatsapp= str_replace(',', '', $whatsapp);
+     $whatsapp= str_replace('_', '', $whatsapp);
+     
+ 	 return $whatsapp;
+}
+
 	function converter_utf8($texto){
 
 	  $texto=str_replace('Ã¡', 'á', $texto);

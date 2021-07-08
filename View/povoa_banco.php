@@ -65,7 +65,8 @@ order by  ed47_i_codigo asc,ed60_i_turma asc  offset $indice  limit $limite");
 		if ($whatsapp=="") {
 			$whatsapp=$telefone;
 		}
-		$whatsapp=str_replace("'","",$nome_turma);
+		$whatsapp= converte_telefone($whatsapp);
+		// $whatsapp=str_replace("'","",$nome_turma);
 
 
 		$array = explode('-', $nome_turma);

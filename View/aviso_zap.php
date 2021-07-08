@@ -101,7 +101,8 @@ function restaurar_conexao_api($conexao){
       $indice=$_GET['indice'];
   }
                     $result=$conexao->query("SELECT * FROM funcionario where
-                     descricao_funcao like 'Professor' or descricao_funcao like 'Professora' ORDER BY $indice, $limite ");
+                     descricao_funcao like 'Professor' or 
+                     descricao_funcao like 'Professora' limit $indice , $limite ");
 
                     foreach ($result as $key4 => $value4) {
                         $numero=$value4['whatsapp'];
@@ -110,11 +111,12 @@ function restaurar_conexao_api($conexao){
                          $mensagem="⚠AVISO IMPORTANTE⚠ ".saudacao().", *".$nome."*, A PLATAFORMA *EDUCA LEM* VAI PASSAR POR UMA MANUTENÇÃO RÁPIDA NO MÓDULO DE CADASTRAR AVALIAÇÕES *PREVISÃO DE NORMALIZAÇÃO: 15:45*, ESSA MENSAGEM FOI ENVIADA DE FORMA AUTOMÁTICA, POR FAVOR NÃO RESPONDER.";
                         
                         if ($numero=='558999342837') {
-                          
+                        
                             enviar_mensagem($conexao,$numero,$mensagem);
+                            echo "$nome - $numero <br>";
 
                         }
-                        break;
+                       
                     }
 
   }else {
