@@ -181,7 +181,7 @@ if (!isset($_COOKIE['ajuda2'])) {
 
 
 
-                              <h3 class='widget-user-username text-right'>".$_SESSION['nome']."</h3>
+                              <h3 class='widget-user-username text-right'>".$_SESSION['nome']." .</h3>
 
                               <h5 class='widget-user-desc text-right'>Professor(a) </h5>
 
