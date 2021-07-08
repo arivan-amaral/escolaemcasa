@@ -39,7 +39,7 @@ order by ed18_i_codigo");
 
     $array = explode('-', $nome_turma);
     //$nome_turma=$array[0];
-    echo "$conta - $nome_turma - $nome_escola ed11_c_descr: $ed11_c_descr<br>";
+    echo "$conta - $nome_turma - $nome_escola ed11_c_descr: $ed11_c_descr $ed11_i_codigo ed11_i_codigo<br>";
   }
 
 echo " quantidade total= $conta";
