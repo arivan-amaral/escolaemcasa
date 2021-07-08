@@ -39,6 +39,8 @@ if (isset($_SESSION['idcoordenador'])) {
 		 				header("Location:../View/professor.php?status=1");
 					  
 					}
+
+					echo "certo";
 		 		}
 			}
 		}
