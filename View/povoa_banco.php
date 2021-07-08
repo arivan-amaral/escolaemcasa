@@ -96,7 +96,23 @@ order by  ed47_i_codigo asc,ed60_i_turma asc  offset $indice  limit $limite");
 				$conexao->exec("
 					INSERT INTO ano_letivo (ano, turma_id, aluno_id,  escola_id) VALUES ('2021', $turma_id, $idaluno,$idescola)");
 			}else{
-				echo "$conta - existente<br>";
+				echo "$conta - EDITANDO existente<br>";
+			
+				// $conexao->exec(" UPDATE  aluno SET 
+				//  nome='$nome_aluno',
+				//  email='$primeiro_nome',
+				//  senha='$senha',
+				//  whatsapp='$whatsapp',
+				//  sexo='$sexo',
+				//  data_nascimento='$data_nascimento'
+				//  ");
+				
+				$conexao->exec("
+					DELETE FROM ano_letivo WHERE aluno_id = $idaluno
+					");		
+
+				$conexao->exec("
+					INSERT INTO ano_letivo (ano, turma_id, aluno_id,  escola_id) VALUES ('2021', $turma_id, $idaluno,$idescola)");
 			}
 				$existe=1;
 				$conta++;
