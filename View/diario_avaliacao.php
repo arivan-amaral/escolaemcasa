@@ -257,7 +257,7 @@ if (!isset($_SESSION['idprofessor'])) {
                                               </thead>
                                               <tbody>
                                                 <?php 
-                                                $resultado=listar_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplina);
+                                                $resultado=listar_todas_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplina);
                                                       $conta=1;
                                                     foreach ($resultado as $key => $value) {
                                                       $data_nota=$value['data_nota'];

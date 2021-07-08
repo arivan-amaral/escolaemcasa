@@ -205,6 +205,14 @@ function excluir_avaliacao_lancada($conexao,$escola_id,$turma_id,$disciplina_id,
     
 }
 
+function listar_todas_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplina) {
+    $resultado=$conexao->query(" SELECT * FROM nota WHERE
+     
+      disciplina_id=$iddisciplina and 
+      escola_id=$idescola and 
+      turma_id=$idturma GROUP BY data_nota ");
+    return $resultado;
+}
 
 function listar_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplina) {
     $resultado=$conexao->query(" SELECT * FROM nota WHERE
