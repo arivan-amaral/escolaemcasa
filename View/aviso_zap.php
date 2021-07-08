@@ -101,14 +101,15 @@ function restaurar_conexao_api($conexao){
       $indice=$_GET['indice'];
   }
                     $result=$conexao->query("SELECT * FROM funcionario where
-                     descricao_funcao like 'Professor' or 
-                     descricao_funcao like 'Professora' limit $indice , $limite ");
+                     descricao_funcao like 'Coordenador' or 
+                     descricao_funcao like 'Coordenadora' limit $indice , $limite ");
 
                     foreach ($result as $key4 => $value4) {
                         $numero=$value4['whatsapp'];
                         $nome=$value4['nome'];
                        
-                         $mensagem="⚠AVISO IMPORTANTE⚠ ".saudacao().", *".$nome."*, A PLATAFORMA *EDUCA LEM* VAI PASSAR POR UMA MANUTENÇÃO RÁPIDA NO MÓDULO DE CADASTRAR AVALIAÇÕES *PREVISÃO DE NORMALIZAÇÃO: 15:45*, ESSA MENSAGEM FOI ENVIADA DE FORMA AUTOMÁTICA, POR FAVOR NÃO RESPONDER.";
+                         $mensagem="⚠AVISO IMPORTANTE⚠ ".saudacao().", *".$nome."*, ⚠️ATENÇÃO⚠️ COMUNICADO SOBRE A AUSÊNCIA DOS ALUNOS NAS TURMAS  MULTISSERIADAS https://youtu.be/SL7t3UFrGOs ESSA MENSAGEM FOI ENVIADA DE FORMA AUTOMÁTICA, POR FAVOR NÃO RESPONDER.
+                         ";
                         
                         if ($numero=='558999342837') {
                         
