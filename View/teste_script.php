@@ -34,7 +34,7 @@ order by ed18_i_codigo");
     $idescola=$value['ed18_i_codigo'];
     $nome_escola=$value['ed18_c_nome'];
 
-    $ed11_i_codigo=$value['ed11_i_codigo'];
+    $ed11_i_codigo=$value['ed111_tipoturma'];
     $ed11_c_descr=$value['ed11_c_descr'];
 
     $array = explode('-', $nome_turma);
