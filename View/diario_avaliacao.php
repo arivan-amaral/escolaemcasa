@@ -17,7 +17,7 @@ setcookie('video', 1, (time()+(300*24*3600)));
 }
 
 if (!isset($_SESSION['idprofessor'])) {
-       header("location:index.php?status=0");
+      // header("location:index.php?status=0");
 
 }else{
 
