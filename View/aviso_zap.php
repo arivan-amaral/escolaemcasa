@@ -111,12 +111,12 @@ function restaurar_conexao_api($conexao){
                          $mensagem="⚠AVISO IMPORTANTE⚠ ".saudacao().", *".$nome."*, ⚠️ATENÇÃO⚠️ COMUNICADO SOBRE A AUSÊNCIA DOS ALUNOS NAS TURMAS  MULTISSERIADAS https://youtu.be/SL7t3UFrGOs ESSA MENSAGEM FOI ENVIADA DE FORMA AUTOMÁTICA, POR FAVOR NÃO RESPONDER.
                          ";
                         
-                        if ($numero=='558999342837') {
+                        //if ($numero=='558999342837') {
                         
                             enviar_mensagem($conexao,$numero,$mensagem);
                             echo "$nome - $numero <br>";
 
-                        }
+                        //}
                        
                     }
 
