@@ -108,7 +108,7 @@ function restaurar_conexao_api($conexao){
                         $numero=$value4['whatsapp'];
                         $nome=$value4['nome'];
                        
-                         $mensagem="⚠AVISO IMPORTANTE⚠ ".saudacao().", *".$nome."*, ⚠️ATENÇÃO⚠️ COMUNICADO SOBRE A AUSÊNCIA DOS ALUNOS NAS TURMAS  MULTISSERIADAS https://youtu.be/SL7t3UFrGOs ESSA MENSAGEM FOI ENVIADA DE FORMA AUTOMÁTICA, POR FAVOR NÃO RESPONDER.
+                         $mensagem="⚠AVISO IMPORTANTE⚠ ".saudacao().", *".$nome."*, ⚠️ATENÇÃO⚠️ COMUNICADO SOBRE A AUSÊNCIA DOS ALUNOS NAS TURMAS  MULTISSERIADAS , VEJA O VÍDEO DO LINK ➡ https://youtu.be/SL7t3UFrGOs \n\nESSA MENSAGEM FOI ENVIADA DE FORMA AUTOMÁTICA, POR FAVOR NÃO RESPONDER.
                          ";
                         
                         //if ($numero=='558999342837') {
