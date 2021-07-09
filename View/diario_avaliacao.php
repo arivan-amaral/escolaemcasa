@@ -257,8 +257,12 @@ if (!isset($_SESSION['idprofessor'])) {
                                               </thead>
                                               <tbody>
                                                 <?php 
-                                                $resultado=listar_todas_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplina);
-                                                      $conta=1;
+                                                $conta=1;
+                                                $array_avaliacao= array('0'=>'av1','1'=>'av2','2'=>'av3','3'=>'av4');
+                                          foreach ($array_avaliacao as $key => $value) {
+                                                  $avaliacao=$value;
+                                                
+                                                $resultado=listar_todas_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplina,$avaliacao);
                                                     foreach ($resultado as $key => $value) {
                                                       $data_nota=$value['data_nota'];
                                                       $turma_id  =$value['turma_id'];
@@ -272,14 +276,14 @@ if (!isset($_SESSION['idprofessor'])) {
                                                       <td>
                                                       $conta
                                                       
-                                            <input type='hidden' id='data_nota$conta' value='$data_nota'>
-                                            <input type='hidden' id='turma_id$conta' value='$turma_id'>
-                                            <input type='hidden' id='disciplina_id$conta' value='$disciplina_id'>
-                                            <input type='hidden' id='escola_id$conta' value='$escola_id'>
-                                            <input type='hidden' id='avaliacao$conta' value='$avaliacao'>
-                                            <input type='hidden' id='periodo_id$conta' value='$periodo_id'>
+                                                      <input type='hidden' id='data_nota$conta' value='$data_nota'>
+                                                      <input type='hidden' id='turma_id$conta' value='$turma_id'>
+                                                      <input type='hidden' id='disciplina_id$conta' value='$disciplina_id'>
+                                                      <input type='hidden' id='escola_id$conta' value='$escola_id'>
+                                                      <input type='hidden' id='avaliacao$conta' value='$avaliacao'>
+                                                      <input type='hidden' id='periodo_id$conta' value='$periodo_id'>
 
-                                 
+                                           
                                                       </td>
                                                         <td>Avaliação $avaliacao - ".converte_data($data_nota)."</td>
                                                         <td><a onclick='excluir_avaliacao($conta);' class='btn btn-danger'>EXCLUIR AVALIAÇÃO</a></td>
@@ -290,9 +294,9 @@ if (!isset($_SESSION['idprofessor'])) {
                                                       </tr>";
                                                       $conta++;
                                                     }
+                                                }
 
-
-                                                ?>
+                                              ?>
 
                                               </tbody>
                                         </table>

@@ -312,6 +312,12 @@ if (!isset($_SESSION['idprofessor'])) {
 
 <input type="hidden" id="url_get" value="<?php echo $url_get; ?>">
 
+
+<?php 
+
+
+?>
+
   <div class="row" id="listagem_frequencia">
 
 
