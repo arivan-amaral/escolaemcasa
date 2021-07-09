@@ -3,7 +3,8 @@ date_default_timezone_set('America/Bahia');
 
 $servername = "localhost";
 $username = "root";
-$password = "UQ2K2V3cfV6F";
+$password = "200120022003";
+// $password = "UQ2K2V3cfV6F";
 try {
 	//instancia objeto PDO, conectando no MySQL
     $conexao = new PDO("mysql:host=$servername;dbname=educalem", $username, $password);

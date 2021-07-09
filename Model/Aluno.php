@@ -210,7 +210,7 @@ function listar_todas_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplin
      
       disciplina_id=$iddisciplina and 
       escola_id=$idescola and 
-      turma_id=$idturma GROUP BY avaliacao ");
+      turma_id=$idturma GROUP BY data_nota ");
     return $resultado;
 }
 

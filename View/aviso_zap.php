@@ -148,6 +148,7 @@ function restaurar_conexao_api($conexao){
                             echo "$nome - $numero <br>";
 
                         }
+                        echo"rodou";
                        
                     }
 
