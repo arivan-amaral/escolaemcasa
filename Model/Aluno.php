@@ -77,7 +77,7 @@ function limpa_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$i
     	avaliacao='$avaliacao' and 
     	data_nota='$data_nota'
     	");
-    return $resultado;
+  
 }
 
 
@@ -207,10 +207,10 @@ function excluir_avaliacao_lancada($conexao,$escola_id,$turma_id,$disciplina_id,
 
 function listar_todas_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplina) {
     $resultado=$conexao->query(" SELECT * FROM nota WHERE
-     
+      
       disciplina_id=$iddisciplina and 
       escola_id=$idescola and 
-      turma_id=$idturma GROUP BY data_nota ");
+      turma_id=$idturma GROUP BY data_nota order by data_hora desc");
     return $resultado;
 }
 
