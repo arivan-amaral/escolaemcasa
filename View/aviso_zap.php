@@ -46,7 +46,7 @@ function enviar_link($conexao,$phone,$mensagem,$linkUrl){
 
     $data = array(
         'phone' => $phone,
-        'message' => $mensagem
+        'message' => $mensagem,
         'linkUrl' => $linkUrl
     );
 
