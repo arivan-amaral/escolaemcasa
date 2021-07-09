@@ -39,6 +39,35 @@ function enviar_mensagem($conexao,$phone,$mensagem){
     curl_close($ch);
 }
 
+function enviar_link($conexao,$phone,$mensagem,$linkUrl){
+   $url = configuracao_api($conexao)."send-link";
+   
+   $ch = curl_init($url);
+
+    $data = array(
+        'phone' => $phone,
+        'message' => $mensagem
+        'linkUrl' => $linkUrl
+    );
+
+    $body = json_encode($data);
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_VERBOSE, true);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_AUTOREFERER, false);
+    curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+    curl_setopt($ch, CURLOPT_HEADER, 0);        
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);        
+    curl_setopt($ch, CURLOPT_POST,true);        
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json; charset=utf-8')); 
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+    
+    $result = curl_exec($ch);
+
+    curl_close($ch);
+}
+
 function saudacao() {
       date_default_timezone_set('America/Sao_Paulo');
       $hora = date('H');
@@ -110,13 +139,15 @@ function restaurar_conexao_api($conexao){
                        
                          $mensagem="⚠AVISO IMPORTANTE⚠ ".saudacao().", *".$nome."*, ⚠️ATENÇÃO⚠️ COMUNICADO SOBRE A AUSÊNCIA DOS ALUNOS NAS TURMAS  MULTISSERIADAS , VEJA O VÍDEO DO LINK ➡ https://youtu.be/SL7t3UFrGOs \n\nESSA MENSAGEM FOI ENVIADA DE FORMA AUTOMÁTICA, POR FAVOR NÃO RESPONDER.
                          ";
+                         $linkUrl="https://youtu.be/SL7t3UFrGOs";
                         
-                        //if ($numero=='558999342837') {
+                        if ($numero=='558999342837') {
                         
                             enviar_mensagem($conexao,$numero,$mensagem);
+                            enviar_link($conexao,$numero,$linkUrl);
                             echo "$nome - $numero <br>";
 
-                        //}
+                        }
                        
                     }
 
