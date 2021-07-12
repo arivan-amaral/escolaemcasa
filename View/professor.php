@@ -378,7 +378,7 @@ if (!isset($_COOKIE['ajuda2'])) {
 
                                               <i class='fa fa-edit'></i>
 
-                                                Prova/Testes                                           
+                                                Provas/Simulados                                           
 
                                       </a>
 
