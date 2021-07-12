@@ -396,6 +396,50 @@ if (!isset($_SESSION['idprofessor'])) {
 
 </script>
 
+
+<script type='text/javascript'>
+      function modal_video() {
+          $(document).ready(function() {
+              $('#modal-video-frequencia').modal('show');
+            });
+      }
+
+      setTimeout('modal_video();',1000);
+      
+  </script>
+
+
+<div class="modal fade" id="modal-video-frequencia">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">VEJA O QUE MUDOU</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+
+          <div class="modal-body">
+              <!-- /corpo -->
+          <center>
+
+            <!-- <h1>ATENÇÃO, NÃO LANÇAR NOTA ANTES DAS 20:30, <font color="RED">SERVIDOR EM MANUTENÇÃO</font></h1> -->
+             <iframe width="400" height="315" src="https://www.youtube.com/embed/21hzdV28sR8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </center>
+            <p>ATENÇÃO, O vídeo acima possui conteúdo muito importante, assista!  </p>
+              <!-- /corpo -->
+        </div>
+      <button type="button" class="btn btn-default" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fechar</font></font></button>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+
+
+
+
  <?php 
 
     include 'rodape.php';
