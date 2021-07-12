@@ -54,7 +54,8 @@ if (!isset($_SESSION['idcoordenador'])) {
 
                       <div class="form-group">
                         <label for="exampleInputEmail1">Função</label>
-                          <select class="form-control" name="funcao">
+                          <select class="form-control" name="funcao" required="">
+                          <option ></option>
                           <option value="Coordenador">Coordenador</option>
                           <option value="Secretário">Secretário</option>
                         </select>
