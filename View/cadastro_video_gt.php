@@ -124,7 +124,7 @@ if (!isset($_SESSION['idcoordenador'])) {
 
                   
 
-                  <form action="../Controller/Cadastro_video_gt.php" method="post">
+                  <form action="../Controller/cadastro_video_gt.php" method="post">
 
                     <div class='card-body'>
 
