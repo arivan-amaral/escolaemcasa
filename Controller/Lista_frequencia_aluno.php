@@ -8,14 +8,71 @@ try {
 
     $professor_id=$_SESSION['idfuncionario'];
 
+    $idserie=$_GET['idserie'];
     $idescola=$_GET['idescola'];
+
     $idturma=$_GET['idturma'];
     $iddisciplina=$_GET['iddisciplina'];
     $data=$_GET['data_frequencia'];
     $aula=$_GET['aula'];
+   $result="
+   <br>
+   <div class='row'>
+     <div class='col-sm-1'></div>
+     <div class='col-sm-10'>
+
+   ";
+    
+
+ if ($idserie< 8) {
+    $result_disciplinas=$conexao->query("SELECT * FROM ministrada,escola,turma,disciplina where
+     ministrada.turma_id=idturma and
+     ministrada.disciplina_id=iddisciplina and 
+     ministrada.escola_id=idescola and
+     ministrada.escola_id=idescola and
+
+     idescola=$idescola and
+     professor_id=$professor_id and
+     idturma=$idturma 
+     order by disciplina_id=$iddisciplina
+    ");
+
+    foreach ($result_disciplinas as $key => $value) {
+       $disciplina_id=$value['iddisciplina'];
+       $nome_disciplina=$value['nome_disciplina'];
+    
+       if ($iddisciplina==$disciplina_id) {
+          $result.="
+          <div class='custom-control custom-checkbox'>
+              <input class='custom-control-input' name='iddisciplina[]' type='checkbox' id='customCheckbox$disciplina_id' value='$disciplina_id' required checked>
+              <label for='customCheckbox$disciplina_id' class='custom-control-label'>$nome_disciplina</label>
+          </div>";
+
+       }
+      else{
+
+         $resultado=verificar_conteudo_aula_cadastrado_por_data($conexao, $iddisciplina, $idturma, $idescola, $data);
+         $marca_disciplina='';
+
+          foreach ($resultado as $key => $value) {
+            $marca_disciplina='checked';
+          }
+        $result.="
+        <div class='custom-control custom-checkbox'>
+            <input class='custom-control-input' name='iddisciplina[]' type='checkbox' id='customCheckbox$disciplina_id' value='$disciplina_id' $marca_disciplina >
+            <label for='customCheckbox$disciplina_id' class='custom-control-label'>$nome_disciplina</label>
+        </div>";
+      }
+  }
  
 
-      $result="
+ }
+
+    $result.="
+   </div>
+   ";
+
+      $result.="
        <div class='card-body'>
         <table class='table table-bordered'>
           <thead>

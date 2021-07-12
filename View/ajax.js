@@ -333,6 +333,7 @@ function lista_frequencia_aluno(){
   var botao_continuar = document.getElementById("botao_continuar");
   var xmlreq = CriaRequest();   
 
+  var idserie = document.getElementById("idserie").value;
   var idescola = document.getElementById("idescola").value;
   var idturma = document.getElementById("idturma").value;
   var iddisciplina = document.getElementById("iddisciplina").value;
@@ -344,7 +345,7 @@ function lista_frequencia_aluno(){
         result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
 
           
-      var url="aula="+aula+"&data_frequencia="+data_frequencia+"&idescola="+idescola+"&idturma="+idturma+"&iddisciplina="+iddisciplina;
+      var url="idserie="+idserie+"&aula="+aula+"&data_frequencia="+data_frequencia+"&idescola="+idescola+"&idturma="+idturma+"&iddisciplina="+iddisciplina;
        xmlreq.open("GET", "../Controller/Lista_frequencia_aluno.php?"+url, true);
         xmlreq.onreadystatechange = function(){      
             if (xmlreq.readyState == 4) {

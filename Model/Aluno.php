@@ -164,6 +164,15 @@ function listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $ide
   return $resultado;
 }
 
+function verificar_conteudo_aula_cadastrado_por_data($conexao, $iddisciplina, $idturma, $idescola, $data) {
+    $resultado=$conexao->query("SELECT * FROM conteudo_aula WHERE
+      data='$data' and 
+      disciplina_id=$iddisciplina and 
+      escola_id=$idescola and 
+      turma_id=$idturma order by data");
+  return $resultado;
+}
+
 function excluir_frequencia_lancada($conexao,$conteudo_aula_id) {
     $conexao->exec("DELETE FROM frequencia WHERE conteudo_aula_id=$conteudo_aula_id
       ");

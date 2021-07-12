@@ -10,36 +10,41 @@ try {
 
     $idescola=$_POST['idescola'];
    	$idturma=$_POST['idturma'];
-    $iddisciplina=$_POST['iddisciplina'];
 
     $data=$_POST['data_frequencia'];
     $descricao=$_POST['descricao'];
     $aula=$_POST['aula'];
     $url_get=$_POST['url_get'];
    	
-limpar_cadastro_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data,$aula);
+    //$iddisciplina=$_POST['iddisciplina'];
+    foreach ($_POST['iddisciplina'] as $key => $value) {
+        $iddisciplina=$_POST['iddisciplina'][$key];
+    
 
-limpa_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula);
+        limpar_cadastro_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data,$aula);
 
-cadastro_conteudo_aula($conexao,$descricao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula);
-$conteudo_aula_id= $conexao->lastInsertId();
+        limpa_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula);
+
+        cadastro_conteudo_aula($conexao,$descricao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula);
+        $conteudo_aula_id= $conexao->lastInsertId();
 
 
-foreach ($_POST['aluno_id'] as $key => $value) {
-    $aluno_id=$_POST['aluno_id'][$key];
-    $presenca=0;
+        foreach ($_POST['aluno_id'] as $key => $value) {
+            $aluno_id=$_POST['aluno_id'][$key];
+            $presenca=0;
 
-    if (isset($_POST["presenca$aluno_id"])) {
-        $presenca=1;
+            if (isset($_POST["presenca$aluno_id"])) {
+                $presenca=1;
+            }
+            cadastro_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$aluno_id,$data,$conteudo_aula_id,$presenca,$aula);
+        }
     }
-    cadastro_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$aluno_id,$data,$conteudo_aula_id,$presenca,$aula);
-}
+            $_SESSION['status']=1;
+            header("location: ../View/diario_frequencia.php?$url_get");
+        } catch (Exception $e) {
+            $_SESSION['status']=0;
+            header("location: ../View/diario_frequencia.php?$url_get");
 
-    $_SESSION['status']=1;
-    header("location: ../View/diario_frequencia.php?$url_get");;
-} catch (Exception $e) {
-    $_SESSION['status']=0;
-    header("location: ../View/diario_frequencia.php?$url_get");;
+        }
 
-}
 ?>

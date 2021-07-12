@@ -22,7 +22,7 @@
        
 
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
+      <!-- <li class="nav-item d-none d-sm-inline-block">
         <a href="sobre_nos.php" class="nav-link">Sobre Nós</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
@@ -30,7 +30,7 @@
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="sobre_nos.php" class="nav-link">Nossos Termos</a> 
-      </li>
+      </li> -->
     </ul>
 
     <!-- Right navbar links -->
