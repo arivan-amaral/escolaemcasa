@@ -47,21 +47,23 @@ try {
               <label for='customCheckbox$disciplina_id' class='custom-control-label'>$nome_disciplina</label>
           </div>";
 
-       }
-        else if ($idserie< 8) {
+       } else if ($idserie< 8) {
        
 
-         $resultado=verificar_conteudo_aula_cadastrado_por_data($conexao, $iddisciplina, $idturma, $idescola, $data);
+         $resultado=verificar_conteudo_aula_cadastrado_por_data($conexao, $disciplina_id, $idturma, $idescola, $data);
          $marca_disciplina='';
 
           foreach ($resultado as $key => $value) {
             $marca_disciplina='checked';
           }
+
         $result.="
         <div class='custom-control custom-checkbox'>
             <input class='custom-control-input' name='iddisciplina[]' type='checkbox' id='customCheckbox$disciplina_id' value='$disciplina_id' $marca_disciplina >
             <label for='customCheckbox$disciplina_id' class='custom-control-label'>$nome_disciplina</label>
         </div>";
+
+        
       }
   }
  

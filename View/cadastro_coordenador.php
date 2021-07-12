@@ -26,7 +26,7 @@ if (!isset($_SESSION['idcoordenador'])) {
          <div class="col-md-10">
             <div class="card card-primary">
                   <div class="card-header">
-                    <h3 class="card-title">CADASTRO DE COORDENADOR</h3>
+                    <h3 class="card-title">CADASTRO DE COORDENADOR / SECRETÁRIO</h3>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
