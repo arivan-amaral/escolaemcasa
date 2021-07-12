@@ -24,7 +24,6 @@ try {
    ";
     
 
- if ($idserie< 8) {
     $result_disciplinas=$conexao->query("SELECT * FROM ministrada,escola,turma,disciplina where
      ministrada.turma_id=idturma and
      ministrada.disciplina_id=iddisciplina and 
@@ -49,7 +48,8 @@ try {
           </div>";
 
        }
-      else{
+        else if ($idserie< 8) {
+       
 
          $resultado=verificar_conteudo_aula_cadastrado_por_data($conexao, $iddisciplina, $idturma, $idescola, $data);
          $marca_disciplina='';
@@ -66,7 +66,7 @@ try {
   }
  
 
- }
+ 
 
     $result.="
    </div>
