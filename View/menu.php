@@ -232,14 +232,14 @@
                                   echo"<li class='nav-item menu'>
                                       <a href='./index.php' class='nav-link'>
                                           <ion-icon name='git-network-outline'></ion-icon>
-                                          <p>Coordenador <i class='right fas fa-angle-left'></i></p>
+                                          <p>Coordenador/Secretário <i class='right fas fa-angle-left'></i></p>
                                       </a>
 
                                        <ul class='nav nav-treeview'>
                                          <li class='nav-item'>
                                             <a href='cadastro_coordenador.php' class='nav-link'>
                                               <i class='far fa-circle nav-icon text-primary'></i>
-                                              <p>Cadastrar coordenador</p>
+                                              <p>Cadastrar</p>
                                             </a>
                                           </li>
                                       </ul>
@@ -248,7 +248,7 @@
                                          <li class='nav-item'>
                                             <a href='pesquisar_coordenador_associar.php' class='nav-link'>
                                               <i class='far fa-circle nav-icon text-primary'></i>
-                                              <p>Pesquisar coordenador</p>
+                                              <p>Pesquisar </p>
                                             </a>
                                           </li>
                                       </ul>       
