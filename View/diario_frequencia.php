@@ -396,7 +396,9 @@ if (!isset($_SESSION['idprofessor'])) {
 
 </script>
 
-
+<?php 
+ if ($idserie< 8) {
+?>
 <script type='text/javascript'>
       function modal_video() {
           $(document).ready(function() {
@@ -407,7 +409,9 @@ if (!isset($_SESSION['idprofessor'])) {
       setTimeout('modal_video();',1000);
       
   </script>
-
+<?php 
+}
+?>
 
 <div class="modal fade" id="modal-video-frequencia">
     <div class="modal-dialog">
