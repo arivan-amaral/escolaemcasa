@@ -22,7 +22,7 @@
           </a>
           <?php 
             if (isset($_SESSION['cargo'])) {
-              echo "<b class='text-danger'>".$_SESSION['cargo']." (a)</b>";
+              echo "<b class='text-danger'>Professor (a)</b>";
             }
           ?>
         </div>
