@@ -47,6 +47,26 @@ function CriaRequest() {
 
 
 
+function excluir_mural(idmural) {
+    var idmural = document.getElementById("idmural"+idmural).value;  
+    var url_get = document.getElementById("url_get").value; 
+
+    var url=""+url_get+"&idmural="+idmural;
+  Swal.fire({
+    title: 'Deseja continuar com a exclusão?',
+    showDenyButton: true,
+    confirmButtonText: `Sim`,
+    denyButtonText: `Não`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      window.location.href = "../Controller/Excluir_mural.php?"+url+"";
+    } else if (result.isDenied) {
+     // Swal.fire('Ação cancelada', '', 'info')
+    }
+  })
+}
+
 function excluir_frequencia(id) {
     var conteudo_aula_id = document.getElementById("conteudo_aula_id"+id).value;  
     var url_get = document.getElementById("url_get").value; 

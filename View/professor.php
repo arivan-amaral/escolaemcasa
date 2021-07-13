@@ -301,7 +301,7 @@ if (!isset($_COOKIE['ajuda2'])) {
                                   <div class='card-body'>
     
 
-                                   <a   href='listar_alunos_da_turma_professor.php?iddisciplina=$iddisciplina&idturma=$idturma&nome_disciplina=$disciplina&nome_turma=$turma&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat'>
+                                   <a   href='listar_alunos_da_turma_professor.php?iddisciplina=$iddisciplina&turma=$turma&disciplina=$disciplina&idturma=$idturma&nome_disciplina=$disciplina&nome_turma=$turma&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat'>
                                      <i class='fa fa-users'></i> 
                                      Lista de alunos
                                    </a>      

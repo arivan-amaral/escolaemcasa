@@ -1,12 +1,24 @@
 <?php
 session_start();
-if (isset($_SESSION['idaluno'])) {
-    header("location:aluno.php");
-}else if (isset($_SESSION['idprofessor'])) {
-    header("location:professor.php");
-}else if (isset($_SESSION['idcoordenador'])) {
-    header("location:coordenador.php");
-}
+
+
+  if (isset($_SESSION['cargo'])){
+      if ($_SESSION['cargo']=="Aluno" or $_SESSION['cargo']=="Aluna"){
+ 
+          header("Location:../View/aluno.php");
+      }else if ($_SESSION['cargo']=="Professor"){
+
+          header("Location:../View/professor.php");
+      }else if ($_SESSION['cargo']=="Secretário"){
+     
+          header("Location:../View/secretario.php");
+      }else if ($_SESSION['cargo']=="Coordenador"){
+         
+          header("Location:../View/coordenador.php");
+      }
+
+
+  }
 
   include "cabecalho.php";
   include "alertas.php";

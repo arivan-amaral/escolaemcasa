@@ -17,9 +17,9 @@ include'../Model/Coordenador.php';
  	 $funcao="";
 
  	 if ($sexo=='Masculino') {
- 	 	$funcao="Coordenador";
+ 	 	$funcao=$_POST['funcao'];
  	 }else{
- 	 	$funcao="Coordenador";
+ 	 	$funcao=$_POST['funcao'];
 
  	 }
 
@@ -37,7 +37,9 @@ include'../Model/Coordenador.php';
  	 header("location:../View/cadastro_coordenador.php?status=1");
 
  } catch (Exception $e) {
- 	 $_SESSION['status']=0;
+ 	$_SESSION['status']=0;
+    $_SESSION['mensagem']="Erro ao cadastrar, esse e-mail ou usuário já exite!";
+
  	  header("location:../View/cadastro_coordenador.php?status=0");
  }
 

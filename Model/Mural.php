@@ -18,5 +18,9 @@ function lista_mural_geral($conexao){
 
 }
 
+function excluir_mural($conexao,$idmural){
+   $conexao->exec("DELETE FROM mural  WHERE id=$idmural ");
+}
+
 
 ?>

@@ -4,161 +4,185 @@ include'../Model/Conexao.php';
 include'../Model/Login.php';
 // incluir a funcionalidade do recaptcha
 require_once "recaptchalib.php";
-  try {
+try {
       // definir a chave secreta
-        $secret = "6LfEhacaAAAAAFH2EK2jnloZadoJmLfX2Xh7BYTl";
+  $secret = "6LfEhacaAAAAAFH2EK2jnloZadoJmLfX2Xh7BYTl";
 
         // verificar a chave secreta
-        $response = null;
-        $reCaptcha = new ReCaptcha($secret);
+  $response = null;
+  $reCaptcha = new ReCaptcha($secret);
 
-        if ($_POST["g-recaptcha-response"]) {
-            $response = $reCaptcha->verifyResponse($_SERVER["REMOTE_ADDR"], $_POST["g-recaptcha-response"]);
-        }
+  if ($_POST["g-recaptcha-response"]) {
+    $response = $reCaptcha->verifyResponse($_SERVER["REMOTE_ADDR"], $_POST["g-recaptcha-response"]);
+  }
 
         // deu tudo certo?
-          if ($response != null && $response->success==true) {
+  if ($response != null && $response->success==true) {
 
-          }else if ($_POST["g-recaptcha-response"] =="" ) {
-              $_SESSION['status']=0;
-              $_SESSION['mensagem']="Selecione a caixa que comprova que você não é um robô!";
+  }else if ($_POST["g-recaptcha-response"] =="" ) {
+    $_SESSION['status']=0;
+    $_SESSION['mensagem']="Selecione a caixa que comprova que você não é um robô!";
               //header("location:../View/index.php?tokem=1"); 
-          }else{
-              $_SESSION['status']=0;
+  }else{
+    $_SESSION['status']=0;
 
-             $_SESSION['mensagem']="Selecione a caixa que comprova que você não é um robô!";
+    $_SESSION['mensagem']="Selecione a caixa que comprova que você não é um robô!";
               //header("location:../View/index.php?tokem=2"); 
-          }
+  }
 
 
 
     //************************************************************
 
  //comentar apos colocar em produção
-$response = true;
- $response->success=true;
+  $response = true;
+ // $response->success=true;
  //comentar apos colocar em produção =>  \^/
 
   if(isset($_POST["email"]) ){  //&& $response != null && $response->success==true){
 
       $email = $_POST["email"];
-       $email=strtolower($email);
-       $senha = $_POST["senha"];
-       $email= preg_replace('/[\'\"]/', '',$email);
-       $senha=preg_replace('/[\']/', '',$senha);
-       $email= preg_replace('/[\=]/', '',$email);
-       $senha=preg_replace('/[\=]/', '',$senha);     
-       $resultado = login_funcionario($conexao, $email, $senha);
-       $cont = 0;
+      $email=strtolower($email);
+      $senha = $_POST["senha"];
+      $email= preg_replace('/[\'\"]/', '',$email);
+      $senha=preg_replace('/[\']/', '',$senha);
+      $email= preg_replace('/[\=]/', '',$email);
+      $senha=preg_replace('/[\=]/', '',$senha);     
+      $resultado = login_funcionario($conexao, $email, $senha);
 
-      foreach ($resultado as $key => $row) {
-                $cont++;
-                $id = $row["idfuncionario"];
-                $nome = ($row["nome"]);
-                $email = $row["email"];
-                $cargo = $row["descricao_funcao"];               
-                $nivel_acesso_id = $row["nivel_acesso_id"];               
+      $login_coordenador=0;
+      $login_professor=0;
+      $login_secretario=0;
 
-                if ($cargo=="Coordenador") {
+      ####################### FUNCIONARIO ####################################
+          foreach ($resultado as $key => $row) {
+            $id = $row["idfuncionario"];
+            $nome = ($row["nome"]);
+            $email = $row["email"];
+            $cargo = $row["descricao_funcao"];               
+            $nivel_acesso_id = $row["nivel_acesso_id"];               
 
-                   $_SESSION["idfuncionario"] = $id;
-                   
-                   $_SESSION["idcoordenador"] = $id;
-                   $_SESSION["nivel_acesso_id"] = $nivel_acesso_id;
+            if ($cargo=="Coordenador") {
 
-                   $_SESSION["nome"] = $nome;
+             $_SESSION["idfuncionario"] = $id;
 
-                   $_SESSION["email"] = $email;
+             $_SESSION["idcoordenador"] = $id;
+             $_SESSION["nivel_acesso_id"] = $nivel_acesso_id;
 
-                   $_SESSION["cargo"] = $cargo;
-                   $_SESSION['status']=1;
-                   header("Location:../View/coordenador.php");
+             $_SESSION["nome"] = $nome;
 
-                }
-                else if ($cargo=="Professor" || $cargo=="Professora") {
+             $_SESSION["email"] = $email;
 
-                   $_SESSION["idfuncionario"] = $id;
-                   
-                   $_SESSION["idprofessor"] = $id;
+             $_SESSION["cargo"] = "Coordenador";
 
-                   $_SESSION["nome"] = $nome;
+             $login_coordenador++;
 
-                   $_SESSION["email"] = $email;
 
-                   $_SESSION["cargo"] = $cargo;
-                   $_SESSION['status']=1;
-                   header("Location:../View/professor.php");
+           }else if ($cargo=="Secretário") {
 
-                }
+             $_SESSION["idfuncionario"] = $id;
+
+             $_SESSION["idsecretario"] = $id;
+             $_SESSION["nivel_acesso_id"] = $nivel_acesso_id;
+
+             $_SESSION["nome"] = $nome;
+
+             $_SESSION["email"] = $email;
+
+             $_SESSION["cargo"] = 'Secretário';
+
+             $login_secretario++;
+
+           }
+           else if ($cargo=="Professor" || $cargo=="Professora") {
+
+             $_SESSION["idfuncionario"] = $id;
+
+             $_SESSION["idprofessor"] = $id;
+
+             $_SESSION["nome"] = $nome;
+
+             $_SESSION["email"] = $email;
+
+             $_SESSION["cargo"] = 'Professor';
+
+             $login_professor++;
+
+           }
+         }
+      ####################### FUNCIONARIO ###############################
+
+
+
+
+      ####################### ALUNO ####################################
+         $login_aluno=0;
+         $resultado2 = login_aluno($conexao, $email, $senha);
+         foreach ($resultado2 as $key2 => $row2) {
+          $id = $row2["idaluno"];
+          $nome = $row2["nome"];
+          $email = $row2["email"];
+          $escola_id = $row2["escola_id"];
+          $turma_id = $row2["turma_id"];
+          $serie_id = $row2["serie_id"];
+          $sexo = $row2["sexo"];
+
+          $_SESSION["idaluno"] = $id;
+          $_SESSION["nome"] = $nome;
+
+          $_SESSION["email"] = $email;
+
+
+          if ($sexo=='Masculino') {
+            $_SESSION["cargo"] = "Aluno";
+          }else{
+            $_SESSION["cargo"] = "Aluna";
+
+          }
+
+          $_SESSION["escola_id"] = $escola_id;
+          $_SESSION["turma_id"] = $turma_id;
+          $_SESSION["serie_id"] = $serie_id;
+
+          $conexao->exec("INSERT INTO acesso (aluno_id) values($id)");
+          $_SESSION['status']=1;
+          $login_aluno++;
+
+        }
+      ####################### ALUNO ####################################
+
+      if ($login_aluno>0){
+          $_SESSION['status']=1;
+          header("Location:../View/aluno.php");
+      }else if ($login_professor>0){
+          $_SESSION['status']=1;
+          header("Location:../View/professor.php");
+      }else if ($login_secretario>0){
+          $_SESSION['status']=1;
+          header("Location:../View/secretario.php");
+      }else if ($login_coordenador>0){
+          $_SESSION['status']=1;
+          header("Location:../View/coordenador.php");
+      }else{
+          $_SESSION['status']=0;
+          $_SESSION['mensagem']="Tente novamente!";
+          header("location:../View/index.php?tokem=0"); 
       }
 
 
 
-    if ($cont ==0) {
-        $resultado2 = login_aluno($conexao, $email, $senha);
-            $cont = 0;
-              foreach ($resultado2 as $key2 => $row2) {
-                        $cont++;
-
-                        $id = $row2["idaluno"];
-
-                        $nome = $row2["nome"];
-                        $email = $row2["email"];
-                        $escola_id = $row2["escola_id"];
-                        $turma_id = $row2["turma_id"];
-                        $serie_id = $row2["serie_id"];
-                        $sexo = $row2["sexo"];
-
-                        $_SESSION["idaluno"] = $id;
-                        $_SESSION["nome"] = $nome;
-
-                        $_SESSION["email"] = $email;
-
-
-                        if ($sexo=='Masculino') {
-                          $_SESSION["cargo"] = "Aluno";
-                        }else{
-                          $_SESSION["cargo"] = "Aluna";
-
-                        }
-
-                        $_SESSION["escola_id"] = $escola_id;
-                        $_SESSION["turma_id"] = $turma_id;
-                        $_SESSION["serie_id"] = $serie_id;
-
-                        $conexao->exec("INSERT INTO acesso (aluno_id) values($id)");
-                        $_SESSION['status']=1;
-                        header("Location:../View/aluno.php");
-            }
-
-            if ($cont == 0) {
-              $_SESSION['mensagem']="Usuário ou senha incorreta!";
-
-              $_SESSION['status']=0;
-              header("Location:../View/index.php?status=0");
-            }
-
-        
-    }else{
-      $_SESSION['status']=0;
-      $_SESSION['mensagem']="Usuário ou senha incorreta!";
-
-      header("Location:../View/?status=0");
-    }
-
-
 }else{
-  $_SESSION['status']=0;
-  $_SESSION['mensagem']="Selecione a caixa que comprova que você não é um robô!";
-   header("location:../View/index.php?tokem=0"); 
-}
-        
-    
-} catch (Exception $e) {
     $_SESSION['status']=0;
-    $_SESSION['mensagem']="Algo deu errado, confira seus dados de acesso e tente novamente!";
+    $_SESSION['mensagem']="Selecione a caixa que comprova que você não é um robô!";
+   // header("location:../View/index.php?tokem=0"); 
+}
 
-    header("Location:../View/?status=0");
+
+
+} catch (Exception $e) {
+  $_SESSION['status']=0;
+  $_SESSION['mensagem']="Algo deu errado, confira seus dados de acesso e tente novamente!";
+  header("Location:../View/?status=0");
 }
 
 

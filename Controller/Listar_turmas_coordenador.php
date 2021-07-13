@@ -5,6 +5,7 @@ try {
   
 
 $idescola=$_GET['idescola'];
+
 $res=$conexao->query("SELECT 
    idturma,
    serie.id as 'idserie',
@@ -20,8 +21,10 @@ ministrada.turma_id = turma.idturma AND
 escola_id=$idescola GROUP BY turma.idturma
 ORDER BY turma.nome_turma
 ");
+
 $result="";
                         foreach ($res as $key => $value) {
+
                               $idturma=$value['idturma'];
                               $idserie=$value['idserie'];
 
@@ -29,7 +32,8 @@ $result="";
                               $nome_turma=($value['nome_turma']);
                               $idescola=($value['idescola']);
                               
-                              if (isset($_SESSION['idcoordenador']))  {
+                              if (isset($_SESSION['idfuncionario']))  {
+                              // if (isset($_SESSION['idcoordenador']))  {
                                 $result.= "
                                 <div class='card card-primary'>
 

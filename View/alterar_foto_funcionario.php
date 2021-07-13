@@ -1,15 +1,12 @@
 <?php
 session_start();
-if (!isset($_SESSION['idprofessor']) && !isset($_SESSION['idcoordenador']) ) {
+if (!isset($_SESSION['idprofessor']) && !isset($_SESSION['idfuncionario']) ) {
 
        header("location:index.php?status=0");
 
 }else{
-    if (isset($_SESSION['idcoordenador'])) {
-        $idprofessor=$_SESSION['idcoordenador'];
-
-    }else if (isset($_SESSION['idprofessor'])) {
-      $idprofessor=$_SESSION['idprofessor'];
+    if (isset($_SESSION['idfuncionario'])) {
+      $idprofessor=$_SESSION['idfuncionario'];
     }
 
 }

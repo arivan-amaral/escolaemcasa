@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['idprofessor']) && !isset($_SESSION['idcoordenador']) ) {
+if (!isset($_SESSION['idprofessor']) && !isset($_SESSION['idfuncionario']) ) {
    header("location:index.php?status=0");
 }else{
 

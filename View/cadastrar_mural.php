@@ -21,11 +21,13 @@ include "alertas.php";
 
   include '../Model/Video.php';
 
-  $idescola=$_GET['idescola'];
-  $idserie=$_GET['idserie'];
-  $idturma=$_GET['turm'];
 
-
+  $idserie=$_GET['idserie']; 
+  $idescola=$_GET['idescola']; 
+  $idturma=$_GET['turm']; 
+  $iddisciplina=$_GET['disc']; 
+ $array_url=explode('p?', $_SERVER["REQUEST_URI"]);
+ $url_get=$array_url[1];
   
 
 ?>
@@ -96,14 +98,31 @@ include "alertas.php";
 
               <div class="container-fluid">
 
+       <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <button class="btn btn-block btn-lg btn-secondary"><?php
 
+            $nome_turma='';
+            $nome_disciplina='';
+            if (isset($_GET['turma'])) {
+              $nome_turma=$_GET['turma'];
+            } 
+            if (isset($_GET['disciplina'])) {
+               $nome_disciplina=$_GET['disciplina'];
+
+            }
+
+             echo $nome_turma ." - ". $nome_disciplina; ?></button>
+        </div>
+      </div>
+      <br>
+      <br>
                 <div class="row">
-                  <div class="col-md-12">
+                  <div class="col-sm-1"></div>
+                  <div class="col-sm-10">
                                               
-                                <button type="button" class="btn btn-block  btn-success"> 
-                                  ADICIONAR ITEM AO MURAL 
-                                </button>
-                                              <br>
+                          
                                           <form class="mt-12"  method="post" action="../Controller/Cadastrar_mural.php">
                                                   <input type="hidden" name="idturma" value="<?php echo $idturma ?>">
                                                   <input type="hidden" name="idserie" value="<?php echo $idserie ?>">
@@ -119,7 +138,7 @@ include "alertas.php";
                                               <div class="form-group">
                                                   <textarea class="form-control" rows="3" name="descricao" placeholder="Descrição" required=""></textarea>
                                               </div>
-
+                                              <input type="hidden" name="url_get" id="url_get" value="<?php echo $url_get; ?>">
 
                                                <button type="submit" class="btn btn-block btn-primary">Salvar </button>
                                                <br>
@@ -130,9 +149,44 @@ include "alertas.php";
                   </div>
                 </div>
 
+      <div class="row">
+                  <div class="col-sm-1"></div>
+                  <div class="col-sm-10">
 
-
+              <?php
+               $res_mural_secret=$conexao->query("SELECT * FROM mural where
+                escola_id=$idescola and
+                turma_id=$idturma and
              
+
+
+                 setor !='Secretaria'  order by mural.id desc");
+
+               foreach ($res_mural_secret as $key => $value) {
+                 $idmural=$value['id'];
+                 $titulo=$value['titulo'];
+                 $descricao=$value['descricao'];
+     
+               
+             
+                   echo"
+                    <input id='idmural$idmural' value='$idmural' hidden>
+                   <div class='card-body'>
+                     <div class='callout callout-danger'>
+                       <h5>$titulo</h5>
+                       <p>$descricao</p><br>
+                       
+                      
+                        <a onclick='excluir_mural($idmural);' class='btn btn-danger text-white'>Excluir</a>
+                     </div>
+                     </div>";
+             
+
+             }
+            ?>  
+
+        </div>
+      </div>     
 
     </div>
 

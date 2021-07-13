@@ -11,6 +11,8 @@ try {
 	$titulo = $_POST['titulo'];
 	$descricao = $_POST['descricao'];
 	$setor = 'Escola';
+    $url_get=$_POST['url_get'];
+
 
 
 	if (isset($_SESSION['idprofessor'])) {
@@ -29,11 +31,11 @@ try {
 
 
 	$_SESSION['status']=1;
-	header("location:../View/cadastrar_mural.php?status=1&idescola=$idescola&turm=$idturma&idserie=$idserie");
+	header("location:../View/cadastrar_mural.php?$url_get");
 
 	} catch (Exception $e) {		
 		$_SESSION['status']=0;
-		header("location:../View/cadastrar_mural.php?status=1&idescola=$idescola&turm=$idturma&idserie=$idserie");
+		header("location:../View/cadastrar_mural.php?$url_get");
 	}
 	
 

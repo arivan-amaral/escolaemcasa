@@ -20,11 +20,7 @@
                } 
             ?>
           </a>
-          <?php 
-            if (isset($_SESSION['cargo'])) {
-              echo "<b class='text-danger'>Professor (a)</b>";
-            }
-          ?>
+          
         </div>
       </div>
       <!-- SidebarSearch Form -->
@@ -62,7 +58,32 @@
 
 
           if (isset($_SESSION['cargo'])) {
-              if ($_SESSION['cargo']=='Coordenador' || $_SESSION['cargo']=='Coordenadora' ){
+
+
+
+              if ($_SESSION['cargo']=='Secretário'){
+                               echo "
+                           
+                              <ul class='nav nav-treeview'>
+                                <li class='nav-item'>
+                                  <a href='alterar_foto_funcionario.php' class='nav-link'>
+                                    <ion-icon name='images-outline'></ion-icon>
+                                    <p>Alterar Foto</p>
+                                  </a>
+                                </li>
+                              </ul>
+
+                              <ul class='nav nav-treeview'>
+                                <li class='nav-item'>
+                                  <a href='alterar_dados_funcionario.php' class='nav-link'>
+                                    <i class='far fa-circle nav-icon text-primary'></i>
+                                    <p>Alterar Meus Dados</p>
+                                  </a>
+                                </li>
+                              </ul>
+
+                  ";
+              }else if ($_SESSION['cargo']=='Coordenador' || $_SESSION['cargo']=='Coordenadora' ){
                   echo "
  
                               <ul class='nav nav-treeview'>

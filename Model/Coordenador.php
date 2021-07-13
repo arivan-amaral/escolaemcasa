@@ -6,7 +6,7 @@
 	}
 
 	function pesquisar_coordenador($conexao, $pesquisa) {
-    	$result=$conexao->query("SELECT * FROM funcionario WHERE (descricao_funcao like 'Coordenador' or descricao_funcao like 'Coordenadora') and  nome like '%$pesquisa%' order by nivel_acesso_id desc , nome asc ");
+    	$result=$conexao->query("SELECT * FROM funcionario WHERE (descricao_funcao like 'Coordenador' or descricao_funcao like 'Coordenadora' or descricao_funcao like 'Secretário') and  nome like '%$pesquisa%' order by nivel_acesso_id desc , nome asc ");
     	return $result ;
 	}	
 
