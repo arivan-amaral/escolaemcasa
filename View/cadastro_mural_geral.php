@@ -23,7 +23,8 @@ include "alertas.php";
 
   $idescola=$_GET['idescola'];
 
-
+ //$array_url=explode('p?', $_SERVER["REQUEST_URI"]);
+ $url_get="";
   
 
 ?>
@@ -136,6 +137,9 @@ include "alertas.php";
                                               <div class="form-group">
                                                   <textarea class="form-control" rows="3" name="descricao" placeholder="Descrição" required=""></textarea>
                                               </div>
+                                              <input type="hidden" id="pagina" value="cadastro_mural_geral.php">
+                                              
+                                              <input type="hidden" name="url_get" id="url_get" value="<?php echo $url_get; ?>">
 
 
                                                <button type="submit" class="btn btn-block btn-primary">Salvar </button>
@@ -147,14 +151,17 @@ include "alertas.php";
                   </div>
                 </div>
 
-
+<a name="mural"></a>
 
              
              <?php
-               $res_mural_secret=$conexao->query("SELECT * FROM mural,serie where serie_id=serie.id and setor='Secretaria' group by serie_id order by mural.id desc");
+               $res_mural_secret=$conexao->query("SELECT 
+               mural.id, mural.titulo, mural.descricao, serie.nome
+
+               FROM mural,serie where serie_id=serie.id and setor='Secretaria' group by serie_id order by mural.id desc");
 
                foreach ($res_mural_secret as $key => $value) {
-                 $idtrabalho=$value['id'];
+                 $idmural=$value['id'];
                  $titulo=$value['titulo'];
                  $descricao=$value['descricao'];
                  $nome=$value['nome'];
@@ -166,6 +173,10 @@ include "alertas.php";
                        <p>$descricao</p><br>
                        <p>$nome</p>
                        <span class='text-info'> Postado pela secretaria.</span>
+
+                        <br>
+                          <input id='idmural$idmural' value='$idmural' hidden>
+                         <a onclick='excluir_mural($idmural);' class='btn btn-danger text-white'>Excluir</a>
                      </div>
                      </div>";
              

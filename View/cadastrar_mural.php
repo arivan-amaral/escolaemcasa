@@ -138,6 +138,7 @@ include "alertas.php";
                                               <div class="form-group">
                                                   <textarea class="form-control" rows="3" name="descricao" placeholder="Descrição" required=""></textarea>
                                               </div>
+                                              <input type="hidden" id="pagina" value="cadastrar_mural.php">
                                               <input type="hidden" name="url_get" id="url_get" value="<?php echo $url_get; ?>">
 
                                                <button type="submit" class="btn btn-block btn-primary">Salvar </button>

@@ -29,7 +29,7 @@ function CriaRequest() {
          }
 
      }
-
+ 
       
 
      if (!request) 
@@ -50,8 +50,9 @@ function CriaRequest() {
 function excluir_mural(idmural) {
     var idmural = document.getElementById("idmural"+idmural).value;  
     var url_get = document.getElementById("url_get").value; 
+    var pagina = document.getElementById("pagina").value; 
 
-    var url=""+url_get+"&idmural="+idmural;
+    var url=""+url_get+"&idmural="+idmural+"&pagina="+pagina;
   Swal.fire({
     title: 'Deseja continuar com a exclusão?',
     showDenyButton: true,
