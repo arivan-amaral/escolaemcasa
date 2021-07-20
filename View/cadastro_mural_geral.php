@@ -27,7 +27,7 @@ include "alertas.php";
  $url_get="";
   
 
-?>
+?> 
 
 
 
@@ -152,6 +152,32 @@ include "alertas.php";
                 </div>
 
 <a name="mural"></a>
+             <?php
+               $res_mural_secret=$conexao->query("SELECT * FROM mural where
+                setor !='Secretaria'  order by mural.id desc");
+
+               foreach ($res_mural_secret as $key => $value) {
+                 $idmural=$value['id'];
+                 $titulo=$value['titulo'];
+                 $descricao=$value['descricao'];
+     
+               
+             
+                   echo"
+                    <input id='idmural$idmural' value='$idmural' hidden>
+                   <div class='card-body'>
+                     <div class='callout callout-info'>
+                       <h5>$titulo</h5>
+                       <p>$descricao</p><br>
+                       
+                      
+                        <a onclick='excluir_mural($idmural);' class='btn btn-danger text-white'>Excluir</a>
+                     </div>
+                     </div>";
+             
+
+             }
+            ?> 
 
              
              <?php
