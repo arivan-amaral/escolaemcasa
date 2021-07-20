@@ -170,6 +170,7 @@ include "alertas.php";
                        <h5>$titulo</h5>
                        <p>$descricao</p><br>
                        
+                       <span class='text-info'> Postado pelo professor.</span>
                       
                         <a onclick='excluir_mural($idmural);' class='btn btn-danger text-white'>Excluir</a>
                      </div>
