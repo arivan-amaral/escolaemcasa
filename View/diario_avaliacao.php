@@ -258,7 +258,7 @@ if (!isset($_SESSION['idprofessor'])) {
                                               <tbody>
                                                 <?php 
                                                 $conta=1;
-                                                $array_avaliacao= array('0'=>'av1','1'=>'av2','2'=>'av3','3'=>'av4');
+                                                $array_avaliacao= array('0'=>'av1','1'=>'av2','2'=>'av3','3'=>'av4','4'=>'DIAGNÓSTICO INICIAL');
                                           foreach ($array_avaliacao as $key => $value) {
                                                   $avaliacao=$value;
                                                 

@@ -1,5 +1,5 @@
 <?php 
- function boletim($conexao,$idescola,$idturma,$idserie,$idaluno){
+ function boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno){
 ?>
       <html xmlns:v="urn:schemas-microsoft-com:vml"
       xmlns:o="urn:schemas-microsoft-com:office:office"
@@ -278,7 +278,7 @@
         padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
         <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
         style='font-family:"Arial Black",sans-serif;mso-fareast-font-family:"Times New Roman";
-        mso-bidi-font-family:Calibri;color:black;mso-fareast-language:PT-BR'>Aluno:<o:p></o:p></span></b></p>
+        mso-bidi-font-family:Calibri;color:black;mso-fareast-language:PT-BR'>Aluno: <o:p> <?php echo $nome_aluno; ?></o:p></span></b></p>
         </td>
         <td width=10 colspan=2 style='width:7.3pt;padding:0cm 3.5pt 0cm 3.5pt;
         height:15.0pt'></td>
@@ -307,7 +307,7 @@
         0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
         <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
         style='font-family:"Arial Black",sans-serif;mso-fareast-font-family:"Times New Roman";
-        mso-bidi-font-family:Calibri;color:black;mso-fareast-language:PT-BR'>Nº<o:p></o:p></span></b></p>
+        mso-bidi-font-family:Calibri;color:black;mso-fareast-language:PT-BR'>Nº<o:p> <?php echo $numero; ?></o:p></span></b></p>
         </td>
         <td width=790 nowrap colspan=6 style='width:592.45pt;border-top:none;
         border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -499,7 +499,7 @@
          }
          ?>
 
-    
+
     </tr>
 
 <?php 
