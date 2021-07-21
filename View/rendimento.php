@@ -731,44 +731,45 @@ foreach ($result_escola as $key => $value) {
     PT-BR'><o:p>
 
 <?php
-$result_nota_aula1=$conexao->query("
-SELECT * FROM nota WHERE
-escola_id=$idescola and
-turma_id=$idturma and
-disciplina_id=$iddisciplina and 
-periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
+
+    $result_nota_aula1=$conexao->query("
+    SELECT * FROM nota WHERE
+    escola_id=$idescola and
+    turma_id=$idturma and
+    disciplina_id=$iddisciplina and 
+    periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
 
 
-$nota_tri_1=0;
-$nota_av3_1='';
-$nota_rp_1='';
+    $nota_tri_1=0;
+    $nota_av3_1='';
+    $nota_rp_1='';
 
-foreach ($result_nota_aula1 as $key => $value) {
+    foreach ($result_nota_aula1 as $key => $value) {
 
-  if ($value['avaliacao']!='RP') {
-    $nota_tri_1+=$value['nota'];
+      if ($value['avaliacao']!='RP') {
+        $nota_tri_1+=$value['nota'];
 
 
-  }
-// ***************************************
-  if ($value['avaliacao']=='av3') {
-    $nota_av3_1=$value['nota'];
+      }
+    // ***************************************
+      if ($value['avaliacao']=='av3') {
+        $nota_av3_1=$value['nota'];
 
-  }
+      }
 
-  if ($value['avaliacao']=='RP') {
-    $nota_rp_1=$value['nota'];
-   
+      if ($value['avaliacao']=='RP') {
+        $nota_rp_1=$value['nota'];
+       
 
-  }
+      }
 
-}
+    }
 
-if ($nota_tri_1<5 && $nota_rp_1!='' && $nota_rp_1>$nota_av3_1) {
- $nota_tri_1=($nota_tri_1-$nota_av3_1)+$nota_rp_1;
-}
+    if ($nota_tri_1<5 && $nota_rp_1!='' && $nota_rp_1>$nota_av3_1) {
+     $nota_tri_1=($nota_tri_1-$nota_av3_1)+$nota_rp_1;
+    }
 
-echo "$nota_tri_1";
+    echo "$nota_tri_1";
 ?>
     </o:p></span></p>
   </td>
