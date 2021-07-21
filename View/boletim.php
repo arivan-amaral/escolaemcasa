@@ -2,6 +2,7 @@
   include"../Controller/Conversao.php";
   include"../Model/Conexao.php";
   include"../Model/Aluno.php";
+  include"boletim_maternall_II.php";
   include"boletim_serie_1ano_id_3.php";
   include"boletim_fundamental_II.php";
   
@@ -44,7 +45,7 @@ else if ($idserie >3 && $idserie <=8) {
     foreach ($res_alunos as $key => $value) {
       $idaluno=$value['idaluno'];
       $nome_aluno=$value['nome_aluno'];
-        boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno);
+        boletim_maternal_1_2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno);
       echo "<br><br>";
       $numero++;
     }

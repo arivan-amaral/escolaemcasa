@@ -411,7 +411,7 @@ div.WordSection1
       <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
       line-height:normal'><span style='mso-ascii-font-family:Calibri;mso-fareast-font-family:
       "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-      color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p>ffff</o:p></span></p>
+      color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p> </o:p></span></p>
       </td>
 <?php
  }
