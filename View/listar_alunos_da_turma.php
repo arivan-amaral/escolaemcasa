@@ -1,12 +1,12 @@
 <?php 
 
 session_start();
-if (!isset($_SESSION['idcoordenador'])) {
+if (!isset($_SESSION['idfuncionario'])) {
        header("location:index.php?status=0");
 
 }else{
 
-  $idcoordenador=$_SESSION['idcoordenador'];
+  $idcoordenador=$_SESSION['idfuncionario'];
 
 }
   include "cabecalho.php";

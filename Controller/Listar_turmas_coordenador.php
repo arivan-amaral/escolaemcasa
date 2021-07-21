@@ -53,6 +53,11 @@ $result="";
                                         <a   href='listar_alunos_da_turma.php?idturma=$idturma&nome_turma=$nome_turma&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat'>
                                           <i class='fa fa-users'></i> 
                                             LISTAR ALUNOS DA TURMA
+                                          </a> 
+
+                                          <a   href='boletim.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-danger btn-block btn-flat'>
+                                          <i class='fa fa-calendar'></i> 
+                                          BOLETIM
                                           </a>      
                                     ";
                                 $pes=listar_disciplina_da_turma($conexao,$idturma,$idescola);

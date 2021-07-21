@@ -127,7 +127,97 @@ if (!isset($_SESSION['idfuncionario'])) {
 
 
                           <?php 
+                            if ( $_SESSION["cargo"] == 'Secretário') {
+                  
 
+                           echo "
+
+                           <div class='card card-secondary'>
+
+                           <div class='card-header'>
+
+                           <h4 class='card-title w-100'>
+                           <a class='d-block w-100 collapsed' data-toggle='collapse show' href='#collapseOne$iddisciplina$idturma$idescola' aria-expanded='true'><b class='text-warning'></b> VER CONTEÚDO - $nome_turma - $nome_disciplina
+
+                           </a>
+
+                           </h4>
+
+                           </div>
+
+                           <div id='collapseOne$iddisciplina$idturma$idescola' class='collapse show' data-parent='#accordion' style=''>
+
+                           <div class='card-body'>
+
+
+                           <a   href='listar_alunos_da_turma.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat'>
+                           <i class='fa fa-users'></i> 
+                           Lista de alunos
+                           </a>      
+
+
+
+                           <a   href='diario_rendimento.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-info btn-block btn-flat'>
+                           <i class='fa fa-calendar'></i> 
+                           RESULTADO FINAL
+                           </a>
+
+
+                           <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-info btn-block btn-flat'>
+                           <i class='fa fa-calendar'></i> 
+                           FICHA DE RENDIMENTO TRI I
+                           </a> 
+
+                           <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=2' class='btn btn-info btn-block btn-flat'>
+                           <i class='fa fa-calendar'></i> 
+                           FICHA DE RENDIMENTO TRI II
+                           </a>   
+                           <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=3' class='btn btn-info btn-block btn-flat'>
+                           <i class='fa fa-calendar'></i> 
+                           FICHA DE RENDIMENTO TRI III
+                           </a>   
+
+                          
+
+                      
+
+                           <a class='btn btn-info btn-block btn-flat' href='diario_acompanhamento.php?disc=$iddisciplina&turm=$idturma&idescola=$idescola&idserie=$idserie' >
+                             <font style='vertical-align: inherit;'>
+
+                           <font style='vertical-align: inherit;'> 
+
+                           <ion-icon name='clipboard-outline'></ion-icon>
+                           Ocorrências (acompanhamento pedagógico)    
+
+                           </font>
+
+                           </font>
+
+                           </a> 
+
+
+
+
+
+                           </div>
+
+                           </div>
+
+                           </div>
+
+                           ";
+
+
+
+
+
+
+
+
+
+
+
+                            }else{
 
                               echo "
 
@@ -246,7 +336,7 @@ if (!isset($_SESSION['idfuncionario'])) {
                               </div>
 
                               ";
-
+                            }
                             
 
                            ?>

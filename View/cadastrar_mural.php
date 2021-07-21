@@ -174,7 +174,7 @@ include "alertas.php";
                    echo"
                     <input id='idmural$idmural' value='$idmural' hidden>
                    <div class='card-body'>
-                     <div class='callout callout-danger'>
+                     <div class='callout callout-info'>
                        <h5>$titulo</h5>
                        <p>$descricao</p><br>
                        
@@ -208,7 +208,7 @@ include "alertas.php";
                        <h5>$titulo</h5>
                        <p>$descricao</p><br>
                        <p>$nome</p>
-                       <span class='text-info'> Postado pela secretaria.</span>
+                       <span class='text-danger'> Postado pela secretaria.</span>
 
                         <br>
                           <input id='idmural$idmural' value='$idmural' hidden>
