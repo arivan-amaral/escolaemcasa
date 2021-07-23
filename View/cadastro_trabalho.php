@@ -32,7 +32,7 @@ include "alertas.php";
 
 
 
-<script src="ajax.js"></script>
+<script src="ajax.js?<?php echo rand(); ?>"></script>
 
 
 
@@ -226,7 +226,7 @@ include "alertas.php";
                                  <div class='timeline-footer'>
                                     <a href='#' onclick='excluir_trabalho($id);' class='btn btn-sm bg-danger'>Deletar Trabalho</a>
 
-                                   <a class='btn btn-sm bg-warning' data-toggle='modal' data-target='#modal-default' onclick='listar_alunos_trabalho($id,$idturma,$iddisciplina);'> VER QUEM ENTREGOU </a>
+                                   <a class='btn btn-sm bg-warning' data-toggle='modal' data-target='#modal-default' onclick='listar_alunos_trabalho($id,$idturma,$iddisciplina,$idescola);'> VER QUEM ENTREGOU </a>
           
 
                                  </div>

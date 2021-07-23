@@ -9,8 +9,10 @@ try {
     $idtrabalho = $_GET["idtrabalho"];
     $iddisciplina = $_GET["iddisciplina"];
     $idturma = $_GET["idturma"];
+    $idescola = $_GET["idescola"];
 
-   $result=listar_aluno_da_turma($conexao,$idturma);
+   // $result=listar_aluno_da_turma($conexao,$idturma); 
+ $result=  listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
     
     $return="";
                     foreach ($result as $key => $value) {

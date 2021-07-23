@@ -1207,7 +1207,7 @@ function relatorio_de_visualizacao_video(idaluno,idturma,iddisciplina) {
 
 
 
- function listar_alunos_trabalho(idtrabalho,idturma,iddisciplina) {
+ function listar_alunos_trabalho(idtrabalho,idturma,iddisciplina,idescola) {
      
      var result = document.getElementById("listar_alunos");
       result.innerHTML = "";
@@ -1217,7 +1217,7 @@ function relatorio_de_visualizacao_video(idaluno,idturma,iddisciplina) {
 
      aguarde();
 
-     xmlreq.open("GET", "../Controller/Listar_alunos_trabalho.php?idtrabalho="+idtrabalho+"&idturma="+idturma+"&iddisciplina="+iddisciplina, true);     
+     xmlreq.open("GET", "../Controller/Listar_alunos_trabalho.php?idescola="+idescola+"&idtrabalho="+idtrabalho+"&idturma="+idturma+"&iddisciplina="+iddisciplina, true);     
      xmlreq.onreadystatechange = function(){
       
          if (xmlreq.readyState == 4) {
