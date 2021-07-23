@@ -317,7 +317,7 @@ foreach ($result_escola as $key => $value) {
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
   style='font-size:15.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-  color:black;mso-fareast-language:PT-BR'>TIPO DE ENSINO: ANOS FINAIS <o:p></o:p></span></b></p>
+  color:black;mso-fareast-language:PT-BR'>TIPO DE ENSINO:  <o:p></o:p></span></b></p>
   </td>
   <td width=326 valign=bottom style='width:244.75pt;border:none;border-right:
   solid windowtext 1.0pt;padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>

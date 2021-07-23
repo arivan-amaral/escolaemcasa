@@ -10,6 +10,11 @@ function lista_escola($conexao){
     return $result;
   
 }
+function buscar_escola_por_id($conexao,$id){
+   $result = $conexao->query("SELECT * FROM escola  where idescola=$id");
+    return $result;
+  
+}
 
 
 ?>

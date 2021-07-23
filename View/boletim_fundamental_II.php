@@ -1,5 +1,5 @@
 <?php 
-function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno){
+function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma){
   ?>
   <html xmlns:v="urn:schemas-microsoft-com:vml"
   xmlns:o="urn:schemas-microsoft-com:office:office"
@@ -222,7 +222,7 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
               <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
                 style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
                 mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-                mso-fareast-language:PT-BR'>ESCOLA MUNICIPAL: <o:p></o:p></span></p>
+                mso-fareast-language:PT-BR'>ESCOLA MUNICIPAL: <?php echo $nome_escola; ?> <o:p></o:p></span></p>
               </td>
               <td width=230 colspan=1 style='width:162.25pt;border-top:none;border-left:
               none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -251,7 +251,7 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
               <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
                 style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
                 mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-                mso-fareast-language:PT-BR'>TURMA:<o:p></o:p></span></p>
+                mso-fareast-language:PT-BR'>TURMA: <?php echo $nome_turma; ?><o:p></o:p></span></p>
               </td>
             </tr>
             <tr style='mso-yfti-irow:4;height:17.25pt;mso-row-margin-right:.75pt'>
@@ -427,7 +427,24 @@ if ($conta_parecer==0 && $linha==0) {
  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
   style='font-size:9.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
   "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'>I TRIMESTRE: <?=$conta_parecer ?><o:p></o:p></span></p>
+  color:black;mso-fareast-language:PT-BR'>I TRIMESTRE: <?php
+
+        $result_parecer_tri1=$conexao->query("
+          SELECT * FROM nota WHERE
+          escola_id=$idescola and
+          turma_id=$idturma and
+          disciplina_id=$iddisciplina and 
+          periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
+
+
+        $parecer_tri_1="";
+      
+        foreach ($result_parecer_tri1 as $key => $value) {
+          $parecer_tri_1=$value['parecer_descritivo'];
+        }
+      echo "$parecer_tri_1";
+
+  ?><o:p></o:p></span></p>
 </td> 
 <?php 
 $conta_parecer++;
@@ -443,7 +460,7 @@ $conta_parecer++;
  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
   style='font-size:9.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
   "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'>II TRIMESTRE: <?=$conta_parecer ?> <o:p></o:p></span></p>
+  color:black;mso-fareast-language:PT-BR'>II TRIMESTRE:  <o:p></o:p></span></p>
 </td> 
 <?php 
 $conta_parecer++;
@@ -452,14 +469,14 @@ $conta_parecer++;
  ?>
 
 
- <td width=150 nowrap rowspan=4 valign=top style='width:171.5pt;border-top:
+ <td width=150 nowrap rowspan=5 valign=top style='width:171.5pt;border-top:
  none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
  mso-border-alt:solid windowtext .5pt;padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt;'>
  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
   style='font-size:9.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
   "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'>III TRIMESTRE: <?=$conta_parecer ?><o:p></o:p></span></p>
+  color:black;mso-fareast-language:PT-BR'>III TRIMESTRE: <o:p></o:p></span></p>
 </td> 
 <?php 
 $conta_parecer++;

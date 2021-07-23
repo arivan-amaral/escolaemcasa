@@ -17,6 +17,14 @@ function associar_aluno($conexao, $ano, $turma_id, $aluno_id,  $escola_id){
 
 
 
+function lista_de_turmas_por_id($conexao,$idturma){
+
+   $result = $conexao->query("SELECT * FROM turma where idturma=$idturma");
+
+    return $result;
+
+}
+
 function lista_de_turmas($conexao,$serie_id){
 
    $result = $conexao->query("SELECT * FROM turma where serie_id=$serie_id  ORDER BY nome_turma asc");

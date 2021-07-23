@@ -1,5 +1,5 @@
 <?php 
- function boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno){
+ function boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma){
 ?>
       <html xmlns:v="urn:schemas-microsoft-com:vml"
       xmlns:o="urn:schemas-microsoft-com:office:office"
@@ -318,7 +318,7 @@
         style='font-family:"Arial Black",sans-serif;mso-fareast-font-family:"Times New Roman";
         mso-bidi-font-family:Calibri;color:black;mso-fareast-language:PT-BR'>Ano:<span
         style='mso-spacerun:yes'>
-        </span>Turma:<span style='mso-spacerun:yes'>
+        </span>Turma: <?php echo $nome_turma; ?><span style='mso-spacerun:yes'>
         </span>Turno:<o:p></o:p></span></b></p>
         </td>
         <td width=10 colspan=2 style='width:7.3pt;padding:0cm 3.5pt 0cm 3.5pt;

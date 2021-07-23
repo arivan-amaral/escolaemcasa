@@ -1,5 +1,5 @@
 <?php 
- function boletim_maternal_1_2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno){
+ function boletim_maternal_1_2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma){
 ?>
 <html xmlns:v="urn:schemas-microsoft-com:vml"
 xmlns:o="urn:schemas-microsoft-com:office:office"
@@ -231,7 +231,7 @@ div.WordSection1
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
   style='font-size:9.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
   "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'>UNIDADE ESCOLAR:<o:p></o:p></span></p>
+  color:black;mso-fareast-language:PT-BR'>UNIDADE ESCOLAR: <?php echo $nome_escola; ?><o:p></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:2;height:8.75pt'>
