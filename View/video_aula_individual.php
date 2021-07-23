@@ -173,11 +173,11 @@
 
                                               <div class='embed-responsive embed-responsive-16by9'>";
                                               if($link!=""){
-
-   echo"<iframe id='player'  class='embed-responsive-item' src='https://www.youtube.com/embed/$link?enablejsapi=0' ></iframe>";
+                                                echo"
+                                                 <iframe width='360' height='315' class='embed-responsive-item' src='https://www.youtube.com/embed/$link' allowfullscreen ></iframe>";
                                                 }else{
                                                 echo"<video width='320' height='240' controls>
-  <source src='video/$video_local' type='video/mp4'>";
+                                                  <source src='video/$video_local' type='video/mp4'>";
                                                 }
 
                                               
@@ -210,7 +210,7 @@
 
 
                     
-
+<!-- 
                         <script>
                           
 
@@ -267,7 +267,7 @@
                           function stopVideo() {
                             player.stopVideo();
                           }
-                        </script>
+                        </script> -->
 
 
                     <button class="btn btn-danger btn-block" onclick="goBack()">Voltar</button>
