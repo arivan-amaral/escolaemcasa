@@ -513,7 +513,25 @@ $linha++;
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><span style='mso-ascii-font-family:Calibri;mso-fareast-font-family:
   "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
+  color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p>
+
+<?php
+// faltas trimestre 1
+$res_fre_t1=$conexao->query("
+SELECT count(*) as 'quantidade' FROM frequencia WHERE
+escola_id=$idescola and
+turma_id=$idturma and
+disciplina_id=$iddisciplina and 
+presenca=0 and data_frequencia BETWEEN '2021-02-01' and '2021-05-01' and aluno_id=$idaluno ");
+
+$quantidade_falta1=0;
+foreach ($res_fre_t1 as $key => $value) {
+  $quantidade_falta1=$value['quantidade'];
+}
+
+echo "$quantidade_falta1";
+?>
+</o:p></span></p>
 </td>
 <td width=48 nowrap style='width:36.2pt;border-top:none;border-left:none;
 border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;

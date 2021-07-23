@@ -462,10 +462,10 @@
             SELECT * FROM nota WHERE
             escola_id=$idescola and
             turma_id=$idturma and
-            avaliacao='av3' and parecer_disciplina_id=$parecer_disciplina_id and aluno_id=$idaluno ");
+            avaliacao='av3' and periodo_id=1 and parecer_disciplina_id=$parecer_disciplina_id and aluno_id=$idaluno ");
             $nota_tri_1='';
             foreach ($result_nota_aula1 as $key => $value) {
-            $nota_tri_1+=$value['sigla'];
+            $nota_tri_1=$value['sigla'];
             }
 
             echo "$nota_tri_1";
