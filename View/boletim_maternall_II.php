@@ -275,7 +275,7 @@ div.WordSection1
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
   style='font-size:9.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
   "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'>MATERNAL I e II<o:p></o:p></span></p>
+  color:black;mso-fareast-language:PT-BR'><?php echo $nome_turma; ?><o:p></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:4;height:8.75pt'>
@@ -312,6 +312,12 @@ div.WordSection1
   color:black;mso-fareast-language:PT-BR'>ALUNO: <?php echo $nome_aluno; ?><o:p></o:p></span></p>
   </td>
  </tr>
+
+
+
+<!-- *************************************************************************************  -->
+
+
  <tr style='mso-yfti-irow:7;height:15.75pt'>
   <td width=394 nowrap colspan=3 rowspan=2 style='width:295.75pt;border:solid windowtext 1.0pt;
   border-bottom:solid black 1.0pt;mso-border-top-alt:windowtext .5pt;
@@ -359,6 +365,8 @@ div.WordSection1
   PT-BR'><o:p></o:p></span></b></p>
   </td>
  </tr>
+
+
  <tr style='mso-yfti-irow:8;height:15.75pt'>
   <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -424,625 +432,288 @@ div.WordSection1
   "Times New Roman";mso-fareast-language:PT-BR'><o:p></o:p></span></p>
   </td>
  </tr>
- <tr style='mso-yfti-irow:9;height:26.25pt'>
-  <td width=394 colspan=3 style='width:295.75pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  mso-border-left-alt:solid windowtext 1.0pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:26.25pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Demonstra atitudes
-  de cuidado e solidariedade na interação com crianças e adultos.<o:p></o:p></span></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:26.25pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:26.25pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:26.25pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=434 colspan=2 style='width:325.55pt;border:solid windowtext 1.0pt;
-  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
-  solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:26.25pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Dialoga com
-  crianças e adultos, expressando seus desejos, necessidades, sentimentos e<br>
-  opiniões.<o:p></o:p></span></p>
-  </td>
-  <td width=32 style='width:24.0pt;border:solid windowtext 1.0pt;border-left:
-  none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:26.25pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border:solid windowtext 1.0pt;border-left:
-  none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:26.25pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border:solid windowtext 1.0pt;border-left:
-  none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:26.25pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
- </tr>
- <tr style='mso-yfti-irow:10;height:24.0pt'>
-  <td width=394 colspan=3 style='width:295.75pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  mso-border-left-alt:solid windowtext 1.0pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:24.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Demonstra imagem
-  positiva de si e confiança em sua capacidade para enfrentar dificuldades e
-  desafios.<o:p></o:p></span></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:24.0pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:24.0pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:24.0pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=434 colspan=2 style='width:325.55pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:24.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Identifica e cria
-  diferentes sons e reconhece rimas e aliterações em cantigas de roda e<br>
-  textos poéticos.<o:p></o:p></span></p>
-  </td>
-  <td width=32 style='width:24.0pt;border-top:none;border-left:none;border-bottom:
-  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;mso-border-top-alt:
-  solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
-  solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:24.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:24.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:24.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
- </tr>
- <tr style='mso-yfti-irow:11;height:26.05pt'>
-  <td width=394 colspan=3 style='width:295.75pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  mso-border-left-alt:solid windowtext 1.0pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:26.05pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Compartilha os
-  objetos e os espaços com crianças da mesma faixa etária e adultos.<o:p></o:p></span></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:26.05pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:26.05pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:26.05pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=434 colspan=2 style='width:325.55pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:26.05pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><span
-  style='mso-spacerun:yes'></span>Demonstra interesse e atenção ao ouvir a
-  leitura de histórias e outros textos, diferenciando escrita de ilustrações, e
-  acompanhando, com orientação do adulto-leitor, a direção da leitura (de cima
-  para baixo, da esquerda para a direita).<o:p></o:p></span></p>
-  </td>
-  <td width=32 style='width:24.0pt;border-top:none;border-left:none;border-bottom:
-  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;mso-border-top-alt:
-  solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
-  solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:26.05pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:26.05pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:26.05pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
- </tr>
- <tr style='mso-yfti-irow:12;height:24.0pt'>
-  <td width=394 colspan=3 style='width:295.75pt;border-top:none;border-left:
-  solid windowtext 1.0pt;border-bottom:none;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-left-alt:solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:24.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Comunica-se com os
-  colegas e os adultos, buscando compreendê-los e fazendo-se compreender.<o:p></o:p></span></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:24.0pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:24.0pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:24.0pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=434 colspan=2 style='width:325.55pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:24.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Formula e responde
-  perguntas sobre fatos da história narrada, identificando cenários,<o:p></o:p></span></p>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>personagens e
-  principais acontecimentos.<o:p></o:p></span></p>
-  </td>
-  <td width=32 style='width:24.0pt;border-top:none;border-left:none;border-bottom:
-  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;mso-border-top-alt:
-  solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
-  solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:24.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:24.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:24.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
- </tr>
- <tr style='mso-yfti-irow:13;height:17.15pt'>
-  <td width=394 colspan=3 style='width:295.75pt;border:solid windowtext 1.0pt;
-  border-bottom:none;mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:
-  solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;background:
-  white;padding:0cm 3.5pt 0cm 3.5pt;height:17.15pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Percebe que as pessoas
-  têm características físicas diferentes, respeitando essas diferenças.<o:p></o:p></span></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:17.15pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:17.15pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:17.15pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=434 colspan=2 style='width:325.55pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:17.15pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Relata experiências
-  e fatos acontecidos, histórias ouvidas, filmes ou peças teatrais<br>
-  assistidos etc.<o:p></o:p></span></p>
-  </td>
-  <td width=32 style='width:24.0pt;border-top:none;border-left:none;border-bottom:
-  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;mso-border-top-alt:
-  solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
-  solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:17.15pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:17.15pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:17.15pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
- </tr>
- <tr style='mso-yfti-irow:14;height:14.85pt'>
-  <td width=394 colspan=3 style='width:295.75pt;border:solid windowtext 1.0pt;
-  border-bottom:none;mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:
-  solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;background:
-  white;padding:0cm 3.5pt 0cm 3.5pt;height:14.85pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Respeita regras
-  básicas de convívio social nas interações e brincadeiras.<o:p></o:p></span></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:14.85pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:14.85pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:14.85pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=434 colspan=2 style='width:325.55pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:14.85pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Cria e conta
-  histórias oralmente, com base em imagens ou temas sugeridos.<o:p></o:p></span></p>
-  </td>
-  <td width=32 style='width:24.0pt;border-top:none;border-left:none;border-bottom:
-  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;mso-border-top-alt:
-  solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
-  solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:14.85pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:14.85pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:14.85pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
- </tr>
- <tr style='mso-yfti-irow:15;height:17.5pt'>
-  <td width=394 colspan=3 style='width:295.75pt;border:solid windowtext 1.0pt;
-  mso-border-top-alt:.5pt;mso-border-left-alt:1.0pt;mso-border-bottom-alt:1.0pt;
-  mso-border-right-alt:.5pt;mso-border-color-alt:windowtext;mso-border-style-alt:
-  solid;background:white;padding:0cm 3.5pt 0cm 3.5pt;height:17.5pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Resolve conflitos
-  nas interações e brincadeiras, com a orientação de um adulto.<o:p></o:p></span></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:17.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:17.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:17.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=434 colspan=2 style='width:325.55pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:17.5pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  class=SpellE><span style='font-size:8.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>Manusea</span></span><span style='font-size:8.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'> diferentes portadores textuais, demonstrando reconhecer seus usos
-  sociais.<o:p></o:p></span></p>
-  </td>
-  <td width=32 style='width:24.0pt;border-top:none;border-left:none;border-bottom:
-  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;mso-border-top-alt:
-  solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
-  solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:17.5pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:17.5pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:17.5pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
- </tr>
- <tr style='mso-yfti-irow:16;height:26.45pt'>
-  <td width=394 nowrap colspan=3 rowspan=2 style='width:295.75pt;border-top:
-  none;border-left:solid windowtext 1.0pt;border-bottom:solid black 1.0pt;
-  border-right:none;mso-border-top-alt:solid windowtext 1.0pt;background:#D9D9D9;
-  padding:0cm 3.5pt 0cm 3.5pt;height:26.45pt'>
+
+
+
+
+  <?php 
+    $res_parec1=$conexao->query("SELECT parecer_disciplina.descricao,parecer_disciplina.id FROM parecer_disciplina WHERE serie_id =$idserie and disciplina_id=40");   
+      $parece_o_eu=array();
+      $parece_escuta_fala=array();
+
+      $array_parece_o_eu=array();
+      $array_parece_escuta_fala=array();
+
+      $conta=0;
+
+    $array_parece_o_eu=array();
+    foreach ($res_parec1 as $key => $value) {
+      $parecer_disciplina_id=$value['id'];
+      $descricao=$value['descricao'];
+      $parece_o_eu[$conta]=$descricao;
+
+      $array_parece_o_eu[$conta]=$parecer_disciplina_id;
+     
+      $conta++;
+    }
+
+    $res_parec2=$conexao->query("SELECT parecer_disciplina.descricao,parecer_disciplina.id FROM
+    parecer_disciplina WHERE serie_id =$idserie and disciplina_id=42");
+    $conta2=0;
+    foreach ($res_parec2 as $key => $value) {
+      $parecer_disciplina_id=$value['id'];
+      $descricao=$value['descricao']; 
+      $parece_escuta_fala[$conta2]=$descricao;
+      $array_parece_escuta_fala[$conta2]=$parecer_disciplina_id;
+      $conta2++;
+    }
+    
+    $maior=$conta2;
+    if ($conta>$conta2) {
+     $maior=$conta;
+    }
+    $conta_row=0;
+
+    for ($i=0; $i < $maior ; $i++) {
+
+      echo" <tr style='mso-yfti-irow:9;height:26.25pt'>";
+      if ($i<$conta ) {
+       
+   ?>
+
+        <td width=394 colspan=3 style='width:295.75pt;border:solid windowtext 1.0pt;
+        border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+        mso-border-left-alt:solid windowtext 1.0pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+        height:26.25pt'>
+        <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
+        style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
+        "Times New Roman";color:black;mso-fareast-language:PT-BR'>
+        <?php echo $parece_o_eu[$i]; ?>
+        <o:p></o:p></span></p>
+        </td>
+        <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
+        border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+        mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+        mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+        height:26.25pt'>
+        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+        line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
+        mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+        PT-BR'><o:p>
+   <?php
+          $parecer_disciplina_id1=$array_parece_o_eu[$i];
+
+            $result_nota_aula1=$conexao->query("
+            SELECT * FROM nota WHERE
+            escola_id=$idescola and
+            turma_id=$idturma and
+            avaliacao='av3' and periodo_id=1 and parecer_disciplina_id=$parecer_disciplina_id1 and aluno_id=$idaluno ");
+            $nota_tri_1='';
+            foreach ($result_nota_aula1 as $key => $value) {
+            $nota_tri_1=$value['sigla'];
+            }
+
+            echo "$nota_tri_1";
+
+            // 1=====
+            ?>
+        </o:p></span></b></p>
+        </td>
+        <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
+        border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+        mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+        mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+        height:26.25pt'>
+        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+        line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
+        mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+        PT-BR'>&nbsp;<o:p></o:p></span></b></p>
+        </td>
+        <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
+        border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+        mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+        mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+        height:26.25pt'>
+        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+        line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
+        mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+        PT-BR'>&nbsp;<o:p></o:p></span></b></p>
+        </td>
+    <?php 
+      }else{
+    ?>
+       
+
+
+ <td width=394 colspan=3 style='width:295.75pt;border:solid windowtext 1.0pt;
+        border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+        mso-border-left-alt:solid windowtext 1.0pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+        height:26.25pt'>
+        <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
+        style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
+        "Times New Roman";color:black;mso-fareast-language:PT-BR'>
+       
+        <o:p></o:p></span></p>
+        </td>
+        <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
+        border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+        mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+        mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+        height:26.25pt'>
+        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+        line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
+        mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+        PT-BR'>&nbsp;<o:p></o:p></span></b></p>
+        </td>
+        <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
+        border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+        mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+        mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+        height:26.25pt'>
+        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+        line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
+        mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+        PT-BR'>&nbsp;<o:p></o:p></span></b></p>
+        </td>
+        <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
+        border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+        mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+        mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+        height:26.25pt'>
+        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+        line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
+        mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+        PT-BR'>&nbsp;<o:p></o:p></span></b></p>
+        </td>
+
+
+
+
+<?php 
+      }
+
+    if ($i<$conta2 ) {
+  ?>
+
+    <td width=434 colspan=2 rowspan="" style='width:325.55pt;border:solid windowtext 1.0pt;
+    border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+    solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+    height:26.25pt'>
+    <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
+    style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
+    "Times New Roman";color:black;mso-fareast-language:PT-BR'><?php echo $parece_escuta_fala[$i]; ?><o:p></o:p></span></p>
+    </td>
+    <td width=32 style='width:24.0pt;border:solid windowtext 1.0pt;border-left:
+    none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+    background:white;padding:0cm 3.5pt 0cm 3.5pt;height:26.25pt'>
+    <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
+    style='font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
+    "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>
+      <b>
+<?php 
+
+ $parecer_disciplina_id2=$array_parece_escuta_fala[$i];
+
+  $result_nota_aula1=$conexao->query("
+  SELECT * FROM nota WHERE
+  escola_id=$idescola and
+  turma_id=$idturma and
+  avaliacao='av3' and periodo_id=1 and parecer_disciplina_id=$parecer_disciplina_id2 and aluno_id=$idaluno ");
+  $nota_tri_1='';
+  foreach ($result_nota_aula1 as $key => $value) {
+  $nota_tri_1=$value['sigla'];
+  }
+
+   echo " $nota_tri_1";
+  // 2======
+ ?>
+   
+</b>
+ </o:p>
+  </span></p>
+    </td>
+    <td width=32 style='width:24.05pt;border:solid windowtext 1.0pt;border-left:
+    none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+    background:white;padding:0cm 3.5pt 0cm 3.5pt;height:26.25pt'>
+    <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
+    style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
+    "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
+    </td>
+    <td width=32 style='width:24.05pt;border:solid windowtext 1.0pt;border-left:
+    none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+    background:white;padding:0cm 3.5pt 0cm 3.5pt;height:26.25pt'>
+    <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
+    style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
+    "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
+    </td>
+    <?php 
+    }
+   ?>
+   </tr>
+
+<?php 
+}
+?>
+
+
+<!-- 2 ************************************************************************************* 2 -->
+
+
+ <tr style='mso-yfti-irow:7;height:15.75pt'>
+  <td width=394 nowrap colspan=3 rowspan=2 style='width:295.75pt;border:solid windowtext 1.0pt;
+  border-bottom:solid black 1.0pt;mso-border-top-alt:windowtext .5pt;
+  mso-border-left-alt:windowtext 1.0pt;mso-border-bottom-alt:black 1.0pt;
+  mso-border-right-alt:windowtext .5pt;mso-border-style-alt:solid;background:
+  #D9D9D9;padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><b><span style='font-size:9.0pt;font-family:"Arial",sans-serif;
   mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>II-CORPO, GESTOS E MOVIMENTOS</span></b><b><span style='font-size:
-  10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  PT-BR'>II-CORPO, GESTOS E MOVIMENTOS</span></b><b><span style='font-size:10.0pt;
+  font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
   color:black;mso-fareast-language:PT-BR'><o:p></o:p></span></b></p>
   </td>
   <td width=71 nowrap colspan=3 style='width:53.4pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  mso-border-left-alt:solid windowtext 1.0pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:26.45pt'>
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+  height:15.75pt'>
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><b><span style='font-size:8.0pt;font-family:"Arial",sans-serif;
   mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
   PT-BR'>TRIMESTRE<o:p></o:p></span></b></p>
   </td>
-  <td width=434 colspan=2 style='width:325.55pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:26.45pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Manipula textos e
-  participa de situações de escuta para ampliar seu contato com diferentes
-  gêneros textuais (parlendas, histórias de aventura, tirinhas, cartazes de
-  sala, cardápios, notícias etc.).<o:p></o:p></span></p>
+  <td width=434 colspan=2 rowspan=2 style='width:325.55pt;border-top:solid windowtext 1.0pt;
+  border-left:none;border-bottom:none;border-right:solid windowtext 1.0pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
+  background:#D9D9D9;padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+  line-height:normal'><b><span style='font-size:9.0pt;font-family:"Arial",sans-serif;
+  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+  PT-BR'>V- ESPAÇO, TEMPOS, QUANTIDADES, RELAÇÕES E TRANSFORMAÇÕES</span></b><b><span
+  style='font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
+  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p></o:p></span></b></p>
   </td>
-  <td width=32 style='width:24.0pt;border-top:none;border-left:none;border-bottom:
-  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;mso-border-top-alt:
-  solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
-  solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:26.45pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Batang",serif;mso-bidi-font-family:Batang;
-  color:black;mso-fareast-language:KO'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:26.45pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:26.45pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
+  <td width=96 colspan=3 style='width:72.1pt;border-top:solid windowtext 1.0pt;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  mso-border-bottom-alt:solid black 1.0pt;padding:0cm 3.5pt 0cm 3.5pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+  line-height:normal'><b><span style='font-size:8.0pt;font-family:"Arial",sans-serif;
+  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+  PT-BR'>TRIMESTRE</span></b><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
+  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+  PT-BR'><o:p></o:p></span></b></p>
   </td>
  </tr>
- <tr style='mso-yfti-irow:17;height:29.25pt'>
-  <td width=24 nowrap style='width:17.8pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:29.25pt'>
+
+
+ <tr style='mso-yfti-irow:8;height:15.75pt'>
+  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+  height:15.75pt'>
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
   mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
@@ -1052,7 +723,7 @@ div.WordSection1
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:29.25pt'>
+  height:15.75pt'>
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
   mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
@@ -1062,180 +733,39 @@ div.WordSection1
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:29.25pt'>
+  height:15.75pt'>
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
   mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
   PT-BR'>3º<o:p></o:p></span></b></p>
   </td>
-  <td width=434 colspan=2 style='width:325.55pt;border:none;border-right:solid windowtext 1.0pt;
+  <td width=32 style='width:24.0pt;border:none;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-right-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:29.25pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  class=SpellE><span style='font-size:8.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>Manusea</span></span><span style='font-size:8.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'> diferentes instrumentos e suportes de escrita para desenhar, traçar
-  letras e outros sinais gráficos.<o:p></o:p></span></p>
-  </td>
-  <td width=32 style='width:24.0pt;border-top:none;border-left:none;border-bottom:
-  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;mso-border-top-alt:
-  solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
-  solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:29.25pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:29.25pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:29.25pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
- </tr>
- <tr style='mso-yfti-irow:18;height:21.6pt'>
-  <td width=394 colspan=3 style='width:295.75pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext 1.0pt;mso-border-top-alt:
-  1.0pt;mso-border-left-alt:1.0pt;mso-border-bottom-alt:.5pt;mso-border-right-alt:
-  .5pt;mso-border-color-alt:windowtext;mso-border-style-alt:solid;background:
-  white;padding:0cm 3.5pt 0cm 3.5pt;height:21.6pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Apropria-se de
-  gestos e movimentos de sua cultura no cuidado de si e nos jogos e
-  brincadeiras.<o:p></o:p></span></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:21.6pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:21.6pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid black 1.0pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:21.6pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=434 colspan=2 rowspan=2 style='width:325.55pt;border:solid windowtext 1.0pt;
-  border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
-  solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;background:
-  #D9D9D9;padding:0cm 3.5pt 0cm 3.5pt;height:21.6pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:9.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>V- ESPAÇO, TEMPOS, QUANTIDADES, RELAÇÕES E TRANSFORMAÇÕES<o:p></o:p></span></b></p>
-  </td>
-  <td width=96 colspan=3 style='width:72.1pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0cm 3.5pt 0cm 3.5pt;height:21.6pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:8.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>TRIMESTRE</span></b><b><span style='font-size:9.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'><o:p></o:p></span></b></p>
-  </td>
- </tr>
- <tr style='mso-yfti-irow:19;height:26.65pt'>
-  <td width=394 colspan=3 style='width:295.75pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  mso-border-left-alt:solid windowtext 1.0pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:26.65pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Desloca seu corpo
-  no espaço, orientando-se por noções como em frente, atrás, no alto, embaixo,
-  dentro, fora etc., ao se envolver em brincadeiras e atividades de diferentes
-  naturezas.<o:p></o:p></span></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:26.65pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:26.65pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid black 1.0pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:26.65pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=32 style='width:24.0pt;border-top:none;border-left:none;border-bottom:
-  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;mso-border-top-alt:
-  solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
-  solid windowtext .5pt;padding:0cm 3.5pt 0cm 3.5pt;height:26.65pt'>
+  height:15.75pt'>
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
   style='font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
   "Times New Roman";color:black;mso-fareast-language:PT-BR'>1º</span></b><span
   style='font-size:10.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
   "Times New Roman";mso-fareast-language:PT-BR'><o:p></o:p></span></p>
   </td>
-  <td width=32 style='width:24.05pt;border:solid windowtext 1.0pt;border-left:
-  none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:26.65pt'>
+  <td width=32 style='width:24.05pt;border-top:solid windowtext 1.0pt;
+  border-left:none;border-bottom:none;border-right:solid windowtext 1.0pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
+  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
   style='font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
   "Times New Roman";color:black;mso-fareast-language:PT-BR'>2º</span></b><span
   style='font-size:10.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
   "Times New Roman";mso-fareast-language:PT-BR'><o:p></o:p></span></p>
   </td>
-  <td width=32 style='width:24.05pt;border:solid windowtext 1.0pt;border-left:
-  none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:26.65pt'>
+  <td width=32 style='width:24.05pt;border-top:solid windowtext 1.0pt;
+  border-left:none;border-bottom:none;border-right:solid windowtext 1.0pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
+  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
   style='font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
   "Times New Roman";color:black;mso-fareast-language:PT-BR'>3º</span></b><span
@@ -1243,308 +773,257 @@ div.WordSection1
   "Times New Roman";mso-fareast-language:PT-BR'><o:p></o:p></span></p>
   </td>
  </tr>
- <tr style='mso-yfti-irow:20;height:23.05pt'>
-  <td width=394 colspan=3 style='width:295.75pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  mso-border-left-alt:solid windowtext 1.0pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:23.05pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Explora formas de deslocamento
-  no espaço (pular, saltar, dançar), combinando movimentos e seguindo
-  orientações.<o:p></o:p></span></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:23.05pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:23.05pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid black 1.0pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:23.05pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=434 colspan=2 style='width:325.55pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext 1.0pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:23.05pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Explora e descreve
-  semelhanças e diferenças entre as características e propriedades dos objetos
-  (textura, massa, tamanho).<o:p></o:p></span></p>
-  </td>
-  <td width=32 style='width:24.0pt;border-top:none;border-left:none;border-bottom:
-  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;mso-border-top-alt:
-  solid windowtext 1.0pt;mso-border-top-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
-  solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
-  white;padding:0cm 3.5pt 0cm 3.5pt;height:23.05pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext 1.0pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:23.05pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext 1.0pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:23.05pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
- </tr>
- <tr style='mso-yfti-irow:21;height:22.45pt'>
-  <td width=394 colspan=3 style='width:295.75pt;border-top:none;border-left:
-  solid windowtext 1.0pt;border-bottom:none;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-left-alt:solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:22.45pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Demonstra progressiva
-  independência no cuidado do seu corpo.<o:p></o:p></span></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border:none;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-right-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:22.45pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border:none;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-right-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:22.45pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border:none;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:22.45pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=434 colspan=2 style='width:325.55pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:22.45pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Observa, relata e
-  descreve incidentes do cotidiano e fenômenos naturais (luz solar, vento,
-  chuva etc.).<o:p></o:p></span></p>
-  </td>
-  <td width=32 style='width:24.0pt;border-top:none;border-left:none;border-bottom:
-  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;mso-border-top-alt:
-  solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:
-  solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
-  white;padding:0cm 3.5pt 0cm 3.5pt;height:22.45pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:22.45pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:22.45pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
- </tr>
- <tr style='mso-yfti-irow:22;height:21.65pt'>
-  <td width=394 colspan=3 style='width:295.75pt;border:solid windowtext 1.0pt;
-  border-bottom:none;mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:
-  solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;background:
-  white;padding:0cm 3.5pt 0cm 3.5pt;height:21.65pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Desenvolve
-  progressivamente as habilidades manuais, adquirindo controle para desenhar,
-  pintar, rasgar, folhear, entre outros.<o:p></o:p></span></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border:solid windowtext 1.0pt;
-  border-left:none;mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:
-  solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
-  white;padding:0cm 3.5pt 0cm 3.5pt;height:21.65pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border:solid windowtext 1.0pt;
-  border-left:none;mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:
-  solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
-  white;padding:0cm 3.5pt 0cm 3.5pt;height:21.65pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:solid windowtext 1.0pt;
-  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;
-  mso-border-right-alt:solid black 1.0pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:21.65pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=434 colspan=2 style='width:325.55pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:21.65pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Compartilha, com
-  outras crianças, situações de cuidado de plantas e animais nos espaços da
-  instituição e fora dela.<o:p></o:p></span></p>
-  </td>
-  <td width=32 style='width:24.0pt;border-top:none;border-left:none;border-bottom:
-  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;mso-border-top-alt:
-  solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:
-  solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
-  white;padding:0cm 3.5pt 0cm 3.5pt;height:21.65pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:21.65pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:21.65pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
- </tr>
- <tr style='mso-yfti-irow:23;height:25.75pt'>
-  <td width=394 colspan=3 rowspan=2 style='width:295.75pt;border:solid windowtext 1.0pt;
-  border-bottom:solid black 1.0pt;mso-border-top-alt:windowtext 1.0pt;
+
+
+
+
+  <?php 
+    $res_parec1=$conexao->query("SELECT parecer_disciplina.descricao,parecer_disciplina.id FROM parecer_disciplina WHERE serie_id =$idserie and disciplina_id=41");   
+      $parece_o_eu=array();
+      $parece_escuta_fala=array();
+      $conta=0;
+
+    foreach ($res_parec1 as $key => $value) {
+      $parecer_disciplina_id=$value['id'];
+      $descricao=$value['descricao'];
+      $parece_o_eu[$conta]=$descricao;
+      $array_parece_o_eu[$conta]=$parecer_disciplina_id;
+     
+      $conta++;
+    }
+
+    $res_parec2=$conexao->query("SELECT parecer_disciplina.descricao,parecer_disciplina.id FROM
+    parecer_disciplina WHERE serie_id =$idserie and disciplina_id=44");
+    $conta2=0;
+    foreach ($res_parec2 as $key => $value) {
+      $parecer_disciplina_id=$value['id'];
+      $descricao=$value['descricao']; 
+      $parece_escuta_fala[$conta2]=$descricao;
+      $conta2++;
+    }
+    
+    $maior=$conta2;
+    if ($conta>$conta2) {
+     $maior=$conta;
+    }
+    $conta_row=0;
+
+    for ($i=0; $i < $maior ; $i++) {
+
+      echo" <tr style='mso-yfti-irow:9;height:26.25pt'>";
+      if ($i<$conta ) {
+       
+   ?>
+
+        <td width=394 colspan=3 style='width:295.75pt;border:solid windowtext 1.0pt;
+        border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+        mso-border-left-alt:solid windowtext 1.0pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+        height:26.25pt'>
+        <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
+        style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
+        "Times New Roman";color:black;mso-fareast-language:PT-BR'>
+        <?php echo $parece_o_eu[$i]; ?>
+        <o:p></o:p></span></p>
+        </td>
+        <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
+        border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+        mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+        mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+        height:26.25pt'>
+        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+        line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
+        mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+        PT-BR'>&nbsp;<o:p>
+
+<?php 
+ $parecer_disciplina_id1=$array_parece_o_eu[$i];
+  $result_nota_aula1=$conexao->query("
+  SELECT * FROM nota WHERE
+  escola_id=$idescola and
+  turma_id=$idturma and
+  avaliacao='av3' and periodo_id=1 and parecer_disciplina_id=$parecer_disciplina_id1 and aluno_id=$idaluno ");
+  $nota_tri_1='';
+  foreach ($result_nota_aula1 as $key => $value) {
+  $nota_tri_1=$value['sigla'];
+  }
+  echo " $nota_tri_1";
+
+  // 3========
+ ?>
+        </o:p></span></b></p>
+        </td>
+        <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
+        border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+        mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+        mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+        height:26.25pt'>
+        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+        line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
+        mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+        PT-BR'>&nbsp;<o:p></o:p></span></b></p>
+        </td>
+        <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
+        border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+        mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+        mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+        height:26.25pt'>
+        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+        line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
+        mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+        PT-BR'>&nbsp;<o:p></o:p></span></b></p>
+        </td>
+    <?php 
+      }else{
+    ?>
+       
+
+
+ <td width=394 colspan=3 style='width:295.75pt;border:solid windowtext 1.0pt;
+        border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+        mso-border-left-alt:solid windowtext 1.0pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+        height:26.25pt'>
+        <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
+        style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
+        "Times New Roman";color:black;mso-fareast-language:PT-BR'>
+       
+        <o:p></o:p></span></p>
+        </td>
+        <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
+        border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+        mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+        mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+        height:26.25pt'>
+        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+        line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
+        mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+        PT-BR'>&nbsp;<o:p></o:p></span></b></p>
+        </td>
+        <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
+        border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+        mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+        mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+        height:26.25pt'>
+        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+        line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
+        mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+        PT-BR'>&nbsp;<o:p></o:p></span></b></p>
+        </td>
+        <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
+        border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+        mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+        mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+        height:26.25pt'>
+        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+        line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
+        mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+        PT-BR'>&nbsp;<o:p></o:p></span></b></p>
+        </td>
+
+
+
+
+<?php 
+      }
+
+    if ($i<$conta2 ) {
+  ?>
+
+    <td width=434 colspan=2 rowspan="" style='width:325.55pt;border:solid windowtext 1.0pt;
+    border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+    solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+    height:26.25pt'>
+    <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
+    style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
+    "Times New Roman";color:black;mso-fareast-language:PT-BR'><?php echo $parece_escuta_fala[$i]; ?><o:p></o:p></span></p>
+    </td>
+    <td width=32 style='width:24.0pt;border:solid windowtext 1.0pt;border-left:
+    none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+    background:white;padding:0cm 3.5pt 0cm 3.5pt;height:26.25pt'>
+    <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
+    style='font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
+    "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>
+      
+<?php 
+
+ $parecer_disciplina_id2=$array_parece_escuta_fala[$i];
+
+  $result_nota_aula1=$conexao->query("
+  SELECT * FROM nota WHERE
+  escola_id=$idescola and
+  turma_id=$idturma and
+  avaliacao='av3' and periodo_id=1 and parecer_disciplina_id=$parecer_disciplina_id2 and aluno_id=$idaluno ");
+  $nota_tri_1='';
+  foreach ($result_nota_aula1 as $key => $value) {
+  $nota_tri_1=$value['sigla'];
+  }
+
+   echo "$nota_tri_1";
+  // 4=========
+
+ ?>
+
+    </o:p></span></p>
+    </td>
+    <td width=32 style='width:24.05pt;border:solid windowtext 1.0pt;border-left:
+    none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+    background:white;padding:0cm 3.5pt 0cm 3.5pt;height:26.25pt'>
+    <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
+    style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
+    "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
+    </td>
+    <td width=32 style='width:24.05pt;border:solid windowtext 1.0pt;border-left:
+    none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+    background:white;padding:0cm 3.5pt 0cm 3.5pt;height:26.25pt'>
+    <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
+    style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
+    "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
+    </td>
+    <?php 
+    }
+   ?>
+   </tr>
+
+<?php 
+}
+?>
+
+
+<!-- 3 *************************************************************************************  3 -->
+
+
+ <tr style='mso-yfti-irow:7;height:15.75pt'>
+  <td width=394 nowrap colspan=3 rowspan=2 style='width:295.75pt;border:solid windowtext 1.0pt;
+  border-bottom:solid black 1.0pt;mso-border-top-alt:windowtext .5pt;
   mso-border-left-alt:windowtext 1.0pt;mso-border-bottom-alt:black 1.0pt;
   mso-border-right-alt:windowtext .5pt;mso-border-style-alt:solid;background:
-  #D9D9D9;padding:0cm 3.5pt 0cm 3.5pt;height:25.75pt'>
+  #D9D9D9;padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><b><span style='font-size:9.0pt;font-family:"Arial",sans-serif;
   mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>III TRAÇOS, SONS, CORES E FORMAS</span></b><b><span style='font-size:
-  10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
+  PT-BR'>III TRAÇOS, SONS, CORES E FORMAS</span></b><b><span style='font-size:10.0pt;
+  font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
   color:black;mso-fareast-language:PT-BR'><o:p></o:p></span></b></p>
   </td>
-  <td width=71 nowrap colspan=3 style='width:53.4pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:25.75pt'>
+  <td width=71 nowrap colspan=3 style='width:53.4pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+  height:15.75pt'>
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><b><span style='font-size:8.0pt;font-family:"Arial",sans-serif;
   mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
   PT-BR'>TRIMESTRE<o:p></o:p></span></b></p>
   </td>
-  <td width=434 colspan=2 style='width:325.55pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:25.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Identifica relações
-  espaciais (dentro e fora, em cima, embaixo, acima, abaixo, entre e do lado) e
-  temporais (antes, durante e depois).<o:p></o:p></span></p>
-  </td>
-  <td width=32 style='width:24.0pt;border-top:none;border-left:none;border-bottom:
-  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;mso-border-top-alt:
-  solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
-  solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:25.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:25.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:25.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
+ 
+  
  </tr>
- <tr style='mso-yfti-irow:24;height:16.5pt'>
+
+
+ <tr style='mso-yfti-irow:8;height:15.75pt'>
   <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:16.5pt'>
+  height:15.75pt'>
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
   mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
@@ -1554,7 +1033,7 @@ div.WordSection1
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:16.5pt'>
+  height:15.75pt'>
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
   mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
@@ -1564,290 +1043,185 @@ div.WordSection1
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:16.5pt'>
+  height:15.75pt'>
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
   mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
   PT-BR'>3º<o:p></o:p></span></b></p>
   </td>
-  <td width=434 colspan=2 style='width:325.55pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:16.5pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Classifica objetos,
-  considerando determinado atributo (tamanho, peso, cor, forma etc.).<o:p></o:p></span></p>
-  </td>
-  <td width=32 style='width:24.0pt;border-top:none;border-left:none;border-bottom:
-  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;mso-border-top-alt:
-  solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:
-  solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
-  white;padding:0cm 3.5pt 0cm 3.5pt;height:16.5pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:16.5pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:16.5pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
  </tr>
- <tr style='mso-yfti-irow:25;height:17.65pt'>
-  <td width=394 colspan=3 style='width:295.75pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
-  solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
-  white;padding:0cm 3.5pt 0cm 3.5pt;height:17.65pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Cria sons com
-  materiais, objetos e instrumentos musicais, para acompanhar diversos ritmos
-  de música.<o:p></o:p></span></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:17.65pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:17.65pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid black 1.0pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:17.65pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=434 colspan=2 style='width:325.55pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:17.65pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Utiliza conceitos
-  básicos de tempo (agora, antes, durante, depois, ontem, hoje, amanhã, lento,
-  rápido, depressa, devagar).<o:p></o:p></span></p>
-  </td>
-  <td width=32 style='width:24.0pt;border-top:none;border-left:none;border-bottom:
-  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;mso-border-top-alt:
-  solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:
-  solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
-  white;padding:0cm 3.5pt 0cm 3.5pt;height:17.65pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:17.65pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:17.65pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
- </tr>
- <tr style='mso-yfti-irow:26;height:24.85pt'>
-  <td width=394 colspan=3 style='width:295.75pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  mso-border-left-alt:solid windowtext 1.0pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:24.85pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Utiliza materiais
-  variados com possibilidades de manipulação (argila, massa de modelar),
-  explorando cores, texturas, superfícies, planos, formas e volumes ao criar
-  objetos tridimensionais.<o:p></o:p></span></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:24.85pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:24.85pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid black 1.0pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:24.85pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=434 colspan=2 style='width:325.55pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:24.85pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Conta oralmente
-  objetos, pessoas, livros etc., em contextos diversos.<o:p></o:p></span></p>
-  </td>
-  <td width=32 style='width:24.0pt;border-top:none;border-left:none;border-bottom:
-  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;mso-border-top-alt:
-  solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:
-  solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
-  white;padding:0cm 3.5pt 0cm 3.5pt;height:24.85pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:24.85pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:24.85pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
- </tr>
- <tr style='mso-yfti-irow:27;height:26.65pt'>
-  <td width=394 colspan=3 style='width:295.75pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:
-  .5pt;mso-border-left-alt:1.0pt;mso-border-bottom-alt:1.0pt;mso-border-right-alt:
-  .5pt;mso-border-color-alt:windowtext;mso-border-style-alt:solid;background:
-  white;padding:0cm 3.5pt 0cm 3.5pt;height:26.65pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Utiliza diferentes
-  fontes sonoras disponíveis no ambiente em brincadeiras cantadas, canções,
-  músicas e melodias.<o:p></o:p></span></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:26.65pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:26.65pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-  height:26.65pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-  PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
-  <td width=434 colspan=2 style='width:325.55pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:26.65pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Registra com
-  números a quantidade de crianças (meninas e meninos, presentes e ausentes) e
-  a quantidade de objetos da mesma natureza (bonecas, bolas, livros etc.).<o:p></o:p></span></p>
-  </td>
-  <td width=32 style='width:24.0pt;border-top:none;border-left:none;border-bottom:
-  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;mso-border-top-alt:
-  solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:
-  solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;background:
-  white;padding:0cm 3.5pt 0cm 3.5pt;height:26.65pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:26.65pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 style='width:24.05pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:26.65pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
-  </td>
- </tr>
+
+
+
+
+  <?php 
+    $res_parec1=$conexao->query("SELECT parecer_disciplina.descricao,parecer_disciplina.id FROM parecer_disciplina WHERE serie_id =$idserie and disciplina_id=43");   
+      $parece_o_eu=array();
+      $parece_escuta_fala=array();
+
+      $array_parece_o_eu=array();
+      $conta=0;
+
+    foreach ($res_parec1 as $key => $value) {
+      $parecer_disciplina_id=$value['id'];
+      $descricao=$value['descricao'];
+      $parece_o_eu[$conta]=$descricao;
+      $array_parece_o_eu[$conta]=$parecer_disciplina_id;
+     
+      $conta++;
+    }
+
+
+    $res_parec2=$conexao->query("SELECT parecer_disciplina.descricao,parecer_disciplina.id FROM
+    parecer_disciplina WHERE serie_id =$idserie and disciplina_id=0");
+    $conta2=0;
+    foreach ($res_parec2 as $key => $value) {
+      $parecer_disciplina_id=$value['id'];
+      $descricao=$value['descricao']; 
+      $parece_escuta_fala[$conta2]=$descricao;
+
+      $array_parece_o_eu[$conta2]=$parecer_disciplina_id;
+      $conta2++;
+    }
+    
+    $maior=$conta2;
+    if ($conta>$conta2) {
+     $maior=$conta;
+    }
+    $conta_row=0;
+
+    for ($i=0; $i < $maior ; $i++) {
+
+      echo" <tr style='mso-yfti-irow:9;height:26.25pt'>";
+      if ($i<$conta ) {
+       
+   ?>
+
+        <td width=394 colspan=3 style='width:295.75pt;border:solid windowtext 1.0pt;
+        border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+        mso-border-left-alt:solid windowtext 1.0pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+        height:26.25pt'>
+        <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
+        style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
+        "Times New Roman";color:black;mso-fareast-language:PT-BR'>
+        <?php echo $parece_o_eu[$i]; ?>
+        <o:p></o:p></span></p>
+        </td>
+        <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
+        border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+        mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+        mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+        height:26.25pt'>
+        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+        line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
+        mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+        PT-BR'>&nbsp;<o:p>
+
+          <?php 
+
+           $parecer_disciplina_id1=$array_parece_o_eu[$i];
+
+            $result_nota_aula1=$conexao->query("
+            SELECT * FROM nota WHERE
+            escola_id=$idescola and
+            turma_id=$idturma and
+            avaliacao='av3' and periodo_id=1 and parecer_disciplina_id=$parecer_disciplina_id1 and aluno_id=$idaluno ");
+            $nota_tri_1='';
+            foreach ($result_nota_aula1 as $key => $value) {
+            $nota_tri_1=$value['sigla'];
+            }
+
+             echo " $nota_tri_1";
+            // 5========
+
+           ?>
+
+        </o:p></span></b></p>
+        </td>
+        <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
+        border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+        mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+        mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+        height:26.25pt'>
+        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+        line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
+        mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+        PT-BR'>&nbsp;<o:p></o:p></span></b></p>
+        </td>
+        <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
+        border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+        mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+        mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+        height:26.25pt'>
+        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+        line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
+        mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+        PT-BR'>&nbsp;<o:p></o:p></span></b></p>
+        </td>
+    <?php 
+      }else{
+    ?>
+       
+
+
+ <td width=394 colspan=3 style='width:295.75pt;border:solid windowtext 1.0pt;
+        border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+        mso-border-left-alt:solid windowtext 1.0pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+        height:26.25pt'>
+        <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
+        style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
+        "Times New Roman";color:black;mso-fareast-language:PT-BR'>
+       
+        <o:p></o:p></span></p>
+        </td>
+        <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
+        border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+        mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+        mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+        height:26.25pt'>
+        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+        line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
+        mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+        PT-BR'>&nbsp;<o:p></o:p></span></b></p>
+        </td>
+        <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
+        border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+        mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+        mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+        height:26.25pt'>
+        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+        line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
+        mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+        PT-BR'>&nbsp;<o:p></o:p></span></b></p>
+        </td>
+        <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
+        border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+        mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+        mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+        height:26.25pt'>
+        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+        line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
+        mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+        PT-BR'>&nbsp;<o:p></o:p></span></b></p>
+        </td>
+
+
+
+
+<?php 
+      }
+
+   
+  ?>
+
+   </tr>
+
+<?php 
+}
+?>
+
+   
+
  <tr style='mso-yfti-irow:28;height:15.0pt'>
   <td width=996 nowrap colspan=11 style='width:746.8pt;border:solid windowtext 1.0pt;
   border-top:none;mso-border-top-alt:solid windowtext 1.0pt;mso-border-top-alt:
