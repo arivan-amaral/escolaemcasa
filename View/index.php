@@ -79,7 +79,7 @@ session_start();
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">EDUCA LEM</h3>
+                <!-- <h3 class="card-title">EDUCA LEM</h3> -->
               </div>
 
 
