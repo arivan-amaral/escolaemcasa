@@ -83,10 +83,10 @@ session_start();
               </div>
 
 
-              <button type="button" class="btn btn-block btn-danger btn-lg">
+         <!--      <button type="button" class="btn btn-block btn-danger btn-lg">
                 <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SAIBA MAIS</font>
                 </font>
-              </button>
+              </button> -->
               <button type="button" class="btn btn-block btn-primary btn-lg" data-toggle='modal' data-target='#modal-default'>
                 <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ENTRAR</font>
                 </font>
