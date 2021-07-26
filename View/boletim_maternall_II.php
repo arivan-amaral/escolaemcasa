@@ -1,5 +1,5 @@
 <?php 
- function boletim_maternal_1_2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma){
+ function boletim_maternal_1_2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$nome_professor){
 ?>
 <html xmlns:v="urn:schemas-microsoft-com:vml"
 xmlns:o="urn:schemas-microsoft-com:office:office"
@@ -297,7 +297,12 @@ div.WordSection1
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
   style='font-size:9.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
   "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'>PROFESSOR (A):<o:p></o:p></span></p>
+  color:black;mso-fareast-language:PT-BR'>PROFESSOR (A):<o:p>
+
+    <?php
+        echo $nome_professor;
+     ?>
+  </o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:6;height:8.75pt'>
@@ -1230,9 +1235,31 @@ div.WordSection1
   white;padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
   style='font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Observações:<o:p></o:p></span></b></p>
+  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Observações:<o:p>
+
+<?php
+
+        $result_parecer_tri1=$conexao->query("
+          SELECT * FROM nota WHERE
+          escola_id=$idescola and
+          turma_id=$idturma and
+          periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
+
+
+        $parecer_tri_1="";
+      
+        foreach ($result_parecer_tri1 as $key => $value) {
+          $parecer_tri_1=$value['parecer_descritivo'];
+        }
+      echo "$parecer_tri_1";
+
+  ?>
+  </o:p></span></b></p>
   </td>
  </tr>
+
+
+
  <tr style='mso-yfti-irow:29;mso-yfti-lastrow:yes;height:16.5pt'>
   <td width=996 nowrap colspan=11 style='width:746.8pt;border:solid windowtext 1.0pt;
   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:

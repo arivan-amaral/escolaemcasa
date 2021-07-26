@@ -4,6 +4,7 @@
   include"../Model/Aluno.php";
   include"../Model/Escola.php";
   include"../Model/Turma.php";
+  include"../Model/Professor.php";
 
   include"boletim_maternall_II.php";
   include"boletim_serie_1ano_id_3.php";
@@ -56,10 +57,23 @@ else if ($idserie >3 && $idserie <=8) {
   echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
   $numero=1;
     $res_alunos=listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola);
+    $nome_professor= " ";
     foreach ($res_alunos as $key => $value) {
       $idaluno=$value['idaluno'];
       $nome_aluno=$value['nome_aluno'];
-        boletim_maternal_1_2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno ,$nome_escola,$nome_turma);
+
+        $res=listar_nome_professor_turma($conexao,$idaluno);
+        $conta_virgula=0;
+        foreach ($res as $key => $value) {
+          if($conta_virgula>0){
+            $nome_professor.= ", ";
+          }
+         $nome_professor.= $value['nome_professor'];
+         $conta_virgula++;
+        }
+        $nome_professor.= ".";
+
+        boletim_maternal_1_2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno ,$nome_escola,$nome_turma,$nome_professor);
       echo "<br><br>";
       $numero++;
     }

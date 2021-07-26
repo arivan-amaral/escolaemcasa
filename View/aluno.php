@@ -302,12 +302,7 @@
 
 
 
-
-
-
-
-
-        <div class="row">
+ <div class="row">
                   <div class="col-lg-3 col-6">
                     <!-- small card -->
                     <div class="small-box bg-info">
