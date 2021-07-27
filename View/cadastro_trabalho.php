@@ -146,7 +146,7 @@ include "alertas.php";
 
                         </div>
 
-                        <input type="text" name="idescola" id="idescola" value="<?php echo $idescola; ?>" class="form-control" required="">
+                        <input type="hidden" name="idescola" id="idescola" value="<?php echo $idescola; ?>" class="form-control" required="">
                         <input type="hidden" name="turma_id" value="<?php echo $_GET['turm']; ?>" class="form-control" required="">
 
                         <input type="hidden" name="disciplina_id" value="<?php echo $_GET['disc']; ?>" class="form-control" required="">
