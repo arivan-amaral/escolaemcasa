@@ -146,7 +146,7 @@ include "alertas.php";
 
                         </div>
 
-                        <input type="hidden" name="idescola" value="<?php echo $_GET['idescola']; ?>" class="form-control" required="">
+                        <input type="text" name="idescola" id="idescola" value="<?php echo $idescola; ?>" class="form-control" required="">
                         <input type="hidden" name="turma_id" value="<?php echo $_GET['turm']; ?>" class="form-control" required="">
 
                         <input type="hidden" name="disciplina_id" value="<?php echo $_GET['disc']; ?>" class="form-control" required="">
@@ -226,7 +226,7 @@ include "alertas.php";
                                  <div class='timeline-footer'>
                                     <a href='#' onclick='excluir_trabalho($id);' class='btn btn-sm bg-danger'>Deletar Trabalho</a>
 
-                                   <a class='btn btn-sm bg-warning' data-toggle='modal' data-target='#modal-default' onclick='listar_alunos_trabalho($id,$idturma,$iddisciplina,$idescola);'> VER QUEM ENTREGOU </a>
+                                   <a class='btn btn-sm bg-warning' data-toggle='modal' data-target='#modal-default' onclick='listar_alunos_trabalho($id,$idturma,$iddisciplina);'> VER QUEM ENTREGOU </a>
           
 
                                  </div>

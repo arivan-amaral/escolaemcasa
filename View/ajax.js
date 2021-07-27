@@ -1207,9 +1207,10 @@ function relatorio_de_visualizacao_video(idaluno,idturma,iddisciplina) {
 
 
 
- function listar_alunos_trabalho(idtrabalho,idturma,iddisciplina,idescola) {
+ function listar_alunos_trabalho(idtrabalho,idturma,iddisciplina) {
      
      var result = document.getElementById("listar_alunos");
+     var idescola = document.getElementById("idescola").value;
       result.innerHTML = "";
 
     
