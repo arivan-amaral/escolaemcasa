@@ -31,8 +31,47 @@ session_start();
  
 
 ?>
+<script type='text/javascript'>
+      function modal_video() {
+          $(document).ready(function() {
+              $('#modal-bem-vindo').modal('show');
+            });
+      }
 
-<script src="ajax.js"></script>
+      setTimeout('modal_video();',800);
+      
+  </script>
+
+
+<div class="modal fade" id="modal-bem-vindo">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">BEM VINDO</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+
+          <div class="modal-body">
+              <!-- /corpo -->
+          <center>
+
+            <!-- <h1>ATENÇÃO, NÃO LANÇAR NOTA ANTES DAS 20:30, <font color="RED">SERVIDOR EM MANUTENÇÃO</font></h1> -->
+             <iframe width="400" height="315" src="https://www.youtube.com/embed/86bozRFrNKs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </center>
+            <p>ATENÇÃO, O vídeo acima possui conteúdo muito importante, assista!  </p>
+              <!-- /corpo -->
+        </div>
+      <button type="button" class="btn btn-default" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fechar</font></font></button>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+
+<script src="ajax.js?<?php echo rand(); ?>"></script>
 
 <div class="content-wrapper" style="min-height: 529px;">
     <!-- Content Header (Page header) -->
