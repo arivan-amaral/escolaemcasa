@@ -127,7 +127,7 @@
 
                           <h3 class='widget-user-username text-right'>$nome</h3>
 
-                          <h5 class='widget-user-desc text-right'>".$_SESSION['cargo']." </h5>
+                          <h5 class='widget-user-desc text-right'> Aluno(a) </h5>
 
                         </div>
 
