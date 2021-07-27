@@ -130,7 +130,7 @@
                   <li class='nav-item'>
                     <a href='alterar_foto.php' class='nav-link'>
                       <ion-icon name='images-outline'></ion-icon>
-                      <p>Aletrar Foto</p>
+                      <p>Alterar Foto</p>
                     </a>
                   </li>
                 </ul>
@@ -139,7 +139,7 @@
                   <li class='nav-item'>
                     <a href='alterar_dados_aluno.php' class='nav-link'>
                       <i class='far fa-circle nav-icon text-primary'></i>
-                      <p>Aletrar Meus Dados</p>
+                      <p>Alterar Meus Dados</p>
                     </a>
                   </li>
                 </ul> ";
@@ -161,7 +161,7 @@
                               <li class='nav-item'>
                                 <a href='alterar_dados_funcionario.php' class='nav-link'>
                                   <i class='far fa-circle nav-icon text-primary'></i>
-                                  <p>Aletrar Meus Dados</p>
+                                  <p>Alterar Meus Dados</p>
                                 </a>
                               </li>
                             </ul>";
