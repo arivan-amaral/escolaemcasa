@@ -11,72 +11,83 @@ try {
 
   $result="";
   $idmensagem="";
-  $res=$conexao->query("SELECT * FROM chat,aluno where aluno_id= idaluno and turma_id=$idturma and escola_id=$idescola ");
+  $res=$conexao->query("SELECT * FROM chat where turma_id=$idturma and escola_id=$idescola ");
   $minha=0;
   foreach ($res as $key => $value) {
       $aluno_id=$value['aluno_id'];
-      $nome_aluno=$value['nome'];
+      $funcionario_id=$value['funcionario_id'];
+      $nome='';
       $data=$value['data'];
       $mensagem=$value['mensagem'];
       $idmensagem=$value['id'];
-      
 
-      if ($idaluno==$aluno_id) {
-         $result.="
-          <div class='direct-chat-msg right'>
-            <div class='direct-chat-infos clearfix'>
-              <span class='direct-chat-name float-right'>$nome_aluno</span>
-              <span class='direct-chat-timestamp float-left'>$data</span>
-            </div>
-            <div class='direct-chat-text'>
-              $mensagem <ion-icon name='checkmark-done-outline'></ion-icon>
-            </div>
-          </div>";
-          $minha=1;
+      if ($aluno_id!='') {
+          $res_a=$conexao->query("SELECT * FROM aluno where idaluno=$aluno_id ");
+          foreach ($res_a as $key => $value) {
+            $nome=$value['nome'];
+          }
+
+
+          if ($idaluno==$aluno_id) {
+               $result.="
+                <div class='direct-chat-msg right'>
+                  <div class='direct-chat-infos clearfix'>
+                    <span class='direct-chat-name float-right'>$nome</span>
+                    <span class='direct-chat-timestamp float-left'>$data</span>
+                  </div>
+                  <div class='direct-chat-text'>
+                    $mensagem <ion-icon name='checkmark-done-outline'></ion-icon>
+                  </div>
+                </div>";
+                $minha=1;
+
+            }else{
+              $result.="
+              <div class='direct-chat-msg'>
+                <div class='direct-chat-infos clearfix'>
+                  <span class='direct-chat-name float-left'>$nome</span>
+                  <span class='direct-chat-timestamp float-right'>$data</span>
+                </div>    
+                <div class='direct-chat-text'>
+                  $mensagem 
+                </div>
+              </div>";
+              $minha=0;
+            }
 
       }else{
-        $result.="
-        <div class='direct-chat-msg'>
-          <div class='direct-chat-infos clearfix'>
-            <span class='direct-chat-name float-left'>$nome_aluno</span>
-            <span class='direct-chat-timestamp float-right'>$data</span>
-          </div>    
-          <div class='direct-chat-text'>
-            $mensagem 
-          </div>
-        </div>";
-        $minha=0;
+
+          $res_f=$conexao->query("SELECT * FROM funcionario where idfuncionario=$funcionario_id ");
+          foreach ($res_f as $key => $value) {
+            $nome=$value['nome'];
+          }
+
+
+
+              $result.="
+              <div class='direct-chat-msg'>
+                <div class='direct-chat-infos clearfix'>
+                  <span class='direct-chat-name float-left'><font color='red'>$nome</font> </span>
+                  <span class='direct-chat-timestamp float-right'>$data</span>
+                </div>    
+                <div class='direct-chat-text'>
+                  $mensagem 
+                </div>
+              </div>";
+              $minha=0;
+            
       }
-  }
-
-
-  $res=$conexao->query("SELECT * FROM chat,funcionario where idfuncionario=funcionario_id and turma_id=$idturma and escola_id=$idescola ");
-  $minha=0;
-  foreach ($res as $key => $value) {
-      $funcionario_id=$value['funcionario_id'];
-      $nome_aluno=$value['nome'];
-      $data=$value['data'];
-      $mensagem=$value['mensagem'];
-      $idmensagem=$value['id'];
-      
-        $result.="
-        <div class='direct-chat-msg'>
-          <div class='direct-chat-infos clearfix'>
-            <span class='direct-chat-name float-left'>$nome_aluno</span>
-            <span class='direct-chat-timestamp float-right'>$data</span>
-          </div>    
-          <div class='direct-chat-text'>
-            $mensagem 
-          </div>
-        </div>";
 
       
   }
+
+
+
 
   echo $result."#§".$idmensagem."#§".$minha;
 
 
 } catch (Exception $e) {
-  
+  echo "$e";
 }
 ?>
