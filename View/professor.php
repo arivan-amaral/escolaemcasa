@@ -484,7 +484,7 @@ if (!isset($_COOKIE['ajuda2'])) {
 
                                      <a class='btn btn-info btn-block btn-flat'
 
-                                            href='#' onclick=alert('chat desabilitado');>
+                                            href='chat_professor.php?escola_id=$idescola&turma_id=$idturma' onclick=alert('chat desabilitado');>
 
 
 

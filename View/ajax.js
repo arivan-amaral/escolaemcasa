@@ -1490,6 +1490,44 @@ function relatorio_de_visualizacao_video(idaluno,idturma,iddisciplina) {
      xmlreq.send(null);
  }
 
+ function chat_receber_professor() {
+
+    var result = document.getElementById("messages");
+    var id_mensagem = document.getElementById("id_mensagem");
+
+    var turma_id = document.getElementById("turma_id").value;
+    var escola_id = document.getElementById("escola_id").value;
+    
+    var xmlreq = CriaRequest();   
+    xmlreq.open("GET", "../Controller/Chat_receber_professor.php?turma_id="+turma_id+"&escola_id="+escola_id, true);
+
+    xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                var recebe=xmlreq.responseText;
+                var vetor=recebe.split("#§");
+                if (id_mensagem.value != vetor[1]) {
+                 result.innerHTML = result.innerHTML+""+vetor[0];
+                 id_mensagem.value=vetor[1];
+                 rolar();
+                 if (vetor[2]==0) {
+                    playaudio();
+                 }
+
+
+                }
+             }else{
+
+                 result.innerHTML ="Erro ao receber mensagens";
+               
+                 
+             }
+         }
+     };
+     xmlreq.send(null);
+ }
+
 
 
  function chat_enviar() {
@@ -1511,6 +1549,38 @@ function relatorio_de_visualizacao_video(idaluno,idturma,iddisciplina) {
              }else{
 
                  result.innerHTML ="Erro ao receber mensagens";
+               
+                 
+             }
+         }
+     };
+     xmlreq.send(null);
+ }
+
+
+ function chat_enviar_professor() {
+
+
+    var result = document.getElementById("messages");
+    var mensagem_enviar = document.getElementById("mensagem_enviar").value;
+    var xmlreq = CriaRequest();   
+
+    var turma_id = document.getElementById("turma_id").value;
+    var escola_id = document.getElementById("escola_id").value;
+    xmlreq.open("GET", "../Controller/Chat_enviar_professor.php?mensagem="+mensagem_enviar+"&turma_id="+turma_id+"&escola_id="+escola_id, true);
+
+
+    xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                 result.innerHTML = xmlreq.responseText;
+                 document.getElementById("mensagem_enviar").value="";
+                 chat_receber_professor();
+                 rolar();
+             }else{
+
+                 result.innerHTML ="VERIFIQUE SUA CONEXÃO COM A INTERNET";
                
                  
              }
