@@ -12,6 +12,8 @@ if (isset($_SESSION['id_funcionario']))  {
 
 $disciplina_id = $_GET['disc'];
 $turma_id = $_GET['turm'];
+$idturma = $_GET['turm'];
+$idescola = $_GET['idescola'];
 ?>
 <script type="text/javascript" src="ajax.js">
   
@@ -69,6 +71,7 @@ $turma_id = $_GET['turm'];
                                         <select class="form-control" name="aluno_id" required="">
                                           <option></option>
                                           <?php 
+                                              //$listar_aluno=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
                                               $listar_aluno=listar_aluno($conexao,$id_funcionario,$disciplina_id,$turma_id);
                                               $conta=1;
                                               foreach ($listar_aluno as $key => $value) {
@@ -76,7 +79,7 @@ $turma_id = $_GET['turm'];
                                                 $nome_aluno=$value['nome'];
                                                 echo "
                                                   <option value='$idaluno' >$nome_aluno</option>
-
+ 
                                                 ";
                                               }
 

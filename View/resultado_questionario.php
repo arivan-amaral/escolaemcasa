@@ -31,6 +31,9 @@ if (!isset($_SESSION['idprofessor'])) {
   $iddisciplina=$_GET['disc'];
   $turma=$_GET['turma'];
   $disciplina=$_GET['disciplina'];
+  
+  $idturma=$_GET['turm'];
+  $idescola=$_GET['idescola'];
 
   $data=date("Y-m-d H:i:s");
 
@@ -150,7 +153,9 @@ if (!isset($_SESSION['idprofessor'])) {
                         <select class="form-control" id='aluno' onchange="resultado_questao();" >
                           <option></option>
                             <?php 
-                                $listar_aluno=listar_aluno_da_turma($conexao,$turma_id);
+                                $listar_aluno=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
+                                
+                                // $listar_aluno=listar_aluno_da_turma($conexao,$turma_id);
                                 $conta=1;
                                 foreach ($listar_aluno as $key => $value) {
                                   $idaluno=$value['idaluno'];
