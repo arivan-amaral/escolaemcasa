@@ -142,7 +142,7 @@ function limpa_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $prof
 }
 
 function listar_trimestre($conexao) {
-    $resultado=$conexao->query("SELECT * FROM periodo");
+    $resultado=$conexao->query("SELECT * FROM periodo where status =1");
   return $resultado;
 }
 
