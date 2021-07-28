@@ -31,7 +31,7 @@ if (!isset($_SESSION['idprofessor'])) {
   $iddisciplina=$_GET['disc'];
   $turma=$_GET['turma'];
   $disciplina=$_GET['disciplina'];
-  
+
   $idturma=$_GET['turm'];
   $idescola=$_GET['idescola'];
 
@@ -108,6 +108,27 @@ if (!isset($_SESSION['idprofessor'])) {
             <section class="content">
 
               <div class="container-fluid">
+                      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <button class="btn btn-block btn-lg btn-secondary"><?php
+
+            $nome_turma='';
+            $nome_disciplina='';
+            if (isset($_GET['turma'])) {
+              $nome_turma=$_GET['turma'];
+            } 
+            if (isset($_GET['disciplina'])) {
+               $nome_disciplina=$_GET['disciplina'];
+
+            }
+
+             echo $nome_turma ." - ". $nome_disciplina; ?></button>
+        </div>
+      </div>
+      <br>
+      <br>
+      
 
                 <div class="row">
 
