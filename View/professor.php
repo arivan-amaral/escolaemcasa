@@ -482,26 +482,44 @@ if (!isset($_COOKIE['ajuda2'])) {
 
 
 
-                                     <a class='btn btn-info btn-block btn-flat'
+                                      <a class='btn btn-info btn-block btn-flat' href='chat_professor.php?escola_id=$idescola&turma_id=$idturma' onclick=alert('chat desabilitado');>
+                                            <font style='vertical-align: inherit;'>
+                                             <font style='vertical-align: inherit;'> 
+                                                <i class='fas fa-comments'></i>
+                                                  Chat da turma
+                                                </font>
+                                              </font>
+                                      </a>
 
-                                            href='chat_professor.php?escola_id=$idescola&turma_id=$idturma' onclick=alert('chat desabilitado');>
+                                      <a class='btn btn-secondary btn-block btn-flat' href='boletim.php?idescola=$idescola&idturma=$idturma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie' onclick=alert('chat desabilitado');>
+                                            <font style='vertical-align: inherit;'>
+                                             <font style='vertical-align: inherit;'> 
+                                               <i class='fa fa-calendar'></i>
+                                                BOLETIM
+                                                </font>
+                                              </font>
+                                      </a>                                       
 
 
+                                      <a   href='diario_rendimento.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat'>
+                                      <i class='fa fa-calendar'></i> 
+                                      RESULTADO FINAL
+                                      </a>
 
-                                             <font style='vertical-align: inherit;'>
 
-                                               <font style='vertical-align: inherit;'> 
+                                      <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat'>
+                                      <i class='fa fa-calendar'></i> 
+                                      FICHA DE RENDIMENTO TRI I
+                                      </a> 
 
-                                                   <i class='fas fa-comments'></i>
-
-                                                     Chat da turma     
-
-                                                 </font>
-
-                                             </font>
-
-                                           </a> 
-
+                                      <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=2' class='btn btn-secondary btn-block btn-flat'>
+                                      <i class='fa fa-calendar'></i> 
+                                      FICHA DE RENDIMENTO TRI II
+                                      </a>   
+                                      <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=3' class='btn btn-secondary btn-block btn-flat'>
+                                      <i class='fa fa-calendar'></i> 
+                                      FICHA DE RENDIMENTO TRI III
+                                      </a> 
                                         
 
                                   </div>
