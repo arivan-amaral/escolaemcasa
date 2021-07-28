@@ -776,8 +776,11 @@ $conta_nota_av3=0;
      and  avaliacao='av1'
      group by avaliacao,periodo_id ORDER  BY avaliacao DESC");
      $nota_ava=0;
+     $nota_1=0;
     foreach ($result_nota_avaliacao as $key => $value) {
           $nota=$value['nota'];
+          $nota_1=$nota;
+
 
             ?>
            <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
@@ -826,8 +829,10 @@ $conta_nota_av3=0;
      and  avaliacao='av2'
      group by avaliacao,periodo_id ORDER  BY avaliacao DESC");
      $nota_ava=0;
+     $nota_2=0;
     foreach ($result_nota_avaliacao as $key => $value) {
           $nota=$value['nota'];
+          $nota_2=$nota;
             ?>
            <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
              border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
@@ -875,8 +880,11 @@ $conta_nota_av2++;
      and  avaliacao='av3'
      group by avaliacao,periodo_id ORDER  BY avaliacao DESC");
      $nota_ava=0;
+      $nota_3=0;
+
     foreach ($result_nota_avaliacao as $key => $value) {
           $nota=$value['nota'];
+          $nota_3=$nota;
 
 
             ?>
@@ -934,8 +942,11 @@ $result_nota_avaliacao_rp=$conexao->query("
      disciplina_id=$iddisciplina and 
      periodo_id=$periodo_id  and avaliacao='RP' and aluno_id=$idaluno  group by avaliacao,periodo_id");
      $nota_ava=0;
+     $nota_rp=0;
      foreach ($result_nota_avaliacao_rp as $key => $value) {
          $nota=$value['nota'];
+         $nota_rp=$nota;
+
          ?>
          <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
                border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
@@ -974,7 +985,17 @@ $result_nota_avaliacao_rp=$conexao->query("
                <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
                line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
                mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-               color:black;mso-fareast-language:PT-BR'>  </span></b></p>
+               color:black;mso-fareast-language:PT-BR'> 
+
+<?php 
+if ($nota_3<5 && $nota_rp!='' && $nota_rp>$nota_3) {
+ $nota_3=($nota_3-$nota_3)+$nota_rp;
+}
+
+$media_final=  round( ($nota_1 + $nota_2 + $nota_3 )/3 ,2);
+echo "$media_final";
+?>
+                </span></b></p>
           </td>
 
               <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
@@ -984,7 +1005,27 @@ $result_nota_avaliacao_rp=$conexao->query("
                <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
                line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
                mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-               color:black;mso-fareast-language:PT-BR'>  </span></b></p>
+               color:black;mso-fareast-language:PT-BR'>  
+
+
+<?php
+ 
+// faltas trimestre 1
+$res_fre_t1=$conexao->query("
+SELECT count(*) as 'quantidade' FROM frequencia WHERE
+escola_id=$idescola and
+turma_id=$idturma and
+disciplina_id=$iddisciplina and 
+presenca=0 and data_frequencia BETWEEN '2021-02-01' and '2021-05-01' and aluno_id=$idaluno ");
+
+$quantidade_falta1=0;
+foreach ($res_fre_t1 as $key => $value) {
+  $quantidade_falta1=$value['quantidade'];
+}
+
+echo "$quantidade_falta1";
+?>
+             </span></b></p>
              </td>
       <?php
 
