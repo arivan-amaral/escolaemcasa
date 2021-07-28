@@ -5,6 +5,8 @@
 	}
 
 	function login_aluno($conexao,$usuario,$senha){
+
+
 		$result=$conexao->query("SELECT * FROM aluno,ano_letivo,turma where
 ano_letivo.aluno_id=idaluno and
 ano_letivo.turma_id=turma.idturma AND
