@@ -32,6 +32,8 @@ echo"<BR>";
 $inicio=36;
 $limite_data=18;
 $limite_aula=18;
+$fim= 18;
+// diario_frequencia_pagina_final($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie)
 
 diario_frequencia_pagina_final($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula+$inicio,$conta_data+$inicio,$limite_data+$inicio,$limite_aula+$inicio,$periodo_id,$idserie);
 

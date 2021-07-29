@@ -204,7 +204,7 @@ foreach ($result_escola as $key => $value) {
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
   style='font-family:"Tw Cen MT Condensed",sans-serif;mso-fareast-font-family:
   "Times New Roman";mso-bidi-font-family:Arial;color:black;mso-fareast-language:
-  PT-BR'>TIPO DE ENSINO: ANOS FINAIS <o:p></o:p></span></b></p>
+  PT-BR'>TIPO DE ENSINO:  <o:p></o:p></span></b></p>
   </td>
   <td width=351 nowrap colspan=18 style='width:263.6pt;padding:0cm 3.5pt 0cm 3.5pt;
   height:12.0pt'>
@@ -431,7 +431,7 @@ foreach ($result_data_aula as $key => $value) {
 
 
 
-
+//referes as datas das aulas
 for ($i=$conta_data; $conta_data<$limite_data ; $i++) { 
  
    if ($conta_data%2==0) {
@@ -549,12 +549,14 @@ foreach ($result_nota_aula as $key => $value) {
 
 
 <?php
+//arivan
+
 $result_aula=$conexao->query("
 SELECT * FROM frequencia WHERE
 escola_id=$idescola and
 turma_id=$idturma and
 disciplina_id=$iddisciplina and 
-data_frequencia BETWEEN '2021-01-01' and '2021-07-09' limit  $inicio,$fim");
+data_frequencia BETWEEN '2021-05-03' and '2021-07-09' limit  $inicio,$fim");
 
 foreach ($result_aula as $key => $value) {
    if ($conta_aula%2==0) {
@@ -567,7 +569,7 @@ foreach ($result_aula as $key => $value) {
       <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
       line-height:normal'><div class="Namerotate"><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-      color:black;mso-fareast-language:PT-BR'><?php echo "Aula $conta_aula"; ?> </div></span></p>
+      color:black;mso-fareast-language:PT-BR'> <?php echo "Aula $conta_aula";  ?> </div></span></p>
   </td>
 
   
@@ -603,7 +605,7 @@ for ($i=$conta_aula; $i < $limite_aula ; $i++) {
       <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
       line-height:normal'><div class="Namerotate"><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-      color:black;mso-fareast-language:PT-BR'><?php echo "Aula $conta_aula"; ?> </div></span></p>
+      color:black;mso-fareast-language:PT-BR'><?php echo "Aula $conta_aula";  ?> </div></span></p>
   </td>
 
   
