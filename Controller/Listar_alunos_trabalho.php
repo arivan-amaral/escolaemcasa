@@ -2,6 +2,7 @@
     include("../Model/Conexao.php");
     include("../Model/Aluno.php");
     include("../Model/Trabalho.php");
+    include("Conversao.php");
 
 try {
   sleep(1);
@@ -39,16 +40,21 @@ try {
                           // $data_recebido='2021-02-08 23:59:00';
 
                           if ($cal_data >= -80000  ) {
-                               $return.=" 
+                            $return.=" 
                             <div class='time-label'>
-                               <span class='bg-blue'>Recebido: $data_recebido</span>
+                               <span class='bg-blue'>Recebido:".data($data_recebido)."</span>
                              </div>";
                              
                            }else {
                             $return.=" 
-                              <div class='time-label'>
-                                 <span class='bg-red'>Recebido com atraso  : $data_recebido</span>
-                               </div>";
+                            <div class='time-label'>
+                               <span class='bg-blue'>Recebido:".data($data_recebido)."</span>
+                             </div>";
+
+                            // $return.=" 
+                            //   <div class='time-label'>
+                            //      <span class='bg-red'>Recebido com atraso  :".data($data_recebido)."</span>
+                            //    </div>";
                             
                            }
 
