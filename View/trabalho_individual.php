@@ -32,7 +32,9 @@
   foreach ($res_d as $key => $value) {
     $disciplina=$value['nome_disciplina'];
   }
-  
+   
+ $array_url=explode('p?', $_SERVER["REQUEST_URI"]);
+ $url_get=$array_url[1];
 
   $data=date("Y-m-d H:i:s");
 
@@ -45,7 +47,7 @@
 
 
 
-<script src="ajax.js"></script>
+<script src="ajax.js?<?php echo rand(); ?>"></script>
 
 
 
@@ -119,6 +121,7 @@
                     <button type="button" class="btn btn-block  btn-success"><?php echo $turma."  - ".$disciplina ?></button>
 <br>
 
+  <input type="hidden" name="url_get" id="url_get" value="<?php echo $url_get; ?>">
 
                     <div class="timeline">
 
@@ -427,7 +430,7 @@
 
                               if ($extensao=="") {
 
-                                  echo "                          
+                                   echo "                          
 
                                   <!-- /.timeline-label -->
 
@@ -446,6 +449,7 @@
                                       <div class='timeline-body'>
                                         $comentario
                                       </div>
+                                    <a  onclick='excluir_trabalho_aluno($idtrabalho);' class='btn btn-sm bg-danger'>Excluir </a>
                                                                   
 
                                     </div>
@@ -500,7 +504,7 @@
                                          </a>
                                       </div>
                               
-
+<a  onclick='excluir_trabalho_aluno($idtrabalho);' class='btn btn-sm bg-danger'>Excluir </a>
                                     </div>
 
                                   </div>

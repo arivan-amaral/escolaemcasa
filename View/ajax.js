@@ -761,7 +761,6 @@ function excluir_trabalho(id) {
   Swal.fire({
     title: 'Deseja continuar com essa ação?',
     showDenyButton: true,
-    showCancelButton: true,
     confirmButtonText: `Sim`,
     denyButtonText: `Não`,
   }).then((result) => {
@@ -769,7 +768,26 @@ function excluir_trabalho(id) {
     if (result.isConfirmed) {
       window.location.href = "../Controller/Excluir_trabalho.php?id="+id+"";
     } else if (result.isDenied) {
-      Swal.fire('Não foi excluido', '', 'info')
+     // Swal.fire('Não foi excluido', '', 'info')
+    }
+  })
+}
+
+function excluir_trabalho_aluno(id) {
+  var url_get = document.getElementById("url_get").value;
+
+  Swal.fire({
+    title: 'Deseja continuar com essa ação?',
+    showDenyButton: true,
+    confirmButtonText: `Sim`,
+    denyButtonText: `Não`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+
+      window.location.href = "../Controller/Excluir_trabalho_aluno.php?id="+id+"&"+url_get;
+    } else if (result.isDenied) {
+     // Swal.fire('Não foi excluido', '', 'info')
     }
   })
 }

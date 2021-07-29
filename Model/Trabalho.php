@@ -43,6 +43,24 @@
 
 
 
+	function pesquisar_trabalho_entregue_aluno($conexao,$idtrabalho) {
+	    $result = $conexao->query("SELECT * FROM trabalho_entregue where id=$idtrabalho ");
+	    return $result;
+
+	}
+
+
+	function excluir_trabalho_aluno($conexao,$id) {
+
+	    $result = $conexao->exec("DELETE FROM trabalho_entregue where id=$id");
+
+	    return $result;
+
+	}
+
+
+
+
 
 	function listar_trabalho_recebido($conexao, $idtrabalho) {
 
