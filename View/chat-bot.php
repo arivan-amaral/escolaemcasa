@@ -2,6 +2,13 @@
 session_start();
 include'../Model/Conexao.php';
 include'Conversao.php';
+
+  $arquivo = file_get_contents('php://input');
+  $json= json_decode($arquivo);
+  $phone= $json->phone;
+  $mensagem_recebida=$json->text->message;
+
+
 function configuracao_api($conexao) {
       $result=$conexao->query("SELECT * FROM whatsapp_configuracao order by id desc limit 1");
       $api="";

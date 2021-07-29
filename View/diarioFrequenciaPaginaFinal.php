@@ -992,8 +992,8 @@ if ($nota_3<5 && $nota_rp!='' && $nota_rp>$nota_3) {
  $nota_3=($nota_3-$nota_3)+$nota_rp;
 }
 
-$media_final=  round( ($nota_1 + $nota_2 + $nota_3 )/3 ,2);
-echo "$media_final";
+$soma_total_notas=  round( ($nota_1 + $nota_2 + $nota_3 ),2);
+echo "$soma_total_notas";
 ?>
                 </span></b></p>
           </td>
