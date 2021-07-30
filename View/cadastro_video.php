@@ -174,70 +174,30 @@ include "alertas.php";
 
                       <!-- timeline time label -->
 
+<?php 
 
+echo "
 
-                  
+<div class='row'>
+<div class='col-sm-1'></div>
+<div class='col-sm-8'>
+  <div class='card card-secondary collapsed-card'>
+    <div class='card-header' data-card-widget='collapse'>
+      <h3 class='card-title'>VER MEUS VÍDEOS </h3>
 
-                    <?php 
+      <div class='card-tools'>
+        <button type='button' class='btn btn-tool' data-card-widget='collapse'>
+          <i class='fas fa-plus'></i>
+        </button>
+      </div>
+      <!-- /.card-tools -->
+    </div>
+    <!-- /.card-header -->
+    <div class='card-body' style='display: none;'>
 
-
-
-                    $result_gt= listar_video_gt_professor($conexao, $idserie,$iddisciplina);
-                    foreach ($result_gt as $key => $linha) {
-                         $idvideo=$linha['id'];
-                         $link=$linha['link'];
-                         $titulo=$linha['titulo'];
-                         $descricao=$linha['descricao'];
-                         $hora=$linha['data_visivel'];
-                         $data_visivel=data_simples($linha['data_visivel']);
-                         echo"
-                         <div class='time-label'>
-                          <b>Data visível:</b>
-                          <input  type='date' class='form-control is-invalid' id='data$idvideo' name='data' value='$data_visivel' required onchange='atualiza_data_hora_video($idvideo);' >
-                           <b>Hora visível:</b>
-                           <input  class='form-control is-invalid' id='hora$idvideo' type='time' name='hora'  value='".hora($hora)."' required onchange='atualiza_data_hora_video($idvideo);'>
-                         </div>
-                         <div>
-
-                                         <i class='fas fa-video bg-maroon'></i>
-
-
-
-                                         <div class='timeline-item'>
-
-                                           <span class='time'><i class='fas fa-clock'></i>$data_visivel</span>
-
-
-
-                                           <h3 class='timeline-header'><a href='#'>$titulo</a> $descricao</h3>
-
-
-
-                                           <div class='timeline-body'>
-
-                                             <div class='embed-responsive embed-responsive-16by9'>
-
-                                               <iframe class='embed-responsive-item' src='https://www.youtube.com/embed/$link' allowfullscreen></iframe>
-
-                                             </div>
-
-                                           </div>
-
-                                           <div class='timeline-footer'>
-
-                                              <!--<a href='../Controller/Excluir_video.php?id=$idvideo' class='btn btn-sm bg-red'>EXCLUIR VÍDEO</a>-->
-
-                                           </div>
-
-                                         </div>
-
-                                       </div>
-                         ";
-                    }
-
-
-                      $result= listar_video_professor($conexao, $idprofessor,$idturma,$iddisciplina,$idescola);
-                      foreach ($result as $key => $linha) {
+";
+                    $result= listar_video_professor($conexao, $idprofessor,$idturma,$iddisciplina,$idescola);
+                    foreach ($result as $key => $linha) {
                            $idvideo=$linha['id'];
                            $link=$linha['link'];
                            $titulo=$linha['titulo'];
@@ -247,9 +207,9 @@ include "alertas.php";
                            echo"
                            <div class='time-label'>
                             <b>Data visível:</b>
-                            <input  type='date' class='form-control is-invalid' id='data$idvideo' name='data' value='$data_visivel' required onchange='atualiza_data_hora_video($idvideo);' >
+                            <input  type='date' class='form-control is-valid' id='data$idvideo' name='data' value='$data_visivel' required onchange='atualiza_data_hora_video($idvideo);' >
                              <b>Hora visível:</b>
-                             <input  class='form-control is-invalid' id='hora$idvideo' type='time' name='hora'  value='".hora($hora)."' required onchange='atualiza_data_hora_video($idvideo);'>
+                             <input  class='form-control is-valid' id='hora$idvideo' type='time' name='hora'  value='".hora($hora)."' required onchange='atualiza_data_hora_video($idvideo);'>
                            </div>
                            <div>
 
@@ -288,6 +248,181 @@ include "alertas.php";
                                          </div>
                            ";
                       }
+
+
+echo"
+      </div>
+    </div>
+  </div>
+</div>
+";
+
+
+
+
+// abaixo videos postado pelo gt
+
+echo "
+
+<div class='row'>
+<div class='col-sm-1'></div>
+<div class='col-sm-8'>
+  <div class='card card-info collapsed-card'>
+    <div class='card-header' data-card-widget='collapse'>
+      <h3 class='card-title'>VER VÍDEOS DO GT</h3>
+
+      <div class='card-tools'>
+        <button type='button' class='btn btn-tool' data-card-widget='collapse'>
+          <i class='fas fa-plus'></i>
+        </button>
+      </div>
+      <!-- /.card-tools -->
+    </div>
+    <!-- /.card-header -->
+    <div class='card-body' style='display: none;'>
+
+";
+
+
+if ($idserie==16) {
+  
+
+  $result_turma = $conexao->query("SELECT * FROM turma where idturma=$idturma ");
+
+
+foreach ($result_turma as $key => $value_et) {
+    $etapa=$value_et['etapa'];
+     $array_url=explode('A', $etapa);
+     $inicio_etapa=$array_url[0];
+     $fim_etapa=$array_url[1];
+     for ($i=$inicio_etapa; $i <= $fim_etapa ; $i++) { 
+        $idserie=$i;
+        
+        $result_gt= listar_video_gt_professor($conexao, $idserie,$iddisciplina);
+        foreach ($result_gt as $key => $linha) {
+             $idvideo=$linha['id'];
+             $link=$linha['link'];
+             $titulo=$linha['titulo'];
+             $descricao=$linha['descricao'];
+             $hora=$linha['data_visivel'];
+             $data_visivel=data_simples($linha['data_visivel']);
+             echo"
+             <div class='time-label'>
+              <b>Data visível:</b>
+              <input  type='date' class='form-control is-valid' id='data$idvideo' name='data' value='$data_visivel' required onchange='atualiza_data_hora_video($idvideo);' >
+               <b>Hora visível:</b>
+               <input  class='form-control is-valid' id='hora$idvideo' type='time' name='hora'  value='".hora($hora)."' required onchange='atualiza_data_hora_video($idvideo);'>
+             </div>
+             <div>
+
+                             <i class='fas fa-video bg-maroon'></i>
+
+
+
+                             <div class='timeline-item'>
+
+                               <span class='time'><i class='fas fa-clock'></i>$data_visivel</span>
+
+
+
+                               <h3 class='timeline-header'><a href='#'>$titulo</a> $descricao</h3>
+
+
+
+                               <div class='timeline-body'>
+
+                                 <div class='embed-responsive embed-responsive-16by9'>
+
+                                   <iframe class='embed-responsive-item' src='https://www.youtube.com/embed/$link' allowfullscreen></iframe>
+
+                                 </div>
+
+                               </div>
+
+                               <div class='timeline-footer'>
+
+                                  <!--<a href='../Controller/Excluir_video.php?id=$idvideo' class='btn btn-sm bg-red'>EXCLUIR VÍDEO</a>-->
+
+                               </div>
+
+                             </div>
+
+                           </div>
+             ";
+        }
+
+  }//fim for
+
+}
+
+
+
+
+}else{
+
+
+                    $result_gt= listar_video_gt_professor($conexao, $idserie,$iddisciplina);
+                    foreach ($result_gt as $key => $linha) {
+                         $idvideo=$linha['id'];
+                         $link=$linha['link'];
+                         $titulo=$linha['titulo'];
+                         $descricao=$linha['descricao'];
+                         $hora=$linha['data_visivel'];
+                         $data_visivel=data_simples($linha['data_visivel']);
+                         echo"
+                         <div class='time-label'>
+                          <b>Data visível:</b>
+                          <input  type='date' class='form-control is-valid' id='data$idvideo' name='data' value='$data_visivel' required onchange='atualiza_data_hora_video($idvideo);' >
+                           <b>Hora visível:</b>
+                           <input  class='form-control is-valid' id='hora$idvideo' type='time' name='hora'  value='".hora($hora)."' required onchange='atualiza_data_hora_video($idvideo);'>
+                         </div>
+                         <div>
+
+                                         <i class='fas fa-video bg-maroon'></i>
+
+
+
+                                         <div class='timeline-item'>
+
+                                           <span class='time'><i class='fas fa-clock'></i>$data_visivel</span>
+
+
+
+                                           <h3 class='timeline-header'><a href='#'>$titulo</a> $descricao</h3>
+
+
+
+                                           <div class='timeline-body'>
+
+                                             <div class='embed-responsive embed-responsive-16by9'>
+
+                                               <iframe class='embed-responsive-item' src='https://www.youtube.com/embed/$link' allowfullscreen></iframe>
+
+                                             </div>
+
+                                           </div>
+
+                                           <div class='timeline-footer'>
+
+                                              <!--<a href='../Controller/Excluir_video.php?id=$idvideo' class='btn btn-sm bg-red'>EXCLUIR VÍDEO</a>-->
+
+                                           </div>
+
+                                         </div>
+
+                                       </div>
+                         ";
+                    }
+}//fim else
+
+echo"
+      </div>
+    </div>
+  </div>
+</div>
+";
+
+
 
                     ?>
 
