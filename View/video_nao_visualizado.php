@@ -18,6 +18,7 @@ $idaluno=$_SESSION['idaluno'];
 $idescola=$_SESSION['escola_id'];
 $idturmaGlobal=$_SESSION['turma_id'];
 $turma_id=$_SESSION['turma_id'];
+$idturma=$_SESSION['turma_id'];
 $idserie=$_SESSION['serie_id'];
 
   $data=date("Y-m-d H:i:s");
@@ -126,6 +127,108 @@ $idserie=$_SESSION['serie_id'];
 
 
 
+              if ($idserie==16) {
+                      
+
+                      $result_turma = $conexao->query("SELECT * FROM turma where idturma=$idturma ");
+
+
+                    foreach ($result_turma as $key => $value_et) {
+                        $etapa=$value_et['etapa'];
+                         $array_url=explode('A', $etapa);
+                         $inicio_etapa=$array_url[0];
+                         $fim_etapa=$array_url[1];
+                         for ($i=$inicio_etapa; $i <= $fim_etapa ; $i++) { 
+                            $idserie=$i;
+
+                            $result_por_serie=listar_video_aulas_gt_nao_visualisado_aluno($conexao,$idserie,$data);
+
+                            $cont=0;
+                            foreach ($result_por_serie as $key => $linha) {
+
+                                $cont++;
+                                 $idvideo=$linha['id'];
+                                 $link=$linha['link'];
+
+                                 $titulo=$linha['titulo'];
+
+                                 $descricao=$linha['descricao'];
+                                 $iddisciplina=$linha['id_disciplina'];
+
+                                 $data_visivel=data($linha['data_visivel']);
+
+                                 echo"
+                                 <br>
+                                 <div class='time-label'>";
+                                 $result_assistidos=listar_videos_assistidos_aluno($conexao,$idaluno,$idvideo);
+                                
+                                 $minutos=0;
+                                 
+                                 foreach ($result_assistidos as $key => $value) {
+                                  
+                                    $minutos=($minutos+$value['minuto']);
+                            
+                                  }
+                                  $minutos=$minutos/2;
+                                  if ($minutos>0) {
+                                    echo"<span class='bg-success'>$data_visivel esse vídeo foi visualizado: $minutos min </span>";
+
+                                  }else{
+                                    echo"<span class='bg-red'>$data_visivel esse vídeo NÂO foi visualizado</span>";
+
+                                  }
+
+
+                                 echo"</div>
+
+                                 <div>
+                                            
+                                                  <div class='timeline-item'>
+                                                   <span class='time'><i class='fas fa-clock'></i>$data_visivel</span>
+                                                   <h5 class='timeline-header'>id: $idvideo - <a href='#'>$titulo</a> $descricao</h5>
+
+
+
+                                                   <div class='timeline-body'>
+
+                                                    <a  href='video_aula_individual.php?idvideo=$idvideo&idturma=$idturma&iddisciplina=$iddisciplina'>
+                                                     <img src='imagens/assista-video.gif' width='200' classe='img-fluid'>
+                                                    </a>
+
+                                                   </div>
+
+                                                   <div class='timeline-footer'>
+
+
+
+                                                      <!--<a class='btn btn-sm bg-maroon'>Comentar</a>-->
+
+                                                   </div>
+
+                                                 </div>
+
+                                               </div>
+
+                                               <!-- END timeline item -->
+
+                                 ";
+
+                            }
+
+
+
+
+                         }
+                    } //fim foreach
+
+                echo"
+                  </div>
+                </div>
+              </div>
+            </div>
+            ";
+
+          }
 
                     $result_por_serie= listar_video_aulas_gt_nao_visualisado_aluno($conexao,$idserie,$data);
 

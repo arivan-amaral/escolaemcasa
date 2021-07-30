@@ -31,13 +31,8 @@
 
 
 <script src="ajax.js?<?php echo rand(); ?>"></script>
-<?php 
-  echo"<script>
-          setTimeout('notificacao_trabalho_whatsapp($idturma)',5000);
-      </script>";
- ?>
 
-<div class="content-wrapper" style="min-height: 529px;">
+ <div class="content-wrapper" style="min-height: 529px;">
 
     <!-- Content Header (Page header) -->
 
@@ -197,9 +192,9 @@
 
                                          </div>
 
-                                         <script>
-                                            
-                                         </script>
+                                        <script>
+                                          setInterval('visualizacao_video($idvideo,$idaluno)', 30000);
+                                        </script>
 
                            ";
 

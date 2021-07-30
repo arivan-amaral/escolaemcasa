@@ -13,8 +13,7 @@
   include '../Model/Video.php';
 
   include '../Controller/Conversao.php';
-
-date_default_timezone_set('America/Sao_Paulo');
+ date_default_timezone_set('America/Sao_Paulo');
 
   $idturma=$_GET['turm'];
   $iddisciplina=$_GET['disc'];
@@ -32,7 +31,7 @@ date_default_timezone_set('America/Sao_Paulo');
 
 
 
-<script src="ajax.js"></script>
+<script src="ajax.js?<?php echo rand(); ?>"></script>
 
 
 
@@ -91,7 +90,7 @@ date_default_timezone_set('America/Sao_Paulo');
 
 
 
-            </section>
+        
 
 
 
@@ -111,21 +110,137 @@ date_default_timezone_set('America/Sao_Paulo');
 
                     <!-- The time line -->
 
-
-
-
-
-
-
-
-
                     <div class="timeline">
 
                     <?php 
 
 
 
+                    // abaixo videos postado pelo gt
 
+                    echo "
+
+                    <div class='row'>
+                    <div class='col-sm-1'></div>
+                    <div class='col-sm-8'>
+                      <div class='card card-info collapsed-card'>
+                        <div class='card-header' data-card-widget='collapse'>
+                          <h3 class='card-title'>VER VÍDEOS DO GT </h3>
+
+                          <div class='card-tools'>
+                            <button type='button' class='btn btn-tool' data-card-widget='collapse'>
+                              <i class='fas fa-plus'></i>
+                            </button>
+                          </div>
+                          <!-- /.card-tools -->
+                        </div>
+                        <!-- /.card-header -->
+                        <div class='card-body' style='display: none;'>
+
+                    ";
+
+
+              if ($idserie==16) {
+                      
+
+                      $result_turma = $conexao->query("SELECT * FROM turma where idturma=$idturma ");
+
+
+                    foreach ($result_turma as $key => $value_et) {
+                        $etapa=$value_et['etapa'];
+                         $array_url=explode('A', $etapa);
+                         $inicio_etapa=$array_url[0];
+                         $fim_etapa=$array_url[1];
+                         for ($i=$inicio_etapa; $i <= $fim_etapa ; $i++) { 
+                            $idserie=$i;
+
+                            $result_por_serie= listar_video_aulas_gt_aluno($conexao,$idserie,$iddisciplina,$data);
+
+                            $cont=0;
+                            foreach ($result_por_serie as $key => $linha) {
+
+                                $cont++;
+                                 $idvideo=$linha['id'];
+                                 $link=$linha['link'];
+
+                                 $titulo=$linha['titulo'];
+
+                                 $descricao=$linha['descricao'];
+
+                                 $data_visivel=data($linha['data_visivel']);
+
+                                 echo"
+                                 <br>
+                                 <div class='time-label'>";
+                                 $result_assistidos=listar_videos_assistidos_aluno($conexao,$idaluno,$idvideo);
+                                
+                                 $minutos=0;
+                                 
+                                 foreach ($result_assistidos as $key => $value) {
+                                  
+                                    $minutos=($minutos+$value['minuto']);
+                            
+                                  }
+                                  $minutos=$minutos/2;
+                                  if ($minutos>0) {
+                                    echo"<span class='bg-success'>$data_visivel esse vídeo foi visualizado: $minutos min </span>";
+
+                                  }else{
+                                    echo"<span class='bg-red'>$data_visivel esse vídeo NÂO foi visualizado</span>";
+
+                                  }
+
+
+                                 echo"</div>
+
+                                 <div>
+                                            
+                                                  <div class='timeline-item'>
+                                                   <span class='time'><i class='fas fa-clock'></i>$data_visivel</span>
+                                                   <h5 class='timeline-header'>id: $idvideo - <a href='#'>$titulo</a> $descricao</h5>
+
+
+
+                                                   <div class='timeline-body'>
+
+                                                    <a  href='video_aula_individual.php?idvideo=$idvideo&idturma=$idturma&iddisciplina=$iddisciplina&turma=$turma&disciplina=$disciplina'>
+                                                     <img src='imagens/assista-video.gif' width='200' classe='img-fluid'>
+                                                    </a>
+
+                                                   </div>
+
+                                                   <div class='timeline-footer'>
+
+
+
+                                                      <!--<a class='btn btn-sm bg-maroon'>Comentar</a>-->
+
+                                                   </div>
+
+                                                 </div>
+
+                                               </div>
+
+                                               <!-- END timeline item -->
+
+                                 ";
+
+                            }
+
+
+
+
+                         }
+                    } //fim foreach
+
+                echo"
+                  </div>
+                </div>
+              </div>
+            </div>
+            ";
+
+              }else{
 
                     $result_por_serie= listar_video_aulas_gt_aluno($conexao,$idserie,$iddisciplina,$data);
 
@@ -198,10 +313,17 @@ date_default_timezone_set('America/Sao_Paulo');
                          ";
 
                     }
+            }//fim else videos do gt
 
 
 
 
+            echo"
+                  </div>
+                </div>
+              </div>
+            </div>
+            ";
 
 
 
