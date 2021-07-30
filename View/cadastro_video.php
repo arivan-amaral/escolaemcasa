@@ -143,6 +143,8 @@ include "alertas.php";
                                                  <input type="hidden" name="idescola" value="<?php echo $idescola; ?>" class="form-control" required="">
      <input type="hidden" name="idserie" value="<?php echo $idserie; ?>" class="form-control" required="">
 
+                   <input type="hidden" name="origem" value="professor" class="form-control" required="">
+
                                                  <input type="hidden" name="turma" value="<?php echo $_GET['turma']; ?>" class="form-control" required="">
 
                                                  <input type="hidden" name="disciplina" value="<?php echo $_GET['disciplina']; ?>" class="form-control" required="">

@@ -9,6 +9,13 @@ try {
 	$titulo = $_POST['titulo'];
 	$descricao = $_POST['descricao'];
 	$hora = $_POST['hora'];
+	$origem='';
+
+	if (isset($_POST['origem'])) {
+		$origem = $_POST['origem'];
+	}	
+
+
 	if (isset($_SESSION['idprofessor'])) {
 		$id_funcionario = $_SESSION['idprofessor'];
 		
@@ -50,8 +57,10 @@ try {
 
 	$_SESSION['status']=1;
 	
-	if($idserie=="NULL"){
+	if($origem=="professor"){
+
 		header("location:../View/cadastro_video.php?status=1&disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie");
+		echo 'teste';
 	}else{
 		header("location:../View/cadastro_video_gt.php?status=1&disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie");
 
