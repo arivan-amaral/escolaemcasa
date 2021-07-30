@@ -128,79 +128,205 @@ if (!isset($_SESSION['idcoordenador'])) {
                   
 
                     <?php 
+echo "
 
-                      $result=listar_video_coordenador_por_serie($conexao,$iddisciplina,$idserie);
+<div class='row'>
+<div class='col-sm-1'></div>
+<div class='col-sm-8'>
+  <div class='card card-info collapsed-card'>
+    <div class='card-header' data-card-widget='collapse'>
+      <h3 class='card-title'>VER VÍDEOS DO GT</h3>
 
+      <div class='card-tools'>
+        <button type='button' class='btn btn-tool' data-card-widget='collapse'>
+          <i class='fas fa-plus'></i>
+        </button>
+      </div>
+      <!-- /.card-tools -->
+    </div>
+    <!-- /.card-header -->
+    <div class='card-body' style='display: none;'>
 
-
-                      foreach ($result as $key => $linha) {
-
-                           $idvideo=$linha['id'];
-
-                           $link=$linha['link'];
-
-                           $titulo=$linha['titulo'];
-
-                           $descricao=$linha['descricao'];
-
-                           $data_visivel=data($linha['data_visivel']);
-
-                           echo"
-
-                           <div class='time-label'>
-
-                             <span class='bg-blue'>$data_visivel</span>
-
-                           </div>
-
-                           <div>
-
-                                           <i class='fas fa-video bg-maroon'></i>
+";
 
 
+                  if ($idserie==16) {
+                    
 
-                                           <div class='timeline-item'>
-
-                                             <span class='time'><i class='fas fa-clock'></i>$data_visivel</span>
-
-
-
-                                             <h3 class='timeline-header'>id: $idvideo - <a href='#'> $titulo</a> $descricao</h3>
+                    $result_turma = $conexao->query("SELECT * FROM turma where idturma=$idturma ");
 
 
+                  foreach ($result_turma as $key => $value_et) {
+                      $etapa=$value_et['etapa'];
+                       $array_url=explode('A', $etapa);
+                       $inicio_etapa=$array_url[0];
+                       $fim_etapa=$array_url[1];
+                       for ($i=$inicio_etapa; $i <= $fim_etapa ; $i++) { 
+                          $idserie=$i;
+                          
 
-                                             <div class='timeline-body'>
+                              $result=listar_video_coordenador_por_serie($conexao,$iddisciplina,$idserie);
 
-                                               <div class='embed-responsive embed-responsive-16by9'>
+                              foreach ($result as $key => $linha) {
 
-                                                 <iframe class='embed-responsive-item' src='https://www.youtube.com/embed/$link' allowfullscreen></iframe>
+                                   $idvideo=$linha['id'];
 
-                                               </div>
+                                   $link=$linha['link'];
 
-                                             </div>
+                                   $titulo=$linha['titulo'];
 
-                                             <div class='timeline-footer'>
+                                   $descricao=$linha['descricao'];
 
-                                                <!--<a href='#' class='btn btn-sm bg-maroon'>Comentar</a>-->
+                                   $data_visivel=data($linha['data_visivel']);
+
+                                   echo"
+
+                                   <div class='time-label'>
+
+                                     <span class='bg-blue'>$data_visivel</span>
+
+                                   </div>
+
+                                   <div>
+
+                                                   <i class='fas fa-video bg-maroon'></i>
+
+
+
+                                                   <div class='timeline-item'>
+
+                                                     <span class='time'><i class='fas fa-clock'></i>$data_visivel</span>
+
+
+
+                                                     <h3 class='timeline-header'>id: $idvideo - <a href='#'> $titulo</a> $descricao</h3>
+
+
+
+                                                     <div class='timeline-body'>
+
+                                                       <div class='embed-responsive embed-responsive-16by9'>
+
+                                                         <iframe class='embed-responsive-item' src='https://www.youtube.com/embed/$link' allowfullscreen></iframe>
+
+                                                       </div>
+
+                                                     </div>
+
+                                                     <div class='timeline-footer'>
+
+                                                        <!--<a href='#' class='btn btn-sm bg-maroon'>Comentar</a>-->
+
+                                                     </div>
+
+                                                   </div>
+
+                                                 </div>
+
+                                                 <!-- END timeline item -->";
+
+                              }
+
+
+
+                        }//fim for
+                    }//fim foreach
+                  }//fim if
+                  else{
+                    $result=listar_video_coordenador_por_serie($conexao,$iddisciplina,$idserie);
+
+                    foreach ($result as $key => $linha) {
+
+                         $idvideo=$linha['id'];
+
+                         $link=$linha['link'];
+
+                         $titulo=$linha['titulo'];
+
+                         $descricao=$linha['descricao'];
+
+                         $data_visivel=data($linha['data_visivel']);
+
+                         echo"
+
+                         <div class='time-label'>
+
+                           <span class='bg-blue'>$data_visivel</span>
+
+                         </div>
+
+                         <div>
+
+                                         <i class='fas fa-video bg-maroon'></i>
+
+
+
+                                         <div class='timeline-item'>
+
+                                           <span class='time'><i class='fas fa-clock'></i>$data_visivel</span>
+
+
+
+                                           <h3 class='timeline-header'>id: $idvideo - <a href='#'> $titulo</a> $descricao</h3>
+
+
+
+                                           <div class='timeline-body'>
+
+                                             <div class='embed-responsive embed-responsive-16by9'>
+
+                                               <iframe class='embed-responsive-item' src='https://www.youtube.com/embed/$link' allowfullscreen></iframe>
 
                                              </div>
 
                                            </div>
 
+                                           <div class='timeline-footer'>
+
+                                              <!--<a href='#' class='btn btn-sm bg-maroon'>Comentar</a>-->
+
+                                           </div>
+
                                          </div>
 
-                                         <!-- END timeline item -->
+                                       </div>
 
-                                         
+                                       <!-- END timeline item -->";
 
+                    }
 
-
-                           ";
-
-                      }
+                  }
 
                
 
+echo"
+      </div>
+    </div>
+  </div>
+</div>
+";
+
+
+echo "
+
+<div class='row'>
+<div class='col-sm-1'></div>
+<div class='col-sm-8'>
+  <div class='card card-secondary collapsed-card'>
+    <div class='card-header' data-card-widget='collapse'>
+      <h3 class='card-title'>VER VÍDEOS DO PROFESSOR </h3>
+
+      <div class='card-tools'>
+        <button type='button' class='btn btn-tool' data-card-widget='collapse'>
+          <i class='fas fa-plus'></i>
+        </button>
+      </div>
+      <!-- /.card-tools -->
+    </div>
+    <!-- /.card-header -->
+    <div class='card-body' style='display: none;'>
+
+";
                       $result_normal=listar_video_coordenador($conexao, $idturma,$iddisciplina,$idescola);
 
 
@@ -270,6 +396,14 @@ if (!isset($_SESSION['idcoordenador'])) {
                            ";
 
                       }
+
+    
+echo"
+      </div>
+    </div>
+  </div>
+</div>
+";
 
                     ?>
 
