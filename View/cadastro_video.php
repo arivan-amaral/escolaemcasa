@@ -21,7 +21,8 @@ include "alertas.php";
 
 
 
-
+ $array_url=explode('p?', $_SERVER["REQUEST_URI"]);
+ $url_get=$array_url[1];
 
 
 
@@ -144,6 +145,7 @@ include "alertas.php";
      <input type="hidden" name="idserie" value="<?php echo $idserie; ?>" class="form-control" required="">
 
                    <input type="hidden" name="origem" value="professor" class="form-control" required="">
+                   <input type="hidden" name="url_get" value="<?php echo $url_get; ?>" class="form-control" required="">
 
                                                  <input type="hidden" name="turma" value="<?php echo $_GET['turma']; ?>" class="form-control" required="">
 
@@ -180,7 +182,7 @@ include "alertas.php";
 
 
 
-                    $result_gt= listar_video_gt_professor($conexao, $idserie);
+                    $result_gt= listar_video_gt_professor($conexao, $idserie,$iddisciplina);
                     foreach ($result_gt as $key => $linha) {
                          $idvideo=$linha['id'];
                          $link=$linha['link'];

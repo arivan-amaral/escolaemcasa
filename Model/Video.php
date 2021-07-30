@@ -111,8 +111,8 @@ function listar_video_individual($conexao,$idvideo) {
 	    return $result;
 	}	
 
-	function listar_video_gt_professor($conexao, $idserie) {
-	    $result = $conexao->query("SELECT * FROM video where serie_id=$idserie and setor='Secretaria' order by data_visivel desc   ");
+	function listar_video_gt_professor($conexao, $idserie,$iddisciplina) {
+	    $result = $conexao->query("SELECT * FROM video where serie_id=$idserie and id_disciplina=$iddisciplina and setor='Secretaria' order by data_visivel desc   ");
 	    return $result;
 	}
 

@@ -10,9 +10,12 @@ try {
 	$descricao = $_POST['descricao'];
 	$hora = $_POST['hora'];
 	$origem='';
+	$url_get='';
 
 	if (isset($_POST['origem'])) {
 		$origem = $_POST['origem'];
+		$url_get=$_POST['url_get'];
+
 	}	
 
 
@@ -59,7 +62,7 @@ try {
 	
 	if($origem=="professor"){
 
-		header("location:../View/cadastro_video.php?status=1&disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie");
+		header("location:../View/cadastro_video.php?$url_get");
 		echo 'teste';
 	}else{
 		header("location:../View/cadastro_video_gt.php?status=1&disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie");

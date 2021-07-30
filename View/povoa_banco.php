@@ -102,7 +102,7 @@ order by  ed47_i_codigo asc,ed60_i_turma asc  offset $indice  limit $limite");
 				// $conexao->exec(" UPDATE  aluno SET 
 				//  nome='$nome_aluno',
 				//  email='$primeiro_nome',
-				//  senha='$senha',
+				//  senha='$senha',		
 				//  whatsapp='$whatsapp',
 				//  sexo='$sexo',
 				//  data_nascimento='$data_nascimento'
@@ -113,8 +113,16 @@ order by  ed47_i_codigo asc,ed60_i_turma asc  offset $indice  limit $limite");
 					");		
 
 				$conexao->exec("
-					INSERT INTO ano_letivo (ano, turma_id, aluno_id,  escola_id) VALUES ('2021', $turma_id, $idaluno,$idescola)");
+					INSERT INTO ano_letivo (ano, turma_id, aluno_id,  escola_id) VALUES ('2021', $turma_id, $idaluno,$idescola)");	
+				
+				$conexao->exec("
+					UPDATE nota SET turma_id=$turma_id, escola_id=$escola_id WHERE aluno_id=$aluno_id");
+
+					$conexao->exec("
+					UPDATE frequencia SET turma_id=$turma_id, escola_id=$escola_id WHERE aluno_id=$aluno_id");
 			}
+
+
 				$existe=1;
 				$conta++;
 			
