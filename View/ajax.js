@@ -792,6 +792,25 @@ function excluir_trabalho_aluno(id) {
   })
 }
 
+function excluir_material_apoio(id) {
+  var url_get = document.getElementById("url_get").value;
+
+  Swal.fire({
+    title: 'Deseja continuar com essa ação?',
+    showDenyButton: true,
+    confirmButtonText: `Sim`,
+    denyButtonText: `Não`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+
+      window.location.href = "../Controller/Excluir_material_apoio.php?id="+id+"&"+url_get;
+    } else if (result.isDenied) {
+     // Swal.fire('Não foi excluido', '', 'info')
+    }
+  })
+}
+
 
 
 

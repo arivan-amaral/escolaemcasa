@@ -410,20 +410,28 @@
 
                               // Resgata diferença entre as datas
                               $dateInterval = $data_inicio->diff($data_fim);
-                              
+                         
+                       
+                           // Resgata diferença entre as datas
+                           $dateInterval = $data_inicio->diff($data_fim);
 
-                              if ($dateInterval->days > 0  ) {
-                                echo" 
-                                 <div class='time-label'>
-                                    <span class='bg-red'>Data enviado com atraso: $data_recebido</span>
-                                  </div>";
-                                
-                              }else{
+
+                           $cal_data=floor(strtotime($data_entrega) - strtotime($data_recebido));
+                          
+                          // $data_recebido='2021-02-08 23:59:00';
+
+                          if ($cal_data >= -80000  ) {
                                 echo"       
                                  <div class='time-label'>
                                       <span class='bg-blue'>Data enviado: $data_recebido</span>
                                     </div>";
-                              }
+                                
+                          }else{
+                                echo" 
+                                 <div class='time-label'>
+                                    <span class='bg-red'>Data enviado com atraso: e $data_recebido</span>
+                                  </div>";
+                          }
 
 
                              

@@ -10,5 +10,15 @@
         return $result;
     }
 
+    function pesquisar_material_apoio_por_id($conexao, $id) {
+        $result=$conexao->query("SELECT * FROM  material_apoio WHERE  id=$id");
+        return $result;
+    }    
+
+    function excluir_material_apoio($conexao, $id) {
+        $result=$conexao->exec("DELETE FROM  material_apoio WHERE  id=$id");
+    }
+
+
 	
 ?>

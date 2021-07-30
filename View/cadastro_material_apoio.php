@@ -28,7 +28,9 @@
   $iddisciplina=$_GET['disc'];
   $idescola=$_GET['idescola'];
   
-  
+   $array_url=explode('p?', $_SERVER["REQUEST_URI"]);
+  $url_get=$array_url[1];
+
   $turma="";
   $disciplina="";
   $res_t=$conexao->query("SELECT * FROM turma where idturma=$idturma");
@@ -120,7 +122,7 @@
                     
                     <button type="button" class="btn btn-block  btn-success"><?php echo $turma."  - ".$disciplina ?></button>
 <br>
-
+ 
 
                     <div class="timeline">
 
@@ -172,7 +174,7 @@
                                         
                                         ";
                                         ?>
-
+                                        <input type="hidden" name="url_get" id="url_get" value="<?php echo $url_get; ?>">
                                   <div onclick='carregando()'>
                                     <button type='submit' class='btn btn-block btn-primary btn-flat'>SALVAR</button>
                                   </div> 
@@ -274,6 +276,10 @@
                                        
                                        echo"
                                          </a>
+                                         <br>
+
+                                    <a href='#' onclick='excluir_material_apoio($id);' class='btn btn-sm bg-danger'>Excluir</a>
+
                                       </div>
                                     </div>
                                   </div>

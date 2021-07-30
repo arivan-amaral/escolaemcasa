@@ -46,15 +46,15 @@ try {
                              </div>";
                              
                            }else {
-                            $return.=" 
-                            <div class='time-label'>
-                               <span class='bg-blue'>Recebido:".data($data_recebido)."</span>
-                             </div>";
-
                             // $return.=" 
-                            //   <div class='time-label'>
-                            //      <span class='bg-red'>Recebido com atraso  :".data($data_recebido)."</span>
-                            //    </div>";
+                            // <div class='time-label'>
+                            //    <span class='bg-blue'>Recebido:".data($data_recebido)."</span>
+                            //  </div>";
+
+                            $return.=" 
+                              <div class='time-label'>
+                                 <span class='bg-red'>Recebido com atraso  :".data($data_recebido)."</span>
+                               </div>";
                             
                            }
 
