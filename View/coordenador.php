@@ -20,12 +20,6 @@ if (!isset($_SESSION['idcoordenador'])) {
   include '../Model/Coordenador.php';
   include '../Model/Escola.php';
 
-  
-
-
-
-  
-
 ?>
 
 
