@@ -153,7 +153,7 @@ if (!isset($_SESSION['idfuncionario'])) {
                            <a   href='listar_alunos_da_turma.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat'>
                            <i class='fa fa-users'></i> 
                            Lista de alunos
-                           </a>      
+                           </a> 
 
 
 
@@ -246,7 +246,7 @@ if (!isset($_SESSION['idfuncionario'])) {
                                      <i class='fa fa-users'></i> 
                                      Lista de alunos
                                    </a>      
-                                      
+                           
                                 <a class='btn btn-info btn-block btn-flat'
 
                                        href='video_aula_disciplina_coordenado.php?disc=$iddisciplina&turm=$idturma&idescola=$idescola&idserie=$idserie' >

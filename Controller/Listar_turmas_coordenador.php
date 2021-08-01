@@ -48,12 +48,21 @@ $result="";
                                         <a   href='coordenador_relatorio_video_aluno.php?idturma=$idturma&nome_turma=$nome_turma&idescola=$idescola&idserie=$idserie' class='btn btn-warning btn-block btn-flat'>
                                           <i class='fa fa-play'></i> 
                                             VER RELATÓRIO DE VÍDEOS DE ALUNO
-                                          </a>      
+                                          </a>  
+
+
                            
                                         <a   href='listar_alunos_da_turma.php?idturma=$idturma&nome_turma=$nome_turma&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat'>
                                           <i class='fa fa-users'></i> 
                                             LISTAR ALUNOS DA TURMA
                                           </a> 
+
+
+                                          <a   href='diario_conteudo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat'>
+                                          <i class='fa fa-edit'></i> 
+                                          CONTEÚDOS DE AULAS
+                                          </a> 
+
 
                                           <a   href='boletim.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-danger btn-block btn-flat'>
                                           <i class='fa fa-calendar'></i> 
