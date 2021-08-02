@@ -369,7 +369,7 @@ div.WordSection1
 
     foreach ($pes as $chave => $linha) {
       $iddisciplina=$linha['iddisciplina'];
-      $resultado=listar_todas_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplina,'av3');
+      $resultado=listar_todas_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplina,'av1');
       foreach ($resultado as $key => $value) {
         $parecer_descritivo.=$value['parecer_descritivo'];
       }

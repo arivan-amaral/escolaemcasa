@@ -75,27 +75,67 @@ try {
                           if ($idperiodo !=6 ) {//se for diferente de diagnostico inicial
                               
                              $result.="<td>
-                              <label for='exampleInputEmail1'>Parecer descritivo</label>
+                             <!-- <label for='exampleInputEmail1'>Parecer descritivo</label>
                               <textarea class='form-control-sm' name='parecer_descritivo$id'>$descricao_parecer</textarea><br>
-                                <B></b>
+                                <B></b> -->
                               </td>
                             
-                              <td>
-                                                  
-                              <label for='exampleInputEmail1'>Nota</label><br>
-                              <input type='text'  name='nota$id' value='$nota' style='min-width:60px;'>
+                              <td>";
+                                if ($idserie >=3) {
+                                  // code...
+                                   $result.="<label for='exampleInputEmail1'>Nota</label><br>
+                                  <input type='text'  name='nota$id' value='$nota' style='min-width:60px;'> 
+                                  <br>
+                                  <br>
+                                  ";
+                                }
+
+
+                                  $result.="<div class='card card-outline card-info'>
+                                         <div class='card-header'>
+                                           <h6>
+                                              Parecer descritivo - $nome_aluno
+                                           </h6>
+                                         </div>
+                                         <!-- /.card-header -->
+                                         <div class='card-body'>
+                                           <textarea  class='form-control' rows='7' name='parecer_descritivo$id'>$descricao_parecer</textarea>
+                                         </div>
+                                         <div class='card-footer'>
+                                           
+                                         </div>
+
+                                       </div>
                               </td>";
                             }else{
                               
                              $result.="<td>
-                              <label for='exampleInputEmail1'> Diagnóstico inicial</label>
-                              <textarea class='form-control-sm' rows='5' name='parecer_descritivo$id'>$descricao_parecer</textarea>
+                           
+                              
+
+             
                               </td>
 
                               <td>
+
+                                    <div class='card card-outline card-info'>
+                                         <div class='card-header'>
+                                           <h6>
+                                              Diagnóstico inicial - $nome_aluno
+                                           </h6>
+                                         </div>
+                                         <!-- /.card-header -->
+                                         <div class='card-body'>
+                                           <textarea  class='form-control' rows='5' name='parecer_descritivo$id'>$descricao_parecer</textarea>
+                                         </div>
+                                         <div class='card-footer'>
+                                           
+                                         </div>
+
+                                       </div>
                                                   
                               <label for='exampleInputEmail1' style='display: none;'>Nota</label><br>
-                              <input type='text'  name='nota$id' value='$nota' style='display: none;'>
+                              <input type='hidden'  name='nota$id' value='$nota' style='display: none;'>
                               </td>";
                             }
 
