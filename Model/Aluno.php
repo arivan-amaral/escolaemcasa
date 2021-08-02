@@ -368,7 +368,7 @@ function verificar_frequencia($conexao,$idescola,$idturma,$iddisciplina,$profess
 	}
 
 	function listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola){
-		$res=$conexao->query("SELECT aluno.senha,aluno.email,aluno.nome as 'nome_aluno', aluno.idaluno, aluno.status as 'status_aluno', turma.nome_turma FROM aluno, ano_letivo,turma where turma_id=$idturma and aluno_id=idaluno and turma_id=idturma and escola_id=$idescola  ORDER by nome ASC");
+		$res=$conexao->query("SELECT turma.nome_turma, aluno.senha,aluno.email,aluno.nome as 'nome_aluno', aluno.idaluno, aluno.status as 'status_aluno', turma.nome_turma FROM aluno, ano_letivo,turma where turma_id=$idturma and aluno_id=idaluno and turma_id=idturma and escola_id=$idescola  ORDER by nome ASC");
 		return $res;
 	}
 
