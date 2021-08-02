@@ -27,7 +27,7 @@ foreach ($res_turma as $key => $value) {
 }
 
 if ($idserie==3) {
-  echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
+  //echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
 
     $numero=1;
     $res_alunos=listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola);
@@ -41,7 +41,7 @@ if ($idserie==3) {
 
 }
 else if ($idserie >3 && $idserie <=8) {
-    echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
+    //echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
     $numero=1;
       $res_alunos=listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola);
       foreach ($res_alunos as $key => $value) {
@@ -54,7 +54,7 @@ else if ($idserie >3 && $idserie <=8) {
 
 }else if ($idserie<3){
 
-  echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
+ // echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
   $numero=1;
     $res_alunos=listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola);
     $nome_professor= " ";
@@ -80,7 +80,7 @@ else if ($idserie >3 && $idserie <=8) {
     }
 
 }else if ($idserie > 8) {
-    echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
+    //echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
     $numero=1;
       $res_alunos=listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola);
       foreach ($res_alunos as $key => $value) {
