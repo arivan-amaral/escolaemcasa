@@ -135,9 +135,23 @@ include "alertas.php";
                         </div>
 
 
-                        <h4 class="card-title">Descrição da Atividade</h4>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="3" name="descricao" placeholder="Descrição da Atividade" required=""></textarea>
+                   
+
+                        <div class="card card-outline card-info">
+                          <div class="card-header">
+                            <h3 >
+                              Descrição da Atividade
+                            </h3>
+                          </div>
+                          <!-- /.card-header -->
+                          <div class="card-body">
+                            <textarea name="descricao" id="summernote" rows="5" style="height: 245.719px;"></textarea>
+
+                          </div>
+                          <div class="card-footer">
+                            
+                          </div>
+
                         </div>
 
                         <h4 class="card-title">Data de Entrega</h4>
