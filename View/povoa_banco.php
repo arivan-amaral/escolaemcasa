@@ -89,7 +89,7 @@ order by  ed47_i_codigo asc,ed60_i_turma asc  offset $indice  limit $limite");
 				$c_a=1;
 			}
 			if ($c_a==0) {
-				echo "INSERINDO => $idaluno,$nome_aluno, $primeiro_nome,$senha, $whatsapp,$sexo,$data_nascimento <bR>";
+				echo "$idaluno,$nome_aluno, $primeiro_nome,$senha, $whatsapp,$sexo,$data_nascimento <bR>";
 				$conexao->exec(" INSERT INTO aluno
 				 (idaluno,nome, email,  senha, whatsapp,sexo,data_nascimento) values
 				 ($idaluno,'$nome_aluno', '$primeiro_nome','$senha', '$whatsapp','$sexo','$data_nascimento')");
