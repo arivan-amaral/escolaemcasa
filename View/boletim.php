@@ -48,7 +48,11 @@ else if ($idserie >3 && $idserie <=8) {
         $idaluno=$value['idaluno'];
         $nome_aluno=$value['nome_aluno'];
           boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
-        echo "<br><br>";
+        if ($numero%2==0) {
+          echo "<br> ";
+          echo "<br> ";
+         
+        }
         $numero++;
       }
 

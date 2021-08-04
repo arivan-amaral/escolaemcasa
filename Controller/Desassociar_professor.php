@@ -8,13 +8,14 @@ include'../Model/Turma.php';
 
 
  	 desassociar_professor($conexao, $id);
- 	 $_SESSION['status']=1;
+ 	 //$_SESSION['status']=1;
 
- 	 header("location:../View/pesquisar_professor_associar.php?status=1");
+ 	 //header("location:../View/pesquisar_professor_associar.php?status=1");
 
  } catch (Exception $e) {
- 	 $_SESSION['status']=0;
- 	 header("location:../View/pesquisar_professor_associar.php?status=0");
+ 	 //$_SESSION['status']=0;
+    echo "VERIFIQUE SUA CONEXÃO COM A INTERNET!";
+ 	 //header("location:../View/pesquisar_professor_associar.php?status=0");
 
  	
 

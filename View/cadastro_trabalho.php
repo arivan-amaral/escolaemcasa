@@ -202,6 +202,7 @@ include "alertas.php";
                          $caminho=$value['caminho'];
 
                          $data_entrega=$value['data_entrega'];
+                         $data_visivel=$value['data_hora_visivel'];
 
                          if ($extensao=="") {
 
@@ -210,6 +211,7 @@ include "alertas.php";
                              <div class='time-label'>
 
                                <span class='bg-blue'>Data Entrega: $data_entrega</span>
+                               <span class='bg-greem'>Data visivel: $data_visivel</span>
 
                              </div>
 
@@ -223,7 +225,8 @@ include "alertas.php";
 
                                <div class='timeline-item'>
 
-                                 <span class='time'><i class='fas fa-clock'></i> $data_entrega</span>
+                                 <span class='time'>
+                                 <i class='fas fa-clock'></i> $data_entrega</span>
 
                                  <h3 class='timeline-header'><a href='#'>$titulo</a>  </h3>
 
@@ -262,7 +265,9 @@ include "alertas.php";
 
                              <div class='time-label'>
 
-                               <span class='bg-primary'>Data entrega: $data_entrega</span>
+                               <span class='bg-primary'>Data entrega: ". converte_data_hora($data_entrega)."</span>
+                               <span class='bg-secondary'>Data visível: ". converte_data_hora($data_visivel)."</span>
+
 
                              </div>
 

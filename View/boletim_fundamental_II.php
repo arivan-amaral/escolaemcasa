@@ -67,14 +67,14 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
     }
 
     /* START - LANDSCAPE */
-    @media print {
+ /*   @media print {
       body {
         background: none;
         -ms-zoom: 1.665;
       }
       div.portrait, div.landscape {
         margin-left: 100;
-        /*margin-right: 100;*/
+      
         padding: 0;
         border: none;
         background: none;
@@ -83,7 +83,7 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
       div.landscape {
         transform: rotate(270deg) translate(-220mm, 0);
         transform-origin: 0 0;
-      }
+      }*/
 
     }
     /* END LANDSCAPE */
@@ -181,7 +181,7 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
 
        <body lang=PT-BR style='tab-interval:35.4pt;word-wrap:break-word'>
 
-        <div class="landscape">
+  
 
           <div class=WordSection1>
 
@@ -608,7 +608,7 @@ color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
 
   </div>
 
-</div>
+
 
 </body>
 

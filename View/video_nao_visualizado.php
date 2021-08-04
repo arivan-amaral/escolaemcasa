@@ -240,8 +240,7 @@ $idserie=$_SESSION['serie_id'];
 
                          $data_visivel=data($linha['data_visivel']);
 
-                         echo"
-                         <div class='time-label'>";
+                        
                          $result_assistidos=listar_videos_assistidos_aluno($conexao,$idaluno,$idvideo);
                         
                          $minutos=0;
@@ -252,18 +251,13 @@ $idserie=$_SESSION['serie_id'];
                     
                           }
                           $minutos=$minutos/2;
-                          if ($minutos>0) {
-                            echo"<span class='bg-success'>$data_visivel esse vídeo foi visualizado: $minutos min </span>";
-
-                          }else{
+                          if ($minutos==0) {
+                             echo"
+                               <div class='time-label'>";
                             echo"<span class='bg-red'>$data_visivel esse vídeo NÂO foi visualizado</span>";
+                            echo"</div>
 
-                          }
-
-
-                         echo"</div>
-
-                         <div>
+                                 <div>
                                       <i class='fas fa-video bg-maroon'></i>
                                           <div class='timeline-item'>
                                            <span class='time'><i class='fas fa-clock'></i>$data_visivel</span>
@@ -294,6 +288,7 @@ $idserie=$_SESSION['serie_id'];
                                        <!-- END timeline item -->
 
                          ";
+                      }
 
                     }
 

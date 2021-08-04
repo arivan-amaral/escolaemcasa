@@ -79,7 +79,7 @@ foreach ($result as $key => $value) {
           $nome_turma = $value['nome_turma'];
           $nome_disciplina = $value['nome_disciplina'];
           
-          $return.="<tr>
+          $return.="<tr id='linha$idministrada'>
                           <td class = ''> 
                           <b class = 'text-danger'>$nome_escola -> </b>
                           <b class = 'text-success'>$nome_turma -></b>

@@ -56,6 +56,8 @@ function data_simples($data){
 }
 function converte_data($data){
     return date("d/m/Y", strtotime($data));
+}function converte_data_hora($data){
+    return date("d/m/Y H:i", strtotime($data));
 }
 	
 
