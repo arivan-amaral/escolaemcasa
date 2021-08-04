@@ -72,9 +72,10 @@ try {
                          
                        <tr class='$cor_tabela'>";
 
-                          if ($idperiodo !=6 ) {//se for diferente de diagnostico inicial
-                              
+                      if ($idperiodo !=6 ) {//se for diferente de diagnostico inicial
+              
                              $result.="<td>
+
                              <!-- <label for='exampleInputEmail1'>Parecer descritivo</label>
                               <textarea class='form-control-sm' name='parecer_descritivo$id'>$descricao_parecer</textarea><br>
                                 <B></b> -->
@@ -137,7 +138,7 @@ try {
                               <label for='exampleInputEmail1' style='display: none;'>Nota</label><br>
                               <input type='hidden'  name='nota$id' value='$nota' style='display: none;'>
                               </td>";
-                            }
+                          }
 
 
 
@@ -149,6 +150,7 @@ try {
                       </tr>";
             
             if ($idperiodo!=6) {
+              // $result.="";
              
                  $res_par=listar_parecer_disciplina($conexao,$iddisciplina,$idturma);
                   foreach ($res_par as $key => $value) {
@@ -163,7 +165,7 @@ try {
                     }
 
               
-
+                    //arivan
                     if ($serie_id == $idserie && $avaliacao=='av3') {
                        $result.="<tr class='$cor_tabela'>
                             <td colspan='2'>

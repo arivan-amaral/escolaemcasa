@@ -1,15 +1,18 @@
 <?php 
+session_start();
   include '../Model/Conexao.php';
   include '../Model/Escola.php';
   include '../Model/Turma.php';
   include '../Model/Disciplina.php';
   include '../Model/Professor.php';
+  include '../Model/Coordenador.php';
   $idprofessor=$_GET['idprofessor'];
   $res=pesquisar_professor_por_id($conexao,$idprofessor);
   foreach ($res as $key => $value) {
     $idprofessor=$value['idfuncionario'];
     $professor=$value['nome'];
   }
+  $idcoordenador=$_SESSION['idfuncionario'];
 ?>
 <br>
 <br>
@@ -41,9 +44,9 @@
 
                         <option></option>
 
-                        <?php
+                        <?php 
 
-                        $res_turma=lista_escola($conexao); 
+                        $res_turma=escola_associada($conexao,$idcoordenador); 
 
                         foreach ($res_turma as $key => $value) {
 
