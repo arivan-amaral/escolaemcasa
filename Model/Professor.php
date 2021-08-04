@@ -52,7 +52,7 @@
 // *************************************************************************************************
 
 	function alterar_dados_professor($conexao,$nome, $email, $senha,$whatsapp,$idfuncionario){
-		$conexao->exec("UPDATE funcionario set  email='$email', senha='$senha',whatsapp='$whatsapp' where idfuncionario=$idfuncionario ");
+		$conexao->exec("UPDATE funcionario set nome='$nome' email='$email', senha='$senha',whatsapp='$whatsapp' where idfuncionario=$idfuncionario ");
 		
 	}
 
