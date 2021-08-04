@@ -299,7 +299,7 @@ $idserie=$_SESSION['serie_id'];
 
 
 
-                      $res_pendencia_v=$conexao->query("SELECT * FROM video WHERE escola_id=$idescola and serie_id=$idserie and id_turma=$turma_id and setor !='Secretaria'");
+                      $res_pendencia_v=$conexao->query("SELECT * FROM video WHERE escola_id=$idescola and serie_id=$idserie and id_turma=$turma_id and setor !='Secretaria'  order by id desc, data_visivel desc ");
                       $cont_video=0;
 
                       foreach ($res_pendencia_v as $key => $linha) {

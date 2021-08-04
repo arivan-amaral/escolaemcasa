@@ -71,7 +71,7 @@ function listar_video_individual($conexao,$idvideo) {
 	}
 
 	function listar_video_aulas_gt_nao_visualisado_aluno($conexao,$idserie,$data) {
-	    $result = $conexao->query("SELECT * FROM video where setor='Secretaria' and serie_id=$idserie and data_visivel <='$data' order by data_visivel desc   ");
+	    $result = $conexao->query("SELECT * FROM video where setor='Secretaria' and serie_id=$idserie and data_visivel <='$data' order by id desc, data_visivel desc   ");
 	    return $result;
 	}
 
