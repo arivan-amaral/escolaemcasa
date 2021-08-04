@@ -29,9 +29,7 @@
   $data=date("Y-m-d H:i:s");
 
    
-  echo"<script>
-          setTimeout('notificacao_video_whatsapp($idturma)',5000);
-      </script>";
+
  
 
 ?>
@@ -133,7 +131,7 @@
                                     </div>
 
                                     <?php
-                                      $res_pendencia=$conexao->query("SELECT * FROM trabalho WHERE escola_id=$idescola and turma_id=$idturma and disciplina_id=$iddisciplina");
+                                      $res_pendencia=$conexao->query("SELECT * FROM trabalho WHERE escola_id=$idescola and turma_id=$idturma and disciplina_id=$iddisciplina and data_hora_visivel<='$data' order by id desc ");
                                       foreach ($res_pendencia as $key => $value) {
                                         $idtrabalho=$value['id'];
                                         $titulo=$value['titulo'];
@@ -155,7 +153,7 @@
                                                 <div class='callout callout-danger'>
                                                   <h5>$titulo</h5>
                                                   <p>$descricao</p>
-                                                  <B>DATA DE ENTREGA: $data_entrega</B>
+                                                  <B>DATA DE ENTREGA: ".converte_data_hora($data_entrega)."</B>
                                                 </div>
                                               </a>
                                               </div>
@@ -166,7 +164,7 @@
                                               <div class='callout callout-success'>
                                                 <h5>$titulo</h5>
                                                 <p>$descricao</p>
-                                                <B>DATA DE ENTREGA: $data_entrega</B>
+                                                <B>DATA DE ENTREGA: ".converte_data_hora($data_entrega)."</B>
                                               </div>
                                             </a>
                                             </div>";

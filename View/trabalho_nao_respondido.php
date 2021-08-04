@@ -19,13 +19,14 @@
   $idaluno=$_SESSION['idaluno'];
   $idescola=$_SESSION['escola_id'];
   $idturma=$_SESSION['turma_id'];
+  $data=date("Y-m-d H:i:s");
 
 
 ?>
 
 
 
-<script src="ajax.js"></script>
+<script src="ajax.js?<?php echo rand(); ?>"></script>
 
 
 
@@ -100,11 +101,13 @@
                                   </div>
 
                                   <?php
-                                    $res_pendencia=$conexao->query("SELECT * FROM trabalho WHERE escola_id=$idescola and turma_id=$idturma");
+                                    $res_pendencia=$conexao->query("SELECT * FROM trabalho WHERE escola_id=$idescola and turma_id=$idturma and data_hora_visivel<='$data' order by id desc");
                                     foreach ($res_pendencia as $key => $value) {
                                       $idtrabalho=$value['id'];
                                       $titulo=$value['titulo'];
                                       $descricao=$value['descricao'];
+                                        $data_entrega=$value['data_entrega'];
+                                      
                                       $iddisciplina=$value['disciplina_id'];
                                       $res=$conexao->query("SELECT * FROM trabalho_entregue WHERE trabalho_id=$idtrabalho limit 1");
                                       $cont=0;
@@ -118,6 +121,8 @@
                                                 <div class='callout callout-danger'>
                                                   <h5>$titulo</h5>
                                                   <p>$descricao</p>
+                                                <B>DATA DE ENTREGA: ".converte_data_hora($data_entrega)."</B>
+
                                                 </div>
                                           </a>
                                           </div>";
