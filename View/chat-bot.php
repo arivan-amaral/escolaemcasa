@@ -1,7 +1,6 @@
 <?php
 session_start();
 include'../Model/Conexao.php';
-include'Conversao.php';
 
   $arquivo = file_get_contents('php://input');
   $json= json_decode($arquivo);
@@ -95,13 +94,17 @@ function restaurar_conexao_api($conexao){
 
 
 // *******************************************************************************************************************************
- $status_api= obter_status_api($conexao);
- if ($status_api) {//só ira atualizar no banco e enviar as mensagens se o status da api estives true
+// $phone="557799323906";
+$mensagem="Olá, clique nesse link e faça seu pedido http://35.198.36.217/chatboot/View/index.php?phone=$phone";
+ enviar_mensagem($conexao,$phone,$mensagem);
+
+ // $status_api= obter_status_api($conexao);
+ // if ($status_api) {//só ira atualizar no banco e enviar as mensagens se o status da api estives true
                               
        
 
-  }else {
-    restaurar_conexao_api($conexao);
-  }
+ //  }else {
+ //    restaurar_conexao_api($conexao);
+ //  }
     // *********************************************************************************************************************************
 ?>
