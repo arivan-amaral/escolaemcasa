@@ -1,4 +1,5 @@
 <?php
+session_start();
     include("../Model/Conexao.php");
     include("../Model/Professor.php");
     include("../Model/Turma.php");
