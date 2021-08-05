@@ -142,12 +142,21 @@ if (!isset($_SESSION['idprofessor'])) {
             <label for="exampleInputEmail1">Escolha a aula</label>
 
             <select class="form-control" id='aula' required  name='aula' onchange="lista_frequencia_aluno();">
-              <option></option>
-              <option value="AULA-1">AULA-1</option>
-              <option value="AULA-2">AULA-2</option>
-              <option value="AULA-3">AULA-3</option>
-              <option value="AULA-4">AULA-4</option>
+              <?php
+              if ($idserie<8) {
+                echo "<option value='AULA-1'>AULA-1</option>";
+              }else{
+                echo"
+                <option></option>
+                <option value='AULA-1'>AULA-1</option>
+                <option value='AULA-2'>AULA-2</option>
+                <option value='AULA-3'>AULA-3</option>
+                <option value='AULA-4'>AULA-4</option>
+                ";
+              }
               
+
+              ?>
             </select>
           </div>
         </div>

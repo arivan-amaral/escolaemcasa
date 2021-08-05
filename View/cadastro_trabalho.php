@@ -16,10 +16,7 @@ include "alertas.php";
   include 'menu.php';
   include '../Model/Conexao.php';
   include '../Controller/Conversao.php';
-
   include '../Model/Trabalho.php';
-
-
 
   $idescola=$_GET['idescola'];
   $idturma=$_GET['turm'];

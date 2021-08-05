@@ -177,16 +177,17 @@
 
                                     
                                     <div class='form-group'>
-                                      <label class='col-form-label' for='inputWarning'><i class='far fa-edit'></i>Resposta</label>
+                                      <label class='col-form-label' for='inputWarning'><i class='far fa-edit'></i>Resposta </label>
                                       <textarea type='text' name='comentario' class='form-control is-warning' id='inputWarning' placeholder='Se preferir responda em texto aqui...' rows='3'></textarea>
                                     </div>
                      
                                     <div class='form-group'>
                                         <!-- <label for='customFile'>Custom File</label> -->
 
-                                          <label class='col-form-label'>ADICIONAR ARQUIVO</label><br>
+                                          <label class='col-form-label'>ADICIONAR ARQUIVO (OPCIONAL)</label><br>
                                         
-                                          <input name='arquivo[]' type='file' multiple='multiple' />
+                                          <input name='arquivo[]' type='file' multiple='multiple' /><br>
+                                          <font color='red'><b> ( OBS: NÃO é permitido o envio de vídeos como resposta) </b></font>
                                         
                                       </div>
 
@@ -423,13 +424,13 @@
                           if ($cal_data >= -80000  ) {
                                 echo"       
                                  <div class='time-label'>
-                                      <span class='bg-blue'>Data enviado: $data_recebido</span>
+                                      <span class='bg-blue'>Data enviado:".converte_data_hora($data_recebido)."</span>
                                     </div>";
                                 
                           }else{
                                 echo" 
                                  <div class='time-label'>
-                                    <span class='bg-red'>Data enviado com atraso: e $data_recebido</span>
+                                    <span class='bg-red'>Data enviado com atraso: ".converte_data_hora($data_recebido)." </span>
                                   </div>";
                           }
 
@@ -450,9 +451,9 @@
 
                                     <div class='timeline-item'>
 
-                                      <span class='time'><i class='fas fa-clock'></i> $data_entrega</span>
+                                      <span class='time'><i class='fas fa-clock'></i>".converte_data_hora($data_entrega)."</span>
 
-                                      <h3 class='timeline-header'><a href='#'>$titulo</a>  </h3>
+                                      <!-- h3 class='timeline-header'><a href='#'>$titulo</a>  </h3 -->
 
                                       <div class='timeline-body'>
                                         $comentario
