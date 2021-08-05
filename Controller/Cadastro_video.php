@@ -63,7 +63,7 @@ try {
 	if($origem=="professor"){
 
 		header("location:../View/cadastro_video.php?$url_get");
-		echo 'teste';
+		//echo 'teste';
 	}else{
 		header("location:../View/cadastro_video_gt.php?status=1&disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie");
 

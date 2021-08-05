@@ -14,11 +14,85 @@
   include '../Model/Aluno.php';
   $idescola=$_SESSION['escola_id'];
   $idturma=$_SESSION['turma_id'];
+  $data_atual=date("Y-m-d H:i:s");
+?>
+<script src="ajax.js?<?php echo rand(1,100); ?>"></script>
+
+
+
+<?php 
+
+$result_reuniao=$conexao->query("SELECT * FROM video_chamada WHERE escola_id=$idescola and turma_id=$idturma and  hora_inicio <='$data_atual'  and hora_fim >'$data_atual' limit 1");
+foreach ($result_reuniao as $key => $value) {
+  echo"
+  <script type='text/javascript'>
+      function modal_reuniao() {
+          $(document).ready(function() {
+              $('#modal-reuniao-videochamada').modal('show');
+            });
+      }
+
+      setTimeout('modal_reuniao();',800);
+      
+  </script>";
+}
+
 ?>
 
 
 
-<script src="ajax.js?<?php echo rand(1,100); ?>"></script>
+
+<div class="modal fade" id="modal-reuniao-videochamada">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">LINKS DE REUNIÕES/VÍDEO CHAMADAS DA TURMA, DISPONÍVEIS!</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+
+          <div class="modal-body">
+              <!-- corpo -->
+              <?php 
+
+              $listando_links=$conexao->query("SELECT * FROM video_chamada,disciplina WHERE  
+                disciplina_id=iddisciplina AND
+                escola_id=$idescola and turma_id=$idturma and hora_inicio <='$data_atual'  and hora_fim >'$data_atual'order by id desc");
+              $cont_reuniao=0;
+              foreach ($listando_links as $key => $value) {
+
+                $id=$value['id'];
+                $nome_disciplina=$value['nome_disciplina'];
+                $descricao=$value['titulo'];
+                $link=$value['link'];
+                $data_visivel=converte_data_hora($value['hora_inicio']);
+                $data_visivel_fim=converte_data_hora($value['hora_fim']);
+
+                echo"       
+                <div class='time-label'>
+                <span class='bg-blue'>LINK DA DISCIPLINA: $nome_disciplina DISPONÍVEL DE: $data_visivel ÀS $data_visivel_fim</span>
+                </div>";
+
+                echo "
+                <p> <a href='$link' target='_blank'>$link</a> </p>
+  
+                $descricao";
+              }
+
+              ?>
+
+
+
+              <!-- /corpo -->          
+          </div>
+      <button type="button" class="btn btn-default" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fechar</font></font></button>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
 
  
 

@@ -349,7 +349,8 @@ if (!isset($_COOKIE['ajuda2'])) {
 
                                       </a> 
 
-                                      <!-- <a class='btn btn-info btn-block btn-flat'
+                                      <!-- -->
+                                      <a class='btn btn-info btn-block btn-flat'
 
                                        href='cadastrar_link_video_chamada.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie' >
 
@@ -368,7 +369,7 @@ if (!isset($_COOKIE['ajuda2'])) {
                                         </font>
 
                                       </a> 
-                                        -->
+                                        
 
 
 

@@ -145,7 +145,7 @@ include "alertas.php";
                           </div>
                           <!-- /.card-header -->
                           <div class="card-body">
-                            <textarea name="descricao" id="summernote" rows="5" style="height: 245.719px;"></textarea>
+                            <textarea name="descricao" id="summernote" rows="5" style="height: 245.719px;" required></textarea>
 
                           </div>
                           <div class="card-footer">

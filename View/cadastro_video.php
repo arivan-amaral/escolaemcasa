@@ -110,7 +110,7 @@ include "alertas.php";
                 <div class="row">
                   <div class="col-md-12">
                                               
-                                              <button type="button" class="btn btn-block btn-success"><?php echo $_GET['turma']."  - ".$_GET['disciplina']; ?></button>
+                                            <button type="button" class="btn btn-block btn-success"><?php echo $_GET['turma']."  - ".$_GET['disciplina']; ?></button>
                                               <br>
                                           <form class="mt-12" action="../Controller/Cadastro_video.php" method="post">
                                               
