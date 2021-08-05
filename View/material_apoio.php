@@ -15,10 +15,12 @@
   include '../Controller/Conversao.php';
 
   include '../Model/Trabalho.php';
+  include '../Model/Material_apoio.php';
 
   $idaluno=$_SESSION['idaluno'];
   $idescola=$_SESSION['escola_id'];
   $idturma=$_SESSION['turma_id'];
+  $iddisciplina=$_GET['iddisciplina'];
 
 
 ?>
@@ -80,68 +82,87 @@
     <!-- /.content-header -->
 
             <!-- Main content -->
-
-            <section class="content">
+ <section class="content">
 
               <div class="container-fluid">
 
                 <div class="row">
 
                   <div class="col-md-12">
+
                     
-                   
-                    
-                                <div class="card card-default">
-                                  <div class="card-header">
-                                    <h3 class="card-title">
-                                      <i class="fas fa-bullhorn"></i>
-                                      Matérial de apoio
-                                    </h3>
+
+
+
+
+                    <div class="timeline">
+
+                      <!-- timeline time label -->
+
+
+
+                      <?php 
+                          
+                          $result=listar_material_apoio_turma_disciplina($conexao, $idescola, $idturma, $iddisciplina);
+                           $cont=0;
+                           foreach ($result as $key => $value) {
+                              
+                              $cont++;
+                              $id=$value['id'];
+                              $titulo=$value['titulo'];
+
+                              $descricao=$value['descricao'];
+
+                              $extensao=$value['extensao'];
+                              
+                              $arquivo=$value['arquivo'];
+                              $data=converte_data_hora($value['data']);
+                                echo"       
+                                 <div class='time-label'>
+                                      <span class='bg-blue'>Data enviado: $data</span>
+                                    </div>";
+                              
+                          
+                                  echo "
+                                  <div>
+                                    <i class='fa fa-camera bg-purple'></i>
+                                    <div class='timeline-item'>
+                                      <h3 class='timeline-header'><a href='#'>$titulo</a></h3>
+                                      <div class='timeline-body'>
+                                         <a href='material_apoio/$arquivo' target='_blank'>";
+                                         $extensao = strtolower ( $extensao );
+                                         if ( strstr ( '.pdf;.docx;.doc;.txt;.odt;.pptx', $extensao ) ) {
+                                            echo"<img src='imagens/arquivos.png' width='200' height='200' alt='...'  ><br>
+                                           $arquivo
+                                            ";
+                                         }else{
+                                             echo"
+                                             <a href='material_apoio/$arquivo' target='_blank'>
+                                                <img src='material_apoio/$arquivo' width='200' height='200' alt='...'  >
+                                             </a>";
+                                         }
+                                       
+                                       echo"
+                                         </a>
+                                         <br>
+
+                               
+
+                                      </div>
+                                    </div>
                                   </div>
 
-                                  <?php
-                                    // $res_pendencia=$conexao->query("SELECT * FROM trabalho WHERE escola_id=$idescola and turma_id=$idturma");
-                                    // foreach ($res_pendencia as $key => $value) {
-                                    //   $idtrabalho=$value['id'];
-                                    //   $titulo=$value['titulo'];
-                                    //   $descricao=$value['descricao'];
-                                    //   $res=$conexao->query("SELECT * FROM trabalho_entregue WHERE trabalho_id=$idtrabalho limit 1");
-                                    //   $cont=0;
-                                    //   foreach ($res as $key => $value) {
-                                    //     $cont++;
-                                    //   }
-                                    //   if ($cont==0) {
-                                        echo"<div class='card-body'>
-                                          <div class='callout callout-danger'>
-                                            <h5>Título</h5>
-                                            <p>Em breve</p>
-                                          </div>
-                                          </div>";
-                                  //     }
-                                      
+                                  ";
 
-                                        
-
-                                  // }                                  
-
-                                  ?>
-                                    
-                                  
-                                  <!-- /.card-body -->
-                                </div>
-                                <!-- /.card -->
-                              
-
-
-
-
-
+                              }
+                      ?>         
+                      <div>
+                        <i class="fas fa-clock bg-gray"></i>
+                      </div>
+                    </div>
                   </div>        
-
                 </div>
-
               </div>
-
             </section>
 
 </div>

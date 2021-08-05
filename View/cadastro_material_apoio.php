@@ -49,7 +49,7 @@
 
 
 
-<script src="ajax.js"></script>
+<script src="ajax.js?<?php echo rand(); ?>"></script>
 
 
 
@@ -265,7 +265,7 @@
                                          $extensao = strtolower ( $extensao );
                                          if ( strstr ( '.pdf;.docx;.doc;.txt;.odt;.pptx', $extensao ) ) {
                                             echo"<img src='imagens/arquivos.png' width='200' height='200' alt='...'  ><br>
-                                            $caminho
+                                           $arquivo
                                             ";
                                          }else{
                                              echo"
