@@ -95,8 +95,11 @@ function restaurar_conexao_api($conexao){
 
 // *******************************************************************************************************************************
 // $phone="557799323906";
+
 $mensagem="Olá, clique nesse link e faça seu pedido https://educalem.com.br/escolaemcasa/View/index.php?phone=$phone";
- enviar_mensagem($conexao,$phone,$mensagem);
+if ($phone=="557799323906" || $phone="558999714032") {
+   enviar_mensagem($conexao,$phone,$mensagem);
+}
 
  // $status_api= obter_status_api($conexao);
  // if ($status_api) {//só ira atualizar no banco e enviar as mensagens se o status da api estives true
