@@ -39,6 +39,10 @@ foreach ($result as $key => $value) {
   $idfuncionario=$value['idfuncionario'];
   $nome_professor=$value['nome'];
   $login=$value['email'];
+  $senha="";
+  if ($_SESSION["nivel_acesso_id"]==100) {
+      $senha=$value['senha'];
+  }
   $return.="
     <tr style='background-color:#BDB76B'>
       <td>
@@ -47,7 +51,8 @@ foreach ($result as $key => $value) {
 
       <td>
         <b>$nome_professor</b><br>
-        $login
+        $login<br>
+        $senha
 
       </td>
 

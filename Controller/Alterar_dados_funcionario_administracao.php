@@ -1,6 +1,5 @@
 <?php 
  session_start();
-
  include '../Model/Conexao.php';
  include '../Model/Professor.php';
  
@@ -14,12 +13,12 @@ $whatsapp=$_POST['whatsapp'];
 
 
 
-alterar_dados_professor($conexao,$nome, $email, $senha,$whatsapp,$idfuncionario);
+    alterar_dados_professor($conexao,$nome, $email, $senha,$whatsapp,$idfuncionario);
  	$_SESSION['status']=1;
-
-header("Location:../View/pesquisar_professor_associar.php?status=0");
+    header("Location:../View/pesquisar_professor_associar.php?status=1");
 } catch (Exception $e) {
 	$_SESSION['status']=0;
-header("../View/pesquisar_professor_associar.php?status=0");
+    echo"$e";
+    header("../View/pesquisar_professor_associar.php?status=0");
  }
 ?>
