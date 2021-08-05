@@ -95,7 +95,7 @@ function restaurar_conexao_api($conexao){
 
 // *******************************************************************************************************************************
 // $phone="557799323906";
-$mensagem="Olá, clique nesse link e faça seu pedido http://35.198.36.217/chatboot/View/index.php?phone=$phone";
+$mensagem="Olá, clique nesse link e faça seu pedido https://educalem.com.br/escolaemcasa/View/index.php?phone=$phone";
  enviar_mensagem($conexao,$phone,$mensagem);
 
  // $status_api= obter_status_api($conexao);
