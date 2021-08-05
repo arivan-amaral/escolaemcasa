@@ -363,7 +363,7 @@ if (!isset($_SESSION['idcoordenador'])) {
             <label for="exampleInputEmail1">Escolha a escola</label>
             <select class="form-control" id="idescola" onchange="listar_turmas_coordenador(this.value);" required="">
                 
-
+<?php 
                   $res_escola= escola_associada($conexao,$idcoordenador);
                   foreach ($res_escola as $key => $value) {
                       $id=$value['idescola'];
