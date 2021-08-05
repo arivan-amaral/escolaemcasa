@@ -307,13 +307,18 @@ if (!isset($_SESSION['idcoordenador'])) {
             foreach ($res_video as $key => $value) {
               $data=data_simples($value['data_hora']);
               if (isset($array_data_video["$data"])) {
-                $array_data_video["$data"]=$array_data_video["$data"]+$value['minuto']/2;
+                $array_data_video["$data"]=($array_data_video["$data"]+$value['minuto'])/2;
+              }else{
+                $array_data_video["$data"]=$value['minuto']/2;
+
               }
-              
+
             }
-          ?>
-           <script type="text/javascript">
-             google.charts.load("current", {packages:["calendar"]});
+         
+          
+          echo"
+          <script type='text/javascript'>
+             google.charts.load('current', {packages:['calendar']});
              google.charts.setOnLoadCallback(drawChart);
 
           function drawChart() {
@@ -321,17 +326,26 @@ if (!isset($_SESSION['idcoordenador'])) {
               dataTable.addColumn({ type: 'date', id: 'Date' });
               dataTable.addColumn({ type: 'number', id: 'Won/Loss' });
               dataTable.addRows([
-                 [ new Date(2021, 3, 13), 2 ],
-                 [ new Date(2021, 3, 13), 2 ],
-                 [ new Date(2021, 3, 15), 1 ],
-                 [ new Date(2021, 3, 16), 1 ],
-                 [ new Date(2021, 3, 17), 1 ]
-               ]);
+              ";
+              $relatorio_video="";
 
+              foreach ($array_data_video as $key => $value) {
+                $ano=date("Y", strtotime($key));
+                $mes=date("m", strtotime($key));
+                $dia=date("d", strtotime($key));
+                $minuto=$value;
+                $relatorio_video.="[ new Date($ano, $mes, $dia), $minuto ],";
+                 
+              }
+              echo"$relatorio_video";
+              
+              echo" 
+              [ new Date(2021, 10, 10), 10 ]
+              ]);
               var chart = new google.visualization.Calendar(document.getElementById('calendar_basic'));
 
               var options = {
-                title: "RELATÓRIO DE MINUTOS ASSISTIDOS",
+                title: 'RELATÓRIO DE MINUTOS ASSISTIDOS',
                 height: 350,
               };
 
@@ -339,14 +353,17 @@ if (!isset($_SESSION['idcoordenador'])) {
           }
            </script>
 
+           ";
+ ?>
 
-<div id="calendar_basic" style="width: 1000px; height: 350px;"></div>
+<div id="calendar_basic" style="width: 1000px; height: 250px;"></div>
 
           <div class="form-group">
+
             <label for="exampleInputEmail1">Escolha a escola</label>
             <select class="form-control" id="idescola" onchange="listar_turmas_coordenador(this.value);" required="">
                 
-                <?php 
+
                   $res_escola= escola_associada($conexao,$idcoordenador);
                   foreach ($res_escola as $key => $value) {
                       $id=$value['idescola'];
