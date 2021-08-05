@@ -739,6 +739,8 @@ function cancelar_associacao_coordenador(id) {
   })
 }
 
+
+
 function cancelar_associacao_professor(id) {
   Swal.fire({
     title: 'Deseja continuar com essa ação?',
@@ -753,6 +755,42 @@ function cancelar_associacao_professor(id) {
 
            var xmlreq = CriaRequest();   
            xmlreq.open("GET", "../Controller/Desassociar_professor.php?id="+id, true);
+           xmlreq.onreadystatechange = function(){             
+                if (xmlreq.readyState == 4) {
+                    if (xmlreq.status == 200) {
+                        document.getElementById("linha"+id).innerHTML=xmlreq.responseText;
+
+                        alert('Ação concluída com sucesso!');                                             
+                        
+                    }else{
+                        alert('Verifique sua conexão com a internet!');
+                        
+                    }
+                }
+            };
+            xmlreq.send(null);
+
+    } else if (result.isDenied) {
+      //Swal.fire('Ação não concluída', '', 'info')
+    }
+  })
+}
+
+
+function excluir_link_video_chamada(id) {
+  Swal.fire({
+    title: 'Deseja continuar com essa ação?',
+    showDenyButton: true,
+  
+    confirmButtonText: `Sim`,
+    denyButtonText: `Não`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+           // window.location.href = "../Controller/Desassociar_professor.php?id="+id+"";
+
+           var xmlreq = CriaRequest();   
+           xmlreq.open("GET", "../Controller/Excluir_link_video_chamada.php?id="+id, true);
            xmlreq.onreadystatechange = function(){             
                 if (xmlreq.readyState == 4) {
                     if (xmlreq.status == 200) {

@@ -203,15 +203,23 @@ $idescola=$_GET['idescola'];
                                                  $data_visivel=converte_data_hora($value['hora_inicio']);
                                                  $data_visivel_fim=converte_data_hora($value['hora_fim']);
 
-                                                 echo"       
-                                                 <div class='time-label'>
-                                                 <span class='bg-blue'>LINK DA DISCIPLINA: $nome_disciplina DISPONÍVEL DE: $data_visivel ÀS $data_visivel_fim</span>
-                                                 </div>";
+                                                 echo"
+                                                 <span id='linha$id'>       
+                                                     <div class='time-label'>
+                                                     <span class='bg-blue'>LINK DA DISCIPLINA: $nome_disciplina DISPONÍVEL DE: $data_visivel ÀS $data_visivel_fim</span>
+                                                     </div>";
 
-                                                 echo "
-                                                 <p> <a href='$link' target='_blank'>$link</a> </p>
-                                   
-                                                 $descricao";
+                                                     echo "
+                                                     <p> ID LINK: $id - <a href='$link' target='_blank'>$link</a> </p>
+                                       
+                                                     $descricao
+
+
+                                                     <a onclick='excluir_link_video_chamada($id);' class='btn btn-danger'>Excluir  link de id: $id</a>
+                                                </span>
+                                                     <br>
+                                                     <br>
+                                                ";
                                                }
 
                                                ?> 
