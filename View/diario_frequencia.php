@@ -144,7 +144,9 @@ if (!isset($_SESSION['idprofessor'])) {
             <select class="form-control" id='aula' required  name='aula' onchange="lista_frequencia_aluno();">
               <?php
               if ($idserie<8) {
-                echo "<option value='AULA-1'>AULA-1</option>";
+                echo "
+                <option></option>
+                <option value='AULA-1'>AULA-1</option>";
               }else{
                 echo"
                 <option></option>

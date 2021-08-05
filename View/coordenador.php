@@ -22,6 +22,8 @@ if (!isset($_SESSION['idcoordenador'])) {
 
 ?>
 
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   
 
 
 <script src="ajax.js?<?php echo rand(); ?>"></script>
@@ -94,11 +96,10 @@ if (!isset($_SESSION['idcoordenador'])) {
 
                    <!-- .row -->
 
-              <div class="col-md-1"></div>
-
-
-
+            <div class="col-md-1"></div>
               <div class="col-md-10">
+
+
 
                 <?php 
 
@@ -300,6 +301,44 @@ if (!isset($_SESSION['idcoordenador'])) {
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-10">
+          <?php 
+            $res_video=$conexao->query("SELECT * FROM visualizacao_video");
+            $array_data_video=array();
+            foreach ($res_video as $key => $value) {
+              $data=data_simples($value['data_hora']);
+              $array_data_video["$data"]=$array_data_video["$data"]+$value['minuto']/2;
+            }
+          ?>
+           <script type="text/javascript">
+             google.charts.load("current", {packages:["calendar"]});
+             google.charts.setOnLoadCallback(drawChart);
+
+          function drawChart() {
+              var dataTable = new google.visualization.DataTable();
+              dataTable.addColumn({ type: 'date', id: 'Date' });
+              dataTable.addColumn({ type: 'number', id: 'Won/Loss' });
+              dataTable.addRows([
+                 [ new Date(2021, 3, 13), 2 ],
+                 [ new Date(2021, 3, 13), 2 ],
+                 [ new Date(2021, 3, 15), 1 ],
+                 [ new Date(2021, 3, 16), 1 ],
+                 [ new Date(2021, 3, 17), 1 ]
+               ]);
+
+              var chart = new google.visualization.Calendar(document.getElementById('calendar_basic'));
+
+              var options = {
+                title: "RELATÓRIO DE MINUTOS ASSISTIDOS",
+                height: 350,
+              };
+
+              chart.draw(dataTable, options);
+          }
+           </script>
+
+
+<div id="calendar_basic" style="width: 1000px; height: 350px;"></div>
+
           <div class="form-group">
             <label for="exampleInputEmail1">Escolha a escola</label>
             <select class="form-control" id="idescola" onchange="listar_turmas_coordenador(this.value);" required="">
