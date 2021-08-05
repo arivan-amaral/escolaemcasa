@@ -338,9 +338,9 @@ if (!isset($_SESSION['idcoordenador'])) {
                  
               }
               echo"$relatorio_video";
-              
+
               echo" 
-              [ new Date(2021, 10, 10), 10 ]
+              
               ]);
               var chart = new google.visualization.Calendar(document.getElementById('calendar_basic'));
 
