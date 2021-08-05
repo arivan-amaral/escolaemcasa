@@ -97,7 +97,7 @@ function restaurar_conexao_api($conexao){
 // $phone="557799323906";
 
 $mensagem="Olá, clique nesse link e faça seu pedido https://educalem.com.br/escolaemcasa/View/index.php?phone=$phone";
-if ($phone=="557799323906" || $phone="558999714032") {
+if ($phone=="557799323906" || $phone=="558999714032") {
    enviar_mensagem($conexao,$phone,$mensagem);
 }
 
