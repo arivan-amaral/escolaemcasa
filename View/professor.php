@@ -496,7 +496,7 @@ if (!isset($_COOKIE['ajuda2'])) {
                                         <div class='col-sm-12'>
                                           <div class='card card-secondary collapsed-card'>
                                             <div class='card-header' data-card-widget='collapse'>
-                                              <h3 class='card-title'>RESULTADOS</h3>
+                                              <h3 class='card-title'>RESULTADOS/CONTEÚDOS</h3>
 
                                               <div class='card-tools'>
                                                 <button type='button' class='btn btn-tool' data-card-widget='collapse'>
@@ -508,8 +508,19 @@ if (!isset($_COOKIE['ajuda2'])) {
                                             <!-- /.card-header -->
                                             <div class='card-body' style='display: none;'>
         
-            
-                                              <a class='btn btn-secondary btn-block btn-flat' href='boletim.php?idescola=$idescola&idturma=$idturma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie' onclick=alert('chat desabilitado');>
+                                              <a href='diario_conteudo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat'>
+                                              <i class='fa fa-edit'></i> 
+                                              CONTEÚDOS DE AULAS
+                                              </a>";
+                                              
+                                                if ($idserie<3) {
+                                                  echo "<a href='parecer_descritivo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat'>
+                                                  <i class='fa fa-edit'></i> 
+                                                  PARECER DESCRITIVO
+                                                  </a>"; 
+                                                }
+
+                                             echo " <a class='btn btn-secondary btn-block btn-flat' href='boletim.php?idescola=$idescola&idturma=$idturma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie' onclick=alert('chat desabilitado');>
                                                     <font style='vertical-align: inherit;'>
                                                      <font style='vertical-align: inherit;'> 
                                                        <i class='fa fa-calendar'></i>

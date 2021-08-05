@@ -58,12 +58,12 @@ $result="";
                                           </a> 
 
 
-                                          <a   href='diario_conteudo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat'>
+                                          <a href='diario_conteudo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat'>
                                           <i class='fa fa-edit'></i> 
                                           CONTEÚDOS DE AULAS
                                           </a> 
 
-                                          <a   href='parecer_descritivo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat'>
+                                          <a href='parecer_descritivo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat'>
                                           <i class='fa fa-edit'></i> 
                                           PARECER DESCRITIVO
                                           </a> 
