@@ -301,7 +301,7 @@ if (!isset($_SESSION['idcoordenador'])) {
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-10">
-          <?php 
+                    <?php 
             $res_video=$conexao->query("SELECT * FROM visualizacao_video order by data_hora asc");
             $array_data_video=array();
             $minuto_aux=0;
@@ -359,7 +359,17 @@ if (!isset($_SESSION['idcoordenador'])) {
            ";
  ?>
 
-<div id="calendar_basic" style="width: 1000px; height: 250px;"></div>
+<div id="calendar_basic" style="width: 1000px; height: 200px;"></div>
+
+        </div>    
+    </div>
+  
+
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          <br>
+
 
           <div class="form-group">
 
