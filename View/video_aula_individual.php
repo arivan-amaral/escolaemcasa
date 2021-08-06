@@ -134,7 +134,7 @@
 
                           $cont++;
                            $idvideo=$linha['id'];
-                           $link=$linha['link'];
+                           $link=trim($linha['link']);
                            $video_local=$linha['video_local'];
                            $titulo=$linha['titulo'];
                            $descricao=$linha['descricao'];
