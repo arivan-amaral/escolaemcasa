@@ -20,10 +20,9 @@ include "alertas.php";
 
   $idescola=$_GET['idescola'];
   $idturma=$_GET['turm'];
+  $idserie=$_GET['idserie'];
 
   $iddisciplina=$_GET['disc'];
-
-  
 
 ?>
 
@@ -161,8 +160,53 @@ include "alertas.php";
                         <input type="hidden" name="turma_id" value="<?php echo $_GET['turm']; ?>" class="form-control" required="">
 
                         <input type="hidden" name="disciplina_id" value="<?php echo $_GET['disc']; ?>" class="form-control" required="">
+                      
+                      <div style="background-color:#808080; padding:10px;border-radius: 1%;">
+                            
+                          <p> <font color='red'>Escolha ás turma abaixo que esse trabalho/atividade será cadastrado. </font></p>
+                        <?php
 
-                        <button type="submit" class="btn waves-effect waves-light btn-lg btn-primary">Enviar Atividade</button>
+                          $result_disciplinas=$conexao->query("SELECT * FROM ministrada,escola,turma,disciplina where
+                           ministrada.turma_id=idturma and
+                           ministrada.disciplina_id=iddisciplina and 
+                           ministrada.escola_id=idescola and
+                           ministrada.escola_id=idescola and
+
+                           idescola=$idescola and
+                           professor_id=$idprofessor and
+                           serie_id=$idserie 
+                           order by disciplina_id=$iddisciplina
+                          ");
+
+                          foreach ($result_disciplinas as $key => $value) {
+                             $turma_id=$value['idturma'];
+                             $nome_turma=$value['nome_turma'];
+                             $nome_disciplina=$value['nome_disciplina'];
+                          
+                             if ($idturma==$turma_id) {
+                                echo"
+                                <div class='custom-control custom-checkbox'>
+                                    <input class='custom-control-input' name='idturma[]' type='checkbox' id='customCheckbox$turma_id' value='$turma_id' required checked>
+                                    <label for='customCheckbox$turma_id' class='custom-control-label'>$nome_turma - $nome_disciplina</label>
+                                </div>";
+
+                             } else {
+                              echo"
+                              <div class='custom-control custom-checkbox'>
+                                  <input class='custom-control-input' name='idturma[]' type='checkbox' id='customCheckbox$turma_id' value='$turma_id'  >
+                                  <label for='customCheckbox$turma_id' class='custom-control-label'>$nome_turma - $nome_disciplina</label>
+                              </div>";
+
+                              
+                            }
+                        }
+
+                        ?>
+                    </div>
+                        <br>
+                        <br>
+
+                        <button type="submit" class="btn btn-block btn-primary">Enviar Atividade</button>
 
                     </form>
 

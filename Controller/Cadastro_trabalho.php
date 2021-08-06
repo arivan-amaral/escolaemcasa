@@ -30,9 +30,13 @@ try {
 		    $novoNome = uniqid ( time () ) . '.' . $extensao;
 		    $destino = '../View/trabalho/' . $novoNome;
 		    if(move_uploaded_file($arquivo_tmp, $destino)){
-
-				$conexao->exec("INSERT INTO trabalho(titulo,caminho,descricao, turma_id, disciplina_id, professor_id,data_entrega,extensao,data_hora_visivel,escola_id) VALUES ('$titulo','$novoNome', '$descricao',$turma_id,$disciplina_id,    $professor_id,'$data_entrega','$extensao','$data_hora_visivel',$idescola )");
+		    		foreach ($_POST['idturma'] as $key => $value) {
+		    			$turma_id=$_POST['idturma'][$key];
+		    			$conexao->exec("INSERT INTO trabalho(titulo,caminho,descricao, turma_id, disciplina_id, professor_id,data_entrega,extensao,data_hora_visivel,escola_id) VALUES ('$titulo','$novoNome', '$descricao',$turma_id,$disciplina_id,    $professor_id,'$data_entrega','$extensao','$data_hora_visivel',$idescola )");
 				
+		    		}
+
+
 				$_SESSION['status']=1;
 	 			header("Location:../View/professor.php?status=1");
 	 		}else{
@@ -47,11 +51,14 @@ try {
 	 	}
 
 	}else{
-		$res_t=$conexao->exec("INSERT INTO trabalho(titulo,descricao, turma_id, disciplina_id, professor_id,data_entrega,extensao,data_hora_visivel,escola_id) VALUES ('$titulo', '$descricao',    $turma_id,$disciplina_id,    $professor_id,'$data_entrega','$extensao' ,'$data_hora_visivel',$idescola)");
-	 	if ($res_t) {
-			$_SESSION['status']=1;
-		 	header("Location:../View/professor.php?status=1");
-	 	}
+		foreach ($_POST['idturma'] as $key => $value) {
+		    $turma_id=$_POST['idturma'][$key];
+			$res_t=$conexao->exec("INSERT INTO trabalho(titulo,descricao, turma_id, disciplina_id, professor_id,data_entrega,extensao,data_hora_visivel,escola_id) VALUES ('$titulo', '$descricao',    $turma_id,$disciplina_id,    $professor_id,'$data_entrega','$extensao' ,'$data_hora_visivel',$idescola)");
+		}
+		 	
+		$_SESSION['status']=1;
+		header("Location:../View/professor.php?status=1");
+		 
 	}
 
 
