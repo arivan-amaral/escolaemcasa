@@ -306,10 +306,11 @@ if (!isset($_SESSION['idcoordenador'])) {
             $array_data_video=array();
             foreach ($res_video as $key => $value) {
               $data=data_simples($value['data_hora']);
+
               if (isset($array_data_video["$data"])) {
                 $array_data_video["$data"]=($array_data_video["$data"]+$value['minuto'])/2;
               }else{
-                $array_data_video["$data"]=$value['minuto']/2;
+                $array_data_video["$data"]=$value['minuto'];
 
               }
 
