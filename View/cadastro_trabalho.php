@@ -163,7 +163,7 @@ include "alertas.php";
                       
                       <div style="background-color:#808080; padding:10px;border-radius: 1%;">
                             
-                          <p> <font color='red'>Escolha ás turma abaixo que esse trabalho/atividade será cadastrado. </font></p>
+                          <p> <font color='red'>Escolha as turma abaixo que esse trabalho/atividade será cadastrado. </font></p>
                         <?php
 
                           $result_disciplinas=$conexao->query("SELECT * FROM ministrada,escola,turma,disciplina where
