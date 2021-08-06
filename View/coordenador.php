@@ -302,17 +302,19 @@ if (!isset($_SESSION['idcoordenador'])) {
         <div class="col-md-1"></div>
         <div class="col-md-10">
           <?php 
-            $res_video=$conexao->query("SELECT * FROM visualizacao_video");
+            $res_video=$conexao->query("SELECT * FROM visualizacao_video order by data_hora asc");
             $array_data_video=array();
+            $minuto_aux=0;
+
             foreach ($res_video as $key => $value) {
+              $minuto_aux=0;
               $data=data_simples($value['data_hora']);
-
-              if (isset($array_data_video["$data"])) {
-                $array_data_video["$data"]=($array_data_video["$data"]+$value['minuto'])/2;
-              }else{
-                $array_data_video["$data"]=$value['minuto'];
-
-              }
+              $minuto_aux=$minuto_aux+($value['minuto']/2); 
+              if (!isset($array_data_video["$data"])) {
+                $array_data_video["$data"]=0;
+              }            
+              $array_data_video["$data"]+=$minuto_aux;
+              
 
             }
          
