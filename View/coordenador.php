@@ -298,72 +298,73 @@ if (!isset($_SESSION['idcoordenador'])) {
 
 
 
-    <div class="row">
+   <!--  <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-10">
-                    <?php 
-            $res_video=$conexao->query("SELECT * FROM visualizacao_video order by data_hora asc");
-            $array_data_video=array();
-            $minuto_aux=0;
+       -->    
+        <?php 
+          //   $res_video=$conexao->query("SELECT * FROM visualizacao_video order by data_hora asc");
+          //   $array_data_video=array();
+          //   $minuto_aux=0;
 
-            foreach ($res_video as $key => $value) {
-              $minuto_aux=0;
-              $data=data_simples($value['data_hora']);
-              $minuto_aux=$minuto_aux+($value['minuto']/2); 
-              if (!isset($array_data_video["$data"])) {
-                $array_data_video["$data"]=0;
-              }            
-              $array_data_video["$data"]+=$minuto_aux;
+          //   foreach ($res_video as $key => $value) {
+          //     $minuto_aux=0;
+          //     $data=data_simples($value['data_hora']);
+          //     $minuto_aux=$minuto_aux+($value['minuto']/2); 
+          //     if (!isset($array_data_video["$data"])) {
+          //       $array_data_video["$data"]=0;
+          //     }            
+          //     $array_data_video["$data"]+=$minuto_aux;
               
 
-            }
+          //   }
          
           
-          echo"
-          <script type='text/javascript'>
-             google.charts.load('current', {packages:['calendar']});
-             google.charts.setOnLoadCallback(drawChart);
+          // echo"
+          // <script type='text/javascript'>
+          //    google.charts.load('current', {packages:['calendar']});
+          //    google.charts.setOnLoadCallback(drawChart);
 
-          function drawChart() {
-              var dataTable = new google.visualization.DataTable();
-              dataTable.addColumn({ type: 'date', id: 'Date' });
-              dataTable.addColumn({ type: 'number', id: 'Won/Loss' });
-              dataTable.addRows([
-              ";
-              $relatorio_video="";
+          // function drawChart() {
+          //     var dataTable = new google.visualization.DataTable();
+          //     dataTable.addColumn({ type: 'date', id: 'Date' });
+          //     dataTable.addColumn({ type: 'number', id: 'Won/Loss' });
+          //     dataTable.addRows([
+          //     ";
+          //     $relatorio_video="";
 
-              foreach ($array_data_video as $key => $value) {
-                $ano=date("Y", strtotime($key));
-                $mes=date("m", strtotime($key));
-                $dia=date("d", strtotime($key));
-                $minuto=$value;
-                $relatorio_video.="[ new Date($ano, $mes, $dia), $minuto ],";
+          //     foreach ($array_data_video as $key => $value) {
+          //       $ano=date("Y", strtotime($key));
+          //       $mes=date("m", strtotime($key));
+          //       $dia=date("d", strtotime($key));
+          //       $minuto=$value;
+          //       $relatorio_video.="[ new Date($ano, $mes, $dia), $minuto ],";
                  
-              }
-              echo"$relatorio_video";
+          //     }
+          //     echo"$relatorio_video";
 
-              echo" 
+          //     echo" 
               
-              ]);
-              var chart = new google.visualization.Calendar(document.getElementById('calendar_basic'));
+          //     ]);
+          //     var chart = new google.visualization.Calendar(document.getElementById('calendar_basic'));
 
-              var options = {
-                title: 'RELATÓRIO DE MINUTOS ASSISTIDOS',
-                height: 350,
-              };
+          //     var options = {
+          //       title: 'RELATÓRIO DE MINUTOS ASSISTIDOS',
+          //       height: 350,
+          //     };
 
-              chart.draw(dataTable, options);
-          }
-           </script>
+          //     chart.draw(dataTable, options);
+          // }
+          //  </script>
 
-           ";
+          //  ";
  ?>
 
-<div id="calendar_basic" style="width: 1000px; height: 200px;"></div>
+<!-- <div id="calendar_basic" style="width: 1000px; height: 200px;"></div>
 
         </div>    
     </div>
-  
+   -->
 
       <div class="row">
         <div class="col-md-1"></div>
