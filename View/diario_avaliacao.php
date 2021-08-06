@@ -130,9 +130,8 @@ if (!isset($_SESSION['idprofessor'])) {
       <br>
       <br>
       <div class="row">
-
-        <div class="col-sm-1"></div>
         
+        <div class="col-sm-1"></div>
         <div class="col-sm-3">
           <div class="form-group">
             <label for="exampleInputEmail1">Data da avaliação</label>
@@ -145,7 +144,7 @@ if (!isset($_SESSION['idprofessor'])) {
           <div class="form-group">
             <label for="exampleInputEmail1">Período</label>
 
-            <select class="form-control" id='periodo' name='periodo' onchange='lista_avaliacao_aluno_por_data();'  required="">
+            <select class="form-control" id='periodo' name='periodo' required="">
               <option></option>
               <?php 
                 $resultado=listar_trimestre($conexao);
@@ -165,7 +164,7 @@ if (!isset($_SESSION['idprofessor'])) {
           <div class="form-group">
             <label for="exampleInputEmail1">Avaliação/Parecer</label>
 
-            <select class="form-control" id='avaliacao' name='avaliacao' onchange='lista_avaliacao_aluno_por_data();' required="">
+            <select class="form-control" id='avaliacao' name='avaliacao' required="">
               <option></option>
               <option value="DIAGNÓSTICO INICIAL">DIAGNÓSTICO INICIAL</option>
               <option value="av1">AV1 / Parecer</option>
@@ -174,6 +173,14 @@ if (!isset($_SESSION['idprofessor'])) {
               <option value="RP">RECUPERAÇÃO</option>
              
             </select>
+          </div>
+        </div>
+
+        <div class="col-sm-2">
+          <div class="form-group">
+            <label for="exampleInputEmail1"> Buscar dados</label>
+
+              <a href="#" class="btn btn-primary" onclick="lista_avaliacao_aluno_por_data();">BUSCAR </a>
           </div>
         </div>
 
