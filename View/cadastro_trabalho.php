@@ -174,8 +174,9 @@ include "alertas.php";
 
                            idescola=$idescola and
                            professor_id=$idprofessor and
-                           serie_id=$idserie 
-                           order by disciplina_id=$iddisciplina
+                           serie_id=$idserie and 
+                           disciplina_id=$iddisciplina
+                        
                           ");
 
                           foreach ($result_disciplinas as $key => $value) {
