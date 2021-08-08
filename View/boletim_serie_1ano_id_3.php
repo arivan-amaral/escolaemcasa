@@ -390,7 +390,7 @@
 
           ?>
 
-       <tr style='mso-yfti-irow:9;height:15.0pt;mso-row-margin-right:.45pt'>
+       <tr style=''>
 
           <td width=44 nowrap rowspan="<?php echo $rowspan; ?>" style='width:33.3pt;border-top:none;
           border-left:solid windowtext 1.0pt;border-bottom:solid black 1.0pt;
@@ -401,7 +401,7 @@
           mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
           color:black;mso-fareast-language:PT-BR'>
             
-            <?php echo $nome_modalidade;  ?>
+            <?php echo  $nome_modalidade;  ?>
 
           <o:p></o:p></span></div></b></p>
           </td>

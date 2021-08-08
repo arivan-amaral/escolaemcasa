@@ -25,7 +25,21 @@ $res_turma=lista_de_turmas_por_id($conexao,$idturma);
 foreach ($res_turma as $key => $value) {
   $nome_turma=$value['nome_turma'];
 }
+?>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
 
+</head>
+<body>
+   
+  <a href="#" onclick="demoFromHTML();">IMPRIMIR</a>
+<div id="employee_detail">
+
+<?php
 if ($idserie==3) {
   //echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
 
@@ -35,7 +49,8 @@ if ($idserie==3) {
       $idaluno=$value['idaluno'];
       $nome_aluno=$value['nome_aluno'];
       boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno, $nome_escola,$nome_turma);
-      echo "<br><br>";
+      // break;
+      
       $numero++;
     }
 
@@ -48,11 +63,6 @@ else if ($idserie >3 && $idserie <=8) {
         $idaluno=$value['idaluno'];
         $nome_aluno=$value['nome_aluno'];
           boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
-        if ($numero%2==0) {
-          echo "<br> ";
-          echo "<br> ";
-         
-        }
         $numero++;
       }
 
@@ -79,8 +89,9 @@ else if ($idserie >3 && $idserie <=8) {
 
         boletim_maternal_1_2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno ,$nome_escola,$nome_turma,$nome_professor);
         $nome_professor='';
-        echo "<br><br>";
+        
       $numero++;
+      break;
     }
 
 }else if ($idserie > 8) {
@@ -91,10 +102,59 @@ else if ($idserie >3 && $idserie <=8) {
         $idaluno=$value['idaluno'];
         $nome_aluno=$value['nome_aluno'];
           boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
-        echo "<br><br>";
+        
         $numero++;
       }
       
 }
 
 ?>
+</div>
+
+
+<script type="text/javascript">
+  
+
+   window.html2canvas = html2canvas;
+
+   function demoFromHTML() {
+
+     const html_source = document.getElementById('employee_detail'); // O id do elemento que contém o Html que quer imprimir.
+     const filename = 'boletim.pdf';
+
+
+     html2canvas(html_source).then(function(canvas) {
+       /*
+       [210,297] Sao os números (largura e altura do papel a4) que eu encontrei para trabalhar com eles.
+       Se você puder encontrar números oficiais do jsPDF, usa.
+        */
+       let imgData = canvas.toDataURL('image/png');
+       let imgWidth = 250; // Largura em mm de um a4
+       let pageHeight = 297; // Altura em mm de um a4
+
+       let imgHeight = canvas.height * imgWidth / canvas.width;
+       let heightLeft = imgHeight;
+       let position = 15;
+       let pdf = new jsPDF('p', 'mm');
+       let fix_imgWidth = 15; // Vai subindo e descendo esses valores ate ficar como queres
+       let fix_imgHeight = 15; // Vai subindo e descendo esses valores ate ficar como queres
+
+       pdf.addImage(imgData, 'PNG', 15, position, imgWidth, imgHeight);
+       heightLeft -= pageHeight;
+
+       while (heightLeft >= 0) {
+         position = heightLeft - imgHeight;
+         pdf.addPage();
+         pdf.addImage(imgData, 'PNG', 15, position, imgWidth + fix_imgWidth, imgHeight + fix_imgHeight);
+         heightLeft -= pageHeight;
+       }
+
+       pdf.save(filename);
+     })
+
+   }
+
+</script>
+
+</body>
+</html>

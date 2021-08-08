@@ -1019,7 +1019,18 @@ div.WordSection1
   PT-BR'>TRIMESTRE<o:p></o:p></span></b></p>
   </td>
  
-  
+  <td width=434 colspan=5 rowspan=2 style='width:325.55pt;border-top:solid windowtext 1.0pt;
+  border-left:none;border-bottom:none;border-right:solid windowtext 1.0pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
+  mso-border-left-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
+  background:#D9D9D9;padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+  line-height:normal'><b><span style='font-size:9.0pt;font-family:"Arial",sans-serif;
+  mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+  PT-BR'>OBSERVAÇÕES</span></b><b><span
+  style='font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
+  "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p></o:p></span></b></p>
+  </td>
  </tr>
 
 
@@ -1141,8 +1152,9 @@ div.WordSection1
 
            ?>
 
-        </o:p></span></b></p>
+          </o:p></span></b></p>
         </td>
+
         <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
         border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
         mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
@@ -1169,46 +1181,7 @@ div.WordSection1
        
 
 
- <td width=394 colspan=3 style='width:295.75pt;border:solid windowtext 1.0pt;
-        border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-        mso-border-left-alt:solid windowtext 1.0pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-        height:26.25pt'>
-        <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-        style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-        "Times New Roman";color:black;mso-fareast-language:PT-BR'>
        
-        <o:p></o:p></span></p>
-        </td>
-        <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-        border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-        mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-        mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-        height:26.25pt'>
-        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-        line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-        mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-        PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-        </td>
-        <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-        border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-        mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-        mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-        height:26.25pt'>
-        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-        line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-        mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-        PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-        </td>
-        <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
-        border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-        mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-        mso-border-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-        height:26.25pt'>
-        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-        line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
-        mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-        PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-        </td>
 
 
 
@@ -1216,53 +1189,48 @@ div.WordSection1
 <?php 
       }
 
-   
-  ?>
+      if ($i==0) {
+        // code...
+?>
+    <td nowrap colspan=5 rowspan="1" style='border-top:none;border-right:solid windowtext 1.0pt;' >
+      <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
+      style='font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
+      "Times New Roman";color:black;mso-fareast-language:PT-BR'>
 
-   </tr>
+    <?php
+
+            $result_parecer_tri1=$conexao->query("
+              SELECT * FROM nota WHERE
+              escola_id=$idescola and
+              turma_id=$idturma and
+              periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
+
+
+            $parecer_tri_1="";
+          
+            foreach ($result_parecer_tri1 as $key => $value) {
+              $parecer_tri_1=$value['parecer_descritivo'];
+            }
+          echo "$parecer_tri_1";
+
+      ?>
+  <o:p>
+      </td>
+
+  </tr>
 
 <?php 
+  
+      }
 }
 ?>
 
    
 
- <tr style='mso-yfti-irow:28;height:15.0pt'>
-  <td width=996 nowrap colspan=11 style='width:746.8pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext 1.0pt;mso-border-top-alt:
-  1.0pt;mso-border-left-alt:1.0pt;mso-border-bottom-alt:.5pt;mso-border-right-alt:
-  .5pt;mso-border-color-alt:windowtext;mso-border-style-alt:solid;background:
-  white;padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
-  style='font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>Observações:<o:p>
-
-<?php
-
-        $result_parecer_tri1=$conexao->query("
-          SELECT * FROM nota WHERE
-          escola_id=$idescola and
-          turma_id=$idturma and
-          periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
-
-
-        $parecer_tri_1="";
-      
-        foreach ($result_parecer_tri1 as $key => $value) {
-          $parecer_tri_1=$value['parecer_descritivo'];
-        }
-      echo "$parecer_tri_1";
-
-  ?>
-  </o:p></span></b></p>
-  </td>
- </tr>
-
-
 
  <tr style='mso-yfti-irow:29;mso-yfti-lastrow:yes;height:16.5pt'>
   <td width=996 nowrap colspan=11 style='width:746.8pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:
+  border-top:solid windowtext 1pt;mso-border-top-alt:solid windowtext 1pt;mso-border-top-alt:
   .5pt;mso-border-left-alt:1.0pt;mso-border-bottom-alt:1.0pt;mso-border-right-alt:
   .5pt;mso-border-color-alt:windowtext;mso-border-style-alt:solid;background:
   white;padding:0cm 3.5pt 0cm 3.5pt;height:16.5pt'>
