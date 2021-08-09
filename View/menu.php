@@ -246,7 +246,7 @@
                               </li>";
 
                               if (isset($_SESSION['nivel_acesso_id'])) {
-                                  if ($_SESSION['nivel_acesso_id']==2) {
+                                  if ($_SESSION['nivel_acesso_id']==2 || $_SESSION['nivel_acesso_id']==100) {
                                     
                                   
 

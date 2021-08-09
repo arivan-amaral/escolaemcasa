@@ -1,4 +1,5 @@
 <?php
+session_start();
     include("../Model/Conexao.php");
     include("../Model/Coordenador.php");
     include("../Model/Escola.php");
@@ -34,12 +35,21 @@ $return="
 foreach ($result as $key => $value) {
   $idfuncionario=$value['idfuncionario'];
   $login=$value['email'];
+  $descricao_funcao=$value['descricao_funcao'];
+  $senha="";
+
+  if ($_SESSION["nivel_acesso_id"]==100) {
+    $senha=$value['senha'];
+  }
   $nome=$value['nome'];
+
   $return.="
     <tr style='background-color:#BDB76B'>
       <td>
         <b>$nome</b><br>
-        Login: $login
+        <b><font color='red'>$descricao_funcao (a)</font></b><br>
+        Login: $login  <br>
+        $senha
       </td>
 
       <td>
