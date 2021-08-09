@@ -433,15 +433,15 @@ if ($conta_parecer==0 && $linha==0) {
           SELECT * FROM nota WHERE
           escola_id=$idescola and
           turma_id=$idturma and
-          disciplina_id=$iddisciplina and 
+        
           periodo_id=1 and aluno_id=$idaluno  group by parecer_descritivo");
 
 // avaliacao,periodo_id 
-        
+
         $parecer_tri_1="";
       
         foreach ($result_parecer_tri1 as $key => $value) {
-          $parecer_tri_1=$value['parecer_descritivo'];
+          $parecer_tri_1.=$value['parecer_descritivo'];
         }
       echo "$parecer_tri_1";
 
