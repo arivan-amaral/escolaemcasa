@@ -35,7 +35,7 @@ try {
                $cont=1;
                $cor_tabela='table-primary';
                foreach ($result_aluno as $key => $value) {
-                
+
                     $nome_aluno=utf8_decode($value['nome_aluno']);
                     $nome_turma=($value['nome_turma']);
                     $id=$value['idaluno'];
@@ -159,8 +159,7 @@ try {
 
               
                     //arivan
-                                  $result.="$serie_id = $idserie & $avaliacao";
-
+                                 
                     if ($serie_id == $idserie && $avaliacao=='av3') {
                        $result.="<tr class='$cor_tabela'>
                             <td colspan='2'>
