@@ -1,4 +1,20 @@
 <?php
+
+if (!isset($_COOKIE['notificado_videos_não'])) {
+    
+  echo "<script type='text/javascript'>
+      function modal_video() {
+          $(document).ready(function() {
+              $('#modal-aviso').modal('show');
+            });
+      }
+
+      setTimeout('modal_video();',1000);
+      
+  </script>";
+ 
+  
+}
   include 'seguranca_aluno.php';
 
   include "cabecalho.php";
@@ -488,6 +504,37 @@ $idserie=$_SESSION['serie_id'];
 
   </script>
 
+
+<div class="modal fade" id="modal-aviso">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" style="color: red;">ATENÇÃO</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+
+          <div class="modal-body">
+              <!-- /corpo -->
+          <center>
+            <h2 ><b>Esta página contém apenas os vídeos que <span style="color: red;">AINDA NÃO</span> foram visualizados pelo aluno, apos serem visualizados estarão disponíveis para conferência em suas respetivas disciplinas.</b></h2>
+           
+          </center>
+          <br>
+           
+
+          <!-- /corpo -->
+        </div>
+           <br>
+      <button type="button" class="btn btn-default" data-dismiss="modal">
+        <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fechar</font></font></button>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
 
 
  <?php 
