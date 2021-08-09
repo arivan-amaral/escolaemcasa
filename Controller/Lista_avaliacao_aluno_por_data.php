@@ -35,7 +35,7 @@ try {
                $cont=1;
                $cor_tabela='table-primary';
                foreach ($result_aluno as $key => $value) {
-
+                
                     $nome_aluno=utf8_decode($value['nome_aluno']);
                     $nome_turma=($value['nome_turma']);
                     $id=$value['idaluno'];
@@ -142,7 +142,7 @@ try {
                      
                       </tr>";
             
-            if ($idserie<8) {
+            if ($idperiodo!=6) {
               // $result.="";
              
                  $res_par=listar_parecer_disciplina($conexao,$iddisciplina,$idturma);
@@ -216,7 +216,7 @@ try {
 
                 }
 
-              //}//fim if
+              }//fim if
 
 
             $cont++;
