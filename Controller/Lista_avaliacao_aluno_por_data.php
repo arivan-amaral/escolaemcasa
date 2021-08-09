@@ -95,7 +95,7 @@ try {
                                   $result.="<div class='card card-outline card-info'>
                                          <div class='card-header'>
                                            <h6>
-                                              Parecer descritivo - $nome_aluno
+                                              Parecer descritivo - $nome_aluno .
                                            </h6>
                                          </div>
                                          <!-- /.card-header -->
@@ -108,7 +108,7 @@ try {
 
                                        </div>
                               </td>";
-                            }else{
+                          }else{
                               
                              $result.="<td>
                            
@@ -122,7 +122,7 @@ try {
                                     <div class='card card-outline card-info'>
                                          <div class='card-header'>
                                            <h6>
-                                              Diagnóstico inicial - $nome_aluno
+                                              Diagnóstico inicial - $nome_aluno...
                                            </h6>
                                          </div>
                                          <!-- /.card-header -->
