@@ -44,10 +44,23 @@ function listar_video_individual($conexao,$idvideo) {
 
 
 	function listar_videos_assistidos($conexao,$idaluno,$iddisciplina,$idturma){
-	    $result = $conexao->query("SELECT video.id as 'idvideo',video.titulo, COUNT(*) AS 'quantidade', disciplina.nome_disciplina FROM `visualizacao_video`,video,turma,disciplina,aluno WHERE video.id_turma= turma.idturma AND 
-			video.id_disciplina=disciplina.iddisciplina AND visualizacao_video.video_id=video.id AND  visualizacao_video.aluno_id=aluno.idaluno AND disciplina.iddisciplina=$iddisciplina AND turma.idturma=$idturma AND aluno.idaluno=$idaluno GROUP BY visualizacao_video.video_id ");
+	    $result = $conexao->query("
+	    	SELECT video.id as 'idvideo',video.titulo,disciplina.nome_disciplina, minuto/2 AS 'quantidade'FROM 
+	    	`visualizacao_video`,video,disciplina
+	    	WHERE 
+	    	video.id_disciplina=disciplina.iddisciplina and
+	    	visualizacao_video.video_id=video.id and
+	    	video.id_disciplina=$iddisciplina AND 
+	    	 visualizacao_video.aluno_id=$idaluno
+	    	");
 	    return $result;
-	}
+	}	
+
+	// function listar_videos_assistidos($conexao,$idaluno,$iddisciplina,$idturma){
+	//     $result = $conexao->query("SELECT video.id as 'idvideo',video.titulo, COUNT(*) AS 'quantidade', disciplina.nome_disciplina FROM `visualizacao_video`,video,turma,disciplina,aluno WHERE video.id_turma= turma.idturma AND 
+	// 		video.id_disciplina=disciplina.iddisciplina AND visualizacao_video.video_id=video.id AND  visualizacao_video.aluno_id=aluno.idaluno AND disciplina.iddisciplina=$iddisciplina AND turma.idturma=$idturma AND aluno.idaluno=$idaluno GROUP BY visualizacao_video.video_id ");
+	//     return $result;
+	// }
 
 	function listar_videos_assistidos_aluno($conexao,$idaluno,$idvideo){
 	    $result = $conexao->query("SELECT * FROM `visualizacao_video` WHERE aluno_id=$idaluno and video_id=$idvideo ");

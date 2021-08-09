@@ -22,24 +22,28 @@
  		$titulo=($value['titulo']);
  		$nome_disciplina=($value['nome_disciplina']);
  		$minutos=$value['quantidade'];
- 		if ($minutos>0) {
- 			$minutos=$minutos/2;
- 		}
+ 		// if ($minutos>0) {
+ 		// 	$minutos=$minutos/2;
+ 		// }
 
  		$html.="
- 			<tr>
- 				<td>
+ 			<tr border='1'>
+ 				<td border='1'>
  					<br>
  					Idvideo: $idvideo<br>
  					Disciplina: $nome_disciplina<br>
- 					Vídeo: $titulo<br>
- 					Minutos Assistidos: $minutos<br>
+ 					<b class='text-primary'>Vídeo: $titulo</b><br>
+ 					<b> $minutos Minutos Assistidos</b><br>
  				</td>
  			</tr>
  		";
  		$minutos=0;
  		$cont++;
  	}
+
+    if ($cont==0) {
+       $html="<b style='color:red'> Nada encontrado.</b>";
+    }
 
 echo "$html";
  	

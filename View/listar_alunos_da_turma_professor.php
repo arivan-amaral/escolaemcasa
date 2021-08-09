@@ -142,17 +142,20 @@ if (!isset($_SESSION['idprofessor'])) {
                       <td>$id</td>
 
                       <td> 
-                      <a href='#' onclick='relatorio_de_visualizacao_video($id,$idturma,$iddisciplina);' >
-                        <b class='text-primary'> $nome_turma</b><BR>
+                      <a onclick='relatorio_de_visualizacao_video($id,$idturma,$iddisciplina);' >
+                        <b class='text-secondary'> $nome_turma</b><BR>
                         <b class='text-success'> $nome_aluno </b> <BR>
-                        <b class='text-danger'>$email  </b><BR>
-                        <b class='text-danger'>Senha: $senha  </b><BR>
+                        <b class='text-secondary'>$email  </b><BR>
+                        <b class='text-secondary'>Senha: $senha  </b><BR>
                       </a><br>
                       <span id='relatorio_de_visualizacao_video$id'>
 
                       </span>
                       </td>
-                      <td> ";
+                      <td> 
+                      <a onclick='relatorio_de_visualizacao_video($id,$idturma,$iddisciplina);' class='btn btn-primary'>RELATÓRIO DE VISUALIZAÇÕES</a>
+
+                      ";
 
 
                       echo"</td>
