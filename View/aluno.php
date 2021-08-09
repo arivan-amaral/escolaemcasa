@@ -14,6 +14,7 @@
   include '../Model/Aluno.php';
   $idescola=$_SESSION['escola_id'];
   $idturma=$_SESSION['turma_id'];
+  $idserie=$_SESSION['serie_id'];
   $data_atual=date("Y-m-d H:i:s");
 ?>
 <script src="ajax.js?<?php echo rand(1,100); ?>"></script>
@@ -532,7 +533,22 @@ foreach ($result_reuniao as $key => $value) {
 
                         <div id="accordion">
 
+                          <div class='card card-warning'>
 
+                            <div class='card-header'>
+
+                              <h4 class='card-title w-100'>
+                                <!-- <a href='href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma' class='d-block w-100 collapsed' data-toggle='collapse' href='#collapseOne' aria-expanded='false'>
+                                MEU BOLETIM <b class='text-warning'> </b> --> 
+
+                                 <a  class='d-block w-100 collapsed' data-toggle='collapse' href='#collapseOne' onclick="alert('EM BREVE VOCÊ PODERÁ ACESSAR SEU BOLETIM POR AQUI!');" aria-expanded='false'>
+                                MEU BOLETIM <b class='text-warning'> </b>
+                                  
+                                  
+                                </a>
+                              </h4>
+                            </div>
+                          </div>
 
                           <?php 
 
