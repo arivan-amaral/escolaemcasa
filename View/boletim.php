@@ -9,7 +9,8 @@
   include"boletim_maternall_II.php";
   include"boletim_serie_1ano_id_3.php";
   include"boletim_fundamental_II.php";
-  
+  include('mpdf/mpdf60/mpdf.php');
+
 $idescola=$_GET['idescola'];
 $idturma=$_GET['idturma'];
 $idserie=$_GET['idserie'];
@@ -33,10 +34,28 @@ foreach ($res_turma as $key => $value) {
   <title></title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
 
+<style type="text/css">
+@media print {
+    html, body {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+    #printable {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 14px;
+    }
+    #printable ~ * {
+        display: none;
+    }
+}
+</style>
 </head>
 <body>
    
-  <a href="#" onclick="demoFromHTML();">IMPRIMIR</a>
+  <!-- <a href="#" onclick="demoFromHTML();">IMPRIMIR</a> -->
 <div id="employee_detail">
 
 <?php
@@ -58,17 +77,34 @@ if ($idserie==3) {
 
 }
 else if ($idserie >3 && $idserie <=8) {
-    //echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
-    $numero=1;
+    
+  
       $res_alunos=listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola);
       foreach ($res_alunos as $key => $value) {
         $idaluno=$value['idaluno'];
         $nome_aluno=$value['nome_aluno'];
-          boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
 
-           echo"<a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma'>IMPRIMIR - $nome_aluno</a> <br><br>";
+
+
+
+
+       // $css = file_get_contents("css/estilo.css");
+
+       // $mpdf->WriteHTML($css,1);
+
+
+
+          $html.="".boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
+         if ($numero%2==0) {
+            echo "<br>";
+            echo "<br>";
+         
+          }
+
+          // echo"<a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma'>IMPRIMIR - $nome_aluno</a> <br><br>";
         $numero++;
       }
+
 
 }else if ($idserie<3){
 
@@ -95,7 +131,7 @@ else if ($idserie >3 && $idserie <=8) {
         $nome_professor='';
         
 
-         echo"<a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma'>IMPRIMIR - $nome_aluno</a> <br><br>";
+        // echo"<a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma'>IMPRIMIR - $nome_aluno</a> <br><br>";
       $numero++;
       //break;
     }
@@ -107,10 +143,15 @@ else if ($idserie >3 && $idserie <=8) {
       foreach ($res_alunos as $key => $value) {
         $idaluno=$value['idaluno'];
         $nome_aluno=$value['nome_aluno'];
-          boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
+          $html.=boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
+       
+        if ($numero%2==0) {
+           echo "<br>";
+           echo "<br>";
         
+         }
 
-         echo"<a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma'>IMPRIMIR - $nome_aluno</a> <br><br>";
+        // echo"<a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma'>IMPRIMIR - $nome_aluno</a> <br><br>";
         $numero++;
       }
       

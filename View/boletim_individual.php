@@ -74,8 +74,7 @@ if ($idserie==3) {
 }
          echo"
 </div>
-
-         <a href='#' onclick='demoFromHTML();'>IMPRIMIR - $nome_aluno</a> <br><br>";
+<a href='#' onclick='demoFromHTML();'>IMPRIMIR - $nome_aluno</a> <br><br>";
 
 ?>
 
