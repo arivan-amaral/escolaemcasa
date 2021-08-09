@@ -1,5 +1,24 @@
 <?php 
 session_start();
+
+  $idserie=$_GET['idserie']; 
+ 
+if ($idserie< 8 && !isset($_COOKIE['notificado'])) {
+    
+  echo "<script type='text/javascript'>
+      function modal_video() {
+          $(document).ready(function() {
+              $('#modal-video-frequencia').modal('show');
+            });
+      }
+
+      setTimeout('modal_video();',1000);
+      
+  </script>";
+ 
+  
+}
+
 if (!isset($_SESSION['idprofessor'])) {
        header("location:index.php?status=0");
 
@@ -22,7 +41,6 @@ if (!isset($_SESSION['idprofessor'])) {
   include '../Model/Professor.php';
 
   $idescola=$_GET['idescola']; 
-  $idserie=$_GET['idserie']; 
   $idturma=$_GET['turm']; 
   $iddisciplina=$_GET['disc']; 
 
@@ -407,22 +425,6 @@ if (!isset($_SESSION['idprofessor'])) {
 
 </script>
 
-<?php 
- if ($idserie< 8) {
-?>
-<script type='text/javascript'>
-      function modal_video() {
-          $(document).ready(function() {
-              $('#modal-video-frequencia').modal('show');
-            });
-      }
-
-      setTimeout('modal_video();',1000);
-      
-  </script>
-<?php 
-}
-?>
 
 <div class="modal fade" id="modal-video-frequencia">
     <div class="modal-dialog">
@@ -440,11 +442,15 @@ if (!isset($_SESSION['idprofessor'])) {
           <center>
 
             <!-- <h1>ATENÇÃO, NÃO LANÇAR NOTA ANTES DAS 20:30, <font color="RED">SERVIDOR EM MANUTENÇÃO</font></h1> -->
-             <iframe width="400" height="315" src="https://www.youtube.com/embed/21hzdV28sR8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+             <iframe width="390" height="315" src="https://www.youtube.com/embed/21hzdV28sR8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </center>
-            <p>ATENÇÃO, O vídeo acima possui conteúdo muito importante, assista!  </p>
-              <!-- /corpo -->
+          <br>
+           <a href="modal_diario_frequencia.php?<?php echo $url_get; ?>" class="btn btn-block btn-danger">Não quero ver essa notificação novamente</a>
+          <br>
+
+          <!-- /corpo -->
         </div>
+           <br>
       <button type="button" class="btn btn-default" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fechar</font></font></button>
       </div>
       <!-- /.modal-content -->
