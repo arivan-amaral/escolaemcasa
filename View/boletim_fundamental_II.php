@@ -434,9 +434,10 @@ if ($conta_parecer==0 && $linha==0) {
           escola_id=$idescola and
           turma_id=$idturma and
           disciplina_id=$iddisciplina and 
-          periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
+          periodo_id=1 and aluno_id=$idaluno  group by parecer_descritivo");
 
-
+// avaliacao,periodo_id 
+        
         $parecer_tri_1="";
       
         foreach ($result_parecer_tri1 as $key => $value) {
