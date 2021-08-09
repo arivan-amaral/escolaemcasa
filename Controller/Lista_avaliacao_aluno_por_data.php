@@ -35,12 +35,13 @@ try {
                $cont=1;
                $cor_tabela='table-primary';
                foreach ($result_aluno as $key => $value) {
-                $nome_aluno=utf8_decode($value['nome_aluno']);
-                $nome_turma=($value['nome_turma']);
-                $id=$value['idaluno'];
-                $status_aluno=$value['status_aluno'];
-                $email=$value['email'];
-                $senha=$value['senha'];
+
+                    $nome_aluno=utf8_decode($value['nome_aluno']);
+                    $nome_turma=($value['nome_turma']);
+                    $id=$value['idaluno'];
+                    $status_aluno=$value['status_aluno'];
+                    $email=$value['email'];
+                    $senha=$value['senha'];
                 
 
                     if ($cont%2==0) {
@@ -56,21 +57,19 @@ try {
                         $descricao_parecer=$value['parecer_descritivo'];
                      }
 
-                  $result.="
-                     <tr  class='$cor_tabela'>
-                      <td  colspan='2'>
-              
-                      <div class='col-sm-6'>
-                        <b class='text-success'> $nome_aluno </b>
-                        <br>
-                      <b>DATA: ".converte_data($data)."</b>
+                      $result.="
+                         <tr  class='$cor_tabela'>
+                          <td  colspan='2'>
+                  
+                          <div class='col-sm-6'>
+                            <b class='text-success'> $nome_aluno </b>
+                            <br>
+                          <b>DATA: ".converte_data($data)."</b>
 
-                        <input type='hidden' name='aluno_id[]' value='$id'><br>
-                      </div>                      
-                      <br>
-
-                         
-                       <tr class='$cor_tabela'>";
+                            <input type='hidden' name='aluno_id[]' value='$id'><br>
+                          </div>                      
+                          <br>
+                        <tr class='$cor_tabela'>";
 
                       if ($idperiodo !=6 ) {//se for diferente de diagnostico inicial
               
@@ -108,21 +107,16 @@ try {
 
                                        </div>
                               </td>";
-                          }else{
+                      }else{
                               
                              $result.="<td>
-                           
-                              
-
-             
                               </td>
 
                               <td>
-
-                                    <div class='card card-outline card-info'>
+                                <div class='card card-outline card-info'>
                                          <div class='card-header'>
                                            <h6>
-                                              Diagnóstico inicial - $nome_aluno...
+                                              Diagnóstico inicial - $nome_aluno ..
                                            </h6>
                                          </div>
                                          <!-- /.card-header -->
@@ -130,15 +124,14 @@ try {
                                            <textarea  class='form-control' rows='5' name='parecer_descritivo$id'>$descricao_parecer</textarea>
                                          </div>
                                          <div class='card-footer'>
-                                           
                                          </div>
 
                                        </div>
                                                   
-                              <label for='exampleInputEmail1' style='display: none;'>Nota</label><br>
-                              <input type='hidden'  name='nota$id' value='$nota' style='display: none;'>
+                                <label for='exampleInputEmail1' style='display: none;'>Nota</label><br>
+                                <input type='hidden'  name='nota$id' value='$nota' style='display: none;'>
                               </td>";
-                          }
+                      }
 
 
 
@@ -149,7 +142,7 @@ try {
                      
                       </tr>";
             
-            if ($idperiodo!=6) {
+            if ($idserie<8) {
               // $result.="";
              
                  $res_par=listar_parecer_disciplina($conexao,$iddisciplina,$idturma);
@@ -223,7 +216,7 @@ try {
 
                 }
 
-              }//fim if
+              //}//fim if
 
 
             $cont++;
