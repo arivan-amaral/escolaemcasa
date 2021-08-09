@@ -166,6 +166,8 @@ try {
 
               
                     //arivan
+                                  $result.="$serie_id = $idserie & $avaliacao";
+
                     if ($serie_id == $idserie && $avaliacao=='av3') {
                        $result.="<tr class='$cor_tabela'>
                             <td colspan='2'>
