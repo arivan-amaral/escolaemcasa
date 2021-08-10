@@ -46,6 +46,40 @@ function enviar_mensagem($conexao,$phone,$mensagem){
     curl_close($ch);
 }
 
+
+function enviar_link($conexao,$phone,$mensagem){
+   $url = configuracao_api($conexao)."send-link";
+   
+   $ch = curl_init($url);
+
+    $data = array(
+        'phone' => $phone,
+        'message' => $mensagem,
+        "image" => "",
+        "linkUrl" => "https://youtu.be/ub_1CMDrb8Q",
+        "title" => "Melhorias na forma de registro dos conteúdos das aulas.",
+        "linkDescription"  => "Melhorias na forma de registro dos conteúdos das aulas."
+    );
+
+
+    $body = json_encode($data);
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_VERBOSE, true);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_AUTOREFERER, false);
+    curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+    curl_setopt($ch, CURLOPT_HEADER, 0);        
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);        
+    curl_setopt($ch, CURLOPT_POST,true);        
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json; charset=utf-8')); 
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+    
+    $result = curl_exec($ch);
+
+    curl_close($ch);
+}
+
 function saudacao() {
       date_default_timezone_set('America/Sao_Paulo');
       $hora = date('H');
@@ -97,8 +131,12 @@ function restaurar_conexao_api($conexao){
 // *******************************************************************************************************************************
  $status_api= obter_status_api($conexao);
  if ($status_api) {//só ira atualizar no banco e enviar as mensagens se o status da api estives true
-                              
-       
+      $result_prof=$conexao->query("SELECT * FROM funcionario where descricao_funcao='Professor' or descricao_funcao='Professora' ");
+      foreach ($result_prof as $key => $value) {
+        $phone=$value['whatsapp'];
+        $mensagem="Melhorias na forma de registro dos conteúdos das aulas. *ESSA MENSAGEM FOI ENVIADA DE FORMA AUTOMÁTICA, POR FAVOR, NÃO RESPONDER!*";
+         enviar_link($conexao,$phone,$mensagem);
+      }            
 
   }else {
     restaurar_conexao_api($conexao);

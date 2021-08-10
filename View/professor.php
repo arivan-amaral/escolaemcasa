@@ -69,7 +69,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
              <?php if (isset($_SESSION['nome'])) {
 
-              echo "  ".$_SESSION['nome'];  
+              echo $_SESSION['idfuncionario']." - ".$_SESSION['nome'];  
 
             } 
 
