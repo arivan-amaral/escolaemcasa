@@ -3,10 +3,10 @@ session_start();
 include'../Model/Conexao.php';
 include'Conversao.php';
 
-  $arquivo = file_get_contents('php://input');
-  $json= json_decode($arquivo);
-  $phone= $json->phone;
-  $mensagem_recebida=$json->text->message;
+  // $arquivo = file_get_contents('php://input');
+  // $json= json_decode($arquivo);
+  // $phone= $json->phone;
+  // $mensagem_recebida=$json->text->message;
 
 
 function configuracao_api($conexao) {
@@ -136,6 +136,7 @@ function restaurar_conexao_api($conexao){
         $phone=$value['whatsapp'];
         $mensagem="Melhorias na forma de registro dos conteúdos das aulas. *ESSA MENSAGEM FOI ENVIADA DE FORMA AUTOMÁTICA, POR FAVOR, NÃO RESPONDER!*";
          enviar_link($conexao,$phone,$mensagem);
+         echo $value['nome']." - ".$value['whatsapp']."<br>";
       }            
 
   }else {
