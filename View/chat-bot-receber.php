@@ -129,18 +129,19 @@ function restaurar_conexao_api($conexao){
 
 
 // *******************************************************************************************************************************
- $status_api= obter_status_api($conexao);
- if ($status_api) {//só ira atualizar no banco e enviar as mensagens se o status da api estives true
+ // $status_api= obter_status_api($conexao);
+ // if ($status_api) {//só ira atualizar no banco e enviar as mensagens se o status da api estives true
+      
       $result_prof=$conexao->query("SELECT * FROM funcionario where descricao_funcao='Professor' or descricao_funcao='Professora' ");
       foreach ($result_prof as $key => $value) {
         $phone=$value['whatsapp'];
-        $mensagem="Melhorias na forma de registro dos conteúdos das aulas. *ESSA MENSAGEM FOI ENVIADA DE FORMA AUTOMÁTICA, POR FAVOR, NÃO RESPONDER!*";
-         enviar_link($conexao,$phone,$mensagem);
+        $mensagem="Boa noite, SUPORTE EDUCA LEM INFORMA: melhorias na forma de registro dos conteúdos das aulas, assista o vídeo no link https://youtu.be/ub_1CMDrb8Q  *ESSA MENSAGEM FOI ENVIADA DE FORMA AUTOMÁTICA, POR FAVOR, NÃO RESPONDER!*";
+         enviar_mensagem($conexao,$phone,$mensagem);
          echo $value['nome']." - ".$value['whatsapp']."<br>";
       }            
 
-  }else {
-    restaurar_conexao_api($conexao);
-  }
+  // }else {
+  //   restaurar_conexao_api($conexao);
+  // }
     // *********************************************************************************************************************************
 ?>
