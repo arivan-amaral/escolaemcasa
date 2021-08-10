@@ -47,6 +47,25 @@ function CriaRequest() {
 
 
 
+function colar_conteudo_ja_cadastrados(conteudo) {
+
+  Swal.fire({
+    title: 'Deseja COLAR  o conteúdo selecionado nessa FREQUÊNCIA a ser cadastrada/editada?',
+    showDenyButton: true,
+    confirmButtonText: `Sim`,
+    denyButtonText: `Não`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+     
+        var descricao_conteudo = document.getElementById("descricao_conteudo");
+         descricao_conteudo.value = descricao_conteudo.value +" "+conteudo;  
+        Swal.fire('O CONTÉUDO SELECIONADO FOI COLADO NO CAMPO DO CONTEÚDO DESSA FREQUÊNCIA A SER CADASTRADA/EDITADA.', '', 'info')
+    } else if (result.isDenied) {
+    }
+  })
+}
+
 function excluir_mural(idmural) {
     var idmural = document.getElementById("idmural"+idmural).value;  
     var url_get = document.getElementById("url_get").value; 

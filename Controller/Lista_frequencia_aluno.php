@@ -75,6 +75,28 @@ try {
    ";
 
       $result.="
+        <div class='col-sm-12'>
+          <div class='col-12'>
+            <label for='exampleInputEmail1' style='color:red;'>Escolha um conteúdo ou digite outro no campo abaixo das frequências</label>
+
+            <select multiple='multiple' id='lista_conteudo' class='form-control' style='height: 180px;'>
+            ";
+            $res_cont=$conexao->query("SELECT * FROM conteudo_aula, turma where turma_id=idturma AND escola_id=$idescola and disciplina_id=$iddisciplina and turma.serie_id=$idserie limit 20");
+                $conta_cor=1;
+                foreach ($res_cont as $key_conteudo=> $value_conteudo) {
+                  $descricao_conteudo=$value_conteudo['descricao'];
+                  if ($conta_cor%2==0) {
+                    $result.="<option value='$descricao_conteudo' onclick='colar_conteudo_ja_cadastrados(this.value);'  style='color: white; background-color:#A9A9A9;'> $descricao_conteudo</option>";
+                  }else{
+                    $result.="<option value='$descricao_conteudo' onclick='colar_conteudo_ja_cadastrados(this.value);'  style='color: white; background-color:#6495ED;'> $descricao_conteudo</option>";
+                  }
+                  $conta_cor++;
+                }
+
+            $result.="
+            </select> 
+          </div>
+        </div>
        <div class='card-body'>
         <table class='table table-bordered'>
           <thead>
@@ -139,10 +161,12 @@ foreach ($res_conteu as $key => $value) {
         </div>
       
       
+   
+
         <div class='col-sm-12'>
           <div class='form-group'>
             <label for='exampleInputEmail1'>Conteúdo da aula</label>
-            <textarea class='form-control' id='exampleInputEmail1' rows='5' name='descricao' required>$conteudo_aula</textarea>
+            <textarea class='form-control' id='descricao_conteudo' rows='5' name='descricao' required>$conteudo_aula</textarea>
           </div>
         </div>
 

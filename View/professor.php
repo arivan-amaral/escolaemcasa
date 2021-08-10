@@ -1,6 +1,25 @@
 <?php
 session_start();
-setcookie('ajuda2', '1', (time()+(300*24*3600)));
+if (!isset($_COOKIE['conteudo'])) {
+  setcookie('conteudo', 1, (time()+(300*24*3600)));
+}
+
+if ($_COOKIE['conteudo']<5) {
+ setcookie('conteudo', $_COOKIE['conteudo']+1);
+
+    echo"<script type='text/javascript'>
+
+      function modal_ajuda() {
+          $(document).ready(function() {
+              $('#modal-conteudo').modal('show');
+            });
+      }
+
+      setTimeout('modal_ajuda();',500);
+      
+    </script>";
+}
+
 if (!isset($_SESSION['idprofessor'])) {
 
        header("location:index.php?status=0");
@@ -21,20 +40,6 @@ if (!isset($_SESSION['idprofessor'])) {
 
   include '../Model/Professor.php';
 
-if (!isset($_COOKIE['ajuda2'])) {
-
-    echo"<script type='text/javascript'>
-
-      function modal_ajuda() {
-          $(document).ready(function() {
-              $('#modal-ajuda').modal('show');
-            });
-      }
-
-      setTimeout('modal_ajuda();',1000);
-      
-    </script>";
-}
 
 ?>
 
@@ -630,11 +635,11 @@ if (!isset($_COOKIE['ajuda2'])) {
   <img id="imagem_whats2" src="https://www.ellodigital.com.br/images/whatsapp.png" onClick="window.open('https://api.whatsapp.com/send?phone=+557799323906&amp;text=OLÁ, PODE ME AJUDAR COM A PLATAFORMA EDUCA LEM?!', '_blank');"><div class="preloader"> <div class="preloaderimg"></div></div>
 
 
-  <div class="modal fade" id="modal-ajuda">
+  <div class="modal fade" id="modal-conteudo">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">AVISO!</h4>
+          <h4 class="modal-title">AVISO! <?php echo $_COOKIE['conteudo']; ?></h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -652,19 +657,17 @@ if (!isset($_COOKIE['ajuda2'])) {
               <div class="card-header callout callout-danger">
                 <h3 class="card-title">
                   <i class="fas fa-bullhorn"></i>
-                  ATENÇÃO, CASO ESTEJA PASSANDO POR ALGUMA DIFICULDADE ENTRE EM CONTATO DIRETO COM O SUPORTE PELO WHATSAPP LOGO ABAIXO E AGUARDE SUA RESPOSTA!
+                  ATENÇÃO, Melhorias na forma de registro dos conteúdos das aulas, assista o vídeo!
                 </h3>
               </div>
 
-        <!--       <div class='card-body'>
-                <a href='trabalho_individual.php?idtrabalho=$idtrabalho&idturma=$idturma&iddisciplina=$iddisciplina&idescola=$idescola'>
+              <div class='card-body'>
+       <center>
 
-                  <div class='callout callout-danger'>
-                    <h5></h5>
-                    
-                  </div>
-                </a>
-              </div> -->
+         <!-- <h1>ATENÇÃO, NÃO LANÇAR NOTA ANTES DAS 20:30, <font color="RED">SERVIDOR EM MANUTENÇÃO</font></h1> -->
+          <iframe width="380" height="315" src="https://www.youtube.com/embed/ub_1CMDrb8Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+       </center>
+              </div>
 
 
               <!-- /.card-body -->
