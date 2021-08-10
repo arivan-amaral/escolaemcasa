@@ -2,24 +2,24 @@
 session_start();
 if (!isset($_COOKIE['conteudo'])) {
   setcookie('conteudo', 1, (time()+(300*24*3600)));
+}else{
+
+  if ($_COOKIE['conteudo']<5) {
+   setcookie('conteudo', $_COOKIE['conteudo']+1);
+
+      echo"<script type='text/javascript'>
+
+        function modal_ajuda() {
+            $(document).ready(function() {
+                $('#modal-conteudo').modal('show');
+              });
+        }
+
+        setTimeout('modal_ajuda();',500);
+        
+      </script>";
+  }
 }
-
-if ($_COOKIE['conteudo']<5) {
- setcookie('conteudo', $_COOKIE['conteudo']+1);
-
-    echo"<script type='text/javascript'>
-
-      function modal_ajuda() {
-          $(document).ready(function() {
-              $('#modal-conteudo').modal('show');
-            });
-      }
-
-      setTimeout('modal_ajuda();',500);
-      
-    </script>";
-}
-
 if (!isset($_SESSION['idprofessor'])) {
 
        header("location:index.php?status=0");

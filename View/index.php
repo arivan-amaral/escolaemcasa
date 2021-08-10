@@ -38,7 +38,7 @@ session_start();
             });
       }
 
-      setTimeout('modal_video();',800);
+      //setTimeout('modal_video();',800);
       
   </script>
 
@@ -133,6 +133,12 @@ session_start();
 
               <br>
               <br>
+                <p><b style="color:black;">Atenção, o vídeo abaixo possui conteúdo muito importante, assista! </b> </p>
+    
+                 <iframe height="350" src="https://www.youtube.com/embed/86bozRFrNKs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+           
+
+
               <!-- /.card-header -->
             <!--   <div class="card-body">
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
