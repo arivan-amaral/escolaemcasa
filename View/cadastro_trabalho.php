@@ -206,9 +206,9 @@ include "alertas.php";
                     </div>
                         <br>
                         <br>
-
+<div onclick='carregando()'>
                         <button type="submit" class="btn btn-block btn-primary">Enviar Atividade</button>
-
+</div>
                     </form>
 
                                         
@@ -227,6 +227,40 @@ include "alertas.php";
 <br>
 <br>
 <br>
+
+<script type="text/javascript">
+
+ function carregando(){
+        let timerInterval
+        Swal.fire({
+          title: 'Aguarde, sua atividade está sendo enviada!',
+          html: '',
+          timer: 200000,
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading()
+            timerInterval = setInterval(() => {
+              const content = Swal.getContent()
+              if (content) {
+                const b = content.querySelector('b')
+                if (b) {
+                  b.textContent = Swal.getTimerLeft()
+                }
+              }
+            }, 100)
+          },
+          willClose: () => {
+            clearInterval(timerInterval)
+          }
+        }).then((result) => {
+          /* Read more about handling dismissals below */
+          if (result.dismiss === Swal.DismissReason.timer) {
+            console.log('I was closed by the timer')
+          }
+        })
+  }
+
+</script>
 
                       <!-- timeline time label -->
                     <?php 

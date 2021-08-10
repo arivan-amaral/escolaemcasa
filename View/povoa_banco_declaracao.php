@@ -113,7 +113,7 @@ order by  ed47_i_codigo asc,ed60_i_turma asc  offset $indice  limit $limite");
 		if ($existe==0) {
   			echo "turma $nome_turma não existente: id aluno $idaluno<br>";
 		}
-
+ 
 		// echo "quantidade inserida: $conta";
 
 		// if ($existe==0) {

@@ -143,13 +143,13 @@
 
 
  <!-- Main Footer --><br>
-  <footer class="main-footer footer-bottom clearfix">
+<!--   <footer class="main-footer footer-bottom clearfix">
     <strong>Copyright &copy;  <?php echo date("Y");?><br><a href="https://valleteclab.com.br/">VALLE TEC LAB</a>.</strong>
     Todos os Direitos Reservados.
     <div class="float-right d-none d-sm-inline-block">
       <b>Versão</b> 2.0
     </div>
-  </footer>
+  </footer> -->
 
   
 </div>
