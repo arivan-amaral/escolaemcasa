@@ -233,7 +233,7 @@ include "alertas.php";
  function carregando(){
         let timerInterval
         Swal.fire({
-          title: 'Aguarde, sua atividade está sendo enviada!',
+          title: 'Aguarde, ação está sendo realizada...',
           html: '',
           timer: 200000,
           timerProgressBar: true,
