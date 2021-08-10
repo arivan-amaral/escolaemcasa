@@ -81,7 +81,7 @@ try {
 
             <select multiple='multiple' id='lista_conteudo' class='form-control' style='height: 180px;'>
             ";
-            $res_cont=$conexao->query("SELECT * FROM conteudo_aula, turma where turma_id=idturma AND escola_id=$idescola and disciplina_id=$iddisciplina and turma.serie_id=$idserie limit 20");
+            $res_cont=$conexao->query("SELECT * FROM conteudo_aula, turma where turma_id=idturma AND escola_id=$idescola and disciplina_id=$iddisciplina and turma.serie_id=$idserie order by desc limit 20");
                 $conta_cor=1;
                 foreach ($res_cont as $key_conteudo=> $value_conteudo) {
                   $descricao_conteudo=$value_conteudo['descricao'];
