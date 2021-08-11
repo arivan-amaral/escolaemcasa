@@ -32,7 +32,11 @@ $password = "UQ2K2V3cfV6F";
 	ed47_v_sexo,
   ed47_d_nasc,
   ed47_v_telef,
-  ed47_v_telcel
+  ed47_v_telcel,
+
+  to_ascii(ed47_v_mae,'LATIN1') as nome_mae,
+  to_ascii(ed47_v_pai,'LATIN1') as nome_pai,
+  ed47_i_censoufnat
 
 from matricula
   inner join aluno on aluno.ed47_i_codigo = ed60_i_aluno
@@ -63,6 +67,11 @@ order by  ed47_i_codigo asc,ed60_i_turma asc  offset $indice  limit $limite");
 
 		$telefone= trim($value['ed47_v_telef']);
 		$whatsapp= trim($value['ed47_v_telcel']);
+
+		$nome_mae= trim($value['nome_mae']);
+		$nome_pai= trim($value['nome_pai']);
+
+
 		if ($whatsapp=="") {
 			$whatsapp=$telefone;
 		}
@@ -89,7 +98,7 @@ order by  ed47_i_codigo asc,ed60_i_turma asc  offset $indice  limit $limite");
 				$c_a=1;
 			}
 			if ($c_a==0) {
-				echo "$idaluno,$nome_aluno, $primeiro_nome,$senha, $whatsapp,$sexo,$data_nascimento <bR>";
+				echo "<font color='red'> INSERIDO => $idaluno,$nome_aluno, $primeiro_nome,$senha, $whatsapp,$sexo,$data_nascimento </font> <bR>";
 				$conexao->exec(" INSERT INTO aluno
 				 (idaluno,nome, email,  senha, whatsapp,sexo,data_nascimento) values
 				 ($idaluno,'$nome_aluno', '$primeiro_nome','$senha', '$whatsapp','$sexo','$data_nascimento')");
@@ -99,14 +108,14 @@ order by  ed47_i_codigo asc,ed60_i_turma asc  offset $indice  limit $limite");
 			}else{
 				echo "$conta - EDITANDO - $idaluno-  $nome_aluno  <br>";
 			
-				// $conexao->exec(" UPDATE  aluno SET 
-				//  nome='$nome_aluno',
-				//  email='$primeiro_nome',
-				//  senha='$senha',		
-				//  whatsapp='$whatsapp',
-				//  sexo='$sexo',
-				//  data_nascimento='$data_nascimento'
-				//  ");
+				$conexao->exec(" UPDATE  aluno SET 
+				 nome='$nome_aluno',
+				 email='$primeiro_nome',
+				 senha='$senha',		
+				 whatsapp='$whatsapp',
+				 sexo='$sexo',
+				 data_nascimento='$data_nascimento'
+				 ");
 				
 				$conexao->exec("
 					DELETE FROM ano_letivo WHERE aluno_id = $idaluno
@@ -129,7 +138,7 @@ order by  ed47_i_codigo asc,ed60_i_turma asc  offset $indice  limit $limite");
 		}
 
 		if ($existe==0) {
-  			echo "turma $nome_turma não existente: id aluno $idaluno<br>";
+  			echo "<font color='red'> turma $nome_turma não existente: id aluno $idaluno </font><br>";
 		}
 
 		// echo "quantidade inserida: $conta";
