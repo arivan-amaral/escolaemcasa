@@ -29,6 +29,9 @@
 											EXCLUIdoooooo -idaluno: $aluno_id - turma:$turma_id -escola: $escola_id
 										</font>
 									</a> <br>";
+					$conexao->exec("DELETE FROM ano_letivo where idano_letivo=$idano_letivo");
+
+
 				}else{
 					echo"<a href='excluir_duplicata_aluno.php?id=$idano_letivo'>
 						<font color='$cor'> 
