@@ -6,16 +6,16 @@
 	$cor='green';
 		$conta=1;
 	foreach ($res as $key => $value) {
-		$aluno_id=$value['quantidade'];
+		$aluno_id=$value['aluno_id'];
+		$quantidade=$value['quantidade'];
 
 		if ($conta%2==0) {
-				$cor='green';
-
+			$cor='green';
 		}else{
 			$cor='red';
 		}
 
-		if ($value['quantidade']>1) {
+		if ($quantidade>1) {
 			$res_duplicatas=$conexao->query("SELECT * FROM ano_letivo where aluno_id=$aluno_id");
 			foreach ($res_duplicatas as $key_d => $value2) {
 				$idano_letivo=$value2['idano_letivo'];
@@ -27,13 +27,14 @@
 						<font color='$cor'> 
 							EXCLUIR -idaluno: $aluno_id - turma:$turma_id -escola: $escola_id
 						</font>
-					</a>";
+					</a> <br>";
 			}
 
+
+		echo"<br>";
+		echo"<br>";
+		echo"<br>";
 		}
-		echo"<br>";
-		echo"<br>";
-		echo"<br>";
 		$conta++;
 	}
 
