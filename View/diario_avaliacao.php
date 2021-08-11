@@ -180,7 +180,7 @@ if (!isset($_SESSION['idprofessor'])) {
         <div class="col-sm-3">
           <div class="form-group">
             <label for="exampleInputEmail1">Data da avaliação</label>
-            <input type="date" class="form-control" name="data_avaliacao" id="data_avaliacao" required="">
+            <input type="date" class="form-control" name="data_avaliacao" id="data_avaliacao" required="" min="2021-01-01" >
             <!-- <input type="date" class="form-control" name="data_avaliacao" id="data_avaliacao" onchange='lista_avaliacao_aluno_por_data();' required=""> -->
           </div>
         </div>   

@@ -2,15 +2,26 @@
 session_start();
     include("../Model/Conexao.php");
     include("../Model/Professor.php");
+    include("../Model/Coordenador.php");
     include("../Model/Turma.php");
     
 
 try {
 
 $pesquisa = $_GET["pesquisa"];
-$result=pesquisar_professor_associacao($conexao,$pesquisa);
-$return="
+$idfuncionario = $_SESSION["idfuncionario"];
+$res_turma=escola_associada($conexao,$idfuncionario); 
+$array_escolas_coordenador=array();
+$conta_escolas=0;
+foreach ($res_turma as $key => $value) {
+  $array_escolas_coordenador[$conta_escolas]=$value['idescola'];
+  $conta_escolas++;
+}
 
+$result=pesquisar_professor_associacao($conexao,$pesquisa);
+
+
+$return="
 <div class='row'>
      <div class='col-md-1'>
         </div>
@@ -34,7 +45,7 @@ $return="
               <tbody>
 
               
-";
+"; 
 $conta=1;
 foreach ($result as $key => $value) {
   $idfuncionario=$value['idfuncionario'];
@@ -82,6 +93,7 @@ foreach ($result as $key => $value) {
     
           $idministrada = $value['idministrada'];
           $nome_escola = $value['nome_escola'];
+          $escola_id = $value['escola_id'];
           $nome_turma = $value['nome_turma'];
           $nome_disciplina = $value['nome_disciplina'];
           
@@ -93,9 +105,15 @@ foreach ($result as $key => $value) {
                           <br>
                              
                           </td>
-                          <td>
-                           <a onclick='cancelar_associacao_professor($idministrada);' class='btn btn-danger'> Cancelar </a> 
-                          </td>
+                          <td>";
+                     
+
+                          if (in_array($escola_id, $array_escolas_coordenador)) { 
+                            $return.="<a onclick='cancelar_associacao_professor($idministrada);' class='btn btn-danger'> Cancelar </a> ";      
+                          }
+
+
+                          $return.="</td>
 
                     </tr> ";
       } 

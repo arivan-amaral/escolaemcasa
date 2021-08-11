@@ -8,6 +8,17 @@ session_start();
 try {
 
 $pesquisa = $_GET["pesquisa"];
+
+$idfuncionario = $_SESSION["idfuncionario"];
+$res_turma=escola_associada($conexao,$idfuncionario); 
+$array_escolas_coordenador=array();
+$conta_escolas=0;
+foreach ($res_turma as $key => $value) {
+  $array_escolas_coordenador[$conta_escolas]=$value['idescola'];
+  $conta_escolas++;
+}
+
+
 $result=pesquisar_coordenador($conexao, $pesquisa);
 $return="
 
@@ -66,6 +77,7 @@ foreach ($result as $key => $value) {
     
           $idrelacionamento_funcionario_escola = $value['idrelacionamento_funcionario_escola'];
           $nome_escola = $value['nome_escola'];
+          $escola_id = $value['escola_id'];
           
           
           $return.="<tr>
@@ -77,7 +89,17 @@ foreach ($result as $key => $value) {
                           </td>
 
                           <td>
-                           <a onclick='cancelar_associacao_coordenador($idrelacionamento_funcionario_escola);' class='btn btn-danger'> Cancelar </a> 
+                          ";
+                     
+
+                          if (in_array($escola_id, $array_escolas_coordenador)) { 
+                         $return.="
+                          <a onclick='cancelar_associacao_coordenador($idrelacionamento_funcionario_escola);' class='btn btn-danger'> Cancelar </a>";
+                          }
+
+
+                          $return.="
+                     
                           </td>
                     </tr>
                           ";
