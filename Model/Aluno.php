@@ -416,7 +416,7 @@ function verificar_frequencia($conexao,$idescola,$idturma,$iddisciplina,$profess
 		ministrada.escola_id=escola.idescola AND
 		ministrada.disciplina_id=disciplina.iddisciplina AND
 		ministrada.professor_id=funcionario.idfuncionario AND
-		turma.facultativo=0 AND
+		disciplina.facultativo=0 AND
 		aluno.idaluno = $idaluno");
 		return $res;
 	}
