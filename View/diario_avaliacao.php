@@ -128,6 +128,51 @@ if (!isset($_SESSION['idprofessor'])) {
         </div>
       </div>
       <br>
+
+
+<div class="row">
+
+    <div class="col-md-1"></div>
+
+
+          <div class="col-sm-10">
+          <div class="form-group">
+            <label for="exampleInputEmail1" style="color:red;">ATALHO PARA DIÁRIO DE AVALIAÇÃO EM OUTRAS TURMAS/DISCIPLINAS</label>
+
+            <select multiple="multiple" class="form-control" id="atalho" >
+              <?php
+              $result=listar_disciplina_professor($conexao,$idprofessor);
+
+
+              $conta=1;
+              foreach ($result as $key => $value) {
+
+                $disciplina=($value['nome_disciplina']);
+                $nome_escola_atalho=($value['nome_escola']);
+                $idescola_atalho=($value['idescola']);
+                $iddisciplina_atalho=$value['iddisciplina'];
+                $idturma_atalho=$value['idturma'];
+                $nome_turma_atalho=($value['nome_turma']);
+                $idserie_atalho=$value['serie_id'];
+
+                echo "
+                <option value='diario_frequencia.php?disc=$iddisciplina_atalho&turm=$idturma_atalho&turma=$nome_turma_atalho&disciplina=$disciplina&idescola=$idescola_atalho&idserie=$idserie_atalho' onclick='atalho();' >
+                    Mudar para turma =>  $nome_turma_atalho - $disciplina  
+                  </option> 
+
+                ";
+                $conta++;
+              }
+
+
+              ?>
+            </select>
+          </div>
+        </div>
+
+
+</div>
+
       <br>
       <div class="row">
         

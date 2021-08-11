@@ -16,6 +16,7 @@ include "alertas.php";
   include 'menu.php';
   include '../Model/Conexao.php';
   include '../Controller/Conversao.php';
+  include '../Model/Professor.php';
 
   include '../Model/Video.php';
 
@@ -37,7 +38,7 @@ include "alertas.php";
 
 
 
-<script src="ajax.js"></script>
+<script src="ajax.js?<?php rand(); ?>"></script>
 
 
 
@@ -112,6 +113,44 @@ include "alertas.php";
                                               
                                             <button type="button" class="btn btn-block btn-success"><?php echo $_GET['turma']."  - ".$_GET['disciplina']; ?></button>
                                               <br>
+
+
+                          <div class="form-group">
+                            <label for="exampleInputEmail1" style="color:red;">ATALHO PARA CADASTRO DE VÍDEOS EM OUTRAS TURMAS/DISCIPLINAS</label>
+
+                            <select multiple="multiple" class="form-control" id="atalho" >
+                              <?php
+                              $result=listar_disciplina_professor($conexao,$idprofessor);
+
+
+                              $conta=1;
+                              foreach ($result as $key => $value) {
+
+                                $disciplina=($value['nome_disciplina']);
+                                $nome_escola_atalho=($value['nome_escola']);
+                                $idescola_atalho=($value['idescola']);
+                                $iddisciplina_atalho=$value['iddisciplina'];
+                                $idturma_atalho=$value['idturma'];
+                                $nome_turma_atalho=($value['nome_turma']);
+                                $idserie_atalho=$value['serie_id'];
+
+                                echo "
+                                <option value='cadastro_video.php?disc=$iddisciplina_atalho&turm=$idturma_atalho&turma=$nome_turma_atalho&disciplina=$disciplina&idescola=$idescola_atalho&idserie=$idserie_atalho' onclick='atalho();' >
+                                    Mudar para turma =>  $nome_turma_atalho - $disciplina  
+                                  </option> 
+
+                                ";
+                                $conta++;
+                              }
+
+
+                              ?>
+                            </select>
+                          </div>
+                        
+
+
+            
                                           <form class="mt-12" action="../Controller/Cadastro_video.php" method="post">
                                               
                                               <h4 class="card-title">Link do vídeo no youtube</h4>

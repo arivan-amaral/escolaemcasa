@@ -247,7 +247,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
                       <div class="card-header">
 
-                        <h3 class="card-title">Clique na Disciplina Desejada</h3>
+                        <h3 class="card-title">Clique na disciplina desejada</h3>
 
                       </div>
 

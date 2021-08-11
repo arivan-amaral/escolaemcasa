@@ -47,6 +47,31 @@ function CriaRequest() {
 
 
 
+function atalho() {
+
+    var select = document.getElementById('atalho');
+    var option = select.options[select.selectedIndex];
+    var texto = option.text; //descricao data +  aula ...
+
+
+      Swal.fire({
+        title: ''+texto+'?',
+        showDenyButton: true,
+        confirmButtonText: `Sim`,
+        denyButtonText: `Não`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+         aguarde();
+         var url = document.getElementById("atalho").value;  
+         window.location.href = url;
+        } else if (result.isDenied) {
+        }
+      })
+
+   
+}
+
 function colar_conteudo_ja_cadastrados(conteudo) {
 
   Swal.fire({
