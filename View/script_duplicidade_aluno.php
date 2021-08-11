@@ -17,17 +17,26 @@
 
 		if ($quantidade>1) {
 			$res_duplicatas=$conexao->query("SELECT * FROM ano_letivo where aluno_id=$aluno_id");
+			$conta2=0;
 			foreach ($res_duplicatas as $key_d => $value2) {
 				$idano_letivo=$value2['idano_letivo'];
 				$aluno_id=$value2['aluno_id'];
 				$turma_id=$value2['turma_id'];
 				$escola_id=$value2['escola_id'];
-
-				echo"<a href='excluir_duplicata_aluno.php?id=$idano_letivo'>
+				if ($conta2==0) {
+					echo"<a href='excluir_duplicata_aluno.php?id=$idano_letivo'>
+										<font color='$cor'> 
+											EXCLUIdoooooo -idaluno: $aluno_id - turma:$turma_id -escola: $escola_id
+										</font>
+									</a> <br>";
+				}else{
+					echo"<a href='excluir_duplicata_aluno.php?id=$idano_letivo'>
 						<font color='$cor'> 
 							EXCLUIR -idaluno: $aluno_id - turma:$turma_id -escola: $escola_id
 						</font>
 					</a> <br>";
+				}
+				$conta2++;
 			}
 
 
