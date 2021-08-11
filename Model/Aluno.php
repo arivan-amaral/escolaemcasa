@@ -398,5 +398,27 @@ function verificar_frequencia($conexao,$idescola,$idturma,$iddisciplina,$profess
 		aluno.idaluno = $idaluno");
 		return $res;
 	}
+
+
+	function listar_disciplina_para_boletim($conexao,$idaluno){
+		$res=$conexao->query("SELECT 
+			disciplina.nome_disciplina,
+			disciplina.iddisciplina,
+			funcionario.nome as 'nome_professor',
+			turma.idturma,
+			turma.nome_turma
+		 FROM turma, ano_letivo, aluno , escola, ministrada,disciplina,funcionario WHERE
+		aluno.idaluno=ano_letivo.aluno_id AND
+		turma.idturma=ano_letivo.turma_id AND
+		escola.idescola=ano_letivo.escola_id AND
+
+		ministrada.turma_id=turma.idturma AND
+		ministrada.escola_id=escola.idescola AND
+		ministrada.disciplina_id=disciplina.iddisciplina AND
+		ministrada.professor_id=funcionario.idfuncionario AND
+		turma.facultativo=0 AND
+		aluno.idaluno = $idaluno");
+		return $res;
+	}
 	
 ?>
