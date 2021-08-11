@@ -2,10 +2,12 @@
 	include '../Model/Conexao.php';
 	include '../Controller/Conversao.php';
 
-	$res=$conexao->exec("SELECT idano_letivo,COUNT(*) AS quantidade, aluno_id, escola_id, turma_id FROM `ano_letivo` GROUP BY aluno_id");
+	$res=$conexao->query("SELECT idano_letivo, COUNT(*) AS quantidade, aluno_id, escola_id, turma_id FROM ano_letivo GROUP BY aluno_id");
 	$cor='green';
+		$conta=1;
 	foreach ($res as $key => $value) {
 		$aluno_id=$value['quantidade'];
+
 		if ($conta%2==0) {
 				$cor='green';
 
@@ -14,7 +16,7 @@
 		}
 
 		if ($value['quantidade']>1) {
-			$res_duplicatas=$conexao->exec("SELECT * FROM `ano_letivo` where aluno_id=$aluno_id");
+			$res_duplicatas=$conexao->query("SELECT * FROM ano_letivo where aluno_id=$aluno_id");
 			foreach ($res_duplicatas as $key_d => $value2) {
 				$idano_letivo=$value2['idano_letivo'];
 				$aluno_id=$value2['aluno_id'];
@@ -32,6 +34,7 @@
 		echo"<br>";
 		echo"<br>";
 		echo"<br>";
+		$conta++;
 	}
 
 ?>
