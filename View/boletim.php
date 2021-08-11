@@ -130,7 +130,10 @@ else if ($idserie >3 && $idserie <=8) {
         boletim_maternal_1_2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno ,$nome_escola,$nome_turma,$nome_professor);
         $nome_professor='';
         
-
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
         // echo"<a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma'>IMPRIMIR - $nome_aluno</a> <br><br>";
       $numero++;
       //break;
