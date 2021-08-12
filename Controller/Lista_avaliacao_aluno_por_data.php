@@ -174,6 +174,7 @@ try {
                                       <input type='hidden' name='descricao_parecer".$id."[]' value='$idparecer'>
                                   <select  name='parecer_sigla".$id."[]'>
                                     <option value='$sigla'>$sigla</option>
+                                    <option ></option>
                                     <option value='S'>S</option>
                                     <option value='N'>N</option>
                                     <option value='D'>D</option>
@@ -200,6 +201,7 @@ try {
                                   <select  name='parecer_sigla".$id."[]'>
                                     <option value='$sigla'>$sigla</option>
                                     <option value='S'>S</option>
+                                    <option></option>
                                     <option value='N'>N</option>
                                     <option value='D'>D</option>
                                     <option value='NT'>NT</option>
