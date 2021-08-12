@@ -16,7 +16,7 @@
     $data_nota=$value['data_nota'];
 
      $conexao->exec("INSERT INTO nota(nota, avaliacao, parecer_disciplina_id, parecer_descritivo, sigla, escola_id, turma_id, disciplina_id, aluno_id, periodo_id, data_nota) VALUES (
-      $nota, '$avaliacao', parecer_disciplina_id, '$parecer_descritivo', '$sigla', escola_id, turma_id, disciplina_id, aluno_id, periodo_id, '$data_nota')"
+      $nota, '$avaliacao', $parecer_disciplina_id, '$parecer_descritivo', '$sigla', $escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, '$data_nota')"
       );
   }
  ?>
