@@ -1197,7 +1197,7 @@ div.WordSection1
       style='font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
       "Times New Roman";color:black;mso-fareast-language:PT-BR'>
 
-    <?php
+      <?php
 
             $result_parecer_tri1=$conexao->query("
               SELECT * FROM nota WHERE
@@ -1205,13 +1205,13 @@ div.WordSection1
               turma_id=$idturma and
               periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
 
-
             $parecer_tri_1="";
-          
             foreach ($result_parecer_tri1 as $key => $value) {
               $parecer_tri_1=$value['parecer_descritivo'];
             }
-          echo "$parecer_tri_1";
+
+            $parecer_tri_1 = wordwrap($parecer_tri_1, 80, "<br />\n");
+            echo $parecer_tri_1;
 
       ?>
   <o:p>
