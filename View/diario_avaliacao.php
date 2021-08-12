@@ -156,7 +156,7 @@ if (!isset($_SESSION['idprofessor'])) {
                 $idserie_atalho=$value['serie_id'];
 
                 echo "
-                <option value='diario_frequencia.php?disc=$iddisciplina_atalho&turm=$idturma_atalho&turma=$nome_turma_atalho&disciplina=$disciplina&idescola=$idescola_atalho&idserie=$idserie_atalho' onclick='atalho();' >
+                <option value='diario_avaliacao.php?disc=$iddisciplina_atalho&turm=$idturma_atalho&turma=$nome_turma_atalho&disciplina=$disciplina&idescola=$idescola_atalho&idserie=$idserie_atalho' onclick='atalho();' >
                     Mudar para turma =>  $nome_turma_atalho - $disciplina  
                   </option> 
 
@@ -310,7 +310,8 @@ if (!isset($_SESSION['idprofessor'])) {
                                               <tbody>
                                                 <?php 
                                                 $conta=1;
-                                                $array_avaliacao= array('0'=>'av1','1'=>'av2','2'=>'av3','3'=>'av4','4'=>'DIAGNÓSTICO INICIAL');
+                                                $array_avaliacao= array('0'=>'av1','1'=>'av2','2'=>'av3','3'=>'av4','4'=>'DIAGNÓSTICO INICIAL','5'=>'RP');
+
                                           foreach ($array_avaliacao as $key => $value) {
                                                   $avaliacao=$value;
                                                 
@@ -322,7 +323,13 @@ if (!isset($_SESSION['idprofessor'])) {
                                                       $escola_id=$value['escola_id'];
                                                       $avaliacao=$value['avaliacao'];
                                                       $periodo_id=$value['periodo_id'];
-                                                      
+                                                      $nome_periodo="";
+                                                      $res_periodo=$conexao->query("SELECT * FROM periodo where id=$periodo_id ");
+                                                      foreach ($res_periodo as $key => $value) {
+                                                        $nome_periodo=$value["descricao"];
+                                                      }
+
+
                                                       echo"
                                                       <tr>
                                                       <td>
@@ -337,7 +344,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
                                            
                                                       </td>
-                                                        <td>Avaliação $avaliacao - ".converte_data($data_nota)."</td>
+                                                        <td>Periodo: $nome_periodo - Avaliação $avaliacao - ".converte_data($data_nota)."</td>
                                                         <td><a onclick='excluir_avaliacao($conta);' class='btn btn-danger'>EXCLUIR AVALIAÇÃO</a></td>
                                                         <td>
                                                           <a href='#listaAlunos' onclick='editar_avaliacao_aluno_por_data($conta);' class='btn btn-primary'>EDITAR AVALIAÇÃO</a>

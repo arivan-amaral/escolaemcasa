@@ -519,7 +519,7 @@ $idserie=$_SESSION['serie_id'];
           <div class="modal-body">
               <!-- /corpo -->
           <center>
-            <h2 ><b>Esta página contém apenas os vídeos que <span style="color: red;">AINDA NÃO</span> foram visualizados pelo aluno. Após serem visualizados estarão disponíveis para conferência em suas respetivas disciplinas.</b></h2>
+            <h2 ><b>Esta página contém apenas os vídeos que <span style="color: red;">AINDA NÃO</span> foram visualizados pelo aluno. Após serem visualizados estarão disponíveis para conferência em suas respectivas disciplinas.</b></h2>
            
           </center>
           <br>
