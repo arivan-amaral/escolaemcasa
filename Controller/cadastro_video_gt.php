@@ -6,7 +6,7 @@ include '../Model/Coordenador.php';
 
 try {
 
-	$link = $_POST['link'];
+	$link = trim($_POST['link']);
 	$titulo = $_POST['titulo'];
 	$descricao = $_POST['descricao'];
 	$hora = $_POST['hora'];
@@ -41,7 +41,7 @@ try {
 	$id_video=0;
 
 	$termos = array('https://youtu.be/', 'http://youtu.be/', 'https://youtube.com/', 'http://youtube.com/','https://www.youtube.com/watch?v=','http://www.youtube.com/watch?v=');
-	$link = str_replace($termos, '', $link);
+	$link =trim(str_replace($termos, '', $link));
 	
 	$idescola = "";
 	$setor = "Secretaria";
