@@ -569,7 +569,7 @@ foreach ($result_aula as $key => $value) {
       <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
       line-height:normal'><div class="Namerotate"><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-      color:black;mso-fareast-language:PT-BR'> <?php echo "Aula $conta_aula";  ?> </div></span></p>
+      color:black;mso-fareast-language:PT-BR'> <?php echo "f Aula $conta_aula";  ?> </div></span></p>
   </td>
 
   
