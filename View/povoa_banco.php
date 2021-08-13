@@ -87,7 +87,7 @@ order by  ed47_i_codigo asc,ed60_i_turma asc  offset $indice  limit $limite");
 		$senha=trim($idaluno);
 		$nome_turma=trim($array[0]);
 		$nome_turma=str_replace("  "," ",$nome_turma);
-
+ 
 		$res_turma=$conexao->query("SELECT * FROM turma where nome_turma like '$nome_turma%' limit 1 ");
 		$existe=0;
 		foreach ($res_turma as $key_turma => $value_turma) {
