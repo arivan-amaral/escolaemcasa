@@ -12,6 +12,7 @@ date_default_timezone_set('America/Bahia');
      $whatsapp= str_replace('.', '', $whatsapp);
      $whatsapp= str_replace(',', '', $whatsapp);
      $whatsapp= str_replace('_', '', $whatsapp);
+     $whatsapp= str_replace("'", '', $whatsapp);
      
  	 return $whatsapp;
 }

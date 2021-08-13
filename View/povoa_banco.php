@@ -65,8 +65,8 @@ order by  ed47_i_codigo asc,ed60_i_turma asc  offset $indice  limit $limite");
 		$sexo= trim($value['ed47_v_sexo']);
 		$data_nascimento= trim($value['ed47_d_nasc']);
 
-		$telefone= trim($value['ed47_v_telef']);
-		$whatsapp= trim($value['ed47_v_telcel']);
+		$telefone= converte_telefone(trim($value['ed47_v_telef']));
+		$whatsapp= converte_telefone(trim($value['ed47_v_telcel']));
 
 		$nome_mae= trim($value['nome_mae']);
 		$nome_pai= trim($value['nome_pai']);
