@@ -8,6 +8,8 @@ if (!isset($_SESSION['idcoordenador'])) {
   $idcoordenador=$_SESSION['idcoordenador'];
 
 }
+  header("location:index.php?status=0");
+
   include "cabecalho.php";
   include "barra_horizontal.php";
   include 'menu.php';

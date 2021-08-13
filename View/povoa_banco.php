@@ -84,7 +84,7 @@ order by  ed47_i_codigo asc,ed60_i_turma asc  offset $indice  limit $limite");
 		
 		$primeiro_nome=trim($array_aluno[0]);
 		$primeiro_nome.=".$idaluno";
-		$senha="escolaemcasa".$idaluno;
+		$senha=trim($idaluno);
 		$nome_turma=trim($array[0]);
 		$nome_turma=str_replace("  "," ",$nome_turma);
 
