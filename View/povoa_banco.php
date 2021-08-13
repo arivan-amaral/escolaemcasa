@@ -114,7 +114,7 @@ order by  ed47_i_codigo asc,ed60_i_turma asc  offset $indice  limit $limite");
 				 senha='$senha',		
 				 whatsapp='$whatsapp',
 				 sexo='$sexo',
-				 data_nascimento='$data_nascimento'
+				 data_nascimento='$data_nascimento' where idaluno=$idaluno
 				 ");
 				
 				$conexao->exec("
