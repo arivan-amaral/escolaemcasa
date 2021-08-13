@@ -106,7 +106,12 @@ order by  ed47_i_codigo asc,ed60_i_turma asc  offset $indice  limit $limite");
 				$conexao->exec("
 					INSERT INTO ano_letivo (ano, turma_id, aluno_id,  escola_id) VALUES ('2021', $turma_id, $idaluno,$idescola)");
 			}else{
-				echo "$conta - EDITANDO - $idaluno-  $nome_aluno sexo: $sexo <br>";
+				echo "$conta - nome=$nome_aluno,
+				 email=$primeiro_nome,
+				 senha=$senha,		
+				 whatsapp=$whatsapp,
+				 sexo=$sexo,
+				 data_nascimento=$data_nascimento where idaluno=$idaluno <br>";
 			
 				$conexao->exec(" UPDATE  aluno SET 
 				 nome='$nome_aluno',
