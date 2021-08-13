@@ -3,7 +3,7 @@
   include"../Model/Coordenador.php";
   include"../Model/Aluno.php";
  
- function parecere_descritivo_cheche($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_escola,$nome_aluno,$nome_turma){
+ function parecere_descritivo_cheche($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_escola,$nome_aluno,$nome_turma,$idaluno){
 ?>
 
 <html xmlns:v="urn:schemas-microsoft-com:vml"
@@ -329,12 +329,12 @@ div.WordSection1
 
     foreach ($pes as $chave => $linha) {
       $iddisciplina=$linha['iddisciplina'];
-      $resultado=listar_todas_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplina,'DIAGNÓSTICO INICIAL');
+      $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'DIAGNÓSTICO INICIAL',$idaluno);
       foreach ($resultado as $key => $value) {
         $parecer_descritivo.=$value['parecer_descritivo'];
       }
-      echo "$parecer_descritivo";
     }
+      echo "$parecer_descritivo";
 
     ?>
   </o:p></span></p>
@@ -369,12 +369,13 @@ div.WordSection1
 
     foreach ($pes as $chave => $linha) {
       $iddisciplina=$linha['iddisciplina'];
-      $resultado=listar_todas_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplina,'av1');
+      $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av1',$idaluno);
       foreach ($resultado as $key => $value) {
         $parecer_descritivo.=$value['parecer_descritivo'];
       }
-      echo "$parecer_descritivo";
+    
     }
+        echo "$parecer_descritivo";
 
     ?>
   </o:p></span></p>

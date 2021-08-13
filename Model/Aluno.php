@@ -225,6 +225,15 @@ function listar_todas_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplin
     return $resultado;
 }
 
+function listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,$avaliacao,$aluno_id) {
+    $resultado=$conexao->query(" SELECT * FROM nota WHERE
+      
+      disciplina_id=$iddisciplina and 
+      escola_id=$idescola and 
+      turma_id=$idturma and avaliacao='$avaliacao' and aluno_id=$aluno_id and parecer_descritivo!='' ");
+    return $resultado;
+}
+
 
 function listar_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplina) {
     $resultado=$conexao->query(" SELECT * FROM nota WHERE

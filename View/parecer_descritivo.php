@@ -18,7 +18,7 @@ $nome_disciplina='';
     $idaluno=$value['idaluno'];
     $nome_aluno=$value['nome_aluno'];
     $nome_turma=$value['nome_turma'];
-    parecere_descritivo_cheche($conexao,$idescola,$idturma,$idserie,$nome_disciplina,$nome_escola,$nome_aluno,$nome_turma); 
+    parecere_descritivo_cheche($conexao,$idescola,$idturma,$idserie,$nome_disciplina,$nome_escola,$nome_aluno,$nome_turma,$idaluno); 
   echo" <br>";
   }
 
