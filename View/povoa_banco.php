@@ -116,7 +116,6 @@ order by  ed47_i_codigo asc,ed60_i_turma asc  offset $indice  limit $limite");
 				$conexao->exec(" UPDATE  aluno SET 
 				 nome='$nome_aluno',
 				 email='$primeiro_nome',
-				 senha='$senha',		
 				 whatsapp='$whatsapp',
 				 sexo='$sexo',
 				 data_nascimento='$data_nascimento' where idaluno=$idaluno
