@@ -4,6 +4,38 @@
     <title>Teste</title>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
     <script type="text/javascript">
+
+    	var options = {
+    	  enableHighAccuracy: true,
+    	  timeout: 5000,
+    	  maximumAge: 0
+    	};
+
+    	navigator.geolocation.getCurrentPosition(function (position) { // callback de sucesso
+    	                    // ajusta a posição do marker para a localização do usuário
+    	                    //marker.setPosition(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+    	                    initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    	                    map.setCenter(initialLocation);
+    	                    marker.setPosition(initialLocation);
+
+    	                    
+				var texto = 'latitude=' + position.coords.latitude + '\r\n' +
+				'longitude=' + position.coords.longitude + '\r\n' +
+				'precisao=' + position.coords.accuracy + ' metros\r\n' +
+				'velocidade=' + position.coords.speed + ' metros/segundo\r\n' +
+				'altitude=' + position.coords.altitude + ' metros\r\n' +
+				'precisaoAltitude=' + position.coords.altitudeAccuracy;
+
+				$('#txtInfo').val(texto);
+
+    	                },
+    	                function (error) { // callback de erro
+    	                    alert('Erro ao obter localização!');
+    	                    console.log('Erro ao obter localização.', error);
+    	                }, options );
+
+
+
         function obterGeolocalizacao()
 		{
 			if (!navigator.geolocation) {
