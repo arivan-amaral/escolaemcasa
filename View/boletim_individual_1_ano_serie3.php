@@ -184,8 +184,10 @@
       	{page:WordSection1;}
       -->
       </style>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
       </head>
+
+<div id="employee_detail">
 
       <body lang=PT-BR style='tab-interval:35.4pt;word-wrap:break-word'>
 
@@ -583,6 +585,8 @@
        <!-- *********************** RODAPÉ *********************************************************** -->
 
       </div>
+      
+    </div>
 
       </body>
 

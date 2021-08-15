@@ -4,13 +4,14 @@
 		return $result;
 	}
 
-	function login_aluno($conexao,$usuario,$senha){
+	function login_aluno($conexao,$usuario,$senha,$ano_letivo){
 
 
-		$result=$conexao->query("SELECT * FROM aluno,ano_letivo,turma where
+		$result=$conexao->query("SELECT * FROM aluno,ano_letivo,turma,escola where
+escola.idescola=escola_id and
 ano_letivo.aluno_id=idaluno and
 ano_letivo.turma_id=turma.idturma AND
- email='$usuario' and senha='$senha' and status='Ativo' ");
+aluno.email='$usuario' and aluno.senha='$senha' and ano='$ano_letivo' and status='Ativo' ");
 		return $result;
 	}
 ?>

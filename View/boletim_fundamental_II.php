@@ -519,15 +519,14 @@ $linha++;
 <?php
 // faltas trimestre 1
 $res_fre_t1=$conexao->query("
-SELECT count(*) as 'quantidade' FROM frequencia WHERE
+SELECT * FROM frequencia WHERE
 escola_id=$idescola and
 turma_id=$idturma and
-
-presenca=0 and data_frequencia BETWEEN '2021-05-03' and '2021-07-09' and aluno_id=$idaluno ");
+presenca=0 and data_frequencia BETWEEN '2021-05-03' and '2021-07-09' and aluno_id=$idaluno  group by data_frequencia");
 // disciplina_id=$iddisciplina and 
 $quantidade_falta1=0;
 foreach ($res_fre_t1 as $key => $value) {
-  $quantidade_falta1=$value['quantidade'];
+  $quantidade_falta1++;
 }
 
 echo "$quantidade_falta1";

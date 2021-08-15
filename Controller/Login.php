@@ -117,10 +117,13 @@ try {
 
       ####################### ALUNO ####################################
          $login_aluno=0;
-         $resultado2 = login_aluno($conexao, $email, $senha);
+         $ano_letivo=date("Y");
+         $resultado2 = login_aluno($conexao, $email, $senha,$ano_letivo);
+
          foreach ($resultado2 as $key2 => $row2) {
           $id = $row2["idaluno"];
           $nome = $row2["nome"];
+          $nome_escola = $row2["nome_escola"];
           $email = $row2["email"];
           $escola_id = $row2["escola_id"];
           $turma_id = $row2["turma_id"];
@@ -131,6 +134,7 @@ try {
           $_SESSION["nome"] = $nome;
 
           $_SESSION["email"] = $email;
+          $_SESSION["nome_escola"] = $nome_escola;
 
 
           if ($sexo=='Masculino') {
@@ -182,7 +186,8 @@ try {
 } catch (Exception $e) {
   $_SESSION['status']=0;
   $_SESSION['mensagem']="Algo deu errado, confira seus dados de acesso e tente novamente!";
-  header("Location:../View/?status=0");
+  echo "$e";
+  //header("Location:../View/?status=0");
 }
 
 

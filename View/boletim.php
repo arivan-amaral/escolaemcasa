@@ -63,11 +63,27 @@ if ($idserie==3) {
   //echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
 
     $numero=1;
-    $res_alunos=listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola);
+    $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
+    $nome_professor= "";
+
     foreach ($res_alunos as $key => $value) {
       $idaluno=$value['idaluno'];
       $nome_aluno=$value['nome_aluno'];
-      boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno, $nome_escola,$nome_turma);
+      if ($numero==1) {
+        
+        $res=listar_nome_professor_turma($conexao,$idaluno);
+        $conta_virgula=0;
+        foreach ($res as $key => $value) {
+          if($conta_virgula>0){
+            $nome_professor.= ", ";
+          }
+         $nome_professor.= $value['nome_professor'];
+         $conta_virgula++;
+        }
+        $nome_professor.= ".";
+      }
+
+      boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno, $nome_escola,$nome_turma,$nome_professor);
       // break;
   echo"<a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma'>IMPRIMIR - $nome_aluno</a> <br><br>";
 
@@ -79,22 +95,14 @@ if ($idserie==3) {
 else if ($idserie >3 && $idserie <=8) {
     
   
-      $res_alunos=listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola);
+      $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
       foreach ($res_alunos as $key => $value) {
         $idaluno=$value['idaluno'];
         $nome_aluno=$value['nome_aluno'];
 
 
+          boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
 
-
-
-       // $css = file_get_contents("css/estilo.css");
-
-       // $mpdf->WriteHTML($css,1);
-
-
-
-          $html.="".boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
          if ($numero%2==0) {
             echo "<br>";
             echo "<br>";
@@ -110,7 +118,7 @@ else if ($idserie >3 && $idserie <=8) {
 
  // echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
   $numero=1;
-    $res_alunos=listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola);
+    $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
     $nome_professor= " ";
     foreach ($res_alunos as $key => $value) {
       $idaluno=$value['idaluno'];
@@ -142,7 +150,7 @@ else if ($idserie >3 && $idserie <=8) {
 }else if ($idserie > 8) {
     //echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
     $numero=1;
-      $res_alunos=listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola);
+      $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
       foreach ($res_alunos as $key => $value) {
         $idaluno=$value['idaluno'];
         $nome_aluno=$value['nome_aluno'];

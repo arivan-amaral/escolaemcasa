@@ -7,7 +7,7 @@
   include"../Model/Professor.php";
 
   include"boletim_maternall_II.php";
-  include"boletim_serie_1ano_id_3.php";
+  include"boletim_individual_1_ano_serie3.php";
   include"boletim_fundamental_II.php";
   
 
@@ -22,24 +22,29 @@ $nome_turma=$_GET['nome_turma'];
 
 
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title></title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
 
-</head>
-<body>
-   
-<div id="employee_detail">
+
 
 <?php
 if ($idserie==3) {
-    boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno, $nome_escola,$nome_turma);
+
+  $nome_professor= "";
+
+  $res=listar_nome_professor_turma($conexao,$idaluno);
+  $conta_virgula=0;
+  foreach ($res as $key => $value) {
+    if($conta_virgula>0){
+      $nome_professor.= ", ";
+    }
+   $nome_professor.= $value['nome_professor'];
+   $conta_virgula++;
+  }
+  $nome_professor.= ".";
+
+     boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno, $nome_escola,$nome_turma,$nome_professor);
 
 }else if ($idserie >3 && $idserie <=8) {
-  boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
+   boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
 
 
 }else if ($idserie<3){
@@ -56,7 +61,7 @@ if ($idserie==3) {
         }
         $nome_professor.= ".";
 
-        boletim_maternal_1_2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno ,$nome_escola,$nome_turma,$nome_professor);
+         boletim_maternal_1_2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno ,$nome_escola,$nome_turma,$nome_professor);
         $nome_professor='';
         
 
@@ -65,16 +70,14 @@ if ($idserie==3) {
 }else if ($idserie > 8) {
     //echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
 
-          boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
-        
-
-         
- 
-      
+    boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
+            
 }
-         echo"
-</div>
-<a href='#' onclick='demoFromHTML();'>IMPRIMIR - $nome_aluno</a> <br><br>";
+
+echo"
+ 
+
+<a href='#' onclick='print();'>BAIXAR BOLETIM - $nome_aluno</a> <br><br>";
 
 ?>
 
@@ -104,10 +107,10 @@ if ($idserie==3) {
        let heightLeft = imgHeight;
        let position = 15;
        let pdf = new jsPDF('p', 'mm');
-       let fix_imgWidth = 15; // Vai subindo e descendo esses valores ate ficar como queres
-       let fix_imgHeight = 15; // Vai subindo e descendo esses valores ate ficar como queres
+       let fix_imgWidth = 25; // Vai subindo e descendo esses valores ate ficar como queres
+       let fix_imgHeight = 10; // Vai subindo e descendo esses valores ate ficar como queres
 
-       pdf.addImage(imgData, 'PNG', 15, position, imgWidth, imgHeight);
+       pdf.addImage(imgData, 'PNG', 20, position, imgWidth, imgHeight);
        heightLeft -= pageHeight;
 
        while (heightLeft >= 0) {

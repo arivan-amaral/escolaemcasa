@@ -31,17 +31,9 @@ session_start();
  
 
 ?>
-<script type='text/javascript'>
-      function modal_video() {
-          $(document).ready(function() {
-              $('#modal-bem-vindo').modal('show');
-            });
-      }
 
-      //setTimeout('modal_video();',800);
-      
-  </script>
 
+Read more: http://www.linhadecodigo.com.br/artigo/3653/usando-geolocalizacao-com-html5.aspx#ixzz73dNbvgiO
 
 <div class="modal fade" id="modal-bem-vindo">
     <div class="modal-dialog">
@@ -116,11 +108,14 @@ session_start();
           <div class="col-md-12">
 
 
+
+</script>
+
+
             <div class="card">
               <div class="card-header">
                 <!-- <h3 class="card-title">EDUCA LEM</h3> -->
               </div>
-
 
          <!--      <button type="button" class="btn btn-block btn-danger btn-lg">
                 <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SAIBA MAIS</font>
