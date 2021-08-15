@@ -252,6 +252,28 @@
 
                                   echo"<li class='nav-item menu'>
                                       <a href='./index.php' class='nav-link'>
+                                         <i class='far fa-bell'></i>
+                                          <p>Avisos<i class='right fas fa-angle-left'></i></p>
+                                      </a>
+
+                                       <ul class='nav nav-treeview'>
+                                         <li class='nav-item'>
+                                            <a href='cadastro_aviso.php' class='nav-link'>
+                                              <i class='far fa-circle nav-icon text-primary'></i>
+                                              <p>Cadastrar</p>
+                                            </a>
+                                          </li>
+                                      </ul>
+
+                                        
+                                  </li>";
+
+
+
+
+
+                                  echo"<li class='nav-item menu'>
+                                      <a href='./index.php' class='nav-link'>
                                           <ion-icon name='git-network-outline'></ion-icon>
                                           <p>Coordenador/Secretário <i class='right fas fa-angle-left'></i></p>
                                       </a>
@@ -275,6 +297,8 @@
                                       </ul>       
                                   </li>";
                                 }
+
+
                               }
                               // echo"<li class='nav-item'>
                               //     <a href='./index.php' class='nav-link'>
@@ -392,35 +416,35 @@
                               // </li>";
                         
 
-                        echo"<li class='nav-item menu'>
-                                  <a href='./index.php' class='nav-link'>
-                                      <ion-icon name='git-pull-request-outline'></ion-icon>
-                                      <p>Associações <i class='right fas fa-angle-left'></i></p>
-                                  </a>
-                                  <ul class='nav nav-treeview'>
-                                    <li class='nav-item'>
-                                      <a href='pesquisar_professor_associar.php' class='nav-link'>
-                                        <i class='far fa-circle nav-icon text-primary'></i>
-                                        <p>Professor a turmas</p>
-                                      </a>
-                                    </li>
-                                  </ul> 
+                        // echo"<li class='nav-item menu'>
+                        //           <a href='./index.php' class='nav-link'>
+                        //               <ion-icon name='git-pull-request-outline'></ion-icon>
+                        //               <p>Associações <i class='right fas fa-angle-left'></i></p>
+                        //           </a>
+                        //           <ul class='nav nav-treeview'>
+                        //             <li class='nav-item'>
+                        //               <a href='pesquisar_professor_associar.php' class='nav-link'>
+                        //                 <i class='far fa-circle nav-icon text-primary'></i>
+                        //                 <p>Professor a turmas</p>
+                        //               </a>
+                        //             </li>
+                        //           </ul> 
 
                                   
-                                  <!-- <ul class='nav nav-treeview'>
-                                    <li class='nav-item'>
-                                      <a href='relatorio_por_escola.php' class='nav-link'>
-                                        <i class='far fa-circle nav-icon text-primary'></i>
-                                        <p>Turmas a escolas</p>
-                                      </a>
-                                    </li>
-                                  </ul> -->
+                        //           <!-- <ul class='nav nav-treeview'>
+                        //             <li class='nav-item'>
+                        //               <a href='relatorio_por_escola.php' class='nav-link'>
+                        //                 <i class='far fa-circle nav-icon text-primary'></i>
+                        //                 <p>Turmas a escolas</p>
+                        //               </a>
+                        //             </li>
+                        //           </ul> -->
 
                                 
                                   
                                    
 
-                              </li>";
+                        //       </li>";
 
 
                        /* echo"<li class='nav-item menu'>

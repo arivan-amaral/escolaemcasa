@@ -77,7 +77,7 @@ if ($idserie==3) {
 echo"
  
 
-<a href='#' onclick='print();'>BAIXAR BOLETIM - $nome_aluno</a> <br><br>";
+<a href='#' onclick='print();'>IMPRIMIR BOLETIM - $nome_aluno</a> <br><br>";
 
 ?>
 
