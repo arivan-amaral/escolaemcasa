@@ -443,7 +443,7 @@ if ($conta_parecer==0 && $linha==0) {
         foreach ($result_parecer_tri1 as $key => $value) {
           $parecer_tri_1.=$value['parecer_descritivo'];
         }
-      echo "$parecer_tri_1";
+     // echo "$parecer_tri_1";
 
   ?><o:p></o:p></span></p>
 </td> 
