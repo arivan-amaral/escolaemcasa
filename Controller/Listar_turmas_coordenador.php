@@ -61,15 +61,17 @@ $result="";
                                           <a href='diario_conteudo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat'>
                                           <i class='fa fa-edit'></i> 
                                           CONTEÚDOS DE AULAS
-                                          </a> 
-
-                                          <a href='parecer_descritivo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat'>
+                                          </a> ";
+                                          if ($idserie<3) {
+                                          $result.="<a href='parecer_descritivo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat'>
                                           <i class='fa fa-edit'></i> 
                                           PARECER DESCRITIVO
-                                          </a> 
+                                          </a> ";
+                                            // code...
+                                          }
 
 
-                                          <a   href='boletim.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-danger btn-block btn-flat'>
+                                          $result.="<a   href='boletim.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-danger btn-block btn-flat'>
                                           <i class='fa fa-calendar'></i> 
                                           BOLETIM
                                           </a>      
