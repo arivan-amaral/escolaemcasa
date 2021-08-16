@@ -232,6 +232,15 @@ include "alertas.php";
 <script type="text/javascript">
 
  function carregando(){
+
+
+    var descricao =  document.getElementById("summernote").value
+  if (descricao=="") {
+      Swal.fire('Preencha os campos obrigatorios!', '', 'info');
+      
+    
+
+  }else{
         let timerInterval
         Swal.fire({
           title: 'Aguarde, ação está sendo realizada...',
@@ -259,7 +268,9 @@ include "alertas.php";
             console.log('I was closed by the timer')
           }
         })
+    }//else
   }
+
 
 </script>
 
