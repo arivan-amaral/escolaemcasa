@@ -33,8 +33,6 @@ session_start();
 ?>
 
 
-Read more: http://www.linhadecodigo.com.br/artigo/3653/usando-geolocalizacao-com-html5.aspx#ixzz73dNbvgiO
-
 <div class="modal fade" id="modal-bem-vindo">
     <div class="modal-dialog">
       <div class="modal-content">
