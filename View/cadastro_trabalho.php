@@ -283,12 +283,12 @@ include "alertas.php";
 
                          if ($extensao=="") {
 
-                             echo "
+                              echo "
 
                              <div class='time-label'>
 
-                               <span class='bg-blue'>Data Entrega: $data_entrega</span>
-                               <span class='bg-greem'>Data visivel: $data_visivel</span>
+                               <span class='bg-blue'>Data Entrega: ". converte_data_hora($data_entrega)."</span>
+                               <span class='bg-greem'>Data visivel: ". converte_data_hora($data_visivel)."</span>
 
                              </div>
 

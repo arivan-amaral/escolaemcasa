@@ -18,6 +18,7 @@
 
 
   $idtrabalho=$_GET['idtrabalho'];
+  $trabalho_entregue_id=$_GET['idtrabalho'];
   $idturma=$_GET['idturma'];
   $iddisciplina=$_GET['iddisciplina'];
   $idescola=$_SESSION['escola_id'];
@@ -354,7 +355,7 @@
                     </div>
 
 
-
+                   
 
 
 
@@ -558,7 +559,76 @@
 
 
 
+ <div class='card card-widget'>
+                                  <div class='card-header'>
+                                    <div class='user-block'>
+                                      <!-- <img class='img-circle' src='../dist/img/user1-128x128.jpg' alt='User Image'> -->
+                                      <span class='username'><a href='#'><?php echo $_SESSION['nome']; ?></a></span>
+                                      
+                                    </div>
+                                    <!-- /.user-block -->
+                                    <div class='card-tools'>
+                                      <button type='button' class='btn btn-tool' title='Mark as read'>
+                                        <i class='far fa-circle'></i>
+                                      </button>
+                                      <button type='button' class='btn btn-tool' data-card-widget='collapse'>
+                                        <i class='fas fa-minus'></i>
+                                      </button>
+                                      <button type='button' class='btn btn-tool' data-card-widget='remove'>
+                                        <i class='fas fa-times'></i>
+                                      </button>
+                                    </div>
+                                    <!-- /.card-tools -->
+                                  </div>
+                                  <!-- /.card-header -->
+                                  
+                                  <!-- /.card-body -->
+                                  <div class='card-footer card-comments' style='display: block;' id="resenha">
+                                   
 
+
+
+
+                               
+
+
+
+
+                                    <!-- /.card-comment -->
+                                  </div>
+                                  <!-- /.card-footer -->
+                                 
+                                  <div class="row">
+                                  <!-- <div class='card-footer' style='display: block;'> -->
+                                      <div class="col-sm-1"></div>
+                                      <div class="col-sm-10">
+
+
+                                
+
+                                        <input type="hidden" id="trabalho_entregue_id" value="<?php echo $trabalho_entregue_id; ?>">
+                                        <input type="hidden" id="aluno_id" value="<?php echo $idaluno; ?>">
+                                        <input type="hidden" id="funcionario_id" value="">
+
+                                        <textarea type='text' id="resposta" class='form-control' placeholder='Responder' rows="4"></textarea>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-sm-1"></div>
+                                      <div class="col-sm-10">
+
+                                        <a class="btn btn-block btn-primary" onclick="enviar_resenha();">Enviar</a>
+                                      </div>
+                                     
+                                
+                                      <!-- </div> -->
+                                  </div>
+                                  <!-- /.card-footer -->
+                               <br>
+
+
+
+                        </div>
 
                   </div>        
 
@@ -583,6 +653,8 @@
 </aside>
 
 <script type="text/javascript">
+    receber_resenha();
+setInterval("receber_resenha()",10000);
 
  function carregando(){
         let timerInterval

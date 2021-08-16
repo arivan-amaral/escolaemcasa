@@ -250,23 +250,23 @@
                                     
                                   
 
-                                  echo"<li class='nav-item menu'>
-                                      <a href='./index.php' class='nav-link'>
-                                         <i class='far fa-bell'></i>
-                                          <p>Avisos<i class='right fas fa-angle-left'></i></p>
-                                      </a>
+                                  // echo"<li class='nav-item menu'>
+                                  //     <a href='./index.php' class='nav-link'>
+                                  //        <i class='far fa-bell'></i>
+                                  //         <p>Avisos<i class='right fas fa-angle-left'></i></p>
+                                  //     </a>
 
-                                       <ul class='nav nav-treeview'>
-                                         <li class='nav-item'>
-                                            <a href='cadastro_aviso.php' class='nav-link'>
-                                              <i class='far fa-circle nav-icon text-primary'></i>
-                                              <p>Cadastrar</p>
-                                            </a>
-                                          </li>
-                                      </ul>
+                                  //      <ul class='nav nav-treeview'>
+                                  //        <li class='nav-item'>
+                                  //           <a href='cadastro_aviso.php' class='nav-link'>
+                                  //             <i class='far fa-circle nav-icon text-primary'></i>
+                                  //             <p>Cadastrar</p>
+                                  //           </a>
+                                  //         </li>
+                                  //     </ul>
 
                                         
-                                  </li>";
+                                  // </li>";
 
 
 

@@ -43,6 +43,57 @@ function CriaRequest() {
  }
 
 
+ function receber_resenha() {
+    var result = document.getElementById("resenha");
+
+    var trabalho_entregue_id = document.getElementById("trabalho_entregue_id").value;
+    var aluno_id = document.getElementById("aluno_id").value;
+    var url ="trabalho_entregue_id="+trabalho_entregue_id+"&aluno_id="+aluno_id;
+
+    var xmlreq = CriaRequest();   
+    xmlreq.open("GET", "../Controller/Resenha_trabalho_entregue_receber.php?"+url, true);
+
+
+    xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                  result.innerHTML = xmlreq.responseText;
+                
+             }else{
+                //result.innerHTML ="Erro ao receber mensagens";                 
+             }
+         }
+     };
+     xmlreq.send(null);
+ }
+
+
+ function enviar_resenha() {
+    var resposta = document.getElementById("resposta").value;
+    var trabalho_entregue_id = document.getElementById("trabalho_entregue_id").value;
+    var funcionario_id = document.getElementById("funcionario_id").value;
+    var aluno_id = document.getElementById("aluno_id").value;
+    var url ="resposta="+resposta+"&trabalho_entregue_id="+trabalho_entregue_id+"&funcionario_id="+funcionario_id+"&aluno_id="+aluno_id;
+    
+    var xmlreq = CriaRequest();   
+    xmlreq.open("GET", "../Controller/Resenha_trabalho_entregue_enviar.php?"+url, true);
+
+
+    xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                 // result.innerHTML = xmlreq.responseText;
+                 document.getElementById("resposta").value="";
+                 receber_resenha();
+             }else{
+                //result.innerHTML ="Erro ao receber mensagens";                 
+             }
+         }
+     };
+     xmlreq.send(null);
+ }
 
 
 
