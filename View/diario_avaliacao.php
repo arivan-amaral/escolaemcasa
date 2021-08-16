@@ -223,6 +223,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
         <div class="col-sm-2">
           <div class="form-group">
+            <br>
             <label for="exampleInputEmail1"> <br></label>
 
               <a href="#" class="btn btn-primary" onclick="lista_avaliacao_aluno_por_data();">BUSCAR </a>

@@ -24,9 +24,13 @@ include "alertas.php";
 
   $iddisciplina=$_GET['disc'];
 
+ $array_url=explode('p?', $_SERVER["REQUEST_URI"]);
+ $url_get=$array_url[1];
+
+
 ?>
-
-
+ 
+ 
 
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 
@@ -161,6 +165,7 @@ include "alertas.php";
                         <input type="hidden" name="turma_id" value="<?php echo $_GET['turm']; ?>" class="form-control" required="">
 
                         <input type="hidden" name="disciplina_id" value="<?php echo $_GET['disc']; ?>" class="form-control" required="">
+                        <input type="hidden" name="url_get" value="<?php echo $url_get; ?>" class="form-control" required="">
                       
                       <div style="background-color:#808080; padding:10px;border-radius: 1%;">
                             
@@ -331,7 +336,9 @@ include "alertas.php";
                                  <div class='timeline-footer'>
                                     <a href='#' onclick='excluir_trabalho($id);' class='btn btn-sm bg-danger'>Deletar Trabalho</a>
 
-                                   <a class='btn btn-sm bg-warning' data-toggle='modal' data-target='#modal-default' onclick='listar_alunos_trabalho($id,$idturma,$iddisciplina);'> VER QUEM ENTREGOU </a>
+                                   <a class='btn btn-sm bg-warning' data-toggle='modal' data-target='#modal-default' onclick='listar_alunos_trabalho($id,$idturma,$iddisciplina);'> VER QUEM ENTREGOU </a> 
+
+                                   <a  href='editar_trabalho.php?$url_get&idtrabalho=$id'  class='btn btn-sm bg-primary'> EDITAR </a>
           
 
                                  </div>
@@ -398,6 +405,7 @@ include "alertas.php";
                                    
                                    <a class='btn btn-sm bg-warning' data-toggle='modal' data-target='#modal-default'  onclick='listar_alunos_trabalho($id,$idturma,$iddisciplina);'> VER QUEM ENTREGOU </a>
 
+                                   <a  href='editar_trabalho.php?$url_get&idtrabalho=$id'  class='btn btn-sm bg-primary'> EDITAR </a>
 
                                  </div>
  

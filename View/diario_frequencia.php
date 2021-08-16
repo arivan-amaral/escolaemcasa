@@ -312,7 +312,7 @@ if (!isset($_SESSION['idprofessor'])) {
                                             <thead>
                                               <tr>
                                                 <th style='width: 10px'>#</th>
-                                                <th>Avaliações</th>
+                                                <th>Frequências</th>
                                                 <th>
                                                 Opções
                                                 </th>

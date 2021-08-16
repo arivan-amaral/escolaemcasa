@@ -75,7 +75,7 @@ try {
               
                              $result.="<td>
 
-                             <!-- <label for='exampleInputEmail1'>Parecer descritivo</label>
+                             <!-- <label for='exampleInputEmail1'>Relatório descritivo</label>
                               <textarea class='form-control-sm' name='parecer_descritivo$id'>$descricao_parecer</textarea><br>
                                 <B></b> -->
                               </td>
@@ -94,7 +94,7 @@ try {
                                   $result.="<div class='card card-outline card-info'>
                                          <div class='card-header'>
                                            <h6>
-                                              Parecer descritivo - $nome_aluno .
+                                              Relatório descritivo - $nome_aluno .
                                            </h6>
                                          </div>
                                          <!-- /.card-header -->
