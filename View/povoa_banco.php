@@ -100,8 +100,8 @@ order by  ed47_i_codigo asc,ed60_i_turma asc  offset $indice  limit $limite");
 			if ($c_a==0) {
 				echo "<font color='red'> INSERIDO => $idaluno,$nome_aluno, $primeiro_nome,$senha, $whatsapp,$sexo,$data_nascimento </font> <bR>";
 				$conexao->exec(" INSERT INTO aluno
-				 (idaluno,nome, email,  senha, whatsapp,sexo,data_nascimento) values
-				 ($idaluno,'$nome_aluno', '$primeiro_nome','$senha', '$whatsapp','$sexo','$data_nascimento')");
+				 (idaluno,nome, email,  senha, whatsapp,sexo,data_nascimento, filiacao1,filiacao2) values
+				 ($idaluno,'$nome_aluno', '$primeiro_nome','$senha', '$whatsapp','$sexo','$data_nascimento','$nome_mae','$nome_pai')");
 				
 				$conexao->exec("
 					INSERT INTO ano_letivo (ano, turma_id, aluno_id,  escola_id) VALUES ('2021', $turma_id, $idaluno,$idescola)");
@@ -118,6 +118,8 @@ order by  ed47_i_codigo asc,ed60_i_turma asc  offset $indice  limit $limite");
 				 email='$primeiro_nome',
 				 whatsapp='$whatsapp',
 				 sexo='$sexo',
+				 filiacao1='$nome_mae',
+				 filiacao2='$nome_pai',
 				 data_nascimento='$data_nascimento' where idaluno=$idaluno
 				 ");
 				
