@@ -157,7 +157,6 @@ function listar_frequencia_cadastrado($conexao, $iddisciplina, $idturma, $idesco
 
 function listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $professor_id) {
     $resultado=$conexao->query("SELECT * FROM conteudo_aula WHERE
-      professor_id=$professor_id and 
       disciplina_id=$iddisciplina and 
       escola_id=$idescola and 
       turma_id=$idturma order by data");
