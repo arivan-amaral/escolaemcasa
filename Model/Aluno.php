@@ -245,7 +245,7 @@ function listar_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplina) {
 
 function verificar_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula) {
     $resultado=$conexao->query("SELECT * FROM conteudo_aula WHERE
-      professor_id=$professor_id and 
+  
       data='$data' and 
       disciplina_id=$iddisciplina and 
       escola_id=$idescola and 
@@ -298,7 +298,7 @@ function verificar_nota_por_data($conexao,$idescola,$idturma,$iddisciplina,$prof
 
 function verificar_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data_frequencia,$aluno_id,$aula) {
     $resultado=$conexao->query(" SELECT * FROM frequencia WHERE
-      professor_id=$professor_id and 
+
       data_frequencia='$data_frequencia' and 
       disciplina_id=$iddisciplina and 
       escola_id=$idescola and 
