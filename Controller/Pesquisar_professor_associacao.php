@@ -78,14 +78,20 @@ foreach ($result as $key => $value) {
 
        <br>
        <br>
-       </td>
+       </td>";
 
-       <td>
-       <input id='nome_professor$idfuncionario' hidden value='$nome_professor'>
-       <a  onclick='excluir_professor($idfuncionario);' name='pro$idfuncionario' class='btn btn-danger'>Excluir professor</a>
-      </td>
+ 
+           if ($_SESSION['nivel_acesso_id']>=100) { 
+               $return.="
+             <td>
+             <input id='nome_professor$idfuncionario' hidden value='$nome_professor'>
+             <a  onclick='excluir_professor($idfuncionario);' name='pro$idfuncionario' class='btn btn-danger'>Excluir professor</a>
+            </td>";
+            }
+
       
-    </tr>
+  $return.="
+   </tr>
   ";
 
       $result_pesquisa =lista_minhas_turmas($conexao,$idfuncionario);
