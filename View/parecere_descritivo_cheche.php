@@ -371,10 +371,36 @@ div.WordSection1
       $iddisciplina=$linha['iddisciplina'];
       $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av1',$idaluno);
       foreach ($resultado as $key => $value) {
-        $parecer_descritivo.=$value['parecer_descritivo'];
+        $parecer_descritivo.="".$value['parecer_descritivo'];
+      }
+    
+    }   
+ 
+    $pes2=listar_disciplina_da_turma($conexao,$idturma,$idescola);
+
+    foreach ($pes2 as $chave => $linha) {
+
+      $iddisciplina=$linha['iddisciplina'];
+      $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av2',$idaluno);
+      foreach ($resultado as $key => $value) {
+        $parecer_descritivo.=". ".$value['parecer_descritivo'];
       }
     
     }
+
+
+    $pes3=listar_disciplina_da_turma($conexao,$idturma,$idescola);
+
+    foreach ($pes3 as $chave => $linha) {
+      $iddisciplina=$linha['iddisciplina'];
+      $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av3',$idaluno);
+      foreach ($resultado as $key => $value) {
+        $parecer_descritivo.=". ".$value['parecer_descritivo'];
+      }
+    
+    }
+
+
         echo "$parecer_descritivo";
 
     ?>

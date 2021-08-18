@@ -378,6 +378,8 @@ foreach ($result_reuniao as $key => $value) {
 
 
  <div class="row">
+                  <div class="col-lg-1 col-6"></div>
+                  
                   <div class="col-lg-3 col-6">
                     <!-- small card -->
                     <div class="small-box bg-info">

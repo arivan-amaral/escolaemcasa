@@ -229,7 +229,7 @@ function listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$idd
       
       disciplina_id=$iddisciplina and 
       escola_id=$idescola and 
-      turma_id=$idturma and avaliacao='$avaliacao' and aluno_id=$aluno_id and parecer_descritivo!='' ");
+      turma_id=$idturma and avaliacao='$avaliacao' and aluno_id=$aluno_id and parecer_descritivo!='' group by parecer_descritivo  ");
     return $resultado;
 }
 
