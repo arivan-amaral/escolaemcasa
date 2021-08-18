@@ -492,7 +492,7 @@ $conta++;
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'><b>VICE-DIRETOR</b><o:p></o:p></span></p>
+  color:black;mso-fareast-language:PT-BR'><b>ASSINATURA DO COORDENADOR</b><o:p></o:p></span></p>
   </td>
   <td width=248 nowrap colspan=2 valign=bottom style='width:186.15pt;
   border:none;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;

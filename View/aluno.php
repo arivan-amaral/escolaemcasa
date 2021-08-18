@@ -420,32 +420,31 @@ foreach ($result_reuniao as $key => $value) {
                     </div>
                   </div>
                   <!-- ./col -->
-                  <div class="col-lg-3 col-6">
-                    <!-- small card -->
+                <!--   <div class="col-lg-3 col-6">
                     <div class="small-box bg-warning">
                       <a href="video_nao_visualizado.php" class="small-box-footer">
 
                       <div class="inner">
-                        <h3>Vídeos 
+                        <h3>Vídeos  -->
                           <?php
-                            $res_pendencia_v=$conexao->query("SELECT * FROM video WHERE escola_id=$idescola and id_turma=$idturma");
-                            $cont_video=0;
-                            foreach ($res_pendencia_v as $key => $value) {
-                              $idvideo=$value['id'];
-                              $res_v=$conexao->query("SELECT * FROM visualizacao_video WHERE video_id=$idvideo and aluno_id=$idaluno limit 1");
+                          //   $res_pendencia_v=$conexao->query("SELECT * FROM video WHERE escola_id=$idescola and id_turma=$idturma");
+                          //   $cont_video=0;
+                          //   foreach ($res_pendencia_v as $key => $value) {
+                          //     $idvideo=$value['id'];
+                          //     $res_v=$conexao->query("SELECT * FROM visualizacao_video WHERE video_id=$idvideo and aluno_id=$idaluno limit 1");
                              
-                              $cont_v=0;
-                              foreach ($res_v as $key => $value) {
-                                $cont_v++;
-                              }
-                              if ($cont_v==0) {
-                                $cont_video=$cont_video + 1;
-                              }
-                          }
+                          //     $cont_v=0;
+                          //     foreach ($res_v as $key => $value) {
+                          //       $cont_v++;
+                          //     }
+                          //     if ($cont_v==0) {
+                          //       $cont_video=$cont_video + 1;
+                          //     }
+                          // }
                           // echo $cont_video;                                  
 
                           ?>
-
+<!-- 
                         </h3>
 
                         
@@ -456,7 +455,7 @@ foreach ($result_reuniao as $key => $value) {
                         Ver sobre isso <i class="fas fa-arrow-circle-right"></i>
                       </a>
                     </div>
-                  </div>
+                  </div> -->
                   <!-- ./col -->
                   <div class="col-lg-3 col-6">
                     <!-- small card -->

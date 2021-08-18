@@ -1,6 +1,6 @@
 <?php 
 
-function diario_frequencia_pagina_final($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie){
+function diario_frequencia_pagina_final($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$data_inicio_trimestre,$data_fim_trimestre){
 
 ?>
 
@@ -292,8 +292,28 @@ foreach ($result_escola as $key => $value) {
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
   style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-  color:black;mso-fareast-language:PT-BR'>UNIDADE: I TRIMESTRE 03/05/2021
-  09/07/2021<o:p></o:p></span></p>
+  color:black;mso-fareast-language:PT-BR'>UNIDADE: 
+  <?php 
+  if ($periodo_id==1) {
+    $data_inicio_trimestre="2021-05-03";
+    $data_fim_trimestre="2021-07-09";
+    echo "I TRIMESTRE ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
+}elseif ($periodo_id==2) {
+    $data_inicio_trimestre="2021-07-27";
+    $data_fim_trimestre="2021-10-01";
+    echo "II TRIMESTRE ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
+
+
+}elseif ($periodo_id==3) {
+    $data_inicio_trimestre="2021-10-04";
+    $data_fim_trimestre="2021-12-21";
+    echo "II TRIMESTRE ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
+  
+}
+
+?>
+
+<o:p></o:p></span></p>
   </td>
   <td width=20 nowrap style='width:14.8pt;border:none;border-bottom:solid windowtext 1.0pt;
   padding:0cm 3.5pt 0cm 3.5pt;height:16.5pt'>
@@ -384,7 +404,7 @@ SELECT * FROM frequencia WHERE
 escola_id=$idescola and
 turma_id=$idturma and
 disciplina_id=$iddisciplina and 
-data_frequencia BETWEEN '2021-01-01' and '2021-07-09' group by aula,data_frequencia order by data_frequencia asc limit $inicio,$fim ");
+data_frequencia BETWEEN '$data_inicio_trimestre' and '$data_fim_trimestre' group by aula,data_frequencia order by data_frequencia asc limit $inicio,$fim ");
 $array_data_aula=array();
 $array_aula=array();
 foreach ($result_data_aula as $key => $value) {
@@ -556,7 +576,7 @@ SELECT * FROM frequencia WHERE
 escola_id=$idescola and
 turma_id=$idturma and
 disciplina_id=$iddisciplina and 
-data_frequencia BETWEEN '2021-05-03' and '2021-07-09' limit  $inicio,$fim");
+data_frequencia BETWEEN '$data_inicio_trimestre' and '$data_fim_trimestre' limit  $inicio,$fim");
 
 foreach ($result_aula as $key => $value) {
    if ($conta_aula%2==0) {
@@ -1018,7 +1038,7 @@ SELECT count(*) as 'quantidade' FROM frequencia WHERE
 escola_id=$idescola and
 turma_id=$idturma and
 disciplina_id=$iddisciplina and 
-presenca=0 and data_frequencia BETWEEN '2021-02-01' and '2021-05-01' and aluno_id=$idaluno ");
+presenca=0 and data_frequencia BETWEEN '$data_inicio_trimestre' and '$data_fim_trimestre' and aluno_id=$idaluno ");
 
 $quantidade_falta1=0;
 foreach ($res_fre_t1 as $key => $value) {
