@@ -43,9 +43,10 @@ try {
             header("location: ../View/diario_frequencia.php?$url_get");
         } catch (Exception $e) {
             $_SESSION['status']=0;
-            $_SESSION['status']='Alguma coisa deu errado!';
+            $_SESSION['mensagem']='Alguma coisa deu errado!';
+            $_SESSION['erro_sql']=$e;
             header("location: ../View/diario_frequencia.php?$url_get");
 
-        }
+         }
 
 ?>

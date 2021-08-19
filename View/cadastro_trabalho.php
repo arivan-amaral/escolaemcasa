@@ -17,6 +17,7 @@ include "alertas.php";
   include '../Model/Conexao.php';
   include '../Controller/Conversao.php';
   include '../Model/Trabalho.php';
+  include '../Model/Turma.php';
 
   $idescola=$_GET['idescola'];
   $idturma=$_GET['turm'];
@@ -167,23 +168,16 @@ include "alertas.php";
                         <input type="hidden" name="disciplina_id" value="<?php echo $_GET['disc']; ?>" class="form-control" required="">
                         <input type="hidden" name="url_get" value="<?php echo $url_get; ?>" class="form-control" required="">
                       
-                      <div style="background-color:#808080; padding:10px;border-radius: 1%;">
+                      <div style="background-color:#B0C4DE; padding:10px;border-radius: 1%;">
                             
-                          <p> <font color='red'>Escolha as turma abaixo que esse trabalho/atividade será cadastrado. </font></p>
+                          <b> <font color='blue'>Escolha as turma abaixo que esse trabalho/atividade será cadastrado. </font></b>
                         <?php
 
-                          $result_disciplinas=$conexao->query("SELECT * FROM ministrada,escola,turma,disciplina where
-                           ministrada.turma_id=idturma and
-                           ministrada.disciplina_id=iddisciplina and 
-                           ministrada.escola_id=idescola and
-                           ministrada.escola_id=idescola and
 
-                           idescola=$idescola and
-                           professor_id=$idprofessor and
-                           serie_id=$idserie and 
-                           disciplina_id=$iddisciplina
-                        
-                          ");
+
+                      $result_disciplinas=listar_turmas_com_mesma_disciplinas_do_professor($conexao,$idescola,$idprofessor,$idserie,$iddisciplina);
+
+                         
 
                           foreach ($result_disciplinas as $key => $value) {
                              $turma_id=$value['idturma'];

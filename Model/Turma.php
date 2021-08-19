@@ -1,4 +1,20 @@
 <?php 
+   function listar_turmas_com_mesma_disciplinas_do_professor($conexao,$idescola,$idprofessor,$idserie,$iddisciplina){
+    $sql= $conexao->query("SELECT * FROM ministrada,escola,turma,disciplina where
+                           ministrada.turma_id=idturma and
+                           ministrada.disciplina_id=iddisciplina and 
+                           ministrada.escola_id=idescola and
+                           ministrada.escola_id=idescola and
+
+                           idescola=$idescola and
+                           professor_id=$idprofessor and
+                           serie_id=$idserie and 
+                           disciplina_id=$iddisciplina
+                        
+                          ");
+     return $sql;
+   }
+
 
 function associar_professor($conexao, $turma_id, $disciplina_id, $professor_id, $escola_id){
 	$result = $conexao->exec("INSERT INTO ministrada( turma_id, disciplina_id, professor_id, escola_id) 

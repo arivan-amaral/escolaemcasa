@@ -1,4 +1,16 @@
 <?php
+  if (!isset($_SESSION['mensagem'])) {
+       $mensagem=$_SESSION['mensagem']="";
+  }  
+
+  if (isset($_SESSION['erro_sql'])) {
+    $erro_sql=$_SESSION['erro_sql'];
+      echo "
+      <script>
+          console.log($erro_sql);
+      </script>"; 
+  }
+
   if (isset($_SESSION['status'])) {
   $mensagem='Alguma coisa deu errado';   
   if (isset($_SESSION['mensagem'])) {
@@ -30,6 +42,8 @@
     }
 
     unset($_SESSION['status']);
+    unset($_SESSION['mensagem']);
+   // unset($_SESSION['erro_sql']);
     
   } 
 ?>
