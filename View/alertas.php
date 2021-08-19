@@ -7,7 +7,7 @@
     $erro_sql=$_SESSION['erro_sql'];
       echo "
       <script>
-          console.log($erro_sql);
+          alert($erro_sql);
       </script>"; 
   }
 

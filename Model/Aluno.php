@@ -130,6 +130,10 @@ function cadastro_conteudo_aula($conexao,$descricao, $disciplina_id, $turma_id, 
     return $conexao;
 }
 
+function editar_conteudo_aula($conexao,$descricao, $idconteudo) {
+    $conexao->exec("UPDATE conteudo_aula SET descricao='$descricao' where id=$idconteudo");
+}
+
 function limpa_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula) {
     $conexao->exec("DELETE FROM conteudo_aula WHERE
       aula='$aula' and 
@@ -140,6 +144,24 @@ function limpa_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $prof
       turma_id=$idturma");
   
 }
+
+function pesquisa_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $data,$aula) {
+    $sql=$conexao->query("SELECT * FROM conteudo_aula WHERE
+      aula='$aula' and 
+      data='$data' and 
+      disciplina_id=$iddisciplina and 
+      escola_id=$idescola and 
+      turma_id=$idturma limit 1");
+    return $sql; 
+}
+
+function verificar_conteudo_aula_em_aluno_trasferido_escola($conexao, $idconteudo,$idescola) {
+    $sql=$conexao->query("SELECT count(*) as 'quantidade' FROM frequencia WHERE
+      conteudo_aula_id=$idconteudo and 
+      escola_id !=$idescola");
+    return $sql; 
+}
+
 
 function listar_trimestre($conexao) {
     $resultado=$conexao->query("SELECT * FROM periodo where status =1");
@@ -265,7 +287,7 @@ function cadastro_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professo
 function limpar_cadastro_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data_frequencia,$aula) {
     $conexao->exec(" DELETE FROM frequencia WHERE
       aula='$aula' and 
-      professor_id=$professor_id and 
+
       data_frequencia='$data_frequencia' and 
       disciplina_id=$iddisciplina and 
       escola_id=$idescola and 

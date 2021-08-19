@@ -22,11 +22,43 @@ try {
     
 
         limpar_cadastro_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data,$aula);
+        
+        $res_pes_cont_aluno_trasf=pesquisa_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $data,$aula);
+        $idconteudo="";
+        foreach ($res_pes_cont_aluno_trasf as $key => $value) {
+            $idconteudo=$value['id'];
+        }    
 
-        limpa_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula);
+        $res_pes_cont_aluno_trasf=pesquisa_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $data,$aula);
+        $idconteudo="";
+        $conteudo_aula_id="";
 
-        cadastro_conteudo_aula($conexao,$descricao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula);
-        $conteudo_aula_id= $conexao->lastInsertId();
+        foreach ($res_pes_cont_aluno_trasf as $key => $value) {
+            $idconteudo=$value['id'];
+            // $res_verificando= verificar_conteudo_aula_em_aluno_trasferido_escola($conexao, $idconteudo,$idescola);
+            // $quantidade_conteudo=0;
+            // foreach ($res_verificando as $key_C => $value_c) {
+            //     $quantidade_conteudo=$value_c['quantidade'];
+            // }
+            // //echo "idconteudo: $idconteudo $quantidade_conteudo <br>";
+            // if ($quantidade_conteudo>0){
+            //     $conteudo_aula_id=$idconteudo;
+            //      editar_conteudo_aula($conexao,$descricao, $idconteudo);
+            // }else{
+                 editar_conteudo_aula($conexao,$descricao, $idconteudo);
+                $conteudo_aula_id=$idconteudo;
+
+                //limpa_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula);
+                // }
+
+
+        }
+
+            if ($idconteudo=="") {
+                 cadastro_conteudo_aula($conexao,$descricao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula);
+                $conteudo_aula_id= $conexao->lastInsertId();
+            }
+
 
 
         foreach ($_POST['aluno_id'] as $key => $value) {
@@ -45,7 +77,8 @@ try {
             $_SESSION['status']=0;
             $_SESSION['mensagem']='Alguma coisa deu errado!';
             $_SESSION['erro_sql']=$e;
-          header("location: ../View/diario_frequencia.php?$url_get");
+            echo "$e";
+          //header("location: ../View/diario_frequencia.php?$url_get");
 
          }
 
