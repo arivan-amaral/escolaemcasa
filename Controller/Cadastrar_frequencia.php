@@ -45,7 +45,8 @@ try {
             $_SESSION['status']=0;
             $_SESSION['mensagem']='Alguma coisa deu errado!';
             $_SESSION['erro_sql']=$e;
-            header("location: ../View/diario_frequencia.php?$url_get");
+            echo "$e";
+            //header("location: ../View/diario_frequencia.php?$url_get");
 
          }
 
