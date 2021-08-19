@@ -438,7 +438,23 @@ if (!isset($_SESSION['idprofessor'])) {
 
 
 
+<script>
+    function somenteNumeros(num) {
+        var er = /[^0-9.]/;
+        er.lastIndex = 0;
+        var campo = num;
+        var valor_campo_nota=campo.value;
+        campo.value=valor_campo_nota.replace(",", ".");
 
+   
+        if (er.test(campo.value)) {
+          campo.value = "";
+                  Swal.fire('Esse campo é permitido apenas números, consulte seu coordenador para mais informações.', '', 'info')
+
+
+        }
+    }
+ </script>
 
 
 

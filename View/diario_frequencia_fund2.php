@@ -33,7 +33,7 @@ $data_fim_trimestre="";
 if ($periodo_id==1) {
     $data_inicio_trimestre="2021-05-03";
     $data_fim_trimestre="2021-07-09";
-    echo"nd,f,mndm";
+    
     // code...
 }elseif ($periodo_id==2) {
     $data_inicio_trimestre="2021-07-27";

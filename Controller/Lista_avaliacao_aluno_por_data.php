@@ -64,11 +64,40 @@ try {
                           <div class='col-sm-6'>
                             <b class='text-success'> $nome_aluno </b>
                             <br>
-                          <b>DATA: ".converte_data($data)."</b>
+                          <b>DATA: ".converte_data($data)."</b><br>";
+                        if ($idserie>3) {
+                            
+                          $result.="
+                          I TRIMESTRE <p style='border: 1px solid black;'>";
 
+                          $array_avaliacao=array('1'=>'av1','2'=>'av2','3'=>'av3','4'=>'RP');
+                          foreach ($array_avaliacao as $key_avs=> $value_avs) {
+                      
+                              $result_nota=$conexao->query("
+                              SELECT * FROM nota WHERE
+                              escola_id=$idescola and
+                              turma_id=$idturma and
+                              disciplina_id=$iddisciplina and 
+                              avaliacao='$value_avs' and 
+                              periodo_id=1 and aluno_id=$id  group by avaliacao,periodo_id ");
+
+
+                              $nota_tri_1=0;
+                              foreach ($result_nota as $key => $value) {
+                                  $nota_tri_1=$value['nota'];
+                              }
+                          $result.="<b style='border: 1px solid black;'>$value_avs :</b>$nota_tri_1 ";
+                          }
+                          $result.="
+                          </p>";
+                        }
+
+
+
+                          $result.="
                             <input type='hidden' name='aluno_id[]' value='$id'><br>
                           </div>                      
-                          <br>
+                          
                         <tr class='$cor_tabela'>";
 
                       if ($idperiodo !=6 ) {//se for diferente de diagnostico inicial
@@ -84,7 +113,7 @@ try {
                                 if ($idserie >=3) {
                                   // code...
                                    $result.="<label for='exampleInputEmail1'>Nota</label><br>
-                                  <input type='text'  name='nota$id' value='$nota' style='min-width:60px;'> 
+                                  <input type='text'  name='nota$id' value='$nota' style='min-width:60px;' onkeyup='somenteNumeros(this);'> 
                                   <br>
                                   <br>
                                   ";
@@ -129,8 +158,8 @@ try {
                                        </div>
                                                   
                                 <label for='exampleInputEmail1' style='display: none;'>Nota</label><br>
-                                <input type='hidden'  name='nota$id' value='$nota' style='display: none;'>
-                              </td>";
+                                <input type='hidden'  name='nota$id' value='$nota' style='display: none;' onkeyup='somenteNumeros(this);'>
+                               </td>";
                       }
 
 
