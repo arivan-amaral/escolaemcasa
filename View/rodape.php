@@ -84,14 +84,14 @@
                   <div class="input-group">
                       <label>Email/Usuário</label>
                   </div>
-                    <input type="text" class="form-control"  name="email" required>
+                    <input type="text" class="form-control"  name="email" id="email" required>
                   
                   <div class="input-group">
                       <label>Senha</label>
                   </div>
                  
                     <div id="input">
-                      <input type="password" name="senha" value="" />
+                      <input type="password" name="senha" id="senha" value="" required />
                       <img src="http://i.stack.imgur.com/H9Sb2.png" alt="">
                     </div>
                     <br>
@@ -128,7 +128,7 @@
                
                  <div class="modal-footer justify-content-between">
                      <button type="button" class="btn btn-default" data-dismiss="modal">FECHAR</button>
-                     <div id="botao_continuar">
+                     <div id="botao_continuar" onclick='carregando_login()'>
                        <button type="submit" class="btn btn-primary" >ENTRAR</button>
                      </div>
                 </div>
@@ -156,6 +156,53 @@
 
 
 
+<script type="text/javascript">
+
+ function carregando_login(){
+
+
+
+    var email =  document.getElementById("email").value;
+    var senha =  document.getElementById("senha").value;
+
+  if (email=="" || senha=="" ) {
+      Swal.fire('Preencha os campos obrigatorios!', '', 'info');
+      
+    
+
+  }else{
+        let timerInterval
+        Swal.fire({
+          title: 'Aguarde, verificando dados...',
+          html: '',
+          timer: 200000,
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading()
+            timerInterval = setInterval(() => {
+              const content = Swal.getContent()
+              if (content) {
+                const b = content.querySelector('b')
+                if (b) {
+                  b.textContent = Swal.getTimerLeft()
+                }
+              }
+            }, 100)
+          },
+          willClose: () => {
+            clearInterval(timerInterval)
+          }
+        }).then((result) => {
+          /* Read more about handling dismissals below */
+          if (result.dismiss === Swal.DismissReason.timer) {
+            console.log('I was closed by the timer')
+          }
+        })
+    }//else
+  }
+
+
+</script>
 
 
 

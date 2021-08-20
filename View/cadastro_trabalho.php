@@ -233,8 +233,11 @@ include "alertas.php";
  function carregando(){
 
 
-    var descricao =  document.getElementById("summernote").value
-  if (descricao=="") {
+    var descricao =  document.getElementById("summernote").value;
+    var hora_visivel =  document.getElementById("hora_visivel").value;
+    var data_visivel =  document.getElementById("data_visivel").value;
+
+  if (descricao=="" || hora_visivel=="" || data_visivel=="") {
       Swal.fire('Preencha os campos obrigatorios!', '', 'info');
       
     
