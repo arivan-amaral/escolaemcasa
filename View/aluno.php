@@ -631,25 +631,7 @@ foreach ($result_reuniao as $key => $value) {
 
 
 
-                                      <a class='btn btn-info btn-block btn-flat'
-
-                                       href='link_video_chamada.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina' >
-
-
-
-                                        <font style='vertical-align: inherit;'>
-
-                                          <font style='vertical-align: inherit;'> 
-
-                                              <ion-icon name='link'></ion-icon>
-
-                                                Link de vídeo chamadas
-
-                                            </font>
-
-                                        </font>
-
-                                      </a> 
+                                     
 
 
                                       <a  href='trabalhos.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina' class='btn btn-info btn-block btn-flat'>

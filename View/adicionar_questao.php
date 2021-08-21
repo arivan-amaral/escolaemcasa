@@ -129,12 +129,12 @@ if(isset($_GET['disciplina_id'])){
 
                                                           <h4 class='card-title'>Pontos</h4>
                                                           <div class='form-group'>
-                                                              <input type='number' name='pontos' class='form-control' autocomplete='off'  placeholder='' required='' >
+                                                              <input type='text' name='pontos' class='form-control' autocomplete='off'  placeholder='' required='' onkeyup='somenteNumeros(this);'>
                                                           </div>
                                                           
                                                            <h4 class='card-title'>Anexo (opcional) </h4>
                                                           <div class='form-group'>
-                                                              <input type='file' name='imagem' class='form-control'>
+                                                              <input type='file' name='imagem' class='form-control' >
                                                           </div>
 
 
@@ -336,7 +336,23 @@ if(isset($_GET['disciplina_id'])){
 
   </script>
 
+  <script>
+      function somenteNumeros(num) {
+          var er = /[^0-9.]/;
+          er.lastIndex = 0;
+          var campo = num;
+          var valor_campo_nota=campo.value;
+          campo.value=valor_campo_nota.replace(",", ".");
 
+     
+          if (er.test(campo.value)) {
+            campo.value = "";
+                    Swal.fire('Esse campo é permitido apenas números.', '', 'info')
+
+
+          }
+      }
+   </script>
 
  <?php 
 
