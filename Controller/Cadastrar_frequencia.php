@@ -2,6 +2,7 @@
 	session_start();
     include("../Model/Conexao.php");
     include("../Model/Aluno.php");
+    include("Conversao.php");
     
 
 try {
@@ -12,7 +13,8 @@ try {
    	$idturma=$_POST['idturma'];
 
     $data=$_POST['data_frequencia'];
-    $descricao=$_POST['descricao'];
+    $descricao=escape_mimic($_POST['descricao']);
+
     $aula=$_POST['aula'];
     $url_get=$_POST['url_get'];
    	
