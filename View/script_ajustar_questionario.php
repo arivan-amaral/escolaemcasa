@@ -1,4 +1,4 @@
-<?php session_start();
+<?php
 include'../Model/Conexao.php';
 
 	try {
@@ -18,11 +18,11 @@ include'../Model/Conexao.php';
 
 
 		}
-		echo"Deu certo";
+		echo"Deu certo...";
 		 
 	} catch (Exception $e) {
 		$_SESSION['status']=0;
-		echo"Erro";
+		echo"$e";
 		//header("location:../View/alterar_dados_aluno.php?status=0");
 	}
 
