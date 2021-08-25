@@ -19,6 +19,7 @@
   $idaluno=$_SESSION['idaluno'];
   $idescola=$_SESSION['escola_id'];
   $idturma=$_SESSION['turma_id'];
+  $idaluno=$_SESSION["idaluno"];
   $data=date("Y-m-d H:i:s");
 
 
@@ -109,7 +110,7 @@
                                         $data_entrega=$value['data_entrega'];
                                       
                                       $iddisciplina=$value['disciplina_id'];
-                                      $res=$conexao->query("SELECT * FROM trabalho_entregue WHERE trabalho_id=$idtrabalho limit 1");
+                                      $res=$conexao->query("SELECT * FROM trabalho_entregue WHERE trabalho_id=$idtrabalho and aluno_id=$idaluno limit 1");
                                       $cont=0;
                                       foreach ($res as $key => $value) {
                                         $cont++;

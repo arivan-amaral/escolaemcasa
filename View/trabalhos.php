@@ -25,6 +25,7 @@
 
   $disciplina=$_GET['disciplina'];
   $idescola=$_SESSION['escola_id'];
+  $idaluno=$_SESSION["idaluno"];
 
   $data=date("Y-m-d H:i:s");
 
@@ -36,7 +37,7 @@
 
 
 
-<script src="ajax.js"></script>
+<script src="ajax.js?<?php echo rand(); ?>"></script>
 
 
 
@@ -141,7 +142,7 @@
 
                                        
 
-                                        $res=$conexao->query("SELECT * FROM trabalho_entregue WHERE trabalho_id=$idtrabalho limit 1");
+                                        $res=$conexao->query("SELECT * FROM trabalho_entregue WHERE trabalho_id=$idtrabalho  and aluno_id = $idaluno limit 1");
                                         $cont=0;
                                         foreach ($res as $key => $value) {
                                           $cont++;
