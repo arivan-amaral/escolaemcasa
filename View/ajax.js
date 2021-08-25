@@ -763,7 +763,7 @@ function pesquisar_professor_associacao(){
     xmlreq.send(null);
 }
 
-
+//
 function alterar_status_questionario(id,status) {
   Swal.fire({
     title: 'Deseja continuar com essa ação?',
@@ -776,7 +776,54 @@ function alterar_status_questionario(id,status) {
     if (result.isConfirmed) {
       window.location.href = "../Controller/Alterar_status_questionario.php?id="+id+"&status="+status+"";
     } else if (result.isDenied) {
-      Swal.fire('Ação cancelada', '', 'info')
+     // Swal.fire('Ação cancelada', '', 'info')
+    }
+  })
+}
+
+//
+function excluir_questionario(id) {
+  Swal.fire({
+    title: 'Deseja continuar com a EXCLUSÃO?',
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: `Sim`,
+    denyButtonText: `Não`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      //window.location.href = "../Controller/Excluir_questionario.php?id="+id;
+   
+   var xmlreq = CriaRequest();   
+   xmlreq.open("GET", "../Controller/Excluir_questionario.php?id="+id, true);
+   xmlreq.onreadystatechange = function(){             
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {
+                if (xmlreq.responseText !="erro") {
+                    document.getElementById("linha"+id).innerHTML=xmlreq.responseText;
+
+                    Swal.fire('Ação não concluída', '', 'success');
+                }else{
+                    Swal.fire('Verifique sua conexão com a internet', '', 'error');
+
+                   // alert('Verifique sua conexão com a internet!');
+                    
+                 }
+               // alert('Ação concluída com sucesso!');                                             
+                
+            }else{
+                Swal.fire('Verifique sua conexão com a internet', '', 'error');
+
+               // alert('Verifique sua conexão com a internet!');
+                
+            }
+        }
+    };
+    xmlreq.send(null);
+
+
+    } else if (result.isDenied) {
+      //Swal.fire('Ação cancelada', '', 'info')
     }
   })
 }
@@ -1126,7 +1173,7 @@ function excluir_material_apoio(id) {
   
 function alterar_data_questionario(id) {
     var data = document.getElementById("data"+id).value;
-    var result = document.getElementById("resposta_alteracao_data");
+    var result = document.getElementById("resposta_alteracao_data"+id);
     
     var xmlreq = CriaRequest();   
     xmlreq.open("GET", "../Controller/Alterar_data_questionario.php?id="+id+"&data="+data, true);
@@ -1135,17 +1182,27 @@ function alterar_data_questionario(id) {
       
          if (xmlreq.readyState == 4) {
              if (xmlreq.status == 200) {
-                 alert('Data alterada');
-                 result.innerHTML =  "Ação concluída!";
+                 //alert('Data alterada');
+                 if (xmlreq.responseText !="erro") {
+                     result.innerHTML =  "Ação concluída!";
+                 }else{
+                alert('verifique sua conexão com a internet!');
+                // Swal.fire({
+                //   icon: 'error',
+                //   title: 'Oops...',
+                //   text: 'Alguma Coisa deu Errado!',
+                  
+                // });
+             }
                  
              }else{
-                // alert('Erro');
-                Swal.fire({
-                  icon: 'error',
-                  title: 'Oops...',
-                  text: 'Alguma Coisa deu Errado!',
+                alert('verifique sua conexão com a internet!');
+                // Swal.fire({
+                //   icon: 'error',
+                //   title: 'Oops...',
+                //   text: 'Alguma Coisa deu Errado!',
                   
-                });
+                // });
              }
          }
      };

@@ -112,11 +112,25 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 		$conexao->exec("INSERT INTO questionario(nome,data, professor_id,  turma_id, disciplina_id) 
 			VALUES ('$nome','$data',$professor_id,$turma_id,$disciplina_id)");
 	}
+
+	function copiar_questionario($conexao,$nome,$data,$professor_id,$turma_id,$disciplina_id,$origem_questionario_id){
+		$conexao->exec("INSERT INTO questionario(nome,data, professor_id,  turma_id, disciplina_id,origem_questionario_id) 
+			VALUES ('$nome','$data',$professor_id,$turma_id,$disciplina_id,'$origem_questionario_id')");
+	}
 	
-	function cadastrar_questao($conexao,$nome, $tipo, $pontos,$questionario_id){
+	function cadastrar_questao($conexao,$nome, $tipo, $pontos,$questionario_id,$origem_questionario_id){
 		$return[0]=$conexao->exec(
-		"INSERT INTO questao(nome,tipo, pontos, questionario_id) 
-			VALUES ('$nome', '$tipo', $pontos,$questionario_id)
+		"INSERT INTO questao(nome,tipo, pontos, questionario_id,origem_questionario_id) 
+			VALUES ('$nome', '$tipo', $pontos,$questionario_id,'$origem_questionario_id')
+		");
+		$return[1]=$conexao->lastInsertId();
+		return $return;
+	}	
+
+	function copiar_questao($conexao,$nome, $tipo, $pontos,$resposta_correta,$questionario_id){
+		$return[0]=$conexao->exec(
+		"INSERT INTO questao(nome,tipo, pontos, questionario_id,resposta_correta) 
+			VALUES ('$nome', '$tipo', $pontos,$questionario_id,'$resposta_correta')
 		");
 		$return[1]=$conexao->lastInsertId();
 		return $return;
@@ -124,12 +138,12 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 
 
 	
-	function cadastrar_alternativa($conexao,$nome, $tipo, $questao_id){
-		$return=$conexao->exec("INSERT INTO alternativa(nome, tipo, questao_id) VALUES ('$nome', '$tipo', $questao_id)");
+	function cadastrar_alternativa($conexao,$nome, $tipo, $questao_id,$origem_questionario_id){
+		$return=$conexao->exec("INSERT INTO alternativa(nome, tipo, questao_id,origem_questionario_id) VALUES ('$nome', '$tipo', $questao_id,'$origem_questionario_id')");
 	}
-	function cadastrar_arquivo($conexao,$novoNome, $questao_id, $extensao){
+	function cadastrar_arquivo($conexao,$novoNome, $questao_id, $extensao,$origem_questionario_id){
 
-		$return=$conexao->exec("INSERT INTO arquivo_questao(arquivo, questao_id,  extensao) VALUES ('$novoNome',$questao_id,'$extensao')");
+		$return=$conexao->exec("INSERT INTO arquivo_questao(arquivo, questao_id,  extensao,origem_questionario_id) VALUES ('$novoNome',$questao_id,'$extensao','$origem_questionario_id')");
 		
 		return $return;
 	}
@@ -212,6 +226,16 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 		return $return;
 	}
 	
+	function listar_questionario_mesma_origem($conexao,$origem_questionario_id){
+		$return=$conexao->query("SELECT *
+		 FROM questionario,turma,disciplina WHERE
+		 turma_id=idturma and
+		 disciplina_id=iddisciplina and 
+		  origem_questionario_id='$origem_questionario_id'");
+		return $return;
+	}
+
+
 	function listar_questao($conexao,$questionario_id){
 		$return=$conexao->query("SELECT * FROM questao WHERE questionario_id=$questionario_id");
 		return $return;
@@ -275,6 +299,15 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 
 	function excluir_questao($conexao, $id) {
 	    $result = $conexao->query("DELETE FROM questao WHERE id=$id");
+	    return $result;
+	}	
+
+	function excluir_questao_por_id_questionario($conexao, $id) {
+	    $result = $conexao->query("DELETE FROM questao WHERE id=$id");
+	    return $result;
+	}
+	function excluir_questionario($conexao, $id) {
+	    $result = $conexao->query("DELETE FROM questionario WHERE id=$id");
 	    return $result;
 	}
 

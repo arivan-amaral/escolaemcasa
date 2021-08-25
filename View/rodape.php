@@ -1,3 +1,81 @@
+<script type='text/javascript'>
+      function modal_avaliacao() {
+          $(document).ready(function() {
+              $('#modal-avaliacao').modal('show');
+            });
+      }
+
+      //setTimeout('modal_avaliacao();',500);
+      
+</script>
+
+
+<div class="modal fade" id="modal-avaliacao">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">AVALIE NOSSA PLATAFORMA!</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+
+          <div class="modal-body">
+<center>
+              <div class="star-wrapper">
+                             <div class="star">
+                                 <img src="http://i.stack.imgur.com/AtiAi.png" alt="" />
+                             </div>
+                             <div class="star">
+                                 <img src="http://i.stack.imgur.com/AtiAi.png" alt="" />
+                             </div>
+                             <div class="star">
+                                 <img src="http://i.stack.imgur.com/AtiAi.png" alt="" />
+                             </div>
+                             <div class="star">
+                                 <img src="http://i.stack.imgur.com/AtiAi.png" alt="" />
+                             </div>
+                             <div class="star">
+                                 <img src="http://i.stack.imgur.com/AtiAi.png" alt="" />
+                             </div>
+                         </div>
+</center>
+<br>
+
+
+                          <div class="card card-outline card-info">
+                          <b>
+                              Faça um comentário, para que possamos melhorar cada vez mais a nossa plataforma
+                            </b>
+                            <b style="color: red;">POR FAVOR, NÃO COLOCAR EMOJI</b>
+                          
+                          <!-- /.card-header -->
+                          <div class="card-body">
+                            <textarea name="descricao" id="summernote" rows="5" style="height: 245.719px;" required></textarea>
+
+                          </div>
+                          <div class="card-footer">
+                            
+                          </div>
+
+                        </div>
+
+              <!-- corpo -->
+
+
+
+              <!-- /corpo -->          
+          </div>
+      <button type="button" class="btn btn-default" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fechar</font></font></button>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+
+
+
 
 <script  src = "https://unpkg.com/ionicons@5.4.0/dist/ionicons.js" > </script>
 

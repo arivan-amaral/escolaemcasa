@@ -13,11 +13,11 @@ try {
 	}
 	$resultado=alterar_status_questionario($conexao,$id,$status);
 	$_SESSION['status']=1;
- 	 header("location:../View/professor.php?status=1");
+ 	 header("location:../View/cadastrar_questionario.php?status=1#questionario");
 
 } catch (Exception $e) {
 		$_SESSION['status']=0;
-	 	 header("location:../View/professor.php?status=0");	
+	 	 header("location:../View/cadastrar_questionario.php?status=0#questionario");	
 }
 
 ?>

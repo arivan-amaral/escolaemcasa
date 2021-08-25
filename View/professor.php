@@ -260,13 +260,22 @@ if (!isset($_SESSION['idprofessor'])) {
                         <div id="accordion">
 
 
+                                  <a  href='cadastrar_questionario.php' class='btn btn-secondary btn-block btn-flat'>
+
+                                            <i class='fa fa-edit'></i>
+
+                                              Provas/Simulados                                           
+
+                                    </a>
+                                    <br>
+
 
                           <?php 
 
                             $result=listar_disciplina_professor($conexao,$idprofessor);
 
 
-
+                            $conta=0;
                             foreach ($result as $key => $value) {
 
                               $disciplina=($value['nome_disciplina']);
@@ -285,11 +294,9 @@ if (!isset($_SESSION['idprofessor'])) {
 
                                 <div class='card-header'>
 
-                                  <h4 class='card-title w-100'>
+                                  <h4 class='card-title w-100'>";
 
-
-
-                                    <a class='d-block w-100 collapsed' data-toggle='collapse' href='#collapseOne$iddisciplina$idturma$idescola' aria-expanded='false'><b class='text-warning'> $nome_escola -></b>". ($turma) ." - ".
+                                   echo " <a class='d-block w-100 collapsed' data-toggle='collapse' href='#collapseOne$iddisciplina$idturma$idescola' aria-expanded='false'><b class='text-warning'> $nome_escola -></b>". ($turma) ." - ".
 
                                       ($disciplina)
 
@@ -378,15 +385,6 @@ if (!isset($_SESSION['idprofessor'])) {
 
 
 
-
-
-                                      <a  href='cadastrar_questionario.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat'>
-
-                                              <i class='fa fa-edit'></i>
-
-                                                Provas/Simulados                                           
-
-                                      </a>
 
                                       <a  href='cadastro_trabalho.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat'>
 
@@ -568,7 +566,7 @@ if (!isset($_SESSION['idprofessor'])) {
                               </div>
 
                               ";
-
+$conta++;
                             }
 
                            ?>

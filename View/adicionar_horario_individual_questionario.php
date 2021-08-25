@@ -107,7 +107,7 @@ include "alertas.php";
                 <div class="row">
                   <div class="col-md-12">
                                               
-                      <button type="button" class="btn btn-block btn-primary"> Adicionar questões ao questionário: <b><?php echo $_GET['nome']; ?></b></button>
+                      <button type="button" class="btn btn-block btn-primary"> Alterar horários individualmente no questionário: <b><?php echo $_GET['nome']; ?></b></button>
 
                     <br>
                     

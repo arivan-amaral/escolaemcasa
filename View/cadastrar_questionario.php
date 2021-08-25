@@ -2,7 +2,7 @@
 session_start();
 if (!isset($_SESSION['idprofessor'])) {
 
-       header("location:index.php?status=0");
+ header("location:index.php?status=0");
 
 }else{
 
@@ -12,23 +12,27 @@ if (!isset($_SESSION['idprofessor'])) {
 include "cabecalho.php";
 include "alertas.php";
 
-  include "barra_horizontal.php";
-  include 'menu.php';
-  include '../Model/Conexao.php';
-  include '../Controller/Conversao.php';
-  include '../Model/Questionario.php';
+include "barra_horizontal.php";
+include 'menu.php';
+include '../Model/Conexao.php';
+include '../Controller/Conversao.php';
+include '../Model/Questionario.php';
+include '../Model/Turma.php';
+include '../Model/Professor.php';
 
-  $idescola=$_GET['idescola'];
-  $idturma=$_GET['turm'];
-  $iddisciplina=$_GET['disc'];
 
-  
+
+
+$array_url=explode('.php', $_SERVER["REQUEST_URI"]);
+$url_get=$array_url[1];
+
+
 
 ?>
 
 
 
-<script src="ajax.js"></script>
+<script src="ajax.js?<?php echo rand(); ?>"></script>
 
 
 
@@ -46,247 +50,354 @@ include "alertas.php";
 
             <h1 class="m-0"><b>
 
-               <?php
-              if (isset($nome_escola_global)) {
+             <?php
+             if (isset($nome_escola_global)) {
                 echo $nome_escola_global; 
-              }
-              ?>
+            }
+            ?>
 
-             <?php if (isset($_SESSION['nome'])) {
+            <?php if (isset($_SESSION['nome'])) {
 
               echo $_SESSION['nome'];  
 
-            } 
+          } 
 
-             ?></b></h1>
+      ?></b></h1>
 
-          </div><!-- /.col -->
+  </div><!-- /.col -->
 
-          <div class="col-sm-2">
+  <div class="col-sm-2">
 
-            <ol class="breadcrumb float-sm-right">
+    <ol class="breadcrumb float-sm-right">
 
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
 
-              <li class="breadcrumb-item active">Questionário</li>
+      <li class="breadcrumb-item active">Questionário</li>
 
-            </ol>
+  </ol>
 
-          </div><!-- /.col -->
+</div><!-- /.col -->
 
-        </div><!-- /.row -->
+</div><!-- /.row -->
 
-      </div><!-- /.container-fluid -->
+</div><!-- /.container-fluid -->
 
-    </div>
+</div>
 
-    <!-- /.content-header -->
-
-
-
-    <!-- Main content -->
+<!-- /.content-header -->
 
 
 
-            </section>
+<!-- Main content -->
 
 
 
-            <!-- Main content -->
-
-            <section class="content">
-
-              <div class="container-fluid">
+</section>
 
 
-                <div class="row">
-                  <div class="col-md-12">
-                                              
-                      <button type="button" class="btn btn-block  btn-success"><?php if(isset($_GET['turma']))echo $_GET['turma']."  - ".$_GET['disciplina']; ?></button>
+
+<!-- Main content -->
+
+<section class="content">
+
+  <div class="container-fluid">
 
 
-                              <form class="mt-12" action="../Controller/Cadastrar_questionario.php" method="post" enctype="multipart/form-data">
+    <div class="row">
+      <div class="col-md-12">
 
-                                    <h4 class="card-title">Nome do Questionário</h4>
-                                    <div class="form-group">
-                                        <input type="text" name="nome" class="form-control" autocomplete="off"  required="">
-                                    </div>
+          <button type="button" class="btn btn-block  btn-secondary">CADASTRO DE QUESTIONARIOS</button>
 
 
-                                    <h4 class="card-title">Data de Início</h4>
-                                    <div class="form-group">
-                                        <input type="date" name="data" class="form-control"  required="">
+          <form class="mt-12" action="../Controller/Cadastrar_questionario.php" method="post" enctype="multipart/form-data">
+            <br>
+            <b>Nome do Questionário</b>
+            <div class="form-group">
+                <input type="text" name="nome" class="form-control" autocomplete="off"  required="">
+            </div>
 
-                                    </div>
 
-                                    <h4>Hora de Início</h4>
-                                    <div class="form-group">
-                                        <input type="time" class="form-control" name="hora_inicio" required>
-                                    </div>
-                                    <h4>Hora de Fim</h4>
-                                    <div class="form-group">
-                                        <input type="time" class="form-control" name="hora_fim" required>
-                                    </div>
 
-                                    <input type="hidden" name="turma_id" value="<?php echo $_GET['turm'] ?>" class="form-control" required="">
 
-                                    <input type="hidden" name="disciplina_id" value="<?php echo $_GET['disc']; ?>" class="form-control" required="">
+            <div style="background-color:#B0C4DE; padding:10px;border-radius: 1%;">
 
-                                    <input type="hidden" name="idescola" value="<?php echo $_GET['idescola']; ?>" class="form-control" required="">
+              <b> <font color='blue'>Escolha as turma/disciplinas que receberar esse    questionário. </font></b>
+              <?php
 
-                                    <input type="hidden" name="turma" value="<?php echo $_GET['turma']; ?>" class="form-control" required="">     
-                                    <input type="hidden" name="disciplina" value="<?php echo $_GET['disciplina']; ?>" class="form-control" required="">
 
-                                    <button type="submit" class="btn waves-effect waves-light btn-lg btn-primary">
-                                      Cadastrar
-                                  </button>
 
-                                </form>
-                                           
-                                        
-                  </div>
+              $result_disciplinas=listar_disciplina_professor($conexao,$idprofessor);
+
+
+
+              foreach ($result_disciplinas as $key => $value) {
+
+                $disciplina=($value['nome_disciplina']);
+                $nome_escola=($value['nome_escola']);
+                $turma=($value['nome_turma']);
+                $idescola=($value['idescola']);
+                $iddisciplina=$value['iddisciplina'];
+                $idturma=$value['idturma'];
+                $idserie=$value['serie_id'];
+
+                echo"
+                <div class='custom-control custom-checkbox'>
+                <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$idturma' value='$idescola+$idturma+$iddisciplina+$idserie'>
+                <label for='customCheckbox$idturma' class='custom-control-label'> $nome_escola - $turma -$disciplina</label>
+                </div>";
+
+
+
+            }
+
+            ?>
+        </div>
+        <br>
+        <br>
+
+
+
+
+        <b>Data de Início</b>
+        <div class="form-group">
+            <input type="date" name="data" class="form-control"  required="">
+
+        </div>
+
+
+
+
+        <h4>Hora de Início</b>
+            <div class="form-group">
+                <input type="time" class="form-control" name="hora_inicio" required>
+            </div>
+            <h4>Hora de Fim</b>
+                <div class="form-group">
+                    <input type="time" class="form-control" name="hora_fim" required>
                 </div>
 
 
 
-                <div class="row">
-                  <div class="col-md-12">
 
-                  <br>      
-                    <div class="table">
-                                            <a class="btn btn-block btn-danger">Lista de Questionário Enviados</a>
+                <input type="hidden" name="url_get" value="<?php echo $url_get ?>" class="form-control" required="">
 
-                                            <table id="zero_config" class="table">
-                                                <thead>
-                                                    <tr>
+<input type="text" id="testa" name="testa" value="" required="" style="display: none;">
 
-                                                       <th>Título</th>
-                                                       
-                                                        <th>Opção</th>
-                                                       
+            <div  onclick='carregando();'>
+                <button type="submit" class="btn waves-effect waves-light btn-lg btn-primary">
+                  Cadastrar
+              </button>
+          </div>
 
-                                                   </tr>
-                                               </thead>
-                                                <tbody>
-                                                  
-<?php 
-                                               
-                                                 
+          </form>
 
-                                                    $turma_id=$_GET['turm'];
-                                                    $disciplina_id=$_GET['disc'];
-
-
-                                                    $result=listar_questionario($conexao,$idprofessor,$turma_id,$disciplina_id);
-
-                                                    foreach ($result as $key => $value) {
-                                                      $id=$value['id'];
-                                                      $nome=($value['nome']);
-                                                      $status=$value['status'];
-                                                      $data=$value['data'];
-
-                                                        echo "
-                                                          <tr>
-
-                                                       
-                                                               <td>
-                                                               id: $id
-                                                                  <br>$nome</b>
-                                                                
-                                                                <input type='date' value='$data' onchange='alterar_data_questionario($id);' id='data$id' >
-                                                                <span class='alert-success' id='resposta_alteracao_data'></span>
-                                                                <br>
-                                                            
-                                                              ";
-                                                              
-                                                              if ($status==1) {
-                                                                  echo"
-                                                                 <span class='text-success'>
-                                                                      Ativo
-                                                                    </span>
-                                                                    <br>
-                                                                  ";
-                                                              }else{
-                                                                echo"
-                                                                  <span class='text-danger'>
-                                                                      Desativado
-                                                                    </span>
-                                                                  <br>";
-                                                              }
-                                                    
-
-                                                             
-
-                                                              if ($status==1) {
-                                                                  echo"
-                                                            <a href='#' onclick='alterar_status_questionario($id,$status);'>
-
-                                                                 <span class='btn btn-primary'>
-                                                                      Desativar
-                                                                    </span>
-                                                            </a>
-                                                                    <br>
-                                                                    <br>
-                                                                  ";
-                                                              }else if ($status==0) {
-                                                                  echo"
-                                                            <a href='#' onclick='alterar_status_questionario($id,$status);'>
-
-                                                                 <span class='btn btn-warning'>
-                                                                      Ativar
-                                                                    </span>
-                                                            </a>
-                                                                    <br>
-                                                                    <br>
-                                                                  ";
-                                                              }
-
-                                                            echo "
-                                                            </td>
-                                                            
-                                                            <td>
-                                                            <a href='adicionar_questao.php?nome=$nome&id=$id&turma_id=$turma_id&disciplina_id=$disciplina_id'>
-                                                                <span class='btn btn-primary'>
-                                                                     Adicionar Questões
-                                                                </span>
-                                                              </a>
-                                                            
-                                                            <br>
-                                                            <br>
-                                                             <a href='adicionar_horario_individual_questionario.php?nome=$nome&id=$id&turma_id=$turma_id&disciplina_id=$disciplina_id&idescola=$idescola'>
-                                                                <span class='btn btn-warning'>
-                                                                     Agendar Hórario Individual
-                                                                </span><br><br>
-                                                            </a>
-
-                                                          
-
-                                                                 </td>";
-
-                                                        echo "
-                                                          </tr>
-                                                        ";
-                                                    }
-
-                                                  ?>
-                                                </tbody>
-
-
-                                         </table>
-
-                                     </div>               
-
-
-
-            <!-- /.content -->
-
-          </div>        
 
       </div>
+  </div>
 
-    </div>
 
-  </section>
+
+  <div class="row">
+      <div class="col-md-12">
+
+          <br>      
+          <div class="table">
+            <a class="btn btn-block btn-info" name="#questionario">Lista de Questionário Enviados</a>
+
+            <table id="zero_config" class="table">
+                <thead>
+                    <tr>
+
+                     <th>Título</th>
+
+                     <th>Opção</th>
+
+
+                 </tr>
+             </thead>
+             <tbody>
+
+
+                <?php 
+
+
+                $result_disciplinas_t=listar_disciplina_professor($conexao,$idprofessor);
+                    $conta=0;
+                foreach ($result_disciplinas_t as $key => $value) {                            
+                    $disciplina_id=$value['iddisciplina'];
+                    $turma_id=$value['idturma'];
+
+                    $disciplina=($value['nome_disciplina']);
+                    $nome_escola=($value['nome_escola']);
+                    $turma=($value['nome_turma']);
+
+                    $result=listar_questionario($conexao,$idprofessor,$turma_id,$disciplina_id);
+                    foreach ($result as $key => $value) {
+                      $id=$value['id'];
+                      $nome=($value['nome']);
+                      $status=$value['status'];
+                      $data=$value['data'];
+                      $origem_questionario_id=$value['origem_questionario_id'];
+                      $cor='';
+                      if ($conta%2==0) {
+                        $cor='#D3D3D3';
+                      }else{
+                        $cor='';
+
+                      }
+
+                    echo "
+                    <tr style='background-color:$cor' id='linha$id'>
+
+
+                    <td>
+                    id: $id <b>$nome_escola - $turma - $disciplina</b><br>
+
+                    <b style='background-color:#CD853F'>$nome</b><br>
+
+                    <input type='date' value='$data' onchange='alterar_data_questionario($id);' id='data$id' >
+                    <span class='alert-success' id='resposta_alteracao_data$id'></span>
+                    <br>
+
+                    ";
+
+                    if ($status==1) {
+                      echo"
+                      <b class='text-success'>
+                      Ativo
+                      </b>
+                      <br>
+                      ";
+                     }else{
+                        echo"
+                        <b class='text-danger'>
+                        Desativado
+                        </b>
+                        <br>";
+                    }
+
+
+
+
+                 if ($status==1) {
+                      echo"
+                      <a  onclick='alterar_status_questionario($id,$status);'>
+
+                      <span class='btn btn-primary'>
+                      Desativar
+                      </span>
+                      </a>
+                      <br>
+                      <br>
+                      ";
+                  }else if ($status==0) {
+                      echo"
+                      <a onclick='alterar_status_questionario($id,$status);'>
+
+                      <span class='btn btn-warning'>
+                      Ativar
+                      </span>
+                      </a>  
+
+                      <a onclick='excluir_questionario($id);'>
+
+                      <span class='btn btn-danger'>
+                      Excluir definitivamente?
+                      </span>
+                      </a>
+                      <br>
+                      <br>
+                      ";
+                  }
+
+                  echo "
+                  </td>
+
+                  <td>
+
+                  <a href='adicionar_questao.php?nome=$nome&id=$id&turma_id=$turma_id&disciplina_id=$disciplina_id&origem_questionario_id=$origem_questionario_id'>
+                  <span class='btn btn-primary'>
+                  Adicionar Questões
+                  </span>
+                  </a>
+
+                  <br>
+                  <br>
+
+
+                  <a href='adicionar_horario_individual_questionario.php?nome=$nome&id=$id&turma_id=$turma_id&disciplina_id=$disciplina_id&idescola=$idescola'>
+                  <span class='btn btn-secondary'>
+                  Agendar Hórario Individual
+                  </span><br><br>
+                  </a> 
+
+      
+
+                  </td>";
+
+                  echo "
+                  </tr>
+
+
+
+                  <div class='modal fade' id='modal-$id'>
+                  <div class='modal-dialog'>
+                  <div class='modal-content'>
+                  <div class='modal-header'>
+                  <h4 class='modal-title'>COPIAR PARA!</b>
+                  <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                  <span aria-hidden='true'>&times;</span>
+                  </button>
+                  </div>
+
+
+                  <div class='modal-body'>
+                  <!-- corpo -->
+                  <form action='../Controller/Copiar_questionario_para_outra_turma.php' method='post' enctype='multipart/form-data'>
+
+                  <input type='hidden' value='$id' name='idquestionario'>
+                  <input type='hidden' value='$idescola' name='idescola'>
+                  <input type='hidden' value='$url_get' name='url_get'>
+
+                  <div class='row'>
+                  <div class='col-4'>
+                  <label><b>Hora início</b></label>
+                  <input type='time' class='form-control' name='hora_inicio' required>
+
+                  </div>
+
+                  <div class='col-4'>
+                  <label><b>Hora fim</b></label>
+                  <input type='time' class='form-control' name='hora_fim' required>
+
+                  </div>
+                  </div>
+                  <br>                                                                 
+
+                  ";
+              $conta++;
+          }
+      }
+
+      ?>
+  </tbody>
+
+
+</table>
+
+</div>               
+
+
+
+<!-- /.content -->
+
+</div>        
+
+</div>
+
+</div>
+
+</section>
 
 </div>
 
@@ -296,9 +407,40 @@ include "alertas.php";
 
 </aside>
 
-  <!-- /.control-sidebar -->
+<!-- /.control-sidebar -->
 
-  <script type="text/javascript">
+<script type="text/javascript">
+
+function carregando() {
+
+    checkBoxes = document.getElementsByClassName("check")
+    noCheckedBoxes = true
+    for (i = 0; i< checkBoxes.length; ++i) {
+        if(checkBoxes[i].checked) {
+            noCheckedBoxes = false
+        }
+    }
+
+    if(noCheckedBoxes) {
+        document.getElementById("testa").value="";
+        Swal.fire({
+                  icon: 'info',
+                  title: 'Atenção',
+                  text: 'Marque todos os campo obrigatórios e  pelo menos uma disciplina, para cadastrar o questionário!',
+                  
+                });
+
+
+    }else{
+        document.getElementById("testa").value=" ";
+
+    }
+
+}
+
+
+
+
 
     /* Máscaras ER */
 
@@ -332,12 +474,12 @@ include "alertas.php";
 
 
 
-  </script>
+</script>
 
 
 
- <?php 
+<?php 
 
-    include 'rodape.php';
+include 'rodape.php';
 
- ?>
+?>

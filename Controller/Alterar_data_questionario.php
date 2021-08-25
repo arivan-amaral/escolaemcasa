@@ -6,7 +6,10 @@ include '../Model/Questionario.php';
     
 try {
 	$resultado=alterar_data_questionario($conexao,$id,$data);
+	
+
 } catch (Exception $e) {
+	echo "erro";
 	
 }
 

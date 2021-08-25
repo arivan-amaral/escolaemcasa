@@ -1,26 +1,32 @@
 <?php
 session_start();
 if (!isset($_SESSION['idprofessor'])) {
-       header("location:index.php?status=0");
+ header("location:index.php?status=0");
 }else{
   $idprofessor=$_SESSION['idprofessor'];
 }
 include "cabecalho.php";
 include "alertas.php";
 
-  include "barra_horizontal.php";
-  include 'menu.php';
-  include '../Model/Conexao.php';
-  include '../Controller/Conversao.php';
-  include '../Model/Questionario.php';
+include "barra_horizontal.php";
+include 'menu.php';
+include '../Model/Conexao.php';
+include '../Controller/Conversao.php';
+include '../Model/Questionario.php';
 
-  $idturma=$_GET['turma_id'];
+$idturma=$_GET['turma_id'];
+$origem_questionario_id=$_GET['origem_questionario_id'];
 if(isset($_GET['disciplina_id'])){
   $iddisciplina=$_GET['disciplina_id'];
 }
-  $iddisciplina="";
+$iddisciplina="";
 
-  
+
+$array_url=explode('p?', $_SERVER["REQUEST_URI"]);
+$url_get=$array_url[1];
+
+
+
 
 ?>
 
@@ -32,263 +38,294 @@ if(isset($_GET['disciplina_id'])){
 
 <div class="content-wrapper" style="min-height: 529px;">
 
-    <!-- Content Header (Page header) -->
+  <!-- Content Header (Page header) -->
 
-    <div class="content-header">
+  <div class="content-header">
 
-      <div class="container-fluid">
+    <div class="container-fluid">
 
-        <div class="row mb-2">
+      <div class="row mb-2">
 
-          <div class="col-sm-10 alert alert-warning">
+        <div class="col-sm-10 alert alert-warning">
 
-            <h1 class="m-0"><b>
+          <h1 class="m-0"><b>
 
-              <?php
-              if (isset($nome_escola_global)) {
-                echo $nome_escola_global; 
-              }
-              ?>
+            <?php
+            if (isset($nome_escola_global)) {
+              echo $nome_escola_global; 
+            }
+            ?>
 
-             <?php if (isset($_SESSION['nome'])) {
+            <?php if (isset($_SESSION['nome'])) {
 
               echo $_SESSION['nome'];  
 
             } 
 
-             ?></b></h1>
+          ?></b></h1>
 
-          </div><!-- /.col -->
+        </div><!-- /.col -->
 
-          <div class="col-sm-2">
+        <div class="col-sm-2">
 
-            <ol class="breadcrumb float-sm-right">
+          <ol class="breadcrumb float-sm-right">
 
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
 
-              <li class="breadcrumb-item active">Questionário</li>
+            <li class="breadcrumb-item active">Questionário</li>
 
-            </ol>
+          </ol>
 
-          </div><!-- /.col -->
+        </div><!-- /.col -->
 
-        </div><!-- /.row -->
+      </div><!-- /.row -->
 
-      </div><!-- /.container-fluid -->
+    </div><!-- /.container-fluid -->
 
-    </div>
+  </div>
 
-    <!-- /.content-header -->
-
-
-
-    <!-- Main content -->
+  <!-- /.content-header -->
 
 
 
-            </section>
+  <!-- Main content -->
 
 
 
-            <!-- Main content -->
-
-            <section class="content">
-
-              <div class="container-fluid">
+</section>
 
 
-                <div class="row">
-                  <div class="col-md-12">
-                                              
-                      <button type="button" class="btn btn-block btn-success"> Adicionar questões ao questionário: <b><?php echo $_GET['nome']; ?></b></button>
 
-                      <form class="mt-12" action="../Controller/Cadastrar_questao.php" method="post" enctype="multipart/form-data">
-        <div class="row">
-        <div class="col-md-12">
-          
-          <div class="card card-outline card-info">
-            <div class="card-header">
-              <h3 >
-                Descreva sua questão abaixo
-              </h3>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <textarea name="nome" id="summernote" style="height: 245.719px;"></textarea>
+<!-- Main content -->
 
-            </div>
-            <div class="card-footer">
-              
-            </div>
+<section class="content">
 
-          </div>
-          
-        </div>
-        <!-- /.col-->
-      </div>
-
-                                                          <h4 class='card-title'>Pontos</h4>
-                                                          <div class='form-group'>
-                                                              <input type='text' name='pontos' class='form-control' autocomplete='off'  placeholder='' required='' onkeyup='somenteNumeros(this);'>
-                                                          </div>
-                                                          
-                                                           <h4 class='card-title'>Anexo (opcional) </h4>
-                                                          <div class='form-group'>
-                                                              <input type='file' name='imagem' class='form-control' >
-                                                          </div>
+  <div class="container-fluid">
 
 
-                                                          <h4 class="card-title">Tipo </h4>
-                                                          <div class="form-group">
-                                                            <select name="tipo" class="form-control" onchange="gerar_questao(this.value);"  required="">
-                                                                <option></option>
-                                                                <option value="multipla">Múltipla Escolha</option>
-                                                                <option value="multipla_justificada">Múltipla Escolha(Justificada)</option>
-                                                                <option value="discursiva">Discursiva</option>
+    <div class="row">
+      <div class="col-md-12">
 
-                                                            </select>
-                                                          </div>
+        <button type="button" class="btn btn-block btn-secondary"> Adicionar questões ao questionário: <b><?php echo $_GET['nome']; ?></b></button>
 
-                                                          <div id="gerar_questao" style="background-color: #e8eaec;">
-                                                            
+        <form class="mt-12" action="../Controller/Cadastrar_questao.php" method="post" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col-md-12">
 
-                                                          </div>
+              <div class="card card-outline card-info">
+                <div class="card-header">
+                  <h3 >
+                    Descreva sua questão abaixo
+                  </h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <textarea name="nome" id="summernote" style="height: 245.719px;"></textarea>
 
-                                                          
+                </div>
+                <div class="card-footer">
 
-                                                          <input type="hidden" name="questionario_id" value="<?php echo $_GET['id'] ?>" class="form-control" required="">
-
-                                                          <input type="hidden" name="turma_id" value="<?php echo $idturma ?>" class="form-control" required="">
-
-                                                          <input type="hidden" name="disciplina_id" value="<?php echo $iddisciplina; ?>" class="form-control" required="">
-                                                          
-                                                          <input type="hidden" name="questionario" value="<?php echo $_GET['nome']; ?>" class="form-control" required="">
-
-                                                          <button type="submit" class="btn waves-effect waves-light btn-lg btn-primary">
-                                                            Cadastrar Questão
-                                                        </button>
-
-                                                      </form>
-                            
-                                           
-                                        
-                  </div>
                 </div>
 
+              </div>
 
-<br>
-<br>
-        <div class="row">
-          <div class="col-md-12">
-            <h1>Lista de questões cadastradas</h1>
-
-           <?php 
-                                      
-                                       $nome_questionario=$_GET['nome'];
-                                           $questionario_id=$_GET['id'];
-
-                                           $listar_questao=listar_questao($conexao,$questionario_id);
-                                           $conta=1;
-                                           foreach ($listar_questao as $key => $value) {
-                                                 $idquestao=$value['id'];
-                                                 $questao=converter_utf8($value['nome']);
-
-                                                 $questao=str_replace("^;", "'", $questao);
-
-                                                 $tipo=$value['tipo'];
-                                              if ($idquestao%2==0) {
-                                                 echo "<div class='p-3 mb-2 bg-light text-dark'>";
-                                              }else{
-                                                 echo "<div class='p-3 mb-2 bg-secondary text-white'>";
-
-                                              }
-                                                 echo "
-                                                 
-
-                                                 <div class='form-group'>
-<p>$questao</p>
-                                                       <!-- <textarea  name='$idquestao' id='$idquestao' class='form-control' required onKeyup=alterar_pergunta_discursiva('$idquestao'); rows='5'>
-
-                                                       </textarea>-->
+            </div>
+            <!-- /.col-->
+          </div>
 
 
-                                                        id:$idquestao <a href='../Controller/Excluir_questao.php?id=$idquestao&questionario_id=$questionario_id&turma_id=$idturma&disciplina_id=$iddisciplina&nome=$nome_questionario' class='btn btn-danger'> Excluir Questão</a><br>
-                                                       <p id='res$idquestao'> </p>
-
-                                                   </div>";
-                                           
-                                                    $arquivo_anexo=listar_arquivo($conexao,$idquestao);
-                                                    foreach ($arquivo_anexo as $key => $value) {
-                                                     $idarquivo=$value['id'];
-                                                     $arquivo=$value['arquivo'];
-
-                                                      echo "<a href='arquivo/$arquivo' class='btn btn-warning'> Ver arquivo Anexado </a>
-
-                                                        <a href='Excluir_anexo.php?id=$idarquivo' class='btn btn-danger' target='_blank'> Excluir Anexo </a><br> ";
-                                                     
-                                                    }
-                                                    
-
-                                                    $cont=1;
-                                                    $listar_alternativa=listar_alternativa($conexao,$idquestao);
-                                                    
-                                                    if ($tipo=="multipla" || $tipo=="multipla_justificada") {
-                                                    
-                                                         
-                                                     }
-
-                                                   foreach ($listar_alternativa as $chave => $linha) {
-                                                       $id=$linha['id'];
-                                                       $tipo=$linha['tipo'];
-                                                       $alternativa=$linha['nome'];
-                                                       $questao_id=$linha['questao_id'];
-                                                       $alternativa=str_replace("^;", "'", $alternativa);
 
 
-                                                       echo "<br>";
+          <h4 class='card-title'>Pontos</h4>
+          <div class='form-group'>
+            <input type='text' name='pontos' class='form-control' autocomplete='off'  placeholder='' required='' onkeyup='somenteNumeros(this);'>
+          </div>
 
-                                                       if ($tipo=="discursiva") {
-                                                       
-                                                       }else if ($tipo=="multipla") {
-                                                         
-                                                          echo "                                                
-                                                           <div class='custom-control custom-radio'>
-                                                             <input type='radio' id='customRadio$id$cont' name='alternativa$questao_id' class='custom-control-input'>
-                                                              <label class='custom-control-label' for='customRadio$id$cont'>
-                                                              $alternativa</label>
-                                                         </div>
-                                                         ";
-
-                                                       }else if ($tipo=="multipla_justificada") {
-                                                           echo "                                                
-                                                           <div class='custom-control custom-radio'>
-                                                             <input type='radio' id='customRadio$id$cont' name='alternativa$questao_id' class='custom-control-input'>
-                                                             <label class='custom-control-label' for='customRadio$id$cont'>$alternativa</label>
-                                                         </div>
-                                                         "; 
-
-                                                       }
-                                                       $cont++;
+          <h4 class='card-title'>Anexo (opcional) </h4>
+          <div class='form-group'>
+            <input type='file' name='imagem' class='form-control' >
+          </div>
 
 
-                                                    }
+          <h4 class="card-title">Tipo </h4>
+          <div class="form-group">
+            <select name="tipo" class="form-control" onchange="gerar_questao(this.value);"  required="">
+              <option></option>
+              <option value="multipla">Múltipla Escolha</option>
+              <option value="multipla_justificada">Múltipla Escolha(Justificada)</option>
+              <option value="discursiva">Discursiva</option>
 
-                                              echo "</div>";
+            </select>
+          </div>
 
-                                             $conta++;
-                                           }
+          <div id="gerar_questao" style="background-color: #e8eaec;">
 
-                                        ?>
 
-            <!-- /.content -->
+          </div>
 
-          </div>        
+            <div style="background-color:#B0C4DE; padding:10px;border-radius: 1%;">
+
+    
+              <b> <font color='blue'>Essa questão será inserida nos questionários abaixo. </font></b>
+
+              <?php
+
+
+        $res_origem_questionario_id=listar_questionario_mesma_origem($conexao,$origem_questionario_id);
+
+        foreach ($res_origem_questionario_id as $key => $value) {
+          $questionario_id=$value['id'];
+
+                $nome_questionario=($value['nome']);
+                $data=converte_data($value['data']);
+                $nome_turma=($value['nome_turma']);
+                $nome_disciplina=($value['nome_disciplina']);
+               
+
+                echo"
+                <div class='custom-control custom-checkbox'>
+                <input class='custom-control-input' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox'  checked>
+                <label for='customCheckbox$idturma' class='custom-control-label'>$data - $nome_turma - $nome_disciplina - $nome_questionario</label>
+                </div>";
+
+
+
+            }
+
+            ?>
+        </div>
+        <br>
+        <br>
+
+
+
+
+          <input type="hidden" name="origem_questionario_id" value="<?php echo $origem_questionario_id; ?>" class="form-control" required="">
+          <input type="hidden" name="url_get" value="<?php echo $url_get; ?>" class="form-control" required="">
+
+          <button type="submit" class="btn waves-effect waves-light btn-lg btn-primary">
+            Cadastrar Questão
+          </button>
+
+        </form>
+
+
 
       </div>
-
     </div>
 
-  </section>
+
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Lista de questões cadastradas</h1>
+
+        <?php 
+
+        $nome_questionario=$_GET['nome'];
+        $questionario_id=$_GET['id'];
+
+        $listar_questao=listar_questao($conexao,$questionario_id);
+        $conta=1;
+        foreach ($listar_questao as $key => $value) {
+         $idquestao=$value['id'];
+         $questao=converter_utf8($value['nome']);
+
+         $questao=str_replace("^;", "'", $questao);
+
+         $tipo=$value['tipo'];
+         if ($idquestao%2==0) {
+           echo "<div class='p-3 mb-2 bg-light text-dark'>";
+         }else{
+           echo "<div class='p-3 mb-2 bg-secondary text-white'>";
+
+         }
+         echo "
+
+
+         <div class='form-group'>
+         <p>$questao </p>
+         <!-- <textarea  name='$idquestao' id='$idquestao' class='form-control' required onKeyup=alterar_pergunta_discursiva('$idquestao'); rows='5'>
+
+         </textarea>-->
+
+
+         id:$idquestao <a href='../Controller/Excluir_questao.php?origem_questionario_id=$origem_questionario_id&id=$idquestao&questionario_id=$questionario_id&turma_id=$idturma&disciplina_id=$iddisciplina&nome=$nome_questionario' class='btn btn-danger'> Excluir Questão</a><br>
+         <p id='res$idquestao'> </p>
+
+         </div>";
+
+         $arquivo_anexo=listar_arquivo($conexao,$idquestao);
+         foreach ($arquivo_anexo as $key => $value) {
+           $idarquivo=$value['id'];
+           $arquivo=$value['arquivo'];
+
+           echo "<a href='arquivo/$arquivo' class='btn btn-warning'> Ver arquivo Anexado </a>";
+
+         // echo"  <a href='../Controller/Excluir_anexo.php?origem_questionario_id=$origem_questionario_id&id=$idarquivo' class='btn btn-danger' target='_blank'> Excluir Anexo </a><br> ";
+
+         }
+
+
+         $cont=1;
+         $listar_alternativa=listar_alternativa($conexao,$idquestao);
+
+         if ($tipo=="multipla" || $tipo=="multipla_justificada") {
+
+
+         }
+
+         foreach ($listar_alternativa as $chave => $linha) {
+           $id=$linha['id'];
+           $tipo=$linha['tipo'];
+           $alternativa=$linha['nome'];
+           $questao_id=$linha['questao_id'];
+           $alternativa=str_replace("^;", "'", $alternativa);
+
+
+           echo "<br>";
+
+           if ($tipo=="discursiva") {
+
+           }else if ($tipo=="multipla") {
+
+            echo "                                                
+            <div class='custom-control custom-radio'>
+            <input type='radio' id='customRadio$id$cont' name='alternativa$questao_id' class='custom-control-input'>
+            <label class='custom-control-label' for='customRadio$id$cont'>
+            $alternativa</label>
+            </div>
+            ";
+
+          }else if ($tipo=="multipla_justificada") {
+           echo "                                                
+           <div class='custom-control custom-radio'>
+           <input type='radio' id='customRadio$id$cont' name='alternativa$questao_id' class='custom-control-input'>
+           <label class='custom-control-label' for='customRadio$id$cont'>$alternativa</label>
+           </div>
+           "; 
+
+         }
+         $cont++;
+       }
+
+       echo "</div>";
+
+       $conta++;
+     }
+
+     ?>
+
+     <!-- /.content -->
+
+   </div>        
+
+ </div>
+
+</div>
+
+</section>
 
 </div>
 
@@ -298,29 +335,29 @@ if(isset($_GET['disciplina_id'])){
 
 </aside>
 
-  <!-- /.control-sidebar -->
+<!-- /.control-sidebar -->
 
-  <script type="text/javascript">
+<script type="text/javascript">
 
-    /* Máscaras ER */
+  /* Máscaras ER */
 
-    function mascara(o,f){
+  function mascara(o,f){
 
-        v_obj=o
+    v_obj=o
 
-        v_fun=f
+    v_fun=f
 
-        setTimeout("execmascara()",1)
+    setTimeout("execmascara()",1)
 
-    }
+  }
 
-    function execmascara(){
+  function execmascara(){
 
-        v_obj.value=v_fun(v_obj.value)
+    v_obj.value=v_fun(v_obj.value)
 
-    }
+  }
 
-    function mtel(v){
+  function mtel(v){
 
         v=v.replace(/\D/g,"");             //Remove tudo o que não é dígito
 
@@ -330,32 +367,32 @@ if(isset($_GET['disciplina_id'])){
 
         return v;
 
-    }
-
-
-
-  </script>
-
-  <script>
-      function somenteNumeros(num) {
-          var er = /[^0-9.]/;
-          er.lastIndex = 0;
-          var campo = num;
-          var valor_campo_nota=campo.value;
-          campo.value=valor_campo_nota.replace(",", ".");
-
-     
-          if (er.test(campo.value)) {
-            campo.value = "";
-                    Swal.fire('Esse campo é permitido apenas números.', '', 'info')
-
-
-          }
       }
-   </script>
 
- <?php 
+
+
+    </script>
+
+    <script>
+      function somenteNumeros(num) {
+        var er = /[^0-9.]/;
+        er.lastIndex = 0;
+        var campo = num;
+        var valor_campo_nota=campo.value;
+        campo.value=valor_campo_nota.replace(",", ".");
+
+
+        if (er.test(campo.value)) {
+          campo.value = "";
+          Swal.fire('Esse campo é permitido apenas números.', '', 'info')
+
+
+        }
+      }
+    </script>
+
+    <?php 
 
     include 'rodape.php';
 
- ?>
+  ?>
