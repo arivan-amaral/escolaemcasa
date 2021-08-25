@@ -73,7 +73,7 @@ foreach ($result_reuniao as $key => $value) {
 
                 echo"       
                 <div class='time-label'>
-                <span class='bg-blue'>LINK DA DISCIPLINA: $nome_disciplina DISPONÍVEL DE: $data_visivel ÀS $data_visivel_fim</span>
+                <b>LINK DA DISCIPLINA: $nome_disciplina DISPONÍVEL DE: $data_visivel ÀS $data_visivel_fim</b>
                 </div>";
 
                 echo "
@@ -95,6 +95,7 @@ foreach ($result_reuniao as $key => $value) {
     <!-- /.modal-dialog -->
   </div>
 
+ 
  
 
 <div class="content-wrapper" style="min-height: 529px;">
@@ -393,12 +394,16 @@ foreach ($result_reuniao as $key => $value) {
                       <div class="icon">
                         <i class="fas fa-tag"></i>
                       </div>
-                        Ver sobre isso <i class="fas fa-arrow-circle-right"></i>
+                      Aqui fica os Recados/orientações coletivas <i class="fas fa-arrow-circle-right"></i>
                       </a>
                     </div>
                   </div>
 
+<?php 
 
+if ($idserie>2) {
+
+ ?>
 
                   <!-- ./col -->
                   <div class="col-lg-3 col-6">
@@ -416,7 +421,7 @@ foreach ($result_reuniao as $key => $value) {
                       <div class="icon">
                         <i class="far fa-comment"></i>
                       </div>
-                      
+                      <br>
                         Ver sobre isso <i class="fas fa-arrow-circle-right"></i>
                       </a>
                     </div>
@@ -492,10 +497,17 @@ foreach ($result_reuniao as $key => $value) {
                       <div class="icon">
                         <i class="fa fa-book"></i>
                       </div>
+                      <br>
+
                         Veja sobre isso <i class="fas fa-arrow-circle-right"></i>
                       </a>
                     </div>
                   </div>
+
+
+               <?php 
+                }
+               ?>
                   <!-- ./col -->
                 </div>
 
@@ -533,6 +545,8 @@ foreach ($result_reuniao as $key => $value) {
                         <!-- we are adding the accordion ID so Bootstrap's collapse plugin detects it -->
 
                         <div id="accordion">
+
+                       
 
                           
                           <?php 
@@ -640,28 +654,29 @@ foreach ($result_reuniao as $key => $value) {
 
                                                 Trabalhos/Atividades                                           
 
-                                      </a> 
+                                      </a> ";
 
-
-
-                                      <a  href='responder_questionario.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina' class='btn btn-info btn-block btn-flat'>
-
-                                              <i class='fa fa-edit'></i>
-
-                                                Prova/Testes                                           
-
-                                      </a>                                      
-
+                                      if ($idserie>2) {
                                       
 
-                                       <a   href='material_apoio.php?iddisciplina=$iddisciplina&idturma=$idturma&nome_disciplina=$disciplina&nome_turma=$turma' class='btn btn-info btn-block btn-flat'>
-                                        <ion-icon name='document-text'></ion-icon> 
-                                        MATERIAL DE APOIO
-                                      </a> 
+                                         echo " <a  href='responder_questionario.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina' class='btn btn-info btn-block btn-flat'>
 
-                                        
+                                                  <i class='fa fa-edit'></i>
 
-                                  </div>
+                                                    Prova/Testes                                           
+
+                                          </a>                                      
+
+                                          
+
+                                           <a   href='material_apoio.php?iddisciplina=$iddisciplina&idturma=$idturma&nome_disciplina=$disciplina&nome_turma=$turma' class='btn btn-info btn-block btn-flat'>
+                                            <ion-icon name='document-text'></ion-icon> 
+                                            MATERIAL DE APOIO
+                                          </a>"; 
+
+                                      }
+
+                                  echo"</div>
 
                                 </div>
 
@@ -720,10 +735,43 @@ $conta++;
   <!-- Control sidebar content goes here -->
 
 </aside>
-
-  <!-- /.control-sidebar -->
+<style type="text/css">
+.star-wrapper {
+    width: 180px;
+    height: 40px;
+    border: 1px solid #ccf;
+}
+.star {
+    width: 35px;
+    height: 30px;
+    overflow: hidden;
+    float: left;
+}
+.star img {
+    height: 30px;
+}
+.full img {
+    margin-left: -40px;
+}
+</style>
 
   <script type="text/javascript">
+
+$(function () {
+    var estrelas = $('.star');
+    var escolhida = 0;
+
+    function repaint(e) {
+        var indice = $(this).index() + 1;
+        if (e.type == 'click') escolhida = indice;
+        estrelas.removeClass('full');
+        var upTo = $(this).hasClass('star-wrapper') ? escolhida : indice;
+        estrelas.slice(0, upTo).addClass('full');
+    }
+
+    $('.star-wrapper').on('mouseleave', repaint);
+    estrelas.on('mouseenter mouseleave click', repaint);
+});
 
     /* Máscaras ER */
 
