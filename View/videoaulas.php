@@ -135,7 +135,7 @@
                           <!-- /.card-tools -->
                         </div>
                         <!-- /.card-header -->
-                        <div class='card-body' style='display: none;'>
+                        <div class='card-body' style='display: block;;'>
 
                     ";
 
