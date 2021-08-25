@@ -6,6 +6,7 @@ include'../Model/Conexao.php';
 		foreach ($res as $key => $value) {
 			$id=$value['id'];
 			$res=$conexao->exec("UPDATE questionario set origem_questionario_id='$id' where id=$id   ");
+		echo"Questionario <br>";
 
 		}
 		
@@ -13,6 +14,8 @@ include'../Model/Conexao.php';
 		foreach ($res_q as $key => $value) {
 			$id=$value['questionario_id'];
 			$res=$conexao->exec("UPDATE questao set origem_questionario_id='$id' where questionario_id=$id   ");
+			echo"Questão <br>";
+
 
 		}
 		echo"Deu certo";
