@@ -123,7 +123,7 @@
                     <div class='row'>
                     <div class='col-sm-1'></div>
                     <div class='col-sm-8'>
-                      <div class='card card-info collapsed-card'>
+                      <div class='card card-info'>
                         <div class='card-header' data-card-widget='collapse'>
                           <h3 class='card-title'>VER VÍDEOS DO GT </h3>
 
