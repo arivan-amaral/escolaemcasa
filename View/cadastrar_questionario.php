@@ -142,8 +142,8 @@ $url_get=$array_url[1];
 
                 echo"
                 <div class='custom-control custom-checkbox'>
-                <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$idturma$idescola' value='$idescola+$idturma+$iddisciplina+$idserie'>
-                <label for='customCheckbox$idturma$idescola' class='custom-control-label'> $nome_escola - $turma -$disciplina</label>
+                <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$idturma$idescola$iddisciplina' value='$idescola+$idturma+$iddisciplina+$idserie'>
+                <label for='customCheckbox$idturma$idescola$iddisciplina' class='custom-control-label'> $nome_escola - $turma -$disciplina</label>
                 </div>";
 
 
