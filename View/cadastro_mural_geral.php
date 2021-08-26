@@ -113,6 +113,8 @@ include "alertas.php";
                                             <div class="form-group">
 
                                             <select name='idserie'  class="custom-select rounded-0" required>
+                                              <option></option>
+
                                               <option value='todas'>TODAS</option>
                                               <?php
 
@@ -121,7 +123,7 @@ include "alertas.php";
                                               foreach ($res_turma as $key => $value) {
                                                   $idserie = $value['id'];
                                                   $serie = ($value['nome']);
-                                                  // echo "<option value='$idserie' class='text-black'>$serie</option>";
+                                                   echo "<option value='$idserie' class='text-black'>$serie</option>";
                                               }
                                               ?>
                                             </select>

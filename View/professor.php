@@ -260,7 +260,7 @@ if (!isset($_SESSION['idprofessor'])) {
                         <div id="accordion">
 
 
-                                  <a  href='cadastrar_questionario.php' class='btn btn-secondary btn-block btn-flat'>
+                                  <a  href='cadastrar_questionario.php' class='btn btn-danger btn-block btn-flat'>
 
                                             <i class='fa fa-edit'></i>
 

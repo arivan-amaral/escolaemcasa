@@ -24,11 +24,18 @@ try {
 	$idserie = $_POST['idserie'];
 
 	if ($idserie=='todas') {
-		$res=lista_todas_series($conexao);
-		foreach ($res as $key => $value) {
+		$res_escola= escola_associada($conexao,$idcoordenador);
+		foreach ($res_escola as $key => $value) {
+		    // $id=$value['idescola'];
+		    // $nome_escola=($value['nome_escola']);
+		// $res=lista_todas_series($conexao);
+		// foreach ($res as $key => $value) {
 			$serie_id=$value['id'];
 			cadastrar_mural_geral($conexao,$titulo, $descricao, $serie_id, $usuario_id,$setor);
 		}
+	}else{
+			cadastrar_mural_geral($conexao,$titulo, $descricao, $idserie, $usuario_id,$setor);
+		
 	}
 
 
