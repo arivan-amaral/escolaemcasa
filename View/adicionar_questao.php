@@ -236,9 +236,9 @@ $url_get=$array_url[1];
 
          $tipo=$value['tipo'];
          if ($idquestao%2==0) {
-           echo "<div class='p-3 mb-2 bg-light text-dark'>";
+           echo "<div class='p-3 mb-2 bg-light text-dark' id='linha$idquestao'>";
          }else{
-           echo "<div class='p-3 mb-2 bg-secondary text-white'>";
+           echo "<div class='p-3 mb-2 bg-secondary text-white' id='linha$idquestao'>";
 
          }
          echo "
@@ -251,7 +251,7 @@ $url_get=$array_url[1];
          </textarea>-->
 
 
-         id:$idquestao <a href='../Controller/Excluir_questao.php?origem_questionario_id=$origem_questionario_id&id=$idquestao&questionario_id=$questionario_id&turma_id=$idturma&disciplina_id=$iddisciplina&nome=$nome_questionario' class='btn btn-danger'> Excluir Questão</a><br>
+         id:$idquestao <a onclick='excluir_questao($idquestao)' class='btn btn-danger'> Excluir Questão</a><br>
          <p id='res$idquestao'> </p>
 
          </div>";
