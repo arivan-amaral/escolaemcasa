@@ -842,7 +842,7 @@ function excluir_questao(id) {
       //window.location.href = "../Controller/Excluir_questionario.php?id="+id;
    
    var xmlreq = CriaRequest();   
-   xmlreq.open("GET", "../Controller/Excluir_questionario.php?id="+id, true);
+   xmlreq.open("GET", "../Controller/Excluir_questao.php?id="+id, true);
    xmlreq.onreadystatechange = function(){             
         if (xmlreq.readyState == 4) {
             if (xmlreq.status == 200) {
