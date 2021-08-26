@@ -264,7 +264,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
                                             <i class='fa fa-edit'></i>
 
-                                              Provas/Simulados                                           
+                                              Provas                                           
 
                                     </a>
                                     <br>
