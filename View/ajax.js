@@ -1184,6 +1184,42 @@ function excluir_material_apoio(id) {
       xmlreq.send(null);
   } 
   
+
+function resposta_multipla_professor(id) {
+    var origem_questionario_id =  document.getElementById('origem_questionario_id').value;
+    var texto_alternativa =  document.getElementById('alternativa'+id).value;
+    var xmlreq = CriaRequest();
+    xmlreq.open("GET", "../Controller/Responder_questionario_discursiva_professor.php?origem_questionario_id="+origem_questionario_id+"&id="+id+"&texto_alternativa="+texto_alternativa, true);
+    xmlreq.onreadystatechange = function(){
+       
+          if (xmlreq.readyState == 4) {
+              if (xmlreq.status == 200) {
+                if (true) {
+                  Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Ação Concluída',
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                  
+                }else{
+                 Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Alguma Coisa deu Errado!',
+                  
+                });
+                  
+              }
+          }else{
+            alert("Erro, verifique sua conexão com a internet!");
+            }
+        }
+    };
+      xmlreq.send(null);
+  } 
+  
   function resposta_justificada(id) {
      
      var idalternativa =id;

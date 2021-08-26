@@ -109,6 +109,9 @@ $url_get=$array_url[1];
         <button type="button" class="btn btn-block btn-secondary"> Adicionar questões ao questionário: <b><?php echo $_GET['nome']; ?></b></button>
 
         <form class="mt-12" action="../Controller/Cadastrar_questao.php" method="post" enctype="multipart/form-data">
+          
+
+<input type="hidden" id="origem_questionario_id" value="<?php echo $origem_questionario_id; ?>">
           <div class="row">
             <div class="col-md-12">
 
@@ -219,7 +222,9 @@ $url_get=$array_url[1];
     <br>
     <div class="row">
       <div class="col-md-12">
-        <h1>Lista de questões cadastradas</h1>
+        <button type="submit" class="btn btn-block btn-secondary">
+        <h1>Confira abaixo a lista de questões cadastradas</h1>
+      </button>
 
         <?php 
 
@@ -235,10 +240,10 @@ $url_get=$array_url[1];
          $questao=str_replace("^;", "'", $questao);
 
          $tipo=$value['tipo'];
-         if ($idquestao%2==0) {
-           echo "<div class='p-3 mb-2 bg-light text-dark' id='linha$idquestao'>";
+         if ($conta%2==0) {
+           echo "<div class='p-3 mb-2' style='background-color:#B0C4DE' id='linha$idquestao'>";
          }else{
-           echo "<div class='p-3 mb-2 bg-secondary text-white' id='linha$idquestao'>";
+           echo "<div class='p-3 mb-2  ' id='linha$idquestao'>";
 
          }
          echo "
@@ -285,6 +290,18 @@ $url_get=$array_url[1];
 
 
            echo "<br>";
+          $pesquisa_alt=$conexao->query("SELECT * FROM alternativa WHERE id=$id ");
+   
+          $marcado="";
+          foreach ($pesquisa_alt as $key_alt => $value_alt) {
+              if ($value_alt['correta']==1) {
+                $marcado="checked";
+                  
+              }else{
+                $marcado="";
+
+              }
+          }
 
            if ($tipo=="discursiva") {
 
@@ -292,16 +309,20 @@ $url_get=$array_url[1];
 
             echo "                                                
             <div class='custom-control custom-radio'>
-            <input type='radio' id='customRadio$id$cont' name='alternativa$questao_id' class='custom-control-input'>
+            <input type='hidden' value='$alternativa' id='alternativa$id'>
+
+            <input type='checkbox' id='customRadio$id$cont' name='alternativa$id$questao_id' class='custom-control-input' onclick='resposta_multipla_professor($id)' $marcado>
             <label class='custom-control-label' for='customRadio$id$cont'>
             $alternativa</label>
             </div>
             ";
 
           }else if ($tipo=="multipla_justificada") {
-           echo "                                                
+           echo "              
+            <input type='hidden' value='$alternativa' id='alternativa$id'>
+
            <div class='custom-control custom-radio'>
-           <input type='radio' id='customRadio$id$cont' name='alternativa$questao_id' class='custom-control-input'>
+           <input type='checkbox' id='customRadio$id$cont' name='alternativa$id$questao_id' class='custom-control-input' onclick='resposta_multipla_professor($id)' $marcado>
            <label class='custom-control-label' for='customRadio$id$cont'>$alternativa</label>
            </div>
            "; 
