@@ -411,9 +411,9 @@ foreach ($result_turma as $key => $value_et) {
                          echo"
                          <div class='time-label'>
                           <b>Data visível:</b>
-                          <input  type='date' class='form-control is-valid' id='data$idvideo' name='data' value='$data_visivel' required onchange='atualiza_data_hora_video($idvideo);' >
+                          <input  type='date' class='form-control is-valid' id='data$idvideo' name='data' value='$data_visivel' required  >
                            <b>Hora visível:</b>
-                           <input  class='form-control is-valid' id='hora$idvideo' type='time' name='hora'  value='".hora($hora)."' required onchange='atualiza_data_hora_video($idvideo);'>
+                           <input  class='form-control is-valid' id='hora$idvideo' type='time' name='hora'  value='".hora($hora)."' required >
                          </div>
                          <div>
 
