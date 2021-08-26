@@ -39,6 +39,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
   include '../Model/Aluno.php';
   include '../Model/Professor.php';
+  include '../Model/Turma.php';
 
   $idescola=$_GET['idescola']; 
   $idturma=$_GET['turm']; 
@@ -180,10 +181,7 @@ if (!isset($_SESSION['idprofessor'])) {
             </select>
           </div>
         </div>
-
-
-
-
+      
         <div class="col-sm-3">
           <div class="form-group">
             <label for="exampleInputEmail1">Datas das aulas lançadas</label>
@@ -209,6 +207,58 @@ if (!isset($_SESSION['idprofessor'])) {
 
 <!-- ####################################################################### -->
 
+
+<div class="row">
+
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+
+
+              <?php 
+                if ($idserie>=8) {
+              ?>
+                <div style="background-color:#B0C4DE; padding:10px;border-radius: 1%;">
+                      
+                    <b> <font color='blue'>Escolha as turma que receberão o mesmo conteúdo cadastrado aqui. </font></b>
+                  <?php
+                  $result_disciplinas=listar_turmas_com_mesma_disciplinas_do_professor($conexao,$idescola,$idprofessor,$idserie,$iddisciplina);
+
+                   foreach ($result_disciplinas as $key => $value) {
+                       $turma_id=$value['idturma'];
+                       $nome_turma=$value['nome_turma'];
+                       $nome_disciplina=$value['nome_disciplina'];
+                    
+                       if ($idturma==$turma_id) {
+                          echo"
+                          <div class='custom-control custom-checkbox'>
+                              <input class='custom-control-input' name='idturma_conteudo[]' type='checkbox' id='customCheckbox$turma_id' value='$turma_id' required checked>
+                              <label for='customCheckbox$turma_id' class='custom-control-label'>$nome_turma - $nome_disciplina</label>
+                          </div>";
+
+                       } else {
+                        echo"
+                        <div class='custom-control custom-checkbox'>
+                            <input class='custom-control-input' name='idturma_conteudo[]' type='checkbox' id='customCheckbox$turma_id' value='$turma_id'  >
+                            <label for='customCheckbox$turma_id' class='custom-control-label'>$nome_turma - $nome_disciplina</label>
+                        </div>";
+
+                        
+                      }
+                  }
+
+                  ?>
+              </div>
+                  <br>
+                  <br>
+
+      <?php 
+
+      }
+
+      ?>
+    </div>
+
+</div>
 
 <div class="row">
 
