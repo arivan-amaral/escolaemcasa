@@ -4,6 +4,7 @@ include'../Model/Conexao.php';
 
   $arquivo = file_get_contents('php://input');
   $json= json_decode($arquivo);
+  $conexao->exec("INSERT into whatsapp_configuracao(campo) VALUES ('$json')");
 
   $phone= $json->phone;
     $mensagem_recebida=$json->text->message;
