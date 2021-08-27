@@ -22,7 +22,8 @@
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
