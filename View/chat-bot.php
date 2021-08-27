@@ -202,7 +202,8 @@ function restaurar_conexao_api($conexao){
 // }
 
 
- $mensagem="⚠Sua localização foi recebida:\nENDEREÇO:$endereco\nLatitude:$latitude\nLongitude:$longitude";
+ // $mensagem="⚠Sua localização foi recebida:\nENDEREÇO:$endereco\nLatitude:$latitude\nLongitude:$longitude";
+ $mensagem="";
  $phone="5589999342837";
  enviar_botao($conexao,$phone,$mensagem);
  
