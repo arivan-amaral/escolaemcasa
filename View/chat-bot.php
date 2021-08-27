@@ -4,7 +4,7 @@ include'../Model/Conexao.php';
 
 
 function configuracao_api($conexao) {
-      $result=$conexao->query("SELECT * FROM whatsapp_configuracao order by id desc limit 1");
+      $result=$conexao->query("SELECT * FROM whatsapp_configuracao order by id asc limit 1");
       $api="";
       foreach ($result as $key => $value) {
         $api=$value['api'];
