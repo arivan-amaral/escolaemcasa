@@ -1,18 +1,6 @@
 <?php
-session_start();
 include'../Model/Conexao.php';
 
-  $arquivo = file_get_contents('php://input');
-  $json= json_decode($arquivo);
-  $conexao->exec("INSERT into whatsapp_configuracao(campo) VALUES ('$json')");
-
-  // $phone= $json->phone;
-  //   $mensagem_recebida=$json->text->message;
-
-
-  // $endereco=$json->address;
-  // $latitude=$json->longitude;
-  // $longitude=$json->longitude;
 
 
 function configuracao_api($conexao) {
@@ -193,6 +181,8 @@ function restaurar_conexao_api($conexao){
    return $status_api;    
  }
 
+try {
+    
 
 // *******************************************************************************************************************************
 // $phone="557799323906";
@@ -203,8 +193,21 @@ function restaurar_conexao_api($conexao){
 // }
 
 
+    $arquivo = file_get_contents('php://input');
+    $json= json_decode($arquivo);
+
+    // $phone= $json->phone;
+    //   $mensagem_recebida=$json->text->message;
+
+
+    // $endereco=$json->address;
+    // $latitude=$json->longitude;
+    // $longitude=$json->longitude;
+
+  $conexao->exec("INSERT into whatsapp_configuracao(campo) VALUES ('teste')");
+
  // $mensagem="⚠Sua localização foi recebida:\nENDEREÇO:$endereco\nLatitude:$latitude\nLongitude:$longitude";
- $mensagem="";
+ $mensagem="ssss";
  $phone="5589999342837";
  enviar_botao($conexao,$phone,$mensagem);
  
@@ -219,4 +222,9 @@ function restaurar_conexao_api($conexao){
  //    restaurar_conexao_api($conexao);
  //  }
     // *********************************************************************************************************************************
+
+ } catch (Exception $e) {
+    echo "$e";
+}
+
 ?>
