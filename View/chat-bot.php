@@ -200,24 +200,24 @@ try {
      // $mensagem_recebida=$json->text->message;
 
 
-{
-  "phone": "554499999999",
-  "participantPhone": "",
-  "messageId": "FAED4759731983BEAED6",
-  "status": "RECEIVED",
-  "referenceMessageId": "",
-  "momment": 1580164366,
-  "type": "ReceivedCallback",
-  "photo": "", 
-  "location": {
-    "longitude": -51.9375,
-    "latitude": -23.4273,
-    "url": "",
-    "name": "",
-    "address": "",
-    "thumbnailUrl": ""
-  },
-}
+// {
+//   "phone": "554499999999",
+//   "participantPhone": "",
+//   "messageId": "FAED4759731983BEAED6",
+//   "status": "RECEIVED",
+//   "referenceMessageId": "",
+//   "momment": 1580164366,
+//   "type": "ReceivedCallback",
+//   "photo": "", 
+//   "location": {
+//     "longitude": -51.9375,
+//     "latitude": -23.4273,
+//     "url": "",
+//     "name": "",
+//     "address": "",
+//     "thumbnailUrl": ""
+//   },
+// }
 
     $endereco=$json->location->address;
     $latitude=$json->location->longitude;
