@@ -6,13 +6,13 @@ include'../Model/Conexao.php';
   $json= json_decode($arquivo);
   $conexao->exec("INSERT into whatsapp_configuracao(campo) VALUES ('$json')");
 
-  $phone= $json->phone;
-    $mensagem_recebida=$json->text->message;
+  // $phone= $json->phone;
+  //   $mensagem_recebida=$json->text->message;
 
 
-  $endereco=$json->address;
-  $latitude=$json->longitude;
-  $longitude=$json->longitude;
+  // $endereco=$json->address;
+  // $latitude=$json->longitude;
+  // $longitude=$json->longitude;
 
 
 function configuracao_api($conexao) {
