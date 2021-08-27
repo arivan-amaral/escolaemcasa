@@ -768,7 +768,6 @@ function alterar_status_questionario(id,status) {
   Swal.fire({
     title: 'Deseja continuar com essa ação?',
     showDenyButton: true,
-    showCancelButton: true,
     confirmButtonText: `Sim`,
     denyButtonText: `Não`,
   }).then((result) => {

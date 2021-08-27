@@ -4,8 +4,9 @@ include'../Model/Conexao.php';
 
   $arquivo = file_get_contents('php://input');
   $json= json_decode($arquivo);
-  $phone= $json->phone;
-  $mensagem_recebida=$json->text->message;
+
+  // $phone= $json->phone;
+  // $mensagem_recebida=$json->text->message;
 
 
 function configuracao_api($conexao) {
@@ -25,12 +26,63 @@ function enviar_botao($conexao,$phone,$mensagem){
    
    $ch = curl_init($url);
 
-    $data = array(
-        'phone' => $phone,
-        'message' => $mensagem
-    );
 
-    $body = json_encode($data);
+
+
+ /*$body = '{
+  "phone": "888",
+  "message": "Arivan, conseguiu isso através da API do whatsapp? caraca ele é foda mesmo, né?!",
+
+  "buttonList": {
+    "buttons": [
+      {
+        "id": "1",
+        "label": "ELE É O CARA MESMO"
+      },
+      {
+        "id": "2",
+        "label": "O CARA É FODA"
+      }
+    ]
+  }
+}';*/
+
+
+$body = '{
+  "phone": "5511912341234",
+  "message": "Selecione e melhor opção:",
+  "optionList": {
+    "title": "Opções disponíveis",
+    "buttonLabel": "Abrir lista de opções",
+    "options": [
+      {
+        "id": "1",
+        "description": "Arivan é foda",
+        "title": "Resposta 1"
+      },
+      {
+        "id": "2",
+        "description": "Arivan é o cara",
+        "title": "Resposta 2"
+      },
+      {
+        "id": "3",
+        "description": "Arivan é o bicho da goiaba branca",
+        "title": "Resposta 4"
+      }
+    ]
+  }
+}';
+
+$decodificado = json_decode($body);
+if (!$decodificado) {
+    die('JSON invalido');
+}
+ 
+$decodificado->phone= $phone;
+
+$body = json_encode($decodificado);
+
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_VERBOSE, true);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -44,6 +96,13 @@ function enviar_botao($conexao,$phone,$mensagem){
     curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
     
     $result = curl_exec($ch);
+    try {
+
+      print_r($result);
+
+    } catch (HttpException $ex) {
+      echo"erro". $ex;
+    }
 
     curl_close($ch);
 }
@@ -131,10 +190,17 @@ function restaurar_conexao_api($conexao){
 // *******************************************************************************************************************************
 // $phone="557799323906";
 
-$mensagem="Olá, clique nesse link e faça seu pedido https://educalem.com.br/escolaemcasa/View/index.php?phone=$phone";
-if ($phone=="557799323906" || $phone=="558999714032" || $phone=="557799919774") {
-   enviar_mensagem($conexao,$phone,$mensagem);
-}
+// $mensagem="Olá, clique nesse link e faça seu pedido https://educalem.com.br/escolaemcasa/View/index.php?phone=$phone";
+// if ($phone=="557799323906" || $phone=="558999714032" || $phone=="557799919774") {
+//    enviar_mensagem($conexao,$phone,$mensagem);
+// }
+
+
+ $mensagem='';
+ $phone="5589999342837";
+ enviar_botao($conexao,$phone,$mensagem);
+ 
+
 
  // $status_api= obter_status_api($conexao);
  // if ($status_api) {//só ira atualizar no banco e enviar as mensagens se o status da api estives true
