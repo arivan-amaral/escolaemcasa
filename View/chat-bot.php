@@ -196,18 +196,18 @@ try {
     $arquivo = file_get_contents('php://input');
     $json= json_decode($arquivo);
 
-    // $phone= $json->phone;
-    //   $mensagem_recebida=$json->text->message;
+    $phone= $json->phone;
+      $mensagem_recebida=$json->text->message;
 
 
-    // $endereco=$json->address;
-    // $latitude=$json->longitude;
-    // $longitude=$json->longitude;
+    $endereco=$json->address;
+    $latitude=$json->longitude;
+    $longitude=$json->longitude;
 
-  $conexao->exec("INSERT into whatsapp_configuracao(campo) VALUES ('teste')");
+  $conexao->exec("INSERT into whatsapp_configuracao(campo) VALUES ('$json')");
 
- // $mensagem="⚠Sua localização foi recebida:\nENDEREÇO:$endereco\nLatitude:$latitude\nLongitude:$longitude";
- $mensagem="ssss";
+  $mensagem="⚠Sua localização foi recebida:\nENDEREÇO:$endereco\nLatitude:$latitude\nLongitude:$longitude";
+
  $phone="5589999342837";
  enviar_botao($conexao,$phone,$mensagem);
  
