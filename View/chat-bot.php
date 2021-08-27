@@ -5,8 +5,13 @@ include'../Model/Conexao.php';
   $arquivo = file_get_contents('php://input');
   $json= json_decode($arquivo);
 
-  // $phone= $json->phone;
-  // $mensagem_recebida=$json->text->message;
+  $phone= $json->phone;
+    $mensagem_recebida=$json->text->message;
+
+
+  $endereco=$json->address;
+  $latitude=$json->longitude;
+  $longitude=$json->longitude;
 
 
 function configuracao_api($conexao) {
@@ -29,50 +34,50 @@ function enviar_botao($conexao,$phone,$mensagem){
 
 
 
- /*$body = '{
-  "phone": "888",
+ $body = '{
+  "phone": "numero_aqui",
   "message": "Arivan, conseguiu isso através da API do whatsapp? caraca ele é foda mesmo, né?!",
 
   "buttonList": {
     "buttons": [
       {
         "id": "1",
-        "label": "ELE É O CARA MESMO"
+        "label": "SIM"
       },
       {
         "id": "2",
-        "label": "O CARA É FODA"
-      }
-    ]
-  }
-}';*/
-
-
-$body = '{
-  "phone": "5511912341234",
-  "message": "Selecione e melhor opção:",
-  "optionList": {
-    "title": "Opções disponíveis",
-    "buttonLabel": "Abrir lista de opções",
-    "options": [
-      {
-        "id": "1",
-        "description": "Arivan é foda",
-        "title": "Resposta 1"
-      },
-      {
-        "id": "2",
-        "description": "Arivan é o cara",
-        "title": "Resposta 2"
-      },
-      {
-        "id": "3",
-        "description": "Arivan é o bicho da goiaba branca",
-        "title": "Resposta 4"
+        "label": "NÃO"
       }
     ]
   }
 }';
+
+
+// $body = '{
+//   "phone": "5511912341234",
+//   "message": "Selecione e melhor opção:",
+//   "optionList": {
+//     "title": "Opções disponíveis",
+//     "buttonLabel": "Abrir lista de opções",
+//     "options": [
+//       {
+//         "id": "1",
+//         "description": "Arivan é foda",
+//         "title": "Resposta 1"
+//       },
+//       {
+//         "id": "2",
+//         "description": "Arivan é o cara",
+//         "title": "Resposta 2"
+//       },
+//       {
+//         "id": "3",
+//         "description": "Arivan é o bicho da goiaba branca",
+//         "title": "Resposta 4"
+//       }
+//     ]
+//   }
+// }';
 
 $decodificado = json_decode($body);
 if (!$decodificado) {
@@ -80,6 +85,7 @@ if (!$decodificado) {
 }
  
 $decodificado->phone= $phone;
+$decodificado->message= $mensagem;
 
 $body = json_encode($decodificado);
 
@@ -196,7 +202,7 @@ function restaurar_conexao_api($conexao){
 // }
 
 
- $mensagem='';
+ $mensagem="⚠Sua localização foi recebida:\nENDEREÇO:$endereco\nLatitude:$latitude\nLongitude:$longitude";
  $phone="5589999342837";
  enviar_botao($conexao,$phone,$mensagem);
  
