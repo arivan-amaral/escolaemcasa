@@ -1,5 +1,6 @@
 <?php
 include'../Model/Conexao.php';
+include'../Controller/Conversao.php';
 
 
 
@@ -195,22 +196,40 @@ try {
 
     $arquivo = file_get_contents('php://input');
     $json= json_decode($arquivo);
-
     $phone= $json->phone;
-      $mensagem_recebida=$json->text->message;
+     // $mensagem_recebida=$json->text->message;
 
 
-    $endereco=$json->address;
-    $latitude=$json->longitude;
-    $longitude=$json->longitude;
+{
+  "phone": "554499999999",
+  "participantPhone": "",
+  "messageId": "FAED4759731983BEAED6",
+  "status": "RECEIVED",
+  "referenceMessageId": "",
+  "momment": 1580164366,
+  "type": "ReceivedCallback",
+  "photo": "", 
+  "location": {
+    "longitude": -51.9375,
+    "latitude": -23.4273,
+    "url": "",
+    "name": "",
+    "address": "",
+    "thumbnailUrl": ""
+  },
+}
 
-  $conexao->exec("INSERT into whatsapp_configuracao(campo) VALUES ('$json')");
+    $endereco=$json->location->address;
+    $latitude=$json->location->longitude;
+    $longitude=$json->location->longitude;
 
-  $mensagem="⚠Sua localização foi recebida:\nENDEREÇO:$endereco\nLatitude:$latitude\nLongitude:$longitude";
 
- $phone="5589999342837";
+
+ $mensagem="⚠Sua localização foi recebida:\nENDEREÇO:$endereco\nLatitude:$latitude\nLongitude:$longitude";
+
+ //$phone="5589999342837";
  enviar_botao($conexao,$phone,$mensagem);
- 
+ print_r($json);
 
 
  // $status_api= obter_status_api($conexao);
