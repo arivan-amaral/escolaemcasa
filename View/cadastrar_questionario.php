@@ -121,7 +121,7 @@ $url_get=$array_url[1];
 
             <div style="background-color:#B0C4DE; padding:10px;border-radius: 1%;">
 
-              <b> <font color='blue'>Escolha as turma/disciplinas que receberar esse    questionário. </font></b>
+              <b> <font color='blue'>Escolha as turmas e/ou disciplinas que receberão esse questionário. </font></b>
               <?php
 
 

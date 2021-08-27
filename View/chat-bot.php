@@ -17,6 +17,38 @@ function configuracao_api($conexao) {
     return $api;
  }
 
+
+
+
+function enviar_botao($conexao,$phone,$mensagem){
+   $url = configuracao_api($conexao)."send-button-list";
+   
+   $ch = curl_init($url);
+
+    $data = array(
+        'phone' => $phone,
+        'message' => $mensagem
+    );
+
+    $body = json_encode($data);
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_VERBOSE, true);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_AUTOREFERER, false);
+    curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+    curl_setopt($ch, CURLOPT_HEADER, 0);        
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);        
+    curl_setopt($ch, CURLOPT_POST,true);        
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json; charset=utf-8')); 
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+    
+    $result = curl_exec($ch);
+
+    curl_close($ch);
+}
+
+
 function enviar_mensagem($conexao,$phone,$mensagem){
    $url = configuracao_api($conexao)."send-messages";
    
@@ -44,6 +76,9 @@ function enviar_mensagem($conexao,$phone,$mensagem){
 
     curl_close($ch);
 }
+
+
+
 
 function saudacao() {
       date_default_timezone_set('America/Sao_Paulo');
