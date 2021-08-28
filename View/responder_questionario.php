@@ -23,9 +23,6 @@ date_default_timezone_set('America/Bahia');
   $idturma=$_GET['turm'];
 
   $iddisciplina=$_GET['disc'];
-  $turma=$_GET['turma'];
-  $disciplina=$_GET['disciplina'];
-
   $data=date("Y-m-d H:i:s");
 
   
@@ -105,15 +102,7 @@ date_default_timezone_set('America/Bahia');
                   <div class="col-md-12">
 
                     
-
-
-
-
-                    <button type="button" class="btn btn-block  btn-success"><?php echo $turma."  - ".$disciplina ?></button>
-                    <br>
-
-
-            <?php 
+                                          <?php 
                                             $iddisciplina=$_GET['disc'];
                                             $idturma=$_GET['turm'];
 
@@ -361,8 +350,9 @@ if ($questionario_id>0) {
                                         
                                         
                                             
-                                              
-                                              <button  class="btn waves-effect waves-light btn-lg btn-warning" onclick="alert('Essa página será recarregada, certifique-se que todas suas respostas permanecerão, se sim, pode sair da página que suas resposta estão conosco, obrigado... '); refreshPage();">
+                                              <br>
+                                              <br>
+                                              <button  class="btn waves-effect waves-light btn-lg btn-success" onclick="alert('Essa página será recarregada, certifique-se que todas suas respostas permanecerão, se sim, pode sair da página que suas resposta estão conosco, obrigado... '); refreshPage();">
                                                   Finalizar Questionário
                                               </button>
 

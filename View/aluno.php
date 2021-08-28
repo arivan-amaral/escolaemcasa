@@ -16,32 +16,122 @@
   $idturma=$_SESSION['turma_id'];
   $idserie=$_SESSION['serie_id'];
   $data_atual=date("Y-m-d H:i:s");
+  $data=date("Y-m-d");
+  $hora_atual=date("H:i:s");
 ?>
 <script src="ajax.js?<?php echo rand(1,100); ?>"></script>
 
-
-
 <?php 
 
-$result_reuniao=$conexao->query("SELECT * FROM video_chamada WHERE escola_id=$idescola and turma_id=$idturma and  hora_inicio <='$data_atual'  and hora_fim >'$data_atual' limit 1");
-foreach ($result_reuniao as $key => $value) {
-  echo"
-  <script type='text/javascript'>
-      function modal_reuniao() {
-          $(document).ready(function() {
-              $('#modal-reuniao-videochamada').modal('show');
-            });
-      }
+$result_prova=$conexao->query("SELECT * FROM questionario WHERE escola_id=$idescola and turma_id=$idturma and data='$data' and status=1");
 
-      setTimeout('modal_reuniao();',800);
-      
-  </script>";
+
+$prova_ativa=0;
+echo "
+<div class='modal fade' id='modal-prova'>
+    <div class='modal-dialog'>
+      <div class='modal-content'>
+        <div class='modal-header'>
+          <h4 class='modal-title'>ATENÇÃO!</h4>
+          <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+            <span aria-hidden='true'>&times;</span>
+          </button>
+        </div>
+        
+
+          <div class='modal-body'>
+                 <h2>Você tem prova disponível.</h2>
+
+";
+foreach ($result_prova as $key_questionario => $value_questionario) {
+    $questionario_id=$value_questionario['id'];
+    $titulo=$value_questionario['nome'];
+    $iddisciplina=$value_questionario['disciplina_id'];
+    $idturma=$value_questionario['turma_id'];
+
+    $result_horario_prova=$conexao->query("SELECT * FROM horario_individual_questionario WHERE horario_individual_questionario.aluno_id=$idaluno AND
+     '$hora_atual' >= horario_individual_questionario.hora_inicio  AND '$hora_atual' <= horario_individual_questionario.hora_fim and questionario_id=$questionario_id limit 1");
+
+  foreach ($result_horario_prova as $key => $value) {
+    echo"
+
+    <script type='text/javascript'>
+
+        function modal_prova() {
+            $(document).ready(function() {
+                $('#modal-prova').modal('show');
+              });
+        }
+
+        setTimeout('modal_prova();',300);
+        
+    </script>";
+
+
+
+                  echo "
+                  <!-- corpo -->
+                 
+
+                 <a  href='responder_questionario.php?disc=$iddisciplina&turm=$idturma' class='btn btn-info btn-block btn-flat'>
+                         <i class='fa fa-edit'></i>
+
+                          RESPONDER PROVA: $titulo                                          
+
+                 </a> 
+                 <br>
+
+                  <!-- /corpo -->          
+           ";
+
+
+    $prova_ativa++;
+
+  }
+}
+
+echo "
+   </div>
+          <button type='button' class='btn btn-default' data-dismiss='modal'><font style='vertical-align: inherit;'><font style='vertical-align: inherit;'>Fechar</font></font></button>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+
+    ";
+
+
+
+if ($prova_ativa==0) {
+    $result_reuniao=$conexao->query("SELECT * FROM video_chamada WHERE escola_id=$idescola and turma_id=$idturma and  hora_inicio <='$data_atual'  and hora_fim >'$data_atual' limit 1");
+    foreach ($result_reuniao as $key => $value) {
+      echo"
+      <script type='text/javascript'>
+          function modal_reuniao() {
+              $(document).ready(function() {
+                  $('#modal-reuniao-videochamada').modal('show');
+                });
+          }
+
+          setTimeout('modal_reuniao();',800);
+          
+      </script>";
+
+
+
+    }
 }
 
 ?>
 
 
 
+
+
+
+
+ 
 
 <div class="modal fade" id="modal-reuniao-videochamada">
     <div class="modal-dialog">

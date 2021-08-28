@@ -113,9 +113,9 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 			VALUES ('$nome','$data',$professor_id,$turma_id,$disciplina_id)");
 	}
 
-	function copiar_questionario($conexao,$nome,$data,$professor_id,$turma_id,$disciplina_id,$origem_questionario_id){
-		$conexao->exec("INSERT INTO questionario(nome,data, professor_id,  turma_id, disciplina_id,origem_questionario_id) 
-			VALUES ('$nome','$data',$professor_id,$turma_id,$disciplina_id,'$origem_questionario_id')");
+	function copiar_questionario($conexao,$nome,$data,$professor_id,$turma_id,$disciplina_id,$origem_questionario_id,$idescola){
+		$conexao->exec("INSERT INTO questionario(nome,data, professor_id,  turma_id, disciplina_id,origem_questionario_id,escola_id) 
+			VALUES ('$nome','$data',$professor_id,$turma_id,$disciplina_id,'$origem_questionario_id',$idescola)");
 	}
 	
 	function cadastrar_questao($conexao,$nome, $tipo, $pontos,$questionario_id,$origem_questionario_id){

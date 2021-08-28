@@ -37,7 +37,7 @@ try {
 		$iddisciplina=$array_url[2];
 		$idserie=$array_url[3];
 
-		copiar_questionario($conexao,$nome,$data,$professor_id,$turma_id,$iddisciplina,$origem_questionario_id);
+		copiar_questionario($conexao,$nome,$data,$professor_id,$turma_id,$iddisciplina,$origem_questionario_id,$idescola);
 		$idquestionario=$conexao->lastInsertId();
 
 		$res=listar_aluno_da_turma_professor($conexao,$turma_id,$idescola);
