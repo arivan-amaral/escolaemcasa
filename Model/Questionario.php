@@ -277,9 +277,9 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 		return $return;
 	}
 
-	function listar_questionario_ativo($conexao,$id_funcionario,$turma_id,$disciplina_id){
+	function listar_questionario_ativo($conexao,$escola_id,$turma_id,$disciplina_id){
 		$return=$conexao->query("SELECT * FROM questionario WHERE 
-			professor_id=$id_funcionario and 
+			escola_id=$escola_id and 
 			turma_id=$turma_id and
 			disciplina_id=$disciplina_id and status=1");
 // 	status=1 and

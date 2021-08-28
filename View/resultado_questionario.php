@@ -1,12 +1,12 @@
 <?php
   session_start();
-if (!isset($_SESSION['idprofessor'])) {
+if (!isset($_SESSION['idfuncionario'])) {
 
        header("location:index.php?status=0");
 
 }else{
 
-  $idprofessor=$_SESSION['idprofessor'];
+  $idprofessor=$_SESSION['idfuncionario'];
 
 }
   include "cabecalho.php";
@@ -31,19 +31,15 @@ if (!isset($_SESSION['idprofessor'])) {
   $iddisciplina=$_GET['disc'];
   $turma=$_GET['turma'];
   $disciplina=$_GET['disciplina'];
-
-  $idturma=$_GET['turm'];
-  $idescola=$_GET['idescola'];
+  $escola_id=$_GET['idescola'];
 
   $data=date("Y-m-d H:i:s");
 
-  
+   
 
 ?>
 
-
-
-<script src="ajax.js"></script>
+<script src="ajax.js?<?php echo rand(); ?>"></script>
 
 
 
@@ -69,7 +65,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
              <?php if (isset($_SESSION['nome'])) {
 
-              echo " ".$_SESSION['nome'];  
+              echo "  ".$_SESSION['nome'];  
 
             } 
 
@@ -108,31 +104,10 @@ if (!isset($_SESSION['idprofessor'])) {
             <section class="content">
 
               <div class="container-fluid">
-                      <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-10">
-            <button class="btn btn-block btn-lg btn-secondary"><?php
-
-            $nome_turma='';
-            $nome_disciplina='';
-            if (isset($_GET['turma'])) {
-              $nome_turma=$_GET['turma'];
-            } 
-            if (isset($_GET['disciplina'])) {
-               $nome_disciplina=$_GET['disciplina'];
-
-            }
-
-             echo $nome_turma ." - ". $nome_disciplina; ?></button>
-        </div>
-      </div>
-      <br>
-      <br>
-      
 
                 <div class="row">
-
-                  <div class="col-md-12">
+                  <div class="col-sm-1"></div>
+                  <div class="col-sm-6">
 
                     
 
@@ -140,14 +115,14 @@ if (!isset($_SESSION['idprofessor'])) {
 
                         <select class="form-control" id='questionario' >
                             
-                            <?php 
+   <?php 
  
 
                             $turma_id=$_GET['turm'];
                             $disciplina_id=$_GET['disc'];
                            
 
-                                $listar_questao=listar_questionario_ativo($conexao,$idprofessor,$turma_id,$disciplina_id);
+                                $listar_questao=listar_questionario_ativo($conexao,$escola_id,$idturma,$iddisciplina);
                                 $conta=1;
                                 foreach ($listar_questao as $key => $value) {
                                   $idquestionario=$value['id'];
@@ -163,44 +138,34 @@ if (!isset($_SESSION['idprofessor'])) {
                        <?php 
 
                         echo "
+                        <input type='hidden' id='escola_id' value='$escola_id'>
                         <input type='hidden' id='disciplina_id' value='$disciplina_id'>
                         <input type='hidden' id='turma_id' value='$turma_id'>
                         ";
 
                       ?>
+                 </div> 
+                  <div class="col-sm-4"> 
+                 <br>
+<input type="hidden" id='aluno' value="1">
+                      <a class="btn btn-primary"  onclick="resultado_questao();"> PESQUISAR</a>
+                  </div>
 
 
-                  <h3 class="card-title">Escolha o Aluno</h3>
-                        <select class="form-control" id='aluno' onchange="resultado_questao();" >
-                          <option></option>
-                            <?php 
-                                $listar_aluno=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
-                                
-                                // $listar_aluno=listar_aluno_da_turma($conexao,$turma_id);
-                                $conta=1;
-                                foreach ($listar_aluno as $key => $value) {
-                                  $idaluno=$value['idaluno'];
-                                  $nome_aluno=converter_utf8($value['nome_aluno']);
-                                  echo "
-                                    <option value='$idaluno' >$nome_aluno</option>
+                        
+                </div>
+<br>
+<br>
 
-                                  ";
-                                }
-
-                            ?>
-                        </select>
-                        <br>
-
-
-                <div  id="resultado_questao">
-
-
+                <div class="row">
+                  <div class="col-sm-1"></div>
+                  <div class="col-sm-10"> 
+                    <div  id="resultado_questao">
+                    </div>
+                  </div>
                 </div>
             
 
-                  </div>        
-
-                </div>
 
               </div>
 

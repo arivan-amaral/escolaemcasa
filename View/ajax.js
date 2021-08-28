@@ -1073,10 +1073,11 @@ function excluir_material_apoio(id) {
     
     var disciplina_id = document.getElementById("disciplina_id").value;
     var turma_id = document.getElementById("turma_id").value;
+    var escola_id = document.getElementById("escola_id").value;
 
 
     var xmlreq = CriaRequest();   
-    xmlreq.open("GET", "../Controller/Resultado_questao.php?aluno="+aluno+"&questionario="+questionario+"&disciplina_id="+disciplina_id+"&turma_id="+turma_id, true);
+    xmlreq.open("GET", "../Controller/Lista_aluno_baixar_prova.php?escola_id="+escola_id+"&aluno="+aluno+"&questionario="+questionario+"&disciplina_id="+disciplina_id+"&turma_id="+turma_id, true);
 
 
     xmlreq.onreadystatechange = function(){
