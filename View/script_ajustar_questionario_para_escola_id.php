@@ -8,7 +8,7 @@ if (isset($_GET['indice'])) {
 }else{
     $indice=0;
 }
-$res_fun=$conexao->query("SELECT * from funcionario where descricao_funcao='Professor' or descricao_funcao='Professora' and status=1 limit $indice,250");
+$res_fun=$conexao->query("SELECT * from funcionario where descricao_funcao='Professor' or descricao_funcao='Professora' and status=1");
 foreach ($res_fun as $key_p => $value_p) {
     $idprofessor=$value_p['idfuncionario'];
     $result_disciplinas_t=listar_disciplina_professor($conexao,$idprofessor);
