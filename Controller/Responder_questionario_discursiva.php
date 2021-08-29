@@ -21,6 +21,7 @@ try {
 		
 		$cont++;
 	}
+	
 	if ($cont==0) {
 		$result = cadastrar_resposta_discursiva($conexao, $resposta_discursiva,  $turma_id, $alternativa_id, $disciplina_id, $aluno_id,$questao_id);
 	
@@ -30,11 +31,10 @@ try {
 
 		
 	}
+	echo "certo";
 	
 } catch (Exception $e) {
-	echo "
-		Erro...
-	";
+	echo "erro";
 }
 		
 ?>

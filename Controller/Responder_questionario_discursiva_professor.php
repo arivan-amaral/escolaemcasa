@@ -26,6 +26,7 @@ $id = $_GET['id'];
 		$pesquisa=$conexao->exec("UPDATE alternativa set correta=$resposta where nome='$texto_alternativa' and origem_questionario_id='$origem_questionario_id' ");
 		
 	}
+	echo "certo";
 
 } catch (Exception $e) {
 	echo "erro";

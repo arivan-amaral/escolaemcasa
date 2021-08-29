@@ -73,7 +73,7 @@ foreach ($result_prova as $key_questionario => $value_questionario) {
                   <!-- corpo -->
                  
 
-                 <a  href='responder_questionario.php?disc=$iddisciplina&turm=$idturma' class='btn btn-info btn-block btn-flat'>
+                 <a  href='responder_questionario.php?questionario_id=$questionario_id&disc=$iddisciplina&turm=$idturma' class='btn btn-info btn-block btn-flat'>
                          <i class='fa fa-edit'></i>
 
                           RESPONDER PROVA: $titulo                                          
@@ -749,13 +749,7 @@ if ($idserie>2) {
                                       if ($idserie>2) {
                                       
 
-                                         echo " <a  href='responder_questionario.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina' class='btn btn-info btn-block btn-flat'>
-
-                                                  <i class='fa fa-edit'></i>
-
-                                                    Prova/Testes                                           
-
-                                          </a>                                      
+                                         echo "                                     
 
                                           
 

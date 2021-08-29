@@ -1160,25 +1160,33 @@ function excluir_material_apoio(id) {
       
       xmlreq.onreadystatechange = function(){
        
-          if (xmlreq.readyState == 4) {
+            if (xmlreq.readyState == 4) {
               if (xmlreq.status == 200) {
-                  Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Ação Concluída',
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
-                  
-              }else{
-                 Swal.fire({
-                  icon: 'error',
-                  title: 'Oops...',
-                  text: 'Alguma Coisa deu Errado!',
-                  
-                });
-                  
-              }
+
+                if (xmlreq.responseText =="certo") {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Ação Concluída',
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+                      
+                  }else{
+                     Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      text: 'Alguma Coisa deu Errado!',
+                      
+                    });
+                      
+                  }
+
+            }else{
+                alert("ERRO, POR FAVOR, VERIFIQUE SUA CONEXÃO COM A INTERNET !");
+            }
+
+
           }
       };
       xmlreq.send(null);
@@ -1194,7 +1202,7 @@ function resposta_multipla_professor(id) {
        
           if (xmlreq.readyState == 4) {
               if (xmlreq.status == 200) {
-                if (true) {
+                if (xmlreq.responseText=="certo") {
                   Swal.fire({
                     position: 'center',
                     icon: 'success',
@@ -1212,7 +1220,8 @@ function resposta_multipla_professor(id) {
                 });
                   
               }
-          }else{
+          }
+          else{
             alert("Erro, verifique sua conexão com a internet!");
             }
         }
@@ -1232,22 +1241,44 @@ function resposta_multipla_professor(id) {
     var questao_id =  document.getElementById('questao_id'+id).value;
 
      var texto = document.getElementById(id).value;
-      
-
       var xmlreq = CriaRequest();
+
+      // numbersList.forEach((number, index, array) => {
+      //   myHTML += `<li>${number}</li>`;
+      // });
+
+
       xmlreq.open("GET", "../Controller/Responder_questionario_discursiva.php?texto="+texto+"&id="+idalternativa+"&disciplina_id="+disciplina_id+"&turma_id="+turma_id+"&questao_id="+questao_id, true);
       
       xmlreq.onreadystatechange = function(){
        
           if (xmlreq.readyState == 4) {
-              if (xmlreq.status == 200) {
-                 //alert("Alternativa Marcada");
+            if (xmlreq.status == 200) {
+
+                if (xmlreq.responseText=="certo") {
+                  // Swal.fire({
+                  //   position: 'center',
+                  //   icon: 'success',
+                  //   title: 'Ação Concluída',
+                  //   showConfirmButton: false,
+                  //   timer: 1500
+                  // });
                   
-              }else{
-                 alert('Erro');
+                }else{
+                //  Swal.fire({
+                //   icon: 'error',
+                //   title: 'Oops...',
+                //   text: 'Alguma Coisa deu Errado!',
+                  
+                // });
                   
               }
-          }
+            }
+            else{
+             alert("Erro, verifique sua conexão com a internet!");
+            }
+        }
+
       };
       xmlreq.send(null);
   }
@@ -1589,6 +1620,63 @@ function relatorio_de_visualizacao_video(idaluno,idturma,iddisciplina) {
            },
            willClose: () => {
              clearInterval(timerInterval)
+           }
+         }).then((result) => {
+           /* Read more about handling dismissals below */
+           if (result.dismiss === Swal.DismissReason.timer) {
+             console.log('I was closed by the timer')
+           }
+         })
+   }
+
+  function aguarde_tempo_dinamico(tempo){
+         let timerInterval
+         Swal.fire({
+           title: 'Aguarde, sua ação está sendo realizada!',
+            html: '<b></b> ',
+           timer: tempo,
+           timerProgressBar: true,
+           didOpen: () => {
+             Swal.showLoading()
+             timerInterval = setInterval(() => {
+               const content = Swal.getContent()
+               if (content) {
+                 const b = content.querySelector('b')
+                 if (b) {
+                   b.textContent = Swal.getTimerLeft()
+                 }
+               }
+             }, 100)
+           },
+           willClose: () => {
+             clearInterval(timerInterval)
+           
+           Swal.fire({
+             title: 'BOM TRABALHO 👏👏',
+             text:'ESCOLHA UMA OPÇÃO ',
+             showDenyButton: true,
+             confirmButtonText: `ENTREGAR PROVA`,
+             denyButtonText: `EDITAR RESPOSTAS`,
+
+             imageUrl: 'sucesso.gif',
+             imageAlt: 'Obrigado',
+             imageWidth: 400,
+             imageHeight: 200
+
+           }).then((result) => {
+             /* Read more about isConfirmed, isDenied below */
+             if (result.isConfirmed) {
+               window.location.href ='index.php';
+
+             } else if (result.isDenied) {
+               window.refresh();
+              
+
+             }
+           })
+           
+
+
            }
          }).then((result) => {
            /* Read more about handling dismissals below */

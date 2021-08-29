@@ -221,8 +221,8 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 	} 
  
 
-    function selecionar_questionario_data($conexao,$iddisciplina,$idturma,$data){
-		$return=$conexao->query("SELECT * FROM questionario WHERE disciplina_id=$iddisciplina and turma_id=$idturma and data='$data' and status=1");
+    function selecionar_questionario_data($conexao,$iddisciplina,$idturma,$data,$questionario_id){
+		$return=$conexao->query("SELECT * FROM questionario WHERE disciplina_id=$iddisciplina and turma_id=$idturma and data='$data' and id=$questionario_id and status=1");
 		return $return;
 	}
 	
