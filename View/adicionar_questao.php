@@ -244,7 +244,7 @@ $url_get=$array_url[1];
          if ($conta%2==0) {
            echo "<div class='p-3 mb-2' style='background-color:#B0C4DE' id='linha$idquestao'>";
          }else{
-           echo "<div class='p-3 mb-2  ' id='linha$idquestao'>";
+           echo "<div class='p-3 mb-2' id='linha$idquestao'>";
 
          }
          echo "
