@@ -10,6 +10,7 @@
   include '../Controller/Conversao.php';
 
   include '../Model/Conexao.php';
+  include '../Model/Disciplina.php';
 
   include '../Model/Aluno.php';
   $idescola=$_SESSION['escola_id'];
@@ -47,6 +48,11 @@ foreach ($result_prova as $key_questionario => $value_questionario) {
     $questionario_id=$value_questionario['id'];
     $titulo=$value_questionario['nome'];
     $iddisciplina=$value_questionario['disciplina_id'];
+    $nome_disciplina="";
+    $res_dis=pesquisar_disciplina_id($conexao,$iddisciplina);
+    foreach ($res_dis as $key_dis => $value_dis) {
+      $nome_disciplina=$value_dis['nome_disciplina'];
+    }
     $idturma=$value_questionario['turma_id'];
 
     $result_horario_prova=$conexao->query("SELECT * FROM horario_individual_questionario WHERE horario_individual_questionario.aluno_id=$idaluno AND
@@ -76,7 +82,7 @@ foreach ($result_prova as $key_questionario => $value_questionario) {
                  <a  href='responder_questionario.php?questionario_id=$questionario_id&disc=$iddisciplina&turm=$idturma' class='btn btn-info btn-block btn-flat'>
                          <i class='fa fa-edit'></i>
 
-                          RESPONDER PROVA: $titulo                                          
+                          RESPONDER PROVA $nome_disciplina: $titulo                                          
 
                  </a> 
                  <br>

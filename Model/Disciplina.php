@@ -12,6 +12,11 @@ function cadastrar_disciplina($conexao,$nome_disciplina){
     $result = $conexao->exec("INSERT INTO disciplina(nome_disciplina) VALUES ('$nome_disciplina')");
 }
 
+function pesquisar_disciplina_id($conexao,$id){
+    $result = $conexao->query("SELECT * FROM disciplina where iddisciplina=$id");
+    return $result;
+}
+
 function cadastrar_minhas_turmas($conexao,$turma,$disciplina,$id_funcionario){
     try{
         $result = $conexao->exec("INSERT into ministrada(turma_id,disciplina_id,professor_id, escola_id) values ($turma,$disciplina,$id_funcionario,1)");
