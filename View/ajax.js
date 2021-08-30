@@ -1287,17 +1287,18 @@ function resposta_multipla_professor(id) {
   
 function alterar_data_questionario(id) {
     var data = document.getElementById("data"+id).value;
+    var data_fim = document.getElementById("data_fim"+id).value;
     var result = document.getElementById("resposta_alteracao_data"+id);
     
     var xmlreq = CriaRequest();   
-    xmlreq.open("GET", "../Controller/Alterar_data_questionario.php?id="+id+"&data="+data, true);
+    xmlreq.open("GET", "../Controller/Alterar_data_questionario.php?id="+id+"&data="+data+"&data_fim="+data_fim, true);
 
     xmlreq.onreadystatechange = function(){
       
          if (xmlreq.readyState == 4) {
              if (xmlreq.status == 200) {
                  //alert('Data alterada');
-                 if (xmlreq.responseText !="erro") {
+                 if (xmlreq.responseText =="certo") {
                      result.innerHTML =  "Ação concluída!";
                  }else{
                 alert('verifique sua conexão com a internet!');

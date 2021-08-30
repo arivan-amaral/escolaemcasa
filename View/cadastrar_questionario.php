@@ -163,18 +163,25 @@ $url_get=$array_url[1];
         <div class="form-group">
             <input type="date" name="data" class="form-control"  required="">
 
+        </div>        
+
+        <b>Data final</b>
+        <div class="form-group">
+            <input type="date" name="data_final" class="form-control"  required="">
+
         </div>
 
 
 
 
-        <h4>Hora de Início</b>
+        <h4>Hora de Início (horários que os alunos poderão acessar a prova)</b>
             <div class="form-group">
-                <input type="time" class="form-control" name="hora_inicio" required>
+                <input type="time" class="form-control" name="hora_inicio" value="00:00" required>
             </div>
-            <h4>Hora de Fim</b>
+        
+        <h4>Hora de Fim</b>
                 <div class="form-group">
-                    <input type="time" class="form-control" name="hora_fim" required>
+                    <input type="time" class="form-control" name="hora_fim" value="23:59" required>
                 </div>
 
 
@@ -238,6 +245,7 @@ $url_get=$array_url[1];
                       $nome=($value['nome']);
                       $status=$value['status'];
                       $data=$value['data'];
+                      $data_fim=$value['data_fim'];
                       $origem_questionario_id=$value['origem_questionario_id'];
                       $cor='';
                       if ($conta%2==0) {
@@ -255,8 +263,11 @@ $url_get=$array_url[1];
                     id: $id <b>$nome_escola - $turma - $disciplina</b><br>
 
                     <b style='background-color:#CD853F'>$nome</b><br>
-
-                    <input type='date' value='$data' onchange='alterar_data_questionario($id);' id='data$id' >
+                    Data início<br>
+                    <input type='date' value='$data' onchange='alterar_data_questionario($id);' id='data$id' > 
+                    
+                   <br> Data final<br>
+                    <input type='date' value='$data_fim' onchange='alterar_data_questionario($id);' id='data_fim$id' >
                     <span class='alert-success' id='resposta_alteracao_data$id'></span>
                     <br>
 

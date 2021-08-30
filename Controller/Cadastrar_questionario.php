@@ -11,6 +11,7 @@ try {
 
 	$nome = $_POST['nome'];
 	$data = $_POST['data'];
+	$data_final = $_POST['data_final'];
 // $escola_turma_disciplina = $_POST['escola_turma_disciplina_idserie'];
 
 
@@ -37,7 +38,7 @@ try {
 		$iddisciplina=$array_url[2];
 		$idserie=$array_url[3];
 
-		copiar_questionario($conexao,$nome,$data,$professor_id,$turma_id,$iddisciplina,$origem_questionario_id,$idescola);
+		copiar_questionario($conexao,$nome,$data,$professor_id,$turma_id,$iddisciplina,$origem_questionario_id,$idescola,$data_final);
 		$idquestionario=$conexao->lastInsertId();
 
 		$res=listar_aluno_da_turma_professor($conexao,$turma_id,$idescola);

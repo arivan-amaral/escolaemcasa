@@ -113,9 +113,9 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 			VALUES ('$nome','$data',$professor_id,$turma_id,$disciplina_id)");
 	}
 
-	function copiar_questionario($conexao,$nome,$data,$professor_id,$turma_id,$disciplina_id,$origem_questionario_id,$idescola){
-		$conexao->exec("INSERT INTO questionario(nome,data, professor_id,  turma_id, disciplina_id,origem_questionario_id,escola_id) 
-			VALUES ('$nome','$data',$professor_id,$turma_id,$disciplina_id,'$origem_questionario_id',$idescola)");
+	function copiar_questionario($conexao,$nome,$data,$professor_id,$turma_id,$disciplina_id,$origem_questionario_id,$idescola,$data_final){
+		$conexao->exec("INSERT INTO questionario(nome,data, professor_id,  turma_id, disciplina_id,origem_questionario_id,escola_id,data_fim) 
+			VALUES ('$nome','$data',$professor_id,$turma_id,$disciplina_id,'$origem_questionario_id',$idescola,'$data_final')");
 	}
 	
 	function cadastrar_questao($conexao,$nome, $tipo, $pontos,$questionario_id,$origem_questionario_id){
@@ -148,9 +148,9 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 		return $return;
 	}
 
-	function alterar_data_questionario($conexao,$id,$data){
+	function alterar_data_questionario($conexao,$id,$data,$data_final){
 		$return=$conexao->exec("UPDATE questionario SET
-		 data='$data' WHERE id=$id ");
+		 data='$data',data_fim='$data_final' WHERE id=$id ");
 	
 		return $return;
 	}

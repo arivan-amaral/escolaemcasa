@@ -475,7 +475,7 @@ if ($prova_ativa==0) {
 
 
  <div class="row">
-                  <div class="col-lg-1 col-6"></div>
+                 
                   
                   <div class="col-lg-3 col-6">
                     <!-- small card -->
@@ -491,6 +491,24 @@ if ($prova_ativa==0) {
                         <i class="fas fa-tag"></i>
                       </div>
                       Aqui fica os Recados/orientações coletivas <i class="fas fa-arrow-circle-right"></i>
+                      </a>
+                    </div>
+                  </div>                  
+
+              <div class="col-lg-3 col-6">
+                    <!-- small card -->
+                    <div class="small-box bg-secondary">
+
+                    <a onclick="modal_prova();" class="small-box-footer">
+                      <div class="inner">
+                        <h3>Prova</h3>
+
+                        
+                      </div>
+                      <div class="icon">
+                        <i class="fas fa-tag"></i>
+                      </div>
+                      Clique para ver as provas que estão disponíveis <i class="fas fa-arrow-circle-right"></i>
                       </a>
                     </div>
                   </div>
