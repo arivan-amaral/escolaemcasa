@@ -179,6 +179,7 @@ $url_get=$array_url[1];
         foreach ($res_origem_questionario_id as $key => $value) {
           $questionario_id=$value['id'];
 
+                $idquestionario=($value['id']);
                 $nome_questionario=($value['nome']);
                 $data=converte_data($value['data']);
                 $nome_turma=($value['nome_turma']);
@@ -187,8 +188,8 @@ $url_get=$array_url[1];
 
                 echo"
                 <div class='custom-control custom-checkbox'>
-                <input class='custom-control-input' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox'  checked>
-                <label for='customCheckbox$idturma' class='custom-control-label'>$data - $nome_turma - $nome_disciplina - $nome_questionario</label>
+                <input class='custom-control-input' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$idquestionario' value='$idquestionario'  checked>
+                <label for='customCheckbox$idquestionario' class='custom-control-label'>$data - $nome_turma - $nome_disciplina - $nome_questionario</label>
                 </div>";
 
 

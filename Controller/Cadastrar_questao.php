@@ -33,8 +33,10 @@ $url = $_POST['url_get'];
 				
 				$res_origem_questionario_id=listar_questionario_mesma_origem($conexao,$origem_questionario_id);
 
-				foreach ($res_origem_questionario_id as $key => $value) {
-					$questionario_id=$value['id'];
+				foreach ($_POST['escola_turma_disciplina'] as $key => $value) {
+
+					$questionario_id=$_POST['escola_turma_disciplina'][$key];
+					
 					$result=cadastrar_questao($conexao,$nome_descricao, $tipo, $pontos,$questionario_id,$origem_questionario_id);
 					$questao_id=$result[1];
 					$resultado_arquivo=cadastrar_arquivo($conexao,$novoNome, $questao_id, $extensao,$origem_questionario_id);
@@ -50,8 +52,8 @@ $url = $_POST['url_get'];
 
 		$res_origem_questionario_id=listar_questionario_mesma_origem($conexao,$origem_questionario_id);
 
-		foreach ($res_origem_questionario_id as $key => $value) {
-			$questionario_id=$value['id'];
+		foreach ($_POST['escola_turma_disciplina'] as $key => $value) {
+			$questionario_id=$_POST['escola_turma_disciplina'][$key];
 			$result=cadastrar_questao($conexao,$nome_descricao, $tipo, $pontos,$questionario_id,$origem_questionario_id);
 			$questao_id=$result[1];
 			
