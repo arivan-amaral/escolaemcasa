@@ -89,8 +89,40 @@ $data=date("Y-m-d H:i:s");
 
 
 
-
+<script src="dropzone/dist/dropzone.js"></script>
 <script type="text/javascript">
+
+
+  $(function () {
+
+      var form;
+      $('#fileUpload').change(function (event) {
+          form = new FormData();
+          form.append('fileUpload', event.target.files[0]); // para apenas 1 arquivo
+          //var name = event.target.files[0].content.name; // para capturar o nome do arquivo com sua extenção
+      });
+
+      $('#btnEnviar').click(function () {
+          $.ajax({
+               url:'../Controller/Enviar_imagem_prova.php',
+               // Url do lado server que vai receber o arquivo
+              data: form,
+              processData: false,
+              contentType: false,
+              type: 'POST',
+              success: function (data) {
+                  // utilizar o retorno
+              }
+          });
+      });
+  });
+
+
+
+
+
+
+
 var discurciva = {};
 var objetiva_justificada = {};
 
@@ -327,6 +359,11 @@ adiciona_justificada_marcacao = function (title) {
               id='$id' onKeyup='adiciona_discurciva($id,this.value)' value='' required rows='5'>$resposta_discursiva</textarea>
               </div>
 
+
+
+<input type='hidden' id='fileUpload' name='fileUpload' />
+<input type='hidden' id='btnEnviar' value='Enviar' />
+   
 
               <div id='rd$id' class='alert-success'>
               </div>

@@ -1,9 +1,10 @@
 <?php session_start();
 include_once '../Model/Conexao.php';
 include_once '../Model/Questionario.php';
+include_once 'Conversao.php';
 
 
-$resposta_discursiva = $_GET['texto'];
+$resposta_discursiva = escape_mimic($_GET['texto']);
 $alternativa_id = $_GET['id'];
 $aluno_id=$_SESSION['idaluno'];
 $turma_id= $_GET['turma_id'];
