@@ -127,7 +127,6 @@ var discurciva = {};
 var objetiva_justificada = {};
 
 escrever_array = function (discurciva, objetiva_justificada) {
-    aguarde_tempo_dinamico(10000);
     Object.keys(discurciva).forEach(function(key) {
         resposta_discursiva(key);
 
@@ -450,9 +449,12 @@ adiciona_justificada_marcacao = function (title) {
 
       <br>
       <br>
-      <button  class="btn waves-effect waves-light btn-lg btn-success" onclick="escrever_array(discurciva,objetiva_justificada);">
+  <?php 
+  echo"
+      <button  class='btn waves-effect waves-light btn-lg btn-success' onclick='escrever_array(discurciva,objetiva_justificada);aguarde_tempo_dinamico($questionario_id);'>
         Finalizar Questionário
-      </button>
+      </button>";
+   ?>
 
 
 

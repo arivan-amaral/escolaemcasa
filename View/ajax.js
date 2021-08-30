@@ -1630,12 +1630,12 @@ function relatorio_de_visualizacao_video(idaluno,idturma,iddisciplina) {
          })
    }
 
-  function aguarde_tempo_dinamico(tempo){
+  function aguarde_tempo_dinamico(id){
          let timerInterval
          Swal.fire({
            title: 'Aguarde, sua ação está sendo realizada!',
             html: '<b></b> ',
-           timer: tempo,
+           timer: 10000,
            timerProgressBar: true,
            didOpen: () => {
              Swal.showLoading()
@@ -1667,7 +1667,7 @@ function relatorio_de_visualizacao_video(idaluno,idturma,iddisciplina) {
            }).then((result) => {
              /* Read more about isConfirmed, isDenied below */
              if (result.isConfirmed) {
-               window.location.href ='index.php';
+               window.location.href ='aluno.php?idquestionario='+id;
 
              } else if (result.isDenied) {
                window.refresh();

@@ -19,6 +19,14 @@
   $data_atual=date("Y-m-d H:i:s");
   $data=date("Y-m-d");
   $hora_atual=date("H:i:s");
+
+
+
+  if (isset($_GET['idquestionario'])){
+    $idquestionario=$_GET['idquestionario'];
+    $conexao->exec("insert into questionario_finalizado (aluno_id,questionario_id)  values ($idaluno,$idquestionario)");
+  }
+
 ?>
 <script src="ajax.js?<?php echo rand(1,100); ?>"></script>
 
@@ -55,45 +63,58 @@ foreach ($result_prova as $key_questionario => $value_questionario) {
     }
     $idturma=$value_questionario['turma_id'];
 
+
+   $res_finalizado=$conexao->query("SELECT * FROM questionario_finalizado WHERE aluno_id=$idaluno and questionario_id=$questionario_id");
+   $questionario_finalizado=0;
+   foreach ($res_finalizado as $key => $value) {
+      $questionario_finalizado++;
+   }
+
+if ($questionario_finalizado==0) {
+
     $result_horario_prova=$conexao->query("SELECT * FROM horario_individual_questionario WHERE horario_individual_questionario.aluno_id=$idaluno AND
      '$hora_atual' >= horario_individual_questionario.hora_inicio  AND '$hora_atual' <= horario_individual_questionario.hora_fim and questionario_id=$questionario_id limit 1");
 
-  foreach ($result_horario_prova as $key => $value) {
-    echo"
+    foreach ($result_horario_prova as $key => $value) {
+      echo"
 
-    <script type='text/javascript'>
+      <script type='text/javascript'>
 
-        function modal_prova() {
-            $(document).ready(function() {
-                $('#modal-prova').modal('show');
-              });
-        }
+          function modal_prova() {
+              $(document).ready(function() {
+                  $('#modal-prova').modal('show');
+                });
+          }
 
-        setTimeout('modal_prova();',300);
-        
-    </script>";
-
-
-
-                  echo "
-                  <!-- corpo -->
-                 
-
-                 <a  href='responder_questionario.php?questionario_id=$questionario_id&disc=$iddisciplina&turm=$idturma' class='btn btn-info btn-block btn-flat'>
-                         <i class='fa fa-edit'></i>
-
-                          RESPONDER PROVA $nome_disciplina: $titulo                                          
-
-                 </a> 
-                 <br>
-
-                  <!-- /corpo -->          
-           ";
+          setTimeout('modal_prova();',300);
+          
+      </script>";
 
 
-    $prova_ativa++;
 
+                    echo "
+                    <!-- corpo -->
+                   
+
+                   <a  href='responder_questionario.php?questionario_id=$questionario_id&disc=$iddisciplina&turm=$idturma' class='btn btn-info btn-block btn-flat'>
+                           <i class='fa fa-edit'></i>
+
+                            RESPONDER PROVA $nome_disciplina: $titulo                                          
+
+                   </a> 
+                   <br>
+
+                    <!-- /corpo -->          
+             ";
+
+
+      $prova_ativa++;
+
+    }
   }
+
+
+
 }
 
 echo "
