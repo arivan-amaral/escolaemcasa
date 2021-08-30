@@ -113,7 +113,7 @@ if (!isset($_SESSION['idfuncionario'])) {
 
                         <h3 class="card-title">Lista de Questionário</h3>
 
-                        <select class="form-control" id='questionario' >
+                        <select class="form-control" id='questionario' onchange='resultado_questao();' >
                             
    <?php 
  
@@ -128,7 +128,7 @@ if (!isset($_SESSION['idfuncionario'])) {
                                   $idquestionario=$value['id'];
                                   $questionario=converter_utf8($value['nome']);
                                   echo "
-                                    <option value='$idquestionario'> $questionario </option>
+                                    <option value='$idquestionario' > $questionario </option>
 
                                   ";
                                 }
@@ -161,6 +161,7 @@ if (!isset($_SESSION['idfuncionario'])) {
                   <div class="col-sm-1"></div>
                   <div class="col-sm-10"> 
                     <div  id="resultado_questao">
+
                     </div>
                   </div>
                 </div>

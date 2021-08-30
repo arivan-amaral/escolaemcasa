@@ -239,6 +239,10 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 	function listar_questao($conexao,$questionario_id){
 		$return=$conexao->query("SELECT * FROM questao WHERE questionario_id=$questionario_id");
 		return $return;
+	}	
+	function listar_questao_resultado($conexao,$questionario_id){
+		$return=$conexao->query("SELECT * FROM questao WHERE (tipo='multipla' or tipo='multipla_justificada') and questionario_id=$questionario_id");
+		return $return;
 	}
 
 	function listar_questao_aluno($conexao,$questionario_id){
@@ -268,6 +272,10 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 
 	function listar_alternativa($conexao,$idquestao){
 		$return=$conexao->query("SELECT * FROM alternativa WHERE questao_id=$idquestao");
+		return $return;
+	}
+	function listar_alternativa_resposta($conexao,$idquestao){
+		$return=$conexao->query("SELECT * FROM alternativa WHERE correta='1' and questao_id=$idquestao");
 		return $return;
 	}
 
