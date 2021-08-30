@@ -40,7 +40,7 @@ try {
 		$idserie = "NULL";
 		
 	}
-
+ 
 	$iddisciplina = $_POST['iddisciplina'];	
 	$idescola = $_POST['idescola'];
 	$idserie = $_POST['idserie'];
@@ -55,28 +55,21 @@ try {
 
 	$link = trim(str_replace($termos, '', $link));
 
-	cadastrar_video($conexao,$link, $titulo, $descricao, $id_funcionario,$idturma,$iddisciplina,$data_visivel,$hora,$idescola,$idserie);
+	foreach ($_POST['idturma'] as $key => $value) {
+		$idturma=$_POST['idturma'][$key];
+		cadastrar_video($conexao,$link, $titulo, $descricao, $id_funcionario,$idturma,$iddisciplina,$data_visivel,$hora,$idescola,$idserie);
+	}
 
 
 	$_SESSION['status']=1;
-	
-	if($origem=="professor"){
+	header("location:../View/cadastro_video.php?$url_get");
 
-		header("location:../View/cadastro_video.php?$url_get");
-		//echo 'teste';
-	}else{
-		header("location:../View/cadastro_video_gt.php?status=1&disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie");
-
-	}
 } catch (Exception $e) {
 	
 	$_SESSION['status']=0;
-	 if($idserie=="NULL"){
-		header("location:../View/cadastro_video.php?status=1&disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie");
-	}else{
-		header("location:../View/cadastro_video_gt.php?status=1&disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie");
-
-	}
+	$_SESSION['mensagem']='erro';
+	header("location:../View/cadastro_video.php?$url_get");
+	
 	
 }
 
