@@ -663,8 +663,15 @@ if ($idserie>2) {
                        
 
                           
-                          <?php 
+                <?php 
+                          $diasemana = array('Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feirs', 'Sexta-feira', 'Sábado');
 
+                          // $diasemana_numero = date('w', strtotime($data));
+                          // echo $diasemana[$diasemana_numero];
+
+                      if ($idserie<8) {
+                            // code...
+                      }
                             $result=listar_disciplina_aluno($conexao,$idaluno);
                             $conta=0;
 
@@ -707,7 +714,95 @@ if ($idserie>2) {
                                 </div>
                               </div>";
                             }
+                            
+                            if ($idserie<-1) {
+                              if ($conta==0) {
+                                foreach ($diasemana as $key_semana=> $value_semana) {
+                                  
+                                  if ($key_semana>0) {
 
+                                   $disciplina=$value_semana;
+                                   $iddisciplina=$key_semana;
+                                   $nome_professor="";
+
+                                    echo "
+
+                                    <div class='card card-primary'>
+
+                                      <div class='card-header'>
+
+                                        <h4 class='card-title w-100'>
+
+
+
+                                          <a class='d-block w-100 collapsed' data-toggle='collapse' href='#collapseOne$iddisciplina' aria-expanded='false'>
+
+                                           $nome_professor  <b class='text-warning'> $disciplina</b>
+
+                                            <i class='right fas fa-angle-left'></i>
+
+                                          </a>
+
+                                        </h4>
+
+                                      </div>
+
+                                      <div id='collapseOne$iddisciplina' class='collapse' data-parent='#accordion' style=''>
+
+                                        <div class='card-body'>
+
+                                            
+
+                                            <a class='btn btn-info btn-block btn-flat'
+
+                                             href='todos_os_videos.php?diasemana=$key_semana' >
+
+
+
+                                              <font style='vertical-align: inherit;'>
+
+                                                <font style='vertical-align: inherit;'> 
+
+                                                    <i class='fa fa-play'></i>
+
+                                                      Ver Videoaulas     
+
+                                                  </font>
+
+                                              </font>
+
+                                            </a> 
+
+
+
+                                           
+
+
+                                            <a  href='trabalhos.php?diasemana=$key_semana' class='btn btn-info btn-block btn-flat'>
+
+                                                    <i class='fa fa-book'></i>
+
+                                                      Trabalhos/Atividades                                           
+
+                                            </a> ";
+
+
+
+
+                                    echo"</div>
+
+                                  </div>
+
+                                </div>
+
+                                ";
+                              }
+
+                                }
+                              }     
+
+                                 
+                            }else{
 
                               echo "
 
@@ -791,10 +886,14 @@ if ($idserie>2) {
                               </div>
 
                               ";
-$conta++;
+
                             }
 
-                           ?>
+                        $conta++;
+                            }
+                      
+
+                ?>
 
                               
 
