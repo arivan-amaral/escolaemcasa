@@ -16,7 +16,7 @@ $id = $_GET['id'];
 
 	$pesquisa_alt=$conexao->query("SELECT * FROM alternativa WHERE nome like'$texto_alternativa' and origem_questionario_id='$origem_questionario_id' ");
 	$resposta=1;
-
+	$conta=0;
 	foreach ($pesquisa_alt as $key => $value) {
 		if ($value['correta']==0) {
 			$resposta=1;
@@ -24,9 +24,13 @@ $id = $_GET['id'];
 			$resposta=0;
 		}
 		$pesquisa=$conexao->exec("UPDATE alternativa set correta='$resposta' where nome='$texto_alternativa' and origem_questionario_id='$origem_questionario_id' ");
-		
+		$conta++;
 	}
-	echo "certo";
+	if ($conta>0) {
+		echo "certo";
+	}else{
+		echo "erro";
+	}
 
 } catch (Exception $e) {
 	echo "erro";
