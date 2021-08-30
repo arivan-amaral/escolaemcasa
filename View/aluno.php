@@ -494,7 +494,11 @@ if ($prova_ativa==0) {
                       </a>
                     </div>
                   </div>                  
+<?php 
 
+if ($prova_ativa!=0) {
+
+ ?>
               <div class="col-lg-3 col-6">
                     <!-- small card -->
                     <div class="small-box bg-secondary">
@@ -514,6 +518,7 @@ if ($prova_ativa==0) {
                   </div>
 
 <?php 
+}
 
 if ($idserie>2) {
 
