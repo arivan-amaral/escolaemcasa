@@ -29,8 +29,8 @@ if (!isset($_SESSION['idfuncionario'])) {
   $idturma=$_GET['turm'];
 
   $iddisciplina=$_GET['disc'];
-  $turma=$_GET['turma'];
-  $disciplina=$_GET['disciplina'];
+  // $turma=$_GET['turma'];
+  // $disciplina=$_GET['disciplina'];
   $escola_id=$_GET['idescola'];
 
   $data=date("Y-m-d H:i:s");

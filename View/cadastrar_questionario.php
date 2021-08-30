@@ -148,6 +148,7 @@ $url_get=$array_url[1];
 
 
 
+
             }
 
             ?>
@@ -314,19 +315,28 @@ $url_get=$array_url[1];
                   </td>
 
                   <td>
+                  
+                  <a  href='resultado_questionario.php?disc=$disciplina_id&turm=$turma_id&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat'>
+
+                          <ion-icon name='eye'></ion-icon>
+
+                            Acompanhar Prova/Testes                                           
+
+                  </a> 
+                  <br>
+
 
                   <a href='adicionar_questao.php?nome=$nome&id=$id&turma_id=$turma_id&disciplina_id=$disciplina_id&origem_questionario_id=$origem_questionario_id'>
-                  <span class='btn btn-primary'>
+                  <span class='btn btn-primary btn-block btn-flat'>
                   Adicionar Questões
                   </span>
                   </a>
 
                   <br>
-                  <br>
-
+          
 
                   <a href='adicionar_horario_individual_questionario.php?nome=$nome&id=$id&turma_id=$turma_id&disciplina_id=$disciplina_id&idescola=$idescola'>
-                  <span class='btn btn-secondary'>
+                  <span class='btn btn-secondary btn-block btn-flat'>
                   Agendar Hórario Individual
                   </span><br><br>
                   </a> 
