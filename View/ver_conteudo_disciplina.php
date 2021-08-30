@@ -156,6 +156,14 @@ if (!isset($_SESSION['idfuncionario'])) {
                            </a> 
 
 
+                           <a  href='resultado_questionario.php?disc=$iddisciplina&turm=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat'>
+
+                                   <ion-icon name='eye'></ion-icon>
+
+                                     Acompanhar Prova/Testes                                           
+
+                           </a> 
+                           <br>
 
                            <a   href='diario_rendimento.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-info btn-block btn-flat'>
                            <i class='fa fa-calendar'></i> 
@@ -268,6 +276,14 @@ if (!isset($_SESSION['idfuncionario'])) {
                                       </a> 
 
 
+                           <a  href='resultado_questionario.php?disc=$iddisciplina&turm=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat'>
+
+                                   <ion-icon name='eye'></ion-icon>
+
+                                     Acompanhar Prova/Testes                                           
+
+                           </a> 
+                           <br>
                                    <a   href='diario_rendimento.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-info btn-block btn-flat'>
                                      <i class='fa fa-calendar'></i> 
                                      RESULTADO FINAL
