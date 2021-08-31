@@ -223,7 +223,7 @@ adiciona_justificada_marcacao = function (title) {
 
           if ($questionario_id !="") {                                            
 
-            $hora_atual=date("H:i:s");
+            $hora_atual=date("H:i:00");
 
 
                                              //  echo "<script>";
