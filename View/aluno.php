@@ -52,11 +52,16 @@ echo "
                  <h2>Você tem prova disponível.</h2>
 
 ";
+$quantidade_questionario=1;
 foreach ($result_prova as $key_questionario => $value_questionario) {
+
+$quantidade_questionario++;
+
     $questionario_id=$value_questionario['id'];
     $titulo=$value_questionario['nome'];
     $iddisciplina=$value_questionario['disciplina_id'];
     $nome_disciplina="";
+    
     $res_dis=pesquisar_disciplina_id($conexao,$iddisciplina);
     foreach ($res_dis as $key_dis => $value_dis) {
       $nome_disciplina=$value_dis['nome_disciplina'];
@@ -102,7 +107,7 @@ if ($questionario_finalizado==0) {
                             RESPONDER PROVA $nome_disciplina: $titulo                                          
 
                    </a> 
-                   $hora_atual
+                   $hora_atual p: $prova_ativa q: $quantidade_questionario
                    <br>
 
                     <!-- /corpo -->          
@@ -112,6 +117,9 @@ if ($questionario_finalizado==0) {
       $prova_ativa++;
 
     }
+  }else{
+    echo "finalizado id: $quantidade_questionario";
+
   }
 
 
