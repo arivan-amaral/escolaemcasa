@@ -228,7 +228,7 @@ try {
 // $conexao->exec("INSERT into whatsapp_configuracao (campo) values ('$json')");
  $mensagem="⚠Sua localização foi recebida:\nENDEREÇO:$endereco\nLatitude:$latitude\nLongitude:$longitude";
 
- $phone="557799078824";
+ // $phone="5577999078824";
  enviar_botao($conexao,$phone,$mensagem);
  print_r($json);
 
