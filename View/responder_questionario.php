@@ -204,8 +204,7 @@ adiciona_justificada_marcacao = function (title) {
           $data_atual=date("Y-m-d");
                                             //$selec_questionario=selecionar_questionario($conexao,$iddisciplina,$idturma);
           $selec_questionario=selecionar_questionario_data($conexao,$iddisciplina,$idturma,$data_atual,$questionario_id);
-          $questionario_id="";
-
+  
           foreach ($selec_questionario as $key => $value) {
 
 
@@ -221,20 +220,15 @@ adiciona_justificada_marcacao = function (title) {
 
           }
 
+            $hora_inicio="";
+            $hora_fim="";
           if ($questionario_id !="") {                                            
 
             $hora_atual=date("H:i:00");
 
-
-                                             //  echo "<script>";
-                                             // echo "alert('$hora_atual');";
-                                             // echo "</script>  ";
-
             $verificar_horario=verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$questionario_id);
 
             $conta_horario=0;
-            $hora_inicio="";
-            $hora_fim="";
             foreach ($verificar_horario as $key => $value) {
               $hora_inicio=$value['hora_inicio'];
               $hora_fim=$value['hora_fim'];
@@ -262,7 +256,8 @@ adiciona_justificada_marcacao = function (title) {
           echo "Swal.fire({
            icon: 'error',
            title: 'Oops...',
-           text: 'Você não tem prova nesse hórario, verifique com seu professor!',
+           text: 'Você não tem prova nesse hórario, verifique com seu professor! hora atual: $hora_atual - $hora_inicio <> $hora_fim ',
+
 
          });";
 
