@@ -220,11 +220,11 @@ adiciona_justificada_marcacao = function (title) {
 
           }
 
-            $hora_inicio="";
-            $hora_fim="";
+            $hora_inicio="codi: ";
+            $hora_fim="erro";
           if ($questionario_id !="") {                                            
 
-            $hora_atual=date("H:i:00");
+            $hora_atual=date("H:i:s");
 
             $verificar_horario=verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$questionario_id);
 
