@@ -102,6 +102,7 @@ if ($questionario_finalizado==0) {
                             RESPONDER PROVA $nome_disciplina: $titulo                                          
 
                    </a> 
+                   $hora_atual
                    <br>
 
                     <!-- /corpo -->          
