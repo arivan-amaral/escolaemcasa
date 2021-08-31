@@ -53,6 +53,8 @@ echo "
 
 ";
 $quantidade_questionario=1;
+$result_prov="";
+
 foreach ($result_prova as $key_questionario => $value_questionario) {
 
 $quantidade_questionario++;
@@ -97,7 +99,7 @@ if ($questionario_finalizado==0) {
 
 
 
-                    echo "
+              $result_prov.= "
                     <!-- corpo -->
                    
 
@@ -107,7 +109,7 @@ if ($questionario_finalizado==0) {
                             RESPONDER PROVA $nome_disciplina: $titulo                                          
 
                    </a> 
-                   $hora_atual p: $prova_ativa q: $quantidade_questionario
+                   
                    <br>
 
                     <!-- /corpo -->          
@@ -117,14 +119,11 @@ if ($questionario_finalizado==0) {
       $prova_ativa++;
 
     }
-  }else{
-    echo "finalizado id: $quantidade_questionario";
-
   }
 
 
-
 }
+echo "$result_prov";
 
 echo "
    </div>
