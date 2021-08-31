@@ -54,6 +54,8 @@ echo "
 ";
 $quantidade_questionario=1;
 $result_prov="";
+   $hora_inicio="";
+   $hora_fim="";
 
 foreach ($result_prova as $key_questionario => $value_questionario) {
 
@@ -82,7 +84,9 @@ if ($questionario_finalizado==0) {
     $result_horario_prova=$conexao->query("SELECT * FROM horario_individual_questionario WHERE horario_individual_questionario.aluno_id=$idaluno AND
      '$hora_atual' >= horario_individual_questionario.hora_inicio  AND '$hora_atual' <= horario_individual_questionario.hora_fim and questionario_id=$questionario_id limit 1");
 
-    foreach ($result_horario_prova as $key => $value) {
+    foreach ($result_horario_prova as $key2 => $value2) {
+         $hora_inicio=$value2['hora_inicio'];
+              $hora_fim=$value2['hora_fim'];
       echo"
 
       <script type='text/javascript'>
@@ -106,7 +110,7 @@ if ($questionario_finalizado==0) {
                    <a  href='responder_questionario.php?questionario_id=$questionario_id&disc=$iddisciplina&turm=$idturma' class='btn btn-info btn-block btn-flat'>
                            <i class='fa fa-edit'></i>
 
-                            RESPONDER PROVA $nome_disciplina: $titulo                                          
+                            RESPONDER PROVA $nome_disciplina: $titulo  $hora_inicio ~~ $hora_fim                                         
 
                    </a> 
                    
