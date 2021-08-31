@@ -32,8 +32,7 @@
 
 <?php 
 
-$result_prova=$conexao->query("SELECT * FROM questionario WHERE escola_id=$idescola and turma_id=$idturma 
- data>='$data' and data_fim >='$data' and status=1");
+$result_prova=$conexao->query("SELECT * FROM questionario WHERE escola_id=$idescola and turma_id=$idturma and data>='$data' and data_fim >='$data' and status=1");
 
 
 $prova_ativa=0;
