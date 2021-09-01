@@ -232,6 +232,7 @@ $url_get=$array_url[1];
                 $result_disciplinas_t=listar_disciplina_professor($conexao,$idprofessor);
                     $conta=0;
                 foreach ($result_disciplinas_t as $key => $value) {                            
+                    $idescola=$value['idescola'];
                     $disciplina_id=$value['iddisciplina'];
                     $turma_id=$value['idturma'];
 
