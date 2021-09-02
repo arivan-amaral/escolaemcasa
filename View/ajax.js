@@ -798,6 +798,57 @@ function alterar_status_questionario(id,status) {
   })
 }
 
+
+
+//
+function excluir_questionario(id) {
+  Swal.fire({
+    title: 'Deseja continuar com a EXCLUSÃO?',
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: `Sim`,
+    denyButtonText: `Não`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      //window.location.href = "../Controller/Excluir_questionario.php?id="+id;
+   
+   var xmlreq = CriaRequest();   
+   xmlreq.open("GET", "../Controller/Excluir_questionario.php?id="+id, true);
+   xmlreq.onreadystatechange = function(){             
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {
+                if (xmlreq.responseText !="erro") {
+                    document.getElementById("linha"+id).innerHTML=xmlreq.responseText;
+
+                    Swal.fire('Ação não concluída', '', 'success');
+                }else{
+                    Swal.fire('Verifique sua conexão com a internet', '', 'error');
+
+                   // alert('Verifique sua conexão com a internet!');
+                    
+                 }
+               // alert('Ação concluída com sucesso!');                                             
+                
+            }else{
+                Swal.fire('Verifique sua conexão com a internet', '', 'error');
+
+               // alert('Verifique sua conexão com a internet!');
+                
+            }
+        }
+    };
+    xmlreq.send(null);
+
+
+    } else if (result.isDenied) {
+      //Swal.fire('Ação cancelada', '', 'info')
+    }
+  })
+}
+
+
+
 //
 function excluir_questionario_simulado(id) {
   Swal.fire({
