@@ -310,7 +310,7 @@ $url_get=$array_url[1];
 
              if ($status==1) {
                   echo"
-                  <a  onclick='alterar_status_questionario($id,$status);'>
+                  <a  onclick='alterar_status_questionario_simulado($id,$status);'>
 
                   <span class='btn btn-primary'>
                   Desativar
@@ -321,14 +321,14 @@ $url_get=$array_url[1];
                   ";
               }else if ($status==0) {
                   echo"
-                  <a onclick='alterar_status_questionario($id,$status);'>
+                  <a onclick='alterar_status_questionario_simulado($id,$status);'>
 
                   <span class='btn btn-warning'>
                   Ativar
                   </span>
                   </a>  
 
-                  <a onclick='excluir_questionario($id);'>
+                  <a onclick='excluir_questionario_simulado($id);'>
 
                   <span class='btn btn-danger'>
                   Excluir definitivamente?

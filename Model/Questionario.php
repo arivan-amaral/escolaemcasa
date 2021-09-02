@@ -194,6 +194,12 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 		return $return;
 	}
 
+	function alterar_status_questionario_simulado($conexao,$id,$status){
+		$return=$conexao->exec("UPDATE questionario_simulado SET
+		 status=$status WHERE id=$id ");
+		return $return;
+	}
+
 
 	function alterar_horario_individual_questionario($conexao,$hora_inicio,$hora_fim,$aluno_id,$idquestionario){
 		$return=$conexao->exec("UPDATE horario_individual_questionario SET
@@ -378,6 +384,10 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 	}
 	function excluir_questionario($conexao, $id) {
 	    $result = $conexao->query("DELETE FROM questionario WHERE id=$id");
+	    return $result;
+	}
+	function excluir_questionario_simulado($conexao, $id) {
+	    $result = $conexao->query("DELETE FROM questionario_simulado WHERE id=$id");
 	    return $result;
 	}
 

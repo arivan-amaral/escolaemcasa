@@ -764,6 +764,24 @@ function pesquisar_professor_associacao(){
 }
 
 //
+function alterar_status_questionario_simulado(id,status) {
+  Swal.fire({
+    title: 'Deseja continuar com essa ação?',
+    showDenyButton: true,
+    confirmButtonText: `Sim`,
+    denyButtonText: `Não`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      window.location.href = "../Controller/Alterar_status_questionario_simulado.php?id="+id+"&status="+status+"";
+    } else if (result.isDenied) {
+     // Swal.fire('Ação cancelada', '', 'info')
+    }
+  })
+}
+
+
+//
 function alterar_status_questionario(id,status) {
   Swal.fire({
     title: 'Deseja continuar com essa ação?',
@@ -781,7 +799,7 @@ function alterar_status_questionario(id,status) {
 }
 
 //
-function excluir_questionario(id) {
+function excluir_questionario_simulado(id) {
   Swal.fire({
     title: 'Deseja continuar com a EXCLUSÃO?',
     showDenyButton: true,
@@ -794,7 +812,7 @@ function excluir_questionario(id) {
       //window.location.href = "../Controller/Excluir_questionario.php?id="+id;
    
    var xmlreq = CriaRequest();   
-   xmlreq.open("GET", "../Controller/Excluir_questionario.php?id="+id, true);
+   xmlreq.open("GET", "../Controller/Excluir_questionario_simulado.php?id="+id, true);
    xmlreq.onreadystatechange = function(){             
         if (xmlreq.readyState == 4) {
             if (xmlreq.status == 200) {
@@ -826,6 +844,7 @@ function excluir_questionario(id) {
     }
   })
 }
+
 
 //
 function excluir_questao(id) {
