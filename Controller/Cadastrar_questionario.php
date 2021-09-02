@@ -38,14 +38,15 @@ try {
 		$iddisciplina=$array_url[2];
 		$idserie=$array_url[3];
 
-		copiar_questionario($conexao,$nome,$data,$professor_id,$turma_id,$iddisciplina,$origem_questionario_id,$idescola,$data_final);
+		$conexao->exec("INSERT INTO questionario_simulado(nome,data, professor_id,  turma_id, disciplina_id,origem_questionario_id,escola_id,data_fim) 
+			VALUES ('$nome','$data',$professor_id,$turma_id,$disciplina_id,'$origem_questionario_id',$idescola,'$data_final')");
 		$idquestionario=$conexao->lastInsertId();
 
-		$res=listar_aluno_da_turma_professor($conexao,$turma_id,$idescola);
-		foreach ($res as $key => $value) {
-			$idaluno=$value['idaluno'];
-			cadastrar_horario_individual_questionario($conexao,$hora_inicio,$hora_fim,$idaluno,$idquestionario);
-		}
+		// $res=listar_aluno_da_turma_professor($conexao,$turma_id,$idescola);
+		// foreach ($res as $key => $value) {
+		// 	$idaluno=$value['idaluno'];
+		// 	cadastrar_horario_individual_questionario($conexao,$hora_inicio,$hora_fim,$idaluno,$idquestionario);
+		// }
 
 	}
 
@@ -54,8 +55,7 @@ try {
 } catch (Exception $e) {
 	$_SESSION['status']=0;
 	$_SESSION['mensagem']='Erro desconhecido';
-	echo "$e";
-	//header("Location:../View/cadastrar_questionario.php?$url&status=0");
+	header("Location:../View/cadastrar_questionario.php?$url&status=0");
 	
 }
 

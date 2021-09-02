@@ -371,7 +371,10 @@ if (!isset($_SESSION['idcoordenador'])) {
         <div class="col-md-10">
           <br>
 
-
+          <a   href='cadastrar_simulado.php' class='btn btn-danger btn-block btn-flat'>
+          <i class='fa fa-edit'></i> 
+          SIMULADO
+          </a>  
           <div class="form-group">
 
             <label for="exampleInputEmail1">Escolha a escola</label>

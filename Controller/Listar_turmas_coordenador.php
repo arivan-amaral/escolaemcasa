@@ -45,6 +45,10 @@ $result="";
                                  </div>
                                 <div id='collapseOne$idturma' class='collapse' data-parent='#accordion' style=''>
                                 <div class='card-body'>
+                                        
+
+        
+
                                         <a   href='coordenador_relatorio_video_aluno.php?idturma=$idturma&nome_turma=$nome_turma&idescola=$idescola&idserie=$idserie' class='btn btn-warning btn-block btn-flat'>
                                           <i class='fa fa-play'></i> 
                                             VER RELATÓRIO DE VÍDEOS DE ALUNO
@@ -71,7 +75,7 @@ $result="";
                                           }
 
 
-                                          $result.="<a   href='boletim.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-danger btn-block btn-flat'>
+                                          $result.="<a   href='boletim.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat'>
                                           <i class='fa fa-calendar'></i> 
                                           BOLETIM
                                           </a>      

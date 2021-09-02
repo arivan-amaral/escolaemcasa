@@ -1387,6 +1387,110 @@ function alterar_data_questionario(id) {
  }
 
 
+  
+  
+function alterar_data_simulado(id) {
+    var data = document.getElementById("data"+id).value;
+    var data_fim = document.getElementById("data_fim"+id).value;
+    var result = document.getElementById("resposta_alteracao_data"+id);
+    
+    var xmlreq = CriaRequest();   
+    xmlreq.open("GET", "../Controller/Alterar_data_simulado.php?id="+id+"&data="+data+"&data_fim="+data_fim, true);
+
+    xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                 //alert('Data alterada');
+                 if (xmlreq.responseText =="certo") {
+                     result.innerHTML =  "Ação concluída!";
+                 }else{
+                alert('verifique sua conexão com a internet!');
+                // Swal.fire({
+                //   icon: 'error',
+                //   title: 'Oops...',
+                //   text: 'Alguma Coisa deu Errado!',
+                  
+                // });
+             }
+                 
+             }else{
+                alert('verifique sua conexão com a internet!');
+                // Swal.fire({
+                //   icon: 'error',
+                //   title: 'Oops...',
+                //   text: 'Alguma Coisa deu Errado!',
+                  
+                // });
+             }
+         }
+     };
+     xmlreq.send(null);
+ }
+
+
+ function alterar_horario_individual_questionario(idaluno) {
+
+    var result= document.getElementById("horario_alterado"+idaluno);
+    var idquestionario= document.getElementById("idquestionario").value;
+    var hora_inicio= document.getElementById("hora_inicio"+idaluno).value;
+    var hora_fim= document.getElementById("hora_fim"+idaluno).value;
+    result.innerHTML="";
+    var url = "idaluno="+idaluno+"&hora_inicio="+hora_inicio+"&hora_fim="+hora_fim+"&idquestionario="+idquestionario;
+     
+     var xmlreq = CriaRequest();
+     xmlreq.open("GET", "../Controller/Alterar_horario_individual_questionario.php?"+url, true);     
+     xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                result.innerHTML="<b class='text-success'>Alterado</b><br>";
+                 
+             }else{
+                result.innerHTML="<b class='text-danger'>Erro ao alterar horário</b><br>";
+                
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Alguma Coisa deu Errado!',
+                  
+                });
+                 
+             }
+         }
+     };
+     xmlreq.send(null);
+ }
+
+
+  function cadastra_horario_individual_questionario(idaluno) {
+
+    var idquestionario= document.getElementById("idquestionario").value;
+
+    var hora_inicio= document.getElementById("hora_inicio"+idaluno).value;
+    var hora_fim= document.getElementById("hora_fim"+idaluno).value;
+    
+    var url = "idaluno="+idaluno+"&hora_inicio="+hora_inicio+"&hora_fim="+hora_fim+"&idquestionario="+idquestionario;
+    
+
+    var xmlreq = CriaRequest();
+     xmlreq.open("GET", "../Controller/Cadastrar_horario_individual_questionario.php?idaluno="+idaluno+"&hora_inicio="+hora_inicio+"&hora_fim="+hora_fim+"&idquestionario="+idquestionario, true);
+     xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                //alert('Alterado Com Sucesso');          
+                 
+             }else{
+                alert('erro' );
+                 
+             }
+         }
+     };
+     xmlreq.send(null);
+ }
+
+
 
 
 function alterar_pergunta_discursiva(id) {
