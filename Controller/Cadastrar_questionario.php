@@ -42,11 +42,11 @@ try {
 			VALUES ('$nome','$data',$professor_id,$turma_id,$disciplina_id,'$origem_questionario_id',$idescola,'$data_final')");
 		$idquestionario=$conexao->lastInsertId();
 
-		// $res=listar_aluno_da_turma_professor($conexao,$turma_id,$idescola);
-		// foreach ($res as $key => $value) {
-		// 	$idaluno=$value['idaluno'];
-		// 	cadastrar_horario_individual_questionario($conexao,$hora_inicio,$hora_fim,$idaluno,$idquestionario);
-		// }
+		$res=listar_aluno_da_turma_professor($conexao,$turma_id,$idescola);
+		foreach ($res as $key => $value) {
+			$idaluno=$value['idaluno'];
+			cadastrar_horario_individual_questionario($conexao,$hora_inicio,$hora_fim,$idaluno,$idquestionario);
+		}
 
 	}
 
@@ -54,7 +54,7 @@ try {
 	header("Location:../View/cadastrar_questionario.php?$url&status=1");
 } catch (Exception $e) {
 	$_SESSION['status']=0;
-	$_SESSION['mensagem']='Erro desconhecido: '.$e;
+	$_SESSION['mensagem']='Erro desconhecido';
 	header("Location:../View/cadastrar_questionario.php?$url&status=0");
 	
 }
