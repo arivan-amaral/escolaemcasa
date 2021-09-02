@@ -357,6 +357,16 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 // 	status=1 and
 
 		return $return;
+	}	
+
+
+	function listar_simulado_ativo($conexao,$idserie){
+		$return=$conexao->query("SELECT * FROM questionario_simulado WHERE 
+
+			serie_id=$idserie and status=1");
+// 	status=1 and
+
+		return $return;
 	}
 
 	function listar_questionario($conexao,$id_funcionario,$turma_id,$disciplina_id){

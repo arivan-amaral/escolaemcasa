@@ -26,12 +26,12 @@ if (!isset($_SESSION['idfuncionario'])) {
 
 
 
-  $idturma=$_GET['turm'];
+  $idserie=$_GET['idserie'];
 
-  $iddisciplina=$_GET['disc'];
-  // $turma=$_GET['turma'];
-  // $disciplina=$_GET['disciplina'];
-  $escola_id=$_GET['idescola'];
+  // $iddisciplina=$_GET['disc'];
+  // // $turma=$_GET['turma'];
+  // // $disciplina=$_GET['disciplina'];
+  // $escola_id=$_GET['idescola'];
 
   $data=date("Y-m-d H:i:s");
 
@@ -131,7 +131,7 @@ Swal.fire({
                             $disciplina_id=$_GET['disc'];
                            
 
-                                $listar_questao=listar_questionario_ativo($conexao,$escola_id,$idturma,$iddisciplina);
+                                $listar_questao=listar_simulado_ativo($conexao,$idserie);
                                 $conta=1;
                                 foreach ($listar_questao as $key => $value) {
                                   $idquestionario=$value['id'];
@@ -146,11 +146,6 @@ Swal.fire({
                         </select>
                        <?php 
 
-                        echo "
-                        <input type='hidden' id='escola_id' value='$escola_id'>
-                        <input type='hidden' id='disciplina_id' value='$disciplina_id'>
-                        <input type='hidden' id='turma_id' value='$turma_id'>
-                        ";
 
                       ?>
                  </div> 
