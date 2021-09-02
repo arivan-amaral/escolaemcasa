@@ -124,6 +124,15 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 			VALUES ('$nome','$data','$data_final',$funcionario_id,'$origem_questionario_id',$idserie)");
 	}
 	
+	function cadastrar_questao_simulado($conexao,$nome, $tipo, $pontos,$questionario_id,$origem_questionario_id){
+		$return[0]=$conexao->exec(
+		"INSERT INTO questao_simulado(nome,tipo, pontos, questionario_id,origem_questionario_id) 
+			VALUES ('$nome', '$tipo', $pontos,$questionario_id,'$origem_questionario_id')
+		");
+		$return[1]=$conexao->lastInsertId();
+		return $return;
+	}
+
 	function cadastrar_questao($conexao,$nome, $tipo, $pontos,$questionario_id,$origem_questionario_id){
 		$return[0]=$conexao->exec(
 		"INSERT INTO questao(nome,tipo, pontos, questionario_id,origem_questionario_id) 
@@ -144,12 +153,23 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 
 
 	
+	function cadastrar_alternativa_simulado($conexao,$nome, $tipo, $questao_id,$origem_questionario_id){
+		$return=$conexao->exec("INSERT INTO alternativa_simulado(nome, tipo, questao_id,origem_questionario_id) VALUES ('$nome', '$tipo', $questao_id,'$origem_questionario_id')");
+	}	
+
 	function cadastrar_alternativa($conexao,$nome, $tipo, $questao_id,$origem_questionario_id){
 		$return=$conexao->exec("INSERT INTO alternativa(nome, tipo, questao_id,origem_questionario_id) VALUES ('$nome', '$tipo', $questao_id,'$origem_questionario_id')");
 	}
 	function cadastrar_arquivo($conexao,$novoNome, $questao_id, $extensao,$origem_questionario_id){
 
 		$return=$conexao->exec("INSERT INTO arquivo_questao(arquivo, questao_id,  extensao,origem_questionario_id) VALUES ('$novoNome',$questao_id,'$extensao','$origem_questionario_id')");
+		
+		return $return;
+	}	
+
+	function cadastrar_arquivo_simulado($conexao,$novoNome, $questao_id, $extensao,$origem_questionario_id){
+
+		$return=$conexao->exec("INSERT INTO arquivo_questao_simulado(arquivo, questao_id,  extensao,origem_questionario_id) VALUES ('$novoNome',$questao_id,'$extensao','$origem_questionario_id')");
 		
 		return $return;
 	}
@@ -254,10 +274,16 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 	}
 
 
+	function listar_questao_simulado($conexao,$questionario_id){
+		$return=$conexao->query("SELECT * FROM questao_simulado WHERE questionario_id=$questionario_id");
+		return $return;
+	}	
+	
 	function listar_questao($conexao,$questionario_id){
 		$return=$conexao->query("SELECT * FROM questao WHERE questionario_id=$questionario_id");
 		return $return;
 	}	
+
 	function listar_questao_resultado($conexao,$questionario_id){
 		$return=$conexao->query("SELECT * FROM questao WHERE (tipo='multipla' or tipo='multipla_justificada') and questionario_id=$questionario_id");
 		return $return;
@@ -288,15 +314,29 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 	
 
 
+	function listar_alternativa_simulado($conexao,$idquestao){
+		$return=$conexao->query("SELECT * FROM alternativa_simulado WHERE questao_id=$idquestao");
+		return $return;
+	}
+
+
 	function listar_alternativa($conexao,$idquestao){
 		$return=$conexao->query("SELECT * FROM alternativa WHERE questao_id=$idquestao");
 		return $return;
 	}
+
+
+
 	function listar_alternativa_resposta($conexao,$idquestao){
 		$return=$conexao->query("SELECT * FROM alternativa WHERE correta='1' and questao_id=$idquestao");
 		return $return;
 	}
 
+
+	function listar_arquivo_simulado($conexao,$idquestao){
+		$return=$conexao->query("SELECT * FROM arquivo_questao_simulado WHERE questao_id=$idquestao");
+		return $return;
+	}
 
 	function listar_arquivo($conexao,$idquestao){
 		$return=$conexao->query("SELECT * FROM arquivo_questao WHERE questao_id=$idquestao");
@@ -325,6 +365,10 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 
 	function excluir_questao($conexao, $id) {
 	    $result = $conexao->query("DELETE FROM questao WHERE id=$id");
+	    return $result;
+	}		
+	function excluir_questao_simulado($conexao, $id) {
+	    $result = $conexao->query("DELETE FROM questao_simulado WHERE id=$id");
 	    return $result;
 	}	
 

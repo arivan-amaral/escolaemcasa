@@ -872,6 +872,51 @@ function excluir_questao(id) {
       //Swal.fire('Ação cancelada', '', 'info')
     }
   })
+}//
+function excluir_questao_simulado(id) {
+  Swal.fire({
+    title: 'Deseja continuar com a EXCLUSÃO?',
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: `Sim`,
+    denyButtonText: `Não`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      //window.location.href = "../Controller/Excluir_questionario.php?id="+id;
+   
+   var xmlreq = CriaRequest();   
+   xmlreq.open("GET", "../Controller/Excluir_questao_simulado.php?id="+id, true);
+   xmlreq.onreadystatechange = function(){             
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {
+                if (xmlreq.responseText !="erro") {
+                    document.getElementById("linha"+id).innerHTML=xmlreq.responseText;
+
+                    Swal.fire('Ação não concluída', '', 'success');
+                }else{
+                    Swal.fire('Verifique sua conexão com a internet', '', 'error');
+
+                   // alert('Verifique sua conexão com a internet!');
+                    
+                 }
+               // alert('Ação concluída com sucesso!');                                             
+                
+            }else{
+                Swal.fire('Verifique sua conexão com a internet', '', 'error');
+
+               // alert('Verifique sua conexão com a internet!');
+                
+            }
+        }
+    };
+    xmlreq.send(null);
+
+
+    } else if (result.isDenied) {
+      //Swal.fire('Ação cancelada', '', 'info')
+    }
+  })
 }
 
 
@@ -1229,6 +1274,48 @@ function resposta_multipla_professor(id) {
       xmlreq.send(null);
   } 
   
+
+  
+
+function resposta_multipla_professor_simulado(id) {
+    var origem_questionario_id =  document.getElementById('origem_questionario_id').value;
+    var texto_alternativa =  document.getElementById('alternativa'+id).value;
+    var xmlreq = CriaRequest();
+    xmlreq.open("GET", "../Controller/Responder_questionario_discursiva_professor_simulado.php?origem_questionario_id="+origem_questionario_id+"&id="+id+"&texto_alternativa="+texto_alternativa, true);
+    xmlreq.onreadystatechange = function(){
+       
+          if (xmlreq.readyState == 4) {
+              if (xmlreq.status == 200) {
+                if (xmlreq.responseText=="certo") {
+                  Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Ação Concluída',
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                  
+                }else{
+                 Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Alguma Coisa deu Errado!',
+                  
+                });
+                  
+              }
+          }
+          else{
+            alert("Erro, verifique sua conexão com a internet!");
+            }
+        }
+    };
+      xmlreq.send(null);
+  } 
+  
+
+
+
   function resposta_justificada(id) {
      
      var idalternativa =id;

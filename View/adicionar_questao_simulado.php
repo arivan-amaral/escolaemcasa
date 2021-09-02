@@ -14,6 +14,8 @@ include '../Model/Conexao.php';
 include '../Controller/Conversao.php';
 include '../Model/Questionario.php';
 
+$nome_questionario=$_GET['nome'];
+$questionario_id=$_GET['questionario_id'];
 $origem_questionario_id=$_GET['origem_questionario_id'];
 
 $array_url=explode('p?', $_SERVER["REQUEST_URI"]);
@@ -26,7 +28,7 @@ $url_get=$array_url[1];
 
 
 
-<script src="ajax.js?<?php echo rand(1100,2000);?>"></script>
+<script src="ajax.js?<?php echo rand();?>"></script>
 
 <script type="text/javascript">
 
@@ -110,7 +112,7 @@ Swal.fire({
 
         <button type="button" class="btn btn-block btn-secondary"> Adicionar questões ao questionário: <b><?php echo $_GET['nome']; ?></b></button>
 
-        <form class="mt-12" action="../Controller/Cadastrar_questao.php" method="post" enctype="multipart/form-data">
+        <form class="mt-12" action="../Controller/Cadastrar_questao_simulado.php" method="post" enctype="multipart/form-data">
           
 
 <input type="hidden" id="origem_questionario_id" value="<?php echo $origem_questionario_id; ?>">
@@ -125,7 +127,7 @@ Swal.fire({
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                  <textarea name="nome" id="summernote" style="height: 245.719px;"></textarea>
+                  <textarea name="nome" id="summernote" style="height: 245.719px;" required></textarea>
 
                 </div>
                 <div class="card-footer">
@@ -164,49 +166,15 @@ Swal.fire({
           </div>
 
           <div id="gerar_questao" style="background-color: #e8eaec;">
-
-
           </div>
 
-            <div style="background-color:#B0C4DE; padding:10px;border-radius: 1%;">
-
-    
-              <b> <font color='blue'>Essa questão será inserida nos questionários abaixo. </font></b>
-
-              <?php
-
-
-        $res_origem_questionario_id=listar_questionario_mesma_origem($conexao,$origem_questionario_id);
-
-        foreach ($res_origem_questionario_id as $key => $value) {
-          $questionario_id=$value['id'];
-
-                $idquestionario=($value['id']);
-                $nome_questionario=($value['nome']);
-                $data=converte_data($value['data']);
-                $nome_turma=($value['nome_turma']);
-                $nome_disciplina=($value['nome_disciplina']);
-               
-
-                echo"
-                <div class='custom-control custom-checkbox'>
-                <input class='custom-control-input' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$idquestionario' value='$idquestionario'  checked>
-                <label for='customCheckbox$idquestionario' class='custom-control-label'>$data - $nome_turma - $nome_disciplina - $nome_questionario</label>
-                </div>";
-
-
-
-            }
-
-            ?>
-        </div>
-        <br>
-        <br>
+            
 
 
 
 
           <input type="hidden" name="origem_questionario_id" value="<?php echo $origem_questionario_id; ?>" class="form-control" required="">
+          <input type="hidden" name="questionario_id" value="<?php echo $questionario_id; ?>" class="form-control" required="">
           <input type="hidden" name="url_get" value="<?php echo $url_get; ?>" class="form-control" required="">
 
           <button type="submit" class="btn waves-effect waves-light btn-lg btn-primary">
@@ -231,10 +199,9 @@ Swal.fire({
 
         <?php 
 
-        $nome_questionario=$_GET['nome'];
-        $questionario_id=$_GET['id'];
+       
 
-        $listar_questao=listar_questao($conexao,$questionario_id);
+        $listar_questao=listar_questao_simulado($conexao,$questionario_id);
         $conta=1;
         foreach ($listar_questao as $key => $value) {
          $idquestao=$value['id'];
@@ -259,12 +226,12 @@ Swal.fire({
          </textarea>-->
 
 
-         id:$idquestao <a onclick='excluir_questao($idquestao)' class='btn btn-danger'> Excluir Questão</a><br>
+         id:$idquestao <a onclick='excluir_questao_simulado($idquestao)' class='btn btn-danger'> Excluir Questão</a><br>
          <p id='res$idquestao'> </p>
 
          </div>";
 
-         $arquivo_anexo=listar_arquivo($conexao,$idquestao);
+         $arquivo_anexo=listar_arquivo_simulado($conexao,$idquestao);
          foreach ($arquivo_anexo as $key => $value) {
            $idarquivo=$value['id'];
            $arquivo=$value['arquivo'];
@@ -277,7 +244,7 @@ Swal.fire({
 
 
          $cont=1;
-         $listar_alternativa=listar_alternativa($conexao,$idquestao);
+         $listar_alternativa=listar_alternativa_simulado($conexao,$idquestao);
 
          if ($tipo=="multipla" || $tipo=="multipla_justificada") {
 
@@ -293,7 +260,7 @@ Swal.fire({
 
 
            echo "<br>";
-          $pesquisa_alt=$conexao->query("SELECT * FROM alternativa WHERE id=$id ");
+          $pesquisa_alt=$conexao->query("SELECT * FROM alternativa_simulado WHERE id=$id ");
    
           $marcado="";
           foreach ($pesquisa_alt as $key_alt => $value_alt) {
@@ -314,7 +281,7 @@ Swal.fire({
             <div class='custom-control custom-radio'>
             <input type='hidden' value='$alternativa' id='alternativa$id'>
 
-            <input type='checkbox' id='customRadio$id$cont' name='alternativa$id$questao_id' class='custom-control-input' onclick='resposta_multipla_professor($id)' $marcado>
+            <input type='checkbox' id='customRadio$id$cont' name='alternativa$id$questao_id' class='custom-control-input' onclick='resposta_multipla_professor_simulado($id)' $marcado>
             <label class='custom-control-label' for='customRadio$id$cont'>
             $alternativa</label>
             </div>
@@ -325,7 +292,7 @@ Swal.fire({
             <input type='hidden' value='$alternativa' id='alternativa$id'>
 
            <div class='custom-control custom-radio'>
-           <input type='checkbox' id='customRadio$id$cont' name='alternativa$id$questao_id' class='custom-control-input' onclick='resposta_multipla_professor($id)' $marcado>
+           <input type='checkbox' id='customRadio$id$cont' name='alternativa$id$questao_id' class='custom-control-input' onclick='resposta_multipla_professor_simulado($id)' $marcado>
            <label class='custom-control-label' for='customRadio$id$cont'>$alternativa</label>
            </div>
            "; 
