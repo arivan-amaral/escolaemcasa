@@ -54,7 +54,7 @@ try {
 	header("Location:../View/cadastrar_questionario.php?$url&status=1");
 } catch (Exception $e) {
 	$_SESSION['status']=0;
-	$_SESSION['mensagem']='Erro desconhecido';
+	$_SESSION['mensagem']='Erro desconhecido: '.$e;
 	header("Location:../View/cadastrar_questionario.php?$url&status=0");
 	
 }
