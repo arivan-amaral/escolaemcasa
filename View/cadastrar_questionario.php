@@ -240,7 +240,7 @@ $url_get=$array_url[1];
                     $nome_escola=($value['nome_escola']);
                     $turma=($value['nome_turma']);
 
-                    $result=listar_questionario($conexao,$idprofessor,$turma_id,$disciplina_id);
+                    $result=listar_questionario_professor($conexao,$idescola,$turma_id,$disciplina_id);
                     foreach ($result as $key => $value) {
                       $id=$value['id'];
                       $nome=($value['nome']);

@@ -377,6 +377,16 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 // 	status=1 and
 
 		return $return;
+	}	
+
+	function listar_questionario_professor($conexao,$escola_id,$turma_id,$disciplina_id){
+		$return=$conexao->query("SELECT * FROM questionario WHERE 
+			escola_id=$escola_id and 
+			turma_id=$turma_id and
+			disciplina_id=$disciplina_id");
+// 	status=1 and
+
+		return $return;
 	}
 
 	function excluir_questao($conexao, $id) {
