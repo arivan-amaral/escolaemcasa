@@ -42,7 +42,7 @@ try {
   if(isset($_POST["email"]) ){  //&& $response != null && $response->success==true){
 
       $email = $_POST["email"];
-      $email=strtolower($email);
+      $email=($email);
       $senha = $_POST["senha"];
       $email= preg_replace('/[\'\"]/', '',$email);
       $senha=preg_replace('/[\']/', '',$senha);
