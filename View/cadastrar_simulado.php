@@ -352,7 +352,7 @@ $url_get=$array_url[1];
 
               </a> 
               <br>
-              <a href='adicionar_questao_simulado.php?origem_questionario_id=$origem_questionario_id'>
+              <a href='adicionar_questao_simulado.php?nome=$nome&origem_questionario_id=$origem_questionario_id&questionario_id=$id'>
               <span class='btn btn-primary btn-block btn-flat'>
               Adicionar Questões
               </span>

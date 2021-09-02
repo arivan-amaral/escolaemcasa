@@ -42,6 +42,15 @@ if (!isset($_SESSION['idfuncionario'])) {
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 
 
+<script type="text/javascript">
+
+Swal.fire({
+              icon: 'info',
+              title: 'Atenção',
+              text: 'Esta página está em manutenção!',
+
+          });
+</script>
 
 <div class="content-wrapper" style="min-height: 529px;">
 

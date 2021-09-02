@@ -1,9 +1,9 @@
 <?php
 session_start();
-if (!isset($_SESSION['idprofessor'])) {
+if (!isset($_SESSION['idfuncionario'])) {
  header("location:index.php?status=0");
 }else{
-  $idprofessor=$_SESSION['idprofessor'];
+  $idprofessor=$_SESSION['idfuncionario'];
 }
 include "cabecalho.php";
 include "alertas.php";
@@ -14,13 +14,7 @@ include '../Model/Conexao.php';
 include '../Controller/Conversao.php';
 include '../Model/Questionario.php';
 
-$idturma=$_GET['turma_id'];
 $origem_questionario_id=$_GET['origem_questionario_id'];
-if(isset($_GET['disciplina_id'])){
-  $iddisciplina=$_GET['disciplina_id'];
-}
-$iddisciplina="";
-
 
 $array_url=explode('p?', $_SERVER["REQUEST_URI"]);
 $url_get=$array_url[1];
@@ -34,7 +28,15 @@ $url_get=$array_url[1];
 
 <script src="ajax.js?<?php echo rand(1100,2000);?>"></script>
 
+<script type="text/javascript">
 
+Swal.fire({
+              icon: 'info',
+              title: 'Atenção',
+              text: 'Esta página está em manutenção!',
+
+          });
+</script>
 
 <div class="content-wrapper" style="min-height: 529px;">
 
