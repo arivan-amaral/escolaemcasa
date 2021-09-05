@@ -1,9 +1,5 @@
 <?php
 session_start();
- unset($_SESSION['cargo']);
-// unset($_SESSION['aluno_id']);
-header("location:index.php?status=MANUTENÇÃO");
-
 if (!isset($_COOKIE['conteudo'])) {
   setcookie('conteudo', 1, (time()+(300*24*3600)));
 }else{

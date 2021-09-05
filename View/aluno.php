@@ -1,9 +1,6 @@
 <?php
-
   include 'seguranca_aluno.php';
- unset($_SESSION['cargo']);
 
-header("location:index.php?status=MANUTENÇÃO");
   include "cabecalho.php";
   include "alertas.php";
   include "barra_horizontal.php";
