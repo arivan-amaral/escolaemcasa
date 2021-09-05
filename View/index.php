@@ -31,6 +31,10 @@ session_start();
 
 
 ?>
+<script type="text/javascript">
+  
+        Swal.fire('ATENÇÃO, O MÓDULO DE PROFESSOR e ALUNO ESTÃO EM MANUTENÇÃO, RETORNAREMOS ATÉ ÀS 17:00.', '', 'info')
+</script>
 
 
 <div class="modal fade" id="modal-bem-vindo">
