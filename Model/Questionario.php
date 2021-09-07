@@ -288,6 +288,11 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 	function listar_questao($conexao,$questionario_id){
 		$return=$conexao->query("SELECT * FROM questao WHERE questionario_id=$questionario_id");
 		return $return;
+	}		
+
+	function listar_questao_por_id($conexao,$questao_id){
+		$return=$conexao->query("SELECT * FROM questao WHERE id=$questao_id");
+		return $return;
 	}	
 
 	function listar_questao_resultado($conexao,$questionario_id){

@@ -205,7 +205,7 @@ $url_get=$array_url[1];
 
 
           <input type="hidden" name="origem_questionario_id" value="<?php echo $origem_questionario_id; ?>" class="form-control" required="">
-          <input type="hidden" name="url_get" value="<?php echo $url_get; ?>" class="form-control" required="">
+          <input type="hidden" name="url_get" id='url_get' value="<?php echo $url_get; ?>" class="form-control" required="">
 
           <button type="submit" class="btn waves-effect waves-light btn-lg btn-primary">
             Cadastrar Questão
@@ -257,7 +257,9 @@ $url_get=$array_url[1];
          </textarea>-->
 
 
-         id:$idquestao <a onclick='excluir_questao($idquestao)' class='btn btn-danger'> Excluir Questão</a><br>
+         id:$idquestao <a onclick='excluir_questao($idquestao)' class='btn btn-danger'> Excluir Questão</a>
+<a href='editar_questionario.php?questao_id=$idquestao&$url_get' class='btn btn-primary'> Editar</a>
+         <br>
          <p id='res$idquestao'> </p>
 
          </div>";

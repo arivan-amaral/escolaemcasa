@@ -73,7 +73,6 @@ $quantidade_questionario++;
     }
     $idturma=$value_questionario['turma_id'];
 
-
    $res_finalizado=$conexao->query("SELECT * FROM questionario_finalizado WHERE aluno_id=$idaluno and questionario_id=$questionario_id");
    $questionario_finalizado=0;
    foreach ($res_finalizado as $key => $value) {
