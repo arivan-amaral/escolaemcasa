@@ -415,7 +415,8 @@ function liberar_questionario(idaluno,idquestionario){
                 if (xmlreq.readyState == 4) {
                     if (xmlreq.status == 200) {
                         // result.innerHTML =  xmlreq.responseText;
-                        resultado.innerHTML ="";             
+                        resultado.innerHTML ="<b class='text-danger'>Questionário não finalizado.</b><br>";
+
                         
                     }else{
                         resultado.innerHTML = xmlreq.responseText;
@@ -423,7 +424,7 @@ function liberar_questionario(idaluno,idquestionario){
                 }
             };
             xmlreq.send(null);
-             
+                 
 
 
     } else if (result.isDenied) {
