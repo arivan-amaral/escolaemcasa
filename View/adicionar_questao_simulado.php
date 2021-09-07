@@ -217,7 +217,9 @@ $url_get=$array_url[1];
          </textarea>-->
 
 
-         id:$idquestao <a onclick='excluir_questao_simulado($idquestao)' class='btn btn-danger'> Excluir Questão</a><br>
+         id:$idquestao <a onclick='excluir_questao_simulado($idquestao)' class='btn btn-danger'> Excluir Questão</a>
+<a href='editar_simulado.php?questao_id=$idquestao&$url_get' class='btn btn-primary'> Editar</a>
+         <br>
          <p id='res$idquestao'> </p>
 
          </div>";
