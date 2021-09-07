@@ -24,7 +24,7 @@
 
   if (isset($_GET['idquestionario'])){
     $idquestionario=$_GET['idquestionario'];
-    $conexao->exec("insert into questionario_finalizado (aluno_id,questionario_id)  values ($idaluno,$idquestionario)");
+    $conexao->exec("INSERT into questionario_finalizado (aluno_id,questionario_id)  values ($idaluno,$idquestionario)");
   }
 
 ?>

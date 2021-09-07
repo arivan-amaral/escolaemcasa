@@ -142,6 +142,9 @@ function colar_conteudo_ja_cadastrados(conteudo) {
   })
 }
 
+
+
+
 function excluir_mural(idmural) {
     var idmural = document.getElementById("idmural"+idmural).value;  
     var url_get = document.getElementById("url_get").value; 
@@ -389,6 +392,45 @@ function lista_avaliacao_ja_cadastrada_por_periodo(periodo){
         }
     };
     xmlreq.send(null);
+}
+
+
+
+
+
+function liberar_questionario(idaluno,idquestionario){
+  var resultado = document.getElementById(idaluno);
+  var xmlreq = CriaRequest();   
+  Swal.fire({
+    title: 'Deseja continuar com essa ação?',
+    showDenyButton: true,
+    confirmButtonText: `Sim`,
+    denyButtonText: `Não`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      
+           xmlreq.open("GET", "../Controller/Liberar_questionario.php?idaluno="+idaluno+"&idquestionario="+idquestionario, true);
+            xmlreq.onreadystatechange = function(){     
+                if (xmlreq.readyState == 4) {
+                    if (xmlreq.status == 200) {
+                        // result.innerHTML =  xmlreq.responseText;
+                        resultado.innerHTML ="";             
+                        
+                    }else{
+                        resultado.innerHTML = xmlreq.responseText;
+                    }
+                }
+            };
+            xmlreq.send(null);
+             
+
+
+    } else if (result.isDenied) {
+     // Swal.fire('Ação cancelada', '', 'info')
+    }
+  })
+
 }
 
 
