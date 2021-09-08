@@ -7,6 +7,7 @@ if (!isset($_SESSION['idfuncionario'])) {
 }else{
 
   $idprofessor=$_SESSION['idfuncionario'];
+  $idfuncionario=$_SESSION['idfuncionario'];
 
 }
 include "cabecalho.php";
@@ -22,8 +23,7 @@ include '../Model/Coordenador.php';
 
 
 
-              $idescola=$_GET['idescola'];
-
+// $idescola=$_GET['idescola'];
 $array_url=explode('.php', $_SERVER["REQUEST_URI"]);
 $url_get=$array_url[1];
 
@@ -257,8 +257,10 @@ $url_get=$array_url[1];
         $conta=0;
         $cor='#DCDCDC';
 
+
+
             foreach ($array_serie as $key2 => $value2) {
-                $res_simulado=listar_simulado($conexao,$key2);
+                $res_simulado=listar_simulado($conexao,$key2,$idprofessor);
                 foreach ($res_simulado as $key => $value) {
                     $id=$value['id'];
                     $nome=$value['nome'];
