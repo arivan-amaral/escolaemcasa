@@ -185,6 +185,23 @@ $url_get=$array_url[1];
         </select>
 
 
+            <div class="form-group">
+                <label for="exampleInputEmail1">Escolha a escola</label>
+                <select class="form-control" name="idescola"  required>
+                    <option></option>
+                        <?php 
+                          $res_escola= escola_associada($conexao,$idcoordenador);
+                          foreach ($res_escola as $key => $value) {
+                              $id=$value['idescola'];
+                              $nome_escola=($value['nome_escola']);
+                              echo "
+                                  <option value='$id'>$nome_escola </option>
+
+                              ";
+                          }
+                        ?>
+                    </select>
+                  </div>
 
 
         <b>Data de Início</b>
