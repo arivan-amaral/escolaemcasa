@@ -7,13 +7,12 @@ include("../Model/Questionario.php");
 try {
 $aluno = $_GET['aluno'];
 $questionario = $_GET['questionario'];
-$disciplina_id = $_GET['disciplina_id'];
-$turma_id = $_GET['turma_id'];
+
 $escola_id = $_GET['escola_id'];
+$idserie = $_GET['serie_id'];
 
 
-$result=listar_aluno_da_turma_professor($conexao,$turma_id,$escola_id);
-
+$result=listar_aluno_do_simulado_professor($conexao,$escola_id,$idserie);
 $return="
 
 <table class='table table-bordered'>
@@ -29,6 +28,7 @@ $return="
 ";
 foreach ($result as $key => $value) {
 $idaluno=$value['idaluno'];
+$idturma=$value['idturma'];
 $nome=$value['nome_aluno'];
 
 $return.="
@@ -77,11 +77,9 @@ $return.="<b>Pontos questão objetiva: $conta_pontos </b><br>";
 $return.="
 	</td>	
 	<td>
-		<a href='ver_resultado_prova.php?turma_id=$turma_id&disciplina_id=$disciplina_id&questionario=$questionario&aluno=$idaluno' target='_blank'>VER PROVA RESPONDINDA<br></a> <br>
+		<a href='ver_resultado_prova.php?turma_id=$idturma&questionario=$questionario&aluno=$idaluno' target='_blank'>VER PROVA<br></a> <br>
 
-		<a href='baixar_prova_pdf.php?turma_id=$turma_id&disciplina_id=$disciplina_id&questionario=$questionario&aluno=$idaluno' target='_blank'>BAIXAR PROVA RESPONDINDA PDF<br></a>
-<BR>
-		<a href='baixar_prova_modelo_pdf.php?turma_id=$turma_id&disciplina_id=$disciplina_id&questionario=$questionario&aluno=$idaluno' target='_blank'>BAIXAR PROVA PARA IMPRESSÃO PDF<br></a>
+		<a href='baixar_prova_pdf.php?turma_id=$idturma&questionario=$questionario&aluno=$idaluno' target='_blank'>BAIXAR PDF<br></a>
 	</td>
 
 </tr>

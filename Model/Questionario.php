@@ -315,6 +315,11 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 
 
 
+	function listar_alternativa_ver_prova($conexao,$idquestao){
+		$return=$conexao->query("SELECT * FROM alternativa WHERE questao_id=$idquestao");
+		return $return;
+	}
+
 	function listar_resposta_alternativa_aluno($conexao,$idquestao,$aluno_id){
 		$return=$conexao->query("SELECT * FROM resposta_questao WHERE questao_id=$idquestao and aluno_id=$aluno_id");
 		return $return;
@@ -332,7 +337,7 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 	// }
 
 	function listar_resposta_multipla_aluno($conexao,$idquestao){
-		$return=$conexao->query("SELECT * FROM alternativa WHERE questao_id=$idquestao and tipo <> 'discursiva' ");
+		$return=$conexao->query("SELECT * FROM alternativa WHERE questao_id=$idquestao and tipo != 'discursiva' ");
 		return $return;
 	}
 	

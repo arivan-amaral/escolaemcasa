@@ -314,8 +314,9 @@ $url_get=$array_url[1];
             <div class='custom-control custom-radio'>
             <input type='hidden' value='$alternativa' id='alternativa$id'>
 
-            <input type='checkbox' id='customRadio$id$cont' name='alternativa$id$questao_id' class='custom-control-input' onclick='resposta_multipla_professor($id)' $marcado>
-            <label class='custom-control-label' for='customRadio$id$cont'>
+            <input type='checkbox' id='customRadio$id$cont$questao_id' name='alternativa$id$questao_id' class='custom-control-input' onclick='resposta_multipla_professor($id)' $marcado>
+
+            <label class='custom-control-label' for='customRadio$id$cont$questao_id'>
             $alternativa</label>
             </div>
             ";
@@ -325,8 +326,8 @@ $url_get=$array_url[1];
             <input type='hidden' value='$alternativa' id='alternativa$id'>
 
            <div class='custom-control custom-radio'>
-           <input type='checkbox' id='customRadio$id$cont' name='alternativa$id$questao_id' class='custom-control-input' onclick='resposta_multipla_professor($id)' $marcado>
-           <label class='custom-control-label' for='customRadio$id$cont'>$alternativa</label>
+           <input type='checkbox' id='customRadio$id$cont$questao_id' name='alternativa$id$questao_id' class='custom-control-input' onclick='resposta_multipla_professor($id)' $marcado>
+           <label class='custom-control-label' for='customRadio$id$cont$questao_id'>$alternativa</label>
            </div>
            "; 
 

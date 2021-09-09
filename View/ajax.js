@@ -1253,6 +1253,40 @@ function excluir_material_apoio(id) {
 
 
 
+ function resultado_questao_simulado() {
+
+    var result = document.getElementById("resultado_questao");
+    result.innerHTML="<img src='imagens/carregando.gif'>";
+
+    var questionario = document.getElementById("questionario").value;
+    var aluno = document.getElementById("aluno").value;
+    var escola_id = document.getElementById("escola_id").value;
+    var serie_id = document.getElementById("serie_id").value;
+
+
+    var xmlreq = CriaRequest();   
+    xmlreq.open("GET", "../Controller/Lista_aluno_baixar_simulado.php?serie_id="+serie_id+"&escola_id="+escola_id+"&aluno="+aluno+"&questionario="+questionario, true);
+
+
+    xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                 result.innerHTML =  xmlreq.responseText;
+                 
+                 
+             }else{
+
+                alert('Erro');
+                 
+             }
+         }
+     };
+     xmlreq.send(null);
+ }
+
+
+
  function resultado_questao() {
 
     var result = document.getElementById("resultado_questao");

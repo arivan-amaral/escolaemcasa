@@ -148,8 +148,10 @@ Swal.fire({
                  </div> 
                   <div class="col-sm-4"> 
                  <br>
-<input type="hidden" id='aluno' value="1">
-                      <a class="btn btn-primary"  onclick="resultado_questao();"> PESQUISAR</a>
+                 <input type="hidden" id="escola_id" value="<?php echo $escola_id; ?>">
+                 <input type="hidden" id="serie_id" value="<?php echo $idserie; ?>">
+<input type="hidden" id='aluno' value="1"> 
+                      <a class="btn btn-primary"  onclick="resultado_questao_simulado();"> PESQUISAR</a>
                   </div>
 
 
