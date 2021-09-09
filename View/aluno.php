@@ -146,7 +146,7 @@ echo "
 
     ";
 
-if ($prova_ativa==0 || $conta_simulado>0) {
+if ($prova_ativa>0 || $conta_simulado>0) {
         echo"
 
       <script type='text/javascript'>

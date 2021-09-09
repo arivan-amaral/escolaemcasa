@@ -274,8 +274,7 @@ $url_get=$array_url[1];
         <?php 
         $conta=0;
         $cor='#DCDCDC';
-
-
+          
 
             foreach ($array_serie as $key2 => $value2) {
                 $res_simulado=listar_simulado($conexao,$key2,$idprofessor);
