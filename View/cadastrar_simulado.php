@@ -20,6 +20,7 @@ include '../Controller/Conversao.php';
 include '../Model/Questionario.php';
 include '../Model/Turma.php';
 include '../Model/Coordenador.php';
+include '../Model/Escola.php';
 
 
 
@@ -280,6 +281,7 @@ $url_get=$array_url[1];
                 $res_simulado=listar_simulado($conexao,$key2,$idprofessor);
                 foreach ($res_simulado as $key => $value) {
                     $id=$value['id'];
+                    $escola_id=$value['escola_id'];
                     $nome=$value['nome'];
 
                     $data=data_simples($value['data'])."T".hora($value['data']);
@@ -298,7 +300,44 @@ $url_get=$array_url[1];
 
                     <td>
                     id: $id <br>
+
+           
+
                     <b style='background-color:#CD853F'>$nome</b><br>
+
+
+                    <div class='form-group'>
+                        <label for='exampleInputEmail1'>Escolha a escola</label>
+                        <select class='form-control' name='idescola' id='idescola$id' onchange='mudar_escola_simulado($id);'  required>
+                             ";
+
+                             $nome_escola="";
+                             if ($escola_id!="") {
+                             $escolas=buscar_escola_por_id($conexao,$escola_id);
+                             foreach ($escolas as $key_escola => $value_escola) {
+                                 $idescola=$value_escola['idescola'];
+                                 $nome_escola=$value_escola['nome_escola'];
+                                 echo"<option value='$idescola'>$nome_escola</option>";
+
+                             }
+                                 // code...
+                             }
+                             if ($nome_escola=="") {
+                                 echo"<option></option>";
+                             }
+                                  $res_escola= escola_associada($conexao,$idcoordenador);
+                                  foreach ($res_escola as $key => $value) {
+                                      $id=$value['idescola'];
+                                      $nome_escola=($value['nome_escola']);
+                                      echo "
+                                          <option value='$id'>$nome_escola </option>
+
+                                      ";
+                                  }
+                        echo "
+                            </select>
+                          </div>
+
                     Data início<br>
                     <input type='datetime-local' value='$data' onchange='alterar_data_simulado($id);' id='data$id' > 
                     <br>

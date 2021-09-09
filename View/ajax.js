@@ -69,6 +69,36 @@ function CriaRequest() {
  }
 
 
+ function mudar_escola_simulado(id) {
+    var idescola= document.getElementById('idescola'+id).value;
+    var xmlreq = CriaRequest();   
+    xmlreq.open("GET", "../Controller/Mudar_escola_simulado.php?idescola="+idescola+"&idquestionario="+id, true);
+
+
+    xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                 // result.innerHTML = xmlreq.responseText;
+                 if (xmlreq.responseText =='certo') {
+
+                    Swal.fire('Ação concluída', '', 'success');
+                }else{
+                    Swal.fire('Erro desconhecido, verifique sua conexão com a internet', '', 'error');
+
+                }
+
+             }else{
+                    alert('Erro desconhecido, verifique sua conexão com a internet');
+
+                //result.innerHTML ="Erro ao receber mensagens";                 
+             }
+         }
+     };
+     xmlreq.send(null);
+ }
+
+
  function enviar_resenha() {
     var resposta = document.getElementById("resposta").value;
     var trabalho_entregue_id = document.getElementById("trabalho_entregue_id").value;
@@ -864,7 +894,7 @@ function excluir_questionario(id) {
                 if (xmlreq.responseText !="erro") {
                     document.getElementById("linha"+id).innerHTML=xmlreq.responseText;
 
-                    Swal.fire('Ação não concluída', '', 'success');
+                    Swal.fire('Ação concluída', '', 'success');
                 }else{
                     Swal.fire('Verifique sua conexão com a internet', '', 'error');
 
