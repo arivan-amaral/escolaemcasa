@@ -27,6 +27,11 @@
     $conexao->exec("INSERT into questionario_finalizado (aluno_id,questionario_id)  values ($idaluno,$idquestionario)");
   }
 
+  if (isset($_GET['simulado_id'])){
+    $simulado_id=$_GET['simulado_id'];
+    // $conexao->exec("INSERT into questionario_simulado_finalizado (aluno_id,questionario_id)  values ($idaluno,$idquestionario)");
+  }
+
 ?>
 <script src="ajax.js?<?php echo rand(1,100); ?>"></script>
 

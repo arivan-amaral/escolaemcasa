@@ -1551,6 +1551,64 @@ function resposta_multipla_professor_simulado(id) {
 
   
   
+
+
+  function resposta_justificada_simulado(id) {
+     
+     var idalternativa =id;
+    var result = document.getElementById("rd"+id);
+     
+
+    var turma_id= document.getElementById('idturma').value;
+    var disciplina_id =  document.getElementById('iddisciplina').value;
+     
+    var questao_id =  document.getElementById('questao_id'+id).value;
+
+     var texto = document.getElementById(id).value;
+      var xmlreq = CriaRequest();
+
+      // numbersList.forEach((number, index, array) => {
+      //   myHTML += `<li>${number}</li>`;
+      // });
+
+
+      xmlreq.open("GET", "../Controller/Responder_questionario_discursiva_professor_simulado.php?texto="+texto+"&id="+idalternativa+"&disciplina_id="+disciplina_id+"&turma_id="+turma_id+"&questao_id="+questao_id, true);
+      
+      xmlreq.onreadystatechange = function(){
+       
+          if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {
+
+                if (xmlreq.responseText=="certo") {
+                  // Swal.fire({
+                  //   position: 'center',
+                  //   icon: 'success',
+                  //   title: 'Ação Concluída',
+                  //   showConfirmButton: false,
+                  //   timer: 1500
+                  // });
+                  
+                }else{
+                //  Swal.fire({
+                //   icon: 'error',
+                //   title: 'Oops...',
+                //   text: 'Alguma Coisa deu Errado!',
+                  
+                // });
+                  
+              }
+            }
+            else{
+             alert("Erro, verifique sua conexão com a internet!");
+            }
+        }
+
+      };
+      xmlreq.send(null);
+  }
+
+  
+  
 function alterar_data_questionario(id) {
     var data = document.getElementById("data"+id).value;
     var data_fim = document.getElementById("data_fim"+id).value;
@@ -1999,6 +2057,65 @@ function relatorio_de_visualizacao_video(idaluno,idturma,iddisciplina) {
            }
          })
    }
+
+  function aguarde_tempo_dinamico_simulado(id){
+         let timerInterval
+         Swal.fire({
+           title: 'Aguarde, sua ação está sendo realizada!',
+            html: '<b></b> ',
+           timer: 10000,
+           timerProgressBar: true,
+           didOpen: () => {
+             Swal.showLoading()
+             timerInterval = setInterval(() => {
+               const content = Swal.getContent()
+               if (content) {
+                 const b = content.querySelector('b')
+                 if (b) {
+                   b.textContent = Swal.getTimerLeft()
+                 }
+               }
+             }, 100)
+           },
+           willClose: () => {
+             clearInterval(timerInterval)
+           
+           Swal.fire({
+             title: 'BOM TRABALHO 👏👏',
+             text:'ESCOLHA UMA OPÇÃO ',
+             showDenyButton: true,
+             confirmButtonText: `ENTREGAR SIMULADO`,
+             denyButtonText: `EDITAR RESPOSTAS`,
+
+             imageUrl: 'sucesso.gif',
+             imageAlt: 'Obrigado',
+             imageWidth: 400,
+             imageHeight: 200
+
+           }).then((result) => {
+             /* Read more about isConfirmed, isDenied below */
+             if (result.isConfirmed) {
+               window.location.href ='aluno.php?simulado_id='+id;
+
+             } else if (result.isDenied) {
+               window.refresh();
+              
+
+             }
+           })
+           
+
+
+           }
+         }).then((result) => {
+           /* Read more about handling dismissals below */
+           if (result.dismiss === Swal.DismissReason.timer) {
+             console.log('I was closed by the timer')
+           }
+         })
+   }
+
+
 
   function aguarde_tempo_dinamico(id){
          let timerInterval

@@ -300,7 +300,7 @@ adiciona_justificada_marcacao = function (title) {
              if ($id==$alternativa_id) {
                echo "                                                
                <div class='custom-control custom-radio'>
-               <input type='radio' id='customRadio$id$cont' name='alternativa$questao_id' class='custom-control-input' onclick='resposta_multipla_simulado($id)' value='$id' checked>
+               <input type='radio' id='customRadio$id$cont' name='alternativa$questao_id' class='custom-control-input' onclick='resposta_multipla_professor_simulado($id)' value='$id' checked>
 
                <label class='custom-control-label' for='customRadio$id$cont'>
                $alternativa</label>
@@ -375,7 +375,7 @@ adiciona_justificada_marcacao = function (title) {
       <br>
   <?php 
   echo"
-      <button  class='btn waves-effect waves-light btn-lg btn-success' onclick='escrever_array(discurciva,objetiva_justificada);aguarde_tempo_dinamico($questionario_id);'>
+      <button  class='btn waves-effect waves-light btn-lg btn-success' onclick='escrever_array(discurciva,objetiva_justificada);aguarde_tempo_dinamico_simulado($questionario_id);'>
         Finalizar Questionário
       </button>";
    ?>
