@@ -268,7 +268,10 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
     function selecionar_questionario_data($conexao,$iddisciplina,$idturma,$data,$questionario_id){
 		$return=$conexao->query("SELECT * FROM questionario WHERE disciplina_id=$iddisciplina and turma_id=$idturma and data='$data' and id=$questionario_id and status=1");
 		return $return;
-	}
+	}    
+
+
+
 	
 	function listar_questionario_mesma_origem($conexao,$origem_questionario_id){
 		$return=$conexao->query("SELECT *
@@ -314,6 +317,11 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 
 	function listar_resposta_alternativa_aluno($conexao,$idquestao,$aluno_id){
 		$return=$conexao->query("SELECT * FROM resposta_questao WHERE questao_id=$idquestao and aluno_id=$aluno_id");
+		return $return;
+	}
+
+	function listar_resposta_alternativa_aluno_simulado($conexao,$idquestao,$aluno_id){
+		$return=$conexao->query("SELECT * FROM resposta_questao_simulado WHERE questao_id=$idquestao and aluno_id=$aluno_id");
 		return $return;
 	}
 

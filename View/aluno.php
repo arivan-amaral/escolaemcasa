@@ -50,7 +50,7 @@ echo "
         
 
           <div class='modal-body'>
-                 <h2>Você tem prova disponível.</h2>
+                 <h2>Você tem prova/simulado disponível.</h2>
 
 ";
 $quantidade_questionario=1;
@@ -87,26 +87,8 @@ if ($questionario_finalizado==0) {
     foreach ($result_horario_prova as $key2 => $value2) {
          $hora_inicio=$value2['hora_inicio'];
               $hora_fim=$value2['hora_fim'];
-      echo"
-
-      <script type='text/javascript'>
-
-          function modal_prova() {
-              $(document).ready(function() {
-                  $('#modal-prova').modal('show');
-                });
-          }
-
-          setTimeout('modal_prova();',300);
-          
-      </script>";
-
-
 
               $result_prov.= "
-                    <!-- corpo -->
-                   
-
                    <a  href='responder_questionario.php?questionario_id=$questionario_id&disc=$iddisciplina&turm=$idturma' class='btn btn-info btn-block btn-flat'>
                            <i class='fa fa-edit'></i>
 
@@ -127,7 +109,31 @@ if ($questionario_finalizado==0) {
 
 
 }
+
+
+$result_simulado=$conexao->query("SELECT * FROM questionario_simulado WHERE escola_id=$idescola and serie_id=$idserie and data<='$data_atual' and data_fim>='$data_atual' and status=1");
+
+
+
+$conta_simulado=0;
+foreach ($result_simulado as $key_simulado => $value_simulado) {
+  $idsumulado=$value_simulado['id'];
+  $titulo=$value_simulado['nome'];
+$result_prov.= "
+                   <a  href='responder_questionario_simulado.php?questionario_id=$idsumulado' class='btn btn-info btn-block btn-flat'>
+                           <i class='fa fa-edit'></i>RESPONDER SIMULADO: $titulo</a>
+                   <br>        
+             ";
+
+  $conta_simulado++;
+}
+
+
 echo "$result_prov";
+
+
+
+
 
 echo "
    </div>
@@ -140,9 +146,23 @@ echo "
 
     ";
 
+if ($prova_ativa==0 || $conta_simulado>0) {
+        echo"
 
+      <script type='text/javascript'>
 
-if ($prova_ativa==0) {
+          function modal_prova() {
+              $(document).ready(function() {
+                  $('#modal-prova').modal('show');
+                });
+          }
+
+          setTimeout('modal_prova();',300);
+          
+      </script>";
+}
+
+if ($prova_ativa==0 && $conta_simulado ==0) {
     $result_reuniao=$conexao->query("SELECT * FROM video_chamada WHERE escola_id=$idescola and turma_id=$idturma and  hora_inicio <='$data_atual'  and hora_fim >'$data_atual' limit 1");
     foreach ($result_reuniao as $key => $value) {
       echo"
