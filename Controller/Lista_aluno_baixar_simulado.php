@@ -77,9 +77,17 @@ $return.="<b>Pontos questão objetiva: $conta_pontos </b><br>";
 $return.="
 	</td>	
 	<td>
-		<a href='ver_resultado_prova.php?turma_id=$idturma&questionario=$questionario&aluno=$idaluno' target='_blank'>VER PROVA<br></a> <br>
+		<a href='ver_resultado_simulado.php?turma_id=$idturma&questionario=$questionario&aluno=$idaluno' target='_blank'>VER RESPOSTA DO SIMULADO</a>
+		 <br>
+		 <br>
 
-		<a href='baixar_prova_pdf.php?turma_id=$idturma&questionario=$questionario&aluno=$idaluno' target='_blank'>BAIXAR PDF<br></a>
+		<a href='baixar_simulado_modelo_pdf.php?turma_id=$idturma&questionario=$questionario&aluno=$idaluno' target='_blank'>BAIXAR SIMULADO PARA IMPRESSÃO</a>
+		<br>
+		<br>
+
+		<a href='baixar_simulado_pdf.php?turma_id=$idturma&questionario=$questionario&aluno=$idaluno' target='_blank'>BAIXAR SIMULADO RESPONDIDO PDF</a>
+		<br>
+		<br>
 	</td>
 
 </tr>
