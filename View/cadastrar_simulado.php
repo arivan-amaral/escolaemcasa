@@ -178,7 +178,7 @@ $url_get=$array_url[1];
                     // code...
                     $idserie=$key;
                         echo"
-                  <option value='$idserie'>$key - $value</option>
+                  <option value='$idserie'>$value</option>
                         ";
                 }
             ?>
