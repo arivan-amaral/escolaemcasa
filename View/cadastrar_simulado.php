@@ -280,7 +280,7 @@ $url_get=$array_url[1];
             foreach ($array_serie as $key2 => $value2) {
                 $res_simulado=listar_simulado($conexao,$key2,$idprofessor);
                 foreach ($res_simulado as $key => $value) {
-                    $id=$value['id'];
+                    $idquestionario=$value['id'];
                     $escola_id=$value['escola_id'];
                     $nome=$value['nome'];
 
@@ -299,7 +299,7 @@ $url_get=$array_url[1];
                     <tr style='background-color:$cor' id='linha$id'>
 
                     <td>
-                    id: $id <br>
+                    id: $idquestionario<br>
 
            
 
@@ -308,7 +308,7 @@ $url_get=$array_url[1];
 
                     <div class='form-group'>
                         <label for='exampleInputEmail1'>Escolha a escola</label>
-                        <select class='form-control' name='idescola' id='idescola$id' onchange='mudar_escola_simulado($id);'  required>
+                        <select class='form-control' name='idescola' id='idescola$idquestionario' onchange='mudar_escola_simulado($idquestionario);'  required>
                              ";
 
                              $nome_escola="";
@@ -339,11 +339,11 @@ $url_get=$array_url[1];
                           </div>
 
                     Data início<br>
-                    <input type='datetime-local' value='$data' onchange='alterar_data_simulado($id);' id='data$id' > 
+                    <input type='datetime-local' value='$data' onchange='alterar_data_simulado($idquestionario);' id='data$idquestionario' > 
                     <br>
                     Data final<br>
-                    <input type='datetime-local' value='$data_fim' onchange=' alterar_data_simulado($id)' id='data_fim$id' >
-                    <span class='alert-success' id='resposta_alteracao_data$id'></span>
+                    <input type='datetime-local' value='$data_fim' onchange=' alterar_data_simulado($idquestionario)' id='data_fim$idquestionario' >
+                    <span class='alert-success' id='resposta_alteracao_data$idquestionario'></span>
                     <br>
 
                     ";
@@ -368,7 +368,7 @@ $url_get=$array_url[1];
 
              if ($status==1) {
                   echo"
-                  <a  onclick='alterar_status_questionario_simulado($id,$status);'>
+                  <a  onclick='alterar_status_questionario_simulado($idquestionario,$status);'>
 
                   <span class='btn btn-primary'>
                   Desativar
@@ -379,14 +379,14 @@ $url_get=$array_url[1];
                   ";
               }else if ($status==0) {
                   echo"
-                  <a onclick='alterar_status_questionario_simulado($id,$status);'>
+                  <a onclick='alterar_status_questionario_simulado($idquestionario,$status);'>
 
                   <span class='btn btn-warning'>
                   Ativar
                   </span>
                   </a>  
 
-                  <a onclick='excluir_questionario_simulado($id);'>
+                  <a onclick='excluir_questionario_simulado($idquestionario);'>
 
                   <span class='btn btn-danger'>
                   Excluir definitivamente?
@@ -410,7 +410,7 @@ $url_get=$array_url[1];
 
               </a> 
               <br>
-              <a href='adicionar_questao_simulado.php?nome=$nome&origem_questionario_id=$origem_questionario_id&questionario_id=$id'>
+              <a href='adicionar_questao_simulado.php?nome=$nome&origem_questionario_id=$origem_questionario_id&questionario_id=$idquestionario'>
               <span class='btn btn-primary btn-block btn-flat'>
               Adicionar Questões
               </span>
