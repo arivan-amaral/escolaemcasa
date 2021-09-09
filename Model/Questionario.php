@@ -379,9 +379,9 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 	}	
 
 
-	function listar_simulado_ativo($conexao,$idserie){
+	function listar_simulado_ativo($conexao,$idserie,$escola_id){
 		$return=$conexao->query("SELECT * FROM questionario_simulado WHERE 
-
+			escola_id=$escola_id and
 			serie_id=$idserie and status=1");
 // 	status=1 and
 

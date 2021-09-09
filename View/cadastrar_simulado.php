@@ -178,7 +178,7 @@ $url_get=$array_url[1];
                     // code...
                     $idserie=$key;
                         echo"
-                  <option value='$idserie'>$value</option>
+                  <option value='$idserie'>$key - $value</option>
                         ";
                 }
             ?>
@@ -282,6 +282,7 @@ $url_get=$array_url[1];
                 foreach ($res_simulado as $key => $value) {
                     $idquestionario=$value['id'];
                     $escola_id=$value['escola_id'];
+                    $idserie=$value['serie_id'];
                     $nome=$value['nome'];
 
                     $data=data_simples($value['data'])."T".hora($value['data']);
@@ -402,7 +403,7 @@ $url_get=$array_url[1];
 
               <td>
 
-              <a  href='resultado_questionario_simulado.php?idserie=$idserie' class='btn btn-info btn-block btn-flat'>
+              <a  href='resultado_questionario_simulado.php?escola_id=$escola_id&idserie=$idserie' class='btn btn-info btn-block btn-flat'>
 
               <ion-icon name='eye'></ion-icon>
 

@@ -27,6 +27,7 @@ if (!isset($_SESSION['idfuncionario'])) {
 
 
   $idserie=$_GET['idserie'];
+  $escola_id=$_GET['escola_id'];
 
   // $iddisciplina=$_GET['disc'];
   // // $turma=$_GET['turma'];
@@ -127,11 +128,7 @@ Swal.fire({
    <?php 
  
 
-                            $turma_id=$_GET['turm'];
-                            $disciplina_id=$_GET['disc'];
-                           
-
-                                $listar_questao=listar_simulado_ativo($conexao,$idserie);
+                                $listar_questao=listar_simulado_ativo($conexao,$idserie,$escola_id);
                                 $conta=1;
                                 foreach ($listar_questao as $key => $value) {
                                   $idquestionario=$value['id'];
