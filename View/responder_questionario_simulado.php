@@ -32,7 +32,7 @@ $data=date("Y-m-d H:i:s");
 
 
 
-<script src="ajax.js<<?php echo rand(); ?>"></script>
+<script src="ajax.js?<?php echo rand(); ?>"></script>
 
 
 
@@ -223,7 +223,7 @@ adiciona_justificada_marcacao = function (title) {
           $tipo=$value['tipo'];
 
           echo "<hr>
-          $questao
+        $questao
           ";
 
           $arquivo_anexo=listar_arquivo_simulado($conexao,$idquestao);
@@ -268,7 +268,7 @@ adiciona_justificada_marcacao = function (title) {
                                     //fim pesquisa
 
             echo "<br>  
-            <input type='hidden' id='questao_id$id' value='$questao_id'>
+            <input type='hidden' id='questao_id$questao_id' value='$questao_id'>
             ";
 
             if ($tipo=="discursiva") {
@@ -300,7 +300,8 @@ adiciona_justificada_marcacao = function (title) {
              if ($id==$alternativa_id) {
                echo "                                                
                <div class='custom-control custom-radio'>
-               <input type='radio' id='customRadio$id$cont' name='alternativa$questao_id' class='custom-control-input' onclick='resposta_multipla_professor_simulado($id)' value='$id' checked>
+               
+               <input type='radio' id='customRadio$id$cont' name='alternativa$questao_id' class='custom-control-input' onclick='resposta_multipla_simulado($id,$questao_id);' value='$alternativa_id' checked>
 
                <label class='custom-control-label' for='customRadio$id$cont'>
                $alternativa</label>
@@ -309,7 +310,8 @@ adiciona_justificada_marcacao = function (title) {
              }else{
                echo "                                                
                <div class='custom-control custom-radio'>
-               <input type='radio' id='customRadio$id$cont' name='alternativa$questao_id' class='custom-control-input' onclick='resposta_multipla_simulado($id)' value='$id'>
+              
+               <input type='radio' id='customRadio$id$cont' name='alternativa$questao_id' class='custom-control-input' onclick='resposta_multipla_simulado($id,$questao_id);' value='$id'>
 
                <label class='custom-control-label' for='customRadio$id$cont'>
                $alternativa</label>

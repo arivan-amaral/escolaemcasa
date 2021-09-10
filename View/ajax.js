@@ -1493,6 +1493,44 @@ function resposta_multipla_professor_simulado(id) {
   } 
   
 
+function resposta_multipla_simulado(id,questao_id) {
+    var origem_questionario_id = "";
+    var texto_alternativa =  "";
+    var questao_id =  document.getElementById('questao_id'+questao_id).value;
+    var xmlreq = CriaRequest();
+    xmlreq.open("GET", "../Controller/Responder_questionario_discursiva_simulado.php?texto=&questao_id="+questao_id+"&idalternativa="+id+"&texto_alternativa="+texto_alternativa, true);
+    xmlreq.onreadystatechange = function(){
+       
+          if (xmlreq.readyState == 4) {
+              if (xmlreq.status == 200) {
+                if (xmlreq.responseText=="certo") {
+                  Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Ação Concluída',
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                  
+                }else{
+                 Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Alguma Coisa deu Errado!',
+                  
+                });
+                  
+              }
+          }
+          else{
+            alert("Erro, verifique sua conexão com a internet!");
+            }
+        }
+    };
+      xmlreq.send(null);
+  } 
+  
+
 
 
   function resposta_justificada(id) {

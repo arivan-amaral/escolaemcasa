@@ -29,6 +29,13 @@ function cadastrar_resposta_discursiva($conexao, $resposta_discursiva,  $turma_i
 	}
 
 
+function cadastrar_resposta_discursiva_simulado($conexao, $resposta_discursiva, $alternativa_id, $aluno_id,$questao_id){
+	$return=$conexao->exec(" INSERT INTO resposta_questao_simulado( resposta_discursiva, alternativa_id,  aluno_id, questao_id) VALUES ('$resposta_discursiva', $alternativa_id, $aluno_id, $questao_id)");
+		
+
+	}
+
+
 
 
 function alterar_resposta_discursiva($conexao, $resposta_discursiva,  $turma_id, $alternativa_id, $disciplina_id, $aluno_id,$id,$questao_id){
@@ -37,6 +44,20 @@ function alterar_resposta_discursiva($conexao, $resposta_discursiva,  $turma_id,
 	 turma_id=$turma_id,
 	  alternativa_id=$alternativa_id, 
 	  disciplina_id=$disciplina_id,
+	   aluno_id='$aluno_id',
+	   questao_id=$questao_id
+	   WHERE
+	   	id=$id
+	   ");
+
+		return $return;
+}
+
+
+function alterar_resposta_discursiva_simulado($conexao, $resposta_discursiva, $alternativa_id, $aluno_id,$id,$questao_id){
+	$return=$conexao->exec(" UPDATE resposta_questao_simulado set 
+		resposta_discursiva='$resposta_discursiva',
+	  alternativa_id=$alternativa_id,
 	   aluno_id='$aluno_id',
 	   questao_id=$questao_id
 	   WHERE
@@ -93,6 +114,12 @@ function pesquisar_resposta_discursiva($conexao, $turma_id, $alternativa_id, $di
 	$return=$conexao->query("SELECT * FROM resposta_questao WHERE 
 	 turma_id=$turma_id and
 	   disciplina_id=$disciplina_id and  
+	   aluno_id=$aluno_id  and questao_id=$questao_id ");
+		return $return;
+	}
+
+function pesquisar_resposta_discursiva_simulado($conexao, $aluno_id,$questao_id){
+	$return=$conexao->query("SELECT * FROM resposta_questao_simulado WHERE  
 	   aluno_id=$aluno_id  and questao_id=$questao_id ");
 		return $return;
 	}
