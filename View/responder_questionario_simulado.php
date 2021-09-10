@@ -212,12 +212,12 @@ adiciona_justificada_marcacao = function (title) {
           $idquestao=$value['id'];
           $questao=$value['nome'];
 
-          $questao=str_replace("^;", "'", $questao);
-          $questao=str_replace('Ã§', 'ç', $questao);
-          $questao= str_replace('Ã©', 'é', $questao);
-          $questao=str_replace('Ã¡','á',$questao);
-          $questao= str_replace('Ã£', 'ã', $questao);
-          $questao= str_replace('Ã³', 'ó', $questao); 
+          // $questao=str_replace("^;", "'", $questao);
+          // $questao=str_replace('Ã§', 'ç', $questao);
+          // $questao= str_replace('Ã©', 'é', $questao);
+          // $questao=str_replace('Ã¡','á',$questao);
+          // $questao= str_replace('Ã£', 'ã', $questao);
+          // $questao= str_replace('Ã³', 'ó', $questao); 
 
 
           $tipo=$value['tipo'];
