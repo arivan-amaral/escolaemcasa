@@ -37,17 +37,17 @@ $return.="
 		<b>$nome<br></b> <br>";
 
 
-		$listar_questao=listar_questao_resultado($conexao,$questionario);
+		$listar_questao=listar_questao_resultado_simulado($conexao,$questionario);
 		$conta=1;
 		$conta_pontos=0;
 		foreach ($listar_questao as $key2 => $value2) {
 		  	$idquestao=$value2['id'];
 			$pontos=$value2['pontos'];
-			$listar_alternativa=listar_alternativa_resposta($conexao,$idquestao);
+			$listar_alternativa=listar_alternativa_resposta_correta_simulado($conexao,$idquestao);
 			foreach ($listar_alternativa as $chave => $linha) {
 			    $idalternativa=$linha['id'];
 			    $correta=$linha['correta'];
-				$res_alt=$conexao->query("SELECT * FROM resposta_questao where resposta_discursiva='' and aluno_id=$idaluno and questao_id=$idquestao and alternativa_id=$idalternativa");
+				$res_alt=$conexao->query("SELECT * FROM resposta_questao_simulado where resposta_discursiva='' and aluno_id=$idaluno and questao_id=$idquestao and alternativa_id=$idalternativa");
 				foreach ($res_alt as $key => $value) {
 					$conta_pontos+=$pontos;
 				}
