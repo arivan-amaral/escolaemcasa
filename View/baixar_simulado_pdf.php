@@ -58,7 +58,7 @@ ALUNO (a): <B>$nome_aluno</B>
 <BR>
 <BR>
 ";
-	$listar_respostas=listar_questao_aluno($conexao,$questionario);
+	$listar_respostas=listar_questao_simulado($conexao,$questionario);
 	$conta=0;
 
 
@@ -88,7 +88,7 @@ ALUNO (a): <B>$nome_aluno</B>
 		Resposta:
 		         <div class='custom-control custom-radio'>
 		         ";
-				 $listar_alternativa=listar_resposta_alternativa_aluno($conexao,$idquestao,$aluno);
+				 $listar_alternativa=listar_resposta_alternativa_aluno_simulado($conexao,$idquestao,$aluno);
 
 		         foreach ($listar_alternativa as $chave => $linha) {
 		         	$alternativa_id=$linha['alternativa_id'];
@@ -104,7 +104,7 @@ ALUNO (a): <B>$nome_aluno</B>
 		         		}
 		         		
 
-			          			 $listar_multipla=listar_resposta_multipla_aluno($conexao,$idquestao,$aluno);
+			          			 $listar_multipla=listar_resposta_multipla_simulado_aluno($conexao,$idquestao,$aluno);
 			          			 $marcada="";
 			          	         foreach ($listar_multipla as $chave2 => $row) {
 			          	         	$nome_alternativa=converter_utf8($row['nome']);
