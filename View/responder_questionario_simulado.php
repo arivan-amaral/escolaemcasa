@@ -210,7 +210,7 @@ adiciona_justificada_marcacao = function (title) {
         $conta=1;
         foreach ($listar_questao as $key => $value) {
           $idquestao=$value['id'];
-          $questao=$value['nome'];
+          $questao=converter_utf8($value['nome']);
 
           // $questao=str_replace("^;", "'", $questao);
           // $questao=str_replace('Ã§', 'ç', $questao);
