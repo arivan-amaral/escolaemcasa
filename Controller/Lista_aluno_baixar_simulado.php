@@ -54,7 +54,7 @@ $return.="
 			
 			}
 		} 
-		$res_finalizado=$conexao->query("SELECT * FROM questionario_finalizado WHERE aluno_id=$idaluno and questionario_id=$questionario");
+		$res_finalizado=$conexao->query("SELECT * FROM questionario_simulado_finalizado WHERE aluno_id=$idaluno and questionario_id=$questionario");
 		$questionario_finalizado=0;
 		foreach ($res_finalizado as $key => $value) {
 		   $questionario_finalizado++;
@@ -65,7 +65,8 @@ $return.="<b>Pontos questão objetiva: $conta_pontos </b><br>";
 				$return.="
 
 				<span id='$idaluno'>
-						<b class='text-primary'>O aluno finalizou o questionário</b><a class='btn btn-primary' onclick='liberar_questionario($idaluno,$questionario);'>LIBERAR QUESTIONÁRIO</a> 
+						<b class='text-primary'>O aluno finalizou o questionário</b>
+						<!-- a class='btn btn-primary' onclick='liberar_questionario($idaluno,$questionario);'>LIBERAR QUESTIONÁRIO</a --> 
 				</span>
 
 				<br>";
