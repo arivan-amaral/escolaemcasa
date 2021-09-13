@@ -59,7 +59,7 @@ if (isset($return)) {
 			foreach ($listar_alternativa as $chave => $linha) {
 			    $idalternativa=$linha['id'];
 			    $correta=$linha['correta'];
-				$res_alt=$conexao->query("SELECT * FROM resposta_questao_simulado where resposta_discursiva='' and aluno_id=$idaluno and questao_id=$idquestao and alternativa_id=$idalternativa");
+				$res_alt=$conexao->query("SELECT * FROM resposta_questao_simulado where aluno_id=$idaluno and questao_id=$idquestao and alternativa_id=$idalternativa");
 				foreach ($res_alt as $key => $value) {
 					$conta_pontos+=$pontos;
 				}
