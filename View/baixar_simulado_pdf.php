@@ -80,7 +80,7 @@ ALUNO (a): <B>$nome_aluno</B>
 	
 	foreach ($listar_respostas as $key => $value) {
 		$idquestao=$value['id'];
-		$questao=converter_utf8($value['nome']);
+		$questao=($value['nome']);
         $questao=str_replace('^;', "'", $questao);
         
 		$html.= "
