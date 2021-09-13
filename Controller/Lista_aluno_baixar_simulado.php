@@ -56,16 +56,21 @@ if (isset($return)) {
 		  	$idquestao=$value2['id'];
 			$pontos=$value2['pontos'];
 			$listar_alternativa=listar_alternativa_resposta_correta_simulado($conexao,$idquestao);
+		
 			foreach ($listar_alternativa as $chave => $linha) {
 			    $idalternativa=$linha['id'];
 			    $correta=$linha['correta'];
+
+
 				$res_alt=$conexao->query("SELECT * FROM resposta_questao_simulado where aluno_id=$idaluno and questao_id=$idquestao and alternativa_id=$idalternativa");
 				foreach ($res_alt as $key => $value) {
 					$conta_pontos+=$pontos;
 				}
 			
 			}
-		} 
+		}
+
+
 		$res_finalizado=$conexao->query("SELECT * FROM questionario_simulado_finalizado WHERE aluno_id=$idaluno and questionario_id=$questionario");
 		$questionario_finalizado=0;
 		foreach ($res_finalizado as $key => $value) {
