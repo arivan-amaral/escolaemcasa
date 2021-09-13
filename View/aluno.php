@@ -29,7 +29,7 @@
 
   if (isset($_GET['simulado_id'])){
     $simulado_id=$_GET['simulado_id'];
-    // $conexao->exec("INSERT into questionario_simulado_finalizado (aluno_id,questionario_id)  values ($idaluno,$idquestionario)");
+    $conexao->exec("INSERT into questionario_simulado_finalizado (aluno_id,questionario_id)  values ($idaluno,$simulado_id)");
   }
 
 ?>
@@ -120,17 +120,29 @@ $result_simulado=$conexao->query("SELECT * FROM questionario_simulado WHERE esco
 
 
 
-$conta_simulado=0;
-foreach ($result_simulado as $key_simulado => $value_simulado) {
-  $idsumulado=$value_simulado['id'];
-  $titulo=$value_simulado['nome'];
-$result_prov.= "
-                   <a  href='responder_questionario_simulado.php?questionario_id=$idsumulado' class='btn btn-info btn-block btn-flat'>
-                           <i class='fa fa-edit'></i>RESPONDER SIMULADO: $titulo</a>
-                   <br>        
-             ";
+$conta_simulado=0;   
 
-  $conta_simulado++;
+
+  foreach ($result_simulado as $key_simulado => $value_simulado) {
+    $idsumulado=$value_simulado['id'];
+    $titulo=$value_simulado['nome'];
+
+    $res_simulado_finalizado=$conexao->query("SELECT * FROM questionario_simulado_finalizado WHERE aluno_id=$idaluno and questionario_id=$idsumulado");
+       $simulado_finalizado=0;
+       foreach ($res_simulado_finalizado as $key => $value) {
+          $simulado_finalizado++;
+       }
+
+    if ($simulado_finalizado==0) {
+                $result_prov.= "
+                     <a  href='responder_questionario_simulado.php?questionario_id=$idsumulado' class='btn btn-info btn-block btn-flat'>
+                             <i class='fa fa-edit'></i>RESPONDER SIMULADO: $titulo</a>
+                     <br>        
+               ";
+
+        $conta_simulado++;
+    }
+  
 }
 
 
