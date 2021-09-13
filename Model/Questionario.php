@@ -367,6 +367,10 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 		$return=$conexao->query("SELECT * FROM alternativa WHERE questao_id=$idquestao and tipo != 'discursiva' ");
 		return $return;
 	}
+		function listar_resposta_multipla_simulado_aluno($conexao,$idquestao){
+		$return=$conexao->query("SELECT * FROM alternativa_simulado WHERE questao_id=$idquestao and tipo != 'discursiva' ");
+		return $return;
+	}
 	
 
 

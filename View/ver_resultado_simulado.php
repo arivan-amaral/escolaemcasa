@@ -104,7 +104,7 @@ ALUNO (a): <B>$nome_aluno</B>
 		         		}
 		         		
 
-			          			 $listar_multipla=listar_resposta_multipla_aluno($conexao,$idquestao,$aluno);
+			          			 $listar_multipla=listar_resposta_multipla_simulado_aluno($conexao,$idquestao,$aluno);
 			          			 $marcada="";
 			          	         foreach ($listar_multipla as $chave2 => $row) {
 			          	         	$nome_alternativa=converter_utf8($row['nome']);
