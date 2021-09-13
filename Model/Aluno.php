@@ -409,13 +409,22 @@ function verificar_frequencia($conexao,$idescola,$idturma,$iddisciplina,$profess
 		return $res;
 	}	
 
-	function listar_aluno_do_simulado_professor($conexao,$escola_id,$idserie){
+	function listar_aluno_do_simulado_professor($conexao,$escola_id,$idserie,$indice){
 		$res=$conexao->query("SELECT aluno.senha,aluno.email,aluno.nome as 'nome_aluno', aluno.idaluno, aluno.status as 'status_aluno', turma.nome_turma,turma.idturma
 		 FROM 
 			aluno, ano_letivo,turma where
-			 serie_id=$idserie and aluno_id=idaluno and turma_id=idturma and escola_id=$escola_id and status like'Ativo' ORDER by nome ASC");
+			 serie_id=$idserie and aluno_id=idaluno and turma_id=idturma and escola_id=$escola_id and status like'Ativo' ORDER by nome ASC limit $indice,50");
 		return $res;
-	}
+	}	
+
+
+	// function listar_aluno_do_simulado_professor($conexao,$escola_id,$idserie){
+	// 	$res=$conexao->query("SELECT aluno.senha,aluno.email,aluno.nome as 'nome_aluno', aluno.idaluno, aluno.status as 'status_aluno', turma.nome_turma,turma.idturma
+	// 	 FROM 
+	// 		aluno, ano_letivo,turma where
+	// 		 serie_id=$idserie and aluno_id=idaluno and turma_id=idturma and escola_id=$escola_id and status like'Ativo' ORDER by nome ASC");
+	// 	return $res;
+	// }
 
 	function listar_disciplina_aluno($conexao,$idaluno){
 		$res=$conexao->query("SELECT 

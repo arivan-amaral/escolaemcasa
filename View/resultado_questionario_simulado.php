@@ -151,6 +151,7 @@ if (!isset($_SESSION['idfuncionario'])) {
                  <input type="hidden" id="escola_id" value="<?php echo $escola_id; ?>">
                  <input type="hidden" id="serie_id" value="<?php echo $idserie; ?>">
 <input type="hidden" id='aluno' value="1"> 
+<input type="hidden" id='indice' value=0> 
                       <a class="btn btn-primary"  onclick="resultado_questao_simulado();"> PESQUISAR</a>
                   </div>
 
@@ -163,9 +164,29 @@ if (!isset($_SESSION['idfuncionario'])) {
                 <div class="row">
                   <div class="col-sm-1"></div>
                   <div class="col-sm-10"> 
-                    <div  id="resultado_questao">
+                    
+                      <table class='table table-bordered'>
 
-                    </div>
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Aluno</th>
+                            <th>Opção</th>
+                          </tr>
+                        </thead>
+
+                        <tbody id="resultado_questao">
+
+                         <tbody>
+                      </table>
+                    
+                  </div>
+                </div>                
+
+                <div class="row">
+                  <div class="col-sm-1"></div>
+                  <div class="col-sm-10" id="paginacao" style="display:none"> 
+                    <a onclick="resultado_questao_simulado();" class="btn btn-block btn-secondary">Listar mais alunos</a>
                   </div>
                 </div>
             

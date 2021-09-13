@@ -10,31 +10,43 @@ $questionario = $_GET['questionario'];
 
 $escola_id = $_GET['escola_id'];
 $idserie = $_GET['serie_id'];
+$indice = $_GET['indice'];
 
 
-$result=listar_aluno_do_simulado_professor($conexao,$escola_id,$idserie);
-$return="
+$conta_aluno=$indice+1;
+$result=listar_aluno_do_simulado_professor($conexao,$escola_id,$idserie,$indice);
+if ($conta_aluno==1) {
+$return="";
+	// code...
+}
 
-<table class='table table-bordered'>
-
-  <thead>
-    <tr>
-      <th>Aluno</th>
-      <th>Opção</th>
-    </tr>
-  </thead>
-
-  <tbody>
-";
 foreach ($result as $key => $value) {
 $idaluno=$value['idaluno'];
 $idturma=$value['idturma'];
 $nome=$value['nome_aluno'];
+$nome_turma=$value['nome_turma'];
+if (isset($return)) {
+	$return.="
+	<tr>
+		<td>
+			$conta_aluno
+		</td>
 
-$return.="
-<tr>
-	<td>
-		<b>$nome<br></b> <br>";
+		<td>
+			<b>$nome</b><br>
+			<b>$nome_turma</b> <br>";
+	// code...
+}else{
+	$return="
+	<tr>
+		<td>
+			$conta_aluno
+		</td>
+
+		<td>
+			<b>$nome</b><br>
+			<b>$nome_turma</b> <br>";
+}
 
 
 		$listar_questao=listar_questao_resultado_simulado($conexao,$questionario);
@@ -94,14 +106,14 @@ $return.="
 </tr>
 
 ";
-
+$conta_aluno++;
 }
-$return.=" <tbody>
-</table>
-";
+if (isset($return)) {
 echo $return;
+	// code...
+}
 
 } catch (Exception $e) {
-echo "Erro desconhecido";
+echo "Erro desconhecido: $e";
 }
 ?>
