@@ -23,6 +23,7 @@ if (!isset($_SESSION['idprofessor'])) {
   $idescola=$_GET['idescola']; 
   $idturma=$_GET['idturma']; 
   $iddisciplina=$_GET['iddisciplina']; 
+  $idserie=$_GET['idserie']; 
 
 ?>
 
@@ -136,6 +137,7 @@ if (!isset($_SESSION['idprofessor'])) {
                 $status_aluno=$value['status_aluno'];
                 $email=$value['email'];
                 $senha=$value['senha'];
+                $etapa_id=$value['etapa_id'];
 
                   echo "
                      <tr>
@@ -154,9 +156,40 @@ if (!isset($_SESSION['idprofessor'])) {
                       </td>
                       <td> 
                       <a onclick='relatorio_de_visualizacao_video($id,$idturma,$iddisciplina);' class='btn btn-primary'>RELATÓRIO DE VISUALIZAÇÕES</a>
-
+                      <br>
                       ";
 
+                        if ($idserie==16) {
+
+                            echo"<label for='exampleInputEmail1'>Escolha a etapa </label>
+                                      <select class='form-control' id='etapa$id' onchange='muda_etapa($id)' required>
+                                      ";
+
+
+                                      if ($etapa_id!="") {
+                                        $res2=$conexao->query("SELECT * FROM etapa_multissereada WHERE id=$etapa_id");
+                                        foreach ($res2 as $key2 => $value2) {
+                                          $nome_etapa=$value2['etapa'];
+                                          echo"
+                                          <option value='$etapa_id'>$nome_etapa</option>
+                                          ";
+                                        }
+                                      }else{
+                                        echo "
+                                        <option></option>
+                                        ";
+                                      }
+                          $res=$conexao->query("SELECT * FROM etapa_multissereada WHERE turma_id=$idturma");
+                          foreach ($res as $key => $value) {
+                            $idetapa=$value['id'];
+                            $nome_etapa=$value['etapa'];
+                            echo"
+                            <option value='$idetapa'>$nome_etapa</option>
+                            ";
+                          }
+
+                              echo"</select>";
+                        }
 
                       echo"</td>
 

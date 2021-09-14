@@ -146,9 +146,9 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 	}	
 
 
-	function cadastrar_simulado($conexao,$idescola,$nome,$data,$data_final,$funcionario_id,$origem_questionario_id,$idserie){
-		$conexao->exec("INSERT INTO questionario_simulado(escola_id,nome,data,data_fim, funcionario_id,origem_questionario_id,serie_id) 
-			VALUES ($idescola,'$nome','$data','$data_final',$funcionario_id,'$origem_questionario_id',$idserie)");
+	function cadastrar_simulado($conexao,$idescola,$nome,$data,$data_final,$funcionario_id,$origem_questionario_id,$idserie,$turma_id,$etapa){
+		$conexao->exec("INSERT INTO questionario_simulado(escola_id,nome,data,data_fim, funcionario_id,origem_questionario_id,serie_id,turma_id,etapa_id) 
+			VALUES ($idescola,'$nome','$data','$data_final',$funcionario_id,'$origem_questionario_id',$idserie,$turma_id,$etapa)");
 	}
 	
 	function cadastrar_questao_simulado($conexao,$nome, $tipo, $pontos,$questionario_id,$origem_questionario_id){

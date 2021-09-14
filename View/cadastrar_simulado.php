@@ -170,17 +170,28 @@ $url_get=$array_url[1];
                 <b>Selecione a série</b>
                 <div class="form-group">
 
-                <select name='idserie'  class="custom-select rounded-0" required>
+                <select name='idserie'  class="custom-select rounded-0"  onchange='listar_etapas(this.value);' required>
                   <option></option>
 
                 <?php
                 foreach ($array_serie as $key => $value) {
-                    // code...
                     $idserie=$key;
+                    if ($idserie !=16) {
                         echo"
-                  <option value='$idserie'>$value</option>
+                        <option value='$idserie'>$value</option>
                         ";
+                    }
                 }
+
+
+                $res_multi=$conexao->query("SELECT * FROM turma WHERE serie_id=16");
+                foreach ($res_multi as $key_m => $value_m) {
+                    $idturma=$value_m['idturma'];
+                    $serie_id=$value_m['serie_id'];
+                    $nome_turma=$value_m['nome_turma'];
+                    echo "<option value='$idturma/$serie_id'>Multisseriada - $nome_turma</option>";
+                }
+
             ?>
         </div>
         </select>
@@ -203,6 +214,11 @@ $url_get=$array_url[1];
                         ?>
                     </select>
                   </div>
+
+
+            <div class="form-group" id="etapa">
+             
+            </div>
 
 
         <b>Data de Início</b>
@@ -232,7 +248,7 @@ $url_get=$array_url[1];
 
 
 
-
+ 
                 <input type="hidden" name="url_get" value="<?php echo $url_get ?>" class="form-control" required="">
 
                 

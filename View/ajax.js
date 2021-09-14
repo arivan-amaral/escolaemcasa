@@ -42,6 +42,52 @@ function CriaRequest() {
 
  }
 
+function muda_etapa(idaluno) {
+    // var result= document.getElementById('etapa'+idaluno);
+    var etapa= document.getElementById('etapa'+idaluno).value;
+    var xmlreq = CriaRequest();   
+
+    xmlreq.open("GET", "../Controller/Muda_etapa_multissereada.php?etapa="+etapa+"&idaluno="+idaluno, true);
+
+   xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                  // result.innerHTML = xmlreq.responseText;
+                    Swal.fire('Ação concluída', '', 'success');
+                
+             }else{
+                   alert('Erro desconhecido, verifique sua conexão com a internet');
+
+                //result.innerHTML ="Erro ao receber mensagens";                 
+             }
+         }
+     };
+     xmlreq.send(null);
+}
+
+function listar_etapas(idserie) {
+    var result= document.getElementById('etapa');
+    var xmlreq = CriaRequest();   
+
+    xmlreq.open("GET", "../Controller/Lista_etapa_multissereada.php?idserie="+idserie, true);
+
+   xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                  result.innerHTML = xmlreq.responseText;
+                
+             }else{
+                   alert('Erro desconhecido, verifique sua conexão com a internet');
+
+                //result.innerHTML ="Erro ao receber mensagens";                 
+             }
+         }
+     };
+     xmlreq.send(null);
+}
+
 
  function receber_resenha() {
     var result = document.getElementById("resenha");
