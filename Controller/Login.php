@@ -129,9 +129,11 @@ try {
           $turma_id = $row2["turma_id"];
           $serie_id = $row2["serie_id"];
           $sexo = $row2["sexo"];
+          $etapa_id = $row2["etapa_id"];
 
           $_SESSION["idaluno"] = $id;
           $_SESSION["nome"] = $nome;
+          $_SESSION["etapa_id"] = $etapa_id;
 
           $_SESSION["email"] = $email;
           $_SESSION["nome_escola"] = $nome_escola;

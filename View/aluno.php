@@ -16,6 +16,7 @@
   $idescola=$_SESSION['escola_id'];
   $idturma=$_SESSION['turma_id'];
   $idserie=$_SESSION['serie_id'];
+  $etapa_id=$_SESSION['etapa_id'];
   $data_atual=date("Y-m-d H:i:s");
   $data=date("Y-m-d");
   $hora_atual=date("H:i:s");
@@ -37,9 +38,7 @@
 
 <?php 
 
-
-$result_prova=$conexao->query("SELECT * FROM questionario WHERE escola_id=$idescola and turma_id=$idturma and data<='$data' and data_fim>='$data' and status=1");
-
+  $result_prova=$conexao->query("SELECT * FROM questionario WHERE escola_id=$idescola and turma_id=$idturma and data<='$data' and data_fim>='$data' and status=1");
 
 $prova_ativa=0;
 echo "
@@ -116,9 +115,18 @@ if ($questionario_finalizado==0) {
 }
 
 
+
+if ($idserie==16) {
+  $result_simulado=$conexao->query("SELECT * FROM questionario_simulado WHERE
+    etapa_id=$etapa_id
+   and escola_id=$idescola 
+   and turma_id=$idturma
+    and data<='$data_atual' 
+    and data_fim>='$data_atual'
+     and status=1");
+}else{  
 $result_simulado=$conexao->query("SELECT * FROM questionario_simulado WHERE escola_id=$idescola and serie_id=$idserie and data<='$data_atual' and data_fim>='$data_atual' and status=1");
-
-
+}
 
 $conta_simulado=0;   
 
