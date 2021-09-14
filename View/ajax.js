@@ -1509,8 +1509,9 @@ function resposta_multipla_professor(id) {
 function resposta_multipla_professor_simulado(id) {
     var origem_questionario_id =  document.getElementById('origem_questionario_id').value;
     var texto_alternativa =  document.getElementById('alternativa'+id).value;
+    var questao_alternativa =  document.getElementById('questao_alternativa'+id).value;
     var xmlreq = CriaRequest();
-    xmlreq.open("GET", "../Controller/Responder_questionario_discursiva_professor_simulado.php?origem_questionario_id="+origem_questionario_id+"&id="+id+"&texto_alternativa="+texto_alternativa, true);
+    xmlreq.open("GET", "../Controller/Responder_questionario_discursiva_professor_simulado.php?questao_alternativa="+questao_alternativa+"&origem_questionario_id="+origem_questionario_id+"&id="+id+"&texto_alternativa="+texto_alternativa, true);
     xmlreq.onreadystatechange = function(){
        
           if (xmlreq.readyState == 4) {

@@ -4,8 +4,10 @@ include_once '../Model/Questionario.php';
 
 try {
 
+
 $texto_alternativa = $_GET['texto_alternativa'];
 $origem_questionario_id = $_GET['origem_questionario_id'];
+$questao_alternativa = $_GET['questao_alternativa'];
 $id = $_GET['id'];
 
 // $aluno_id=$_SESSION['idaluno'];
@@ -14,7 +16,11 @@ $id = $_GET['id'];
 // $questao_id=$_GET['questao_id'];
  
 
-	$pesquisa_alt=$conexao->query("SELECT * FROM alternativa_simulado WHERE id =$id and origem_questionario_id='$origem_questionario_id' ");
+	$pesquisa_alt=$conexao->query("SELECT * FROM questao_simulado,alternativa_simulado WHERE 
+		questao_simulado.nome like '%$questao_alternativa%' and 
+		questao_id=questao_simulado.id and 
+		alternativa_simulado.id =$id and
+		 alternativa_simulado.origem_questionario_id='$origem_questionario_id' ");
 	$resposta=1;
 	$conta=0;
 	foreach ($pesquisa_alt as $key => $value) {
@@ -35,7 +41,7 @@ $id = $_GET['id'];
 	}
 
 } catch (Exception $e) {
-	echo "erro";
+	echo "erro: $e";
 }
 		
 ?>

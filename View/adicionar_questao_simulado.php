@@ -265,6 +265,7 @@ $url_get=$array_url[1];
 
               }
           }
+            $questao_aux=substr($questao, 0, 25);
 
            if ($tipo=="discursiva") {
 
@@ -273,6 +274,7 @@ $url_get=$array_url[1];
             echo "                                                
             <div class='custom-control custom-radio'>
             <input type='hidden' value='$alternativa' id='alternativa$id'>
+            <input type='hidden' value='$questao_aux' id='questao_alternativa$id'>
 
             <input type='checkbox' id='customRadio$id$cont' name='alternativa$id$questao_id' class='custom-control-input' onclick='resposta_multipla_professor_simulado($id)' $marcado>
             <label class='custom-control-label' for='customRadio$id$cont'>
@@ -282,6 +284,8 @@ $url_get=$array_url[1];
 
           }else if ($tipo=="multipla_justificada") {
            echo "              
+            <input type='hidden' value='$questao_aux' id='questao_alternativa$id'>
+           
             <input type='hidden' value='$alternativa' id='alternativa$id'>
 
            <div class='custom-control custom-radio'>
