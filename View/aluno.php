@@ -16,7 +16,10 @@
   $idescola=$_SESSION['escola_id'];
   $idturma=$_SESSION['turma_id'];
   $idserie=$_SESSION['serie_id'];
-  $etapa_id=$_SESSION['etapa_id'];
+  $etapa_id="";
+  if (isset($_SESSION['etapa_id'])) {
+    $etapa_id=$_SESSION['etapa_id'];
+  }
   $data_atual=date("Y-m-d H:i:s");
   $data=date("Y-m-d");
   $hora_atual=date("H:i:s");
@@ -116,7 +119,7 @@ if ($questionario_finalizado==0) {
 
 
 
-if ($idserie==16) {
+if ($idserie==16 && $etapa_id!="") {
   $result_simulado=$conexao->query("SELECT * FROM questionario_simulado WHERE
     etapa_id=$etapa_id
    and escola_id=$idescola 
