@@ -3,6 +3,20 @@ include_once"../Model/Conexao.php";
 include_once"../Model/Escola.php";
 include_once"conteudos_registrados.php";
 
+
+    $data_inicio_trimestre1="2021-05-03";
+    $data_fim_trimestre1="2021-07-09";
+    
+
+    $data_inicio_trimestre2="2021-07-27";
+    $data_fim_trimestre2="2021-10-01";
+
+    $data_inicio_trimestre3="2021-10-04";
+    $data_fim_trimestre3="2021-12-21";
+
+
+
+
 $idescola=$_GET['idescola'];
 $idturma=$_GET['idturma'];
 $idserie=$_GET['idserie'];
@@ -18,9 +32,13 @@ foreach ($pes as $chave => $linha) {
   $iddisciplina=$linha['iddisciplina'];
   $nome_professor=$linha['nome'];
   $nome_turma=$linha['nome_turma'];
-  diario_conteudo($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola); 
+  diario_conteudo($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola,$data_inicio_trimestre1,$data_fim_trimestre1); 
+  echo "<br>";
+  diario_conteudo($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola,$data_inicio_trimestre2,$data_fim_trimestre2); 
   echo" <br>";
 }
+
+
 
 
  ?>

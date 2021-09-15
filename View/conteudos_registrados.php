@@ -3,7 +3,7 @@
   include"../Model/Coordenador.php";
   include"../Model/Aluno.php";
  
- function diario_conteudo($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola){
+ function diario_conteudo($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola,$data_inicial,$data_final){
 ?>
 
 <html xmlns:v="urn:schemas-microsoft-com:vml"
@@ -247,7 +247,8 @@ div.WordSection1
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
   style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'><b>PERÍODO 2021</b><o:p></o:p></span></p>
+  color:black;mso-fareast-language:PT-BR'><b>PERÍODO: <?php 
+  echo converte_data($data_inicial) ." - ". converte_data($data_final); ?></b><o:p></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:6;height:15.0pt'>
@@ -406,7 +407,7 @@ div.WordSection1
  </tr>
 
 <?php
-$result_conteudo= $conexao->query("SELECT * FROM conteudo_aula where disciplina_id=$iddisciplina and turma_id=$idturma and escola_id=$idescola ");
+$result_conteudo= $conexao->query("SELECT * FROM conteudo_aula where disciplina_id=$iddisciplina and turma_id=$idturma and escola_id=$idescola  and data BETWEEN $data_inicial and $data_final");
 $conta=1;
 foreach ($result_conteudo as $key => $value) {
   $data_conteudo=converte_data($value['data']);
