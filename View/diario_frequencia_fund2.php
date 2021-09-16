@@ -48,14 +48,12 @@ if ($periodo_id==1) {
 
 diario_frequencia($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$data_inicio_trimestre,$data_fim_trimestre); 
 echo"<BR>";
-$inicio=35;
-// $inicio=0;
+$inicio=0;
 $conta_aula=36;
 
 $limite_data=18;
 $limite_aula=18;
-$fim= 52;
-// $fim= 17;
+$fim= 17;
 // diario_frequencia_pagina_final($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie)
 
 diario_frequencia_pagina_final($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula+$inicio,$conta_data+$inicio,$limite_data+$inicio,$limite_aula+$inicio,$periodo_id,$idserie,$data_inicio_trimestre,$data_fim_trimestre);
