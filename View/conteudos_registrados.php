@@ -3,7 +3,7 @@
   include"../Model/Coordenador.php";
   include"../Model/Aluno.php";
  
- function diario_conteudo($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola,$data_inicial,$data_final){
+ function diario_conteudo($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola,$data_inicial,$data_final,$periodo){
 ?>
 
 <html xmlns:v="urn:schemas-microsoft-com:vml"
@@ -330,7 +330,14 @@ div.WordSection1
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
   style='font-size:10pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'><b>UNIDADE: I TRIMESTRE</b><o:p></o:p></span></p>
+  color:black;mso-fareast-language:PT-BR'><b>UNIDADE: 
+
+      <?php 
+     echo "$periodo";
+  
+    ?>
+
+  </b><o:p></o:p></span></p>
   </td>
   <td width=406 nowrap colspan=2 style='width:304.75pt;border-top:none;
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
