@@ -589,7 +589,7 @@ foreach ($result_aula as $key => $value) {
       <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
       line-height:normal'><div class="Namerotate"><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-      color:black;mso-fareast-language:PT-BR'> <?php echo "Aula $conta_aula";  ?> </div></span></p>
+      color:black;mso-fareast-language:PT-BR'> <?php echo "f Aula $conta_aula";  ?> </div></span></p>
   </td>
 
   
@@ -736,13 +736,12 @@ $conta_presenca=1;
     $aula=$array_aula[$key];
     $data_frequencia=$array_data_aula[$key];
 
-    $res_pre=$conexao->query("SELECT presenca from frequencia where presenca=1 and aluno_id=$idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and data_frequencia='$data_frequencia' and aula='$aula' limit $inicio,$fim ");
+    $res_pre=$conexao->query("SELECT presenca from frequencia where presenca=1 and aluno_id=$idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and data_frequencia='$data_frequencia' and aula='$aula' ");
      
     if ($res_pre->rowCount()>0) {
       $presenca=".";
     }else{
-      $presenca="";
-      // $presenca="F";
+      $presenca="F";
 
     }
    
@@ -1046,7 +1045,7 @@ foreach ($res_fre_t1 as $key => $value) {
   $quantidade_falta1=$value['quantidade'];
 }
 
-// echo "$quantidade_falta1";
+echo "$quantidade_falta1";
 ?>
              </span></b></p>
              </td>
