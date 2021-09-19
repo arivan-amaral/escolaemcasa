@@ -38,21 +38,20 @@ try {
 		    		}
 
 
-				$_SESSION['status']=1;
-	 					header("Location:../View/cadastro_trabalho.php?$url_get");
-
-	 		}else{
-				$_SESSION['status']=0;
-						header("Location:../View/cadastro_trabalho.php?$url_get");
-
+						// $_SESSION['status']=1;
+	 				// 	header("Location:../View/cadastro_trabalho.php?$url_get");
 
 	 		}
-	    }else{
-				$_SESSION['status']=0;
-						header("Location:../View/cadastro_trabalho.php?$url_get");
 
-
+	 		// else{
+				// $_SESSION['status']=0;
+				// 		header("Location:../View/cadastro_trabalho.php?$url_get");
+	 		// }
 	 	}
+	  		//else{
+			// 	$_SESSION['status']=0;
+			// 			header("Location:../View/cadastro_trabalho.php?$url_get");
+	 		// }
 
 	}else{
 		foreach ($_POST['idturma'] as $key => $value) {
@@ -60,13 +59,14 @@ try {
 			$res_t=$conexao->exec("INSERT INTO trabalho(titulo,descricao, turma_id, disciplina_id, professor_id,data_entrega,extensao,data_hora_visivel,escola_id) VALUES ('$titulo', '$descricao',    $turma_id,$disciplina_id,    $professor_id,'$data_entrega','$extensao' ,'$data_hora_visivel',$idescola)");
 		}
 		 	
-		$_SESSION['status']=1;
-				header("Location:../View/cadastro_trabalho.php?$url_get");
+		// $_SESSION['status']=1;
+		// 		header("Location:../View/cadastro_trabalho.php?$url_get");
 
 		 
 	}
 
-
+$_SESSION['status']=1;
+header("Location:../View/cadastro_trabalho.php?$url_get"); 
 } catch (Exception $e) {
 	$_SESSION['status']=0;
 	echo "$e";
