@@ -239,7 +239,7 @@ try {
               //     $cont++;
               //  }
 
-$res_conteu=verificar_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula);
+$res_conteu=verificar_conteudo_aula($conexao, $iddisciplina_get, $idturma_get, $idescola_get, $professor_id, $data,$aula);
 
 $conteudo_aula="";
 foreach ($res_conteu as $key => $value) {
