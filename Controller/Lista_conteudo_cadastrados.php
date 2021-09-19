@@ -248,9 +248,9 @@ foreach ($res_conteu as $key => $value) {
 
           // $result.="</tbody>
           // </table>";
-if ($conta_marcados==0) {
-  $conteudo_aula="";
-}
+// if ($conta_marcados==0) {
+//   $conteudo_aula="";
+// }
           $result.="
    <BR>
        </div>
