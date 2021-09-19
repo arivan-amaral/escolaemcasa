@@ -53,10 +53,17 @@ try {
         $disciplina=($value['nome_disciplina']);
         $nome_escola=($value['nome_escola']);
         $turma=($value['nome_turma']);
+
+
         $idescola=($value['idescola']);
         $iddisciplina=$value['iddisciplina'];
         $idturma=$value['idturma'];
-        $idserie=$value['serie_id'];
+        $idserie=$value['serie_id']; 
+
+        $escola_id=($value['idescola']);
+        $disciplina_id=$value['iddisciplina'];
+        $turma_id=$value['idturma'];
+        $serie_id=$value['serie_id'];
          //if ($idturma==$idturma_get && $idescola==$idescola_get && $iddisciplina=$iddisciplina_get) {
             // $result.="
             // <div class='custom-control custom-checkbox'>
@@ -67,13 +74,13 @@ try {
              $resultado=verificar_conteudo_aula_cadastrado_por_data($conexao, $iddisciplina, $idturma, $idescola, $data);
               $marca_disciplina='';
               foreach ($resultado as $key => $value) {
-                $marca_disciplina='checked';
                 $idturma_verifc=$value['turma_id'];
                 $idescola_verifc=$value['escola_id'];
                 $iddisciplina_verifc=$value['disciplina_id'];
 
                 if ($idturma==$idturma_get && $idescola==$idescola_get && $iddisciplina=$iddisciplina_get) {
                   $conta_marcados++;
+                  $marca_disciplina='checked';
                 }
               }
 
@@ -81,22 +88,22 @@ try {
 
                 $result.="
                 <div class='custom-control custom-checkbox'>
-                <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$idturma$idescola$iddisciplina' value='$idescola+$idturma+$iddisciplina+$idserie' $marca_disciplina required>
-                <label for='customCheckbox$idturma$idescola$iddisciplina' class='custom-control-label'> $nome_escola - <font style='color:#8B0000'>$turma -$disciplina</font> </label>
+                <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$escola_id$turma_id$disciplina_id$serie_id' value='$escola_id+$turma_id+$disciplina_id+$serie_id' $marca_disciplina required> 
+                <label for='customCheckbox$escola_id$turma_id$disciplina_id$serie_id' class='custom-control-label'> $nome_escola - <font style='color:#8B0000'>$turma -$disciplina</font> </label>
                 </div>";
             }else if ($idturma==$idturma_get && $idescola==$idescola_get && $iddisciplina=$iddisciplina_get && $marca_disciplina!='') {
 
                 $result.="
                 <div class='custom-control custom-checkbox'>
-                <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$idturma$idescola$iddisciplina' value='$idescola+$idturma+$iddisciplina+$idserie' $marca_disciplina >
-                <label for='customCheckbox$idturma$idescola$iddisciplina' class='custom-control-label'> $nome_escola - <font style='color:#8B0000'>$turma -$disciplina</font> </label>
+                <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$escola_id$turma_id$disciplina_id$serie_id' value='$escola_id+$turma_id+$disciplina_id+$serie_id' $marca_disciplina required>
+                <label for='customCheckbox$escola_id$turma_id$disciplina_id$serie_id' class='custom-control-label'> $nome_escola - <font style='color:#8B0000'>$turma -$disciplina</font> </label>
                 </div>";
             }else {
 
                 $result.="
                 <div class='custom-control custom-checkbox'>
-                <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$idturma$idescola$iddisciplina' value='$idescola+$idturma+$iddisciplina+$idserie' $marca_disciplina>
-                <label for='customCheckbox$idturma$idescola$iddisciplina' class='custom-control-label'> $nome_escola - <font style='color:#8B0000'>$turma -$disciplina</font> </label>
+                <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$escola_id$turma_id$disciplina_id$serie_id' value='$escola_id+$turma_id+$disciplina_id+$serie_id' $marca_disciplina> 
+                <label for='customCheckbox$escola_id$turma_id$disciplina_id$serie_id' class='custom-control-label'> $nome_escola - <font style='color:#8B0000'>$turma -$disciplina</font> </label>
                 </div>";
             }
 
