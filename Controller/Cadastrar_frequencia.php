@@ -60,7 +60,7 @@ try {
             if (isset($_POST["presenca$aluno_id"])) {
                 $presenca=1;
             }
-            cadastro_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$aluno_id,$data,$conteudo_aula_id,$presenca,$aula);
+            cadastro_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$aluno_id,$data,$idconteudo,$presenca,$aula);
         }
     }
             $_SESSION['status']=1;

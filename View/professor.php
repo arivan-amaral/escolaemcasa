@@ -472,7 +472,8 @@ if (!isset($_SESSION['idprofessor'])) {
 
                                                <font style='vertical-align: inherit;'> 
 
-                                                   <i class='fa fa-calendar'></i>
+                                                   <ion-icon name='document-text'></ion-icon> 
+
 
                                                     Diário de conteúdo  
 

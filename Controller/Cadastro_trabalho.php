@@ -69,7 +69,8 @@ try {
 
 } catch (Exception $e) {
 	$_SESSION['status']=0;
-		header("Location:../View/cadastro_trabalho.php?$url_get");
+	echo "$e";
+		//header("Location:../View/cadastro_trabalho.php?$url_get");
 
 	
 }

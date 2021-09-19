@@ -41,8 +41,11 @@ if (!isset($_SESSION['idprofessor'])) {
   include '../Model/Turma.php';
 
   $idescola=$_GET['idescola']; 
+  $idescola_get=$_GET['idescola']; 
   $idturma=$_GET['turm']; 
+  $idturma_get=$_GET['turm']; 
   $iddisciplina=$_GET['disc']; 
+  $iddisciplina_get=$_GET['disc']; 
 
  $array_url=explode('p?', $_SERVER["REQUEST_URI"]);
  $url_get=$array_url[1];
@@ -216,39 +219,70 @@ if (!isset($_SESSION['idprofessor'])) {
               <?php 
                 if ($idserie>=8) {
               ?>
-                <div style="background-color:#B0C4DE; padding:10px;border-radius: 1%;">
-                      
-                    <b> <font color='blue'>Escolha as turma que receberão o mesmo conteúdo cadastrado aqui. </font></b>
+               
                   <?php
-                  $result_disciplinas=listar_turmas_com_mesma_disciplinas_do_professor($conexao,$idescola,$idprofessor,$idserie,$iddisciplina);
 
-                   foreach ($result_disciplinas as $key => $value) {
-                       $turma_id=$value['idturma'];
-                       $nome_turma=$value['nome_turma'];
-                       $nome_disciplina=$value['nome_disciplina'];
+
+                  //   $result_disciplinas=listar_disciplina_professor($conexao,$idprofessor);
+
+
+
+                  //   foreach ($result_disciplinas as $key => $value) {
+
+                  //     $disciplina=($value['nome_disciplina']);
+                  //     $nome_escola=($value['nome_escola']);
+                  //     $turma=($value['nome_turma']);
+                  //     $idescola=($value['idescola']);
+                  //     $iddisciplina=$value['iddisciplina'];
+                  //     $idturma=$value['idturma'];
+                  //     $idserie=$value['serie_id'];
+                  //      if ($idturma==$idturma_get && $idescola==$idescola_get && $iddisciplina=$iddisciplina_get) {
+                  //         echo"
+                  //         <div class='custom-control custom-checkbox'>
+                  //         <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$idturma$idescola$iddisciplina' value='$idescola+$idturma+$iddisciplina+$idserie' required checked>
+                  //         <label for='customCheckbox$idturma$idescola$iddisciplina' class='custom-control-label'> $nome_escola - <font style='color:#8B0000'>$turma -$disciplina</font> </label>
+                  //         </div>";
+                  //       }else{
+                  //         echo"
+                  //         <div class='custom-control custom-checkbox'>
+                  //         <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$idturma$idescola$iddisciplina' value='$idescola+$idturma+$iddisciplina+$idserie'>
+                  //         <label for='customCheckbox$idturma$idescola$iddisciplina' class='custom-control-label'> $nome_escola - <font style='color:#8B0000'>$turma -$disciplina</font> </label>
+                  //         </div>";
+                  //       }
+
+
+
+
+                  // }
+
+
+                  // $result_disciplinas=listar_turmas_com_mesma_disciplinas_do_professor($conexao,$idescola,$idprofessor,$idserie,$iddisciplina);
+
+                  //  foreach ($result_disciplinas as $key => $value) {
+                  //      $turma_id=$value['idturma'];
+                  //      $nome_turma=$value['nome_turma'];
+                  //      $nome_disciplina=$value['nome_disciplina'];
                     
-                       if ($idturma==$turma_id) {
-                          echo"
-                          <div class='custom-control custom-checkbox'>
-                              <input class='custom-control-input' name='idturma_conteudo[]' type='checkbox' id='customCheckbox$turma_id' value='$turma_id' required checked>
-                              <label for='customCheckbox$turma_id' class='custom-control-label'>$nome_turma - $nome_disciplina</label>
-                          </div>";
+                  //      if ($idturma==$turma_id) {
+                  //         echo"
+                  //         <div class='custom-control custom-checkbox'>
+                  //             <input class='custom-control-input' name='idturma_conteudo[]' type='checkbox' id='customCheckbox$turma_id' value='$turma_id' required checked>
+                  //             <label for='customCheckbox$turma_id' class='custom-control-label'>$nome_turma - $nome_disciplina</label>
+                  //         </div>";
 
-                       } else {
-                        echo"
-                        <div class='custom-control custom-checkbox'>
-                            <input class='custom-control-input' name='idturma_conteudo[]' type='checkbox' id='customCheckbox$turma_id' value='$turma_id'  >
-                            <label for='customCheckbox$turma_id' class='custom-control-label'>$nome_turma - $nome_disciplina</label>
-                        </div>";
+                  //      } else {
+                  //       echo"
+                  //       <div class='custom-control custom-checkbox'>
+                  //           <input class='custom-control-input' name='idturma_conteudo[]' type='checkbox' id='customCheckbox$turma_id' value='$turma_id'  >
+                  //           <label for='customCheckbox$turma_id' class='custom-control-label'>$nome_turma - $nome_disciplina</label>
+                  //       </div>";
 
                         
-                      }
-                  }
+                  //     }
+                  // }
 
                   ?>
-              </div>
-                  <br>
-                  <br>
+
 
       <?php 
 
@@ -285,7 +319,7 @@ if (!isset($_SESSION['idprofessor'])) {
                 $idserie_atalho=$value['serie_id'];
 
                 echo "
-                <option value='cadastar_conteudo.php?disc=$iddisciplina_atalho&turm=$idturma_atalho&turma=$nome_turma_atalho&disciplina=$disciplina&idescola=$idescola_atalho&idserie=$idserie_atalho' onclick='atalho();' >
+                <option value='cadastrar_conteudo.php?disc=$iddisciplina_atalho&turm=$idturma_atalho&turma=$nome_turma_atalho&disciplina=$disciplina&idescola=$idescola_atalho&idserie=$idserie_atalho' onclick='atalho();' >
                     Mudar para turma =>  $nome_turma_atalho - $disciplina  
                   </option> 
 
@@ -436,6 +470,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
 
 <input type="hidden" id="url_get" value="<?php echo $url_get; ?>">
+          <input type="hidden" id="local" value="cadastrar_conteudo">
 
 
 <?php 

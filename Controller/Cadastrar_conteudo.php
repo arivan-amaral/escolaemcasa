@@ -9,8 +9,9 @@ try {
 
     $professor_id=$_SESSION['idfuncionario'];
 
-    $idescola=$_POST['idescola'];
-   	$idturma=$_POST['idturma'];
+    // $idescola=$_POST['idescola'];
+   	// $idturma=$_POST['idturma'];
+    // $iddisciplina=$_POST['iddisciplina'];
 
     $data=$_POST['data_frequencia'];
     $descricao="";
@@ -21,18 +22,22 @@ try {
     $aula=$_POST['aula'];
     $url_get=$_POST['url_get'];
    	
-    $iddisciplina=$_POST['iddisciplina'];
-    foreach ($_POST['iddisciplina'] as $key => $value) {
-        $iddisciplina=$_POST['iddisciplina'][$key];
-    
+
+    foreach ($_POST['escola_turma_disciplina'] as $key => $value) {
+
+        $array_url=explode('+',$_POST['escola_turma_disciplina'][$key]);
+        $idescola=$array_url[0];
+        $idturma=$array_url[1];
+        $iddisciplina=$array_url[2];
+        $idserie=$array_url[3];
 
         //limpar_cadastro_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data,$aula);
-        
-        $res_pes_cont_aluno_trasf=pesquisa_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $data,$aula);
-        $idconteudo="";
-        foreach ($res_pes_cont_aluno_trasf as $key => $value) {
-            $idconteudo=$value['id'];
-        }    
+       
+        // $res_pes_cont_aluno_trasf=pesquisa_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $data,$aula);
+        // $idconteudo="";
+        // foreach ($res_pes_cont_aluno_trasf as $key => $value) {
+        //     $idconteudo=$value['id'];
+        // }    
 
         $res_pes_cont_aluno_trasf=pesquisa_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $data,$aula);
         $idconteudo="";
@@ -45,11 +50,12 @@ try {
         }
 
 
-            if ($idconteudo=="") {
-                 cadastro_conteudo_aula($conexao,$descricao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula);
-                $conteudo_aula_id= $conexao->lastInsertId();
-            }
+        if ($idconteudo=="") {
+            cadastro_conteudo_aula($conexao,$descricao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula);
+            $conteudo_aula_id= $conexao->lastInsertId();
+        }
 
+        echo "$iddisciplina <br>";
 
         // arivan 17/09/2021
 

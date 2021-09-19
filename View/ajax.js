@@ -245,10 +245,11 @@ function excluir_mural(idmural) {
 function excluir_frequencia(id) {
     var conteudo_aula_id = document.getElementById("conteudo_aula_id"+id).value;  
     var url_get = document.getElementById("url_get").value; 
-
-    var url="conteudo_aula_id="+conteudo_aula_id+"&"+url_get;
+    var local = document.getElementById("local").value; 
+ 
+    var url="local="+local+"&conteudo_aula_id="+conteudo_aula_id+"&"+url_get;
   Swal.fire({
-    title: 'Deseja continuar com a exclusão?',
+    title: 'Deseja continuar com a exclusão, conteúdo/frequência?',
     showDenyButton: true,
     confirmButtonText: `Sim`,
     denyButtonText: `Não`,

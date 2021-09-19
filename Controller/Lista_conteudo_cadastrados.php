@@ -1,78 +1,151 @@
 <?php
   session_start();
     include("../Model/Conexao.php");
+    include("../Model/Professor.php");
     include("../Model/Aluno.php");
     
 
 try {
 
     $professor_id=$_SESSION['idfuncionario'];
+    $idprofessor=$_SESSION['idfuncionario'];
 
     $idserie=$_GET['idserie'];
     $idescola=$_GET['idescola'];
+    $idescola_get=$_GET['idescola'];
 
     $idturma=$_GET['idturma'];
+    $idturma_get=$_GET['idturma'];
     $iddisciplina=$_GET['iddisciplina'];
+    $iddisciplina_get=$_GET['iddisciplina'];
     $data=$_GET['data_frequencia'];
     $aula=$_GET['aula'];
    $result="
    <br>
-   <div class='row'>
-     <div class='col-sm-1'></div>
-     <div class='col-sm-10'>
 
+     <div class='col-sm-12'>
+
+      <div style='background-color:#B0C4DE; padding:10px;border-radius: 1%;''>
+      <b> <font color='blue'>Escolha as turma que receberão o mesmo conteúdo cadastrado aqui. </font></b>
+  
    ";
     
 
-    $result_disciplinas=$conexao->query("SELECT * FROM ministrada,escola,turma,disciplina where
-     ministrada.turma_id=idturma and
-     ministrada.disciplina_id=iddisciplina and 
-     ministrada.escola_id=idescola and
-     ministrada.escola_id=idescola and
+    // $result_disciplinas=$conexao->query("SELECT * FROM ministrada,escola,turma,disciplina where
+    //  ministrada.turma_id=idturma and
+    //  ministrada.disciplina_id=iddisciplina and 
+    //  ministrada.escola_id=idescola and
+    //  ministrada.escola_id=idescola and
 
-     idescola=$idescola and
-     professor_id=$professor_id and
-     idturma=$idturma 
-     order by disciplina_id=$iddisciplina
-    ");
+    //  idescola=$idescola and
+    //  professor_id=$professor_id and
+    //  idturma=$idturma 
+    //  order by disciplina_id=$iddisciplina
+    // ");
 
-    foreach ($result_disciplinas as $key => $value) {
-       $disciplina_id=$value['iddisciplina'];
-       $nome_disciplina=$value['nome_disciplina'];
-    
-       if ($iddisciplina==$disciplina_id) {
-          $result.="
-          <div class='custom-control custom-checkbox'>
-              <input class='custom-control-input' name='iddisciplina[]' type='checkbox' id='customCheckbox$disciplina_id' value='$disciplina_id' required checked>
-              <label for='customCheckbox$disciplina_id' class='custom-control-label'>$nome_disciplina</label>
-          </div>";
 
-       } else if ($idserie< 8) {
-       
+      $result_disciplinas=listar_disciplina_professor($conexao,$idprofessor);
 
-         $resultado=verificar_conteudo_aula_cadastrado_por_data($conexao, $disciplina_id, $idturma, $idescola, $data);
-         $marca_disciplina='';
+      $conta_marcados=0;
+      $total=0;
+      foreach ($result_disciplinas as $key => $value) {
 
-          foreach ($resultado as $key => $value) {
-            $marca_disciplina='checked';
+        $disciplina=($value['nome_disciplina']);
+        $nome_escola=($value['nome_escola']);
+        $turma=($value['nome_turma']);
+        $idescola=($value['idescola']);
+        $iddisciplina=$value['iddisciplina'];
+        $idturma=$value['idturma'];
+        $idserie=$value['serie_id'];
+         //if ($idturma==$idturma_get && $idescola==$idescola_get && $iddisciplina=$iddisciplina_get) {
+            // $result.="
+            // <div class='custom-control custom-checkbox'>
+            // <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$idturma$idescola$iddisciplina' value='$idescola+$idturma+$iddisciplina+$idserie' required >
+            // <label for='customCheckbox$idturma$idescola$iddisciplina' class='custom-control-label'> $nome_escola - <font style='color:#8B0000'>$turma -$disciplina</font> </label>
+            // </div>";
+         // }else{
+             $resultado=verificar_conteudo_aula_cadastrado_por_data($conexao, $iddisciplina, $idturma, $idescola, $data);
+              $marca_disciplina='';
+              foreach ($resultado as $key => $value) {
+                $marca_disciplina='checked';
+                $idturma_verifc=$value['turma_id'];
+                $idescola_verifc=$value['escola_id'];
+                $iddisciplina_verifc=$value['disciplina_id'];
+
+                if ($idturma==$idturma_get && $idescola==$idescola_get && $iddisciplina=$iddisciplina_get) {
+                  $conta_marcados++;
+                }
+              }
+
+             if ($idturma==$idturma_get && $idescola==$idescola_get && $iddisciplina=$iddisciplina_get && $marca_disciplina=='') {
+
+                $result.="
+                <div class='custom-control custom-checkbox'>
+                <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$idturma$idescola$iddisciplina' value='$idescola+$idturma+$iddisciplina+$idserie' $marca_disciplina required>
+                <label for='customCheckbox$idturma$idescola$iddisciplina' class='custom-control-label'> $nome_escola - <font style='color:#8B0000'>$turma -$disciplina</font> </label>
+                </div>";
+            }else if ($idturma==$idturma_get && $idescola==$idescola_get && $iddisciplina=$iddisciplina_get && $marca_disciplina!='') {
+
+                $result.="
+                <div class='custom-control custom-checkbox'>
+                <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$idturma$idescola$iddisciplina' value='$idescola+$idturma+$iddisciplina+$idserie' $marca_disciplina required>
+                <label for='customCheckbox$idturma$idescola$iddisciplina' class='custom-control-label'> $nome_escola - <font style='color:#8B0000'>$turma -$disciplina</font> </label>
+                </div>";
+            }else {
+
+                $result.="
+                <div class='custom-control custom-checkbox'>
+                <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$idturma$idescola$iddisciplina' value='$idescola+$idturma+$iddisciplina+$idserie' $marca_disciplina>
+                <label for='customCheckbox$idturma$idescola$iddisciplina' class='custom-control-label'> $nome_escola - <font style='color:#8B0000'>$turma -$disciplina</font> </label>
+                </div>";
+            }
+
+
+
+
+
           }
 
-        $result.="
-        <div class='custom-control custom-checkbox'>
-            <input class='custom-control-input' name='iddisciplina[]' type='checkbox' id='customCheckbox$disciplina_id' value='$disciplina_id' $marca_disciplina >
-            <label for='customCheckbox$disciplina_id' class='custom-control-label'>$nome_disciplina</label>
-        </div>";
+    // }
+
+
+  //   foreach ($result_disciplinas as $key => $value) {
+  //      $disciplina_id=$value['iddisciplina'];
+  //      $nome_disciplina=$value['nome_disciplina'];
+    
+  //      if ($iddisciplina==$disciplina_id) {
+  //         $result.="
+  //         <div class='custom-control custom-checkbox'>
+  //             <input class='custom-control-input' name='iddisciplina[]' type='checkbox' id='customCheckbox$disciplina_id' value='$disciplina_id' required checked>
+  //             <label for='customCheckbox$disciplina_id' class='custom-control-label'>$nome_disciplina</label>
+  //         </div>";
+
+  //      } else if ($idserie< 8) {
+  //        $resultado=verificar_conteudo_aula_cadastrado_por_data($conexao, $disciplina_id, $idturma, $idescola, $data);
+  //        $marca_disciplina='';
+
+  //         foreach ($resultado as $key => $value) {
+  //           $marca_disciplina='checked';
+  //         }
+
+  //       $result.="
+  //       <div class='custom-control custom-checkbox'>
+  //           <input class='custom-control-input' name='iddisciplina[]' type='checkbox' id='customCheckbox$disciplina_id' value='$disciplina_id' $marca_disciplina >
+  //           <label for='customCheckbox$disciplina_id' class='custom-control-label'>$nome_disciplina</label>
+  //       </div>";
 
         
-      }
-  }
+  //     }
+  // }
  
 
  
 
     $result.="
-   </div>
-   </div>
+    </div>
+        <br>
+        <br>
+   
   
    ";
 
@@ -168,7 +241,9 @@ foreach ($res_conteu as $key => $value) {
 
           // $result.="</tbody>
           // </table>";
-
+if ($conta_marcados==0) {
+  $conteudo_aula="";
+}
           $result.="
    <BR>
        </div>

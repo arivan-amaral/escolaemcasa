@@ -63,7 +63,10 @@ if (!isset($_SESSION['idprofessor'])) {
 
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 
+<script type="text/javascript">
+      Swal.fire('ATENÇÃO, SÓ É PERMITIDO O LANÇAMENTO DA FREQUÊNCIA SE JÁ HOUVER CONTEÚDO CADASTRADO NA MESMA DATA.', '', 'info');
 
+</script>
 
 <div class="content-wrapper" style="min-height: 529px;">
 
@@ -437,6 +440,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
 
 <input type="hidden" id="url_get" value="<?php echo $url_get; ?>">
+          <input type="hidden" id="local" value="diario_frequencia">
 
 
 <?php 
