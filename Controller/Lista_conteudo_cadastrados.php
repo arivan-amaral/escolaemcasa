@@ -80,19 +80,19 @@ try {
                 $iddisciplina_verifc=$value['disciplina_id'];
                   $marca_disciplina='checked';
 
-                if ($idturma_verifc==$idturma_get && $idescola_verifc==$idescola_get && $iddisciplina_verifc=$iddisciplina_get) {
+                if ($idturma_verifc==$idturma_get && $idescola_verifc==$idescola_get && $iddisciplina_verifc==$iddisciplina_get) {
                   $conta_marcados++;
                 }
               }
 
-             if ($turma_id==$idturma_get && $escola_id==$idescola_get && $disciplina_id=$iddisciplina_get && $marca_disciplina=='') {
+             if ($turma_id==$idturma_get && $escola_id==$idescola_get && $disciplina_id==$iddisciplina_get && $marca_disciplina=='') {
 
                 $result.="
                 <div class='custom-control custom-checkbox'>
                 <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$escola_id$turma_id$disciplina_id$serie_id' value='$escola_id+$turma_id+$disciplina_id+$serie_id' $marca_disciplina required> 
                 <label for='customCheckbox$escola_id$turma_id$disciplina_id$serie_id' class='custom-control-label'> $nome_escola - <font style='color:#8B0000'>$turma -$disciplina</font> </label>
                 </div>";
-            }else if ($turma_id==$idturma_get && $escola_id==$idescola_get && $disciplina_id=$iddisciplina_get && $marca_disciplina!='') {
+            }else if ($turma_id==$idturma_get && $escola_id==$idescola_get && $disciplina_id==$iddisciplina_get && $marca_disciplina!='') {
 
                 $result.="
                 <div class='custom-control custom-checkbox'>
