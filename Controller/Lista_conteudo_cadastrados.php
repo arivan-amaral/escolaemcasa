@@ -77,10 +77,10 @@ try {
                 $idturma_verifc=$value['turma_id'];
                 $idescola_verifc=$value['escola_id'];
                 $iddisciplina_verifc=$value['disciplina_id'];
+                  $marca_disciplina='checked';
 
                 if ($idturma==$idturma_get && $idescola==$idescola_get && $iddisciplina=$iddisciplina_get) {
                   $conta_marcados++;
-                  $marca_disciplina='checked';
                 }
               }
 
