@@ -267,7 +267,6 @@ function listar_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplina) {
 
 function verificar_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula) {
     $resultado=$conexao->query("SELECT * FROM conteudo_aula WHERE
-  
       data='$data' and 
       disciplina_id=$iddisciplina and 
       escola_id=$idescola and 

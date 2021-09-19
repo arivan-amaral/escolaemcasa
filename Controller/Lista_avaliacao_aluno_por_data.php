@@ -16,7 +16,17 @@ try {
     $idperiodo=$_GET['idperiodo'];
     $avaliacao=$_GET['avaliacao'];
     $idserie=$_GET['idserie'];
- 
+    $tamanho=4;
+    
+ if ($avaliacao=='av1') {
+    $tamanho=3;
+ }elseif ($avaliacao=='av2') {
+    $tamanho=3;
+ }elseif ($avaliacao=='av3') {
+    $tamanho=4;
+ }elseif ($avaliacao=='RP') {
+    $tamanho=4;
+ }
 
       $result="
 
@@ -89,7 +99,35 @@ try {
                           $result.="<b style='border: 1px solid black;'>$value_avs :</b>$nota_tri_1 ";
                           }
                           $result.="
-                          </p>";
+                          </p> ";
+
+                          $result.="
+                            II TRIMESTRE <p style='border: 1px solid black;'>";
+
+                            $array_avaliacao=array('1'=>'av1','2'=>'av2','3'=>'av3','4'=>'RP');
+                            foreach ($array_avaliacao as $key_avs=> $value_avs) {
+                        
+                                $result_nota=$conexao->query("
+                                SELECT * FROM nota WHERE
+                                escola_id=$idescola and
+                                turma_id=$idturma and
+                                disciplina_id=$iddisciplina and 
+                                avaliacao='$value_avs' and 
+                                periodo_id=2 and aluno_id=$id  group by avaliacao,periodo_id ");
+
+
+                                $nota_tri_1=0;
+                                foreach ($result_nota as $key => $value) {
+                                    $nota_tri_1=$value['nota'];
+                                }
+                            $result.="<b style='border: 1px solid black;'>$value_avs :</b>$nota_tri_1 ";
+                            }
+                            $result.="
+                            </p>";
+
+
+
+
                         }
 
 
@@ -113,13 +151,13 @@ try {
                                 if ($idserie >=3) {
                                   // code...
                                    $result.="<label for='exampleInputEmail1'>Nota</label><br>
-                                  <input type='text'  name='nota$id' value='$nota' style='min-width:60px;' onkeyup='somenteNumeros(this);'> 
+                                  <input type='text'  name='nota$id' value='$nota' style='min-width:60px;' onkeyup='somenteNumeros(this,$tamanho);'> 
                                   <br>
                                   <br>
                                   ";
                                 }
 
-
+ 
                                   $result.="<div class='card card-outline card-info'>
                                          <div class='card-header'>
                                            <h6>
@@ -158,7 +196,7 @@ try {
                                        </div>
                                                   
                                 <label for='exampleInputEmail1' style='display: none;'>Nota</label><br>
-                                <input type='hidden'  name='nota$id' value='$nota' style='display: none;' onkeyup='somenteNumeros(this);'>
+                                <input type='hidden'  name='nota$id' value='$nota' style='display: none;' onkeyup='somenteNumeros(this,$tamanho);'>
                                </td>";
                       }
 

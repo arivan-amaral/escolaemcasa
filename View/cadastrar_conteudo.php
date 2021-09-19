@@ -1,23 +1,22 @@
 <?php 
 session_start();
-
-  $idserie=$_GET['idserie']; 
+$idserie=$_GET['idserie']; 
  
-if ($idserie< 8 && !isset($_COOKIE['notificado'])) {
+// if ($idserie< 8 && !isset($_COOKIE['notificado'])) {
     
-  echo "<script type='text/javascript'>
-      function modal_video() {
-          $(document).ready(function() {
-              $('#modal-video-frequencia').modal('show');
-            });
-      }
+//   echo "<script type='text/javascript'>
+//       function modal_video() {
+//           $(document).ready(function() {
+//               $('#modal-video-frequencia').modal('show');
+//             });
+//       }
 
-      setTimeout('modal_video();',1000);
+//       setTimeout('modal_video();',1000);
       
-  </script>";
+//   </script>";
  
   
-}
+// }
 
 if (!isset($_SESSION['idprofessor'])) {
        header("location:index.php?status=0");
@@ -121,7 +120,7 @@ if (!isset($_SESSION['idprofessor'])) {
       <div class="container-fluid">
         <!-- Info boxes -->
         <!-- .row -->
-  <form action="../Controller/Cadastrar_frequencia.php" method="post">
+  <form action="../Controller/Cadastrar_conteudo.php" method="post">
 
        
       <div class="row">
@@ -160,7 +159,7 @@ if (!isset($_SESSION['idprofessor'])) {
           <div class="form-group">
             <label for="exampleInputEmail1">Escolha a aula</label>
 
-            <select class="form-control" id='aula' required  name='aula' onchange="lista_frequencia_aluno();">
+            <select class="form-control" id='aula' required  name='aula' onchange="lista_conteudo_aluno();">
               <?php
               if ($idserie<8) {
                 echo "
@@ -184,9 +183,9 @@ if (!isset($_SESSION['idprofessor'])) {
       
         <div class="col-sm-3">
           <div class="form-group">
-            <label for="exampleInputEmail1">Datas das aulas lançadas</label>
+            <label for="exampleInputEmail1">Datas dos conteúdos lançadas</label>
 
-            <select class="form-control" id="data_ja_lancada" onchange="data_frequencia_ja_cadastrada(this.value);" >
+            <select class="form-control" id="data_ja_lancada" onchange="listar_conteudo_cadastrado(this.value);" >
               <option></option>
               <?php 
                 $resultado=listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $idprofessor);
@@ -267,7 +266,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
           <div class="col-sm-10">
           <div class="form-group">
-            <label for="exampleInputEmail1" style="color:red;">ATALHO PARA DIÁRIO DE FREQUÊNCIA EM OUTRAS TURMAS/DISCIPLINAS</label>
+            <label for="exampleInputEmail1" style="color:red;">ATALHO PARA DIÁRIO DE CONTEÚDO EM OUTRAS TURMAS/DISCIPLINAS</label>
 
             <select multiple="multiple" class="form-control" id="atalho" >
               <?php
@@ -286,7 +285,7 @@ if (!isset($_SESSION['idprofessor'])) {
                 $idserie_atalho=$value['serie_id'];
 
                 echo "
-                <option value='diario_frequencia.php?disc=$iddisciplina_atalho&turm=$idturma_atalho&turma=$nome_turma_atalho&disciplina=$disciplina&idescola=$idescola_atalho&idserie=$idserie_atalho' onclick='atalho();' >
+                <option value='cadastar_conteudo.php?disc=$iddisciplina_atalho&turm=$idturma_atalho&turma=$nome_turma_atalho&disciplina=$disciplina&idescola=$idescola_atalho&idserie=$idserie_atalho' onclick='atalho();' >
                     Mudar para turma =>  $nome_turma_atalho - $disciplina  
                   </option> 
 
@@ -317,7 +316,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
                   <div class="card-header">
 
-                    <h3 class="card-title">FREQUÊNCIAS CADASTRADAS</h3>
+                    <h3 class="card-title">CONTEÚDOS CADASTRADOS</h3>
 
                   </div>
 
@@ -342,7 +341,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
 
                                 <a class='d-block w-100 collapsed' data-toggle='collapse' href='#collapseOne' aria-expanded='false'><b class='text-warning'>
-                                    CLIQUE AQUI PARA VER AS FREQUÊNCIAS CADASTRADAS 
+                                    CLIQUE AQUI PARA VER OS CONTEÚDOS CADASTRADOS 
                                   </b>
 
                                 </a>
@@ -490,7 +489,6 @@ if (!isset($_SESSION['idprofessor'])) {
       checkBoxes.forEach(function(el) {
          if(el.checked) {
              //selecionados++;
-             console.log(el.value);
             el.checked=false;
          }else{
            
@@ -498,7 +496,7 @@ if (!isset($_SESSION['idprofessor'])) {
          }
         
       });
-     // console.log(selecionados);
+      console.log(selecionados);
 
     }
 
@@ -520,40 +518,6 @@ if (!isset($_SESSION['idprofessor'])) {
 // });
 
 </script>
-
-
-<div class="modal fade" id="modal-video-frequencia">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">VEJA O QUE MUDOU</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        
-
-          <div class="modal-body">
-              <!-- /corpo -->
-          <center>
-
-            <!-- <h1>ATENÇÃO, NÃO LANÇAR NOTA ANTES DAS 20:30, <font color="RED">SERVIDOR EM MANUTENÇÃO</font></h1> -->
-             <iframe width="390" height="315" src="https://www.youtube.com/embed/21hzdV28sR8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </center>
-          <br>
-           <a href="modal_diario_frequencia.php?<?php echo $url_get; ?>" class="btn btn-block btn-danger">Não quero ver essa notificação novamente</a>
-          <br>
-
-          <!-- /corpo -->
-        </div>
-           <br>
-      <button type="button" class="btn btn-default" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fechar</font></font></button>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-
 
 
 

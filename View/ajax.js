@@ -431,6 +431,32 @@ function data_frequencia_ja_cadastrada(data){
   lista_frequencia_aluno();
 }
 
+
+function listar_conteudo_cadastrado(data){
+
+
+  var select = document.getElementById('data_ja_lancada');
+  var option = select.options[select.selectedIndex];
+
+  var valor= option.value; //data
+  var texto = option.text; //descricao data +  aula ...
+
+  var data_frequencia = document.getElementById("data_frequencia").value=data;
+  var array_d=texto.split(' - ');
+  var texto_aux=array_d[1];
+
+  var a =document.getElementById("aula");
+
+   a.innerHTML= "<option value='"+texto_aux+"'>"+
+  texto_aux+"</option>"+ a.innerHTML+"";
+
+
+  lista_conteudo_aluno();
+}
+
+
+
+
 function limpa_data_frequencia_ja_cadastrada(){
   var data_frequencia = document.getElementById("data_ja_lancada").value='';
 }
@@ -582,6 +608,69 @@ function lista_frequencia_aluno(){
           
       var url="idserie="+idserie+"&aula="+aula+"&data_frequencia="+data_frequencia+"&idescola="+idescola+"&idturma="+idturma+"&iddisciplina="+iddisciplina;
        xmlreq.open("GET", "../Controller/Lista_frequencia_aluno.php?"+url, true);
+        xmlreq.onreadystatechange = function(){      
+            if (xmlreq.readyState == 4) {
+                if (xmlreq.status == 200) {
+                    result.innerHTML =  xmlreq.responseText;
+                    botao_continuar.innerHTML=""+
+                    "<div class='col-sm-1'></div>"+
+                    "<div class='col-sm-10'>"+
+                      "<button type='submit' class='btn btn-block btn-primary'>Concluir</button>"+
+                    "</div>";
+                    
+                }else{
+                       result.innerHTML = xmlreq.responseText;
+                    
+                    
+                }
+            }
+        };
+        xmlreq.send(null);
+    }else{
+
+        if (aula=="") {
+            Swal.fire({
+                      icon: 'info',
+                      title: 'Atenção...',
+                      text: 'Selecione a aula!',
+                      showConfirmButton: false,
+                      timer: 1500
+                      
+                    });
+        }else if (data_frequencia=="") {
+            Swal.fire({
+                      icon: 'info',
+                      title: 'Atenção...',
+                      text: 'Selecione a data!',
+                      showConfirmButton: false,
+                      timer: 1500
+                      
+                    });
+        }
+
+    }
+}
+
+function lista_conteudo_aluno(){
+  var result = document.getElementById("listagem_frequencia");
+
+  var botao_continuar = document.getElementById("botao_continuar");
+  var xmlreq = CriaRequest();   
+
+  var idserie = document.getElementById("idserie").value;
+  var idescola = document.getElementById("idescola").value;
+  var idturma = document.getElementById("idturma").value;
+  var iddisciplina = document.getElementById("iddisciplina").value;
+
+   var data_frequencia = document.getElementById("data_frequencia").value;
+   var aula = document.getElementById("aula").value;
+
+    if (aula !="" && data_frequencia !="" ) {
+        result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
+
+          
+      var url="idserie="+idserie+"&aula="+aula+"&data_frequencia="+data_frequencia+"&idescola="+idescola+"&idturma="+idturma+"&iddisciplina="+iddisciplina;
+       xmlreq.open("GET", "../Controller/Lista_conteudo_cadastrados.php?"+url, true);
         xmlreq.onreadystatechange = function(){      
             if (xmlreq.readyState == 4) {
                 if (xmlreq.status == 200) {

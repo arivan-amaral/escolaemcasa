@@ -439,7 +439,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
 
 <script>
-    function somenteNumeros(num) {
+    function somenteNumeros(num,tamanho) {
         var er = /[^0-9.]/;
         er.lastIndex = 0;
         var campo = num;
@@ -452,9 +452,18 @@ if (!isset($_SESSION['idprofessor'])) {
                   Swal.fire('Esse campo é permitido apenas números, consulte seu coordenador para mais informações.', '', 'info')
 
 
+        }else{
+
+            if(campo.value>tamanho){
+              Swal.fire('A nota não pode ser maior que: '+tamanho+'.', '', 'info')
+              campo.value = "";
+            }
         }
+
+
     }
- </script>
+
+  </script>
 
 
 

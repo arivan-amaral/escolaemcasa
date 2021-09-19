@@ -50,18 +50,18 @@ try {
        } else if ($idserie< 8) {
        
 
-         $resultado=verificar_conteudo_aula_cadastrado_por_data($conexao, $disciplina_id, $idturma, $idescola, $data);
-         $marca_disciplina='';
+         // $resultado=verificar_conteudo_aula_cadastrado_por_data($conexao, $disciplina_id, $idturma, $idescola, $data);
+         // $marca_disciplina='';
 
-          foreach ($resultado as $key => $value) {
-            $marca_disciplina='checked';
-          }
+         //  foreach ($resultado as $key => $value) {
+         //    $marca_disciplina='checked';
+         //  }
 
-        $result.="
-        <div class='custom-control custom-checkbox'>
-            <input class='custom-control-input' name='iddisciplina[]' type='checkbox' id='customCheckbox$disciplina_id' value='$disciplina_id' $marca_disciplina >
-            <label for='customCheckbox$disciplina_id' class='custom-control-label'>$nome_disciplina</label>
-        </div>";
+        // $result.="
+        // <div class='custom-control custom-checkbox'>
+        //     <input class='custom-control-input' name='iddisciplina[]' type='checkbox' id='customCheckbox$disciplina_id' value='$disciplina_id' $marca_disciplina >
+        //     <label for='customCheckbox$disciplina_id' class='custom-control-label'>$nome_disciplina</label>
+        // </div>";
 
         
       }
@@ -74,29 +74,31 @@ try {
    </div>
    ";
 
-      $result.="
-        <div class='col-sm-12'>
-          <div class='col-12'>
-            <label for='exampleInputEmail1' style='color:red;'>Escolha um conteúdo ou digite outro no campo abaixo das frequências</label>
+      // $result.="
+      //   <div class='col-sm-12'>
+      //     <div class='col-12'>
+      //       <label for='exampleInputEmail1' style='color:red;'>Escolha um conteúdo ou digite outro no campo abaixo das frequências</label>
 
-            <select multiple='multiple' id='lista_conteudo' class='form-control' style='height: 180px;'>
-            ";
-            $res_cont=$conexao->query("SELECT * FROM conteudo_aula, turma where turma_id=idturma AND escola_id=$idescola and disciplina_id=$iddisciplina and turma.serie_id=$idserie order by conteudo_aula.id desc limit 20");
-                $conta_cor=1;
-                foreach ($res_cont as $key_conteudo=> $value_conteudo) {
-                  $descricao_conteudo=$value_conteudo['descricao'];
-                  if ($conta_cor%2==0) {
-                    $result.="<option value='$descricao_conteudo' onclick='colar_conteudo_ja_cadastrados(this.value);'  style='color: white; background-color:#A9A9A9;'> $descricao_conteudo</option>";
-                  }else{
-                    $result.="<option value='$descricao_conteudo' onclick='colar_conteudo_ja_cadastrados(this.value);'  style='color: white; background-color:#6495ED;'> $descricao_conteudo</option>";
-                  }
-                  $conta_cor++;
-                }
+      //       <select multiple='multiple' id='lista_conteudo' class='form-control' style='height: 180px;'>
+      //       ";
+      //       $res_cont=$conexao->query("SELECT * FROM conteudo_aula, turma where turma_id=idturma AND escola_id=$idescola and disciplina_id=$iddisciplina and turma.serie_id=$idserie order by conteudo_aula.id desc limit 20");
+      //           $conta_cor=1;
+      //           foreach ($res_cont as $key_conteudo=> $value_conteudo) {
+      //             $descricao_conteudo=$value_conteudo['descricao'];
+      //             if ($conta_cor%2==0) {
+      //               $result.="<option value='$descricao_conteudo' onclick='colar_conteudo_ja_cadastrados(this.value);'  style='color: white; background-color:#A9A9A9;'> $descricao_conteudo</option>";
+      //             }else{
+      //               $result.="<option value='$descricao_conteudo' onclick='colar_conteudo_ja_cadastrados(this.value);'  style='color: white; background-color:#6495ED;'> $descricao_conteudo</option>";
+      //             }
+      //             $conta_cor++;
+      //           }
 
-            $result.="
-            </select> 
-          </div>
-        </div>
+      //       $result.="
+      //       </select> 
+      //     </div>
+      //   </div>";
+
+        $result.="
        <div class='card-body'>
         <table class='table table-bordered'>
           <thead>
@@ -152,27 +154,31 @@ try {
 $res_conteu=verificar_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula);
 
 $conteudo_aula="";
-foreach ($res_conteu as $key => $value) {
-  $conteudo_aula=$value['descricao'];
+foreach ($res_conteu as $key_con => $value_con) {
+  $conteudo_aula=$value_con['descricao'];
 }
-
+// $conteudo_aula="$iddisciplina, $idturma, $idescola, $professor_id, $data,$aula";
           $result.="</tbody>
           </table>
-        </div>
+        </div>";
       
       
    
 
-        <div class='col-sm-12'>
+        // $result.="<div class='col-sm-12'>
+        //   <div class='form-group'>
+        //     <label for='exampleInputEmail1'>Conteúdo da aula</label>
+        //     <textarea class='form-control' id='descricao_conteudo' rows='5' name='descricao' required>$conteudo_aula</textarea>
+        //   </div>
+        // </div>";      
+   
+
+        $result.="<div class='col-sm-12'>
           <div class='form-group'>
             <label for='exampleInputEmail1'>Conteúdo da aula</label>
-            <textarea class='form-control' id='descricao_conteudo' rows='5' name='descricao' required>$conteudo_aula</textarea>
+            <p>$conteudo_aula</p>
           </div>
-        </div>
-
-
-
-      ";
+        </div>";
 
       echo $result;
   }catch (Exception $e) {

@@ -455,7 +455,26 @@ if (!isset($_SESSION['idprofessor'])) {
 
                                                    <i class='fa fa-calendar'></i>
 
-                                                    Diário - Frequência e conteúdo   
+                                                    Diário - Frequência 
+                                                 </font>
+
+                                             </font>
+
+                                           </a>                                      
+
+                                           <a class='btn btn-info btn-block btn-flat'
+
+                                            href='cadastrar_conteudo.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie' >
+
+
+
+                                             <font style='vertical-align: inherit;'>
+
+                                               <font style='vertical-align: inherit;'> 
+
+                                                   <i class='fa fa-calendar'></i>
+
+                                                    Diário de conteúdo  
 
                                                  </font>
 

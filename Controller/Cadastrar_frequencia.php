@@ -13,7 +13,10 @@ try {
    	$idturma=$_POST['idturma'];
 
     $data=$_POST['data_frequencia'];
-    $descricao=escape_mimic($_POST['descricao']);
+    $descricao="";
+    if (isset($_POST['descricao'])) {
+     $descricao=escape_mimic($_POST['descricao']);
+    }
 
     $aula=$_POST['aula'];
     $url_get=$_POST['url_get'];
@@ -30,36 +33,23 @@ try {
         foreach ($res_pes_cont_aluno_trasf as $key => $value) {
             $idconteudo=$value['id'];
         }    
+        // arivan 17/09/2021
 
-        $res_pes_cont_aluno_trasf=pesquisa_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $data,$aula);
-        $idconteudo="";
-        $conteudo_aula_id="";
+        // $res_pes_cont_aluno_trasf=pesquisa_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $data,$aula);
+        // $idconteudo="";
+        // $conteudo_aula_id="";
 
-        foreach ($res_pes_cont_aluno_trasf as $key => $value) {
-            $idconteudo=$value['id'];
-            // $res_verificando= verificar_conteudo_aula_em_aluno_trasferido_escola($conexao, $idconteudo,$idescola);
-            // $quantidade_conteudo=0;
-            // foreach ($res_verificando as $key_C => $value_c) {
-            //     $quantidade_conteudo=$value_c['quantidade'];
+        // foreach ($res_pes_cont_aluno_trasf as $key => $value) {
+        //     $idconteudo=$value['id'];
+        //     editar_conteudo_aula($conexao,$descricao, $idconteudo);
+        //     $conteudo_aula_id=$idconteudo;
+        // }
+
+
+            // if ($idconteudo=="") {
+            //      cadastro_conteudo_aula($conexao,$descricao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula);
+            //     $conteudo_aula_id= $conexao->lastInsertId();
             // }
-            // //echo "idconteudo: $idconteudo $quantidade_conteudo <br>";
-            // if ($quantidade_conteudo>0){
-            //     $conteudo_aula_id=$idconteudo;
-            //      editar_conteudo_aula($conexao,$descricao, $idconteudo);
-            // }else{
-                 editar_conteudo_aula($conexao,$descricao, $idconteudo);
-                $conteudo_aula_id=$idconteudo;
-
-                //limpa_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula);
-                // }
-
-
-        }
-
-            if ($idconteudo=="") {
-                 cadastro_conteudo_aula($conexao,$descricao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula);
-                $conteudo_aula_id= $conexao->lastInsertId();
-            }
 
 
 
