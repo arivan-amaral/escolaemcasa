@@ -79,7 +79,7 @@ try {
                 $iddisciplina_verifc=$value['disciplina_id'];
                   $marca_disciplina='checked';
 
-                if ($idturma==$idturma_get && $idescola==$idescola_get && $iddisciplina=$iddisciplina_get) {
+                if ($idturma_verifc==$idturma_get && $idescola_verifc==$idescola_get && $iddisciplina_verifc=$iddisciplina_get) {
                   $conta_marcados++;
                 }
               }
