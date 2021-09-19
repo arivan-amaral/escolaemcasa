@@ -33,7 +33,7 @@ session_start();
 ?>
 <script type="text/javascript">
   
-      Swal.fire('ATENÇÃO, O MÓDULO DE PROFESSOR e ALUNO ESTÃO EM MANUTENÇÃO.', '', 'info');
+      //Swal.fire('ATENÇÃO, O MÓDULO DE PROFESSOR e ALUNO ESTÃO EM MANUTENÇÃO.', '', 'info');
 </script>
 
 
