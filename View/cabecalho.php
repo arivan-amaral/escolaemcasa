@@ -1,4 +1,10 @@
  <?php
+if (isset($_SESSION['cargo'])) {
+  // code...
+ unset($_SESSION['cargo']);
+ header("location:index.php");
+}
+
    $nome_escola_global="EDUCA LEM -";
 ?>
 <!DOCTYPE html>
