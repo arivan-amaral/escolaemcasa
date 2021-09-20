@@ -18,7 +18,7 @@ try {
 $conexao->exec("INSERT INTO xplanejamento(descr_tipoprocesso, id_pro, tautor, descr_situacaoprojeto, descr_situacaoprojeto2, obsgerais, tusuario, pagina)
  VALUES ('$descr_tipoprocesso', '$id_pro', '$tautor', 
  '$descr_situacaoprojeto', '$descr_situacaoprojeto2', '$obsgerais',
- '$tusuario', '$pagina')")
+ '$tusuario', '$pagina')");
 
 
 $body = [
