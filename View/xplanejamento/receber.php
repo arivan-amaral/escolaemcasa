@@ -5,7 +5,7 @@
   $mensagem_recebida=$json->Recipients->Email;
 
 $body = [
-        'status' => "$mensagem_recebida" 
+        'status' => "teste: $mensagem_recebida" 
     ];
 echo json_encode($body);
 
