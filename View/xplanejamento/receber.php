@@ -1,6 +1,11 @@
 <?php 
+ $arquivo = file_get_contents('php://input');
+  $json= json_decode($arquivo);
+  // $phone= $json->phone;
+  $mensagem_recebida=$json->Recipients->Email;
+
 $body = [
-        'status' => "nao-responda@valleteclab.com" 
+        'status' => "$mensagem_recebida" 
     ];
 echo json_encode($body);
 
