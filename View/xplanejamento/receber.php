@@ -6,19 +6,15 @@ try {
   $mensagem_recebida=$json->Recipients->Email;
 
 $body = [
-        'status' => 'certo: '
+        'status' => 'certo'
     ];
 
 
 $decodificado = json_decode($body);
-
-if (!$decodificado) {
-    die('JSON invalido');
-}
  
 $decodificado->status= $mensagem_recebida;
 
-echo json_encode($body);
+echo json_encode($decodificado);
 
 } catch (Exception $e) {
 	$body = [
