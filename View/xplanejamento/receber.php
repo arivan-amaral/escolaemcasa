@@ -7,6 +7,6 @@
 $body = [
         'status' => $mensagem_recebida
     ];
-echo json_encode($body);
+echo json_encode($json);
 
 ?>
