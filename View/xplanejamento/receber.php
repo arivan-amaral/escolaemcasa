@@ -3,7 +3,7 @@ try {
  $arquivo = file_get_contents('php://input');
   $json= json_decode($arquivo);
   // $phone= $json->phone;
-  $mensagem_recebida="gdfjgsdajgj: ".$json->Recipients->Email;
+  $mensagem_recebida="teee: ".$json->FromEmail;
 
 $body = [
         'status' => 'certo'
