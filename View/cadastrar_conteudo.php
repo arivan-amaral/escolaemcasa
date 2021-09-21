@@ -66,7 +66,7 @@ if (!isset($_SESSION['idprofessor'])) {
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 
 <script type="text/javascript">
-      Swal.fire('ATENÇÃO, SE FOR LANÇAR O CONTEÚDO PARA MAIS DE UMA TURMA AO MESMO TEMPO, FIQUE ATENTO A DATA DE REGISTRO, POIS O CONTEÚDO A SER CADASTRADO NAS OUTRAS TURMAS IRÃO FICAR COM A MESMA DATA.', '', 'info');
+    
 
 </script>
 

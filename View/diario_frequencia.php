@@ -64,7 +64,6 @@ if (!isset($_SESSION['idprofessor'])) {
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 
 <script type="text/javascript">
-      Swal.fire('ATENÇÃO, SÓ É PERMITIDO O LANÇAMENTO DA FREQUÊNCIA SE JÁ HOUVER CONTEÚDO CADASTRADO NA MESMA DATA.', '', 'info');
 
 </script>
 
