@@ -310,7 +310,7 @@ if (!isset($_SESSION['idcoordenador'])) {
 
         <div class="col-lg-3 col-6">
           <!-- small card -->
-          <div class="small-box bg-info">
+          <div class="small-box bg-danger">
 
           <a href="mural.php" class="small-box-footer">
             <div class="inner">
@@ -328,38 +328,43 @@ if (!isset($_SESSION['idcoordenador'])) {
 
              <?php 
 
-                $pes_aluno=$conexao->query("SELECT aluno_id ,(SELECT DISTINCT SUM(minuto) ) AS 'minutos' FROM visualizacao_video GROUP BY aluno_id ORDER by minutos DESC limit 1");
+                $pes_aluno=$conexao->query("SELECT aluno_id ,(SELECT DISTINCT SUM(minuto) ) AS 'minutos' FROM visualizacao_video GROUP BY aluno_id ORDER by minutos DESC limit 3");
               $nome_aluno="";
               $minutos_aluno=0;
+              $conta_colocacao=1;
+              $array_cores=array('1'=>'success','2'=>'primary','3'=>'info');
                 foreach ($pes_aluno as $key => $value) {
                   $aluno_id=$value['aluno_id'];
                   $minutos_aluno=$value['minutos']/2;
 
                   $res_dados_aluno=$conexao->query("SELECT nome FROM aluno WHERE idaluno= $aluno_id limit 1");
-;
                   foreach ($res_dados_aluno as $key2 => $value2) {
                     $nome_aluno=$value2['nome'];
-                  }                
+                  }  
+                  $cor=$array_cores[$conta_colocacao];
+                  echo"
 
+                  <div class='col-lg-3 col-6'>
+                    <!-- small card -->
+                    <div class='small-box bg-$cor'>
+
+                    <a href='mural.php' class='small-box-footer'>
+                      <div class='inner'>
+                        <h5>$conta_colocacao ° lugar com ". number_format(($minutos_aluno), 2, '.', '')." Min assistidos</h5>
+                      </div>
+                      <div class='icon'>
+                        <!-- <i class='fas fa-tag'></i> -->
+                      </div>
+                       $nome_aluno
+                      <i class='fas fa-arrow-circle-right'></i>
+                      </a>
+                    </div>
+                  </div>
+                  ";              
+                  $conta_colocacao++;
                 }
         ?>
 
-        <div class="col-lg-3 col-6">
-          <!-- small card -->
-          <div class="small-box bg-info">
-
-          <a href="mural.php" class="small-box-footer">
-            <div class="inner">
-              <h5>1° lugar com <?php echo number_format(($minutos_aluno), 2, '.', ''); ?> Mininutos assistidos</h5>
-            </div>
-            <div class="icon">
-              <!-- <i class="fas fa-tag"></i> -->
-            </div>
-            <?php echo $nome_aluno; ?>
-            <i class="fas fa-arrow-circle-right"></i>
-            </a>
-          </div>
-        </div>
 
 
       </div>
