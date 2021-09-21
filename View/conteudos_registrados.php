@@ -414,7 +414,7 @@ div.WordSection1
  </tr>
 
 <?php
-$result_conteudo= $conexao->query("SELECT * FROM conteudo_aula where disciplina_id=$iddisciplina and turma_id=$idturma and escola_id=$idescola  and data BETWEEN '$data_inicial' and '$data_final' ");
+$result_conteudo= $conexao->query("SELECT * FROM conteudo_aula where disciplina_id=$iddisciplina and turma_id=$idturma and escola_id=$idescola  and data BETWEEN '$data_inicial' and '$data_final' order by data asc ");
 $conta=1;
 foreach ($result_conteudo as $key => $value) {
   $data_conteudo=converte_data($value['data']);

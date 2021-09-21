@@ -319,7 +319,7 @@ if (!isset($_SESSION['idcoordenador'])) {
             <div class="icon">
               <!-- <i class="fas fa-tag"></i> -->
             </div>
-            Total de minutos assistidos de toda a rede <i class="fas fa-arrow-circle-right"></i>
+            Total de minutos assistidos em toda a rede <i class="fas fa-arrow-circle-right"></i>
             </a>
           </div>
         </div>         
