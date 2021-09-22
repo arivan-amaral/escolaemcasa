@@ -11,6 +11,10 @@ class ComposerStaticInita9700c0d4366573bc3ff5bbb9aa52309
         array (
             'Svg\\' => 4,
         ),
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
         'F' => 
         array (
             'FontLib\\' => 8,
@@ -25,6 +29,10 @@ class ComposerStaticInita9700c0d4366573bc3ff5bbb9aa52309
         'Svg\\' => 
         array (
             0 => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'FontLib\\' => 
         array (
