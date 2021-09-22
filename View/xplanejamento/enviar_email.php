@@ -22,10 +22,10 @@ try {
     $mail->Username   = 'valleteclablem@gmail.com';                     //SMTP username
     $mail->Password   = 'MudancaValle!';                               //SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS
 
 
- 
+ //teste
    $res=$conexao->query("SELECT * from xplanejamento where enviado=0  limit 3");
 
     foreach ($res as $key => $value) {
