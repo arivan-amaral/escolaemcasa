@@ -223,7 +223,7 @@ if (!isset($_SESSION['idprofessor'])) {
                       
                     <b> <font color='blue'>Escolha as turma que receberão o mesmo conteúdo cadastrado aqui. </font></b>
                   <?php
-                  $result_disciplinas=listar_disciplinas_da_mesma_turma_professor($conexao,$idescola,$idprofessor,$iddisciplina);
+                  $result_disciplinas=listar_turmas_com_mesma_disciplinas_do_professor($conexao,$idescola,$idprofessor,$idserie,$iddisciplina);
 
                    foreach ($result_disciplinas as $key => $value) {
                        $turma_id=$value['idturma'];

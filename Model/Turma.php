@@ -16,21 +16,6 @@
    }
 
 
-  function listar_disciplinas_da_mesma_turma_professor($conexao,$idescola,$idprofessor,$iddisciplina){
-    $sql= $conexao->query("SELECT * FROM ministrada,escola,turma,disciplina where
-                           ministrada.turma_id=idturma and
-                           ministrada.disciplina_id=iddisciplina and 
-                           ministrada.escola_id=idescola and
-                           ministrada.escola_id=idescola and
-                           idescola=$idescola and
-                           professor_id=$idprofessor and
-                           disciplina_id=$iddisciplina
-                        
-                          ");
-     return $sql;
-   }
-
-
 function associar_professor($conexao, $turma_id, $disciplina_id, $professor_id, $escola_id){
 	$result = $conexao->exec("INSERT INTO ministrada( turma_id, disciplina_id, professor_id, escola_id) 
 		VALUES ($turma_id, $disciplina_id, $professor_id, $escola_id)");
