@@ -491,7 +491,7 @@
             foreach ($result_nota_aula3 as $key => $value) {
             $nota_tri_3=$value['sigla'];
             }
-
+ 
             echo "$nota_tri_3";
             ?>
 
