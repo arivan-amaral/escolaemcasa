@@ -10,6 +10,7 @@ try {
 
     $idserie=$_GET['idserie'];
     $idescola=$_GET['idescola'];
+    $idescola_get=$_GET['idescola'];
 
     $idturma=$_GET['idturma'];
     $iddisciplina=$_GET['iddisciplina'];
@@ -39,13 +40,32 @@ try {
     foreach ($result_disciplinas as $key => $value) {
        $disciplina_id=$value['iddisciplina'];
        $nome_disciplina=$value['nome_disciplina'];
+       $nome_turma=$value['nome_turma'];
+       $nome_escola=$value['nome_escola'];
+       $escola_id_bd=$value['escola_id'];
+       $turma_id_bd=$value['turma_id'];
     
-       if ($iddisciplina==$disciplina_id) {
-          $result.="
-          <div class='custom-control custom-checkbox'>
-              <input class='custom-control-input' name='iddisciplina[]' type='checkbox' id='customCheckbox$disciplina_id' value='$disciplina_id' required checked>
-              <label for='customCheckbox$disciplina_id' class='custom-control-label'>$nome_disciplina</label>
-          </div>";
+       if ($escola_id_bd==$idescola_get) {
+
+        $resultado2=verificar_frequencia_na_data($conexao,$escola_id_bd,$turma_id_bd,$disciplina_id,$professor_id,$data,$aula);
+          $marcado2='';
+          foreach ($resultado2 as $key22 => $value22) {
+            $marcado2='checked';
+          }
+
+          if ($iddisciplina==$disciplina_id) {
+            $result.="
+            <div class='custom-control custom-checkbox'>
+                <input class='custom-control-input' name='iddisciplina[]' type='checkbox' id='customCheckbox$disciplina_id' value='$disciplina_id' required $marcado2>
+                <label for='customCheckbox$disciplina_id' class='custom-control-label'>$nome_escola - $nome_turma - $nome_disciplina</label>
+            </div>";
+          }else{
+            $result.="
+            <div class='custom-control custom-checkbox'>
+                <input class='custom-control-input' name='iddisciplina[]' type='checkbox' id='customCheckbox$disciplina_id' value='$disciplina_id' $marcado2>
+                <label for='customCheckbox$disciplina_id' class='custom-control-label'> $nome_escola - $nome_turma - $nome_disciplina</label>
+            </div>";
+          }
 
        } else if ($idserie< 8) {
        
