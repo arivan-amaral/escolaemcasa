@@ -426,7 +426,7 @@
           <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
           line-height:normal'><span style='mso-ascii-font-family:Calibri;mso-fareast-font-family:
           "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-          color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p>
+          color:black;mso-fareast-language:PT-BR'><o:p>
             <?php
 
             $result_nota_aula1=$conexao->query("
@@ -451,7 +451,24 @@
           <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
           line-height:normal'><span style='mso-ascii-font-family:Calibri;mso-fareast-font-family:
           "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-          color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
+          color:black;mso-fareast-language:PT-BR'><o:p>
+            
+            <?php
+
+            $result_nota_aula2=$conexao->query("
+            SELECT * FROM nota WHERE
+            escola_id=$idescola and
+            turma_id=$idturma and
+            avaliacao='av3' and periodo_id=2 and parecer_disciplina_id=$parecer_disciplina_id and aluno_id=$idaluno ");
+            $nota_tri_2='';
+            foreach ($result_nota_aula2 as $key => $value) {
+            $nota_tri_2=$value['sigla'];
+            }
+
+            echo "$nota_tri_2";
+            ?>
+
+          </o:p></span></p>
           </td>
 
           <td width=58 nowrap style='width:43.45pt;border-top:none;border-left:none;
@@ -461,7 +478,24 @@
           <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
           line-height:normal'><span style='mso-ascii-font-family:Calibri;mso-fareast-font-family:
           "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-          color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
+          color:black;mso-fareast-language:PT-BR'><o:p>
+            
+            <?php
+
+            $result_nota_aula3=$conexao->query("
+            SELECT * FROM nota WHERE
+            escola_id=$idescola and
+            turma_id=$idturma and
+            avaliacao='av3' and periodo_id=3 and parecer_disciplina_id=$parecer_disciplina_id and aluno_id=$idaluno ");
+            $nota_tri_3='';
+            foreach ($result_nota_aula3 as $key => $value) {
+            $nota_tri_3=$value['sigla'];
+            }
+
+            echo "$nota_tri_3";
+            ?>
+
+          </o:p></span></p>
           </td>
          
        </tr>
