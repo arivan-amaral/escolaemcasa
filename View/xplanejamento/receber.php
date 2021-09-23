@@ -13,12 +13,13 @@ try {
         $obsgerais =$json->obsgerais;
         $tusuario =$json->tusuario;
         $pagina =$json->pagina;
+        $telefone =$json->telefone;
 
 
-$conexao->exec("INSERT INTO xplanejamento(descr_tipoprocesso, id_pro, tautor, descr_situacaoprojeto, descr_situacaoprojeto2, obsgerais, tusuario, pagina)
+$conexao->exec("INSERT INTO xplanejamento(descr_tipoprocesso, id_pro, tautor, descr_situacaoprojeto, descr_situacaoprojeto2, obsgerais, tusuario, pagina,telefone)
  VALUES ('$descr_tipoprocesso', '$id_pro', '$tautor', 
  '$descr_situacaoprojeto', '$descr_situacaoprojeto2', '$obsgerais',
- '$tusuario', '$pagina')");
+ '$tusuario', '$pagina','$telefone')");
 
 
 $body = [
