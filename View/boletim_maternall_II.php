@@ -532,7 +532,27 @@ div.WordSection1
         <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
         line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
         mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-        PT-BR'>&nbsp;<o:p></o:p></span></b></p>
+        PT-BR'>&nbsp;<o:p>
+
+          <?php
+                 $parecer_disciplina_id1=$array_parece_o_eu[$i];
+
+                   $result_nota_aula2=$conexao->query("
+                   SELECT * FROM nota WHERE
+                   escola_id=$idescola and
+                   turma_id=$idturma and
+                   avaliacao='av3' and periodo_id=2 and parecer_disciplina_id=$parecer_disciplina_id1 and aluno_id=$idaluno ");
+                   $nota_tri_2='';
+                   foreach ($result_nota_aula2 as $key => $value) {
+                   $nota_tri_2=$value['sigla'];
+                   }
+
+                   echo "$nota_tri_2";
+
+                   // 1=====
+                   ?>
+
+        </o:p></span></b></p>
         </td>
         <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
         border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -542,7 +562,26 @@ div.WordSection1
         <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
         line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
         mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-        PT-BR'>&nbsp;<o:p></o:p></span></b></p>
+        PT-BR'><o:p>
+              <?php
+                 $parecer_disciplina_id1=$array_parece_o_eu[$i];
+
+                   $result_nota_aula3=$conexao->query("
+                   SELECT * FROM nota WHERE
+                   escola_id=$idescola and
+                   turma_id=$idturma and
+                   avaliacao='av3' and periodo_id=3 and parecer_disciplina_id=$parecer_disciplina_id1 and aluno_id=$idaluno ");
+                   $nota_tri_3='';
+                   foreach ($result_nota_aula3 as $key => $value) {
+                     $nota_tri_3=$value['sigla'];
+                   }
+
+                   echo "$nota_tri_3";
+
+                   // 1=====
+              ?>
+
+        </o:p></span></b></p>
         </td>
     <?php 
       }else{
@@ -642,14 +681,57 @@ div.WordSection1
     background:white;padding:0cm 3.5pt 0cm 3.5pt;height:26.25pt'>
     <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
     style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-    "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
+    "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>
+
+      <?php 
+
+       $parecer_disciplina_id2=$array_parece_escuta_fala[$i];
+
+        $result_nota_aula2=$conexao->query("
+        SELECT * FROM nota WHERE
+        escola_id=$idescola and
+        turma_id=$idturma and
+        avaliacao='av3' and periodo_id=2 and parecer_disciplina_id=$parecer_disciplina_id2 and aluno_id=$idaluno ");
+        $nota_tri_2='';
+        foreach ($result_nota_aula2 as $key => $value) {
+        $nota_tri_2=$value['sigla'];
+        }
+
+         echo " $nota_tri_2";
+        // 2======
+       ?>
+
+    </o:p></span></p>
     </td>
+
+
+
     <td width=32 style='width:24.05pt;border:solid windowtext 1.0pt;border-left:
     none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
     background:white;padding:0cm 3.5pt 0cm 3.5pt;height:26.25pt'>
     <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
     style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-    "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
+    "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>
+      
+      <?php 
+       $parecer_disciplina_id2=$array_parece_escuta_fala[$i];
+
+        $result_nota_aula3=$conexao->query("
+        SELECT * FROM nota WHERE
+        escola_id=$idescola and
+        turma_id=$idturma and
+        avaliacao='av3' and periodo_id=3 and parecer_disciplina_id=$parecer_disciplina_id2 and aluno_id=$idaluno ");
+        $nota_tri_3='';
+        foreach ($result_nota_aula3 as $key => $value) {
+        $nota_tri_3=$value['sigla'];
+        }
+
+         echo " $nota_tri_3";
+        // 2======
+      ?>
+
+
+    </o:p></span></p>
     </td>
     <?php 
     }
@@ -865,7 +947,25 @@ div.WordSection1
         <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
         line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
         mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-        PT-BR'>&nbsp;<o:p></o:p></span></b></p>
+        PT-BR'><o:p>
+
+          <?php 
+           $parecer_disciplina_id1=$array_parece_o_eu[$i];
+
+            $result_nota_aula2=$conexao->query("
+            SELECT * FROM nota WHERE
+            escola_id=$idescola and
+            turma_id=$idturma and
+            avaliacao='av3' and periodo_id=2 and parecer_disciplina_id=$parecer_disciplina_id1 and aluno_id=$idaluno ");
+            $nota_tri_2='';
+            foreach ($result_nota_aula2 as $key => $value) {
+            $nota_tri_2=$value['sigla'];
+            }
+            echo " $nota_tri_2";
+
+            // 3========
+          ?>
+        </o:p></span></b></p>
         </td>
         <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
         border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -875,7 +975,25 @@ div.WordSection1
         <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
         line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
         mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-        PT-BR'>&nbsp;<o:p></o:p></span></b></p>
+        PT-BR'><o:p>
+
+          <?php 
+           $parecer_disciplina_id1=$array_parece_o_eu[$i];
+
+            $result_nota_aula3=$conexao->query("
+            SELECT * FROM nota WHERE
+            escola_id=$idescola and
+            turma_id=$idturma and
+            avaliacao='av3' and periodo_id=3 and parecer_disciplina_id=$parecer_disciplina_id1 and aluno_id=$idaluno ");
+            $nota_tri_3='';
+            foreach ($result_nota_aula3 as $key => $value) {
+            $nota_tri_3=$value['sigla'];
+            }
+            echo " $nota_tri_3";
+
+            // 3========
+           ?>
+        </o:p></span></b></p>
         </td>
     <?php 
       }else{
@@ -974,14 +1092,55 @@ div.WordSection1
     background:white;padding:0cm 3.5pt 0cm 3.5pt;height:26.25pt'>
     <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
     style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-    "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
+    "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>
+
+<?php 
+
+ $parecer_disciplina_id2=$array_parece_escuta_fala[$i];
+
+  $result_nota_aula2=$conexao->query("
+  SELECT * FROM nota WHERE
+  escola_id=$idescola and
+  turma_id=$idturma and
+  avaliacao='av3' and periodo_id=2 and parecer_disciplina_id=$parecer_disciplina_id2 and aluno_id=$idaluno ");
+  $nota_tri_2='';
+  foreach ($result_nota_aula2 as $key => $value) {
+  $nota_tri_2=$value['sigla'];
+  }
+
+   echo "$nota_tri_2";
+  // 4=========
+
+ ?>
+    </o:p></span></p>
     </td>
     <td width=32 style='width:24.05pt;border:solid windowtext 1.0pt;border-left:
     none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
     background:white;padding:0cm 3.5pt 0cm 3.5pt;height:26.25pt'>
     <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
     style='font-size:8.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-    "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
+    "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>
+
+      <?php 
+
+       $parecer_disciplina_id2=$array_parece_escuta_fala[$i];
+
+        $result_nota_aula3=$conexao->query("
+        SELECT * FROM nota WHERE
+        escola_id=$idescola and
+        turma_id=$idturma and
+        avaliacao='av3' and periodo_id=3 and parecer_disciplina_id=$parecer_disciplina_id2 and aluno_id=$idaluno ");
+        $nota_tri_3='';
+        foreach ($result_nota_aula3 as $key => $value) {
+          $nota_tri_3=$value['sigla'];
+        }
+        echo "$nota_tri_3";
+        // 4=========
+
+       ?>
+
+
+    </o:p></span></p>
     </td>
     <?php 
     }
@@ -1163,7 +1322,28 @@ div.WordSection1
         <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
         line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
         mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-        PT-BR'>&nbsp;<o:p></o:p></span></b></p>
+        PT-BR'><o:p>
+
+          <?php 
+
+           $parecer_disciplina_id1=$array_parece_o_eu[$i];
+
+            $result_nota_aula2=$conexao->query("
+            SELECT * FROM nota WHERE
+            escola_id=$idescola and
+            turma_id=$idturma and
+            avaliacao='av3' and periodo_id=2 and parecer_disciplina_id=$parecer_disciplina_id1 and aluno_id=$idaluno ");
+            $nota_tri_2='';
+            foreach ($result_nota_aula2 as $key => $value) {
+            $nota_tri_2=$value['sigla'];
+            }
+
+             echo " $nota_tri_2";
+            // 5========
+
+           ?>
+
+        </o:p></span></b></p>
         </td>
         <td width=24 nowrap style='width:17.8pt;border-top:none;border-left:none;
         border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -1173,19 +1353,34 @@ div.WordSection1
         <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
         line-height:normal'><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
         mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
-        PT-BR'>&nbsp;<o:p></o:p></span></b></p>
+        PT-BR'><o:p>
+
+          <?php 
+
+           $parecer_disciplina_id1=$array_parece_o_eu[$i];
+
+            $result_nota_aula3=$conexao->query("
+            SELECT * FROM nota WHERE
+            escola_id=$idescola and
+            turma_id=$idturma and
+            avaliacao='av3' and periodo_id=3 and parecer_disciplina_id=$parecer_disciplina_id1 and aluno_id=$idaluno ");
+            $nota_tri_3='';
+            foreach ($result_nota_aula3 as $key => $value) {
+              $nota_tri_3=$value['sigla'];
+            }
+
+             echo " $nota_tri_3";
+            // 5========
+
+          ?>
+
+        </o:p></span></b></p>
         </td>
     <?php 
       }else{
     ?>
        
-
-
        
-
-
-
-
 <?php 
       }
 

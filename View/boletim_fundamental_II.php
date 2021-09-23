@@ -395,7 +395,49 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
    <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
    line-height:normal'><span style='mso-ascii-font-family:Calibri;mso-fareast-font-family:
    "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-   color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p>jhhhh</o:p></span></p>
+   color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p>
+      <?php
+
+      $result_nota_aula2=$conexao->query("
+        SELECT * FROM nota WHERE
+        escola_id=$idescola and
+        turma_id=$idturma and
+        disciplina_id=$iddisciplina and 
+        periodo_id=2 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
+
+
+      $nota_tri_2=0;
+      $nota_av3_2='';
+      $nota_rp_2='';
+      foreach ($result_nota_aula2 as $key => $value) {
+
+        if ($value['avaliacao']!='RP') {
+          $nota_tri_2+=$value['nota'];
+
+
+        }
+          // ***************************************
+        if ($value['avaliacao']=='av3') {
+          $nota_av3_2=$value['nota'];
+
+        }
+
+        if ($value['avaliacao']=='RP') {
+          $nota_rp_2=$value['nota'];
+
+
+        }
+
+      }
+
+      if ($nota_tri_2<5 && $nota_rp_2!='' && $nota_rp_2>$nota_av3_2) {
+       $nota_tri_2=($nota_tri_2-$nota_av3_2)+$nota_rp_2;
+     }
+
+     echo "$nota_tri_2";
+     ?>
+
+   </o:p></span></p>
  </td>
  <td width=53 nowrap style='width:39.4pt;border-top:none;border-left:none;
  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -404,7 +446,52 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
  line-height:normal'><span style='mso-ascii-font-family:Calibri;mso-fareast-font-family:
  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
- color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
+ color:black;mso-fareast-language:PT-BR'><o:p>
+
+   <?php
+
+   $result_nota_aula3=$conexao->query("
+     SELECT * FROM nota WHERE
+     escola_id=$idescola and
+     turma_id=$idturma and
+     disciplina_id=$iddisciplina and 
+     periodo_id=3 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
+
+
+   $nota_tri_3=0;
+   $nota_av3_3='';
+   $nota_rp_3='';
+   foreach ($result_nota_aula3 as $key => $value) {
+
+     if ($value['avaliacao']!='RP') {
+       $nota_tri_3+=$value['nota'];
+
+
+     }
+       // ***************************************
+     if ($value['avaliacao']=='av3') {
+       $nota_av3_3=$value['nota'];
+
+     }
+
+     if ($value['avaliacao']=='RP') {
+       $nota_rp_3=$value['nota'];
+
+
+     }
+
+   }
+
+   if ($nota_tri_3<5 && $nota_rp_3!='' && $nota_rp_3>$nota_av3_3) {
+    $nota_tri_3=($nota_tri_3-$nota_av3_3)+$nota_rp_3;
+  }
+
+  echo "$nota_tri_3";
+  ?>
+
+
+
+ </o:p></span></p>
 </td>
 <td width=28 nowrap style='width:21.05pt;border-top:none;border-left:none;
 border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
