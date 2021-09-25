@@ -127,7 +127,7 @@ include "alertas.php";
                       
                       <h4 class="card-title">Dia para ficar visível</h4>
                         <div class="form-group">
-                            <input type="date" name="data_visivel" class="form-control"  required="">
+                            <input type="date" name="data_visivel" class="form-control" min="<?php echo date("Y-m-d") ?>" required="">
                         </div>
 
                         <h4 class="card-title">Hora para ficar visível</h4>
@@ -158,7 +158,7 @@ include "alertas.php";
 
                         <h4 class="card-title">Data de Entrega</h4>
                         <div class="form-group">
-                            <input type="date" name="data_entrega" class="form-control"  required="">
+                            <input type="date" name="data_entrega" class="form-control"  min="<?php echo date("Y-m-d") ?>"  required="">
 
                         </div>
 
