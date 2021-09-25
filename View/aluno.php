@@ -801,7 +801,7 @@ if ($idserie>2) {
                               </div>";
                             }
                             
-                            if ($idserie<-1) {
+                            if ($idserie<3) {
                               if ($conta==0) {
                                 foreach ($diasemana as $key_semana=> $value_semana) {
                                   
@@ -841,7 +841,7 @@ if ($idserie>2) {
 
                                             <a class='btn btn-info btn-block btn-flat'
 
-                                             href='todos_os_videos.php?diasemana=$key_semana' >
+                                             href='todos_os_videos.php?diasemana=$key_semana&&turma=Vídeos &disciplina=$value_semana' >
 
 
 
@@ -864,7 +864,7 @@ if ($idserie>2) {
                                            
 
 
-                                            <a  href='trabalhos.php?diasemana=$key_semana' class='btn btn-info btn-block btn-flat'>
+                                            <a  href='trabalhos.php?diasemana=$key_semana&disc=$iddisciplina&turm=$idturma&turma=Trabalhos&disciplina=$value_semana' class='btn btn-info btn-block btn-flat'>
 
                                                     <i class='fa fa-book'></i>
 

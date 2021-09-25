@@ -26,9 +26,11 @@
   $disciplina=$_GET['disciplina'];
   $idescola=$_SESSION['escola_id'];
   $idaluno=$_SESSION["idaluno"];
+  $idserie=$_SESSION['serie_id'];
 
   $data=date("Y-m-d H:i:s");
 
+  $diasemana_get=$_GET['diasemana'];
    
 
  
@@ -138,39 +140,75 @@
                                         $titulo=$value['titulo'];
                                         $descricao=$value['descricao'];
                                         $data_entrega=$value['data_entrega'];
+                                        //$data_visivel=$value['data_hora_visivel'];
 
-
+                                        $data_visivel_simples=data_simples($linha['data_hora_visivel']);
+                                        $diasemana_bd= date('w', strtotime($data_visivel_simples));
+                                        if ($diasemana_get== $diasemana_bd && $idserie<3) {
                                        
 
-                                        $res=$conexao->query("SELECT * FROM trabalho_entregue WHERE trabalho_id=$idtrabalho  and aluno_id = $idaluno limit 1");
-                                        $cont=0;
-                                        foreach ($res as $key => $value) {
-                                          $cont++;
-                                        }
-                                        if ($cont==0) {
-                                          echo"
-                                            <div class='card-body'>
+                                            $res=$conexao->query("SELECT * FROM trabalho_entregue WHERE trabalho_id=$idtrabalho  and aluno_id = $idaluno limit 1");
+                                            $cont=0;
+                                            foreach ($res as $key => $value) {
+                                              $cont++;
+                                            }
+                                            if ($cont==0) {
+                                              echo"
+                                                <div class='card-body'>
+                                                <a href='trabalho_individual.php?idtrabalho=$idtrabalho&idturma=$idturma&iddisciplina=$iddisciplina&idescola=$idescola'>
+                                                    <div class='callout callout-danger'>
+                                                      <h5>$titulo</h5>
+                                                      <p>$descricao</p>
+                                                      <B>DATA DE ENTREGA: ".converte_data_hora($data_entrega)."</B>
+                                                    </div>
+                                                  </a>
+                                                  </div>
+                                                  ";
+                                            }else{
+                                              echo"<div class='card-body'>
+                                              <a href='trabalho_individual.php?idtrabalho=$idtrabalho&idturma=$idturma&iddisciplina=$iddisciplina&idescola=$idescola'>
+                                                  <div class='callout callout-success'>
+                                                    <h5>$titulo</h5>
+                                                    <p>$descricao</p>
+                                                    <B>DATA DE ENTREGA: ".converte_data_hora($data_entrega)."</B>
+                                                  </div>
+                                                </a>
+                                                </div>";
+                                            }
+                                        }else if ($idserie>2){
+
+
+                                          $res=$conexao->query("SELECT * FROM trabalho_entregue WHERE trabalho_id=$idtrabalho  and aluno_id = $idaluno limit 1");
+                                          $cont=0;
+                                          foreach ($res as $key => $value) {
+                                            $cont++;
+                                          }
+                                          if ($cont==0) {
+                                            echo"
+                                              <div class='card-body'>
+                                              <a href='trabalho_individual.php?idtrabalho=$idtrabalho&idturma=$idturma&iddisciplina=$iddisciplina&idescola=$idescola'>
+                                                  <div class='callout callout-danger'>
+                                                    <h5>$titulo</h5>
+                                                    <p>$descricao</p>
+                                                    <B>DATA DE ENTREGA: ".converte_data_hora($data_entrega)."</B>
+                                                  </div>
+                                                </a>
+                                                </div>
+                                                ";
+                                          }else{
+                                            echo"<div class='card-body'>
                                             <a href='trabalho_individual.php?idtrabalho=$idtrabalho&idturma=$idturma&iddisciplina=$iddisciplina&idescola=$idescola'>
-                                                <div class='callout callout-danger'>
+                                                <div class='callout callout-success'>
                                                   <h5>$titulo</h5>
                                                   <p>$descricao</p>
                                                   <B>DATA DE ENTREGA: ".converte_data_hora($data_entrega)."</B>
                                                 </div>
                                               </a>
-                                              </div>
-                                              ";
-                                        }else{
-                                          echo"<div class='card-body'>
-                                          <a href='trabalho_individual.php?idtrabalho=$idtrabalho&idturma=$idturma&iddisciplina=$iddisciplina&idescola=$idescola'>
-                                              <div class='callout callout-success'>
-                                                <h5>$titulo</h5>
-                                                <p>$descricao</p>
-                                                <B>DATA DE ENTREGA: ".converte_data_hora($data_entrega)."</B>
-                                              </div>
-                                            </a>
-                                            </div>";
+                                              </div>";
+                                          }
+
+
                                         }
-                                        
 
                                           
 
