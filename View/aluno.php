@@ -750,7 +750,7 @@ if ($idserie>2) {
 
                           
                 <?php 
-                          $diasemana = array('Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feirs', 'Sexta-feira', 'Sábado');
+                          $diasemana = array('Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado');
 
                           // $diasemana_numero = date('w', strtotime($data));
                           // echo $diasemana[$diasemana_numero];
