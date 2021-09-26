@@ -18,6 +18,7 @@
   $turma=$_GET['turma'];
   $disciplina=$_GET['disciplina'];
   $diasemana_array = array('Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feirs', 'Sexta-feira', 'Sábado');
+  $data=date("Y-m-d H:i:s");
 
 
   
@@ -95,11 +96,11 @@
 
 
                   
-
+ 
                     <?php 
 
                           // echo $diasemana[$diasemana_numero];
-                    $result=$conexao->query("SELECT * FROM video where  serie_id=$idserie  order by data_visivel desc   ");
+                    $result=$conexao->query("SELECT * FROM video where  serie_id=$idserie and '$data' >= data_visivel  order by data_visivel desc   ");                                                
                     foreach ($result as $key => $linha) {
 
                          $idvideo=$linha['id'];
