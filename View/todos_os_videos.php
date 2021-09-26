@@ -14,6 +14,7 @@
   $idturma=$_SESSION['turma_id'];
   $idescola=$_SESSION['escola_id'];
   $idserie=$_SESSION['serie_id'];
+  $idaluno=$_SESSION['idaluno'];
   $diasemana_get=$_GET['diasemana'];
   $turma=$_GET['turma'];
   $disciplina=$_GET['disciplina'];
@@ -126,12 +127,23 @@
 
                          echo"
 
-                         <div class='time-label'>
+                         <div class='time-label'>";
 
-                           <span class='bg-blue'>$data_visivel</span>
+                                $result_assistidos=listar_videos_assistidos_aluno($conexao,$idaluno,$idvideo);
+                                 $minutos=0;  
+                                 foreach ($result_assistidos as $key => $value) {
+                                    $minutos=($minutos+$value['minuto']);
+                                  }
+                                  $minutos=$minutos/2;
+                                  if ($minutos>0) {
+                                    echo"<span class='bg-success'>$data_visivel esse vídeo foi visualizado: $minutos min </span>";
 
+                                  }else{
+                                    echo"<span class='bg-red'>$data_visivel esse vídeo NÂO foi visualizado</span>";
+
+                                  }
+                        echo "
                          </div>
-
                          <div>
 
                                          <i class='fas fa-video bg-maroon'></i>
