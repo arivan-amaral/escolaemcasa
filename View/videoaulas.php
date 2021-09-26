@@ -27,6 +27,7 @@
   $idserie=$_SESSION['serie_id'];
   $escola_id=$_SESSION['escola_id'];
 
+  $cont=0;
 ?>
 
 
@@ -156,7 +157,6 @@
 
                             $result_por_serie= listar_video_aulas_gt_aluno($conexao,$idserie,$iddisciplina,$data);
 
-                            $cont=0;
                             foreach ($result_por_serie as $key => $linha) {
 
                                 $cont++;
@@ -172,14 +172,11 @@
                                  echo"
                                  <br>
                                  <div class='time-label'>";
+
                                  $result_assistidos=listar_videos_assistidos_aluno($conexao,$idaluno,$idvideo);
-                                
-                                 $minutos=0;
-                                 
+                                 $minutos=0;  
                                  foreach ($result_assistidos as $key => $value) {
-                                  
                                     $minutos=($minutos+$value['minuto']);
-                            
                                   }
                                   $minutos=$minutos/2;
                                   if ($minutos>0) {
@@ -244,7 +241,7 @@
 
                     $result_por_serie= listar_video_aulas_gt_aluno($conexao,$idserie,$iddisciplina,$data);
 
-                    $cont=0;
+                    // $cont=0;
                     foreach ($result_por_serie as $key => $linha) {
 
                         $cont++;
