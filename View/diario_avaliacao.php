@@ -49,7 +49,11 @@ if (!isset($_SESSION['idprofessor'])) {
 
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 
+<script type="text/javascript">
 
+                    Swal.fire('ATENÇÃO, A PÁGINA DE NOTAS ESTÁ EM MANUTENÇÃO, PARA FACILITAR O LANÇAMENTO', '', 'info');
+
+</script>
 
 <div class="content-wrapper" style="min-height: 529px;">
 
