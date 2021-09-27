@@ -346,7 +346,10 @@ if (!isset($_SESSION['idprofessor'])) {
                                            
                                                       </td>
                                                         <td>Periodo: $nome_periodo - Avaliação $avaliacao - ".converte_data($data_nota)."</td>
-                                                        <td><a onclick='excluir_avaliacao($conta);' class='btn btn-danger'>EXCLUIR AVALIAÇÃO</a></td>
+                                                        <td>
+                                                        <!-- a onclick='excluir_avaliacao($conta);' class='btn btn-danger'>EXCLUIR AVALIAÇÃO</a -->
+
+                                                        </td>
                                                         <td>
                                                           <a href='#listaAlunos' onclick='editar_avaliacao_aluno_por_data($conta);' class='btn btn-primary'>EDITAR AVALIAÇÃO</a>
                                                         </td>
