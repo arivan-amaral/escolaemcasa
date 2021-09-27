@@ -51,7 +51,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
 <script type="text/javascript">
 
-                    Swal.fire('ATENÇÃO, A PÁGINA DE NOTAS ESTÁ EM MANUTENÇÃO, PARA FACILITAR O LANÇAMENTO', '', 'info');
+                    Swal.fire('ATENÇÃO, A PÁGINA DE NOTAS ESTÁ EM MANUTENÇÃO PARA FACILITAR O LANÇAMENTO.', '', 'info');
 
 </script>
 
@@ -65,7 +65,8 @@ if (!isset($_SESSION['idprofessor'])) {
 
         <div class="row mb-2">
 
-          <div class="col-sm-10 alert alert-warning">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-10 alert alert-warning text-center">
 
             <h1 class="m-0"><b>           
 
@@ -82,17 +83,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
           </div><!-- /.col -->
 
-          <div class="col-sm-2">
-
-            <ol class="breadcrumb float-sm-right">
-
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-
-              <li class="breadcrumb-item active">Início</li>
-
-            </ol>
-
-          </div><!-- /.col -->
+          
 
         </div><!-- /.row -->
 
@@ -181,15 +172,9 @@ if (!isset($_SESSION['idprofessor'])) {
       <div class="row">
         
         <div class="col-sm-1"></div>
-        <div class="col-sm-3">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Data da avaliação</label>
-            <input type="date" class="form-control" name="data_avaliacao" id="data_avaliacao" required="" min="2021-01-01" >
-            <!-- <input type="date" class="form-control" name="data_avaliacao" id="data_avaliacao" onchange='lista_avaliacao_aluno_por_data();' required=""> -->
-          </div>
-        </div>   
+  
 
-        <div class="col-sm-3">
+        <div class="col-sm-6">
           <div class="form-group">
             <label for="exampleInputEmail1">Período</label>
 
@@ -209,23 +194,9 @@ if (!isset($_SESSION['idprofessor'])) {
           </div>
         </div>
 
-        <div class="col-sm-2">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Avaliação/Parecer</label>
 
-            <select class="form-control" id='avaliacao' name='avaliacao' required="">
-              <option></option>
-              <option value="DIAGNÓSTICO INICIAL">DIAGNÓSTICO INICIAL</option>
-              <option value="av1">AV1 / Parecer</option>
-              <option value="av2">AV2 / Parecer</option>
-              <option value="av3">AV3 / Parecer</option>
-              <option value="RP">RECUPERAÇÃO</option>
-             
-            </select>
-          </div>
-        </div>
 
-        <div class="col-sm-2">
+        <div class="col-sm-3">
           <div class="form-group">
             <br>
             <label for="exampleInputEmail1"> <br></label>
