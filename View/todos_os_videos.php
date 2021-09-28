@@ -101,7 +101,10 @@
                     <?php 
 
                           // echo $diasemana[$diasemana_numero];
-                    $result=$conexao->query("SELECT * FROM video where  serie_id=$idserie and '$data' >= data_visivel  order by data_visivel desc   ");                                                
+                    $result=$conexao->query("SELECT * FROM video where 
+                     (
+                         (id_turma IS NULL AND escola_id IS NULL) or (id_turma = $idturma and escola_id= $idescola) 
+                     ) and  (serie_id=$idserie and '$data' >= data_visivel ) order by data_visivel desc  ");                                                
                     foreach ($result as $key => $linha) {
 
                          $idvideo=$linha['id'];
