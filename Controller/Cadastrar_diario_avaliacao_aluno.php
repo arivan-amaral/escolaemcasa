@@ -118,7 +118,7 @@ foreach ($_POST['aluno_id'] as $key => $value) {
                 $conta_total_nota++;
              }
 
-             if ($conta_total_nota !=0) {
+             if ($conta_total_nota ==0) {
               cadastro_nota($conexao,$nota, 
                       $parecer_disciplina_id, $parecer_descritivo, $sigla,$idescola, $idturma, $iddisciplina, $aluno_id, $periodo, $data,$avaliacao);
              }else if ($conta_total_nota==1) {
