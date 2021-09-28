@@ -86,10 +86,10 @@ try {
                               <td>";
                                 if ($idserie >=3) {
                                   // code...
-                                   $nota1='';
-                                   $nota2='';
-                                   $nota3='';
-                                   $notarp=''; 
+                                   $nota1='0';
+                                   $nota2='0';
+                                   $nota3='0';
+                                   $notarp='0'; 
 
                                    $array_nota1=array();
                                    $array_nota2=array();
@@ -104,7 +104,7 @@ try {
                                       $idnota=$value['idnota'];
 
                                       $nota1=$value['nota'];
-                                      $array_nota1[$idnota]=$value['nota'];
+                                      $array_nota1[$idnota]=$value['nota']." data: ".$value['data_nota'];;
                                       $conta_total_nota++;
                                    }
 
@@ -115,7 +115,7 @@ try {
                                       $idnota=$value['idnota'];
 
                                       $nota2=$value['nota'];
-                                      $array_nota2[$idnota]=$value['nota'];
+                                      $array_nota2[$idnota]=$value['nota']." data: ".$value['data_nota'];;
                                       $conta_total_nota++;
                                    }
 
@@ -126,7 +126,7 @@ try {
                                       $idnota=$value['idnota'];
 
                                       $nota3=$value['nota'];
-                                      $array_nota3[$idnota]=$value['nota'];
+                                      $array_nota3[$idnota]=$value['nota']." data: ".$value['data_nota'];
                                       $conta_total_nota++;
                                    }
 
@@ -135,7 +135,7 @@ try {
                                    foreach ($result_rp as $key => $value) {
                                       $idnota=$value['idnota'];
                                       $notarp=$value['nota'];
-                                      $array_notarp[$idnota]=$value['nota'];
+                                      $array_notarp[$idnota]=$value['nota']." data: ".$value['data_nota'];;
                                       $conta_total_nota++;
                                    }
 
@@ -154,20 +154,42 @@ try {
 
                                    $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>Nota RP:</label>
                                   <input type='text'  name='nota_RP$id' value='$notarp' style='width:50px;' onkeyup='somenteNumeros(this,4);'>
-                                    <br>
-                                  ";
+                                  
+                                  ";                     
+
+
+                                  $media= ($nota1+$nota2+$nota3 );
+                                  if ($media<5 && $notarp !='' && $notarp>$nota3) {
+                                    $media=($media-$nota3)+$notarp;
+                                  }
+
+                                
+
+                                  if ($media <5) {
+                                    $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>Total:</label>
+                                    <input type='text'  value='$media' style='width:50px; background-color: #FFDAB9;'>
+                                      <br>
+                                    ";
+                                  }else{
+                                    $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>Total:</label>
+                                    <input type='text'  value='$media' style='width:50px;background-color: #00BFFF;''>
+                                      <br>
+                                    ";
+                                  }
+
+
 
                                   if (count($array_nota1)>1) {
                                     $result.="<font color='red'> AV1 DESSE ALUNO POSSUI DUPLICIDADE: <br>";
                                     foreach ($array_nota1 as $key_dupli => $value) {
-                                      $result.="<b>id:$key_dupli</b> : $value <br>";
+                                      $result.="<b></b> nota av1: $value <br>";
                                     }
                                     $result.="</FONT><BR>";
                                   }
                                   if (count($array_nota2)>1) {
                                     $result.="<font color='red'> AV2 DESSE ALUNO POSSUI DUPLICIDADE:  <br>";
                                     foreach ($array_nota2 as $key_dupli => $value) {
-                                      $result.="<b>id:$key_dupli</b> : $value <br>";
+                                      $result.="<b></b> nota av2: $value <br>";
                                     }
                                     $result.="</FONT><BR>";
                                   }
@@ -177,7 +199,7 @@ try {
                                   if (count($array_notarp)>1) {
                                     $result.="<font color='red'> RP DESSE ALUNO POSSUI DUPLICIDADE <br>";
                                     foreach ($array_notarp as $key_dupli => $value) {
-                                      $result.="<b>id:$key_dupli</b> : $value <br>";
+                                      $result.="<b></b> nota RP: $value <br>";
                                     }
                                     $result.="</FONT><BR>";
                                   }
@@ -233,14 +255,14 @@ try {
                                         foreach ($result_rp as $key => $value) {
                                            $idnota=$value['idnota'];
                                            $notarp=$value['nota'];
-                                           $array_DIAGNOSTICO_INICIAL[$idnota]=$value['nota'];
+                                           $array_DIAGNOSTICO_INICIAL[$idnota]=" data: ".$value['data_nota']." => ".$value['nota'];
                                            $conta_total_nota++;
                                         }
 
                                         if (count($array_DIAGNOSTICO_INICIAL)>1) {
                                           $result.="<font color='red'> DIAGNÓSTICO INICIAL DESSE ALUNO POSSUI DUPLICIDADE <br>";
                                           foreach ($array_DIAGNOSTICO_INICIAL as $key_dupli => $value) {
-                                            $result.="<b>id:$key_dupli</b> : $value <br>";
+                                            $result.="<b></b> : $value <br>";
                                           }
                                           $result.="</FONT><BR>";
                                         }

@@ -50,7 +50,9 @@ if (!isset($_SESSION['idprofessor'])) {
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 
 <script type="text/javascript">
-     Swal.fire('ATENÇÃO, A PÁGINA DE NOTAS ESTÁ EM MANUTENÇÃO PARA FACILITAR O LANÇAMENTO.', '', 'info');
+
+
+                   // Swal.fire('ATENÇÃO, A PÁGINA DE NOTAS ESTÁ EM MANUTENÇÃO PARA FACILITAR O LANÇAMENTO.', '', 'info');
 
 </script>
 
@@ -101,7 +103,7 @@ if (!isset($_SESSION['idprofessor'])) {
       <div class="container-fluid">
         <!-- Info boxes -->
         <!-- .row -->
-  <!-- <form action="../Controller/Cadastrar_diario_avaliacao_aluno.php" method="post"> -->
+  <form action="../Controller/Cadastrar_diario_avaliacao_aluno.php" method="post">
           
       <div class="row">
         <div class="col-sm-1"></div>
@@ -418,6 +420,37 @@ if (!isset($_SESSION['idprofessor'])) {
         }
 
 
+    }
+
+
+    function aguardando() {
+              let timerInterval
+        Swal.fire({
+          title: 'Aguarde, ação está sendo realizada...',
+          html: '',
+          timer: 60000,
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading()
+            timerInterval = setInterval(() => {
+              const content = Swal.getContent()
+              if (content) {
+                const b = content.querySelector('b')
+                if (b) {
+                  b.textContent = Swal.getTimerLeft()
+                }
+              }
+            }, 100)
+          },
+          willClose: () => {
+            clearInterval(timerInterval)
+          }
+        }).then((result) => {
+          /* Read more about handling dismissals below */
+          if (result.dismiss === Swal.DismissReason.timer) {
+            console.log('I was closed by the timer')
+          }
+        })
     }
 
   </script>

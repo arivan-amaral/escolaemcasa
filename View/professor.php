@@ -4,21 +4,21 @@ if (!isset($_COOKIE['conteudo'])) {
   setcookie('conteudo', 1, (time()+(300*24*3600)));
 }else{
 
-  if ($_COOKIE['conteudo']<5) {
-   setcookie('conteudo', $_COOKIE['conteudo']+1);
+  // if ($_COOKIE['conteudo']<5) {
+  //  setcookie('conteudo', $_COOKIE['conteudo']+1);
 
-      echo"<script type='text/javascript'>
+  //     echo"<script type='text/javascript'>
 
-        function modal_ajuda() {
-            $(document).ready(function() {
-                $('#modal-conteudo').modal('show');
-              });
-        }
+  //       function modal_ajuda() {
+  //           $(document).ready(function() {
+  //               $('#modal-conteudo').modal('show');
+  //             });
+  //       }
 
-        setTimeout('modal_ajuda();',500);
+  //       setTimeout('modal_ajuda();',500);
         
-      </script>";
-  }
+  //     </script>";
+  // }
 }
 if (!isset($_SESSION['idprofessor'])) {
 
@@ -45,7 +45,26 @@ if (!isset($_SESSION['idprofessor'])) {
 
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 
+<script type="text/javascript">
 
+function aviso_nota(){
+  Swal.fire({
+    title: '',
+    width: 700,
+    height: 1400,
+    padding: '8em',
+    background: '#fff url(nota_duplicada.png)',
+    backdrop: `
+      rgba(0,0,123,0.4)
+      url("atencao.gif")
+      left top
+      no-repeat
+    `
+  });
+}
+
+aviso_nota();
+</script>
 
 <div class="content-wrapper" style="min-height: 529px;">
 

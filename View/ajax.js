@@ -768,7 +768,7 @@ function editar_avaliacao_aluno_por_data(conta){
                         botao_continuar.innerHTML=""+
                         "<div class='col-sm-1'></div>"+
                         "<div class='col-sm-10'>"+
-                          "<button type='submit' class='btn btn-block btn-primary'>Concluir</button>"+
+                          "<button type='submit' class='btn btn-block btn-primary' >Concluir</button>"+
                         "</div>";
                         
                     }else{
@@ -814,7 +814,7 @@ function lista_avaliacao_aluno_por_data(){
                         botao_continuar.innerHTML=""+
                         "<div class='col-sm-1'></div>"+
                         "<div class='col-sm-10'>"+
-                          "<button type='submit' class='btn btn-block btn-primary'>Concluir</button>"+
+                          "<button type='submit' class='btn btn-block btn-primary' onclick='aguardando();'>Concluir</button>"+
                         "</div>";
                         
                     }else{

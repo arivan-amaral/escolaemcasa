@@ -106,6 +106,32 @@ function verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno
     return $resultado;
 }
 
+function verifica_sigla_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$avaliacao,$parecer_disciplina_id){
+    $resultado=$conexao->query(" SELECT * FROM nota WHERE
+        escola_id=$idescola and 
+        turma_id=$idturma and 
+        disciplina_id=$iddisciplina and
+        aluno_id=$idaluno and
+        periodo_id=$idperiodo and 
+        avaliacao ='$avaliacao' and 
+        parecer_disciplina_id=$parecer_disciplina_id
+        ");
+    return $resultado;
+}
+
+
+function quantidade_nota_pareceres_individual_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$avaliacao){
+    $resultado=$conexao->query(" SELECT count(*) AS 'quantidade' FROM nota WHERE
+        escola_id=$idescola and 
+        turma_id=$idturma and 
+        disciplina_id=$iddisciplina and
+        aluno_id=$idaluno and
+        periodo_id=$idperiodo and 
+        avaliacao ='$avaliacao'
+        ");
+    return $resultado;
+}
+
 // ************************************************************************
 
 function listar_parecer_disciplina($conexao,$iddisciplina){

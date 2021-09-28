@@ -12,7 +12,7 @@
   }
 
   if (isset($_SESSION['status'])) {
-  $mensagem='Alguma coisa deu errado';   
+  $mensagem='';   
   if (isset($_SESSION['mensagem'])) {
      $mensagem=$_SESSION['mensagem'];
   }
@@ -34,6 +34,7 @@
           position: 'center',
           icon: 'success',
           title: 'Ação Concluída',
+             text: ' $mensagem',
           showConfirmButton: false,
           timer: 1500
         });
