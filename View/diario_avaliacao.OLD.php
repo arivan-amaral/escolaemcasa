@@ -50,7 +50,8 @@ if (!isset($_SESSION['idprofessor'])) {
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 
 <script type="text/javascript">
-     Swal.fire('ATENÇÃO, A PÁGINA DE NOTAS ESTÁ EM MANUTENÇÃO PARA FACILITAR O LANÇAMENTO.', '', 'info');
+
+                    //Swal.fire('ATENÇÃO, A PÁGINA DE NOTAS ESTÁ EM MANUTENÇÃO, PARA FACILITAR O LANÇAMENTO', '', 'info');
 
 </script>
 
@@ -64,8 +65,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
         <div class="row mb-2">
 
-          <div class="col-sm-1"></div>
-          <div class="col-sm-10 alert alert-warning text-center">
+          <div class="col-sm-10 alert alert-warning">
 
             <h1 class="m-0"><b>           
 
@@ -82,7 +82,17 @@ if (!isset($_SESSION['idprofessor'])) {
 
           </div><!-- /.col -->
 
-          
+          <div class="col-sm-2">
+
+            <ol class="breadcrumb float-sm-right">
+
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+
+              <li class="breadcrumb-item active">Início</li>
+
+            </ol>
+
+          </div><!-- /.col -->
 
         </div><!-- /.row -->
 
@@ -101,7 +111,7 @@ if (!isset($_SESSION['idprofessor'])) {
       <div class="container-fluid">
         <!-- Info boxes -->
         <!-- .row -->
-  <!-- <form action="../Controller/Cadastrar_diario_avaliacao_aluno.php" method="post"> -->
+  <form action="../Controller/Cadastrar_diario_avaliacao_aluno.php" method="post">
           
       <div class="row">
         <div class="col-sm-1"></div>
@@ -171,9 +181,15 @@ if (!isset($_SESSION['idprofessor'])) {
       <div class="row">
         
         <div class="col-sm-1"></div>
-  
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Data da avaliação</label>
+            <input type="date" class="form-control" name="data_avaliacao" id="data_avaliacao" required="" min="2021-01-01" >
+            <!-- <input type="date" class="form-control" name="data_avaliacao" id="data_avaliacao" onchange='lista_avaliacao_aluno_por_data();' required=""> -->
+          </div>
+        </div>   
 
-        <div class="col-sm-6">
+        <div class="col-sm-3">
           <div class="form-group">
             <label for="exampleInputEmail1">Período</label>
 
@@ -184,12 +200,7 @@ if (!isset($_SESSION['idprofessor'])) {
                 foreach ($resultado as $key => $value) {
                   $idperiodo=$value['id'];
                   $descricao=$value['descricao'];
-                  if ($idserie <3 && $idperiodo==6) {
-                    echo"<option value='$idperiodo'>$descricao</option>";
-
-                  }else if ($idperiodo !=6) {
-                    echo"<option value='$idperiodo'> $descricao</option>";
-                  }
+                  echo"<option value='$idperiodo'>$descricao</option>";
                   
                 }
 
@@ -198,9 +209,23 @@ if (!isset($_SESSION['idprofessor'])) {
           </div>
         </div>
 
+        <div class="col-sm-2">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Avaliação/Parecer</label>
 
+            <select class="form-control" id='avaliacao' name='avaliacao' required="">
+              <option></option>
+              <option value="DIAGNÓSTICO INICIAL">DIAGNÓSTICO INICIAL</option>
+              <option value="av1">AV1 / Parecer</option>
+              <option value="av2">AV2 / Parecer</option>
+              <option value="av3">AV3 / Parecer</option>
+              <option value="RP">RECUPERAÇÃO</option>
+             
+            </select>
+          </div>
+        </div>
 
-        <div class="col-sm-3">
+        <div class="col-sm-2">
           <div class="form-group">
             <br>
             <label for="exampleInputEmail1"> <br></label>
@@ -225,7 +250,7 @@ if (!isset($_SESSION['idprofessor'])) {
 <!-- ####################################################################### -->
 
 
-<!-- <div class="row">
+<div class="row">
 
     <div class="col-md-1"></div>
 
@@ -241,9 +266,17 @@ if (!isset($_SESSION['idprofessor'])) {
 
                   </div>
 
+                  <!-- /.card-header -->
+
                   <div class="card-body">
 
+                    <!-- we are adding the accordion ID so Bootstrap's collapse plugin detects it -->
+
                     <div id="accordion">
+
+
+
+       
 
                           <div class='card card-primary'>
 
@@ -279,61 +312,59 @@ if (!isset($_SESSION['idprofessor'])) {
                                                   </th>
                                                 </tr>
                                               </thead>
-                                              <tbody> -->
-
-
+                                              <tbody>
                                                 <?php 
-                                          //       $conta=1;
-                                          //       $array_avaliacao= array('0'=>'av1','1'=>'av2','2'=>'av3','3'=>'av4','4'=>'DIAGNÓSTICO INICIAL','5'=>'RP');
+                                                $conta=1;
+                                                $array_avaliacao= array('0'=>'av1','1'=>'av2','2'=>'av3','3'=>'av4','4'=>'DIAGNÓSTICO INICIAL','5'=>'RP');
 
-                                          // foreach ($array_avaliacao as $key => $value) {
-                                          //         $avaliacao=$value;
+                                          foreach ($array_avaliacao as $key => $value) {
+                                                  $avaliacao=$value;
                                                 
-                                          //       $resultado=listar_todas_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplina,$avaliacao);
-                                          //           foreach ($resultado as $key => $value) {
-                                          //             $data_nota=$value['data_nota'];
-                                          //             $turma_id  =$value['turma_id'];
-                                          //             $disciplina_id  =$value['disciplina_id'];
-                                          //             $escola_id=$value['escola_id'];
-                                          //             $avaliacao=$value['avaliacao'];
-                                          //             $periodo_id=$value['periodo_id'];
-                                          //             $nome_periodo="";
-                                          //             $res_periodo=$conexao->query("SELECT * FROM periodo where id=$periodo_id ");
-                                          //             foreach ($res_periodo as $key => $value) {
-                                          //               $nome_periodo=$value["descricao"];
-                                          //             }
+                                                $resultado=listar_todas_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplina,$avaliacao);
+                                                    foreach ($resultado as $key => $value) {
+                                                      $data_nota=$value['data_nota'];
+                                                      $turma_id  =$value['turma_id'];
+                                                      $disciplina_id  =$value['disciplina_id'];
+                                                      $escola_id=$value['escola_id'];
+                                                      $avaliacao=$value['avaliacao'];
+                                                      $periodo_id=$value['periodo_id'];
+                                                      $nome_periodo="";
+                                                      $res_periodo=$conexao->query("SELECT * FROM periodo where id=$periodo_id ");
+                                                      foreach ($res_periodo as $key => $value) {
+                                                        $nome_periodo=$value["descricao"];
+                                                      }
 
 
-                                          //             echo"
-                                          //             <tr>
-                                          //             <td>
-                                          //             $conta
+                                                      echo"
+                                                      <tr>
+                                                      <td>
+                                                      $conta
                                                       
-                                          //             <input type='hidden' id='data_nota$conta' value='$data_nota'>
-                                          //             <input type='hidden' id='turma_id$conta' value='$turma_id'>
-                                          //             <input type='hidden' id='disciplina_id$conta' value='$disciplina_id'>
-                                          //             <input type='hidden' id='escola_id$conta' value='$escola_id'>
-                                          //             <input type='hidden' id='avaliacao$conta' value='$avaliacao'>
-                                          //             <input type='hidden' id='periodo_id$conta' value='$periodo_id'>
+                                                      <input type='hidden' id='data_nota$conta' value='$data_nota'>
+                                                      <input type='hidden' id='turma_id$conta' value='$turma_id'>
+                                                      <input type='hidden' id='disciplina_id$conta' value='$disciplina_id'>
+                                                      <input type='hidden' id='escola_id$conta' value='$escola_id'>
+                                                      <input type='hidden' id='avaliacao$conta' value='$avaliacao'>
+                                                      <input type='hidden' id='periodo_id$conta' value='$periodo_id'>
 
                                            
-                                          //             </td>
-                                          //               <td>Periodo: $nome_periodo - Avaliação $avaliacao - ".converte_data($data_nota)."</td>
-                                          //               <td>
-                                          //               <!-- a onclick='excluir_avaliacao($conta);' class='btn btn-danger'>EXCLUIR AVALIAÇÃO</a -->
+                                                      </td>
+                                                        <td>Periodo: $nome_periodo - Avaliação $avaliacao - ".converte_data($data_nota)."</td>
+                                                        <td>
+                                                        <!-- a onclick='excluir_avaliacao($conta);' class='btn btn-danger'>EXCLUIR AVALIAÇÃO</a -->
 
-                                          //               </td>
-                                          //               <td>
-                                          //                 <a href='#listaAlunos' onclick='editar_avaliacao_aluno_por_data($conta);' class='btn btn-primary'>EDITAR AVALIAÇÃO</a>
-                                          //               </td>
+                                                        </td>
+                                                        <td>
+                                                          <a href='#listaAlunos' onclick='editar_avaliacao_aluno_por_data($conta);' class='btn btn-primary'>EDITAR AVALIAÇÃO</a>
+                                                        </td>
 
-                                          //             </tr>";
-                                          //             $conta++;
-                                          //           }
-                                          //       }
+                                                      </tr>";
+                                                      $conta++;
+                                                    }
+                                                }
 
                                               ?>
-<!-- 
+
                                               </tbody>
                                         </table>
               
@@ -342,19 +373,38 @@ if (!isset($_SESSION['idprofessor'])) {
 
                           </div>
 
+                               
+
+
+
                     </div>
 
                   </div>
 
 
+
+                  <!-- /.card-body -->
+
                 </div>
+
+                <!-- /.card -->
 
               </div>
 
         </div>
 
+
+
+
+
+
+
+    <!-- Main row -->
+
+    <!-- /.row -->
+
   </div>
- -->
+
 
 <!-- ####################################################################### -->
 

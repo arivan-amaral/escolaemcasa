@@ -800,12 +800,14 @@ function lista_avaliacao_aluno_por_data(){
   var idescola = document.getElementById("idescola").value;
   var idturma = document.getElementById("idturma").value;
   var iddisciplina = document.getElementById("iddisciplina").value;
+
+  var data_avaliacao = document.getElementById("data_avaliacao").value;
   var idperiodo = document.getElementById("periodo").value;
+  var avaliacao = document.getElementById("avaliacao").value;
 
-
-   if ( idperiodo !="" ) {
+   if (data_avaliacao !="" && idperiodo !="" && avaliacao !="") {
         result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
-          var url="idserie="+idserie+"&idperiodo="+idperiodo+"&idescola="+idescola+"&idturma="+idturma+"&iddisciplina="+iddisciplina;
+          var url="idserie="+idserie+"&avaliacao="+avaliacao+"&idperiodo="+idperiodo+"&data_avaliacao="+data_avaliacao+"&idescola="+idescola+"&idturma="+idturma+"&iddisciplina="+iddisciplina;
            xmlreq.open("GET", "../Controller/Lista_avaliacao_aluno_por_data.php?"+url, true);
             xmlreq.onreadystatechange = function(){      
                 if (xmlreq.readyState == 4) {
@@ -829,11 +831,29 @@ function lista_avaliacao_aluno_por_data(){
 
     }else{
         
-        if (idperiodo =="") {
+        if (data_avaliacao =="") {
+            Swal.fire({
+                      icon: 'info',
+                      title: 'Atenção...',
+                      text: 'Selecione a data da avaliação!',
+                      showConfirmButton: false,
+                      timer: 1500
+                      
+                    });
+        }else if (idperiodo =="") {
             Swal.fire({
                       icon: 'info',
                       title: 'Atenção...',
                       text: 'Selecione o período!',
+                      showConfirmButton: false,
+                      timer: 1500
+                      
+                    });
+        }else if (avaliacao =="") {
+            Swal.fire({
+                      icon: 'info',
+                      title: 'Atenção...',
+                      text: 'Selecione a avalicão desejada (av1,av2 ou av3)!',
                       showConfirmButton: false,
                       timer: 1500
                       

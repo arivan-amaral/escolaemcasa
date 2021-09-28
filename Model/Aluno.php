@@ -81,7 +81,7 @@ function limpa_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$i
 }
 
 
-function verifica_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$data_nota,$parecer_disciplina_id,$avaliacao){
+function verifica_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$parecer_disciplina_id,$avaliacao){
     $resultado=$conexao->query(" SELECT * FROM nota WHERE
     	escola_id=$idescola and 
     	turma_id=$idturma and 
@@ -89,21 +89,18 @@ function verifica_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,
     	aluno_id=$idaluno and
     	periodo_id=$idperiodo and 
     	parecer_disciplina_id=$parecer_disciplina_id and 
-    	avaliacao='$avaliacao' and 
-
-    	data_nota='$data_nota'
+    	avaliacao='$avaliacao'
     	");
     return $resultado;
 }
 
-function verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$data_nota,$avaliacao){
+function verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$avaliacao){
     $resultado=$conexao->query(" SELECT * FROM nota WHERE
     	escola_id=$idescola and 
     	turma_id=$idturma and 
     	disciplina_id=$iddisciplina and
     	aluno_id=$idaluno and
     	periodo_id=$idperiodo and 
-    	data_nota='$data_nota' and 
     	avaliacao ='$avaliacao'
     	");
     return $resultado;
