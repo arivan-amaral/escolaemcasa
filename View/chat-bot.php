@@ -269,8 +269,8 @@ foreach ($res as $key => $value) {
 
  // $status_api= obter_status_api($conexao);
  // if ($status_api) {//só ira atualizar no banco e enviar as mensagens se o status da api estives true
-                              
-       
+      $novo_indice=$indice + 20;        
+       echo"<a href='https://educalem.com.br/escolaemcasa/View/chat-bot.php?indice=$novo_indice' target='_blank'>Carregar mais $indice + $novo_indice</a>";
 
  //  }else {
  //    restaurar_conexao_api($conexao);
