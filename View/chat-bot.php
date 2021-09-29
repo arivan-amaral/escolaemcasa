@@ -218,7 +218,7 @@ try {
 // $conexao->exec("INSERT into whatsapp_configuracao (campo) values ('$json')");
  //$mensagem="⚠Sua localização foi recebida:\nENDEREÇO:$endereco\nLatitude:$latitude\nLongitude:$longitude";
 
-$res=$conexao->query("SELECT * FROM aluno where status='Ativo' limit $indice ,20 ");
+$res=$conexao->query("SELECT * FROM aluno where status='Ativo' and enviado=0 limit $indice ,20 ");
 foreach ($res as $key => $value) {
         $aluno_id=$value['idaluno'];
         $nome_aluno=$value['nome'];
