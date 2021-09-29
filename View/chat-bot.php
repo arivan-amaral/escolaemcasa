@@ -34,7 +34,7 @@ function enviar_botao($conexao,$phone,$mensagem){
     "buttons": [
       {
         "id": "1",
-        "label": "SOU EU MESMO!"
+        "label": "NÃO SOU EU!"
       }
     ]
   }
