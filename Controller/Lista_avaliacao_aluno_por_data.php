@@ -180,45 +180,39 @@ try {
 
 
                                   if (count($array_nota1)>1) {
-                                    $result.="<font color='red'> AV1 DESSE ALUNO POSSUI DUPLICIDADE: <br>";
+                                    $result.="<font color='red'> AV1 DESSE ALUNO POSSUI DUPLICIDADE:</FONT> <br>";
                                     foreach ($array_nota1 as $key_dupli => $value) {
-                                      $result.="<b></b> nota av1: $value <br>";
+                                      $result.="<div id='nota_excluir$key_dupli'><b> nota av1:</b> <font color='blue'> $value </FONT> <a onclick='excluir_nota_duplicada($key_dupli);' class='btn btn-sm bg-danger'>Excluir $value</a></div><br>";
                                     }
-                                    $result.="</FONT><BR>";
+                                    $result.="______________________________________________________<BR>";
                                   }
                                   if (count($array_nota2)>1) {
-                                    $result.="<font color='red'> AV2 DESSE ALUNO POSSUI DUPLICIDADE:  <br>";
+                                    $result.="<font color='red'> AV2 DESSE ALUNO POSSUI DUPLICIDADE:  </FONT> <br>";
                                     foreach ($array_nota2 as $key_dupli => $value) {
-                                      $result.="<b></b> nota av2: $value <br>";
+                                      $result.="<div id='nota_excluir$key_dupli'><b> nota av2:</b> <font color='blue'> $value </FONT><a onclick='excluir_nota_duplicada($key_dupli);' class='btn btn-sm bg-danger'>Excluir $value</a></div><br>";
                                     }
-                                    $result.="</FONT><BR>";
+                                    $result.="______________________________________________________<BR>";
                                   }
                                   if (count($array_nota3)>1) {
                                     // $result.="<font color='red'> AV3 DESSE ALUNO POSSUI DUPLICIDADE: ".count($array_nota3)."</FONT><BR>";
                                   }
                                   if (count($array_notarp)>1) {
-                                    $result.="<font color='red'> RP DESSE ALUNO POSSUI DUPLICIDADE <br>";
+                                    $result.="<font color='red'> RP DESSE ALUNO POSSUI DUPLICIDADE  </FONT> <br>";
                                     foreach ($array_notarp as $key_dupli => $value) {
-                                      $result.="<b></b> nota RP: $value <br>";
+                                         $result.="<div id='nota_excluir$key_dupli'>
+                                         <b> nota RP:</b> <font color='blue'> $value </FONT>  <a onclick='excluir_nota_duplicada($key_dupli);' class='btn btn-sm bg-danger'>Excluir $value</a></div><br>";
                                     }
-                                    $result.="</FONT><BR>";
+                                    $result.="______________________________________________________<BR>";
                                   }
 
                                   $result.="
                                   <br>
                                   ";
                                 }
-                                         //  <b>
-                                         //      Relatório descritivo - $nome_aluno .
-                                         //   </b>
-  
-                                         // <div class='card-body'>
-                                         //   <textarea  class='form-control' rows='3' name='parecer_descritivo$id'>$descricao_parecer</textarea>
-                                         // </div>
- 
+
                                 $result.="
-  
                               </td>";
+
                       }else{// se for diagnostico inicial
 
                               $result_verifica=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'DIAGNÓSTICO INICIAL');
@@ -237,7 +231,6 @@ try {
                                               Diagnóstico inicial - $nome_aluno 
                                            </h6>
                                          </div>
-                                         <!-- /.card-header -->
                                          <div class='card-body'>
                                            <textarea  class='form-control' rows='5' name='parecer_descritivo$id'>$descricao_parecer</textarea>
                                          </div>
@@ -302,13 +295,15 @@ try {
                       $sigla=$value['sigla'];
                     }
 
-              
-                    //arivan
-                                 
+        
+
+
                     if ($serie_id == $idserie) {  //pareceres que ja foram prenchidos
                     // if ($serie_id == $idserie && $avaliacao=='av3') {  //pareceres que ja foram prenchidos
                        $result.="<tr class='$cor_tabela'>
                             <td colspan='2'>
+
+
                             <div class='col-12'>
                                   
                                  ";

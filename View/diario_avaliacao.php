@@ -1,19 +1,25 @@
 <?php 
 session_start();
-setcookie('video', 1, (time()+(300*24*3600)));
- if (!isset($_COOKIE['video'])) {
+//$_COOKIE['video_nota']=$_COOKIE['video_nota']+1;
+if (!isset($_COOKIE['video_nota'])) {
+  setcookie('video_nota', 1, (time()+(300*24*3600)));
+ // $_COOKIE['video_nota']=$_COOKIE['video_nota']+1;
 
-    echo"<script type='text/javascript'>
+}
+else if ($_COOKIE['video_nota']<6) {
+      echo"<script type='text/javascript'>
       function modal_video() {
           $(document).ready(function() {
               $('#modal-video').modal('show');
             });
       }
 
-      setTimeout('modal_video();',1000);
+      setTimeout('modal_video();',500);
       
     </script>";
-  $_COOKIE['video']=$_COOKIE['video']+1;
+  setcookie('video_nota',$_COOKIE['video_nota']+1 );
+
+  //$_COOKIE['video_nota']=$_COOKIE['video_nota']+1;
 }
 
 if (!isset($_SESSION['idprofessor'])) {
@@ -462,7 +468,7 @@ if (!isset($_SESSION['idprofessor'])) {
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">VEJA O QUE MUDOU</h4>
+          <h4 class="modal-title">VEJA O QUE MUDOU <?php echo $_COOKIE['video_nota']; ?></h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -471,11 +477,21 @@ if (!isset($_SESSION['idprofessor'])) {
 
           <div class="modal-body">
               <!-- /corpo -->
-          <center>
+        
+            <b> Como resolver a duplicidade das notas </b>
+             <a  href='https://youtu.be/f6omYxWvGeY' target="_blank">
+              <img src='imagens/assista-video.gif' width='200' classe='img-fluid' >
+             </a>
+             <br>
+             <br>           
 
-            <!-- <h1>ATENÇÃO, NÃO LANÇAR NOTA ANTES DAS 20:30, <font color="RED">SERVIDOR EM MANUTENÇÃO</font></h1> -->
-             <iframe width="400" height="315" src="https://www.youtube.com/embed/dNihxQto4Hg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </center>
+             <b> Como lançar as notas no novo formato </b>
+             <a  href='https://youtu.be/URKraLoTQHU' target="_blank">
+              <img src='imagens/assista-video.gif' width='200' classe='img-fluid' >
+             </a>
+             <br>
+             <br>
+
 
               <!-- /corpo -->
         </div>
