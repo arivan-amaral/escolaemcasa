@@ -225,8 +225,8 @@ foreach ($res as $key => $value) {
         $whatsapp='55'.trim($value['whatsapp']);
         $whatsapp_responsavel='55'.trim($value['whatsapp_responsavel']);
         
-        $whatsapp='5589999342837';
-        $whatsapp_responsavel='5589999342837';
+        // $whatsapp='5589999342837';
+        // $whatsapp_responsavel='5589999342837';
         
         $mensagem="Olá $nome_aluno!
         Esperamos que todos estejam bem! 😊
