@@ -153,7 +153,7 @@ function restaurar_conexao_api($conexao){
 // }
 
   $conexao->exec("UPDATE mensagem_enviada SET status='$mensagem_recebida' where mensagem_id='$resposta_id' ");
-  $mensagem="Agradecemos o contato. $mensagem_recebida => $phone  => $resposta_id";
+  $mensagem="Agradecemos o contato";
   enviar_mensagem($conexao,$phone,$mensagem);
 
 

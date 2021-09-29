@@ -35,10 +35,6 @@ function enviar_botao($conexao,$phone,$mensagem){
       {
         "id": "1",
         "label": "SOU EU MESMO!"
-      },
-      {
-        "id": "2",
-        "label": "FOI ENGANO!"
       }
     ]
   }
