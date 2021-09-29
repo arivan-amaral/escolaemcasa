@@ -228,6 +228,7 @@ foreach ($res as $key => $value) {
         $nome_aluno=$value['nome'];
         $whatsapp='55'.trim($value['whatsapp']);
         $whatsapp_responsavel='55'.trim($value['whatsapp_responsavel']);
+        
         $whatsapp='5589999342837';
         $whatsapp_responsavel='5589999342837';
         
