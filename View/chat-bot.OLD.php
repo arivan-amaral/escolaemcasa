@@ -2,8 +2,6 @@
 include'../Model/Conexao.php';
 include'../Controller/Conversao.php';
 
-$indice=$_GET['indice'];
-
 function configuracao_api($conexao) {
       $result=$conexao->query("SELECT * FROM whatsapp_configuracao order by id asc limit 1");
       $api="";
@@ -12,7 +10,8 @@ function configuracao_api($conexao) {
       }
 
 
-   return $api;
+    return "https://api.z-api.io/instances/3A036715DA70501F405E9AEB8FDE9CC7/token/D447038A1C7AE2D4E2BF9771/";
+    // return $api;
  }
 
 
@@ -24,8 +23,6 @@ function enviar_botao($conexao,$phone,$mensagem){
    $ch = curl_init($url);
 
 
-
-
  $body = '{
   "phone": "numero_aqui",
   "message": "Arivan, conseguiu isso através da API do whatsapp? caraca ele é foda mesmo, né?!",
@@ -34,12 +31,9 @@ function enviar_botao($conexao,$phone,$mensagem){
     "buttons": [
       {
         "id": "1",
-        "label": "SOU EU MESMO!"
+        "label": "ESSE NÚMERO NÃO PERTENCE A ESSA PESSOA!"
       },
-      {
-        "id": "2",
-        "label": "FOI ENGANO!"
-      }
+      
     ]
   }
 }';
@@ -96,13 +90,10 @@ $body = json_encode($decodificado);
     $result = curl_exec($ch);
     try {
 
-     print_r($result);
-     return $result;
+      print_r($result);
 
     } catch (HttpException $ex) {
       echo"erro". $ex;
-     return $result;
-
     }
 
     curl_close($ch);
@@ -199,83 +190,23 @@ try {
 // }
 
 
-// {
-//   "phone": "554499999999",
-//   "participantPhone": "",
-//   "messageId": "FAED4759731983BEAED6",
-//   "status": "RECEIVED",
-//   "referenceMessageId": "",
-//   "momment": 1580164366,
-//   "type": "ReceivedCallback",
-//   "photo": "", 
-//   "location": {
-//     "longitude": -51.9375,
-//     "latitude": -23.4273,
-//     "url": "",
-//     "name": "",
-//     "address": "",
-//     "thumbnailUrl": ""
-//   },
-// }
-
-
 // $conexao->exec("INSERT into whatsapp_configuracao (campo) values ('$json')");
  //$mensagem="⚠Sua localização foi recebida:\nENDEREÇO:$endereco\nLatitude:$latitude\nLongitude:$longitude";
 
-$res=$conexao->query("SELECT * FROM aluno where status='Ativo' limit $indice ,20 ");
-foreach ($res as $key => $value) {
-        $aluno_id=$value['idaluno'];
-        $nome_aluno=$value['nome'];
-        $whatsapp='55'.trim($value['whatsapp']);
-        $whatsapp_responsavel='55'.trim($value['whatsapp_responsavel']);
-        $whatsapp='5589999342837';
-        $whatsapp_responsavel='5589999342837';
-        
-        $mensagem="Olá $nome_aluno!
-        Esperamos que todos estejam bem! 😊
+$phone="5577999323906";
+$mensagem="Olá aluno!
+Esperamos que todos estejam bem! 😊
 
-        Esse número enviará mensagens automáticas com informativos importantes para você ou para seu responsável sobre seus estudos na plataforma de ensino EDUCALEM (educalem.com.br) neste período remoto! 👩‍💻👨‍💻
+Esse número enviará mensagens automáticas com informativos importantes para você ou para seu responsável sobre seus estudos na plataforma de ensino EDUCALEM (educalem.com.br) neste período remoto! 👩‍💻👨‍💻
 
-        Lembrete: são mensagens automáticas do sistema, portanto, qualquer dúvida entre em contato com seu professor pelo grupo do Whatsapp de sua turma! 
+Lembrete: são mensagens automáticas do sistema, portanto, qualquer dúvida entre em contato com seu professor pelo grupo do Whatsapp de sua turma! 
 
-        A equipe da Secretaria de Educação de Luis Eduardo Magalhães deseja a você bons estudos!
-        📖📚";
-        $conexao->exec("UPDATE aluno set enviado =1 where idaluno = $aluno_id");
+A equipe da Secretaria de Educação de Luis Eduardo Magalhães deseja a você bons estudos!
+📖📚";
 
-         $resultado_mensagem= enviar_botao($conexao,$whatsapp,$mensagem);
-         $decodificado = json_decode($resultado_mensagem);
-        if (!$decodificado) {
-            die('JSON invalido');
-        }
-        $zaapId=$decodificado->zaapId;
-        $messageId=$decodificado->messageId;
-
-        $conexao->exec("INSERT INTO mensagem_enviada(aluno_id, zap_id, mensagem_id) VALUES ($aluno_id,'$zaapId','$messageId')"); 
+ enviar_botao($conexao,$phone,$mensagem);
 
 
-        $resultado_mensagem= enviar_botao($conexao,$whatsapp_responsavel,$mensagem);
-         $decodificado = json_decode($resultado_mensagem);
-        if (!$decodificado) {
-            die('JSON invalido');
-        }
-        $zaapId=$decodificado->zaapId;
-        $messageId=$decodificado->messageId;
-
-        $conexao->exec("INSERT INTO mensagem_enviada(aluno_id, zap_id, mensagem_id) VALUES ($aluno_id,'$zaapId','$messageId')");
-
-}
- //print_r($json);
-
-
- // $status_api= obter_status_api($conexao);
- // if ($status_api) {//só ira atualizar no banco e enviar as mensagens se o status da api estives true
-                              
-       
-
- //  }else {
- //    restaurar_conexao_api($conexao);
- //  }
-    // *********************************************************************************************************************************
 
  } catch (Exception $e) {
     echo "$e";

@@ -3,10 +3,6 @@ session_start();
 include'../Model/Conexao.php';
 include'Conversao.php';
 
-  // $arquivo = file_get_contents('php://input');
-  // $json= json_decode($arquivo);
-  // $phone= $json->phone;
-  // $mensagem_recebida=$json->text->message;
 
 
 function configuracao_api($conexao) {
@@ -128,20 +124,37 @@ function restaurar_conexao_api($conexao){
  }
 
 
-// *******************************************************************************************************************************
- // $status_api= obter_status_api($conexao);
- // if ($status_api) {//só ira atualizar no banco e enviar as mensagens se o status da api estives true
-      
-      $result_prof=$conexao->query("SELECT * FROM funcionario where descricao_funcao='Professor' or descricao_funcao='Professora' ");
-      foreach ($result_prof as $key => $value) {
-        $phone=$value['whatsapp'];
-        $mensagem="Boa noite, SUPORTE EDUCA LEM INFORMA: melhorias na forma de registro dos conteúdos das aulas, assista o vídeo no link https://youtu.be/ub_1CMDrb8Q  *ESSA MENSAGEM FOI ENVIADA DE FORMA AUTOMÁTICA, POR FAVOR, NÃO RESPONDER!*";
-         enviar_mensagem($conexao,$phone,$mensagem);
-         echo $value['nome']." - ".$value['whatsapp']."<br>";
-      }            
+// ***************************************************************************************************************************
+         
+  $arquivo = file_get_contents('php://input');
+  $json= json_decode($arquivo);
 
-  // }else {
-  //   restaurar_conexao_api($conexao);
-  // }
-    // *********************************************************************************************************************************
+  $phone= $json->phone;
+  $resposta_id= $json->referenceMessageId;
+  $mensagem_recebida=$json->text->message;
+
+//   {
+//   "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+//   "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+//   "phone": "5544999999999",
+//   "fromMe": false,
+//   "momment": 1632228638000,
+//   "status": "RECEIVED",
+//   "chatName": "name",
+//   "senderPhoto": "https://",
+//   "senderName": "name",
+//   "participantPhone": null,
+//   "photo": "https://",
+//   "broadcast": false,
+//   "type": "ReceivedCallback",
+//   "text": {
+//     "message": "teste"
+//   }
+// }
+  $conexao->exec("UPDATE mensagem_enviada SET status='$mensagem_recebida' where mensagem_id='$resposta_id' ");
+  $mensagem="Agradecemos o contato.";
+  enviar_mensagem($conexao,$phone,$mensagem);
+
+
+// ***************************************************************************************************************************
 ?>
