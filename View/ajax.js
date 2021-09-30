@@ -1044,7 +1044,7 @@ function excluir_questionario(id) {
 //
 function excluir_nota_duplicada(id) {
   Swal.fire({
-    title: 'Deseja continuar com a EXCLUSÃO dessa nota?',
+    title: 'Deseja continuar com a EXCLUSÃO dessa nota? Favor deixar ao menos uma nota sem excluir!',
     showDenyButton: true,
     confirmButtonText: `Sim`,
     denyButtonText: `Não`,
