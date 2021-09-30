@@ -93,7 +93,7 @@ try {
 
                                    $array_nota1=array();
                                    $array_nota2=array();
-                                   $array_nota3=array();
+                                   // $array_nota3=array();
                                    $array_notarp=array();
 
 
@@ -124,11 +124,13 @@ try {
 
                                    foreach ($result_n3 as $key => $value) {
                                       $idnota=$value['idnota'];
-
                                       $nota3=$value['nota'];
-                                      $array_nota3[$idnota]=$value['nota']." data: ".$value['data_nota'];
-                                      $conta_total_nota++;
+                                     // $array_nota3[$idnota]=$value['nota']." data: ".$value['data_nota'];;
+                                      //$conta_total_nota++;
                                    }
+
+                  
+
 
                                   $result_rp=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'RP');
                                    $conta_total_nota=0;
@@ -193,9 +195,7 @@ try {
                                     }
                                     $result.="______________________________________________________<BR>";
                                   }
-                                  if (count($array_nota3)>1) {
-                                    // $result.="<font color='red'> AV3 DESSE ALUNO POSSUI DUPLICIDADE: ".count($array_nota3)."</FONT><BR>";
-                                  }
+        
                                   if (count($array_notarp)>1) {
                                     $result.="<font color='red'> RP DESSE ALUNO POSSUI DUPLICIDADE  </FONT> <br>";
                                     foreach ($array_notarp as $key_dupli => $value) {
@@ -324,8 +324,29 @@ try {
                                   </select>
                                 </p>
 
-                              </div>   
-                            </td>
+                              </div>";
+                                  $array_nota3=array();
+                                  $result_n3=verifica_sigla_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av3',$parecer_disciplina_id);
+
+                                  $conta_total_nota=0;
+                                  foreach ($result_n3 as $key => $value) {
+                                      $idnota=$value['idnota'];
+                                      $nota3=$value['sigla'];
+                                      $array_nota3[$idnota]=$value['nota']." data: ".$value['data_nota'];
+                                      $conta_total_nota++;
+                                   }
+
+                              if (count($array_nota3)>1) {
+                                 $result.="<font color='red'> AV3 (PARECERES) DESSE ALUNO POSSUI DUPLICIDADE  </FONT> <br>";
+                                foreach ($array_nota3 as $key_dupli => $value) {
+                                     $result.="<div id='nota_excluir$key_dupli'>
+                                     <b> nota AV3:</b> <font color='blue'> $value </FONT>  <a onclick='excluir_nota_duplicada($key_dupli);' class='btn btn-sm bg-danger'>Excluir $value</a></div><br>";
+                                }
+                                $result.="______________________________________________________<BR>";
+                              }
+
+
+                            $result.="</td>
                             </tr>";
 
                     }else if ($serie_id =="" && $idserie <8 ) {//pareceres que NÃO  foram prenchidos
@@ -351,7 +372,31 @@ try {
                                   </select>
                                 </p>
 
-                              </div>   
+                              </div> ";
+
+
+                                $array_nota3=array();
+                                  $result_n3=verifica_sigla_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av3',$idparecer);
+
+                                  $conta_total_nota=0;
+                                  foreach ($result_n3 as $key => $value) {
+                                      $idnota=$value['idnota'];
+                                      $nota3=$value['sigla'];
+                                      $array_nota3[$idnota]="nota: ".$value['nota']." sigla: ".$value['sigla']." data: ".$value['data_nota'];
+                                      $conta_total_nota++;
+                                   }
+
+                              if (count($array_nota3)>1) {
+                                 $result.="<font color='red'> AV3 (PARECERES) DESSE ALUNO POSSUI DUPLICIDADE  </FONT> <br>";
+                                foreach ($array_nota3 as $key_dupli => $value) {
+                                     $result.="<div id='nota_excluir$key_dupli'>
+                                     <b> nota AV3:</b> <font color='blue'> $value </FONT>  <a onclick='excluir_nota_duplicada($key_dupli);' class='btn btn-sm bg-danger'>Excluir $value</a></div><br>";
+                                }
+                                $result.="______________________________________________________<BR>";
+                              }
+
+
+                            $result.="
                             </td>
                             </tr>";
                     }

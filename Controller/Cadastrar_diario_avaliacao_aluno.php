@@ -48,7 +48,7 @@ foreach ($_POST['aluno_id'] as $key => $value) {
                 $nota=trim($_POST["nota_$value_av$aluno_id"]);
                 $nota=str_replace(',','.',$nota);
             }
-          }
+          } 
 
           if (isset($_POST["parecer_sigla$aluno_id"]) && $avaliacao=='av3') {
              
@@ -96,6 +96,7 @@ foreach ($_POST['aluno_id'] as $key => $value) {
                 
 
 
+                  // if ($conta_qnt_siglas>=0) {
                   if ($conta_qnt_siglas==0) {
                       $parecer_disciplina_id=0;
                       if (isset($_POST["descricao_parecer$aluno_id"][$key])) {
@@ -119,7 +120,7 @@ foreach ($_POST['aluno_id'] as $key => $value) {
              }
 
              if ($conta_total_nota ==0) {
-              cadastro_nota($conexao,$nota, 
+                cadastro_nota($conexao,$nota, 
                       $parecer_disciplina_id, $parecer_descritivo, $sigla,$idescola, $idturma, $iddisciplina, $aluno_id, $periodo, $data,$avaliacao);
              }else if ($conta_total_nota==1) {
 

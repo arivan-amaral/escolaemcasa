@@ -110,7 +110,7 @@ if (!isset($_SESSION['idprofessor'])) {
         <!-- Info boxes -->
         <!-- .row -->
   <form action="../Controller/Cadastrar_diario_avaliacao_aluno.php" method="post">
-          
+           
       <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
@@ -233,7 +233,7 @@ if (!isset($_SESSION['idprofessor'])) {
 <!-- ####################################################################### -->
 
 
-<!-- <div class="row">
+<div class="row">
 
     <div class="col-md-1"></div>
 
@@ -245,7 +245,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
                   <div class="card-header">
 
-                    <h3 class="card-title">AVALIAÇÕES CADASTRADAS</h3>
+                    <h3 class="card-title">VERIFICAR SE AVALIAÇÃO (AV3) ESTÁ DUPLICADA</h3>
 
                   </div>
 
@@ -262,7 +262,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
 
                                 <a class='d-block w-100 collapsed' data-toggle='collapse' href='#collapseOne' aria-expanded='false'><b class='text-warning'>
-                                    CLIQUE AQUI PARA VER AS AVALIAÇÕES CADASTRADAS 
+                                    VERIFICAR SE AVALIAÇÃO (AV3) ESTÁ DUPLICADA
                                   </b>
 
                                 </a>
@@ -287,61 +287,61 @@ if (!isset($_SESSION['idprofessor'])) {
                                                   </th>
                                                 </tr>
                                               </thead>
-                                              <tbody> -->
+                                              <tbody>
 
 
                                                 <?php 
-                                          //       $conta=1;
-                                          //       $array_avaliacao= array('0'=>'av1','1'=>'av2','2'=>'av3','3'=>'av4','4'=>'DIAGNÓSTICO INICIAL','5'=>'RP');
+                                          $conta=1;
+                                          $array_avaliacao=array('2'=>'av3');
 
-                                          // foreach ($array_avaliacao as $key => $value) {
-                                          //         $avaliacao=$value;
+                                          foreach ($array_avaliacao as $key => $value) {
+                                                  $avaliacao=$value;
                                                 
-                                          //       $resultado=listar_todas_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplina,$avaliacao);
-                                          //           foreach ($resultado as $key => $value) {
-                                          //             $data_nota=$value['data_nota'];
-                                          //             $turma_id  =$value['turma_id'];
-                                          //             $disciplina_id  =$value['disciplina_id'];
-                                          //             $escola_id=$value['escola_id'];
-                                          //             $avaliacao=$value['avaliacao'];
-                                          //             $periodo_id=$value['periodo_id'];
-                                          //             $nome_periodo="";
-                                          //             $res_periodo=$conexao->query("SELECT * FROM periodo where id=$periodo_id ");
-                                          //             foreach ($res_periodo as $key => $value) {
-                                          //               $nome_periodo=$value["descricao"];
-                                          //             }
+                                                $resultado=listar_todas_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplina,$avaliacao);
+                                                    foreach ($resultado as $key => $value) {
+                                                      $data_nota=$value['data_nota'];
+                                                      $turma_id  =$value['turma_id'];
+                                                      $disciplina_id  =$value['disciplina_id'];
+                                                      $escola_id=$value['escola_id'];
+                                                      $avaliacao=$value['avaliacao'];
+                                                      $periodo_id=$value['periodo_id'];
+                                                      $nome_periodo="";
+                                                      $res_periodo=$conexao->query("SELECT * FROM periodo where id=$periodo_id ");
+                                                      foreach ($res_periodo as $key => $value) {
+                                                        $nome_periodo=$value["descricao"];
+                                                      }
 
 
-                                          //             echo"
-                                          //             <tr>
-                                          //             <td>
-                                          //             $conta
+                                                      echo"
+                                                      <tr>
+                                                      <td>
+                                                      $conta
                                                       
-                                          //             <input type='hidden' id='data_nota$conta' value='$data_nota'>
-                                          //             <input type='hidden' id='turma_id$conta' value='$turma_id'>
-                                          //             <input type='hidden' id='disciplina_id$conta' value='$disciplina_id'>
-                                          //             <input type='hidden' id='escola_id$conta' value='$escola_id'>
-                                          //             <input type='hidden' id='avaliacao$conta' value='$avaliacao'>
-                                          //             <input type='hidden' id='periodo_id$conta' value='$periodo_id'>
+                                                      <input type='hidden' id='data_nota$conta' value='$data_nota'>
+                                                      <input type='hidden' id='turma_id$conta' value='$turma_id'>
+                                                      <input type='hidden' id='disciplina_id$conta' value='$disciplina_id'>
+                                                      <input type='hidden' id='escola_id$conta' value='$escola_id'>
+                                                      <input type='hidden' id='avaliacao$conta' value='$avaliacao'>
+                                                      <input type='hidden' id='periodo_id$conta' value='$periodo_id'>
 
                                            
-                                          //             </td>
-                                          //               <td>Periodo: $nome_periodo - Avaliação $avaliacao - ".converte_data($data_nota)."</td>
-                                          //               <td>
-                                          //               <!-- a onclick='excluir_avaliacao($conta);' class='btn btn-danger'>EXCLUIR AVALIAÇÃO</a -->
+                                                      </td>
+                                                        <td>Periodo: $nome_periodo - Avaliação $avaliacao - ".converte_data($data_nota)."</td>
+                                                        <td>
+                                                        <!-- a onclick='excluir_avaliacao($conta);' class='btn btn-danger'>EXCLUIR AVALIAÇÃO</a -->
 
-                                          //               </td>
-                                          //               <td>
-                                          //                 <a href='#listaAlunos' onclick='editar_avaliacao_aluno_por_data($conta);' class='btn btn-primary'>EDITAR AVALIAÇÃO</a>
-                                          //               </td>
+                                                        </td>
+                                                        <td>
+                                                          <a href='#listaAlunos' onclick='editar_avaliacao_aluno_por_data($conta);' class='btn btn-primary'>EDITAR AVALIAÇÃO</a>
+                                                        </td>
 
-                                          //             </tr>";
-                                          //             $conta++;
-                                          //           }
-                                          //       }
+                                                      </tr>";
+                                                      $conta++;
+                                                    }
+                                                }
 
                                               ?>
-<!-- 
+
                                               </tbody>
                                         </table>
               
@@ -362,7 +362,7 @@ if (!isset($_SESSION['idprofessor'])) {
         </div>
 
   </div>
- -->
+
 
 <!-- ####################################################################### -->
 

@@ -29,9 +29,9 @@ if (!isset($_SESSION['idprofessor'])) {
   include '../Model/Professor.php';
 
   
-    if ($_COOKIE['aviso_nota']<5) {
+if ($_COOKIE['aviso_nota']<5) {
   ?>
-     <script>
+     <!-- <script>
      function aviso_nota(){
        Swal.fire({
          title: '',
@@ -49,7 +49,7 @@ if (!isset($_SESSION['idprofessor'])) {
      }
 
      aviso_nota();
-     </script>
+     </script> -->
    <?php 
   }
 ?>
