@@ -169,7 +169,7 @@
                   </div>
                  
                     <div id="input">
-                      <input type="password" name="senha" id="senha" value="" required />
+                      <input type="password" name="senha" id="senha" value="" autocomplete="off" required />
                       <img src="http://i.stack.imgur.com/H9Sb2.png" alt="">
                     </div>
                     <br>

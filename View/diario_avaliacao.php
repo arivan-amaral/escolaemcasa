@@ -478,7 +478,7 @@ if (!isset($_SESSION['idprofessor'])) {
           <div class="modal-body">
               <!-- /corpo -->
         
-            <b> Como resolver a duplicidade das notas </b>
+            <b> Como resolver a duplicidade nas avaliações </b>
              <a  href='https://youtu.be/f6omYxWvGeY' target="_blank">
               <img src='imagens/assista-video.gif' width='200' classe='img-fluid' >
              </a>
