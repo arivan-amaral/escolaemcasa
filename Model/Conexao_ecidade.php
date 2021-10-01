@@ -6,7 +6,7 @@ ini_set('display_errors', '1');
 
 function conecta(){  
     try {
-      $pdo = new PDO("pgsql:dbname='xdg'; host='200.223.86.171'; user='postgres'; password='OMiTioNAnt';port='5432'"); 
+      $pdo = new PDO("pgsql:dbname='xdg'; host='200.223.86.171'; user='postgres'; password='p5qD$CK5s2v^';port='5432'"); 
       $pdo->exec( "select fc_startsession();" );
       $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       return $pdo;
