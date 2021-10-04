@@ -334,7 +334,8 @@ try {
 
                               </div>";
                                   $array_nota3=array();
-                                  $result_n3=verifica_sigla_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av3',$parecer_disciplina_id);
+                                  $result_n3=verifica_sigla_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av3',$idparecer);
+                      // $result_n3=verifica_sigla_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av3',$parecer_disciplina_id);
 
                                   $conta_total_nota=0;
                                   foreach ($result_n3 as $key => $value) {
