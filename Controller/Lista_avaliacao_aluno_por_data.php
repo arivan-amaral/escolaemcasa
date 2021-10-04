@@ -428,7 +428,7 @@ try {
 
       echo $result;
   }catch (Exception $e) {
-      echo "VERIFIQUE SUA CONEXÃO COM A INTERNET ".$e;
+      echo "VERIFIQUE SUA CONEXÃO COM A INTERNET ";
   }
 
 ?>
