@@ -115,7 +115,9 @@ foreach ($_POST['aluno_id'] as $key => $value) {
 
             $verifica_duplicidade=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$aluno_id,$periodo,$avaliacao);
              $conta_total_nota=0;
+             $nome_aluno_nota_duplicada="";
              foreach ($verifica_duplicidade as $key => $value) {
+                $nome_aluno_nota_duplicada.=", ".$value['aluno_id'];
                 $conta_total_nota++;
              }
 
@@ -163,7 +165,7 @@ foreach ($_POST['aluno_id'] as $key => $value) {
              }else if ($conta_total_nota>1) {
 
               $_SESSION['status']=0;
-              $_SESSION['mensagem']='ALGUM ALUNO TEM NOTA DUPLICADA, VERIFIQUE QUAL A NOTA QUE DEVE PERSISTIR E EXCLUA A NOTA DUPLICADA';
+              $_SESSION['mensagem']="ALGUM ALUNO TEM NOTA DUPLICADA, VERIFIQUE QUAL A NOTA QUE DEVE PERSISTIR E EXCLUA A NOTA DUPLICADA id: ".$nome_aluno_nota_duplicada;
               header("location: ../View/diario_avaliacao.php?$url_get");
               exit();
              }
