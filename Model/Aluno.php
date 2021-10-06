@@ -204,7 +204,7 @@ function listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $ide
     $resultado=$conexao->query("SELECT * FROM conteudo_aula WHERE
       disciplina_id=$iddisciplina and 
       escola_id=$idescola and 
-      turma_id=$idturma order by data");
+      turma_id=$idturma order by data, aula ");
   return $resultado;
 }
 
