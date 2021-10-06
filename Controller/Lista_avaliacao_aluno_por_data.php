@@ -221,6 +221,31 @@ try {
                                 $result.="
                               </td>";
 
+                                $result.="
+                                <tr>
+                                <td>
+                                </td>
+                                <td>";
+
+
+
+                              $result_verifica_av3=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av3');
+                              $descricao_parecer_av3='';
+                              foreach ($result_verifica_av3 as $key22 => $value22) {
+                                 $descricao_parecer_av3=$value22['parecer_descritivo'];
+                              }
+
+
+                                $result.="
+                             <label for='exampleInputEmail1'>Relatório descritivo</label>
+                                <textarea  class='form-control' rows='5' name='parecer_descritivo$id'>$descricao_parecer_av3 </textarea>
+
+                              </td>
+                              </tr>
+                              ";
+
+
+
                       }else{// se for diagnostico inicial
 
                               $result_verifica=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'DIAGNÓSTICO INICIAL');
@@ -269,7 +294,8 @@ try {
                                         }
 
 
-                                  $result.="                                                  
+                                  $result.="    
+
                                 <label for='exampleInputEmail1' style='display: none;'>Nota</label><br>
                                 <input type='hidden'  name='nota$id' value='' style='display: none;' onkeyup='somenteNumeros(this,$tamanho);'>
                                </td>";
@@ -310,7 +336,6 @@ try {
                     // if ($serie_id == $idserie && $avaliacao=='av3') {  //pareceres que ja foram prenchidos
                        $result.="<tr class='$cor_tabela'>
                             <td colspan='2'>
-
 
                             <div class='col-12'>
                                   
@@ -361,7 +386,9 @@ try {
                     }else if ($serie_id =="" && $idserie <8 ) {//pareceres que NÃO  foram prenchidos
                        $result.="<tr class='$cor_tabela'>
                             <td colspan='2'>
+
                             <div class='col-12'>
+
                                   
                                  ";
                                    

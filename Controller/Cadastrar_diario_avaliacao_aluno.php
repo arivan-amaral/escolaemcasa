@@ -49,7 +49,9 @@ foreach ($_POST['aluno_id'] as $key => $value) {
                 $nota=str_replace(',','.',$nota);
             }
           } 
-
+          // if ($avaliacao!='av3' && $avaliacao!="DIAGNÓSTICO INICIAL") {
+          //    $parecer_descritivo='ttt';
+          // }
           if (isset($_POST["parecer_sigla$aluno_id"]) && $avaliacao=='av3') {
              
               foreach ($_POST["parecer_sigla$aluno_id"] as $key => $value) {
