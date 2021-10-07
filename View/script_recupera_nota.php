@@ -2,7 +2,7 @@
 	include '../Model/Conexao.php';
 	include '../Controller/Conversao.php';
 
-	$res=$conexao->query("SELECT *  FROM nota_backup WHERE escola_id = 27 AND turma_id = 7032 AND disciplina_id = 1 AND periodo_id = 2 ");
+	//$res=$conexao->query("SELECT *  FROM nota_backup WHERE escola_id = 27 AND turma_id = 7032 AND disciplina_id = 1 AND periodo_id = 2 ");
 	
 		$conta=1;
 	foreach ($res as $key => $value) {
