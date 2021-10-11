@@ -22,12 +22,15 @@ try {
   }else if ($_POST["g-recaptcha-response"] =="" ) {
     $_SESSION['status']=0;
     $_SESSION['mensagem']="Selecione a caixa que comprova que você não é um robô!";
-              //header("location:../View/index.php?tokem=1"); 
+      header("location:../View/index.php?tokem=1"); 
+      exit();
+
   }else{
     $_SESSION['status']=0;
 
     $_SESSION['mensagem']="Selecione a caixa que comprova que você não é um robô!";
-              //header("location:../View/index.php?tokem=2"); 
+    header("location:../View/index.php?tokem=2"); 
+    exit();
   }
 
 
@@ -39,7 +42,7 @@ try {
  // $response->success=true;
  //comentar apos colocar em produção =>  \^/
 
-  if(isset($_POST["email"]) ){  //&& $response != null && $response->success==true){
+  if(isset($_POST["email"]) && $response != null && $response->success==true){  //&& $response != null && $response->success==true){
 
       $email = $_POST["email"];
       $email=($email);
@@ -160,19 +163,29 @@ try {
       if ($login_aluno>0){
           $_SESSION['status']=1;
           header("Location:../View/aluno.php");
+    exit();
+
       }else if ($login_professor>0){
           $_SESSION['status']=1;
           header("Location:../View/professor.php");
+    exit();
+
       }else if ($login_secretario>0){
           $_SESSION['status']=1;
           header("Location:../View/secretario.php");
+    exit();
+
       }else if ($login_coordenador>0){
           $_SESSION['status']=1;
           header("Location:../View/coordenador.php");
+    exit();
+
       }else{
           $_SESSION['status']=0;
           $_SESSION['mensagem']="Tente novamente!";
           header("location:../View/index.php?tokem=0"); 
+    exit();
+
       }
 
 
@@ -180,7 +193,9 @@ try {
 }else{
     $_SESSION['status']=0;
     $_SESSION['mensagem']="Selecione a caixa que comprova que você não é um robô!";
-   // header("location:../View/index.php?tokem=0"); 
+    header("location:../View/index.php?tokem=0"); 
+    exit();
+
 }
 
 
@@ -188,8 +203,10 @@ try {
 } catch (Exception $e) {
   $_SESSION['status']=0;
   $_SESSION['mensagem']="Algo deu errado, confira seus dados de acesso e tente novamente!";
-  echo "$e";
-  //header("Location:../View/?status=0");
+ // echo "$e";
+  header("Location:../View/?status=0");
+    exit();
+  
 }
 
 
