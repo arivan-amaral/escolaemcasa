@@ -329,9 +329,9 @@ div.WordSection1
 
     foreach ($pes as $chave => $linha) {
       $iddisciplina=$linha['iddisciplina'];
-      $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'DIAGNÓSTICO INICIAL',$idaluno);
+      $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'DIAGNÓSTICO INICIAL',$idaluno,6);
       foreach ($resultado as $key => $value) {
-        $parecer_descritivo.=$value['parecer_descritivo'];
+        $parecer_descritivo=$value['parecer_descritivo'];
       }
     }
       echo "$parecer_descritivo";
@@ -365,43 +365,39 @@ div.WordSection1
 
     <?php 
     $parecer_descritivo='';
-    $pes=listar_disciplina_da_turma($conexao,$idturma,$idescola);
+    // $pes=listar_disciplina_da_turma($conexao,$idturma,$idescola);
 
-    foreach ($pes as $chave => $linha) {
-      $iddisciplina=$linha['iddisciplina'];
-      $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av1',$idaluno);
-      foreach ($resultado as $key => $value) {
-        $parecer_descritivo.="".$value['parecer_descritivo'];
-      }
+    // foreach ($pes as $chave => $linha) {
+    //   $iddisciplina=$linha['iddisciplina'];
+    //   $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av1',$idaluno);
+    //   foreach ($resultado as $key => $value) {
+    //     $parecer_descritivo="".$value['parecer_descritivo'];
+    //   }
     
-    }   
+    // }   
  
-    $pes2=listar_disciplina_da_turma($conexao,$idturma,$idescola);
-
-    foreach ($pes2 as $chave => $linha) {
-
-      $iddisciplina=$linha['iddisciplina'];
-      $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av2',$idaluno);
-      foreach ($resultado as $key => $value) {
-        $parecer_descritivo.=". ".$value['parecer_descritivo'];
-      }
+    // $pes2=listar_disciplina_da_turma($conexao,$idturma,$idescola);
+    // foreach ($pes2 as $chave => $linha) {
+    //   $iddisciplina=$linha['iddisciplina'];
+    //   $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av2',$idaluno);
+    //   foreach ($resultado as $key => $value) {
+    //     $parecer_descritivo.=". ".$value['parecer_descritivo'];
+    //   }
     
-    }
+    // }
 
 
     $pes3=listar_disciplina_da_turma($conexao,$idturma,$idescola);
-
     foreach ($pes3 as $chave => $linha) {
       $iddisciplina=$linha['iddisciplina'];
-      $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av3',$idaluno);
+      $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av3',$idaluno,1);
       foreach ($resultado as $key => $value) {
-        $parecer_descritivo.=". ".$value['parecer_descritivo'];
+        $parecer_descritivo=" ".$value['parecer_descritivo'];
       }
     
     }
 
-
-        echo "$parecer_descritivo";
+echo "$parecer_descritivo";
 
     ?>
   </o:p></span></p>
@@ -429,7 +425,24 @@ div.WordSection1
   height:15.75pt'>
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
   style='font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p> </o:p></span></p>
+  "Times New Roman";color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p> 
+
+<?php 
+
+    $parecer_descritivo="";
+    $pes_periodo2=listar_disciplina_da_turma($conexao,$idturma,$idescola);
+    foreach ($pes_periodo2 as $chave => $linha) {
+      $iddisciplina=$linha['iddisciplina'];
+      $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av3',$idaluno,2);
+      foreach ($resultado as $key => $value) {
+        $parecer_descritivo=$value['parecer_descritivo'];
+      }
+    
+    }
+
+echo "$parecer_descritivo";
+?>
+  </o:p></span></p>
   </td>
  </tr>
 
@@ -454,7 +467,24 @@ div.WordSection1
   height:15.75pt'>
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
   style='font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-  "Times New Roman";color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p> </o:p></span></p>
+  "Times New Roman";color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p>
+
+    <?php 
+
+          $parecer_descritivo="";
+        $pes_periodo3=listar_disciplina_da_turma($conexao,$idturma,$idescola);
+        foreach ($pes_periodo3 as $chave => $linha) {
+          $iddisciplina=$linha['iddisciplina'];
+          $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av3',$idaluno,3);
+          foreach ($resultado as $key => $value) {
+            $parecer_descritivo=" ".$value['parecer_descritivo'];
+          }
+        
+        }
+
+    echo "$parecer_descritivo";
+    ?>
+   </o:p></span></p>
   </td>
  </tr>
 

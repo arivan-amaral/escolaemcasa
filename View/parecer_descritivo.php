@@ -13,7 +13,7 @@ foreach ($res as $key => $value) {
 }
 $nome_disciplina='';
 
-  $res_alunos=listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola);
+  $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
   foreach ($res_alunos as $key => $value) {
     $idaluno=$value['idaluno'];
     $nome_aluno=$value['nome_aluno'];
