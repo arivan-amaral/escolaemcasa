@@ -1,14 +1,9 @@
-<?php 
-session_start();
-if (!isset($_SESSION['idaluno'])) {
-	$_SESSION['status']=0;
-	header("location:../View/iii.php?status=0");
-}
+<?php session_start();
 include'../Model/Conexao.php';
 include'../Model/Aluno.php';
-try {
 
 function converte_telefone($whatsapp){
+
 	$whatsapp= str_replace(' ', '', $whatsapp);
 	$whatsapp= str_replace('(', '', $whatsapp);
 	$whatsapp= str_replace(')', '', $whatsapp);
@@ -24,6 +19,7 @@ $whatsapp_responsavel="55".converte_telefone($_POST['whatsapp_responsavel']);
 $idaluno=$_SESSION['idaluno'];
 
 
+	try {
 		if ($idaluno!="") {
 			atualizar_dados_aluno($conexao,$nome,$email,$senha,$whatsapp, $whatsapp_responsavel, $idaluno);
 		}
@@ -32,7 +28,7 @@ $idaluno=$_SESSION['idaluno'];
 		 
 	} catch (Exception $e) {
 		$_SESSION['status']=0;
-		//header("location:../View/alterar_dados_aluno.php?status=0");
+		header("location:../View/alterar_dados_aluno.php?status=0");
 	}
 
 ?>
