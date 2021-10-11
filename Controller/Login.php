@@ -1,6 +1,5 @@
 <?php
 session_start();
-include'../Model/Conexao_select.php';
 include'../Model/Conexao.php';
 include'../Model/Login.php';
 // incluir a funcionalidade do recaptcha
@@ -23,12 +22,12 @@ try {
   }else if ($_POST["g-recaptcha-response"] =="" ) {
     $_SESSION['status']=0;
     $_SESSION['mensagem']="Selecione a caixa que comprova que você não é um robô!";
-   // header("location:../View/index.php?tokem=1"); 
+              //header("location:../View/index.php?tokem=1"); 
   }else{
     $_SESSION['status']=0;
 
     $_SESSION['mensagem']="Selecione a caixa que comprova que você não é um robô!";
-   // header("location:../View/index.php?tokem=2"); 
+              //header("location:../View/index.php?tokem=2"); 
   }
 
 
@@ -40,7 +39,7 @@ try {
  // $response->success=true;
  //comentar apos colocar em produção =>  \^/
 
-  if(isset($_POST["email"]) && $response != null && $response->succes==true){  //&& $response != null && $response->succes==true){
+  if(isset($_POST["email"]) ){  //&& $response != null && $response->success==true){
 
       $email = $_POST["email"];
       $email=($email);
@@ -48,9 +47,8 @@ try {
       $email= preg_replace('/[\'\"]/', '',$email);
       $senha=preg_replace('/[\']/', '',$senha);
       $email= preg_replace('/[\=]/', '',$email);
-      $senha=preg_replace('/[\=]/', '',$senha);  
-
-      $resultado = login_funcionario($conexao_select, $email, $senha);
+      $senha=preg_replace('/[\=]/', '',$senha);     
+      $resultado = login_funcionario($conexao, $email, $senha);
 
       $login_coordenador=0;
       $login_professor=0;
@@ -120,7 +118,7 @@ try {
       ####################### ALUNO ####################################
          $login_aluno=0;
          $ano_letivo=date("Y");
-         $resultado2 = login_aluno($conexao_select, $email, $senha,$ano_letivo);
+         $resultado2 = login_aluno($conexao, $email, $senha,$ano_letivo);
 
          foreach ($resultado2 as $key2 => $row2) {
           $id = $row2["idaluno"];
@@ -162,29 +160,19 @@ try {
       if ($login_aluno>0){
           $_SESSION['status']=1;
           header("Location:../View/aluno.php");
-  exit(); 
-
       }else if ($login_professor>0){
           $_SESSION['status']=1;
           header("Location:../View/professor.php");
-  exit(); 
-
       }else if ($login_secretario>0){
           $_SESSION['status']=1;
           header("Location:../View/secretario.php");
-  exit(); 
-
       }else if ($login_coordenador>0){
           $_SESSION['status']=1;
           header("Location:../View/coordenador.php");
-  exit(); 
-
       }else{
           $_SESSION['status']=0;
           $_SESSION['mensagem']="Tente novamente!";
           header("location:../View/index.php?tokem=0"); 
-  exit(); 
-
       }
 
 
@@ -192,8 +180,7 @@ try {
 }else{
     $_SESSION['status']=0;
     $_SESSION['mensagem']="Selecione a caixa que comprova que você não é um robô!";
-    header("location:../View/index.php?tokem=0");
-    exit(); 
+   // header("location:../View/index.php?tokem=0"); 
 }
 
 
@@ -201,9 +188,8 @@ try {
 } catch (Exception $e) {
   $_SESSION['status']=0;
   $_SESSION['mensagem']="Algo deu errado, confira seus dados de acesso e tente novamente!";
-  header("Location:../View/?status=0");
-  exit(); 
-
+  echo "$e";
+  //header("Location:../View/?status=0");
 }
 
 
