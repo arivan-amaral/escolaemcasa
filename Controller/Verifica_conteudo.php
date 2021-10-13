@@ -12,6 +12,7 @@ $professor_id=$_SESSION['idfuncionario'];
 $idprofessor=$_SESSION['idfuncionario'];
 
 $data=$_GET['data'];
+$aula=$_GET['aula'];
 $array_url=explode('-',$_GET['valor_input']);
 $idescola=$array_url[0];
 $idturma=$array_url[1];
@@ -32,7 +33,7 @@ foreach ($res2 as $key => $value) {
   // code...
 }
 
-       $resultado=verificar_conteudo_aula_cadastrado_por_data($conexao, $iddisciplina, $idturma, $idescola, $data);
+       $resultado=verificar_conteudo_aula_cadastrado_por_data_aula($conexao, $iddisciplina, $idturma, $idescola, $data,$aula);
         $marca_disciplina='';
           $campo_origem_conteudo=$idescola."".$idturma."".$iddisciplina."".$idserie;
           $conteudo_aula="";

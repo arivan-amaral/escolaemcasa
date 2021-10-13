@@ -52,9 +52,10 @@ function adicinar_campo_conteudo(idcampo){
 
         var valor_input = document.getElementById('customCheckbox'+idcampo).value;
         var data = document.getElementById('data_frequencia').value;
+        var aula = document.getElementById('aula').value;
        
         var xmlreq = CriaRequest();
-        xmlreq.open("GET", "../Controller/Verifica_conteudo.php?data="+data+"&valor_input="+valor_input, true);
+        xmlreq.open("GET", "../Controller/Verifica_conteudo.php?aula="+aula+"&data="+data+"&valor_input="+valor_input, true);
 
         xmlreq.onreadystatechange = function(){
       

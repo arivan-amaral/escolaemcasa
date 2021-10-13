@@ -75,7 +75,7 @@ try {
             // <label for='customCheckbox$idturma$idescola$iddisciplina' class='custom-control-label'> $nome_escola - <font style='color:#8B0000'>$turma -$disciplina</font> </label>
             // </div>";
          // }else{
-             $resultado=verificar_conteudo_aula_cadastrado_por_data($conexao, $iddisciplina, $idturma, $idescola, $data);
+             $resultado=verificar_conteudo_aula_cadastrado_por_data_aula($conexao, $iddisciplina, $idturma, $idescola, $data,$aula);
               $marca_disciplina='';
 
               foreach ($resultado as $key => $value) {
@@ -262,7 +262,7 @@ $result.="<div id='conteudos'>
         $idescola=$value['escola_id'];
         $serie_id=$value['serie_id'];
 
-       $resultado=verificar_conteudo_aula_cadastrado_por_data($conexao, $iddisciplina, $idturma, $idescola, $data);
+       $resultado=verificar_conteudo_aula_cadastrado_por_data_aula($conexao, $iddisciplina, $idturma, $idescola, $data,$aula);
         $marca_disciplina='';
           $campo_origem_conteudo=$value['escola_id']."".$value['turma_id']."".$value['disciplina_id']."".$serie_id;
           $conteudo_aula="";
@@ -270,16 +270,19 @@ $result.="<div id='conteudos'>
           $conteudo_aula=$value['descricao'];
             
         }
+
+                // code...
             $result.="
               <div class='col-sm-12' id='campo_inputs$campo_origem_conteudo'>
                 <div class='form-group'>
                   <label for='exampleInputEmail1'>Conteúdo da aula $nome_escola - $turma <font style='color:#8B0000'> => $disciplina </font></label>
-                  <textarea class='form-control' id='descricao_conteudo' rows='5' name='descricao$campo_origem_conteudo' required> $conteudo_aula</textarea>
+                  <textarea class='form-control' id='descricao_conteudo' rows='5' name='descricao$campo_origem_conteudo' required>$conteudo_aula</textarea>
                 </div>
               </div>
               <br>
 
               ";
+        
               $conteudo_aula="";
           
     }

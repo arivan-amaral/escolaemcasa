@@ -217,6 +217,16 @@ function verificar_conteudo_aula_cadastrado_por_data($conexao, $iddisciplina, $i
   return $resultado;
 }
 
+function verificar_conteudo_aula_cadastrado_por_data_aula($conexao, $iddisciplina, $idturma, $idescola, $data,$aula) {
+    $resultado=$conexao->query("SELECT * FROM conteudo_aula WHERE
+      data='$data' and 
+      aula='$aula' and 
+      disciplina_id=$iddisciplina and 
+      escola_id=$idescola and 
+      turma_id=$idturma order by data");
+  return $resultado;
+}
+
 
 
 function excluir_frequencia_lancada($conexao,$conteudo_aula_id) {
