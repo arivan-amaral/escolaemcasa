@@ -487,7 +487,10 @@ if (!isset($_SESSION['idprofessor'])) {
   </div>
 
 
-   
+
+   <div id="inputs"></div>
+
+
           <input type="hidden" name="url_get" value="<?php echo $url_get; ?>">
 
           <input type="hidden" name="idserie" id="idserie" value="<?php echo $idserie; ?>">
@@ -519,6 +522,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
 </div>
 <script type="text/javascript">
+
 
   function seleciona_tudo(){
 

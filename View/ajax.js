@@ -42,6 +42,56 @@ function CriaRequest() {
 
  }
 
+
+function adicinar_campo_conteudo(idcampo){
+    var conteudos=document.getElementById('conteudos');
+    var valor = true;
+    var valor = document.getElementById('customCheckbox'+idcampo).checked;
+    var label = document.getElementById('label'+idcampo).innerHTML;
+    if (valor==true) {
+
+        var valor_input = document.getElementById('customCheckbox'+idcampo).value;
+        var data = document.getElementById('data_frequencia').value;
+       
+        var xmlreq = CriaRequest();
+        xmlreq.open("GET", "../Controller/Verifica_conteudo.php?data="+data+"&valor_input="+valor_input, true);
+
+        xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                  // result.innerHTML = xmlreq.responseText;
+                    conteudos.innerHTML+= xmlreq.responseText;
+                    //Swal.fire('Ação concluída', '', 'success');
+             }else{
+                   alert('Erro desconhecido, verifique sua conexão com a internet');
+
+                //result.innerHTML ="Erro ao receber mensagens";                 
+             }
+         }
+     };
+     xmlreq.send(null);
+
+    }else{
+       document.getElementById('campo_inputs'+idcampo).innerHTML="";
+    }
+
+      // <div class='row'>
+      //   <div class='col-sm-12'>
+      //     <div class='form-group'>
+      //       <label for='exampleInputEmail1'>Conteúdo da aula</label>
+      //       <textarea class='form-control' id='descricao_conteudo' rows='5' name='descricao' required>$conteudo_aula</textarea>
+      //     </div>
+      //   </div>
+      // </div>
+
+}
+
+
+
+
+
+
 function muda_etapa(idaluno) {
     // var result= document.getElementById('etapa'+idaluno);
     var etapa= document.getElementById('etapa'+idaluno).value;

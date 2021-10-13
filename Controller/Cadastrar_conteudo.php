@@ -15,9 +15,9 @@ try {
 
     $data=$_POST['data_frequencia'];
     $descricao="";
-    if (isset($_POST['descricao'])) {
-     $descricao=escape_mimic($_POST['descricao']);
-    }
+    // if (isset($_POST['descricao'])) {
+    //  $descricao=escape_mimic($_POST['descricao']);
+    // }
 
     $aula=$_POST['aula'];
     $url_get=$_POST['url_get'];
@@ -25,12 +25,16 @@ try {
 
     foreach ($_POST['escola_turma_disciplina'] as $key => $value) {
 
-        $array_url=explode('+',$_POST['escola_turma_disciplina'][$key]);
+        $array_url=explode('-',$_POST['escola_turma_disciplina'][$key]);
         $idescola=$array_url[0];
         $idturma=$array_url[1];
         $iddisciplina=$array_url[2];
         $idserie=$array_url[3];
+        $campo_origem_conteudo=$idescola."".$idturma."".$iddisciplina."".$idserie;
 
+            if (isset($_POST["descricao$campo_origem_conteudo"])) {
+             $descricao=escape_mimic($_POST["descricao$campo_origem_conteudo"]);
+            }
         //limpar_cadastro_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data,$aula);
        
         // $res_pes_cont_aluno_trasf=pesquisa_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $data,$aula);
@@ -45,6 +49,8 @@ try {
 
         foreach ($res_pes_cont_aluno_trasf as $key => $value) {
             $idconteudo=$value['id'];
+
+
             editar_conteudo_aula($conexao,$descricao, $idconteudo);
             $conteudo_aula_id=$idconteudo;
         }
