@@ -266,12 +266,13 @@ $result.="<div id='conteudos'>
         $marca_disciplina='';
           $campo_origem_conteudo=$value['escola_id']."".$value['turma_id']."".$value['disciplina_id']."".$serie_id;
           $conteudo_aula="";
+          $conta_conteudo=0;
         foreach ($resultado as $key => $value) {
           $conteudo_aula=$value['descricao'];
-            
+          $conta_conteudo++;
         }
-
-                // code...
+        
+        if ($conta_conteudo>0) {
             $result.="
               <div class='col-sm-12' id='campo_inputs$campo_origem_conteudo'>
                 <div class='form-group'>
@@ -280,10 +281,12 @@ $result.="<div id='conteudos'>
                 </div>
               </div>
               <br>
-
               ";
+        }
         
-              $conteudo_aula="";
+          $conteudo_aula="";
+          $conta_conteudo=0;
+
           
     }
 
