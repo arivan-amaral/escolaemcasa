@@ -45,7 +45,7 @@ foreach ($res2 as $key => $value) {
               <div class='col-sm-12' id='campo_inputs$campo_origem_conteudo'>
                 <div class='form-group'>
                   <label for='exampleInputEmail1'>Conteúdo da aula $turma <font style='color:#8B0000'> => $disciplina </font></label>
-                  <textarea class='form-control' id='descricao_conteudo' rows='5' name='descricao$campo_origem_conteudo' required> $conteudo_aula</textarea>
+                  <textarea class='form-control' id='descricao_conteudo' rows='5' name='descricao$campo_origem_conteudo' required>$conteudo_aula</textarea>
                 </div>
               </div>
               <br>
