@@ -169,7 +169,7 @@ try {
         
 
         <div class='col-sm-12'>
-            <label for='exampleInputEmail1' style='color:red;'>Escolha um conteúdo ou digite outro no campo abaixo das frequências</label>
+            <label for='exampleInputEmail1' style='color:red;'>Escolha um conteúdo ou digite outro no(s) campo(s) abaixo.</label>
 
             <select multiple='multiple' id='lista_conteudo' class='form-control' style='height: 180px;'>
             ";
