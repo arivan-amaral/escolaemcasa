@@ -734,7 +734,7 @@ function lista_conteudo_aluno(){
                     "<div class='col-sm-10'>"+
                       "<button type='submit' class='btn btn-block btn-primary'>Concluir</button>"+
                     "</div>";
-                      Swal.fire('ATENÇÃO, SE FOR LANÇAR O CONTEÚDO PARA MAIS DE UMA TURMA AO MESMO TEMPO, FIQUE ATENTO A DATA DE REGISTRO, POIS O CONTEÚDO A SER CADASTRADO NAS OUTRAS TURMAS IRÃO FICAR COM A MESMA DATA.', '', 'info');
+                      //Swal.fire('ATENÇÃO, SE FOR LANÇAR O CONTEÚDO PARA MAIS DE UMA TURMA AO MESMO TEMPO, FIQUE ATENTO A DATA DE REGISTRO, POIS O CONTEÚDO A SER CADASTRADO NAS OUTRAS TURMAS IRÃO FICAR COM A MESMA DATA.', '', 'info');
                     
                 }else{
                        result.innerHTML = xmlreq.responseText;
