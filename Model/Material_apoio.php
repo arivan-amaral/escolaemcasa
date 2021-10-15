@@ -6,7 +6,7 @@
 	}    
 
     function listar_material_apoio_turma_disciplina($conexao, $escola_id, $turma_id, $disciplina_id) {
-        $result=$conexao->query("SELECT * FROM  material_apoio WHERE  escola_id=$escola_id and  turma_id=$turma_id and disciplina_id= $disciplina_id");
+        $result=$conexao->query("SELECT * FROM  material_apoio WHERE  escola_id=$escola_id and  turma_id=$turma_id and disciplina_id= $disciplina_id order by id desc");
         return $result;
     }
 
