@@ -64,7 +64,7 @@ try {
 		// if ($conta_qnt_siglas>=0) {
 		if ($conta_qnt_siglas==0) {
 		    cadastro_nota($conexao,$nota, 
-		    $parecer_disciplina_id, $parecer_descritivo, $sigla,$idescola, $idturma, $iddisciplina, $aluno_id, $periodo, $data,$avaliacao);
+		    $parecer_disciplina_id, $parecer_descritivo, $sigla,$escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, $data_nota,$avaliacao);
 		   		      echo "$idnota_bd - $avaliacao - $nota <br>";
 
 		}
