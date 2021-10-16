@@ -9,6 +9,7 @@ try {
 	$res=$conexao->query("SELECT * FROM nota_backup WHERE nota != 0 AND avaliacao LIKE 'av3' AND escola_id = 162 AND turma_id = 6267 AND disciplina_id = 2 AND periodo_id = 1 and  sigla!='' GROUP BY parecer_disciplina_id, nota ");
 	
 		$conta=1;
+		$parecer_disciplina_id=0;
 	foreach ($res as $key => $value) {
 		$aluno_id=$value['aluno_id'];
 		$parecer_disciplina_id=$value['parecer_disciplina_id'];
@@ -30,7 +31,6 @@ try {
 		// $verifica_duplicidade=verifica_sigla_nota_diario($conexao,,$idturma,$iddisciplina,$aluno_id,$periodo,'av3',$parecer_disciplina_id);
 		$verifica_duplicidade=verifica_sigla_nota_diario($conexao,162,6267,2,$aluno_id,1,'av3',$parecer_disciplina_id);
 		$conta_qnt_siglas=0;
-		$parecer_disciplina_id=0;
 
 		foreach ($verifica_duplicidade as $key => $value) {
 		      $idnota_bd=$value['idnota'];
