@@ -52,7 +52,7 @@
 		           WHERE 
 		           idnota =$idnota_bd
 		           ");
-		     // echo "$idnota_bd - $avaliacao - $nota <br>";
+		      echo "$idnota - $avaliacao - $nota <br>";
 		      $conta_qnt_siglas++;
 
 		}
@@ -63,6 +63,8 @@
 		if ($conta_qnt_siglas==0) {
 		    cadastro_nota($conexao,$nota, 
 		    $parecer_disciplina_id, $parecer_descritivo, $sigla,$idescola, $idturma, $iddisciplina, $aluno_id, $periodo, $data,$avaliacao);
+		   		      echo "$idnota_bd - $avaliacao - $nota <br>";
+
 		}
 		
 		// $nota=$value['nota'];
