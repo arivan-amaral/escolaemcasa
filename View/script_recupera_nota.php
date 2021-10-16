@@ -50,7 +50,7 @@ try {
 		           UPDATE nota SET
 		           nota=$nota,
 		           sigla='$sigla',
-		           parecer_descritivo='$parecer_descritivo'
+		           parecer_descritivo='$parecer_descritivo',
 		           parecer_disciplina_id='$parecer_disciplina_id'
 		           WHERE 
 		           idnota =$idnota_bd
