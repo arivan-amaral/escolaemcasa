@@ -6,7 +6,7 @@
 try {
 	
 
-	$res=$conexao->query("SELECT * FROM nota_backup WHERE nota != 0 AND avaliacao LIKE 'av3' AND escola_id = 162 AND turma_id = 6267 AND disciplina_id = 2 AND periodo_id = 1 and evento='exclusão'  sigla!='' GROUP BY parecer_disciplina_id, nota ");
+	$res=$conexao->query("SELECT * FROM nota_backup WHERE nota != 0 AND avaliacao LIKE 'av3' AND escola_id = 162 AND turma_id = 6267 AND disciplina_id = 2 AND periodo_id = 1 and evento='exclusão' and  sigla!='' GROUP BY parecer_disciplina_id, nota ");
 	
 		$conta=1;
 		$parecer_disciplina_id=0;
