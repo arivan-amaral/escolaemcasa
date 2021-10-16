@@ -51,10 +51,11 @@ try {
 		           nota=$nota,
 		           sigla='$sigla',
 		           parecer_descritivo='$parecer_descritivo'
+		           parecer_disciplina_id='$parecer_disciplina_id'
 		           WHERE 
 		           idnota =$idnota_bd
 		           ");
-		      echo "$idnota - $avaliacao - $nota <br>";
+		      echo "$idnota_bd - $avaliacao - $nota <br>";
 		      $conta_qnt_siglas++;
 
 		}
