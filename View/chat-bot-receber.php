@@ -6,12 +6,12 @@ include'Conversao.php';
 
 
 function configuracao_api($conexao) {
-      $result=$conexao->query("SELECT * FROM whatsapp_configuracao order by id desc limit 1");
-      $api="";
-      foreach ($result as $key => $value) {
-        $api=$value['api'];
-      }
-    return $api;
+      // $result=$conexao->query("SELECT * FROM whatsapp_configuracao order by id desc limit 1");
+      // $api="";
+      // foreach ($result as $key => $value) {
+      //   $api=$value['api'];
+      // }
+    return "https://api.z-api.io/instances/3A117DE24D29B0F8B947666635019963/token/740F08AA8EE356131716B00E/";
  }
 
 function enviar_mensagem($conexao,$phone,$mensagem){
@@ -152,8 +152,8 @@ function restaurar_conexao_api($conexao){
 //   }
 // }
 
-  $conexao->exec("UPDATE mensagem_enviada SET status='$resposta_id' where mensagem_id='$resposta_id' ");
-  $mensagem="Agradecemos o contato";
+  $conexao->exec("INSERT into mensagem_enviada (status,mensagem_id) VALUES ('$resposta_id','$mensagem_id')");
+  $mensagem="Agradecemos o contato: ". $mensagem_recebida;
   enviar_mensagem($conexao,$phone,$mensagem);
 
 
