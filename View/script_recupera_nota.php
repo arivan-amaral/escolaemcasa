@@ -55,7 +55,7 @@ try {
 		           WHERE 
 		           idnota =$idnota_bd
 		           ");
-		      echo "$conta => update: $idnota_bd - $avaliacao - $nota <br>";
+		      echo "$conta =>  $aluno_id update: $idnota_bd - $avaliacao - $nota <br>";
 		      $conta_qnt_siglas++;
 
 		}
@@ -66,7 +66,7 @@ try {
 		if ($conta_qnt_siglas==0) {
 		    cadastro_nota($conexao,$nota, 
 		    $parecer_disciplina_id, $parecer_descritivo, $sigla,$escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, $data_nota,$avaliacao);
-		   		      echo "$conta => cadastro_nota: $idnota_bd - $avaliacao - $nota <br>";
+		   		      echo "$conta => $aluno_id cadastro_nota: $idnota_bd - $avaliacao - $nota <br>";
 
 		}
 		
@@ -97,7 +97,7 @@ try {
 		// 	$periodo_id,
 		// 	'$data_nota'
 		// )");
-
+		echo"***********$conta => $aluno_id **************";
 
 		$conta++;
 	}
