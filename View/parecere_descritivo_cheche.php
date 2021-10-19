@@ -397,6 +397,19 @@ div.WordSection1
     
     }
 
+
+    if ($parecer_descritivo=="") {
+      $pes_pare=listar_disciplina_da_turma($conexao,$idturma,$idescola);
+      foreach ($pes_pare as $chave => $linha) {
+        $iddisciplina=$linha['iddisciplina'];
+        $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av1',$idaluno,1);
+        foreach ($resultado as $key => $value) {
+          $parecer_descritivo=" ".$value['parecer_descritivo'];
+        }
+      
+      }
+
+    }
 echo "$parecer_descritivo";
 
     ?>
@@ -440,6 +453,20 @@ echo "$parecer_descritivo";
     
     }
 
+
+    if ($parecer_descritivo=="") {
+      $pes_pare=listar_disciplina_da_turma($conexao,$idturma,$idescola);
+      foreach ($pes_pare as $chave => $linha) {
+        $iddisciplina=$linha['iddisciplina'];
+        $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av1',$idaluno,2);
+        foreach ($resultado as $key => $value) {
+          $parecer_descritivo=" ".$value['parecer_descritivo'];
+        }
+      
+      }
+
+    }
+
 echo "$parecer_descritivo";
 ?>
   </o:p></span></p>
@@ -480,6 +507,19 @@ echo "$parecer_descritivo";
             $parecer_descritivo=" ".$value['parecer_descritivo'];
           }
         
+        }
+
+        if ($parecer_descritivo=="") {
+          $pes_pare=listar_disciplina_da_turma($conexao,$idturma,$idescola);
+          foreach ($pes_pare as $chave => $linha) {
+            $iddisciplina=$linha['iddisciplina'];
+            $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av1',$idaluno,3);
+            foreach ($resultado as $key => $value) {
+              $parecer_descritivo=" ".$value['parecer_descritivo'];
+            }
+          
+          }
+
         }
 
     echo "$parecer_descritivo";
