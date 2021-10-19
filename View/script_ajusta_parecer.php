@@ -11,7 +11,7 @@ if (isset($_GET['tokem'])) {
 	$conta_qnt_siglas=1;
 	foreach ($res as $key => $value) {
 		$aluno_id=$value['aluno_id'];
-		$$parecer_descritivo=$value['parecer_descritivo'];
+		$parecer_descritivo=$value['parecer_descritivo'];
 
 		// $conexao->exec("UPDATE nota set parecer_descritivo='$parecer_descritivo'  WHERE escola_id = 38 AND turma_id = 5675 AND periodo_id = 2 and avaliacao='av3' and aluno_id=$aluno_id and parecer_descritivo =''  ");
 
