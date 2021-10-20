@@ -50,15 +50,23 @@ foreach ($res_turma as $key => $value) {
     #printable ~ * {
         display: none;
     }
+
+    .pagebreak { page-break-before: always; } /* page-break-after works, as well */
 }
+
+
+#employee_detail {
+    page-break-inside: avoid !important;
+    margin: 4px 0 4px 0;  /* to keep the page break from cutting too close to the text in the div */
+  }
 
 
 
 </style>
 </head>
-<body>
+<body >
    
-  <!-- <a href="#" onclick="demoFromHTML();">IMPRIMIR</a> -->
+   <a href="#" onclick="demoFromHTML();">IMPRIMIR</a> 
 <div id="employee_detail">
 
 <?php
@@ -141,14 +149,32 @@ else if ($idserie >3 && $idserie <=8) {
         boletim_maternal_1_2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno ,$nome_escola,$nome_turma,$nome_professor);
         $nome_professor='';
         
-        echo "<br>";
-        echo "<br>";
-        echo "<br>";
-        echo "<br>";
+        echo"<br>";
+        echo"<br>";
+        echo"<br>";
+        echo"<br>";
+        echo"<br>";
+        echo"<br>";
+        echo"<br>";
+        echo"<br>";
+        echo"<br>";
+        echo"<br>";
+        echo"<br>";
+        echo"<br>";
+        echo"<br>";
+        echo"<br>";
+
+        echo"<br>";
+        echo"<br>";
+        echo"<br>";
+        echo"<br>";
+        echo"<br>";
+        
         // echo"<a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma'>IMPRIMIR - $nome_aluno</a> <br><br>";
       $numero++;
       //break;
     }
+echo"<div class='pagebreak'> </div>";
 
 }else if ($idserie > 8) {
     //echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
@@ -174,48 +200,14 @@ else if ($idserie >3 && $idserie <=8) {
 ?>
 </div>
 
+</body>
 
 <script type='text/javascript'>
   
 
    window.html2canvas = html2canvas;
 
-   function demoFromHTML() {
-
-     const html_source = document.getElementById('employee_detail'); // O id do elemento que contém o Html que quer imprimir.
-     const filename = 'boletim.pdf';
-
-
-     html2canvas(html_source).then(function(canvas) {
-       /*
-       [210,297] Sao os números (largura e altura do papel a4) que eu encontrei para trabalhar com eles.
-       Se você puder encontrar números oficiais do jsPDF, usa.
-        */
-       let imgData = canvas.toDataURL('image/png');
-       let imgWidth = 250; // Largura em mm de um a4
-       let pageHeight = 297; // Altura em mm de um a4
-
-       let imgHeight = canvas.height * imgWidth / canvas.width;
-       let heightLeft = imgHeight;
-       let position = 15;
-       let pdf = new jsPDF('p', 'mm');
-       let fix_imgWidth = 15; // Vai subindo e descendo esses valores ate ficar como queres
-       let fix_imgHeight = 15; // Vai subindo e descendo esses valores ate ficar como queres
-
-       pdf.addImage(imgData, 'PNG', 15, position, imgWidth, imgHeight);
-       heightLeft -= pageHeight;
-
-       while (heightLeft >= 0) {
-         position = heightLeft - imgHeight;
-         pdf.addPage();
-         pdf.addImage(imgData, 'PNG', 15, position, imgWidth + fix_imgWidth, imgHeight + fix_imgHeight);
-         heightLeft -= pageHeight;
-       }
-
-       pdf.save(filename);
-     })
-
-   }
+   
 
 
 
@@ -240,7 +232,7 @@ function demoFromHTML() {
        let position = 15;
        let pdf = new jsPDF('p', 'mm');
        let fix_imgWidth = 15; // Vai subindo e descendo esses valores ate ficar como queres
-       let fix_imgHeight = 15; // Vai subindo e descendo esses valores ate ficar como queres
+       let fix_imgHeight = 55; // Vai subindo e descendo esses valores ate ficar como queres
 
        pdf.addImage(imgData, 'PNG', 15, position, imgWidth, imgHeight);
        heightLeft -= pageHeight;
@@ -248,7 +240,8 @@ function demoFromHTML() {
        while (heightLeft >= 0) {
          position = heightLeft - imgHeight;
          pdf.addPage();
-         pdf.addImage(imgData, 'PNG', 15, position, imgWidth + fix_imgWidth, imgHeight + fix_imgHeight);
+          console.log(position);
+         pdf.addImage(imgData, 'PNG', 1, position, imgWidth + fix_imgWidth, imgHeight + fix_imgHeight);
          heightLeft -= pageHeight;
        }
 
@@ -257,8 +250,6 @@ function demoFromHTML() {
 
    }
 
-
 </script>
 
-</body>
 </html>
