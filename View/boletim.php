@@ -51,6 +51,9 @@ foreach ($res_turma as $key => $value) {
         display: none;
     }
 }
+
+
+
 </style>
 </head>
 <body>

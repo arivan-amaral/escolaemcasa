@@ -1398,7 +1398,7 @@ div.WordSection1
               SELECT * FROM nota WHERE
               escola_id=$idescola and
               turma_id=$idturma and
-              periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
+              periodo_id=1 and aluno_id=$idaluno and parecer_descritivo !='' group by avaliacao,periodo_id ");
 
             $observacao="";
             $parecer_tri_1="";
@@ -1412,7 +1412,7 @@ div.WordSection1
               SELECT * FROM nota WHERE
               escola_id=$idescola and
               turma_id=$idturma and
-              periodo_id=2 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
+              periodo_id=2 and aluno_id=$idaluno and parecer_descritivo !='' group by avaliacao,periodo_id ");
 
             $parecer_tri_2="";
             foreach ($result_parecer_tri2 as $key => $value) {
@@ -1423,7 +1423,7 @@ div.WordSection1
               SELECT * FROM nota WHERE
               escola_id=$idescola and
               turma_id=$idturma and
-              periodo_id=3 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
+              periodo_id=3 and aluno_id=$idaluno and parecer_descritivo !=''  group by avaliacao,periodo_id ");
 
             $parecer_tri_3="";
             foreach ($result_parecer_tri3 as $key => $value) {
@@ -1434,7 +1434,7 @@ div.WordSection1
 
 
             $observacao = wordwrap($observacao, 80, "<br />\n");
-            echo "$observacao";
+            echo ": $observacao";
 
       ?>
   <o:p>
