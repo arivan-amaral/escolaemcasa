@@ -164,6 +164,8 @@ if (!isset($_SESSION['idfuncionario'])) {
 
                            </a> 
                            <br>
+                           
+
 
                            <a   href='diario_rendimento.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-info btn-block btn-flat'>
                            <i class='fa fa-calendar'></i> 
@@ -283,7 +285,13 @@ if (!isset($_SESSION['idfuncionario'])) {
                                      Acompanhar Prova/Testes                                           
 
                            </a> 
-                           <br>
+                           
+
+                           <a href='parecer_descritivo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat'>
+                           <i class='fa fa-edit'></i> 
+                           RELATÓRIO DESCRITIVO
+                           </a>
+                           
                                    <a   href='diario_rendimento.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-info btn-block btn-flat'>
                                      <i class='fa fa-calendar'></i> 
                                      RESULTADO FINAL
