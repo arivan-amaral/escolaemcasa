@@ -114,9 +114,15 @@ else if ($idserie >3 && $idserie <=8) {
 
           boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
 
-         if ($numero%2==0) {
+         if ($numero%2==0 && $numero!=1) {
             echo "<br>";
             echo "<br>";
+            echo "<br>";
+            echo "<br>";
+    
+           
+            echo"<br>";
+            
          
           }
 
@@ -241,7 +247,7 @@ function demoFromHTML() {
          position = heightLeft - imgHeight;
          pdf.addPage();
           console.log(position);
-         pdf.addImage(imgData, 'PNG', 1, position, imgWidth + fix_imgWidth, imgHeight + fix_imgHeight);
+         pdf.addImage(imgData, 'PNG', 1, position, 210 + fix_imgWidth, imgHeight + fix_imgHeight);
          heightLeft -= pageHeight;
        }
 

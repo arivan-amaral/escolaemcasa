@@ -6,8 +6,9 @@
 try {
 	
 
-	//$res=$conexao->query("SELECT * FROM nota_backup WHERE nota != 0 AND avaliacao LIKE 'av3' AND escola_id = 162 AND turma_id = 6267 AND disciplina_id = 2 AND periodo_id = 1 and evento='exclusão' and sigla!='' ");
-	
+	$res=$conexao->query("SELECT * FROM nota_backup WHERE escola_id = 162 AND turma_id = 6359 AND disciplina_id = 2 AND periodo_id = 1 and avaliacao='av3' and evento='exclusão' and data_hora='2021-10-20 16:23:36' ");
+
+
 		$conta=1;
 		$parecer_disciplina_id=0;
 	foreach ($res as $key => $value) {
@@ -29,7 +30,8 @@ try {
 		      $data_nota=$value['data_nota'];
 
 		// $verifica_duplicidade=verifica_sigla_nota_diario($conexao,,$idturma,$iddisciplina,$aluno_id,$periodo,'av3',$parecer_disciplina_id);
-		$verifica_duplicidade=verifica_sigla_nota_diario($conexao,162,6267,2,$aluno_id,1,'av3',$parecer_disciplina_id);
+		  // ($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$avaliacao,$parecer_disciplina_id)
+		$verifica_duplicidade=verifica_sigla_nota_diario($conexao,162,6359,2,$aluno_id,1,'av3',$parecer_disciplina_id);
 		$conta_qnt_siglas=0;
 
 		foreach ($verifica_duplicidade as $key => $value) {
