@@ -6,7 +6,7 @@
 try {
 	
 
-	$res=$conexao->query("SELECT * FROM nota_backup WHERE escola_id = 162 AND turma_id = 6359 AND disciplina_id = 2 AND periodo_id = 1 and avaliacao='av3' and evento='exclusão' and data_hora='2021-10-20 16:23:36' ");
+	// $res=$conexao->query("SELECT * FROM nota_backup WHERE escola_id = 162 AND turma_id = 6359 AND disciplina_id = 2 AND periodo_id = 1 and avaliacao='av3' and evento='exclusão' and data_hora='2021-10-20 16:23:36' ");
 
 
 		$conta=1;
