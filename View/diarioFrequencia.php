@@ -1,6 +1,11 @@
 <?php 
 function diario_frequencia($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$data_inicio_trimestre,$data_fim_trimestre){
+  $nome_disciplina='';
 
+$result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina=$id");
+foreach ($result_disc as $key => $value) {
+  $nome_disciplina=$value['nome_disciplina'];
+}
 ?>
 
 
@@ -270,7 +275,7 @@ foreach ($result_escola as $key => $value) {
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
   style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-  color:black;mso-fareast-language:PT-BR'>COMPONENTE CURRICULAR: <o:p></o:p></span></p>
+  color:black;mso-fareast-language:PT-BR'>COMPONENTE CURRICULAR: <b> <?php echo $nome_disciplina; ?></b> </span></p>
   </td>
   
  </tr>
