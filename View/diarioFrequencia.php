@@ -2,7 +2,7 @@
 function diario_frequencia($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$data_inicio_trimestre,$data_fim_trimestre){
   $nome_disciplina='';
 
-$result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina=$id");
+$result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina=$iddisciplina");
 foreach ($result_disc as $key => $value) {
   $nome_disciplina=$value['nome_disciplina'];
 }
