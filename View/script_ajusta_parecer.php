@@ -6,7 +6,7 @@
 try {
 
 if (isset($_GET['tokem'])) {
-	$res=$conexao->query("SELECT * FROM nota_backup WHERE escola_id = 38 AND turma_id = 5675 AND periodo_id = 2 and avaliacao='av1' GROUP by aluno_id ");
+	//$res=$conexao->query("SELECT * FROM nota_backup WHERE escola_id = 38 AND turma_id = 5675 AND periodo_id = 2 and avaliacao='av1' GROUP by aluno_id ");
 	
 	$conta_qnt_siglas=1;
 	foreach ($res as $key => $value) {

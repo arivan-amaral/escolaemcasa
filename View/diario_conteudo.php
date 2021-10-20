@@ -36,6 +36,9 @@ foreach ($pes as $chave => $linha) {
   echo "<br>";
   diario_conteudo($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola,$data_inicio_trimestre2,$data_fim_trimestre2,"II TRIMESTRE"); 
   echo" <br>";
+
+  diario_conteudo($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola,$data_inicio_trimestre3,$data_fim_trimestre3,"III TRIMESTRE"); 
+  echo" <br>";
 }
 
 
