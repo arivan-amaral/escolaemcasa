@@ -1421,7 +1421,7 @@ div.WordSection1
               $parecer_tri_2=$value['parecer_descritivo'];
             }
 
-            echo"II TRIMESTRE: </br>";
+            echo"<br>II TRIMESTRE: </br>";
             $parecer_tri_2 = wordwrap($parecer_tri_2, 80, "<br />\n");
             echo "$parecer_tri_2";
 
@@ -1436,7 +1436,7 @@ div.WordSection1
               $parecer_tri_3=$value['parecer_descritivo'];
             }
 
-            echo"III TRIMESTRE: </br>";
+            echo"<br>III TRIMESTRE: <br>";
             $parecer_tri_3 = wordwrap($parecer_tri_3, 80, "<br />\n");
             echo "$parecer_tri_3";
 
