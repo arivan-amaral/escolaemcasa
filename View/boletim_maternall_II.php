@@ -1400,13 +1400,41 @@ div.WordSection1
               turma_id=$idturma and
               periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
 
+            $observacao="";
             $parecer_tri_1="";
             foreach ($result_parecer_tri1 as $key => $value) {
               $parecer_tri_1=$value['parecer_descritivo'];
             }
 
-            $parecer_tri_1 = wordwrap($parecer_tri_1, 80, "<br />\n");
-            echo $parecer_tri_1;
+          ;
+
+            $result_parecer_tri2=$conexao->query("
+              SELECT * FROM nota WHERE
+              escola_id=$idescola and
+              turma_id=$idturma and
+              periodo_id=2 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
+
+            $parecer_tri_2="";
+            foreach ($result_parecer_tri2 as $key => $value) {
+              $parecer_tri_2=$value['parecer_descritivo'];
+            }
+
+            $result_parecer_tri3=$conexao->query("
+              SELECT * FROM nota WHERE
+              escola_id=$idescola and
+              turma_id=$idturma and
+              periodo_id=3 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
+
+            $parecer_tri_3="";
+            foreach ($result_parecer_tri3 as $key => $value) {
+              $parecer_tri_3=$value['parecer_descritivo'];
+            }
+
+            $observacao=$parecer_tri_1." ".$parecer_tri_2." ".$parecer_tri_3;
+
+
+            $observacao = wordwrap($observacao, 80, "<br />\n");
+            echo "$observacao";
 
       ?>
   <o:p>
