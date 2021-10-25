@@ -110,7 +110,11 @@ else if ($idserie >3 && $idserie <=8) {
         $idaluno=$value['idaluno'];
         $nome_aluno=$value['nome_aluno'];
 
-
+        if (isset($_GET['tokem_teste'])) {
+            echo "-----" .$numero ."-----";
+          // code...
+        }
+        
           boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
 
          if ($numero%2==0 ) {
@@ -118,7 +122,7 @@ else if ($idserie >3 && $idserie <=8) {
             echo "<br>";
             echo "<br>";
             echo"<br> ";
-            echo"___________________________________________________<br> ";
+            echo"<br> ";
             
          
           }
@@ -126,10 +130,7 @@ else if ($idserie >3 && $idserie <=8) {
           // echo"<a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma'>IMPRIMIR - $nome_aluno</a> <br><br>";
         $numero++;
       }
-          if (isset($_GET['tokem_teste'])) {
-              echo "-----" .$numero ."-----";
-            // code...
-          }
+       
 
 
 }else if ($idserie<3){
