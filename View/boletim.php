@@ -123,6 +123,10 @@ else if ($idserie >3 && $idserie <=8) {
             
          
           }
+          if (isset($_GET['tokem_teste'])) {
+              echo "-----" .$numero ."-----";
+            // code...
+          }
 
           // echo"<a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma'>IMPRIMIR - $nome_aluno</a> <br><br>";
         $numero++;
