@@ -1406,9 +1406,11 @@ div.WordSection1
               $parecer_tri_1=$value['parecer_descritivo'];
             }
 
-          echo"I TRIMESTRE: </br>";
+          // echo"I TRIMESTRE: </br>";
+          
           $parecer_tri_1 = wordwrap($parecer_tri_1, 80, "<br />\n");
-          echo "$parecer_tri_1";
+
+          //echo "$parecer_tri_1";
 
             $result_parecer_tri2=$conexao->query("
               SELECT * FROM nota WHERE
@@ -1421,9 +1423,11 @@ div.WordSection1
               $parecer_tri_2=$value['parecer_descritivo'];
             }
 
-            echo"<br>II TRIMESTRE: </br>";
+            //echo"<br>II TRIMESTRE: </br>";
+            
             $parecer_tri_2 = wordwrap($parecer_tri_2, 80, "<br />\n");
-            echo "$parecer_tri_2";
+            
+            //echo "$parecer_tri_2";
 
             $result_parecer_tri3=$conexao->query("
               SELECT * FROM nota WHERE
@@ -1436,9 +1440,10 @@ div.WordSection1
               $parecer_tri_3=$value['parecer_descritivo'];
             }
 
-            echo"<br>III TRIMESTRE: <br>";
+           // echo"<br>III TRIMESTRE: <br>";
             $parecer_tri_3 = wordwrap($parecer_tri_3, 80, "<br />\n");
-            echo "$parecer_tri_3";
+           
+           // echo "$parecer_tri_3";
 
       ?>
   <o:p>
