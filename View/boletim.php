@@ -70,10 +70,9 @@ foreach ($res_turma as $key => $value) {
 <div id="employee_detail">
 
 <?php
-    $numero=1;
+$numero=1;
 if ($idserie==3) {
   //echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
-
     $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
     $nome_professor= "";
 
@@ -123,14 +122,14 @@ else if ($idserie >3 && $idserie <=8) {
             
          
           }
-          if (isset($_GET['tokem_teste'])) {
-              echo "-----" .$numero ."-----";
-            // code...
-          }
 
           // echo"<a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma'>IMPRIMIR - $nome_aluno</a> <br><br>";
         $numero++;
       }
+          if (isset($_GET['tokem_teste'])) {
+              echo "-----" .$numero ."-----";
+            // code...
+          }
 
 
 }else if ($idserie<3){
