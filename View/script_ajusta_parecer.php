@@ -13,7 +13,11 @@ if (isset($_GET['tokem'])) {
 		$aluno_id=$value['aluno_id'];
 		$parecer_descritivo=$value['parecer_descritivo'];
 
-		 $conexao->exec("UPDATE nota set parecer_descritivo='$parecer_descritivo'  WHERE escola_id = 38 AND turma_id = 5676 AND periodo_id = 1 and avaliacao='av3 and aluno_id=$aluno_id and parecer_descritivo =''  ");
+		 $conexao->exec("UPDATE nota set parecer_descritivo='$parecer_descritivo'  WHERE
+		  escola_id = 38 AND
+		  turma_id = 5676 AND
+		  periodo_id = 1
+		  and avaliacao='av3' and aluno_id=$aluno_id and parecer_descritivo =''  ");
 
 
 		echo "$conta_qnt_siglas =>  UPDATE nota set parecer_descritivo=$parecer_descritivo  WHERE escola_id = 38 AND turma_id = 5676 AND periodo_id = 1 and avaliacao='av3 and aluno_id=$aluno_id and parecer_descritivo   <br>";
