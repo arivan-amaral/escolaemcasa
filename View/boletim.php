@@ -119,6 +119,7 @@ else if ($idserie >3 && $idserie <=8) {
             echo "<br>";
             echo "<br>";
             echo"<br> ";
+            echo"___________________________________________________<br> ";
             
          
           }
@@ -208,15 +209,8 @@ echo"<div class='pagebreak'> </div>";
 <script type='text/javascript'>
   
 
-   window.html2canvas = html2canvas;
-
-   
-
-
-
-
+window.html2canvas = html2canvas;
 function demoFromHTML() {
-
      const html_source = document.getElementById('employee_detail'); // O id do elemento que contém o Html que quer imprimir.
      const filename = 'boletim.pdf';
 
