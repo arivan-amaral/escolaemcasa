@@ -70,10 +70,10 @@ foreach ($res_turma as $key => $value) {
 <div id="employee_detail">
 
 <?php
+    $numero=1;
 if ($idserie==3) {
   //echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
 
-    $numero=1;
     $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
     $nome_professor= "";
 
