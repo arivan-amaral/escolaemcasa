@@ -1,7 +1,7 @@
 <?php 
 	include '../Model/Conexao_ecidade.php';
 	include '../Controller/Conversao.php';
-	// include '../Model/Conexao.php';
+	include '../Model/Conexao.php';
 	// $pdo;
 	// $res=listar_alunos($pdo);
 	$indice=0;
@@ -13,14 +13,14 @@
 	}
 try {
 	
-$servername = "localhost";
-$username = "root";
-$password = "RJv4K0gx30ki"; //novo servidor *.151
+// $servername = "localhost";
+// $username = "root";
+// $password = "RJv4K0gx30ki"; //novo servidor *.151
 // $password = "UQ2K2V3cfV6F";
 	//instancia objeto PDO, conectando no MySQL
-    $conexao = new PDO("mysql:host=$servername;dbname=educalem", $username, $password);
+    // $conexao = new PDO("mysql:host=$servername;dbname=educalem", $username, $password);
     // apresenta o erro PDO 
-    $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 	$res=$pdo->query("SELECT
 	ed47_i_codigo,
