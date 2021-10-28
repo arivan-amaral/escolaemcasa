@@ -205,11 +205,11 @@ $idtrabalho=$_GET['idtrabalho'];
               </div>";
 
             } else {
-              echo"
-              <div class='custom-control custom-checkbox'>
-              <input class='custom-control-input' name='idturma[]' type='checkbox' id='customCheckbox$turma_id' value='$turma_id'  >
-              <label for='customCheckbox$turma_id' class='custom-control-label'>$nome_turma - $nome_disciplina</label>
-              </div>";
+              // echo"
+              // <div class='custom-control custom-checkbox'>
+              // <input class='custom-control-input' name='idturma[]' type='checkbox' id='customCheckbox$turma_id' value='$turma_id'  >
+              // <label for='customCheckbox$turma_id' class='custom-control-label'>$nome_turma - $nome_disciplina</label>
+              // </div>";
 
 
             }
