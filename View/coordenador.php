@@ -36,7 +36,7 @@ if ($_COOKIE['dia_doservidor_publico']<2 && date("m-d")=="10-28") {
      function dia_doservidor_publico(){
          Swal.fire({
            title: "Parabéns!",
-           imageUrl: 'imagens/dia_doservidor_publico.png',
+           imageUrl: 'dia_doservidor_publico.png',
            // imageWidth: 400,
            // imageHeight: 200,
            imageAlt: 'dia_doservidor_publico',
