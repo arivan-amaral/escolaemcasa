@@ -1,11 +1,11 @@
 <?php
 session_start();
-if (!isset($_COOKIE['dia_doservidor_publico'])) {
-  setcookie('dia_doservidor_publico', 1, (time()+(30*24*3600)));
+if (!isset($_COOKIE['dia_doservidor_publico2'])) {
+  setcookie('dia_doservidor_publico2', 1, (time()+(30*24*3600)));
  // setcookie('conteudo', 1, (time()+(300*24*3600)));
 }else{
-  setcookie('dia_doservidor_publico', 0, (time()+(30*24*3600)));
-  setcookie('dia_doservidor_publico', $_COOKIE['dia_doservidor_publico']+1);
+  setcookie('dia_doservidor_publico2', 0, (time()+(30*24*3600)));
+  setcookie('dia_doservidor_publico2', $_COOKIE['dia_doservidor_publico2']+1);
 }
   
 ###################################################
@@ -30,7 +30,7 @@ if (!isset($_SESSION['idcoordenador'])) {
   include '../Model/Escola.php';
   include '../Model/Aluno.php';
 
-if ($_COOKIE['dia_doservidor_publico']<2 && date("m-d")=="10-28") {
+if ($_COOKIE['dia_doservidor_publico2']<2 && date("m-d")=="10-28") {
 ?>
     <script>
      function dia_doservidor_publico(){
