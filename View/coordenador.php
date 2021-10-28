@@ -1,5 +1,14 @@
 <?php
 session_start();
+if (!isset($_COOKIE['dia_doservidor_publico'])) {
+  setcookie('dia_doservidor_publico', 1, (time()+(30*24*3600)));
+ // setcookie('conteudo', 1, (time()+(300*24*3600)));
+}else{
+  setcookie('dia_doservidor_publico', 0, (time()+(30*24*3600)));
+  setcookie('dia_doservidor_publico', $_COOKIE['dia_doservidor_publico']+1);
+}
+  
+###################################################
 if (!isset($_SESSION['idcoordenador'])) {
   header("location:index.php?status=0");
 
@@ -21,6 +30,22 @@ if (!isset($_SESSION['idcoordenador'])) {
   include '../Model/Escola.php';
   include '../Model/Aluno.php';
 
+if ($_COOKIE['dia_doservidor_publico']<2 && date("m-d")=="10-28") {
+?>
+    <script>
+     function dia_doservidor_publico(){
+         Swal.fire({
+           title: "Parabéns!",
+           imageUrl: 'imagens/dia_doservidor_publico.png',
+           // imageWidth: 400,
+           // imageHeight: 200,
+           imageAlt: 'dia_doservidor_publico',
+         });
+     }
+setTimeout('dia_doservidor_publico();',3000);
+  </script> 
+<?php 
+  }
 ?>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
