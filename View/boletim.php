@@ -26,49 +26,14 @@ $res_turma=lista_de_turmas_por_id($conexao,$idturma);
 foreach ($res_turma as $key => $value) {
   $nome_turma=$value['nome_turma'];
 }
+
+include_once"cabecalho_boletim.php";
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title></title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
 
-<style type="text/css">
-@media print {
-    html, body {
-        margin: 0;
-        padding: 0;
-        border: 0;
-    }
-    #printable {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        font-size: 14px;
-    }
-    #printable ~ * {
-        display: none;
-    }
+<!-- ################################################################################ -->
 
-    .pagebreak { page-break-before: always; } /* page-break-after works, as well */
-}
-
-
-#employee_detail {
-    page-break-inside: avoid !important;
-    margin: 4px 0 4px 0;  /* to keep the page break from cutting too close to the text in the div */
-  }
-
-
-@page {
-  size: auto;
-}
-</style>
-</head>
-<body >
    
-   <a href="#" onclick="demoFromHTML();">BAIXAR BOLETINS</a> 
+<!-- <a href="#" onclick="demoFromHTML();">BAIXAR BOLETINS</a>  -->
 <div id="employee_detail">
 
 <?php
@@ -98,7 +63,7 @@ if ($idserie==3) {
       boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno, $nome_escola,$nome_turma,$nome_professor);
       // break;
   //echo"<a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma'>IMPRIMIR - $nome_aluno</a> <br><br>";
-echo"<br>";
+echo"<div class='pagebreak'> </div>";
       
       $numero++;
     }
@@ -214,7 +179,6 @@ echo"<div class='pagebreak'> </div>";
 ?>
 </div>
 
-</body>
 
 <script type='text/javascript'>
   
@@ -258,5 +222,5 @@ function demoFromHTML() {
    }
 
 </script>
-
+</body>
 </html>
