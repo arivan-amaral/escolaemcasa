@@ -257,6 +257,23 @@
         <td style='height:15.0pt;border:none' width=0 height=20></td>
         <![endif]>
        </tr>
+
+       <tr style='mso-yfti-irow:5;height:15.0pt'>
+        <td width=834 nowrap colspan=7 style='width:625.75pt;border:solid windowtext 1.0pt;
+        border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+        padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
+        <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
+        style='font-family:"Arial Black",sans-serif;mso-fareast-font-family:"Times New Roman";
+        mso-bidi-font-family:Calibri;color:black;mso-fareast-language:PT-BR'>Escola: <o:p> <?php echo $nome_escola; ?></o:p></span></b></p>
+        </td>
+        <td width=10 colspan=2 style='width:7.3pt;padding:0cm 3.5pt 0cm 3.5pt;
+        height:15.0pt'></td>
+        <![if !supportMisalignedRows]>
+        <td style='height:15.0pt;border:none' width=0 height=20></td>
+        <![endif]>
+       </tr>
+
+
        <tr style='mso-yfti-irow:6;height:15.0pt'>
         <td width=834 nowrap colspan=7 style='border:solid windowtext 1.0pt;
         border-top:none;mso-border-top-alt:solid windowtext .1pt;mso-border-alt:solid windowtext .1pt;
