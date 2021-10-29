@@ -158,7 +158,7 @@ echo"<div class='pagebreak'> </div>";
       foreach ($res_alunos as $key => $value) {
         $idaluno=$value['idaluno'];
         $nome_aluno=$value['nome_aluno'];
-    echo "$numero";
+    // echo "$numero";
           boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
        
        // if ($numero%2==0 ) {
