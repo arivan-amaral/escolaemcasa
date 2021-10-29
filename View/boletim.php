@@ -153,6 +153,7 @@ echo"<div class='pagebreak'> </div>";
 
 }else if ($idserie > 8) {
     //echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
+    echo "$numero";
     $numero=1;
       $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
       foreach ($res_alunos as $key => $value) {
