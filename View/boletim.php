@@ -84,12 +84,12 @@ else if ($idserie >3 && $idserie <=8) {
 
           boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
 
-         if ($numero%2==0 ) {
-            echo "<br>";
-            echo "<br>";
-            echo "<br>";
-            echo"<br>";
-            echo"<br>";
+         if ($numero%3==0 ) {
+            echo "<div class='pagebreak'> </div>";
+            // echo "<br>";
+            // echo "<br>";
+            // echo"<br>";
+            // echo"<br>";
             
          
           }
@@ -164,8 +164,7 @@ echo"<div class='pagebreak'> </div>";
             echo "<br>";
             echo "<br>";
             echo "<br>";
-            echo"<br> ";
-            echo"___________________________________________________<br> ";
+
             
          
           }
