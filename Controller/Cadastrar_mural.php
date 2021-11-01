@@ -4,7 +4,7 @@ include '../Model/Conexao.php';
 
 include '../Model/Mural.php';
 include '../Model/Serie.php';
-include 'Conversao.php.php';
+include 'Conversao.php';
 
 try {
 
