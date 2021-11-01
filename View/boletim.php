@@ -78,7 +78,7 @@ else if ($idserie >3 && $idserie <=8) {
         $nome_aluno=$value['nome_aluno'];
 
         if (isset($_GET['tokem_teste'])) {
-            echo "----- teste: " .$numero ."-----";
+            echo "" .$numero ."";
           // code...
         }
 
