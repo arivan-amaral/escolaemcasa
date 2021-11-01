@@ -9,8 +9,10 @@ include 'Conversao.php.php';
 try {
 
 	
-	$titulo =escape_mimic( $_POST['titulo']);
-	$descricao =  escape_mimic($_POST['descricao']);
+	$titulo =($_POST['titulo']);
+	$titulo =escape_mimic($titulo);
+	$descricao =  ($_POST['descricao']);
+	$descricao =  escape_mimic($descricao);
 	$setor = 'Escola';
     $url_get=$_POST['url_get'];
 
