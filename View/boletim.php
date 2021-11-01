@@ -78,9 +78,11 @@ else if ($idserie >3 && $idserie <=8) {
         $nome_aluno=$value['nome_aluno'];
 
         if (isset($_GET['tokem_teste'])) {
-            echo "" .$numero ."";
-          // code...
+            //echo "" .$numero ."-";
+        
         }
+            echo "";
+          // code...
 
           echo boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
 
