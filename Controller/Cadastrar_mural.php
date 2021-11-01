@@ -4,12 +4,13 @@ include '../Model/Conexao.php';
 
 include '../Model/Mural.php';
 include '../Model/Serie.php';
+include 'Conversao.php.php';
 
 try {
 
 	
-	$titulo = $_POST['titulo'];
-	$descricao = $_POST['descricao'];
+	$titulo =escape_mimic( $_POST['titulo']);
+	$descricao =  escape_mimic($_POST['descricao']);
 	$setor = 'Escola';
     $url_get=$_POST['url_get'];
 
