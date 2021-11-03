@@ -129,6 +129,20 @@ try {
                                       $conta_total_nota++;
                                    }
 
+                                   ###################### ARIVAN 03-11-2021
+
+                                  $result_nota_fund1_3=verifica_nota_diario_av3_fund1($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av3');
+                                   $conta_total_nota_fund1=0;
+                                   $nota_fund1_3=0;
+                                   $array_notas_fund1_3=array();
+                                   foreach ($result_nota_fund1_3 as $key => $value) {
+                                      $idnota=$value['idnota'];
+                                      $nota_fund1_3=$value['nota'];
+                                     $array_notas_fund1_3[$idnota]=$value['nota']." data: ".$value['data_nota'];;
+                                      $conta_total_nota_fund1++;
+                                   }
+
+                                   ######################ARIVAN 03-11-2021
                   
 
 
@@ -202,7 +216,16 @@ try {
                                       $result.="<div id='nota_excluir$key_dupli'><b> nota av3:</b> <font color='blue'> $value </FONT><a onclick='excluir_nota_duplicada($key_dupli);' class='btn btn-sm bg-danger'>Excluir $value</a></div><br>";
                                     }
                                     $result.="______________________________________________________<BR>";
+                                  
+                                  }else if( (count($array_notas_fund1_3)>1) && $idserie <8){
+                                    $result.="<font color='red'> AV3 DESSE ALUNO POSSUI DUPLICIDADE:  </FONT> <br>";
+                                    foreach ($array_notas_fund1_3 as $key_dupli => $value) {
+                                      $result.="<div id='nota_excluir$key_dupli'><b> nota av3:</b> <font color='blue'> $value </FONT><a onclick='excluir_nota_duplicada($key_dupli);' class='btn btn-sm bg-danger'>Excluir $value</a></div><br>";
+                                    }
+                                    $result.="______________________________________________________<BR>";
                                   }
+
+
         
                                   if (count($array_notarp)>1) {
                                     $result.="<font color='red'> RP DESSE ALUNO POSSUI DUPLICIDADE  </FONT> <br>";

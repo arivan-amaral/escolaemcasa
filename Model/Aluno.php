@@ -94,15 +94,28 @@ function verifica_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,
     return $resultado;
 }
 
-function verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$avaliacao){
+function verifica_nota_diario_av3_fund1($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$avaliacao){
     $resultado=$conexao->query(" SELECT * FROM nota WHERE
     	escola_id=$idescola and 
     	turma_id=$idturma and 
     	disciplina_id=$iddisciplina and
     	aluno_id=$idaluno and
     	periodo_id=$idperiodo and 
+        parecer_disciplina_id=0 and
     	avaliacao ='$avaliacao'
     	");
+    return $resultado;
+}
+
+function verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$avaliacao){
+    $resultado=$conexao->query(" SELECT * FROM nota WHERE
+        escola_id=$idescola and 
+        turma_id=$idturma and 
+        disciplina_id=$iddisciplina and
+        aluno_id=$idaluno and
+        periodo_id=$idperiodo and 
+        avaliacao ='$avaliacao'
+        ");
     return $resultado;
 }
 

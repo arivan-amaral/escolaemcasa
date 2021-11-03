@@ -81,10 +81,9 @@ else if ($idserie >3 && $idserie <=8) {
             //echo "" .$numero ."-";
         
         }
-            echo "";
-          // code...
+        
 
-          echo boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
+           boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
 
          if ($numero%3==0 ) {
             echo "<div class='pagebreak'> </div>";
