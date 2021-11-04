@@ -385,7 +385,10 @@ if (!isset($_SESSION['idprofessor'])) {
                                                     <input type='hidden' id='conteudo_aula_id$conta' value='$conteudo_aula_id'>
                                                     </td>
                                                       <td>$aula - ".converte_data($data)."</td>
-                                                      <td><a onclick='excluir_frequencia($conta);' class='btn btn-danger'>EXCLUIR FREQUÊNCIA</a></td>
+                                                      <td>
+                                                      <!-- a onclick='excluir_frequencia($conta);' class='btn btn-danger'>EXCLUIR FREQUÊNCIA</a -->
+
+                                                      </td>
                                                     </tr>";
                                                     $conta++;
                                                   }
