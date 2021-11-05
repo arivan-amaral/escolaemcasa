@@ -9,6 +9,7 @@
   include"boletim_maternall_II.php";
   include"boletim_serie_1ano_id_3.php";
   include"boletim_fundamental_II.php";
+  include"teste_boletim.php";
   include('mpdf/mpdf60/mpdf.php');
 
 $idescola=$_GET['idescola'];
@@ -78,6 +79,7 @@ else if ($idserie >3 && $idserie <=8) {
       $idaluno=$value['idaluno'];
       $nome_aluno=$value['nome_aluno'];
       echo "$idaluno - $nome_aluno <br>";
+      teste_boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
     }
 
   }else{
@@ -90,7 +92,7 @@ else if ($idserie >3 && $idserie <=8) {
         $nome_aluno=$value['nome_aluno'];
 
             //echo "" .$numero ."-";
-            echo ".";
+            // teste_boletim.php
         
         
 
