@@ -72,16 +72,26 @@ if ($idserie==3) {
 else if ($idserie >3 && $idserie <=8) {
     
   
+  if (isset($_GET['tokem_teste'])) {
+    $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
+    foreach ($res_alunos as $key => $value) {
+      $idaluno=$value['idaluno'];
+      $nome_aluno=$value['nome_aluno'];
+      echo "$idaluno - $nome_aluno <br>";
+    }
+
+  }else{
+
+
+
       $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
       foreach ($res_alunos as $key => $value) {
         $idaluno=$value['idaluno'];
         $nome_aluno=$value['nome_aluno'];
 
-        if (isset($_GET['tokem_teste'])) {
             //echo "" .$numero ."-";
             echo ".";
         
-        }
         
 
            boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
@@ -100,6 +110,7 @@ else if ($idserie >3 && $idserie <=8) {
         $numero++;
       }
        
+  }//tokem
 
 
 }else if ($idserie<3){
