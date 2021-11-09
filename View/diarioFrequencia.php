@@ -7,10 +7,10 @@ if ($idserie <3) {
   $tipo_ensino="Educação Infantil";
 }if ($idserie >=3 && $idserie <8) {
   $tipo_ensino="Ensino Fundamental - Anos Iniciais";
-}else if($idserie > 8 && $idserie <=11){
+}else if($idserie >= 8 && $idserie <=11){
   $tipo_ensino="Ensino Fundamental - Anos Finais";
 
-}else{
+}else if ($idserie>11) {
   $tipo_ensino="Educação de Jovens e Adultos";
 
 }
