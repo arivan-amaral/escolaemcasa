@@ -8,6 +8,21 @@ function diario_frequencia_pagina_final($conexao,$idescola,$idturma,$iddisciplin
     $nome_disciplina=$value['nome_disciplina'];
   }
 
+    $tipo_ensino="";
+
+if ($idserie <3) {
+  $tipo_ensino="Educação Infantil";
+}if ($idserie >=3 && $idserie <8) {
+  $tipo_ensino="Ensino Fundamental - Anos Iniciais";
+}else if($idserie > 8 && $idserie <=11){
+  $tipo_ensino="Ensino Fundamental - Anos Finais";
+
+}else{
+  $tipo_ensino="Educação de Jovens e Adultos";
+
+}
+
+
 ?>
 
 
@@ -210,7 +225,7 @@ foreach ($result_escola as $key => $value) {
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
   style='font-family:"Tw Cen MT Condensed",sans-serif;mso-fareast-font-family:
   "Times New Roman";mso-bidi-font-family:Arial;color:black;mso-fareast-language:
-  PT-BR'>TIPO DE ENSINO:  <o:p></o:p></span></b></p>
+  PT-BR'>TIPO DE ENSINO:  <?php echo $tipo_ensino; ?> <o:p></o:p></span></b></p>
   </td>
   <td width=351 nowrap colspan=18 style='width:263.6pt;padding:0cm 3.5pt 0cm 3.5pt;
   height:12.0pt'>
