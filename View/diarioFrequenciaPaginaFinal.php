@@ -1,6 +1,18 @@
 <?php 
 
-function diario_frequencia_pagina_final($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$data_inicio_trimestre,$data_fim_trimestre){
+function diario_frequencia_pagina_final($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
+  $conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$data_inicio_trimestre,$data_fim_trimestre){
+
+
+/*
+  ($conta_aula+$inicio,
+    $conta_data+$inicio,
+    $limite_data+$inicio,
+    $limite_aula+$inicio,
+
+    $periodo_id,$idserie,$data_inicio_trimestre,$data_fim_trimestre)
+
+    */
   
   $nome_disciplina='';
   $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina=$iddisciplina");
@@ -425,7 +437,7 @@ SELECT * FROM frequencia WHERE
 escola_id=$idescola and
 turma_id=$idturma and
 disciplina_id=$iddisciplina and 
-data_frequencia BETWEEN '$data_inicio_trimestre' and '$data_fim_trimestre' group by aula,data_frequencia order by data_frequencia asc limit $inicio,$fim ");
+data_frequencia BETWEEN '$data_inicio_trimestre' and '$data_fim_trimestre' group by data_frequencia, aula order by data_frequencia asc limit $inicio,$fim ");
 $array_data_aula=array();
 $array_aula=array();
 foreach ($result_data_aula as $key => $value) {

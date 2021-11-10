@@ -336,7 +336,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
                                   <h4 class='card-title w-100'>";
 
-                                   echo " <a class='d-block w-100 collapsed' data-toggle='collapse' href='#collapseOne$iddisciplina$idturma$idescola' aria-expanded='false'><b class='text-warning'> $nome_escola -></b>". ($turma) ." - ".
+                                   echo " <a class='d-block w-100 collapsed' data-toggle='collapse' href='#collapseOne$iddisciplina$idturma$idescola' aria-expanded='false'><b class='text-warning'>$idescola - $nome_escola -></b>". ($turma) ." - ".
 
                                       ($disciplina)
 

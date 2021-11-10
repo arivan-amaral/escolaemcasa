@@ -227,19 +227,19 @@
                                     <li class='nav-item'>
                                       <a href='cadastro_aluno.php' class='nav-link'>
                                         <i class='far fa-circle nav-icon text-primary'></i>
-                                        <p>Cadastrar alunos</p>
+                                        <p>Cadastrar aluno</p>
                                       </a>
                                     </li>
                                   </ul>
 
-                                  <!-- <ul class='nav nav-treeview'>
+                                   <ul class='nav nav-treeview'>
                                     <li class='nav-item'>
                                       <a href='pesquisa_aluno.php' class='nav-link'>
                                         <i class='far fa-circle nav-icon text-primary'></i>
-                                        <p>Pesquisar alunos</p>
+                                        <p>Pesquisar aluno</p>
                                       </a>
                                     </li>
-                                  </ul> -->
+                                  </ul> 
 
                                   
                           
