@@ -770,9 +770,11 @@ $conta_presenca=1;
     $data_frequencia=$array_data_aula[$key];
 
     $res_pre=$conexao->query("SELECT presenca from frequencia where presenca=1 and aluno_id=$idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and data_frequencia='$data_frequencia' and aula='$aula' limit $inicio , $fim ");
-    //
+    // $res_pre=$conexao->query("SELECT presenca from frequencia where presenca=1 and aluno_id=$idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and data_frequencia='$data_frequencia' and aula='$aula'
+    // 
+    // 
     if (isset($_GET['tokem'])) {
-           $presenca="..".$res_pre->rowCount();
+           $presenca="|SELECT presenca from frequencia where presenca=1 and aluno_id=$idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and data_frequencia='$data_frequencia' and aula='$aula'|".$res_pre->rowCount();
 
      }elseif ($res_pre->rowCount()>0) {
       $presenca=".";
