@@ -11,7 +11,7 @@
 
 ?>
 
-<script src="ajax.js"></script>
+<script src="ajax.js?<?php echo rand(); ?>"></script>
 
 <div class="content-wrapper" style="min-height: 529px;">
     <!-- Content Header (Page header) -->
@@ -53,7 +53,7 @@
                <!-- .row -->
           <div class="col-md-12">
 
-                         <h1 class="btn alert-primary">Sua foto Atual</h1 >
+                    <h1 class="btn alert-primary">Sua foto Atual</h1 >
                     <div class="col-lg-8 text-center mb-8">
 
                     <?php 
