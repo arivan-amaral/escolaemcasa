@@ -12,32 +12,17 @@ include_once "../Model/Conexao.php";
 <div class="content-wrapper">
 <!-- ####################### CORPO ################################################# -->
 
-      <div class="container-fluid">
-        <div class="row mb-2">
-
-          <div class="col-sm-1"></div>
-          <div class="col-sm-10 alert alert-<?php echo $tema_aplivacao; ?>">
-          <center>  
-            <h1 class="m-0">
-              <b>
-                <?php echo $nome_escola_global ?>
-              </b>
-            </h1>
-          </center>
-
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->    
+    
       <form method="POST">
         <div class="card card-primary card-tabs">
           <div class="card-header p-0 pt-1">
             <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
               <li class="pt-2 px-3"><h3 class="card-title">CADASTRAR ALUNO</h3></li>
-              <li class="nav-item">
-                <a class="nav-link" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Dados Pessoais</a>
+         <li class="nav-item">
+                <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Dados Pessoais</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" id="custom-tabs-two-profile-tab" data-toggle="pill" href="#custom-tabs-two-profile" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false">Endereço</a>
+                <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill" href="#custom-tabs-two-profile" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false">Endereço</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" id="custom-tabs-two-messages-tab" data-toggle="pill" href="#custom-tabs-two-messages" role="tab" aria-controls="custom-tabs-two-messages" aria-selected="false">Documentos</a>
@@ -53,20 +38,19 @@ include_once "../Model/Conexao.php";
               </li>
             </ul>
           </div>
+
+
           <div class="card-body">
             <div class="tab-content" id="custom-tabs-two-tabContent">
-              <div class="tab-pane fade" id="custom-tabs-two-home" role="tabpanel" aria-labelledby="custom-tabs-two-home-tab">
+              <div class="tab-pane fade  active show" id="custom-tabs-two-home" role="tabpanel" aria-labelledby="custom-tabs-two-home-tab">
                  <div class="card-body">
+
+
                     <div class="row">
                       <div class="col-sm-1">
                         <img src="imagens/user.png" class="img-thumbnail" alt="...">
                       </div>
-                      <div class="col-sm-4">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Código</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo" required="" disabled>
-                        </div>
-                      </div>
+ 
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Código INEP</label>
@@ -77,6 +61,18 @@ include_once "../Model/Conexao.php";
                         <div class="form-group">
                           <label for="exampleInputEmail1">N° Nis</label>
                           <input type="text" class="form-control" id="exampleInputEmail1" name="n_nis" required="">
+                        </div>
+                      </div>
+
+                       <div class="col-sm-3">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Bolsa Familia</label><br>
+                          <select style="height:38px;" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                            <option selected></option>
+                            <option value="S">Sim</option>
+                            <option value="N">Não</option>
+            
+                          </select>
                         </div>
                       </div>
                     </div>
@@ -114,88 +110,85 @@ include_once "../Model/Conexao.php";
                         </div>
                       </div>
                     </div>
+                   
+
                     <div class="row">
+                      
                       <div class="col-sm-2">
-                         <div class="form-group">
-                          <label for="exampleInputEmail1">Contato</label><br>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Tipo responsável</label><br>
                           <select style="height:38px;" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                             <option selected></option>
-                            <option value="1">Whastapp</option>
-                            <option value="2">Telefone</option>
-                            <option value="3">Email</option>
+                            <option value="PAI E/OU MÃE">PAI E/OU MÃE</option>
+                            <option value="PAI">PAI</option>
+                            <option value="MÃE">MÃE</option>
                             <option>----------------------------</option>
                           </select>
                         </div>
                       </div>
+
+
                       <div class="col-sm-2">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Filiação</label><br>
-                          <select style="height:38px;" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                            <option selected></option>
-                            <option value="1">PAI E/OU MÃE</option>
-                            <option value="2">PAI</option>
-                            <option value="3">MÃE</option>
-                            <option>----------------------------</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-sm-2">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Raça</label><br>
+                          <label for="exampleInputEmail1">Raça do aluno</label><br>
                           <select style="height:38px;" class="form-select" aria-label=".form-select-lg example">
-                            <option selected>Não Declarada</option>
-                            <option value="1">Branco</option>
-                            <option value="2">Negro</option>
-                            <option value="3">Pardo</option>
-                            <option value="4">Amarelo</option>
-                            <option value="5">Indigena</option>
+                            <option selected value="Não Declarada">Não Declarada</option>
+                            <option value="Branco">Branco</option>
+                            <option value="Negro">Negro</option>
+                            <option value="Pardo">Pardo</option>
+                            <option value="Amarelo">Amarelo</option>
+                            <option value="Indigena">Indigena</option>
                             <option>----------------------------</option>
                           </select>
                         </div>
                       </div>
                       <div class="col-sm-2">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Estado Civil</label><br>
+                          <label for="exampleInputEmail1">Estado Civil do aluno</label><br>
                           <select style="height:38px;" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                             <option selected></option>
-                            <option value="1">Solteiro</option>
-                            <option value="2">Casado</option>
-                            <option value="3">Separado</option>
-                            <option value="4">Divorciado</option>
-                            <option value="5">Viúvo</option>
-                            <option>----------------------------</option>
+                            <option value="Solteiro">Solteiro</option>
+                            <option value="Casado">Casado</option>
+                            <option value="Divorciado">Divorciado</option>
+                            <option value="Viúvo">Viúvo</option>
+                             
                           </select>
                         </div>
                       </div>
-                      <div class="col-sm-2">
+                      <div class="col-sm-3">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Tipo Sanguineo</label><br>
+                          <label for="exampleInputEmail1">Tipo Sanguineo do aluno</label><br>
                           <select style="height:38px;" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                             <option selected></option>
-                            <option value="1">A+</option>
-                            <option value="2">A-</option>
-                            <option value="3">B+</option>
-                            <option value="4">B-</option>
-                            <option value="5">AB+</option>
-                            <option value="6">AB-</option>
-                            <option value="7">O+</option>
-                            <option value="8">O-</option>
-                            <option>----------------------------</option>
+                            <option value=""></option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                           
                           </select>
                         </div>
                       </div>
+
+
                       <div class="col-sm-2">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Sexo</label><br>
+                          <label for="exampleInputEmail1">Sexo do aluno</label><br>
                           <select style="height:38px;" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                             <option selected></option>
-                            <option value="1">Masculino</option>
-                            <option value="2">Feminino</option>
-                            <option>----------------------------</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Feminino</option>
+                            
                           </select>
                         </div>
                       </div>
                     </div>
+
+
                     <label for="exampleInputEmail1"><h5>Filiação 1</h5></label>
                     <div class="row">          
                       <div class="col-sm-4">
@@ -213,7 +206,7 @@ include_once "../Model/Conexao.php";
                       <div class="col-sm-4"><br><br>
                         <div class="form-check form-switch">
                           <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                          <label class="form-check-label" for="flexSwitchCheckDefault">Responsavel</label>
+                          <label class="form-check-label" for="flexSwitchCheckDefault">Responsável</label>
                         </div>
                       </div>
                     </div>
@@ -234,18 +227,16 @@ include_once "../Model/Conexao.php";
                       <div class="col-sm-4"><br><br>
                         <div class="form-check form-switch">
                           <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                          <label class="form-check-label" for="flexSwitchCheckDefault">Responsavel</label>
+                          <label class="form-check-label" for="flexSwitchCheckDefault">Responsável</label>
                         </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <button type="button" class="btn btn-primary ">Proximo</button>
-                      </div>  
-                    </div>
+                     
                  </div>
               </div>
-              <div class="tab-pane fade active show" id="custom-tabs-two-profile" role="tabpanel" aria-labelledby="custom-tabs-two-profile-tab">
+
+
+              <div class="tab-pane fade" id="custom-tabs-two-profile" role="tabpanel" aria-labelledby="custom-tabs-two-profile-tab">
                  <div class="card-body">
                     <div class="row">
                       <div class="col-sm-5">
@@ -256,13 +247,13 @@ include_once "../Model/Conexao.php";
                       </div>
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">complemento</label>
+                          <label for="exampleInputEmail1">Complemento</label>
                           <input type="text" class="form-control" id="exampleInputEmail1" name="complemento" required="">
                         </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">numero</label>
+                          <label for="exampleInputEmail1">Número</label>
                           <input type="text" class="form-control" id="exampleInputEmail1" name="numero" required="">
                         </div>
                       </div>
@@ -276,7 +267,7 @@ include_once "../Model/Conexao.php";
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Municipio</label>
+                          <label for="exampleInputEmail1">Município</label>
                           <input type="text" class="form-control" id="exampleInputEmail1" name="municipio" required="">
                         </div>
                       </div>
@@ -305,32 +296,8 @@ include_once "../Model/Conexao.php";
                         </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Telefone</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="telefone" required="">
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Fax</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="fax" required="">
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Email</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="email" required="">
-                        </div>
-                      </div>
-                       <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Caixa Postal</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="caixa_postal" required="">
-                        </div>
-                      </div>
-                    </div>
+                    
+
                     <div class="row">
                       <div class="col-sm-3">
                         <div class="form-group">
@@ -381,23 +348,13 @@ include_once "../Model/Conexao.php";
                           <label for="exampleInputEmail1">Recebe Escolarização Em Outro Espaço</label><br>
                           <select style="height:38px;" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                             <option selected></option>
-                            <option value="1">Sim</option>
-                            <option value="2">Não</option>
-                            <option>--------------------------------------------</option>
+                            <option value="S">Sim</option>
+                            <option value="N">Não</option>
+                           
                           </select>
                         </div>
                       </div>
-                      <div class="col-sm-2">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Bolsa Familia</label><br>
-                          <select style="height:38px;" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                            <option selected></option>
-                            <option value="1">Sim</option>
-                            <option value="2">Não</option>
-                            <option>--------------------------</option>
-                          </select>
-                        </div>
-                      </div>
+                     
                     </div>
                     <div class="row">
                       <div class="col-sm-4">
@@ -408,8 +365,12 @@ include_once "../Model/Conexao.php";
                       </div>
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">local de procedencia </label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="complemento" required="">
+                          <label for="exampleInputEmail1">Local de procedência </label>
+                            <select name="" id=" "> 
+                              <option value="Escola da rede">Escola da REDE</option>
+                              <option value="Escola da fora">Escola da FORA</option>
+
+                            </select> 
                         </div>
                       </div>
                       <div class="col-sm-4">
@@ -419,13 +380,13 @@ include_once "../Model/Conexao.php";
                         </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <button type="button" class="btn btn-primary ">Proximo</button>
-                      </div>  
-                    </div>
+                   
+
+
                  </div>
               </div>
+
+
               <div class="tab-pane fade" id="custom-tabs-two-messages" role="tabpanel" aria-labelledby="custom-tabs-two-messages-tab">
                  <div class="card-body">
                     <div class="row">
@@ -499,7 +460,7 @@ include_once "../Model/Conexao.php";
                       </div>
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Cartorios</label><br>
+                          <label for="exampleInputEmail1">Cartórios</label><br>
                           <select style="height:38px;" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                             <option selected></option>
                             <option value="1">-------------------------------------------------------------</option>
@@ -578,12 +539,7 @@ include_once "../Model/Conexao.php";
                           <input type="text" class="form-control" id="exampleInputEmail1" name="cpf" required="" disabled>
                         </div>
                       </div>
-                      <div class="col-sm-2">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">N° Passaporte</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="n_passaporte" required="" disabled>
-                        </div>
-                      </div>
+          
                       <div class="col-sm-2">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Cartão Sus</label>
@@ -605,13 +561,11 @@ include_once "../Model/Conexao.php";
                        </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <button type="button" class="btn btn-primary ">Proximo</button>
-                      </div>  
-                    </div>
+                  
                  </div>
               </div>
+
+
               <div class="tab-pane fade" id="custom-tabs-two-settings" role="tabpanel" aria-labelledby="custom-tabs-two-settings-tab">
                   <div class="card-body">
                     <div class="row">
@@ -836,6 +790,8 @@ include_once "../Model/Conexao.php";
                     </div>
                  </div>
               </div>
+
+
               <div class="tab-pane fade" id="custom-tabs-two-necessidades" role="tabpanel" aria-labelledby="custom-tabs-two-necessidades-tab">
                  <div class="card-body">
                     <div class="row">
@@ -903,7 +859,9 @@ include_once "../Model/Conexao.php";
                     </div>
                  </div>
               </div>
-              <div class="tab-pane fade" id="custom-tabs-two-matricula" role="tabpanel" aria-labelledby="custom-tabs-two-matricula-tab">
+
+
+              <div class="tab-pane fade " id="custom-tabs-two-matricula" role="tabpanel" aria-labelledby="custom-tabs-two-matricula-tab">
                  <div class="card-body">
                     <div class="row">
                       <div class="col-sm-6">
