@@ -1,5 +1,26 @@
 <?php
 
+    function pesquisar_aluno($conexao,$pesquisa ) {
+        $sql = $conexao->prepare("SELECT serie.id as 'idserie', idturma, idescola, escola.nome_escola,
+        ano_letivo.idano_letivo as 'matricula', turma.nome_turma, aluno.nome, aluno.idaluno FROM aluno,ano_letivo,escola,turma,serie where
+        serie.id = turma.serie_id and 
+        aluno.idaluno=ano_letivo.aluno_id and 
+        escola.idescola = ano_letivo.escola_id and 
+        turma.idturma = ano_letivo.turma_id and 
+        (aluno.idaluno = :idaluno OR aluno.nome like :nome_aluno) limit 50
+           ");
+        $pesquisa='%'.$pesquisa.'%';
+        $sql->execute(
+            array(
+            "nome_aluno"=>$pesquisa,
+            "idaluno"=>$pesquisa
+            )
+        );
+        return $sql->fetchAll();
+    }
+
+
+
 function cadastro_ocorrencia($conexao,$escola_id, $turma_id, $disciplina_id, $professor_id, $aluno_id, $descricao, $data_ocorrencia){
 
 	$resultado=$conexao->exec(" INSERT INTO ocorrencia_pedagogica(escola_id, turma_id, disciplina_id, professor_id, aluno_id, descricao, data_ocorrencia) VALUES ($escola_id, $turma_id, $disciplina_id, $professor_id, $aluno_id, '$descricao', '$data_ocorrencia')		
@@ -522,5 +543,3 @@ function verificar_frequencia_na_data($conexao,$idescola,$idturma,$iddisciplina,
 		aluno.idaluno = $idaluno");
 		return $res;
 	}
-	
-?>

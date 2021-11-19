@@ -1,12 +1,12 @@
 <?php 
 session_start();
-if (!isset($_SESSION['idcoordenador'])) {
+if (!isset($_SESSION['idfuncionario'])) {
 
        header("location:index.php?status=0");
 
 }else{
 
-  $idcoordenador=$_SESSION['idcoordenador'];
+  $idcoordenador=$_SESSION['idfuncionario'];
 
 } 
   include "cabecalho.php";
@@ -19,8 +19,7 @@ if (!isset($_SESSION['idcoordenador'])) {
 ?>
 
 <script src="ajax.js?<?php echo rand(); ?>"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
+ 
 <div class="content-wrapper" style="min-height: 529px;">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -58,17 +57,17 @@ if (!isset($_SESSION['idcoordenador'])) {
            <div class="col-sm-8"> 
               <label for="exampleInputEmail1">Pesquisar aluno</label>
                 <input type="search" id="pesquisa" class="form-control form-control" 
-               value="" placeholder="Pesquise o professor a ser associado">
+               value="" placeholder="Pesquisar aluno">
               
            </div>
 
               <div class="col-sm-2"> 
                 <label><br></label><br>
-               <a class="btn btn-primary" onclick="pesquisar_professor_associacao();">Buscar</a>
+               <a class="btn btn-primary" onclick="pesquisa_aluno();">Buscar</a>
               </div>
          </div> 
 
-<div id='tabela_pesquisa_professor'>
+<div id='tabela_pesquisa'>
     
 
 

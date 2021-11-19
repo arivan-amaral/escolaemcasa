@@ -43,6 +43,32 @@ function CriaRequest() {
  }
 
 
+function pesquisa_aluno(){
+    var result=document.getElementById('tabela_pesquisa');
+    var pesquisa = document.getElementById('pesquisa').value;
+     
+        var xmlreq = CriaRequest();
+        xmlreq.open("GET", "../Controller/Pesquisar_aluno.php?pesquisa="+pesquisa, true);
+
+        xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                result.innerHTML = xmlreq.responseText;
+        
+             }else{
+                   alert('Erro desconhecido, verifique sua conexão com a internet');
+
+                //result.innerHTML ="Erro ao receber mensagens";                 
+             }
+         }
+     };
+     xmlreq.send(null);
+}
+
+
+// ################################## MIGRAÇAO ECIDADE ######################################
+
 function adicinar_campo_conteudo(idcampo){
     var conteudos=document.getElementById('conteudos');
     var valor = true;
@@ -77,14 +103,6 @@ function adicinar_campo_conteudo(idcampo){
        document.getElementById('campo_inputs'+idcampo).innerHTML="";
     }
 
-      // <div class='row'>
-      //   <div class='col-sm-12'>
-      //     <div class='form-group'>
-      //       <label for='exampleInputEmail1'>Conteúdo da aula</label>
-      //       <textarea class='form-control' id='descricao_conteudo' rows='5' name='descricao' required>$conteudo_aula</textarea>
-      //     </div>
-      //   </div>
-      // </div>
 
 }
 

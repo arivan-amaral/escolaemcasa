@@ -28,9 +28,9 @@ $nome_turma=$_GET['nome_turma'];
 
 
 <?php
+  $nome_professor= "";
 if ($idserie==3) {
 
-  $nome_professor= "";
 
   $res=listar_nome_professor_turma($conexao,$idaluno);
   $conta_virgula=0;

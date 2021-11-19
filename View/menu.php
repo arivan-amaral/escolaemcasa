@@ -62,8 +62,35 @@
 
 
               if ($_SESSION['cargo']=='Secretário'){
+
+
+                                              echo"
+                              <li class='nav-item menu'>
+                                  <a href='./index.php' class='nav-link'>
+                                      <ion-icon name='people-outline'></ion-icon>
+                                      <p>Aluno <i class='right fas fa-angle-left'></i></p>
+                                  </a>
+                                  
+                                  <ul class='nav nav-treeview'>
+                                    <li class='nav-item'>
+                                      <a href='cadastro_aluno.php' class='nav-link'>
+                                        <i class='far fa-circle nav-icon text-primary'></i>
+                                        <p>Cadastrar aluno</p>
+                                      </a>
+                                    </li>
+                                  </ul>
+
+                                   <ul class='nav nav-treeview'>
+                                    <li class='nav-item'>
+                                      <a href='pesquisa_aluno.php' class='nav-link'>
+                                        <i class='far fa-circle nav-icon text-primary'></i>
+                                        <p>Pesquisar aluno</p>
+                                      </a>
+                                    </li>
+                                  </ul> 
+                              </li>";
+                              
                                echo "
-                           
                               <ul class='nav nav-treeview'>
                                 <li class='nav-item'>
                                   <a href='alterar_foto_funcionario.php' class='nav-link'>
@@ -96,8 +123,21 @@
                               </ul> 
                   ";
               }else if ($_SESSION['cargo']=='Professor' || $_SESSION['cargo']=='Professora' ){
+                 
+                  echo"
+         
+                                   <ul class='nav nav-treeview'>
+                                    <li class='nav-item'>
+                                      <a href='pesquisa_aluno.php' class='nav-link'>
+                                        <i class='far fa-circle nav-icon text-primary'></i>
+                                        <p>Pesquisar aluno</p>
+                                      </a>
+                                    </li>
+                                  </ul> 
+                           ";
+
                   echo "
-                              <ul class='nav nav-treeview'>
+                            <ul class='nav nav-treeview'>
                                 <li class='nav-item'>
                                   <a href='professor.php' class='nav-link'>
                                     <i class='far fa-circle nav-icon text-success'></i>
@@ -240,9 +280,6 @@
                                       </a>
                                     </li>
                                   </ul> 
-
-                                  
-                          
                               </li>";
 
                               if (isset($_SESSION['nivel_acesso_id'])) {
