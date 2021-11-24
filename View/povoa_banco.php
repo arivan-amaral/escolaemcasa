@@ -114,6 +114,22 @@ order by  ed47_i_codigo asc,ed60_i_turma asc  offset $indice  limit $limite");
 				 sexo=$sexo,
 				 data_nascimento=$data_nascimento where idaluno=$idaluno <br>";
 			
+
+
+					$res_quantidade_ano_letivo=$conexao->query("SELECT COUNT(*) as 'quantidade' FROM ano_letivo where aluno_id=$idaluno group by aluno_id");
+					
+					$quantidade_ano_letivo=0;
+					foreach ($res_quantidade_ano_letivo as $key_q => $value_q) {
+						$quantidade_ano_letivo=$value_q['quantidade'];
+					}
+
+					if ($quantidade_ano_letivo >1) {
+							$res_quantidade_ano_letivo=$conexao->exec("DELETE FROM ano_letivo where aluno_id=$idaluno limit 1");
+  			echo "<font color='red'> ALUNO EXCLUIDO DUPLICATA: id aluno $idaluno </font><br>";
+
+
+					}
+
 				$conexao->exec(" UPDATE  aluno SET 
 				 nome='$nome_aluno',
 				 whatsapp='$whatsapp',
@@ -144,7 +160,7 @@ order by  ed47_i_codigo asc,ed60_i_turma asc  offset $indice  limit $limite");
 		}
 
 		if ($existe==0) {
-  			echo "<font color='red'> turma $nome_turma não existente: id aluno $idaluno </font><br>";
+  			echo "<font color='blue'> turma $nome_turma não existente: id aluno $idaluno </font><br>";
 		}
 
 		// echo "quantidade inserida: $conta";
