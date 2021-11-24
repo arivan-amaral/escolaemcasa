@@ -43,6 +43,213 @@ function CriaRequest() {
  }
 
 
+
+
+
+function pesquisar_solicitacao_transferencia_por_escola(){
+    var quantidade_pedido_transferencia=document.getElementById('quantidade_pedido_transferencia');
+    var pedido_transferencia=document.getElementById('pedido_transferencia');
+     
+        var xmlreq = CriaRequest();
+        xmlreq.open("GET", "../Controller/Pesquisar_solicitacao_transferencia_por_escola.php", true);
+
+        xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             
+
+             if (xmlreq.status == 200) {
+
+               var texto = xmlreq.responseText;
+               
+               var array_pes= texto.split('*');
+                pedido_transferencia.innerHTML = array_pes[0];
+                quantidade_pedido_transferencia.innerHTML = array_pes[1];
+        
+             }else{
+                   alert('Erro desconhecido, verifique sua conexão com a internet');
+
+                //result.innerHTML ="Erro ao receber mensagens";                 
+             }
+         }
+     };
+     xmlreq.send(null);
+}
+
+
+
+
+
+
+
+function cadastro_aluno(){
+  var ajax = new XMLHttpRequest();
+  // Seta tipo de requisição: Post e a URL da API
+  ajax.open("POST", "../Controller/Cadastro_aluno.php", true);
+  ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  // Seta paramêtros da requisição e envia a requisição
+  var tudo_certo=true;
+  var escola =document.getElementById('escola').value;
+  var serie =document.getElementsByName('serie')[0].value;
+  var turma =document.getElementsByName('turma')[0].value;
+  
+   if (!!document.getElementsByName('etapa')) {
+    var etapa ="";
+  }else{
+     var etapa =document.getElementsByName('etapa')[0].value;
+  }
+  
+
+  if (escola =='' || serie =='' || turma =='' ) {
+    alert(escola +"- "+ serie+"-"+turma)
+        tudo_certo=false;
+        Swal.fire({
+          position: 'center',
+          icon: 'info',
+          title: 'Preencha corretamente todos os campos de curso',
+             text: ' ',
+          showConfirmButton: false,
+          timer: 3000
+        });
+  }
+
+ ajax.send(
+ "nome="+document.getElementsByName('nome')[0].value+
+ "&escola="+ escola+
+ "&serie="+serie+
+ "&turma="+turma+
+ "&etapa="+etapa+
+
+ "&sexo="+document.getElementsByName('sexo')[0].value+
+  "&email="+document.getElementsByName('email')[0].value+
+  "&filiacao1="+document.getElementsByName('filiacao1')[0].value+
+  "&filiacao2="+document.getElementsByName('filiacao2')[0].value+
+  "&senha="+document.getElementsByName('senha')[0].value+
+  "&whatsapp="+document.getElementsByName('whatsapp')[0].value+
+  "&whatsapp_responsavel="+document.getElementsByName('whatsapp_responsavel')[0].value+
+  "&data_nascimento="+document.getElementsByName('data_nascimento')[0].value+
+  "&numero_nis="+document.getElementsByName('numero_nis')[0].value+
+  "&codigo_inep="+document.getElementsByName('codigo_inep')[0].value+
+  "&bolsa_familia="+document.getElementsByName('bolsa_familia')[0].value+
+  "&tipo_responsavel="+document.getElementsByName('tipo_responsavel')[0].value+
+  "&raca_aluno="+document.getElementsByName('raca_aluno')[0].value+
+  "&estado_civil_aluno="+document.getElementsByName('estado_civil_aluno')[0].value+
+  "&tipo_sanguinio_aluno="+document.getElementsByName('tipo_sanguinio_aluno')[0].value+
+  "&profissao="+document.getElementsByName('profissao')[0].value+
+  "&situacao_documentacao="+document.getElementsByName('situacao_documentacao')[0].value+
+  "&tipo_certidao="+document.getElementsByName('tipo_certidao')[0].value+
+  "&numero_termo="+document.getElementsByName('numero_termo')[0].value+
+  "&folha="+document.getElementsByName('folha')[0].value+
+  "&uf_cartorio="+document.getElementsByName('uf_cartorio')[0].value+
+  "&uf_municipio_cartorio="+document.getElementsByName('uf_municipio_cartorio')[0].value+
+  "&cartorio="+document.getElementsByName('cartorio')[0].value+
+  "&numero_indentidade="+document.getElementsByName('numero_indentidade')[0].value+
+  "&uf_identidade="+document.getElementsByName('uf_identidade')[0].value+
+  "&orgao_emissor_indentidade="+document.getElementsByName('orgao_emissor_indentidade')[0].value+
+  "&data_expedicao="+document.getElementsByName('data_expedicao')[0].value+
+  "&numero_cnh="+document.getElementsByName('numero_cnh')[0].value+
+  "&categoria_cnh="+document.getElementsByName('categoria_cnh')[0].value+
+  "&cpf="+document.getElementsByName('cpf')[0].value+
+  "&cartao_sus="+document.getElementsByName('cartao_sus')[0].value+
+  "&observacao="+document.getElementsByName('observacao')[0].value+
+
+"&necessidade_especial="+document.getElementsByName('necessidade_especial')[0].value+
+ "&apoio_pedagogico="+document.getElementsByName('apoio_pedagogico')[0].value+
+ "&tipo_diagnostico="+document.getElementsByName('tipo_diagnostico')[0].value+
+ "&cpf_filiacao1="+document.getElementsByName('cpf_filiacao1')[0].value+
+ "&cpf_filiacao2="+document.getElementsByName('cpf_filiacao2')[0].value+
+ "&endereco="+document.getElementsByName('endereco')[0].value+
+ "&complemento="+document.getElementsByName('complemento')[0].value+
+ "&numero_endereco="+document.getElementsByName('numero_endereco')[0].value+
+ "&uf_endereco="+document.getElementsByName('uf_endereco')[0].value+
+ "&municipio_endereco="+document.getElementsByName('municipio_endereco')[0].value+
+ "&bairro_endereco="+document.getElementsByName('bairro_endereco')[0].value+
+ "&zona_endereco="+document.getElementsByName('zona_endereco')[0].value+
+ "&cep_endereco="+document.getElementsByName('cep_endereco')[0].value+
+ "&nacionalidade="+document.getElementsByName('nacionalidade')[0].value+
+ "&pais="+document.getElementsByName('pais')[0].value+
+ "&naturalidade="+document.getElementsByName('naturalidade')[0].value+
+ "&localidade="+document.getElementsByName('localidade')[0].value+
+ "&transposte_escolar="+document.getElementsByName('transposte_escolar')[0].value+
+ "&poder_publico_responsavel="+document.getElementsByName('poder_publico_responsavel')[0].value+
+ "&recebe_escolaridade_outro_espaco="+document.getElementsByName('recebe_escolaridade_outro_espaco')[0].value+
+ "&matricula_certidao="+document.getElementsByName('matricula_certidao')[0].value+
+ "&uf_municipio_cartorio="+document.getElementsByName('uf_municipio_cartorio')[0].value+
+ "&cartorio="+document.getElementsByName('cartorio')[0].value
+
+
+
+  );
+
+
+
+    if (tudo_certo==true) {
+         aguarde();
+        // Cria um evento para receber o retorno.
+          ajax.onreadystatechange = function() {
+            // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
+            if (ajax.readyState == 4 && ajax.status == 200) {
+                var data = ajax.responseText;
+                  if(data == 'certo'){
+                    Swal.fire({
+                      position: 'center',
+                      icon: 'success',
+                      title: 'Ação Concluída',
+                         text: ' ',
+                      showConfirmButton: false,
+                      timer: 2500
+                    });
+                    refresh();
+                  }else{
+                    Swal.fire({
+                      position: 'center',
+                      icon: 'error',
+                      title: 'Alguma coisa deu errado',
+                         text: ' ',
+                      showConfirmButton: false,
+                      timer: 1500
+                    });
+                  }
+            }
+          }
+    }
+}
+
+
+function refresh() {    
+    setTimeout(function () {
+      window.location.reload()
+
+    }, 2000);
+}
+
+function listar_vagas_turma_transferencia_aluno(){
+    var result=document.getElementById('resultado');
+    var escola = document.getElementById('escola').value;
+    var serie = document.getElementById('serie').value;
+     
+        var xmlreq = CriaRequest();
+        xmlreq.open("GET", "../Controller/Listar_vagas_turma_transferencia_aluno.php?escola="+escola+"&serie="+serie, true);
+
+        xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+            result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
+
+             if (xmlreq.status == 200) {
+                result.innerHTML = xmlreq.responseText;
+        
+             }else{
+                   alert('Erro desconhecido, verifique sua conexão com a internet');
+
+                //result.innerHTML ="Erro ao receber mensagens";                 
+             }
+         }
+     };
+     xmlreq.send(null);
+}
+
+
 function pesquisa_aluno(){
     var result=document.getElementById('tabela_pesquisa');
     var pesquisa = document.getElementById('pesquisa').value;
@@ -134,6 +341,31 @@ function muda_etapa(idaluno) {
      };
      xmlreq.send(null);
 }
+
+function listar_etapas_cad_aluno() {
+    var result= document.getElementById('etapa');
+    var idserie= document.getElementById('idserie').value;
+    var idturma= document.getElementById('idturma').value;
+    var xmlreq = CriaRequest();   
+
+    xmlreq.open("GET", "../Controller/Lista_etapa_multissereada.php?idserie="+idturma+"/"+idserie, true);
+
+   xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                  result.innerHTML = xmlreq.responseText;
+                
+             }else{
+                   alert('Erro desconhecido, verifique sua conexão com a internet');
+
+                //result.innerHTML ="Erro ao receber mensagens";                 
+             }
+         }
+     };
+     xmlreq.send(null);
+}
+
 
 function listar_etapas(idserie) {
     var result= document.getElementById('etapa');
@@ -2795,6 +3027,30 @@ function rolar() {
     var xmlreq = CriaRequest();   
     result.innerHTML="<img src='imagens/carregando.gif'>";
     xmlreq.open("GET", "../Controller/Listar_turmas_coordenador.php?idescola="+idescola, true);
+
+
+    xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                 result.innerHTML = xmlreq.responseText;
+                 
+             }else{
+
+                 result.innerHTML ="Verifique sua conexão com a internet!";
+               
+                 
+             }
+         }
+     };
+     xmlreq.send(null);
+ } 
+
+ function listar_turmas_por_serie(idserie) {
+    var result = document.getElementById("turmas");
+    var xmlreq = CriaRequest();   
+    result.innerHTML="<img src='imagens/carregando.gif'>";
+    xmlreq.open("GET", "../Controller/Listar_turmas_por_serie.php?idserie="+idserie, true);
 
 
     xmlreq.onreadystatechange = function(){

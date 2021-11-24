@@ -89,7 +89,7 @@ $mensagem="";
 $imagem="https://pirilampoobjetivo.com.br/blog/View/imagens/logo_pirilampo.png";
 
 
-$resultado=$conexao->query("SELECT * FROM ano_letivo, aluno WHERE aluno.idaluno=ano_letivo.aluno_id and aluno.status ='Ativo' AND aluno.whatsapp!='55' AND aluno.whatsapp!='' ORDER BY turma_id ASC");
+$resultado=$conexao->query("SELECT * FROM ano_letivo, aluno WHERE  ano_letivo.status_letivo=1 AND aluno.idaluno=ano_letivo.aluno_id and aluno.status ='Ativo' AND aluno.whatsapp!='55' AND aluno.whatsapp!='' ORDER BY turma_id ASC");
 
 foreach ($resultado as $key => $value) {
 	$numero=$value['whatsapp'];

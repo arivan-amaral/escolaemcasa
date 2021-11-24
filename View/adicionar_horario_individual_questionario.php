@@ -150,8 +150,11 @@ include "alertas.php";
                                                 
                                               
                                            
-                                             $res_a=$conexao->query("SELECT turma.nome_turma, aluno.nome,aluno.email,aluno.senha,aluno.idaluno FROM escola,ano_letivo,aluno,turma WHERE ano_letivo.escola_id = escola.idescola AND ano_letivo.turma_id = turma.idturma AND
+                                             $res_a=$conexao->query("SELECT turma.nome_turma, aluno.nome,aluno.email,aluno.senha,aluno.idaluno FROM escola,ano_letivo,aluno,turma WHERE 
+                                               ano_letivo.status_letivo=1 AND 
+                                               ano_letivo.escola_id = escola.idescola AND ano_letivo.turma_id = turma.idturma AND
                                               ano_letivo.aluno_id = aluno.idaluno AND
+                                              ano_letivo.status_letivo = 1 AND
                                               turma.idturma=$idturma and
                                               ano_letivo.escola_id=$idescola
 

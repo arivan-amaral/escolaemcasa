@@ -83,7 +83,7 @@ foreach ($result_trabalho as $key2 => $value2) {
 }
 if ($cont_tra>0) {
   
-      $result_aluno=$conexao->query("SELECT * FROM ano_letivo, aluno WHERE aluno.idaluno=ano_letivo.aluno_id AND ano_letivo.turma_id=$turma_id AND aluno.status ='Ativo' AND aluno.whatsapp!='55' AND aluno.whatsapp!='' ");
+      $result_aluno=$conexao->query("SELECT * FROM ano_letivo, aluno WHERE  ano_letivo.status_letivo=1 AND aluno.idaluno=ano_letivo.aluno_id AND ano_letivo.turma_id=$turma_id AND aluno.status ='Ativo' AND aluno.whatsapp!='55' AND aluno.whatsapp!='' ");
 
       foreach ($result_aluno as $key4 => $value4) {
         $numero=$value4['whatsapp'];

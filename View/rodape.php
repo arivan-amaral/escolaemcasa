@@ -1,3 +1,16 @@
+<?php
+if ($_SESSION['cargo']=="Secretário" || $_SESSION['cargo']=="Coordenador"){
+      echo "
+        <script>
+            setInterval('pesquisar_solicitacao_transferencia_por_escola()',5000);
+        </script>
+      ";
+}
+
+
+
+?>
+
 <script type='text/javascript'>
       function modal_avaliacao() {
           $(document).ready(function() {

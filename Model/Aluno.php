@@ -1,8 +1,28 @@
 <?php
+function quantidade_aluno_turma($conexao,$idturma,$idescola){
+  $sql=$conexao->prepare("SELECT COUNT(*) as 'quantidade' FROM
+   aluno, ano_letivo,turma 
+   WHERE 
+   ano_letivo.status_letivo=1 AND 
+   turma.idturma=:idturma and
+    aluno_id=idaluno and 
+    turma_id=idturma and 
+    escola_id=:idescola  
+
+    ORDER by nome ASC");
+  
+  $sql->bindParam("idturma",$idturma);
+  $sql->bindParam("idescola",$idescola);
+  $sql->execute();
+
+  return $sql->fetchAll();
+}
+
 
 function pesquisar_aluno($conexao,$pesquisa ) {
     $sql = $conexao->prepare("SELECT serie.id as 'idserie', idturma, idescola, escola.nome_escola,
         ano_letivo.idano_letivo as 'matricula', turma.nome_turma, aluno.nome, aluno.idaluno FROM aluno,ano_letivo,escola,turma,serie where
+        ano_letivo.status_letivo=1 AND
         serie.id = turma.serie_id and 
         aluno.idaluno=ano_letivo.aluno_id and 
         escola.idescola = ano_letivo.escola_id and 
@@ -462,9 +482,60 @@ function cadastro_aluno($conexao,$nome,
     $categoria_cnh,
     $cpf,
     $cartao_sus,
-    $observacao) {
+    $observacao,
 
-    $sql=$conexao->prepare("INSERT INTO aluno(  nome, sexo, email, filiacao1, filiacao2,  senha, whatsapp, whatsapp_responsavel, data_nascimento, numero_nis, codigo_inep, bolsa_familia, tipo_responsavel, raca_aluno, estado_civil_aluno, tipo_sanguinio_aluno, profissao, situacao_documentacao, tipo_certidao, numero_termo, folha, uf_cartorio, municipio_cartorio, nome_cartorio, numero_indentidade, uf_identidade, orgao_emissor_indentidade, data_expedicao, numero_cnh, categoria_cnh, cpf, cartao_sus, observacao) VALUES (
+
+     $necessidade_especial,
+ $apoio_pedagogico,
+ $tipo_diagnostico,
+ $cpf_filiacao1,
+ $cpf_filiacao2,
+ $endereco,
+ $complemento,
+ $numero_endereco,
+ $uf_endereco,
+ $municipio_endereco,
+ $bairro_endereco,
+ $zona_endereco,
+ $cep_endereco,
+ $nacionalidade,
+ $pais,
+ $naturalidade,
+ $localidade,
+ $transposte_escolar,
+ $poder_publico_responsavel,
+ $recebe_escolaridade_outro_espaco,
+ $matricula_certidao,
+ $uf_municipio_cartorio,
+ $cartorio
+
+) {
+
+    $sql=$conexao->prepare("INSERT INTO aluno(  nome, sexo, email, filiacao1, filiacao2,  senha, whatsapp, whatsapp_responsavel, data_nascimento, numero_nis, codigo_inep, bolsa_familia, tipo_responsavel, raca_aluno, estado_civil_aluno, tipo_sanguinio_aluno, profissao, situacao_documentacao, tipo_certidao, numero_termo, folha, uf_cartorio, municipio_cartorio, nome_cartorio, numero_indentidade, uf_identidade, orgao_emissor_indentidade, data_expedicao, numero_cnh, categoria_cnh, cpf, cartao_sus, observacao, 
+necessidade_especial,
+ apoio_pedagogico,
+ tipo_diagnostico,
+ cpf_filiacao1,
+ cpf_filiacao2,
+ endereco,
+ complemento,
+ numero_endereco,
+ uf_endereco,
+ municipio_endereco,
+ bairro_endereco,
+ zona_endereco,
+ cep_endereco,
+ nacionalidade,
+ pais,
+ naturalidade,
+ localidade,
+ transposte_escolar,
+ poder_publico_responsavel,
+ recebe_escolaridade_outro_espaco,
+ matricula_certidao,
+ uf_municipio_cartorio,
+ cartorio
+ ) VALUES (
     :nome,
     :sexo,
     :email,
@@ -498,8 +569,34 @@ function cadastro_aluno($conexao,$nome,
     :categoria_cnh,
     :cpf,
     :cartao_sus,
-    :observacao
+    :observacao,
+
+    :necessidade_especial,
+    :apoio_pedagogico,
+    :tipo_diagnostico,
+    :cpf_filiacao1,
+    :cpf_filiacao2,
+    :endereco,
+    :complemento,
+    :numero_endereco,
+    :uf_endereco,
+    :municipio_endereco,
+    :bairro_endereco,
+    :zona_endereco,
+    :cep_endereco,
+    :nacionalidade,
+    :pais,
+    :naturalidade,
+    :localidade,
+    :transposte_escolar,
+    :poder_publico_responsavel,
+    :recebe_escolaridade_outro_espaco,
+    :matricula_certidao,
+    :uf_municipio_cartorio,
+    :cartorio
 )");
+
+
 
  $sql->bindParam("nome",$nome);
  $sql->bindParam("sexo",$sexo);
@@ -534,6 +631,31 @@ function cadastro_aluno($conexao,$nome,
  $sql->bindParam("cpf",$cpf);
  $sql->bindParam("cartao_sus",$cartao_sus);
  $sql->bindParam("observacao",$observacao);
+
+
+$sql->bindParam("necessidade_especial",$necessidade_especial);
+ $sql->bindParam("apoio_pedagogico",$apoio_pedagogico);
+ $sql->bindParam("tipo_diagnostico",$tipo_diagnostico);
+ $sql->bindParam("cpf_filiacao1",$cpf_filiacao1);
+ $sql->bindParam("cpf_filiacao2",$cpf_filiacao2);
+ $sql->bindParam("endereco",$endereco);
+ $sql->bindParam("complemento",$complemento);
+ $sql->bindParam("numero_endereco",$numero_endereco);
+ $sql->bindParam("uf_endereco",$uf_endereco);
+ $sql->bindParam("municipio_endereco",$municipio_endereco);
+ $sql->bindParam("bairro_endereco",$bairro_endereco);
+ $sql->bindParam("zona_endereco",$zona_endereco);
+ $sql->bindParam("cep_endereco",$cep_endereco);
+ $sql->bindParam("nacionalidade",$nacionalidade);
+ $sql->bindParam("pais",$pais);
+ $sql->bindParam("naturalidade",$naturalidade);
+ $sql->bindParam("localidade",$localidade);
+ $sql->bindParam("transposte_escolar",$transposte_escolar);
+ $sql->bindParam("poder_publico_responsavel",$poder_publico_responsavel);
+ $sql->bindParam("recebe_escolaridade_outro_espaco",$recebe_escolaridade_outro_espaco);
+ $sql->bindParam("matricula_certidao",$matricula_certidao);
+ $sql->bindParam("uf_municipio_cartorio",$uf_municipio_cartorio);
+ $sql->bindParam("cartorio", $cartorio);
  $sql->execute();
 
  return $conexao;
@@ -576,17 +698,19 @@ function atualizar_whatsapp_aluno_responsavel($conexao,$whatsapp, $whatsapp_resp
 }
 
 function listar_aluno_da_turma($conexao,$idturma){
-  $res=$conexao->query("SELECT aluno.senha,aluno.email,aluno.nome as 'nome_aluno', aluno.idaluno, aluno.status as 'status_aluno', turma.nome_turma FROM aluno, ano_letivo,turma where turma_id=$idturma and aluno_id=idaluno and turma_id=idturma and aluno.status='Ativo' ORDER by nome ASC");
+  $res=$conexao->query("SELECT aluno.senha,aluno.email,aluno.nome as 'nome_aluno', aluno.idaluno, aluno.status as 'status_aluno', turma.nome_turma FROM aluno, ano_letivo,turma where ano_letivo.status_letivo=1 AND turma_id=$idturma and aluno_id=idaluno and turma_id=idturma and aluno.status='Ativo' ORDER by nome ASC");
   return $res;
 }
 
 function listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola){
-  $res=$conexao->query("SELECT turma.nome_turma, aluno.senha,aluno.email,aluno.nome as 'nome_aluno', aluno.idaluno, aluno.status as 'status_aluno', turma.nome_turma FROM aluno, ano_letivo,turma where turma_id=$idturma and aluno_id=idaluno and turma_id=idturma and escola_id=$idescola  ORDER by nome ASC");
+  $res=$conexao->query("SELECT turma.nome_turma, aluno.senha,aluno.email,aluno.nome as 'nome_aluno', aluno.idaluno, aluno.status as 'status_aluno', turma.nome_turma FROM aluno, ano_letivo,turma where ano_letivo.status_letivo=1 AND turma_id=$idturma and aluno_id=idaluno and turma_id=idturma and escola_id=$idescola  ORDER by nome ASC");
   return $res;
 }
 
 function listar_aluno_da_turma_professor($conexao,$idturma,$escola_id){
-  $res=$conexao->query("SELECT aluno.senha,aluno.email,aluno.nome as 'nome_aluno', aluno.idaluno, aluno.status as 'status_aluno', turma.nome_turma,ano_letivo.etapa_id FROM aluno, ano_letivo,turma where turma_id=$idturma and aluno_id=idaluno and turma_id=idturma and escola_id=$escola_id and status like'Ativo' ORDER by nome ASC");
+  $res=$conexao->query("SELECT aluno.senha,aluno.email,aluno.nome as 'nome_aluno', aluno.idaluno, aluno.status as 'status_aluno', turma.nome_turma,ano_letivo.etapa_id FROM aluno, ano_letivo,turma where 
+        ano_letivo.status_letivo=1 AND
+   turma_id=$idturma and aluno_id=idaluno and turma_id=idturma and escola_id=$escola_id and status like'Ativo' ORDER by nome ASC");
   return $res;
 }	
 
@@ -594,6 +718,7 @@ function listar_aluno_do_simulado_professor($conexao,$escola_id,$idserie,$indice
   $res=$conexao->query("SELECT aluno.senha,aluno.email,aluno.nome as 'nome_aluno', aluno.idaluno, aluno.status as 'status_aluno', turma.nome_turma,turma.idturma
    FROM 
    aluno, ano_letivo,turma where
+        ano_letivo.status_letivo=1 AND
    serie_id=$idserie and aluno_id=idaluno and turma_id=idturma and escola_id=$escola_id and status like'Ativo' ORDER by turma.nome_turma, nome ASC limit $indice,50");
   return $res;
 }	
@@ -636,9 +761,11 @@ function listar_disciplina_para_boletim($conexao,$idaluno){
    turma.idturma,
    turma.nome_turma
    FROM turma, ano_letivo, aluno , escola, ministrada,disciplina,funcionario WHERE
+    ano_letivo.status_letivo=1 AND 
    aluno.idaluno=ano_letivo.aluno_id AND
    turma.idturma=ano_letivo.turma_id AND
    escola.idescola=ano_letivo.escola_id AND
+    ano_letivo.status_letivo=1 AND
 
    ministrada.turma_id=turma.idturma AND
    ministrada.escola_id=escola.idescola AND

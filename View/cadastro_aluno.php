@@ -5,18 +5,20 @@ include_once 'barra_horizontal.php';
 include_once "menu.php"; 
 include_once "alertas.php"; 
 include_once "../Model/Conexao.php"; 
+include_once "../Model/Serie.php"; 
+include_once "../Model/Escola.php"; 
 
 
  
 ?>
+
+<script src="ajax.js?<?php echo rand(); ?>"></script>
   <!-- Main Sidebar Container -->
 <div class="content-wrapper">
 <!-- ####################### CORPO ################################################# -->
+   <H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>
 
-    
-      <form method="POST" action="../Controller/Cadastro_aluno.php">
-
-
+ 
         <div class="card card-primary card-tabs">
           <div class="card-header p-0 pt-1">
             <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
@@ -31,7 +33,7 @@ include_once "../Model/Conexao.php";
                 <a class="nav-link" id="custom-tabs-two-messages-tab" data-toggle="pill" href="#custom-tabs-two-messages" role="tab" aria-controls="custom-tabs-two-messages" aria-selected="false">Documentos</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="custom-tabs-two-settings-tab" data-toggle="pill" href="#custom-tabs-two-settings" role="tab" aria-controls="custom-tabs-two-settings" aria-selected="false">Cursos</a>
+                <a class="nav-link" id="custom-tabs-two-settings-tab" data-toggle="pill" href="#custom-tabs-two-settings" role="tab" aria-controls="custom-tabs-two-settings" aria-selected="false">Curso</a>
               </li>
              
                
@@ -53,20 +55,20 @@ include_once "../Model/Conexao.php";
                       <div class="col-sm-2">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Código INEP</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo_inep" required="">
+                          <input type="text" class="form-control" id="codigo_inep" name="codigo_inep" required="">
                         </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">N° Nis</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="numero_nis" required="">
+                          <input type="text" class="form-control" id="numero_nis" name="numero_nis" required="">
                         </div>
                       </div>
 
                        <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Bolsa Familia</label><br>
-                          <select  class="form-control" name="bolsa_familia" required>
+                          <select  class="form-control" name="bolsa_familia" id="bolsa_familia" required>
                             <option selected></option>
                             <option value="S">Sim</option>
                             <option value="N">Não</option>
@@ -78,7 +80,7 @@ include_once "../Model/Conexao.php";
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Local de procedência </label>
-                            <select name="" id=" "  class="form-control" > 
+                            <select name="local_procedencia" id="local_procedencia"  class="form-control" > 
                               <option value="Escola da rede">Escola da REDE</option>
                               <option value="Escola da fora">Escola de FORA</option>
 
@@ -94,7 +96,7 @@ include_once "../Model/Conexao.php";
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Nome</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="nome" required="">
+                          <input type="text" class="form-control" id="nome" name="nome" required="">
                         </div>
                       </div>
                       <div class="col-sm-3">
@@ -114,16 +116,22 @@ include_once "../Model/Conexao.php";
 
 
                     <div class="row">
-                      <div class="col-sm-6">
+                      <div class="col-sm-4">
                          <div class="form-group">
                           <label for="exampleInputEmail1">Email</label>
                           <input type="text" class="form-control" id="exampleInputEmail1" name="email"  >
                         </div>
                       </div>
-                      <div class="col-sm-6">
+                      <div class="col-sm-4">
                          <div class="form-group">
-                          <label for="exampleInputEmail1">Whatsapp</label>
+                          <label for="exampleInputEmail1">Whatsapp aluno</label>
                           <input type="text" class="form-control" id="exampleInputEmail1" name="whatsapp"  >
+                        </div>
+                      </div>                      
+                      <div class="col-sm-4">
+                         <div class="form-group">
+                          <label for="exampleInputEmail1">Whatsapp responsável</label>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="whatsapp_responsavel"  >
                         </div>
                       </div>
                     </div>
@@ -131,20 +139,25 @@ include_once "../Model/Conexao.php";
 
 
                    <div class="row">
+                 
+
                      <div class="col-sm-4">
                        <div class="form-group">
-                         <label for="exampleInputEmail1">Necessidade especial</label>
-                         <input type="text" class="form-control" id="exampleInputEmail1" name="necessidade"   >
+                         <label for="exampleInputEmail1">Necessidade especial</label><br>
+                         <select  class="form-control" name="necessidade_especial">
+                           <option value='N'>NÃO</option>
+                           <option value='S'>SIM</option>
+                         </select>
                        </div>
                      </div>
          
                      <div class="col-sm-3">
                        <div class="form-group">
                          <label for="exampleInputEmail1">Apoio Pedagógico</label><br>
-                         <select  class="form-control">
-                           <option selected></option>
-                           <option value="1"></option>
-                           <option>----------------------</option>
+                         <select  class="form-control" name="apoio_pedagogico">
+                             <option value='SEM APOIO PEDAGÓGICO'>SEM APOIO PEDAGÓGICO</option>
+                              <option value="COM APOIO PEDAGÓGICO">COM APOIO PEDAGÓGICO</option>
+                              <option value="COM APOIO PEDAGÓGICO (OUTRO ESTABELECIMENTO)">COM APOIO PEDAGÓGICO (OUTRO ESTABELECIMENTO)</option>
                          </select>
                        </div>
                      </div>
@@ -152,10 +165,10 @@ include_once "../Model/Conexao.php";
                      <div class="col-sm-3">
                        <div class="form-group">
                          <label for="exampleInputEmail1">Tipo De Diagnóstico</label><br>
-                         <select  class="form-control">
-                           <option selected></option>
-                           <option value="1"></option>
-                           <option>-----------------</option>
+                         <select  class="form-control" name="tipo_diagnostico">
+                           <option value='SEM DIAGNÓSTICO'>SEM DIAGNÓSTICO</option>
+                           <option value='FICHA DE AVALIAÇÃO'>FICHA DE AVALIAÇÃO</option>
+                           <option value='LAUDO TÉCNICO'>LAUDO TÉCNICO</option>
                          </select>
                        </div>
                      </div>
@@ -181,10 +194,9 @@ include_once "../Model/Conexao.php";
                         <div class="form-group">
                           <label for="exampleInputEmail1">Tipo responsável</label><br>
                           <select  class="form-control" required name="tipo_responsavel">
-                            <option selected></option>
-                            <option value="PAI E/OU MÃE">PAI E/OU MÃE</option>
-                            <option value="PAI">PAI</option>
                             <option value="MÃE">MÃE</option>
+                            <option value="PAI">PAI</option>
+                            <option value="OUTRO">OUTRO</option>
                              
                           </select>
                         </div>
@@ -208,7 +220,7 @@ include_once "../Model/Conexao.php";
                         <div class="form-group">
                           <label for="exampleInputEmail1">Estado Civil do aluno</label><br>
                           <select  class="form-control" name="estado_civil_aluno" required>
-                            <option selected></option>
+                    
                             <option value="Solteiro">Solteiro</option>
                             <option value="Casado">Casado</option>
                             <option value="Divorciado">Divorciado</option>
@@ -223,13 +235,13 @@ include_once "../Model/Conexao.php";
                           <select  class="form-control" required name="tipo_sanguinio_aluno">
                             <option selected></option>
                      
-                            <option value="A+">A+</option>
+                            <option value="Amais">A+</option>
                             <option value="A-">A-</option>
-                            <option value="B+">B+</option>
+                            <option value="Bmais">B+</option>
                             <option value="B-">B-</option>
-                            <option value="AB+">AB+</option>
+                            <option value="ABmais">AB+</option>
                             <option value="AB-">AB-</option>
-                            <option value="O+">O+</option>
+                            <option value="Omais">O+</option>
                             <option value="O-">O-</option>
                            
                           </select>
@@ -240,8 +252,8 @@ include_once "../Model/Conexao.php";
                       <div class="col-sm-2">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Sexo do aluno</label><br>
-                          <select  class="form-control" required name="sexo">
-                            <option selected></option>
+                          <select  class="form-control" required id='sexo' name="sexo">
+                          
                             <option value="M">Masculino</option>
                             <option value="F">Feminino</option>
                             
@@ -250,19 +262,29 @@ include_once "../Model/Conexao.php";
                       </div>
                     </div>
 
+    
+ 
+ 
+ 
+ 
+ 
+     
+      
+      
+ 
 
                     <label for="exampleInputEmail1"><h5>Filiação 1</h5></label>
                     <div class="row">          
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Nome</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="filiação1" required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="filiacao1" required="">
                         </div>
                       </div>
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Cpf</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="cpf_filiação1" required="">
+                          <label for="exampleInputEmail1">Cpf filiação 1</label>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="cpf_filiacao1" required="">
                         </div>
                       </div>
                       <div class="col-sm-4"><br><br>
@@ -277,13 +299,13 @@ include_once "../Model/Conexao.php";
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Nome</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="filiação2" required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="filiacao2" required="">
                         </div>
                       </div>
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Cpf</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="cpf_filiação2" required="">
+                          <label for="exampleInputEmail1">Cpf filiação 2</label>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="cpf_filiacao2" required="">
                         </div>
                       </div>
                       <div class="col-sm-4"><br><br>
@@ -316,7 +338,7 @@ include_once "../Model/Conexao.php";
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Número</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="numero" required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="numero_endereco" required="">
                         </div>
                       </div>
                     </div>
@@ -324,25 +346,25 @@ include_once "../Model/Conexao.php";
                       <div class="col-sm-2">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Uf</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="uf" required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="uf_endereco" required="">
                         </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Município</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="municipio" required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="municipio_endereco" required="">
                         </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Bairro</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="bairro" required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="bairro_endereco" required="">
                         </div>
                       </div>
                       <div class="col-sm-2">
                          <div class="form-group">
                           <label for="exampleInputEmail1">Zona</label><br>
-                          <select   class="form-control" required>
+                          <select   class="form-control" name="zona_endereco">
                             <option selected></option>
                             <option value="Urbana">Urbana</option>
                             <option value="Rural">Rural</option>
@@ -354,7 +376,7 @@ include_once "../Model/Conexao.php";
                       <div class="col-sm-2">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Cep</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="cep" required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="cep_endereco" required="">
                         </div>
                       </div>
                     </div>
@@ -390,18 +412,23 @@ include_once "../Model/Conexao.php";
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Transporte Escolar Público</label><br>
-                          <select   class="form-control" required>
+                          <select class="form-control" name="transposte_escolar">
+                       
                             <option selected>Não Utilizado</option>
-                            <option value="Ônibus">Ônibus</option>
+                            <option value="RODOVIÁRIO-VANS/KOMBI">RODOVIÁRIO-VANS/KOMBI</option>
+                            <option value="RODOVIÁRIO-MICROONIBUS">RODOVIÁRIO-MICROONIBUS</option>
+                            <option value="RODOVIÁRIO-OUTRO">RODOVIÁRIO-OUTRO</option>
                           </select>
                         </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Poder Público Responsável</label><br>
-                          <select   class="form-control">
-                            <option selected value="Municipal">Municipal</option>
+                          <select   class="form-control" name="poder_publico_responsavel">
+                            <option  value="Municipal">Municipal</option>
 
+   
+        
                            
                           </select>
                         </div>
@@ -409,10 +436,10 @@ include_once "../Model/Conexao.php";
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Recebe Escolarização Em Outro Espaço</label><br>
-                          <select  class="form-control" required>
-                            <option selected></option>
-                            <option value="S">Sim</option>
+                          <select  class="form-control" required name="recebe_escolaridade_outro_espaco">
+      
                             <option value="N">Não</option>
+                            <option value="S">Sim</option>
                            
                           </select>
                         </div>
@@ -427,12 +454,7 @@ include_once "../Model/Conexao.php";
                         </div>
                       </div>
                       
-                      <div class="col-sm-4">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">.</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="numero" required="">
-                        </div>
-                      </div>
+                      
                     </div>
                    
 
@@ -448,27 +470,32 @@ include_once "../Model/Conexao.php";
                         <div class="form-group">
                           <label for="exampleInputEmail1">Situação Da Documentação</label><br>
                           <select  class="form-control" required name="situacao_documentacao">
-                            <option selected></option>
-                            <option value="Aluno Possui Documentação"></option>
+                             
+                            <option value="Aluno Possui Documentação">Aluno Possui Documentação</option>
                             <option value="Aluno Não Possui Documentação">Aluno Não Possui Documentação</option>
                             
                           </select>
                         </div>
                       </div>
  
-                      
+                  
+      
                     </div>
                     <div class="row">
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Matrícula da certidão </label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="matricula" required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="matricula_certidao" required="">
                         </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Tipo De Certidão</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="tipo_certidao" required="">
+                          <select type="text" class="form-control"  name="tipo_certidao">
+                            <option value="N">CERTIDÃO NASCIMENTO</option>
+                            <option value="C">CERTIDÃO CASAMENTO</option>
+                             
+                          </select>
                         </div>
                       </div>
                       <div class="col-sm-3">
@@ -497,7 +524,7 @@ include_once "../Model/Conexao.php";
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Município</label><br>
-                          <select  class="form-control" name="municipio_cartorio" required>
+                          <select  class="form-control" name="uf_municipio_cartorio" required>
                             <option selected></option>
                             <option value="1">---------</option>
                           </select>
@@ -506,7 +533,7 @@ include_once "../Model/Conexao.php";
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Cartórios</label><br>
-                          <input name="nome_cartorio" class="form-control" required>
+                          <input name="cartorio" class="form-control" required>
                         </div>
                       </div>
                     </div>
@@ -517,12 +544,7 @@ include_once "../Model/Conexao.php";
                           <input type="text" class="form-control" id="exampleInputEmail1" name="numero_indentidade">
                         </div>
                       </div>
-                      <div class="col-sm-2">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Complemento</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="complemento" >
-                        </div>
-                      </div>
+                 
                       <div class="col-sm-2">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Uf Identidade</label>
@@ -538,7 +560,7 @@ include_once "../Model/Conexao.php";
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Data Expedição Identidade</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="data_expedicao_identidade" >
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="data_expedicao" >
                         </div>
                       </div>
                     </div>
@@ -566,23 +588,25 @@ include_once "../Model/Conexao.php";
                           <input type="text" class="form-control" id="exampleInputEmail1" name="cpf"    >
                         </div>
                       </div>
-          
+              
                       <div class="col-sm-2">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Cartão Sus</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="cartao_sus" required="" disabled>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="cartao_sus" required="" >
                         </div>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-sm-6">
+                      <div class="col-sm-12">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Observações</label>
                           <textarea rows="3" class="form-control" id="exampleInputEmail1" name="observacao" required=""></textarea>
                        </div>
                       </div>
                       
-                    </div>
+                    </div>                    
+
+                    
                   
                  </div>
               </div>
@@ -590,119 +614,67 @@ include_once "../Model/Conexao.php";
 
               <div class="tab-pane fade" id="custom-tabs-two-settings" role="tabpanel" aria-labelledby="custom-tabs-two-settings-tab">
                   <div class="card-body">
+                 
+           
+            
                     <div class="row">
                       <div class="col-sm-3">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Codigo Escola</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo_escola" 
-                          required="">
+                          <label for="exampleInputEmail1">Escola</label>
+                         <select class="form-control"  name="escola" id="escola" >
+                          <option></option>
+                       <?php 
+                         $res_escola=lista_escola($conexao);
+                         foreach ($res_escola as $key => $value) {
+                             $idescola=$value['idescola'];
+                             $nome_escola=$value['nome_escola'];
+                             echo "<option value='$idescola'>$nome_escola </option>";
+                         }
+                         ?>
+                         </select>
                         </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Nome Escola</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="nome_escola" 
-                          required="" disabled>
+                          <label for="exampleInputEmail1">Série</label>
+                            <select class="form-control"  name="serie" id="idserie" onchange="listar_turmas_por_serie(this.value);">
+                            <option></option>
+
+                          <?php 
+                            $res_serie=lista_todas_series($conexao);
+                            foreach ($res_serie as $key => $value) {
+                                $id=$value['id'];
+                                $nome_serie=$value['nome'];
+                                echo "<option value='$id'>$nome_serie </option>";
+                            }
+                            ?>
+                            </select>
                         </div>
                       </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Codigo Calendario</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo_calendario" required="">
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Nome Calendario</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="nome_calendario" required="" disabled>
-                        </div>
-                      </div>
+                      
+
+                                                          
+
+                      <span id="turmas">
+                        <input type="hidden" name="turma" value="">
+                      </span>            
+
+                       <span id="etapa">
+                        <input type="hidden" name="etapa" value="">
+                    
+                      </span>
+                      
                     </div>
-                    <div class="row">
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Codigo Aluno</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo_aluno" 
-                          required="">
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Nome Aluno</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="nome_aluno" 
-                          required="" disabled>
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Codigo Etapa</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo_etapa" required="">
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Nome Etapa</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="nome_etapa" required="" disabled>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Codigo Curso</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo_curso" 
-                          required="">
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Nome Curso</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="nome_curso" 
-                          required="" disabled>
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Codigo Turno</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo_turno" required="">
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Nome Turno</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="nome_turno" required="" disabled>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Codigo Base Curricular</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo_base_curricular" 
-                          required="">
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Nome Base Curricular</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="nome_base_curricular" 
-                          required="" disabled>
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Codigo Situação</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo_situacao" required="">
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Nome Situação</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="nome_situacao" required="" disabled>
-                        </div>
-                      </div>
-                    </div>
-      
+      <br>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <button   class="btn btn-block btn-success " onclick="cadastro_aluno();">Cadastrar Aluno</button>
+
+         </div>
+        </div>
+        
+      </div>
                     <br>
                     <div class="row">
                       <div class="col-12">
@@ -819,13 +791,9 @@ include_once "../Model/Conexao.php";
 
 
 
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <button type="submit" class="btn btn-primary ">Incluir</button>
-                      </div>  
-                    </div>
+           
         </div>
-      </form>
+  
   
 
 </div>

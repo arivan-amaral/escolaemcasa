@@ -2,12 +2,20 @@
   session_start();
     include("../Model/Conexao.php");
     include("../Model/Aluno.php");
+    include("../Model/Coordenador.php");
     
 
 try {
 
     $professor_id=$_SESSION['idfuncionario'];
-
+ 
+    $res_turma=escola_associada($conexao,$professor_id); 
+    $array_escolas_coordenador=array();
+    $conta_escolas=0;
+    foreach ($res_turma as $key => $value) {
+      $array_escolas_coordenador[$conta_escolas]=$value['idescola'];
+      $conta_escolas++;
+    }
     $pesquisa=$_GET['pesquisa'];
 
       $result="
@@ -46,13 +54,56 @@ try {
                       <td>$matricula</td>
 
                       <td>
+                     
                         <b class='text-success'> $nome_aluno </b> <br> 
                         <b class='text-danger'> $nome_escola -</b> <b class='text-primary'>$nome_turma </b> 
                       </td>
                       
-                      <td>
-                        <a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma' class='d-block w-100 collapsed' > BOLETIM </a> </b> 
+                    
+
+
+
+                      <td class = 'text-right'>
+                          <div class = 'btn-group text-right'>
+                              <button type = 'button' class = 'btn btn-primary fs12 dropdown-toggle' data-toggle = 'dropdown' aria-expanded = 'false'> 
+                                  Opções
+                                  <span class = 'caret ml5'></span>
+                              </button>
+                              <ul class = 'dropdown-menu' role = 'menu'>
+                                  
+                                  <li>
+                                    <a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma'  target='_blank' class='dropdown-item'  > Boletim atual </a> </b>
+                                  </li>";
+                                
+                                if (in_array($idescola, $array_escolas_coordenador) ) { 
+
+                                $result.="
+                                  <li>
+                                  <form name='form$idaluno' action='tranferencia_aluno.php' method='post' target='_blank'>
+                                      <input type='hidden' name='aluno_id' value='$idaluno'>
+                                      <input type='hidden' name='escola_id' value='$idescola'>
+                                      <input type='hidden' name='turma_id' value='$idturma'>
+                                      <input type='hidden' name='serie_id' value='$idserie'>
+                                      <input type='hidden' name='nome_aluno' value='$nome_aluno'>
+                                      <button type='submit' class='dropdown-item'  >Transferência</button>
+                               
+                                  </form>
+                                  </li>";
+                                
+                                $result.="
+                                  <li>
+                                      <a href ='hitorico_aluno.php' class='dropdown-item' target='_blank' >Histórico</a>
+                                  </li>";
+                                }
+                                  
+                                 $result.="
+                              </ul>
+                          </div>
                       </td>
+
+
+                        
+             
                      
                       
 

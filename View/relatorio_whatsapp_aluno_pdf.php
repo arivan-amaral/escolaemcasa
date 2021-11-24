@@ -52,7 +52,9 @@ include'../Controller/Conversao.php';
 
 $conta=1;
 $res=$conexao->query("SELECT * from aluno,escola,ano_letivo,turma where 
+   ano_letivo.status_letivo=1 AND 
   ano_letivo.aluno_id = idaluno and 
+  ano_letivo.status_letivo = 1 and 
   ano_letivo.escola_id = escola.idescola and
   turma_id=turma.idturma
  order by escola.nome_escola asc, turma.nome_turma asc, aluno.nome asc limit 15000,5000");

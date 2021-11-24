@@ -1,8 +1,7 @@
 <?php
 session_start();
 include'../Model/Conexao.php';
-include'Conversao.php';
-
+include'../Controller/Conversao.php';
 
 
 function configuracao_api($conexao) {
@@ -11,7 +10,7 @@ function configuracao_api($conexao) {
       // foreach ($result as $key => $value) {
       //   $api=$value['api'];
       // }
-    return "https://api.z-api.io/instances/3A117DE24D29B0F8B947666635019963/token/740F08AA8EE356131716B00E/";
+    return "https://api.z-api.io/instances/3A2EC867CCA5E06B760AD6B4039C5465/token/362A03F940A28C5AE32AF9C4/";
  }
 
 function enviar_mensagem($conexao,$phone,$mensagem){
@@ -124,14 +123,106 @@ function restaurar_conexao_api($conexao){
  }
 
 
+
+
+function enviar_botao($conexao,$phone,$mensagem){
+   $url = configuracao_api($conexao)."send-button-list";
+   
+   $ch = curl_init($url);
+
+
+
+
+//  $body = '{
+//   "phone": "numero_aqui",
+//   "message": "Arivan, conseguiu isso através da API do whatsapp? caraca ele é foda mesmo, né?!",
+
+//   "buttonList": {
+//     "buttons": [
+//       {
+//         "id": "1",
+//         "label": "SOU EU!"
+//       },{
+//         "id": "1",
+//         "label": "NÃO SOU EU!"
+//       }
+//     ]
+//   }
+// }';
+
+
+
+
+$body = '{
+  "phone": "5511912341234",
+  "message": "Selecione e melhor opção:",
+  "optionList": {
+    "title": "Opções disponíveis",
+    "buttonLabel": "Abrir lista de opções",
+    "options": [
+      {
+        "id": "1",
+        "description": "Arivan é foda",
+        "title": "Resposta 1"
+      },
+      {
+        "id": "2",
+        "description": "Arivan é o cara",
+        "title": "Resposta 2"
+      },
+      {
+        "id": "3",
+        "description": "Arivan é o bicho da goiaba branca",
+        "title": "Resposta 4"
+      }
+    ]
+  }
+}';
+
+
+
+$decodificado = json_decode($body);
+if (!$decodificado) {
+    die('JSON invalido');
+}
+ 
+$decodificado->phone= $phone;
+$decodificado->message= $mensagem;
+
+$body = json_encode($decodificado);
+
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_VERBOSE, true);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_AUTOREFERER, false);
+    curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+    curl_setopt($ch, CURLOPT_HEADER, 0);        
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);        
+    curl_setopt($ch, CURLOPT_POST,true);        
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json; charset=utf-8')); 
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+    
+    $result = curl_exec($ch);
+    try {
+
+     print_r($result);
+     return $result;
+
+    } catch (HttpException $ex) {
+      echo"erro". $ex;
+     return $result;
+
+    }
+
+    curl_close($ch);
+}
+
 // ***************************************************************************************************************************
          
   $arquivo = file_get_contents('php://input');
   $json= json_decode($arquivo);
 
-  $phone= $json->phone;
-  $resposta_id= $json->referenceMessageId;
-  $mensagem_recebida=$json->text->message;
 
 //   {
 //   "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
@@ -151,10 +242,37 @@ function restaurar_conexao_api($conexao){
 //     "message": "teste"
 //   }
 // }
+// 
+// "location": {
+//     "longitude": -51.9375,
+//     "latitude": -23.4273,
+//     "url": "",
+//     "name": "",
+//     "address": "",
+//     "thumbnailUrl": ""
+//   },
+// }
+
+  $phone= $json->phone;
+  $resposta_id= $json->referenceMessageId;
+
+  $latitude=$json->location->latitude;
+  $longitude=$json->location->longitude;
+
+    $url=$json->location->url;
+    $name=$json->location->name;
+    $address=$json->location->address;
+    $thumbnailUrl=$json->location->thumbnailUrl;
+
+
+
 
   $conexao->exec("INSERT into mensagem_enviada (status,mensagem_id) VALUES ('$resposta_id','$mensagem_id')");
-  $mensagem="Agradecemos o contato: ". $mensagem_recebida;
-  enviar_mensagem($conexao,$phone,$mensagem);
+ $mensagem="⚠Sua localização foi recebida:\nENDEREÇO:$endereco\nLatitude:$latitude\nLongitude:$longitude";
+
+  //$mensagem="vc enviou : ". $mensagem_recebida;
+  //enviar_mensagem($conexao,'558999342837',$mensagem);
+   enviar_mensagem($conexao,$phone,$mensagem);
 
 
 // ***************************************************************************************************************************

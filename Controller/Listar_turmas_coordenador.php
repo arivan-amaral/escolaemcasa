@@ -80,6 +80,19 @@ $result="";
                                           BOLETIM
                                           </a>      
                                     ";
+                                          
+                                      $result.="
+                                     <form action='ata_resultado_final.php' method='post' target='_blank'>
+                                      <input type='hidden' name='idturma' value='$idturma'>
+                                      <input type='hidden' name='idescola' value='$idescola'>
+                                      <input type='hidden' name='idserie' value='$idserie'>
+                                      <input type='hidden' name='iddisciplina' value='$iddisciplina'>
+                                      <button  class='btn btn-danger btn-block btn-flat'>
+                                          <i class='fa fa-print'></i> 
+                                            ATA DE RESULTADOS FINAIS
+                                          </button> 
+                                      </form>     
+                                    ";
                                 $pes=listar_disciplina_da_turma($conexao,$idturma,$idescola);
 
                                 foreach ($pes as $chave => $linha) {

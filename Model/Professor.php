@@ -12,7 +12,9 @@
           turma.idturma,
           turma.nome_turma
          FROM turma, ano_letivo, aluno , escola, ministrada,disciplina,funcionario WHERE
+          ano_letivo.status_letivo=1 AND 
         aluno.idaluno=ano_letivo.aluno_id AND
+        ano_letivo.status_letivo=1 AND
         turma.idturma=ano_letivo.turma_id AND
         escola.idescola=ano_letivo.escola_id AND
 

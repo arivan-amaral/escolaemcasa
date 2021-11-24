@@ -125,7 +125,7 @@ order by  ed47_i_codigo asc,ed60_i_turma asc  offset $indice  limit $limite");
 
 					if ($quantidade_ano_letivo >1) {
 							$res_quantidade_ano_letivo=$conexao->exec("DELETE FROM ano_letivo where aluno_id=$idaluno limit 1");
-  			echo "<font color='red'> ALUNO EXCLUIDO DUPLICATA: id aluno $idaluno </font><br>";
+  					echo "<font color='red'> ALUNO EXCLUIDO DUPLICATA: id aluno $idaluno </font><br>";
 
 
 					}

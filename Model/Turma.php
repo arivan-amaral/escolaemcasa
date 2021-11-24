@@ -1,4 +1,41 @@
 <?php 
+
+
+
+   function listar_turmas_escola($conexao,$idescola,$idserie){
+  
+      $sql=$conexao->prepare("SELECT 
+         idturma,
+         serie.id as 'idserie',
+         serie.nome as 'nome_serie',
+         nome_turma,
+         nome_escola,
+         idescola
+        FROM ministrada,escola,turma,funcionario,serie WHERE
+
+      serie.id= turma.serie_id AND
+      ministrada.escola_id= escola.idescola AND
+      ministrada.professor_id= funcionario.idfuncionario and
+      ministrada.turma_id = turma.idturma 
+      AND escola_id= :idescola 
+      AND turma.serie_id= :idserie 
+
+      GROUP BY turma.idturma
+      ORDER BY turma.nome_turma
+      ");
+      $sql->bindParam("idescola",$idescola);
+      $sql->bindParam("idserie",$idserie);
+
+      $sql->execute();
+      return $sql->fetchAll();
+   }
+
+
+
+
+
+
+
    function listar_turmas_com_mesma_disciplinas_do_professor($conexao,$idescola,$idprofessor,$idserie,$iddisciplina){
     $sql= $conexao->query("SELECT * FROM ministrada,escola,turma,disciplina where
                            ministrada.turma_id=idturma and
