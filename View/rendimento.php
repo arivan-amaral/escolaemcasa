@@ -899,7 +899,7 @@ $nota_tri_3=0;
 $nota_av3_3='';
 $nota_rp_3='';
 
-foreach ($result_nota_aula2 as $key => $value) {
+foreach ($result_nota_aula3 as $key => $value) {
   if ($value['avaliacao']!='RP') {
      $nota_tri_3+=$value['nota'];
   }
