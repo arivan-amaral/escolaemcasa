@@ -86,8 +86,6 @@ else if ($idserie >3 && $idserie <=8) {
   }else{
 
 
-      echo "$numero";
-
       $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
       foreach ($res_alunos as $key => $value) {
         $idaluno=$value['idaluno'];
@@ -98,6 +96,7 @@ else if ($idserie >3 && $idserie <=8) {
         
         
 
+      echo "$numero";
            boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
 
          if ($numero%3==0 ) {
