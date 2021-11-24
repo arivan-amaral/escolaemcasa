@@ -39,6 +39,7 @@ include_once"cabecalho_boletim.php";
 
 <?php
 $numero=1;
+
 if ($idserie==3) {
   //echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
     $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
@@ -85,6 +86,7 @@ else if ($idserie >3 && $idserie <=8) {
   }else{
 
 
+      echo "$numero";
 
       $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
       foreach ($res_alunos as $key => $value) {
