@@ -39,7 +39,7 @@ $result="";
 
                                  <div class='card-header'>
                                    <h4 class='card-title w-100'>
-                                     <a class='d-block w-100 collapsed' data-toggle='collapse' href='#collapseOne$idturma' aria-expanded='false'> ". $nome_turma ."  <i class='right fas fa-angle-left'></i>
+                                     <a class='d-block w-100 collapsed' data-toggle='collapse' href='#collapseOne$idturma' aria-expanded='false' target='_blank'> ". $nome_turma ."  <i class='right fas fa-angle-left'></i>
                                      </a>
                                      </h4>
                                  </div>
@@ -49,33 +49,39 @@ $result="";
 
         
 
-                                        <a   href='coordenador_relatorio_video_aluno.php?idturma=$idturma&nome_turma=$nome_turma&idescola=$idescola&idserie=$idserie' class='btn btn-warning btn-block btn-flat'>
+                                        <a   href='coordenador_relatorio_video_aluno.php?idturma=$idturma&nome_turma=$nome_turma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat' target='_blank'>
                                           <i class='fa fa-play'></i> 
                                             VER RELATÓRIO DE VÍDEOS DE ALUNO
                                           </a>  
 
 
                            
-                                        <a   href='listar_alunos_da_turma.php?idturma=$idturma&nome_turma=$nome_turma&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat'>
+                                        <a   href='listar_alunos_da_turma.php?idturma=$idturma&nome_turma=$nome_turma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat' target='_blank'>
                                           <i class='fa fa-users'></i> 
                                             LISTAR ALUNOS DA TURMA
                                           </a> 
 
 
-                                          <a href='diario_conteudo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat'>
+                                          <a href='diario_conteudo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat' target='_blank'>
                                           <i class='fa fa-edit'></i> 
                                           CONTEÚDOS DE AULAS
                                           </a> ";
                                           if ($idserie<3) {
-                                          $result.="<a href='parecer_descritivo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat'>
+                                          $result.="<a href='parecer_descritivo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat' target='_blank'>
                                           <i class='fa fa-edit'></i> 
                                           PARECER DESCRITIVO
                                           </a> ";
                                             // code...
                                           }
 
+                                          if ($idserie>2 && $idserie< 8) {
+                                                $result.="<a href='habilidade.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-warning btn-block btn-flat' target='_blank'>
+                                                  <i class='fa fa-card'></i> 
+                                                  HABILIDADES
+                                                  </a>";
+                                          }
 
-                                          $result.="<a   href='boletim.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat'>
+                                          $result.="<a   href='boletim.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat' target='_blank'>
                                           <i class='fa fa-calendar'></i> 
                                           BOLETIM
                                           </a>      
@@ -93,7 +99,7 @@ $result="";
                                           </button> 
                                       </form>   
                                       <br>
-                                        
+
                                     ";
                                 $pes=listar_disciplina_da_turma($conexao,$idturma,$idescola);
 
@@ -104,7 +110,7 @@ $result="";
 
                                   $result.= "
                                   
-                                        <a   href='ver_conteudo_disciplina.php?iddisciplina=$iddisciplina&idturma=$idturma&nome_disciplina=$nome_disciplina&nome_turma=$nome_turma&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat'>
+                                        <a   href='ver_conteudo_disciplina.php?iddisciplina=$iddisciplina&idturma=$idturma&nome_disciplina=$nome_disciplina&nome_turma=$nome_turma&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat' target='_blank'>
                                           <i class='fa fa-book'></i> 
                                             $nome_disciplina -> $nome
                                           </a>      
