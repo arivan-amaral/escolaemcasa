@@ -100,16 +100,137 @@ $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
   
          <?php 
 
-          $disciplina_id="";
+          $iddisciplina="";
           foreach ($array_disciplina as $key => $value) {
-            $disciplina_id=$array_disciplina[$key];
+            $iddisciplina=$array_disciplina[$key];
             
         ?>
           <td width=42 valign=top style='width:31.15pt;border:none;border-right:solid black 1.0pt;
           background:#E0E0E0;padding:0cm 0cm 0cm 0cm;height:11.3pt'>
           <p class=TableParagraph align=center style='margin-top:1.85pt;margin-right:
           2.7pt;margin-bottom:0cm;margin-left:3.35pt;margin-bottom:.0001pt;text-align:
-          center'><span lang=PT style='font-size:8.0pt'>8.60</span></p>
+          center'><span lang=PT style='font-size:8.0pt'>
+            <?php
+
+             $result_nota_aula1=$conexao->query("
+               SELECT * FROM nota WHERE
+               escola_id=$idescola and
+               turma_id=$idturma and
+               disciplina_id=$iddisciplina and 
+               periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
+
+             $nota_tri_1=0;
+             $nota_av3_1='';
+             $nota_rp_1='';
+             foreach ($result_nota_aula1 as $key => $value) {
+               if ($value['avaliacao']!='RP') {
+                 $nota_tri_1+=$value['nota'];
+               }
+            // ***************************************
+               if ($value['avaliacao']=='av3') {
+                 $nota_av3_1=$value['nota'];
+               }
+               if ($value['avaliacao']=='RP') {
+                 $nota_rp_1=$value['nota'];
+               }
+             }
+             if ($nota_tri_1<5 && $nota_rp_1!='' && $nota_rp_1>$nota_av3_1) {
+              $nota_tri_1=($nota_tri_1-$nota_av3_1)+$nota_rp_1;
+            }
+
+            //echo "$nota_tri_1";
+            ?>
+
+
+
+ <?php
+
+      $result_nota_aula2=$conexao->query("
+        SELECT * FROM nota WHERE
+        escola_id=$idescola and
+        turma_id=$idturma and
+        disciplina_id=$iddisciplina and 
+        periodo_id=2 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
+
+
+      $nota_tri_2=0;
+      $nota_av3_2='';
+      $nota_rp_2='';
+      foreach ($result_nota_aula2 as $key => $value) {
+
+        if ($value['avaliacao']!='RP') {
+          $nota_tri_2+=$value['nota'];
+
+
+        }
+          // ***************************************
+        if ($value['avaliacao']=='av3') {
+          $nota_av3_2=$value['nota'];
+
+        }
+
+        if ($value['avaliacao']=='RP') {
+          $nota_rp_2=$value['nota'];
+
+
+        }
+
+      }
+
+      if ($nota_tri_2<5 && $nota_rp_2!='' && $nota_rp_2>$nota_av3_2) {
+       $nota_tri_2=($nota_tri_2-$nota_av3_2)+$nota_rp_2;
+     }
+
+    // echo "$nota_tri_2";
+     ?>
+
+
+
+      <?php
+
+   $result_nota_aula3=$conexao->query("
+     SELECT * FROM nota WHERE
+     escola_id=$idescola and
+     turma_id=$idturma and
+     disciplina_id=$iddisciplina and 
+     periodo_id=3 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
+
+
+   $nota_tri_3=0;
+   $nota_av3_3='';
+   $nota_rp_3='';
+   foreach ($result_nota_aula3 as $key => $value) {
+
+     if ($value['avaliacao']!='RP') {
+       $nota_tri_3+=$value['nota'];
+
+
+     }
+       // ***************************************
+     if ($value['avaliacao']=='av3') {
+       $nota_av3_3=$value['nota'];
+
+     }
+
+     if ($value['avaliacao']=='RP') {
+       $nota_rp_3=$value['nota'];
+
+
+     }
+
+   }
+
+   if ($nota_tri_3<5 && $nota_rp_3!='' && $nota_rp_3>$nota_av3_3) {
+    $nota_tri_3=($nota_tri_3-$nota_av3_3)+$nota_rp_3;
+  }
+    $media=($nota_tri_3+$nota_tri_2+$nota_tri_1)/3;
+
+    echo number_format($media, 1, '.', ',');
+  ?>
+
+
+
+      </span></p>
           </td>
         <?php 
         }
@@ -118,7 +239,18 @@ $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
   background:#E0E0E0;padding:0cm 0cm 0cm 0cm;height:11.3pt'>
   <p class=TableParagraph align=center style='margin-top:1.85pt;margin-right:
   10.25pt;margin-bottom:0cm;margin-left:11.6pt;margin-bottom:.0001pt;
-  text-align:center'><span lang=PT style='font-size:8.0pt'>Apr</span></p>
+  text-align:center'><span lang=PT style='font-size:8.0pt'>
+<?php 
+    if ($media >= 5) {
+         echo "Apr";
+    }else{
+         echo "Rep";
+
+    }
+?>
+
+
+</span></p>
   </td>
  </tr>
 
