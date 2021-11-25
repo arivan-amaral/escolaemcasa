@@ -70,8 +70,11 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
  <H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>
 
 <?php 
+                                      
+$idescola=$_POST['idescola'];
+$idturma=$_POST['idturma'];
 
-  ata_resultados_finais($conexao);
+  ata_resultados_finais($conexao,$idescola,$idturma);
 ?>
 
 </body>

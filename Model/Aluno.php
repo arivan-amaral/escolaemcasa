@@ -756,6 +756,7 @@ function listar_disciplina_aluno($conexao,$idaluno){
 function listar_disciplina_para_boletim($conexao,$idaluno){
   $res=$conexao->query("SELECT 
    disciplina.nome_disciplina,
+   disciplina.abreviacao,
    disciplina.iddisciplina,
    funcionario.nome as 'nome_professor',
    turma.idturma,
@@ -773,5 +774,25 @@ function listar_disciplina_para_boletim($conexao,$idaluno){
    ministrada.professor_id=funcionario.idfuncionario AND
    disciplina.facultativo=0 AND
    aluno.idaluno = $idaluno");
+  return $res;
+}
+
+function listar_disciplina_para_ata($conexao,$escola_id,$idturma){
+  $res=$conexao->query("SELECT 
+   disciplina.nome_disciplina,
+   disciplina.abreviacao,
+   disciplina.iddisciplina,
+   funcionario.nome as 'nome_professor',
+   turma.idturma,
+   turma.nome_turma
+   FROM turma,   escola, ministrada,disciplina,funcionario WHERE
+    ministrada.turma_id=turma.idturma AND
+   ministrada.escola_id=escola.idescola AND
+   ministrada.disciplina_id=disciplina.iddisciplina AND
+   ministrada.professor_id=funcionario.idfuncionario AND
+   disciplina.facultativo=0 AND
+   turma.idturma = $idturma and
+   escola.idescola = $escola_id
+   ");
   return $res;
 }
