@@ -252,10 +252,11 @@ function listar_vagas_turma_transferencia_aluno(){
 
 function pesquisa_aluno(){
     var result=document.getElementById('tabela_pesquisa');
+    var escola = document.getElementById('escola').value;
     var pesquisa = document.getElementById('pesquisa').value;
      
         var xmlreq = CriaRequest();
-        xmlreq.open("GET", "../Controller/Pesquisar_aluno.php?pesquisa="+pesquisa, true);
+        xmlreq.open("GET", "../Controller/Pesquisar_aluno.php?pesquisa="+pesquisa+"&escola="+escola, true);
 
         xmlreq.onreadystatechange = function(){
       

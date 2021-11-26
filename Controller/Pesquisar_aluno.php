@@ -16,7 +16,15 @@ try {
       $array_escolas_coordenador[$conta_escolas]=$value['idescola'];
       $conta_escolas++;
     }
+    $escola=$_GET['escola'];
     $pesquisa=$_GET['pesquisa'];
+
+    if ($escola =="Todas") {
+      $codigo_sql=" escola.nome_escola IS NOT NULL ";
+    }else{
+      $codigo_sql=" escola.idescola= $escola ";
+
+    }
 
       $result="
        <div class='card-body'>
@@ -30,9 +38,11 @@ try {
               </th>
             </tr>
           </thead>
-          <tbody>";
+          <tbody>
 
-               $result_aluno= pesquisar_aluno($conexao,$pesquisa );
+          ";
+
+               $result_aluno= pesquisar_aluno($conexao,$pesquisa,$codigo_sql );
                $cont=1;
                
                foreach ($result_aluno as $key => $value) {
@@ -40,13 +50,12 @@ try {
                 $nome_turma=($value['nome_turma']);
                 $idaluno=$value['idaluno'];
                 $matricula=$value['matricula'];
+                
                 $nome_escola=$value['nome_escola'];
-				$numero="";
-
-				$idescola=$value['idescola'];
-				$idturma=$value['idturma'];
-
-				$idserie=$value['idserie'];
+        				$numero="";
+        				$idescola=$value['idescola'];
+        				$idturma=$value['idturma'];
+        				$idserie=$value['idserie'];
 
 
                   $result.="
@@ -86,6 +95,20 @@ try {
                                       <input type='hidden' name='serie_id' value='$idserie'>
                                       <input type='hidden' name='nome_aluno' value='$nome_aluno'>
                                       <button type='submit' class='dropdown-item'  >Transferência</button>
+                               
+                                  </form>
+                                  </li>";
+
+
+                                $result.="
+                                  <li>
+                                  <form name='declaracao$idaluno' action='declaracao.php' method='post' target='_blank'>
+                                      <input type='hidden' name='aluno_id' value='$idaluno'>
+                                      <input type='hidden' name='escola_id' value='$idescola'>
+                                      <input type='hidden' name='turma_id' value='$idturma'>
+                                      <input type='hidden' name='serie_id' value='$idserie'>
+                                      <input type='hidden' name='nome_aluno' value='$nome_aluno'>
+                                      <button type='submit' class='dropdown-item'  >Declarações</button>
                                
                                   </form>
                                   </li>";

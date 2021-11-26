@@ -13,6 +13,9 @@ if (!isset($_SESSION['idfuncionario'])) {
   include "barra_horizontal.php";
   include 'menu.php';
   include 'alertas.php';
+  include_once '../Model/Coordenador.php';
+  include_once '../Model/Conexao.php';
+  include_once '../Model/Escola.php';
 
 
  
@@ -22,12 +25,11 @@ if (!isset($_SESSION['idfuncionario'])) {
  
 <div class="content-wrapper" style="min-height: 529px;">
     <!-- Content Header (Page header) -->
+    
     <div class="content-header">
       <div class="container-fluid">
-        <div class="row mb-2">
-       
+        <div class="row mb-2"> 
        <div class="col-sm-10 alert alert-warning">
-
          <h1 class="m-0"><b>
 
           <?php
@@ -51,10 +53,41 @@ if (!isset($_SESSION['idfuncionario'])) {
     </div>
     <!-- /.content-header -->
     <!-- Main content -->
+  <div class="container-fluid">
 
         <div class="row">
-           <div class="col-sm-1"></div> 
-           <div class="col-sm-8"> 
+           <div class="col-sm-4">
+            <label for="exampleInputEmail1">Filtrar por escola</label>
+              <select id="escola" class="form-control form-control">
+
+                  <option value="Todas" style='color: black; background-color:#A9A9A9;'>TODAS AS ESCOLAS</option>
+                  <?php 
+
+                  $res_turma=escola_associada($conexao,$idcoordenador); 
+                  $array_escolas_coordenador=array();
+                  $conta_escolas=0;
+                  foreach ($res_turma as $key => $value) {
+                    $array_escolas_coordenador[$conta_escolas]=$value['idescola'];
+                    $conta_escolas++;
+                  }
+                 $res_escola=lista_escola($conexao); 
+                 foreach ($res_escola as $key => $value) {
+                    $idescola=$value['idescola'];
+                    $nome_escola=$value['nome_escola'];
+                    if (in_array($idescola, $array_escolas_coordenador) ) { 
+                      echo"<option value='$idescola' style='color: black; background-color:#A9A9A9;'>$nome_escola </option>";
+                    }else{
+                      echo"<option value='$idescola'>$nome_escola </option>";
+
+                    }
+                 }
+
+
+                  ?>
+              </select>
+
+           </div> 
+           <div class="col-sm-6"> 
               <label for="exampleInputEmail1">Pesquisar aluno</label>
                 <input type="search" id="pesquisa" class="form-control form-control" 
                value="" placeholder="Pesquisar aluno">
@@ -96,7 +129,7 @@ const inputEle = document.getElementById('pesquisa');
 inputEle.addEventListener('keyup', function(e){
   var key = e.which || e.keyCode;
   if (key == 13) { // codigo da tecla enter
-   pesquisar_professor_associacao();
+   pesquisa_aluno();
   }
 });
 </script>

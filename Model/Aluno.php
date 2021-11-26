@@ -19,23 +19,26 @@ function quantidade_aluno_turma($conexao,$idturma,$idescola){
 }
 
 
-function pesquisar_aluno($conexao,$pesquisa ) {
-    $sql = $conexao->prepare("SELECT serie.id as 'idserie', idturma, idescola, escola.nome_escola,
+function pesquisar_aluno($conexao,$pesquisa,$codigo_sql ) {
+    $sql = $conexao->query("SELECT serie.id as 'idserie', idturma, idescola, escola.nome_escola,
         ano_letivo.idano_letivo as 'matricula', turma.nome_turma, aluno.nome, aluno.idaluno FROM aluno,ano_letivo,escola,turma,serie where
         ano_letivo.status_letivo=1 AND
         serie.id = turma.serie_id and 
         aluno.idaluno=ano_letivo.aluno_id and 
         escola.idescola = ano_letivo.escola_id and 
         turma.idturma = ano_letivo.turma_id and 
-        (aluno.idaluno = :idaluno OR aluno.nome like :nome_aluno) limit 50
+        $codigo_sql  and 
+        (aluno.idaluno like '$pesquisa' OR aluno.nome like '%$pesquisa%' ) limit 50
         ");
-    $pesquisa='%'.$pesquisa.'%';
-    $sql->execute(
-        array(
-            "nome_aluno"=>$pesquisa,
-            "idaluno"=>$pesquisa
-        )
-    );
+
+    // $pesquisa='%'.$pesquisa.'%';
+    // $sql->execute(
+    //     array(
+    //         "codigo_sql"=>$codigo_sql,
+    //         "nome_aluno"=>$pesquisa,
+    //         "idaluno"=>$pesquisa
+    //     )
+    // );
     return $sql->fetchAll();
 }
 
