@@ -19,6 +19,7 @@ $escola_id=$_POST['escola_id'];
 $turma_id=$_POST['turma_id'];
 $serie_id=$_POST['serie_id'];
 $nome_aluno=$_POST['nome_aluno'];
+$idfuncionario=$_SESSION['idfuncionario'];
 
 ?>
 
@@ -52,12 +53,28 @@ $nome_aluno=$_POST['nome_aluno'];
             <label for="exampleInputEmail1">Escola pretendida</label>
             <select class="form-control"  name="escola_id" id="escola" required onchange="listar_vagas_turma_transferencia_aluno()">
               <option></option>
+              <option value='ESCOLA FORA DO MUNICÍPIO' style='color: black; background-color:#8B0000;'>ESCOLA FORA DO MUNICÍPIO </option>
               <?php 
+              $res_turma=escola_associada($conexao,$idfuncionario); 
+              $array_escolas_coordenador=array();
+              $conta_escolas=0;
+              foreach ($res_turma as $key => $value) {
+                $array_escolas_coordenador[$conta_escolas]=$value['idescola'];
+                $conta_escolas++;
+              }
+
               $res_escola=lista_escola($conexao);
               foreach ($res_escola as $key => $value) {
                $idescola=$value['idescola'];
                $nome_escola=$value['nome_escola'];
-               echo "<option value='$idescola'>$nome_escola </option>";
+               
+                if (in_array($idescola, $array_escolas_coordenador) ) { 
+                  echo"<option value='$idescola' style='color: white; background-color:#A9A9A9;'>$nome_escola </option>";
+                }else{
+                    echo"<option value='$idescola'>$nome_escola </option>";
+                }
+
+               
              }
              ?>
            </select>
