@@ -75,7 +75,7 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
  word-wrap:break-word'>
 
  <H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>
-
+<input type="hidden" name="dfas" id="sds" value="dsafsd">
  <div class=WordSection1>
 
  <table class=MsoNormalTable border=2 cellspacing=0 cellpadding=0 
