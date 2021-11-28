@@ -2,7 +2,6 @@
 function ata_resultados_finais($conexao,$idescola,$idturma){
 
 ?>
-<table class='MsoNormalTable'>
 
 
  <tr style='height:21.9pt'>
@@ -39,12 +38,24 @@ function ata_resultados_finais($conexao,$idescola,$idturma){
   border-left:none;padding:0cm 0cm 0cm 0cm;height:21.9pt'>
   <p class=TableParagraph style='margin-top:.8pt;margin-right:0cm;margin-bottom:
   0cm;margin-left:5.75pt;margin-bottom:.0001pt'><b><span lang=PT
-  style='font-size:7.0pt;font-family:"Arial",sans-serif'><?php echo strtoupper($abreviacao); ?></span></b></p>
+  style='font-size:7.0pt;font-family:"Arial",sans-serif'>mnbnbh<?php echo strtoupper($abreviacao); ?></span></b></p>
   <p class=TableParagraph style='margin-top:3.3pt;margin-right:0cm;margin-bottom:
   0cm;margin-left:9.65pt;margin-bottom:.0001pt'><b><span lang=PT
 
   style='font-size:7.0pt;font-family:"Arial",sans-serif'>160</span></b></p>
   </td>
+
+  <!--  <td width=42 valign=top style='width:31.15pt;border:solid black 1.0pt;
+  border-left:none;padding:0cm 0cm 0cm 0cm;height:21.9pt'>
+  <p class=TableParagraph style='margin-top:.8pt;margin-right:0cm;margin-bottom:
+  0cm;margin-left:5.75pt;margin-bottom:.0001pt'><b><span lang=PT
+  style='font-size:7.0pt;font-family:"Arial",sans-serif'>mnbnbh<?php echo strtoupper($abreviacao); ?></span></b></p>
+  <p class=TableParagraph style='margin-top:3.3pt;margin-right:0cm;margin-bottom:
+  0cm;margin-left:9.65pt;margin-bottom:.0001pt'><b><span lang=PT
+
+  style='font-size:7.0pt;font-family:"Arial",sans-serif'>160</span></b></p>
+  </td>
+   -->
 <?php 
 
 }
@@ -61,7 +72,7 @@ function ata_resultados_finais($conexao,$idescola,$idturma){
  </tr>
 
  <tr >
-  <td width=19 valign=top style='width:14.15pt;border-top:none;border-left:
+  <td width=19 colspan="2" valign=top style='width:14.15pt;border-top:none;border-left:
   solid black 1.0pt;border-bottom:none;border-right:solid black 1.0pt;
   padding:0cm 0cm 0cm 0cm;height:10.95pt'>
   <p class=TableParagraph style='margin-top:.8pt;margin-right:0cm;margin-bottom:
@@ -298,32 +309,7 @@ $conta_aluno++;
  
   
 
-</table>
 
-</div>
-
-<span lang=PT style='font-size:1.0pt;font-family:"Arial MT",sans-serif'><br
-clear=all style='page-break-before:auto'>
-</span>
-
-<div class=WordSection3>
-
-<p class=MsoNormal style='margin-top:.25pt'><span style='position:relative;
-z-index:-1660650496'><span style='position:absolute;left:399px;top:-65px;
-width:121px;height:2px'><img width=121 height=2
-src="ata_ecidade_arquivos/image003.gif"></span></span><span style='position:
-relative;z-index:-1660649984'><span style='position:absolute;left:588px;
-top:-65px;width:121px;height:2px'><img width=121 height=2
-src="ata_ecidade_arquivos/image004.gif"></span></span></p>
-
-<span lang=PT style='font-size:7.0pt;font-family:"Arial MT",sans-serif'><br
-clear=all>
-</span>
-
-<p class=MsoBodyText style='margin-top:.45pt;margin-right:0cm;margin-bottom:
-0cm;margin-left:0cm;margin-bottom:.0001pt'></p>
-
-</div>
 <?php 
 }
 ?>

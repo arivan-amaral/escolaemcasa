@@ -115,7 +115,7 @@ try {
                                 
                                 $result.="
                                   <li>
-                                      <a href ='hitorico_aluno.php' class='dropdown-item' target='_blank' >Histórico</a>
+                                      <a href ='historico_aluno.php' class='dropdown-item' target='_blank' >Histórico</a>
                                   </li>";
                                 }
                                   
