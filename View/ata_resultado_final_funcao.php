@@ -38,7 +38,7 @@ function ata_resultados_finais($conexao,$idescola,$idturma){
   border-left:none;padding:0cm 0cm 0cm 0cm;height:21.9pt'>
   <p class=TableParagraph style='margin-top:.8pt;margin-right:0cm;margin-bottom:
   0cm;margin-left:5.75pt;margin-bottom:.0001pt'><b><span lang=PT
-  style='font-size:7.0pt;font-family:"Arial",sans-serif'>mnbnbh<?php echo strtoupper($abreviacao); ?></span></b></p>
+  style='font-size:7.0pt;font-family:"Arial",sans-serif'><?php echo strtoupper($abreviacao); ?></span></b></p>
   <p class=TableParagraph style='margin-top:3.3pt;margin-right:0cm;margin-bottom:
   0cm;margin-left:9.65pt;margin-bottom:.0001pt'><b><span lang=PT
 
