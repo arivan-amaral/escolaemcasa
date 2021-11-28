@@ -63,7 +63,7 @@ function ata_resultados_finais($conexao,$idescola,$idturma){
 
  
   
-  <td width=45 valign=top style='width:34.0pt;border:solid black 1.0pt;
+  <td  style='border:solid black 1.0pt;
   border-left:none;padding:0cm 0cm 0cm 0cm;height:21.9pt'>
   <p class=TableParagraph align=center style='margin-top:.8pt;margin-right:
   10.25pt;margin-bottom:0cm;margin-left:11.6pt;margin-bottom:.0001pt;
@@ -72,7 +72,7 @@ function ata_resultados_finais($conexao,$idescola,$idturma){
  </tr>
 
  <tr >
-  <td width=19 colspan="2" valign=top style='width:14.15pt;border-top:none;border-left:
+  <td width=19  valign=top style='width:14.15pt;border-top:none;border-left:
   solid black 1.0pt;border-bottom:none;border-right:solid black 1.0pt;
   padding:0cm 0cm 0cm 0cm;height:10.95pt'>
   <p class=TableParagraph style='margin-top:.8pt;margin-right:0cm;margin-bottom:

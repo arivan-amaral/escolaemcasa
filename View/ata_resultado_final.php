@@ -83,7 +83,7 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
   mso-padding-alt:0cm 3.5pt 0cm 3.5pt'>
 
   <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:15.75pt'>
-   <td width=83 nowrap rowspan=4 valign=top style='width:62.6pt;border:solid windowtext 1.0pt;
+   <td width=83 nowrap rowspan=1 valign=top style='width:62.6pt;border:solid windowtext 1.0pt;
    border-right:none;mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:
    solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;padding:
    0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
@@ -108,45 +108,34 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
    "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
    color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
    </td>
-   <td  colspan="12" valign=top style='border:1pt;border-top:
+
+   <td  colspan="12" valign=top style='border:1pt;border:
    solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;padding:0cm 3.5pt 0cm 3.5pt;
    height:15.75pt'>
    <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
    style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
    mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
    color:black;mso-fareast-language:PT-BR'>PREFEITURA LUÍS EDUARDO MAGALHÃES<o:p></o:p></span></b></p>
-   </td>
-  </tr>
 
-  <tr style='mso-yfti-irow:1;height:15.75pt'>
-   <td valign=top style='padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
      <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
      style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
      mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
      color:black;mso-fareast-language:PT-BR'>0 - ESCOLA MUNICIPAL ONERO COSTA DA
      ROSA - INEP 29001358<o:p></o:p></span></b></p>
-   </td>
-  </tr>
 
-  <tr style='mso-yfti-irow:2;height:20.25pt'>
-   <td  nowrap valign=top style='padding:0cm 3.5pt 0cm 3.5pt;
-   height:20.25pt'>
    <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
    style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
    mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
    color:black;mso-fareast-language:PT-BR'>JOÃO DOURADO, 230 - STA. CRUZ
    3628-4233 LUIS EDUARDO MAGALHÃES<o:p></o:p></span></b></p>
-   </td>
-  </tr>
-  <tr style='mso-yfti-irow:3;mso-yfti-lastrow:yes;height:15.75pt'>
-   <td   nowrap valign=top style='border:none;border-bottom:
-   solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
-   padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
+
    <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
    style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
    mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-   color:black;mso-fareast-language:PT-BR'>ESCOLAONEROCOSTA@HOTMAIL.COM - <a
+   color:black;mso-fareast-language:PT-BR'>ESCOLAONEROCOSTA@HOTMAIL.COM - 
+   <a
    href="http://luiseduardomagalhaes.ba.gov.br/">http://luiseduardomagalhaes.ba.gov.br/</a><o:p></o:p></span></b></p>
+   <br>
    </td>
   </tr>
 
