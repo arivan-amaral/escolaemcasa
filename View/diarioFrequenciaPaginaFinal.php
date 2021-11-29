@@ -763,7 +763,7 @@ for ($i=$conta_aula; $i < $limite_aula ; $i++) {
 
 
 <?php
-$presenca="-";
+$presenca="--";
 $conta_presenca=1;
  foreach ($array_aula as $key => $value) {
     $aula=$array_aula[$key];
@@ -781,10 +781,7 @@ $conta_presenca=1;
     if (isset($_GET['tokem'])) {
            $presenca="|SELECT presenca from frequencia where presenca=1 and aluno_id=$idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and data_frequencia='$data_frequencia' and aula='$aula'|".$res_pre->rowCount();
 
-     }elseif ($presenca !="."){
-      $presenca="-";
-      // $presenca="F";
-    }
+     }
    
   ?>
   
