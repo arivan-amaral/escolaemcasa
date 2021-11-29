@@ -47,7 +47,7 @@ $status=1;
   <section class="content">
     <div class="container-fluid">
       <!-- Info boxes -->
-      <form action="../Controller/Solicitacao_transferencia.php" method='post'>
+      <form action="pdf_declaracao.php" method='post' target="_blank">
         <input type="hidden" name="aluno_id" value="<?php echo $aluno_id; ?>" >
       <div class="row">
 
@@ -61,7 +61,7 @@ $status=1;
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                          <textarea name="nome" id="summernote" style="height: 245.719px;">
+                          <textarea name="texto_declaracao" id="summernote" style="height: 245.719px;">
                             <p class="MsoNormal" align="center" style="margin-top:0cm;margin-right:0cm;margin-bottom:21.3pt;margin-left:15.85pt;text-align:center;"><b><span style="font-size:10.0pt;line-height:107%;font-family:&quot;Arial&quot;,sans-serif;">Atestado de Frequência</span></b></p>
 <?php 
   $res_aluno= pesquisar_dados_aluno_por_id($conexao,$aluno_id,$ano,$status);

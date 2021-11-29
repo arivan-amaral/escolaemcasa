@@ -111,8 +111,9 @@ $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
   
          <?php 
 
-          $iddisciplina="";
-          foreach ($array_disciplina as $key => $value) {
+ $iddisciplina="";
+$media_aprovacao=true;
+  foreach ($array_disciplina as $key => $value) {
             $iddisciplina=$array_disciplina[$key];
             
         ?>
@@ -237,10 +238,14 @@ $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
     $media=($nota_tri_3+$nota_tri_2+$nota_tri_1)/3;
 
     echo number_format($media, 1, '.', ',');
-  ?>
+ 
+    
+    if ($media >= 5) {
+    }else{
+      $media_aprovacao=false;
 
-
-
+    }
+?>
       </span></p>
           </td>
         <?php 
@@ -252,9 +257,10 @@ $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
   10.25pt;margin-bottom:0cm;margin-left:11.6pt;margin-bottom:.0001pt;
   text-align:center'><span lang=PT style='font-size:8.0pt'>
 <?php 
-    if ($media >= 5) {
+    if ($media_aprovacao == true) {
          echo "Apr";
     }else{
+      $media_aprovacao=false;
          echo "Rep";
 
     }
