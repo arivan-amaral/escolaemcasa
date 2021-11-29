@@ -290,13 +290,13 @@ $conta_aluno++;
   0cm;margin-left:2.75pt;margin-bottom:.0001pt'><span lang=PT style='font-size:
   8.0pt'>MARIA VITORIA FERREIRA</span></p>
   </td>
-  <td width=461 colspan=12 valign=top style='width:345.45pt;border:none;
+<!--   <td width=461 colspan=12 valign=top style='width:345.45pt;border:none;
   border-right:solid black 1.0pt;padding:0cm 0cm 0cm 0cm;height:11.3pt'>
   <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
   0cm;margin-left:2.75pt;margin-bottom:.0001pt'><span lang=PT style='font-size:
   8.0pt'>TRANSFERIDO FORA<span style='letter-spacing:.05pt'> </span>em
   19/03/2020</span></p>
-  </td>
+  </td> -->
  </tr>
  <tr style='height:10.55pt'>
   <td width=321 colspan=4 valign=top style='border:solid black 1.0pt;
