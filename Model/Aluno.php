@@ -663,11 +663,166 @@ $sql->bindParam("necessidade_especial",$necessidade_especial);
 
  return $conexao;
 }
+ 
 
-	// function listar_video($conexao,$idturma,$iddisciplina,$data) {
-	//     $result = $conexao->query("SELECT * FROM video where id_turma=$idturma and id_disciplina=$iddisciplina and data_visivel <='$data' order by data_visivel asc   ");
-	//     return $result;
-	// }
+
+function editar_dados_aluno($conexao,$nome,
+    $sexo,
+    $email,
+    $filiacao1,
+    $filiacao2,
+ 
+    $whatsapp,
+    $whatsapp_responsavel,
+    $data_nascimento,
+
+    $numero_nis,
+    $codigo_inep,
+    $bolsa_familia,
+    $tipo_responsavel,
+    $raca_aluno,
+    $estado_civil_aluno,
+    $tipo_sanguinio_aluno,
+    $profissao,
+    $situacao_documentacao,
+    $tipo_certidao,
+    $numero_termo,
+    $folha,
+    $uf_cartorio,
+    $municipio_cartorio,
+    $nome_cartorio,
+    $numero_indentidade,
+    $uf_identidade,
+    $orgao_emissor_indentidade,
+    $data_expedicao,
+    $numero_cnh,
+    $categoria_cnh,
+    $cpf,
+    $cartao_sus,
+    $observacao,
+
+
+     $necessidade_especial,
+ $apoio_pedagogico,
+ $tipo_diagnostico,
+ $cpf_filiacao1,
+ $cpf_filiacao2,
+ $endereco,
+ $complemento,
+ $numero_endereco,
+ $uf_endereco,
+ $municipio_endereco,
+ $bairro_endereco,
+ $zona_endereco,
+ $cep_endereco,
+ $nacionalidade,
+ $pais,
+ $naturalidade,
+ $localidade,
+ $transposte_escolar,
+ $poder_publico_responsavel,
+ $recebe_escolaridade_outro_espaco,
+ $matricula_certidao,
+ $uf_municipio_cartorio,
+ $cartorio,
+ $idaluno
+) {
+
+    $sql=$conexao->prepare("UPDATE aluno SET 
+        nome= :nome, sexo=:sexo, email=:email, filiacao1=:filiacao1, filiacao2=:filiacao2, whatsapp = :whatsapp, whatsapp_responsavel=:whatsapp_responsavel, data_nascimento=:data_nascimento, numero_nis= :numero_nis, codigo_inep=:codigo_inep, bolsa_familia=:bolsa_familia, tipo_responsavel=:tipo_responsavel, raca_aluno= :raca_aluno, estado_civil_aluno=:estado_civil_aluno, tipo_sanguinio_aluno=:tipo_sanguinio_aluno, profissao= :profissao, situacao_documentacao=:situacao_documentacao, tipo_certidao=:tipo_certidao, numero_termo=:numero_termo, folha=:folha, uf_cartorio=:uf_cartorio, municipio_cartorio=:municipio_cartorio, nome_cartorio=:nome_cartorio, numero_indentidade=:numero_indentidade, uf_identidade=:uf_identidade, orgao_emissor_indentidade=:orgao_emissor_indentidade, data_expedicao=:data_expedicao, numero_cnh=:numero_cnh, categoria_cnh=:categoria_cnh, cpf=:cpf, cartao_sus=:cartao_sus, observacao=:observacao, 
+necessidade_especial=:necessidade_especial,
+ apoio_pedagogico=:apoio_pedagogico,
+ tipo_diagnostico=:tipo_diagnostico,
+ cpf_filiacao1=:cpf_filiacao1,
+ cpf_filiacao2=:cpf_filiacao2,
+ endereco=:endereco,
+ complemento=:complemento,
+ numero_endereco=:numero_endereco,
+ uf_endereco=:uf_endereco,
+ municipio_endereco=:municipio_endereco,
+ bairro_endereco=:bairro_endereco,
+ zona_endereco=:zona_endereco,
+ cep_endereco=:cep_endereco,
+ nacionalidade=:nacionalidade,
+ pais=:pais,
+ naturalidade=:naturalidade,
+ localidade=:localidade,
+ transposte_escolar=:transposte_escolar,
+ poder_publico_responsavel=:poder_publico_responsavel,
+ recebe_escolaridade_outro_espaco=:recebe_escolaridade_outro_espaco,
+ matricula_certidao=:matricula_certidao,
+ uf_municipio_cartorio=:uf_municipio_cartorio,
+ cartorio=:cartorio
+ WHERE idaluno=:idaluno
+
+");
+
+
+
+ $sql->bindParam("nome",$nome);
+ $sql->bindParam("sexo",$sexo);
+ $sql->bindParam("email",$email);
+ $sql->bindParam("filiacao1",$filiacao1);
+ $sql->bindParam("filiacao2",$filiacao2);
+ $sql->bindParam("whatsapp",$whatsapp);
+ $sql->bindParam("whatsapp_responsavel",$whatsapp_responsavel);
+ $sql->bindParam("data_nascimento",$data_nascimento);
+ $sql->bindParam("numero_nis",$numero_nis);
+ $sql->bindParam("codigo_inep",$codigo_inep);
+ $sql->bindParam("bolsa_familia",$bolsa_familia);
+ $sql->bindParam("tipo_responsavel",$tipo_responsavel);
+ $sql->bindParam("raca_aluno",$raca_aluno);
+ $sql->bindParam("estado_civil_aluno",$estado_civil_aluno);
+ $sql->bindParam("tipo_sanguinio_aluno",$tipo_sanguinio_aluno);
+ $sql->bindParam("profissao",$profissao);
+ $sql->bindParam("situacao_documentacao",$situacao_documentacao);
+ $sql->bindParam("tipo_certidao",$tipo_certidao);
+ $sql->bindParam("numero_termo",$numero_termo);
+ $sql->bindParam("folha",$folha);
+ $sql->bindParam("uf_cartorio",$uf_cartorio);
+ $sql->bindParam("municipio_cartorio",$municipio_cartorio);
+ $sql->bindParam("nome_cartorio",$nome_cartorio);
+ $sql->bindParam("numero_indentidade",$numero_indentidade);
+ $sql->bindParam("uf_identidade",$uf_identidade);
+ $sql->bindParam("orgao_emissor_indentidade",$orgao_emissor_indentidade);
+ $sql->bindParam("data_expedicao",$data_expedicao);
+ $sql->bindParam("numero_cnh",$numero_cnh);
+ $sql->bindParam("categoria_cnh",$categoria_cnh);
+ $sql->bindParam("cpf",$cpf);
+ $sql->bindParam("cartao_sus",$cartao_sus);
+ $sql->bindParam("observacao",$observacao);
+
+
+$sql->bindParam("necessidade_especial",$necessidade_especial);
+ $sql->bindParam("apoio_pedagogico",$apoio_pedagogico);
+ $sql->bindParam("tipo_diagnostico",$tipo_diagnostico);
+ $sql->bindParam("cpf_filiacao1",$cpf_filiacao1);
+ $sql->bindParam("cpf_filiacao2",$cpf_filiacao2);
+ $sql->bindParam("endereco",$endereco);
+ $sql->bindParam("complemento",$complemento);
+ $sql->bindParam("numero_endereco",$numero_endereco);
+ $sql->bindParam("uf_endereco",$uf_endereco);
+ $sql->bindParam("municipio_endereco",$municipio_endereco);
+ $sql->bindParam("bairro_endereco",$bairro_endereco);
+ $sql->bindParam("zona_endereco",$zona_endereco);
+ $sql->bindParam("cep_endereco",$cep_endereco);
+ $sql->bindParam("nacionalidade",$nacionalidade);
+ $sql->bindParam("pais",$pais);
+ $sql->bindParam("naturalidade",$naturalidade);
+ $sql->bindParam("localidade",$localidade);
+ $sql->bindParam("transposte_escolar",$transposte_escolar);
+ $sql->bindParam("poder_publico_responsavel",$poder_publico_responsavel);
+ $sql->bindParam("recebe_escolaridade_outro_espaco",$recebe_escolaridade_outro_espaco);
+ $sql->bindParam("matricula_certidao",$matricula_certidao);
+ $sql->bindParam("uf_municipio_cartorio",$uf_municipio_cartorio);
+ $sql->bindParam("cartorio", $cartorio);
+ $sql->bindParam("idaluno", $idaluno);
+ $sql->execute();
+
+ return $conexao;
+}
+
+	
 
 
 
@@ -678,6 +833,34 @@ function meus_dados_aluno($conexao,$idaluno){
 
 function dados_aluno($conexao,$idaluno){
   $res=$conexao->query("SELECT imagem.nome as 'foto', aluno.nome as 'nome',aluno.idaluno as 'idaluno', aluno.whatsapp, aluno.email,aluno.senha, aluno.whatsapp_responsavel FROM aluno,imagem where  id_aluno=idaluno and idaluno = $idaluno  ORDER by nome ASC");
+  return $res;
+}
+
+function pesquisar_dados_aluno_por_id($conexao,$idaluno,$ano,$status){
+  $res=$conexao->query("
+    SELECT 
+        aluno.nome as 'nome',
+        naturalidade,
+        uf_cartorio, 
+        data_nascimento,
+        filiacao1,
+        filiacao2,
+        nome_turma, 
+        nome_escola,
+        serie.nome as 'nome_serie' 
+    FROM 
+        aluno,ano_letivo,serie, turma, escola 
+    where 
+            turma.serie_id=serie.id and
+            escola_id=idescola and
+            turma_id=idturma and
+            aluno_id=idaluno and
+            ano_letivo.ano='$ano' and
+            ano_letivo.status_letivo=$status and
+            idaluno = $idaluno  
+
+            ");
+
   return $res;
 }
 

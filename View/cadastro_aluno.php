@@ -7,6 +7,7 @@ include_once "alertas.php";
 include_once "../Model/Conexao.php"; 
 include_once "../Model/Serie.php"; 
 include_once "../Model/Escola.php"; 
+include_once "../Model/Estado.php"; 
 
 
  
@@ -342,19 +343,28 @@ include_once "../Model/Escola.php";
                         </div>
                       </div>
                     </div>
+
                     <div class="row">
                       <div class="col-sm-2">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Uf</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="uf_endereco" required="">
+                          <select type="text" class="form-control" id="exampleInputEmail1" name="uf_endereco" required="" onchange="pesquisar_municipio(this.value,'municipio_endereco');">
+                            <option></option>
+                            <?php 
+                              $resultado_estado= listar_estado($conexao);
+                              foreach ($resultado_estado as $key => $value) {
+                                $idestado=$value['id'];
+                                $nome_estado=$value['nome'];
+                                echo "<option value='$idestado'> $nome_estado</option>";
+                              }
+                            ?>
+                          </select>
                         </div>
                       </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Município</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="municipio_endereco" required="">
-                        </div>
+                      <div class="col-sm-3"id="municipio_endereco">
+                        <!-- municipio aqui -->
                       </div>
+                      
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Bairro</label>
@@ -515,21 +525,24 @@ include_once "../Model/Escola.php";
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">UF cartorio</label><br>
-                          <select  class="form-control" required name="uf_cartorio">
-                            <option selected></option>
-                            <option value="1">----------</option>
+                          <select  class="form-control" required name="uf_cartorio"  onchange="pesquisar_municipio(this.value,'uf_municipio_cartorio');">
+                            <option></option>
+                            <?php 
+                              $resultado_estado= listar_estado($conexao);
+                              foreach ($resultado_estado as $key => $value) {
+                                $idestado=$value['id'];
+                                $nome_estado=$value['nome'];
+                                echo "<option value='$idestado'> $nome_estado</option>";
+                              }
+                            ?>
                           </select>
                         </div>
                       </div>
-                      <div class="col-sm-4">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Município</label><br>
-                          <select  class="form-control" name="uf_municipio_cartorio" required>
-                            <option selected></option>
-                            <option value="1">---------</option>
-                          </select>
-                        </div>
+
+                      <div class="col-sm-4" id="uf_municipio_cartorio">
+                        <!-- municipio aqui -->
                       </div>
+
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Cartórios</label><br>
@@ -548,7 +561,18 @@ include_once "../Model/Escola.php";
                       <div class="col-sm-2">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Uf Identidade</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="uf_identidade"  >
+                          <select class="form-control"  name="uf_identidade" >
+                            <option></option>
+
+                          <?php 
+                              $resultado_estado= listar_estado($conexao);
+                              foreach ($resultado_estado as $key => $value) {
+                                $idestado=$value['id'];
+                                $nome_estado=$value['nome'];
+                                echo "<option value='$idestado'> $nome_estado</option>";
+                              }
+                            ?>
+                          </select>
                         </div>
                       </div>
                       <div class="col-sm-2">

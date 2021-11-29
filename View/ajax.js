@@ -46,6 +46,26 @@ function CriaRequest() {
 
 
 
+function pesquisar_municipio(idestado,campo){
+        var xmlreq = CriaRequest();
+        var result=document.getElementById(campo);
+        var url = "nome_campo_id="+campo+"&idestado="+idestado;
+        result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
+        xmlreq.open("GET", "../Controller/Lista_municipio_ajax.php?"+url, true);
+        xmlreq.onreadystatechange = function(){
+         if (xmlreq.readyState == 4) {           
+             if (xmlreq.status == 200) {
+               result.innerHTML = xmlreq.responseText;              
+             }else{
+                alert('Erro desconhecido, verifique sua conexão com a internet');               
+             }
+         }
+     };
+     xmlreq.send(null);
+}
+
+
+
 function pesquisar_solicitacao_transferencia_por_escola(){
     var quantidade_pedido_transferencia=document.getElementById('quantidade_pedido_transferencia');
     var pedido_transferencia=document.getElementById('pedido_transferencia');
@@ -80,7 +100,16 @@ function pesquisar_solicitacao_transferencia_por_escola(){
 
 
 
-
+function alert_preencha_todos_campos(mensagem) {
+ Swal.fire({
+          position: 'center',
+          icon: 'info',
+          title: mensagem,
+             text: ' ',
+          showConfirmButton: false,
+          timer: 3000
+        });
+}
 
 function cadastro_aluno(){
   var ajax = new XMLHttpRequest();
@@ -100,17 +129,42 @@ function cadastro_aluno(){
   }
   
 
+   if (!!document.getElementsByName('uf_identidade')) {
+    var uf_identidade="";
+
+   }else{
+    var uf_identidade=document.getElementsByName('uf_identidade')[0].value;
+
+   }   
+
+   if (!!document.getElementsByName('uf_municipio_cartorio')) {
+    var uf_municipio_cartorio="";
+
+   }else{
+    var uf_municipio_cartorio=document.getElementsByName('uf_municipio_cartorio')[0].value;
+
+   }   
+
+   if (!!document.getElementsByName('uf_cartorio')) {
+    var uf_cartorio="";
+
+   }else{
+    var uf_cartorio=document.getElementsByName('uf_cartorio')[0].value;
+
+   }   
+
+   if (!!document.getElementsByName('municipio_endereco')) {
+    var municipio_endereco="";
+   }else{
+    var municipio_endereco=document.getElementsByName('municipio_endereco')[0].value;
+
+   }
+
+
   if (escola =='' || serie =='' || turma =='' ) {
-    alert(escola +"- "+ serie+"-"+turma)
+    //alert(escola +"- "+ serie+"-"+turma)
         tudo_certo=false;
-        Swal.fire({
-          position: 'center',
-          icon: 'info',
-          title: 'Preencha corretamente todos os campos de curso',
-             text: ' ',
-          showConfirmButton: false,
-          timer: 3000
-        });
+       alert_preencha_todos_campos('Preencha corretamente todos os campos de curso');
   }
 
  ajax.send(
@@ -140,11 +194,11 @@ function cadastro_aluno(){
   "&tipo_certidao="+document.getElementsByName('tipo_certidao')[0].value+
   "&numero_termo="+document.getElementsByName('numero_termo')[0].value+
   "&folha="+document.getElementsByName('folha')[0].value+
-  "&uf_cartorio="+document.getElementsByName('uf_cartorio')[0].value+
-  "&uf_municipio_cartorio="+document.getElementsByName('uf_municipio_cartorio')[0].value+
+  "&uf_cartorio="+uf_cartorio+
+  "&uf_municipio_cartorio="+uf_municipio_cartorio+
   "&cartorio="+document.getElementsByName('cartorio')[0].value+
   "&numero_indentidade="+document.getElementsByName('numero_indentidade')[0].value+
-  "&uf_identidade="+document.getElementsByName('uf_identidade')[0].value+
+  "&uf_identidade="+uf_identidade+
   "&orgao_emissor_indentidade="+document.getElementsByName('orgao_emissor_indentidade')[0].value+
   "&data_expedicao="+document.getElementsByName('data_expedicao')[0].value+
   "&numero_cnh="+document.getElementsByName('numero_cnh')[0].value+
@@ -162,7 +216,7 @@ function cadastro_aluno(){
  "&complemento="+document.getElementsByName('complemento')[0].value+
  "&numero_endereco="+document.getElementsByName('numero_endereco')[0].value+
  "&uf_endereco="+document.getElementsByName('uf_endereco')[0].value+
- "&municipio_endereco="+document.getElementsByName('municipio_endereco')[0].value+
+ "&municipio_endereco="+municipio_endereco+
  "&bairro_endereco="+document.getElementsByName('bairro_endereco')[0].value+
  "&zona_endereco="+document.getElementsByName('zona_endereco')[0].value+
  "&cep_endereco="+document.getElementsByName('cep_endereco')[0].value+
@@ -174,7 +228,7 @@ function cadastro_aluno(){
  "&poder_publico_responsavel="+document.getElementsByName('poder_publico_responsavel')[0].value+
  "&recebe_escolaridade_outro_espaco="+document.getElementsByName('recebe_escolaridade_outro_espaco')[0].value+
  "&matricula_certidao="+document.getElementsByName('matricula_certidao')[0].value+
- "&uf_municipio_cartorio="+document.getElementsByName('uf_municipio_cartorio')[0].value+
+
  "&cartorio="+document.getElementsByName('cartorio')[0].value
 
 

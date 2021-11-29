@@ -20,6 +20,8 @@ $turma_id=$_POST['turma_id'];
 $serie_id=$_POST['serie_id'];
 $nome_aluno=$_POST['nome_aluno'];
 $idfuncionario=$_SESSION['idfuncionario'];
+$ano=date("Y");
+$status=1;
 
 ?>
 
@@ -61,13 +63,26 @@ $idfuncionario=$_SESSION['idfuncionario'];
                         <div class="card-body">
                           <textarea name="nome" id="summernote" style="height: 245.719px;">
                             <p class="MsoNormal" align="center" style="margin-top:0cm;margin-right:0cm;margin-bottom:21.3pt;margin-left:15.85pt;text-align:center;"><b><span style="font-size:10.0pt;line-height:107%;font-family:&quot;Arial&quot;,sans-serif;">Atestado de Frequência</span></b></p>
-
-<p class="MsoNormal" style="margin-top:0cm;margin-right:3.25pt;margin-bottom:22.55pt;margin-left:19.6pt;text-align:justify;text-justify:inter-ideograph;text-indent:-.5pt;line-height:111%;"><span style="font-size:9.0pt;line-height:111%;font-family:&quot;Arial&quot;,sans-serif;">Atesto que ADRYANA DA SILVA ALMEIDA natural de LUIS EDUARDO MAGALHAES,
-no estado de BA, nascido(a) aos 31 dias de Julho do ano de 2009, filho(a) de
-CICERO DA SILVA ALMEIDA e VALDELICE SILVA DE ALMEIDA, está cursando a(o) 6º
-ANO, turma 6º ANO A - MATUTINO 2021 do(a) FUNDAMENTAL II (6º À 9ºANO) nesta
-escola.</span></p><p class="MsoNormal" style="margin-top:0cm;margin-right:3.25pt;margin-bottom:22.55pt;margin-left:19.6pt;text-align:justify;text-justify:inter-ideograph;text-indent:-.5pt;line-height:111%;"><div style="text-align: center;"><span style="font-family: Arial, sans-serif; font-size: 9pt; text-indent: -0.5pt;">__________________________________________________________________</span></div><span style="font-family: Arial, sans-serif; font-size: 9pt; text-align: left;"><div style="text-align: center;"><span style="font-size: 9pt; text-indent: -0.5pt;">OBS.: Declaro que
-o aluno está apto a cursar o 6º ano do ensino fundamental II</span></div></span></p><p></p></textarea>
+<?php 
+  $res_aluno= pesquisar_dados_aluno_por_id($conexao,$aluno_id,$ano,$status);
+  foreach ($res_aluno as $key => $value) {
+    $nome_aluno=$value['nome'];
+    $naturalidade=$value['naturalidade'];
+    $uf_naturalidade=$value['uf_cartorio'];
+    $data_nascimento= converte_data($value['data_nascimento']);
+  
+    $nome_escola=$value['nome_escola'];
+    $filiacao1=$value['filiacao1'];
+    $filiacao2=$value['filiacao2'];
+    $nome_serie=$value['nome_serie'];
+    $nome_turma=$value['nome_turma'];
+ ?>
+<p class="MsoNormal" style="margin-top:0cm;margin-right:3.25pt;margin-bottom:22.55pt;margin-left:19.6pt;text-align:justify;text-justify:inter-ideograph;text-indent:-.5pt;line-height:111%;"><span style="font-size:9.0pt;line-height:111%;font-family:&quot;Arial&quot;,sans-serif;">Atesto que <b> <?php echo $nome_aluno; ?> </b> natural de <?php echo $naturalidade .",". $uf_naturalidade; ?>, nascido(a) em <?php echo $data_nascimento; ?>, filho(a) de
+<?php echo $filiacao1.",". $filiacao2 ; ?>, está cursando a(o) <?php echo $nome_serie; ?>, <?php echo $nome_turma; ?>  na <b> <?php echo $nome_escola; ?> </b> </span></p><p class="MsoNormal" style="margin-top:0cm;margin-right:3.25pt;margin-bottom:22.55pt;margin-left:19.6pt;text-align:justify;text-justify:inter-ideograph;text-indent:-.5pt;line-height:111%;"><div style="text-align: center;"><span style="font-family: Arial, sans-serif; font-size: 9pt; text-indent: -0.5pt;"></span></div><span style="font-family: Arial, sans-serif; font-size: 9pt; text-align: left;"><div style="text-align: center;"><span style="font-size: 9pt; text-indent: -0.5pt;">OBS.: Declaro que ...<p></p><p></p><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;">____________________________________________________</span></div><div style="text-align: center;"><span style="font-size: 1rem;">LUÍS EDUARDO MAGALHÃES, <?php echo date("d/m/Y"); ?> </span></div></p><p><br></p>
+</textarea>
+<?php 
+}
+?>
 
                         </div>
                         <div class="card-footer">
