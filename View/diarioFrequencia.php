@@ -644,7 +644,7 @@ $conta_presenca=1;
       $presenca=".";
     }else{
       $presenca="";
-      // $presenca="F";
+       $presenca="-";
 
     }
    
