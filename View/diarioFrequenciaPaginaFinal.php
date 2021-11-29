@@ -721,7 +721,7 @@ for ($i=$conta_aula; $i < $limite_aula ; $i++) {
  </tr>
 
 
-<!-- ************************************************ARIVAN COMECO DAS LINHAS******************************************* -->
+<!-- ******************** ARIVAN COMECO DAS LINHAS ************************** -->
 
  
 <?php
@@ -763,7 +763,7 @@ for ($i=$conta_aula; $i < $limite_aula ; $i++) {
 
 
 <?php
-$presenca=".";
+$presenca="-";
 $conta_presenca=1;
  foreach ($array_aula as $key => $value) {
     $aula=$array_aula[$key];
@@ -776,12 +776,14 @@ $conta_presenca=1;
     if (isset($_GET['tokem'])) {
            $presenca="|SELECT presenca from frequencia where presenca=1 and aluno_id=$idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and data_frequencia='$data_frequencia' and aula='$aula'|".$res_pre->rowCount();
 
-     }elseif ($res_pre->rowCount()>0) {
+     }
+     foreach ($res_pre as $key_res_pre => $value_res_pre) {
       $presenca=".";
-    }else{
-      $presenca="";
-      // $presenca="F";
+     }
 
+    if ($presenca !="-"){
+      $presenca="-";
+      // $presenca="F";
     }
    
   ?>
@@ -1084,16 +1086,14 @@ foreach ($res_fre_t1 as $key => $value) {
   $quantidade_falta1=$value['quantidade'];
 }
 
-echo "$quantidade_falta1";
+//echo "$quantidade_falta1";
 ?>
              </span></b></p>
              </td>
-      <?php
-
+<?php
 
  echo"</tr>";
  $conta++;
-
 
 
 }
