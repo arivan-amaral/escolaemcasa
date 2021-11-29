@@ -62,7 +62,7 @@ $status=1;
                         <!-- /.card-header -->
                         <div class="card-body">
                           <textarea name="texto_declaracao" id="summernote" style="height: 245.719px;">
-                            <p class="MsoNormal" align="center" style="margin-top:0cm;margin-right:0cm;margin-bottom:21.3pt;margin-left:15.85pt;text-align:center;"><b><span style="font-size:10.0pt;line-height:107%;font-family:&quot;Arial&quot;,sans-serif;">Atestado de Frequência</span></b></p>
+                            <p class="MsoNormal" align="center" style="margin-top:0cm;margin-right:0cm;margin-bottom:21.3pt;margin-left:15.85pt;text-align:center;"><b><span style="font-size:10.0pt;line-height:107%;sans-serif;">Atestado de Frequência</span></b></p>
 <?php 
   $res_aluno= pesquisar_dados_aluno_por_id($conexao,$aluno_id,$ano,$status);
   foreach ($res_aluno as $key => $value) {
