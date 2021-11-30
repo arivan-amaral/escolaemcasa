@@ -83,8 +83,9 @@ foreach ($_POST['aluno_id'] as $key => $value) {
                         $aluno_id_bd=$value['aluno_id'];
                         $periodo_id_bd=$value['periodo_id'];
                         $data_nota_bd=$value['data_nota'];
+                        $funcionario_id_bd=$value['funcionario_id'];
                         
-                        if ( ($nota != $nota_bd) || ($sigla != $sigla_bd) ) {
+                        if ( ($nota != $nota_bd) || ($sigla != $sigla_bd) || $funcionario_id_bd=='' ) {
                            
                             $conexao->exec("
                              UPDATE nota SET
@@ -174,8 +175,9 @@ foreach ($_POST['aluno_id'] as $key => $value) {
                       $aluno_id_bd=$value['aluno_id'];
                       $periodo_id_bd=$value['periodo_id'];
                       $data_nota_bd=$value['data_nota'];
+                      $funcionario_id_bd=$value['funcionario_id'];
                         
-                        if ($nota != $nota_bd ) {
+                        if ( ($nota != $nota_bd) || $funcionario_id_bd=='') {
                            // $funcionario_id=0;
                             $conexao->exec("
                              UPDATE nota SET
