@@ -1822,7 +1822,7 @@ aguarde();
  function resultado_questao() {
 
     var result = document.getElementById("resultado_questao");
-    result.innerHTML="<img src='imagens/carregando.gif'>";
+    // result.innerHTML="<img src='imagens/carregando.gif'>";
 
     var questionario = document.getElementById("questionario").value;
     var aluno = document.getElementById("aluno").value;
