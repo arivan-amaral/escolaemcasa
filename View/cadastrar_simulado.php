@@ -130,6 +130,8 @@ $url_get=$array_url[1];
               $res_escola= escola_associada($conexao,$idprofessor);
               $result="";
               $array_serie=array();
+              $sql_escola = " AND ( ";
+
               foreach ($res_escola as $key => $value) {
                   $idescola=$value['idescola'];
 
@@ -161,7 +163,12 @@ $url_get=$array_url[1];
                         $array_serie[$idserie]=$nome_serie;
                         
                     }
+                  
+                  $sql_escola  .= " escola_id = $idescola OR ";
                 }
+
+                  $sql_escola  .= " escola_id = -1 ";
+
                 ?>
 
 
@@ -293,7 +300,8 @@ $url_get=$array_url[1];
           
 
             foreach ($array_serie as $key2 => $value2) {
-                $res_simulado=listar_simulado($conexao,$key2,$idprofessor);
+                // arivan
+                $res_simulado=listar_simulado($conexao,$key2,$sql_escola);
                 foreach ($res_simulado as $key => $value) {
                     $idquestionario=$value['id'];
                     $escola_id=$value['escola_id'];
@@ -312,6 +320,7 @@ $url_get=$array_url[1];
 
                     }
                     echo "
+
                     <tr style='background-color:$cor' id='linha$id'>
 
                     <td>

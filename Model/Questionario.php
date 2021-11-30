@@ -280,10 +280,15 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 
 
 
-	function listar_simulado($conexao,$idserie,$idprofessor){
-		$return=$conexao->query("SELECT * FROM questionario_simulado WHERE serie_id= $idserie and funcionario_id=$idprofessor ");
+	function listar_simulado($conexao,$idserie,$sql_escola){
+		$return=$conexao->query("SELECT * FROM questionario_simulado WHERE serie_id= $idserie   $sql_escola ) ");
 		return $return;
-	} 
+	 } 
+
+	// function listar_simulado($conexao,$idserie,$idprofessor){
+	// 	$return=$conexao->query("SELECT * FROM questionario_simulado WHERE serie_id= $idserie and funcionario_id=$idprofessor ");
+	// 	return $return;
+	// } 
 
 
 	function selecionar_questionario($conexao,$iddisciplina,$idturma){
