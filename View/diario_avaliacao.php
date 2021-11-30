@@ -48,6 +48,12 @@ if (!isset($_SESSION['idprofessor'])) {
   $idturma=$_GET['turm']; 
   $iddisciplina=$_GET['disc']; 
  $array_url=explode('p?', $_SERVER["REQUEST_URI"]);
+
+  $funcionario='';
+ if (isset($_GET['funcionario'])) {
+    $funcionario=$_GET['funcionario'];
+ }
+ // funcionario=secretaria
  $url_get=$array_url[1];
 ?>
 
@@ -136,7 +142,10 @@ if (!isset($_SESSION['idprofessor'])) {
 
     <div class="col-md-1"></div>
 
+<?php 
 
+if ($funcionario!='secretaria') {
+?>
           <div class="col-sm-10">
           <div class="form-group">
             <label for="exampleInputEmail1" style="color:red;">ATALHO PARA DIÁRIO DE AVALIAÇÃO EM OUTRAS TURMAS/DISCIPLINAS</label>
@@ -171,7 +180,9 @@ if (!isset($_SESSION['idprofessor'])) {
             </select>
           </div>
         </div>
-
+<?php 
+}
+?>
 
 </div>
 

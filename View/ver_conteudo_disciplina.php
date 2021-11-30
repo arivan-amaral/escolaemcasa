@@ -150,10 +150,22 @@ if (!isset($_SESSION['idfuncionario'])) {
                            <div class='card-body'>
 
 
-                           <a   href='listar_alunos_da_turma.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat'>
+                           <a   href='listar_alunos_da_turma.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat'>
                            <i class='fa fa-users'></i> 
                            Lista de alunos
                            </a> 
+
+
+                                <a class='btn btn-danger btn-block btn-flat'
+                                  href='diario_avaliacao.php?disc=$iddisciplina&turm=$idturma&turma=$nome_turma&disciplina=$nome_disciplina&idescola=$idescola&idserie=$idserie&funcionario=secretaria' target='_blank'>
+                                   <font style='vertical-align: inherit;'>
+                                     <font style='vertical-align: inherit;'> 
+                                         <ion-icon name='stats-chart-outline'></ion-icon>
+                                          Diário - Avaliação    
+                                       </font>
+                                   </font>
+                                 </a> 
+
 
 
                            <a  href='resultado_questionario.php?disc=$iddisciplina&turm=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat'>
@@ -167,22 +179,22 @@ if (!isset($_SESSION['idfuncionario'])) {
                            
 
 
-                           <a   href='diario_rendimento.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-info btn-block btn-flat'>
+                           <a   href='diario_rendimento.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat'>
                            <i class='fa fa-calendar'></i> 
                            RESULTADO FINAL
                            </a>
 
 
-                           <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-info btn-block btn-flat'>
+                           <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat'>
                            <i class='fa fa-calendar'></i> 
                            FICHA DE RENDIMENTO TRI I
                            </a> 
 
-                           <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=2' class='btn btn-info btn-block btn-flat'>
+                           <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=2' class='btn btn-secondary btn-block btn-flat'>
                            <i class='fa fa-calendar'></i> 
                            FICHA DE RENDIMENTO TRI II
                            </a>   
-                           <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=3' class='btn btn-info btn-block btn-flat'>
+                           <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=3' class='btn btn-secondary btn-block btn-flat'>
                            <i class='fa fa-calendar'></i> 
                            FICHA DE RENDIMENTO TRI III
                            </a>   
@@ -191,7 +203,7 @@ if (!isset($_SESSION['idfuncionario'])) {
 
                       
 
-                           <a class='btn btn-info btn-block btn-flat' href='diario_acompanhamento.php?disc=$iddisciplina&turm=$idturma&idescola=$idescola&idserie=$idserie' >
+                           <a class='btn btn-secondary btn-block btn-flat' href='diario_acompanhamento.php?disc=$iddisciplina&turm=$idturma&idescola=$idescola&idserie=$idserie' >
                              <font style='vertical-align: inherit;'>
 
                            <font style='vertical-align: inherit;'> 
@@ -257,6 +269,20 @@ if (!isset($_SESSION['idfuncionario'])) {
                                      Lista de alunos
                                    </a>      
                            
+
+
+
+                                <a class='btn btn-danger btn-block btn-flat'
+                                  href='diario_avaliacao.php?disc=$iddisciplina&turm=$idturma&turma=$nome_turma&disciplina=$nome_disciplina&idescola=$idescola&idserie=$idserie&funcionario=secretaria' target='_blank'>
+                                   <font style='vertical-align: inherit;'>
+                                     <font style='vertical-align: inherit;'> 
+                                         <ion-icon name='stats-chart-outline'></ion-icon>
+                                          Diário - Avaliação    
+                                       </font>
+                                   </font>
+                                 </a> 
+
+
                                 <a class='btn btn-info btn-block btn-flat'
 
                                        href='video_aula_disciplina_coordenado.php?disc=$iddisciplina&turm=$idturma&idescola=$idescola&idserie=$idserie' >
