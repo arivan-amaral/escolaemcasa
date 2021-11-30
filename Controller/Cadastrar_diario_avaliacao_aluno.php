@@ -3,7 +3,7 @@
     include("../Model/Conexao.php");
     include("../Model/Aluno.php");
     
-    $professor_id=$_SESSION['idfuncionario'];
+    $funcionario_id=$_SESSION['idfuncionario'];
 
     $idescola=$_POST['idescola'];
     $idturma=$_POST['idturma'];
@@ -11,6 +11,7 @@
     $idserie=$_POST['idserie'];
 
     $periodo=$_POST['periodo'];
+
    $data=date("Y-m-d");
    // $data=$_POST['data_avaliacao'];
     // $avaliacao=$_POST['avaliacao'];
@@ -82,15 +83,46 @@ foreach ($_POST['aluno_id'] as $key => $value) {
                         $aluno_id_bd=$value['aluno_id'];
                         $periodo_id_bd=$value['periodo_id'];
                         $data_nota_bd=$value['data_nota'];
-
-                        $conexao->exec("
+                        
+                        if ( ($nota != $nota_bd) || ($sigla != $sigla_bd) ) {
+                           
+                            $conexao->exec("
                              UPDATE nota SET
                              nota=$nota,
                              sigla='$sigla',
+                             funcionario_id=$funcionario_id,
                              parecer_descritivo='$parecer_descritivo'
                              WHERE 
                              idnota =$idnota_bd
                              ");
+                            
+                            // echo "string1:          UPDATE nota SET
+                            //  nota=$nota,
+                            //  sigla='$sigla',
+                            //  funcionario_id=$nota,
+                            //  parecer_descritivo='$parecer_descritivo'
+                            //  WHERE 
+                            //  idnota =$idnota_bd";
+                        }else{
+                             $conexao->exec("
+                             UPDATE nota SET
+                             nota=$nota,
+                             sigla='$sigla',
+                       
+                             parecer_descritivo='$parecer_descritivo'
+                             WHERE 
+                             idnota =$idnota_bd
+                             ");
+
+                             // echo "string2:  UPDATE nota SET
+                             // nota=$nota,
+                             // sigla='$sigla',
+                       
+                             // parecer_descritivo='$parecer_descritivo'
+                             // WHERE 
+                             // idnota =$idnota_bd";
+                        }
+
                        // echo "$idnota_bd - $avaliacao - $nota <br>";
                         $conta_qnt_siglas++;
 
@@ -106,7 +138,7 @@ foreach ($_POST['aluno_id'] as $key => $value) {
                       }
 
                       cadastro_nota($conexao,$nota, 
-                      $parecer_disciplina_id, $parecer_descritivo, $sigla,$idescola, $idturma, $iddisciplina, $aluno_id, $periodo, $data,$avaliacao);
+                      $parecer_disciplina_id, $parecer_descritivo, $sigla,$idescola, $idturma, $iddisciplina, $aluno_id, $periodo, $data,$avaliacao,$funcionario_id);
                   }
               }
 
@@ -125,7 +157,7 @@ foreach ($_POST['aluno_id'] as $key => $value) {
 
              if ($conta_total_nota ==0) {
                 cadastro_nota($conexao,$nota, 
-                      $parecer_disciplina_id, $parecer_descritivo, $sigla,$idescola, $idturma, $iddisciplina, $aluno_id, $periodo, $data,$avaliacao);
+                      $parecer_disciplina_id, $parecer_descritivo, $sigla,$idescola, $idturma, $iddisciplina, $aluno_id, $periodo, $data,$avaliacao,$funcionario_id);
              }else if ($conta_total_nota==1) {
 
                 $verifica_duplicidade=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$aluno_id,$periodo,$avaliacao);
@@ -142,14 +174,43 @@ foreach ($_POST['aluno_id'] as $key => $value) {
                       $aluno_id_bd=$value['aluno_id'];
                       $periodo_id_bd=$value['periodo_id'];
                       $data_nota_bd=$value['data_nota'];
-           
-                        $conexao->exec("
+                        
+                        if ($nota != $nota_bd ) {
+                           // $funcionario_id=0;
+                            $conexao->exec("
+                             UPDATE nota SET
+                             nota=$nota,
+                             funcionario_id=$funcionario_id,
+                             parecer_descritivo='$parecer_descritivo'
+                             WHERE 
+                             idnota =$idnota_bd
+                             ");
+
+                            // echo "string4:$nota != $nota_bd  UPDATE nota SET
+                            //  nota=$nota,
+                            //  funcionario_id=$funcionario_id,
+                            //  parecer_descritivo='$parecer_descritivo'
+                            //  WHERE 
+                            //  idnota =$idnota_bd <br>
+                            //  ";
+
+                        }else{
+
+                             $conexao->exec("
                              UPDATE nota SET
                              nota=$nota,
                              parecer_descritivo='$parecer_descritivo'
                              WHERE 
                              idnota =$idnota_bd
                              ");
+
+                             // echo " string5: $nota != $nota_bd
+                             // UPDATE nota SET
+                             // nota=$nota,
+                             // parecer_descritivo='$parecer_descritivo'
+                             // WHERE 
+                             // idnota =$idnota_bd <br>";
+                        }
 
                         // echo " UPDATE nota SET
                         //      nota=$nota,
@@ -184,7 +245,7 @@ foreach ($_POST['aluno_id'] as $key => $value) {
    $_SESSION['status']=1;
    $_SESSION['mensagem']='Dados inseridos';
 
-   header("location: ../View/diario_avaliacao.php?$url_get");
+  header("location: ../View/diario_avaliacao.php?$url_get");
 } catch (Exception $e) {
    $_SESSION['status']=0;
    echo "$e";

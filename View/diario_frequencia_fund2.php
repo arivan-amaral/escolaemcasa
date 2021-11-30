@@ -6,14 +6,13 @@ include_once"../Model/Aluno.php";
 
 include_once"diarioFrequencia.php";
 include_once"diarioFrequenciaPaginaFinal.php";
-
-
-
+include_once"diarioFrequenciaPaginaFinal_fund1.php";
 
 
 $idescola=$_GET['idescola'];
 $idturma=$_GET['idturma'];
 $iddisciplina=$_GET['iddisciplina'];
+$idserie=$_GET['idserie'];
 
 $inicio=0;
 $fim=35;
@@ -45,32 +44,63 @@ if ($periodo_id==1) {
     // code...
 }
 
-//linha 409 508 
-diario_frequencia($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$data_inicio_trimestre,$data_fim_trimestre); 
-echo"<BR>";
 
-$inicio=36;
-// $conta_aula=36;
-$conta_aula=36;
+if ($idserie<8) {
 
-$limite_data=18;
-$limite_aula=18;
+        //linha 409 508 
+        diario_frequencia($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$data_inicio_trimestre,$data_fim_trimestre); 
+        echo"<BR>";
 
-// $limite_data=18;
-// $limite_aula=18; 
-$conta_data=1; //não existia
-$fim= 17;
-// diario_frequencia_pagina_final($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie)
+        $inicio=36;
+        // $conta_aula=36;
+        $conta_aula=36;
+
+        $limite_data=18;
+        $limite_aula=18;
+
+        // $limite_data=18;
+        // $limite_aula=18; 
+        $conta_data=1; //não existia
+        $fim= 17;
+        // diario_frequencia_pagina_final($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie)
 
 
-//linha 428 600 760
-diario_frequencia_pagina_final($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
-    $conta_aula+0,
-    $conta_data+0,
-    $limite_data+0,
-    $limite_aula+0,
+        //linha 428 600 760
+        diario_frequencia_pagina_final_fund1($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
+            $conta_aula+0,
+            $conta_data+0,
+            $limite_data+0,
+            $limite_aula+0,
 
-    $periodo_id,$idserie,$data_inicio_trimestre,$data_fim_trimestre);
+            $periodo_id,$idserie,$data_inicio_trimestre,$data_fim_trimestre);
+}else{
+    //linha 409 508 
+        diario_frequencia($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$data_inicio_trimestre,$data_fim_trimestre); 
+        echo"<BR>";
 
+        $inicio=36;
+        // $conta_aula=36;
+        $conta_aula=36;
+
+        $limite_data=18;
+        $limite_aula=18;
+
+        // $limite_data=18;
+        // $limite_aula=18; 
+        $conta_data=1; //não existia
+        $fim= 17;
+        // diario_frequencia_pagina_final($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie)
+
+
+        //linha 428 600 760
+        diario_frequencia_pagina_final($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
+            $conta_aula+0,
+            $conta_data+0,
+            $limite_data+0,
+            $limite_aula+0,
+
+            $periodo_id,$idserie,$data_inicio_trimestre,$data_fim_trimestre);
+
+}
 
  ?>
