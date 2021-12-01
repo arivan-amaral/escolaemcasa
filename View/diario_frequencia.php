@@ -150,13 +150,13 @@ if (!isset($_SESSION['idprofessor'])) {
       <div class="row">
         <div class="col-sm-1"></div>
         
-        <!-- <div class="col-sm-4">
-          <div class="form-group"> -->
-            <!-- <label for="exampleInputEmail1">Data da aula</label> -->
-            <input hidden type="date" class="form-control" name="data_frequencia" id="data_frequencia" required="" min="2021-01-01" >
-            <!-- <input type="date" class="form-control" name="data_frequencia" id="data_frequencia" required="" onchange="lista_frequencia_aluno();"> -->
-          <!-- </div>
-        </div> -->   
+       <div class="col-sm-4">
+          <div class="form-group">
+             <label for="exampleInputEmail1">Data da aula</label>
+            <input  type="date" class="form-control" name="data_frequencia" id="data_frequencia" required="" min="2021-01-01" >
+           <!--  <input type="date" class="form-control" name="data_frequencia" id="data_frequencia" required="" onchange="lista_frequencia_aluno();"> -->
+           </div>
+        </div>    
 
         <div class="col-sm-4">
           <div class="form-group">

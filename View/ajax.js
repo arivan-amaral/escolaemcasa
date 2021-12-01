@@ -1809,7 +1809,7 @@ aguarde();
                  
              }else{
 
-                alert('Erro');
+                alert('Erro, verifique sua conexão com a internet');
                  
              }
          }
