@@ -81,8 +81,8 @@ try {
             $_SESSION['status']=0;
             $_SESSION['mensagem']='Alguma coisa deu errado!';
             $_SESSION['erro_sql']=$e;
-          //   echo "$e";
-          header("location: ../View/cadastrar_conteudo.php?$url_get");
+           echo "$e";
+          //header("location: ../View/cadastrar_conteudo.php?$url_get");
 
          }
 

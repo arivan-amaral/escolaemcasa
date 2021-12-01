@@ -428,6 +428,17 @@ function verificar_frequencia_na_data($conexao,$idescola,$idturma,$iddisciplina,
     return $resultado;
 }
 
+function verificar_frequencia_na_data_conteudo($conexao,$idescola,$idturma,$iddisciplina,$data_frequencia,$aula) {
+    $resultado=$conexao->query(" SELECT * FROM frequencia WHERE
+
+      data_frequencia='$data_frequencia' and 
+      disciplina_id=$iddisciplina and 
+      escola_id=$idescola and 
+      aula='$aula' and 
+      turma_id=$idturma group by data_frequencia limit 1");
+    return $resultado;
+}
+
 
 
 // ********************************************************************************
