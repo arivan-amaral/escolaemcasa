@@ -200,12 +200,12 @@ if (!isset($_SESSION['idprofessor'])) {
                   $aula=$value['aula'];
                   //echo"<option value='$data' >".converte_data($data)." - $aula </option>";
                   
-                  $res_freq=verificar_frequencia_na_data_conteudo($conexao,$idescola,$idturma,$iddisciplina,$data,$aula);
+                  // $res_freq=verificar_frequencia_na_data_conteudo($conexao,$idescola,$idturma,$iddisciplina,$data,$aula);
                   $background='';
-                  foreach ($res_freq as $key => $value) {
-                    $background='#2E8B57; color: white;';
+                  // foreach ($res_freq as $key => $value) {
+                  //   $background='#2E8B57; color: white;';
 
-                  }
+                  // }
 
                   echo"<option value='$data' style='background-color: $background'>".converte_data($data)." - $aula </option>";
                   
