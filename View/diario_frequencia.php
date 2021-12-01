@@ -5,16 +5,16 @@ session_start();
  
 if ($idserie< 8 && !isset($_COOKIE['notificado'])) {
     
-  echo "<script type='text/javascript'>
-      function modal_video() {
-          $(document).ready(function() {
-              $('#modal-video-frequencia').modal('show');
-            });
-      }
+  // echo "<script type='text/javascript'>
+  //     function modal_video() {
+  //         $(document).ready(function() {
+  //             $('#modal-video-frequencia').modal('show');
+  //           });
+  //     }
 
-      setTimeout('modal_video();',1000);
+  //     setTimeout('modal_video();',1000);
       
-  </script>";
+  // </script>";
  
   
 }
