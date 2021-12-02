@@ -3,7 +3,7 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
   ?>
  
 
-          <div class=WordSection1>
+          
 
             <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width=577
             style='width:432.85pt;border-collapse:collapse;border:none;mso-border-alt:
@@ -511,9 +511,6 @@ color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
     
     </table>
 
-    <p class=MsoNormal><o:p>&nbsp;</o:p></p>
-
-  </div>
 
 <?php 
 }
