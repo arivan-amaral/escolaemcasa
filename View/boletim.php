@@ -174,6 +174,7 @@ echo"<div class='pagebreak'> </div>";
       foreach ($res_alunos as $key => $value) {
         $idaluno=$value['idaluno'];
         $nome_aluno=$value['nome_aluno'];
+      echo "<input type='hidden' value='$numero'>";
     echo "$numero";
           boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
        
