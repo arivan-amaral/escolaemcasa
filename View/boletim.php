@@ -91,7 +91,7 @@ else if ($idserie >3 && $idserie <=8) {
         $idaluno=$value['idaluno'];
         $nome_aluno=$value['nome_aluno'];
 
-            //echo "" .$numero ."-";
+            echo "" .$numero ."-";
             // teste_boletim.php
         
         
