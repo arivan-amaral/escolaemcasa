@@ -11,7 +11,7 @@ set_time_limit(0);
   include"boletim_serie_1ano_id_3.php";
   include"boletim_fundamental_II.php";
   include"teste_boletim.php";
-  include('mpdf/mpdf60/mpdf.php');
+  //include('mpdf/mpdf60/mpdf.php');
 
 $idescola=$_GET['idescola'];
 $idturma=$_GET['idturma'];
@@ -97,7 +97,7 @@ else if ($idserie >3 && $idserie <=8) {
         
         
 
-      echo "<input type='hidden' value='$numero'>";
+      echo ". <input type='hidden' value='$numero'>";
            boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
 
          if ($numero%3==0 ) {
