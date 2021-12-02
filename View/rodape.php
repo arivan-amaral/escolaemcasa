@@ -2,7 +2,7 @@
 if ($_SESSION['cargo']=="Secretário" || $_SESSION['cargo']=="Coordenador"){
       echo "
         <script>
-            setInterval('pesquisar_solicitacao_transferencia_por_escola()',5000);
+            setInterval('pesquisar_solicitacao_transferencia_por_escola()',60000);
         </script>
       ";
 }
