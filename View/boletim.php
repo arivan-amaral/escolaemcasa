@@ -1,4 +1,5 @@
 <?php 
+set_time_limit(0);
   include"../Controller/Conversao.php";
   include"../Model/Conexao.php";
   include"../Model/Aluno.php";
