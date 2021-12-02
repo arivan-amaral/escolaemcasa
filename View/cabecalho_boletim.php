@@ -1,8 +1,6 @@
 <?php 
 if ($idserie > 8) {
 ?>
-
-
  <html xmlns:v="urn:schemas-microsoft-com:vml"
   xmlns:o="urn:schemas-microsoft-com:office:office"
   xmlns:w="urn:schemas-microsoft-com:office:word"
@@ -93,12 +91,12 @@ if ($idserie > 8) {
 
   </style>
 
-
   <link rel=dataStoreItem href="boletim_fundamental_II_arquivos/item0001.xml"
   target="boletim_fundamental_II_arquivos/props002.xml">
   <link rel=themeData href="boletim_fundamental_II_arquivos/themedata.thmx">
   <link rel=colorSchemeMapping
   href="boletim_fundamental_II_arquivos/colorschememapping.xml">
+  
 <style type="text/css">
 @page  
 { 

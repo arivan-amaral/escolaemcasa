@@ -97,7 +97,7 @@ else if ($idserie >3 && $idserie <=8) {
         
         
 
-      echo ". <input type='hidden' value='$numero'>";
+      echo "<input type='hidden' value='$numero'>";
            boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
 
          if ($numero%3==0 ) {
@@ -171,15 +171,21 @@ echo"<div class='pagebreak'> </div>";
 }else if ($idserie > 8) {
     //echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
     $numero=1;
+        echo "<input type='hidden' name='$numero' value='$numero'>";
+
       $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
       foreach ($res_alunos as $key => $value) {
         $idaluno=$value['idaluno'];
         $nome_aluno=$value['nome_aluno'];
-      echo "<input type='hidden' value='$numero'>";
+        //echo ". <input type='hidden' value='$numero'>";
+        echo "<input type='hidden' name='$numero' value='$numero'>";
+
     // echo "$numero";
           boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
        
        if ($numero%3==0 ) {
+        echo ".<input type='hidden' name='tt$numero' value='$numero'>";
+
             echo "<div class='pagebreak'> </div>";
             // echo "<br>";
             // echo "<br>";
