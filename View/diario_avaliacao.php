@@ -7,16 +7,16 @@ if (!isset($_COOKIE['video_nota'])) {
 
 }
 else if ($_COOKIE['video_nota']<6) {
-      echo"<script type='text/javascript'>
-      function modal_video() {
-          $(document).ready(function() {
-              $('#modal-video').modal('show');
-            });
-      }
+    //   echo"<script type='text/javascript'>
+    //   function modal_video() {
+    //       $(document).ready(function() {
+    //           $('#modal-video').modal('show');
+    //         });
+    //   }
 
-      setTimeout('modal_video();',500);
+    //   setTimeout('modal_video();',500);
       
-    </script>";
+    // </script>";
   setcookie('video_nota',$_COOKIE['video_nota']+1 );
 
   //$_COOKIE['video_nota']=$_COOKIE['video_nota']+1;
