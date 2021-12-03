@@ -840,7 +840,7 @@ function lista_avaliacao_ja_cadastrada_por_periodo(periodo){
                 botao_continuar.innerHTML=""+
                 "<div class='col-sm-1'></div>"+
                 "<div class='col-sm-10'>"+
-                  "<button type='submit' class='btn btn-block btn-primary'>Concluir</button>"+
+                  "<button type='submit' class='btn btn-block btn-primary' onclick='aguarde_tempo_dinamico(60000);'>Concluir</button>"+
                 "</div>";
                 
             }else{
@@ -1170,7 +1170,7 @@ function lista_avaliacao_aluno_por_data(){
                         botao_continuar.innerHTML=""+
                         "<div class='col-sm-1'></div>"+
                         "<div class='col-sm-10'>"+
-                          "<button type='submit' class='btn btn-block btn-primary' onclick='aguardando();'>Concluir</button>"+
+                          "<button type='submit' id='btn_diario_avaliacao' class='btn btn-block btn-primary'  onclick='aguarde_acao(60000);bloquear_botao();'>Concluir</button>"+
                         "</div>";
                         
                     }else{
@@ -2597,6 +2597,44 @@ function relatorio_de_visualizacao_video(idaluno,idturma,iddisciplina) {
      };
      xmlreq.send(null);
  }
+
+
+  function bloquear_botao(){
+    setTimeout(function () {
+        document.getElementById('btn_diario_avaliacao').disabled = true;
+        // body...
+    },1000);
+
+  }
+  function aguarde_acao(tempo){
+         let timerInterval
+         Swal.fire({
+           title: 'Aguarde, sua ação está sendo realizada!',
+           html: ' ',
+           timer: tempo,
+           timerProgressBar: true,
+           didOpen: () => {
+             Swal.showLoading()
+             timerInterval = setInterval(() => {
+               const content = Swal.getContent()
+               if (content) {
+                 const b = content.querySelector('b')
+                 if (b) {
+                   b.textContent = Swal.getTimerLeft()
+                 }
+               }
+             }, 100)
+           },
+           willClose: () => {
+             clearInterval(timerInterval)
+           }
+         }).then((result) => {
+           /* Read more about handling dismissals below */
+           if (result.dismiss === Swal.DismissReason.timer) {
+             console.log('I was closed by the timer')
+           }
+         })
+   }
 
 
   function aguarde(){
