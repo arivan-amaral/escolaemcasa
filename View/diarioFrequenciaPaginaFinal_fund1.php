@@ -736,7 +736,7 @@ for ($i=$conta_aula; $i < $limite_aula ; $i++) {
 
 
 <?php
-$presenca="--";
+$presenca="-";
 $conta_presenca=1;
  foreach ($array_aula as $key => $value) {
     $aula=$array_aula[$key];
