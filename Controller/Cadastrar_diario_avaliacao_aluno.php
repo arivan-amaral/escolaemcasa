@@ -3,7 +3,11 @@
     include("../Model/Conexao.php");
     include("../Model/Aluno.php");
     
-    $funcionario_id=$_SESSION['idfuncionario'];
+    if (!isset($_SESSION['idfuncionario'])) {
+        $funcionario_id=175;
+    }else{
+        $funcionario_id=$_SESSION['idfuncionario'];
+    }
 
     $idescola=$_POST['idescola'];
     $idturma=$_POST['idturma'];
