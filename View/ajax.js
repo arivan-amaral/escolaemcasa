@@ -1991,6 +1991,7 @@ function resposta_multipla_professor(id) {
 function resposta_multipla_professor_simulado(id) {
     var origem_questionario_id =  document.getElementById('origem_questionario_id').value;
     var texto_alternativa =  document.getElementById('alternativa'+id).value;
+    var link_erro =  document.getElementById('link'+id);
     var questao_alternativa =  document.getElementById('questao_alternativa'+id).value;
     var xmlreq = CriaRequest();
     xmlreq.open("GET", "../Controller/Responder_questionario_discursiva_professor_simulado.php?questao_alternativa="+questao_alternativa+"&origem_questionario_id="+origem_questionario_id+"&id="+id+"&texto_alternativa="+texto_alternativa, true);
@@ -2016,9 +2017,11 @@ function resposta_multipla_professor_simulado(id) {
                 });
                   
               }
+
           }
           else{
             alert("Erro, verifique sua conexão com a internet!");
+            link_erro.innerHTML="Ocorreu um erro, acesse o link abaixo, vai aparecer uma mensagem (CERTO) <BR> <a target='_blank' href='../Controller/Responder_questionario_discursiva_professor_simulado.php?questao_alternativa="+questao_alternativa+"&origem_questionario_id="+origem_questionario_id+"&id="+id+"&texto_alternativa="+texto_alternativa+"'> Clique aqui para Marcar essa questão</a>";
             }
         }
     };

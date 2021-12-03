@@ -295,6 +295,7 @@ $url_get=$array_url[1];
            "; 
 
          }
+         echo"<p id='link$id'></p>";
          $cont++;
        }
 
