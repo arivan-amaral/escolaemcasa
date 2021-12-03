@@ -81,7 +81,7 @@ $result="";
                                                   </a>";
                                           }
 
-                                          $result.="<a   href='boletim.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat' target='_blank'>
+                                          $result.="<a   href='boletim.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1&tokem_teste=reee' class='btn btn-secondary btn-block btn-flat' target='_blank'>
                                           <i class='fa fa-calendar'></i> 
                                           BOLETIM
                                           </a>      

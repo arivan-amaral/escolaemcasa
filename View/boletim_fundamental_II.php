@@ -115,7 +115,7 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
         mso-border-alt:solid windowtext .5pt;padding:0cm 3.5pt 0cm 3.5pt;height:17.25pt'>
         <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
         line-height:normal'><span style='font-family:"Arabic Typesetting";mso-fareast-font-family:
-        "Times New Roman";color:black;mso-fareast-language:PT-BR'>NF<o:p></o:p></span></p>
+        "Times New Roman";color:black;mso-fareast-language:PT-BR'>NF<o:p> </o:p></span></p>
       </td>
       <td width=229 nowrap valign=top style='width:171.5pt;border-top:none;
       border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -494,10 +494,10 @@ color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
       <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
         style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
         mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-        mso-fareast-language:PT-BR'>Resultado Final:<o:p></o:p></span></p>
+        mso-fareast-language:PT-BR'>Resultado Final:<o:p><?php //echo $nota_tri_1 + $nota_tri_2 + $nota_tri_3; ?></o:p></span></p>
       </td>
     </tr>
-    <![if !supportMisalignedColumns]>
+   
      <tr height=0>
       <td width=71 style='border:none'></td>
       <td width=103 style='border:none'></td>

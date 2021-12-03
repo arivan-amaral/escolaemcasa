@@ -583,7 +583,7 @@ setTimeout('dia_doservidor_publico();',3000);
                                                   </a>"; 
                                                 }
 
-                                             echo " <a class='btn btn-secondary btn-block btn-flat' href='boletim.php?idescola=$idescola&idturma=$idturma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie' onclick=alert('chat desabilitado');>
+                                             echo " <a class='btn btn-secondary btn-block btn-flat' href='boletim.php?idescola=$idescola&idturma=$idturma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie&tokem_teste=reee' >
                                                     <font style='vertical-align: inherit;'>
                                                      <font style='vertical-align: inherit;'> 
                                                        <i class='fa fa-calendar'></i>
