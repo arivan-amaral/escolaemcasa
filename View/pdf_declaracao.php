@@ -162,6 +162,10 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
   </tr>
   <tr>
   <td colspan="2" >
+    <br>
+    <br>
+    <br>
+    <br>
   <p class="text-justify">
 
 <?php

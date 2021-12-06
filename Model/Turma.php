@@ -85,6 +85,13 @@ function lista_de_turmas($conexao,$serie_id){
     return $result;
 
 }
+// function pesquisar_turma_por_escola_por_id($conexao,$idescola,$idturma){
+
+//    $result = $conexao->query("SELECT * FROM turma,escola where serie_id=$serie_id  ORDER BY nome_turma asc");
+
+//     return $result;
+
+// }
 
 function lista_turma($conexao){
 

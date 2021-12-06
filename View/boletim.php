@@ -76,15 +76,15 @@ else if ($idserie >3 && $idserie <=8) {
     
   
   if (isset($_GET['tokem_teste'])) {
-    $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
-    foreach ($res_alunos as $key => $value) {
-      $idaluno=$value['idaluno'];
-      $nome_aluno=$value['nome_aluno'];
-      echo "$idaluno - $nome_aluno <br>";
-      teste_boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
-    }
+  //   $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
+  //   foreach ($res_alunos as $key => $value) {
+  //     $idaluno=$value['idaluno'];
+  //     $nome_aluno=$value['nome_aluno'];
+  //    // echo "$idaluno - $nome_aluno <br>";
+  //     teste_boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
+  //   }
 
-  }else{
+  // }else{
 
 
       $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);

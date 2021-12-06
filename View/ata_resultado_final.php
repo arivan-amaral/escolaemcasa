@@ -1,7 +1,17 @@
 <?php 
 include_once '../Model/Conexao.php';
 include_once '../Model/Aluno.php';
+include_once '../Model/Turma.php';
 include_once 'ata_resultado_final_funcao.php';
+ 
+$idescola=$_POST['idescola'];
+$idturma=$_POST['idturma'];
+
+ 
+  $nome_escola=$_POST['nome_escola'];
+  $nome_turma=$_POST['nome_turma'];
+ 
+
 ?>
 <html xmlns:v="urn:schemas-microsoft-com:vml"
 xmlns:o="urn:schemas-microsoft-com:office:office"
@@ -26,27 +36,7 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
 <style>
 
     
-      @media print {
-          body {
-            background: none;
-            -ms-zoom: 1.665;
-          }
-          div.portrait, div.landscape {
-            margin-left: 100;
-          
-            padding: 0;
-            border: none;
-            background: none;
-            size: 4in 6in landscape;
-          }
-          div.landscape {
-            transform: rotate(270deg) translate(-220mm, 0);
-            transform-origin: 0 0;
-          }
-
-        }
-
-   
+  
 
         table { page-break-inside:auto }
         tr    { page-break-inside:avoid; page-break-after:auto }
@@ -54,33 +44,39 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
         tfoot { display:table-footer-group }
 
 
-    @media print {
-
+      @media print {
         .pagebreak { page-break-before: always; } /* page-break-after works, as well */
       }
 
 </style>
 
- 
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
 </head>
-
-<body lang=PT-BR  >
-
 
 
  </head>
 
- <body lang=PT-BR link="#0563C1" vlink="#954F72" style='tab-interval:35.4pt;
- word-wrap:break-word'>
+ <body>
+
+<div class="content-wrapper" style="min-height: 529px;background-color: white;">
+ <section class="content">
+    <div class="container-fluid">
+<br>
 
  <H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>
-<input type="hidden" name="dfas" id="sds" value="dsafsd">
+
  <div class=WordSection1>
 
- <table class=MsoNormalTable border=2 cellspacing=0 cellpadding=0 
-  style='border-collapse:collapse;
-  mso-padding-alt:0cm 3.5pt 0cm 3.5pt'>
+ <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 
+  style='width: 80%;'>
 
   <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:15.75pt'>
    <td width=83 nowrap rowspan=1 valign=top style='width:62.6pt;border:solid windowtext 1.0pt;
@@ -98,7 +94,7 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
     <tr>
      <td></td>
      <td>
-      <img width=60 height=75 src="file_cabecalho_II_arquivos/image002.jpg"
+      <img width=60 height=75 src="imagens/logo.png"
      v:shapes="Imagem_x0020_2"></td>
     </tr>
    </table>
@@ -110,9 +106,9 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
    </td>
 
    <td  colspan="12" valign=top style='border:1pt;border:
-   solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;padding:0cm 3.5pt 0cm 3.5pt;
-   height:15.75pt'>
-   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
+   solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;padding:10pt 3.5pt 0cm 3.5pt;
+   height:15.75pt; text-align: center;'>
+   <p class=MsoNormal style='margin-bottom:9pt;line-height:normal'><b><span
    style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
    mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
    color:black;mso-fareast-language:PT-BR'>PREFEITURA LUÍS EDUARDO MAGALHÃES<o:p></o:p></span></b></p>
@@ -120,21 +116,24 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
      <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
      style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
      mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-     color:black;mso-fareast-language:PT-BR'>0 - ESCOLA MUNICIPAL ONERO COSTA DA
-     ROSA - INEP 29001358<o:p></o:p></span></b></p>
+     color:black;mso-fareast-language:PT-BR'><?php echo "$nome_escola"; ?><o:p></o:p></span></b></p>
+     <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
+     style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+     mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+     color:black;mso-fareast-language:PT-BR'>TURMA: <?php echo "$nome_turma"; ?><o:p></o:p></span></b></p>
 
-   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
+   <!-- <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
    style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
    mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
    color:black;mso-fareast-language:PT-BR'>JOÃO DOURADO, 230 - STA. CRUZ
-   3628-4233 LUIS EDUARDO MAGALHÃES<o:p></o:p></span></b></p>
+   3628-4233 LUIS EDUARDO MAGALHÃES<o:p></o:p></span></b></p> -->
 
-   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
+<!--    <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
    style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
    mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
    color:black;mso-fareast-language:PT-BR'>ESCOLAONEROCOSTA@HOTMAIL.COM - 
    <a
-   href="http://luiseduardomagalhaes.ba.gov.br/">http://luiseduardomagalhaes.ba.gov.br/</a><o:p></o:p></span></b></p>
+   href="http://luiseduardomagalhaes.ba.gov.br/">http://luiseduardomagalhaes.ba.gov.br/</a><o:p></o:p></span></b></p> -->
    <br>
    </td>
   </tr>
@@ -149,8 +148,16 @@ $idturma=$_POST['idturma'];
 </table>
 
 </div>
+<br>
 
-
-
+<center>
+<footer class="no-print">
+  <i class="fa fa-print"></i>
+  <a href='#'class="btn  btn-primary " onclick='print();'>IMPRIMIR</a> <br><br>
+</footer>
+</center>
+    </div>
+  </session>
+</div>
 </body>
 </html>

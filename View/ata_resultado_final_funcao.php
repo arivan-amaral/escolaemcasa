@@ -4,7 +4,7 @@ function ata_resultados_finais($conexao,$idescola,$idturma){
 ?>
 
 
- <tr style='height:21.9pt'>
+ <tr style='width:80%'>
  
   <td width=19 valign=top style='width:14.15pt;border:solid black 1.0pt;
   padding:0cm 0cm 0cm 0cm;height:21.9pt'>
@@ -94,17 +94,24 @@ $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
   $idaluno=$value['idaluno'];
   $nome_aluno=$value['nome_aluno'];
 
+  if ($conta_aluno%2==0) {
+    $cor_linha="#E0E0E0";
+  }else{
+    $cor_linha="white";
+
+  }
+
 ?>
  <tr style='height:11.3pt'>
   
   <td width=19 valign=top style='width:14.15pt;border-top:none;border-left:
   solid black 1.0pt;border-bottom:none;border-right:solid black 1.0pt;
-  background:#E0E0E0;padding:0cm 0cm 0cm 0cm;height:11.3pt'>
+  background:<?php echo "$cor_linha"; ?>;padding:0cm 0cm 0cm 0cm;height:11.3pt'>
   <p class=TableParagraph style='margin-left:5.3pt'><span lang=PT
   style='font-size:8.0pt'><?php echo "$conta_aluno"; ?></span></p>
   </td>
   <td width=246 valign=top style='width:184.25pt;border:none;border-right:solid black 1.0pt;
-  background:#E0E0E0;padding:0cm 0cm 0cm 0cm;height:11.3pt'>
+  background:<?php echo "$cor_linha"; ?>;padding:0cm 0cm 0cm 0cm;height:11.3pt'>
   <p class=TableParagraph style='margin-left:2.75pt'><span lang=PT
   style='font-size:8.0pt'><?php echo $nome_aluno; ?></span></p>
   </td>
@@ -115,10 +122,10 @@ $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
 $media_aprovacao=true;
   foreach ($array_disciplina as $key => $value) {
             $iddisciplina=$array_disciplina[$key];
-            
+         
         ?>
           <td width=42 valign=top style='width:31.15pt;border:none;border-right:solid black 1.0pt;
-          background:#E0E0E0;padding:0cm 0cm 0cm 0cm;height:11.3pt'>
+          background:<?php echo "$cor_linha"; ?>;padding:0cm 0cm 0cm 0cm;height:11.3pt'>
           <p class=TableParagraph align=center style='margin-top:1.85pt;margin-right:
           2.7pt;margin-bottom:0cm;margin-left:3.35pt;margin-bottom:.0001pt;text-align:
           center'><span lang=PT style='font-size:8.0pt'>
@@ -252,7 +259,7 @@ $media_aprovacao=true;
         }
         ?>
   <td width=45 valign=top style='width:34.0pt;border:none;border-right:solid black 1.0pt;
-  background:#E0E0E0;padding:0cm 0cm 0cm 0cm;height:11.3pt'>
+  background:<?php echo "$cor_linha"; ?>;padding:0cm 0cm 0cm 0cm;height:11.3pt'>
   <p class=TableParagraph align=center style='margin-top:1.85pt;margin-right:
   10.25pt;margin-bottom:0cm;margin-left:11.6pt;margin-bottom:.0001pt;
   text-align:center'><span lang=PT style='font-size:8.0pt'>
@@ -277,7 +284,7 @@ $conta_aluno++;
 }
 ?>
  <tr style='height:11.3pt'>
-  <td width=19 valign=top style='width:14.15pt;border-top:none;border-left:
+ <!--  <td width=19 valign=top style='width:14.15pt;border-top:none;border-left:
   solid black 1.0pt;border-bottom:none;border-right:solid black 1.0pt;
   padding:0cm 0cm 0cm 0cm;height:11.3pt'>
   <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
@@ -289,7 +296,9 @@ $conta_aluno++;
   <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
   0cm;margin-left:2.75pt;margin-bottom:.0001pt'><span lang=PT style='font-size:
   8.0pt'>MARIA VITORIA FERREIRA</span></p>
-  </td>
+  </td> -->
+
+
 <!--   <td width=461 colspan=12 valign=top style='width:345.45pt;border:none;
   border-right:solid black 1.0pt;padding:0cm 0cm 0cm 0cm;height:11.3pt'>
   <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
@@ -300,17 +309,21 @@ $conta_aluno++;
  </tr>
  <tr style='height:10.55pt'>
   <td width=321 colspan=4 valign=top style='border:solid black 1.0pt;
-  padding:0cm 0cm 0cm 0cm;height:10.55pt'>
-  <p class=TableParagraph align=center style='margin-top:1.45pt;margin-right:
-  100.2pt;margin-bottom:0cm;margin-left:100.85pt;margin-bottom:.0001pt;
+  padding:0pt 0pt 10pt 0pt;height:10.55pt'>
+  <p class=TableParagraph align=center style='margin-top:1.45pt;margin-left:1.85pt;margin-bottom:50pt;
   text-align:center'><span lang=PT style='font-size:10.0pt'>Observações:</span></p>
-  </td>
-  <td width=404 colspan=10 valign=top style='border:solid black 1.0pt;
-  border-left:none;padding:0cm 0cm 0cm 0cm;height:10.55pt'>
-  <p class=TableParagraph align=center style='margin-top:1.45pt;margin-right:
-  101.05pt;margin-bottom:0cm;margin-left:102.1pt;margin-bottom:.0001pt;
+  </td>  
+
+  <td width=321 colspan=10 valign=top style='border:solid black 1.0pt;
+  padding:0pt 0pt 10pt 0pt;height:10.55pt'>
+  <p class=TableParagraph align=center style='margin-top:1.45pt;margin-left:1.85pt;margin-bottom:50pt;
   text-align:center'><span lang=PT style='font-size:10.0pt'>Convenções:</span></p>
   </td>
+  <!-- <td width=404 colspan=10  style='border:solid black 1.0pt;
+  border-left:none;padding:100pt;height:10.55pt'>
+  <p class=TableParagraph align=center style='margin-top:1.45pt;margin-left:1.85pt;margin-bottom:.0001pt;
+  text-align:center'>Convenções:</span></p>
+  </td> -->
  </tr>
  
   

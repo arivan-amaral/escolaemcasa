@@ -11,7 +11,8 @@ $res=$conexao->query("SELECT
    serie.id as 'idserie',
    serie.nome as 'nome_serie',
    nome_turma,
-   idescola
+   idescola,
+   nome_escola
   FROM ministrada,escola,turma,funcionario,serie WHERE
 
 serie.id= turma.serie_id AND
@@ -31,6 +32,7 @@ $result="";
                               $nome_serie=$value['nome_serie'];
                               $nome_turma=($value['nome_turma']);
                               $idescola=($value['idescola']);
+                              $nome_escola=($value['nome_escola']);
                               
                               if (isset($_SESSION['idfuncionario']))  {
                               // if (isset($_SESSION['idcoordenador']))  {
@@ -92,7 +94,9 @@ $result="";
                                      <form action='ata_resultado_final.php' method='post' target='_blank'>
                                       <input type='hidden' name='idturma' value='$idturma'>
                                       <input type='hidden' name='idescola' value='$idescola'>
-                                      <input type='hidden' name='idserie' value='$idserie'>
+
+                                      <input type='hidden' name='nome_escola' value='$nome_escola'>
+                                      <input type='hidden' name='nome_turma' value='$nome_turma'>
                                       <button  class='btn btn-danger btn-block btn-flat'>
                                           <i class='fa fa-print'></i> 
                                             ATA DE RESULTADOS FINAIS
