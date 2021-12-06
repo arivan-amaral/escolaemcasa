@@ -320,7 +320,9 @@ mso-border-alt:solid windowtext .5pt;padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
 <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
 line-height:normal'><span style='mso-ascii-font-family:Calibri;mso-fareast-font-family:
 "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-color:black;mso-fareast-language:PT-BR'><?php echo"". ($nota_tri_1+$nota_tri_2+$nota_tri_3)/3; ?></span></p>
+color:black;mso-fareast-language:PT-BR'>
+<?php $total=($nota_tri_1+$nota_tri_2+$nota_tri_3)/3;
+echo"".number_format($total, 2, '.') ; ?></span></p>
 </td>
 <?php
 if ($conta_parecer==0 && $linha==0) {
