@@ -1,13 +1,14 @@
 <?php session_start();
 include_once '../Model/Conexao.php';
+include_once 'Conversao.php';
 include_once '../Model/Questionario.php';
 
 try {
 
 
-$texto_alternativa = $_GET['texto_alternativa'];
-$origem_questionario_id = $_GET['origem_questionario_id'];
-$questao_alternativa = $_GET['questao_alternativa'];
+$texto_alternativa = escape_mimic($_GET['texto_alternativa']);
+$origem_questionario_id = escape_mimic($_GET['origem_questionario_id']);
+$questao_alternativa = escape_mimic($_GET['questao_alternativa']);
 $id = $_GET['id'];
 
 // $aluno_id=$_SESSION['idaluno'];

@@ -49,6 +49,8 @@ $status=1;
       <!-- Info boxes -->
       <form action="pdf_declaracao.php" method='post' target="_blank">
         <input type="hidden" name="aluno_id" value="<?php echo $aluno_id; ?>" >
+        <input type="hidden" name="escola_id" value="<?php echo $escola_id; ?>" >
+        <input type="hidden" name="turma_id" value="<?php echo $turma_id; ?>" >
       <div class="row">
 
                     <div class="col-md-12">
@@ -62,7 +64,7 @@ $status=1;
                         <!-- /.card-header -->
                         <div class="card-body">
                           <textarea name="texto_declaracao" id="summernote" style="height: 245.719px;">
-                            <p class="MsoNormal" align="center" style="margin-top:0cm;margin-right:0cm;margin-bottom:21.3pt;margin-left:15.85pt;text-align:center;"><b><span style="font-size:10.0pt;line-height:107%;sans-serif;">Atestado de Frequência</span></b></p>
+                            <p class="MsoNormal" align="center" style="margin-top:0cm;margin-right:0cm;margin-bottom:21.3pt;margin-left:15.85pt;text-align:center;"><b><span style="font-size:18.0pt;line-height:107%;sans-serif;">Atestado de Frequência</span></b></p>
 <?php 
   $res_aluno= pesquisar_dados_aluno_por_id($conexao,$aluno_id,$ano,$status);
   foreach ($res_aluno as $key => $value) {
@@ -77,8 +79,8 @@ $status=1;
     $nome_serie=$value['nome_serie'];
     $nome_turma=$value['nome_turma'];
  ?>
-<p class="MsoNormal" style="margin-top:0cm;margin-right:3.25pt;margin-bottom:22.55pt;margin-left:19.6pt;text-align:justify;text-justify:inter-ideograph;text-indent:-.5pt;line-height:111%;"><span style="font-size:9.0pt;line-height:111%;font-family:&quot;Arial&quot;,sans-serif;">Atesto que <b> <?php echo $nome_aluno; ?> </b> natural de <?php echo $naturalidade .",". $uf_naturalidade; ?>, nascido(a) em <?php echo $data_nascimento; ?>, filho(a) de
-<?php echo $filiacao1.",". $filiacao2 ; ?>, está cursando a(o) <?php echo $nome_serie; ?>, <?php echo $nome_turma; ?>  na <b> <?php echo $nome_escola; ?> </b> </span></p><p class="MsoNormal" style="margin-top:0cm;margin-right:3.25pt;margin-bottom:22.55pt;margin-left:19.6pt;text-align:justify;text-justify:inter-ideograph;text-indent:-.5pt;line-height:111%;"><div style="text-align: center;"><span style="font-family: Arial, sans-serif; font-size: 9pt; text-indent: -0.5pt;"></span></div><span style="font-family: Arial, sans-serif; font-size: 9pt; text-align: left;"><div style="text-align: center;"><span style="font-size: 9pt; text-indent: -0.5pt;">OBS.: Declaro que ...<p></p><p></p><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;">____________________________________________________</span></div><div style="text-align: center;"><span style="font-size: 1rem;">LUÍS EDUARDO MAGALHÃES, <?php echo date("d/m/Y"); ?> </span></div></p><p><br></p>
+<p class="MsoNormal" style="margin-top:0cm;margin-right:3.25pt;margin-bottom:22.55pt;margin-left:19.6pt;text-align:justify;text-justify:inter-ideograph;text-indent:-.5pt;line-height:111%;"><span style="font-size:14.0pt;line-height:111%;font-family:&quot;Arial&quot;,sans-serif;">Atesto que <b> <?php echo $nome_aluno; ?> </b> natural de <?php echo $naturalidade .",". $uf_naturalidade; ?>, nascido(a) em <?php echo $data_nascimento; ?>, filho(a) de
+<?php echo $filiacao1.",". $filiacao2 ; ?>, está cursando a(o) <?php echo $nome_serie; ?>, <?php echo $nome_turma; ?>  na <b> <?php echo $nome_escola; ?> </b> </span></p><p class="MsoNormal" style="margin-top:0cm;margin-right:3.25pt;margin-bottom:22.55pt;margin-left:19.6pt;text-align:justify;text-justify:inter-ideograph;text-indent:-.5pt;line-height:111%;"><div style="text-align: center;"><span style="font-family: Arial, sans-serif; font-size: 9pt; text-indent: -0.5pt;"></span></div><span style="font-family: Arial, sans-serif; font-size: 9pt; text-align: left;"><div style="text-align: center;"><span style="font-size: 14pt; text-indent: -0.5pt;">OBS.: Declaro que ...<p></p><p></p><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;">____________________________________________________</span></div><div style="text-align: center;"><span style="font-size: 1rem;"><span style="font-family: Arial, sans-serif; font-size: 9pt; text-indent: -0.5pt;">Luís Eduardo Magalhães, <?php echo date("d/m/Y"); ?> </span></span></div></p><p><br></p>
 </textarea>
 <?php 
 }
@@ -86,7 +88,6 @@ $status=1;
 
                         </div>
                         <div class="card-footer">
-
                         </div>
 
                       </div>

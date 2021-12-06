@@ -1,7 +1,18 @@
  <?php 
 include_once '../Model/Conexao.php';
 include_once '../Model/Aluno.php';
-include_once 'ata_resultado_final_funcao.php';
+$idaluno=$_POST['aluno_id'];
+$res=pesquisar_dados_aluno_por_id($conexao,$idaluno,date("Y"),1); 
+$texto_declaracao=$_POST['texto_declaracao'];
+$nome_escola="";
+$nome_turma="";
+$nome_aluno="";
+foreach ($res as $key => $value) {
+  $nome_aluno=$value['nome'];
+  $nome_escola=$value['nome_escola'];
+  $nome_turma=$value['nome_turma'];
+}
+
 ?>
 <html xmlns:v="urn:schemas-microsoft-com:vml"
 xmlns:o="urn:schemas-microsoft-com:office:office"
@@ -83,18 +94,20 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
 
  </head>
 
- <body lang=PT-BR link="#0563C1" vlink="#954F72" style='tab-interval:35.4pt;
- word-wrap:break-word'>
+ <body>
 
- <H1 class="no-print"> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>
-<input type="hidden" name="dfas" id="sds" value="dsafsd">
+<div class="content-wrapper" style="min-height: 529px;">
+ <section class="content">
+    <div class="container-fluid">
+<br>
+ <!-- <H1 class="no-print"> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR> -->
+
  <div class=WordSection1>
 
- <table class=MsoNormalTable border=2 cellspacing=0 cellpadding=0 
-  >
+ <table>
 
   <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:15.75pt'>
-   <td width=83 nowrap rowspan=1 valign=top style='width:62.6pt;border:solid windowtext 1.0pt;
+   <td width=100 nowrap rowspan=1 valign=top style='width:102.6pt;border:solid windowtext 1.0pt;
    border-right:none;mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:
    solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;padding:
    0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
@@ -109,8 +122,8 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
     <tr>
      <td></td>
      <td>
-      <img width=60 height=75 src="file_cabecalho_II_arquivos/image002.jpg"
-     v:shapes="Imagem_x0020_2"></td>
+      <img width=90 height=105 src="imagens/logo.png">
+    </td>
     </tr>
    </table>
 
@@ -121,9 +134,9 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
    </td>
 
    <td  colspan="12" valign=top style='border:1pt;border:
-   solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;padding:0cm 3.5pt 0cm 3.5pt;
+   solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;padding:9pt 3.5pt 0cm 3.5pt;text-align: center;
    height:15.75pt'>
-   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
+   <p class=MsoNormal style='margin-bottom:5pt;line-height:normal'><b><span
    style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
    mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
    color:black;mso-fareast-language:PT-BR'>PREFEITURA LUÍS EDUARDO MAGALHÃES<o:p></o:p></span></b></p>
@@ -131,35 +144,28 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
      <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
      style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
      mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-     color:black;mso-fareast-language:PT-BR'>0 - ESCOLA MUNICIPAL ONERO COSTA DA
-     ROSA - INEP 29001358<o:p></o:p></span></b></p>
+     color:black;mso-fareast-language:PT-BR'><?php echo "$nome_escola"; ?><o:p></o:p></span></b></p>
 
    <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
    style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
    mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-   color:black;mso-fareast-language:PT-BR'>JOÃO DOURADO, 230 - STA. CRUZ
-   3628-4233 LUIS EDUARDO MAGALHÃES<o:p></o:p></span></b></p>
+   color:black;mso-fareast-language:PT-BR'>TURMA: <?php echo "$nome_turma"; ?><o:p></o:p></span></b></p>
 
-   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
+  <!--  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
    style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
    mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
    color:black;mso-fareast-language:PT-BR'>ESCOLAONEROCOSTA@HOTMAIL.COM - 
    <a
-   href="http://luiseduardomagalhaes.ba.gov.br/">http://luiseduardomagalhaes.ba.gov.br/</a><o:p></o:p></span></b></p>
+   href="http://luiseduardomagalhaes.ba.gov.br/">http://luiseduardomagalhaes.ba.gov.br/</a><o:p></o:p></span></b></p> -->
    <br>
    </td>
   </tr>
   <tr>
   <td colspan="2" >
   <p class="text-justify">
-  <?php 
-                                      
-$texto_declaracao=$_POST['texto_declaracao'];
 
-
-echo "$texto_declaracao";
-
-
+<?php
+  echo "$texto_declaracao";
 ?>
 </p>
 </td>
@@ -167,15 +173,22 @@ echo "$texto_declaracao";
 </table>
 </div>
 
+<center>
+  
+<footer class="no-print">
+  <i class="fa fa-print"></i>
+  <a href='#'class="btn btn-primary " onclick='print();'>IMPRIMIR</a> <br><br>
+</footer>
+</center>
 
-
-
+</div>
+</section>
+</div>
 
 </body>
 </html>
 
 
-<a href='#' class="btn btn-primary no-print" onclick='print();'>IMPRIMIR</a> <br><br>";
 
 
 
