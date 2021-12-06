@@ -23,7 +23,7 @@ else if ($_COOKIE['video_nota']<6) {
 }
 
 if (!isset($_SESSION['idprofessor'])) {
-      // header("location:index.php?status=0");
+       header("location:index.php?status=0");
 
 }else{
 
