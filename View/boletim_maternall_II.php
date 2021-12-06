@@ -285,6 +285,8 @@
     $res_parec2=$conexao->query("SELECT parecer_disciplina.descricao,parecer_disciplina.id FROM
     parecer_disciplina WHERE serie_id =$idserie and disciplina_id=42");
     $conta2=0;
+     // arivan 03 $parece_escuta_fala=array();
+    // 
     foreach ($res_parec2 as $key => $value) {
       $parecer_disciplina_id=$value['id'];
       $descricao=$value['descricao']; 
@@ -699,14 +701,23 @@
       $conta++;
     }
 
-    $res_parec2=$conexao->query("SELECT parecer_disciplina.descricao,parecer_disciplina.id FROM
+//arivan 01
+    $res_parec3=$conexao->query("SELECT parecer_disciplina.descricao,
+      parecer_disciplina.id FROM
     parecer_disciplina WHERE serie_id =$idserie and disciplina_id=44");
     $conta2=0;
-    foreach ($res_parec2 as $key => $value) {
+      
+      $parece_espaco_tempo=array();
+      $parece_escuta_fala=array();
+
+    foreach ($res_parec3 as $key => $value) {
       $parecer_disciplina_id=$value['id'];
       $descricao=$value['descricao']; 
+      $parece_espaco_tempo[$conta2]=$parecer_disciplina_id;
       $parece_escuta_fala[$conta2]=$descricao;
       $conta2++;
+
+     // echo "arivan é foda : $parecer_disciplina_id";
     }
     
     $maior=$conta2;
@@ -809,7 +820,7 @@
             foreach ($result_nota_aula3 as $key => $value) {
             $nota_tri_3=$value['sigla'];
             }
-            echo " $nota_tri_3";
+            echo "$nota_tri_3";
 
             // 3========
            ?>
@@ -870,6 +881,7 @@
 
     if ($i<$conta2 ) {
   ?>
+<!-- arivan 02 -->
 
     <td width=434 colspan=2 rowspan="" style='width:325.55pt;border:solid windowtext 1.0pt;
     border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
@@ -942,8 +954,8 @@
     "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p>
 
       <?php 
-
-       $parecer_disciplina_id2=$array_parece_escuta_fala[$i];
+// arivan 05
+       $parecer_disciplina_id2=$parece_espaco_tempo[$i];
 
         $result_nota_aula3=$conexao->query("
         SELECT * FROM nota WHERE
