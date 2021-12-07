@@ -185,7 +185,8 @@ try {
                                   if ($media <5) {
                                     $res_conselho=buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno);
                                     $conta_aprovado=count($res_conselho);
-                                    if ($conta_aprovado>0) {
+                                    
+                                    if ($conta_aprovado>0 && $idperiodo==3) {
                                       $media_conselho=5.0;
                                       // code...
                                     }else{
@@ -195,7 +196,7 @@ try {
                                     $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>Total:</label>
                                     <input type='text'  value='$media_conselho' style='width:50px; background-color: #FFDAB9;'>"; 
                                        
-                                       if ($idserie >3) {  
+                                       if ($idserie >3 && $idperiodo==3) {  
                                          $result.="
 
                                          <input type='hidden' value='$idescola' id='escola_apc$idaluno'>

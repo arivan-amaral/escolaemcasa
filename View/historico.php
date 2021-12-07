@@ -116,7 +116,8 @@ function hitorico_aluno($conexao){
   </td>
  </tr>
  <tr style='height:12.2pt'>
-  <td width=20 rowspan=13 valign=bottom style='width:15.3pt;border:solid black 1.0pt;
+ 
+  <td width=20 rowspan=4 valign=bottom style='width:15.3pt;border:solid black 1.0pt;
   border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
   normal'><b><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>Componentes

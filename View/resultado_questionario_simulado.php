@@ -123,7 +123,7 @@ if (!isset($_SESSION['idfuncionario'])) {
 
                         <h3 class="card-title">Lista de Questionário</h3>
 
-                        <select class="form-control" id='questionario' onchange='resultado_questao();' >
+                        <select class="form-control" id='questionario' >
                             
    <?php 
  
