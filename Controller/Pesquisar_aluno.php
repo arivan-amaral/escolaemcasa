@@ -97,6 +97,19 @@ try {
                                       <button type='submit' class='dropdown-item'  >Transferência</button>
                                
                                   </form>
+                                  </li>";        
+
+                                  $result.="
+                                  <li>
+                                  <form name='form$idaluno' action='registra_nota_fora_rede.php' method='post' target='_blank'>
+                                      <input type='hidden' name='aluno_id' value='$idaluno'>
+                                      <input type='hidden' name='escola_id' value='$idescola'>
+                                      <input type='hidden' name='turma_id' value='$idturma'>
+                                      <input type='hidden' name='serie_id' value='$idserie'>
+                                      <input type='hidden' name='nome_aluno' value='$nome_aluno'>
+                                      <button type='submit' class='dropdown-item'  >Notas fora da rede</button>
+                               
+                                  </form>
                                   </li>";
 
 

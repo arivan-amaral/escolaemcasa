@@ -32,6 +32,10 @@
     	$result=$conexao->query("SELECT * FROM funcionario WHERE idfuncionario=$idfuncionario   and funcionario.status=1 ");
     	return $result ;
 	}
+	function pesquisar_professor_por_id_status($conexao,$idfuncionario) {
+    	$result=$conexao->query("SELECT * FROM funcionario WHERE idfuncionario=$idfuncionario  ");
+    	return $result ;
+	}
 
 	function pesquisar_professor_associacao($conexao,$pesquisa) {
     	$result=$conexao->query("SELECT * FROM funcionario WHERE descricao_funcao !='Coordenador' and  descricao_funcao !='Secretário' AND descricao_funcao !='Coordenadora' and nome like '%$pesquisa%'  and funcionario.status=1 ");

@@ -417,7 +417,8 @@ if (!isset($_SESSION['idprofessor'])) {
                                               <?php 
                                               $resultado=listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $idprofessor);
                                                     $conta=1;
-                                                  foreach ($resultado as $key => $value) {
+                                                foreach ($resultado as $key => $value) {
+                                                    $professor_id=$value['professor_id'];
                                                     $conteudo_aula_id=$value['id'];
                                                     $data=$value['data'];
                                                     $aula=$value['aula'];
@@ -427,7 +428,17 @@ if (!isset($_SESSION['idprofessor'])) {
                                                     $conta
                                                     <input type='hidden' id='conteudo_aula_id$conta' value='$conteudo_aula_id'>
                                                     </td>
-                                                      <td>$aula - ".converte_data($data)."</td>
+                                                      <td>$aula - ".converte_data($data)."<br>
+                                                      ";
+                                                      $res_prof=pesquisar_professor_por_id_status($conexao,$idprofessor);
+                                                      foreach ($res_prof as $key => $value) {
+                                                        $nome_funcionario=$value['nome'];
+                                                        
+                                                        echo"<b>Professor: $professor_id - $nome_funcionario </b>";
+                                                      }
+
+                                                      echo "
+                                                      </td>
                                                       <td><a onclick='excluir_frequencia($conta);' class='btn btn-danger'>EXCLUIR</a></td>
                                                     </tr>";
                                                     $conta++;
