@@ -49,6 +49,7 @@ try {
                     $nome_aluno=utf8_decode($value['nome_aluno']);
                     $nome_turma=($value['nome_turma']);
                     $id=$value['idaluno'];
+                    $idaluno=$value['idaluno'];
                     $status_aluno=$value['status_aluno'];
                     $email=$value['email'];
                     $senha=$value['senha'];
@@ -180,12 +181,51 @@ try {
                                   }
 
                                 
-
+                                  $conta_aprovado=0;
                                   if ($media <5) {
+                                    $res_conselho=buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno);
+                                    $conta_aprovado=count($res_conselho);
+                                    if ($conta_aprovado>0) {
+                                      $media_conselho=5.0;
+                                      // code...
+                                    }else{
+                                      $media_conselho=$media;
+                                    }
+
                                     $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>Total:</label>
-                                    <input type='text'  value='$media' style='width:50px; background-color: #FFDAB9;'>
-                                      <br>
+                                    <input type='text'  value='$media_conselho' style='width:50px; background-color: #FFDAB9;'>"; 
+                                       
+                                       if ($idserie >3) {  
+                                         $result.="
+
+                                         <input type='hidden' value='$idescola' id='escola_apc$idaluno'>
+
+                                         <input type='hidden' value='$idturma' id='turma_apc$idaluno'>
+
+                                         <input type='hidden' value='$iddisciplina' id='disciplina_apc$idaluno'>
+                                          <span id='btn_apc$idaluno'>
+                                          ";
+
+                                       
+                                         
+                                         if ($conta_aprovado>0) {
+                                            aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno);
+                                            $result.="
+                                            <a class='btn btn-success'> APC </A>
+                                            <a class='btn btn-danger' onclick='cancelar_aprovacao_concelho($idaluno);'> Cancelar aprovação</a>";
+
+                                         }else{
+                                          $result.="<a class='btn btn-primary' onclick='aprovar_concelho($idaluno);'> Aprovar pelo conselho</a>";
+                                         }
+
+                                           
+                                         $result.=" </span>";
+                                       }
+
+                                  $result.="
+                                        <br>
                                     ";
+
                                   }else{
                                     $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>Total:</label>
                                     <input type='text'  value='$media' style='width:50px;background-color: #00BFFF;''>

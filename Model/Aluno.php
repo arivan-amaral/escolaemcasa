@@ -1,4 +1,41 @@
 <?php
+function cancelar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno){
+  $sql=$conexao->prepare("DELETE FROM historico_nota WHERE escola_id = :idescola and turma_id = :idturma and disciplina_id = :iddisciplina and aluno_id = :idaluno");
+  
+  $sql->bindParam("idescola",$idescola);
+  $sql->bindParam("idturma",$idturma);
+  $sql->bindParam("iddisciplina",$iddisciplina);
+  $sql->bindParam("idaluno",$idaluno);
+  $sql->execute();
+
+}
+
+function aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno){
+  $sql=$conexao->prepare("INSERT INTO historico_nota 
+    ( escola_id, turma_id, disciplina_id, aluno_id) VALUES 
+    ( :idescola, :idturma, :iddisciplina, :idaluno)");
+  
+  $sql->bindParam("idescola",$idescola);
+  $sql->bindParam("idturma",$idturma);
+  $sql->bindParam("iddisciplina",$iddisciplina);
+  $sql->bindParam("idaluno",$idaluno);
+  $sql->execute();
+
+}
+
+function buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno){
+  $sql=$conexao->prepare("SELECT * FROM historico_nota WHERE escola_id = :idescola and turma_id = :idturma and disciplina_id = :iddisciplina and aluno_id = :idaluno");
+  
+  $sql->bindParam("idescola",$idescola);
+  $sql->bindParam("idturma",$idturma);
+  $sql->bindParam("iddisciplina",$iddisciplina);
+  $sql->bindParam("idaluno",$idaluno);
+  $sql->execute();
+  return $sql->fetchAll();
+
+}
+
+
 function quantidade_aluno_turma($conexao,$idturma,$idescola){
   $sql=$conexao->prepare("SELECT COUNT(*) as 'quantidade' FROM
    aluno, ano_letivo,turma 

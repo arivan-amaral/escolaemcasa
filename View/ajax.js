@@ -328,6 +328,77 @@ function pesquisa_aluno(){
      xmlreq.send(null);
 }
 
+function aprovar_concelho(idaluno){
+    aguarde_acao(3000);
+    var result=document.getElementById('btn_apc'+idaluno);
+    var idescola = document.getElementById('escola_apc'+idaluno).value;
+
+    var idturma = document.getElementById('turma_apc'+idaluno).value;
+    var iddisciplina = document.getElementById('disciplina_apc'+idaluno).value;
+ 
+    var url="idescola="+idescola+"&idturma="+idturma+"&iddisciplina="+iddisciplina+"&idaluno="+idaluno;
+    
+        var xmlreq = CriaRequest();
+        xmlreq.open("GET", "../Controller/Aprovar_concelho.php?"+url, true);
+
+        xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                if(xmlreq.responseText=="certo"){
+                    result.innerHTML="<a class='btn btn-success'> APC </A> <a class='btn btn-danger' onclick='cancelar_aprovacao_concelho("+idaluno+");'> Cancelar APC</a>";
+                }else{
+                    alert("Erro, tente novamente");
+                    result.innerHTML="<a class='btn btn-primary' onclick='aprovar_concelho("+idaluno+");'> Aprovar pelo conselho</a>";
+                }
+
+             }else{
+                   alert('Atenção: '+xmlreq.responseText);
+
+                //result.innerHTML ="Erro ao receber mensagens";                 
+             }
+         }
+     };
+     xmlreq.send(null);
+}
+
+
+
+function cancelar_aprovacao_concelho(idaluno){
+    aguarde_acao(3000);
+    
+    var result=document.getElementById('btn_apc'+idaluno);
+    var idescola = document.getElementById('escola_apc'+idaluno).value;
+
+    var idturma = document.getElementById('turma_apc'+idaluno).value;
+    var iddisciplina = document.getElementById('disciplina_apc'+idaluno).value;
+ 
+    var url="idescola="+idescola+"&idturma="+idturma+"&iddisciplina="+iddisciplina+"&idaluno="+idaluno;
+    
+        var xmlreq = CriaRequest();
+        xmlreq.open("GET", "../Controller/Cancelar_aprovacao_conselho.php?"+url, true);
+
+        xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                if(xmlreq.responseText=="certo"){
+                    result.innerHTML="<a class='btn btn-primary' onclick='aprovar_concelho("+idaluno+");'> Aprovar pelo conselho</a>";
+                }else{
+                    alert("Erro, tente novamente");
+                    result.innerHTML="<a class='btn btn-success'> APC </A> <a class='btn btn-danger' onclick='cancelar_aprovacao_concelho("+idaluno+");'> Cancelar APC</a>";
+                }
+
+             }else{
+                   alert('Atenção: '+xmlreq.responseText);
+
+                //result.innerHTML ="Erro ao receber mensagens";                 
+             }
+         }
+     };
+     xmlreq.send(null);
+}
+
 
 // ################################## MIGRAÇAO ECIDADE ######################################
 
