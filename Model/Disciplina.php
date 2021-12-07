@@ -8,6 +8,12 @@ function lista_disciplina($conexao){
     return $result;
 }
 
+function lista_disciplina_nao_facultativa($conexao){
+        $result = $conexao->query("SELECT * FROM disciplina where abreviacao IS NOT NULL and facultativo=0 ORDER BY iddisciplina asc");
+    
+    return $result;
+}
+
 function cadastrar_disciplina($conexao,$nome_disciplina){
     $result = $conexao->exec("INSERT INTO disciplina(nome_disciplina) VALUES ('$nome_disciplina')");
 }

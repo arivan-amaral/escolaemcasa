@@ -20,6 +20,8 @@ if (!isset($_SESSION['idfuncionario'])) {
 
   include '../Model/Aluno.php';
   include '../Model/Professor.php';
+  include '../Model/Serie.php';
+  include '../Model/Disciplina.php';
 
   $idserie=$_POST['serie_id']; 
   $idescola=$_POST['escola_id']; 
@@ -96,21 +98,34 @@ if (!isset($_SESSION['idfuncionario'])) {
 
         <div class="col-sm-3">
           <div class="form-group">
+            <label for="exampleInputEmail1">Ano de referência</label>
+
+
+            <select class="form-control" id='periodo' name='periodo' required="">
+           
+              <?php 
+               for ($i=date("Y"); $i > 2000 ; $i--) { 
+                echo "<option value='$i'>$i</option>";
+                }
+               ?>
+            </select>
+          </div>
+        </div>         
+
+        <div class="col-sm-3">
+          <div class="form-group">
             <label for="exampleInputEmail1">Série</label>
 
             <select class="form-control" id='periodo' name='periodo' required="">
               <option></option>
               <?php 
-                $resultado=listar_trimestre($conexao);
+                $resultado=lista_todas_series($conexao);
                 foreach ($resultado as $key => $value) {
-                  $idperiodo=$value['id'];
-                  $descricao=$value['descricao'];
-                  if ($idserie <3 && $idperiodo==6) {
-                    echo"<option value='$idperiodo'>$descricao</option>";
-
-                  }else if ($idperiodo !=6) {
-                    echo"<option value='$idperiodo'> $descricao</option>";
-                  }
+                  $idserie_bd=$value['id'];
+                  $descricao=$value['nome'];
+                  
+                    echo"<option value='$idserie_bd'> $descricao</option>";
+                  
                   
                 }
 
@@ -127,53 +142,76 @@ if (!isset($_SESSION['idfuncionario'])) {
             <select class="form-control" id='periodo' name='periodo' required="">
               <option></option>
               <?php 
-                $resultado=listar_trimestre($conexao);
+                $resultado=lista_disciplina_nao_facultativa($conexao);
                 foreach ($resultado as $key => $value) {
-                  $idperiodo=$value['id'];
-                  $descricao=$value['descricao'];
-                  if ($idserie <3 && $idperiodo==6) {
-                    echo"<option value='$idperiodo'>$descricao</option>";
-
-                  }else if ($idperiodo !=6) {
-                    echo"<option value='$idperiodo'> $descricao</option>";
-                  }
+                  $iddisciplina_bd=$value['iddisciplina'];
+                  $nome_disciplina=$value['nome_disciplina'];
+                   
+                    echo"<option value='$iddisciplina_bd'> $nome_disciplina</option>";
+                  
                   
                 }
 
                ?>
             </select>
           </div>
-        </div> 
+        </div>         
 
         <div class="col-sm-3">
           <div class="form-group">
-            <label for="exampleInputEmail1">Média/Nota</label>
+            <label for="exampleInputEmail1">Aluno já finalizou a série?</label>
 
-            <input class="form-control" id='nota' name='nota' required="">
+            <select class="form-control" id='aluno_finalizou' name='aluno_finalizou' required="" onchange="registra_nota_fora_rede_ano_finalizado(this.value);">
+              <option value="Sim">Sim</option>
+              <option value="Não">Não</option>
+              </select>
+          </div>
+        </div> 
+
+<div class="row" id='aluno_finalizado_ano'>
+  
+     <div class='col-sm-3'>
+          <div class='form-group'>
+            <label for='exampleInputEmail1'>Tipo registro</label>
+            <select class='form-control' id='tipo_registro' name='tipo_registro' required=''>
+                <option value='Média'>Média</option>
+                <option value='Nota'>Nota</option>
+                
+            </select>
             
           </div>
         </div>
- 
+      <div class='col-sm-3'>
+          <div class='form-group'>
+            <label for='exampleInputEmail1'>Média</label>
 
-      <div class="col-sm-3">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Carga horária</label>
+            <input class='form-control' id='media' name='media' required=''>
+              
+          </div>
+        </div>      
 
-            <input class="form-control" id='carga_horaria' name='carga_horaria' required="">
+        <div class='col-sm-3'>
+          <div class='form-group'>
+            <label for='exampleInputEmail1'>Carga horária</label>
+
+            <input class='form-control' id='carga_horaria' name='carga_horaria' required=''>
               
           </div>
         </div>
 
-   <div class="col-sm-3">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Total faltas</label>
+   <div class='col-sm-3'>
+          <div class='form-group'>
+            <label for='exampleInputEmail1'>Total faltas</label>
 
-            <input class="form-control" id='total_falta' name='total_falta' required="">
+            <input class='form-control' id='total_falta' name='total_falta' required=''>
               
           </div>
         </div>
   </div>
-  
+
+       
+
+</div>
 <div class="row">
    <div class="col-sm-2"></div>
    <div class="col-sm-8">

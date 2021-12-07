@@ -46,6 +46,28 @@ function CriaRequest() {
 
 
 
+function registra_nota_fora_rede_ano_finalizado(opcao) {
+    var result= document.getElementById('aluno_finalizado_ano');
+    var xmlreq = CriaRequest();   
+
+    xmlreq.open("GET", "../Controller/View_registro_nota_fora_rede.php?opcao="+opcao, true);
+
+   xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                   result.innerHTML = xmlreq.responseText;
+             }else{
+                   alert('Erro desconhecido, verifique sua conexão com a internet');
+
+                //result.innerHTML ="Erro ao receber mensagens";                 
+             }
+         }
+     };
+     xmlreq.send(null);
+}
+
+
 function pesquisar_municipio(idestado,campo){
         var xmlreq = CriaRequest();
         var result=document.getElementById(campo);
@@ -366,7 +388,7 @@ function aprovar_concelho(idaluno){
 
 function cancelar_aprovacao_concelho(idaluno){
     aguarde_acao(3000);
-    
+
     var result=document.getElementById('btn_apc'+idaluno);
     var idescola = document.getElementById('escola_apc'+idaluno).value;
 
