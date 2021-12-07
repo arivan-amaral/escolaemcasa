@@ -29,7 +29,7 @@ if ($idserie <3) {
 }else if($idserie > 8 && $idserie <=11){
   $tipo_ensino="Ensino Fundamental - Anos Finais";
 
-}else{
+}else if ($idserie > 11){
   $tipo_ensino="Educação de Jovens e Adultos";
 
 }

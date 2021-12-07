@@ -71,8 +71,8 @@ if ($idserie<8) {
             $conta_data+0,
             $limite_data+0,
             $limite_aula+0,
-
             $periodo_id,$idserie,$data_inicio_trimestre,$data_fim_trimestre);
+        
 }else{
     //linha 409 508 
         diario_frequencia($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$data_inicio_trimestre,$data_fim_trimestre); 
