@@ -280,6 +280,10 @@ function listar_nota_aluno_fora($conexao,$aluno_id) {
     return $resultado;
 }
 
+
+function excluir_notas_cadastrada_fora($conexao,$idnota) {
+    $conexao->exec("DELETE FROM nota where idnota=$idnota");
+}
 // ********************************************************************************
 
 function cadastro_conteudo_aula($conexao,$descricao, $disciplina_id, $turma_id, $escola_id, $professor_id, $data,$aula) {

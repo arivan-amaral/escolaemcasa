@@ -50,7 +50,7 @@ if (!isset($_SESSION['idfuncionario'])) {
        
            <input type="hidden" name="idescola" value="<?php echo $idescola; ?>">
            <input type="hidden" name="idturma" value="<?php echo $idturma; ?>">
-           <input type="hidden" name="idaluno" value="<?php echo $idaluno; ?>">
+           <input type="hidden" name="idaluno" id="idaluno" value="<?php echo $idaluno; ?>">
 
  
 
@@ -154,9 +154,6 @@ foreach ($res_aluno as $key => $value) {
         </div> 
 
 </div>
-<script type="text/javascript">
-          setTimeout("view_nota_fora_rede_ano_finalizado('Sim');",100);
-</script>
   <div class="row" id='aluno_finalizado_ano'>
       
 
@@ -172,96 +169,24 @@ foreach ($res_aluno as $key => $value) {
               
           </div>
         </div>
+  </div>
 
+<script type="text/javascript">
+          setTimeout("view_nota_fora_rede_ano_finalizado('Sim');",100);
+          setTimeout("lista_notas_cadastrada_fora();",200);
+</script>
 
 
       
-      </div>
 
     
  <!-- </form> -->
 
 
        
-        <div class="row">
-                              <div class="col-12">
-                                <div class="card">
-                                  <div class="card-header">
-                                    <h3 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Registros de notas fora da rede</font></font></h3>
-
-                                    <div class="card-tools">
-                                     <!--  <div class="input-group input-group-sm" style="width: 150px;">
-                                        <input type="text" name="table_search" class="form-control float-right" placeholder="Procurar">
-
-                                        <div class="input-group-append">
-                                          <button type="submit" class="btn btn-default">
-                                            <i class="fas fa-search"></i>
-                                          </button>
-                                        </div>
-                                      </div> -->
-                                    </div>
-                                  </div>
-                                
-                                  <div class="card-body table-responsive p-0" style="height: 300px;">
-                                    <table class="table table-head-fixed text-nowrap">
-                                      <thead>
-                                        <tr>
-                                          <th>Disciplina</th>
-                                          <th>Escola origem</th>
-                                      
-                                          <th>Escola atual</th>
- 
-                                          <th>Nota/Média/NF</th>
-                                          <th>Opções</th>
-                                          
-                                        </tr>
-                                      </thead>
-                                      <tbody>
-                                        <?php 
-
-                                        $res_nota_fora=listar_nota_aluno_fora($conexao,$idaluno);
-                                        foreach ($res_nota_fora as $key => $value) {
-                                          $idnota=$value['idnota'];
-                                          $nome_aluno=$value['nome_aluno'];
-                                          $escola_origem=$value['escola_origem'];
-                                          $nome_serie=$value['nome_serie'];
-                                          $escola_atual=$value['escola_atual'];
-                                          $periodo=$value['periodo'];
-                                          $tipo_avaliacao=$value['tipo_avaliacao'];
-                                          $nome_disciplina=$value['nome_disciplina'];
-                                          $nota=$value['nota'];
-
-                                          echo"
-                                            <tr>
-                                              <td> <b> $nome_disciplina </b> </td>
-                                              <td> $escola_origem <br>
-                                                <b>Ano/Série: $nome_serie</b>
-                                               </td>
-                                              <td> 
-                                                $escola_atual<br>
-                                                <b>Périodo: $periodo 
-                                              <br>
-                                              Tipo avaliacao: $tipo_avaliacao</b> 
-                                              </td>
-
-                                              <td><b> $nota </b></td>
-                                              <td> <a class='btn btn-danger'> CANCELAR</A>
-                                              </p> caso queria excluir<br> entre em contato com o suporte,<br> pois essa funcionalidade está em manutenção por enquanto</p> </td>
-                                              
-                                            </tr>";
-
-                                          }
-                                         
-                                        ?>
-                                        
-                                      </tbody>
-                                    </table>
-                                  </div> 
-                                  <!-- /.card-body -->
-                                </div>
-                                <!-- /.card -->
-                              </div>
-                            </div>
+        <div class="row" id='lista_notas_cadastrada_fora'>
+                              
+        </div>
 
 
       </div>
