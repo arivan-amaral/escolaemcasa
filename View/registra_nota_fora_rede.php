@@ -170,12 +170,12 @@ if (!isset($_SESSION['idfuncionario'])) {
 
 <div class="row" id='aluno_finalizado_ano'>
   
-     <div class='col-sm-3'>
+   <div class='col-sm-3'>
           <div class='form-group'>
             <label for='exampleInputEmail1'>Tipo registro</label>
             <select class='form-control' id='tipo_registro' name='tipo_registro' required=''>
-                <option value='Média'>Média</option>
-                <option value='Nota'>Nota</option>
+                <option value='Nota Final'>Nota final</option>
+            
                 
             </select>
             
@@ -183,9 +183,9 @@ if (!isset($_SESSION['idfuncionario'])) {
         </div>
       <div class='col-sm-3'>
           <div class='form-group'>
-            <label for='exampleInputEmail1'>Média</label>
+            <label for='exampleInputEmail1'>Nota final</label>
 
-            <input class='form-control' id='media' name='media' required=''>
+            <input class='form-control' id='nota_final' name='nota_final' required='' onkeyup='somenteNumeros(this,10);'>
               
           </div>
         </div>      
@@ -194,7 +194,7 @@ if (!isset($_SESSION['idfuncionario'])) {
           <div class='form-group'>
             <label for='exampleInputEmail1'>Carga horária</label>
 
-            <input class='form-control' id='carga_horaria' name='carga_horaria' required=''>
+            <input class='form-control' id='carga_horaria' name='carga_horaria' required='' onkeyup='somenteNumeros(this,300);'>
               
           </div>
         </div>
@@ -203,13 +203,11 @@ if (!isset($_SESSION['idfuncionario'])) {
           <div class='form-group'>
             <label for='exampleInputEmail1'>Total faltas</label>
 
-            <input class='form-control' id='total_falta' name='total_falta' required=''>
+            <input class='form-control' id='total_falta' name='total_falta' required=''onkeyup='somenteNumeros(this,200);'>
               
           </div>
         </div>
   </div>
-
-       
 
 </div>
 <div class="row">
@@ -275,13 +273,13 @@ if (!isset($_SESSION['idfuncionario'])) {
    
         if (er.test(campo.value)) {
           campo.value = "";
-                  Swal.fire('Esse campo é permitido apenas números, consulte seu coordenador para mais informações.', '', 'info')
+                  Swal.fire('Esse campo é permitido apenas números.', '', 'info')
 
 
         }else{
 
             if(campo.value>tamanho){
-              Swal.fire('A nota não pode ser maior que: '+tamanho+'.', '', 'info')
+              Swal.fire('O valor não pode ser maior que: '+tamanho+'.', '', 'info')
               campo.value = "";
             }
         }
