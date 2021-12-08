@@ -326,7 +326,7 @@ foreach ($result_escola as $key => $value) {
 }elseif ($periodo_id==3) {
     $data_inicio_trimestre="2021-10-04";
     $data_fim_trimestre="2021-12-21";
-    echo "II TRIMESTRE ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
+    echo "III TRIMESTRE ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
   
 }
 

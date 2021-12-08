@@ -14,7 +14,7 @@ try{
     
 
     //generico
-    $aluno_finalizou=$_POST['aluno_finalizou'];
+    $aluno_finalizou=$_REQUEST['aluno_finalizou'];
     
     
     if ($aluno_finalizou=="Sim") {
@@ -22,24 +22,24 @@ try{
         $idturma=1000;
 
     }else{
-        $idturma=$_POST['idturma'];
-        $idperiodo=$_POST['idperiodo'];
+        $idturma=$_REQUEST['idturma'];
+        $idperiodo=$_REQUEST['idperiodo'];
 
     }
 
     //generico
-    $escola_origem=$_POST['escola_origem']; //de onde o aluno veio 
+    $escola_origem=$_REQUEST['escola_origem']; //de onde o aluno veio 
 
-    $idescola=$_POST['idescola']; // escola da rede a qual a nota está sendo inserida
-    $iddisciplina=$_POST['iddisciplina'];
-    $idaluno=$_POST['idaluno'];
-    $avaliacao=$_POST['tipo_registro'];
-    $nota=$_POST['media_ou_nf'];
+    $idescola=$_REQUEST['idescola']; // escola da rede a qual a nota está sendo inserida
+    $iddisciplina=$_REQUEST['iddisciplina'];
+    $idaluno=$_REQUEST['idaluno'];
+    $avaliacao=$_REQUEST['tipo_registro'];
+    $nota=$_REQUEST['media_ou_nf'];
 
-    $ano_referencia=$_POST['ano_referencia'];
-    $idserie=$_POST['idserie'];
-    $carga_horaria=$_POST['carga_horaria'];
-    $total_falta=$_POST['total_falta'];
+    $ano_referencia=$_REQUEST['ano_referencia'];
+    $idserie=$_REQUEST['idserie'];
+    $carga_horaria=$_REQUEST['carga_horaria'];
+    $total_falta=$_REQUEST['total_falta'];
 
 
     // aluno não finalizou o ano
@@ -52,15 +52,16 @@ try{
        
 
 
-   $_SESSION['status']=1;
-   $_SESSION['mensagem']='Dados inseridos';
+   // $_SESSION['status']=1;
+   // $_SESSION['mensagem']='Dados inseridos';
 $url_get="escola_id=$idescola"."&turma_id=$idturma"."&serie_id=$idserie"."&aluno_id=$idaluno";
 
-  header("location: ../View/registra_nota_fora_rede.php?$url_get");
+echo"certo";
+ // header("location: ../View/registra_nota_fora_rede.php?$url_get");
 } catch (Exception $e) {
-   $_SESSION['status']=0;
+   // $_SESSION['status']=0;
    echo "$e";
-//    header("location: ../View/registra_nota_fora_rede.php?$url_get");
+//   header("location: ../View/registra_nota_fora_rede.php?$url_get");
 
 
 }

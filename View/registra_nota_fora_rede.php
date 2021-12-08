@@ -46,7 +46,7 @@ if (!isset($_SESSION['idfuncionario'])) {
       <div class="container-fluid">
         <!-- Info boxes -->
         <!-- .row -->
-  <form action="../Controller/Cadastrar_nota_fora_rede.php" method="post">
+  <!-- <form action="../Controller/Cadastrar_nota_fora_rede.php" method="post">  -->
        
            <input type="hidden" name="idescola" value="<?php echo $idescola; ?>">
            <input type="hidden" name="idturma" value="<?php echo $idturma; ?>">
@@ -146,7 +146,7 @@ foreach ($res_aluno as $key => $value) {
           <div class="form-group">
             <label for="exampleInputEmail1">Aluno já finalizou a série?</label>
 
-            <select class="form-control" id='aluno_finalizou' name='aluno_finalizou' required="" onchange="registra_nota_fora_rede_ano_finalizado(this.value);">
+            <select class="form-control" id='aluno_finalizou' name='aluno_finalizou' required="" onchange="view_nota_fora_rede_ano_finalizado(this.value);">
               <option value="Sim">Sim</option>
               <option value="Não">Não</option>
               </select>
@@ -155,18 +155,20 @@ foreach ($res_aluno as $key => $value) {
 
 </div>
 <script type="text/javascript">
-          setTimeout("registra_nota_fora_rede_ano_finalizado('Sim');",100);
+          setTimeout("view_nota_fora_rede_ano_finalizado('Sim');",100);
 </script>
-    <div class="row" id='aluno_finalizado_ano'>
+  <div class="row" id='aluno_finalizado_ano'>
       
 
   </div>
+
+
 
 <div class="row">
    <div class="col-sm-2"></div>
    <div class="col-sm-8">
           <div class="form-group">
-           <button type="submit" class="btn btn-block btn-primary">CADASTRAR</button>
+           <a   class="btn btn-block btn-primary" onclick="cadastrar_nota_fora_rede_ano_finalizado();">CADASTRAR</a>
               
           </div>
         </div>
@@ -177,11 +179,10 @@ foreach ($res_aluno as $key => $value) {
       </div>
 
     
- </form>
-        <!-- Main row -->
+ <!-- </form> -->
 
-        <!-- /.row -->
 
+       
         <div class="row">
                               <div class="col-12">
                                 <div class="card">

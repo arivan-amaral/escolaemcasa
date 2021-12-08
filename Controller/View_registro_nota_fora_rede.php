@@ -31,7 +31,7 @@ if ($opcao=="Sim") {
           <div class='form-group'>
             <label for='exampleInputEmail1'>Carga horária</label>
 
-            <input class='form-control' id='carga_horaria' name='carga_horaria' required='' onkeyup='somenteNumeros(this,300);'>
+            <input class='form-control' id='carga_horaria' name='carga_horaria' required='' onkeyup='somenteNumeros(this,1000);'>
               
           </div>
         </div>
@@ -40,7 +40,7 @@ if ($opcao=="Sim") {
           <div class='form-group'>
             <label for='exampleInputEmail1'>Total faltas</label>
 
-            <input class='form-control' id='total_falta' name='total_falta' required=''onkeyup='somenteNumeros(this,200);'>
+            <input class='form-control' id='total_falta' name='total_falta' required=''onkeyup='somenteNumeros(this,300);'>
               
           </div>
         </div>
@@ -99,7 +99,7 @@ if ($opcao=="Sim") {
           <div class='form-group'>
             <label for='exampleInputEmail1'>Carga horária</label>
 
-            <input class='form-control' id='carga_horaria' name='carga_horaria' required='' onkeyup='somenteNumeros(this,200);'>
+            <input class='form-control' id='carga_horaria' name='carga_horaria' required='' onkeyup='somenteNumeros(this,1000);'>
               
           </div>
         </div>
@@ -108,7 +108,7 @@ if ($opcao=="Sim") {
           <div class='form-group'>
             <label for='exampleInputEmail1'>Total faltas</label>
 
-            <input class='form-control' id='total_falta' name='total_falta' required='' onkeyup='somenteNumeros(this,100);'>
+            <input class='form-control' id='total_falta' name='total_falta' required='' onkeyup='somenteNumeros(this,200);'>
               
           </div>
         </div>
