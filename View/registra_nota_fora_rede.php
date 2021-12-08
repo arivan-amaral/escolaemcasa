@@ -23,10 +23,10 @@ if (!isset($_SESSION['idfuncionario'])) {
   include '../Model/Serie.php';
   include '../Model/Disciplina.php';
 
-  $idserie=$_POST['serie_id']; 
-  $idescola=$_POST['escola_id']; 
-  $idturma=$_POST['turma_id']; 
-  $aluno=$_POST['aluno_id']; 
+  $idserie=$_REQUEST['serie_id']; 
+  $idescola=$_REQUEST['escola_id']; 
+  $idturma=$_REQUEST['turma_id']; 
+  $idaluno=$_REQUEST['aluno_id']; 
  
 ?>
 
@@ -36,42 +36,6 @@ if (!isset($_SESSION['idfuncionario'])) {
 
 
 <div class="content-wrapper" style="min-height: 529px;">
-
-    <!-- Content Header (Page header) -->
-
-    <div class="content-header">
-
-      <div class="container-fluid">
-
-        <div class="row mb-2">
-
-          <div class="col-sm-1"></div>
-          <div class="col-sm-10 alert alert-warning text-center">
-
-            <h1 class="m-0"><b>           
-
-             <?php
-             echo "$nome_escola_global"; 
-
-             if (isset($_SESSION['nome'])) {
-
-              echo " ".$_SESSION['nome'];  
-
-            } 
-
-             ?></b></h1>
-
-          </div><!-- /.col -->
-
-          
-
-        </div><!-- /.row -->
-
-      </div><!-- /.container-fluid -->
-
-    </div>
-
-    <!-- /.content-header -->
 
 
 
@@ -83,25 +47,46 @@ if (!isset($_SESSION['idfuncionario'])) {
         <!-- Info boxes -->
         <!-- .row -->
   <form action="../Controller/Cadastrar_nota_fora_rede.php" method="post">
-           
+       
+           <input type="hidden" name="idescola" value="<?php echo $idescola; ?>">
+           <input type="hidden" name="idturma" value="<?php echo $idturma; ?>">
+           <input type="hidden" name="idaluno" value="<?php echo $idaluno; ?>">
+
+ 
+
+<?php 
+
+$res_aluno=meus_dados_aluno($conexao,$idaluno);
+$nome_aluno="";
+foreach ($res_aluno as $key => $value) {
+  $nome_aluno=$value['nome'];
+}
+
+ ?>
       <div class="row">
         <div class="col-sm-1"></div>
-        <div class="col-sm-10">
-            <button class="btn btn-block btn-lg btn-secondary">REGISTRO DE NOTAS FORA DA REDE</button>
+        <div class="col-sm-12">
+            <button class="btn btn-block btn-lg btn-success">REGISTRO DE NOTAS FORA DA REDE<br>ALUNO: <?php echo "$nome_aluno"; ?></button>
         </div>
       </div>
       <br>
 
       <div class="row">
         
+        <div class='col-sm-3'>
+                <div class='form-group'>
+                  <label for='exampleInputEmail1'>Escola de origem</label>
+                  <input class='form-control' id='escola_origem' name='escola_origem' required=''>
+                    
+                </div>
+              </div>  
 
-
-        <div class="col-sm-3">
+        <div class="col-sm-2">
           <div class="form-group">
             <label for="exampleInputEmail1">Ano de referência</label>
 
 
-            <select class="form-control" id='periodo' name='periodo' required="">
+            <select class="form-control" id='ano_referencia' name='ano_referencia' required="">
            
               <?php 
                for ($i=date("Y"); $i > 2000 ; $i--) { 
@@ -112,11 +97,11 @@ if (!isset($_SESSION['idfuncionario'])) {
           </div>
         </div>         
 
-        <div class="col-sm-3">
+        <div class="col-sm-2">
           <div class="form-group">
             <label for="exampleInputEmail1">Série</label>
 
-            <select class="form-control" id='periodo' name='periodo' required="">
+            <select class="form-control" id='idserie' name='idserie' required="">
               <option></option>
               <?php 
                 $resultado=lista_todas_series($conexao);
@@ -135,11 +120,11 @@ if (!isset($_SESSION['idfuncionario'])) {
         </div>        
 
 
-        <div class="col-sm-3">
+        <div class="col-sm-2">
           <div class="form-group">
             <label for="exampleInputEmail1">Disciplina</label>
 
-            <select class="form-control" id='periodo' name='periodo' required="">
+            <select class="form-control" id='iddisciplina' name='iddisciplina' required="">
               <option></option>
               <?php 
                 $resultado=lista_disciplina_nao_facultativa($conexao);
@@ -168,48 +153,15 @@ if (!isset($_SESSION['idfuncionario'])) {
           </div>
         </div> 
 
-<div class="row" id='aluno_finalizado_ano'>
-  
-   <div class='col-sm-3'>
-          <div class='form-group'>
-            <label for='exampleInputEmail1'>Tipo registro</label>
-            <select class='form-control' id='tipo_registro' name='tipo_registro' required=''>
-                <option value='Nota Final'>Nota final</option>
-            
-                
-            </select>
-            
-          </div>
-        </div>
-      <div class='col-sm-3'>
-          <div class='form-group'>
-            <label for='exampleInputEmail1'>Nota final</label>
+</div>
+<script type="text/javascript">
+          setTimeout("registra_nota_fora_rede_ano_finalizado('Sim');",100);
+</script>
+    <div class="row" id='aluno_finalizado_ano'>
+      
 
-            <input class='form-control' id='nota_final' name='nota_final' required='' onkeyup='somenteNumeros(this,10);'>
-              
-          </div>
-        </div>      
-
-        <div class='col-sm-3'>
-          <div class='form-group'>
-            <label for='exampleInputEmail1'>Carga horária</label>
-
-            <input class='form-control' id='carga_horaria' name='carga_horaria' required='' onkeyup='somenteNumeros(this,300);'>
-              
-          </div>
-        </div>
-
-   <div class='col-sm-3'>
-          <div class='form-group'>
-            <label for='exampleInputEmail1'>Total faltas</label>
-
-            <input class='form-control' id='total_falta' name='total_falta' required=''onkeyup='somenteNumeros(this,200);'>
-              
-          </div>
-        </div>
   </div>
 
-</div>
 <div class="row">
    <div class="col-sm-2"></div>
    <div class="col-sm-8">
@@ -224,33 +176,92 @@ if (!isset($_SESSION['idfuncionario'])) {
       
       </div>
 
-
-<input type="hidden" name="url_get" id="url_get" value="<?php echo $url_get; ?>">
-
-<input type="hidden" name="idserie" id="idserie" value="<?php echo $idserie; ?>" >
-<input type="hidden" name="idescola" id="idescola" value="<?php echo $idescola; ?>">
-<input type="hidden" name="idturma" id="idturma" value="<?php echo $idturma; ?>">
-<input type="hidden" name="iddisciplina" id="iddisciplina" value="<?php echo $iddisciplina; ?>" readonly>
-
-
-
-
-<a name="listaAlunos"></a>
-  <div id="listagem_avaliacao">
-
-
-  </div>
-
-   
-
-      <div class="row" id="botao_continuar">
-        
-      </div>
-      
+    
  </form>
         <!-- Main row -->
 
         <!-- /.row -->
+
+        <div class="row">
+                              <div class="col-12">
+                                <div class="card">
+                                  <div class="card-header">
+                                    <h3 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Registros de notas fora da rede</font></font></h3>
+
+                                    <div class="card-tools">
+                                     <!--  <div class="input-group input-group-sm" style="width: 150px;">
+                                        <input type="text" name="table_search" class="form-control float-right" placeholder="Procurar">
+
+                                        <div class="input-group-append">
+                                          <button type="submit" class="btn btn-default">
+                                            <i class="fas fa-search"></i>
+                                          </button>
+                                        </div>
+                                      </div> -->
+                                    </div>
+                                  </div>
+                                
+                                  <div class="card-body table-responsive p-0" style="height: 300px;">
+                                    <table class="table table-head-fixed text-nowrap">
+                                      <thead>
+                                        <tr>
+                                          <th>Disciplina</th>
+                                          <th>Escola origem</th>
+                                      
+                                          <th>Escola atual</th>
+ 
+                                          <th>Nota/Média/NF</th>
+                                          <th>Opções</th>
+                                          
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <?php 
+
+                                        $res_nota_fora=listar_nota_aluno_fora($conexao,$idaluno);
+                                        foreach ($res_nota_fora as $key => $value) {
+                                          $idnota=$value['idnota'];
+                                          $nome_aluno=$value['nome_aluno'];
+                                          $escola_origem=$value['escola_origem'];
+                                          $nome_serie=$value['nome_serie'];
+                                          $escola_atual=$value['escola_atual'];
+                                          $periodo=$value['periodo'];
+                                          $tipo_avaliacao=$value['tipo_avaliacao'];
+                                          $nome_disciplina=$value['nome_disciplina'];
+                                          $nota=$value['nota'];
+
+                                          echo"
+                                            <tr>
+                                              <td> <b> $nome_disciplina </b> </td>
+                                              <td> $escola_origem <br>
+                                                <b>Ano/Série: $nome_serie</b>
+                                               </td>
+                                              <td> 
+                                                $escola_atual<br>
+                                                <b>Périodo: $periodo 
+                                              <br>
+                                              Tipo avaliacao: $tipo_avaliacao</b> 
+                                              </td>
+
+                                              <td><b> $nota </b></td>
+                                              <td> <a class='btn btn-danger'> CANCELAR</A>
+                                              </p> caso queria excluir<br> entre em contato com o suporte,<br> pois essa funcionalidade está em manutenção por enquanto</p> </td>
+                                              
+                                            </tr>";
+
+                                          }
+                                         
+                                        ?>
+                                        
+                                      </tbody>
+                                    </table>
+                                  </div> 
+                                  <!-- /.card-body -->
+                                </div>
+                                <!-- /.card -->
+                              </div>
+                            </div>
+
 
       </div>
 

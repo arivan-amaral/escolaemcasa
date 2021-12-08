@@ -6,6 +6,7 @@ $opcao=$_GET['opcao'];
 if ($opcao=="Sim") {
 ?>
      
+  
    <div class='col-sm-3'>
           <div class='form-group'>
             <label for='exampleInputEmail1'>Tipo registro</label>
@@ -21,7 +22,7 @@ if ($opcao=="Sim") {
           <div class='form-group'>
             <label for='exampleInputEmail1'>Nota final</label>
 
-            <input class='form-control' id='nota_final' name='nota_final' required='' onkeyup='somenteNumeros(this,10);'>
+            <input class='form-control' id='media_ou_nf' name='media_ou_nf' required='' onkeyup='somenteNumeros(this,10);'>
               
           </div>
         </div>      
@@ -44,16 +45,17 @@ if ($opcao=="Sim") {
           </div>
         </div>
   </div>
-
   <?php 
 }else{
   ?>
+     
+
 
    <div class='col-sm-3'>
            <div class="form-group">
             <label for="exampleInputEmail1">Período</label>
 
-            <select class="form-control" id='periodo' name='periodo' required="">
+            <select class="form-control" id='idperiodo' name='idperiodo' required="">
               <option></option>
               <?php 
                 $resultado=listar_trimestre($conexao);
@@ -70,20 +72,30 @@ if ($opcao=="Sim") {
             </select>
           </div>
         </div>
-
+ <div class='col-sm-2'>
+          <div class='form-group'>
+            <label for='exampleInputEmail1'>Tipo registro</label>
+            <select class='form-control' id='tipo_registro' name='tipo_registro' required=''>
+                <option value='Média'>Média</option>
+            
+                
+            </select>
+            
+          </div>
+        </div>
 
       <div class='col-sm-1'>
           <div class='form-group'>
             <label for='exampleInputEmail1'>Média</label>
 
-            <input class='form-control' id='media' name='media' required='' onkeyup='somenteNumeros(this,10);'>
+            <input class='form-control' id='media_ou_nf' name='media_ou_nf' required='' onkeyup='somenteNumeros(this,10);'>
               
           </div>
         </div>     
 
             
 
-        <div class='col-sm-3'>
+        <div class='col-sm-2'>
           <div class='form-group'>
             <label for='exampleInputEmail1'>Carga horária</label>
 
@@ -92,7 +104,7 @@ if ($opcao=="Sim") {
           </div>
         </div>
 
-   <div class='col-sm-3'>
+   <div class='col-sm-2'>
           <div class='form-group'>
             <label for='exampleInputEmail1'>Total faltas</label>
 

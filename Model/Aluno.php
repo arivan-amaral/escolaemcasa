@@ -240,6 +240,46 @@ function cadastro_nota($conexao,$nota, $parecer_disciplina_id, $parecer_descriti
     return $conexao;
 }
 
+function cadastro_nota_aluno_fora($conexao,$nota, $escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, $avaliacao,$funcionario_id,$escola_origem,$ano_referencia, $serie_id, $carga_horaria, $total_falta,$aluno_finalizou ) {
+    $conexao->exec("INSERT INTO nota
+(nota, escola_id, turma_id, disciplina_id, aluno_id, periodo_id, avaliacao,funcionario_id,escola_origem,ano_referencia, serie_id, carga_horaria, total_falta,aluno_finalizou) VALUES
+
+($nota, $escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, '$avaliacao',
+    $funcionario_id,'$escola_origem','$ano_referencia', $serie_id, '$carga_horaria', $total_falta,'$aluno_finalizou')");
+
+
+}
+
+function listar_nota_aluno_fora($conexao,$aluno_id) {
+    
+  $resultado=  $conexao->query("SELECT 
+ nota.idnota as 'idnota',
+ aluno.nome as 'nome_aluno',
+ nota.escola_origem as 'escola_origem',
+ serie.nome as 'nome_serie',
+ escola.nome_escola as 'escola_atual',
+ nota.nota as 'nota',
+ periodo.descricao as 'periodo',
+ disciplina.nome_disciplina as 'nome_disciplina',
+ nota.avaliacao as 'tipo_avaliacao'
+
+     FROM 
+        nota,serie,aluno,turma,disciplina,escola,periodo
+        WHERE 
+     nota.aluno_finalizou !='' and 
+     nota.escola_id=escola.idescola and
+     nota.disciplina_id=disciplina.iddisciplina and
+     nota.aluno_id=aluno.idaluno and
+     nota.serie_id= serie.id and 
+     nota.turma_id= turma.idturma and 
+     nota.periodo_id= periodo.id and 
+     nota.aluno_id=$aluno_id order by serie.nome
+
+     ");
+
+    return $resultado;
+}
+
 // ********************************************************************************
 
 function cadastro_conteudo_aula($conexao,$descricao, $disciplina_id, $turma_id, $escola_id, $professor_id, $data,$aula) {
