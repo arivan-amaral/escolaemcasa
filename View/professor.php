@@ -553,9 +553,14 @@ setTimeout('dia_doservidor_publico();',3000);
                                                   Chat da turma
                                                 </font>
                                               </font>
-                                      </a>
-
-                                        <br>
+                                      </a>";
+                                      if ($idserie>2 && $idserie< 8) {
+                                                echo "<a href='habilidade.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-warning btn-block btn-flat' target='_blank'>
+                                                  <i class='fa fa-card'></i> 
+                                                  HABILIDADES
+                                                  </a>";
+                                          }
+                                        echo"<br>
                                         <div class='col-sm-12'>
                                           <div class='card card-secondary collapsed-card'>
                                             <div class='card-header' data-card-widget='collapse'>
