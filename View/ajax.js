@@ -46,7 +46,168 @@ function CriaRequest() {
 
 
 
-function registra_nota_fora_rede_ano_finalizado(opcao) {
+function cadastrar_nota_fora_rede_ano_finalizado() {
+   // var result= document.getElementById('lista_notas_cadastrada_fora');
+    var xmlreq = new XMLHttpRequest();
+   
+    xmlreq.open("POST", "../Controller/Cadastrar_nota_fora_rede.php", true);
+    xmlreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+
+    var aluno_finalizou=document.getElementsByName('aluno_finalizou')[0].value;
+    if (aluno_finalizou=="Sim") {
+        idturma=1000;
+        idperiodo=7;
+    }else{
+        var idturma=document.getElementsByName('idturma')[0].value;
+        var idperiodo=document.getElementsByName('idperiodo')[0].value;
+    }
+    var escola_origem=document.getElementsByName('escola_origem')[0].value; //de onde o aluno vei)[0].value;
+
+    var idescola =document.getElementsByName('idescola')[0].value; // escola da rede a qual a nota está sendo inseri)[0].value;
+    var iddisciplina=document.getElementsByName('iddisciplina')[0].value;
+    var idaluno=document.getElementsByName('idaluno')[0].value;
+    var tipo_registro=document.getElementsByName('tipo_registro')[0].value;
+
+    var ano_referencia=document.getElementsByName('ano_referencia')[0].value;
+    var idserie=document.getElementsByName('idserie')[0].value;
+   
+    var media_ou_nf=document.getElementsByName('media_ou_nf')[0].value;
+    var carga_horaria=document.getElementsByName('carga_horaria')[0].value;
+    var total_falta=document.getElementsByName('total_falta')[0].value;
+
+
+ xmlreq.send(
+ "aluno_finalizou="+aluno_finalizou+
+ "&idperiodo="+idperiodo+
+ "&idturma="+idturma+
+ "&iddisciplina="+iddisciplina+
+ 
+ "&escola_origem="+escola_origem+
+ "&idescola="+idescola+
+ "&idaluno="+idaluno+
+ "&tipo_registro="+tipo_registro+
+ "&media_ou_nf="+media_ou_nf+
+ "&ano_referencia="+ano_referencia+
+ "&idserie="+idserie+
+ "&carga_horaria="+carga_horaria+
+ "&total_falta="+total_falta
+ );
+   // if (!!document.getElementsByName('etapa')) 
+   xmlreq.onreadystatechange = function() {
+     // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
+     if (xmlreq.readyState == 4 && xmlreq.status == 200) {
+         var data = xmlreq.responseText;
+           if(data == 'certo'){
+             Swal.fire({
+               position: 'center',
+               icon: 'success',
+               title: 'Ação Concluída',
+                  text: ' ',
+               showConfirmButton: false,
+               timer: 2500
+             });
+        document.getElementsByName('iddisciplina')[0].value="";
+          document.getElementsByName('media_ou_nf')[0].value="";
+          document.getElementsByName('carga_horaria')[0].value="";
+          document.getElementsByName('total_falta')[0].value="";
+         lista_notas_cadastrada_fora();
+           }else{
+             Swal.fire({
+               position: 'center',
+               icon: 'error',
+               title: 'Alguma coisa deu errado',
+                  text: ' ',
+               showConfirmButton: false,
+               timer: 1500
+             });
+
+         lista_notas_cadastrada_fora();
+             
+           }
+     }
+   }
+  
+
+
+}
+
+
+
+
+function excluir_notas_cadastrada_fora(idnota) {
+   
+    var xmlreq = CriaRequest();   
+   
+    xmlreq.open("GET", "../Controller/Excluir_notas_cadastrada_fora.php?idnota="+idnota, true);
+    xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                // result.innerHTML = xmlreq.responseText;
+                 if(xmlreq.responseText=="certo"){
+                    Swal.fire({
+                      position: 'center',
+                      icon: 'success',
+                      title: 'Ação concluída',
+                         text: ' ',
+                      showConfirmButton: false,
+                      timer: 1500
+                    });
+                   var node = document.getElementById(idnota);
+                   if (node.parentNode) {
+                     node.parentNode.removeChild(node);
+                   }
+
+
+                 }else{
+                    Swal.fire({
+                      position: 'center',
+                      icon: 'error',
+                      title: 'Alguma coisa deu errado',
+                         text: ' ',
+                      showConfirmButton: false,
+                      timer: 1500
+                    });
+                 }
+
+             }else{
+                result.innerHTML = 'Erro desconhecido, verifique sua conexão com a internet';
+
+                //result.innerHTML ="Erro ao receber mensagens";                 
+             }
+         }
+     };
+     xmlreq.send(null);
+}
+
+
+
+function lista_notas_cadastrada_fora() {
+    var result= document.getElementById('lista_notas_cadastrada_fora');
+    var xmlreq = CriaRequest();   
+    var idaluno= document.getElementById('idaluno').value;
+
+    xmlreq.open("GET", "../Controller/Lista_notas_cadastrada_fora.php?idaluno="+idaluno, true);
+
+   xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                result.innerHTML = xmlreq.responseText;
+             }else{
+                result.innerHTML = 'Erro desconhecido, verifique sua conexão com a internet';
+
+                //result.innerHTML ="Erro ao receber mensagens";                 
+             }
+         }
+     };
+     xmlreq.send(null);
+}
+
+
+
+function view_nota_fora_rede_ano_finalizado(opcao) {
     var result= document.getElementById('aluno_finalizado_ano');
     var xmlreq = CriaRequest();   
 

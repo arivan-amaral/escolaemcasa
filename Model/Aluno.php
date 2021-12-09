@@ -991,6 +991,45 @@ function listar_aluno_da_turma_professor($conexao,$idturma,$escola_id){
    turma_id=$idturma and aluno_id=idaluno and turma_id=idturma and escola_id=$escola_id and status like'Ativo' ORDER by nome ASC");
   return $res;
 }	
+function listar_aluno_da_turma_ata_resultado_final($conexao,$aluno_id,$turma_id,$escola_id){
+  $res=$conexao->query("SELECT 
+aluno.nome as 'nome_aluno',
+aluno.idaluno,
+turma.nome_turma,
+ecidade_movimentacao_escolar.matriculamov_dataevento AS 'data_evento',
+ecidade_movimentacao_escolar.matriculamov_descr as 'descricao_procedimento',
+ecidade_movimentacao_escolar.matriculamov_procedimento as 'procedimento'
+FROM
+ecidade_movimentacao_escolar,
+aluno,turma,escola
+
+where 
+ecidade_movimentacao_escolar.aluno_id= aluno.idaluno AND
+ecidade_movimentacao_escolar.turma_id = turma.idturma and 
+ecidade_movimentacao_escolar.escola_id = escola.idescola and 
+ecidade_movimentacao_escolar.calendario_ano ='2021' and 
+ 
+ecidade_movimentacao_escolar.escola_id=$escola_id and
+ecidade_movimentacao_escolar.turma_id=$turma_id and
+ecidade_movimentacao_escolar.aluno_id=$aluno_id and
+
+    
+    (
+   
+   ecidade_movimentacao_escolar.matriculamov_procedimento 
+   LIKE 'TRANSFERÊNCIA ENTRE ESCOLAS DA REDE' OR 
+   ecidade_movimentacao_escolar.matriculamov_procedimento 
+   LIKE 'TRANSFERÊNCIA PARA OUTRA ESCOLA' OR  
+   ecidade_movimentacao_escolar.matriculamov_procedimento 
+   LIKE 'TROCAR ALUNO DE TURMA' OR  
+   ecidade_movimentacao_escolar.matriculamov_procedimento 
+   LIKE 'TROCAR ALUNO DE MODALIDADE' )
+
+    AND 
+
+   aluno.status like'Ativo' ORDER by aluno.nome ASC");
+  return $res;
+}   
 
 function listar_aluno_do_simulado_professor($conexao,$escola_id,$idserie,$indice){
   $res=$conexao->query("SELECT aluno.senha,aluno.email,aluno.nome as 'nome_aluno', aluno.idaluno, aluno.status as 'status_aluno', turma.nome_turma,turma.idturma

@@ -101,9 +101,48 @@ $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
 
   }
 
+  $res_movimentacao=listar_aluno_da_turma_ata_resultado_final($conexao,$idaluno,$idturma,$idescola);
+  $data_evento="";
+  $descricao_procedimento="";
+  $procedimento="";
+  foreach ($res_movimentacao as $key => $value) {
+      $data_evento=$value['data_evento'];
+      $descricao_procedimento=$value['descricao_procedimento'];
+      $procedimento=$value['procedimento'];
+  }
+
 ?>
  <tr style='height:11.3pt'>
+  <?php 
+ 
+  if ($procedimento!='') {
   
+  ?>
+      <td width=19 valign=top style='width:14.15pt;border-top:none;border-left:
+      solid black 1.0pt;border-bottom:none;border-right:solid black 1.0pt;
+      padding:0cm 0cm 0cm 0cm;height:11.3pt'>
+      <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
+      0cm;margin-left:3.65pt;margin-bottom:.0001pt'><span lang=PT style='font-size:
+      8.0pt'><?php echo "$conta_aluno"; ?></span></p>
+      </td>
+      <td width=246 valign=top style='width:184.25pt;border:none;border-right:solid black 1.0pt;
+      padding:0cm 0cm 0cm 0cm;height:11.3pt'>
+      <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
+      0cm;margin-left:2.75pt;margin-bottom:.0001pt'><span lang=PT style='font-size:
+      8.0pt'><?php echo $nome_aluno; ?></span></p>
+      </td>
+
+
+     <td width=461 colspan=12 valign=top style='width:345.45pt;border:none;
+      border-right:solid black 1.0pt;padding:0cm 0cm 0cm 0cm;height:11.3pt'>
+      <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
+      0cm;margin-left:2.75pt;margin-bottom:.0001pt'><span lang=PT style='font-size:
+      8.0pt'><?php echo"$procedimento $descricao_procedimento "; ?></p>
+      </td> 
+
+  <?php
+   }else{
+  ?>
   <td width=19 valign=top style='width:14.15pt;border-top:none;border-left:
   solid black 1.0pt;border-bottom:none;border-right:solid black 1.0pt;
   background:<?php echo "$cor_linha"; ?>;padding:0cm 0cm 0cm 0cm;height:11.3pt'>
@@ -113,17 +152,18 @@ $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
   <td width=246 valign=top style='width:184.25pt;border:none;border-right:solid black 1.0pt;
   background:<?php echo "$cor_linha"; ?>;padding:0cm 0cm 0cm 0cm;height:11.3pt'>
   <p class=TableParagraph style='margin-left:2.75pt'><span lang=PT
-  style='font-size:8.0pt'><?php echo $nome_aluno; ?></span></p>
+  style='font-size:8.0pt'><?php echo $nome_aluno;
+  echo "string"; ?></span></p>
   </td>
   
-         <?php 
+<?php
 
- $iddisciplina="";
-$media_aprovacao=true;
-  foreach ($array_disciplina as $key => $value) {
+      $iddisciplina="";
+      $media_aprovacao=true;
+      foreach ($array_disciplina as $key => $value) {
             $iddisciplina=$array_disciplina[$key];
          
-        ?>
+  ?>
           <td width=42 valign=top style='width:31.15pt;border:none;border-right:solid black 1.0pt;
           background:<?php echo "$cor_linha"; ?>;padding:0cm 0cm 0cm 0cm;height:11.3pt'>
           <p class=TableParagraph align=center style='margin-top:1.85pt;margin-right:
@@ -220,44 +260,35 @@ $media_aprovacao=true;
    $nota_rp_3='';
    foreach ($result_nota_aula3 as $key => $value) {
 
-     if ($value['avaliacao']!='RP') {
-       $nota_tri_3+=$value['nota'];
+         if ($value['avaliacao']!='RP') {
+           $nota_tri_3+=$value['nota'];
+         }
+           // ***************************************
+         if ($value['avaliacao']=='av3') {
+           $nota_av3_3=$value['nota'];
+         }
 
-
-     }
-       // ***************************************
-     if ($value['avaliacao']=='av3') {
-       $nota_av3_3=$value['nota'];
-
-     }
-
-     if ($value['avaliacao']=='RP') {
-       $nota_rp_3=$value['nota'];
-
-
-     }
+         if ($value['avaliacao']=='RP') {
+           $nota_rp_3=$value['nota'];
+         }
 
    }
 
-   if ($nota_tri_3<5 && $nota_rp_3!='' && $nota_rp_3>$nota_av3_3) {
+  if ($nota_tri_3<5 && $nota_rp_3!='' && $nota_rp_3>$nota_av3_3) {
     $nota_tri_3=($nota_tri_3-$nota_av3_3)+$nota_rp_3;
   }
-    $media=($nota_tri_3+$nota_tri_2+$nota_tri_1)/3;
-
-    echo number_format($media, 1, '.', ',');
- 
-    
-    if ($media >= 5) {
-    }else{
+  $media=($nota_tri_3+$nota_tri_2+$nota_tri_1)/3;
+  echo number_format($media, 1, '.', ',');
+  if ($media >= 5) {
+  }else{
       $media_aprovacao=false;
-
-    }
+  }
 ?>
       </span></p>
           </td>
-        <?php 
-        }
-        ?>
+<?php 
+  }
+?>
   <td width=45 valign=top style='width:34.0pt;border:none;border-right:solid black 1.0pt;
   background:<?php echo "$cor_linha"; ?>;padding:0cm 0cm 0cm 0cm;height:11.3pt'>
   <p class=TableParagraph align=center style='margin-top:1.85pt;margin-right:
@@ -282,31 +313,10 @@ $media_aprovacao=true;
 $conta_aluno++; 
 
 }
+
+}//else se não houve movimentação escolar
 ?>
- <tr style='height:11.3pt'>
- <!--  <td width=19 valign=top style='width:14.15pt;border-top:none;border-left:
-  solid black 1.0pt;border-bottom:none;border-right:solid black 1.0pt;
-  padding:0cm 0cm 0cm 0cm;height:11.3pt'>
-  <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
-  0cm;margin-left:3.65pt;margin-bottom:.0001pt'><span lang=PT style='font-size:
-  8.0pt'>18</span></p>
-  </td>
-  <td width=246 valign=top style='width:184.25pt;border:none;border-right:solid black 1.0pt;
-  padding:0cm 0cm 0cm 0cm;height:11.3pt'>
-  <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
-  0cm;margin-left:2.75pt;margin-bottom:.0001pt'><span lang=PT style='font-size:
-  8.0pt'>MARIA VITORIA FERREIRA</span></p>
-  </td> -->
 
-
-<!--   <td width=461 colspan=12 valign=top style='width:345.45pt;border:none;
-  border-right:solid black 1.0pt;padding:0cm 0cm 0cm 0cm;height:11.3pt'>
-  <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
-  0cm;margin-left:2.75pt;margin-bottom:.0001pt'><span lang=PT style='font-size:
-  8.0pt'>TRANSFERIDO FORA<span style='letter-spacing:.05pt'> </span>em
-  19/03/2020</span></p>
-  </td> -->
- </tr>
  <tr style='height:10.55pt'>
   <td width=321 colspan=4 valign=top style='border:solid black 1.0pt;
   padding:0pt 0pt 10pt 0pt;height:10.55pt'>
