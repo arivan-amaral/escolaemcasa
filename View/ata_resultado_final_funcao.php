@@ -152,8 +152,7 @@ $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
   <td width=246 valign=top style='width:184.25pt;border:none;border-right:solid black 1.0pt;
   background:<?php echo "$cor_linha"; ?>;padding:0cm 0cm 0cm 0cm;height:11.3pt'>
   <p class=TableParagraph style='margin-left:2.75pt'><span lang=PT
-  style='font-size:8.0pt'><?php echo $nome_aluno;
-  echo "string"; ?></span></p>
+  style='font-size:8.0pt'><?php echo $nome_aluno; ?></span></p>
   </td>
   
 <?php
