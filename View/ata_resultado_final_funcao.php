@@ -106,7 +106,7 @@ $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
   $descricao_procedimento="";
   $procedimento="";
   foreach ($res_movimentacao as $key => $value) {
-      $data_evento=$value['data_evento'];
+      $data_evento=data_simples($value['data_evento']);
       $descricao_procedimento=$value['descricao_procedimento'];
       $procedimento=$value['procedimento'];
   }
@@ -137,7 +137,7 @@ $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
       border-right:solid black 1.0pt;padding:0cm 0cm 0cm 0cm;height:11.3pt'>
       <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
       0cm;margin-left:2.75pt;margin-bottom:.0001pt'><span lang=PT style='font-size:
-      8.0pt'><?php echo"$procedimento"; ?></p>
+      8.0pt'><?php echo"$procedimento | $data_evento"; ?></p>
       </td> 
 
   <?php
