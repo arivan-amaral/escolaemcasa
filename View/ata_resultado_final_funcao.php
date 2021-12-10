@@ -308,7 +308,7 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
           
           $media_aprovacao=true;
       }else{
-          echo "$media";
+          echo number_format($media, 1, '.', ',');
           $media_aprovacao=false;
 
       }
