@@ -390,9 +390,15 @@ div.WordSection1
     $pes3=listar_disciplina_da_turma($conexao,$idturma,$idescola);
     foreach ($pes3 as $chave => $linha) {
       $iddisciplina=$linha['iddisciplina'];
-      $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av3',$idaluno,1);
-      foreach ($resultado as $key => $value) {
-        $parecer_descritivo="- ".$value['parecer_descritivo'];
+
+      if ($parecer_descritivo =="") {
+        
+        $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av3',$idaluno,1);
+
+        foreach ($resultado as $key => $value) {
+          $parecer_descritivo=" ".$value['parecer_descritivo'];
+        }
+
       }
     
     }
@@ -403,6 +409,7 @@ div.WordSection1
       $pes_pare=listar_disciplina_da_turma($conexao,$idturma,$idescola);
       foreach ($pes_pare as $chave => $linha) {
         $iddisciplina=$linha['iddisciplina'];
+        
         $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av1',$idaluno,1);
         foreach ($resultado as $key => $value) {
           $parecer_descritivo=" ".$value['parecer_descritivo'];
@@ -411,6 +418,7 @@ div.WordSection1
       }
 
     }
+
 if (isset($_GET['token'])) {
   echo "SELECT * FROM nota WHERE
       disciplina_id=$iddisciplina and 
