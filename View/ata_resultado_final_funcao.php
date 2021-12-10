@@ -26,12 +26,14 @@ function ata_resultados_finais($conexao,$idescola,$idturma){
   $res_disc=listar_disciplina_para_ata($conexao,$idescola,$idturma);
   $conta_disciplina=0;
   $array_disciplina=array();
+  $array_nome_sigla_disciplina=array();
+
   foreach ($res_disc as $key => $value) {
     $iddisciplina=$value['iddisciplina'];
     $nome_disciplina=$value['nome_disciplina'];
     $abreviacao=$value['abreviacao'];
     $array_disciplina[$conta_disciplina]=$iddisciplina;
-
+    $array_nome_sigla_disciplina[$abreviacao]=$nome_disciplina;
     $conta_disciplina++;
 ?>
   <td width=42 valign=top style='width:31.15pt;border:solid black 1.0pt;
@@ -86,7 +88,7 @@ function ata_resultados_finais($conexao,$idescola,$idturma){
        '><b><span lang=PT style='font-size:7.0pt;font-family:"Arial",sans-serif'>Nome
       do Aluno</span></b></p>
   </td>
-</tr>
+
 <?php
 $conta_aluno=1; 
 $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
@@ -105,14 +107,17 @@ $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
   $data_evento="";
   $descricao_procedimento="";
   $procedimento="";
+  $matricula="";
   foreach ($res_movimentacao as $key => $value) {
+      $matricula=($value['matricula']);
       $data_evento=converte_data($value['data_evento']);
       $descricao_procedimento=$value['descricao_procedimento'];
       $procedimento=$value['procedimento'];
   }
 
 ?>
- <tr style='height:11.3pt'>
+ <tr style=' '>
+ 
   <?php 
  
   if ($procedimento!='') {
@@ -125,19 +130,19 @@ $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
       0cm;margin-left:3.65pt;margin-bottom:.0001pt'><span lang=PT style='font-size:
       8.0pt'><?php echo "$conta_aluno"; ?></span></p>
       </td>
-      <td width=246 valign=top style='width:184.25pt;border:none;border-right:solid black 1.0pt;
+      <td  valign=top style='border:none;border-right:solid black 1.0pt;
       padding:0cm 0cm 0cm 0cm;height:11.3pt'>
       <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
       0cm;margin-left:2.75pt;margin-bottom:.0001pt'><span lang=PT style='font-size:
-      8.0pt'><?php echo $nome_aluno; ?></span></p>
+      8.0pt'><?php echo "$nome_aluno"; ?></span></p>
       </td>
 
 
-     <td width=461 colspan=12 valign=top style='width:345.45pt;border:none;
+     <td colspan=<?php echo $conta_disciplina+2; ?> valign=top style='border:none;
       border-right:solid black 1.0pt;padding:0cm 0cm 10pt 0cm;height:11.3pt'>
       <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
       0cm;margin-left:2.75pt;margin-bottom:.0001pt'><span lang=PT style='font-size:
-      8.0pt'><?php echo"$procedimento | $data_evento"; ?></p>
+      8.0pt'><?php echo"$matricula - $procedimento  $data_evento"; ?></p>
       </td> 
 
   <?php
@@ -320,14 +325,41 @@ $conta_aluno++;
  <tr style='height:10.55pt'>
   <td width=321 colspan=4 valign=top style='border:solid black 1.0pt;
   padding:0pt 0pt 10pt 0pt;height:10.55pt'>
-  <p class=TableParagraph align=center style='margin-top:1.45pt;margin-left:1.85pt;margin-bottom:50pt;
+  <p class=TableParagraph align=center style='margin-top:1.45pt;margin-left:1.85pt;margin-bottom:5pt;
   text-align:center'><span lang=PT style='font-size:10.0pt'>Observações:</span></p>
   </td>  
 
   <td width=321 colspan=10 valign=top style='border:solid black 1.0pt;
   padding:0pt 0pt 10pt 0pt;height:10.55pt'>
-  <p class=TableParagraph align=center style='margin-top:1.45pt;margin-left:1.85pt;margin-bottom:50pt;
-  text-align:center'><span lang=PT style='font-size:10.0pt'>Convenções:</span></p>
+  <p class=TableParagraph align=center style='margin-top:1.45pt;margin-left:4.85pt;margin-bottom:5pt;
+  text-align:center'><span lang=PT style='font-size:10.0pt'>Convenções:</span>
+</p>
+ <p style='margin-top:1.45pt;margin-left:4.85pt;margin-bottom:5pt;padding:0pt 0pt 10pt 5pt;'> 
+  <?php 
+    $conta_dis=1;
+    foreach ($array_nome_sigla_disciplina as $key => $value) {
+      echo "<span lang=PT style='font-size:8.0pt'> $key - $value &nbsp;&nbsp;&nbsp;</span>";
+      if ($conta_dis%2==0) {
+       echo "<br>";
+      }
+      $conta_dis++;
+    }
+    echo "<span lang=PT style='font-size:8.0pt'> APC -Aprovado pelo conselho &nbsp;&nbsp;  </span>";
+    echo "<span lang=PT style='font-size:8.0pt'> APR -Aprovado &nbsp;&nbsp;</span>";
+    echo "<span lang=PT style='font-size:8.0pt'> REP -REPROVADO &nbsp;&nbsp;</span>";
+
+  ?>
+</p>
+
+  <p  align=center style='border-top: 1px solid black; margin-top:1.45pt;margin-left:0.85pt;margin-bottom:5pt;
+  text-align:center'></p>  
+  <p  align=center style=' font-size:10.0pt margin-top:1.45pt;margin-left:0.85pt;margin-bottom:5pt;
+  text-align:center'>
+
+  E, para constar, foi lavrada esta Ata. <br>
+  ________________________________________<br>
+LUÍS EDUARDO MAGALHAES, <?php echo date("d/m/Y"); ?>
+</p> 
   </td>
   <!-- <td width=404 colspan=10  style='border:solid black 1.0pt;
   border-left:none;padding:100pt;height:10.55pt'>

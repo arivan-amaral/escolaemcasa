@@ -410,7 +410,7 @@ div.WordSection1
       }
 
     }
-echo "$parecer_descritivo";
+echo ".$parecer_descritivo";
 
     ?>
   </o:p></span></p>
