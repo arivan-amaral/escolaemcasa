@@ -24,7 +24,7 @@ function aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno){
 }
 
 function buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno){
-  $sql=$conexao->prepare("SELECT * FROM historico_nota WHERE escola_id = :idescola and turma_id = :idturma and disciplina_id = :iddisciplina and aluno_id = :idaluno");
+  $sql=$conexao->prepare("SELECT * FROM historico_nota WHERE escola_id = :idescola and turma_id = :idturma and disciplina_id = :iddisciplina and aluno_id = :idaluno and status=1");
   
   $sql->bindParam("idescola",$idescola);
   $sql->bindParam("idturma",$idturma);

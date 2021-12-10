@@ -210,7 +210,7 @@ try {
                                        
                                          
                                          if ($conta_aprovado>0) {
-                                            aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno);
+                                            //aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno);
                                             $result.="
                                             <a class='btn btn-success'> APC </A>
                                             <a class='btn btn-danger' onclick='cancelar_aprovacao_concelho($idaluno);'> Cancelar aprovação</a>";
