@@ -1084,9 +1084,7 @@ ecidade_movimentacao_escolar.escola_id = escola.idescola and
 ecidade_movimentacao_escolar.calendario_ano ='2021' and 
  
 ecidade_movimentacao_escolar.escola_id=$escola_id and
-ecidade_movimentacao_escolar.turma_id=$turma_id and
-
-aluno.status like'Ativo' group by ecidade_movimentacao_escolar.aluno_id  ORDER by aluno.nome ASC ");
+ecidade_movimentacao_escolar.turma_id=$turma_id   group by ecidade_movimentacao_escolar.aluno_id  ORDER by aluno.nome ASC ");
   return $res;
 } 
 
