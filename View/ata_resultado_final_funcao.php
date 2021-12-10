@@ -293,10 +293,25 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
     $nota_tri_3=($nota_tri_3-$nota_av3_3)+$nota_rp_3;
   }
   $media=($nota_tri_3+$nota_tri_2+$nota_tri_1)/3;
-  echo number_format($media, 1, '.', ',');
+ //arivan
   if ($media >= 5) {
+      echo number_format($media, 1, '.', ',');
+      $media_aprovacao=true;
+
   }else{
-      $media_aprovacao=false;
+      $res_conselho=buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno);
+      $conta_aprovado=count($res_conselho);
+      
+       if ($conta_aprovado>0 ) {
+          $media_conselho=5.0;
+          echo "<b>$media_conselho</b>";
+          
+          $media_aprovacao=true;
+      }else{
+          $media_aprovacao=false;
+
+      }
+
   }
 ?>
       </span></p>
