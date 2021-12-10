@@ -133,7 +133,7 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
   if ($procedimento!='') {
   
   ?>
-      <td width=19 valign=top style='width:14.15pt;border-top:none;border-left:
+      <td width=19 valign=top style='background-color: <?php echo "$cor_linha"; ?>; width:14.15pt;border-top:none;border-left:
       solid black 1.0pt;border-bottom:none;border-right:solid black 1.0pt;
       padding:0cm 0cm 0cm 0cm;height:11.3pt'>
       <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
@@ -152,7 +152,7 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
       border-right:solid black 1.0pt;padding:0cm 0cm 10pt 0cm;height:11.3pt'>
       <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
       0cm;margin-left:2.75pt;margin-bottom:.0001pt'><span lang=PT style='font-size:
-      8.0pt'><?php echo"$matricula - $procedimento  $datasaida "; ?></p>
+      8.0pt'><?php echo" $procedimento  $datasaida "; ?></p>
       </td> 
 
   <?php
@@ -308,6 +308,7 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
           
           $media_aprovacao=true;
       }else{
+          echo "$media";
           $media_aprovacao=false;
 
       }
