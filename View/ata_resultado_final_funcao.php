@@ -109,10 +109,15 @@ $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
   $procedimento="";
   $matricula="";
   foreach ($res_movimentacao as $key => $value) {
+      $datasaida=($value['datasaida']);
       $matricula=($value['matricula']);
       $data_evento=converte_data($value['data_evento']);
       $descricao_procedimento=$value['descricao_procedimento'];
       $procedimento=$value['procedimento'];
+      
+      if ($datasaida!="") {
+        $datasaida=converte_data($datasaida);
+      }
   }
 
 ?>
@@ -142,7 +147,7 @@ $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
       border-right:solid black 1.0pt;padding:0cm 0cm 10pt 0cm;height:11.3pt'>
       <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
       0cm;margin-left:2.75pt;margin-bottom:.0001pt'><span lang=PT style='font-size:
-      8.0pt'><?php echo"$matricula - $procedimento  $data_evento"; ?></p>
+      8.0pt'><?php echo"$matricula - $procedimento  $datasaida "; ?></p>
       </td> 
 
   <?php
