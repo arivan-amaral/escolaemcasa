@@ -137,6 +137,7 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
   $res_disc=listar_disciplina_para_boletim($conexao,$idaluno);
   $conta_parecer=0;
   $linha=0;
+  $resultado_final=true;
 
   foreach ($res_disc as $key => $value) {
     $iddisciplina=$value['iddisciplina'];
@@ -322,6 +323,9 @@ line-height:normal'><span style='mso-ascii-font-family:Calibri;mso-fareast-font-
 "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
 color:black;mso-fareast-language:PT-BR'>
 <?php $total=($nota_tri_1+$nota_tri_2+$nota_tri_3)/3;
+if ($total <5 ) {
+  $resultado_final=false;
+}
 echo"".number_format($total, 1, '.','') ; ?></span></p>
 </td>
 <?php
@@ -338,27 +342,26 @@ if ($conta_parecer==0 && $linha==0) {
   "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
   color:black;mso-fareast-language:PT-BR'>I TRIMESTRE: <?php
 
-        $result_parecer_tri1=$conexao->query("
-          SELECT * FROM nota WHERE
-          escola_id=$idescola and
-          turma_id=$idturma and
+        // $result_parecer_tri1=$conexao->query("
+        //   SELECT * FROM nota WHERE
+        //   escola_id=$idescola and
+        //   turma_id=$idturma and
         
-          periodo_id=1 and aluno_id=$idaluno  group by parecer_descritivo");
+        //   periodo_id=1 and aluno_id=$idaluno  group by parecer_descritivo");
 
 // avaliacao,periodo_id 
 
         $parecer_tri_1="";
       
-        foreach ($result_parecer_tri1 as $key => $value) {
-          $parecer_tri_1.=$value['parecer_descritivo'];
-        }
+        // foreach ($result_parecer_tri1 as $key => $value) {
+        //   $parecer_tri_1.=$value['parecer_descritivo'];
+        // }
      // echo "$parecer_tri_1";
 
   ?><o:p></o:p></span></p>
 </td> 
 <?php 
 $conta_parecer++;
-
 }else if ($conta_parecer==1 && $linha==3) {
  ?>
 
@@ -496,7 +499,15 @@ color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
       <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
         style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
         mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-        mso-fareast-language:PT-BR'>Resultado Final:<o:p><?php //echo $nota_tri_1 + $nota_tri_2 + $nota_tri_3; ?></o:p></span></p>
+
+        mso-fareast-language:PT-BR'>Resultado Final:<o:p><?php 
+        if ($resultado_final==false) {
+          echo " <b>Rep</b>";
+        }else{
+          echo " <b>Apr</b>";
+
+        }
+      ?></o:p></span></p>
       </td>
     </tr>
    
@@ -515,5 +526,7 @@ color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
 
 
 <?php 
+$resultado_final=true;
+
 }
 ?>
