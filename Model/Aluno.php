@@ -1064,7 +1064,7 @@ aluno.status like'Ativo' ORDER by aluno.nome ASC");
 
 
 
-function listar_aluno_da_turma_ata_resultado_final($conexao,$aluno_id,$turma_id,$escola_id){
+function listar_aluno_da_turma_ata_resultado_final($conexao,$turma_id,$escola_id){
   $res=$conexao->query("SELECT 
 aluno.nome as 'nome_aluno',
 aluno.idaluno,
