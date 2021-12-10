@@ -1018,7 +1018,9 @@ ecidade_movimentacao_escolar.escola_id = escola.idescola and
 ecidade_matricula.matricula_codigo=$matricula and 
 
 ecidade_matricula.calendario_ano ='2021' and 
+
 ecidade_matricula.matricula_situacao !='MATRICULADO' 
+AND ecidade_matricula.matricula_situacao !='REMATRICULAR ALUNO' 
 AND 
 aluno.status like'Ativo' ORDER by aluno.nome ASC");
   
