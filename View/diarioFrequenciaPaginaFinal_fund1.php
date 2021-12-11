@@ -99,10 +99,12 @@ target="pla_arquivos/props002.xml">
 
     <!-- FECHANDO A LINHA NO TOPO DO NOME PREFEITURA -->
 
-<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=1091
+<table  class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 
+  style='width: 100%;'>
+<!-- <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=1091
  style='page-break-after: always; page-break-inside: auto; width:818.05pt;border-collapse:collapse;mso-yfti-tbllook:1184;
  mso-padding-alt:0cm 3.5pt 0cm 3.5pt; border: 1px solid black;'>
- 
+ --> 
  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:15.0pt'>
  
  <td width=11 nowrap valign=bottom style='width:15.4pt;border-top:solid windowtext 1.0pt;
@@ -546,14 +548,14 @@ foreach ($result_nota_aula as $key => $value) {
   $array_avaliacao[$conta_nota]=$avaliacao;
   ?>
 
- <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
+ <!-- <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
       border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
       solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
       <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
       line-height:normal'><div class="Namerotate"><span style='font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
       color:black;mso-fareast-language:PT-BR'><?php echo converte_data($data_nota); ?> </div></span></p>
-  </td>
+  </td> -->
 
 <?php 
     $conta_nota++;
@@ -563,14 +565,14 @@ foreach ($result_nota_aula as $key => $value) {
  for($i=$conta_nota; $i < 4; $i++) {   
 ?>
 
- <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
+<!--  <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
       border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
       solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
       <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
       line-height:normal'><div class="Namerotate"><span style='font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
       color:black;mso-fareast-language:PT-BR'> </div></span></p>
-  </td>
+  </td> -->
 
   
 <?php 
