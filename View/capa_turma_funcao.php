@@ -4,7 +4,7 @@ function capa_turma($conexao,$idescola,$idturma){
 ?>
 
 
- <tr style='width:80%'>
+ <tr >
   <td colspan="6"  style='border:none;border:solid black 1.0pt;
   padding:0cm 0cm 0cm 0cm;height:10.95pt'>
       <p class=TableParagraph  style='margin-top:.8pt;margin-right:

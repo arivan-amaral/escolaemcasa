@@ -35,22 +35,6 @@ xmlns="http://www.w3.org/TR/REC-html40">
 <link rel=colorSchemeMapping
 href="regitro_conteudo_arquivos/colorschememapping.xml">
 
-<style>
-
-    
-  
-
-        table { page-break-inside:auto }
-        tr    { page-break-inside:avoid; page-break-after:auto }
-        thead { display:table-header-group }
-        tfoot { display:table-footer-group }
-
-
-      @media print {
-        .pagebreak { page-break-before: always; } /* page-break-after works, as well */
-      }
-
-</style>
 
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- overlayScrollbars -->
@@ -60,12 +44,57 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+        @media print {
+          body {
+            background: none;
+            -ms-zoom: 1.665;
+          }
+          div.portrait, div.landscape {
+            margin-left: 100;
+          
+            padding: 0;
+            border: none;
+            background: none;
+            size: 4in 6in landscape;
+          }
+          div.landscape {
+            transform: rotate(270deg) translate(-220mm, 0);
+            transform-origin: 0 0;
+          }
+
+        }
+
+   
+
+        table { page-break-inside:auto }
+        tr    { page-break-inside:avoid; page-break-after:auto }
+        thead { display:table-header-group }
+        tfoot { display:table-footer-group }
+
+
+    @media print {
+
+        .pagebreak { page-break-before: always; } /* page-break-after works, as well */
+      }
+      @media print{@page {size: landscape}}
+
+</style>
+<style type="text/css" media="print">
+    .page
+    {
+     -webkit-transform: rotate(-90deg); 
+     -moz-transform:rotate(-90deg);
+     filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    }
+
+
+</style>
 </head>
 
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
         .load {
@@ -91,12 +120,12 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
 
 
 
- <H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>
+ <!-- <H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR> -->
 
  <div class=WordSection1>
 
  <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 
-  style='width: 80%;'>
+  style='width: 100%;'>
 
   <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:15.75pt'>
    <td width=83 nowrap rowspan=1 valign=top style='width:62.6pt;border:solid windowtext 1.0pt;

@@ -4,7 +4,7 @@ function ata_resultados_finais($conexao,$idescola,$idturma){
 ?>
 
 
- <tr style='width:80%'>
+ <tr style='width:100%'>
  
   <td width=19 valign=top style='width:14.15pt;border:solid black 1.0pt;
   padding:0cm 0cm 0cm 0cm;height:21.9pt'>
@@ -162,12 +162,14 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
   ?>
   <td width=19 valign=top style='width:14.15pt;border-top:none;border-left:
   solid black 1.0pt;border-bottom:none;border-right:solid black 1.0pt;
-  background:<?php echo "$cor_linha"; ?>;padding:0cm 0cm 0cm 0cm;height:11.3pt'>
+  background:<?php echo "$cor_linha"; ?>;padding:0cm 0cm 0cm 0cm; '>
+
   <p class=TableParagraph style='margin-left:5.3pt'><span lang=PT
   style='font-size:8.0pt'><?php echo "$conta_aluno"; ?></span></p>
   </td>
+
   <td width=246 valign=top style='width:184.25pt;border:none;border-right:solid black 1.0pt;
-  background:<?php echo "$cor_linha"; ?>;padding:0cm 0cm 0cm 0cm;height:11.3pt'>
+  background:<?php echo "$cor_linha"; ?>;padding:0cm 0cm 0cm 0cm;'>
   <p class=TableParagraph style='margin-left:2.75pt'><span lang=PT
   style='font-size:8.0pt'><?php echo $nome_aluno; ?></span></p>
   </td>
@@ -181,9 +183,9 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
          
   ?>
           <td width=42 valign=top style='width:31.15pt;border:none;border-right:solid black 1.0pt;
-          background:<?php echo "$cor_linha"; ?>;padding:0cm 0cm 0cm 0cm;height:11.3pt'>
-          <p class=TableParagraph align=center style='margin-top:1.85pt;margin-right:
-          2.7pt;margin-bottom:0cm;margin-left:3.35pt;margin-bottom:.0001pt;text-align:
+          background:<?php echo "$cor_linha"; ?>;padding:0cm 0cm 0cm 0cm;'>
+          <p class=TableParagraph align=center style='margin-right:
+          2.7pt;margin-bottom:0cm;margin-left:3.35pt;;text-align:
           center'><span lang=PT style='font-size:8.0pt'>
             <?php
 
@@ -322,9 +324,9 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
   }
 ?>
   <td width=45 valign=top style='width:34.0pt;border:none;border-right:solid black 1.0pt;
-  background:<?php echo "$cor_linha"; ?>;padding:0cm 0cm 0cm 0cm;height:11.3pt'>
+  background:<?php echo "$cor_linha"; ?>;padding:0cm 0cm 0cm 0cm;'>
   <p class=TableParagraph align=center style='margin-top:1.85pt;margin-right:
-  10.25pt;margin-bottom:0cm;margin-left:11.6pt;margin-bottom:.0001pt;
+  10.25pt;margin-bottom:0cm;margin-left:11.6pt;
   text-align:center'><span lang=PT style='font-size:8.0pt'>
 <?php 
     if ($media_aprovacao == true) {
