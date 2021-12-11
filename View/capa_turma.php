@@ -142,18 +142,7 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
      mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
      color:black;mso-fareast-language:PT-BR'>TURMA: <?php echo "$nome_turma"; ?><o:p></o:p></span></b></p>
 
-   <!-- <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
-   style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-   color:black;mso-fareast-language:PT-BR'>JOÃO DOURADO, 230 - STA. CRUZ
-   3628-4233 LUIS EDUARDO MAGALHÃES<o:p></o:p></span></b></p> -->
-
-<!--    <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
-   style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-   color:black;mso-fareast-language:PT-BR'>ESCOLAONEROCOSTA@HOTMAIL.COM - 
-   <a
-   href="http://luiseduardomagalhaes.ba.gov.br/">http://luiseduardomagalhaes.ba.gov.br/</a><o:p></o:p></span></b></p> -->
+ 
    <br>
    </td>
   </tr>

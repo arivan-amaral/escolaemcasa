@@ -1074,12 +1074,17 @@ turma.nome_turma,
 ecidade_movimentacao_escolar.matriculamov_dataevento AS 'data_evento',
 ecidade_movimentacao_escolar.matriculamov_descr as 'descricao_procedimento',
 ecidade_movimentacao_escolar.matriculamov_procedimento as 'procedimento',
-ecidade_movimentacao_escolar.matricula_codigo as 'matricula'
+ecidade_movimentacao_escolar.matricula_codigo as 'matricula',
+
+ecidade_matricula.matricula_datamatricula as 'data_matricula',
+ecidade_matricula.datasaida as 'datasaida'
 FROM
-ecidade_movimentacao_escolar,
+ecidade_movimentacao_escolar, ecidade_matricula,
 aluno,turma,escola
 
-where 
+where
+ecidade_matricula.matricula_codigo = ecidade_movimentacao_escolar.matricula_codigo and 
+
 ecidade_movimentacao_escolar.aluno_id= aluno.idaluno AND
 ecidade_movimentacao_escolar.turma_id = turma.idturma and 
 ecidade_movimentacao_escolar.escola_id = escola.idescola and 

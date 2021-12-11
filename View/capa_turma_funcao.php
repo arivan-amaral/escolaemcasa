@@ -87,10 +87,16 @@ function capa_turma($conexao,$idescola,$idturma){
 <?php
 $conta_aluno=1; 
 $matricula_aluno="";
+
+  $matricula="";
+  $datasaida="";
+  $data_matricula="";
 $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola);
  foreach ($res_alunos as $key => $value) {
 
   $idaluno=$value['idaluno'];
+  $datasaida=$value['datasaida'];
+  $data_matricula=$value['data_matricula'];
   $nome_aluno=$value['nome_aluno'];
   $sexo_aluno=$value['sexo'];
   $data_nascimento=$value['data_nascimento'];
@@ -108,30 +114,16 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
   }
 
 // pesquisar_aluno_da_turma_ata_resultado_final
-  $res_movimentacao=pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula_aluno);
 
-  $data_evento="";
-  $descricao_procedimento="";
-  $procedimento="";
-  $matricula="";
-  $datasaida="";
-  $data_matricula="";
-  foreach ($res_movimentacao as $key => $value) {
-      $datasaida=($value['datasaida']);
-      $data_matricula=($value['matricula_datamatricula']);
-      $matricula=($value['matricula']);
-      $data_evento=converte_data($value['data_evento']);
-      $descricao_procedimento=$value['descricao_procedimento'];
-      $procedimento=$value['procedimento'];
-      
+
+ 
       if ($datasaida!="") {
         $datasaida=converte_data($datasaida);
       }     
       if ($data_matricula!="") {
         $data_matricula=converte_data($data_matricula);
       }
-  }
-
+  
 ?>
  <tr style=''>
  
