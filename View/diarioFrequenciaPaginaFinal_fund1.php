@@ -283,13 +283,13 @@ foreach ($result_escola as $key => $value) {
 }elseif ($periodo_id==2) {
     $data_inicio_trimestre="2021-07-27";
     $data_fim_trimestre="2021-10-01";
-    echo "II TRIMESTRE ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
+    echo "II TRIMESTRE ".converte_data($data_inicio_trimestre)." a ".converte_data($data_fim_trimestre);
 
 
 }elseif ($periodo_id==3) {
     $data_inicio_trimestre="2021-10-04";
     $data_fim_trimestre="2021-12-21";
-    echo "III TRIMESTRE ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
+    echo "III TRIMESTRE ".converte_data($data_inicio_trimestre)." a ".converte_data($data_fim_trimestre);
   
 }
 
@@ -454,9 +454,7 @@ for ($i=$conta_data; $conta_data<$limite_data ; $i++) {
   } else{ 
 ?>
   
-  <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
-      border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
-      solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
+  <td width=41 nowrap style='width:18.8pt;border:1.0pt solid black;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
       <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
       line-height:normal'><div class="Namerotate"><span style='font-size:6.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
@@ -525,7 +523,7 @@ foreach ($result_nota_aula as $key => $value) {
  ?>
 
 
-  <td width=41 nowrap rowspan=2 style='width:30.8pt;border-top:none;border-left:
+<!--   <td width=41 nowrap rowspan=2 style='width:30.8pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-left-alt:solid windowtext 1.0pt;background:#D9D9D9;padding:0cm 3.5pt 0cm 3.5pt;
   mso-rotate:90;height:48.75pt'>
@@ -533,7 +531,7 @@ foreach ($result_nota_aula as $key => $value) {
   line-height:normal'><b><div class="Namerotate"><span style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
   color:black;mso-fareast-language:PT-BR'>RP<o:p></o:p></span></div></b></p>
-  </td>
+  </td> -->
  <td width=41 nowrap rowspan=2 style='width:30.8pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-left-alt:solid windowtext 1.0pt;background:#D9D9D9;padding:0cm 3.5pt 0cm 3.5pt;
@@ -708,7 +706,7 @@ $conta_presenca=1;
   ?>
   
 
-  <td width=10 nowrap valign=top style='border:solid windowtext 1.0pt;
+  <td width=10 nowrap valign=top style='border: 1.0pt solid black;
     border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
     solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
     white;height:13.5pt'>
@@ -729,29 +727,25 @@ $conta_presenca=1;
   ?>
   
 
-  <td width=10 nowrap valign=top style='border:solid windowtext 1.0pt;
-    border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
-    solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
+  <td width=10 nowrap valign=top style='border: 1.0pt solid black;background:
     white;height:13.5pt'>
     <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
     line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
     mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-    color:black;mso-fareast-language:PT-BR'>  </span></b></p>
+    color:black;mso-fareast-language:PT-BR'></span></b></p>
   </td>
     
   <?php
    } 
 ?>
   
+<!-- arivan 11122021 -->
 
-              <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
-               border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
-               solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
-               white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
+             <!--  <td width=10 nowrap valign=top style='width:10.8pt;border:1.0pt solid black;  background: white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
                <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
                line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
                mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-               color:black;mso-fareast-language:PT-BR'>  
+               color:black;mso-fareast-language:PT-BR'> -->  
 
 
 <?php
@@ -771,8 +765,8 @@ foreach ($res_fre_t1 as $key => $value) {
 
 //echo "$quantidade_falta1";
 ?>
-             </span></b></p>
-             </td>
+             <!-- </span></b></p> -->
+             <!-- </td> -->
 <?php
 
  echo"</tr>";

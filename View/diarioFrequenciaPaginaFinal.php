@@ -278,11 +278,11 @@ foreach ($result_escola as $key => $value) {
   if ($periodo_id==1) {
     $data_inicio_trimestre="2021-05-03";
     $data_fim_trimestre="2021-07-09";
-    echo "I TRIMESTRE ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
+    echo "I TRIMESTRE ".converte_data($data_inicio_trimestre)." a ".converte_data($data_fim_trimestre);
 }elseif ($periodo_id==2) {
     $data_inicio_trimestre="2021-07-27";
     $data_fim_trimestre="2021-10-01";
-    echo "II TRIMESTRE ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
+    echo "II TRIMESTRE ".converte_data($data_inicio_trimestre)." a ".converte_data($data_fim_trimestre);
 
 
 }elseif ($periodo_id==3) {
