@@ -105,6 +105,23 @@ $result="";
                                       <br>
 
                                     ";
+
+                                     $result.="
+                                       
+                                     <form action='capa_turma.php' method='post' target='_blank'>
+                                      <input type='hidden' name='idturma' value='$idturma'>
+                                      <input type='hidden' name='idescola' value='$idescola'>
+
+                                      <input type='hidden' name='nome_escola' value='$nome_escola'>
+                                      <input type='hidden' name='nome_turma' value='$nome_turma'>
+                                      <button  class='btn btn-danger btn-block btn-flat'>
+                                          <i class='fa fa-print'></i> 
+                                            CAPA DA TURMA
+                                          </button> 
+                                      </form>   
+                                      <br>
+
+                                    ";
                                 $pes=listar_disciplina_da_turma($conexao,$idturma,$idescola);
 
                                 foreach ($pes as $chave => $linha) {

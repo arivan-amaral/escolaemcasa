@@ -1067,6 +1067,8 @@ aluno.status like'Ativo' ORDER by aluno.nome ASC");
 function listar_aluno_da_turma_ata_resultado_final($conexao,$turma_id,$escola_id){
   $res=$conexao->query("SELECT 
 aluno.nome as 'nome_aluno',
+aluno.sexo,
+aluno.data_nascimento,
 aluno.idaluno,
 turma.nome_turma,
 ecidade_movimentacao_escolar.matriculamov_dataevento AS 'data_evento',

@@ -4,7 +4,7 @@ include_once '../Controller/Conversao.php';
 include_once '../Model/Aluno.php';
 include_once '../Model/Turma.php';
 include_once 'ata_resultado_final_funcao.php';
-// include_once 'capa_turma_funcao.php';
+include_once 'capa_turma_funcao.php';
  
 $idescola=$_POST['idescola'];
 $idturma=$_POST['idturma'];
@@ -163,8 +163,8 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
 $idescola=$_POST['idescola'];
 $idturma=$_POST['idturma'];
 
-  //capa_turma($conexao,$idescola,$idturma);
- ata_resultados_finais($conexao,$idescola,$idturma);
+  capa_turma($conexao,$idescola,$idturma);
+   
 ?>
 </table>
 
