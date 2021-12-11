@@ -440,14 +440,12 @@ for ($i=$conta_data; $conta_data<$limite_data ; $i++) {
      
   ?>
   
-  <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
-      border-left:none;background:#D9D9D9;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
-      solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
+  
+  <td width=41 nowrap style='width:18.8pt;border:1.0pt solid black;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt;background:#D9D9D9;'>
       <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-      line-height:normal'><div class="Namerotate">
-        <span style='font-size:6.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+      line-height:normal'><div class="Namerotate"><span style='font-size:6.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-      color:black;mso-fareast-language:PT-BR'>  </span></div></p>
+      color:black;mso-fareast-language:PT-BR'>  </div></span></p>
   </td>
   
 <?php
