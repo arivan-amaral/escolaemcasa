@@ -110,7 +110,7 @@ body
 { 
     /* this affects the margin on the content before sending to printer */ 
     
-  100%; margin: auto;
+ margin: auto;
 }
 
     table { page-break-inside:auto }

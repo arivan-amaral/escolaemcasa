@@ -133,12 +133,13 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
   if ($procedimento!='') {
   
   ?>
-      <td width=19 valign=top style='background-color: <?php echo "$cor_linha"; ?>; width:14.15pt;border-top:solid black 1.0pt;border-left:
-      solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-      padding:0cm 0cm 0cm 0cm;height:11.3pt'>
+      <td width=19 valign=top style='background-color: <?php echo "$cor_linha"; ?>; width:14.15pt;border:solid black 1.0pt;padding:0cm 0cm 0cm 0cm;height:11.3pt'>
+
       <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
-      0cm;margin-left:3.65pt;margin-bottom:.0001pt'><span lang=PT style='font-size:
-      8.0pt'><?php echo "$conta_aluno"; ?></span></p>
+      0cm;margin-left:3.65pt;margin-bottom:.0001pt'>
+      <span lang=PT style='font-size:
+      8.0pt'><?php echo "$conta_aluno"; ?>
+    </span></p>
       </td>
 
       <td  valign=top style='border:solid black 1.0pt; 
@@ -160,15 +161,13 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
     $conta_aluno++; 
    }else{
   ?>
-  <td width=19 valign=top style='width:14.15pt;border-top:none;border-left:
-  solid black 1.0pt;border-bottom:none;border-right:solid black 1.0pt;
-  background:<?php echo "$cor_linha"; ?>;padding:0cm 0cm 0cm 0cm; '>
+  <td width=19 valign=top style='width:14.15pt;border:solid black 1.0pt;  background:<?php echo "$cor_linha"; ?>;padding:0cm 0cm 0cm 0cm; '>
 
   <p class=TableParagraph style='margin-left:5.3pt'><span lang=PT
   style='font-size:8.0pt'><?php echo "$conta_aluno"; ?></span></p>
   </td>
 
-  <td width=246 valign=top style='width:184.25pt;border:none;border-right:solid black 1.0pt;
+  <td width=246 valign=top style='width:184.25pt;border:solid black 1.0pt;
   background:<?php echo "$cor_linha"; ?>;padding:0cm 0cm 0cm 0cm;'>
   <p class=TableParagraph style='margin-left:2.75pt'><span lang=PT
   style='font-size:8.0pt'><?php echo $nome_aluno; ?></span></p>
@@ -182,10 +181,10 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
             $iddisciplina=$array_disciplina[$key];
          
   ?>
-          <td width=42 valign=top style='width:31.15pt;border:none;border-right:solid black 1.0pt;
+          <td width=42 valign=top style='width:31.15pt;border:solid black 1.0pt;
           background:<?php echo "$cor_linha"; ?>;padding:0cm 0cm 0cm 0cm;'>
           <p class=TableParagraph align=center style='margin-right:
-          2.7pt;margin-bottom:0cm;margin-left:3.35pt;;text-align:
+          2.7pt;margin-bottom:0cm;margin-left:3.35pt;text-align:
           center'><span lang=PT style='font-size:8.0pt'>
             <?php
 
@@ -323,7 +322,7 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
 <?php 
   }
 ?>
-  <td width=45 valign=top style='width:34.0pt;border:none;border-right:solid black 1.0pt;
+  <td width=45 valign=top style='width:34.0pt;border: solid black 1.0pt;
   background:<?php echo "$cor_linha"; ?>;padding:0cm 0cm 0cm 0cm;'>
   <p class=TableParagraph align=center style='margin-top:1.85pt;margin-right:
   10.25pt;margin-bottom:0cm;margin-left:11.6pt;
@@ -382,12 +381,12 @@ $conta_aluno++;
 
   <p  align=center style='border-top: 1px solid black; margin-top:1.45pt;margin-left:0.85pt;margin-bottom:5pt;
   text-align:center'></p>  
-  <p  align=center style=' font-size:10.0pt margin-top:1.45pt;margin-left:0.85pt;margin-bottom:5pt;
+  <p  align=center style=' font-size:8.0pt margin-top:1.45pt;margin-left:0.85pt;margin-bottom:5pt;
   text-align:center'>
 
   E, para constar, foi lavrada esta Ata. <br>
-  ________________________________________<br>
-LUÍS EDUARDO MAGALHAES, <?php echo date("d/m/Y"); ?>
+  ___________________________________________<br>
+Luís Eduardo Magalhães - BA, <?php echo date("d/m/Y"); ?>
 </p> 
   </td>
   <!-- <td width=404 colspan=10  style='border:solid black 1.0pt;
