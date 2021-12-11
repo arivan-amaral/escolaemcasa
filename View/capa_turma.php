@@ -91,7 +91,7 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
 
 
 
- <H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>
+ <!-- <H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR> -->
 
  <div class=WordSection1>
 
