@@ -40,61 +40,6 @@ if ($idserie <3) {
 ?>
 
 
-<html xmlns:v="urn:schemas-microsoft-com:vml"
-xmlns:o="urn:schemas-microsoft-com:office:office"
-xmlns:w="urn:schemas-microsoft-com:office:word"
-xmlns:x="urn:schemas-microsoft-com:office:excel"
-xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
-xmlns="http://www.w3.org/TR/REC-html40">
-
-<head>
-<meta charset="UTF-8">
-<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
-<meta name=ProgId content=Word.Document>
-<meta name=Generator content="Microsoft Word 15">
-<meta name=Originator content="Microsoft Word 15">
-<link rel=File-List href="pla_arquivos/filelist.xml">
-<link rel=Edit-Time-Data href="pla_arquivos/editdata.mso">
-
-<style>
-.Namerotate {
-  display:inline-block;
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-  -webkit-transform: rotate(270deg);
-  -ms-transform: rotate(270deg);
-  transform: rotate(270deg);
-  
-}
-
-.tblborder, .tblborder td, .tblborder th{
-  border-collapse:collapse;
-  border:1px solid #000;
-}
-
-.tblborder td, .tblborder th{
-  padding:20px 10px;
-}
-
-.positionRi {
-  position: absolute;
-  top: 10px;
-  left: 5px;
-  /*right:0; */
-  width: 200px;
-  height: 150px;
-  /*border: 3px solid #73AD21;*/
-}
-
-</style>
-
-<link rel=dataStoreItem href="pla_arquivos/item0001.xml"
-target="pla_arquivos/props002.xml">
-<link rel=themeData href="pla_arquivos/themedata.thmx">
-<link rel=colorSchemeMapping href="pla_arquivos/colorschememapping.xml">
-</head>
-
-<body lang=PT-BR style='tab-interval:35.4pt;word-wrap:break-word'>
-
 <div class=WordSection1>
 
     <!-- FECHANDO A LINHA NO TOPO DO NOME PREFEITURA -->
@@ -846,9 +791,7 @@ foreach ($res_fre_t1 as $key => $value) {
 </div>
 
 <!-- ********************************************** -->
-</body>
 
-</html>
 
 <?php 
 
