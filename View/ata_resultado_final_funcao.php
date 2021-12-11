@@ -133,23 +133,24 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
   if ($procedimento!='') {
   
   ?>
-      <td width=19 valign=top style='background-color: <?php echo "$cor_linha"; ?>; width:14.15pt;border-top:none;border-left:
-      solid black 1.0pt;border-bottom:none;border-right:solid black 1.0pt;
+      <td width=19 valign=top style='background-color: <?php echo "$cor_linha"; ?>; width:14.15pt;border-top:solid black 1.0pt;border-left:
+      solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
       padding:0cm 0cm 0cm 0cm;height:11.3pt'>
       <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
       0cm;margin-left:3.65pt;margin-bottom:.0001pt'><span lang=PT style='font-size:
       8.0pt'><?php echo "$conta_aluno"; ?></span></p>
       </td>
-      <td  valign=top style='border:none;border-right:solid black 1.0pt;
-      padding:0cm 0cm 0cm 0cm;height:11.3pt'>
+
+      <td  valign=top style='border:solid black 1.0pt; 
+      padding:0cm 0cm 0cm 0cm;height:11.3pt;background-color: <?php echo "$cor_linha"; ?>;'>
       <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
       0cm;margin-left:2.75pt;margin-bottom:.0001pt'><span lang=PT style='font-size:
       8.0pt'><?php echo "$nome_aluno"; ?></span></p>
       </td>
 
 
-     <td colspan=<?php echo $conta_disciplina+2; ?> valign=top style='border:none;
-      border-right:solid black 1.0pt;padding:0cm 0cm 10pt 0cm;height:11.3pt'>
+     <td colspan=<?php echo $conta_disciplina+2; ?> valign=top style='border:solid black 1.0pt;
+     ;padding:0cm 0cm 10pt 0cm;height:11.3pt;background-color: <?php echo "$cor_linha"; ?>;'>
       <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
       0cm;margin-left:2.75pt;margin-bottom:.0001pt'><span lang=PT style='font-size:
       8.0pt'><?php echo" $procedimento  $datasaida "; ?></p>
