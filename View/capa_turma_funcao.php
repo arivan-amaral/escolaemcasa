@@ -194,15 +194,21 @@ $conta_aluno++;
  <tr style='height:10.55pt'>
   <td width=321 colspan=4 valign=top style='border:solid black 1.0pt;
   padding:0pt 0pt 10pt 0pt;height:10.55pt'>
-  <p class=TableParagraph align=center style='margin-top:1.45pt;margin-left:1.85pt;margin-bottom:5pt;
-  text-align:center'><span lang=PT style='font-size:10.0pt'>Assinatura do Coordenador
+  
+  <p class=TableParagraph align=center style='margin-top:1.45pt;margin-left:4.85pt;margin-bottom:1pt;margin-top:7pt;
+  text-align:center'>
+  _____________________________________________<br>
+  <span lang=PT style='font-size:10.0pt'>Assinatura do Coordenador
 </span></p>
   </td>  
 
   <td width=321 colspan=10 valign=top style='border:solid black 1.0pt;
   padding:0pt 0pt 10pt 0pt;height:10.55pt'>
-  <p class=TableParagraph align=center style='margin-top:1.45pt;margin-left:4.85pt;margin-bottom:5pt;
-  text-align:center'><span lang=PT style='font-size:10.0pt'>Assinatura do Professor</span>
+
+  <p class=TableParagraph align=center style='margin-top:1.45pt;margin-left:4.85pt;margin-bottom:1pt;margin-top:7pt;
+  text-align:center'>
+  _____________________________________________<br>
+  <span lang=PT style='font-size:10.0pt'>Assinatura do Professor</span>
 </p>
  
 
