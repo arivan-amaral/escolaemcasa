@@ -124,8 +124,8 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
 
  <div class=WordSection1>
 
- <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 
-  style='width: 100%;'>
+ <table class=MsoNormalTable cellspacing=0 cellpadding=0 
+  style='width: 100%;border: 1pt solid black;'>
 
   <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:15.75pt'>
    <td width=83 nowrap rowspan=1 valign=top style='width:62.6pt;border:solid windowtext 1.0pt;
@@ -186,7 +186,7 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
    <br>
    </td>
 
-    <td  colspan="4" valign=top style='background-color: #E0E0E0; border:1pt solid black; padding:10pt 3.5pt 0cm 3.5pt;
+    <td  colspan="100%" valign=top style='background-color: #E0E0E0; border:1pt solid black; padding:10pt 3.5pt 0cm 3.5pt;
    height:15.75pt; text-align: center;'>
    <p class=MsoNormal style='margin-bottom:9pt;line-height:normal'><b><span
    style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
