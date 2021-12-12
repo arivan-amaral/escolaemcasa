@@ -592,9 +592,9 @@ foreach ($result_aula as $key => $value) {
 
   $conta_aula++;
 } 
-
-
-
+?>
+ 
+<?php
 for ($i=$conta_aula; $i < $limite_aula ; $i++) { 
    if ($conta_aula%2==0) {
 ?>

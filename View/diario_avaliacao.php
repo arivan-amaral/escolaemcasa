@@ -22,12 +22,12 @@ else if ($_COOKIE['video_nota']<6) {
   //$_COOKIE['video_nota']=$_COOKIE['video_nota']+1;
 }
 
-if (!isset($_SESSION['idprofessor'])) {
+if (!isset($_SESSION['idfuncionario'])) {
        header("location:index.php?status=0");
 
 }else{
 
-  $idprofessor=$_SESSION['idprofessor'];
+  $idprofessor=$_SESSION['idfuncionario'];
 
 }
   include "cabecalho.php";
