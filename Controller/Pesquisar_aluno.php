@@ -31,7 +31,7 @@ try {
         <table class='table table-bordered'>
           <thead>
             <tr>
-              <th style='width: 10px'>Matrícula</th>
+              <th style='width: 10px'>Códido Aluno</th>
               <th>Aluno</th>
               <th>
               Opções
@@ -60,7 +60,7 @@ try {
 
                   $result.="
                      <tr>
-                      <td>$matricula</td>
+                      <td>$idaluno</td>
 
                       <td>
                      
