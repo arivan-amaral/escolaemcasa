@@ -177,6 +177,7 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
 
       $iddisciplina="";
       $media_aprovacao=true;
+      $aprovacao_conselho=false;
       foreach ($array_disciplina as $key => $value) {
             $iddisciplina=$array_disciplina[$key];
          
@@ -310,6 +311,7 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
           echo "<b>$media_conselho</b>";
           
           $media_aprovacao=true;
+          $aprovacao_conselho=true;
       }else{
           echo number_format($media, 1, '.', ',');
           $media_aprovacao=false;
@@ -337,9 +339,11 @@ else{
     if($idserie<3){
          echo "Apr";
 
+    }elseif ($aprovacao_conselho == true) {
+         echo "Apc";
     }elseif ($media_aprovacao == true) {
          echo "Apr";
-    }else{
+    }elseif ($media_aprovacao == false){
       $media_aprovacao=false;
          echo "Rep";
 
