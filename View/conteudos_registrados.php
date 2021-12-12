@@ -8,7 +8,7 @@
 
 <div class=WordSection1>
 
-<table class='MsoNormalTable'>
+<table class='MsoNormalTable' style="width: 100%;">
 
  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:20.25pt'>
   <td width=936 nowrap colspan=7 valign=bottom style='width:701.7pt;border:

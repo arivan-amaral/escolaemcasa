@@ -1,5 +1,5 @@
 <?php 
-function ata_resultados_finais($conexao,$idescola,$idturma){
+function ata_resultados_finais($conexao,$idescola,$idturma,$idserie){
 
 ?>
 
@@ -186,8 +186,9 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
           <p class=TableParagraph align=center style='margin-right:
           2.7pt;margin-bottom:0cm;margin-left:3.35pt;text-align:
           center'><span lang=PT style='font-size:8.0pt'>
-            <?php
-
+        <?php
+        if ($idserie>3) {
+  
              $result_nota_aula1=$conexao->query("
                SELECT * FROM nota WHERE
                escola_id=$idescola and
@@ -316,6 +317,11 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
       }
 
   }
+
+}//se serie for menor que 3
+else{
+  echo "Apr";
+}
 ?>
       </span></p>
           </td>
@@ -328,7 +334,10 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
   10.25pt;margin-bottom:0cm;margin-left:11.6pt;
   text-align:center'><span lang=PT style='font-size:8.0pt'>
 <?php 
-    if ($media_aprovacao == true) {
+    if($idserie<3){
+         echo "Apr";
+
+    }elseif ($media_aprovacao == true) {
          echo "Apr";
     }else{
       $media_aprovacao=false;

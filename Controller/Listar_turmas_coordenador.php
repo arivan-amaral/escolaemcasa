@@ -92,6 +92,7 @@ $result="";
                                       $result.="
                                       <br>
                                      <form action='ata_resultado_final.php' method='post' target='_blank'>
+                                      <input type='hidden' name='idserie' value='$idserie'>
                                       <input type='hidden' name='idturma' value='$idturma'>
                                       <input type='hidden' name='idescola' value='$idescola'>
 

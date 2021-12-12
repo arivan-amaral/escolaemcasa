@@ -191,9 +191,10 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
                                       
 $idescola=$_POST['idescola'];
 $idturma=$_POST['idturma'];
+$idserie=$_POST['idserie'];
 
   //capa_turma($conexao,$idescola,$idturma);
- ata_resultados_finais($conexao,$idescola,$idturma);
+ ata_resultados_finais($conexao,$idescola,$idturma,$idserie);
 ?>
 </table>
 

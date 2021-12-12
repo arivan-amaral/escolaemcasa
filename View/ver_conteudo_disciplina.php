@@ -161,7 +161,7 @@ if (!isset($_SESSION['idfuncionario'])) {
                                    <font style='vertical-align: inherit;'>
                                      <font style='vertical-align: inherit;'> 
                                          <ion-icon name='stats-chart-outline'></ion-icon>
-                                          Diário - Avaliação    
+                                          Diário - Avaliação (alunos da rede)    
                                        </font>
                                    </font>
                                  </a> 
@@ -277,7 +277,7 @@ if (!isset($_SESSION['idfuncionario'])) {
                                    <font style='vertical-align: inherit;'>
                                      <font style='vertical-align: inherit;'> 
                                          <ion-icon name='stats-chart-outline'></ion-icon>
-                                          Diário - Avaliação    
+                                          Diário - Avaliação (alunos da rede)    
                                        </font>
                                    </font>
                                  </a> 
