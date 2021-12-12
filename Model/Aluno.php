@@ -994,38 +994,59 @@ function listar_aluno_da_turma_professor($conexao,$idturma,$escola_id){
 
 function pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula){
   $res=$conexao->query("SELECT 
-        aluno.nome as 'nome_aluno',
-        aluno.idaluno,
-        turma.nome_turma,
-        ecidade_movimentacao_escolar.matriculamov_dataevento AS 'data_evento',
-        ecidade_movimentacao_escolar.matriculamov_descr as 'descricao_procedimento',
-        ecidade_movimentacao_escolar.matricula_codigo as 'matricula',
-        
         ecidade_matricula.matricula_situacao as 'procedimento',
 
         ecidade_matricula.datasaida as 'datasaida',
         ecidade_matricula.destinosaida as 'destinosaida',
         ecidade_matricula.matricula_situacao as 'procedimento'
 FROM
-ecidade_movimentacao_escolar,
-aluno,turma,escola,ecidade_matricula
+ecidade_matricula
 
 WHERE 
-ecidade_matricula.aluno_id= aluno.idaluno AND
-ecidade_matricula.matricula_codigo = ecidade_movimentacao_escolar.matricula_codigo and 
- 
-ecidade_movimentacao_escolar.escola_id = escola.idescola and 
 ecidade_matricula.matricula_codigo=$matricula and 
-
 ecidade_matricula.calendario_ano ='2021' and 
-
 ecidade_matricula.matricula_situacao !='MATRICULADO' 
 AND ecidade_matricula.matricula_situacao !='REMATRICULAR ALUNO' 
-AND 
-aluno.status like'Ativo' ORDER by aluno.nome ASC");
+ ");
   
   return $res;
 } 
+
+
+// function pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula){
+//   $res=$conexao->query("SELECT 
+//         aluno.nome as 'nome_aluno',
+//         aluno.idaluno,
+       
+//         ecidade_movimentacao_escolar.matriculamov_dataevento AS 'data_evento',
+//         ecidade_movimentacao_escolar.matriculamov_descr as 'descricao_procedimento',
+//         ecidade_movimentacao_escolar.matricula_codigo as 'matricula',
+        
+//         ecidade_matricula.matricula_situacao as 'procedimento',
+
+//         ecidade_matricula.datasaida as 'datasaida',
+//         ecidade_matricula.destinosaida as 'destinosaida',
+//         ecidade_matricula.matricula_situacao as 'procedimento'
+// FROM
+// ecidade_movimentacao_escolar,
+// aluno,escola,ecidade_matricula
+
+// WHERE 
+// ecidade_matricula.aluno_id= aluno.idaluno AND
+// ecidade_matricula.matricula_codigo = ecidade_movimentacao_escolar.matricula_codigo and 
+ 
+// ecidade_movimentacao_escolar.escola_id = escola.idescola and 
+// ecidade_matricula.matricula_codigo=$matricula and 
+
+// ecidade_matricula.calendario_ano ='2021' and 
+
+// ecidade_matricula.matricula_situacao !='MATRICULADO' 
+// AND ecidade_matricula.matricula_situacao !='REMATRICULAR ALUNO' 
+ 
+//  ORDER by aluno.nome ASC");
+  
+//   return $res;
+// } 
 
 // function listar_aluno_da_turma_ata_resultado_final($conexao,$aluno_id,$turma_id,$escola_id){
 //   $res=$conexao->query("SELECT 
@@ -1091,7 +1112,7 @@ ecidade_movimentacao_escolar.escola_id = escola.idescola and
 ecidade_movimentacao_escolar.calendario_ano ='2021' and 
  
 ecidade_movimentacao_escolar.escola_id=$escola_id and
-ecidade_movimentacao_escolar.turma_id=$turma_id   group by ecidade_movimentacao_escolar.aluno_id  ORDER by aluno.nome ASC limit 0 ,200");
+ecidade_movimentacao_escolar.turma_id=$turma_id   group by ecidade_movimentacao_escolar.aluno_id  ORDER by aluno.nome ASC  ");
   return $res;
 } 
 
