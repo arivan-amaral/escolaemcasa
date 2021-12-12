@@ -154,7 +154,7 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
    color:black;mso-fareast-language:PT-BR'><o:p>&nbsp;</o:p></span></p>
    </td>
 
-   <td  colspan="12" valign=top style='border:1pt;border:
+   <td  colspan="6" valign=top style='border:1pt;border:
    solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;padding:10pt 3.5pt 0cm 3.5pt;
    height:15.75pt; text-align: center;'>
    <p class=MsoNormal style='margin-bottom:9pt;line-height:normal'><b><span
@@ -185,6 +185,14 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
    href="http://luiseduardomagalhaes.ba.gov.br/">http://luiseduardomagalhaes.ba.gov.br/</a><o:p></o:p></span></b></p> -->
    <br>
    </td>
+
+    <td  colspan="4" valign=top style='background-color: #E0E0E0; border:1pt solid black; padding:10pt 3.5pt 0cm 3.5pt;
+   height:15.75pt; text-align: center;'>
+   <p class=MsoNormal style='margin-bottom:9pt;line-height:normal'><b><span
+   style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+   color:black;mso-fareast-language:PT-BR'>Relatório de ATA final<o:p></o:p></span></b></p>
+    </td>
   </tr>
 
 <?php 
