@@ -186,11 +186,11 @@ try {
                                     <input type='text'  value='$media' style='width:50px; background-color: #FFDAB9;'>"; 
                                   
                                   $conta_aprovado=0;
-                                      $nf=5;
+                                      
                                       // if ($idserie >3 && $idperiodo==3) {  
                                       //     $nf=media_final($conexao,$idescola,$idturma,$iddisciplina,$idperiodo, $idaluno );
                                       // }
-                                  if ($nf <5) {
+                                  
                                     $res_conselho=buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno);
                                     $conta_aprovado=count($res_conselho);
                                    
@@ -219,8 +219,6 @@ try {
                                          }else{
                                           $result.="<a class='btn btn-primary' onclick='aprovar_concelho($idaluno);'> Aprovar pelo conselho</a>";
 
-                                          $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>NF:</label>
-                                          <input type='text'  value='$nf' style='width:50px; background-color: #FFDAB9;'>"; 
                                           
                                          }
 
@@ -232,7 +230,7 @@ try {
                                         <br>
                                     ";
 
-                                  }
+                                  
 
 
                                   if (count($array_nota1)>1) {
