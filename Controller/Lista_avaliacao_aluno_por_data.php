@@ -196,7 +196,7 @@ try {
                                     $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>Total:</label>
                                     <input type='text'  value='$media' style='width:50px; background-color: #FFDAB9;'>"; 
                                        
-                                       if ($idserie >3 && $idperiodo==3) {  
+                                       if ($idserie >3) {  
                                          $result.="
 
                                          <input type='hidden' value='$idescola' id='escola_apc$idaluno'>
