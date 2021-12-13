@@ -16,11 +16,11 @@ try {
     $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     //echo "Conexao realizada com sucesso!"; 
 }catch(PDOException $e){
-    echo "Conexao falhou: ";
+    echo "Conexao falhou: ".$e;
 }
 
 
-$res= $conexao->query("select * from ecidade_matricula limit 100 ");
+$res= $conexao->query("SELECT * from ecidade_matricula limit 100 ");
 foreach ($res as $key => $value) {
 	echo $value['aluno_id']." <br> ";
 }
