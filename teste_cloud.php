@@ -2,7 +2,7 @@
 date_default_timezone_set('America/Bahia');
 
 $servername = "34.151.231.17";
-$username = "bitnami-aogs7eir7q:southamerica-east1:mysql-valle";
+$username = "root";
 $password = "Oaeh6h7H7m6EaB7F";
 
 
@@ -16,7 +16,7 @@ try {
     $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     //echo "Conexao realizada com sucesso!"; 
 }catch(PDOException $e){
-    echo "Conexao falhou: ".$e;
+    echo "dd Conexao falhou: ".$e;
 }
 
 
