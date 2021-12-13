@@ -35,7 +35,7 @@ include_once"cabecalho_boletim.php";
 <!-- ################################################################################ -->
 
    
-<!-- <a href="#" onclick="demoFromHTML();">BAIXAR BOLETINS</a>  -->
+<a href="#" onclick="demoFromHTML();">BAIXAR BOLETINS</a> 
 <div id="employee_detail">
 
 <?php
@@ -92,16 +92,17 @@ else if ($idserie >3 && $idserie <=8) {
         $idaluno=$value['idaluno'];
         $nome_aluno=$value['nome_aluno'];
 
-            echo "" .$numero ."-";
+            echo "--" .$numero ."--";
             // teste_boletim.php
         
         
 
-      echo "<input type='hidden' value='$numero'>";
+      echo "<input type='hidden' name='teste' value='$numero'>";
            boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
 
          if ($numero%3==0 ) {
             echo "<div class='pagebreak'> </div>";
+            echo "<input type='hidden' name='teste2' value='$numero'>";
             // echo "<br>";
             // echo "<br>";
             // echo"<br>";
