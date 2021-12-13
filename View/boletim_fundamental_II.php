@@ -330,8 +330,8 @@ if (isset($_GET['teste_boletim'])) {
   // code...
 echo"( $resultado_final )".number_format($total, 1, '.','') ; 
 }else{
-  
-echo"$resultado_final .".number_format($total, 1, '.','') ;
+
+echo"".number_format($total, 1, '.','') ;
 }
 
 ?></span></p>
