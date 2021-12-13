@@ -87,6 +87,8 @@ try {
                             
                               <td>";
                                 if ($idserie >=3){
+                                // arivan 
+                                // if ($idserie >=3){
                                   // code...
                                    $nota1='0';
                                    $nota2='0';
