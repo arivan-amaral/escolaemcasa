@@ -326,7 +326,15 @@ color:black;mso-fareast-language:PT-BR'>
 if ($total <5 ) {
   $resultado_final=false;
 }
-echo"".number_format($total, 1, '.','') ; ?></span></p>
+if (isset($_GET['teste_boletim'])) {
+  // code...
+echo"( $resultado_final )".number_format($total, 1, '.','') ; 
+}else{
+  
+echo"$resultado_final .".number_format($total, 1, '.','') ;
+}
+
+?></span></p>
 </td>
 <?php
 if ($conta_parecer==0 && $linha==0) {
