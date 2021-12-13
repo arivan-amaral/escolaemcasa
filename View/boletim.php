@@ -11,6 +11,7 @@ set_time_limit(0);
   include"boletim_serie_1ano_id_3.php";
   include"boletim_fundamental_II.php";
   include"teste_boletim.php";
+  include"../Controller/Cauculos_notas.php";
   //include('mpdf/mpdf60/mpdf.php');
 
 $idescola=$_GET['idescola'];

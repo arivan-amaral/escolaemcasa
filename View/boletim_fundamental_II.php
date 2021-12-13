@@ -201,9 +201,10 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
 
         }
 
-        if ($nota_tri_1<5 && $nota_rp_1!='' && $nota_rp_1>$nota_av3_1) {
-         $nota_tri_1=($nota_tri_1-$nota_av3_1)+$nota_rp_1;
-       }
+       //  if ($nota_tri_1<5 && $nota_rp_1!='' && $nota_rp_1>$nota_av3_1) {
+       //   $nota_tri_1=($nota_tri_1-$nota_av3_1)+$nota_rp_1;
+       // }
+      $nota_tri_1=calculos_media_notas($nota_tri_1,$nota_rp_1,$nota_av3_1);
 
        echo "$nota_tri_1";
        ?>
@@ -251,9 +252,10 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
 
       }
 
-      if ($nota_tri_2<5 && $nota_rp_2!='' && $nota_rp_2>$nota_av3_2) {
-       $nota_tri_2=($nota_tri_2-$nota_av3_2)+$nota_rp_2;
-     }
+     //  if ($nota_tri_2<5 && $nota_rp_2!='' && $nota_rp_2>$nota_av3_2) {
+     //   $nota_tri_2=($nota_tri_2-$nota_av3_2)+$nota_rp_2;
+     // }
+      $nota_tri_2=calculos_media_notas($nota_tri_2,$nota_rp_2,$nota_av3_2);
 
      echo "$nota_tri_2";
      ?>
@@ -303,9 +305,11 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
 
    }
 
-   if ($nota_tri_3<5 && $nota_rp_3!='' && $nota_rp_3>$nota_av3_3) {
-    $nota_tri_3=($nota_tri_3-$nota_av3_3)+$nota_rp_3;
-  }
+  //  if ($nota_tri_3<5 && $nota_rp_3!='' && $nota_rp_3>$nota_av3_3) {
+  //   $nota_tri_3=($nota_tri_3-$nota_av3_3)+$nota_rp_3;
+  // }
+      $nota_tri_3=calculos_media_notas($nota_tri_3,$nota_rp_3,$nota_av3_3);
+  
 
   echo "$nota_tri_3";
   ?>
