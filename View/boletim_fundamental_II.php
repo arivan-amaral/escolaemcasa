@@ -526,7 +526,7 @@ color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
 
 
 <?php 
-$resultado_final=true;
+//$resultado_final=true;
 
 }
 ?>
