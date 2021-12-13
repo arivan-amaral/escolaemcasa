@@ -2,7 +2,8 @@
   session_start();
     include("../Model/Conexao.php");
     include("../Model/Aluno.php");
-    include("../Controller/Conversao.php");
+    include("Nota_final_funcao.php");
+    include("Conversao.php");
     
 
 try {
@@ -181,22 +182,19 @@ try {
                                   }
 
                                 
-                                  $conta_aprovado=0;
-                                  if ($media <5) {
-                                    $res_conselho=buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno);
-                                    $conta_aprovado=count($res_conselho);
-                                    
-                                    // if ($conta_aprovado>0 && $idperiodo==3) {
-                                    //   $media_conselho=5.0;
-                                    //   // code...
-                                    // }else{
-                                    //   $media_conselho=$media;
-                                    // }
-
                                     $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>Total:</label>
                                     <input type='text'  value='$media' style='width:50px; background-color: #FFDAB9;'>"; 
-                                       
-                                       if ($idserie >3) {  
+                                  
+                                  $conta_aprovado=0;
+                                      $nf=0;
+                                      if ($idserie >3 && $idperiodo==3) {  
+                                          $nf=media_final($conexao,$idescola,$idturma,$iddisciplina,$idperiodo, $idaluno );
+                                      }
+                                  if ($nf <5) {
+                                    $res_conselho=buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno);
+                                    $conta_aprovado=count($res_conselho);
+                                   
+                                       if ($idserie >3 && $idperiodo==3) {  
                                          $result.="
 
                                          <input type='hidden' value='$idescola' id='escola_apc$idaluno'>
@@ -211,12 +209,19 @@ try {
                                          
                                          if ($conta_aprovado>0) {
                                             //aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno);
+                                            $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>NF:</label>
+                                            <input type='text'  value='5.0' style='width:50px; background-color: #FFDAB9;'>"; 
+                                            
                                             $result.="
                                             <a class='btn btn-success'> APC </A>
                                             <a class='btn btn-danger' onclick='cancelar_aprovacao_concelho($idaluno);'> Cancelar aprovação</a>";
 
                                          }else{
                                           $result.="<a class='btn btn-primary' onclick='aprovar_concelho($idaluno);'> Aprovar pelo conselho</a>";
+
+                                          $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>NF:</label>
+                                          <input type='text'  value='$nf' style='width:50px; background-color: #FFDAB9;'>"; 
+                                          
                                          }
 
                                            
@@ -227,13 +232,7 @@ try {
                                         <br>
                                     ";
 
-                                  }else{
-                                    $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>Total:</label>
-                                    <input type='text'  value='$media' style='width:50px;background-color: #00BFFF;''>
-                                      <br>
-                                    ";
                                   }
-
 
 
                                   if (count($array_nota1)>1) {
