@@ -3,8 +3,9 @@ date_default_timezone_set('America/Bahia');
 
 $servername = "localhost";
 $username = "root";
-$password = "BDWRe85Oam8D";
-// $password = "RJv4K0gx30ki";
+$password = "";
+// $password = "BDWRe85Oam8D";
+// $mysql  = "Oaeh6h7H7m6EaB7F";
 
 try {
 	//instancia objeto PDO, conectando no MySQL
@@ -13,6 +14,6 @@ try {
     $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     //echo "Conexao realizada com sucesso!"; 
 }catch(PDOException $e){
-    echo "Conexao falhou: " . $e->getMessage();
+    echo "Conexao falhou: ";
 }
 ?>
