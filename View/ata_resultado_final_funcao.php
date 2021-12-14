@@ -115,9 +115,9 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
   $matricula="";
   foreach ($res_movimentacao as $key => $value) {
       $datasaida=($value['datasaida']);
-      $matricula=($value['matricula']);
-      $data_evento=converte_data($value['data_evento']);
-      $descricao_procedimento=$value['descricao_procedimento'];
+      // $matricula=($value['matricula']);
+      // $data_evento=converte_data($value['data_evento']);
+      // $descricao_procedimento=$value['descricao_procedimento'];
       $procedimento=$value['procedimento'];
       
       if ($datasaida!="") {

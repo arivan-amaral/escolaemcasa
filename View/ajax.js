@@ -547,6 +547,69 @@ function aprovar_concelho(idaluno){
 
 
 
+function marcar_aluno_evadido(matricula){
+    aguarde_acao(3000);
+    var result = document.getElementById('evadido_btn'+matricula);
+
+    var url="matricula="+matricula+"&matricula_situacao=EVADIDO";
+    
+        var xmlreq = CriaRequest();
+        xmlreq.open("GET", "../Controller/Marcar_aluno_evadido.php?"+url, true);
+
+        xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                if(xmlreq.responseText=="certo"){
+                    result.innerHTML="<a class='btn btn-danger' onclick='desmarcar_aluno_evadido("+matricula+");'>DESMARCAR DE EVADIDO </a>";
+                }else{
+                    alert("Erro, tente novamente");
+                    result.innerHTML="<a class='btn btn-primary' onclick='marcar_como_evadido("+matricula+");'>MARCAR COMO EVADIDO </a>";
+                }
+
+             }else{
+                   alert('Atenção: '+xmlreq.responseText);
+
+                //result.innerHTML ="Erro ao receber mensagens";                 
+             }
+         }
+     };
+     xmlreq.send(null);
+}
+
+
+function desmarcar_aluno_evadido(matricula){
+    aguarde_acao(3000);
+    var result = document.getElementById('evadido_btn'+matricula);
+
+    var url="matricula="+matricula+"&matricula_situacao=MATRICULADO";
+    
+        var xmlreq = CriaRequest();
+        xmlreq.open("GET", "../Controller/Marcar_aluno_evadido.php?"+url, true);
+
+        xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                if(xmlreq.responseText=="certo"){
+                    result.innerHTML="<a class='btn btn-primary' onclick='marcar_aluno_evadido("+matricula+");'>MARCAR COMO EVADIDO </a>";
+                }else{
+                    alert("Erro, tente novamente");
+                    result.innerHTML="<a class='btn btn-danger' onclick='desmarcar_aluno_evadido("+matricula+");'>DESMARCAR DE EVADIDO </a>";
+                }
+
+             }else{
+                   alert('Atenção: '+xmlreq.responseText);
+
+                //result.innerHTML ="Erro ao receber mensagens";                 
+             }
+         }
+     };
+     xmlreq.send(null);
+}
+
+
+
 function cancelar_aprovacao_concelho(idaluno){
     aguarde_acao(3000);
 

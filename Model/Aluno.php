@@ -1010,6 +1010,25 @@ AND ecidade_matricula.matricula_situacao !='REMATRICULAR ALUNO'
  ");
   
   return $res;
+}
+
+function pesquisar_aluno_da_turma_listagem($conexao,$matricula){
+  $res=$conexao->query("SELECT 
+        ecidade_matricula.matricula_situacao as 'procedimento',
+
+        ecidade_matricula.datasaida as 'datasaida',
+        ecidade_matricula.destinosaida as 'destinosaida',
+        ecidade_matricula.matricula_situacao as 'procedimento'
+FROM
+ecidade_matricula
+
+WHERE 
+ecidade_matricula.matricula_codigo=$matricula and 
+ecidade_matricula.calendario_ano ='2021' 
+AND ecidade_matricula.matricula_situacao !='REMATRICULAR ALUNO' 
+ ");
+  
+  return $res;
 } 
 
 
