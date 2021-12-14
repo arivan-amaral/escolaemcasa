@@ -126,76 +126,147 @@ if (!isset($_SESSION['idprofessor'])) {
           </thead>
 
           <tbody>
+            <?php
+            $conta_aluno=1; 
+            $matricula_aluno="";
+            $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola);
+             foreach ($res_alunos as $key => $value) {
+
+              $idaluno=$value['idaluno'];
+              $nome_aluno=$value['nome_aluno'];
+              $matricula_aluno=$value['matricula'];
+
+            // pesquisar_aluno_da_turma_ata_resultado_final
+              $res_movimentacao=pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula_aluno);
+
+              $data_evento="";
+              $descricao_procedimento="";
+              $procedimento="";
+              $matricula="";
+              foreach ($res_movimentacao as $key => $value) {
+                  $datasaida=($value['datasaida']);
+                  $matricula=($value['matricula']);
+                  $data_evento=converte_data($value['data_evento']);
+                  $descricao_procedimento=$value['descricao_procedimento'];
+                  $procedimento=$value['procedimento'];
+                  
+                  if ($datasaida!="") {
+                    $datasaida=converte_data($datasaida);
+                  }
+              }
+  // <b class='text-primary'> $nome_turma</b><BR>
+          // <b class='text-danger'>$email  </b><BR>
+          // <b class='text-danger'>Senha: $senha  </b><BR>
+    echo "
+
+       <tr>
+        <td>$id</td>
+
+        <td> 
+          <b class='text-success'> $nome_aluno </b> <BR>
+          <b class='text-danger'> $procedimento $datasaida  </b> <BR>
+        
+        </td>
+        <td> ";
+        if ($procedimento=='EVADIDO' || $procedimento=='CANCELADO' || $procedimento=='FALECIDO' || $procedimento=='MATRICULA INDEFERIDA') {
+          //  echo"<div class='form-group'>
+          //   <div class='custom-control custom-switch custom-switch-off-danger custom-switch-on-success '>
+          //     <input type='checkbox' class='custom-control-input' id='customSwitch3$id' onclick='mudar_status_aluno(1,$id)'>
+
+          //     <label class='custom-control-label' for='customSwitch3$id'></label>
+          //   </div>
+          // </div>";
+        }else{
+          
+           // echo"<div class='form-group'>
+           //    <div class='custom-control custom-switch custom-switch-on-success custom-switch-off-danger'>
+           //      <input type='checkbox' class='custom-control-input' id='customSwitch3$id' onclick='mudar_status_aluno(0,$id)' checked>
+
+           //      <label class='custom-control-label' for='customSwitch3$id' id='customSwitch3$id' ></label>
+           //    </div>
+           //  </div>";
+          
+        }
+        
+
+        echo"</td>
+
+      </tr>
+    ";
+
+
+          }
+?>
 
             <?php 
-               $result= listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
+               // $result= listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
 
-               foreach ($result as $key => $value) {
-                $nome_aluno=utf8_decode($value['nome_aluno']);
-                $nome_turma=($value['nome_turma']);
-                $id=$value['idaluno'];
-                $status_aluno=$value['status_aluno'];
-                $email=$value['email'];
-                $senha=$value['senha'];
-                $etapa_id=$value['etapa_id'];
+               // foreach ($result as $key => $value) {
+               //  $nome_aluno=utf8_decode($value['nome_aluno']);
+               //  $nome_turma=($value['nome_turma']);
+               //  $id=$value['idaluno'];
+               //  $status_aluno=$value['status_aluno'];
+               //  $email=$value['email'];
+               //  $senha=$value['senha'];
+               //  $etapa_id=$value['etapa_id'];
 
-                  echo "
-                     <tr>
-                      <td>$id</td>
+               //    echo "
+               //       <tr>
+               //        <td>$id</td>
 
-                      <td> 
-                      <a onclick='relatorio_de_visualizacao_video($id,$idturma,$iddisciplina);' >
-                        <b class='text-secondary'> $nome_turma</b><BR>
-                        <b class='text-success'> $nome_aluno </b> <BR>
-                        <b class='text-secondary'>$email  </b><BR>
-                        <b class='text-secondary'>Senha: $senha  </b><BR>
-                      </a><br>
-                      <span id='relatorio_de_visualizacao_video$id'>
+               //        <td> 
+               //        <a onclick='relatorio_de_visualizacao_video($id,$idturma,$iddisciplina);' >
+               //          <b class='text-secondary'> $nome_turma</b><BR>
+               //          <b class='text-success'> $nome_aluno </b> <BR>
+               //          <b class='text-secondary'>$email  </b><BR>
+               //          <b class='text-secondary'>Senha: $senha  </b><BR>
+               //        </a><br>
+               //        <span id='relatorio_de_visualizacao_video$id'>
 
-                      </span>
-                      </td>
-                      <td> 
-                      <a onclick='relatorio_de_visualizacao_video($id,$idturma,$iddisciplina);' class='btn btn-primary'>RELATÓRIO DE VISUALIZAÇÕES</a>
-                      <br>
-                      ";
+               //        </span>
+               //        </td>
+               //        <td> 
+               //        <a onclick='relatorio_de_visualizacao_video($id,$idturma,$iddisciplina);' class='btn btn-primary'>RELATÓRIO DE VISUALIZAÇÕES</a>
+               //        <br>
+               //        ";
 
-                        if ($idserie==16) {
+               //          if ($idserie==16) {
 
-                            echo"<label for='exampleInputEmail1'>Escolha a etapa </label>
-                                      <select class='form-control' id='etapa$id' onchange='muda_etapa($id)' required>
-                                      ";
+               //              echo"<label for='exampleInputEmail1'>Escolha a etapa </label>
+               //                        <select class='form-control' id='etapa$id' onchange='muda_etapa($id)' required>
+               //                        ";
 
 
-                                      if ($etapa_id!="") {
-                                        $res2=$conexao->query("SELECT * FROM etapa_multissereada WHERE id=$etapa_id");
-                                        foreach ($res2 as $key2 => $value2) {
-                                          $nome_etapa=$value2['etapa'];
-                                          echo"
-                                          <option value='$etapa_id'>$nome_etapa</option>
-                                          ";
-                                        }
-                                      }else{
-                                        echo "
-                                        <option></option>
-                                        ";
-                                      }
-                          $res=$conexao->query("SELECT * FROM etapa_multissereada WHERE turma_id=$idturma");
-                          foreach ($res as $key => $value) {
-                            $idetapa=$value['id'];
-                            $nome_etapa=$value['etapa'];
-                            echo"
-                            <option value='$idetapa'>$nome_etapa</option>
-                            ";
-                          }
+               //                        if ($etapa_id!="") {
+               //                          $res2=$conexao->query("SELECT * FROM etapa_multissereada WHERE id=$etapa_id");
+               //                          foreach ($res2 as $key2 => $value2) {
+               //                            $nome_etapa=$value2['etapa'];
+               //                            echo"
+               //                            <option value='$etapa_id'>$nome_etapa</option>
+               //                            ";
+               //                          }
+               //                        }else{
+               //                          echo "
+               //                          <option></option>
+               //                          ";
+               //                        }
+               //            $res=$conexao->query("SELECT * FROM etapa_multissereada WHERE turma_id=$idturma");
+               //            foreach ($res as $key => $value) {
+               //              $idetapa=$value['id'];
+               //              $nome_etapa=$value['etapa'];
+               //              echo"
+               //              <option value='$idetapa'>$nome_etapa</option>
+               //              ";
+               //            }
 
-                              echo"</select>";
-                        }
+               //                echo"</select>";
+               //          }
 
-                      echo"</td>
+               //        echo"</td>
 
-                    </tr>
-                  ";
-               }
+               //      </tr>
+               //    ";
+               // }
             ?>
 
 
