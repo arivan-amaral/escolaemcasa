@@ -138,6 +138,7 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
   $conta_parecer=0;
   $linha=0;
   $resultado_final=true;
+  $resultado_conselho=false;
 
   foreach ($res_disc as $key => $value) {
     $iddisciplina=$value['iddisciplina'];
@@ -330,16 +331,38 @@ color:black;mso-fareast-language:PT-BR'>
 
 $total=($nota_tri_1+$nota_tri_2+$nota_tri_3)/3;
 $total=number_format($total, 1, '.','') ;
+
+// if (isset($_GET['teste_boletim'])) {
+//   // code...
+// echo"( $resultado_final )".number_format($total, 1, '.','') ; 
+// }else{
 if ($total <5 ) {
   $resultado_final=false;
-}
-if (isset($_GET['teste_boletim'])) {
-  // code...
-echo"( $resultado_final )".number_format($total, 1, '.','') ; 
+//buscar concelho
+          $res_conselho=buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno);
+          $conta_aprovado=count($res_conselho);
+          
+           if ($conta_aprovado>0 ) {
+              $media_conselho=5.0;
+              $resultado_conselho=true;
+
+              echo "<b>".number_format($media_conselho, 1, '.', ',')."</b>";
+
+              $aprovacao_conselho=true;
+          }else{
+              $resultado_conselho=false;
+
+              echo number_format($total, 1, '.', ',');
+          }
+
+//buscar concelho
 }else{
 
-echo"".number_format($total, 1, '.','') ;
+  echo"".number_format($total, 1, '.','') ;
 }
+
+
+// }
 
 ?></span></p>
 </td>
@@ -516,7 +539,11 @@ color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
         mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
 
         mso-fareast-language:PT-BR'>Resultado Final:<o:p><?php 
-        if ($resultado_final==false) {
+        
+        if ($resultado_conselho==true) {
+          echo " <b>Apc</b>";
+
+        }elseif ($resultado_final==false) {
           echo " <b>Rep</b>";
         }else{
           echo " <b>Apr</b>";
