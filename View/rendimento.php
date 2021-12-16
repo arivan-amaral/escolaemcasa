@@ -1119,9 +1119,9 @@ if ($media_final <5 ) {
           $media_conselho=5.0;
           $resultado_conselho=true;
 
-          echo "<b>".number_format($media_conselho, 1, '.', ',')."</b>";
+          //echo "<b>".number_format($media_conselho, 1, '.', ',')."</b>";
 
-              echo "<font color='red'>APC</font>";
+              echo "<font color='blue'>APC</font>";
 
       }else{
          
