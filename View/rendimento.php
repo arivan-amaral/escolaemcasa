@@ -685,15 +685,84 @@ foreach ($result_escola as $key => $value) {
 <!-- arivan linhas  -->
  
 <?php
-  $result= listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola);
-  $conta=1;
-  foreach ($result as $key => $value) {
-    $nome_aluno=utf8_decode($value['nome_aluno']);
-    $nome_turma=($value['nome_turma']);
+  // $result= listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola);
+
+  // $conta=1;
+  // foreach ($result as $key => $value) {
+  //   $nome_aluno=utf8_decode($value['nome_aluno']);
+  //   $nome_turma=($value['nome_turma']);
+  //   $idaluno=$value['idaluno'];
+  //   $status_aluno=$value['status_aluno'];
+  //   $email=$value['email'];
+  //   $senha=$value['senha'];
+  //   
+  //   
+  
+
+
+  $conta_aluno=1; 
+  $matricula_aluno="";
+  $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola);
+   foreach ($res_alunos as $key => $value) {
     $idaluno=$value['idaluno'];
-    $status_aluno=$value['status_aluno'];
-    $email=$value['email'];
-    $senha=$value['senha'];
+    $nome_aluno=$value['nome_aluno'];
+    $matricula_aluno=$value['matricula'];
+
+  // pesquisar_aluno_da_turma_ata_resultado_final
+    $res_movimentacao=pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula_aluno);
+
+    $data_evento="";
+    $descricao_procedimento="";
+    $procedimento="";
+    $matricula="";
+    foreach ($res_movimentacao as $key => $value) {
+        $datasaida=($value['datasaida']);
+        // $matricula=($value['matricula']);
+        // $data_evento=converte_data($value['data_evento']);
+        // $descricao_procedimento=$value['descricao_procedimento'];
+        $procedimento=$value['procedimento'];
+        
+        if ($datasaida!="") {
+          $datasaida=converte_data($datasaida);
+        }
+    }
+
+if ($procedimento !='') {
+
+  echo"<tr style='mso-yfti-irow:14;height:15.0pt'>
+    
+        <td width=20 style='width:14.85pt;border:solid windowtext 1.0pt;border-top:
+            none;mso-border-top-alt:solid windowtext 1.0pt;mso-border-alt:solid windowtext 1.0pt;
+            mso-border-bottom-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+            height:15.0pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+            line-height:normal'><span style='font-size:8.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;
+            color:black;mso-fareast-language:PT-BR'> $conta_aluno
+<o:p></o:p></span></p>
+        </td>
+
+      <td  style='width:14.85pt;border:solid windowtext 1.0pt;border-top:
+          none;mso-border-top-alt:solid windowtext 1.0pt;mso-border-alt:solid windowtext 1.0pt;
+          mso-border-bottom-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+          height:15.0pt'>
+          <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
+  style='font-size:8.0pt;font-family:'Arial',sans-serif;mso-fareast-font-family:
+  'Times New Roman';color:#000000;mso-fareast-language:PT-BR'>
+          $nome_aluno
+          </span>
+          </p>
+        </td>
+
+        <td colspan='100%' style='width:14.85pt;border:solid windowtext 1.0pt;border-top:
+          none;mso-border-top-alt:solid windowtext 1.0pt;mso-border-alt:solid windowtext 1.0pt;
+          mso-border-bottom-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
+          height:15.0pt'>
+          $procedimento
+        </td>
+        </tr>";
+
+
+}else{
 ?>
 
 
@@ -707,7 +776,7 @@ foreach ($result_escola as $key => $value) {
         <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
         line-height:normal'><span style='font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
         mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-        color:black;mso-fareast-language:PT-BR'><?php echo $conta; ?><o:p></o:p></span></p>
+        color:black;mso-fareast-language:PT-BR'><?php echo $conta_aluno; ?><o:p></o:p></span></p>
     </td>
 
 
@@ -875,7 +944,8 @@ foreach ($res_fre_t2 as $key => $value) {
   $quantidade_falta2=$value['quantidade'];
 }
 
-echo "$quantidade_falta2";
+//echo "$quantidade_falta2";
+echo "-";
 ?>
 
   <o:p></o:p></span></p>
@@ -953,8 +1023,10 @@ echo "$nota_tri_3";
       $quantidade_falta3=$value['quantidade'];
     }
 
-    echo "$quantidade_falta3";
-    ?>
+    //echo "$quantidade_falta3";
+    echo "-";
+
+  ?>
 
 <o:p></o:p></span></p>
   </td>
@@ -981,8 +1053,35 @@ echo "$nota_tri_3";
     mso-fareast-font-family:"Times New Roman";color:#000000;mso-fareast-language:
     PT-BR'>
 
-<?php $media_final=  round( ($nota_tri_1 + $nota_tri_2 + $nota_tri_3 )/3 ,2);
-echo "$media_final";
+<?php 
+$media_final=  round( ($nota_tri_1 + $nota_tri_2 + $nota_tri_3 )/3 ,2);
+//echo "$media_final";
+
+
+if ($media_final <5 ) {
+  //$resultado_final=false;
+//buscar concelho
+          $res_conselho=buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno);
+          $conta_aprovado=count($res_conselho);
+          
+           if ($conta_aprovado>0 ) {
+              $media_conselho=5.0;
+              $resultado_conselho=true;
+
+              echo "<b>".number_format($media_conselho, 1, '.', ',')."</b>";
+
+              $aprovacao_conselho=true;
+          }else{
+              $resultado_conselho=false;
+
+              echo number_format($media_final, 1, '.', ',');
+          }
+
+//buscar concelho
+}else{
+
+  echo"".number_format($media_final, 1, '.','') ;
+}
 ?>
 
     <o:p></o:p></span></p>
@@ -1034,7 +1133,9 @@ echo "$media_final";
 
 
  <?php 
-    $conta++;
+    }//else
+
+    $conta_aluno++;
   }
  ?>
 
