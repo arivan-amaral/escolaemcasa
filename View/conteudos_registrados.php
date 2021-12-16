@@ -278,7 +278,18 @@ foreach ($result_conteudo as $key => $value) {
       <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
       style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-      color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p><?php echo"$descricao"; ?></o:p></span></p>
+      color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p>
+        <?php 
+        if (isset($_GET['teste'])) {
+          echo "SELECT * FROM conteudo_aula where disciplina_id=$iddisciplina and turma_id=$idturma and escola_id=$idescola  and data BETWEEN '$data_inicial' and '$data_final' order by data asc && $descricao ";
+        }else{
+          
+        echo"$descricao"; 
+        }
+
+        ?>
+
+      </o:p></span></p>
       </td>
 
      
