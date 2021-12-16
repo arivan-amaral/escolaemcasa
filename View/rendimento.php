@@ -746,7 +746,7 @@ if ($procedimento !='') {
           mso-border-bottom-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
           height:15.0pt'>
           <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-  style='font-size:8.0pt;font-family:'Arial',sans-serif;mso-fareast-font-family:
+  style='font-size:8.0pt;font-family:'Arial'x ,sans-serif;mso-fareast-font-family:
   'Times New Roman';color:#000000;mso-fareast-language:PT-BR'>
           $nome_aluno
           </span>
@@ -868,7 +868,8 @@ foreach ($res_fre_t1 as $key => $value) {
   $quantidade_falta1=$value['quantidade'];
 }
 
-echo "$quantidade_falta1";
+//echo "$quantidade_falta1";
+echo "-";
 ?>
 
   <o:p></o:p></span></p>
@@ -1095,7 +1096,8 @@ if ($media_final <5 ) {
     mso-fareast-font-family:"Times New Roman";color:#000000;mso-fareast-language:
     PT-BR'>
 <?php 
-    echo ($quantidade_falta1+$quantidade_falta2+$quantidade_falta3);
+    // echo ($quantidade_falta1+$quantidade_falta2+$quantidade_falta3);
+     echo "-";
  ?>
   <o:p></o:p></span></p>
   </td>
@@ -1108,10 +1110,29 @@ if ($media_final <5 ) {
   padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
   <?php 
 
-    if ($media_final>=5) {
-      echo "<font color='blue'>APROVADO</font>";
-    }else{
+    if ($media_final<5) {
+   
+      $res_conselho=buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno);
+      $conta_aprovado=count($res_conselho);
+      
+       if ($conta_aprovado>0 ) {
+          $media_conselho=5.0;
+          $resultado_conselho=true;
+
+          echo "<b>".number_format($media_conselho, 1, '.', ',')."</b>";
+
+              echo "<font color='red'>APC</font>";
+
+      }else{
+         
       echo "<font color='red'>REPROVADO</font>";
+
+          // echo number_format($media_final, 1, '.', ',');
+      }
+      // echo "<font color='red'>REPROVADO</font>";
+
+    }else{
+      echo "<font color='blue'>APROVADO</font>";
 
     }
 
