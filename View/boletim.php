@@ -139,7 +139,7 @@ else if ($idserie >3 && $idserie <=8) {
          $conta_virgula++;
         }
         $nome_professor.= ".";
-
+echo "<br>";
         boletim_maternal_1_2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno ,$nome_escola,$nome_turma,$nome_professor);
         $nome_professor='';
         
