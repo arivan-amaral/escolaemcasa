@@ -174,6 +174,7 @@ echo"<div class='pagebreak'> </div>";
     //echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
     $numero=1;
         echo "<input type='hidden' name='$numero' value='$numero'>";
+        echo "<input type='hidden' name='uuuunumero' value='numero'>";
 
       $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
       foreach ($res_alunos as $key => $value) {
