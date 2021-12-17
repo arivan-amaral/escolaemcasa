@@ -4,7 +4,7 @@
 
 
 <div class=WordSection1>
-  <table  >
+  <table  class="tabela_serie123">
 <!-- 
 <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=996
  style='width:746.8pt;border-collapse:collapse;mso-yfti-tbllook:1184;
@@ -18,10 +18,9 @@
   line-height:normal'><span style='mso-no-proof:yes'>
 
     <![if !vml]><img width=62 height=74
-  src="boletim_maternal_I_e_II_arquivos/image002.jpg" v:shapes="Imagem_x0020_2"><![endif]></span><span
+  src="imagens/logo.png" v:shapes="Imagem_x0020_2"> </span><span
   style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
-  mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'><o:p></o:p></span></p>
+  mso-hansi-font-family:Calibri;'><o:p></o:p></span></p>
   </td>
   <td width=912 colspan=10 valign=bottom style='width:684.1pt;border:solid windowtext 1.0pt;
   border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:

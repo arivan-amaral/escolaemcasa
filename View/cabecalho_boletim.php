@@ -224,7 +224,7 @@ body
 { 
     /* this affects the margin on the content before sending to printer */ 
     
-  100%; margin: auto;
+   100%; margin: auto;
 }
 
     table { page-break-inside:auto }
@@ -368,10 +368,12 @@ href="baletim_maternal_I_e_II_arquivos/colorschememapping.xml">
 <style type="text/css">
 @page  
 { 
+    margin: 2mm 2mm 2mm 2mm;  
+
     size: auto;   /* auto is the initial value */ 
 
     /* this affects the margin in the printer settings */ 
-    margin: 10mm 2mm 2mm 2mm;  
+  
 } 
 
 body  
@@ -388,8 +390,13 @@ body
 
 
 @media print {
-    margin-left: 2cm;
-    .pagebreak { page-break-before: always; } /* page-break-after works, as well */
+   
+    .pagebreak { page-break-before: always; }
+    
+    .tabela_serie123{
+      margin: 1mm 2mm 2mm 10mm;  
+
+    }  
   }
 
 </style>
@@ -461,12 +468,7 @@ body
     margin: 2mm 2mm 2mm 2mm;  
 } 
 
-body  
-{ 
-    /* this affects the margin on the content before sending to printer */ 
-    
-   margin: auto;
-}
+
 
     table { page-break-inside:auto }
     tr    { page-break-inside:avoid; page-break-after:auto }
@@ -484,23 +486,9 @@ body
 
 
 <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <!-- *********************************************************************************** -->
   
-  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
-<!-- CodeMirror -->
-  <link rel="stylesheet" href="plugins/codemirror/codemirror.css">
-  <link rel="stylesheet" href="plugins/codemirror/theme/monokai.css">
-  <link rel="stylesheet" href="plugins/simplemde/simplemde.min.css">
 
 
     </head>

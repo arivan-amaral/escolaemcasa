@@ -2,8 +2,8 @@
  function boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$nome_professor){
 ?>
     
-  <div id="folha-a4" class="folha a4_vertical" >
-     <div id="conteudo">
+  <!-- <div id="folha-a4" class="folha a4_vertical" > -->
+     <!-- <div id="conteudo"> -->
 
 
       <div class=WordSection1>
@@ -11,7 +11,7 @@
       <table >
        
 
-       <tr style='mso-yfti-irow:4;height:15.0pt'>
+       <tr >
         <td width=84 nowrap colspan=2 style='width:63.0pt;border:solid windowtext 1.0pt;
         mso-border-alt:solid windowtext .5pt;padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
         <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
@@ -398,10 +398,10 @@
 
       </div>
       
-    </div>
+<!--     </div>
 
   </div>
-  <!-- </div> -->
-<?php 
+ -->
+  <?php 
 }
 ?>
