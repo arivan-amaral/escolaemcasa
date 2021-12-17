@@ -150,9 +150,9 @@ if (!isset($_SESSION['idfuncionario'])) {
         <td > ";
         if ($procedimento=='EVADIDO') {
 
-            echo"<div class='form-group' id='evadido_btn$matricula'>
-              <a class='btn btn-danger' onclick='desmarcar_aluno_evadido($matricula);'>DESMARCAR DE EVADIDO </a>
-            </div>";  
+            // echo"<div class='form-group' id='evadido_btn$matricula'>
+            //   <a class='btn btn-danger' onclick='desmarcar_aluno_evadido($matricula);'>DESMARCAR DE EVADIDO </a>
+            // </div>";  
             
           //  echo"<div class='form-group'>
           //   <div class='custom-control custom-switch custom-switch-off-danger custom-switch-on-success '>
@@ -162,9 +162,9 @@ if (!isset($_SESSION['idfuncionario'])) {
           //   </div>
           // </div>";
         }elseif ( $procedimento=='MATRICULADO'){
-           echo"<div class='form-group'  id='evadido_btn$matricula'>
-              <a class='btn btn-primary' onclick='marcar_aluno_evadido($matricula);'>MARCAR COMO EVADIDO </a>
-            </div>";  
+           // echo"<div class='form-group'  id='evadido_btn$matricula'>
+           //    <a class='btn btn-primary' onclick='marcar_aluno_evadido($matricula);'>MARCAR COMO EVADIDO </a>
+           //  </div>";  
             
            
            //  // echo"<div class='form-group'>

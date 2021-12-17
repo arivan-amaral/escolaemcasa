@@ -2,7 +2,7 @@
  function boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$nome_professor){
 ?>
     
-  <div id="folha-a4" class="folha a4_vertical">
+  <div id="folha-a4" class="folha a4_vertical" >
      <div id="conteudo">
 
 
@@ -401,7 +401,7 @@
     </div>
 
   </div>
-  </div>
+  <!-- </div> -->
 <?php 
 }
 ?>

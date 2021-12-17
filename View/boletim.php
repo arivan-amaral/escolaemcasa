@@ -36,7 +36,7 @@ include_once"cabecalho_boletim.php";
 <!-- ################################################################################ -->
 
    
-<a href="#" onclick="demoFromHTML();">BAIXAR BOLETINS</a> 
+<!-- <a href="#" onclick="demoFromHTML();">BAIXAR BOLETINS</a> -->
 <div id="employee_detail">
 
 <?php
