@@ -112,19 +112,22 @@ if (!isset($_SESSION['idfuncionario'])) {
             <?php
             $conta_aluno=1; 
             $matricula="";
-            $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola);
+            $res_alunos=array();
+            // $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola);
              foreach ($res_alunos as $key => $value) {
 
               $idaluno=$value['idaluno'];
               $nome_aluno=$value['nome_aluno'];
               $matricula=$value['matricula'];
 
+              $res_movimentacao=array();
             // pesquisar_aluno_da_turma_ata_resultado_final
-              $res_movimentacao=pesquisar_aluno_da_turma_listagem($conexao,$matricula);
+              // $res_movimentacao=pesquisar_aluno_da_turma_listagem($conexao,$matricula);
 
               $data_evento="";
               $descricao_procedimento="";
               $procedimento="";
+              $datasaida="";
             
               foreach ($res_movimentacao as $key => $value) {
                   $datasaida=($value['datasaida']);
@@ -190,8 +193,8 @@ if (!isset($_SESSION['idfuncionario'])) {
 
 
             <?php 
-               $result= array();
-               // $result= listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola);
+               //$result= array();
+                $result= listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola);
 
                foreach ($result as $key => $value) {
                 $nome_aluno=utf8_decode($value['nome_aluno']);
@@ -214,7 +217,7 @@ if (!isset($_SESSION['idfuncionario'])) {
 
                       </td>
                       <td> ";
-                      if ($procedimento=='EVADIDO' || $procedimento=='CANCELADO' || $procedimento=='FALECIDO' || $procedimento=='MATRICULA INDEFERIDA') {
+                      if ($status_aluno =='Ativo') {
                           echo"<div class='form-group'>
                             <div class='custom-control custom-switch custom-switch-on-success custom-switch-off-danger'>
                               <input type='checkbox' class='custom-control-input' id='customSwitch3$id' onclick='mudar_status_aluno(0,$id)' checked>
@@ -233,7 +236,7 @@ if (!isset($_SESSION['idfuncionario'])) {
                       }
                       
 
-                      echo"tt</td>
+                      echo"</td>
 
                     </tr>
                   ";

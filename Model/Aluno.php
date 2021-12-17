@@ -1273,8 +1273,13 @@ function listar_disciplina_para_ata($conexao,$escola_id,$idturma){
    disciplina.iddisciplina,
    funcionario.nome as 'nome_professor',
    turma.idturma,
-   turma.nome_turma
-   FROM turma,   escola, ministrada,disciplina,funcionario WHERE
+   turma.nome_turma,
+   carga_horaria.CH AS 'carga_horaria'
+
+   FROM carga_horaria, turma,   escola, ministrada,disciplina,funcionario WHERE
+    carga_horaria.serie_id=turma.serie_id AND
+    carga_horaria.disciplina_id=disciplina.iddisciplina AND
+    
     ministrada.turma_id=turma.idturma AND
    ministrada.escola_id=escola.idescola AND
    ministrada.disciplina_id=disciplina.iddisciplina AND
