@@ -34,6 +34,13 @@ include_once"cabecalho_boletim.php";
 ?>
 
 <!-- ################################################################################ -->
+<p class="no-print">
+  <br>
+  <br>
+  
+<a href='#'class="btn btn-block btn-primary " onclick='print();'>IMPRIMIR</a> 
+
+</p>
 
    
 <!-- <a href="#" onclick="demoFromHTML();">BAIXAR BOLETINS</a> -->
@@ -250,5 +257,7 @@ function demoFromHTML() {
    }
 
 </script>
+
+
 </body>
 </html>

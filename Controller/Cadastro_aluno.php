@@ -8,7 +8,12 @@ try {
 
     $nome=$_POST['nome'];
     $sexo=$_POST['sexo'];
-    $email=$_POST['email'];
+    if (isset( $_POST['email'])) {
+         $email=$_POST['email'];
+    }else{
+         $email=date("d").date("m").date("Y").rand();
+
+    }
     $filiacao1=$_POST['filiacao1'];
     $filiacao2=$_POST['filiacao2'];
     $senha='lem12345';
@@ -47,8 +52,8 @@ try {
     $necessidade_especial=$_POST['necessidade_especial'];
     $apoio_pedagogico=$_POST['apoio_pedagogico'];
     $tipo_diagnostico=$_POST['tipo_diagnostico'];
-    $cpf_filiacao1=$_POST['cpf_filiacao1'];
-    $cpf_filiacao2=$_POST['cpf_filiacao2'];
+    $cpf_filiacao1=converte_telefone($_POST['cpf_filiacao1']);
+    $cpf_filiacao2=converte_telefone($_POST['cpf_filiacao2']);
     
     $endereco=$_POST['endereco'];
 
