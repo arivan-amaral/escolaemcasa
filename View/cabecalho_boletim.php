@@ -465,7 +465,7 @@ body
     size: auto;   /* auto is the initial value */ 
 
     /* this affects the margin in the printer settings */ 
-    margin: 2mm 2mm 2mm 2mm;  
+    margin: 5mm 2mm 2mm 2mm;  
 } 
 
 
@@ -478,6 +478,10 @@ body
 
 @media print {
     .pagebreak { page-break-before: always; } /* page-break-after works, as well */
+    .WordSection1{
+      margin: 5mm 2mm 2mm 2mm;  
+
+    }
   }
 
 
