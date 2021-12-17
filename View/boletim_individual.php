@@ -11,6 +11,8 @@
   include"boletim_maternall_II.php";
   include"boletim_individual_1_ano_serie3.php";
   include"boletim_fundamental_II.php";
+  include"../Controller/Cauculos_notas.php";
+  
   
 
 $idescola=$_GET['idescola'];
