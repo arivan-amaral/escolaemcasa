@@ -378,7 +378,7 @@ body
 { 
     /* this affects the margin on the content before sending to printer */ 
     
-  100%; margin: auto;
+  margin: auto;
 }
 
     table { page-break-inside:auto }
@@ -388,6 +388,7 @@ body
 
 
 @media print {
+    margin-left: 2cm;
     .pagebreak { page-break-before: always; } /* page-break-after works, as well */
   }
 
