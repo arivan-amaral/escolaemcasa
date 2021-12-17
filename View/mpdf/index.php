@@ -1,8 +1,5 @@
 <?php 
-
  include("mpdf60/mpdf.php");
-
-
 
  $html = "
 
@@ -58,13 +55,6 @@
 
  $mpdf->Output();
  // $mpdf->Output('teste.pdf');
-
- 
-
- 
-
- 
-
 
 
 exit;

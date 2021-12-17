@@ -27,9 +27,11 @@ function ata_resultados_finais($conexao,$idescola,$idturma,$idserie){
   $conta_disciplina=0;
   $array_disciplina=array();
   $array_nome_sigla_disciplina=array();
-
+  $carga_horaria='';
   foreach ($res_disc as $key => $value) {
     $iddisciplina=$value['iddisciplina'];
+    $carga_horaria=$value['carga_horaria'];
+    
     $nome_disciplina=$value['nome_disciplina'];
     $abreviacao=$value['abreviacao'];
     $array_disciplina[$conta_disciplina]=$iddisciplina;
@@ -44,7 +46,7 @@ function ata_resultados_finais($conexao,$idescola,$idturma,$idserie){
   <p class=TableParagraph style='margin-top:3.3pt;margin-right:0cm;margin-bottom:
   0cm;margin-left:9.65pt;margin-bottom:.0001pt'><b><span lang=PT
 
-  style='font-size:7.0pt;font-family:"Arial",sans-serif'>160</span></b></p>
+  style='font-size:7.0pt;font-family:"Arial",sans-serif'><?php echo $carga_horaria; ?></span></b></p>
   </td>
 
   <!--  <td width=42 valign=top style='width:31.15pt;border:solid black 1.0pt;
