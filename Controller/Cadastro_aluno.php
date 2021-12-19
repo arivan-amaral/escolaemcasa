@@ -8,7 +8,7 @@ try {
 
     $nome=$_POST['nome'];
     $sexo=$_POST['sexo'];
-    if (isset( $_POST['email'])) {
+    if ( $_POST['email'] !='') {
          $email=$_POST['email'];
     }else{
          $email=date("d").date("m").date("Y").rand();
