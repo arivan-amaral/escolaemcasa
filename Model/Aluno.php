@@ -1124,10 +1124,10 @@ where
 
 ecidade_matricula.aluno_id= aluno.idaluno AND
 ecidade_matricula.turma_id = turma.idturma and 
-ecidade_matricula.alunoprimat_escola = escola.idescola and 
+ecidade_matricula.turma_escola = escola.idescola and 
 ecidade_matricula.calendario_ano ='2021' and 
  
-ecidade_matricula.alunoprimat_escola=$escola_id and
+ecidade_matricula.turma_escola=$escola_id and
 ecidade_matricula.matricula_situacao !='CANCELADO' and
 ecidade_matricula.turma_id=$turma_id  ORDER by aluno.nome ASC;");
 
