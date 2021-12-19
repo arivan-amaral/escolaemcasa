@@ -21,7 +21,7 @@ if(isset($_GET['tokem_arivan'])){
 
 echo "<form action='Controller/ajusta_turma.php' method='post'> ";
 
-$res=$conexao->query("SELECT turma_id,matricula_turma,aluno_id,matricula_codigo, turma_descr FROM ecidade_matricula GROUP by matricula_turma  
+$res=$conexao->query("SELECT turma_id,matricula_turma,aluno_id,matricula_codigo, turma_descr FROM ecidade_matricula where matricula_situacao !='MATRICULA INDEVIDA' and matricula_situacao !='CANCELADO'and matricula_situacao !='MATRICULA INDEFERIDA' GROUP by matricula_turma  
 ORDER BY ecidade_matricula.turma_descr ASC limit $inicio , $limite");
 $conta=1;
     $array_cor=array('0' =>'blue' , '1' =>'red' , '2' =>'greem','3' =>'grey');

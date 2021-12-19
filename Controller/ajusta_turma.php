@@ -13,7 +13,9 @@ foreach ($_POST['matricula_turma'] as $key => $value) {
     }
 }
 
-    echo "DEU CERTO ";
+    echo "DEU CERTO <BR>";
+    // $pagina_aux=$pagina+$limite;
+    // echo "<a href='../ajusta_turma.php?tokem_arivan&pagina=$pagina_aux&limite=$limite'> VOLTAR E CONTINUAR</a> as soma da pagina já será feita se clicar no link acima: pagina = pagina: $pagina + $limite  ";
     
 } catch (Exception $e) {
     echo "$e";
