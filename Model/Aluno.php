@@ -572,14 +572,15 @@ function cadastrar_ecidade_matricula($conexao, $aluno_id, $turma_id, $matricula_
 
 function cadastrar_ecidade_movimentacao_escolar($conexao,$matricula_codigo,$aluno_id,$turma_id,$calendario_ano,$escola_id,$escola_nome,$matriculamov_procedimento,$matriculamov_descr) {
     $sql=$conexao->prepare("INSERT INTO ecidade_movimentacao_escolar(matricula_codigo, aluno_id, turma_id, calendario_ano, escola_id, escola_nome, matriculamov_procedimento, matriculamov_descr) VALUES (:matricula_codigo,:aluno_id,:turma_id,:calendario_ano,:escola_id,:escola_nome,:matriculamov_procedimento,:matriculamov_descr)");
-        $sql->bindParam("$matricula_codigo",$matricula_codigo);
-        $sql->bindParam("$aluno_id",$aluno_id);
-        $sql->bindParam("$turma_id",$turma_id);
-        $sql->bindParam("$calendario_ano",$calendario_ano);
-        $sql->bindParam("$escola_id",$escola_id);
-        $sql->bindParam("$escola_nome",$escola_nome);
-        $sql->bindParam("$matriculamov_procedimento",$matriculamov_procedimento);
-        $sql->bindParam("$matriculamov_descr",$matriculamov_descr);
+        
+        $sql->bindParam("matricula_codigo",$matricula_codigo);
+        $sql->bindParam("aluno_id",$aluno_id);
+        $sql->bindParam("turma_id",$turma_id);
+        $sql->bindParam("calendario_ano",$calendario_ano);
+        $sql->bindParam("escola_id",$escola_id);
+        $sql->bindParam("escola_nome",$escola_nome);
+        $sql->bindParam("matriculamov_procedimento",$matriculamov_procedimento);
+        $sql->bindParam("matriculamov_descr",$matriculamov_descr);
     $sql->execute();
 }
 

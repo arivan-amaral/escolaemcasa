@@ -661,6 +661,17 @@ $idcoordenador=$_SESSION['idfuncionario'];
                          ?>
                          </select>
                         </div>
+                      </div>                      
+
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Turno</label>
+                         <select class="form-control"  name="turno" id="turno" >
+                          <option value="MATUTINO">MATUTINO</option>
+                          <option value="VESPERTINO">VESPERTINO</option>
+                          <option value="VESPERTINO">NOTURNO</option>
+                         </select>
+                        </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">

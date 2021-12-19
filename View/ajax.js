@@ -412,7 +412,8 @@ function cadastro_aluno(){
  "&recebe_escolaridade_outro_espaco="+document.getElementsByName('recebe_escolaridade_outro_espaco')[0].value+
  "&matricula_certidao="+document.getElementsByName('matricula_certidao')[0].value+
 
- "&cartorio="+document.getElementsByName('cartorio')[0].value
+ "&cartorio="+document.getElementsByName('cartorio')[0].value+
+ "&turno="+document.getElementsByName('turno')[0].value
 
 
 

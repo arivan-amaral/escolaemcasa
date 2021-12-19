@@ -146,10 +146,14 @@ try {
     $matricula_tipo="N";
     $turno_nome=$_POST['turno'];
     cadastrar_ecidade_matricula($conexao, $aluno_id, $turma_id, $observacao, $matricula_tipo, $calendario_ano, $escola_id, $turno_nome);
- 	//associar_aluno($conexao, date("Y"), $turma, $aluno_id,  $escola);
- 	//$_SESSION['status']=1; 	 
- 	//header("location:../View/cadastro_aluno.php");
-        
+
+$matricula_codigo= $conexao->lastInsertId();
+$matriculamov_descr="ALUNO MATRICULADO NA TURMA";
+$matriculamov_procedimento="MATRICULAR ALUNO";
+$escola_nome="";
+    cadastrar_ecidade_movimentacao_escolar($conexao,$matricula_codigo,$aluno_id,$turma_id,$calendario_ano,$escola_id,$escola_nome,$matriculamov_procedimento,$matriculamov_descr);
+ 	
+     
     echo "certo";
 } catch (Exception $e) {
     echo $e;
