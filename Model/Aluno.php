@@ -1161,7 +1161,7 @@ ecidade_matricula.turma_id=$turma_id  ORDER by aluno.nome ASC;");
 // ecidade_movimentacao_escolar.escola_id=$escola_id and
 // ecidade_matricula.matricula_situacao !='CANCELADO' and
 // ecidade_movimentacao_escolar.turma_id=$turma_id   group by ecidade_movimentacao_escolar.aluno_id  ORDER by aluno.nome ASC  ");
-//   return $res;
+   return $res;
 } 
 
 
