@@ -1105,35 +1105,62 @@ AND ecidade_matricula.matricula_situacao !='REMATRICULAR ALUNO'
 
 
 function listar_aluno_da_turma_ata_resultado_final($conexao,$turma_id,$escola_id){
-  $res=$conexao->query("SELECT 
+  $res=$conexao->query("
+    SELECT 
 aluno.nome as 'nome_aluno',
 aluno.sexo,
 aluno.data_nascimento,
 aluno.idaluno,
 turma.nome_turma,
-ecidade_movimentacao_escolar.matriculamov_dataevento AS 'data_evento',
-ecidade_movimentacao_escolar.matriculamov_descr as 'descricao_procedimento',
-ecidade_movimentacao_escolar.matriculamov_procedimento as 'procedimento',
-ecidade_movimentacao_escolar.matricula_codigo as 'matricula',
 
 ecidade_matricula.matricula_datamatricula as 'data_matricula',
 ecidade_matricula.datasaida as 'datasaida'
 FROM
-ecidade_movimentacao_escolar, ecidade_matricula,
+ ecidade_matricula,
 aluno,turma,escola
 
 where
-ecidade_matricula.matricula_codigo = ecidade_movimentacao_escolar.matricula_codigo and 
 
-ecidade_movimentacao_escolar.aluno_id= aluno.idaluno AND
-ecidade_movimentacao_escolar.turma_id = turma.idturma and 
-ecidade_movimentacao_escolar.escola_id = escola.idescola and 
-ecidade_movimentacao_escolar.calendario_ano ='2021' and 
+ecidade_matricula.aluno_id= aluno.idaluno AND
+ecidade_matricula.turma_id = turma.idturma and 
+ecidade_matricula.alunoprimat_escola = escola.idescola and 
+ecidade_matricula.calendario_ano ='2021' and 
  
-ecidade_movimentacao_escolar.escola_id=$escola_id and
+ecidade_matricula.alunoprimat_escola=$escola_id and
 ecidade_matricula.matricula_situacao !='CANCELADO' and
-ecidade_movimentacao_escolar.turma_id=$turma_id   group by ecidade_movimentacao_escolar.aluno_id  ORDER by aluno.nome ASC  ");
-  return $res;
+ecidade_matricula.turma_id=$turma_id  ORDER by aluno.nome ASC;");
+
+//   return $res;
+//mudança de escripte de listagem de alunos da turma   
+//   $res=$conexao->query("SELECT 
+// aluno.nome as 'nome_aluno',
+// aluno.sexo,
+// aluno.data_nascimento,
+// aluno.idaluno,
+// turma.nome_turma,
+// ecidade_movimentacao_escolar.matriculamov_dataevento AS 'data_evento',
+// ecidade_movimentacao_escolar.matriculamov_descr as 'descricao_procedimento',
+// ecidade_movimentacao_escolar.matriculamov_procedimento as 'procedimento',
+// ecidade_movimentacao_escolar.matricula_codigo as 'matricula',
+
+// ecidade_matricula.matricula_datamatricula as 'data_matricula',
+// ecidade_matricula.datasaida as 'datasaida'
+// FROM
+// ecidade_movimentacao_escolar, ecidade_matricula,
+// aluno,turma,escola
+
+// where
+// ecidade_matricula.matricula_codigo = ecidade_movimentacao_escolar.matricula_codigo and 
+
+// ecidade_movimentacao_escolar.aluno_id= aluno.idaluno AND
+// ecidade_movimentacao_escolar.turma_id = turma.idturma and 
+// ecidade_movimentacao_escolar.escola_id = escola.idescola and 
+// ecidade_movimentacao_escolar.calendario_ano ='2021' and 
+ 
+// ecidade_movimentacao_escolar.escola_id=$escola_id and
+// ecidade_matricula.matricula_situacao !='CANCELADO' and
+// ecidade_movimentacao_escolar.turma_id=$turma_id   group by ecidade_movimentacao_escolar.aluno_id  ORDER by aluno.nome ASC  ");
+//   return $res;
 } 
 
 
