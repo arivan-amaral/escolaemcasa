@@ -8,6 +8,8 @@ include_once "../Model/Conexao.php";
 include_once "../Model/Serie.php"; 
 include_once "../Model/Escola.php"; 
 include_once "../Model/Estado.php"; 
+include_once "../Model/Coordenador.php"; 
+$idcoordenador=$_SESSION['idfuncionario'];
 
 
  
@@ -648,7 +650,9 @@ include_once "../Model/Estado.php";
                          <select class="form-control"  name="escola" id="escola" >
                           <option></option>
                        <?php 
-                         $res_escola=lista_escola($conexao);
+                         // $res_escola=lista_escola($conexao);
+
+                        $res_escola= escola_associada($conexao,$idcoordenador);
                          foreach ($res_escola as $key => $value) {
                              $idescola=$value['idescola'];
                              $nome_escola=$value['nome_escola'];

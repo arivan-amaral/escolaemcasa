@@ -542,6 +542,46 @@ function alterar_foto_aluno($conexao, $nome, $id) {
 }
 
 	// *****************************************************************************************
+function cadastrar_ano_letivo($conexao,$escola_id, $turma_id, $aluno_id, $ano) {
+    $sql=$conexao->prepare("INSERT INTO ano_letivo(escola_id, turma_id,  aluno_id, ano) VALUES (:escola_id, :turma_id, :aluno_id, :ano)");
+     $sql->bindParam("escola_id",$escola_id);
+     $sql->bindParam("turma_id",$turma_id);
+     $sql->bindParam("aluno_id",$aluno_id);
+     $sql->bindParam("ano",$ano);
+     $sql->execute();
+}
+
+
+
+function cadastrar_ecidade_matricula($conexao, $aluno_id, $turma_id, $matricula_obs, $matricula_tipo, $calendario_ano, $turma_escola, $turno_nome) {
+
+    $sql=$conexao->prepare("INSERT INTO ecidade_matricula(aluno_id, turma_id, matricula_obs, matricula_tipo, calendario_ano, turma_escola,  turno_nome) VALUES (
+        :aluno_id,:turma_id,:matricula_obs,:matricula_tipo,:calendario_ano,:turma_escola,:turno_nome)");
+
+   $sql->bindParam("aluno_id",$aluno_id);
+   $sql->bindParam("turma_id",$turma_id);
+   $sql->bindParam("matricula_obs",$matricula_obs);
+   $sql->bindParam("matricula_tipo",$matricula_tipo);
+   $sql->bindParam("calendario_ano",$calendario_ano);
+   $sql->bindParam("turma_escola",$turma_escola);
+   // $sql->bindParam("escola_nome",$escola_nome);
+   $sql->bindParam("turno_nome",$turno_nome);
+
+    $sql->execute();
+}
+
+function cadastrar_ecidade_movimentacao_escolar($conexao,$matricula_codigo,$aluno_id,$turma_id,$calendario_ano,$escola_id,$escola_nome,$matriculamov_procedimento,$matriculamov_descr) {
+    $sql=$conexao->prepare("INSERT INTO ecidade_movimentacao_escolar(matricula_codigo, aluno_id, turma_id, calendario_ano, escola_id, escola_nome, matriculamov_procedimento, matriculamov_descr) VALUES (:matricula_codigo,:aluno_id,:turma_id,:calendario_ano,:escola_id,:escola_nome,:matriculamov_procedimento,:matriculamov_descr)");
+        $sql->bindParam("$matricula_codigo",$matricula_codigo);
+        $sql->bindParam("$aluno_id",$aluno_id);
+        $sql->bindParam("$turma_id",$turma_id);
+        $sql->bindParam("$calendario_ano",$calendario_ano);
+        $sql->bindParam("$escola_id",$escola_id);
+        $sql->bindParam("$escola_nome",$escola_nome);
+        $sql->bindParam("$matriculamov_procedimento",$matriculamov_procedimento);
+        $sql->bindParam("$matriculamov_descr",$matriculamov_descr);
+    $sql->execute();
+}
 
 function cadastro_aluno($conexao,$nome,
     $sexo,

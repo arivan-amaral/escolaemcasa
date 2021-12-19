@@ -17,8 +17,8 @@ try {
     $filiacao1=$_POST['filiacao1'];
     $filiacao2=$_POST['filiacao2'];
     $senha='lem12345';
-    $whatsapp=$_POST['whatsapp'];
-    $whatsapp_responsavel=$_POST['whatsapp_responsavel'];
+    $whatsapp=converte_telefone($_POST['whatsapp']);
+    $whatsapp_responsavel=converte_telefone($_POST['whatsapp_responsavel']);
     $data_nascimento=$_POST['data_nascimento'];
 
     $codigo_inep=$_POST['codigo_inep'];
@@ -137,12 +137,19 @@ try {
     );
 
 
-
+    $escola_id=$_POST['escola'];
+    $turma_id=$_POST['turma'];
     $aluno_id= $conexao->lastInsertId();
+    $ano=date("Y");
+    $calendario_ano=date("Y");
+    cadastrar_ano_letivo($conexao,$escola_id, $turma_id, $aluno_id, $ano);
+    $matricula_tipo="N";
+    $turno_nome=$_POST['turno'];
+    cadastrar_ecidade_matricula($conexao, $aluno_id, $turma_id, $observacao, $matricula_tipo, $calendario_ano, $escola_id, $turno_nome);
  	//associar_aluno($conexao, date("Y"), $turma, $aluno_id,  $escola);
  	//$_SESSION['status']=1; 	 
  	//header("location:../View/cadastro_aluno.php");
-        //
+        
     echo "certo";
 } catch (Exception $e) {
     echo $e;
