@@ -1111,11 +1111,15 @@ aluno.nome as 'nome_aluno',
 aluno.sexo,
 aluno.data_nascimento,
 aluno.idaluno,
+aluno.email,
+aluno.status as 'status_aluno',
+aluno.senha,
 turma.nome_turma,
 
 ecidade_matricula.matricula_codigo as 'matricula',
 ecidade_matricula.matricula_datamatricula as 'data_matricula',
 ecidade_matricula.datasaida as 'datasaida'
+
 FROM
  ecidade_matricula,
 aluno,turma,escola

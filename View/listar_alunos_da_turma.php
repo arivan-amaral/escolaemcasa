@@ -194,7 +194,7 @@ if (!isset($_SESSION['idfuncionario'])) {
 
             <?php 
                //$result= array();
-                $result= listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola);
+                $result= listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola);
 
                foreach ($result as $key => $value) {
                 $nome_aluno=utf8_decode($value['nome_aluno']);
