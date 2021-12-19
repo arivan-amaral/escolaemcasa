@@ -1113,6 +1113,7 @@ aluno.data_nascimento,
 aluno.idaluno,
 turma.nome_turma,
 
+ecidade_matricula.matricula_codigo as 'matricula',
 ecidade_matricula.matricula_datamatricula as 'data_matricula',
 ecidade_matricula.datasaida as 'datasaida'
 FROM
