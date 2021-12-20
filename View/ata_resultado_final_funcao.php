@@ -370,7 +370,7 @@ else{
   text-align:center'><span lang=PT style='font-size:8.0pt'>
 <?php 
     if($idserie<3){
-         echo "Apr";
+        echo "<b style='color: green;'>Apr</b>";
 
     }elseif ($aprovacao_conselho == true) {
          echo "<b style='color: blue;'>Apc </b>";
