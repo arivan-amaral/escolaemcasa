@@ -43,17 +43,7 @@
   color:black;mso-fareast-language:PT-BR'><b>SECRETARIA MUNICIPAL DE EDUCAÇÃO</b><o:p></o:p></span></p>
   </td>
  </tr>
- <tr style='mso-yfti-irow:2;height:18.75pt'>
-  <td width=936 colspan=7 style='width:701.7pt;border-top:none;border-left:
-  solid windowtext 1.0pt;border-bottom:none;border-right:solid windowtext 1.0pt;
-  mso-border-left-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:18.75pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><span style='font-size:16.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-  mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'><b>OBJETOS DE CONHECIMENTOS</b><o:p></o:p></span></p>
-  </td>
- </tr>
+
  <tr style='mso-yfti-irow:3;height:15.0pt'>
   <td width=936 colspan=7 style='width:701.7pt;border-top:none;border-left:
   solid windowtext 1.0pt;border-bottom:none;border-right:solid windowtext 1.0pt;
