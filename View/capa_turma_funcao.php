@@ -133,9 +133,7 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
       padding:0cm 0cm 0cm 0cm;height:11.3pt'>
 
       <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
-      0cm;margin-left:3.65pt;margin-bottom:.0001pt;font-size:
-      8.0pt;text-align:
-  center'><span lang=PT style='font-size:
+      0cm;margin-left:3.65pt;margin-bottom:.0001pt;'><span lang=PT style='font-size:
       8.0pt;text-align:
   center'><?php echo "$conta_aluno"; ?></span></p>
       </td>
@@ -143,49 +141,36 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
       <td  valign=top style='border:solid black 1.0pt; 
       padding:0cm 0cm 0cm 0cm;height:11.3pt;background-color: <?php echo "$cor_linha"; ?>;'>
       <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
-      0cm;margin-left:2.75pt;margin-bottom:.0001pt;font-size:
-      8.0pt;text-align:
-  center'><span lang=PT style='font-size:
-      8.0pt;text-align:
-  center'><?php echo "$nome_aluno"; ?></span></p>
+      0cm;margin-left:2.75pt;margin-bottom:.0001pt;'><span lang=PT ><?php echo "$nome_aluno"; ?></span></p>
+      </td>
+
+      <td  valign=top style='border:solid black 1.0pt; 
+      padding:0cm 0cm 0cm 0cm;height:11.3pt;background-color: <?php echo "$cor_linha"; ?>;'>
+      <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
+      0cm;margin-left:2.75pt;margin-bottom:.0001pt;'><span lang=PT ><?php echo "$sexo_aluno"; ?></span></p>
       </td>
 
       <td  valign=top style='border:solid black 1.0pt; 
       padding:0cm 0cm 0cm 0cm;height:11.3pt;background-color: <?php echo "$cor_linha"; ?>;'>
       <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
       0cm;margin-left:2.75pt;margin-bottom:.0001pt;font-size:
-      8.0pt;text-align:
-  center'><span lang=PT style='font-size:
-      8.0pt;text-align:
-  center'><?php echo "$sexo_aluno"; ?></span></p>
+      8.0pt;'><span lang=PT style='font-size:
+      8.0pt;' ><?php echo "$data_nascimento"; ?></span></p>
       </td>
 
       <td  valign=top style='border:solid black 1.0pt; 
       padding:0cm 0cm 0cm 0cm;height:11.3pt;background-color: <?php echo "$cor_linha"; ?>;'>
       <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
       0cm;margin-left:2.75pt;margin-bottom:.0001pt;font-size:
-      8.0pt;text-align:
-  center'><span lang=PT style='font-size:
-      8.0pt;text-align:
-  center'><?php echo "$data_nascimento"; ?></span></p>
+      8.0pt;'><span lang=PT style='font-size:
+      8.0pt;'><?php echo "$data_matricula"; ?></span></p>
       </td>
 
       <td  valign=top style='border:solid black 1.0pt; 
       padding:0cm 0cm 0cm 0cm;height:11.3pt;background-color: <?php echo "$cor_linha"; ?>;'>
       <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
       0cm;margin-left:2.75pt;margin-bottom:.0001pt;font-size:
-      8.0pt;text-align:
-  center'><span lang=PT style='font-size:
-      8.0pt;text-align:
-  center'><?php echo "$data_matricula"; ?></span></p>
-      </td>
-
-      <td  valign=top style='border:solid black 1.0pt; 
-      padding:0cm 0cm 0cm 0cm;height:11.3pt;background-color: <?php echo "$cor_linha"; ?>;'>
-      <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
-      0cm;margin-left:2.75pt;margin-bottom:.0001pt;font-size:
-      8.0pt;text-align:
-  center'><span lang=PT style='font-size:
+      8.0pt; '><span lang=PT style='font-size:
       8.0pt;'><?php echo "$datasaida"; ?></span></p>
       </td>
 
@@ -193,10 +178,7 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
       padding:0cm 0cm 0cm 0cm;height:11.3pt;background-color: <?php echo "$cor_linha"; ?>;'>
       <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
       0cm;margin-left:2.75pt;margin-bottom:.0001pt;font-size:
-      8.0pt;text-align:
-  center'><span lang=PT style='font-size:
-      8.0pt;text-align:
-  center'><?php echo ""; ?></span></p>
+      8.0pt;'><span lang=PT ><?php echo ""; ?></span></p>
       </td>
 
 
