@@ -177,7 +177,7 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
       </td>
 
 
-     <td colspan=<?php echo $conta_disciplina+2; ?> valign=top style='border:solid black 1.0pt;
+     <td colspan='100%' valign=top style='border:solid black 1.0pt;
      ;padding:0cm 0cm 10pt 0cm;height:11.3pt;background-color: <?php echo "$cor_linha"; ?>;'>
       <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
       0cm;margin-left:2.75pt;margin-bottom:.0001pt'><span lang=PT style='font-size:
