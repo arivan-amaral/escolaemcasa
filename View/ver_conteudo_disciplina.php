@@ -181,7 +181,7 @@ if (!isset($_SESSION['idfuncionario'])) {
 
                            <a   href='diario_rendimento.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat'>
                            <i class='fa fa-calendar'></i> 
-                           RESULTADO FINAL
+                           RESULTADO ANUAL
                            </a>
 
 
@@ -320,7 +320,7 @@ if (!isset($_SESSION['idfuncionario'])) {
                            
                                    <a   href='diario_rendimento.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-info btn-block btn-flat'>
                                      <i class='fa fa-calendar'></i> 
-                                     RESULTADO FINAL
+                                     RESULTADO ANUAL
                                    </a>
 
 

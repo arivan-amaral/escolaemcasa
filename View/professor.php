@@ -600,7 +600,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
                                               <a   href='diario_rendimento.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat'>
                                               <i class='fa fa-calendar'></i> 
-                                              RESULTADO FINAL
+                                              RESULTADO ANUAL
                                               </a>
 
 
