@@ -703,30 +703,7 @@ foreach ($result_escola as $key => $value) {
   $conta_aluno=1; 
   $matricula_aluno="";
   $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola);
-   foreach ($res_alunos as $key => $value) {
-    $idaluno=$value['idaluno'];
-    $nome_aluno=$value['nome_aluno'];
-    $matricula_aluno=$value['matricula'];
-
-  // pesquisar_aluno_da_turma_ata_resultado_final
-    $res_movimentacao=pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula_aluno);
-
-    $data_evento="";
-    $descricao_procedimento="";
-    $procedimento="";
-    $matricula="";
-    foreach ($res_movimentacao as $key => $value) {
-        $datasaida=($value['datasaida']);
-        // $matricula=($value['matricula']);
-        // $data_evento=converte_data($value['data_evento']);
-        // $descricao_procedimento=$value['descricao_procedimento'];
-        $procedimento=$value['procedimento'];
-        
-        if ($datasaida!="") {
-          $datasaida=converte_data($datasaida);
-        }
-    }
-    if (isset($_GET['teste_programacao'])) {
+  if (isset($_GET['teste_programacao'])) {
       // code...
 echo "SELECT 
 aluno.nome as 'nome_aluno',
@@ -757,6 +734,30 @@ ecidade_matricula.turma_escola=$idescola and
 ecidade_matricula.matricula_situacao !='CANCELADO' and
 ecidade_matricula.turma_id=$idturma  ORDER by aluno.nome ASC";
     }
+   foreach ($res_alunos as $key => $value) {
+    $idaluno=$value['idaluno'];
+    $nome_aluno=$value['nome_aluno'];
+    $matricula_aluno=$value['matricula'];
+
+  // pesquisar_aluno_da_turma_ata_resultado_final
+    $res_movimentacao=pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula_aluno);
+
+    $data_evento="";
+    $descricao_procedimento="";
+    $procedimento="";
+    $matricula="";
+    foreach ($res_movimentacao as $key => $value) {
+        $datasaida=($value['datasaida']);
+        // $matricula=($value['matricula']);
+        // $data_evento=converte_data($value['data_evento']);
+        // $descricao_procedimento=$value['descricao_procedimento'];
+        $procedimento=$value['procedimento'];
+        
+        if ($datasaida!="") {
+          $datasaida=converte_data($datasaida);
+        }
+    }
+    
 
 if ($procedimento !='') {
 
