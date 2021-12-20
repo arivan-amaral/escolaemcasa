@@ -791,7 +791,7 @@ $sql->bindParam("necessidade_especial",$necessidade_especial);
  $sql->bindParam("matricula_certidao",$matricula_certidao);
  $sql->bindParam("uf_municipio_cartorio",$uf_municipio_cartorio);
  $sql->bindParam("cartorio", $cartorio);
- $sql->evxecute();
+ $sql->execute();
  
 
  return $conexao;

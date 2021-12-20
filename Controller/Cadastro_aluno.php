@@ -156,7 +156,8 @@ $matricula_codigo= $conexao->lastInsertId();
 $matriculamov_descr="ALUNO MATRICULADO NA TURMA";
 $matriculamov_procedimento="MATRICULAR ALUNO";
 $escola_nome="";
-    cadastrar_ecidade_movimentacao_escolar($conexao,$matricula_codigo,$aluno_id,$turma_id,$calendario_ano,$escola_id,$escola_nome,$matriculamov_procedimento,$matriculamov_descr);
+
+cadastrar_ecidade_movimentacao_escolar($conexao,$matricula_codigo,$aluno_id,$turma_id,$calendario_ano,$escola_id,$escola_nome,$matriculamov_procedimento,$matriculamov_descr);
  	
 
     echo "certo";
