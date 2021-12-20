@@ -586,7 +586,7 @@ $idcoordenador=$_SESSION['idfuncionario'];
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Data Expedição Identidade</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="data_expedicao" >
+                          <input type="date" class="form-control" id="exampleInputEmail1" name="data_expedicao" >
                         </div>
                       </div>
                     </div>
