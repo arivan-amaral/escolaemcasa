@@ -726,6 +726,37 @@ foreach ($result_escola as $key => $value) {
           $datasaida=converte_data($datasaida);
         }
     }
+    if (isset($_GET['teste_programacao'])) {
+      // code...
+echo "SELECT 
+aluno.nome as 'nome_aluno',
+aluno.sexo,
+aluno.data_nascimento,
+aluno.idaluno,
+aluno.email,
+aluno.status as 'status_aluno',
+aluno.senha,
+turma.nome_turma,
+
+ecidade_matricula.matricula_codigo as 'matricula',
+ecidade_matricula.matricula_datamatricula as 'data_matricula',
+ecidade_matricula.datasaida as 'datasaida'
+
+FROM
+ ecidade_matricula,
+aluno,turma,escola
+
+where
+
+ecidade_matricula.aluno_id= aluno.idaluno AND
+ecidade_matricula.turma_id = turma.idturma and 
+ecidade_matricula.turma_escola = escola.idescola and 
+ecidade_matricula.calendario_ano ='2021' and 
+ 
+ecidade_matricula.turma_escola=$idescola and
+ecidade_matricula.matricula_situacao !='CANCELADO' and
+ecidade_matricula.turma_id=$idturma  ORDER by aluno.nome ASC";
+    }
 
 if ($procedimento !='') {
 
@@ -765,7 +796,7 @@ if ($procedimento !='') {
 
 }else{
 ?>
-
+ 
 
 
 <tr style='mso-yfti-irow:14;height:15.0pt'>

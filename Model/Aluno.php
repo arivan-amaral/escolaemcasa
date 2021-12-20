@@ -791,7 +791,8 @@ $sql->bindParam("necessidade_especial",$necessidade_especial);
  $sql->bindParam("matricula_certidao",$matricula_certidao);
  $sql->bindParam("uf_municipio_cartorio",$uf_municipio_cartorio);
  $sql->bindParam("cartorio", $cartorio);
- $sql->execute();
+ $sql->evxecute();
+ 
 
  return $conexao;
 }
@@ -1174,7 +1175,7 @@ ecidade_matricula.calendario_ano ='2021' and
  
 ecidade_matricula.turma_escola=$escola_id and
 ecidade_matricula.matricula_situacao !='CANCELADO' and
-ecidade_matricula.turma_id=$turma_id  ORDER by aluno.nome ASC;");
+ecidade_matricula.turma_id=$turma_id  ORDER by aluno.nome ASC");
 
 //   return $res;
 //mudança de escripte de listagem de alunos da turma   
