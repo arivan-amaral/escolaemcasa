@@ -25,7 +25,7 @@ function capa_turma($conexao,$idescola,$idturma){
   
   <p class=TableParagraph align=right style='margin-top:3.3pt;margin-right:
   2.0pt;margin-bottom:0cm;margin-left:0cm;margin-bottom:.0001pt;text-align:
-  right'><b><span lang=PT style='font-size:8.0pt;font-family:"Arial",sans-serif'>
+  center'><b><span lang=PT style='font-size:8.0pt;font-family:"Arial",sans-serif'>
   ALUNO(A)
 </span></b></p>
   </td>
@@ -35,7 +35,7 @@ function capa_turma($conexao,$idescola,$idturma){
   
   <p class=TableParagraph align=right style='margin-top:3.3pt;margin-right:
   2.0pt;margin-bottom:0cm;margin-left:0cm;margin-bottom:.0001pt;text-align:
-  right'><b><span lang=PT style='font-size:7.0pt;font-family:"Arial",sans-serif'>
+  center'><b><span lang=PT style='font-size:7.0pt;font-family:"Arial",sans-serif'>
     SEXO
   </span></b></p>
   </td>
@@ -45,7 +45,7 @@ function capa_turma($conexao,$idescola,$idturma){
   
   <p class=TableParagraph align=right style='margin-top:3.3pt;margin-right:
   2.0pt;margin-bottom:0cm;margin-left:0cm;margin-bottom:.0001pt;text-align:
-  right'><b><span lang=PT style='font-size:7.0pt;font-family:"Arial",sans-serif'>
+  center'><b><span lang=PT style='font-size:7.0pt;font-family:"Arial",sans-serif'>
     DATA DE NASCIMENTO
   </span></b></p>
   </td>
@@ -55,7 +55,7 @@ function capa_turma($conexao,$idescola,$idturma){
   
   <p class=TableParagraph align=right style='margin-top:3.3pt;margin-right:
   2.0pt;margin-bottom:0cm;margin-left:0cm;margin-bottom:.0001pt;text-align:
-  right'><b><span lang=PT style='font-size:7.0pt;font-family:"Arial",sans-serif'>DATA DE ENTRADA</span></b></p>
+  center'><b><span lang=PT style='font-size:7.0pt;font-family:"Arial",sans-serif'>DATA DE ENTRADA</span></b></p>
   </td>
 
   <td  valign=top style='width:184.25pt;border:solid black 1.0pt;
@@ -63,7 +63,7 @@ function capa_turma($conexao,$idescola,$idturma){
   
   <p class=TableParagraph align=right style='margin-top:3.3pt;margin-right:
   2.0pt;margin-bottom:0cm;margin-left:0cm;margin-bottom:.0001pt;text-align:
-  right'><b><span lang=PT style='font-size:7.0pt;font-family:"Arial",sans-serif'>DATA DE SAÍDA</span></b></p>
+  center'><b><span lang=PT style='font-size:7.0pt;font-family:"Arial",sans-serif'>DATA DE SAÍDA</span></b></p>
   </td>
 
   <td  valign=top style='width:184.25pt;border:solid black 1.0pt;
@@ -71,7 +71,7 @@ function capa_turma($conexao,$idescola,$idturma){
   
   <p class=TableParagraph align=right style='margin-top:3.3pt;margin-right:
   2.0pt;margin-bottom:0cm;margin-left:0cm;margin-bottom:.0001pt;text-align:
-  right'><b><span lang=PT style='font-size:7.0pt;font-family:"Arial",sans-serif'>OBSERVAÇÃO</span></b></p>
+  center'><b><span lang=PT style='font-size:7.0pt;font-family:"Arial",sans-serif'>OBSERVAÇÃO</span></b></p>
   </td>
 
 
