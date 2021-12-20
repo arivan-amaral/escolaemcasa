@@ -375,7 +375,7 @@ else{
     }elseif ($aprovacao_conselho == true) {
          echo "<b style='color: blue;'>Apc </b>";
     }elseif ($media_aprovacao == true) {
-         echo "<b style='color: greem;'>Apr</b>";
+         echo "<b style='color: green;'>Apr</b>";
     }elseif ($media_aprovacao == false){
       $media_aprovacao=false;
          echo "<b style='color: red;'>Rep</b>";
