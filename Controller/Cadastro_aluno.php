@@ -39,7 +39,12 @@ try {
     $numero_indentidade=$_POST['numero_indentidade'];
     $uf_identidade=$_POST['uf_identidade'];
     $orgao_emissor_indentidade=$_POST['orgao_emissor_indentidade'];
-    $data_expedicao=$_POST['data_expedicao'];
+    if ($_POST['data_expedicao']!="") {
+         $data_expedicao=$_POST['data_expedicao'];
+    }else{
+        $data_expedicao=null;
+    }
+
     $categoria_cnh=$_POST['categoria_cnh'];
     $observacao=$_POST['observacao'];
 
@@ -153,7 +158,7 @@ $matriculamov_procedimento="MATRICULAR ALUNO";
 $escola_nome="";
     cadastrar_ecidade_movimentacao_escolar($conexao,$matricula_codigo,$aluno_id,$turma_id,$calendario_ano,$escola_id,$escola_nome,$matriculamov_procedimento,$matriculamov_descr);
  	
-     
+
     echo "certo";
 } catch (Exception $e) {
     echo $e;
