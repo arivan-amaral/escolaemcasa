@@ -315,7 +315,7 @@ if (!isset($_SESSION['idfuncionario'])) {
 
                            <a href='parecer_descritivo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat'>
                            <i class='fa fa-edit'></i> 
-                           RELATÓRIO DESCRITIVO
+                           PARECER DESCRITIVO
                            </a>
                            
                                    <a   href='diario_rendimento.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-info btn-block btn-flat'>
