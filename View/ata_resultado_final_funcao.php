@@ -373,12 +373,12 @@ else{
          echo "Apr";
 
     }elseif ($aprovacao_conselho == true) {
-         echo "Apc";
+         echo "<b style='color: blue;'>Apc </b>";
     }elseif ($media_aprovacao == true) {
-         echo "Apr";
+         echo "<b style='color: greem;'>Apr</b>";
     }elseif ($media_aprovacao == false){
       $media_aprovacao=false;
-         echo "Rep";
+         echo "<b style='color: red;'>Rep</b>";
 
     }
 ?>
@@ -400,7 +400,7 @@ $conta_aluno++;
   <td width=321 colspan=4 valign=top style='border:solid black 1.0pt;
   padding:0pt 0pt 10pt 0pt;height:10.55pt'>
   <p class=TableParagraph align=center style='margin-top:1.45pt;margin-left:1.85pt;margin-bottom:5pt;
-  text-align:center'><span lang=PT style='font-size:10.0pt'>Observações:</span></p>
+  text-align:center'><span lang=PT style='font-size:10.0pt'>Assinatura dos professores:</span></p>
   </td>  
 
   <td width=321 colspan=10 valign=top style='border:solid black 1.0pt;
