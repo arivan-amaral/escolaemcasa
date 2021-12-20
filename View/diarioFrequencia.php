@@ -89,8 +89,7 @@ $colspan="100%";
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><b><span style='font-size:16.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-  color:black;mso-fareast-language:PT-BR; margin-left: 300px;'>DIÁRIO DE CLASSE - FREQUÊNCIA E
-  RENDIMENTO<o:p></o:p></span></b></p>
+  color:black;mso-fareast-language:PT-BR; margin-left: 300px;'>DIÁRIO DE CLASSE <o:p></o:p></span></b></p>
   </td>
 
  </tr>
@@ -387,7 +386,7 @@ foreach ($result_data_aula as $key => $value) {
       border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
       solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
       <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-      line-height:normal'><div class="Namerotate"><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+      line-height:normal'><div class="Namerotate"><span style='font-size:6.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
       color:black;mso-fareast-language:PT-BR'><?php echo converte_data($data_frequencia); ?></div></span></p>
   </td>
