@@ -132,7 +132,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
                             <!-- Add the bg color to the header using any of the bg-* classes -->
 
-                            <div class='widget-user-header text-white' style='background: url(imagens/fundo.jpg)'>
+                            <div class='widget-user-header text-white' style='background: url(imagens/logo_educalem.png)'>
 
 
 
@@ -219,13 +219,22 @@ setTimeout('dia_doservidor_publico();',3000);
 
                        
 
-                      echo "<!-- Widget: user widget style 1 -->
+                      echo "<style>
+                      .quadro {
+                        background-image: url(imagens/logo_educalem_natal.png);
+                        background-repeat: no-repeat;
+                        // background-attachment: fixed;
+                        background-position: center;
+                         
+                            background-size: 100% 100%;
+                      }
+                      </style>
 
-                          <div class='card card-widget widget-user shadow-lg'>
+                          <div class='card card-widget widget-user shadow-lg quadro' >
 
                             <!-- Add the bg color to the header using any of the bg-* classes -->
 
-                            <div class='widget-user-header text-white' style='background: url(fotos/fundo.jpg)'>
+                            <div class='widget-user-header text-white' >
 
 
 

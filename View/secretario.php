@@ -113,13 +113,24 @@ if (!isset($_SESSION['idsecretario'])) {
                   foreach ($res_dados_aluno as $key => $value) {
                     $nome=$value['nome'];
                     $imagem=$value['foto'];
-                      echo "<!-- Widget: user widget style 1 -->
+                      echo "
 
-                          <div class='card card-widget widget-user shadow-lg'>
+                      <style>
+                  .quadro {
+                    background-image: url(imagens/logo_educalem_natal.png);
+                    background-repeat: no-repeat;
+                    // background-attachment: fixed;
+                    background-position: center;
+                     
+                        background-size: 100% 100%;
+                  }
+                  </style>
+
+                          <div class='card card-widget widget-user shadow-lg quadro'>
 
                             <!-- Add the bg color to the header using any of the bg-* classes -->
 
-                            <div class='widget-user-header text-white' style='background: url(imagens/fundo.jpg)'>
+                            <div class='widget-user-header text-white'>
 
 
 
@@ -208,11 +219,22 @@ if (!isset($_SESSION['idsecretario'])) {
 
                       echo "<!-- Widget: user widget style 1 -->
 
-                          <div class='card card-widget widget-user shadow-lg'>
+
+                      <style>
+                        .quadro {
+                          background-image: url(imagens/logo_educalem_natal.png);
+                          background-repeat: no-repeat;
+                          // background-attachment: fixed;
+                          background-position: center;
+                           
+                              background-size: 100% 100%;
+                        }
+                        </style>
+                          <div class='card card-widget widget-user shadow-lg quadro'>
 
                             <!-- Add the bg color to the header using any of the bg-* classes -->
 
-                            <div class='widget-user-header text-white' style='background: url(fotos/fundo.jpg)'>
+                            <div class='widget-user-header text-black'>
 
 
 
