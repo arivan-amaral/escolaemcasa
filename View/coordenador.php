@@ -128,11 +128,11 @@ setTimeout('dia_doservidor_publico();',3000);
                     $imagem=$value['foto'];
                       echo "<!-- Widget: user widget style 1 -->
 
-                          <div class='card card-widget widget-user shadow-lg'>
+                          <div class='card card-widget widget-user shadow-lg quadro'>
 
                             <!-- Add the bg color to the header using any of the bg-* classes -->
 
-                            <div class='widget-user-header text-white' style='background: url(imagens/logo_educalem.png)'>
+                            <div class='widget-user-header text-white'>
 
 
 
