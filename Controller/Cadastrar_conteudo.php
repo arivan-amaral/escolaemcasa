@@ -25,13 +25,15 @@ try {
     
         if (isset($_SESSION['cargo'])) {
             if (isset($_SESSION['idprofessor'])) {
-                header("location: ../View/cadastrar_conteudo.php?$url_get");
+                $_SESSION['status']=0;
                 $_SESSION['mensagem']='BLOQUEADO PARA PROFESSOR!';
+                header("location: ../View/cadastrar_conteudo.php?$url_get");
                 exit;
             }
         }else{
-              header("location: ../View/cadastrar_conteudo.php?$url_get");
+                $_SESSION['status']=0;
                 $_SESSION['mensagem']='BLOQUEADO PARA PROFESSOR!';
+              header("location: ../View/cadastrar_conteudo.php?$url_get");
                 exit;
         }
   

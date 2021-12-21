@@ -37,13 +37,16 @@ try {
     if (isset($_SESSION['cargo'])) {
         
         if (isset($_SESSION['idprofessor'])) {
-            header("location: ../View/diario_avaliacao.php?$url_get");
+                $_SESSION['status']=0;
             $_SESSION['mensagem']='BLOQUEADO PARA PROFESSOR!';
+            header("location: ../View/diario_avaliacao.php?$url_get");
             exit;
         }
     }else{
-          header("location: ../View/diario_avaliacao.php?$url_get");
+                $_SESSION['status']=0;
+        
             $_SESSION['mensagem']='BLOQUEADO PARA PROFESSOR!';
+          header("location: ../View/diario_avaliacao.php?$url_get");
             exit;
     }
     /////////////////////////////////////////////////////////
