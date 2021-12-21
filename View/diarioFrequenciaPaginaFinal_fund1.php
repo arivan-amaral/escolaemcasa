@@ -378,7 +378,7 @@ foreach ($result_escola as $key => $value) {
 
  <tr style='mso-yfti-irow:11;height:58.75pt'>
 
-
+  
   <?php
 $result_data_aula=$conexao->query("
 SELECT * FROM frequencia WHERE
@@ -505,30 +505,13 @@ foreach ($result_nota_aula as $key => $value) {
  for($i=$conta_nota; $i < 4; $i++) {   
 ?>
 
-<!--  <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
-      border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
-      solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
-      <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-      line-height:normal'><div class="Namerotate"><span style='font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-      mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-      color:black;mso-fareast-language:PT-BR'> </div></span></p>
-  </td> -->
-
   
 <?php 
   }
  ?>
 
 
-<!--   <td width=41 nowrap rowspan=2 style='width:30.8pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-left-alt:solid windowtext 1.0pt;background:#D9D9D9;padding:0cm 3.5pt 0cm 3.5pt;
-  mso-rotate:90;height:48.75pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><b><div class="Namerotate"><span style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-  mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-  color:black;mso-fareast-language:PT-BR'>RP<o:p></o:p></span></div></b></p>
-  </td> -->
+ 
  <td width=41 nowrap rowspan=2 style='width:30.8pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-left-alt:solid windowtext 1.0pt;background:#D9D9D9;padding:0cm 3.5pt 0cm 3.5pt;

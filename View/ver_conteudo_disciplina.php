@@ -177,6 +177,11 @@ if (!isset($_SESSION['idfuncionario'])) {
                            </a> 
                            <br>
                            
+                           <a href='parecer_descritivo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat'>
+                           <i class='fa fa-edit'></i> 
+                           PARECER DESCRITIVO
+                           </a>
+                           <BR>
 
 
                            <a   href='diario_rendimento.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat'>
