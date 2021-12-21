@@ -33,6 +33,20 @@ try {
     $nota=0;
     $url_get=$_POST['url_get'];
 
+    /////////////////////////////////////////////////////////
+    if (isset($_SESSION['cargo'])) {
+        
+        if (isset($_SESSION['idprofessor'])) {
+            header("location: ../View/diario_avaliacao.php?$url_get");
+            $_SESSION['mensagem']='BLOQUEADO PARA PROFESSOR!';
+            exit;
+        }
+    }else{
+          header("location: ../View/diario_avaliacao.php?$url_get");
+            $_SESSION['mensagem']='BLOQUEADO PARA PROFESSOR!';
+            exit;
+    }
+    /////////////////////////////////////////////////////////
 
 foreach ($_POST['aluno_id'] as $key => $value) {
       $aluno_id=$_POST['aluno_id'][$key];

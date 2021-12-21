@@ -3,7 +3,7 @@
     include("../Model/Conexao.php");
     include("../Model/Aluno.php");
     include("Conversao.php");
-    
+
 
 try {
 
@@ -21,7 +21,21 @@ try {
 
     $aula=$_POST['aula'];
     $url_get=$_POST['url_get'];
-   	
+    /////////////////////////////////////////////////////////
+    
+        if (isset($_SESSION['cargo'])) {
+            if (isset($_SESSION['idprofessor'])) {
+                header("location: ../View/cadastrar_conteudo.php?$url_get");
+                $_SESSION['mensagem']='BLOQUEADO PARA PROFESSOR!';
+                exit;
+            }
+        }else{
+              header("location: ../View/cadastrar_conteudo.php?$url_get");
+                $_SESSION['mensagem']='BLOQUEADO PARA PROFESSOR!';
+                exit;
+        }
+  
+    /////////////////////////////////////////////////////////
 
     foreach ($_POST['escola_turma_disciplina'] as $key => $value) {
 
