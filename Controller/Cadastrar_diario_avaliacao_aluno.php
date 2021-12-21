@@ -34,7 +34,25 @@ try {
     $url_get=$_POST['url_get'];
 
     /////////////////////////////////////////////////////////
-    if (isset($_SESSION['cargo'])) {
+      
+        if(
+         $_SESSION['idprofessor']==514 ||
+         $_SESSION['idprofessor']==485 || 
+         $_SESSION['idprofessor']==467 || 
+         $_SESSION['idprofessor']==718 || 
+         $_SESSION['idprofessor']==1416 || 
+         $_SESSION['idprofessor']==895 ||
+         $_SESSION['idprofessor']==972 ||
+         $_SESSION['idprofessor']==679 ||
+         $_SESSION['idprofessor']==686 || 
+         $_SESSION['idprofessor']==305 ||
+         $_SESSION['idprofessor']==722 ||
+         $_SESSION['idprofessor']==907 ||
+         $_SESSION['idprofessor']==867 ||
+         $_SESSION['idprofessor']==501
+     ) {
+///
+        }elseif (isset($_SESSION['cargo'])) {
         
         if (isset($_SESSION['idprofessor'])) {
                 $_SESSION['status']=0;
