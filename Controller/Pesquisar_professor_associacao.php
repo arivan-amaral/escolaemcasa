@@ -60,6 +60,7 @@ foreach ($result as $key => $value) {
     <tr style='background-color:#BDB76B'>
       <td>
         <b>$conta</b><br>
+        <b>id: $idfuncionario</b><br>
       </td> 
 
       <td>
