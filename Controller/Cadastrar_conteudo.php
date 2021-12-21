@@ -24,6 +24,9 @@ try {
     /////////////////////////////////////////////////////////
     
         if(
+         $_SESSION['idprofessor']==645 ||
+         $_SESSION['idprofessor']==281 ||
+         $_SESSION['idprofessor']==325 ||
          $_SESSION['idprofessor']==514 ||
          $_SESSION['idprofessor']==485 || 
          $_SESSION['idprofessor']==467 || 
