@@ -37,6 +37,34 @@ try {
       
         if(
          
+         $_SESSION['idprofessor']==523 ||
+         $_SESSION['idprofessor']==772 ||
+         $_SESSION['idprofessor']==1401 ||
+         $_SESSION['idprofessor']==733 ||
+         $_SESSION['idprofessor']==767 ||
+         $_SESSION['idprofessor']==575 ||
+         $_SESSION['idprofessor']==768 ||
+         $_SESSION['idprofessor']==523 ||
+         $_SESSION['idprofessor']==769 ||
+         $_SESSION['idprofessor']==1394 ||
+         $_SESSION['idprofessor']==337 ||
+         $_SESSION['idprofessor']==586 ||
+         $_SESSION['idprofessor']==578 ||
+         $_SESSION['idprofessor']==516 ||
+
+         $_SESSION['idprofessor']==1074 ||
+         $_SESSION['idprofessor']==1001 ||
+         $_SESSION['idprofessor']==585 ||
+         $_SESSION['idprofessor']==584 ||
+         $_SESSION['idprofessor']==576 ||
+         $_SESSION['idprofessor']==570 ||
+         $_SESSION['idprofessor']==582 ||
+         $_SESSION['idprofessor']==505 ||
+         $_SESSION['idprofessor']==517 ||
+         $_SESSION['idprofessor']==376 ||
+         
+
+
          $_SESSION['idprofessor']==645 ||
          $_SESSION['idprofessor']==281 ||
          $_SESSION['idprofessor']==325 ||
