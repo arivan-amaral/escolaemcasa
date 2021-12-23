@@ -48,6 +48,17 @@ setTimeout('dia_doservidor_publico();',3000);
   }
 ?>
 
+<style>
+                      .quadro {
+                        background-image: url(imagens/logo_educalem_natal.png);
+                        background-repeat: no-repeat;
+                   
+                        background-position: center;
+                         
+                            background-size: 100% 100%;
+                      }
+                      </style>
+
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
    
 
@@ -219,16 +230,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
                        
 
-                      echo "<style>
-                      .quadro {
-                        background-image: url(imagens/logo_educalem_natal.png);
-                        background-repeat: no-repeat;
-                        // background-attachment: fixed;
-                        background-position: center;
-                         
-                            background-size: 100% 100%;
-                      }
-                      </style>
+                      echo "
 
                           <div class='card card-widget widget-user shadow-lg quadro' >
 

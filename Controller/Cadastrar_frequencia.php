@@ -21,6 +21,8 @@ try {
     $aula=$_POST['aula'];
     $url_get=$_POST['url_get'];
    	
+    include_once"Bloqueio_funcoes_para_professor.php";
+
     //$iddisciplina=$_POST['iddisciplina'];
     foreach ($_POST['iddisciplina'] as $key => $value) {
         $iddisciplina=$_POST['iddisciplina'][$key];
