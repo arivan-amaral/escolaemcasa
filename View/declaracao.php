@@ -20,7 +20,8 @@ $turma_id=$_POST['turma_id'];
 $serie_id=$_POST['serie_id'];
 $nome_aluno=$_POST['nome_aluno'];
 $idfuncionario=$_SESSION['idfuncionario'];
-$ano=date("Y");
+$ano=2021;
+// $ano=date("Y");
 $status=1;
 
 ?>
