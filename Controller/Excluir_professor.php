@@ -5,9 +5,10 @@ include '../Model/Professor.php';
 
 $id = $_GET['id'];
 try {
-	
 	desativar_professor($conexao,$id);
-	$conexao->query("DELETE FROM ministrada where professor_id=$id ");
+	$ano_letivo_vigente= $_SESSION['ano_letivo_vigente'];
+	$conexao->query("DELETE FROM ministrada where professor_id=$id and ano='$ano_letivo_vigente' ");
+	
 
 
 	$_SESSION['status']=1;
