@@ -1,6 +1,7 @@
 <?php 
 // header(sprintf('location: %s', $_SERVER['HTTP_REFERER']));
 //  exit;
+session_start();
   include"../Controller/Conversao.php";
   include"../Model/Conexao.php";
   include"../Model/Aluno.php";
@@ -45,7 +46,7 @@ if ($idserie==3) {
   }
   $nome_professor.= ".";
 
-     boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno, $nome_escola,$nome_turma,$nome_professor);
+     boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno, $nome_escola,$nome_turma,$nome_professor,$_SESSION['ano_letivo']);
 
 }else if ($idserie >3 && $idserie <=8) {
    boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$_SESSION['ano_letivo']);
