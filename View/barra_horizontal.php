@@ -34,7 +34,7 @@
 
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
-        <select  hidden  id="ano_letivo" class="" onchange="mudar_ano_letivo(this.value);">
+        <select  id="ano_letivo" class="" onchange="mudar_ano_letivo(this.value);">
           <?php 
             if (isset($_SESSION['ano_letivo'])) {
                ;
