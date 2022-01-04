@@ -1,4 +1,5 @@
 <?php 
+session_start();
   include"../Controller/Conversao.php";
   include"../Model/Conexao.php";
   include"../Model/Aluno.php";
@@ -62,7 +63,7 @@ if ($idserie<8){
         }
         $nome_professor.= ".";
 
-        boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno, $nome_escola,$nome_turma,$nome_professor);
+        boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno, $nome_escola,$nome_turma,$nome_professor,$_SESSION['ano_letivo']);
         $nome_professor='';
         
         echo"<br>";

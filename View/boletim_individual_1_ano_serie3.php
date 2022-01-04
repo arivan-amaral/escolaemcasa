@@ -1,5 +1,5 @@
 <?php 
- function boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$nome_professor){
+ function boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$nome_professor,$ano_letivo){
 ?>
     
   <!-- <div id="folha-a4" class="folha a4_vertical" > -->
@@ -41,7 +41,7 @@
         line-height:normal'><b><span style='font-size:18.0pt;font-family:"Arial Black",sans-serif;
         mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
         color:black;mso-fareast-language:PT-BR'>Acompanhamento do Rendimento do Aluno
-        / 2021<o:p></o:p></span></b></p>
+        / <?php echo $ano_letivo; ?><o:p></o:p></span></b></p>
         <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
         line-height:normal'><b><span style='font-family:"Arial Black",sans-serif;
         mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
@@ -101,7 +101,7 @@
         padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
         <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
         style='font-family:"Arial Black",sans-serif;mso-fareast-font-family:"Times New Roman";
-        mso-bidi-font-family:Calibri;color:black;mso-fareast-language:PT-BR'>Ano: <?php echo date("Y"); ?><span
+        mso-bidi-font-family:Calibri;color:black;mso-fareast-language:PT-BR'>Ano: <?php echo $ano_letivo; ?><span
         style='mso-spacerun:yes'>
         </span>Turma: <?php echo $nome_turma; ?><span style='mso-spacerun:yes'>
         </span>Turno:<o:p></o:p></span></b></p>
