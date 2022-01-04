@@ -313,7 +313,7 @@ function pesquisar_solicitacao_transferencia_por_escola(){
                 quantidade_pedido_transferencia.innerHTML = array_pes[1];
         
              }else{
-                   alert('Erro desconhecido, verifique sua conexão com a internet');
+                   //alert('Erro desconhecido, verifique sua conexão com a internet');
 
                 //result.innerHTML ="Erro ao receber mensagens";                 
              }
