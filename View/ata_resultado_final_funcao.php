@@ -120,6 +120,37 @@ $matricula_aluno="";
 // ecidade_matricula.turma_id=$idturma  ORDER by aluno.nome ASC";
 
 $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+if (isset($_GET['TESTE'])) {
+  $al=$_SESSION['ano_letivo'];
+  echo " SELECT 
+aluno.nome as 'nome_aluno',
+aluno.sexo,
+aluno.data_nascimento,
+aluno.idaluno,
+aluno.email,
+aluno.status as 'status_aluno',
+aluno.senha,
+turma.nome_turma,
+
+ecidade_matricula.matricula_codigo as 'matricula',
+ecidade_matricula.matricula_datamatricula as 'data_matricula',
+ecidade_matricula.datasaida as 'datasaida'
+
+FROM
+ ecidade_matricula,
+aluno,turma,escola
+
+where
+
+ecidade_matricula.aluno_id= aluno.idaluno AND
+ecidade_matricula.turma_id = turma.idturma and 
+ecidade_matricula.turma_escola = escola.idescola and 
+ecidade_matricula.calendario_ano ='$al' and 
+ 
+ecidade_matricula.turma_escola=$idescola and
+ecidade_matricula.matricula_situacao !='CANCELADO' and
+ecidade_matricula.turma_id=$idturma  ORDER by aluno.nome ASC";
+}
  foreach ($res_alunos as $key => $value) {
 
   $idaluno=$value['idaluno'];
