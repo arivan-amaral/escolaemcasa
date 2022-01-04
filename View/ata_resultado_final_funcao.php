@@ -152,6 +152,7 @@ ecidade_matricula.turma_escola=$idescola and
 ecidade_matricula.matricula_situacao !='CANCELADO' and
 ecidade_matricula.turma_id=$idturma  ORDER by aluno.nome ASC";
 }
+
  foreach ($res_alunos as $key => $value) {
 
   $idaluno=$value['idaluno'];
