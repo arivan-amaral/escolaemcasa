@@ -1,5 +1,5 @@
 <?php 
- function boletim_maternal_1_2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$nome_professor){
+ function boletim_maternal_1_2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$nome_professor,$ano_letivo){
 ?>
 
 
@@ -84,7 +84,7 @@
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
   style='font-size:9.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
   "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'>2021<o:p></o:p></span></p>
+  color:black;mso-fareast-language:PT-BR'><?php echo $ano_letivo; ?><o:p></o:p></span></p>
   </td>
   <td width=312 colspan=4 valign=bottom style='width:233.8pt;border-top:solid windowtext 1.0pt;
   border-left:none;border-bottom:none;border-right:solid windowtext 1.0pt;

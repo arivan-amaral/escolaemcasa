@@ -83,7 +83,7 @@
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
   style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'><b>PERÍODO 2021</b><o:p></o:p></span></p>
+  color:black;mso-fareast-language:PT-BR'><b>PERÍODO <?php echo $_SESSION['ano_letivo']; ?></b><o:p></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:6;height:15.0pt'>

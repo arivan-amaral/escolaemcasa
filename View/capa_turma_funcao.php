@@ -91,7 +91,7 @@ $matricula_aluno="";
   $matricula="";
   $datasaida="";
   $data_matricula="";
-$res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola);
+$res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
  foreach ($res_alunos as $key => $value) {
 
   $idaluno=$value['idaluno'];

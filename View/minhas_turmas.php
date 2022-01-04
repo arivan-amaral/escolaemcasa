@@ -271,7 +271,7 @@ if (!isset($_SESSION['idprofessor'])) {
           <tbody>
 
             <?php 
-               $result_associacoes= lista_minhas_turmas($conexao,$idprofessor);
+               $result_associacoes= lista_minhas_turmas($conexao,$idprofessor,$_SESSION['ano_letivo']);
                foreach ($result_associacoes as $key => $value) {
                 $nome_disciplina=$value['nome_disciplina'];
                 $nome_turma=$value['nome_turma'];

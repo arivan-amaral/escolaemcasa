@@ -4,7 +4,7 @@
     	$conexao->exec("UPDATE funcionario set status=0 WHERE idfuncionario=$idfuncionario ");
     
 	}	
-	function listar_nome_professor_turma($conexao,$idaluno) {
+	function listar_nome_professor_turma($conexao,$idaluno,$ano_letivo) {
     	        $res=$conexao->query("SELECT 
           disciplina.nome_disciplina,
           disciplina.iddisciplina,
@@ -18,6 +18,7 @@
         turma.idturma=ano_letivo.turma_id AND
         escola.idescola=ano_letivo.escola_id AND
 
+        ministrada.ano='$ano_letivo' AND
         ministrada.turma_id=turma.idturma AND
         ministrada.escola_id=escola.idescola AND
         ministrada.disciplina_id=disciplina.iddisciplina AND

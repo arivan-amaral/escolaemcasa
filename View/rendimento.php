@@ -702,7 +702,7 @@ foreach ($result_escola as $key => $value) {
 
   $conta_aluno=1; 
   $matricula_aluno="";
-  $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola);
+  $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
   
    foreach ($res_alunos as $key => $value) {
     $idaluno=$value['idaluno'];
@@ -710,7 +710,7 @@ foreach ($result_escola as $key => $value) {
     $matricula_aluno=$value['matricula'];
 
   // pesquisar_aluno_da_turma_ata_resultado_final
-    $res_movimentacao=pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula_aluno);
+    $res_movimentacao=pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula_aluno,$_SESSION['ano_letivo']);
 
     $data_evento="";
     $descricao_procedimento="";

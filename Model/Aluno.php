@@ -1034,7 +1034,7 @@ function listar_aluno_da_turma_professor($conexao,$idturma,$escola_id){
 }	
 
 
-function pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula){
+function pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula,$ano_letivo){
   $res=$conexao->query("SELECT 
         ecidade_matricula.matricula_situacao as 'procedimento',
 
@@ -1046,7 +1046,7 @@ ecidade_matricula
 
 WHERE 
 ecidade_matricula.matricula_codigo=$matricula and 
-ecidade_matricula.calendario_ano ='2021' and 
+ecidade_matricula.calendario_ano ='$ano_letivo' and 
 ecidade_matricula.matricula_situacao !='MATRICULADO' 
 AND ecidade_matricula.matricula_situacao !='REMATRICULAR ALUNO' 
  ");
@@ -1054,7 +1054,7 @@ AND ecidade_matricula.matricula_situacao !='REMATRICULAR ALUNO'
   return $res;
 }
 
-function pesquisar_aluno_da_turma_listagem($conexao,$matricula){
+function pesquisar_aluno_da_turma_listagem($conexao,$matricula,$ano_letivo){
   $res=$conexao->query("SELECT 
         ecidade_matricula.matricula_situacao as 'procedimento',
 
@@ -1066,7 +1066,7 @@ ecidade_matricula
 
 WHERE 
 ecidade_matricula.matricula_codigo=$matricula and 
-ecidade_matricula.calendario_ano ='2021' 
+ecidade_matricula.calendario_ano ='$ano_letivo' 
 AND ecidade_matricula.matricula_situacao !='REMATRICULAR ALUNO' 
  ");
   
@@ -1074,7 +1074,7 @@ AND ecidade_matricula.matricula_situacao !='REMATRICULAR ALUNO'
 } 
 
 
-// function pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula){
+// function pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula,$_SESSION['ano_letivo']){
 //   $res=$conexao->query("SELECT 
 //         aluno.nome as 'nome_aluno',
 //         aluno.idaluno,
@@ -1146,7 +1146,7 @@ AND ecidade_matricula.matricula_situacao !='REMATRICULAR ALUNO'
 
 
 
-function listar_aluno_da_turma_ata_resultado_final($conexao,$turma_id,$escola_id){
+function listar_aluno_da_turma_ata_resultado_final($conexao,$turma_id,$escola_id,$ano_letivo){
   $res=$conexao->query("
     SELECT 
 aluno.nome as 'nome_aluno',
@@ -1171,7 +1171,7 @@ where
 ecidade_matricula.aluno_id= aluno.idaluno AND
 ecidade_matricula.turma_id = turma.idturma and 
 ecidade_matricula.turma_escola = escola.idescola and 
-ecidade_matricula.calendario_ano ='2021' and 
+ecidade_matricula.calendario_ano ='$ano_letivo' and 
  
 ecidade_matricula.turma_escola=$escola_id and
 ecidade_matricula.matricula_situacao !='CANCELADO' and

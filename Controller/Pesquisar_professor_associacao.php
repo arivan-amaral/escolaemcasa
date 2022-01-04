@@ -97,7 +97,7 @@ foreach ($result as $key => $value) {
    </tr>
   ";
 
-      $result_pesquisa =lista_minhas_turmas($conexao,$idfuncionario);
+      $result_pesquisa =lista_minhas_turmas($conexao,$idfuncionario,$_SESSION['ano_letivo']);
        foreach ($result_pesquisa as $key => $value) {
     
           $idministrada = $value['idministrada'];
@@ -107,7 +107,9 @@ foreach ($result as $key => $value) {
           $nome_disciplina = $value['nome_disciplina'];
           
           $return.="<tr id='linha$idministrada'>
-                          <td class = ''> 
+                          <td class = ''>
+                          </td> 
+                          <td> 
                           <b class = 'text-danger'>$nome_escola -> </b>
                           <b class = 'text-success'>$nome_turma -></b>
                           <b class = 'text-primary'>$nome_disciplina</b>
@@ -116,8 +118,8 @@ foreach ($result as $key => $value) {
                           </td>
                           <td>";
                      
-
-                          if (in_array($escola_id, $array_escolas_coordenador)) { 
+ 
+                          if (in_array($escola_id, $array_escolas_coordenador) && ($_SESSION['ano_letivo'] == $_SESSION['ano_letivo_vigente'] )) { 
                             $return.="<a onclick='cancelar_associacao_professor($idministrada);' class='btn btn-danger'> Cancelar </a> ";      
                           }
 

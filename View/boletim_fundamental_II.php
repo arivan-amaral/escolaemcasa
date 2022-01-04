@@ -1,5 +1,5 @@
 <?php 
-function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma){
+function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$ano_letivo){
   ?>
  
 
@@ -30,7 +30,7 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
                 line-height:normal'><b><span style='font-size:12.0pt;font-family:"Arial Black",sans-serif;
                 mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
                 color:black;mso-fareast-language:PT-BR'>Acompanhamento do Rendimento do Aluno
-                / 2021</span></b><span style='mso-ascii-font-family:Calibri;mso-fareast-font-family:
+                / <?php echo $ano_letivo; ?></span></b><span style='mso-ascii-font-family:Calibri;mso-fareast-font-family:
                 "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
                 color:black;mso-fareast-language:PT-BR'><o:p></o:p></span></p>
               </td>

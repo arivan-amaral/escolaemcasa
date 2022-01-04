@@ -1,4 +1,4 @@
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <nav class="main-header navbar navbar-expand navbar-dark navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -33,6 +33,28 @@
 
 
       <!-- Messages Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <select   id="ano_letivo" class="" onchange="mudar_ano_letivo(this.value);">
+          <?php 
+            if (isset($_SESSION['ano_letivo'])) {
+               ;
+              if ($_SESSION['ano_letivo'] ==2022 ) {
+                  echo "<option  value='2022' selected>2022</option>";
+                echo "<option value='2021'>2021</option>";
+
+              }else{
+                echo "<option value='2021' selected>2021</option>";
+                  echo "<option  value='2022' >2022</option>";
+
+
+              }
+            }
+           ?>
+         
+        </select>
+      </li> 
+
+
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <!-- <i class="far fa-bell"></i> -->

@@ -51,7 +51,9 @@ function saudacao() {
         return 'Boa noite';
 }
 // *******************************************************************************************************************************
-$data_inicio_hoje="2021-02-26"." 00:00:00";
+$ano_letivo=$_SESSION['ano_letivo'];
+
+$data_inicio_hoje="$ano_letivo"."-01-01"." 00:00:00";
 $data_fim_hoje=date("Y-m-d")." 23:59:59";
 
 $turma_id=$_GET['idturma'];

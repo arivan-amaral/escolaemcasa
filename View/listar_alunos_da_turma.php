@@ -113,7 +113,7 @@ if (!isset($_SESSION['idfuncionario'])) {
             $conta_aluno=1; 
             $matricula="";
             $res_alunos=array();
-            // $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola);
+            // $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
              foreach ($res_alunos as $key => $value) {
 
               $idaluno=$value['idaluno'];
@@ -194,7 +194,7 @@ if (!isset($_SESSION['idfuncionario'])) {
 
             <?php 
                //$result= array();
-                $result= listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola);
+                $result= listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
 
                foreach ($result as $key => $value) {
                 $nome_aluno=utf8_decode($value['nome_aluno']);

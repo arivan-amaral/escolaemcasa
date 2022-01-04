@@ -51,7 +51,7 @@ if ($idserie<8){
       $idaluno=$value['idaluno'];
       $nome_aluno=$value['nome_aluno'];
 
-        $res=listar_nome_professor_turma($conexao,$idaluno);
+        $res=listar_nome_professor_turma($conexao,$idaluno,$_SESSION['ano_letivo']);
         $conta_virgula=0;
         foreach ($res as $key => $value) {
           if($conta_virgula>0){

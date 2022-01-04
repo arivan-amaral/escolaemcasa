@@ -1,5 +1,6 @@
 <?php 
 set_time_limit(0);
+session_start();
   include"../Controller/Conversao.php";
   include"../Model/Conexao.php";
   include"../Model/Aluno.php";
@@ -59,7 +60,7 @@ if ($idserie==3) {
       $nome_aluno=$value['nome_aluno'];
       if ($numero==1) {
         
-        $res=listar_nome_professor_turma($conexao,$idaluno);
+        $res=listar_nome_professor_turma($conexao,$idaluno,$_SESSION['ano_letivo']);
         $conta_virgula=0;
         foreach ($res as $key => $value) {
           if($conta_virgula>0){
@@ -106,7 +107,7 @@ else if ($idserie >3 && $idserie <=8) {
         
 
       echo "<input type='hidden' name='teste' value='$numero'>";
-           boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
+           boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$_SESSION['ano_letivo']);
 
          if ($numero%3==0 ) {
             echo "<div class='pagebreak'> </div>";
@@ -136,7 +137,7 @@ else if ($idserie >3 && $idserie <=8) {
       $idaluno=$value['idaluno'];
       $nome_aluno=$value['nome_aluno'];
 
-        $res=listar_nome_professor_turma($conexao,$idaluno);
+        $res=listar_nome_professor_turma($conexao,$idaluno,$_SESSION['ano_letivo']);
         $conta_virgula=0;
         foreach ($res as $key => $value) {
           if($conta_virgula>0){
@@ -148,7 +149,7 @@ else if ($idserie >3 && $idserie <=8) {
         $nome_professor.= ".";
 echo "<br>";
 echo "$numero";
-        boletim_maternal_1_2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno ,$nome_escola,$nome_turma,$nome_professor);
+        boletim_maternal_1_2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno ,$nome_escola,$nome_turma,$nome_professor,$_SESSION['ano_letivo']);
         $nome_professor='';
         
         // echo"<br>";
@@ -192,7 +193,7 @@ echo"<div class='pagebreak'> </div>";
         echo "<input type='hidden' name='$numero' value='$numero'><br>";
 
      echo "$numero";
-          boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma);
+          boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$_SESSION['ano_letivo']);
        
        if ($numero%3==0 ) {
         echo ".<input type='hidden' name='tt$numero' value='$numero'>";

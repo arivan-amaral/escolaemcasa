@@ -102,9 +102,9 @@ function lista_turma($conexao){
 }
 
 
-function lista_minhas_turmas($conexao,$id_funcionario){
+function lista_minhas_turmas($conexao,$id_funcionario,$ano_letivo){
 
-        $result = $conexao->query("SELECT * FROM turma,disciplina, ministrada, funcionario,escola where escola.idescola= ministrada.escola_id and turma_id=idturma and disciplina_id=iddisciplina and professor_id=idfuncionario and idfuncionario=$id_funcionario ORDER by escola.nome_escola asc, turma.nome_turma asc, disciplina.nome_disciplina asc");
+        $result = $conexao->query("SELECT * FROM turma,disciplina, ministrada, funcionario,escola where escola.idescola= ministrada.escola_id and turma_id=idturma and disciplina_id=iddisciplina and professor_id=idfuncionario and idfuncionario=$id_funcionario and ministrada.ano='$ano_letivo' ORDER by escola.nome_escola asc, turma.nome_turma asc, disciplina.nome_disciplina asc");
 
     return $result;
 

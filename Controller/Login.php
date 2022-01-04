@@ -39,6 +39,8 @@ try {
  // $response->success=true;
  //comentar apos colocar em produção =>  \^/
 
+ $ano_letivo=date("Y");
+
   if(isset($_POST["email"]) ){  //&& $response != null && $response->success==true){
 
       $email = $_POST["email"];
@@ -74,6 +76,8 @@ try {
              $_SESSION["email"] = $email;
 
              $_SESSION["cargo"] = "Coordenador";
+             $_SESSION["ano_letivo"] = $ano_letivo;
+             $_SESSION["ano_letivo_vigente"] = $ano_letivo;
 
              $login_coordenador++;
 
@@ -90,6 +94,9 @@ try {
              $_SESSION["email"] = $email;
 
              $_SESSION["cargo"] = 'Secretário';
+             $_SESSION["ano_letivo"] = $ano_letivo;
+             $_SESSION["ano_letivo_vigente"] = $ano_letivo;
+
 
              $login_secretario++;
 
@@ -105,6 +112,9 @@ try {
              $_SESSION["email"] = $email;
 
              $_SESSION["cargo"] = 'Professor';
+             $_SESSION["ano_letivo"] = $ano_letivo;
+             $_SESSION["ano_letivo_vigente"] = $ano_letivo;
+
 
              $login_professor++;
 
@@ -117,7 +127,6 @@ try {
 
       ####################### ALUNO ####################################
          $login_aluno=0;
-         $ano_letivo=date("Y");
          $resultado2 = login_aluno($conexao, $email, $senha,$ano_letivo);
 
          foreach ($resultado2 as $key2 => $row2) {
@@ -149,6 +158,9 @@ try {
           $_SESSION["escola_id"] = $escola_id;
           $_SESSION["turma_id"] = $turma_id;
           $_SESSION["serie_id"] = $serie_id;
+             $_SESSION["ano_letivo"] = $ano_letivo;
+             $_SESSION["ano_letivo_vigente"] = $ano_letivo;
+          
 
           $conexao->exec("INSERT INTO acesso (aluno_id) values($id)");
           $_SESSION['status']=1;

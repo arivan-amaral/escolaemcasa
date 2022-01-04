@@ -232,7 +232,7 @@ foreach ($result_escola as $key => $value) {
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
   style='font-family:"Tw Cen MT Condensed",sans-serif;mso-fareast-font-family:
   "Times New Roman";mso-bidi-font-family:Arial;color:black;mso-fareast-language:
-  PT-BR'>PERIODO LETIVO 2021<o:p></o:p></span></b></p>
+  PT-BR'>PERIODO LETIVO <?php echo $_SESSION['ano_letivo']; ?><o:p></o:p></span></b></p>
   </td>
 
  </tr>
