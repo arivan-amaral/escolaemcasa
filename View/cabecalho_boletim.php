@@ -432,32 +432,11 @@ body
 }else if($idserie==3){
 
 ?>
-      <html xmlns:v="urn:schemas-microsoft-com:vml"
-      xmlns:o="urn:schemas-microsoft-com:office:office"
-      xmlns:w="urn:schemas-microsoft-com:office:word"
-      xmlns:x="urn:schemas-microsoft-com:office:excel"
-      xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
-      xmlns="http://www.w3.org/TR/REC-html40">
+      <html>
 
       <head>
       <meta charset="UTF-8">
       <title>idserie==3</title>
-      <meta http-equiv=Content-Type content="text/html; charset=windows-1252">
-      <meta name=ProgId content=Word.Document>
-      <meta name=Generator content="Microsoft Word 15">
-      <meta name=Originator content="Microsoft Word 15">
-      <link rel=File-List
-      href="Acompanhamento%20do%20Rendimento%20do%20Aluno_arquivos/filelist.xml">
-      <link rel=Edit-Time-Data
-      href="Acompanhamento%20do%20Rendimento%20do%20Aluno_arquivos/editdata.mso">
-
-    
-
-
-      <link rel=themeData
-      href="Acompanhamento%20do%20Rendimento%20do%20Aluno_arquivos/themedata.thmx">
-      <link rel=colorSchemeMapping
-      href="Acompanhamento%20do%20Rendimento%20do%20Aluno_arquivos/colorschememapping.xml">
 
 <style type="text/css">
 @page  
@@ -465,7 +444,7 @@ body
     size: auto;   /* auto is the initial value */ 
 
     /* this affects the margin in the printer settings */ 
-    margin: 5mm 2mm 2mm 2mm;  
+    margin: center;  
 } 
 
 
@@ -479,7 +458,7 @@ body
 @media print {
     .pagebreak { page-break-before: always; } /* page-break-after works, as well */
     .WordSection1{
-      margin: 5mm 2mm 2mm 2mm;  
+      margin: 1mm 2mm 2mm 2mm;  
 
     }
   }
@@ -489,12 +468,27 @@ body
 
 
 
-<!-- Font Awesome Icons -->
 
+<!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <!-- *********************************************************************************** -->
   
+  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+<!-- CodeMirror -->
+  <link rel="stylesheet" href="plugins/codemirror/codemirror.css">
+  <link rel="stylesheet" href="plugins/codemirror/theme/monokai.css">
+  <link rel="stylesheet" href="plugins/simplemde/simplemde.min.css">
 
-
+ 
     </head>
 
 <body lang=PT-BR >
