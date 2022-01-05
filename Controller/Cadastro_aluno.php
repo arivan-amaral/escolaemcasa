@@ -81,6 +81,9 @@ try {
     $uf_municipio_cartorio=$_POST['uf_municipio_cartorio'];
     $cartorio=$_POST['cartorio'];
 
+    $nome_responsavel=$_POST['nome_responsavel'];
+    $cpf_responsavel=$_POST['cpf_responsavel'];
+
     cadastro_aluno($conexao,$nome,
         $sexo,
         $email,
@@ -138,7 +141,9 @@ try {
         $recebe_escolaridade_outro_espaco,
         $matricula_certidao,
         $uf_municipio_cartorio,
-        $cartorio
+        $cartorio,
+        $nome_responsavel,
+        $cpf_responsavel
     );
 
 

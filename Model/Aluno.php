@@ -642,7 +642,9 @@ function cadastro_aluno($conexao,$nome,
  $recebe_escolaridade_outro_espaco,
  $matricula_certidao,
  $uf_municipio_cartorio,
- $cartorio
+ $cartorio,
+ $nome_responsavel,
+ $cpf_responsavel
 
 ) {
 
@@ -669,7 +671,9 @@ necessidade_especial,
  recebe_escolaridade_outro_espaco,
  matricula_certidao,
  uf_municipio_cartorio,
- cartorio
+ cartorio,
+ $nome_responsavel,
+ $cpf_responsavel
  ) VALUES (
     :nome,
     :sexo,
@@ -728,7 +732,9 @@ necessidade_especial,
     :recebe_escolaridade_outro_espaco,
     :matricula_certidao,
     :uf_municipio_cartorio,
-    :cartorio
+    :cartorio,
+    :nome_responsavel,
+    :cpf_responsavel
 )");
 
 
@@ -791,6 +797,8 @@ $sql->bindParam("necessidade_especial",$necessidade_especial);
  $sql->bindParam("matricula_certidao",$matricula_certidao);
  $sql->bindParam("uf_municipio_cartorio",$uf_municipio_cartorio);
  $sql->bindParam("cartorio", $cartorio);
+ $sql->bindParam("nome_responsavel", $nome_responsavel);
+ $sql->bindParam("cpf_responsavel", $cpf_responsavel);
  $sql->execute();
  
 

@@ -15,6 +15,7 @@ $idcoordenador=$_SESSION['idfuncionario'];
  
 ?>
 
+
 <script src="ajax.js?<?php echo rand(); ?>"></script>
   <!-- Main Sidebar Container -->
 <div class="content-wrapper">
