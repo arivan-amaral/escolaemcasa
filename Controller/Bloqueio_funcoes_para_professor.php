@@ -2,6 +2,8 @@
  /////////////////////////////////////////////////////////
     
         if(
+            $_SESSION['idprofessor']==339 ||
+            $_SESSION['idprofessor']==1030 ||
             $_SESSION['idprofessor']==504 ||
             $_SESSION['idprofessor']==409 ||
             $_SESSION['idprofessor']==523 ||
