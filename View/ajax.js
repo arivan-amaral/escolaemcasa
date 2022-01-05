@@ -456,7 +456,9 @@ function cadastro_aluno(){
  "&matricula_certidao="+document.getElementsByName('matricula_certidao')[0].value+
 
  "&cartorio="+document.getElementsByName('cartorio')[0].value+
- "&turno="+document.getElementsByName('turno')[0].value
+ "&turno="+document.getElementsByName('turno')[0].value+
+ "&nome_responsavel="+document.getElementsByName('nome_responsavel')[0].value+
+ "&cpf_responsavel="+document.getElementsByName('cpf_responsavel')[0].value
 
 
 

@@ -265,12 +265,26 @@ $idcoordenador=$_SESSION['idfuncionario'];
                       </div>
                     </div>
 
-    
- 
- 
- 
- 
- 
+                    <div class="row">          
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Nome do responsável</label>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="nome_responsavel" required="">
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Cpf do responsável</label>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="cpf_responsavel" required="">
+                        </div>
+                      </div>
+                      <!-- <div class="col-sm-4"><br><br>
+                        <div class="form-check form-switch">
+                          <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                          <label class="form-check-label" for="flexSwitchCheckDefault">Responsável</label>
+                        </div>
+                      </div> -->
+                    </div> 
      
       
       
@@ -280,7 +294,7 @@ $idcoordenador=$_SESSION['idfuncionario'];
                     <div class="row">          
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Nome</label>
+                          <label for="exampleInputEmail1">Nome filiação 1</label>
                           <input type="text" class="form-control" id="exampleInputEmail1" name="filiacao1" required="">
                         </div>
                       </div>
@@ -290,18 +304,18 @@ $idcoordenador=$_SESSION['idfuncionario'];
                           <input type="text" class="form-control" id="exampleInputEmail1" name="cpf_filiacao1" required="">
                         </div>
                       </div>
-                      <div class="col-sm-4"><br><br>
+                      <!-- <div class="col-sm-4"><br><br>
                         <div class="form-check form-switch">
                           <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                           <label class="form-check-label" for="flexSwitchCheckDefault">Responsável</label>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
                     <label for="exampleInputEmail1"><h5>Filiação 2</h5></label>
                     <div class="row">          
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Nome</label>
+                          <label for="exampleInputEmail1">Nome filiação 2</label>
                           <input type="text" class="form-control" id="exampleInputEmail1" name="filiacao2" required="">
                         </div>
                       </div>
@@ -311,12 +325,12 @@ $idcoordenador=$_SESSION['idfuncionario'];
                           <input type="text" class="form-control" id="exampleInputEmail1" name="cpf_filiacao2" required="">
                         </div>
                       </div>
-                      <div class="col-sm-4"><br><br>
+                      <!-- <div class="col-sm-4"><br><br>
                         <div class="form-check form-switch">
                           <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                           <label class="form-check-label" for="flexSwitchCheckDefault">Responsável</label>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
                      
                  </div>
