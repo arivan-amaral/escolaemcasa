@@ -18,7 +18,7 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
                 <![if !vml]><span style='mso-ignore:vglayout;
                 position:absolute;z-index:251658240;margin-left:13px;margin-top:-60px;
                 width:44px;height:58px'><img width=44 height=58
-                src="boletim_fundamental_II_arquivos/image002.png" v:shapes="Imagem_x0020_3"></span><span
+                src="imagens/logo.png" v:shapes="Imagem_x0020_3"></span><span
                   style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
                   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
                   mso-fareast-language:PT-BR'><o:p></o:p></span></p>
