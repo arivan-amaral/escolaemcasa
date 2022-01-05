@@ -73,9 +73,8 @@ if ($idserie==3) {
       }
 
       boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno, $nome_escola,$nome_turma,$nome_professor,$_SESSION['ano_letivo']);
-      // break;
-  //echo"<a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma'>IMPRIMIR - $nome_aluno</a> <br><br>";
-    echo"<div class='pagebreak'> </div>";
+
+      echo"<div class='pagebreak'> </div>";
       
       $numero++;
     }

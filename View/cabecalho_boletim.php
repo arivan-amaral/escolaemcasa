@@ -457,6 +457,7 @@ body
 
 @media print {
     .pagebreak { page-break-before: always; } /* page-break-after works, as well */
+    
     .WordSection1{
       margin: 1mm 2mm 2mm 2mm;  
 
