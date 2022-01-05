@@ -79,7 +79,11 @@ function pesquisar_aluno($conexao,$pesquisa,$codigo_sql ) {
     return $sql->fetchAll();
 }
 
-
+function pesquisar_aluno2($conexao,$id) {
+   $sql = $conexao->prepare("SELECT * FROM aluno where idaluno = :id");
+   $sql->execute(array('id' =>$id));
+   return $sql->fetchAll();
+}
 
 function cadastro_ocorrencia($conexao,$escola_id, $turma_id, $disciplina_id, $professor_id, $aluno_id, $descricao, $data_ocorrencia){
 
