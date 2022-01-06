@@ -810,7 +810,7 @@ $sql->bindParam("necessidade_especial",$necessidade_especial);
 }
  
 
-
+ 
 function editar_dados_aluno($conexao,$nome,
     $sexo,
     $email,
@@ -870,7 +870,10 @@ function editar_dados_aluno($conexao,$nome,
  $matricula_certidao,
  $uf_municipio_cartorio,
  $cartorio,
- $idaluno
+ $idaluno,
+
+ $nome_responsavel,
+ $cpf_responsavel
 ) {
 
     $sql=$conexao->prepare("UPDATE aluno SET 
@@ -897,7 +900,10 @@ necessidade_especial=:necessidade_especial,
  recebe_escolaridade_outro_espaco=:recebe_escolaridade_outro_espaco,
  matricula_certidao=:matricula_certidao,
  uf_municipio_cartorio=:uf_municipio_cartorio,
- cartorio=:cartorio
+ cartorio=:cartorio,
+ nome_responsavel= :nome_responsavel,
+ cpf_responsavel = :cpf_responsavel
+
  WHERE idaluno=:idaluno
 
 ");
@@ -961,6 +967,8 @@ $sql->bindParam("necessidade_especial",$necessidade_especial);
  $sql->bindParam("matricula_certidao",$matricula_certidao);
  $sql->bindParam("uf_municipio_cartorio",$uf_municipio_cartorio);
  $sql->bindParam("cartorio", $cartorio);
+ $sql->bindParam("nome_responsavel", $nome_responsavel);
+ $sql->bindParam("cpf_responsavel", $cpf_responsavel);
  $sql->bindParam("idaluno", $idaluno);
  $sql->execute();
 

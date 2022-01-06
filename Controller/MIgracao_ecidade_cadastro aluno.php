@@ -85,45 +85,20 @@ $res_alunos_ecidade=$conexao_ecidade->query("SELECT
 
 foreach ($res_alunos_ecidade as $key => $value) {
 
-    $email=data("Y-m-d H:m:i")."". rand();
-    // $email=$value['email'];
 
-    // as 'cartorio',
-    $cartorio='';
-    // $cartorio=$value['cartorio'];
-
-    // as 'apoio_pedagogico',
-    $apoio_pedagogico='';
-    // $apoio_pedagogico=$value['apoio_pedagogico'];
-    // as 'tipo_diagnostico',
-    // $tipo_diagnostico=$value['tipo_diagnostico'];
-    $tipo_diagnostico='';
-    // as 'cpf_filiacao1',
-    // $cpf_filiacao1=$value['cpf_filiacao1'];
-    $cpf_filiacao1='';
-    // as 'cpf_filiacao2',
-    // $cpf_filiacao2=$value['cpf_filiacao2'];
-    $cpf_filiacao2='';
-    // as 'poder_publico_responsavel',
-
-     $poder_publico_responsavel='';
-     // $poder_publico_responsavel=$value['poder_publico_responsavel'];
-    // as 'recebe_escolaridade_outro_espaco',
-    $recebe_escolaridade_outro_espaco='';
-    // $recebe_escolaridade_outro_espaco=$value['recebe_escolaridade_outro_espaco'];
-
- // as 'nacionalidade',
-    $nacionalidade='';
-    // $nacionalidade=$value['nacionalidade'];
  
-    // as 'naturalidade',
-       $naturalidade='';
-       // $naturalidade=$value['naturalidade'];
-    // as 'localidade',
-    $localidade='';
-    // $localidade=$value['localidade'];
+    $email=$value['email'];
+    $nome_cartorio=$value['cartorio'];
+     $apoio_pedagogico=$value['apoio_pedagogico'];
+    $tipo_diagnostico=$value['tipo_diagnostico'];
+     $cpf_filiacao1=$value['cpf_filiacao1'];
+     $cpf_filiacao2=$value['cpf_filiacao2'];
+     $poder_publico_responsavel='';
+    $recebe_escolaridade_outro_espaco='';
+    $nacionalidade=$value['nacionalidade'];
+    $naturalidade=$value['naturalidade'];
+    $localidade=$value['localidade'];
 
-$nome_cartorio='';
 //###########################################
     $matricula_certidao=$value['matricula_certidao'];
     $nome=$value['nome'];
