@@ -41,7 +41,17 @@
       ));
     }
 
-
+   function validar_turma_escola($conexao,$idescola,$ano,$serie,$idturma,$turno) {
+        $sql = $conexao->prepare("SELECT count(*) as 'id' FROM  relacionamento_turma_escola,turma where relacionamento_turma_escola.escola_id =:idescola AND turma.idturma = relacionamento_turma_escola.turma_id AND relacionamento_turma_escola.turma_id =:idturma AND turma.serie_id =:serie AND relacionamento_turma_escola.ano =:ano AND relacionamento_turma_escola.turno = :turno");
+        $sql->execute(array(
+         'idescola' =>$idescola,
+         'idturma' =>$idturma,
+         'serie' =>$serie,
+         'ano' =>$ano,
+         'turno' =>$turno
+      ));
+        return $sql->fetchAll();
+    }
 
 
 
