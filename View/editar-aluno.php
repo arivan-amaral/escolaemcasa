@@ -5,7 +5,13 @@ include_once 'barra_horizontal.php';
 include_once "menu.php"; 
 include_once "alertas.php"; 
 include_once "../Model/Conexao.php"; 
+include_once "../Model/Serie.php"; 
+include_once "../Model/Escola.php"; 
+include_once "../Model/Estado.php"; 
+include_once "../Model/Coordenador.php"; 
 include_once "../Model/Aluno.php"; 
+$idcoordenador=$_SESSION['idfuncionario'];
+
 
 
 $id = 50003;
@@ -27,6 +33,47 @@ $tipo_sanguinio_aluno="";
 $cpf_filiacao1="";
 $cpf_filiacao2="";
 $situacao_documentacao = "";
+$tipo_certidao="";
+$endereco ="";
+$complemento = "";
+$numero_endereco = "";
+$uf_endereco = "";
+$municipio_endereco = "";
+$bairro_endereco = "";
+$zona_endereco = "";
+$cep_endereco = "";
+$nacionalidade = "";
+$pais="";
+$naturalidade="";
+$localidade = "";
+$transposte_escolar = "";
+$poder_publico_responsavel = "";
+$recebe_escolaridade_outro_espaco = "";
+$matricula_certidao="";
+$uf_municipio_cartorio = "";
+$cartorio = "";
+$cartao_sus = "";
+$profissao = "";
+$bolsa_familia = "";
+$folha = "";
+$uf_cartorio = "";
+$municipio_cartorio = "";
+$nome_cartorio = "";
+$numero_indentidade = "";
+$uf_identidade = "";
+$orgao_emissor_indentidade = "";
+$data_expedicao = "";
+$numero_cnh = "";
+$categoria_cnh = "";
+$observacao = "";
+$necessidade_especial = "";
+$apoio_pedagogico = "";
+$tipo_diagnostico = "";
+$tipo_certidao = "";
+$numero_termo = "";
+$data_expedicao = "";
+$cpf = "";
+$whatsapp_responsavel = "";
 
 foreach ($res as $key => $value) {
     $nome = $value['nome'];
@@ -38,220 +85,300 @@ foreach ($res as $key => $value) {
     $filiacao2 = $value['filiacao2'];
     $cpf_filiacao1 = $value['cpf_filiacao1'];
     $cpf_filiacao2 = $value['cpf_filiacao2'];
-    $documento = $value['documento'];
     $whatsapp = $value['whatsapp'];
+    $whatsapp_responsavel = $value['whatsapp_responsavel'];
     $numero_nis = $value['numero_nis'];
     $tipo_responsavel = $value['tipo_responsavel'];
     $raca_aluno = $value['raca_aluno'];
     $estado_civil_aluno = $value['estado_civil_aluno'];
     $tipo_sanguinio_aluno = $value['tipo_sanguinio_aluno'];
-
+    $endereco = $value['endereco'];
+    $complemento = $value['complemento'];
+    $numero_endereco = $value['numero_endereco'];
+    $uf_endereco = $value['uf_endereco'];
+    $municipio_endereco = $value['municipio_endereco'];
+    $bairro_endereco = $value['bairro_endereco'];
+    $zona_endereco = $value['zona_endereco'];
+    $cep_endereco = $value['cep_endereco'];
+    $nacionalidade = $value['nacionalidade'];
+    $pais = $value['pais'];
+    $naturalidade = $value['naturalidade'];
+    $localidade = $value['localidade'];
+    $transposte_escolar = $value['transposte_escolar'];
+    $poder_publico_responsavel = $value['poder_publico_responsavel'];
+    $recebe_escolaridade_outro_espaco = $value['recebe_escolaridade_outro_espaco'];
+    $profissao = $value['profissao'];
+    $situacao_documentacao = $value['situacao_documentacao'];
+    $matricula_certidao= $value['matricula_certidao'];
+    $uf_municipio_cartorio = $value['uf_municipio_cartorio'];
+    $cartorio = $value['cartorio'];
+    $cartao_sus = $value['cartao_sus'];
+    $bolsa_familia = $value['bolsa_familia'];
+    $folha = $value['folha'];
+    $uf_cartorio = $value['uf_cartorio'];
+    $municipio_cartorio = $value['municipio_cartorio'];
+    $nome_cartorio = $value['nome_cartorio'];
+    $numero_indentidade = $value['numero_indentidade'];
+    $uf_identidade = $value['uf_identidade'];
+    $orgao_emissor_indentidade = $value['orgao_emissor_indentidade'];
+    $data_expedicao = $value['data_expedicao'];
+    $numero_cnh = $value['numero_cnh'];
+    $categoria_cnh = $value['categoria_cnh'];
+    $observacao = $value['observacao'];
+    $necessidade_especial = $value['necessidade_especial'];
+    $apoio_pedagogico = $value['apoio_pedagogico'];
+    $tipo_diagnostico = $value['tipo_diagnostico'];
+    $matricula_certidao = $value['matricula_certidao'];
+    $tipo_certidao = $value['tipo_certidao'];
+    $numero_termo = $value['numero_termo'];
+    $data_expedicao = $value['data_expedicao'];
+    $cpf = $value['cpf'];
 }
+
+ 
 ?>
+
+
+<script src="ajax.js?<?php echo rand(); ?>"></script>
   <!-- Main Sidebar Container -->
 <div class="content-wrapper">
 <!-- ####################### CORPO ################################################# -->
+   <H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>
 
-      <div class="container-fluid">
-        <div class="row mb-2">
-
-          <div class="col-sm-1"></div>
-          <div class="col-sm-10 alert alert-<?php echo $tema_aplivacao; ?>">
-          <center>  
-            <h1 class="m-0">
-              <b>
-                <?php echo $nome_escola_global ?>
-              </b>
-            </h1>
-          </center>
-
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->    
-      <form method="POST">
+ 
         <div class="card card-primary card-tabs">
           <div class="card-header p-0 pt-1">
             <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
               <li class="pt-2 px-3"><h3 class="card-title">CADASTRAR ALUNO</h3></li>
-              <li class="nav-item">
-                <a class="nav-link" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Dados Pessoais</a>
+            <li class="nav-item">
+                <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Dados Pessoais</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" id="custom-tabs-two-profile-tab" data-toggle="pill" href="#custom-tabs-two-profile" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false">Endereço</a>
+                <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill" href="#custom-tabs-two-profile" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false">Endereço</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" id="custom-tabs-two-messages-tab" data-toggle="pill" href="#custom-tabs-two-messages" role="tab" aria-controls="custom-tabs-two-messages" aria-selected="false">Documentos</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="custom-tabs-two-settings-tab" data-toggle="pill" href="#custom-tabs-two-settings" role="tab" aria-controls="custom-tabs-two-settings" aria-selected="false">Cursos</a>
+                <a class="nav-link" id="custom-tabs-two-settings-tab" data-toggle="pill" href="#custom-tabs-two-settings" role="tab" aria-controls="custom-tabs-two-settings" aria-selected="false">Curso</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" id="custom-tabs-two-necessidades-tab" data-toggle="pill" href="#custom-tabs-two-necessidades" role="tab" aria-controls="custom-tabs-two-necessidades" aria-selected="false">Necessidades Especiais</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="custom-tabs-two-matricula-tab" data-toggle="pill" href="#custom-tabs-two-matricula" role="tab" aria-controls="custom-tabs-two-matricula" aria-selected="false">Matricula INEP</a>
-              </li>
+             
+               
             </ul>
           </div>
           <div class="card-body">
             <div class="tab-content" id="custom-tabs-two-tabContent">
-              <div class="tab-pane fade" id="custom-tabs-two-home" role="tabpanel" aria-labelledby="custom-tabs-two-home-tab">
+              <div class="tab-pane fade  active show" id="custom-tabs-two-home" role="tabpanel" aria-labelledby="custom-tabs-two-home-tab">
                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-sm-1">
-                        <img src="imagens/user.png" class="img-thumbnail" alt="...">
-                      </div>
-                      <div class="col-sm-4">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Código</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo" required="" disabled>
-                        </div>
-                      </div>
-                      <div class="col-sm-4">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Código INEP</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo_inep" value='<?php echo $codigo_inep; ?>' required="">
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">N° Nis</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="n_nis" value='<?php echo $numero_nis; ?>' required="">
-                        </div>
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <img src="imagens/user.png" class="img-thumbnail" alt="...">
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Código INEP</label>
+                        <input type="text" class="form-control" id="codigo_inep" name="codigo_inep" value='<?php echo $codigo_inep; ?>' required="">
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Nome</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="nome" value='<?php echo $nome; ?>' required="">
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Nascimento</label>
-                          <input type="date" class="form-control" id="exampleInputEmail1" name="nascimento" value='<?php echo $data_nascimento; ?>' required="">
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Idade</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="idade" required="" disabled>
-                        </div>
-                      </div>             
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-6">
-                         <div class="form-group">
-                          <label for="exampleInputEmail1">Email</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="email" value='<?php echo $email; ?>' required="">
-                        </div>
-                      </div>
-                      <div class="col-sm-6">
-                         <div class="form-group">
-                          <label for="exampleInputEmail1">Celular</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="celular" value='<?php echo $whatsapp; ?>' required="">
-                        </div>
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">N° Nis</label>
+                        <input type="text" class="form-control" id="numero_nis" name="numero_nis" value='<?php echo $numero_nis;  ?>' required="">
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-sm-2">
-                         <div class="form-group">
-                          <label for="exampleInputEmail1">Contato</label><br>
-                          <select class="form-control">
-                            <option selected></option>
-                            <option value="Whastapp">Whastapp</option>
-                            <option value="Telefone">Telefone</option>
-                            <option value="Email">Email</option>
-                          </select>
-                        </div>
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Bolsa Familia</label><br>
+                        <select  class="form-control" name="bolsa_familia" id="bolsa_familia" required>
+                          <option selected value='<?php echo $bolsa_familia; ?>'><?php echo $bolsa_familia  ?></option>
+                          <option value="S">Sim</option>
+                          <option value="N">Não</option>
+          
+                        </select>
                       </div>
-                      <div class="col-sm-2">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Filiação</label><br>
-                          <select class="form-control">
-                            <option selected value='<?php echo $tipo_responsavel; ?>'><?php echo $tipo_responsavel ?></option>
-                            <option value="PAI E/OU MÃE">PAI E/OU MÃE</option>
-                            <option value="PAI">PAI</option>
-                            <option value="MÃE">MÃE</option>
+                    </div>
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Local de procedência </label>
+                          <select name="local_procedencia" id="local_procedencia"  class="form-control" > 
+                            <option value="Escola da rede">Escola da REDE</option>
+                            <option value="Escola da fora">Escola de FORA</option>
 
+                          </select> 
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Nome</label>
+                        <input type="text" class="form-control" id="nome" name="nome"  value='<?php echo $nome; ?>' required="">
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Nascimento</label>
+                        <input type="date" class="form-control" id="exampleInputEmail1" name="data_nascimento" value='<?php echo $data_nascimento; ?>' required="">
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Idade</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="idade" required="" disabled>
+                      </div>
+                    </div>             
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4">
+                       <div class="form-group">
+                        <label for="exampleInputEmail1">Email</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="email" value='<?php echo $email; ?>' >
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                       <div class="form-group">
+                        <label for="exampleInputEmail1">Whatsapp aluno</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="whatsapp" value='<?php echo $whatsapp; ?>'  >
+                      </div>
+                    </div>                      
+                    <div class="col-sm-4">
+                       <div class="form-group">
+                        <label for="exampleInputEmail1">Whatsapp responsável</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="whatsapp_responsavel"  value='<?php echo $whatsapp_responsavel; ?>' >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-sm-4">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Necessidade especial</label><br>
+                          <select  class="form-control" name="necessidade_especial">
+                            <option selected value='<?php echo $necessidade_especial ?>'><?php echo $necessidade_especial ?></option>
+                             <option value='N'>NÃO</option>
+                             <option value='S'>SIM</option>
+                          </select>
+                        </div>
+                      </div>      
+                      <div class="col-sm-3">
+                       <div class="form-group">
+                         <label for="exampleInputEmail1">Apoio Pedagógico</label><br>
+                         <select  class="form-control" name="apoio_pedagogico">
+                              <option selected value='<?php echo $apoio_pedagogico; ?>'><?php echo $apoio_pedagogico ?></option>
+                             <option value='SEM APOIO PEDAGÓGICO'>SEM APOIO PEDAGÓGICO</option>
+                              <option value="COM APOIO PEDAGÓGICO">COM APOIO PEDAGÓGICO</option>
+                              <option value="COM APOIO PEDAGÓGICO (OUTRO ESTABELECIMENTO)">COM APOIO PEDAGÓGICO (OUTRO ESTABELECIMENTO)</option>
+                         </select>
+                       </div>
+                      </div>
+                      <div class="col-sm-3">
+                       <div class="form-group">
+                         <label for="exampleInputEmail1">Tipo De Diagnóstico</label><br>
+                         <select  class="form-control" name="tipo_diagnostico">
+                           <option selected ></option>
+                           <option value='SEM DIAGNÓSTICO'>SEM DIAGNÓSTICO</option>
+                           <option value='FICHA DE AVALIAÇÃO'>FICHA DE AVALIAÇÃO</option>
+                           <option value='LAUDO TÉCNICO'>LAUDO TÉCNICO</option>
+                         </select>
+                       </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12 alert alert-secondary">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-2">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Tipo responsável</label><br>
+                          <select  class="form-control" required name="tipo_responsavel">
+                            <option selected value='<?php echo $tipo_responsavel; ?>'><?php echo $tipo_responsavel ?></option>
+                            <option value="MÃE">MÃE</option>
+                            <option value="PAI">PAI</option>
+                            <option value="OUTRO">OUTRO</option>
                           </select>
                         </div>
                       </div>
                       <div class="col-sm-2">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Raça</label><br>
-                          <select  class="form-control" >
-                            <option selected value='<?php echo $raca_aluno ?>'><?php echo $raca_aluno ?></option>
+                          <label for="exampleInputEmail1">Raça do aluno</label><br>
+                          <select   class="form-control" name="raca_aluno" required>
+                            <option selected value='<?php echo $raca_aluno; ?>'><?php echo $raca_aluno ?></option>
                             <option value="Não Declarada">Não Declarada</option>
                             <option value="Branco">Branco</option>
                             <option value="Negro">Negro</option>
                             <option value="Pardo">Pardo</option>
                             <option value="Amarelo">Amarelo</option>
                             <option value="Indigena">Indigena</option>
-                          </select>
+                           </select>
                         </div>
                       </div>
                       <div class="col-sm-2">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Estado Civil</label><br>
-                          <select class="form-control" >
+                          <label for="exampleInputEmail1">Estado Civil do aluno</label><br>
+                          <select  class="form-control" name="estado_civil_aluno" required>
                             <option selected value='<?php echo $estado_civil_aluno; ?>'><?php echo $estado_civil_aluno ?></option>
                             <option value="Solteiro">Solteiro</option>
                             <option value="Casado">Casado</option>
-                            <option value="Separado">Separado</option>
                             <option value="Divorciado">Divorciado</option>
                             <option value="Viúvo">Viúvo</option>
+                             
                           </select>
                         </div>
                       </div>
-                      <div class="col-sm-2">
+                      <div class="col-sm-3">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Tipo Sanguineo</label><br>
-                          <select class="form-control" >
-                            <option selected value='<?php echo $tipo_sanguinio_aluno;?>'><?php echo $tipo_sanguinio_aluno;?></option>
-                            <option value="A+">A+</option>
+                          <label for="exampleInputEmail1">Tipo Sanguineo do aluno</label><br>
+                          <select  class="form-control" required name="tipo_sanguinio_aluno">
+                            <option selected value='<?php echo $tipo_sanguinio_aluno; ?>'><?php echo $tipo_sanguinio_aluno ?></option>
+                            <option value="Amais">A+</option>
                             <option value="A-">A-</option>
-                            <option value="B+">B+</option>
+                            <option value="Bmais">B+</option>
                             <option value="B-">B-</option>
-                            <option value="AB+">AB+</option>
+                            <option value="ABmais">AB+</option>
                             <option value="AB-">AB-</option>
-                            <option value="O+">O+</option>
+                            <option value="Omais">O+</option>
                             <option value="O-">O-</option>
+                           
                           </select>
                         </div>
                       </div>
                       <div class="col-sm-2">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Sexo</label><br>
-                          <select class="form-control">
-                            <option selected value='<?php echo $sexo ?>'><?php if ($sexo == 'M'){echo "Masculino";}else{ echo "Feminino";} {
-                              // code...
-                            } echo $sexo ?></option>
+                          <label for="exampleInputEmail1">Sexo do aluno</label><br>
+                          <select  class="form-control" required id='sexo' name="sexo">
+                            <option selected value='<?php echo $sexo; ?>'><?php if($sexo == 'M'){echo "Masculino";}else{ echo "Feminino";}  ?></option>
                             <option value="M">Masculino</option>
                             <option value="F">Feminino</option>
                           </select>
                         </div>
                       </div>
                     </div>
+                    <div class="row">          
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Nome do responsável</label>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="nome_responsavel" required="">
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Cpf do responsável</label>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="cpf_responsavel"  required="">
+                        </div>
+                      </div>
+                    </div> 
                     <label for="exampleInputEmail1"><h5>Filiação 1</h5></label>
                     <div class="row">          
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Nome</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="nome_filiação1" value='<?php echo $filiacao1; ?>' required="">
+                          <label for="exampleInputEmail1">Nome filiação 1</label>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="filiacao1" value='<?php echo $filiacao1 ?>' required="">
                         </div>
                       </div>
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Cpf</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="cpf_filiação1" value='<?php echo $cpf_filiacao1; ?>' required="">
-                        </div>
-                      </div>
-                      <div class="col-sm-4"><br><br>
-                        <div class="form-check form-switch">
-                          <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                          <label class="form-check-label" for="flexSwitchCheckDefault">Responsavel</label>
+                          <label for="exampleInputEmail1">Cpf filiação 1</label>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="cpf_filiacao1" value='<?php echo $cpf_filiacao1 ?>' required="">
                         </div>
                       </div>
                     </div>
@@ -259,49 +386,38 @@ foreach ($res as $key => $value) {
                     <div class="row">          
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Nome</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="nome_filiação2" value='<?php echo $filiacao2; ?>' required="">
+                          <label for="exampleInputEmail1">Nome filiação 2</label>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="filiacao2" value='<?php echo $filiacao2 ?>' required="">
                         </div>
                       </div>
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Cpf</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="cpf_filiação2" value='<?php echo $cpf_filiacao2; ?>' required="">
+                          <label for="exampleInputEmail1">Cpf filiação 2</label>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="cpf_filiacao2" value='<?php echo $cpf_filiacao2 ?>' required="">
                         </div>
                       </div>
-                      <div class="col-sm-4"><br><br>
-                        <div class="form-check form-switch">
-                          <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                          <label class="form-check-label" for="flexSwitchCheckDefault">Responsavel</label>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <button type="button" class="btn btn-primary ">Proximo</button>
-                      </div>  
-                    </div>
+                    </div>           
                  </div>
               </div>
-              <div class="tab-pane fade active show" id="custom-tabs-two-profile" role="tabpanel" aria-labelledby="custom-tabs-two-profile-tab">
+              <div class="tab-pane fade" id="custom-tabs-two-profile" role="tabpanel" aria-labelledby="custom-tabs-two-profile-tab">
                  <div class="card-body">
                     <div class="row">
                       <div class="col-sm-5">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Endereço</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="endereco" required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="endereco" value='<?php echo $endereco; ?>' required="">
                         </div>
                       </div>
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">complemento</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="complemento" required="">
+                          <label for="exampleInputEmail1">Complemento</label>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="complemento" value='<?php echo $complemento; ?>' >
                         </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">numero</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="numero" required="">
+                          <label for="exampleInputEmail1">Número</label>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="numero_endereco" value='<?php echo $numero_endereco; ?>' required="">
                         </div>
                       </div>
                     </div>
@@ -309,61 +425,42 @@ foreach ($res as $key => $value) {
                       <div class="col-sm-2">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Uf</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="uf" required="">
+                          <select type="text" class="form-control" id="exampleInputEmail1" name="uf_endereco" required="" onchange="pesquisar_municipio(this.value,'municipio_endereco');">
+                            <option selected value='<?php echo $uf_endereco; ?>'><?php echo $uf_endereco ?></option>
+                            <?php 
+                              $resultado_estado= listar_estado($conexao);
+                              foreach ($resultado_estado as $key => $value) {
+                                $idestado=$value['id'];
+                                $nome_estado=$value['nome'];
+                                echo "<option value='$idestado'> $nome_estado</option>";
+                              }
+                            ?>
+                          </select>
                         </div>
                       </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Municipio</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="municipio" required="">
-                        </div>
-                      </div>
+                      <div class="col-sm-3"id="municipio_endereco">
+                        <!-- municipio aqui -->
+                      </div>                
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Bairro</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="bairro" required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="bairro_endereco" value='<?php echo $bairro_endereco; ?>' required="">
                         </div>
                       </div>
                       <div class="col-sm-2">
                          <div class="form-group">
                           <label for="exampleInputEmail1">Zona</label><br>
-                          <select  class="form-control">
-                            <option selected></option>
-                            <option value="1">Urbana</option>
-                            <option value="2">Rural</option>
+                          <select   class="form-control" name="zona_endereco">
+                            <option selected value='<?php echo $zona_endereco; ?>'><?php echo  $zona_endereco; ?></option>
+                            <option value="Urbana">Urbana</option>
+                            <option value="Rural">Rural</option>
                           </select>
                         </div>
                       </div>
                       <div class="col-sm-2">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Cep</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="cep" required="">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Telefone</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="telefone" required="">
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Fax</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="fax" required="">
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Email</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="email" required="">
-                        </div>
-                      </div>
-                       <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Caixa Postal</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="caixa_postal" required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="cep_endereco" value='<?php echo $cep_endereco ?>' required="">
                         </div>
                       </div>
                     </div>
@@ -371,25 +468,25 @@ foreach ($res as $key => $value) {
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Nacionalidade</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="nacionalidade" required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="nacionalidade" value='<?php echo $nacionalidade; ?>' required="">
                         </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">País</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="pais" required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="pais" value='<?php echo $pais; ?>' required="">
                         </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Naturalidade</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="naturalidade" required="" disabled>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="naturalidade" value='<?php echo $naturalidade; ?>' required="">
                         </div>
                       </div>
-                       <div class="col-sm-3">
+                      <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">localidade</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="localidade" required="" disabled>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="localidade" value='<?php echo $localidade; ?>' >
                         </div>
                       </div>
                     </div>
@@ -397,64 +494,42 @@ foreach ($res as $key => $value) {
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Transporte Escolar Público</label><br>
-                          <select class="form-control">
-                            <option selected>Não Utilizado</option>
+                          <select class="form-control" name="transposte_escolar">
+                            <option selected value='<?php echo $transposte_escolar; ?>'><?php echo $transposte_escolar  ?></option>
+                            <option value="NÃO-UTILIZADO" >Não Utilizado</option>
+                            <option value="RODOVIÁRIO-VANS/KOMBI">RODOVIÁRIO-VANS/KOMBI</option>
+                            <option value="RODOVIÁRIO-MICROONIBUS">RODOVIÁRIO-MICROONIBUS</option>
+                            <option value="RODOVIÁRIO-OUTRO">RODOVIÁRIO-OUTRO</option>
                           </select>
                         </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Poder Público Responsável</label><br>
-                          <select class="form-control" >
-                            <option selected></option>
+                          <select   class="form-control" name="poder_publico_responsavel">
+                            <option selected value='<?php echo $poder_publico_responsavel; ?>'><?php echo $poder_publico_responsavel ?></option>
+                            <option  value="Municipal">Municipal</option>
                           </select>
                         </div>
                       </div>
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Recebe Escolarização Em Outro Espaço</label><br>
-                          <select class="form-control" >
-                            <option selected></option>
-                            <option value="1">Sim</option>
-                            <option value="2">Não</option>
+                          <select  class="form-control" required name="recebe_escolaridade_outro_espaco">
+                            <option selected value='<?php echo $recebe_escolaridade_outro_espaco; ?>'><?php echo $recebe_escolaridade_outro_espaco ?></option>
+                            <option value="N">Não</option>
+                            <option value="S">Sim</option>
                           </select>
                         </div>
-                      </div>
-                      <div class="col-sm-2">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Bolsa Familia</label><br>
-                          <select class="form-control" >
-                            <option selected></option>
-                            <option value="1">Sim</option>
-                            <option value="2">Não</option>
-                          </select>
-                        </div>
-                      </div>
+                      </div>               
                     </div>
                     <div class="row">
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Profissão</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="profissão" required="">
+                          <label for="exampleInputEmail1">Profissão do aluno</label>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="profissao" value='<?php echo $profissao ?>'>
                         </div>
                       </div>
-                      <div class="col-sm-4">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">local de procedencia </label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="complemento" required="">
-                        </div>
-                      </div>
-                      <div class="col-sm-4">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">.</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="numero" required="">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <button type="button" class="btn btn-primary ">Proximo</button>
-                      </div>  
                     </div>
                  </div>
               </div>
@@ -464,48 +539,43 @@ foreach ($res as $key => $value) {
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Situação Da Documentação</label><br>
-                          <select class="form-control">
-                            <option selected>Aluno Possui Documentação</option>
-                            <option value="1">Aluno Não Possui Documentação</option>
+                          <select  class="form-control" required name="situacao_documentacao">
+                            <option selected value='<?php echo  $situacao_documentacao; ?>'><?php echo  $situacao_documentacao ?></option> 
+                            <option value="Aluno Possui Documentação">Aluno Possui Documentação</option>
+                            <option value="Aluno Não Possui Documentação">Aluno Não Possui Documentação</option>
+                            
                           </select>
-                        </div>
-                      </div>
-                      <div class="col-sm-4">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Código</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo" required="" disabled>
-                        </div>
-                      </div>
-                      <div class="col-sm-4">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Código INEP</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo_inep" required="">
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Matricula</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="matricula" required="">
+                          <label for="exampleInputEmail1">Matrícula da certidão </label>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="matricula_certidao" value='<?php echo $matricula_certidao ?>' required="">
                         </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Tipo De Certidão</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="tipo_certidao" required="">
+                          <select type="text" class="form-control"  name="tipo_certidao">
+                            <option selected value='<?php echo $tipo_certidao ?>'><?php echo  $tipo_certidao?></option>
+                            <option value="N">CERTIDÃO NASCIMENTO</option>
+                            <option value="C">CERTIDÃO CASAMENTO</option>
+                             
+                          </select>
                         </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Número Do Termo</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="numero_termo" required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="numero_termo" value='<?php echo $numero_termo ?>' required="">
                         </div>
                       </div>
                       <div class="col-sm-2">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Folha</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="folha" required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="folha" value='<?php echo $folha ?>' required="">
                         </div>
                       </div>
                     </div>
@@ -513,25 +583,26 @@ foreach ($res as $key => $value) {
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">UF cartorio</label><br>
-                          <select class="form-control">
-                            <option selected></option>
+                          <select  class="form-control"  required name="uf_cartorio"  onchange="pesquisar_municipio(this.value,'uf_municipio_cartorio');">
+                            <option selected value='<?php echo $uf_cartorio; ?>'><?php echo $uf_cartorio ?></option>
+                            <?php 
+                              $resultado_estado= listar_estado($conexao);
+                              foreach ($resultado_estado as $key => $value) {
+                                $idestado=$value['id'];
+                                $nome_estado=$value['nome'];
+                                echo "<option value='$idestado'> $nome_estado</option>";
+                              }
+                            ?>
                           </select>
                         </div>
                       </div>
-                      <div class="col-sm-4">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Municipio</label><br>
-                          <select class="form-control">
-                            <option selected></option>
-                          </select>
-                        </div>
+                      <div class="col-sm-4" id="uf_municipio_cartorio">
+                        <!-- municipio aqui -->
                       </div>
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Cartorios</label><br>
-                          <select class="form-control" >
-                            <option selected></option>
-                          </select>
+                          <label for="exampleInputEmail1">Cartórios</label><br>
+                          <input name="cartorio" class="form-control" value='<?php echo $cartorio; ?>' required>
                         </div>
                       </div>
                     </div>
@@ -539,31 +610,36 @@ foreach ($res as $key => $value) {
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">N° Identidade</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="n_identidade" required="" disabled>
-                        </div>
-                      </div>
-                      <div class="col-sm-2">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Complemento</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="complemento" required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="numero_indentidade" value='<?php echo $numero_indentidade; ?>'>
                         </div>
                       </div>
                       <div class="col-sm-2">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Uf Identidade</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="uf_identidade" required="">
+                          <select class="form-control"  name="uf_identidade" >
+                            <option selected value='<?php echo $uf_identidade; ?>'><?php echo $uf_identidade ?></option>
+
+                          <?php 
+                              $resultado_estado= listar_estado($conexao);
+                              foreach ($resultado_estado as $key => $value) {
+                                $idestado=$value['id'];
+                                $nome_estado=$value['nome'];
+                                echo "<option value='$idestado'> $nome_estado</option>";
+                              }
+                            ?>
+                          </select>
                         </div>
                       </div>
                       <div class="col-sm-2">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Orgão Emissor</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="orgao_emissor" required="" disabled>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="orgao_emissor_indentidade" value='<?php echo $orgao_emissor_indentidade ?>'>
                         </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Data Expedição Identidade</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="data_expedicao_identidade" required="">
+                          <input type="date" class="form-control" id="exampleInputEmail1" name="data_expedicao" value='<?php echo $data_expedicao; ?>' >
                         </div>
                       </div>
                     </div>
@@ -571,73 +647,38 @@ foreach ($res as $key => $value) {
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">N° CNH</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="n_cnh" required="" disabled>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="numero_cnh" value='<?php echo $numero_cnh; ?>'  >
                         </div>
-                      </div>
-                      <div class="col-sm-2">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">1° CNH</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="1_cnh" required="">
-                        </div>
-                      </div>
+                      </div>                       
                       <div class="col-sm-2">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Categoria CNH</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="categoria_cnh" required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="categoria_cnh" value='<?php echo $categoria_cnh; ?>' >
                         </div>
-                      </div>
-                      <div class="col-sm-2">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Emissão CNH</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="emissao_cnh" required="" disabled>
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Vencimento CNH</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="vencimento_cnh" required="">
-                        </div>
-                      </div>
+                      </div>                    
                     </div>
                     <div class="row">
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Cpf</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="cpf" required="" disabled>
-                        </div>
-                      </div>
-                      <div class="col-sm-2">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">N° Passaporte</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="n_passaporte" required="" disabled>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="cpf"  value='<?php echo $cpf; ?>'  >
                         </div>
                       </div>
                       <div class="col-sm-2">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Cartão Sus</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="cartão_sus" required="" disabled>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="cartao_sus" value='<?php echo $cartao_sus; ?>' required="" >
                         </div>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-sm-6">
+                      <div class="col-sm-12">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Observações</label>
-                          <textarea rows="3" class="form-control" id="exampleInputEmail1" name="observações" required=""></textarea>
+                          <textarea rows="3" class="form-control" id="exampleInputEmail1" name="observacao" value='<?php echo $observacao ?>' required=""><?php echo $observacao ?></textarea>
                        </div>
                       </div>
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Contato</label>
-                          <textarea rows="3" class="form-control" id="exampleInputEmail1" name="contato" required=""></textarea>
-                       </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <button type="button" class="btn btn-primary ">Proximo</button>
-                      </div>  
-                    </div>
+                    </div>                   
                  </div>
               </div>
               <div class="tab-pane fade" id="custom-tabs-two-settings" role="tabpanel" aria-labelledby="custom-tabs-two-settings-tab">
@@ -645,120 +686,74 @@ foreach ($res as $key => $value) {
                     <div class="row">
                       <div class="col-sm-3">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Codigo Escola</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo_escola" 
-                          required="">
+                          <label for="exampleInputEmail1">Escola</label>
+                         <select class="form-control"  name="escola" id="escola" >
+                          <option></option>
+                       <?php 
+                         // $res_escola=lista_escola($conexao);
+
+                        $res_escola= escola_associada($conexao,$idcoordenador);
+                         foreach ($res_escola as $key => $value) {
+                             $idescola=$value['idescola'];
+                             $nome_escola=$value['nome_escola'];
+                             echo "<option value='$idescola'>$nome_escola </option>";
+                         }
+                         ?>
+                         </select>
+                        </div>
+                      </div>                      
+
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Turno</label>
+                         <select class="form-control"  name="turno" id="turno" >
+                          <option value="MATUTINO">MATUTINO</option>
+                          <option value="VESPERTINO">VESPERTINO</option>
+                          <option value="VESPERTINO">NOTURNO</option>
+                         </select>
                         </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Nome Escola</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="nome_escola" 
-                          required="" disabled>
+                          <label for="exampleInputEmail1">Série</label>
+                            <select class="form-control"  name="serie" id="idserie" onchange="listar_turmas_por_serie(this.value);">
+                            <option></option>
+
+                          <?php 
+                            $res_serie=lista_todas_series($conexao);
+                            foreach ($res_serie as $key => $value) {
+                                $id=$value['id'];
+                                $nome_serie=$value['nome'];
+                                echo "<option value='$id'>$nome_serie </option>";
+                            }
+                            ?>
+                            </select>
                         </div>
                       </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Codigo Calendario</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo_calendario" required="">
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Nome Calendario</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="nome_calendario" required="" disabled>
-                        </div>
-                      </div>
+                      
+
+                                                          
+
+                      <span id="turmas">
+                        <input type="hidden" name="turma" value="">
+                      </span>            
+
+                       <span id="etapa">
+                        <input type="hidden" name="etapa" value="">
+                    
+                      </span>
+                      
                     </div>
-                    <div class="row">
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Codigo Aluno</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo_aluno" 
-                          required="">
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Nome Aluno</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="nome_aluno" 
-                          required="" disabled>
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Codigo Etapa</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo_etapa" required="">
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Nome Etapa</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="nome_etapa" required="" disabled>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Codigo Curso</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo_curso" 
-                          required="">
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Nome Curso</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="nome_curso" 
-                          required="" disabled>
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Codigo Turno</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo_turno" required="">
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Nome Turno</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="nome_turno" required="" disabled>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Codigo Base Curricular</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo_base_curricular" 
-                          required="">
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Nome Base Curricular</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="nome_base_curricular" 
-                          required="" disabled>
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Codigo Situação</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo_situacao" required="">
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Nome Situação</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="nome_situacao" required="" disabled>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <button type="button" class="btn btn-primary ">Incluir</button>
-                      </div>  
-                    </div>
+      <br>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <button   class="btn btn-block btn-success " onclick="cadastro_aluno();">Cadastrar Aluno</button>
+
+         </div>
+        </div>
+        
+      </div>
                     <br>
                     <div class="row">
                       <div class="col-12">
@@ -778,210 +773,26 @@ foreach ($res as $key => $value) {
                               </div>
                             </div>
                           </div>
-                          <!-- /.card-header -->
-                          <div class="card-body table-responsive p-0" style="height: 300px;">
-                            <table class="table table-head-fixed text-nowrap">
-                              <thead>
-                                <tr>
-                                  <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nome Da Escola</font></font></th>
-                                  <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nome Do Curso</font></font></th>
-                                  <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nome Da Base</font></font></th>
-                                  <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nome Do Calendario</font></font></th>
-                                  <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Situação</font></font></th>
-                                  <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nome Da Etapa</font></font></th>
-                                  <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nome Do Turno</font></font></th>
-                                  <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Opções</font></font></th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">183</font></font></td>
-                                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">John Doe</font></font></td>
-                                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">07-11-2014</font></font></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                </tr>
-                                <tr>
-                                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">183</font></font></td>
-                                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">John Doe</font></font></td>
-                                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">07-11-2014</font></font></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                </tr>
-                                <tr>
-                                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">183</font></font></td>
-                                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">John Doe</font></font></td>
-                                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">07-11-2014</font></font></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                </tr>
-                                <tr>
-                                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">183</font></font></td>
-                                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">John Doe</font></font></td>
-                                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">07-11-2014</font></font></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                </tr>
-                                <tr>
-                                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">183</font></font></td>
-                                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">John Doe</font></font></td>
-                                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">07-11-2014</font></font></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                </tr>
-                                <tr>
-                                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">183</font></font></td>
-                                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">John Doe</font></font></td>
-                                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">07-11-2014</font></font></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                          <!-- /.card-body -->
                         </div>
                         <!-- /.card -->
                       </div>
                     </div>
                  </div>
               </div>
-              <div class="tab-pane fade" id="custom-tabs-two-necessidades" role="tabpanel" aria-labelledby="custom-tabs-two-necessidades-tab">
-                 <div class="card-body">
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Código</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo" required="" >
-                        </div>
-                      </div>
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Código Aluno</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo_aluno" required="">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Necessidade</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="necessidade" required="" >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-8">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Apoio Pedagógico</label><br>
-                          <select class="form-control">
-                            <option selected></option>
-                            <option value="1"></option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-sm-4">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Tipo De Diagnóstico</label><br>
-                          <select class="form-control">
-                            <option selected></option>
-                            <option value="1"></option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-8">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Ultima Alteração</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="ultima_alteracao" required="" disabled>
-                        </div>
-                      </div>
-                      <div class="col-sm-4">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Data</label>
-                          <input type="date" class="form-control" id="exampleInputEmail1" name="data" required="">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <button type="button" class="btn btn-primary ">Proximo</button>
-                      </div>  
-                    </div>
-                 </div>
-              </div>
-              <div class="tab-pane fade" id="custom-tabs-two-matricula" role="tabpanel" aria-labelledby="custom-tabs-two-matricula-tab">
-                 <div class="card-body">
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Código</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo" required="" disabled>
-                        </div>
-                      </div>
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Código Aluno</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo_aluno" required="" disabled>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Código INEP Do Aluno</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo_inep_aluno" required="" disabled>
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Código INEP Da Turma</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="codigo_inep_turma" required="" >
-                        </div>
-                      </div>
-                      <div class="col-sm-4">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Matricula INEP</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="matricula_inep" required="" >
-                        </div>
-                      </div>
-                      <div class="col-sm-2">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Ano</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="ano" required="" >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <button type="button" class="btn btn-primary ">Incluir</button>
-                      </div>  
-                    </div>
-                 </div>
-              </div>
+
+
+         
+
+
+          
           </div>
           <!-- /.card -->
+
+
+
+           
         </div>
-      </form>
+  
   
 
 </div>
