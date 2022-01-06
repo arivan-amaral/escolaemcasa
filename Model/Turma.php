@@ -30,6 +30,17 @@
       return $sql->fetchAll();
    }
 
+   function cadastrar_turma_escola($conexao,$idEscola,$idTurma,$turno,$ano,$vagas) {
+      $sql = $conexao->prepare("INSERT INTO relacionamento_turma_escola (escola_id,turma_id,turno,ano,quantidade_vaga) VALUES (:idEscola,:idTurma,:turno,:ano,:vagas)");
+      $sql->execute(array(
+         'idEscola' =>$idEscola,
+         'idTurma' =>$idTurma,
+         'turno' =>$turno,
+         'ano' =>$ano,
+         'vagas' =>$vagas
+      ));
+    }
+
 
 
 

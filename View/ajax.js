@@ -808,7 +808,7 @@ function listar_etapas(idserie) {
 }
 
 
- function receber_resenha() {
+function receber_resenha() {
     var result = document.getElementById("resenha");
 
     var trabalho_entregue_id = document.getElementById("trabalho_entregue_id").value;
@@ -1586,6 +1586,52 @@ function lista_de_turmas(id){
         }
     };
     xmlreq.send(null);
+}
+
+function remover_turma_escola(itemid){
+  var element = document.getElementById(itemid); // will return element
+  element.parentNode.removeChild(element); // will remove the element from DOM
+
+}
+
+function adicionar_turma_escola(){
+    var tabela=document.getElementById('tabela');
+    var escola_objeto=document.getElementById('escola');
+    var turno=document.getElementById('turno').value;
+    var serie_objeto=document.getElementById('idserie');
+    var turma_objeto=document.getElementById('idturma');
+    var ano=document.getElementById('ano').value;
+    var vagas =document.getElementById('quantidade_vaga').value;
+
+    var escola=escola_objeto.value;
+    var option_escola = escola_objeto.children[escola_objeto.selectedIndex];
+    var nome_escola = option_escola.textContent;
+
+
+    var serie=serie_objeto.value;
+    var option_serie = serie_objeto.children[serie_objeto.selectedIndex];
+    var nome_serie = option_serie.textContent;
+
+    var turma = turma_objeto.value;
+    var option_turma = turma_objeto.children[turma_objeto.selectedIndex];
+    var nome_turma = option_turma.textContent;
+
+    var item = "div_"+Math.random();
+
+    tabela.innerHTML+=""+
+            "<tr id='"+item+"'>"+
+              "<td><input type='hidden' class='form-control' id='escola' name='escola[]' value='"+escola+"' > "+nome_escola+"</td>"+
+              "<td><input type='hidden' class='form-control' id='turno' name='turno[]' value='"+turno+"' >"+turno+"</td>"+
+              "<td><input type='hidden' class='form-control' id='idserie' name='idserie[]' value='"+serie+"' >"+nome_serie+"</td>"+
+              "<td><input type='hidden' class='form-control' id='idturma' name='idturma[]' value='"+turma+"' >"+nome_turma+"</td>"+
+              "<td><input type='hidden' class='form-control' id='ano' name='ano[]'  value='"+ano+"'>"+ano+"</td>"+
+              "<td><input type='hidden' class='form-control' id='quantidade_vaga' name='quantidade_vaga[]'  value='"+vagas+"'>"+vagas+"</td>"+
+              "<td><a class='btn btn-danger' onclick=remover_turma_escola('"+item+"');>Cancelar</a></td>"+
+            "</tr>";
+            document.getElementById('idserie').value = "";
+            document.getElementById('quantidade_vaga').value = "";
+            document.getElementById('idturma').value = "";
+
 }
 
 function listar_opcao_associacao_coordenador(id){

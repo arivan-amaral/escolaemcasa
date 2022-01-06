@@ -9,7 +9,7 @@ try {
 	$idserie=$_GET['idserie'];
 
 	$result="<label for='exampleInputEmail1'>Turma</label>
-	<select class='form-control' name='turma' id='idturma'  onchange='listar_etapas_cad_aluno()'>
+	<select class='form-control' name='idturma' id='idturma'  onchange='listar_etapas_cad_aluno()'>
 	<option></option>";
 	$res=lista_de_turmas($conexao,$idserie);
 	foreach ($res as $key => $value) {
