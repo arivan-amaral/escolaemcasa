@@ -18,8 +18,8 @@
         <span style='mso-ignore:vglayout;
         position:absolute;z-index:251660288;left:0px;margin-left:65px;margin-top:
         -9px;width:44px;height:60px'><img width=44 height=60
-        src="Acompanhamento%20do%20Rendimento%20do%20Aluno_arquivos/image002.png"
-        v:shapes="Imagem_x0020_2"></span><![endif]><b><span style='font-family:"Arial Black",sans-serif;
+        src="imagens/logo.png"
+        v:shapes="Imagem_x0020_2"></span> <b><span style='font-family:"Arial Black",sans-serif;
         mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
         color:black;mso-fareast-language:PT-BR'><o:p></o:p></span></b></p>
         <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;

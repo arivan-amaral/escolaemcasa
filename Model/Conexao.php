@@ -8,7 +8,7 @@ try {
 //desbloquado para servidor padrao
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $password = "BDWRe85Oam8D";
 // }else{
 
 // $servername = "34.151.231.17";

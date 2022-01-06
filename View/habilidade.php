@@ -6,12 +6,9 @@ session_start();
   include"../Model/Escola.php";
   include"../Model/Turma.php";
   include"../Model/Professor.php";
-
   include"boletim_maternall_II.php";
   include"boletim_serie_1ano_id_3.php";
   include"boletim_fundamental_II.php";
-  include"teste_boletim.php";
-  include('mpdf/mpdf60/mpdf.php');
 
 $idescola=$_GET['idescola'];
 $idturma=$_GET['idturma'];
@@ -33,9 +30,13 @@ include_once"cabecalho_boletim.php";
 ?>
 
 <!-- ################################################################################ -->
+<p class="no-print">
+  <br>
+  <br>
+  
+<a href='#'class="btn btn-block btn-primary " onclick='print();'>IMPRIMIR</a> 
 
-   
-<!-- <a href="#" onclick="demoFromHTML();">BAIXAR BOLETINS</a>  -->
+</p>
 <div id="employee_detail">
 
 <?php
@@ -65,33 +66,13 @@ if ($idserie<8){
 
         boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno, $nome_escola,$nome_turma,$nome_professor,$_SESSION['ano_letivo']);
         $nome_professor='';
-        
-        echo"<br>";
-        echo"<br>";
-        echo"<br>";
-        echo"<br>";
-        echo"<br>";
-        echo"<br>";
-        echo"<br>";
-        echo"<br>";
-        echo"<br>";
-        echo"<br>";
-        echo"<br>";
-        echo"<br>";
-        echo"<br>";
-        echo"<br>";
 
-        echo"<br>";
-        echo"<br>";
-        echo"<br>";
-        echo"<br>";
-        echo"<br>";
+echo"<div class='pagebreak'> </div>";
         
-        // echo"<a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma'>IMPRIMIR - $nome_aluno</a> <br><br>";
+        
       $numero++;
       //break;
     }
-echo"<div class='pagebreak'> </div>";
 
 }
 
