@@ -343,10 +343,6 @@ if ($_SESSION['cargo']=="Secretário" || $_SESSION['cargo']=="Coordenador"){
     });
 </script>
 
-
-
-
-
 <!-- Summernote -->
 <script src="plugins/summernote/summernote-bs4.min.js"></script>
 <!-- CodeMirror -->
