@@ -28,8 +28,9 @@
     	return $res;    
 	}	
 
-	function listar_nome_professor_turma_por_disciplina($conexao,$iddisciplina,$ano_letivo) {
-    	        $res=$conexao->query("SELECT 
+	function listar_nome_professor_turma_por_disciplina($conexao,$iddisciplina,$idescola,$ano_letivo) {
+    	        $res=$conexao->query("
+    	    SELECT 
           disciplina.nome_disciplina,
           disciplina.iddisciplina,
           funcionario.nome as 'nome_professor',
@@ -37,13 +38,14 @@
           turma.nome_turma
          FROM turma, escola, ministrada,disciplina,funcionario WHERE
  
-        ministrada.ano='$ano_letivo' AND
-        ministrada.disciplina_id='$iddisciplina' AND
         ministrada.turma_id=turma.idturma AND
         ministrada.escola_id=escola.idescola AND
         ministrada.disciplina_id=disciplina.iddisciplina AND
-        ministrada.professor_id=funcionario.idfuncionario 
-        group by funcionario.nome asc");
+        ministrada.professor_id=funcionario.idfuncionario and
+
+        ministrada.ano='$ano_letivo' AND
+        ministrada.escola_id='$idescola' AND
+        ministrada.disciplina_id='$iddisciplina' limit 1");
 
     	return $res;    
 	}	

@@ -9,7 +9,7 @@ $iddisciplina=$_GET['iddisciplina'];
 $idserie=$_GET['idserie'];
 $ano_letivo=$_SESSION['ano_letivo'];
 
-$res_pro=listar_nome_professor_turma_por_disciplina($conexao,$iddisciplina,$ano_letivo);
+$res_pro=listar_nome_professor_turma_por_disciplina($conexao,$iddisciplina,$idescola,$ano_letivo);
 $nome_professor='';
 foreach ($res_pro as $key => $value) {
     $nome_professor=$value['nome_professor'];
