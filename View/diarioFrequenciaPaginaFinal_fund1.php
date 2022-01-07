@@ -70,7 +70,7 @@ if ($idserie <3) {
     <span style='mso-ignore:vglayout;
   position:absolute;z-index:251659264;margin-top:0px;
   width:68px;height:75px'><img width=68 height=75
-  src="pla_arquivos/image001.png" v:shapes="Imagem_x0020_6"></span><span
+  src="imagens/logo.png" v:shapes="Imagem_x0020_6"></span><span
   style='font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
   "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p></o:p></span></p><br>
   

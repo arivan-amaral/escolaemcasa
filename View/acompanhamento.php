@@ -193,7 +193,7 @@ div.WordSection1
     <td width=15 height=11></td>
    </tr>
    <tr>
-    <td><img width=53 height=60 src="pla_arquivos/image001.png" v:shapes="Imagem_x0020_3"></td>
+    <td><img width=53 height=60 src="imagens/logo.png" v:shapes="Imagem_x0020_3"></td>
    </tr>
   </table>
   </span><![endif]><span style='font-size:10.0pt;font-family:"Arial",sans-serif;
