@@ -191,7 +191,7 @@ if ($_SESSION['cargo']=="Secretário" || $_SESSION['cargo']=="Coordenador"){
           
                    <style type="text/css">
                     #input > * {
-                      height: 1.3em;
+                      height: 2.0em;
                       float: left;
                     }
 

@@ -27,8 +27,6 @@ if (!isset($_SESSION['idprofessor'])) {
 
 ?>
 
-
-
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 
 
@@ -43,8 +41,9 @@ if (!isset($_SESSION['idprofessor'])) {
 
         <div class="row mb-2">
 
-          <div class="col-sm-10 alert alert-warning">
-
+          <div class="col-sm-12 alert alert-warning">
+            <center>
+              
             <h1 class="m-0"><b>           
 
              <?php
@@ -57,20 +56,10 @@ if (!isset($_SESSION['idprofessor'])) {
             } 
 
              ?></b></h1>
+            </center>
 
           </div><!-- /.col -->
-
-          <div class="col-sm-2">
-
-            <ol class="breadcrumb float-sm-right">
-
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-
-              <li class="breadcrumb-item active">Início</li>
-
-            </ol>
-
-          </div><!-- /.col -->
+ 
 
         </div><!-- /.row -->
 

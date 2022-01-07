@@ -7,6 +7,7 @@ if (!isset($_SESSION['idfuncionario'])) {
 }else{
 
   $idcoordenador=$_SESSION['idfuncionario'];
+  $idfuncionario=$_SESSION['idfuncionario'];
  
 }
   include "cabecalho.php";
@@ -20,9 +21,13 @@ if (!isset($_SESSION['idfuncionario'])) {
   include '../Model/Conexao.php';
 
   include '../Model/Aluno.php';
+  include '../Model/Coordenador.php';
+  include '../Model/Escola.php';
+  include '../Model/Serie.php';
 
   $idturma=$_GET['idturma']; 
   $idescola=$_GET['idescola']; 
+  $serie_id=$_GET['idserie']; 
 
 ?>
 
@@ -87,7 +92,7 @@ if (!isset($_SESSION['idfuncionario'])) {
 
       <div class="row">
           <div class="col-sm-3">
-            <a href="" class="btn btn-block btn-primary">Transferir selecionados</a>
+            <a  class="btn btn-block btn-primary" onclick="procedimento_transferencia();"  data-toggle='modal' data-target='#modal_transferencia'>Transferir selecionados</a>
           </div>
 
           <div class="col-sm-3">
@@ -100,6 +105,12 @@ if (!isset($_SESSION['idfuncionario'])) {
 
 
       </div>
+
+
+ 
+<form action=" " name="procedimentos" id="procedimentos" method="post">
+
+ 
 
 
       <div class="row">
@@ -365,7 +376,100 @@ if (!isset($_SESSION['idfuncionario'])) {
   </script> -->
 
 
+  <div class="modal fade bd-example-modal-lg" id="modal_transferencia">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">PROCEDIMENTO TRANSFERÊNCIA</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+            <div class="modal-body">    
+          
+                <div class="row">
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Escola pretendida</label>
+                      <select class="form-control"  name="escola_id" id="escola" required onchange="listar_vagas_turma_transferencia_aluno()">
+                        <option></option>
+                        <option value='ESCOLA FORA DO MUNICÍPIO' style='color: black; background-color:#8B0000;'>ESCOLA FORA DO MUNICÍPIO </option>
+                        <?php 
+                        $res_turma=escola_associada($conexao,$idfuncionario); 
+                        $array_escolas_coordenador=array();
+                        $conta_escolas=0;
+                        foreach ($res_turma as $key => $value) {
+                          $array_escolas_coordenador[$conta_escolas]=$value['idescola'];
+                          $conta_escolas++;
+                        }
 
+                        $res_escola=lista_escola($conexao);
+                        foreach ($res_escola as $key => $value) {
+                         $idescola=$value['idescola'];
+                         $nome_escola=$value['nome_escola'];
+                         
+                          if (in_array($idescola, $array_escolas_coordenador) ) { 
+                            echo"<option value='$idescola' style='color: white; background-color:#A9A9A9;'>$nome_escola </option>";
+                          }else{
+                              echo"<option value='$idescola'>$nome_escola </option>";
+                          }
+
+                         
+                        }
+                       ?>
+                     </select>
+                   </div>
+                 </div>
+                 <div class="col-sm-3">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Série</label>
+                    <select class="form-control"  name="serie_id" id="serie" >
+              
+
+                      <?php 
+                      $res_serie=pesquisar_serie_por_id($conexao,$serie_id);
+                      foreach ($res_serie as $key => $value) {
+                        $id=$value['id'];
+                        $nome_serie=$value['nome'];
+                        echo "<option value='$id'>$nome_serie </option>";
+                      }
+                      ?>
+                    </select>
+                  </div>
+                </div>       
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Observação</label>
+                    <textarea class="form-control"  name="observacao" ></textarea>
+                  </div>
+                </div>
+
+              </div>
+            
+
+                 
+                   <div class="modal-footer justify-content-between">
+                       <button type="button" class="btn btn-default" data-dismiss="modal">FECHAR</button>
+                       <div id="botao_continuar" onclick='carregando_login()'>
+                         <button type="submit" class="btn btn-primary" >TRANSFERIR SELECIONADOS</button>
+                       </div>
+                  </div>
+
+                <!-- /corpo -->
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+
+  </form>
+
+  <script>
+    function procedimento_transferencia(){
+      document.procedimentos.action = "../Controller/Tranferir_aluno.php";
+    }
+  </script>
 
  <?php 
 
