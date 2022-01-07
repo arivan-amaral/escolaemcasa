@@ -23,7 +23,7 @@ try {
                 $_SESSION['status']=1;
                 cadastrar_turma_escola($conexao,$escola,$turma,$turno,$ano,$vagas);
             }else{
-                $_SESSION['mensagem'] = "Alguns cadastros ja estão no sistema, eles não foram enviados para evitar duplicidade";
+                $_SESSION['mensagem'] = "Alguns cadastros já estão no sistema, eles não foram enviados para evitar duplicidade!";
                 $_SESSION['status']=0;
             }
         }   
@@ -31,7 +31,7 @@ try {
     header("location:../View/cadastro_turma_escola.php");
         
 } catch (Exception $exc) {
-    $_SESSION['mensagem'] = 'beneficiario ja cadastrado no sistema!!!';
+    $_SESSION['mensagem'] = 'Erro, verifique os dados e tente novamente!';
     $_SESSION['status'] = 0;
    //header("location:../View/painel.php");
    echo $exc;

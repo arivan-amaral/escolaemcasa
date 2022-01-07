@@ -42,8 +42,8 @@ if (!isset($_SESSION['idfuncionario'])) {
 
         <div class="row mb-2">
 
-          <div class="col-sm-10 alert alert-warning">
-
+          <div class="col-sm-12 alert alert-warning">
+<center>
             <h1 class="m-0"><b>
 
              <?php
@@ -59,20 +59,11 @@ if (!isset($_SESSION['idfuncionario'])) {
             } 
 
              ?></b></h1>
+</center>
 
           </div><!-- /.col -->
 
-          <div class="col-sm-2">
-
-            <ol class="breadcrumb float-sm-right">
-
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-
-              <li class="breadcrumb-item active">Início</li>
-
-            </ol>
-
-          </div><!-- /.col -->
+          
 
         </div><!-- /.row -->
 
@@ -95,6 +86,23 @@ if (!isset($_SESSION['idfuncionario'])) {
 
 
       <div class="row">
+          <div class="col-sm-3">
+            <a href="" class="btn btn-block btn-primary">Transferir selecionados</a>
+          </div>
+
+          <div class="col-sm-3">
+            <a href="" class="btn btn-block btn-success">Rematricular selecionados</a>
+          </div>   
+
+          <div class="col-sm-3">
+            <a href="" class="btn btn-block btn-success">Trocar de turma os selecionados</a>
+          </div>
+
+
+      </div>
+
+
+      <div class="row">
 
        <div class="card-body">
 
@@ -102,7 +110,12 @@ if (!isset($_SESSION['idfuncionario'])) {
 
           <thead>
             <tr>
-              <th style="width: 10px">#id</th>
+              <th style="width: 20px">
+                Todos
+               <input type='checkbox' id='checkTodos' class='checkbox' name='checkTodos' onclick='seleciona_todos_alunos();'> 
+              </th>
+
+              
               <th>Dados do Aluno</th>
               <th>Opção</th>
             </tr>
@@ -143,7 +156,7 @@ if (!isset($_SESSION['idfuncionario'])) {
     echo "
 
        <tr>
-        <td>$idaluno</td>
+    
 
         <td> 
           <b class='text-success'> $nome_aluno </b> <BR>
@@ -206,9 +219,9 @@ if (!isset($_SESSION['idfuncionario'])) {
 
                   echo "
                      <tr>
-                      <td>$id</td>
-
-                      <td> 
+                     <td><p><input type='checkbox' class='checkbox' name='aluno$id '  value='$id'  >   </p></td>
+              
+                      <td>$id -
                         <b class='text-primary'> $nome_turma</b><BR>
                         <b class='text-success'> $nome_aluno </b> <BR>
                         <b class='text-danger'>$email  </b><BR>
@@ -283,7 +296,24 @@ if (!isset($_SESSION['idfuncionario'])) {
 
   <script type="text/javascript">
 
-    /* Máscaras ER */
+    function seleciona_todos_alunos(){
+
+      var checkBoxes = document.querySelectorAll('.checkbox');
+      var selecionados = 0;
+      checkBoxes.forEach(function(el) {
+         if(el.checked) {
+             //selecionados++;
+             console.log(el.value);
+            el.checked=false;
+         }else{
+           
+            el.checked=true;
+         }
+        
+      });
+     // console.log(selecionados);
+
+    }
 
     function mascara(o,f){
 

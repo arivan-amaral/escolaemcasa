@@ -656,7 +656,11 @@ $idcoordenador=$_SESSION['idfuncionario'];
               <div class="tab-pane fade" id="custom-tabs-two-settings" role="tabpanel" aria-labelledby="custom-tabs-two-settings-tab">
                   <div class="card-body">
                  
-           
+<script>
+ document.getElementById("idserie").onchange = function(){
+    var value = document.getElementById("idserie").value;
+ };
+</script>
             
                     <div class="row">
                       <div class="col-sm-3">
@@ -710,7 +714,7 @@ $idcoordenador=$_SESSION['idfuncionario'];
                                                           
 
                       <span id="turmas">
-                        <input type="hidden" name="turma" value="">
+                        <input type="hidden" name="idturma" value="">
                       </span>            
 
                        <span id="etapa">

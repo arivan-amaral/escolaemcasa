@@ -676,8 +676,8 @@ necessidade_especial,
  matricula_certidao,
  uf_municipio_cartorio,
  cartorio,
- $nome_responsavel,
- $cpf_responsavel
+ nome_responsavel,
+ cpf_responsavel
  ) VALUES (
     :nome,
     :sexo,
@@ -1193,6 +1193,7 @@ ecidade_matricula.turma_id = turma.idturma and
 ecidade_matricula.turma_escola = escola.idescola and 
 ecidade_matricula.calendario_ano ='$ano_letivo' and 
  
+ecidade_matricula.matricula_concluida='N' and
 ecidade_matricula.turma_escola=$escola_id and
 ecidade_matricula.matricula_situacao !='CANCELADO' and
 ecidade_matricula.turma_id=$turma_id  ORDER by aluno.nome ASC");

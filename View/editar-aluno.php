@@ -11,10 +11,10 @@ include_once "../Model/Estado.php";
 include_once "../Model/Coordenador.php"; 
 include_once "../Model/Aluno.php"; 
 $idcoordenador=$_SESSION['idfuncionario'];
+$id = $_POST['aluno_id'];
 
 
 
-$id = 50003;
 $res =pesquisar_aluno2($conexao,$id);
 $nome = "";
 $sexo = "";
@@ -149,7 +149,7 @@ foreach ($res as $key => $value) {
         <div class="card card-primary card-tabs">
           <div class="card-header p-0 pt-1">
             <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
-              <li class="pt-2 px-3"><h3 class="card-title">CADASTRAR ALUNO</h3></li>
+              <li class="pt-2 px-3"><h3 class="card-title">EDITANDO DADOS DO ALUNO</h3></li>
             <li class="nav-item">
                 <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Dados Pessoais</a>
               </li>

@@ -6,7 +6,7 @@
     
 
 try {
-
+ 
     $professor_id=$_SESSION['idfuncionario'];
  
     $res_turma=escola_associada($conexao,$professor_id); 
@@ -95,6 +95,19 @@ try {
                                       <input type='hidden' name='serie_id' value='$idserie'>
                                       <input type='hidden' name='nome_aluno' value='$nome_aluno'>
                                       <button type='submit' class='dropdown-item'  >Transferência</button>
+                               
+                                  </form>
+                                  </li>"; 
+
+                                $result.="
+                                  <li>
+                                  <form name='editar$idaluno' action='editar-aluno.php' method='post' >
+                                      <input type='hidden' name='aluno_id' value='$idaluno'>
+                                      <input type='hidden' name='escola_id' value='$idescola'>
+                                      <input type='hidden' name='turma_id' value='$idturma'>
+                                      <input type='hidden' name='serie_id' value='$idserie'>
+                                      <input type='hidden' name='nome_aluno' value='$nome_aluno'>
+                                      <button type='submit' class='dropdown-item'  >Editar dados</button>
                                
                                   </form>
                                   </li>";        

@@ -346,7 +346,7 @@ function cadastro_aluno(){
   var tudo_certo=true;
   var escola =document.getElementById('escola').value;
   var serie =document.getElementsByName('serie')[0].value;
-  var turma =document.getElementsByName('turma')[0].value;
+  var turma =document.getElementsByName('idturma')[0].value;
   
    if (!!document.getElementsByName('etapa')) {
     var etapa ="";
@@ -1615,10 +1615,19 @@ function adicionar_turma_escola(){
     var turma = turma_objeto.value;
     var option_turma = turma_objeto.children[turma_objeto.selectedIndex];
     var nome_turma = option_turma.textContent;
+    
+    if (escola=="" || turno =="" || serie =="" || turma=="" || ano=="" || vagas=="") {
+        Swal.fire({
+          icon: 'info',
+          title: 'Atenção...',
+          text: 'Preencha todos os campos!',
+          showConfirmButton: false,
+          timer: 1500
+        });
 
-    var item = "div_"+Math.random();
-
-    tabela.innerHTML+=""+
+    }else{
+        var item = "div_"+escola+serie+turma+turno;
+        tabela.innerHTML+=""+
             "<tr id='"+item+"'>"+
               "<td><input type='hidden' class='form-control' id='escola' name='escola[]' value='"+escola+"' > "+nome_escola+"</td>"+
               "<td><input type='hidden' class='form-control' id='turno' name='turno[]' value='"+turno+"' >"+turno+"</td>"+
@@ -1631,6 +1640,7 @@ function adicionar_turma_escola(){
             document.getElementById('idserie').value = "";
             document.getElementById('quantidade_vaga').value = "";
             document.getElementById('idturma').value = "";
+    }
 
 }
 
