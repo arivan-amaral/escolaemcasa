@@ -2,9 +2,28 @@
   include"../Controller/Conversao.php";
   include"../Model/Coordenador.php";
   include"../Model/Aluno.php";
+  include"../Model/Professor.php";
   include"../Controller/Cauculos_notas.php";
 
- function rendimento($conexao,$idescola,$idturma,$iddisciplina,$idserie){
+ function rendimento($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_professor){
+
+
+if ($idserie <3) {
+  $tipo_ensino="Educação Infantil";
+}if ($idserie >=3 && $idserie <8) {
+  $tipo_ensino="Ensino Fundamental - Anos Iniciais";
+}else if($idserie >= 8 && $idserie <=11){
+  $tipo_ensino="Ensino Fundamental - Anos Finais";
+
+}else if ($idserie>11) {
+  $tipo_ensino="Educação de Jovens e Adultos";
+
+}
+$result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina=$iddisciplina");
+foreach ($result_disc as $key => $value) {
+  $nome_disciplina=$value['nome_disciplina'];
+}
+
 ?>
 
 <html xmlns:v="urn:schemas-microsoft-com:vml"
@@ -273,7 +292,7 @@ div.WordSection1
   <td width=807 colspan=12 valign=bottom style='width:605.25pt;border:none;
   border-left:solid windowtext 1.0pt;padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
-  style='font-size:15.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+  style='font-size:13.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
   color:black;mso-fareast-language:PT-BR'>ESCOLA MUNICIPAL:<span
   style='mso-spacerun:yes'> </span><o:p>
@@ -299,7 +318,7 @@ foreach ($result_escola as $key => $value) {
   <td width=807 colspan=12 valign=bottom style='width:605.25pt;border:none;
   border-left:solid windowtext 1.0pt;padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
-  style='font-size:15.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+  style='font-size:13.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
   color:black;mso-fareast-language:PT-BR'>ENDEREÇO:<span
   style='mso-spacerun:yes'> </span><o:p></o:p></span></b></p>
@@ -316,16 +335,36 @@ foreach ($result_escola as $key => $value) {
   <td width=807 colspan=12 valign=bottom style='width:605.25pt;border:none;
   border-left:solid windowtext 1.0pt;padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
-  style='font-size:15.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+  style='font-size:13.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-  color:black;mso-fareast-language:PT-BR'>TIPO DE ENSINO:  <o:p></o:p></span></b></p>
-  </td>
+  color:black;mso-fareast-language:PT-BR'>TIPO DE ENSINO: <?php echo "$tipo_ensino"; ?>  <o:p></o:p></span></b></p>
+  </td>  
+
   <td width=326 valign=bottom style='width:244.75pt;border:none;border-right:
   solid windowtext 1.0pt;padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
   style='font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
   color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></b></p>
+  </td>
+ </tr> 
+
+ <tr style='mso-yfti-irow:7;height:12.0pt'>
+  
+  <td width=807 colspan=12 valign=bottom style='width:605.25pt;border:none;
+  border-left:solid windowtext 1.0pt;padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
+  style='font-size:13.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+  mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+  color:black;mso-fareast-language:PT-BR'>Professor: <?php echo "$nome_professor"; ?>  <o:p></o:p></span></b></p>
+  </td>  
+
+  <td width=326 valign=bottom style='width:244.75pt;border:none;border-right:
+  solid windowtext 1.0pt;padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
+  style='font-size:13.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+  mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+  color:black;mso-fareast-language:PT-BR'>DISCIPLINA: <?php echo "$nome_disciplina"; ?><o:p></o:p></span></b></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:8;height:5.25pt'>
