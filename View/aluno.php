@@ -466,7 +466,7 @@ if ($prova_ativa==0 && $conta_simulado ==0) {
                   }
                   </style>
 
-                      <div class='card card-widget widget-user shadow-lg' quadro>
+                      <div class='card card-widget widget-user shadow-lg quadro'>
 
                         <!-- Add the bg color to the header using any of the bg-* classes -->
 
