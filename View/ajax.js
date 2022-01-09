@@ -1588,6 +1588,42 @@ function lista_de_turmas(id){
     xmlreq.send(null);
 }
 
+
+function lista_turma_escola_por_serie(campo_listagem){
+  var result = document.getElementById(campo_listagem);
+  var escola_id = document.getElementById("rematricula_escola_id").value;
+  
+  if (campo_listagem=='troca_turma') {
+    var id = document.getElementById("troca_turma_serie_id").value;
+    var turno = document.getElementById("troca_turma_turno").value;
+
+  }else{
+
+  var id = document.getElementById("rematricula_nova_serie").value;
+  var turno = document.getElementById("rematricula_turno").value;
+  }
+  var xmlreq = CriaRequest();   
+  result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
+
+   xmlreq.open("GET", "../Controller/Lista_de_turmas_por_escola_serie.php?turno="+turno+"&escola_id="+escola_id+"&serie_id="+id, true);
+    xmlreq.onreadystatechange = function(){      
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {
+
+                   result.innerHTML =  xmlreq.responseText;
+                
+            }else{
+                   result.innerHTML = "Erro ao pesquisar";
+                
+                
+            }
+        }
+    };
+    xmlreq.send(null);
+}
+
+
+
 function remover_turma_escola(itemid){
   var element = document.getElementById(itemid); // will return element
   element.parentNode.removeChild(element); // will remove the element from DOM

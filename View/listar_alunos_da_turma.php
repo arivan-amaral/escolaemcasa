@@ -29,8 +29,10 @@ include '../Model/Nota.php';
 
 $idturma=$_GET['idturma']; 
 $idescola=$_GET['idescola']; 
+$rematricula_escola_id=$_GET['idescola']; 
 $serie_id=$_GET['idserie']; 
 $idserie=$_GET['idserie']; 
+$idserie_atual=$_GET['idserie']; 
 
 ?>
 
@@ -574,7 +576,24 @@ function addChecked(id) {
         <div class="modal-body">    
       
             <div class="row">
-              <div class="col-sm-3">
+
+                 <div class="col-sm-2">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Ano letivo</label>
+                  <select  id="ano_letivo" class="form-control" onchange="mudar_ano_letivo(this.value);">
+                           <?php 
+                             if (isset($_SESSION['ano_letivo'])) {    
+                                  $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
+                                  echo "<option value='$ano_letivo_vigente' selected>$ano_letivo_vigente</option>";                            
+                             }
+                            ?>
+                          
+                      </select>
+                </div>
+              </div> 
+
+
+              <div class="col-sm-4">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Escola pretendida</label>
                   <select class="form-control"  name="escola_id" id="escola" required onchange="listar_vagas_turma_transferencia_aluno()">
@@ -606,7 +625,7 @@ function addChecked(id) {
                  </select>
                </div>
              </div>
-             <div class="col-sm-3">
+             <div class="col-sm-2">
               <div class="form-group">
                 <label for="exampleInputEmail1">Série</label>
                 <select class="form-control"  name="serie_id" id="serie" >
@@ -623,7 +642,7 @@ function addChecked(id) {
                 </select>
               </div>
             </div>       
-            <div class="col-sm-6">
+            <div class="col-sm-4">
               <div class="form-group">
                 <label for="exampleInputEmail1">Observação</label>
                 <textarea class="form-control"  name="observacao" ></textarea>
@@ -663,10 +682,26 @@ function addChecked(id) {
         <div class="modal-body">    
       
             <div class="row">
-              <div class="col-sm-3">
+
+               <div class="col-sm-2">
               <div class="form-group">
-                <label for="exampleInputEmail1">Série</label>
-                <select class="form-control"  name="serie_id" id="serie" >
+                <label for="exampleInputEmail1">Ano letivo</label>
+                <select  id="ano_letivo" class="form-control" onchange="mudar_ano_letivo(this.value);">
+                         <?php 
+                           if (isset($_SESSION['ano_letivo'])) {    
+                                $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
+                                echo "<option value='$ano_letivo_vigente' selected>$ano_letivo_vigente</option>";                            
+                           }
+                          ?>
+                        
+                    </select>
+              </div>
+            </div>  
+              <div class="col-sm-2">
+              <div class="form-group">
+                <input type="hidden" name="rematricula_escola_id" id="rematricula_escola_id" value="<?php echo $rematricula_escola_id; ?>">
+                <label for="exampleInputEmail1">Série atual</label>
+                <select class="form-control"  name="serie_id" id="serie" required>
           
 
                   <?php 
@@ -674,10 +709,55 @@ function addChecked(id) {
                   foreach ($res_serie as $key => $value) {
                     $id=$value['id'];
                     $nome_serie=$value['nome'];
+                    
+                      echo "<option value='$id'>$nome_serie </option>";
+                
+                  }
+                  ?>
+                </select>
+              </div>
+            </div>    
+
+            <div class="col-sm-3">
+              <div class="form-group">
+           
+                <label for="exampleInputEmail1">Turno</label>
+                <select class="form-control" onchange="lista_turma_escola_por_serie('lista_de_turmas_rematricula');" name="rematricula_turno" id="rematricula_turno" >
+                      <option></option>
+                       <option value="MATUTINO">MATUTINO</option>
+                       <option value="VESPERTINO">VESPERTINO</option>
+                       <option value="VESPERTINO">NOTURNO</option>
+                </select>
+              </div>
+            </div>              
+
+            <div class="col-sm-2">
+              <div class="form-group">
+                <label for="exampleInputEmail1" class="text-danger">Nova Série</label>
+                <select class="form-control"  name="rematricula_nova_serie" id="rematricula_nova_serie" required onchange="lista_turma_escola_por_serie('lista_de_turmas_rematricula');" >
+                  <option></option>
+                  <?php 
+                  $res_serie=pesquisar_serie_por_id($conexao,$serie_id);
+                  foreach ($res_serie as $key => $value) {
+                    $id=$value['id'];
+                    $nome_serie=$value['nome'];
+                    echo "<option value='$id'>$nome_serie </option>";
+                  }       
+
+                  $res_serie=pesquisar_serie_por_id($conexao,$serie_id+1);
+                  foreach ($res_serie as $key => $value) {
+                    $id=$value['id'];
+                    $nome_serie=$value['nome'];
                     echo "<option value='$id'>$nome_serie </option>";
                   }
                   ?>
                 </select>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="form-group" id="lista_de_turmas_rematricula">
+               
               </div>
             </div>       
     
@@ -688,7 +768,8 @@ function addChecked(id) {
              
                <div class="modal-footer justify-content-between">
                    <button type="button" class="btn btn-default" data-dismiss="modal">FECHAR</button>
-                   <div id="botao_continuar" onclick='carregando_login()'>
+                   <!-- onclick='carregando_login()' -->
+                   <div id="botao_continuar" >
                      <button type="submit" class="btn btn-primary" >REMATRICULAR SELECIONADOS</button>
                    </div>
               </div>
@@ -719,9 +800,9 @@ function addChecked(id) {
                 <label for="exampleInputEmail1">Ano letivo</label>
                 <select  id="ano_letivo" class="form-control" onchange="mudar_ano_letivo(this.value);">
                          <?php 
-                           if (isset($_SESSION['ano_letivo'])) {    
-                                $ano_letivo=$_SESSION['ano_letivo'];
-                                echo "<option value='$ano_letivo' selected>$ano_letivo</option>";                            
+                           if (isset($_SESSION['ano_letivo_vigente'])) {    
+                                $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
+                                echo "<option value='$ano_letivo_vigente' selected>$ano_letivo_vigente</option>";                            
                            }
                           ?>
                         
@@ -729,10 +810,10 @@ function addChecked(id) {
               </div>
             </div>   
 
-     <div class="col-sm-3">
+     <div class="col-sm-2">
               <div class="form-group">
                 <label for="exampleInputEmail1">Série atual</label>
-                <select class="form-control"  name="serie_id" id="serie" >
+                <select class="form-control"  name="troca_turma_serie_id" id="troca_turma_serie_id" required>
           
 
                   <?php 
@@ -745,7 +826,29 @@ function addChecked(id) {
                   ?>
                 </select>
               </div>
-            </div>       
+            </div>    
+
+   
+
+
+                 <div class="col-sm-3">
+                   <div class="form-group">
+                 
+                     <label for="exampleInputEmail1" class="text-danger">Novo Turno</label>
+                     <select class="form-control" onchange="lista_turma_escola_por_serie('troca_turma');" name="troca_turma_turno" id="troca_turma_turno" required >
+                           <option></option>
+                            <option value="MATUTINO">MATUTINO</option>
+                            <option value="VESPERTINO">VESPERTINO</option>
+                            <option value="VESPERTINO">NOTURNO</option>
+                     </select>
+                   </div>
+                 </div> 
+                 <div class="col-sm-3">
+                   <div class="form-group" id="troca_turma">
+                 
+                     
+                   </div>
+                 </div> 
     
 
           </div>

@@ -106,6 +106,23 @@ function lista_de_turmas($conexao,$serie_id){
     return $result;
 
 }
+
+function lista_de_turmas_das_escolas($conexao,$serie_id,$escola_id,$turno,$ano_letivo_vigente){
+
+   $result = $conexao->query("
+      SELECT * FROM serie,turma,relacionamento_turma_escola where 
+   turma.serie_id=serie.id and
+   relacionamento_turma_escola.turma_id=turma.idturma and 
+   relacionamento_turma_escola.escola_id=$escola_id and
+   turma.serie_id=$serie_id and
+     turno='$turno' and
+     ano=$ano_letivo_vigente 
+
+     ORDER BY nome_turma asc");
+
+    return $result;
+
+}
 // function pesquisar_turma_por_escola_por_id($conexao,$idescola,$idturma){
 
 //    $result = $conexao->query("SELECT * FROM turma,escola where serie_id=$serie_id  ORDER BY nome_turma asc");
