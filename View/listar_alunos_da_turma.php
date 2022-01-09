@@ -716,7 +716,22 @@ function addChecked(id) {
             <div class="row">
               <div class="col-sm-3">
               <div class="form-group">
-                <label for="exampleInputEmail1">Série</label>
+                <label for="exampleInputEmail1">Ano letivo</label>
+                <select  id="ano_letivo" class="form-control" onchange="mudar_ano_letivo(this.value);">
+                         <?php 
+                           if (isset($_SESSION['ano_letivo'])) {    
+                                $ano_letivo=$_SESSION['ano_letivo'];
+                                echo "<option value='$ano_letivo' selected>$ano_letivo</option>";                            
+                           }
+                          ?>
+                        
+                    </select>
+              </div>
+            </div>   
+
+     <div class="col-sm-3">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Série atual</label>
                 <select class="form-control"  name="serie_id" id="serie" >
           
 
