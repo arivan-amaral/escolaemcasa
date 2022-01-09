@@ -205,9 +205,12 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
 <?php
 
       $iddisciplina="";
-      $media_aprovacao=true;
+      $media_aprovacao=false;
       $aprovacao_conselho=false;
       foreach ($array_disciplina as $key => $value) {
+           $media_aprovacao=false;
+           $aprovacao_conselho=false;
+            
             $iddisciplina=$array_disciplina[$key];
          
   ?>
@@ -219,12 +222,7 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
         <?php
         if ($idserie>3) {
   
-             $result_nota_aula1=$conexao->query("
-               SELECT * FROM nota WHERE
-               escola_id=$idescola and
-               turma_id=$idturma and
-               disciplina_id=$iddisciplina and 
-               periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
+             $result_nota_aula1=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,1);
 
              $nota_tri_1=0;
              $nota_av3_1='';
@@ -241,9 +239,7 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
                  $nota_rp_1=$value['nota'];
                }
              }
-            //  if ($nota_tri_1<5 && $nota_rp_1!='' && $nota_rp_1>$nota_av3_1) {
-            //   $nota_tri_1=($nota_tri_1-$nota_av3_1)+$nota_rp_1;
-            // }
+        
       $nota_tri_1=calculos_media_notas($nota_tri_1,$nota_rp_1,$nota_av3_1);
 
             //echo "$nota_tri_1";
@@ -252,8 +248,10 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
 
 
  <?php
+  
+      $result_nota_aula2=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,2);
 
-      $result_nota_aula2=$conexao->query("
+      $conexao->query("
         SELECT * FROM nota WHERE
         escola_id=$idescola and
         turma_id=$idturma and
@@ -285,9 +283,7 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
 
       }
 
-     //  if ($nota_tri_2<5 && $nota_rp_2!='' && $nota_rp_2>$nota_av3_2) {
-     //   $nota_tri_2=($nota_tri_2-$nota_av3_2)+$nota_rp_2;
-     // }
+    
       $nota_tri_2=calculos_media_notas($nota_tri_2,$nota_rp_2,$nota_av3_2);
      
 
@@ -298,12 +294,7 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
 
       <?php
 
-   $result_nota_aula3=$conexao->query("
-     SELECT * FROM nota WHERE
-     escola_id=$idescola and
-     turma_id=$idturma and
-     disciplina_id=$iddisciplina and 
-     periodo_id=3 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
+   $result_nota_aula3=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,3);
 
 
    $nota_tri_3=0;
@@ -336,6 +327,8 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
   if ($media >= 5) {
       echo number_format($media, 1, '.', ',');
       $media_aprovacao=true;
+      $aprovacao_conselho=false;
+
 
   }else{
       $res_conselho=buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno);
@@ -345,7 +338,7 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
           $media_conselho=number_format('5', 1, '.', ',');
           echo "<b>$media_conselho</b>";
           
-          $media_aprovacao=true;
+          $media_aprovacao=false;
           $aprovacao_conselho=true;
       }else{
           echo number_format($media, 1, '.', ',');
@@ -358,6 +351,8 @@ $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescol
 }//se serie for menor que 3
 else{
   echo "Apr";
+  $media_aprovacao=true;
+
 }
 ?>
       </span></p>

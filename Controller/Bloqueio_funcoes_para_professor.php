@@ -1,13 +1,13 @@
  <?php 
  /////////////////////////////////////////////////////////
-    
+   if (isset($_SESSION['idprofessor'])) {
         if(
-            $_SESSION['idprofessor']==401 ||
-            $_SESSION['idprofessor']==339 ||
-            $_SESSION['idprofessor']==1030 ||
-            $_SESSION['idprofessor']==504 ||
-            $_SESSION['idprofessor']==409 ||
-            $_SESSION['idprofessor']==523 ||
+         $_SESSION['idprofessor']==401 ||
+         $_SESSION['idprofessor']==339 ||
+         $_SESSION['idprofessor']==1030 ||
+         $_SESSION['idprofessor']==504 ||
+         $_SESSION['idprofessor']==409 ||
+         $_SESSION['idprofessor']==523 ||
          $_SESSION['idprofessor']==772 ||
          $_SESSION['idprofessor']==1401 ||
          $_SESSION['idprofessor']==733 ||
@@ -65,5 +65,5 @@
               header("location: ../View/index.php?$url_get");
                 exit;
         }
-  
+  }
     /////////////////////////////////////////////////////////

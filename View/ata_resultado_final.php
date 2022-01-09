@@ -4,6 +4,7 @@ include_once '../Model/Conexao.php';
 include_once '../Controller/Conversao.php';
 include_once '../Model/Aluno.php';
 include_once '../Model/Turma.php';
+include_once '../Model/Nota.php';
 include_once 'ata_resultado_final_funcao.php';
 include_once '../Controller/Cauculos_notas.php';
 // include_once 'capa_turma_funcao.php';
