@@ -37,16 +37,18 @@
         <select  id="ano_letivo" class="" onchange="mudar_ano_letivo(this.value);">
           <?php 
             if (isset($_SESSION['ano_letivo'])) {
-               ;
-              if ($_SESSION['ano_letivo'] ==2022 ) {
-                  echo "<option  value='2022' selected>2022</option>";
-                echo "<option value='2021'>2021</option>";
+              if ( $_SESSION['cargo']!="Aluno" && $_SESSION['cargo']!="Aluna") {
+                 
+                if ($_SESSION['ano_letivo'] ==2022 ) {
+                    echo "<option  value='2022' selected>2022</option>";
+                  echo "<option value='2021'>2021</option>";
 
-              }else{
-                echo "<option value='2021' selected>2021</option>";
-                  echo "<option  value='2022' >2022</option>";
+                }else{
+                  echo "<option value='2021' selected>2021</option>";
+                    echo "<option  value='2022' >2022</option>";
 
 
+                }
               }
             }
            ?>

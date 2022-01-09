@@ -2,7 +2,7 @@
 
 session_start();
 if (!isset($_SESSION['idfuncionario'])) {
-     header("location:index.php?status=0");
+   header("location:index.php?status=0");
 
 }else{
 
@@ -42,72 +42,72 @@ $idserie=$_GET['idserie'];
 
 <div class="content-wrapper" style="min-height: 529px;">
 
-  <!-- Content Header (Page header) -->
+<!-- Content Header (Page header) -->
 
-  <div class="content-header">
+<div class="content-header">
 
-    <div class="container-fluid">
+  <div class="container-fluid">
 
-      <div class="row mb-2">
+    <div class="row mb-2">
 
-        <div class="col-sm-12 alert alert-warning">
+      <div class="col-sm-12 alert alert-warning">
 <center>
-          <h1 class="m-0"><b>
+        <h1 class="m-0"><b>
 
-           <?php
-            if (isset($nome_escola_global)) {
-              echo $nome_escola_global; 
-            }
-            ?>
+         <?php
+          if (isset($nome_escola_global)) {
+            echo $nome_escola_global; 
+          }
+          ?>
 
-           <?php if (isset($_SESSION['nome'])) {
+         <?php if (isset($_SESSION['nome'])) {
 
-            echo " ".$_SESSION['nome'];  
+          echo " ".$_SESSION['nome'];  
 
-          } 
+        } 
 
-           ?></b></h1>
+         ?></b></h1>
 </center>
 
-        </div><!-- /.col -->
+      </div><!-- /.col -->
 
-        
+      
 
-      </div><!-- /.row -->
+    </div><!-- /.row -->
 
-    </div><!-- /.container-fluid -->
+  </div><!-- /.container-fluid -->
+
+</div>
+
+<!-- /.content-header -->
+
+
+
+<!-- Main content -->
+
+<section class="content">
+
+  <div class="container-fluid">
+    <!-- Info boxes -->
+    <!-- .row -->
+
+
+
+  <div class="row">
+      <div class="col-sm-3">
+        <a  class="btn btn-block btn-primary" onclick="mudar_action_form('Tranferir_aluno.php');"  data-toggle='modal' data-target='#modal_transferencia'>Transferir selecionados</a>
+      </div>
+
+      <div class="col-sm-3">
+        <a href="" class="btn btn-block btn-success" onclick="mudar_action_form('Rematricular_aluno.php');"  data-toggle='modal' data-target='#modal_rematricula'>Rematricular selecionados</a>
+      </div>   
+
+      <div class="col-sm-3">
+        <a href="" class="btn btn-block btn-primary" onclick="mudar_action_form('Troca_aluno_de_turma.php');"  data-toggle='modal' data-target='#modal_troca_de_turma'>Trocar de turma os selecionados</a>
+      </div>
+
 
   </div>
-
-  <!-- /.content-header -->
-
-
-
-  <!-- Main content -->
-
-  <section class="content">
-
-    <div class="container-fluid">
-      <!-- Info boxes -->
-      <!-- .row -->
-
-
-
-    <div class="row">
-        <div class="col-sm-3">
-          <a  class="btn btn-block btn-primary" onclick="mudar_action_form('Tranferir_aluno.php');"  data-toggle='modal' data-target='#modal_transferencia'>Transferir selecionados</a>
-        </div>
-
-        <div class="col-sm-3">
-          <a href="" class="btn btn-block btn-success" onclick="mudar_action_form('Rematricular_aluno.php');"  data-toggle='modal' data-target='#modal_rematricula'>Rematricular selecionados</a>
-        </div>   
-
-        <div class="col-sm-3">
-          <a href="" class="btn btn-block btn-primary" onclick="mudar_action_form('Troca_aluno_de_turma.php');"  data-toggle='modal' data-target='#modal_troca_de_turma'>Trocar de turma os selecionados</a>
-        </div>
-
-
-    </div>
 
 
 
@@ -116,222 +116,261 @@ $idserie=$_GET['idserie'];
 
 
 
-    <div class="row">
+  <div class="row">
 
-     <div class="card-body">
+   <div class="card-body">
 
-      <table class="table table-bordered">
+    <table class="table table-bordered">
 
-        <thead>
-          <tr>
-            <th style="width: 20px">
-              Todos
-             <input type='checkbox' id='checkTodos' class='checkbox' name='checkTodos' onclick='seleciona_todos_alunos();'> 
-            </th>
+      <thead>
+        <tr>
+          <th style="width: 20px">
+            Todos
+           <input type='checkbox' id='checkTodos' class='checkbox' name='checkTodos' onclick='seleciona_todos_alunos();'> 
+          </th>
 
-            
-            <th>Dados do Aluno</th>
-            <th>Resultado</th>
-            <th>Opção</th>
-          </tr>
-        </thead>
+          
+          <th>Dados do Aluno</th>
+          <th>Resultado</th>
+          <th>Opção</th>
+        </tr>
+      </thead>
 
-        <tbody>
-          <?php
-          $conta_aluno=1; 
-          $matricula="";
-          $res_alunos=array();
-          // $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
-           foreach ($res_alunos as $key => $value) {
+      <tbody>
+        <?php
+        $conta_aluno=1; 
+        $matricula="";
+        $res_alunos=array();
+        // $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+         foreach ($res_alunos as $key => $value) {
 
+          $idaluno=$value['idaluno'];
+          $nome_aluno=$value['nome_aluno'];
+          $matricula=$value['matricula'];
+
+          $res_movimentacao=array();
+        // pesquisar_aluno_da_turma_ata_resultado_final
+          // $res_movimentacao=pesquisar_aluno_da_turma_listagem($conexao,$matricula);
+
+          $data_evento="";
+          $descricao_procedimento="";
+          $procedimento="";
+          $datasaida="";
+        
+          foreach ($res_movimentacao as $key => $value) {
+              $datasaida=($value['datasaida']);
+              $procedimento=$value['procedimento'];
+              
+              if ($datasaida!="") {
+                $datasaida=converte_data($datasaida);
+              }
+          }
+// <b class='text-primary'> $nome_turma</b><BR>
+      // <b class='text-danger'>$email  </b><BR>
+      // <b class='text-danger'>Senha: $senha  </b><BR>
+echo "
+
+   <tr>
+
+
+    <td> 
+      <b class='text-success'> $nome_aluno </b> <BR>
+      <b class='text-danger'> $procedimento $datasaida  </b> <BR>
+    
+    </td>
+    <td > ";
+    if ($procedimento=='EVADIDO') {
+
+        // echo"<div class='form-group' id='evadido_btn$matricula'>
+        //   <a class='btn btn-danger' onclick='desmarcar_aluno_evadido($matricula);'>DESMARCAR DE EVADIDO </a>
+        // </div>";  
+        
+      //  echo"<div class='form-group'>
+      //   <div class='custom-control custom-switch custom-switch-off-danger custom-switch-on-success '>
+      //     <input type='checkbox' class='custom-control-input' id='customSwitch3$id' onclick='mudar_status_aluno(1,$id)'>
+
+      //     <label class='custom-control-label' for='customSwitch3$id'></label>
+      //   </div>
+      // </div>";
+    }elseif ( $procedimento=='MATRICULADO'){
+       // echo"<div class='form-group'  id='evadido_btn$matricula'>
+       //    <a class='btn btn-primary' onclick='marcar_aluno_evadido($matricula);'>MARCAR COMO EVADIDO </a>
+       //  </div>";  
+        
+       
+       //  // echo"<div class='form-group'>
+       //    <div class='custom-control custom-switch custom-switch-on-success custom-switch-off-danger'>
+       //      <input type='checkbox' class='custom-control-input' id='customSwitch3$idaluno' onclick='mudar_status_aluno(0,$idaluno)' checked>
+
+       //      <label class='custom-control-label' for='customSwitch3$idaluno' id='customSwitch3$idaluno' ></label>
+       //    </div>
+       //  </div>";
+      
+    }
+    
+
+    echo"</td>
+
+  </tr>
+";
+
+
+      }
+?>
+
+
+
+        <?php 
+           //$result= array();
+            $result= listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+
+           foreach ($result as $key => $value) {
+            $nome_aluno=utf8_decode($value['nome_aluno']);
+            $nome_turma=($value['nome_turma']);
+            $id=$value['idaluno'];
             $idaluno=$value['idaluno'];
-            $nome_aluno=$value['nome_aluno'];
-            $matricula=$value['matricula'];
+            $status_aluno=$value['status_aluno'];
+            $email=$value['email'];
+            $senha=$value['senha'];
+            $matricula_aluno=$value['matricula'];
 
-            $res_movimentacao=array();
-          // pesquisar_aluno_da_turma_ata_resultado_final
-            // $res_movimentacao=pesquisar_aluno_da_turma_listagem($conexao,$matricula);
+            $res_movimentacao=pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula_aluno,$_SESSION['ano_letivo']);
 
             $data_evento="";
             $descricao_procedimento="";
             $procedimento="";
-            $datasaida="";
-          
+            $matricula="";
             foreach ($res_movimentacao as $key => $value) {
-                $datasaida=($value['datasaida']);
+                $datasaida=($value['datasaida']);     
                 $procedimento=$value['procedimento'];
                 
                 if ($datasaida!="") {
                   $datasaida=converte_data($datasaida);
                 }
             }
-// <b class='text-primary'> $nome_turma</b><BR>
-        // <b class='text-danger'>$email  </b><BR>
-        // <b class='text-danger'>Senha: $senha  </b><BR>
-  echo "
 
-     <tr>
-  
-
-      <td> 
-        <b class='text-success'> $nome_aluno </b> <BR>
-        <b class='text-danger'> $procedimento $datasaida  </b> <BR>
-      
+            if ($procedimento!="") {
+             echo "<tr>
+   
+<td>
+</td>
+      <td  valign=top style='border:solid black 1.0pt; 
+      padding:0cm 0cm 0cm 0cm;height:11.3pt; '>
+      <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
+      0cm;margin-left:2.75pt;margin-bottom:.0001pt'><span lang=PT style='font-size:
+      8.0pt'>$nome_aluno</span></p>
       </td>
-      <td > ";
-      if ($procedimento=='EVADIDO') {
 
-          // echo"<div class='form-group' id='evadido_btn$matricula'>
-          //   <a class='btn btn-danger' onclick='desmarcar_aluno_evadido($matricula);'>DESMARCAR DE EVADIDO </a>
-          // </div>";  
+
+     <td colspan='100%' valign=top style='border:solid black 1.0pt;
+     ;padding:0cm 0cm 10pt 0cm;height:11.3pt; '>
+      <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
+      0cm;margin-left:2.75pt;margin-bottom:.0001pt'><span lang=PT style='font-size:
+      8.0pt'> $procedimento  $datasaida </p>
+      </td> ";
+
+
+            }else{
+              echo "
+                 <tr>
+                 <td><p><input type='checkbox' class='checkbox' name='aluno$id '  value='$id'  >   </p></td>
           
-        //  echo"<div class='form-group'>
-        //   <div class='custom-control custom-switch custom-switch-off-danger custom-switch-on-success '>
-        //     <input type='checkbox' class='custom-control-input' id='customSwitch3$id' onclick='mudar_status_aluno(1,$id)'>
-
-        //     <label class='custom-control-label' for='customSwitch3$id'></label>
-        //   </div>
-        // </div>";
-      }elseif ( $procedimento=='MATRICULADO'){
-         // echo"<div class='form-group'  id='evadido_btn$matricula'>
-         //    <a class='btn btn-primary' onclick='marcar_aluno_evadido($matricula);'>MARCAR COMO EVADIDO </a>
-         //  </div>";  
-          
-         
-         //  // echo"<div class='form-group'>
-         //    <div class='custom-control custom-switch custom-switch-on-success custom-switch-off-danger'>
-         //      <input type='checkbox' class='custom-control-input' id='customSwitch3$idaluno' onclick='mudar_status_aluno(0,$idaluno)' checked>
-
-         //      <label class='custom-control-label' for='customSwitch3$idaluno' id='customSwitch3$idaluno' ></label>
-         //    </div>
-         //  </div>";
-        
-      }
-      
-
-      echo"</td>
-
-    </tr>
-  ";
+                  <td>$id -
+                    <b class='text-primary'> $nome_turma</b><BR>
+                    <b class='text-success'> $nome_aluno </b> <BR>
+                    <b class='text-danger'>$email  </b><BR>
+                    <b class='text-danger'>Senha: $senha  </b><BR>
 
 
-        }
-?>
+                  </td>";
 
-
-
-          <?php 
-             //$result= array();
-              $result= listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
-
-             foreach ($result as $key => $value) {
-              $nome_aluno=utf8_decode($value['nome_aluno']);
-              $nome_turma=($value['nome_turma']);
-              $id=$value['idaluno'];
-              $idaluno=$value['idaluno'];
-              $status_aluno=$value['status_aluno'];
-              $email=$value['email'];
-              $senha=$value['senha'];
-
-                echo "
-                   <tr>
-                   <td><p><input type='checkbox' class='checkbox' name='aluno$id '  value='$id'  >   </p></td>
+                  echo"<td> ";
             
-                    <td>$id -
-                      <b class='text-primary'> $nome_turma</b><BR>
-                      <b class='text-success'> $nome_aluno </b> <BR>
-                      <b class='text-danger'>$email  </b><BR>
-                      <b class='text-danger'>Senha: $senha  </b><BR>
-
-
-                    </td>";
-
-                    echo"<td> ";
-  ##############################################################
+##############################################################
 $iddisciplina="";
-    $media_aprovacao=false;
-    $aprovacao_conselho=false;
-    $res_disc=listar_disciplina_para_ata($conexao,$idescola,$idturma);
-    foreach ($res_disc as $key => $value) {
-               $media_aprovacao=false;
-           $aprovacao_conselho=false;
-        $iddisciplina=$value['iddisciplina'];
+  $media_aprovacao=false;
+  $aprovacao_conselho=false;
+  $res_disc=listar_disciplina_para_ata($conexao,$idescola,$idturma);
+  foreach ($res_disc as $key => $value) {
+             $media_aprovacao=false;
+         $aprovacao_conselho=false;
+      $iddisciplina=$value['iddisciplina'];
 
-          if ($idserie>3) {
+        if ($idserie>3) {
 
-           $result_nota_aula1=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,1);;
+         $result_nota_aula1=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,1);;
 
-           $nota_tri_1=0;
-           $nota_av3_1='';
-           $nota_rp_1='';
-           foreach ($result_nota_aula1 as $key => $value) {
-             if ($value['avaliacao']!='RP') {
-               $nota_tri_1+=$value['nota'];
-             }
-          // _______________________________
-             if ($value['avaliacao']=='av3') {
-               $nota_av3_1=$value['nota'];
-             }
-             if ($value['avaliacao']=='RP') {
-               $nota_rp_1=$value['nota'];
-             }
+         $nota_tri_1=0;
+         $nota_av3_1='';
+         $nota_rp_1='';
+         foreach ($result_nota_aula1 as $key => $value) {
+           if ($value['avaliacao']!='RP') {
+             $nota_tri_1+=$value['nota'];
            }
+        // _______________________________
+           if ($value['avaliacao']=='av3') {
+             $nota_av3_1=$value['nota'];
+           }
+           if ($value['avaliacao']=='RP') {
+             $nota_rp_1=$value['nota'];
+           }
+         }
 
-    $nota_tri_1=calculos_media_notas($nota_tri_1,$nota_rp_1,$nota_av3_1);
+  $nota_tri_1=calculos_media_notas($nota_tri_1,$nota_rp_1,$nota_av3_1);
 
 // ****************************************************
 
-    $result_nota_aula2=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,2);
+  $result_nota_aula2=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,2);
 
-    $nota_tri_2=0;
-    $nota_av3_2='';
-    $nota_rp_2='';
-    foreach ($result_nota_aula2 as $key => $value) {
+  $nota_tri_2=0;
+  $nota_av3_2='';
+  $nota_rp_2='';
+  foreach ($result_nota_aula2 as $key => $value) {
 
-      if ($value['avaliacao']!='RP') {
-        $nota_tri_2+=$value['nota'];
+    if ($value['avaliacao']!='RP') {
+      $nota_tri_2+=$value['nota'];
 
-
-      }
-
-      if ($value['avaliacao']=='av3') {
-        $nota_av3_2=$value['nota'];
-
-      }
-
-      if ($value['avaliacao']=='RP') {
-        $nota_rp_2=$value['nota'];
-
-
-      }
 
     }
 
-    $nota_tri_2=calculos_media_notas($nota_tri_2,$nota_rp_2,$nota_av3_2);
-   
+    if ($value['avaliacao']=='av3') {
+      $nota_av3_2=$value['nota'];
+
+    }
+
+    if ($value['avaliacao']=='RP') {
+      $nota_rp_2=$value['nota'];
+
+
+    }
+
+  }
+
+  $nota_tri_2=calculos_media_notas($nota_tri_2,$nota_rp_2,$nota_av3_2);
+ 
 // ****************************************************
- $result_nota_aula3=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,3);
+$result_nota_aula3=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,3);
 
 
- $nota_tri_3=0;
- $nota_av3_3='';
- $nota_rp_3='';
- foreach ($result_nota_aula3 as $key => $value) {
+$nota_tri_3=0;
+$nota_av3_3='';
+$nota_rp_3='';
+foreach ($result_nota_aula3 as $key => $value) {
 
-       if ($value['avaliacao']!='RP') {
-         $nota_tri_3+=$value['nota'];
-       }
-         //______________________________
-         
-       if ($value['avaliacao']=='av3') {
-         $nota_av3_3=$value['nota'];
-       }
+     if ($value['avaliacao']!='RP') {
+       $nota_tri_3+=$value['nota'];
+     }
+       //______________________________
+       
+     if ($value['avaliacao']=='av3') {
+       $nota_av3_3=$value['nota'];
+     }
 
-       if ($value['avaliacao']=='RP') {
-         $nota_rp_3=$value['nota'];
-       }
+     if ($value['avaliacao']=='RP') {
+       $nota_rp_3=$value['nota'];
+     }
 
- }
+}
 
 $nota_tri_3=calculos_media_notas($nota_tri_3,$nota_rp_3,$nota_av3_3);
 
@@ -339,105 +378,106 @@ $media=($nota_tri_3+$nota_tri_2+$nota_tri_1)/3;
 //arivan
 $media=number_format($media, 1, '.', ',');
 if ($media >= 5) {
-   // echo number_format($media, 1, '.', ',');
-    $media_aprovacao=true;
+ // echo number_format($media, 1, '.', ',');
+  $media_aprovacao=true;
 
 }else{
-    $res_conselho=buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno);
-    $conta_aprovado=count($res_conselho);
-    
-     if ($conta_aprovado>0 ) {
-        $media_conselho=number_format('5', 1, '.', ',');
-        //echo "<b>$media_conselho</b>";
-        
-        $media_aprovacao=false;
-        $aprovacao_conselho=true;
-    }else{
-       // echo number_format($media, 1, '.', ',');
-        $media_aprovacao=false;
+  $res_conselho=buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno);
+  $conta_aprovado=count($res_conselho);
+  
+   if ($conta_aprovado>0 ) {
+      $media_conselho=number_format('5', 1, '.', ',');
+      //echo "<b>$media_conselho</b>";
+      
+      $media_aprovacao=false;
+      $aprovacao_conselho=true;
+  }else{
+     // echo number_format($media, 1, '.', ',');
+      $media_aprovacao=false;
 
-    }
+  }
 
 }
 
 }//se serie for menor que 3
 else{
-    $media_aprovacao=true;
+  $media_aprovacao=true;
 
 }
 
 }// foreche disciplinas
 
 
-  if($idserie<3){
-      echo "<b style='color: green;'>Apr</b>";
-  }elseif ($aprovacao_conselho == true) {
-       echo "<b style='color: blue;'>Apc </b>";
-  }elseif ($media_aprovacao == true) {
-       echo "<b style='color: green;'>Apr</b>";
-  }elseif ($media_aprovacao == false){
-    $media_aprovacao=false;
-       echo "<b style='color: red;'>Rep</b>";
-  }
-  ##############################################################
+if($idserie<3){
+    echo "<b style='color: green;'>Apr</b>";
+}elseif ($aprovacao_conselho == true) {
+     echo "<b style='color: blue;'>Apc </b>";
+}elseif ($media_aprovacao == true) {
+     echo "<b style='color: green;'>Apr</b>";
+}elseif ($media_aprovacao == false){
+  $media_aprovacao=false;
+     echo "<b style='color: red;'>Rep</b>";
+}
+##############################################################
 
 
-                    echo"</td> ";
+                  echo"</td> ";
 
 
-                    
-                    echo"<td> ";
-                    if ($status_aluno =='Ativo') {
-                        echo"<div class='form-group'>
-                          <div class='custom-control custom-switch custom-switch-on-success custom-switch-off-danger'>
-                            <input type='checkbox' class='custom-control-input' id='customSwitch3$id' onclick='mudar_status_aluno(0,$id)' checked>
-
-                            <label class='custom-control-label' for='customSwitch3$id' id='customSwitch3$id' ></label>
-                          </div>
-                        </div>";
-                    }else{
+                  
+                  echo"<td> ";
+                  if ($status_aluno =='Ativo') {
                       echo"<div class='form-group'>
-                        <div class='custom-control custom-switch custom-switch-off-danger custom-switch-on-success '>
-                          <input type='checkbox' class='custom-control-input' id='customSwitch3$id' onclick='mudar_status_aluno(1,$id)'>
+                        <div class='custom-control custom-switch custom-switch-on-success custom-switch-off-danger'>
+                          <input type='checkbox' class='custom-control-input' id='customSwitch3$id' onclick='mudar_status_aluno(0,$id)' checked>
 
-                          <label class='custom-control-label' for='customSwitch3$id'></label>
+                          <label class='custom-control-label' for='customSwitch3$id' id='customSwitch3$id' ></label>
                         </div>
                       </div>";
-                    }
-                    
+                  }else{
+                    echo"<div class='form-group'>
+                      <div class='custom-control custom-switch custom-switch-off-danger custom-switch-on-success '>
+                        <input type='checkbox' class='custom-control-input' id='customSwitch3$id' onclick='mudar_status_aluno(1,$id)'>
 
-                    echo"</td>
+                        <label class='custom-control-label' for='customSwitch3$id'></label>
+                      </div>
+                    </div>";
+                  }
+                  
 
-                  </tr>
-                ";
-             }
-          ?>
+                  echo"</td>
 
-
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-      
-
-    </div>
+                </tr>
+              ";
+            }//procedimento ==""
+           }
+        ?>
 
 
 
-      <!-- Main row -->
+        </tbody>
 
-      <!-- /.row -->
+      </table>
 
     </div>
 
-
-
-
+    
 
   </div>
+
+
+
+    <!-- Main row -->
+
+    <!-- /.row -->
+
+  </div>
+
+
+
+
+
+</div>
 
 </section>
 
@@ -453,52 +493,52 @@ else{
 
 <script type="text/javascript">
 
-  function seleciona_todos_alunos(){
+function seleciona_todos_alunos(){
 
-    var checkBoxes = document.querySelectorAll('.checkbox');
-    var selecionados = 0;
-    checkBoxes.forEach(function(el) {
-       if(el.checked) {
-           //selecionados++;
-           console.log(el.value);
-          el.checked=false;
-       }else{
-         
-          el.checked=true;
-       }
-      
-    });
-   // console.log(selecionados);
+  var checkBoxes = document.querySelectorAll('.checkbox');
+  var selecionados = 0;
+  checkBoxes.forEach(function(el) {
+     if(el.checked) {
+         //selecionados++;
+         console.log(el.value);
+        el.checked=false;
+     }else{
+       
+        el.checked=true;
+     }
+    
+  });
+ // console.log(selecionados);
 
-  }
+}
 
-  function mascara(o,f){
+function mascara(o,f){
 
-      v_obj=o
+    v_obj=o
 
-      v_fun=f
+    v_fun=f
 
-      setTimeout("execmascara()",1)
+    setTimeout("execmascara()",1)
 
-  }
+}
 
-  function execmascara(){
+function execmascara(){
 
-      v_obj.value=v_fun(v_obj.value)
+    v_obj.value=v_fun(v_obj.value)
 
-  }
+}
 
-  function mtel(v){
+function mtel(v){
 
-      v=v.replace(/\D/g,"");             //Remove tudo o que não é dígito
+    v=v.replace(/\D/g,"");             //Remove tudo o que não é dígito
 
-      v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
+    v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
 
-      v=v.replace(/(\d)(\d{4})$/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
+    v=v.replace(/(\d)(\d{4})$/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
 
-      return v;
+    return v;
 
-  }
+}
 
 
 
@@ -506,224 +546,224 @@ else{
 
 
 <!--   <script>
-  function removerChecked(id) {
-      var ele = document.getElementByName(id);
-      for(var i=0;i<ele.length;i++){
-         ele[i].checked = false;
-      }
-  }
+function removerChecked(id) {
+    var ele = document.getElementByName(id);
+    for(var i=0;i<ele.length;i++){
+       ele[i].checked = false;
+    }
+}
 
-  function addChecked(id) {
-      var ele = document.getElementByName(id);
-      for(var i=0;i<ele.length;i++){
-         ele[i].checked = true;
-      }
-  }
+function addChecked(id) {
+    var ele = document.getElementByName(id);
+    for(var i=0;i<ele.length;i++){
+       ele[i].checked = true;
+    }
+}
 </script> -->
 
 
 <div class="modal fade bd-example-modal-lg" id="modal_transferencia">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">PROCEDIMENTO TRANSFERÊNCIA</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-          <div class="modal-body">    
-        
-              <div class="row">
-                <div class="col-sm-3">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Escola pretendida</label>
-                    <select class="form-control"  name="escola_id" id="escola" required onchange="listar_vagas_turma_transferencia_aluno()">
-                      <option></option>
-                      <option value='ESCOLA FORA DO MUNICÍPIO' style='color: black; background-color:#8B0000;'>ESCOLA FORA DO MUNICÍPIO </option>
-                      <?php 
-                      $res_turma=escola_associada($conexao,$idfuncionario); 
-                      $array_escolas_coordenador=array();
-                      $conta_escolas=0;
-                      foreach ($res_turma as $key => $value) {
-                        $array_escolas_coordenador[$conta_escolas]=$value['idescola'];
-                        $conta_escolas++;
-                      }
-
-                      $res_escola=lista_escola($conexao);
-                      foreach ($res_escola as $key => $value) {
-                       $idescola=$value['idescola'];
-                       $nome_escola=$value['nome_escola'];
-                       
-                        if (in_array($idescola, $array_escolas_coordenador) ) { 
-                          echo"<option value='$idescola' style='color: white; background-color:#A9A9A9;'>$nome_escola </option>";
-                        }else{
-                            echo"<option value='$idescola'>$nome_escola </option>";
-                        }
-
-                       
-                      }
-                     ?>
-                   </select>
-                 </div>
-               </div>
-               <div class="col-sm-3">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">PROCEDIMENTO TRANSFERÊNCIA</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body">    
+      
+            <div class="row">
+              <div class="col-sm-3">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Série</label>
-                  <select class="form-control"  name="serie_id" id="serie" >
-            
-
+                  <label for="exampleInputEmail1">Escola pretendida</label>
+                  <select class="form-control"  name="escola_id" id="escola" required onchange="listar_vagas_turma_transferencia_aluno()">
+                    <option></option>
+                    <option value='ESCOLA FORA DO MUNICÍPIO' style='color: black; background-color:#8B0000;'>ESCOLA FORA DO MUNICÍPIO </option>
                     <?php 
-                    $res_serie=pesquisar_serie_por_id($conexao,$serie_id);
-                    foreach ($res_serie as $key => $value) {
-                      $id=$value['id'];
-                      $nome_serie=$value['nome'];
-                      echo "<option value='$id'>$nome_serie </option>";
+                    $res_turma=escola_associada($conexao,$idfuncionario); 
+                    $array_escolas_coordenador=array();
+                    $conta_escolas=0;
+                    foreach ($res_turma as $key => $value) {
+                      $array_escolas_coordenador[$conta_escolas]=$value['idescola'];
+                      $conta_escolas++;
                     }
-                    ?>
-                  </select>
-                </div>
-              </div>       
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Observação</label>
-                  <textarea class="form-control"  name="observacao" ></textarea>
-                </div>
+
+                    $res_escola=lista_escola($conexao);
+                    foreach ($res_escola as $key => $value) {
+                     $idescola=$value['idescola'];
+                     $nome_escola=$value['nome_escola'];
+                     
+                      if (in_array($idescola, $array_escolas_coordenador) ) { 
+                        echo"<option value='$idescola' style='color: white; background-color:#A9A9A9;'>$nome_escola </option>";
+                      }else{
+                          echo"<option value='$idescola'>$nome_escola </option>";
+                      }
+
+                     
+                    }
+                   ?>
+                 </select>
+               </div>
+             </div>
+             <div class="col-sm-3">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Série</label>
+                <select class="form-control"  name="serie_id" id="serie" >
+          
+
+                  <?php 
+                  $res_serie=pesquisar_serie_por_id($conexao,$serie_id);
+                  foreach ($res_serie as $key => $value) {
+                    $id=$value['id'];
+                    $nome_serie=$value['nome'];
+                    echo "<option value='$id'>$nome_serie </option>";
+                  }
+                  ?>
+                </select>
+              </div>
+            </div>       
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Observação</label>
+                <textarea class="form-control"  name="observacao" ></textarea>
+              </div>
+            </div>
+
+          </div>
+        
+
+             
+               <div class="modal-footer justify-content-between">
+                   <button type="button" class="btn btn-default" data-dismiss="modal">FECHAR</button>
+                   <div id="botao_continuar" onclick='carregando_login()'>
+                     <button type="submit" class="btn btn-primary" >TRANSFERIR SELECIONADOS</button>
+                   </div>
               </div>
 
-            </div>
-          
-
-               
-                 <div class="modal-footer justify-content-between">
-                     <button type="button" class="btn btn-default" data-dismiss="modal">FECHAR</button>
-                     <div id="botao_continuar" onclick='carregando_login()'>
-                       <button type="submit" class="btn btn-primary" >TRANSFERIR SELECIONADOS</button>
-                     </div>
-                </div>
-
-              <!-- /corpo -->
-        </div>
+            <!-- /corpo -->
       </div>
-      <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
+    <!-- /.modal-content -->
   </div>
+  <!-- /.modal-dialog -->
+</div>
 
 
 
-  <div class="modal fade bd-example-modal-lg" id="modal_rematricula">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">PROCEDIMENTO REMATRÍCULA</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-          <div class="modal-body">    
-        
-              <div class="row">
-                <div class="col-sm-3">
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Série</label>
-                  <select class="form-control"  name="serie_id" id="serie" >
-            
-
-                    <?php 
-                    $res_serie=pesquisar_serie_por_id($conexao,$serie_id);
-                    foreach ($res_serie as $key => $value) {
-                      $id=$value['id'];
-                      $nome_serie=$value['nome'];
-                      echo "<option value='$id'>$nome_serie </option>";
-                    }
-                    ?>
-                  </select>
-                </div>
-              </div>       
+<div class="modal fade bd-example-modal-lg" id="modal_rematricula">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">PROCEDIMENTO REMATRÍCULA</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body">    
       
-
-            </div>
+            <div class="row">
+              <div class="col-sm-3">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Série</label>
+                <select class="form-control"  name="serie_id" id="serie" >
           
 
-               
-                 <div class="modal-footer justify-content-between">
-                     <button type="button" class="btn btn-default" data-dismiss="modal">FECHAR</button>
-                     <div id="botao_continuar" onclick='carregando_login()'>
-                       <button type="submit" class="btn btn-primary" >REMATRICULAR SELECIONADOS</button>
-                     </div>
-                </div>
+                  <?php 
+                  $res_serie=pesquisar_serie_por_id($conexao,$serie_id);
+                  foreach ($res_serie as $key => $value) {
+                    $id=$value['id'];
+                    $nome_serie=$value['nome'];
+                    echo "<option value='$id'>$nome_serie </option>";
+                  }
+                  ?>
+                </select>
+              </div>
+            </div>       
+    
 
-              <!-- /corpo -->
-        </div>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>  
-
-
-  <div class="modal fade bd-example-modal-lg" id="modal_troca_de_turma">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">PROCEDIMENTO TROCA DE TURMA</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-          <div class="modal-body">    
+          </div>
         
-              <div class="row">
-                <div class="col-sm-3">
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Série</label>
-                  <select class="form-control"  name="serie_id" id="serie" >
-            
 
-                    <?php 
-                    $res_serie=pesquisar_serie_por_id($conexao,$serie_id);
-                    foreach ($res_serie as $key => $value) {
-                      $id=$value['id'];
-                      $nome_serie=$value['nome'];
-                      echo "<option value='$id'>$nome_serie </option>";
-                    }
-                    ?>
-                  </select>
-                </div>
-              </div>       
-      
+             
+               <div class="modal-footer justify-content-between">
+                   <button type="button" class="btn btn-default" data-dismiss="modal">FECHAR</button>
+                   <div id="botao_continuar" onclick='carregando_login()'>
+                     <button type="submit" class="btn btn-primary" >REMATRICULAR SELECIONADOS</button>
+                   </div>
+              </div>
 
-            </div>
-          
-
-               
-                 <div class="modal-footer justify-content-between">
-                     <button type="button" class="btn btn-default" data-dismiss="modal">FECHAR</button>
-                     <div id="botao_continuar" onclick='carregando_login()'>
-                       <button type="submit" class="btn btn-primary" >TOCAR DE TURMA ALUNOS SELECIONADOS</button>
-                     </div>
-                </div>
-
-              <!-- /corpo -->
-        </div>
+            <!-- /corpo -->
       </div>
-      <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
+    <!-- /.modal-content -->
   </div>
+  <!-- /.modal-dialog -->
+</div>  
+
+
+<div class="modal fade bd-example-modal-lg" id="modal_troca_de_turma">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">PROCEDIMENTO TROCA DE TURMA</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body">    
+      
+            <div class="row">
+              <div class="col-sm-3">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Série</label>
+                <select class="form-control"  name="serie_id" id="serie" >
+          
+
+                  <?php 
+                  $res_serie=pesquisar_serie_por_id($conexao,$serie_id);
+                  foreach ($res_serie as $key => $value) {
+                    $id=$value['id'];
+                    $nome_serie=$value['nome'];
+                    echo "<option value='$id'>$nome_serie </option>";
+                  }
+                  ?>
+                </select>
+              </div>
+            </div>       
+    
+
+          </div>
+        
+
+             
+               <div class="modal-footer justify-content-between">
+                   <button type="button" class="btn btn-default" data-dismiss="modal">FECHAR</button>
+                   <div id="botao_continuar" onclick='carregando_login()'>
+                     <button type="submit" class="btn btn-primary" >TOCAR DE TURMA ALUNOS SELECIONADOS</button>
+                   </div>
+              </div>
+
+            <!-- /corpo -->
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
 
 </form>
 
 <script>
-  function mudar_action_form(procedimento){
-    document.procedimentos.action = "../Controller/"+procedimento+";
-  }  
+function mudar_action_form(procedimento){
+  document.procedimentos.action = "../Controller/"+procedimento+"";
+}  
 
- 
+
 </script>
 
 <?php 
 
-  include 'rodape.php';
+include 'rodape.php';
 
 ?>
