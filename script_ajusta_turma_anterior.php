@@ -7,7 +7,7 @@ try {
 foreach ($res as $key => $value) {
 	$matricula_turma=$value['matricula_turma'];
 	$turma_id=$value['turma_id'];
-	$conexao->exec("UPDATE ecidade_matricula set turma_id_anterior= $turma_id WHERE matricula_turmaant=$matricula_turma");
+	$conexao->exec("UPDATE ecidade_matricula set turma_id_anterior= $turma_id WHERE matricula_turmaant='$matricula_turma' ");
 
 
 }
