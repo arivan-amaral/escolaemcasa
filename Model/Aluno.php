@@ -1316,22 +1316,23 @@ function listar_aluno_do_simulado_professor($conexao,$escola_id,$idserie,$indice
 	// 	return $res;
 	// }
 
-function listar_disciplina_aluno($conexao,$idaluno){
+function listar_disciplina_aluno($conexao,$idaluno,$ano_letivo){
   $res=$conexao->query("SELECT 
    disciplina.nome_disciplina,
    disciplina.iddisciplina,
    funcionario.nome as 'nome_professor',
    turma.idturma,
    turma.nome_turma
-   FROM turma, ano_letivo, aluno , escola, ministrada,disciplina,funcionario WHERE
-   aluno.idaluno=ano_letivo.aluno_id AND
-   turma.idturma=ano_letivo.turma_id AND
-   escola.idescola=ano_letivo.escola_id AND
+   FROM turma, ecidade_matricula, aluno , escola, ministrada,disciplina,funcionario WHERE
+   aluno.idaluno=ecidade_matricula.aluno_id AND
+   turma.idturma=ecidade_matricula.turma_id AND
+   escola.idescola=ecidade_matricula.turma_escola AND
 
    ministrada.turma_id=turma.idturma AND
    ministrada.escola_id=escola.idescola AND
    ministrada.disciplina_id=disciplina.iddisciplina AND
    ministrada.professor_id=funcionario.idfuncionario AND
+   ecidade_matricula.calendario_ano='$ano_letivo' AND
    aluno.idaluno = $idaluno");
   return $res;
 }

@@ -97,7 +97,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
         <div class="row mb-2">
 
-          <div class="col-sm-10 alert alert-warning">
+          <div class="col-sm-12 alert alert-warning">
 
             <h1 class="m-0"><b>
 
@@ -117,17 +117,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
           </div><!-- /.col -->
 
-          <div class="col-sm-2">
-
-            <ol class="breadcrumb float-sm-right">
-
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-
-              <li class="breadcrumb-item active">Início</li>
-
-            </ol>
-
-          </div><!-- /.col -->
+ <!-- /.col -->
 
         </div><!-- /.row -->
 

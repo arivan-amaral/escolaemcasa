@@ -7,14 +7,16 @@
 	function login_aluno($conexao,$usuario,$senha,$ano_letivo){
 
 
-		$result=$conexao->query("SELECT * FROM aluno,ano_letivo,turma,escola where
-			 ano_letivo.status_letivo=1 AND 
-escola.idescola=escola_id and
-ano_letivo.aluno_id=idaluno and
-ano_letivo.turma_id=turma.idturma AND
-ano_letivo.status_letivo=1 AND
+		$result=$conexao->query("SELECT * FROM aluno,ecidade_matricula,turma,escola where
+			 
+escola.idescola=ecidade_matricula.turma_escola and
+ecidade_matricula.aluno_id=idaluno and
+ecidade_matricula.turma_id=turma.idturma AND
+ecidade_matricula.matricula_concluida='N' AND
 
-aluno.email='$usuario' and aluno.senha='$senha' and ano='$ano_letivo' and status='Ativo' ");
+aluno.email='$usuario' and aluno.senha='$senha' and ecidade_matricula.calendario_ano='2021' and aluno.status='Ativo' ");
+
+
 		return $result;
 	}
 ?>

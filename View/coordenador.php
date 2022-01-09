@@ -79,7 +79,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
           <div class="col-sm-1">
           </div>
-          <div class="col-sm-10 alert alert-warning">
+          <div class="col-sm-12 alert alert-warning">
 
             <h1 class="m-0"><b>
 

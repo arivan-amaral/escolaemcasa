@@ -285,7 +285,7 @@ if ($prova_ativa==0 && $conta_simulado ==0) {
 
         <div class="row mb-2">
 
-          <div class="col-sm-10 alert alert-warning">
+          <div class="col-sm-12 alert alert-warning">
 
             <h1 class="m-0"><b>
 
@@ -306,17 +306,7 @@ if ($prova_ativa==0 && $conta_simulado ==0) {
 
           </div><!-- /.col -->
 
-          <div class="col-sm-2">
-
-            <ol class="breadcrumb float-sm-right">
-
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-
-              <li class="breadcrumb-item active">Início</li>
-
-            </ol>
-
-          </div><!-- /.col -->
+ <!-- /.col -->
 
         </div><!-- /.row -->
 
@@ -775,8 +765,8 @@ if ($idserie>2) {
 
                       if ($idserie<8) {
                             // code...
-                      }
-                            $result=listar_disciplina_aluno($conexao,$idaluno);
+                      } 
+                            $result=listar_disciplina_aluno($conexao,$idaluno,$_SESSION['ano_letivo_vigente']);
                             $conta=0;
 
                             foreach ($result as $key => $value) {

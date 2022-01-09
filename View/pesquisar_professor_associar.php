@@ -26,7 +26,7 @@ if (!isset($_SESSION['idcoordenador'])) {
       <div class="container-fluid">
         <div class="row mb-2">
        
-       <div class="col-sm-10 alert alert-warning">
+       <div class="col-sm-12 alert alert-warning">
 
          <h1 class="m-0"><b>
 

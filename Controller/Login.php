@@ -134,7 +134,7 @@ try {
           $nome = $row2["nome"];
           $nome_escola = $row2["nome_escola"];
           $email = $row2["email"];
-          $escola_id = $row2["escola_id"];
+          $escola_id = $row2["turma_escola"];
           $turma_id = $row2["turma_id"];
           $serie_id = $row2["serie_id"];
           $sexo = $row2["sexo"];
@@ -183,8 +183,8 @@ try {
           header("Location:../View/coordenador.php");
       }else{
           $_SESSION['status']=0;
-          $_SESSION['mensagem']="Tente novamente!";
-          header("location:../View/index.php?tokem=0"); 
+          $_SESSION['mensagem']="Tente novamente!!";
+          //header("location:../View/index.php?tokem=0"); 
       }
 
 
@@ -200,8 +200,8 @@ try {
 } catch (Exception $e) {
   $_SESSION['status']=0;
   $_SESSION['mensagem']="Algo deu errado, confira seus dados de acesso e tente novamente!";
-  echo "ESTAMOS EM MANUTENÇÃO";
-  //header("Location:../View/?status=0");
+  echo "ESTAMOS EM MANUTENÇÃO:";
+  header("Location:../View/");
 }
 
 
