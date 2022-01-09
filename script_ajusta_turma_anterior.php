@@ -2,9 +2,9 @@
 set_time_limit(0);
 include 'Model/Conexao.php';
 try {
-	$inicio=$value['inicio'];
-	$fim=$value['fim'];
-	
+	$inicio=$_GET['inicio'];
+	$fim=$_GET['fim'];
+
 	$res=$conexao->query("SELECT * from ecidade_matricula where matricula_turma IS NOT NULL and turma_id IS NOT NULL group by matricula_turma LIMIT $inicio , $fim");
 
 foreach ($res as $key => $value) {
