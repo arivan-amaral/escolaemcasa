@@ -110,7 +110,7 @@ function lista_de_turmas($conexao,$serie_id){
 function lista_de_turmas_das_escolas($conexao,$serie_id,$escola_id,$turno,$ano_letivo_vigente){
 
    $result = $conexao->query("
-      SELECT * FROM serie,turma,relacionamento_turma_escola,escola where 
+      SELECT turma.idturma as 'idturma', relacionamento_turma_escola.id as 'id' , turma.nome_turma,relacionamento_turma_escola.ano, escola.nome_escola,relacionamento_turma_escola.turno, relacionamento_turma_escola.quantidade_vaga FROM serie,turma,relacionamento_turma_escola,escola where 
    relacionamento_turma_escola.escola_id= escola.idescola and
    turma.serie_id=serie.id and
    relacionamento_turma_escola.turma_id=turma.idturma and 
@@ -123,6 +123,12 @@ function lista_de_turmas_das_escolas($conexao,$serie_id,$escola_id,$turno,$ano_l
 
     return $result;
 
+}
+
+function excluir_turma_escola($conexao,$id){
+   $sql = $conexao->prepare("DELETE FROM relacionamento_turma_escola WHERE id = :id");
+   $sql->execute(array(
+          'id' =>$id));
 }
 // function pesquisar_turma_por_escola_por_id($conexao,$idescola,$idturma){
 

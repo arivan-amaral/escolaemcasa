@@ -1649,33 +1649,39 @@ function lista_turma_cadastrada_escola_por_serie(campo_listagem){
 
 
 
-function remover_turma_escola(itemid){
-  var element = document.getElementById(itemid); // will return element
-  element.parentNode.removeChild(element); // will remove the element from DOM
+function remover_turma_escola(id){
+    var tabela = document.getElementById('tabela');
+    var xmlreq = CriaRequest();
+        xmlreq.open("GET", "../Controller/Excluir_turma_escola.php?id="+id, true);
 
+        xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                   //result.innerHTML = xmlreq.responseText;
+
+             }else{
+                   alert('Erro desconhecido, verifique sua conexão com a internet');
+
+                //result.innerHTML ="Erro ao receber mensagens";                 
+             }
+         }
+        };
+     xmlreq.send(null);
+    lista_turma_cadastrada_escola_por_serie('tabela');
 }
 
+
 function adicionar_turma_escola(){
-    var tabela=document.getElementById('tabela');
-    var escola_objeto=document.getElementById('escola');
+
+    var tabela = document.getElementById('tabela');
+    var escola=document.getElementById('escola').value;
     var turno=document.getElementById('turno').value;
-    var serie_objeto=document.getElementById('idserie');
-    var turma_objeto=document.getElementById('idturma');
+    var serie=document.getElementById('idserie').value;
+    var turma=document.getElementById('idturma').value;
     var ano=document.getElementById('ano').value;
     var vagas =document.getElementById('quantidade_vaga').value;
 
-    var escola=escola_objeto.value;
-    var option_escola = escola_objeto.children[escola_objeto.selectedIndex];
-    var nome_escola = option_escola.textContent;
-
-
-    var serie=serie_objeto.value;
-    var option_serie = serie_objeto.children[serie_objeto.selectedIndex];
-    var nome_serie = option_serie.textContent;
-
-    var turma = turma_objeto.value;
-    var option_turma = turma_objeto.children[turma_objeto.selectedIndex];
-    var nome_turma = option_turma.textContent;
     
     if (escola=="" || turno =="" || serie =="" || turma=="" || ano=="" || vagas=="") {
         Swal.fire({
@@ -1687,20 +1693,42 @@ function adicionar_turma_escola(){
         });
 
     }else{
-        var item = "div_"+escola+serie+turma+turno;
-        tabela.innerHTML+=""+
-            "<tr id='"+item+"'>"+
-              "<td><input type='hidden' class='form-control' id='escola' name='escola[]' value='"+escola+"' > "+nome_escola+"</td>"+
-              "<td><input type='hidden' class='form-control' id='turno' name='turno[]' value='"+turno+"' >"+turno+"</td>"+
-              "<td><input type='hidden' class='form-control' id='idserie' name='idserie[]' value='"+serie+"' >"+nome_serie+"</td>"+
-              "<td><input type='hidden' class='form-control' id='idturma' name='idturma[]' value='"+turma+"' >"+nome_turma+"</td>"+
-              "<td><input type='hidden' class='form-control' id='ano' name='ano[]'  value='"+ano+"'>"+ano+"</td>"+
-              "<td><input type='hidden' class='form-control' id='quantidade_vaga' name='quantidade_vaga[]'  value='"+vagas+"'>"+vagas+"</td>"+
-              "<td><a class='btn btn-danger' onclick=remover_turma_escola('"+item+"');>Cancelar</a></td>"+
-            "</tr>";
-            document.getElementById('idserie').value = "";
-            document.getElementById('quantidade_vaga').value = "";
-            document.getElementById('idturma').value = "";
+            var xmlreq = CriaRequest(); 
+            xmlreq.open("GET", "../Controller/Cadastrar_turma_escola.php?escola="+escola+"&turno="+turno+"&serie="+serie+"&turma="+turma+"&ano="+ano+"&quantidade_vaga="+vagas, true);
+            xmlreq.onreadystatechange = function(){      
+                if (xmlreq.readyState == 4) {
+                    if (xmlreq.status == 200) {                
+                             
+                        if (xmlreq.responseText=='certo') {
+                            document.getElementById('idturma').value = "";
+                            document.getElementById('quantidade_vaga').value = "";
+                             Swal.fire({
+                              icon: 'success',
+                              title: 'Ação concluída',
+                              text: '',
+                              showConfirmButton: false,
+                              timer: 1500
+                            });
+                        }else{
+                             Swal.fire({
+                              icon: 'error',
+                              title: 'Atenção...',
+                              text: xmlreq.responseText,
+                              showConfirmButton: true,
+                            
+                            });
+                        }
+
+                    }else{
+                          
+                        alert('Verifique sua conexão com a internet!');
+                        
+                    }
+                }
+            };
+            xmlreq.send(null);
+            lista_turma_cadastrada_escola_por_serie('tabela');
+
     }
 
 }
