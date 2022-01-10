@@ -86,18 +86,18 @@ try {
                                 
                                 if (in_array($idescola, $array_escolas_coordenador) ) { 
 
-                                $result.="
-                                  <li>
-                                  <form name='form$idaluno' action='tranferencia_aluno.php' method='post' target='_blank'>
-                                      <input type='hidden' name='aluno_id' value='$idaluno'>
-                                      <input type='hidden' name='escola_id' value='$idescola'>
-                                      <input type='hidden' name='turma_id' value='$idturma'>
-                                      <input type='hidden' name='serie_id' value='$idserie'>
-                                      <input type='hidden' name='nome_aluno' value='$nome_aluno'>
-                                      <button type='submit' class='dropdown-item'  >Transferência</button>
+                                // $result.="
+                                //   <li>
+                                //   <form name='form$idaluno' action='tranferencia_aluno.php' method='post' target='_blank'>
+                                //       <input type='hidden' name='aluno_id' value='$idaluno'>
+                                //       <input type='hidden' name='escola_id' value='$idescola'>
+                                //       <input type='hidden' name='turma_id' value='$idturma'>
+                                //       <input type='hidden' name='serie_id' value='$idserie'>
+                                //       <input type='hidden' name='nome_aluno' value='$nome_aluno'>
+                                //       <button type='submit' class='dropdown-item'  >Transferência</button>
                                
-                                  </form>
-                                  </li>"; 
+                                //   </form>
+                                //   </li>"; 
 
                                 $result.="
                                   <li>

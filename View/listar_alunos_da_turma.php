@@ -34,6 +34,9 @@ $serie_id=$_GET['idserie'];
 $idserie=$_GET['idserie']; 
 $idserie_atual=$_GET['idserie']; 
 
+$array_url=explode('php?', $_SERVER["REQUEST_URI"]);
+$url_get=$array_url[1];
+
 ?>
 
 
@@ -97,17 +100,21 @@ $idserie_atual=$_GET['idserie'];
 
   <div class="row">
       <div class="col-sm-3">
-        <a  class="btn btn-block btn-primary" onclick="mudar_action_form('Tranferir_aluno.php');"  data-toggle='modal' data-target='#modal_transferencia'>Transferir selecionados</a>
+        <a  class="btn btn-block btn-primary" onclick="mudar_action_form('Solicitacao_transferencia.php');"  data-toggle='modal' data-target='#modal_transferencia'>Transferir selecionados</a>
       </div>
 
       <div class="col-sm-3">
         <a href="" class="btn btn-block btn-success" onclick="mudar_action_form('Rematricular_aluno.php');"  data-toggle='modal' data-target='#modal_rematricula'>Rematricular selecionados</a>
       </div>   
-
+<?php 
+  if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
+ ?>
       <div class="col-sm-3">
         <a href="" class="btn btn-block btn-primary" onclick="mudar_action_form('Troca_aluno_de_turma.php');"  data-toggle='modal' data-target='#modal_troca_de_turma'>Trocar de turma os selecionados</a>
       </div>
-
+<?php 
+}
+?>
 
   </div>
 
@@ -241,7 +248,7 @@ echo "
             $data_evento="";
             $descricao_procedimento="";
             $procedimento="";
-            $matricula="";
+            // $matricula="";
             foreach ($res_movimentacao as $key => $value) {
                 $datasaida=($value['datasaida']);     
                 $procedimento=$value['procedimento'];
@@ -275,7 +282,7 @@ echo "
             }else{
               echo "
                  <tr>
-                 <td><p><input type='checkbox' class='checkbox' name='aluno$id '  value='$id'  >   </p></td>
+                 <td><p><input type='checkbox' class='checkbox' name='idaluno[]' value='$idaluno'>   </p></td>
           
                   <td>$id -
                     <b class='text-primary'> $nome_turma</b><BR>
@@ -410,20 +417,35 @@ else{
 }// foreche disciplinas
 
 
+ $resultado="";
 if($idserie<3){
-    echo "<b style='color: green;'>Apr</b>";
+  echo "<b style='color: green;'>Apr</b>";
+  $resultado="Apr";
+
 }elseif ($aprovacao_conselho == true) {
-     echo "<b style='color: blue;'>Apc </b>";
+    echo "<b style='color: blue;'>Apc </b>";
+    $resultado="Apc";
+
 }elseif ($media_aprovacao == true) {
-     echo "<b style='color: green;'>Apr</b>";
+    echo "<b style='color: green;'>Apr</b>";
+    $resultado="Apr";
+
 }elseif ($media_aprovacao == false){
   $media_aprovacao=false;
-     echo "<b style='color: red;'>Rep</b>";
+  echo "<b style='color: red;'>Rep</b>";
+ $resultado="Rep";
+
 }
+
+
+echo "<input type='hidden' name='nome_aluno[]' value='$nome_aluno'>";
+echo "<input type='hidden' name='matricula_aluno[]' value='$matricula_aluno'>";
+echo "<input type='hidden' name='resultado[]' value='$resultado'>";
+echo "<input type='hidden' name='idturma' value='$idturma'>";
+echo "<input type='hidden' name='url_get' value='$url_get'>";
+ 
 ##############################################################
-
-
-                  echo"</td> ";
+  echo"</td> ";
 
 
                   
@@ -596,9 +618,10 @@ function addChecked(id) {
               <div class="col-sm-4">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Escola pretendida</label>
-                  <select class="form-control"  name="escola_id" id="escola" required onchange="listar_vagas_turma_transferencia_aluno()">
+                  <select class="form-control"  name="escola_id" id="escola"  onchange="listar_vagas_turma_transferencia_aluno()">
                     <option></option>
-                    <option value='ESCOLA FORA DO MUNICÍPIO' style='color: black; background-color:#8B0000;'>ESCOLA FORA DO MUNICÍPIO </option>
+                    <!-- ESCOLA FORA DO MUNICÍPIO -->
+                    <option value='0' style='color: black; background-color:#D2691E;'>ESCOLA FORA DO MUNICÍPIO </option>
                     <?php 
                     $res_turma=escola_associada($conexao,$idfuncionario); 
                     $array_escolas_coordenador=array();
@@ -655,7 +678,8 @@ function addChecked(id) {
              
                <div class="modal-footer justify-content-between">
                    <button type="button" class="btn btn-default" data-dismiss="modal">FECHAR</button>
-                   <div id="botao_continuar" onclick='carregando_login()'>
+                    <!-- onclick='carregando_login()' -->
+                   <div id="botao_continuar">
                      <button type="submit" class="btn btn-primary" >TRANSFERIR SELECIONADOS</button>
                    </div>
               </div>
@@ -701,7 +725,7 @@ function addChecked(id) {
               <div class="form-group">
                 <input type="hidden" name="rematricula_escola_id" id="rematricula_escola_id" value="<?php echo $rematricula_escola_id; ?>">
                 <label for="exampleInputEmail1">Série atual</label>
-                <select class="form-control"  name="serie_id" id="serie" required>
+                <select class="form-control"  name="serie_id" id="serie" >
           
 
                   <?php 
@@ -734,7 +758,7 @@ function addChecked(id) {
             <div class="col-sm-2">
               <div class="form-group">
                 <label for="exampleInputEmail1" class="text-danger">Nova Série</label>
-                <select class="form-control"  name="rematricula_nova_serie" id="rematricula_nova_serie" required onchange="lista_turma_escola_por_serie('lista_de_turmas_rematricula');" >
+                <select class="form-control"  name="rematricula_nova_serie" id="rematricula_nova_serie"  onchange="lista_turma_escola_por_serie('lista_de_turmas_rematricula');" >
                   <option></option>
                   <?php 
                   $res_serie=pesquisar_serie_por_id($conexao,$serie_id);
@@ -813,7 +837,7 @@ function addChecked(id) {
      <div class="col-sm-2">
               <div class="form-group">
                 <label for="exampleInputEmail1">Série atual</label>
-                <select class="form-control"  name="troca_turma_serie_id" id="troca_turma_serie_id" required>
+                <select class="form-control"  name="troca_turma_serie_id" id="troca_turma_serie_id" >
           
 
                   <?php 
@@ -835,7 +859,7 @@ function addChecked(id) {
                    <div class="form-group">
                  
                      <label for="exampleInputEmail1" class="text-danger">Novo Turno</label>
-                     <select class="form-control" onchange="lista_turma_escola_por_serie('troca_turma');" name="troca_turma_turno" id="troca_turma_turno" required >
+                     <select class="form-control" onchange="lista_turma_escola_por_serie('troca_turma');" name="troca_turma_turno" id="troca_turma_turno"  >
                            <option></option>
                             <option value="MATUTINO">MATUTINO</option>
                             <option value="VESPERTINO">VESPERTINO</option>
@@ -857,7 +881,8 @@ function addChecked(id) {
              
                <div class="modal-footer justify-content-between">
                    <button type="button" class="btn btn-default" data-dismiss="modal">FECHAR</button>
-                   <div id="botao_continuar" onclick='carregando_login()'>
+                   <!-- onclick='carregando_login()' -->
+                   <div id="botao_continuar" >
                      <button type="submit" class="btn btn-primary" >TOCAR DE TURMA ALUNOS SELECIONADOS</button>
                    </div>
               </div>

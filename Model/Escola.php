@@ -15,8 +15,8 @@ function pesquisar_solicitacao_transferencia_por_escola($conexao,$visualizada,$a
 function solicitacao_transferencia($conexao,$aluno_id, $serie_id,
 $profissional_solicitante,
 $escola_id,
-$observacao){
-   $sql = $conexao->prepare("INSERT INTO solicitacao_transferencia(aluno_id, serie_id, profissional_solicitante,  escola_id,   observacao) VALUES ( :aluno_id, :serie_id, :profissional_solicitante,  :escola_id,:observacao)
+$observacao,$ano_letivo,$ano_letivo_vigente){
+   $sql = $conexao->prepare("INSERT INTO solicitacao_transferencia(aluno_id, serie_id, profissional_solicitante,  escola_id,   observacao, ano_letivo,ano_letivo_vigente) VALUES ( :aluno_id, :serie_id, :profissional_solicitante,  :escola_id,:observacao,:ano_letivo,:ano_letivo_vigente)
       ");
 
    $sql->bindParam('aluno_id',$aluno_id);
@@ -25,6 +25,8 @@ $observacao){
    $sql->bindParam('escola_id',$escola_id);
  
    $sql->bindParam('observacao',$observacao);
+   $sql->bindParam('ano_letivo',$ano_letivo);
+   $sql->bindParam('ano_letivo_vigente',$ano_letivo_vigente);
 
    $sql->execute();
 }
