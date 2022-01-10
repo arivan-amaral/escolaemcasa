@@ -8,7 +8,10 @@ try {
 	$profissional_solicitante=$_SESSION['idfuncionario'];
 
 	$turma_id=$_POST['rematricula_turma'];
-	
+
+	// foreach ($_POST as $key => $value) {
+	// 	echo "$key - $value <br>";
+	// }
 	
 
 	$turma_id_anterior=$_POST['idturma'];

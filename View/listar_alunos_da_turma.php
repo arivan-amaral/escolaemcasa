@@ -115,7 +115,9 @@ $url_get=$array_url[1];
       </div>
       <br>
  
-
+<?php 
+  if (isset($_GET['teste'])) { 
+?>
 
   <div class="row">
       <div class="col-sm-3">
@@ -142,9 +144,11 @@ $url_get=$array_url[1];
 
   </div>
 
+<?php
+ }
+?>
 
-
-<form action=" " name="procedimentos" id="procedimentos" method="post">
+<form action="" name="procedimentos" id="procedimentos" method="post">
 
 
 
@@ -804,8 +808,11 @@ function addChecked(id) {
             </div>
 
             <div class="col-sm-3">
-              <div class="form-group" id="lista_de_turmas_rematricula">
-               
+              <div class="form-group" id="">
+                 <label for='exampleInputEmail1' class='text-danger'>Turma pretendida</label>
+                  <select class='form-control'  name='rematricula_turma' id='lista_de_turmas_rematricula'>
+                  </select>
+                
               </div>
             </div>       
     
