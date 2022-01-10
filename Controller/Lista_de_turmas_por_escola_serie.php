@@ -15,14 +15,11 @@ $result=lista_de_turmas_das_escolas($conexao,$serie_id,$escola_id,$turno,$ano_le
 $return="
     <label for='exampleInputEmail1' class='text-danger'>Turma pretendida</label>
     <select class='form-control'  name='rematricula_turma' id='rematricula_turma'> 
-      <option></option>      
-";
+      <option></option>";
 foreach ($result as $key => $value) {
   $idturma=$value['idturma'];
   $nome_turma=$value['nome_turma'];
-  $return.="
-        <option value='$idturma'> $nome_turma</option>
-  ";
+  $return.="<option value='$idturma'> $nome_turma</option>";
 }
 
 $return.="</select>";
