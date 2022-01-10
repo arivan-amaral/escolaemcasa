@@ -26,6 +26,7 @@ include '../Model/Coordenador.php';
 include '../Model/Escola.php';
 include '../Model/Serie.php';
 include '../Model/Nota.php';
+include '../Model/Turma.php';
 
 $idturma=$_GET['idturma']; 
 $idescola=$_GET['idescola']; 
@@ -95,17 +96,40 @@ $url_get=$array_url[1];
   <div class="container-fluid">
     <!-- Info boxes -->
     <!-- .row -->
+       <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <button class="btn btn-block btn-lg btn-secondary">
+              <?php
+            $nome_turma='';
+            $nome_disciplina='';
+            $res_turma=lista_de_turmas_por_id($conexao,$idturma);
+   
+            foreach ($res_turma as $key => $value) {
+              $nome_turma=$value['nome_turma'];
+            }     
+             
 
+             echo $nome_turma  ; ?></button>
+        </div>
+      </div>
+      <br>
+ 
 
 
   <div class="row">
       <div class="col-sm-3">
         <a  class="btn btn-block btn-primary" onclick="mudar_action_form('Solicitacao_transferencia.php');"  data-toggle='modal' data-target='#modal_transferencia'>Transferir selecionados</a>
       </div>
-
+<?php 
+  if ($_SESSION['ano_letivo']!=$_SESSION['ano_letivo_vigente']) {
+ ?>
       <div class="col-sm-3">
         <a href="" class="btn btn-block btn-success" onclick="mudar_action_form('Rematricular_aluno.php');"  data-toggle='modal' data-target='#modal_rematricula'>Rematricular selecionados</a>
-      </div>   
+      </div> 
+<?php 
+  } 
+?>  
 <?php 
   if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
  ?>
@@ -725,7 +749,7 @@ function addChecked(id) {
               <div class="form-group">
                 <input type="hidden" name="rematricula_escola_id" id="rematricula_escola_id" value="<?php echo $rematricula_escola_id; ?>">
                 <label for="exampleInputEmail1">Série atual</label>
-                <select class="form-control"  name="serie_id" id="serie" >
+                <select class="form-control"  name="rematricula_serie_id" id="serie" >
           
 
                   <?php 

@@ -666,7 +666,7 @@ $idcoordenador=$_SESSION['idfuncionario'];
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Escola</label>
-                         <select class="form-control"  name="escola" id="escola" >
+                         <select class="form-control"  name="escola" id="escola" onchange="lista_turma_escola_por_serie('turmas');">
                           <option></option>
                        <?php 
                          // $res_escola=lista_escola($conexao);
@@ -685,7 +685,8 @@ $idcoordenador=$_SESSION['idfuncionario'];
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Turno</label>
-                         <select class="form-control"  name="turno" id="turno" >
+    
+                         <select class="form-control"  name="turno" id="turno" onchange="lista_turma_escola_por_serie('turmas');" >
                           <option value="MATUTINO">MATUTINO</option>
                           <option value="VESPERTINO">VESPERTINO</option>
                           <option value="VESPERTINO">NOTURNO</option>
@@ -695,7 +696,8 @@ $idcoordenador=$_SESSION['idfuncionario'];
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Série</label>
-                            <select class="form-control"  name="serie" id="idserie" onchange="listar_turmas_por_serie(this.value);">
+                            <select class="form-control"  name="serie" id="idserie" onchange="lista_turma_escola_por_serie('turmas');">
+                              <!--    <select class="form-control"  name="serie" id="idserie" onchange="listar_turmas_por_serie(this.value);"> -->
                             <option></option>
 
                           <?php 

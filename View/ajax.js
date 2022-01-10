@@ -1591,15 +1591,22 @@ function lista_de_turmas(id){
 
 function lista_turma_escola_por_serie(campo_listagem){
   var result = document.getElementById(campo_listagem);
+  if (campo_listagem=="turmas") {
+    var escola_id = document.getElementById("escola").value;
+    var id = document.getElementById("idserie").value;
+    var turno = document.getElementById("turno").value;
+
+  }else if (campo_listagem=='troca_turma') {
     var escola_id = document.getElementById("rematricula_escola_id").value;
- if (campo_listagem=='troca_turma') {
     var id = document.getElementById("troca_turma_serie_id").value;
     var turno = document.getElementById("troca_turma_turno").value;
 
   }else{
-  var id = document.getElementById("rematricula_nova_serie").value;
-  var turno = document.getElementById("rematricula_turno").value;
+      var escola_id = document.getElementById("rematricula_escola_id").value;
+      var id = document.getElementById("rematricula_nova_serie").value;
+      var turno = document.getElementById("rematricula_turno").value;
   }
+  
   var xmlreq = CriaRequest();   
   result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
 

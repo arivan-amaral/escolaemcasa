@@ -40,6 +40,17 @@
         });
       </script>"; 
       
+    }else if($_SESSION['status']==2) {
+      echo "<script>      
+        Swal.fire({
+          position: 'center',
+          icon: 'info',
+          title: 'ATENÇÃO',
+             text: ' $mensagem'
+      
+        });
+      </script>"; 
+      
     }
 
     unset($_SESSION['status']);
