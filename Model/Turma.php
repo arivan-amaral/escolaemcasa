@@ -110,7 +110,8 @@ function lista_de_turmas($conexao,$serie_id){
 function lista_de_turmas_das_escolas($conexao,$serie_id,$escola_id,$turno,$ano_letivo_vigente){
 
    $result = $conexao->query("
-      SELECT * FROM serie,turma,relacionamento_turma_escola where 
+      SELECT * FROM serie,turma,relacionamento_turma_escola,escola where 
+   relacionamento_turma_escola.escola_id= escola.idescola and
    turma.serie_id=serie.id and
    relacionamento_turma_escola.turma_id=turma.idturma and 
    relacionamento_turma_escola.escola_id=$escola_id and
