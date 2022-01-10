@@ -15,7 +15,7 @@ session_start();
 
 ?> 
 
-
+ 
 
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 
@@ -66,7 +66,7 @@ session_start();
                 <div class="row">
                   <div class="col-md-12">
                     <br>
-                <form class="mt-12"  method="POST" action="../Controller/Cadastrar_turma_escola.php">
+                <form class="mt-12"  method="GET">
                   <div class="card-body">
                     <div class="row">
                       <div class="col-sm-3">
@@ -115,7 +115,7 @@ session_start();
                         </div>
                       </div>
                       <span id="turmas">
-                        <input type="hidden" name="turma" value="">
+                        <input type="hidden" name="idturma" value="">
                       </span>            
                     </div>  
                     <div class="row">
@@ -139,10 +139,7 @@ session_start();
                         </div>
                       </div>
                     </div> 
-                    <br>
-                    <div class="row">
-                      <button type="submit" class="btn btn-block btn-primary">Concluir</button> 
-                    </div>                
+                    <br>               
                     </form> 
                     <br>
                     <div class="row">
