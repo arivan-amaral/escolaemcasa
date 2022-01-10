@@ -90,7 +90,7 @@ session_start();
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Turno</label>
-                         <select class="form-control"  name="turno" id="turno" onchange="lista_turma_escola_por_serie('tabela');" required>
+                         <select class="form-control"  name="turno" id="turno" onchange="lista_turma_cadastrada_escola_por_serie('tabela');" required>
                           <option value="MATUTINO">MATUTINO</option>
                           <option value="VESPERTINO">VESPERTINO</option>
                           <option value="VESPERTINO">NOTURNO</option>
@@ -100,7 +100,7 @@ session_start();
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Série</label>
-                            <select class="form-control"  name="idserie" id="idserie" onchange="lista_turma_escola_por_serie('tabela');listar_turmas_por_serie(this.value);">
+                            <select class="form-control"  name="idserie" id="idserie" onchange="lista_turma_cadastrada_escola_por_serie('tabela');listar_turmas_por_serie(this.value);">
                             <option></option>
 
                           <?php 
