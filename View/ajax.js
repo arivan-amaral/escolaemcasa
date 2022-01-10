@@ -1621,7 +1621,7 @@ function lista_turma_escola_por_serie(campo_listagem){
 }
 
 
-function lista_turma_escola_por_serie(campo_listagem){
+function lista_turma_cadastrada_escola_por_serie(campo_listagem){
   var result = document.getElementById(campo_listagem);
   var escola_id = document.getElementById("escola").value;
   var id = document.getElementById("idserie").value;
