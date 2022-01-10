@@ -72,7 +72,7 @@ session_start();
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Escola</label>
-                         <select class="form-control"  name="escola" id="escola" onchange="lista_turma_escola_por_serie('tabela');" required>
+                         <select class="form-control"  name="escola" id="escola" onchange="lista_turma_cadastrada_escola_por_serie('tabela');" required>
                           <option></option>
                        <?php 
                          // $res_escola=lista_escola($conexao);
