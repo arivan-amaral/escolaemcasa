@@ -63,6 +63,27 @@
                           funcionario.idfuncionario = $idcoordenador  ORDER by nome_disciplina desc ");
 
 		return $res;
+	}		
+
+	function listar_turmas_coordenador($conexao,$idescola,$ano_letivo){
+	    $res=$conexao->query("SELECT 
+	       idturma,
+	       serie.id as 'idserie',
+	       serie.nome as 'nome_serie',
+	       nome_turma,
+	       idescola,
+	       nome_escola
+	      FROM ministrada,escola,turma,funcionario,serie WHERE
+
+	    serie.id= turma.serie_id AND
+	    ministrada.escola_id= escola.idescola AND
+	    ministrada.professor_id= funcionario.idfuncionario and
+	    ministrada.turma_id = turma.idturma AND
+	    ministrada.ano = '$ano_letivo' AND
+	    escola_id=$idescola GROUP BY turma.idturma
+	    ORDER BY turma.nome_turma");
+
+		return $res;
 	}	
 
 	function listar_disciplina_da_turma($conexao,$idturma,$idescola){

@@ -32,6 +32,7 @@ try {
 			// if ($resultado=="Apc" || $resultado=="Apr") {
 				solicitacao_transferencia(
 					$conexao,
+					$matricula_aluno,
 					$aluno_id,
 					$serie_id,	
 					$profissional_solicitante,

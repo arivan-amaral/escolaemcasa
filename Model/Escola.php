@@ -1,4 +1,10 @@
 <?php 
+function pesquisar_solicitacao_transferencia_por_aluno($conexao,$matricula,$aceita){
+   $sql = $conexao->query("SELECT * from solicitacao_transferencia WHERE matricula=$matricula and aceita =$aceita
+      ");
+   return $sql->fetchAll();
+}
+
 function pesquisar_solicitacao_transferencia_por_escola($conexao,$visualizada,$aceita, $sql_escolas){
    $sql = $conexao->query("SELECT * from  funcionario,aluno,escola,solicitacao_transferencia WHERE 
       aluno_id=idaluno and
@@ -12,11 +18,12 @@ function pesquisar_solicitacao_transferencia_por_escola($conexao,$visualizada,$a
    return $sql->fetchAll();
 }
 
-function solicitacao_transferencia($conexao,$aluno_id, $serie_id,
+               
+function solicitacao_transferencia($conexao,$matricula,$aluno_id, $serie_id,
 $profissional_solicitante,
 $escola_id,
 $observacao,$ano_letivo,$ano_letivo_vigente){
-   $sql = $conexao->prepare("INSERT INTO solicitacao_transferencia(aluno_id, serie_id, profissional_solicitante,  escola_id,   observacao, ano_letivo,ano_letivo_vigente) VALUES ( :aluno_id, :serie_id, :profissional_solicitante,  :escola_id,:observacao,:ano_letivo,:ano_letivo_vigente)
+   $sql = $conexao->prepare("INSERT INTO solicitacao_transferencia(aluno_id, serie_id, profissional_solicitante,  escola_id,   observacao, ano_letivo,ano_letivo_vigente,matricula) VALUES ( :aluno_id, :serie_id, :profissional_solicitante,  :escola_id,:observacao,:ano_letivo,:ano_letivo_vigente,:matricula)
       ");
 
    $sql->bindParam('aluno_id',$aluno_id);
@@ -27,6 +34,7 @@ $observacao,$ano_letivo,$ano_letivo_vigente){
    $sql->bindParam('observacao',$observacao);
    $sql->bindParam('ano_letivo',$ano_letivo);
    $sql->bindParam('ano_letivo_vigente',$ano_letivo_vigente);
+   $sql->bindParam('matricula',$matricula);
 
    $sql->execute();
 }

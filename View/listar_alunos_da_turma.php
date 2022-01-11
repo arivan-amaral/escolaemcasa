@@ -285,8 +285,9 @@ echo "
                   $datasaida=converte_data($datasaida);
                 }
             }
+            $res_solicitacao_trasferencia=pesquisar_solicitacao_transferencia_por_aluno($conexao,$matricula_aluno,0);
 
-            if ($procedimento!="") {
+        if ($procedimento!="") {
              echo "<tr>
    
 <td>
@@ -309,9 +310,14 @@ echo "
 
             }else{
               echo "
-                 <tr>
-                 <td><p><input type='checkbox' class='checkbox' name='idaluno[]' value='$idaluno'>   </p></td>
-          
+                 <tr>";
+        if (count($res_solicitacao_trasferencia)==0) {
+
+                echo " <td><p><input type='checkbox' class='checkbox' name='idaluno[]' value='$idaluno'>   </p></td>";
+          }else{
+            echo "<td><B>SOLICITADO TRANSFERÊNCIA</B</td>";
+          }
+          echo"
                   <td>$id -
                     <b class='text-primary'> $nome_turma</b><BR>
                     <b class='text-success'> $nome_aluno </b> <BR>

@@ -5,23 +5,7 @@ try {
   
 
 $idescola=$_GET['idescola'];
-
-$res=$conexao->query("SELECT 
-   idturma,
-   serie.id as 'idserie',
-   serie.nome as 'nome_serie',
-   nome_turma,
-   idescola,
-   nome_escola
-  FROM ministrada,escola,turma,funcionario,serie WHERE
-
-serie.id= turma.serie_id AND
-ministrada.escola_id= escola.idescola AND
-ministrada.professor_id= funcionario.idfuncionario and
-ministrada.turma_id = turma.idturma AND
-escola_id=$idescola GROUP BY turma.idturma
-ORDER BY turma.nome_turma
-");
+$res=listar_turmas_coordenador($conexao,$idescola,$_SESSION['ano_letivo']);
 
 $result="";
                         foreach ($res as $key => $value) {
