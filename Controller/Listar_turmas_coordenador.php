@@ -107,7 +107,7 @@ $result="";
                                       <br>
 
                                     ";
-                                $pes=listar_disciplina_da_turma($conexao,$idturma,$idescola);
+                                $pes=listar_disciplina_da_turma($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
 
                                 foreach ($pes as $chave => $linha) {
                                   $nome_disciplina=($linha['nome_disciplina']);

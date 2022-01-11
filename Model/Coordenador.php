@@ -86,10 +86,14 @@
 		return $res;
 	}	
 
-	function listar_disciplina_da_turma($conexao,$idturma,$idescola){
+
+function listar_disciplina_da_turma($conexao,$idturma,$idescola,$ano_letivo){
 	    $res=$conexao->query("SELECT turma.nome_turma, disciplina.iddisciplina,disciplina.nome_disciplina, funcionario.nome FROM turma, ministrada,disciplina, funcionario WHERE 
 	    	funcionario.idfuncionario= ministrada.professor_id AND
-	    	disciplina.iddisciplina=ministrada.disciplina_id AND ministrada.turma_id=turma.idturma AND turma.idturma = $idturma and escola_id=$idescola ORDER by nome_disciplina ASC");
+	    	disciplina.iddisciplina=ministrada.disciplina_id AND
+	    	 ministrada.turma_id=turma.idturma AND 
+	    	 ministrada.ano='$ano_letivo' AND 
+	    	 turma.idturma = $idturma and escola_id=$idescola ORDER by nome_disciplina ASC");
 
 		return $res;
 	}

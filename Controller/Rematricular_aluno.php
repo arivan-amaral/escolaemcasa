@@ -48,7 +48,7 @@ try {
 			 	$matricula_tipo='R';
 			 	$calendario_ano=$_SESSION['ano_letivo_vigente'];
 
-			 if ( $rematricula_serie_id ==$rematricula_nova_serie ) {
+			 if ( $rematricula_serie_id ==$rematricula_nova_serie && $resultado !="Apc" || $resultado !="Apr" ) {
 				rematricular_aluno($conexao,$aluno_id,$turma_id,$turma_id_anterior,$matricula_situacao,$matricula_concluida,$matricula_datamatricula,$matricula_ativa,$matricula_tipo,$calendario_ano,$turma_escola,$turno_nome);
 				
 				mudar_situacao_rematricular_aluno($conexao,$matricula_aluno);

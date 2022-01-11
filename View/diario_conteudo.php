@@ -1,4 +1,5 @@
-<?php 
+<?php
+session_start();
 include_once"../Model/Conexao.php";
 include_once"../Model/Escola.php";
 include_once"conteudos_registrados.php";
@@ -96,7 +97,7 @@ $res=buscar_escola_por_id($conexao,$idescola);
 foreach ($res as $key => $value) {
     $nome_escola=$value['nome_escola'];
 }
-$pes=listar_disciplina_da_turma($conexao,$idturma,$idescola);
+$pes=listar_disciplina_da_turma($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
 
 foreach ($pes as $chave => $linha) {
   $nome_disciplina=($linha['nome_disciplina']);
