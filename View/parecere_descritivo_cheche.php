@@ -201,44 +201,42 @@
 
     <?php 
     $parecer_descritivo="";
-    // $pes=listar_disciplina_da_turma($conexao,$idturma,$idescola);
-
-    // foreach ($pes as $chave => $linha) {
-    //   $iddisciplina=$linha['iddisciplina'];
-    //   $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av1',$idaluno);
-    //   foreach ($resultado as $key => $value) {
-    //     $parecer_descritivo="".$value['parecer_descritivo'];
-    //   }
-    
-    // }   
- 
-    // $pes2=listar_disciplina_da_turma($conexao,$idturma,$idescola);
-    // foreach ($pes2 as $chave => $linha) {
-    //   $iddisciplina=$linha['iddisciplina'];
-    //   $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av2',$idaluno);
-    //   foreach ($resultado as $key => $value) {
-    //     $parecer_descritivo.=". ".$value['parecer_descritivo'];
-    //   }
-    
-    // }
-
-
-    $pes3=listar_disciplina_da_turma($conexao,$idturma,$idescola,$ano_letivo);
-    foreach ($pes3 as $chave => $linha) {
-      $iddisciplina=$linha['iddisciplina'];
-
+    if($idserie>3){
       if ($parecer_descritivo =="") {
-        
         $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av3',$idaluno,1);
 
         foreach ($resultado as $key => $value) {
           $parecer_descritivo=" ".$value['parecer_descritivo'];
         }
+      }      
 
+      if ($parecer_descritivo =="") {
+        $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av1',$idaluno,1);
+
+        foreach ($resultado as $key => $value) {
+          $parecer_descritivo=" ".$value['parecer_descritivo'];
+        }
       }
-    
-    }
 
+
+    echo "$parecer_descritivo";
+
+    }else{
+
+      $pes3=listar_disciplina_da_turma($conexao,$idturma,$idescola,$ano_letivo);
+      foreach ($pes3 as $chave => $linha) {
+        $iddisciplina=$linha['iddisciplina'];
+
+        if ($parecer_descritivo =="") {
+          $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av3',$idaluno,1);
+
+          foreach ($resultado as $key => $value) {
+            $parecer_descritivo=" ".$value['parecer_descritivo'];
+          }
+        }
+      
+      }
+  
 
     if ($parecer_descritivo=="") {
 
@@ -255,15 +253,8 @@
 
     }
 
-if (isset($_GET['token'])) {
-  echo "SELECT * FROM nota WHERE
-      disciplina_id=$iddisciplina and 
-      escola_id=$idescola and 
-      turma_id=$idturma and avaliacao='$avaliacao' and aluno_id=$idaluno and parecer_descritivo!='' and periodo_id=1 group by parecer_descritivo limit 1  ";
-
-}
-
-echo "$parecer_descritivo";
+    echo "$parecer_descritivo";
+  }//else serie <3 
 
     ?>
   </o:p></span></p>
@@ -296,31 +287,57 @@ echo "$parecer_descritivo";
 <?php 
 
     $parecer_descritivo="";
-    $pes_periodo2=listar_disciplina_da_turma($conexao,$idturma,$idescola,$ano_letivo);
-    foreach ($pes_periodo2 as $chave => $linha) {
-      $iddisciplina=$linha['iddisciplina'];
-      $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av3',$idaluno,2);
-      foreach ($resultado as $key => $value) {
-        $parecer_descritivo=$value['parecer_descritivo'];
-      }
-    
-    }
 
 
-    if ($parecer_descritivo=="") {
-      $pes_pare=listar_disciplina_da_turma($conexao,$idturma,$idescola,$ano_letivo);
-      foreach ($pes_pare as $chave => $linha) {
-        $iddisciplina=$linha['iddisciplina'];
-        $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av1',$idaluno,2);
+
+    if($idserie>3){
+      if ($parecer_descritivo =="") {
+        $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av3',$idaluno,2);
+
         foreach ($resultado as $key => $value) {
           $parecer_descritivo=" ".$value['parecer_descritivo'];
+        }
+      }      
+
+      if ($parecer_descritivo =="") {
+        $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av1',$idaluno,2);
+
+        foreach ($resultado as $key => $value) {
+          $parecer_descritivo=" ".$value['parecer_descritivo'];
+        }
+      }
+
+
+    echo "$parecer_descritivo";
+
+    }else{
+
+      $pes_periodo2=listar_disciplina_da_turma($conexao,$idturma,$idescola,$ano_letivo);
+      foreach ($pes_periodo2 as $chave => $linha) {
+        $iddisciplina=$linha['iddisciplina'];
+        $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av3',$idaluno,2);
+        foreach ($resultado as $key => $value) {
+          $parecer_descritivo=$value['parecer_descritivo'];
         }
       
       }
 
-    }
 
-echo "$parecer_descritivo";
+      if ($parecer_descritivo=="") {
+        $pes_pare=listar_disciplina_da_turma($conexao,$idturma,$idescola,$ano_letivo);
+        foreach ($pes_pare as $chave => $linha) {
+          $iddisciplina=$linha['iddisciplina'];
+          $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av1',$idaluno,2);
+          foreach ($resultado as $key => $value) {
+            $parecer_descritivo=" ".$value['parecer_descritivo'];
+          }
+        
+        }
+
+      }
+
+    echo "$parecer_descritivo";
+  }
 ?>
   </o:p></span></p>
   </td>
@@ -352,6 +369,30 @@ echo "$parecer_descritivo";
     <?php 
 
           $parecer_descritivo="";
+
+
+    if($idserie>3){
+      if ($parecer_descritivo =="") {
+        $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av3',$idaluno,3);
+
+        foreach ($resultado as $key => $value) {
+          $parecer_descritivo=" ".$value['parecer_descritivo'];
+        }
+      }      
+
+      if ($parecer_descritivo =="") {
+        $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av1',$idaluno,3);
+
+        foreach ($resultado as $key => $value) {
+          $parecer_descritivo=" ".$value['parecer_descritivo'];
+        }
+      }
+
+
+    echo "$parecer_descritivo";
+
+    }else{
+
         $pes_periodo3=listar_disciplina_da_turma($conexao,$idturma,$idescola,$ano_letivo);
         foreach ($pes_periodo3 as $chave => $linha) {
           $iddisciplina=$linha['iddisciplina'];
@@ -376,6 +417,7 @@ echo "$parecer_descritivo";
         }
 
     echo "$parecer_descritivo";
+  }//else
     ?>
    </o:p></span></p>
   </td>
