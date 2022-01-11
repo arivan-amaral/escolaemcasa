@@ -120,11 +120,12 @@ $nome_disciplina='';
 
   $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
   $conta=1;
+  // $res_alunos= listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
   foreach ($res_alunos as $key => $value) {
     $idaluno=$value['idaluno'];
     $nome_aluno=$value['nome_aluno'];
     $nome_turma=$value['nome_turma'];
-    parecere_descritivo_cheche($conexao,$idescola,$idturma,$idserie,$nome_disciplina,$nome_escola,$nome_aluno,$nome_turma,$idaluno); 
+    parecere_descritivo_cheche($conexao,$idescola,$idturma,$idserie,$nome_disciplina,$nome_escola,$nome_aluno,$nome_turma,$idaluno,$_SESSION['ano_letivo']); 
     echo" <br>";
     if ($conta%2==0) {
       echo "<div class='pagebreak'> </div>";

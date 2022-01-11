@@ -3,7 +3,7 @@
   include"../Model/Coordenador.php";
   include"../Model/Aluno.php";
  
- function parecere_descritivo_cheche($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_escola,$nome_aluno,$nome_turma,$idaluno){
+ function parecere_descritivo_cheche($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_escola,$nome_aluno,$nome_turma,$idaluno,$ano_letivo){
 ?>
 
 <div class=WordSection1>
@@ -161,7 +161,7 @@
   "Times New Roman";color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p>
     <?php 
     $parecer_descritivo='';
-    $pes=listar_disciplina_da_turma($conexao,$idturma,$idescola);
+    $pes=listar_disciplina_da_turma($conexao,$idturma,$idescola,$ano_letivo);
 
     foreach ($pes as $chave => $linha) {
       $iddisciplina=$linha['iddisciplina'];
@@ -223,7 +223,7 @@
     // }
 
 
-    $pes3=listar_disciplina_da_turma($conexao,$idturma,$idescola);
+    $pes3=listar_disciplina_da_turma($conexao,$idturma,$idescola,$ano_letivo);
     foreach ($pes3 as $chave => $linha) {
       $iddisciplina=$linha['iddisciplina'];
 
@@ -242,7 +242,7 @@
 
     if ($parecer_descritivo=="") {
 
-      $pes_pare=listar_disciplina_da_turma($conexao,$idturma,$idescola);
+      $pes_pare=listar_disciplina_da_turma($conexao,$idturma,$idescola,$ano_letivo);
       foreach ($pes_pare as $chave => $linha) {
         $iddisciplina=$linha['iddisciplina'];
         
@@ -296,7 +296,7 @@ echo "$parecer_descritivo";
 <?php 
 
     $parecer_descritivo="";
-    $pes_periodo2=listar_disciplina_da_turma($conexao,$idturma,$idescola);
+    $pes_periodo2=listar_disciplina_da_turma($conexao,$idturma,$idescola,$ano_letivo);
     foreach ($pes_periodo2 as $chave => $linha) {
       $iddisciplina=$linha['iddisciplina'];
       $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av3',$idaluno,2);
@@ -308,7 +308,7 @@ echo "$parecer_descritivo";
 
 
     if ($parecer_descritivo=="") {
-      $pes_pare=listar_disciplina_da_turma($conexao,$idturma,$idescola);
+      $pes_pare=listar_disciplina_da_turma($conexao,$idturma,$idescola,$ano_letivo);
       foreach ($pes_pare as $chave => $linha) {
         $iddisciplina=$linha['iddisciplina'];
         $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av1',$idaluno,2);
@@ -352,7 +352,7 @@ echo "$parecer_descritivo";
     <?php 
 
           $parecer_descritivo="";
-        $pes_periodo3=listar_disciplina_da_turma($conexao,$idturma,$idescola);
+        $pes_periodo3=listar_disciplina_da_turma($conexao,$idturma,$idescola,$ano_letivo);
         foreach ($pes_periodo3 as $chave => $linha) {
           $iddisciplina=$linha['iddisciplina'];
           $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av3',$idaluno,3);
@@ -363,7 +363,7 @@ echo "$parecer_descritivo";
         }
 
         if ($parecer_descritivo=="") {
-          $pes_pare=listar_disciplina_da_turma($conexao,$idturma,$idescola);
+          $pes_pare=listar_disciplina_da_turma($conexao,$idturma,$idescola,$ano_letivo);
           foreach ($pes_pare as $chave => $linha) {
             $iddisciplina=$linha['iddisciplina'];
             $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av1',$idaluno,3);
