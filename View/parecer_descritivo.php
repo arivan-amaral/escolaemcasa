@@ -1,4 +1,5 @@
 <?php 
+session_start();
 include_once"../Model/Conexao.php";
 include_once"../Model/Escola.php";
 include_once"parecere_descritivo_cheche.php";

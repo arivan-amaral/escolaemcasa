@@ -159,6 +159,7 @@ $idcoordenador=$_SESSION['idfuncionario'];
                        <div class="form-group">
                          <label for="exampleInputEmail1">Apoio Pedagógico</label><br>
                          <select  class="form-control" name="apoio_pedagogico">
+                             <option></option>
                              <option value='SEM APOIO PEDAGÓGICO'>SEM APOIO PEDAGÓGICO</option>
                               <option value="COM APOIO PEDAGÓGICO">COM APOIO PEDAGÓGICO</option>
                               <option value="COM APOIO PEDAGÓGICO (OUTRO ESTABELECIMENTO)">COM APOIO PEDAGÓGICO (OUTRO ESTABELECIMENTO)</option>
@@ -170,6 +171,8 @@ $idcoordenador=$_SESSION['idfuncionario'];
                        <div class="form-group">
                          <label for="exampleInputEmail1">Tipo De Diagnóstico</label><br>
                          <select  class="form-control" name="tipo_diagnostico">
+                             <option></option>
+                          
                            <option value='SEM DIAGNÓSTICO'>SEM DIAGNÓSTICO</option>
                            <option value='FICHA DE AVALIAÇÃO'>FICHA DE AVALIAÇÃO</option>
                            <option value='LAUDO TÉCNICO'>LAUDO TÉCNICO</option>
