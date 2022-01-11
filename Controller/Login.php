@@ -184,7 +184,7 @@ try {
       }else{
           $_SESSION['status']=0;
           $_SESSION['mensagem']="Tente novamente!!";
-          //header("location:../View/index.php?tokem=0"); 
+          header("location:../View/index.php?tokem=0"); 
       }
 
 
