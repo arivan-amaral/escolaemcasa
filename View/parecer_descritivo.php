@@ -1,4 +1,5 @@
 <?php 
+<?php 
 session_start();
 include_once"../Model/Conexao.php";
 include_once"../Model/Escola.php";

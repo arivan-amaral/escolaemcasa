@@ -31,7 +31,7 @@
   src="regitro_conteudo_arquivos/image002.jpg" v:shapes="Imagem_x0020_2"></span><span
   style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'><o:p></o:p></span></p>
+  mso-fareast-language:PT-BR' ><o:p></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:1;height:15.0pt'>
@@ -200,7 +200,7 @@
   "Times New Roman";color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p>
 
     <?php 
-    $parecer_descritivo=":o$idserie";
+    $parecer_descritivo="$idserie";
     if($idserie>3){
       if ($parecer_descritivo =="") {
         $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av3',$idaluno,1);
