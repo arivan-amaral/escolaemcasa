@@ -749,7 +749,7 @@ $conta_presenca=1;
 
 
 //
- for ($i=$conta_presenca; $i <20 ; $i++) {
+ for ($i=$conta_presenca; $i < $limite_aula ; $i++) {
    
   ?>
   
