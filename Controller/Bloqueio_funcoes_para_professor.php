@@ -2,6 +2,8 @@
  /////////////////////////////////////////////////////////
    if (isset($_SESSION['idprofessor'])) {
         if(
+         $_SESSION['idprofessor']==1414 ||
+         $_SESSION['idprofessor']==1032 ||
          $_SESSION['idprofessor']==1020 ||
          $_SESSION['idprofessor']==401 ||
          $_SESSION['idprofessor']==339 ||
