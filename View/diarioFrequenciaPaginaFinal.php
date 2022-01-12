@@ -354,7 +354,7 @@ foreach ($result_escola as $key => $value) {
 
  
 <!-- arghg -->
-  <td width=164 nowrap colspan=5 style='width:13.2pt;border-bottom:
+  <td width=164 nowrap colspan='100%' style='width:13.2pt;border-bottom:
   solid windowtext 1.0pt;border-left:
   solid windowtext 1.0pt;
   border-top:solid windowtext 1.0pt;padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
