@@ -28,7 +28,7 @@
     	return $res;    
 	}	
 
-	function listar_nome_professor_turma_por_disciplina($conexao,$iddisciplina,$idescola,$ano_letivo) {
+	function listar_nome_professor_turma_por_disciplina($conexao,$idturma,$iddisciplina,$idescola,$ano_letivo) {
     	        $res=$conexao->query("
     	    SELECT 
           disciplina.nome_disciplina,
@@ -45,6 +45,7 @@
 
         ministrada.ano='$ano_letivo' AND
         ministrada.escola_id='$idescola' AND
+        ministrada.turma_id='$idturma' AND
         ministrada.disciplina_id='$iddisciplina' limit 1");
 
     	return $res;    

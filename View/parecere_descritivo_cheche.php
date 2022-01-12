@@ -200,7 +200,7 @@
   "Times New Roman";color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p>
 
     <?php 
-    $parecer_descritivo="";
+    $parecer_descritivo=":o$idserie";
     if($idserie>3){
       if ($parecer_descritivo =="") {
         $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av3',$idaluno,1);
