@@ -709,7 +709,8 @@ foreach ($res as $key => $value) {
                          <select class="form-control"  name="turno" id="turno" >
                           <option value="MATUTINO">MATUTINO</option>
                           <option value="VESPERTINO">VESPERTINO</option>
-                          <option value="VESPERTINO">NOTURNO</option>
+                             <option value="NOTURNO">NOTURNO</option>
+                          <option value="INTEGRAL">INTEGRAL</option>
                          </select>
                         </div>
                       </div>
