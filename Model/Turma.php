@@ -107,6 +107,41 @@ function lista_de_turmas($conexao,$serie_id){
 
 }
 
+function quantidade_vaga_turma($conexao,$escola_id,$turma_id,$turno,$ano_letivo_vigente){
+
+   $result = $conexao->query("
+      SELECT * FROM relacionamento_turma_escola where  
+      relacionamento_turma_escola.escola_id=$escola_id and
+      relacionamento_turma_escola.turma_id=$turma_id and
+     relacionamento_turma_escola.turno='$turno' and
+     relacionamento_turma_escola.ano='$ano_letivo_vigente' ");
+
+    return $result;
+
+}
+
+function quantidade_aluno_na_turma($conexao,$escola_id,$turma_id,$turno,$ano_letivo_vigente){
+
+   $result = $conexao->query("
+     SELECT 
+   COUNT(*) as 'quantidade'
+FROM
+ ecidade_matricula
+
+where
+
+ecidade_matricula.matricula_concluida='N' and
+ecidade_matricula.matricula_ativa='S' and
+ecidade_matricula.matricula_situacao !='CANCELADO' and
+ecidade_matricula.turma_escola=$escola_id and
+ecidade_matricula.turma_id=$turma_id AND
+ecidade_matricula.calendario_ano ='$ano_letivo_vigente'  AND
+ecidade_matricula.turno_nome ='$turno' ");
+
+    return $result;
+
+}
+
 function lista_de_turmas_das_escolas($conexao,$serie_id,$escola_id,$turno,$ano_letivo_vigente){
 
    $result = $conexao->query("
@@ -124,6 +159,8 @@ function lista_de_turmas_das_escolas($conexao,$serie_id,$escola_id,$turno,$ano_l
     return $result;
 
 }
+
+
 
 function excluir_turma_escola($conexao,$id){
    $sql = $conexao->prepare("DELETE FROM relacionamento_turma_escola WHERE id = :id");

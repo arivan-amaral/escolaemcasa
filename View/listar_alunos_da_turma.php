@@ -115,20 +115,25 @@ $url_get=$array_url[1];
       </div>
       <br>
  
+
 <?php 
   if (isset($_GET['teste'])) { 
 ?>
-
   <div class="row">
       <div class="col-sm-3">
         <a  class="btn btn-block btn-primary" onclick="mudar_action_form('Solicitacao_transferencia.php');"  data-toggle='modal' data-target='#modal_transferencia'>Transferir selecionados</a>
       </div>
+  <?php
+ }
+?>
+
 <?php 
   if ($_SESSION['ano_letivo']!=$_SESSION['ano_letivo_vigente']) {
  ?>
       <div class="col-sm-3">
         <a href="" class="btn btn-block btn-success" onclick="mudar_action_form('Rematricular_aluno.php');"  data-toggle='modal' data-target='#modal_rematricula'>Rematricular selecionados</a>
       </div> 
+
 <?php 
   } 
 ?>  
@@ -144,9 +149,7 @@ $url_get=$array_url[1];
 
   </div>
 
-<?php
- }
-?>
+
 
 <form action="" name="procedimentos" id="procedimentos" method="post">
 
@@ -291,20 +294,18 @@ echo "
              echo "<tr>
    
 <td>
+$conta_aluno
 </td>
-      <td  valign=top style='border:solid black 1.0pt; 
+      <td  valign=top style='border:solid black 1.0pt;
+      $conta_aluno -  
       padding:0cm 0cm 0cm 0cm;height:11.3pt; '>
-      <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
-      0cm;margin-left:2.75pt;margin-bottom:.0001pt'><span lang=PT style='font-size:
-      8.0pt'>$nome_aluno</span></p>
+      $nome_aluno
       </td>
 
 
      <td colspan='100%' valign=top style='border:solid black 1.0pt;
      ;padding:0cm 0cm 10pt 0cm;height:11.3pt; '>
-      <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
-      0cm;margin-left:2.75pt;margin-bottom:.0001pt'><span lang=PT style='font-size:
-      8.0pt'> $procedimento  $datasaida </p>
+       $procedimento  $datasaida 
       </td> ";
 
 
@@ -313,14 +314,14 @@ echo "
                  <tr>";
         if (count($res_solicitacao_trasferencia)==0) {
 
-                echo " <td><p><input type='checkbox' class='checkbox' name='idaluno[]' value='$idaluno'>   </p></td>";
+                echo " <td>$conta_aluno - <p><input type='checkbox' class='checkbox' name='idaluno[]' value='$idaluno'>   </p></td>";
           }else{
             echo "<td><B>SOLICITADO TRANSFERÊNCIA</B</td>";
           }
           echo"
                   <td>$id -
-                    <b class='text-primary'> $nome_turma</b><BR>
                     <b class='text-success'> $nome_aluno </b> <BR>
+                    <b class='text-primary'> $nome_turma</b><BR>
                     <b class='text-danger'>$email  </b><BR>
                     <b class='text-danger'>Senha: $senha  </b><BR>
 
@@ -508,6 +509,7 @@ echo "<input type='hidden' name='url_get' value='$url_get'>";
                 </tr>
               ";
             }//procedimento ==""
+            $conta_aluno++;
            }
         ?>
 
@@ -814,16 +816,25 @@ function addChecked(id) {
               </div>
             </div>
 
+
+
             <div class="col-sm-3">
               <div class="form-group" id="">
                  <label for='exampleInputEmail1' class='text-danger'>Turma pretendida</label>
-                  <select class='form-control'  name='rematricula_turma' id='lista_de_turmas_rematricula'>
+                  <select class='form-control' name='rematricula_turma' id='lista_de_turmas_rematricula' onchange="quantidade_vaga_turma('lista_de_turmas_rematricula');">
                   </select>
                 
               </div>
             </div>       
     
+     <div class="col-sm-6">
+              <div class="form-group" >
+                <label for='exampleInputEmail1' class='text-danger'>Vagas restantes na turma</label>
 
+                <input type="text"  name="quantidade_vagas_restante" id="quantidade_vagas_restante" value="0" readonly class="alert alert-secondary">
+                 
+              </div>
+            </div>
           </div>
         
 

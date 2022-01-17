@@ -1591,6 +1591,14 @@ function lista_de_turmas(id){
 
 function lista_turma_escola_por_serie(campo_listagem){
   var result = document.getElementById(campo_listagem);
+  var quantidade_vagas_restante = document.getElementById("quantidade_vagas_restante");
+   if (!!document.getElementById('lista_de_turmas_rematricula')) {
+        var turma_id =0;
+    }else{
+        var turma_id =document.getElementById('lista_de_turmas_rematricula').value;
+            
+    }
+
   if (campo_listagem=="turmas") {
     var escola_id = document.getElementById("rematricula_escola_id").value;
     var id = document.getElementById("idserie").value;
@@ -1605,16 +1613,71 @@ function lista_turma_escola_por_serie(campo_listagem){
       var escola_id = document.getElementById("rematricula_escola_id").value;
       var id = document.getElementById("rematricula_nova_serie").value;
       var turno = document.getElementById("rematricula_turno").value;
+
+
   }
   var xmlreq = CriaRequest();   
   result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
 
-   xmlreq.open("GET", "../Controller/Lista_de_turmas_por_escola_serie.php?rematricula=sim&turno="+turno+"&escola_id="+escola_id+"&serie_id="+id, true);
+   xmlreq.open("GET", "../Controller/Lista_de_turmas_por_escola_serie.php?turma_id="+turma_id+"&rematricula=sim&turno="+turno+"&escola_id="+escola_id+"&serie_id="+id, true);
     xmlreq.onreadystatechange = function(){      
         if (xmlreq.readyState == 4) {
             if (xmlreq.status == 200) {
+                var recebe =xmlreq.responseText;
 
-                   result.innerHTML =  xmlreq.responseText;
+                var vetor=recebe.split("|#|");
+                 quantidade_vagas_restante.value=0;                 
+                result.innerHTML =  vetor[0];
+                // result.innerHTML =  xmlreq.responseText;
+                
+            }else{
+                   result.innerHTML = "Erro ao pesquisar";
+                
+                
+            }
+        }
+    };
+    xmlreq.send(null);
+}
+
+
+function quantidade_vaga_turma(campo_listagem){
+  var result = document.getElementById(campo_listagem);
+  var quantidade_vagas_restante = document.getElementById("quantidade_vagas_restante");
+
+        var turma_id =document.getElementById('lista_de_turmas_rematricula').value;
+            
+
+
+  if (campo_listagem=="turmas") {
+    var escola_id = document.getElementById("rematricula_escola_id").value;
+    var id = document.getElementById("idserie").value;
+    var turno = document.getElementById("turno").value;
+
+  }else if (campo_listagem=='troca_turma') {
+    var escola_id = document.getElementById("rematricula_escola_id").value;
+    var id = document.getElementById("troca_turma_serie_id").value;
+    var turno = document.getElementById("troca_turma_turno").value;
+
+  }else{
+      var escola_id = document.getElementById("rematricula_escola_id").value;
+      var id = document.getElementById("rematricula_nova_serie").value;
+      var turno = document.getElementById("rematricula_turno").value;
+
+
+  }
+  var xmlreq = CriaRequest();   
+
+   xmlreq.open("GET", "../Controller/Lista_de_turmas_por_escola_serie.php?turma_id="+turma_id+"&rematricula=sim&turno="+turno+"&escola_id="+escola_id+"&serie_id="+id, true);
+    xmlreq.onreadystatechange = function(){      
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {
+                var recebe =xmlreq.responseText;
+
+                var vetor=recebe.split("|#|");
+                quantidade_vagas_restante.value=vetor[2];                 
+                // result.innerHTML =  vetor[0];
+                // result.innerHTML =  xmlreq.responseText;
                 
             }else{
                    result.innerHTML = "Erro ao pesquisar";
