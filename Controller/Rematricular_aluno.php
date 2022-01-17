@@ -61,6 +61,7 @@ try {
 
 
 			}elseif ($quantidade_vagas_restante> 0 && ($resultado=="Apc" || $resultado=="Apr") ) {
+			  	
 			  	rematricular_aluno($conexao,$aluno_id,$turma_id,$turma_id_anterior,$matricula_situacao,$matricula_concluida,$matricula_datamatricula,$matricula_ativa,$matricula_tipo,$calendario_ano,$turma_escola,$turno_nome);
 				
 				mudar_situacao_rematricular_aluno($conexao,$matricula_aluno);
@@ -124,8 +125,8 @@ try {
 } catch (Exception $e) {
 	$_SESSION['status']=0;
 	$_SESSION['mensagem']='Alguma coisa deu errado, tente novamente!';
-	// header("location:../View/listar_alunos_da_turma.php?$url_get");
-	echo "$e";
+	header("location:../View/listar_alunos_da_turma.php?$url_get");
+	// echo "$e";
  
 }
 
