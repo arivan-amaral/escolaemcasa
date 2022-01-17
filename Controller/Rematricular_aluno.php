@@ -124,7 +124,8 @@ try {
 } catch (Exception $e) {
 	$_SESSION['status']=0;
 	$_SESSION['mensagem']='Alguma coisa deu errado, tente novamente!';
-	header("location:../View/listar_alunos_da_turma.php?$url_get");
+	// header("location:../View/listar_alunos_da_turma.php?$url_get");
+	echo "$e";
  
 }
 
