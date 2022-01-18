@@ -211,6 +211,9 @@ $idserie=$_POST['idserie'];
 
 </div>
 <br>
+<script>
+    alert("Estamos em manutenção na ATA");
+</script>
 
 <center>
 <footer class="no-print">
