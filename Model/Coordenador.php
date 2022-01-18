@@ -65,6 +65,30 @@
 		return $res;
 	}		
 
+	function listar_turmas_inicial_coordenador($conexao,$idescola,$ano_letivo){
+	    $res=$conexao->query("SELECT 
+	       idturma,
+	       serie.id as 'idserie',
+	       serie.nome as 'nome_serie',
+	       nome_turma,
+	       idescola,
+	       nome_escola
+
+	FROM escola,turma,serie,relacionamento_turma_escola WHERE
+
+		relacionamento_turma_escola.escola_id= escola.idescola and 
+		relacionamento_turma_escola.turma_id = turma.idturma AND
+		turma.serie_id = serie.id AND
+		escola.idescola='$idescola' AND 
+		relacionamento_turma_escola.ano='$ano_letivo'
+
+	 GROUP BY turma.idturma
+	 ORDER BY turma.nome_turma");
+
+		return $res;
+	}
+
+
 	function listar_turmas_coordenador($conexao,$idescola,$ano_letivo){
 	    $res=$conexao->query("SELECT 
 	       idturma,
