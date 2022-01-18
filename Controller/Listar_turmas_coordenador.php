@@ -5,8 +5,11 @@ try {
   
 
   $idescola=$_GET['idescola'];
-  $res=listar_turmas_inicial_coordenador($conexao,$idescola,$_SESSION['ano_letivo']);
-  // $res=listar_turmas_coordenador($conexao,$idescola,$_SESSION['ano_letivo']);
+  if ($_SESSION['ano_letivo']==2022) {
+    $res=listar_turmas_inicial_coordenador($conexao,$idescola,$_SESSION['ano_letivo']);
+  }else{
+    $res=listar_turmas_coordenador($conexao,$idescola,$_SESSION['ano_letivo']);
+  }
 
   $result="";
   foreach ($res as $key => $value) {
