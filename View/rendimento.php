@@ -793,7 +793,7 @@ if ($procedimento !='') {
             none;mso-border-top-alt:solid windowtext 1.0pt;mso-border-alt:solid windowtext 1.0pt;
             mso-border-bottom-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
             height:15.0pt'>
-            <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:left;
+            <p class=MsoNormal  style='margin-bottom:0cm;text-align:left;
             line-height:normal'>
             <span style='font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;
             color:black;mso-fareast-language:PT-BR'> $nome_aluno
@@ -802,24 +802,60 @@ if ($procedimento !='') {
         </td>
 
         <td colsplan='100%' style='border: 1px solid black'>
-        </td>  <td colsplan='100%' style='border: 1px solid black'>
-        </td>  <td colsplan='100%' style='border: 1px solid black'>
-        </td>  <td colsplan='100%' style='border: 1px solid black'>
-        </td>  <td colsplan='100%' style='border: 1px solid black'>
+            <span style='font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
+           <o:p></o:p>
+           </span>
+        </td>
+
+        <td colsplan='100%' style='border: 1px solid black'>
+            <span style='font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
+           <o:p></o:p>
+           </span>
         </td>  
         <td colsplan='100%' style='border: 1px solid black'>
+            <span style='font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
+           <o:p></o:p>
+           </span>
+        </td>  
+
+        <td colsplan='100%' style='border: 1px solid black'>
+            <span style='font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
+           <o:p></o:p>
+           </span>
         </td>  
         <td colsplan='100%' style='border: 1px solid black'>
+            <span style='font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
+           <o:p></o:p>
+           </span>
         </td>  
         <td colsplan='100%' style='border: 1px solid black'>
+            <span style='font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
+           <o:p></o:p>
+           </span>
         </td>  
         <td colsplan='100%' style='border: 1px solid black'>
+            <span style='font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
+           <o:p></o:p>
+           </span>
         </td>  
         <td colsplan='100%' style='border: 1px solid black'>
+            <span style='font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
+           <o:p></o:p>
+           </span>
+        </td>  
+        <td colsplan='100%' style='border: 1px solid black'>
+            <span style='font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
+           <o:p></o:p>
+           </span>
+        </td>  
+        <td colsplan='100%' style='border: 1px solid black'>
+           <span style='font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
+           <o:p></o:p>
+           </span>
         </td>
         <td colsplan='100%' style='border: 1px solid black'>
             <p class=MsoNormal 
-            line-height:normal'><span style='font-size:12.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;
+            line-height:normal'><span style='font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;
             color:black;mso-fareast-language:PT-BR;'>  $procedimento
 <o:p></o:p></span></p>
         </td>
