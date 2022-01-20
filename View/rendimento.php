@@ -802,54 +802,54 @@ if ($procedimento !='') {
         </td>
 
         <td colsplan='100%' style='border: 1px solid black'>
-            <span style='font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
+            <span style='text-align:center; font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
            <o:p></o:p>
            </span>
         </td>
 
         <td colsplan='100%' style='border: 1px solid black'>
-            <span style='font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
+            <span style='text-align:center;font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
            <o:p></o:p>
            </span>
         </td>  
         <td colsplan='100%' style='border: 1px solid black'>
-            <span style='font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
+            <span style='text-align:center;font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
            <o:p></o:p>
            </span>
         </td>  
 
         <td colsplan='100%' style='border: 1px solid black'>
-            <span style='font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
+            <span style='text-align:center;font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
            <o:p></o:p>
            </span>
         </td>  
         <td colsplan='100%' style='border: 1px solid black'>
-            <span style='font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
+            <span style='text-align:center;font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
            <o:p></o:p>
            </span>
         </td>  
         <td colsplan='100%' style='border: 1px solid black'>
-            <span style='font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
+            <span style='text-align:center;font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
            <o:p></o:p>
            </span>
         </td>  
         <td colsplan='100%' style='border: 1px solid black'>
-            <span style='font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
+            <span style='text-align:center;font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
            <o:p></o:p>
            </span>
         </td>  
         <td colsplan='100%' style='border: 1px solid black'>
-            <span style='font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
+            <span style='text-align:center;font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
            <o:p></o:p>
            </span>
         </td>  
         <td colsplan='100%' style='border: 1px solid black'>
-            <span style='font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
+            <span style='text-align:center;font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
            <o:p></o:p>
            </span>
         </td>  
         <td colsplan='100%' style='border: 1px solid black'>
-           <span style='font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
+           <span style='text-align:center;font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;color:black;mso-fareast-language:PT-BR;'><b>  - </b>
            <o:p></o:p>
            </span>
         </td>
