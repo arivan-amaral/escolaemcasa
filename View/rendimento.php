@@ -789,20 +789,36 @@ if ($procedimento !='') {
 <o:p></o:p></span></p>
         </td>       
 
-        <td width=20 style='width:14.85pt;border:solid windowtext 1.0pt;border-top:
+        <td colsplan='100%' width=20 style='width:14.85pt;border:solid windowtext 1.0pt;border-top:
             none;mso-border-top-alt:solid windowtext 1.0pt;mso-border-alt:solid windowtext 1.0pt;
             mso-border-bottom-alt:solid windowtext .5pt;background:white;padding:0cm 3.5pt 0cm 3.5pt;
             height:15.0pt'>
             <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
             line-height:normal'><span style='font-size:8.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;
             color:black;mso-fareast-language:PT-BR'> $nome_aluno
-<o:p></o:p></span></p>
+          <o:p></o:p></span></p>
         </td>
 
-        <td colsplan='100%' style=''>
+        <td colsplan='100%' style='border: 1px solid black'>
+        </td>  <td colsplan='100%' style='border: 1px solid black'>
+        </td>  <td colsplan='100%' style='border: 1px solid black'>
+        </td>  <td colsplan='100%' style='border: 1px solid black'>
+        </td>  <td colsplan='100%' style='border: 1px solid black'>
+        </td>  
+        <td colsplan='100%' style='border: 1px solid black'>
+        </td>  
+        <td colsplan='100%' style='border: 1px solid black'>
+        </td>  
+        <td colsplan='100%' style='border: 1px solid black'>
+        </td>  
+        <td colsplan='100%' style='border: 1px solid black'>
+        </td>  
+        <td colsplan='100%' style='border: 1px solid black'>
+        </td>
+        <td colsplan='100%' style='border: 1px solid black'>
             <p class=MsoNormal 
-            line-height:normal'><span style='font-size:8.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;
-            color:black;mso-fareast-language:PT-BR'>  $procedimento
+            line-height:normal'><span style='font-size:12.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;
+            color:black;mso-fareast-language:PT-BR;'>  $procedimento
 <o:p></o:p></span></p>
         </td>
 
