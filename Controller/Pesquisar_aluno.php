@@ -41,37 +41,91 @@ try {
           <tbody>
 
           ";
+// ecidade_matricula.calendario_ano ='$ano_letivo_vigente' and 
+  $result_aluno=$conexao->query("SELECT 
+aluno.nome as 'nome_aluno',
+aluno.sexo,
+aluno.data_nascimento,
+aluno.idaluno,
+aluno.email,
+aluno.status as 'status_aluno',
+aluno.senha
 
-               $result_aluno= pesquisar_aluno($conexao,$pesquisa,$codigo_sql );
+
+FROM
+ 
+aluno 
+
+where
+  aluno.nome LIKE '%$pesquisa%'  
+  ORDER by  aluno.nome asc limit 50");
+
+
+               // $result_aluno= pesquisar_aluno($conexao,$pesquisa,$codigo_sql );
                $cont=1;
                
                foreach ($result_aluno as $key => $value) {
-                $nome_aluno=utf8_decode($value['nome']);
-                $nome_turma=($value['nome_turma']);
+                $nome_aluno=utf8_decode($value['nome_aluno']);
                 $idaluno=$value['idaluno'];
-                $matricula=$value['matricula'];
-                
-                $nome_escola=$value['nome_escola'];
         				$numero="";
-        				$idescola=$value['idescola'];
-        				$idturma=$value['idturma'];
-        				$idserie=$value['idserie'];
+                $result.="<tr>
+                      <td>$idaluno</td>
+                      <td>
+                        <b class='text-success'> $nome_aluno </b> <br> 
+                      ";
+           
 
+                    $result_ecidade_matricula=$conexao->query("SELECT
+                    turma.nome_turma,
+                    escola.nome_escola,
+                    ecidade_matricula.matricula_codigo as 'matricula',
+                    ecidade_matricula.matricula_datamatricula as 'data_matricula',
+                    ecidade_matricula.datasaida as 'datasaida',
+                    ecidade_matricula.turma_escola as 'idescola',
+                    ecidade_matricula.turma_id as 'idturma',
+                    turma.serie_id as 'idserie',
+                    ecidade_matricula.calendario_ano as 'calendario_ano'
+
+                    FROM
+                      ecidade_matricula,
+                      turma,escola
+                    where
+                
+                      ecidade_matricula.aluno_id = $idaluno and 
+                      ecidade_matricula.turma_id = turma.idturma and 
+                      ecidade_matricula.turma_escola = escola.idescola and 
+                      ecidade_matricula.matricula_situacao !='CANCELADO'
+                      ORDER by ecidade_matricula.calendario_ano desc");
+$conta_ano_cursado=1;
+foreach ($result_ecidade_matricula as $key => $value) {
+                $nome_turma=($value['nome_turma']);
+                $nome_escola=$value['nome_escola'];
+                $idescola=$value['idescola'];
+                $idturma=$value['idturma'];
+                $idserie=$value['idserie'];
+                $matricula=$value['matricula'];
+                $calendario_ano=$value['calendario_ano'];
+                if ($conta_ano_cursado==1) {
+                   $result.="
+                        <b class='text-primary'> $nome_escola -</b> 
+                        <b class='text-primary'> $nome_turma </b> 
+                        <b class='text-success'> Ano: $calendario_ano </b> <br>
+                      ";
+                }else{
+                      $result.="
+                        <b class='text-black'> $nome_escola -</b> 
+                        <b class='text-black'> $nome_turma </b> 
+                        <b class='text-success'> Ano: $calendario_ano</b> <br>
+                      ";
+                }
+
+
+  $conta_ano_cursado++;
+         
+}//final => foreach ($result_ecidade_matricula as $key => $value) {
 
                   $result.="
-                     <tr>
-                      <td>$idaluno</td>
-
-                      <td>
-                     
-                        <b class='text-success'> $nome_aluno </b> <br> 
-                        <b class='text-danger'> $nome_escola -</b> <b class='text-primary'>$nome_turma </b> 
-                      </td>
-                      
-                    
-
-
-
+                </td>
                       <td class = 'text-right'>
                           <div class = 'btn-group text-right'>
                               <button type = 'button' class = 'btn btn-primary fs12 dropdown-toggle' data-toggle = 'dropdown' aria-expanded = 'false'> 
@@ -148,15 +202,14 @@ try {
                                  $result.="
                               </ul>
                           </div>
-                      </td>
-
+                      </td>";
 
                         
              
                      
                       
 
-                    </tr>";
+                    $result.="</tr>";
                   $cont++;
                }
 
@@ -169,7 +222,7 @@ try {
       echo $result;
 
   }catch (Exception $e) {
-      echo "VERIFIQUE SUA CONEXÃO COM A INTERNET $e";
+      echo "VERIFIQUE SUA CONEXÃO COM A INTERNET $e<br>";
   }
 
 ?>

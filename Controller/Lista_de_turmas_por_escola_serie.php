@@ -19,7 +19,7 @@ if (isset($_GET['turma_id'])) {
 $result="";
 
 if (isset($_GET["rematricula"])){
-    $result=lista_de_turmas_das_escolas($conexao,$serie_id,$escola_id,$turno,$ano_letivo_vigente);
+    $result=lista_de_turmas_das_escolas_rematricula($conexao,$serie_id,$escola_id,$turno,$ano_letivo_vigente);
     $return="<option></option>";
     foreach ($result as $key => $value) {
       $idturma=$value['idturma'];

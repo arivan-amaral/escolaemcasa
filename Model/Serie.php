@@ -10,6 +10,11 @@ function pesquisar_serie_por_id($conexao,$idserie){
     return $result;
 
 }
+function pesquisar_ordem_proxima_serie($conexao,$idserie){
+   $result = $conexao->query("SELECT * FROM serie where $idserie  ORDER BY id asc");
+    return $result;
+
+}
 
 
 ?>
