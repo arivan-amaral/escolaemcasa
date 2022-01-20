@@ -539,6 +539,8 @@ function pesquisa_aluno(){
     var pesquisa = document.getElementById('pesquisa').value;
      
         var xmlreq = CriaRequest();
+        result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
+
         xmlreq.open("GET", "../Controller/Pesquisar_aluno.php?pesquisa="+pesquisa+"&escola="+escola, true);
 
         xmlreq.onreadystatechange = function(){

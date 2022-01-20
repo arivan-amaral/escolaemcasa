@@ -1,6 +1,7 @@
 <?php session_start();
 include'../Model/Conexao.php';
 include'../Model/Escola.php';
+include'../Model/Aluno.php';
 
 
 try {
@@ -53,8 +54,7 @@ try {
 			 	$matricula_tipo='R';
 			 	$calendario_ano=$_SESSION['ano_letivo_vigente'];
 
-			 	$verificar_aluno_na_turna_rematricula=$conexao->query("SELECT * FROM ecidade_matricula where 
-			 		calendario_ano='$calendario_ano' and aluno_id=$aluno_id ");
+			 	$verificar_aluno_na_turna_rematricula=verificar_aluno_na_turna_rematricula($conexao,$aluno_id,$calendario_ano);
 			
 			$rematriculado=0;
 			foreach ($verificar_aluno_na_turna_rematricula as $key => $value) {

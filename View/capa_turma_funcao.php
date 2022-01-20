@@ -91,7 +91,14 @@ $matricula_aluno="";
   $matricula="";
   $datasaida="";
   $data_matricula="";
-$res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+// $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+
+  if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
+    $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+  }else{
+    $res_alunos=listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+  }
+
  foreach ($res_alunos as $key => $value) {
 
   $idaluno=$value['idaluno'];
