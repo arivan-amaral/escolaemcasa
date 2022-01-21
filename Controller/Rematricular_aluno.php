@@ -63,7 +63,8 @@ try {
 
 
 			
-
+			echo "$aluno_id - $nome_aluno <br>";
+			
 			 if ($rematriculado==0 && $quantidade_vagas_restante> 0 && $rematricula_serie_id ==$rematricula_nova_serie && ($resultado !="Apc" || $resultado !="Apr" ) ) {
 				rematricular_aluno($conexao,$aluno_id,$turma_id,$turma_id_anterior,$matricula_situacao,$matricula_concluida,$matricula_datamatricula,$matricula_ativa,$matricula_tipo,$calendario_ano,$turma_escola,$turno_nome);
 				
@@ -81,53 +82,45 @@ try {
 				 
 			}else if($quantidade_vagas_restante==0){
 				$vagas_esgotada.=" | $aluno_id - $nome_aluno";
-
-
 			}else{
 				$aluno_reprovado.=" | $aluno_id - $nome_aluno";
 				// echo "$aluno_reprovado";
 			}
 
-		}
+		}//foreach ($_POST['idaluno'] as $key => $value) {
 
 	}
 
-	if (!isset($_POST['idaluno'])) {
-		$_SESSION['status']=0;
-		$_SESSION['mensagem']='Nenhum aluno selecionado!';
-		header("location:../View/listar_alunos_da_turma.php?$url_get");
-		exit();
-	}	
+	// if (!isset($_POST['idaluno'])) {
+	// 	$_SESSION['status']=0;
+	// 	$_SESSION['mensagem']='Nenhum aluno selecionado!';
+	// 	header("location:../View/listar_alunos_da_turma.php?$url_get");
+	// 	exit();
+	// }	
 	
-	if ($vagas_esgotada!="") {
-		$_SESSION['status']=2;
-		$vagas_esgotada="Não é possível transferir aluno motivo (VAGAS ESGOTADAS) para: ".$vagas_esgotada;
+	// if ($vagas_esgotada!="") {
+	// 	$_SESSION['status']=2;
+	// 	$vagas_esgotada="Não é possível transferir aluno motivo (VAGAS ESGOTADAS) para: ".$vagas_esgotada;
+	// 	$_SESSION['mensagem']=$vagas_esgotada;
+	// 	header("location:../View/listar_alunos_da_turma.php?$url_get");	
+	// 	exit();
 
-		$_SESSION['mensagem']=$vagas_esgotada;
+	// }
 
-		//echo "i $quantidade_vagas_restante i".$vagas_esgotada;
-
-		header("location:../View/listar_alunos_da_turma.php?$url_get");	
-		exit();
-
-	}
-
-	if ($aluno_reprovado!="") {
-		$_SESSION['status']=2;
+	// if ($aluno_reprovado!="") {
+	// 	$_SESSION['status']=2;
 		 
-		$aluno_reprovado="Não é possível transferir aluno com reprovação".$aluno_reprovado;
+	// 	$aluno_reprovado="Não é possível transferir aluno com reprovação".$aluno_reprovado;
 
-		$_SESSION['mensagem']=$aluno_reprovado."".$vagas_esgotada;
-		//echo $aluno_reprovado."i $quantidade_vagas_restante i".$vagas_esgotada;
+	// 	$_SESSION['mensagem']=$aluno_reprovado."".$vagas_esgotada;
+	// 	header("location:../View/listar_alunos_da_turma.php?$url_get");	
+	// 	exit();
 
-		header("location:../View/listar_alunos_da_turma.php?$url_get");	
-		exit();
-
-	}else{
-		$_SESSION['status']=1;
-		header("location:../View/listar_alunos_da_turma.php?$url_get");	
-		exit();
-	}	
+	// }else{
+	// 	$_SESSION['status']=1;
+	// 	header("location:../View/listar_alunos_da_turma.php?$url_get");	
+	// 	exit();
+	// }	
 		
 	
 
