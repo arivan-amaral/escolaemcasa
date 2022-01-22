@@ -369,13 +369,13 @@ $idcoordenador=$_SESSION['idfuncionario'];
                         <div class="form-group">
                           <label for="exampleInputEmail1">Uf</label>
                           <select type="text" class="form-control" id="exampleInputEmail1" name="uf_endereco" required="" onchange="pesquisar_municipio(this.value,'municipio_endereco');">
-                            <option></option>
+                            <option value="5">Bahia</option>
                             <?php 
                               $resultado_estado= listar_estado($conexao);
                               foreach ($resultado_estado as $key => $value) {
                                 $idestado=$value['id'];
                                 $nome_estado=$value['nome'];
-                                echo "<option value='$idestado'> $nome_estado</option>";
+                                echo "<option value='$idestado'>$nome_estado</option>";
                               }
                             ?>
                           </select>
@@ -383,6 +383,20 @@ $idcoordenador=$_SESSION['idfuncionario'];
                       </div>
                       <div class="col-sm-3"id="municipio_endereco">
                         <!-- municipio aqui -->
+                        <div class='form-group'>
+                          <label for='exampleInputEmail1'>Município</label>
+                          <select type='text' class='form-control'  name='municipio_endereco' >
+                            <option value="515">Luís Eduardo Magalhães</option>
+                            <?php 
+                        $pesquisa_cidadade=listar_cidade_por_idestado($conexao,5);
+                        foreach ($pesquisa_cidadade as $key => $value) {
+                          $id=$value['id'];
+                          $nome_cidade=$value['nome'];
+                          echo"<option value='$id'>$nome_cidade</option>"; 
+                        }
+                        ?>
+                           </select>
+                        </div>
                       </div>
                       
                       <div class="col-sm-3">
