@@ -337,8 +337,27 @@ function alert_preencha_todos_campos(mensagem) {
         });
 }
 
+function bloquear_botao_concluir(botao){
+    setTimeout(function(){
+        document.getElementById(botao).disabled = true;
+        document.getElementById(botao).innerHTML="AGUARDE 20 SEGUNDOS, PARA CLICAR NOVAMENTE ";
+
+    },50);
+
+ 
+
+    setTimeout(function(){
+        document.getElementById(botao).disabled = false;
+        document.getElementById(botao).innerHTML="Concluir";
+
+    },20000);
+
+}
+
+
 function cadastro_aluno(){
   var ajax = new XMLHttpRequest();
+    bloquear_botao_concluir("btn_cadastro_aluno");
   // Seta tipo de requisição: Post e a URL da API
   ajax.open("POST", "../Controller/Cadastro_aluno.php", true);
   ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

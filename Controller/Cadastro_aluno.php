@@ -6,13 +6,13 @@ include'Conversao.php';
 
 try {
 
-    $nome=$_POST['nome'];
+    $nome=trim($_POST['nome']);
     $sexo=$_POST['sexo'];
     if ( $_POST['email'] !='') {
          $email=$_POST['email'];
     }else{
-         $email=date("d").date("m").date("Y").rand();
-
+        $primeiroNome = explode(" ",$nome);
+         $email=$primeiroNome[0].".".$primeiroNome[1]."".rand(0,100);
     }
     $filiacao1=$_POST['filiacao1'];
     $filiacao2=$_POST['filiacao2'];
@@ -163,12 +163,12 @@ $matriculamov_procedimento="MATRICULAR ALUNO";
 $escola_nome="";
 
 cadastrar_ecidade_movimentacao_escolar($conexao,$matricula_codigo,$aluno_id,$turma_id,$calendario_ano,$escola_id,$escola_nome,$matriculamov_procedimento,$matriculamov_descr);
- 	
+    
 
     echo "certo";
 } catch (Exception $e) {
     echo $e;
- 	 //$_SESSION['status']=0;
-	// header("location:../View/cadastro_aluno.php");
+     //$_SESSION['status']=0;
+    // header("location:../View/cadastro_aluno.php");
 }
 ?>

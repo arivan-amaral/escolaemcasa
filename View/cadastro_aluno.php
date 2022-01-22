@@ -747,7 +747,7 @@ $idcoordenador=$_SESSION['idfuncionario'];
       <div class="row">
         <div class="col-sm-12">
           <div class="form-group">
-            <button   class="btn btn-block btn-success " onclick="alert('SISTEMA BLOQUEADO PARA MATRICULA NO MOMENTO');">Cadastrar Aluno</button><!--     <button   class="btn btn-block btn-success " onclick="cadastro_aluno();">Cadastrar Aluno</button> -->
+            <button   class="btn btn-block btn-success " onclick="alert('SISTEMA BLOQUEADO PARA MATRICULA NO MOMENTO');">Cadastrar Aluno</button><!--     <button   class="btn btn-block btn-success " id="btn_cadastro_aluno" onclick="cadastro_aluno();">Cadastrar Aluno</button> -->
 
          </div>
         </div>
