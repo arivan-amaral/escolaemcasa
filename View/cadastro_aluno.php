@@ -747,14 +747,16 @@ $idcoordenador=$_SESSION['idfuncionario'];
                         <input type="hidden" name="etapa" value="">
                     
                       </span>
-            <div class="col-sm-6">
-              <div class="form-group" >
-                <label for='exampleInputEmail1' class='text-danger'>Vagas restantes na turma</label>
 
-                <input type="text"  name="quantidade_vagas_restante" id="quantidade_vagas_restante" value="0" readonly class="alert alert-secondary">
-                 
-              </div>
-            </div>
+
+                        <div class="col-sm-3">
+                          <div class="form-group" >
+                            <label for='exampleInputEmail1' class='text-danger'>Vagas restantes na turma</label>
+
+                            <input type="text"  name="quantidade_vagas_restante" id="quantidade_vagas_restante" value="0" readonly class="form-control">
+                             
+                          </div>
+                        </div>
                     </div>
       <br>
       <div class="row">
