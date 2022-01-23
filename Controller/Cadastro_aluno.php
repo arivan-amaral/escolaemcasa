@@ -2,12 +2,15 @@
 include'../Model/Conexao.php';
 include'../Model/Aluno.php';
 include'../Model/Turma.php';
+include'../Model/Escola.php';
 include'Conversao.php';
 
 try {
-
+ 
     $nome=trim($_POST['nome']);
     $sexo=$_POST['sexo'];
+    $quantidade_vagas_restante=$_POST['quantidade_vagas_restante'];
+
     if ( $_POST['email'] !='') {
          $email=$_POST['email'];
     }else{
@@ -84,6 +87,41 @@ try {
     $nome_responsavel=$_POST['nome_responsavel'];
     $cpf_responsavel=$_POST['cpf_responsavel'];
 
+    $escola_id=$_POST['escola'];
+    $turma_id=$_POST['turma'];
+    $turno_nome=$_POST['turno'];
+// _________________________________________________________
+
+    $turma_id_anterior=null;
+    $matricula_situacao='MATRICULADO';
+    $matricula_concluida='N';
+    $matricula_datamatricula=date("Y-m-d");
+    $matricula_ativa='S';
+    $matricula_tipo='N';
+    $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
+    $calendario_ano=$_SESSION['ano_letivo_vigente'];
+// _________________________________________________________
+
+
+if ($quantidade_vagas_restante>0) {//vindo da interface
+
+    ###########################################################################################
+    $quantidade_vaga_total=0;
+    $quantidade_vaga_restante=0;
+
+      $res_quantidade= quantidade_vaga_turma($conexao,$escola_id,$turma_id,$turno_nome,$ano_letivo_vigente);
+      foreach ($res_quantidade as $key => $value) {
+         $quantidade_vaga_total=$value['quantidade_vaga'];
+      }
+
+      $res_quantidade_vaga_restante= quantidade_aluno_na_turma($conexao,$escola_id,$turma_id,$turno_nome,$ano_letivo_vigente);
+      foreach ($res_quantidade_vaga_restante as $key => $value) {
+         $quantidade_vaga_restante=$value['quantidade'];
+      }
+     $quantidade_vaga_restante=$quantidade_vaga_total-$quantidade_vaga_restante;
+    ###########################################################################################
+if ($quantidade_vagas_restante>0) { //buscando novamente antes de inserir
+
     cadastro_aluno($conexao,$nome,
         $sexo,
         $email,
@@ -147,15 +185,16 @@ try {
     );
 
 
-    $escola_id=$_POST['escola'];
-    $turma_id=$_POST['turma'];
+   
     $aluno_id= $conexao->lastInsertId();
     $ano=date("Y");
     $calendario_ano=date("Y");
     cadastrar_ano_letivo($conexao,$escola_id, $turma_id, $aluno_id, $ano);
     $matricula_tipo="N";
-    $turno_nome=$_POST['turno'];
-    cadastrar_ecidade_matricula($conexao, $aluno_id, $turma_id, $observacao, $matricula_tipo, $calendario_ano, $escola_id, $turno_nome);
+    // cadastrar_ecidade_matricula($conexao, $aluno_id, $turma_id, $observacao, $matricula_tipo, $calendario_ano, $escola_id, $turno_nome);
+    
+
+rematricular_aluno($conexao,$aluno_id,$turma_id,$turma_id_anterior,$matricula_situacao,$matricula_concluida,$matricula_datamatricula,$matricula_ativa,$matricula_tipo,$calendario_ano,$escola_id,$turno_nome);
 
 $matricula_codigo= $conexao->lastInsertId();
 $matriculamov_descr="ALUNO MATRICULADO NA TURMA";
@@ -163,9 +202,17 @@ $matriculamov_procedimento="MATRICULAR ALUNO";
 $escola_nome="";
 
 cadastrar_ecidade_movimentacao_escolar($conexao,$matricula_codigo,$aluno_id,$turma_id,$calendario_ano,$escola_id,$escola_nome,$matriculamov_procedimento,$matriculamov_descr);
-    
 
     echo "certo";
+}//fim desse => if ($quantidade_vagas_restante>0) { //buscando novamente antes de inserir
+else{echo "erro";}
+
+
+}//vindo da interface
+else{
+    echo "erro";
+}
+
 } catch (Exception $e) {
     echo $e;
      //$_SESSION['status']=0;

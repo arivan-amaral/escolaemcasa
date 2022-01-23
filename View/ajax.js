@@ -366,7 +366,7 @@ function cadastro_aluno(){
   var escola =document.getElementById('escola').value;
   var serie =document.getElementsByName('serie')[0].value;
   var turma =document.getElementsByName('idturma')[0].value;
-  
+
    if (!!document.getElementsByName('etapa')) {
     var etapa ="";
   }else{
@@ -477,7 +477,8 @@ function cadastro_aluno(){
  "&cartorio="+document.getElementsByName('cartorio')[0].value+
  "&turno="+document.getElementsByName('turno')[0].value+
  "&nome_responsavel="+document.getElementsByName('nome_responsavel')[0].value+
- "&cpf_responsavel="+document.getElementsByName('cpf_responsavel')[0].value
+ "&cpf_responsavel="+document.getElementsByName('cpf_responsavel')[0].value+
+ "&quantidade_vagas_restante="+document.getElementsByName('quantidade_vagas_restante')[0].value
 
 
 
@@ -3763,3 +3764,81 @@ function rolar() {
      };
      xmlreq.send(null);
  }
+
+
+
+ // ##############################################################VML
+ 
+
+function lista_turma_escola_por_serie_cadatro_aluno(){
+
+   
+   var result = document.getElementById("idturma");
+   var quantidade_vagas_restante = document.getElementById("quantidade_vagas_restante");
+ 
+    var escola_id = document.getElementById("escola").value;
+    var idserie = document.getElementById("idserie").value;
+    var turno = document.getElementById("turno").value;
+    var turma_id = document.getElementById("idturma").value;
+
+
+  var xmlreq = CriaRequest();   
+  result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
+
+   xmlreq.open("GET", "../Controller/Lista_de_turmas_cadastrada_por_escola_serie_cadastro_aluno.php?turma_id="+turma_id+"&rematricula=não&turno="+turno+"&escola_id="+escola_id+"&serie_id="+idserie, true);
+    xmlreq.onreadystatechange = function(){      
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {
+                var recebe =xmlreq.responseText;
+
+                var vetor=recebe.split("|#|");
+                 quantidade_vagas_restante.value=0;                 
+                result.innerHTML =  vetor[0];
+                // result.innerHTML =  xmlreq.responseText;
+                
+            }else{
+                   result.innerHTML = "Erro ao pesquisar";
+                
+                
+            }
+        }
+    };
+    xmlreq.send(null);
+}
+
+
+function quantidade_vaga_turma_cadastro_aluno(){
+
+   
+   var result = document.getElementById("idturma");
+   var quantidade_vagas_restante = document.getElementById("quantidade_vagas_restante");
+ 
+    var escola_id = document.getElementById("escola").value;
+    var idserie = document.getElementById("idserie").value;
+    var turno = document.getElementById("turno").value;
+    var turma_id = document.getElementById("idturma").value;
+
+
+  var xmlreq = CriaRequest();   
+  // quantidade_vagas_restante.innerHTML="<center><img src='imagens/carregando.gif'></center>";
+
+   xmlreq.open("GET", "../Controller/Quantidade_vaga_turma.php?turma_id="+turma_id+"&rematricula=não&turno="+turno+"&escola_id="+escola_id+"&serie_id="+idserie, true);
+    xmlreq.onreadystatechange = function(){      
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {
+                var recebe =xmlreq.responseText;
+
+                var vetor=recebe.split("|#|");
+                 quantidade_vagas_restante.value=0;                 
+                 quantidade_vagas_restante.value =  vetor[1];
+                // result.innerHTML =  xmlreq.responseText;
+                
+            }else{
+                   quantidade_vagas_restante.innerHTML = "Erro ao pesquisar";
+                
+                
+            }
+        }
+    };
+    xmlreq.send(null);
+}

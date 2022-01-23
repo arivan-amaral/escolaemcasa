@@ -20,7 +20,7 @@ $idcoordenador=$_SESSION['idfuncionario'];
   <!-- Main Sidebar Container -->
 <div class="content-wrapper">
 <!-- ####################### CORPO ################################################# -->
-   <H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>
+   <!-- <H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR> -->
 
  
         <div class="card card-primary card-tabs">
@@ -420,7 +420,7 @@ $idcoordenador=$_SESSION['idfuncionario'];
                       <div class="col-sm-2">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Cep</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="cep_endereco" required="">
+                          <input type="number" class="form-control" id="exampleInputEmail1" name="cep_endereco" required="">
                         </div>
                       </div>
                     </div>
@@ -430,13 +430,13 @@ $idcoordenador=$_SESSION['idfuncionario'];
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Nacionalidade</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="nacionalidade" required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="nacionalidade" required="" value="Brasileira">
                         </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">País</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="pais" required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="pais" required="" value="Brasil">
                         </div>
                       </div>
                       <div class="col-sm-3">
@@ -678,12 +678,14 @@ $idcoordenador=$_SESSION['idfuncionario'];
     var value = document.getElementById("idserie").value;
  };
 </script>
-            
-                    <div class="row">
-                      <div class="col-sm-3">
+
+
+        
+          <div class="row">
+                      <div class="col-sm-5">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Escola</label>
-                         <select class="form-control"  name="escola" id="escola" onchange="lista_turma_escola_por_serie('turmas');">
+                         <select class="form-control"  name="escola" id="escola" onchange="lista_turma_escola_por_serie_cadatro_aluno();">
                           <option></option>
                        <?php 
                          // $res_escola=lista_escola($conexao);
@@ -703,7 +705,7 @@ $idcoordenador=$_SESSION['idfuncionario'];
                         <div class="form-group">
                           <label for="exampleInputEmail1">Turno</label>
     
-                         <select class="form-control"  name="turno" id="turno" onchange="lista_turma_escola_por_serie('turmas');" >
+                         <select class="form-control"  name="turno" id="turno" onchange="lista_turma_escola_por_serie_cadatro_aluno();" >
                           <option value="MATUTINO">MATUTINO</option>
                           <option value="VESPERTINO">VESPERTINO</option>
                           <option value="NOTURNO">NOTURNO</option>
@@ -714,7 +716,7 @@ $idcoordenador=$_SESSION['idfuncionario'];
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Série</label>
-                            <select class="form-control"  name="serie" id="idserie" onchange="lista_turma_escola_por_serie('turmas');">
+                            <select class="form-control"  name="serie" id="idserie" onchange="lista_turma_escola_por_serie_cadatro_aluno();">
                               <!--    <select class="form-control"  name="serie" id="idserie" onchange="listar_turmas_por_serie(this.value);"> -->
                             <option></option>
 
@@ -731,87 +733,40 @@ $idcoordenador=$_SESSION['idfuncionario'];
                       </div>
                       
 
-                                                          
-
-                      <span id="turmas">
-                        <input type="hidden" name="idturma" value="">
-                      </span>            
+                                
+                        <div class="col-sm-4">
+                        <div class="form-group">
+                        <label for='exampleInputEmail1' class='text-danger'>Turma pretendida</label>
+                          <select class='form-control'  name='idturma' id='idturma' onchange="quantidade_vaga_turma_cadastro_aluno();"> 
+                          
+                        </select>
+                         </div>
+                       </div>
 
                        <span id="etapa">
                         <input type="hidden" name="etapa" value="">
                     
                       </span>
-                      
+            <div class="col-sm-6">
+              <div class="form-group" >
+                <label for='exampleInputEmail1' class='text-danger'>Vagas restantes na turma</label>
+
+                <input type="text"  name="quantidade_vagas_restante" id="quantidade_vagas_restante" value="0" readonly class="alert alert-secondary">
+                 
+              </div>
+            </div>
                     </div>
       <br>
       <div class="row">
         <div class="col-sm-12">
           <div class="form-group">
-            <button   class="btn btn-block btn-success " onclick="alert('SISTEMA BLOQUEADO PARA MATRICULA NO MOMENTO');">Cadastrar Aluno</button><!--     <button   class="btn btn-block btn-success " id="btn_cadastro_aluno" onclick="cadastro_aluno();">Cadastrar Aluno</button> -->
+             <button   class="btn btn-block btn-success " id="btn_cadastro_aluno" onclick="cadastro_aluno();">Cadastrar Aluno</button>
 
          </div>
         </div>
         
       </div>
-                    <br>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="card">
-                          <div class="card-header">
-                            <h3 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Registros</font></font></h3>
-
-                            <div class="card-tools">
-                              <div class="input-group input-group-sm" style="width: 150px;">
-                                <input type="text" name="table_search" class="form-control float-right" placeholder="Procurar">
-
-                                <div class="input-group-append">
-                                  <button type="submit" class="btn btn-default">
-                                    <i class="fas fa-search"></i>
-                                  </button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <!-- /.card-header -->
-                         <!--  <div class="card-body table-responsive p-0" style="height: 300px;">
-                            <table class="table table-head-fixed text-nowrap">
-                              <thead>
-                                <tr>
-                                  <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nome Da Escola</font></font></th>
-                                  <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nome Do Curso</font></font></th>
-                                  <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nome Da Base</font></font></th>
-                                  <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nome Do Calendario</font></font></th>
-                                  <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Situação</font></font></th>
-                                  <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nome Da Etapa</font></font></th>
-                                  <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nome Do Turno</font></font></th>
-                                  <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Opções</font></font></th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">183</font></font></td>
-                                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">John Doe</font></font></td>
-                                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">07-11-2014</font></font></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                  <td><span class="tag tag-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aprovado</font></font></span></td>
-                                </tr>
-                                
-                              </tbody>
-                            </table>
-                          </div> -->
-                          <!-- /.card-body -->
-                        </div>
-                        <!-- /.card -->
-                      </div>
-                    </div>
-                 </div>
-              </div>
-
-
-         
+                  
 
 
           
