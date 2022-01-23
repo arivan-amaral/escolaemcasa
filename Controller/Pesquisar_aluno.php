@@ -67,7 +67,7 @@ where
                foreach ($result_aluno as $key => $value) {
                 $nome_aluno=utf8_decode($value['nome_aluno']);
                 $idaluno=$value['idaluno'];
-        				$numero="";
+                $numero="";
                 $result.="<tr>
                       <td>$idaluno</td>
                       <td>
@@ -78,6 +78,7 @@ where
                     $result_ecidade_matricula=$conexao->query("SELECT
                     turma.nome_turma,
                     escola.nome_escola,
+                    escola.idescola,
                     ecidade_matricula.matricula_codigo as 'matricula',
                     ecidade_matricula.matricula_datamatricula as 'data_matricula',
                     ecidade_matricula.datasaida as 'datasaida',
@@ -97,6 +98,14 @@ where
                       ecidade_matricula.matricula_situacao !='CANCELADO'
                       ORDER by ecidade_matricula.calendario_ano desc");
 $conta_ano_cursado=1;
+$nome_turma='';
+$nome_escola='';
+$idescola='';
+$idturma='';
+$idserie='';
+$matricula='';
+$calendario_ano='';
+
 foreach ($result_ecidade_matricula as $key => $value) {
                 $nome_turma=($value['nome_turma']);
                 $nome_escola=$value['nome_escola'];
@@ -106,6 +115,14 @@ foreach ($result_ecidade_matricula as $key => $value) {
                 $matricula=$value['matricula'];
                 $calendario_ano=$value['calendario_ano'];
                 if ($conta_ano_cursado==1) {
+                  $nome_turma=($value['nome_turma']);
+                  $nome_escola=$value['nome_escola'];
+                  $idescola=$value['idescola'];
+                  $idturma=$value['idturma'];
+                  $idserie=$value['idserie'];
+                  $matricula=$value['matricula'];
+                  $calendario_ano=$value['calendario_ano'];
+
                    $result.="
                         <b class='text-primary'> $nome_escola -</b> 
                         <b class='text-primary'> $nome_turma </b> 
