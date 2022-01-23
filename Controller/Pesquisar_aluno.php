@@ -8,8 +8,9 @@
 try {
  
     $professor_id=$_SESSION['idfuncionario'];
+    $idfuncionario=$_SESSION['idfuncionario'];
  
-    $res_turma=escola_associada($conexao,$professor_id); 
+    $res_turma=escola_associada($conexao,$idfuncionario); 
     $array_escolas_coordenador=array();
     $conta_escolas=0;
     foreach ($res_turma as $key => $value) {
@@ -58,7 +59,7 @@ aluno
 
 where
   aluno.nome LIKE '%$pesquisa%'  
-  ORDER by  aluno.nome asc limit 50");
+  ORDER by  aluno.nome asc limit 25");
 
 
                // $result_aluno= pesquisar_aluno($conexao,$pesquisa,$codigo_sql );
@@ -96,15 +97,11 @@ where
                       ecidade_matricula.turma_id = turma.idturma and 
                       ecidade_matricula.turma_escola = escola.idescola and 
                       ecidade_matricula.matricula_situacao !='CANCELADO'
-                      ORDER by ecidade_matricula.calendario_ano desc");
+                      ORDER by ecidade_matricula.calendario_ano asc");
 $conta_ano_cursado=1;
-$nome_turma='';
-$nome_escola='';
-$idescola='';
-$idturma='';
-$idserie='';
-$matricula='';
-$calendario_ano='';
+$result_ecidade_matricula=$result_ecidade_matricula->fetchAll();
+
+$detectar_ultimo=count($result_ecidade_matricula);
 
 foreach ($result_ecidade_matricula as $key => $value) {
                 $nome_turma=($value['nome_turma']);
@@ -114,19 +111,12 @@ foreach ($result_ecidade_matricula as $key => $value) {
                 $idserie=$value['idserie'];
                 $matricula=$value['matricula'];
                 $calendario_ano=$value['calendario_ano'];
-                if ($conta_ano_cursado==1) {
-                  $nome_turma=($value['nome_turma']);
-                  $nome_escola=$value['nome_escola'];
-                  $idescola=$value['idescola'];
-                  $idturma=$value['idturma'];
-                  $idserie=$value['idserie'];
-                  $matricula=$value['matricula'];
-                  $calendario_ano=$value['calendario_ano'];
 
-                   $result.="
+                if ($detectar_ultimo==$conta_ano_cursado) {
+                    $result.="
                         <b class='text-primary'> $nome_escola -</b> 
                         <b class='text-primary'> $nome_turma </b> 
-                        <b class='text-success'> Ano: $calendario_ano </b> <br>
+                        <b class='text-danger'> Ano: $calendario_ano </b> <br>
                       ";
                 }else{
                       $result.="
@@ -154,22 +144,27 @@ foreach ($result_ecidade_matricula as $key => $value) {
                                   <li>
                                     <a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma'  target='_blank' class='dropdown-item'  > Boletim atual </a> </b>
                                   </li>";
+
+                                // if ($calendario_ano2 !='2021') {
+                                 if ($calendario_ano !=$_SESSION['ano_letivo_vigente']) {
+
+                                  $result.="
+                                    <li>
+                                    <form name='form$idaluno' action='rematricular_aluno.php' method='post' target='_blank'>
+                                        <input type='hidden' name='aluno_id' value='$idaluno'>
+                                        <input type='hidden' name='escola_id' value='$idescola'>
+                                        <input type='hidden' name='turma_id' value='$idturma'>
+                                        <input type='hidden' name='serie_id' value='$idserie'>
+                                        <input type='hidden' name='nome_aluno' value='$nome_aluno'>
+                                        <button type='submit' class='dropdown-item'  >Rematricular </button>
+                                  
+                                    </form>
+                                    </li>";
+                                }
                                 
-                                if (in_array($idescola, $array_escolas_coordenador) ) { 
+                              if (in_array($idescola, $array_escolas_coordenador) ) { 
 
-                                // $result.="
-                                //   <li>
-                                //   <form name='form$idaluno' action='tranferencia_aluno.php' method='post' target='_blank'>
-                                //       <input type='hidden' name='aluno_id' value='$idaluno'>
-                                //       <input type='hidden' name='escola_id' value='$idescola'>
-                                //       <input type='hidden' name='turma_id' value='$idturma'>
-                                //       <input type='hidden' name='serie_id' value='$idserie'>
-                                //       <input type='hidden' name='nome_aluno' value='$nome_aluno'>
-                                //       <button type='submit' class='dropdown-item'  >Transferência</button>
-                               
-                                //   </form>
-                                //   </li>"; 
-
+                                
                                 $result.="
                                   <li>
                                   <form name='editar$idaluno' action='editar-aluno.php' method='post' >
