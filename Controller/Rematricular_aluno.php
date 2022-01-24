@@ -91,36 +91,36 @@ try {
 
 	}
 
-	// if (!isset($_POST['idaluno'])) {
-	// 	$_SESSION['status']=0;
-	// 	$_SESSION['mensagem']='Nenhum aluno selecionado!';
-	// 	header("location:../View/listar_alunos_da_turma.php?$url_get");
-	// 	exit();
-	// }	
+	if (!isset($_POST['idaluno'])) {
+		$_SESSION['status']=0;
+		$_SESSION['mensagem']='Nenhum aluno selecionado!';
+		header("location:../View/listar_alunos_da_turma.php?$url_get");
+		exit();
+	}	
 	
-	// if ($vagas_esgotada!="") {
-	// 	$_SESSION['status']=2;
-	// 	$vagas_esgotada="Não é possível transferir aluno motivo (VAGAS ESGOTADAS) para: ".$vagas_esgotada;
-	// 	$_SESSION['mensagem']=$vagas_esgotada;
-	// 	header("location:../View/listar_alunos_da_turma.php?$url_get");	
-	// 	exit();
+	if ($vagas_esgotada!="") {
+		$_SESSION['status']=2;
+		$vagas_esgotada="Não foi possível realizar ação motivo (VAGAS ESGOTADAS) para: ".$vagas_esgotada;
+		$_SESSION['mensagem']=$vagas_esgotada;
+		header("location:../View/listar_alunos_da_turma.php?$url_get");	
+		exit();
 
-	// }
+	}
 
-	// if ($aluno_reprovado!="") {
-	// 	$_SESSION['status']=2;
+	if ($aluno_reprovado!="") {
+		$_SESSION['status']=2;
 		 
-	// 	$aluno_reprovado="Não é possível transferir aluno com reprovação".$aluno_reprovado;
+		$aluno_reprovado="Não foi possível realizar ação ".$aluno_reprovado;
 
-	// 	$_SESSION['mensagem']=$aluno_reprovado."".$vagas_esgotada;
-	// 	header("location:../View/listar_alunos_da_turma.php?$url_get");	
-	// 	exit();
+		$_SESSION['mensagem']=$aluno_reprovado."".$vagas_esgotada;
+		header("location:../View/listar_alunos_da_turma.php?$url_get");	
+		exit();
 
-	// }else{
-	// 	$_SESSION['status']=1;
-	// 	header("location:../View/listar_alunos_da_turma.php?$url_get");	
-	// 	exit();
-	// }	
+	}else{
+		$_SESSION['status']=1;
+		header("location:../View/listar_alunos_da_turma.php?$url_get");	
+		exit();
+	}	
 		
 	
 
