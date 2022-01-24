@@ -13,8 +13,11 @@ foreach ($res_aluno as $key => $value) {
     $idaluno=$value['idaluno'];
 
     $res=$conexao->query("SELECT * FROM ecidade_matricula WHERE aluno_id=$idaluno limit 1");
-     $res=$res->fetchAll();
-     if(count($res)==0){
+    $conta_exclusao=0;
+     foreach ($res as $key => $value) {
+         $conta_exclusao++;
+     }
+     if($conta_exclusao==0){
         $res=$conexao->exec("DELETE FROM aluno WHERE idaluno=$idaluno");
      }
 
