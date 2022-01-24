@@ -153,7 +153,12 @@ foreach ($res_alunos_ecidade as $key => $value) {
     $numero_indentidade=$value['numero_indentidade'];
     $uf_identidade=$value['uf_identidade'];
     $orgao_emissor_indentidade=$value['orgao_emissor_indentidade'];
-    $data_expedicao=$value['data_expedicao'];
+    if ($value['data_expedicao']=="") {
+        $data_expedicao=null;
+    }else{
+        $data_expedicao=$value['data_expedicao'];
+
+    }
     $categoria_cnh=$value['categoria_cnh'];
     $observacao=$value['observacao'];
 
