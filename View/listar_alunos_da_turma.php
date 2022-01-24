@@ -255,7 +255,7 @@ $url_get=$array_url[1];
 
                 echo " <td>$conta_aluno - <p><input type='checkbox' class='checkbox' name='idaluno[]' value='$idaluno'>   </p></td>";
           }else{
-            if ( count($verificar_aluno_na_turna_rematricula)>0) {
+            if ( count($verificar_aluno_na_turna_rematricula)>0 && $_SESSION['ano_letivo'] == $_SESSION['ano_letivo_vigente']) {
               echo "<td><B>ALUNO REMATRICULADO</B</td>";
 
             }elseif ( count($res_solicitacao_trasferencia)>0) {

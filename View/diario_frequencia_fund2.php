@@ -157,13 +157,14 @@ if ($idserie<8) {
         // $conta_aula=36;
         $conta_aula=36;
 
-        // $limite_data=18;
-        // $limite_aula=18;    
-         $limite_data=26;
-        $limite_aula=26;
+        // $limite_data=26;
+        // $limite_aula=26;    
+         $limite_data=30;
+        $limite_aula=30;
 
         $conta_data=1; //não existia
-        $fim= 25;
+        $fim= 29; //era 25 tirei para teste
+        
         // diario_frequencia_pagina_final($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie)
 
 
