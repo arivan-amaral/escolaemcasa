@@ -987,8 +987,8 @@ $sql->bindParam("necessidade_especial",$necessidade_especial);
 
 
 function meus_dados_aluno($conexao,$idaluno){
-  $res=$conexao->query("SELECT * FROM aluno where idaluno = $idaluno  ORDER by nome ASC");
-  return $res;
+  $res=$conexao->query("SELECT * FROM aluno where idaluno = $idaluno ");
+  return $res->fetchAll();
 }	
 
 function dados_aluno($conexao,$idaluno){
