@@ -7,11 +7,11 @@ include'../Model/Turma.php';
 include'Conversao.php';
 $indice=$_GET['indice'];
 $limite=$_GET['limite'];
-
+try{
 $res_aluno=$conexao->query("SELECT * FROM aluno limit $indice,$limite");
 foreach ($res_aluno as $key => $value) {
     $idaluno=$value['idaluno'];
-    
+
     $res=$conexao->query("SELECT * FROM ecidademigrado_alunos WHERE aluno_id=$idaluno limit 1");
      $res=$res->fetchAll();
      if(count($res)==0){
