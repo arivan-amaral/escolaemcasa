@@ -1,11 +1,24 @@
 <?php 
 set_time_limit(0);
 // session_start();
-include'../Model/Conexao.php';
+//include'../Model/Conexao.php';
 include'../Model/Aluno.php';
 include'../Model/Turma.php';
 include'Conversao.php';
 
+
+
+    $servername = "35.247.201.56";
+    $username = "root";
+    $password = "BDWRe85Oam8D";
+
+// $password = "BDWRe85Oam8D";
+
+
+    //instancia objeto PDO, conectando no MySQL
+    $conexao = new PDO("mysql:host=$servername;dbname=educalem", $username, $password);
+    // apresenta o erro PDO 
+    $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 try {
 
 $indice=$_GET['indice'];
