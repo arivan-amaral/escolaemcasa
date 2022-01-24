@@ -17,7 +17,9 @@ foreach ($res_aluno as $key => $value) {
      foreach ($res as $key => $value) {
          $conta_exclusao++;
      }
+
      if($conta_exclusao==0){
+        echo "$idaluno <br>";
         $res=$conexao->exec("DELETE FROM aluno WHERE idaluno=$idaluno");
      }
 
