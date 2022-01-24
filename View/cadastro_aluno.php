@@ -99,16 +99,17 @@ $idcoordenador=$_SESSION['idfuncionario'];
                     <div class="row">
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Nome</label>
+                          <label for="exampleInputEmail1">Nome <b class="text-danger">*</b></label>
                           <input type="text" class="form-control" id="nome" name="nome" required="">
                         </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Nascimento</label>
+                          <label for="exampleInputEmail1">Nascimento <b class="text-danger">*</b></label>
                           <input type="date" class="form-control" id="exampleInputEmail1" name="data_nascimento" required="">
                         </div>
                       </div>
+                      
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Idade</label>
@@ -122,7 +123,7 @@ $idcoordenador=$_SESSION['idfuncionario'];
                     <div class="row">
                       <div class="col-sm-4">
                          <div class="form-group">
-                          <label for="exampleInputEmail1">Email</label>
+                          <label for="exampleInputEmail1">Email </label>
                           <input type="text" class="form-control" id="exampleInputEmail1" name="email"  >
                         </div>
                       </div>
@@ -272,13 +273,13 @@ $idcoordenador=$_SESSION['idfuncionario'];
                     <div class="row">          
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Nome do responsável</label>
+                          <label for="exampleInputEmail1">Nome do responsável <b class="text-danger">*</b></label>
                           <input type="text" class="form-control" id="exampleInputEmail1" name="nome_responsavel" required="">
                         </div>
                       </div>
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Cpf do responsável</label>
+                          <label for="exampleInputEmail1">Cpf do responsável <b class="text-danger">*</b></label>
                           <input type="text" class="form-control" id="exampleInputEmail1" name="cpf_responsavel" required="">
                         </div>
                       </div>
@@ -294,17 +295,17 @@ $idcoordenador=$_SESSION['idfuncionario'];
       
  
 
-                    <label for="exampleInputEmail1"><h5>Filiação 1</h5></label>
+                    <label for="exampleInputEmail1"><h5>Filiação 1 <b class="text-danger">*</b></h5></label>
                     <div class="row">          
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Nome filiação 1</label>
+                          <label for="exampleInputEmail1">Nome filiação 1 <b class="text-danger">*</b></label>
                           <input type="text" class="form-control" id="exampleInputEmail1" name="filiacao1" required="">
                         </div>
                       </div>
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Cpf filiação 1</label>
+                          <label for="exampleInputEmail1">Cpf filiação 1 <b class="text-danger">*</b></label>
                           <input type="text" class="form-control" id="exampleInputEmail1" name="cpf_filiacao1" required="">
                         </div>
                       </div>
@@ -315,17 +316,17 @@ $idcoordenador=$_SESSION['idfuncionario'];
                         </div>
                       </div> -->
                     </div>
-                    <label for="exampleInputEmail1"><h5>Filiação 2</h5></label>
+                    <label for="exampleInputEmail1"><h5>Filiação 2 <b class="text-danger">*</b></h5></label>
                     <div class="row">          
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Nome filiação 2</label>
+                          <label for="exampleInputEmail1">Nome filiação 2 <b class="text-danger">*</b></label>
                           <input type="text" class="form-control" id="exampleInputEmail1" name="filiacao2" required="">
                         </div>
                       </div>
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Cpf filiação 2</label>
+                          <label for="exampleInputEmail1">Cpf filiação 2 <b class="text-danger">*</b></label>
                           <input type="text" class="form-control" id="exampleInputEmail1" name="cpf_filiacao2" required="">
                         </div>
                       </div>
@@ -420,11 +421,12 @@ $idcoordenador=$_SESSION['idfuncionario'];
                       <div class="col-sm-2">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Cep</label>
-                          <input type="number" class="form-control" id="exampleInputEmail1" name="cep_endereco" required="">
+                          <input type="number" class="form-control" id="exampleInputEmail1" name="cep_endereco" required="" value="47850000">
                         </div>
                       </div>
                     </div>
                     
+
 
                     <div class="row">
                       <div class="col-sm-3">

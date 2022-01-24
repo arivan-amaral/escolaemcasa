@@ -3,6 +3,7 @@
     include("../Model/Conexao.php");
     include("../Model/Aluno.php");
     include("../Model/Coordenador.php");
+    include("../Model/Serie.php");
     
 
 try {
@@ -102,7 +103,13 @@ $conta_ano_cursado=1;
 $result_ecidade_matricula=$result_ecidade_matricula->fetchAll();
 
 $detectar_ultimo=count($result_ecidade_matricula);
-
+ $nome_turma='';
+$nome_escola='';
+$idescola=1;
+$idturma='';
+$idserie=3;
+$matricula='';
+$calendario_ano='';
 foreach ($result_ecidade_matricula as $key => $value) {
                 $nome_turma=($value['nome_turma']);
                 $nome_escola=$value['nome_escola'];
@@ -150,16 +157,18 @@ foreach ($result_ecidade_matricula as $key => $value) {
 
                                   $result.="
                                     <li>
-                                    <form name='form$idaluno' action='rematricular_aluno.php' method='post' target='_blank'>
+                                    <!-- form name='form$idaluno' action='rematricular_aluno.php' method='post' target='_blank'>
                                         <input type='hidden' name='aluno_id' value='$idaluno'>
                                         <input type='hidden' name='escola_id' value='$idescola'>
                                         <input type='hidden' name='turma_id' value='$idturma'>
                                         <input type='hidden' name='serie_id' value='$idserie'>
-                                        <input type='hidden' name='nome_aluno' value='$nome_aluno'>
-                                        <button type='submit' class='dropdown-item'  >Rematricular </button>
+                                        <input type='hidden' name='nome_aluno' value='$nome_aluno' -->
+
+                                        <!-- button type='submit' class='dropdown-item'  >Rematricular </button -->
+                                        <a   class='dropdown-item' data-toggle='modal' data-target='#modal_rematricula' >Rematricular </a>
                                   
-                                    </form>
-                                    </li>";
+                                    <!--/form>
+                                    </li -->";
                                 }
                                 
                               if (in_array($idescola, $array_escolas_coordenador) ) { 
@@ -230,6 +239,116 @@ foreach ($result_ecidade_matricula as $key => $value) {
           </table>
         </div>
       ";
+
+
+      // $result.="<div class='modal fade bd-example-modal-lg' id='modal_rematricula'>
+      //   <div class='modal-dialog modal-lg'>
+      //     <div class='modal-content'>
+      //       <div class='modal-header'>
+      //         <h4 class='modal-title'>PROCEDIMENTO REMATRÍCULA</h4>
+      //         <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+      //           <span aria-hidden='true'>&times;</span>
+      //         </button>
+      //       </div>
+      //         <div class='modal-body'>    
+      //             <div class='row'>
+      //                <div class='col-sm-2'>
+      //                <div class='form-group'>
+      //                 <label for='exampleInputEmail1'>Ano letivo</label>
+      //                 <select  id='ano_letivo' class='form-control' onchange=mudar_ano_letivo(this.value);>";
+                    
+      //                            if (isset($_SESSION['ano_letivo'])) {    
+      //                                 $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
+      //                                 $result.="<option value='$ano_letivo_vigente' selected>$ano_letivo_vigente</option>";                            
+      //                            }
+                    
+                              
+      //                    $result.=" </select>
+      //               </div>
+      //             </div>  
+      //               <div class='col-sm-2'>
+      //               <div class='form-group'>
+      //                 <input type='hidden' name='rematricula_escola_id' id='rematricula_escola_id' value='$idescola;'>
+      //                 <label for='exampleInputEmail1'>Série atual</label>
+      //                 <select class='form-control'  name='rematricula_serie_id' id='serie' >";  $result.="<option value='$idserie'>$nome_serie </option>";
+      //                   $result.="
+      //                </select>
+      //               </div>
+      //             </div>    
+
+      //             <div class='col-sm-3'>
+      //               <div class='form-group'>
+                 
+      //                 <label for='exampleInputEmail1'>Turno</label>
+      //                 <select class='form-control' onchange='lista_turma_escola_por_serie('lista_de_turmas_rematricula');' name='rematricula_turno' id='rematricula_turno' >
+      //                       <option></option>
+      //                        <option value='MATUTINO'>MATUTINO</option>
+      //                        <option value='VESPERTINO'>VESPERTINO</option>
+      //                           <option value='NOTURNO'>NOTURNO</option>
+      //                           <option value='INTEGRAL'>INTEGRAL</option>
+      //                 </select>
+      //               </div>
+      //             </div>              
+
+      //             <div class='col-sm-2'>
+      //               <div class='form-group'>
+      //                 <label for='exampleInputEmail1' class='text-danger'>Nova Série</label>
+      //                 <select class='form-control'  name='rematricula_nova_serie' id='rematricula_nova_serie'  onchange='lista_turma_escola_por_serie('lista_de_turmas_rematricula');' >
+      //                   <option></option>";
+
+                      
+      //                   $res_serie=pesquisar_serie_por_id($conexao,$idserie);
+      //                   foreach ($res_serie as $key => $value) {
+      //                     $id=$value['id'];
+      //                     $nome_serie=$value['nome'];
+      //                     $result.="<option value='$id'>$nome_serie </option>";
+      //                   }       
+
+      //                   $res_serie=pesquisar_serie_por_id($conexao,$idserie+1);
+      //                   foreach ($res_serie as $key => $value) {
+      //                     $id=$value['id'];
+      //                     $nome_serie=$value['nome'];
+      //                     $result.="<option value='$id'>$nome_serie </option>";
+      //                   }
+                     
+      //                 $result.="</select>
+      //               </div>
+      //             </div>
+
+
+
+      //             <div class='col-sm-3'>
+      //               <div class='form-group' id=''>
+      //                  <label for='exampleInputEmail1' class='text-danger'>Turma pretendida</label>
+      //                   <select class='form-control' name='rematricula_turma' id='lista_de_turmas_rematricula' onchange=quantidade_vaga_turma('lista_de_turmas_rematricula');>
+      //                   </select>
+                      
+      //               </div>
+      //             </div>      
+          
+      //           <div class='col-sm-6'>
+      //               <div class='form-group' >
+      //                 <label for='exampleInputEmail1' class='text-danger'>Vagas restantes na turma</label>
+
+      //                 <input type='text'  name='quantidade_vagas_restante' id='quantidade_vagas_restante' value='0' readonly class='alert alert-secondary'>
+                       
+      //               </div>
+      //             </div>
+      //           </div>
+              
+      //           <div class='modal-footer justify-content-between'>
+      //                    <button type='button' class='btn btn-default' data-dismiss='modal'>FECHAR</button>
+                         
+      //                    <div id='botao_continuar' >
+      //                      <button type='submit' class='btn btn-primary' >REMATRICULAR ALUNO</button>
+      //                    </div>
+      //               </div>
+      //       </div>
+      //     </div>
+
+      //   </div>
+      // </div> ";
+
 
       echo $result;
 
