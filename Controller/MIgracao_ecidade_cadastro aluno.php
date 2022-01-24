@@ -1,4 +1,6 @@
-<?php session_start();
+<?php 
+set_time_limit(0);
+// session_start();
 include'../Model/Conexao.php';
 include'../Model/Aluno.php';
 include'../Model/Turma.php';
@@ -6,14 +8,11 @@ include'Conversao.php';
 
 try {
 
+$indice=$_GET['indice'];
+$limite=$_GET['limite'];
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$conexao_ecidade = new PDO("mysql:host=$servername;dbname=ecidade", $username, $password); 
-$conexao_ecidade->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $conta=0;
-$res_alunos_ecidade=$conexao_ecidade->query("SELECT 
+$res_alunos_ecidade=$conexao->query("SELECT 
 
    aluno_nome as 'nome',
    aluno_sexo as 'sexo',
@@ -75,8 +74,11 @@ $res_alunos_ecidade=$conexao_ecidade->query("SELECT
     aluno__certidaomatricula as 'matricula_certidao',
     aluno_censoufcert as 'uf_municipio_cartorio',
 
-    aluno_codigo as 'idaluno'
- FROM ecidademigrado_alunos limit 1,100000");
+    aluno_codigo as 'idaluno',
+    aluno_censocartorio,
+    aluno_nomeresp,
+    ufnat 
+ FROM ecidademigrado_alunos limit $indice,$limite");
 
 
 
@@ -84,20 +86,31 @@ $res_alunos_ecidade=$conexao_ecidade->query("SELECT
 
 
 foreach ($res_alunos_ecidade as $key => $value) {
+    $nome=$value['nome'];
 
+    // $email=$value['email'];
+     $email="";
+    if ($email=="") {
+        $primeiroNome = explode(" ",$nome);
+         $email=$primeiroNome[0].".".$primeiroNome[1]."".rand();
+    }else{
+         $email=rand();
 
- 
-    $email=$value['email'];
-    $nome_cartorio=$value['cartorio'];
-     $apoio_pedagogico=$value['apoio_pedagogico'];
-    $tipo_diagnostico=$value['tipo_diagnostico'];
-     $cpf_filiacao1=$value['cpf_filiacao1'];
-     $cpf_filiacao2=$value['cpf_filiacao2'];
+    }
+    $nome_cartorio=$value['aluno_censocartorio'];
+    $artorio=$value['aluno_censocartorio'];
+    // $nome_cartorio=$value['cartorio'];
+     $apoio_pedagogico='';
+    $tipo_diagnostico='';
+     $cpf_filiacao1='';
+     $cpf_filiacao2='';
      $poder_publico_responsavel='';
     $recebe_escolaridade_outro_espaco='';
-    $nacionalidade=$value['nacionalidade'];
-    $naturalidade=$value['naturalidade'];
-    $localidade=$value['localidade'];
+    $nacionalidade='Brasileira';
+    // $nacionalidade=$value['nacionalidade'];
+    $naturalidade=$value['ufnat'];
+    $localidade='';
+    // $localidade=$value['localidade'];
 
 //###########################################
     $matricula_certidao=$value['matricula_certidao'];
@@ -151,8 +164,10 @@ foreach ($res_alunos_ecidade as $key => $value) {
     $cep_endereco=$value['cep_endereco'];
     $pais=$value['pais'];
 
- 
-    $transposte_escolar=$value['transposte_escolar'];
+ $cartorio=$value['aluno_censocartorio'];
+ $nome_responsavel=$value['aluno_nomeresp'];
+ $cpf_responsavel='';
+$transposte_escolar=$value['transposte_escolar'];
    
     $uf_municipio_cartorio=$value['uf_municipio_cartorio'];
     $idaluno=$value['idaluno'];
@@ -163,6 +178,7 @@ foreach ($res_alunos_ecidade as $key => $value) {
     foreach ($res_existe_aluno as $key => $value) {
         $aluno_existe++;
     }
+
 
 
     if ($aluno_existe==0) {
@@ -203,7 +219,7 @@ foreach ($res_alunos_ecidade as $key => $value) {
     $observacao,
 
 
-$necessidade_especial,
+     $necessidade_especial,
  $apoio_pedagogico,
  $tipo_diagnostico,
  $cpf_filiacao1,
@@ -235,7 +251,7 @@ $necessidade_especial,
 
 
 else{
-    editar_dados_aluno($conexao,$nome,
+    /*editar_dados_aluno($conexao,$nome,
     $sexo,
     $email,
     $filiacao1,
@@ -299,12 +315,14 @@ else{
  $nome_responsavel,
  $cpf_responsavel
 );
-
-    echo "$conta - ATUALIZADO <br> ";
+*/
+    //echo "$conta - ATUALIZADO <br> ";
 }
 
 $conta++;
 }
+
+echo "<a href='../Controller/MIgracao_ecidade_cadastro%20aluno.php?indice=".($indice+$limite)."&limite=100'>Proximo: ".($indice+$limite)."</a>";
    // $aluno_id= $conexao->lastInsertId();
  	//associar_aluno($conexao, date("Y"), $turma, $aluno_id,  $escola);
  	//$_SESSION['status']=1; 	 

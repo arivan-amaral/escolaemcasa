@@ -180,87 +180,10 @@ $url_get=$array_url[1];
         <?php
         $conta_aluno=1; 
         $matricula="";
-        $res_alunos=array();
-        // $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
-         foreach ($res_alunos as $key => $value) {
-
-          $idaluno=$value['idaluno'];
-          $nome_aluno=$value['nome_aluno'];
-          $matricula=$value['matricula'];
-
-          $res_movimentacao=array();
-        // pesquisar_aluno_da_turma_ata_resultado_final
-          // $res_movimentacao=pesquisar_aluno_da_turma_listagem($conexao,$matricula);
-
-          $data_evento="";
-          $descricao_procedimento="";
-          $procedimento="";
-          $datasaida="";
-        
-          foreach ($res_movimentacao as $key => $value) {
-              $datasaida=($value['datasaida']);
-              $procedimento=$value['procedimento'];
-              
-              if ($datasaida!="") {
-                $datasaida=converte_data($datasaida);
-              }
-          }
-// <b class='text-primary'> $nome_turma</b><BR>
-      // <b class='text-danger'>$email  </b><BR>
-      // <b class='text-danger'>Senha: $senha  </b><BR>
-echo "
-
-   <tr>
 
 
-    <td> 
-      <b class='text-success'> $nome_aluno </b> <BR>
-      <b class='text-danger'> $procedimento $datasaida  </b> <BR>
-    
-    </td>
-    <td > ";
-    if ($procedimento=='EVADIDO') {
 
-        // echo"<div class='form-group' id='evadido_btn$matricula'>
-        //   <a class='btn btn-danger' onclick='desmarcar_aluno_evadido($matricula);'>DESMARCAR DE EVADIDO </a>
-        // </div>";  
-        
-      //  echo"<div class='form-group'>
-      //   <div class='custom-control custom-switch custom-switch-off-danger custom-switch-on-success '>
-      //     <input type='checkbox' class='custom-control-input' id='customSwitch3$id' onclick='mudar_status_aluno(1,$id)'>
-
-      //     <label class='custom-control-label' for='customSwitch3$id'></label>
-      //   </div>
-      // </div>";
-    }elseif ( $procedimento=='MATRICULADO'){
-       // echo"<div class='form-group'  id='evadido_btn$matricula'>
-       //    <a class='btn btn-primary' onclick='marcar_aluno_evadido($matricula);'>MARCAR COMO EVADIDO </a>
-       //  </div>";  
-        
-       
-       //  // echo"<div class='form-group'>
-       //    <div class='custom-control custom-switch custom-switch-on-success custom-switch-off-danger'>
-       //      <input type='checkbox' class='custom-control-input' id='customSwitch3$idaluno' onclick='mudar_status_aluno(0,$idaluno)' checked>
-
-       //      <label class='custom-control-label' for='customSwitch3$idaluno' id='customSwitch3$idaluno' ></label>
-       //    </div>
-       //  </div>";
       
-    }
-    
-
-    echo"</td>
-
-  </tr>
-";
-
-
-      }
-?>
-
-
-
-        <?php 
            //$result= array();
             // $result= listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
             
@@ -296,12 +219,22 @@ echo "
             }
             $res_solicitacao_trasferencia=pesquisar_solicitacao_transferencia_por_aluno($conexao,$matricula_aluno,0);
 
-        if ($procedimento!="") {
-             echo "<tr>
+            $verificar_aluno_na_turna_rematricula=verificar_aluno_na_turna_rematricula($conexao,$idaluno,$_SESSION['ano_letivo_vigente']);
+            
+      //       $rematriculado=0;
+      //       foreach ($verificar_aluno_na_turna_rematricula as $key => $value) {
+      //         $rematriculado++;
+      //       }
+      // if ($rematriculado>0) {
+      //         // code...
+      // }
+
+      if ($procedimento!="") {
+         echo "<tr>
    
-<td>
-$conta_aluno
-</td>
+        <td>
+        $conta_aluno
+        </td>
       <td  valign=top style='border:solid black 1.0pt;
       $conta_aluno -  
       padding:0cm 0cm 0cm 0cm;height:11.3pt; '>
@@ -318,12 +251,20 @@ $conta_aluno
             }else{
               echo "
                  <tr>";
-        if (count($res_solicitacao_trasferencia)==0) {
+        if (count($res_solicitacao_trasferencia)==0 && count($verificar_aluno_na_turna_rematricula)==0) {
 
                 echo " <td>$conta_aluno - <p><input type='checkbox' class='checkbox' name='idaluno[]' value='$idaluno'>   </p></td>";
           }else{
-            echo "<td><B>SOLICITADO TRANSFERÊNCIA</B</td>";
+            if ( count($verificar_aluno_na_turna_rematricula)>0) {
+              echo "<td><B>ALUNO REMATRICULADO</B</td>";
+
+            }elseif ( count($res_solicitacao_trasferencia)>0) {
+              echo "<td><B>SOLICITADO TRANSFERÊNCIA</B</td>";
+
+            }
           }
+
+
           echo"
                   <td>$id -
                     <b class='text-success'> $nome_aluno </b> <BR>
