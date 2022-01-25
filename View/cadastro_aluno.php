@@ -71,7 +71,7 @@ $idcoordenador=$_SESSION['idfuncionario'];
 
                        <div class="col-sm-3">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Bolsa Familia</label><br>
+                          <label for="exampleInputEmail1">Bolsa familia</label><br>
                           <select  class="form-control" name="bolsa_familia" id="bolsa_familia" required>
                             <option selected></option>
                             <option value="S">Sim</option>
@@ -158,7 +158,7 @@ $idcoordenador=$_SESSION['idfuncionario'];
          
                      <div class="col-sm-3">
                        <div class="form-group">
-                         <label for="exampleInputEmail1">Apoio Pedagógico</label><br>
+                         <label for="exampleInputEmail1">Apoio dedagógico</label><br>
                          <select  class="form-control" name="apoio_pedagogico">
                              <option></option>
                              <option value='SEM APOIO PEDAGÓGICO'>SEM APOIO PEDAGÓGICO</option>
@@ -170,7 +170,7 @@ $idcoordenador=$_SESSION['idfuncionario'];
 
                      <div class="col-sm-3">
                        <div class="form-group">
-                         <label for="exampleInputEmail1">Tipo De Diagnóstico</label><br>
+                         <label for="exampleInputEmail1">Tipo de diagnóstico</label><br>
                          <select  class="form-control" name="tipo_diagnostico">
                              <option></option>
                           
