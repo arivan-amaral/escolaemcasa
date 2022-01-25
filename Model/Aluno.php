@@ -6,7 +6,7 @@
 
 function verificar_aluno_na_turna_rematricula($conexao,$aluno_id,$calendario_ano){
 $res=$conexao->query("SELECT * FROM ecidade_matricula where 
-                    calendario_ano='$calendario_ano'
+                    calendario_ano='$calendario_ano' and matricula_tipo='R'  
                      and aluno_id=$aluno_id ");
 return $res->fetchAll();
 }

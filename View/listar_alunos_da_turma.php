@@ -170,6 +170,7 @@ $url_get=$array_url[1];
           </th>
 
           
+          <th style="width: 50px">Situação Matrícula</th>
           <th>Dados do Aluno</th>
           <th>Resultado</th>
           <th>Opção</th>
@@ -235,6 +236,9 @@ $url_get=$array_url[1];
    
         <td>
         $conta_aluno
+        </td>        
+        <td>
+        $procedimento 
         </td>
       <td  valign=top style='border:solid black 1.0pt;
       $conta_aluno -  
@@ -246,7 +250,7 @@ $url_get=$array_url[1];
 
      <td colspan='100%' valign=top style='border:solid black 1.0pt;
      ;padding:0cm 0cm 10pt 0cm;height:11.3pt; '>
-       $procedimento  $datasaida 
+        $datasaida 
       </td> ";
 
 
@@ -256,17 +260,41 @@ $url_get=$array_url[1];
         if (count($res_solicitacao_trasferencia)==0 && count($verificar_aluno_na_turna_rematricula)==0) {
 
                 echo " <td>$conta_aluno - <p><input type='checkbox' class='checkbox' name='idaluno[]' value='$idaluno'>   </p></td>";
+              echo "<td><B>MATRICULADO</B</td>";
+
           }else{
+
             if ( count($verificar_aluno_na_turna_rematricula)>0 && $_SESSION['ano_letivo'] == $_SESSION['ano_letivo_vigente']) {
-              echo "<td>$conta_aluno - <B>ALUNO REMATRICULADO</B</td>";
+              echo "<td>$conta_aluno -  <p><input type='checkbox' class='checkbox' name='idaluno[]' value='$idaluno'></p> </td>";
+              echo "<td><B>ALUNO REMATRICULADO</B</td>";
 
             }elseif ( count($res_solicitacao_trasferencia)>0) {
-              echo "<td>$conta_aluno - <B>SOLICITADO TRANSFERÊNCIA</B</td>";
+              echo "<td>$conta_aluno - </td>";
+              echo "<td>  <B>SOLICITADO TRANSFERÊNCIA</B</td>";
 
-            }else{
+             }
+            // elseif (count($verificar_aluno_na_turna_rematricula)>0 && $_SESSION['ano_letivo'] ==$_SESSION['ano_letivo_vigente'] ) {
+    
+            //   echo"<td>
+            //     $conta_aluno -  <p><input type='checkbox' class='checkbox' name='idaluno[]' value='$idaluno'>   </p> 
+            //     </td>";
+            //   echo "<td><B>REMATRICULADO</B</td>";
+
+            // }
+            elseif (count($verificar_aluno_na_turna_rematricula)>0 && $_SESSION['ano_letivo_vigente']) {
+    
               echo"<td>
-                $conta_aluno
+                $conta_aluno - 
                 </td>";
+              echo "<td><B>REMATRICULADO</B</td>";
+
+            }
+            elseif (count($verificar_aluno_na_turna_rematricula)==0) {
+              echo"<td>
+                $conta_aluno - 
+                </td>";
+              echo "<td><B>MATRICULADO</B</td>";
+
             }
           }
 
