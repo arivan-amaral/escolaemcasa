@@ -153,7 +153,7 @@ if ($idserie<8) {
         echo "<div class='pagebreak'> </div>";
 
 
-        $inicio=35;//36;
+        $inicio=36;//36;
         // $conta_aula=36;
         $conta_aula=36;
 
