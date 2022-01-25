@@ -508,7 +508,7 @@ if (escola =='' || serie =='' || turma =='' || data_nascimento ==''
                       showConfirmButton: false,
                       timer: 2500
                     });
-                    window.location.href="index.php";
+                    window.location.href="cadastro_aluno.php";
                   }else{
                     Swal.fire({
                       position: 'center',
