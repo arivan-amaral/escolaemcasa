@@ -295,17 +295,17 @@ $idcoordenador=$_SESSION['idfuncionario'];
       
  
 
-                    <label for="exampleInputEmail1"><h5>Filiação 1 <b class="text-danger">*</b></h5></label>
+                    <label for="exampleInputEmail1"><h5>Filiação 1  </h5></label>
                     <div class="row">          
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Nome filiação 1 <b class="text-danger">*</b></label>
+                          <label for="exampleInputEmail1">Nome filiação 1  </label>
                           <input type="text" class="form-control" id="exampleInputEmail1" name="filiacao1" required="">
                         </div>
                       </div>
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Cpf filiação 1 <b class="text-danger">*</b></label>
+                          <label for="exampleInputEmail1">Cpf filiação 1  </label>
                           <input type="text" class="form-control" id="exampleInputEmail1" name="cpf_filiacao1" required="">
                         </div>
                       </div>
@@ -316,17 +316,17 @@ $idcoordenador=$_SESSION['idfuncionario'];
                         </div>
                       </div> -->
                     </div>
-                    <label for="exampleInputEmail1"><h5>Filiação 2 <b class="text-danger">*</b></h5></label>
+                    <label for="exampleInputEmail1"><h5>Filiação 2  </h5></label>
                     <div class="row">          
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Nome filiação 2 <b class="text-danger">*</b></label>
+                          <label for="exampleInputEmail1">Nome filiação 2  </label>
                           <input type="text" class="form-control" id="exampleInputEmail1" name="filiacao2" required="">
                         </div>
                       </div>
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Cpf filiação 2 <b class="text-danger">*</b></label>
+                          <label for="exampleInputEmail1">Cpf filiação 2  </label>
                           <input type="text" class="form-control" id="exampleInputEmail1" name="cpf_filiacao2" required="">
                         </div>
                       </div>

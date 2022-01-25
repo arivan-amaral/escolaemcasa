@@ -411,10 +411,8 @@ var nome_responsavel=document.getElementsByName('nome_responsavel')[0].value;
 var cpf_responsavel=document.getElementsByName('cpf_responsavel')[0].value;
 var filiacao1=document.getElementsByName('filiacao1')[0].value;
 var filiacao2=document.getElementsByName('filiacao2')[0].value;
-
-  if (escola =='' || serie =='' || turma =='' || data_nascimento ==''
-   || cpf_filiacao1 =='' || cpf_filiacao2 =='' || nome_responsavel =='' 
-   || cpf_responsavel =='' || filiacao1 =='' || filiacao2 =='' ) {
+if (escola =='' || serie =='' || turma =='' || data_nascimento =='' 
+    || nome_responsavel =='' ) {
     //alert(escola +"- "+ serie+"-"+turma)
         tudo_certo=false;
        alert_preencha_todos_campos('Preencha corretamente todos os campos de curso');
@@ -510,7 +508,7 @@ var filiacao2=document.getElementsByName('filiacao2')[0].value;
                       showConfirmButton: false,
                       timer: 2500
                     });
-                    refresh();
+                    window.location.href="index.php";
                   }else{
                     Swal.fire({
                       position: 'center',
