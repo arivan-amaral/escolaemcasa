@@ -200,6 +200,7 @@ $url_get=$array_url[1];
             $idaluno=$value['idaluno'];
             $status_aluno=$value['status_aluno'];
             $email=$value['email'];
+            $data_nascimento=converte_data($value['data_nascimento']);
             $senha=$value['senha'];
             $matricula_aluno=$value['matricula'];
 
@@ -239,6 +240,7 @@ $url_get=$array_url[1];
       $conta_aluno -  
       padding:0cm 0cm 0cm 0cm;height:11.3pt; '>
       $nome_aluno
+      Data nascimento: $data_nascimento <BR>
       </td>
 
 
@@ -256,11 +258,15 @@ $url_get=$array_url[1];
                 echo " <td>$conta_aluno - <p><input type='checkbox' class='checkbox' name='idaluno[]' value='$idaluno'>   </p></td>";
           }else{
             if ( count($verificar_aluno_na_turna_rematricula)>0 && $_SESSION['ano_letivo'] == $_SESSION['ano_letivo_vigente']) {
-              echo "<td><B>ALUNO REMATRICULADO</B</td>";
+              echo "<td>$conta_aluno - <B>ALUNO REMATRICULADO</B</td>";
 
             }elseif ( count($res_solicitacao_trasferencia)>0) {
-              echo "<td><B>SOLICITADO TRANSFERÊNCIA</B</td>";
+              echo "<td>$conta_aluno - <B>SOLICITADO TRANSFERÊNCIA</B</td>";
 
+            }else{
+              echo"<td>
+                $conta_aluno
+                </td>";
             }
           }
 
@@ -268,6 +274,8 @@ $url_get=$array_url[1];
           echo"
                   <td>$id -
                     <b class='text-success'> $nome_aluno </b> <BR>
+                    Data nascimento: $data_nascimento <BR>
+
                     <b class='text-primary'> $nome_turma</b><BR>
                     <b class='text-danger'>$email  </b><BR>
                     <b class='text-danger'>Senha: $senha  </b><BR>
