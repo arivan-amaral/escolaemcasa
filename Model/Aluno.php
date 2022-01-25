@@ -1,4 +1,8 @@
 <?php
+    function excluir_questao($conexao, $idaluno) {
+        $conexao->exec("DELETE FROM aluno WHERE idaluno=$idaluno");
+ 
+    }
 
 function verificar_aluno_na_turna_rematricula($conexao,$aluno_id,$calendario_ano){
 $res=$conexao->query("SELECT * FROM ecidade_matricula where 

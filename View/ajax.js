@@ -3974,3 +3974,45 @@ function rematricular_aluno_individual(idaluno){
     };
     xmlreq.send(null);
 }
+
+
+function excluir_aluno(idaluno){
+  var result=document.getElementById("linha"+idaluno);
+  var xmlreq = CriaRequest();   
+  var url="idaluno="+idaluno;
+   xmlreq.open("GET", "../Controller/Excluir_aluno.php?"+url, true);
+    xmlreq.onreadystatechange = function(){      
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {
+                
+                if (xmlreq.responseText=="Ação Concluída") {
+                   Swal.fire({
+                     position: 'center',
+                     icon: 'success',
+                     title: 'Ação Concluída',
+                        text: ' ',
+                     showConfirmButton: false,
+                     timer: 2500
+                   });
+
+                   if (result.parentNode) {
+                     result.parentNode.removeChild(result);
+                   }
+
+                }else{
+                        Swal.fire({
+                       position: 'center',
+                       icon: 'info',
+                       title: 'Alguma coisa deu errado',
+                          text: ''+xmlreq.responseText,
+                       showConfirmButton: true
+                     });
+                }
+
+            }else{
+                 alert("Erro desconhecido");  
+            }
+        }
+    };
+    xmlreq.send(null);
+}

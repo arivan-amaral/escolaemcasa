@@ -77,7 +77,7 @@ where
                 $idaluno=$value['idaluno'];
                 $data_nascimento=converte_data($value['data_nascimento']);
                 $numero="";
-                $result.="<tr>
+                $result.="<tr id='linha$idaluno'>
                       <td>$idaluno</td>
                       <td>
                         <b class='text-success'> $nome_aluno </b> <br> 
@@ -298,6 +298,13 @@ foreach ($result_ecidade_matricula as $key => $value) {
                                   <li>
                                     <a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma'  target='_blank' class='dropdown-item'  > Boletim atual </a> </b>
                                   </li>";
+
+                                  if ($detectar_ultimo==0) {
+                                   $result.= "
+                                   <li>
+                                    <a class='dropdown-item' onclick='excluir_aluno($idaluno);'> Excluir </a> </b>
+                                  </li>";
+                                  }
 
                                 // if ($calendario_ano2 !='2021') {
                                  if ($calendario_ano !=$_SESSION['ano_letivo_vigente']) {
