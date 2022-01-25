@@ -88,7 +88,7 @@ $iddisciplina=$_GET['iddisciplina'];
 $idserie=$_GET['idserie'];
 
 $inicio=0;
-$fim=35;
+$fim=36;
 
 $conta_aula=1;
 $conta_data=1;
@@ -153,7 +153,7 @@ if ($idserie<8) {
         echo "<div class='pagebreak'> </div>";
 
 
-        $inicio=36;
+        $inicio=35;//36;
         // $conta_aula=36;
         $conta_aula=36;
 
