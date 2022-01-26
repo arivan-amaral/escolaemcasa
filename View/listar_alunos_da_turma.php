@@ -453,6 +453,9 @@ echo"<td> ";
 if ( count($verificar_aluno_na_turna_rematricula)==0 && $_SESSION['ano_letivo'] == $_SESSION['ano_letivo_vigente']) {
   echo "<a class='btn btn-danger' onclick='excluir_aluno_matriculado($idaluno);' >Excluir aluno</a> <br> <br>";
 
+}elseif ( count($verificar_aluno_na_turna_rematricula)>0 && $_SESSION['ano_letivo'] == $_SESSION['ano_letivo_vigente']) {
+  echo "<a class='btn btn-danger' onclick='cancelar_rematricula($idaluno);' >Cancelar rematricula</a> <br> <br>";
+
 }
 
 if ($status_aluno =='Ativo') {

@@ -279,7 +279,7 @@ $idcoordenador=$_SESSION['idfuncionario'];
                       </div>
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Cpf do responsável <b class="text-danger">*</b></label>
+                          <label for="exampleInputEmail1">Cpf do responsável </label>
                           <input type="text" class="form-control" id="exampleInputEmail1" name="cpf_responsavel" required="">
                         </div>
                       </div>
