@@ -1704,12 +1704,18 @@ function lista_turma_escola_por_serie_escola_individual(idaluno){
 
 
 function quantidade_vaga_turma(campo_listagem){
-  var result = document.getElementById(campo_listagem);
-  var quantidade_vagas_restante = document.getElementById("quantidade_vagas_restante");
+    var result = document.getElementById(campo_listagem);
 
+    var turma_id =document.getElementById('lista_de_turmas_rematricula').value;
+     if (campo_listagem=='troca_turma') {    
+        var quantidade_vagas_restante = document.getElementById("quantidade_vagas_restante_troca_turma");
+        var turma_id =document.getElementById('lista_de_turmas_troca_turma').value;
+
+    }else{
         var turma_id =document.getElementById('lista_de_turmas_rematricula').value;
-            
+        var quantidade_vagas_restante = document.getElementById("quantidade_vagas_restante");
 
+    }
 
   if (campo_listagem=="turmas") {
     var escola_id = document.getElementById("rematricula_escola_id").value;
@@ -4141,4 +4147,39 @@ function cancelar_rematricula(idaluno) {
       }
 
     });
+}
+
+
+// #########################################################################
+
+
+function troca_de_turma_escola_por_serie(){
+  var quantidade_vagas_restante = document.getElementById("quantidade_vagas_restante_troca_turma");
+  var result = document.getElementById("lista_de_turmas_troca_turma");
+   
+      var escola_id = document.getElementById("rematricula_escola_id").value;
+      var idserie = document.getElementById("troca_turma_serie_id").value;
+      var turno = document.getElementById("troca_turma_turno").value;
+     
+  var xmlreq = CriaRequest();   
+
+   xmlreq.open("GET", "../Controller/Lista_de_turmas_cadastrada_por_escola_serie_cadastro_aluno.php?turma_id=&rematricula=não&turno="+turno+"&escola_id="+escola_id+"&serie_id="+idserie, true);
+    xmlreq.onreadystatechange = function(){      
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {
+                var recebe =xmlreq.responseText;
+
+                var vetor=recebe.split("|#|");
+                 quantidade_vagas_restante.value=0;                 
+                 result.innerHTML =  vetor[0];
+                // result.innerHTML =  xmlreq.responseText;
+                
+            }else{
+                   result.innerHTML = "Erro ao pesquisar";
+                
+                
+            }
+        }
+    };
+    xmlreq.send(null);
 }

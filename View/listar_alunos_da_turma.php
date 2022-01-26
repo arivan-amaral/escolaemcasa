@@ -217,7 +217,7 @@ $url_get=$array_url[1];
             $verificar_aluno_na_turna_rematricula=verificar_aluno_na_turna_rematricula($conexao,$idaluno,$_SESSION['ano_letivo_vigente']);
             
           echo "<tr id='linha$idaluno'>
-              <input type='hidden' id='matricula$idaluno' value='$matricula_aluno'>
+              <input type='hidden' id='matricula$idaluno' name='matricula$idaluno' value='$matricula_aluno'>
               ";
             if ($procedimento!="") {
              echo "
@@ -254,7 +254,7 @@ $url_get=$array_url[1];
 
               if ( count($verificar_aluno_na_turna_rematricula)>0 && $_SESSION['ano_letivo'] == $_SESSION['ano_letivo_vigente']) {
                 echo "<td>$conta_aluno -  <p><input type='checkbox' class='checkbox' name='idaluno[]' value='$idaluno'></p> </td>";
-                echo "<td><B>ALUNO REMATRICULADO</B</td>";
+                echo "<td><B>ALUNO REMATRICULADO</B></td>";
 
               }elseif ( count($res_solicitacao_trasferencia)>0) {
                 echo "<td>$conta_aluno - </td>";
@@ -881,7 +881,7 @@ function addChecked(id) {
          <div class="form-group">
 
            <label for="exampleInputEmail1" class="text-danger">Novo Turno</label>
-           <select class="form-control" onchange="lista_turma_escola_por_serie('troca_turma');" name="troca_turma_turno" id="troca_turma_turno"  >
+           <select class="form-control" onchange="troca_de_turma_escola_por_serie();" name="troca_turma_turno" id="troca_turma_turno"  >
              <option></option>
              <option value="MATUTINO">MATUTINO</option>
              <option value="VESPERTINO">VESPERTINO</option>
@@ -891,12 +891,21 @@ function addChecked(id) {
          </div>
        </div> 
        <div class="col-sm-3">
-         <div class="form-group" id="troca_turma">
+         <div class="form-group" >
+            <label class="text-danger">Nova turma</label>
+            <select id="lista_de_turmas_troca_turma" name="lista_de_turmas_troca_turma" class="form-control" onchange="quantidade_vaga_turma('troca_turma');">
 
-
+            </select>
          </div>
        </div> 
+        <div class="col-sm-4">
+         <div class="form-group" >
+           <label for='exampleInputEmail1' class='text-danger'>Vagas restantes na turma</label>
 
+           <input type="text"  name="quantidade_vagas_restante_troca_turma" id="quantidade_vagas_restante_troca_turma" value="0" readonly class="alert alert-secondary">
+
+         </div>
+       </div>
 
      </div>
 
