@@ -3977,49 +3977,49 @@ function rematricular_aluno_individual(idaluno){
 }
 
 
-// function excluir_aluno(idaluno){
-//   var result=document.getElementById("linha"+idaluno);
-//   var xmlreq = CriaRequest();   
-//   var url="idaluno="+idaluno;
-//    xmlreq.open("GET", "../Controller/Excluir_aluno.php?"+url, true);
-//     xmlreq.onreadystatechange = function(){      
-//         if (xmlreq.readyState == 4) {
-//             if (xmlreq.status == 200) {
+function excluir_aluno(idaluno){
+  var result=document.getElementById("linha"+idaluno);
+  var xmlreq = CriaRequest();   
+  var url="idaluno="+idaluno;
+   xmlreq.open("GET", "../Controller/Excluir_aluno.php?"+url, true);
+    xmlreq.onreadystatechange = function(){      
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {
                 
-//                 if (xmlreq.responseText=="Ação Concluída") {
-//                    Swal.fire({
-//                      position: 'center',
-//                      icon: 'success',
-//                      title: 'Ação Concluída',
-//                         text: ' ',
-//                      showConfirmButton: false,
-//                      timer: 2500
-//                    });
+                if (xmlreq.responseText=="Ação concluída") {
+                   Swal.fire({
+                     position: 'center',
+                     icon: 'success',
+                     title: 'Ação concluída',
+                        text: ' ',
+                     showConfirmButton: false,
+                     timer: 2500
+                   });
 
-//                    if (result.parentNode) {
-//                      result.parentNode.removeChild(result);
-//                    }
+                   if (result.parentNode) {
+                     result.parentNode.removeChild(result);
+                   }
 
-//                 }else{
-//                         Swal.fire({
-//                        position: 'center',
-//                        icon: 'info',
-//                        title: 'Alguma coisa deu errado',
-//                           text: ''+xmlreq.responseText,
-//                        showConfirmButton: true
-//                      });
-//                 }
+                }else{
+                        Swal.fire({
+                       position: 'center',
+                       icon: 'info',
+                       title: 'Alguma coisa deu errado',
+                          text: ''+xmlreq.responseText,
+                       showConfirmButton: true
+                     });
+                }
 
-//             }else{
-//                  alert("Erro desconhecido");  
-//             }
-//         }
-//     };
-//     xmlreq.send(null);
-// }
+            }else{
+                 alert("Erro desconhecido");  
+            }
+        }
+    };
+    xmlreq.send(null);
+}
 
 
-function excluir_aluno(idaluno) {
+function excluir_aluno_matriculado(idaluno) {
    
     var matricula = document.getElementById("matricula"+idaluno).value;
     var xmlreq = CriaRequest();   
@@ -4034,7 +4034,7 @@ function excluir_aluno(idaluno) {
      /* Read more about isConfirmed, isDenied below */
      if (result.isConfirmed) {
 
-        xmlreq.open("GET", "../Controller/Excluir_aluno.php?idaluno="+idaluno+"&matricula="+matricula, true);
+        xmlreq.open("GET", "../Controller/Excluir_aluno_matriculado.php?idaluno="+idaluno+"&matricula="+matricula, true);
         xmlreq.onreadystatechange = function(){
           
              if (xmlreq.readyState == 4) {
