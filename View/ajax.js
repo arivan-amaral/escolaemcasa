@@ -508,7 +508,8 @@ if (escola =='' || serie =='' || turma =='' || data_nascimento ==''
                       showConfirmButton: false,
                       timer: 2500
                     });
-                    window.location.href="cadastro_aluno.php";
+                    setTimeout(function(){window.location.href="cadastro_aluno.php";},1500);
+                    
                   }else{
                     Swal.fire({
                       position: 'center',
@@ -3976,43 +3977,106 @@ function rematricular_aluno_individual(idaluno){
 }
 
 
-function excluir_aluno(idaluno){
-  var result=document.getElementById("linha"+idaluno);
-  var xmlreq = CriaRequest();   
-  var url="idaluno="+idaluno;
-   xmlreq.open("GET", "../Controller/Excluir_aluno.php?"+url, true);
-    xmlreq.onreadystatechange = function(){      
-        if (xmlreq.readyState == 4) {
-            if (xmlreq.status == 200) {
+// function excluir_aluno(idaluno){
+//   var result=document.getElementById("linha"+idaluno);
+//   var xmlreq = CriaRequest();   
+//   var url="idaluno="+idaluno;
+//    xmlreq.open("GET", "../Controller/Excluir_aluno.php?"+url, true);
+//     xmlreq.onreadystatechange = function(){      
+//         if (xmlreq.readyState == 4) {
+//             if (xmlreq.status == 200) {
                 
-                if (xmlreq.responseText=="Ação Concluída") {
-                   Swal.fire({
-                     position: 'center',
-                     icon: 'success',
-                     title: 'Ação Concluída',
-                        text: ' ',
-                     showConfirmButton: false,
-                     timer: 2500
-                   });
+//                 if (xmlreq.responseText=="Ação Concluída") {
+//                    Swal.fire({
+//                      position: 'center',
+//                      icon: 'success',
+//                      title: 'Ação Concluída',
+//                         text: ' ',
+//                      showConfirmButton: false,
+//                      timer: 2500
+//                    });
 
-                   if (result.parentNode) {
-                     result.parentNode.removeChild(result);
-                   }
+//                    if (result.parentNode) {
+//                      result.parentNode.removeChild(result);
+//                    }
 
-                }else{
+//                 }else{
+//                         Swal.fire({
+//                        position: 'center',
+//                        icon: 'info',
+//                        title: 'Alguma coisa deu errado',
+//                           text: ''+xmlreq.responseText,
+//                        showConfirmButton: true
+//                      });
+//                 }
+
+//             }else{
+//                  alert("Erro desconhecido");  
+//             }
+//         }
+//     };
+//     xmlreq.send(null);
+// }
+
+
+function excluir_aluno(idaluno) {
+   
+    var matricula = document.getElementById("matricula"+idaluno).value;
+    var xmlreq = CriaRequest();   
+   
+
+   Swal.fire({
+     title: 'Tem certeza que deseja excluir ?',
+     showDenyButton: true,
+     confirmButtonText: `Sim`,
+     denyButtonText: `Não`,
+   }).then((result) => {
+     /* Read more about isConfirmed, isDenied below */
+     if (result.isConfirmed) {
+
+        xmlreq.open("GET", "../Controller/Excluir_aluno.php?idaluno="+idaluno+"&matricula="+matricula, true);
+        xmlreq.onreadystatechange = function(){
+          
+             if (xmlreq.readyState == 4) {
+                 if (xmlreq.status == 200) {
+                    // result.innerHTML = xmlreq.responseText;
+                     if(xmlreq.responseText=="Ação concluída"){
                         Swal.fire({
-                       position: 'center',
-                       icon: 'info',
-                       title: 'Alguma coisa deu errado',
-                          text: ''+xmlreq.responseText,
-                       showConfirmButton: true
-                     });
-                }
+                          position: 'center',
+                          icon: 'success',
+                          title: 'Ação concluída!',
+                             text: ' ',
+                          showConfirmButton: false,
+                          timer: 1500
+                        });
 
-            }else{
-                 alert("Erro desconhecido");  
-            }
-        }
-    };
-    xmlreq.send(null);
+                       var node = document.getElementById("linha"+idaluno);
+                       if (node.parentNode) {
+                         node.parentNode.removeChild(node);
+                       }
+
+
+                     }else{
+                        Swal.fire({
+                          position: 'center',
+                          icon: 'error',
+                          title: 'Alguma coisa deu errado',
+                             text: '',
+                          showConfirmButton: true
+                        });
+                     }
+
+                 }else{
+                    alert('Erro desconhecido, verifique sua conexão com a internet');
+
+                    //result.innerHTML ="Erro ao receber mensagens";                 
+                 }
+             }
+         };
+         xmlreq.send(null);
+
+      } else if (result.isDenied) {
+      }
+
+    });
 }
