@@ -73,7 +73,7 @@ where
                $cont=1;
                
                foreach ($result_aluno as $key => $value) {
-                $nome_aluno=utf8_decode($value['nome_aluno']);
+                $nome_aluno=($value['nome_aluno']);
                 $idaluno=$value['idaluno'];
                 $data_nascimento=converte_data($value['data_nascimento']);
                 $numero="";
