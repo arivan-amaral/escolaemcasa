@@ -188,7 +188,7 @@ $url_get=$array_url[1];
           }
 
           foreach ($result as $key => $value) {
-            $nome_aluno=utf8_decode($value['nome_aluno']);
+            $nome_aluno=($value['nome_aluno']);
             $nome_turma=($value['nome_turma']);
             $id=$value['idaluno'];
             $idaluno=$value['idaluno'];
