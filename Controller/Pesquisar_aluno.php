@@ -206,34 +206,33 @@ foreach ($result_ecidade_matricula as $key => $value) {
                                             <label for='exampleInputEmail1' class='text-danger'>Nova Série</label>
                                             <select class='form-control'  name='rematricula_nova_serie$idserie' id='rematricula_nova_serie$idaluno'  onchange='lista_turma_escola_por_serie_escola_individual($idaluno);' >
                                               <option></option>";
-                                              
-                                              $res_destino_rematricula=lista_ordem_serie_rematricula($conexao,$serie_id);
-                                              foreach ($res_destino_rematricula as $key_re => $value_re) {
-                                                  $possivel_destino=$value_re['possivel_destino'];
+                                              // $res_destino_rematricula=lista_ordem_serie_rematricula($conexao,$serie_id);
+                                              // foreach ($res_destino_rematricula as $key_re => $value_re) {
+                                              //     $possivel_destino=$value_re['possivel_destino'];
 
-                                                  $res_serie=pesquisar_serie_por_id($conexao,$possivel_destino);
-                                                  foreach ($res_serie as $key => $value) {
-                                                    $id=$value['id'];
-                                                    $nome_serie=$value['nome'];
-                                                    echo "<option value='$id'>$nome_serie </option>";
-                                                  } 
-                                              }      
+                                              //     $res_serie=pesquisar_serie_por_id($conexao,$possivel_destino);
+                                              //     foreach ($res_serie as $key => $value) {
+                                              //       $id=$value['id'];
+                                              //       $nome_serie=$value['nome'];
+                                              //       echo "<option value='$id'>$nome_serie </option>";
+                                              //     } 
+                                              // }      
 
                                             
-                                              // $res_serie=lista_serie_rematricula($conexao,$idserie);
+                                              $res_serie=lista_serie_rematricula($conexao,$idserie);
                                               
-                                              // foreach ($res_serie as $key => $value) {
-                                              //   $id=$value['id'];
-                                              //   $nome_serie=$value['nome'];
-                                              //   $result.="<option value='$id'>$nome_serie </option>";
-                                              // }       
+                                              foreach ($res_serie as $key => $value) {
+                                                $id=$value['id'];
+                                                $nome_serie=$value['nome'];
+                                                $result.="<option value='$id'>$nome_serie </option>";
+                                              }       
 
-                                              // $res_serie=pesquisar_serie_por_id($conexao,$idserie+1);
-                                              // foreach ($res_serie as $key => $value) {
-                                              //   $id=$value['id'];
-                                              //   $nome_serie=$value['nome'];
-                                              //   $result.="<option value='$id'>$nome_serie </option>";
-                                              // }
+                                              $res_serie=pesquisar_serie_por_id($conexao,$idserie+1);
+                                              foreach ($res_serie as $key => $value) {
+                                                $id=$value['id'];
+                                                $nome_serie=$value['nome'];
+                                                $result.="<option value='$id'>$nome_serie </option>";
+                                              }
                                            
                                             $result.="</select>
                                           </div>
