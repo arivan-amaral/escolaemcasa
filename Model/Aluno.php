@@ -819,6 +819,230 @@ $sql->bindParam("necessidade_especial",$necessidade_especial);
 
  return $conexao;
 }
+
+function cadastro_aluno_migracao($conexao,$idaluno,$nome,
+    $sexo,
+    $email,
+    $filiacao1,
+    $filiacao2,
+    $senha,
+    $whatsapp,
+    $whatsapp_responsavel,
+    $data_nascimento,
+
+    $numero_nis,
+    $codigo_inep,
+    $bolsa_familia,
+    $tipo_responsavel,
+    $raca_aluno,
+    $estado_civil_aluno,
+    $tipo_sanguinio_aluno,
+    $profissao,
+    $situacao_documentacao,
+    $tipo_certidao,
+    $numero_termo,
+    $folha,
+    $uf_cartorio,
+    $municipio_cartorio,
+    $nome_cartorio,
+    $numero_indentidade,
+    $uf_identidade,
+    $orgao_emissor_indentidade,
+    $data_expedicao,
+    $numero_cnh,
+    $categoria_cnh,
+    $cpf,
+    $cartao_sus,
+    $observacao,
+
+
+     $necessidade_especial,
+ $apoio_pedagogico,
+ $tipo_diagnostico,
+ $cpf_filiacao1,
+ $cpf_filiacao2,
+ $endereco,
+ $complemento,
+ $numero_endereco,
+ $uf_endereco,
+ $municipio_endereco,
+ $bairro_endereco,
+ $zona_endereco,
+ $cep_endereco,
+ $nacionalidade,
+ $pais,
+ $naturalidade,
+ $localidade,
+ $transposte_escolar,
+ $poder_publico_responsavel,
+ $recebe_escolaridade_outro_espaco,
+ $matricula_certidao,
+ $uf_municipio_cartorio,
+ $cartorio,
+ $nome_responsavel,
+ $cpf_responsavel,
+ $idaluno
+
+) {
+
+    $sql=$conexao->prepare("INSERT INTO aluno(idaluno,  nome, sexo, email, filiacao1, filiacao2,  senha, whatsapp, whatsapp_responsavel, data_nascimento, numero_nis, codigo_inep, bolsa_familia, tipo_responsavel, raca_aluno, estado_civil_aluno, tipo_sanguinio_aluno, profissao, situacao_documentacao, tipo_certidao, numero_termo, folha, uf_cartorio, municipio_cartorio, nome_cartorio, numero_indentidade, uf_identidade, orgao_emissor_indentidade, data_expedicao, numero_cnh, categoria_cnh, cpf, cartao_sus, observacao, 
+necessidade_especial,
+ apoio_pedagogico,
+ tipo_diagnostico,
+ cpf_filiacao1,
+ cpf_filiacao2,
+ endereco,
+ complemento,
+ numero_endereco,
+ uf_endereco,
+ municipio_endereco,
+ bairro_endereco,
+ zona_endereco,
+ cep_endereco,
+ nacionalidade,
+ pais,
+ naturalidade,
+ localidade,
+ transposte_escolar,
+ poder_publico_responsavel,
+ recebe_escolaridade_outro_espaco,
+ matricula_certidao,
+ uf_municipio_cartorio,
+ cartorio,
+ nome_responsavel,
+ cpf_responsavel
+ ) VALUES (
+    :idaluno,
+    :nome,
+    :sexo,
+    :email,
+    :filiacao1,
+    :filiacao2,
+    :senha,
+    :whatsapp,
+    :whatsapp_responsavel,
+    :data_nascimento,
+
+    :numero_nis,
+    :codigo_inep,
+    :bolsa_familia,
+    :tipo_responsavel,
+    :raca_aluno,
+    :estado_civil_aluno,
+    :tipo_sanguinio_aluno,
+    :profissao,
+    :situacao_documentacao,
+    :tipo_certidao,
+    :numero_termo,
+    :folha,
+    :uf_cartorio,
+    :municipio_cartorio,
+    :nome_cartorio,
+    :numero_indentidade,
+    :uf_identidade,
+    :orgao_emissor_indentidade,
+    :data_expedicao,
+    :numero_cnh,
+    :categoria_cnh,
+    :cpf,
+    :cartao_sus,
+    :observacao,
+
+    :necessidade_especial,
+    :apoio_pedagogico,
+    :tipo_diagnostico,
+    :cpf_filiacao1,
+    :cpf_filiacao2,
+    :endereco,
+    :complemento,
+    :numero_endereco,
+    :uf_endereco,
+    :municipio_endereco,
+    :bairro_endereco,
+    :zona_endereco,
+    :cep_endereco,
+    :nacionalidade,
+    :pais,
+    :naturalidade,
+    :localidade,
+    :transposte_escolar,
+    :poder_publico_responsavel,
+    :recebe_escolaridade_outro_espaco,
+    :matricula_certidao,
+    :uf_municipio_cartorio,
+    :cartorio,
+    :nome_responsavel,
+    :cpf_responsavel
+)");
+
+
+
+ $sql->bindParam("idaluno",$idaluno);
+ $sql->bindParam("nome",$nome);
+ $sql->bindParam("sexo",$sexo);
+ $sql->bindParam("email",$email);
+ $sql->bindParam("filiacao1",$filiacao1);
+ $sql->bindParam("filiacao2",$filiacao2);
+ $sql->bindParam("senha",$senha);
+ $sql->bindParam("whatsapp",$whatsapp);
+ $sql->bindParam("whatsapp_responsavel",$whatsapp_responsavel);
+ $sql->bindParam("data_nascimento",$data_nascimento);
+ $sql->bindParam("numero_nis",$numero_nis);
+ $sql->bindParam("codigo_inep",$codigo_inep);
+ $sql->bindParam("bolsa_familia",$bolsa_familia);
+ $sql->bindParam("tipo_responsavel",$tipo_responsavel);
+ $sql->bindParam("raca_aluno",$raca_aluno);
+ $sql->bindParam("estado_civil_aluno",$estado_civil_aluno);
+ $sql->bindParam("tipo_sanguinio_aluno",$tipo_sanguinio_aluno);
+ $sql->bindParam("profissao",$profissao);
+ $sql->bindParam("situacao_documentacao",$situacao_documentacao);
+ $sql->bindParam("tipo_certidao",$tipo_certidao);
+ $sql->bindParam("numero_termo",$numero_termo);
+ $sql->bindParam("folha",$folha);
+ $sql->bindParam("uf_cartorio",$uf_cartorio);
+ $sql->bindParam("municipio_cartorio",$municipio_cartorio);
+ $sql->bindParam("nome_cartorio",$nome_cartorio);
+ $sql->bindParam("numero_indentidade",$numero_indentidade);
+ $sql->bindParam("uf_identidade",$uf_identidade);
+ $sql->bindParam("orgao_emissor_indentidade",$orgao_emissor_indentidade);
+ $sql->bindParam("data_expedicao",$data_expedicao);
+ $sql->bindParam("numero_cnh",$numero_cnh);
+ $sql->bindParam("categoria_cnh",$categoria_cnh);
+ $sql->bindParam("cpf",$cpf);
+ $sql->bindParam("cartao_sus",$cartao_sus);
+ $sql->bindParam("observacao",$observacao);
+
+
+$sql->bindParam("necessidade_especial",$necessidade_especial);
+ $sql->bindParam("apoio_pedagogico",$apoio_pedagogico);
+ $sql->bindParam("tipo_diagnostico",$tipo_diagnostico);
+ $sql->bindParam("cpf_filiacao1",$cpf_filiacao1);
+ $sql->bindParam("cpf_filiacao2",$cpf_filiacao2);
+ $sql->bindParam("endereco",$endereco);
+ $sql->bindParam("complemento",$complemento);
+ $sql->bindParam("numero_endereco",$numero_endereco);
+ $sql->bindParam("uf_endereco",$uf_endereco);
+ $sql->bindParam("municipio_endereco",$municipio_endereco);
+ $sql->bindParam("bairro_endereco",$bairro_endereco);
+ $sql->bindParam("zona_endereco",$zona_endereco);
+ $sql->bindParam("cep_endereco",$cep_endereco);
+ $sql->bindParam("nacionalidade",$nacionalidade);
+ $sql->bindParam("pais",$pais);
+ $sql->bindParam("naturalidade",$naturalidade);
+ $sql->bindParam("localidade",$localidade);
+ $sql->bindParam("transposte_escolar",$transposte_escolar);
+ $sql->bindParam("poder_publico_responsavel",$poder_publico_responsavel);
+ $sql->bindParam("recebe_escolaridade_outro_espaco",$recebe_escolaridade_outro_espaco);
+ $sql->bindParam("matricula_certidao",$matricula_certidao);
+ $sql->bindParam("uf_municipio_cartorio",$uf_municipio_cartorio);
+ $sql->bindParam("cartorio", $cartorio);
+ $sql->bindParam("nome_responsavel", $nome_responsavel);
+ $sql->bindParam("cpf_responsavel", $cpf_responsavel);
+ $sql->execute();
+ 
+
+ return $conexao;
+}
  
 
  
