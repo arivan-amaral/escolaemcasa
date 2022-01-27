@@ -771,19 +771,24 @@ function addChecked(id) {
           <select class="form-control"  name="rematricula_nova_serie" id="rematricula_nova_serie"  onchange="lista_turma_escola_por_serie('lista_de_turmas_rematricula');" >
             <option></option>
             <?php 
-            $res_serie=pesquisar_serie_por_id($conexao,$serie_id);
-            foreach ($res_serie as $key => $value) {
-              $id=$value['id'];
-              $nome_serie=$value['nome'];
-              echo "<option value='$id'>$nome_serie </option>";
-            }       
+            $res_destino_rematricula=lista_ordem_serie_rematricula($conexao,$serie_id);
+            foreach ($res_destino_rematricula as $key_re => $value_re) {
+                $possivel_destino=$value_re['possivel_destino'];
 
-            $res_serie=pesquisar_serie_por_id($conexao,$serie_id+1);
-            foreach ($res_serie as $key => $value) {
-              $id=$value['id'];
-              $nome_serie=$value['nome'];
-              echo "<option value='$id'>$nome_serie </option>";
-            }
+                $res_serie=pesquisar_serie_por_id($conexao,$possivel_destino);
+                foreach ($res_serie as $key => $value) {
+                  $id=$value['id'];
+                  $nome_serie=$value['nome'];
+                  echo "<option value='$id'>$nome_serie </option>";
+                } 
+            }      
+
+            // $res_serie=pesquisar_serie_por_id($conexao,$serie_id+1);
+            // foreach ($res_serie as $key => $value) {
+            //   $id=$value['id'];
+            //   $nome_serie=$value['nome'];
+            //   echo "<option value='$id'>$nome_serie </option>";
+            // }
             ?>
           </select>
         </div>

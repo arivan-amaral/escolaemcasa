@@ -21,5 +21,13 @@ function pesquisar_ordem_proxima_serie($conexao,$idserie){
 
 }
 
+function lista_ordem_serie_rematricula($conexao,$idserie){
+   $result = $conexao->query("SELECT * FROM associar_serie_rematricula 
+      where 
+      associar_serie_rematricula.serie_origem = $idserie");
+    return $result;
+
+}
+
 
 ?>
