@@ -817,8 +817,10 @@ $sql->bindParam("necessidade_especial",$necessidade_especial);
  $sql->execute();
  
 
- return $conexao;
+ // return $conexao;
 }
+
+##############################################################
 
 function cadastro_aluno_migracao($conexao,$idaluno,$nome,
     $sexo,
@@ -881,7 +883,7 @@ function cadastro_aluno_migracao($conexao,$idaluno,$nome,
  $cartorio,
  $nome_responsavel,
  $cpf_responsavel,
- $idaluno
+ 
 
 ) {
 
@@ -1039,10 +1041,9 @@ $sql->bindParam("necessidade_especial",$necessidade_especial);
  $sql->bindParam("nome_responsavel", $nome_responsavel);
  $sql->bindParam("cpf_responsavel", $cpf_responsavel);
  $sql->execute();
- 
-
- return $conexao;
 }
+
+##############################################################
  
 
  
