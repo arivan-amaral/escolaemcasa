@@ -882,7 +882,7 @@ function cadastro_aluno_migracao($conexao,$idaluno,$nome,
  $uf_municipio_cartorio,
  $cartorio,
  $nome_responsavel,
- $cpf_responsavel,
+ $cpf_responsavel
  
 
 ) {
