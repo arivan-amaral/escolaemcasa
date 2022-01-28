@@ -29,9 +29,9 @@ try {
 	
 		foreach ($_POST['idaluno'] as $key => $value) {
 			$aluno_id=$_POST['idaluno'][$key];
-			$nome_aluno=$_POST['nome_aluno'][$key];
-			$matricula_aluno=$_POST['matricula'.$aluno_id];
-			$resultado=$_POST['resultado'][$key];
+			$nome_aluno=$_POST["nome_aluno$aluno_id"];
+			$matricula_aluno=$_POST["matricula$aluno_id"];
+			$resultado=$_POST["resultado$aluno_id"];
 		 	$calendario_ano=$_SESSION['ano_letivo_vigente'];
 			
 			##################################################################
