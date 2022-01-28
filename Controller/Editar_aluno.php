@@ -83,7 +83,7 @@ try {
     if ($_POST['data_expedicao']!="") {
          $data_expedicao=$_POST['data_expedicao'];
     }else{
-        $data_expedicao=null;
+        $data_expedicao='0000-00-00';
     }
 
     $categoria_cnh=$_POST['categoria_cnh'];
