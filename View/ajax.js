@@ -515,9 +515,8 @@ if (escola =='' || serie =='' || turma =='' || data_nascimento ==''
                       position: 'center',
                       icon: 'error',
                       title: 'Alguma coisa deu errado',
-                         text: ' ',
-                      showConfirmButton: false,
-                      timer: 1500
+                         text: data,
+                      showConfirmButton: true
                     });
                   }
             }
