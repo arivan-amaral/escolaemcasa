@@ -127,7 +127,7 @@ if ($idserie<8) {
 
         $inicio=36;
         // $conta_aula=36;
-        $conta_aula=37;
+        $conta_aula=36;
 
         $limite_data=18;
         $limite_aula=18;
@@ -155,7 +155,7 @@ if ($idserie<8) {
 
         $inicio=36;//36;
         // $conta_aula=36;
-        $conta_aula=36;
+        $conta_aula=37;
 
         // $limite_data=26;
         // $limite_aula=26;    
