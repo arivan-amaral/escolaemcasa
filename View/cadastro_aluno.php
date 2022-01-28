@@ -85,8 +85,8 @@ $idcoordenador=$_SESSION['idfuncionario'];
                         <div class="form-group">
                           <label for="exampleInputEmail1">Local de procedência </label>
                             <select name="local_procedencia" id="local_procedencia"  class="form-control" > 
-                              <option value="Escola da rede">Escola da REDE</option>
                               <option value="Escola da fora">Escola de FORA</option>
+                              <!-- <option value="Escola da rede">Escola da REDE</option> -->
 
                             </select> 
                         </div>

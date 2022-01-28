@@ -16,20 +16,33 @@ try {
 	$ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
 	$aluno_reprovado = "";
 
-	if ( empty($_POST['escola_id']) ){
+	if ( empty($observacao)){
 		$_SESSION['status']=0;
-		$_SESSION['mensagem']='Selecione todos os campos!';
+		$_SESSION['mensagem']='Selecione todos os campos incluindo uma observação!';
 		header("location:../View/listar_alunos_da_turma.php?$url_get");
 		exit();
 
 	}elseif (isset($_POST['idaluno'])) {
+		$solicitacao_pendente='';
 		foreach ($_POST['idaluno'] as $key => $value) {
 			$aluno_id=$_POST['idaluno'][$key];
 			$nome_aluno=$_POST['nome_aluno'][$key];
 			$matricula_aluno=$_POST['matricula_aluno'][$key];
 			$resultado=$_POST['resultado'][$key];
+			
+			$aceita=0; //neutra
+			//$aceita=1;// 1 aceita
+			//$aceita=2;// 2 recusada
 
-			// if ($resultado=="Apc" || $resultado=="Apr") {
+			$solicitacao_tranferencia=verificar_solicitacao_tranferencia($conexao,$aluno_id,$ano_letivo_vigente,$aceita);
+
+			 if (count($solicitacao_tranferencia)==0) {
+			 	if ($escola_id==0) {
+			 		$aceita=1;// 1 aceita
+
+			 		
+			 	}else{
+			 		$aceita=0;// 0 neutra(pendente)
 				solicitacao_transferencia(
 					$conexao,
 					$matricula_aluno,
@@ -37,13 +50,11 @@ try {
 					$serie_id,	
 					$profissional_solicitante,
 					$escola_id,
-					$observacao,$ano_letivo,$ano_letivo_vigente);
-				
-
-			// }else{
-			// 	$aluno_reprovado.=" | $aluno_id - $nome_aluno";
-			// 	// echo "$aluno_reprovado";
-			// }
+					$observacao,$ano_letivo,$ano_letivo_vigente,$aceita);
+			 	}
+			 }else{
+			 	$solicitacao_pendente.=" | $nome_aluno ";
+			 }
 		}
 
 	}
@@ -53,24 +64,25 @@ try {
 		$_SESSION['mensagem']='Nenhum aluno selecionado!';
 		header("location:../View/listar_alunos_da_turma.php?$url_get");
 		exit();
-	}
-		$_SESSION['status']=1;
+	}elseif ($solicitacao_pendente!="") {
+		$_SESSION['status']=2;
+		$_SESSION['mensagem']="Aluno com solicitação de transferência pendente: ".$solicitacao_realizada;
 		header("location:../View/listar_alunos_da_turma.php?$url_get");	
-	
+		exit();
+	}else{
+	 
+	$_SESSION['status']=1;
+		header("location:../View/listar_alunos_da_turma.php?$url_get");	
+		exit();
+	}
 		
-	//  if ($aluno_reprovado!="") {
-	// 	$_SESSION['status']=2;
-	// 	$_SESSION['status']="Não é possível transferir aluno com reprovação".$aluno_reprovado;
-
-	// } 
-
 
 
 } catch (Exception $e) {
 	$_SESSION['status']=0;
 	$_SESSION['mensagem']='Alguma coisa deu errado, tente novamente!';
 	header("location:../View/listar_alunos_da_turma.php?$url_get");
- 
+ 	
 }
 
 ?>

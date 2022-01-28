@@ -11,11 +11,11 @@ include_once "../Model/Estado.php";
 include_once "../Model/Coordenador.php"; 
 include_once "../Model/Aluno.php"; 
 $idcoordenador=$_SESSION['idfuncionario'];
-$id = $_POST['aluno_id'];
+$idaluno = $_POST['aluno_id'];
 
 
 
-$res =pesquisar_aluno2($conexao,$id);
+$res =pesquisar_aluno2($conexao,$idaluno);
 $nome = "";
 $sexo = "";
 $email = "";
@@ -74,6 +74,8 @@ $numero_termo = "";
 $data_expedicao = "";
 $cpf = "";
 $whatsapp_responsavel = "";
+$nome_responsavel = "";
+$cpf_responsavel = "";
 
 foreach ($res as $key => $value) {
     $nome = $value['nome'];
@@ -92,6 +94,7 @@ foreach ($res as $key => $value) {
     $raca_aluno = $value['raca_aluno'];
     $estado_civil_aluno = $value['estado_civil_aluno'];
     $tipo_sanguinio_aluno = $value['tipo_sanguinio_aluno'];
+    
     $endereco = $value['endereco'];
     $complemento = $value['complemento'];
     $numero_endereco = $value['numero_endereco'];
@@ -133,6 +136,8 @@ foreach ($res as $key => $value) {
     $numero_termo = $value['numero_termo'];
     $data_expedicao = $value['data_expedicao'];
     $cpf = $value['cpf'];
+    $nome_responsavel = $value['nome_responsavel'];
+    $cpf_responsavel = $value['cpf_responsavel'];
 }
 
  
@@ -143,7 +148,7 @@ foreach ($res as $key => $value) {
   <!-- Main Sidebar Container -->
 <div class="content-wrapper">
 <!-- ####################### CORPO ################################################# -->
-   <H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>
+   <!-- <H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR> -->
 
  
         <div class="card card-primary card-tabs">
@@ -159,13 +164,15 @@ foreach ($res as $key => $value) {
               <li class="nav-item">
                 <a class="nav-link" id="custom-tabs-two-messages-tab" data-toggle="pill" href="#custom-tabs-two-messages" role="tab" aria-controls="custom-tabs-two-messages" aria-selected="false">Documentos</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" id="custom-tabs-two-settings-tab" data-toggle="pill" href="#custom-tabs-two-settings" role="tab" aria-controls="custom-tabs-two-settings" aria-selected="false">Curso</a>
-              </li>
+       
              
                
             </ul>
           </div>
+
+      <form id="form1" name="form1" method="POST" enctype="multipart/form-data">
+        
+          
           <div class="card-body">
             <div class="tab-content" id="custom-tabs-two-tabContent">
               <div class="tab-pane fade  active show" id="custom-tabs-two-home" role="tabpanel" aria-labelledby="custom-tabs-two-home-tab">
@@ -190,13 +197,23 @@ foreach ($res as $key => $value) {
                       <div class="form-group">
                         <label for="exampleInputEmail1">Bolsa Familia</label><br>
                         <select  class="form-control" name="bolsa_familia" id="bolsa_familia" required>
-                          <option selected value='<?php echo $bolsa_familia; ?>'><?php echo $bolsa_familia  ?></option>
-                          <option value="S">Sim</option>
-                          <option value="N">Não</option>
+                          <option></option>
+                          <?php 
+                            if ($bolsa_familia=="N") {
+                              echo "
+                                <option value='N' selected>Não</option>
+                                <option value='S'>Sim</option>";
+                            }else{
+                              echo"<option value='S' selected>Sim</option>
+                              <option value='N' >Não</option>";
+
+                            }
+                          ?>
           
                         </select>
                       </div>
                     </div>
+                    
                     <div class="col-sm-3">
                       <div class="form-group">
                         <label for="exampleInputEmail1">Local de procedência </label>
@@ -207,9 +224,17 @@ foreach ($res as $key => $value) {
                           </select> 
                       </div>
                     </div>
+
                   </div>
                   <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-1">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">id</label>
+                        <input type="text" class="form-control" name="idaluno" value="<?php echo $idaluno; ?>" readonly>
+                      </div>
+                    </div>                 
+
+                    <div class="col-sm-5">
                       <div class="form-group">
                         <label for="exampleInputEmail1">Nome</label>
                         <input type="text" class="form-control" id="nome" name="nome"  value='<?php echo $nome; ?>' required="">
@@ -357,13 +382,13 @@ foreach ($res as $key => $value) {
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Nome do responsável</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="nome_responsavel" required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="nome_responsavel" required="" value="<?php echo $nome_responsavel; ?>">
                         </div>
                       </div>
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Cpf do responsável</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="cpf_responsavel"  required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="cpf_responsavel"  required="" value="<?php echo $cpf_responsavel; ?>">
                         </div>
                       </div>
                     </div> 
@@ -426,21 +451,49 @@ foreach ($res as $key => $value) {
                         <div class="form-group">
                           <label for="exampleInputEmail1">Uf</label>
                           <select type="text" class="form-control" id="exampleInputEmail1" name="uf_endereco" required="" onchange="pesquisar_municipio(this.value,'municipio_endereco');">
-                            <option selected value='<?php echo $uf_endereco; ?>'><?php echo $uf_endereco ?></option>
+                            <option value="5">Bahia</option>
                             <?php 
                               $resultado_estado= listar_estado($conexao);
                               foreach ($resultado_estado as $key => $value) {
                                 $idestado=$value['id'];
                                 $nome_estado=$value['nome'];
-                                echo "<option value='$idestado'> $nome_estado</option>";
+                                if ($idestado==$uf_endereco) {
+                                  echo "<option value='$idestado' selected>$nome_estado</option>";
+                                }else{
+                                echo "<option value='$idestado' >$nome_estado</option>";
+
+                                }
                               }
                             ?>
                           </select>
                         </div>
                       </div>
+
                       <div class="col-sm-3"id="municipio_endereco">
                         <!-- municipio aqui -->
-                      </div>                
+                        <div class='form-group'>
+                          <label for='exampleInputEmail1'>Município</label>
+                          <select type='text' class='form-control'  name='municipio_endereco' >
+                         <option value="515">Luís Eduardo Magalhães</option>
+
+                            <?php 
+                        $pesquisa_cidadade=listar_cidade_por_idestado($conexao,5);
+                        foreach ($pesquisa_cidadade as $key => $value) {
+                          $id=$value['id'];
+                          $nome_cidade=$value['nome'];
+                            if ($id==$municipio_endereco) {
+                              echo "<option value='$id' selected>$nome_cidade</option>";
+                            }else{
+                            echo "<option value='$id' >$nome_cidade</option>";
+
+                            }
+                          } 
+                        
+                        ?>
+                           </select>
+                        </div>
+                      </div>
+
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Bairro</label>
@@ -516,9 +569,19 @@ foreach ($res as $key => $value) {
                         <div class="form-group">
                           <label for="exampleInputEmail1">Recebe Escolarização Em Outro Espaço</label><br>
                           <select  class="form-control" required name="recebe_escolaridade_outro_espaco">
-                            <option selected value='<?php echo $recebe_escolaridade_outro_espaco; ?>'><?php echo $recebe_escolaridade_outro_espaco ?></option>
-                            <option value="N">Não</option>
-                            <option value="S">Sim</option>
+                             
+                              <?php 
+                                if ($recebe_escolaridade_outro_espaco=="S") {
+                                  echo"
+                                  <option value='S'selected>Sim</option>
+                                  <option value='N'>Não</option>";
+                                }else{
+                                   echo"
+                                  <option value='N'selected>Não</option>
+                                  <option value='S'>Sim</option>";
+                                }
+                              ?>
+                            
                           </select>
                         </div>
                       </div>               
@@ -559,9 +622,20 @@ foreach ($res as $key => $value) {
                         <div class="form-group">
                           <label for="exampleInputEmail1">Tipo De Certidão</label>
                           <select type="text" class="form-control"  name="tipo_certidao">
-                            <option selected value='<?php echo $tipo_certidao ?>'><?php echo  $tipo_certidao?></option>
-                            <option value="N">CERTIDÃO NASCIMENTO</option>
-                            <option value="C">CERTIDÃO CASAMENTO</option>
+                            
+
+                            <?php 
+                              if ($tipo_certidao=="N") {
+                                echo"
+                                <option value='C'>CERTIDÃO CASAMENTO</option>
+                                <option value='N' selected>CERTIDÃO NASCIMENTO</option>";
+                              }else{
+                                  echo"
+                                <option value='C' selected>CERTIDÃO CASAMENTO</option>
+                                <option value='N' >CERTIDÃO NASCIMENTO</option>";
+                              }
+                            ?>
+                            
                              
                           </select>
                         </div>
@@ -584,13 +658,18 @@ foreach ($res as $key => $value) {
                         <div class="form-group">
                           <label for="exampleInputEmail1">UF cartorio</label><br>
                           <select  class="form-control"  required name="uf_cartorio"  onchange="pesquisar_municipio(this.value,'uf_municipio_cartorio');">
-                            <option selected value='<?php echo $uf_cartorio; ?>'><?php echo $uf_cartorio ?></option>
-                            <?php 
+                            <option value=''></option>
+                             <?php 
                               $resultado_estado= listar_estado($conexao);
                               foreach ($resultado_estado as $key => $value) {
-                                $idestado=$value['id'];
+                                $idestado_cartorio=$value['id'];
                                 $nome_estado=$value['nome'];
-                                echo "<option value='$idestado'> $nome_estado</option>";
+                                if ($idestado_cartorio==$uf_cartorio) {
+                                  echo "<option value='$idestado_cartorio' selected>$nome_estado</option>";
+                                }else{
+                                echo "<option value='$idestado_cartorio' >$nome_estado</option>";
+
+                                }
                               }
                             ?>
                           </select>
@@ -598,6 +677,29 @@ foreach ($res as $key => $value) {
                       </div>
                       <div class="col-sm-4" id="uf_municipio_cartorio">
                         <!-- municipio aqui -->
+                        <div class='form-group'>
+                          <label for='exampleInputEmail1'>Município</label>
+                          <select type='text' class='form-control'  name='municipio_cartorio' >
+                   <option></option>
+ 
+                            <?php 
+                        $pesquisa_cidadade=listar_cidade_por_idestado($conexao,5);
+                        foreach ($pesquisa_cidadade as $key => $value) {
+                          $idmunicipo_cartorio=$value['id'];
+                          $nome_cidade=$value['nome'];
+                            if ($idmunicipo_cartorio==$uf_municipio_cartorio) {
+                              echo "<option value='$idmunicipo_cartorio' selected>$nome_cidade</option>";
+                            }else{
+                            echo "<option value='$idmunicipo_cartorio' >$nome_cidade</option>";
+
+                            }
+                          } 
+                        
+                        ?>
+                           </select>
+                        </div>
+                      </div>
+
                       </div>
                       <div class="col-sm-4">
                         <div class="form-group">
@@ -617,14 +719,19 @@ foreach ($res as $key => $value) {
                         <div class="form-group">
                           <label for="exampleInputEmail1">Uf Identidade</label>
                           <select class="form-control"  name="uf_identidade" >
-                            <option selected value='<?php echo $uf_identidade; ?>'><?php echo $uf_identidade ?></option>
+                            <option></option>
 
                           <?php 
                               $resultado_estado= listar_estado($conexao);
                               foreach ($resultado_estado as $key => $value) {
-                                $idestado=$value['id'];
+                                $idestado_rg=$value['id'];
                                 $nome_estado=$value['nome'];
-                                echo "<option value='$idestado'> $nome_estado</option>";
+                                if ($uf_identidade==$idestado_rg) {
+                                  echo "<option value='$idestado_rg' selected> $nome_estado</option>";
+                                }else{
+                                  echo "<option value='$idestado_rg'> $nome_estado</option>";
+                                }
+
                               }
                             ?>
                           </select>
@@ -678,114 +785,23 @@ foreach ($res as $key => $value) {
                           <textarea rows="3" class="form-control" id="exampleInputEmail1" name="observacao" value='<?php echo $observacao ?>' required=""><?php echo $observacao ?></textarea>
                        </div>
                       </div>
-                    </div>                   
-                 </div>
-              </div>
-              <div class="tab-pane fade" id="custom-tabs-two-settings" role="tabpanel" aria-labelledby="custom-tabs-two-settings-tab">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Escola</label>
-                         <select class="form-control"  name="escola" id="escola" >
-                          <option></option>
-                       <?php 
-                         // $res_escola=lista_escola($conexao);
-
-                        $res_escola= escola_associada($conexao,$idcoordenador);
-                         foreach ($res_escola as $key => $value) {
-                             $idescola=$value['idescola'];
-                             $nome_escola=$value['nome_escola'];
-                             echo "<option value='$idescola'>$nome_escola </option>";
-                         }
-                         ?>
-                         </select>
-                        </div>
-                      </div>                      
-
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Turno</label>
-                         <select class="form-control"  name="turno" id="turno" >
-                          <option value="MATUTINO">MATUTINO</option>
-                          <option value="VESPERTINO">VESPERTINO</option>
-                             <option value="NOTURNO">NOTURNO</option>
-                          <option value="INTEGRAL">INTEGRAL</option>
-                         </select>
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Série</label>
-                            <select class="form-control"  name="serie" id="idserie" onchange="listar_turmas_por_serie(this.value);">
-                            <option></option>
-
-                          <?php 
-                            $res_serie=lista_todas_series($conexao);
-                            foreach ($res_serie as $key => $value) {
-                                $id=$value['id'];
-                                $nome_serie=$value['nome'];
-                                echo "<option value='$id'>$nome_serie </option>";
-                            }
-                            ?>
-                            </select>
-                        </div>
-                      </div>
-                      
-
-                                                          
-
-                      <span id="turmas">
-                        <input type="hidden" name="turma" value="">
-                      </span>            
-
-                       <span id="etapa">
-                        <input type="hidden" name="etapa" value="">
-                    
-                      </span>
-                      
                     </div>
-      <br>
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="form-group">
-            <button   class="btn btn-block btn-success " onclick="cadastro_aluno();">Cadastrar Aluno</button>
 
-         </div>
-        </div>
-        
-      </div>
                     <br>
                     <div class="row">
-                      <div class="col-12">
-                        <div class="card">
-                          <div class="card-header">
-                            <h3 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Registros</font></font></h3>
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                           <button  type="button" class="btn btn-block btn-success " id="btnSend" name="btnSend" onclick="editar_aluno();">Editar Aluno</button>
 
-                            <div class="card-tools">
-                              <div class="input-group input-group-sm" style="width: 150px;">
-                                <input type="text" name="table_search" class="form-control float-right" placeholder="Procurar">
-
-                                <div class="input-group-append">
-                                  <button type="submit" class="btn btn-default">
-                                    <i class="fas fa-search"></i>
-                                  </button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- /.card -->
-                      </div>
-                    </div>
+                       </div>
+                      </div>                   
                  </div>
               </div>
-
+              
 
          
 
-
-          
+      </form>        
           </div>
           <!-- /.card -->
 

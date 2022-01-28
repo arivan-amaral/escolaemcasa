@@ -4183,3 +4183,45 @@ function troca_de_turma_escola_por_serie(){
     };
     xmlreq.send(null);
 }
+
+
+function editar_aluno(){     
+      var formData = new FormData(document.getElementById("form1"));      
+      $.ajax({
+              type: 'POST',
+              url: '../Controller/Editar_aluno.php',
+              data: formData,
+              contentType: false,
+              cache: false,
+              processData:false,
+              beforeSend: function(){
+                    $('#btnSend').attr("disabled","disabled");
+                    $('#form1').css("opacity",".5");
+              },
+              success: function(msg){  
+              console.log(msg);               
+                  if(msg == 'certo')
+                  {
+                      $('#form1')[0].reset();
+                      
+                      Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Ação Concluída',
+                           text: ' ',
+                        showConfirmButton: false,
+                        timer: 3000
+                      });
+                      setTimeout(function(){window.location.href="pesquisa_aluno.php";},1500);
+
+                  }
+                  else
+                  {
+                      alert('Problemas no envio');
+                  }
+                  $('#form1').css("opacity","");
+                  $("#btnSend").removeAttr("disabled");
+              }
+          });
+    }
+

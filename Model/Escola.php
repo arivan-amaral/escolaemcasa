@@ -22,8 +22,8 @@ function pesquisar_solicitacao_transferencia_por_escola($conexao,$visualizada,$a
 function solicitacao_transferencia($conexao,$matricula,$aluno_id, $serie_id,
 $profissional_solicitante,
 $escola_id,
-$observacao,$ano_letivo,$ano_letivo_vigente){
-   $sql = $conexao->prepare("INSERT INTO solicitacao_transferencia(aluno_id, serie_id, profissional_solicitante,  escola_id,   observacao, ano_letivo,ano_letivo_vigente,matricula) VALUES ( :aluno_id, :serie_id, :profissional_solicitante,  :escola_id,:observacao,:ano_letivo,:ano_letivo_vigente,:matricula)
+$observacao,$ano_letivo,$ano_letivo_vigente,$aceita){
+   $sql = $conexao->prepare("INSERT INTO solicitacao_transferencia(aluno_id, serie_id, profissional_solicitante,  escola_id,   observacao, ano_letivo,ano_letivo_vigente,matricula,aceita) VALUES ( :aluno_id, :serie_id, :profissional_solicitante,  :escola_id,:observacao,:ano_letivo,:ano_letivo_vigente,:matricula,:aceita)
       ");
 
    $sql->bindParam('aluno_id',$aluno_id);
@@ -35,8 +35,29 @@ $observacao,$ano_letivo,$ano_letivo_vigente){
    $sql->bindParam('ano_letivo',$ano_letivo);
    $sql->bindParam('ano_letivo_vigente',$ano_letivo_vigente);
    $sql->bindParam('matricula',$matricula);
+   $sql->bindParam('aceita',$aceita);
 
    $sql->execute();
+}  
+
+function verificar_solicitacao_tranferencia(
+   $conexao,$aluno_id,$ano_letivo_vigente,$aceita){
+
+   $sql = $conexao->prepare("SELECT * FROM solicitacao_transferencia 
+      WHERE 
+        aluno_id= :aluno_id and
+        ano_letivo_vigente= :ano_letivo_vigente and
+       
+        aceita= :aceita
+      ");
+
+   $sql->bindParam('aluno_id',$aluno_id);
+   $sql->bindParam('ano_letivo_vigente',$ano_letivo_vigente);
+ 
+   $sql->bindParam('aceita',$aceita);
+   $sql->execute();
+
+   return $sql->fetchAll();
 }
 
 

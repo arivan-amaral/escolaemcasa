@@ -1082,8 +1082,7 @@ function editar_dados_aluno($conexao,$nome,
     $cartao_sus,
     $observacao,
 
-
-     $necessidade_especial,
+ $necessidade_especial,
  $apoio_pedagogico,
  $tipo_diagnostico,
  $cpf_filiacao1,
@@ -1208,7 +1207,7 @@ $sql->bindParam("necessidade_especial",$necessidade_especial);
  $sql->bindParam("idaluno", $idaluno);
  $sql->execute();
 
- return $conexao;
+ // return $conexao;
 }
 
 	
@@ -1631,3 +1630,13 @@ function listar_disciplina_para_ata($conexao,$escola_id,$idturma){
    ");
   return $res;
 }
+
+
+// function transferir_fora($conexao,$matricula_codigo, $data_saida){
+//   $sql=$conexao->prepare("UPDATE ecidade_matricula set procedimento= : WHERE matricula_codigo = :matricula_codigo");
+  
+//   $sql->bindParam("matricula_codigo",$matricula_codigo);
+  
+//   $sql->execute();
+
+// }
