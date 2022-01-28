@@ -872,7 +872,7 @@ function addChecked(id) {
         <div class="col-sm-2">
           <div class="form-group">
             <label for="exampleInputEmail1">Série atual</label>
-            <select class="form-control"  name="troca_turma_serie_id" id="troca_turma_serie_id" >
+            <select class="form-control"  name="troca_turma_serie_id_antiga" id="" >
 
 
               <?php 
@@ -894,7 +894,7 @@ function addChecked(id) {
          <div class="form-group">
 
            <label for="exampleInputEmail1" class="text-danger">Novo Turno</label>
-           <select class="form-control" onchange="troca_de_turma_escola_por_serie();" name="troca_turma_turno" id="troca_turma_turno"  >
+           <select class="form-control" onchange="troca_de_turma_escola_por_serie('troca_turma');" name="troca_turma_turno" id="troca_turma_turno"  >
              <option></option>
              <option value="MATUTINO">MATUTINO</option>
              <option value="VESPERTINO">VESPERTINO</option>
@@ -903,6 +903,29 @@ function addChecked(id) {
            </select>
          </div>
        </div> 
+
+
+       <div class="col-sm-2">
+         <div class="form-group">
+           <label for="exampleInputEmail1" class="text-danger">Nova Série</label>
+           <select class="form-control"  name="troca_turma_serie_id" id="troca_turma_serie_id"  onchange="troca_de_turma_escola_por_serie();" >
+             <option></option>
+             <?php 
+             $res_destino_rematricula=lista_ordem_serie_rematricula($conexao,$serie_id);
+             foreach ($res_destino_rematricula as $key_re => $value_re) {
+                 $possivel_destino=$value_re['possivel_destino'];
+
+                 $res_serie=pesquisar_serie_por_id($conexao,$possivel_destino);
+                 foreach ($res_serie as $key => $value) {
+                   $id=$value['id'];
+                   $nome_serie=$value['nome'];
+                   echo "<option value='$id'>$nome_serie </option>";
+                 } 
+             }      
+             ?>
+           </select>
+         </div>
+       </div>
        <div class="col-sm-3">
          <div class="form-group" >
             <label class="text-danger">Nova turma</label>

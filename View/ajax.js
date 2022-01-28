@@ -1646,7 +1646,7 @@ function lista_turma_escola_por_serie(campo_listagem){
 
   }
   var xmlreq = CriaRequest();   
-  result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
+  // result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
 
    xmlreq.open("GET", "../Controller/Lista_de_turmas_por_escola_serie.php?turma_id="+turma_id+"&rematricula=sim&turno="+turno+"&escola_id="+escola_id+"&serie_id="+id, true);
     xmlreq.onreadystatechange = function(){      
