@@ -28,7 +28,8 @@ include '../Model/Nota.php';
 include '../Model/Turma.php';
 
 $idturma=$_GET['idturma']; 
-$idescola=$_GET['idescola']; 
+$idescola=$_GET['idescola'];
+
 $rematricula_escola_id=$_GET['idescola']; 
 $serie_id=$_GET['idserie']; 
 $idserie=$_GET['idserie']; 
@@ -106,10 +107,17 @@ $url_get=$array_url[1];
 
           foreach ($res_turma as $key => $value) {
             $nome_turma=$value['nome_turma'];
-          }     
+          }           
+
+          $nome_escola='';
+    $res_escola=buscar_escola_por_id($conexao,$idescola);
+    $nome_escola="";
+    foreach ($res_escola as $key => $value) {
+      $nome_escola=$value['nome_escola'];
+    }    
 
 
-          echo $nome_turma  ; ?></button>
+          echo "$nome_escola - <b class='text-warning'>$nome_turma </b>"  ; ?></button>
         </div>
       </div>
       <br>
@@ -117,16 +125,16 @@ $url_get=$array_url[1];
 
       <?php 
       if (isset($_GET['teste'])) { 
+        if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
+      
         ?>
         <div class="row">
           <div class="col-sm-3">
-            <a  class="btn btn-block btn-primary" onclick="mudar_action_form('Solicitacao_transferencia.php');"  data-toggle='modal' data-target='#modal_transferencia'>Transferir selecionados</a>
+            <a  class="btn btn-block btn-info" onclick="mudar_action_form('Solicitacao_transferencia.php');"  data-toggle='modal' data-target='#modal_transferencia'>Transferir selecionados</a>
           </div>
           <?php
         }
-        ?>
-
-        <?php 
+   }
         if ($_SESSION['ano_letivo']!=$_SESSION['ano_letivo_vigente']) {
          ?>
          <div class="col-sm-3">
@@ -438,9 +446,9 @@ if($idserie<3){
 }
 
 
-echo "<input type='hidden' name='nome_aluno[]' value='$nome_aluno'>";
-echo "<input type='hidden' name='matricula_aluno[]' value='$matricula_aluno'>";
-echo "<input type='hidden' name='resultado[]' value='$resultado'>";
+echo "<input type='hidden' name='nome_aluno$idaluno' value='$nome_aluno'>";
+echo "<input type='hidden' name='matricula_aluno$idaluno' value='$matricula_aluno'>";
+echo "<input type='hidden' name='resultado$idaluno' value='$resultado'>";
 echo "<input type='hidden' name='idturma' value='$idturma'>";
 echo "<input type='hidden' name='url_get' value='$url_get'>";
 
