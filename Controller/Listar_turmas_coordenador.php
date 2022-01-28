@@ -5,13 +5,14 @@ try {
   
 
   $idescola=$_GET['idescola'];
-  if ($_SESSION['ano_letivo']==2022) {
+  if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
     $res=listar_turmas_inicial_coordenador($conexao,$idescola,$_SESSION['ano_letivo']);
   }else{
     $res=listar_turmas_coordenador($conexao,$idescola,$_SESSION['ano_letivo']);
   }
 
   $result="";
+  $turno="";
   foreach ($res as $key => $value) {
 
     $idturma=$value['idturma'];
@@ -21,6 +22,11 @@ try {
     $nome_turma=($value['nome_turma']);
     $idescola=($value['idescola']);
     $nome_escola=($value['nome_escola']);
+    if (isset($value['turno'])) {
+        $turno=($value['turno']);
+    }else{
+      $turno="REMOTO";
+    }
     
     if (isset($_SESSION['idfuncionario']))  {
                               // if (isset($_SESSION['idcoordenador']))  {
@@ -29,7 +35,7 @@ try {
 
       <div class='card-header'>
       <h4 class='card-title w-100'>
-      <a class='d-block w-100 collapsed' data-toggle='collapse' href='#collapseOne$idturma' aria-expanded='false' target='_blank'> ". $nome_turma ."  <i class='right fas fa-angle-left'></i>
+      <a class='d-block w-100 collapsed' data-toggle='collapse' href='#collapseOne$idturma' aria-expanded='false' target='_blank'> ". $nome_turma ." - <b class='text-black'> [ $turno ]</b>  <i class='right fas fa-angle-left'></i>
       </a>
       </h4>
       </div>

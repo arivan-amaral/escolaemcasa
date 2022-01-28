@@ -72,7 +72,8 @@
 	       serie.nome as 'nome_serie',
 	       nome_turma,
 	       idescola,
-	       nome_escola
+	       nome_escola,
+	       relacionamento_turma_escola.turno
 
 	FROM escola,turma,serie,relacionamento_turma_escola WHERE
 
