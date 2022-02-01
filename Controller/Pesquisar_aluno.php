@@ -65,7 +65,7 @@ FROM
 aluno 
 
 where
-  aluno.nome LIKE '%$pesquisa%'  
+  aluno.nome LIKE '%$pesquisa%'   OR idaluno='$pesquisa'
   ORDER by  aluno.nome asc limit 25");
 
 
