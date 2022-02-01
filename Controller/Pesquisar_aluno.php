@@ -57,6 +57,8 @@ aluno.data_nascimento,
 aluno.idaluno,
 aluno.email,
 aluno.status as 'status_aluno',
+aluno.whatsapp,
+aluno.whatsapp_responsavel,
 aluno.senha
 
 
@@ -76,12 +78,15 @@ where
                 $nome_aluno=($value['nome_aluno']);
                 $idaluno=$value['idaluno'];
                 $data_nascimento=converte_data($value['data_nascimento']);
+                $whatsapp=($value['whatsapp']);
+                $whatsapp_responsavel=($value['whatsapp_responsavel']);
                 $numero="";
                 $result.="<tr id='linha$idaluno'>
                       <td>$idaluno</td>
                       <td>
                         <b class='text-success'> $nome_aluno </b> <br> 
                         <b class='text-success'> Data nascimento: $data_nascimento </b> <br> 
+                        <b class='text-info'> Contato: $whatsapp | $whatsapp_responsavel </b> <br>  
                       ";
            
 

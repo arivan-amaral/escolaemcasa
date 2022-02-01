@@ -1,7 +1,8 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
+    
     <a href="index.php" class="brand-link">
-      <img src="imagens/logo_educalem_natal.png" alt="educalem" class="brand-image" style="opacity: 1">
+      <img src="imagens/logo.png" alt="educalem" style=" " height="100">
       <!-- <span class="brand-text font-weight-light">EDUCA LEM</span> -->
     </a>
     <!-- Sidebar -->
