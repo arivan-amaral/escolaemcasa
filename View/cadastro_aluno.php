@@ -158,7 +158,7 @@ $idcoordenador=$_SESSION['idfuncionario'];
          
                      <div class="col-sm-3">
                        <div class="form-group">
-                         <label for="exampleInputEmail1">Apoio dedagógico</label><br>
+                         <label for="exampleInputEmail1">Apoio pedagógico</label><br>
                          <select  class="form-control" name="apoio_pedagogico">
                              <option></option>
                              <option value='SEM APOIO PEDAGÓGICO'>SEM APOIO PEDAGÓGICO</option>
