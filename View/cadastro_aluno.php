@@ -592,7 +592,7 @@ $idcoordenador=$_SESSION['idfuncionario'];
 
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Cartórios</label><br>
+                          <label for="exampleInputEmail1">Cartório</label><br>
                           <input name="cartorio" class="form-control" required>
                         </div>
                       </div>

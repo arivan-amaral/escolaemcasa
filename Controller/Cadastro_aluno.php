@@ -86,8 +86,12 @@ try {
             $recebe_escolaridade_outro_espaco=$_POST['recebe_escolaridade_outro_espaco'];
             $matricula_certidao=$_POST['matricula_certidao'];
             $uf_municipio_cartorio=$_POST['uf_municipio_cartorio'];
-            $cartorio=$_POST['cartorio'];
-
+            // $cartorio=$_POST['cartorio'];
+            if ($_POST['cartorio']!="") {
+                 $cartorio=$_POST['cartorio'];
+            }else{
+                $cartorio=null;
+            }
             $nome_responsavel=$_POST['nome_responsavel'];
             $cpf_responsavel=$_POST['cpf_responsavel'];
 
