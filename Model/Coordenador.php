@@ -18,7 +18,7 @@
 
 	function excluir_coordenador($conexao,$id){
     	$conexao->exec("DELETE FROM relacionamento_funcionario_escola where funcionario_id=$id");
-    	$conexao->exec("DELETE FROM funcionario where idfuncionario=$id");
+    	$conexao->exec("UPDATE funcionario set status=0 where idfuncionario=$id");
     	
 	}	
 
