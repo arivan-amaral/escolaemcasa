@@ -12,7 +12,8 @@ try {
 
 } catch (Exception $e) {
 	$_SESSION['status']=0;
-	header("Location:../View/pesquisar_coordenador_associar.php");
+	echo $e;
+	//header("Location:../View/pesquisar_coordenador_associar.php");
 }
 
 ?>
