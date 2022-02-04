@@ -365,7 +365,76 @@ setTimeout('dia_doservidor_publico();',3000);
 
                                   <div class='card-body'>
     
+                                  <div class='row'>
+                                            <div class='col-lg-3 col-6'>
+                                              <!-- small card -->
+                                              <div class='small-box bg-info'>
+                                                <div class='inner'>
+                                                  <h3></h3>
 
+                                                  <p>Conteúdo</p>
+                                                </div>
+                                                <div class='icon'>
+                                                 
+                                                </div>
+                                                <a  href='cadastrar_conteudo.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie' class='small-box-footer'>
+                                                  Cadastrar conteúdo <ion-icon name='document-text'></ion-icon>
+                                                </a>
+                                              </div>
+                                            </div>
+                                            <!-- ./col -->
+                                            <div class='col-lg-3 col-6'>
+                                              <!-- small card -->
+                                              <div class='small-box bg-success'>
+                                                <div class='inner'>
+                                                  <h3> </h3>
+
+                                                  <p>Frequência</p>
+                                                </div>
+                                                <div class='icon'>
+                                                  <i class='ion ion-stats-bars'></i>
+                                                </div>
+                                                <a href='diario_frequencia.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie' class='small-box-footer'>
+                                                  Cadastrar frequência <i class='fa fa-calendar'></i>
+                                                </a>
+                                              </div>
+                                            </div>
+                                            <!-- ./col -->
+                                            <div class='col-lg-3 col-6'>
+                                              <!-- small card -->
+                                              <div class='small-box bg-warning'>
+                                                <div class='inner'>
+                                                  <h3></h3>
+
+                                                  <p>Ocorrência </p>
+                                                </div>
+                                                <div class='icon'>
+                                                   
+                                                </div>
+                                                <a  href='acompanhamento_pedagogico.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie' class='small-box-footer'>
+                                                  Cadastrar ocorrência  <ion-icon name='bookmark-outline'></ion-icon>
+                                                </a>
+                                              </div>
+                                            </div>
+                                            <!-- ./col -->
+                                            <div class='col-lg-3 col-6'>
+                                              <!-- small card -->
+                                              <div class='small-box bg-danger'>
+                                                <div class='inner'>
+                                                  <h3></h3>
+
+                                                  <p>Avaliação</p>
+                                                </div>
+                                                <div class='icon'>
+                                                  
+                                                </div>
+                                                <a  href='diario_avaliacao.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie' class='small-box-footer'>
+                                                  Cadastrar avaliação <i class='fas fa-chart-pie'></i>
+                                                </a>
+                                              </div>
+                                            </div>
+                                  
+                                          </div>
                                    <a   href='listar_alunos_da_turma_professor.php?iddisciplina=$iddisciplina&turma=$turma&disciplina=$disciplina&idturma=$idturma&nome_disciplina=$disciplina&nome_turma=$turma&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat'>
                                      <i class='fa fa-users'></i> 
                                      Lista de alunos
@@ -474,88 +543,11 @@ setTimeout('dia_doservidor_publico();',3000);
                                        <ion-icon name='document-text'></ion-icon> 
                                        MATERIAL DE APOIO
                                      </a> 
+                                                                       
 
+                                  
 
-
-                                     <a class='btn btn-info btn-block btn-flat'
-
-                                            href='acompanhamento_pedagogico.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie' >
-
-
-
-                                             <font style='vertical-align: inherit;'>
-
-                                               <font style='vertical-align: inherit;'> 
-
-                                                   <ion-icon name='clipboard-outline'></ion-icon>
-                                                    Ocorrências (acompanhamento pedagógico)    
-
-                                                 </font>
-
-                                             </font>
-
-                                           </a> 
-
-                                     <a class='btn btn-info btn-block btn-flat'
-
-                                            href='diario_frequencia.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie' >
-
-
-
-                                             <font style='vertical-align: inherit;'>
-
-                                               <font style='vertical-align: inherit;'> 
-
-                                                   <i class='fa fa-calendar'></i>
-
-                                                    Diário - Frequência 
-                                                 </font>
-
-                                             </font>
-
-                                           </a>                                      
-
-                                           <a class='btn btn-info btn-block btn-flat'
-
-                                            href='cadastrar_conteudo.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie' >
-
-
-
-                                             <font style='vertical-align: inherit;'>
-
-                                               <font style='vertical-align: inherit;'> 
-
-                                                   <ion-icon name='document-text'></ion-icon> 
-
-
-                                                    Diário de conteúdo  
-
-                                                 </font>
-
-                                             </font>
-
-                                           </a> 
-
-                                     <a class='btn btn-info btn-block btn-flat'
-
-                                            href='diario_avaliacao.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie' >
-
-
-
-                                             <font style='vertical-align: inherit;'>
-
-                                               <font style='vertical-align: inherit;'> 
-
-                                                   <ion-icon name='stats-chart-outline'></ion-icon>
-
-                                                    Diário - Avaliação    
-
-                                                 </font>
-
-                                             </font>
-
-                                           </a> 
-
+                                     
 
 
 
