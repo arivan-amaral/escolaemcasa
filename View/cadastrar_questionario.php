@@ -126,7 +126,7 @@ $url_get=$array_url[1];
 
 
 
-              $result_disciplinas=listar_disciplina_professor($conexao,$idprofessor);
+              $result_disciplinas=listar_disciplina_professor($conexao,$idprofessor,$_SESSION['ano_letivo']);
 
 
 
@@ -229,7 +229,7 @@ $url_get=$array_url[1];
                 <?php 
 
 
-                $result_disciplinas_t=listar_disciplina_professor($conexao,$idprofessor);
+                $result_disciplinas_t=listar_disciplina_professor($conexao,$idprofessor,$_SESSION['ano_letivo']);
                     $conta=0;
                 foreach ($result_disciplinas_t as $key => $value) {                            
                     $idescola=$value['idescola'];

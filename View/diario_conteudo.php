@@ -3,17 +3,36 @@ session_start();
 include_once"../Model/Conexao.php";
 include_once"../Model/Escola.php";
 include_once"conteudos_registrados.php";
+ 
+ $ano_letivo=$_SESSION['ano_letivo'];
 
 
-    $data_inicio_trimestre1="2021-05-03";
-    $data_fim_trimestre1="2021-07-09";
+     $data_inicio_trimestre1="";
+     $data_fim_trimestre1="";
+
+     $data_inicio_trimestre2="";
+     $data_fim_trimestre2="";
+     
+     $data_inicio_trimestre3="";
+     $data_fim_trimestre3="";
+
+  
+  $res_calendario=listar_data_periodo($conexao,$ano_letivo);
+  foreach ($res_calendario as $key => $value) {
+  
+      if ($value['periodo_id']==1) {
+          $data_inicio_trimestre1=$value['inicio'];
+          $data_fim_trimestre1=$value['fim'];
+      }elseif ($value['periodo_id']==2){
+          $data_inicio_trimestre2=$value['inicio'];
+          $data_fim_trimestre2=$value['fim'];
+      }elseif ($value['periodo_id']==3){
+          $data_inicio_trimestre3=$value['inicio'];
+          $data_fim_trimestre3=$value['fim'];
+      }
+
     
-
-    $data_inicio_trimestre2="2021-07-27";
-    $data_fim_trimestre2="2021-10-01";
-
-    $data_inicio_trimestre3="2021-10-04";
-    $data_fim_trimestre3="2021-12-21";
+  }
 ?>
 
 <html xmlns:v="urn:schemas-microsoft-com:vml"

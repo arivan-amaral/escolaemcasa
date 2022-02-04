@@ -1,22 +1,28 @@
 <?php
+session_start();
     include("../Model/Conexao.php");
     include("../Model/Aluno.php");
     include("../Model/Trabalho.php");
     include("Conversao.php");
 
 try {
-  sleep(1);
+  // sleep(1);
   
     $idtrabalho = $_GET["idtrabalho"];
     $iddisciplina = $_GET["iddisciplina"];
     $idturma = $_GET["idturma"];
     $idescola = $_GET["idescola"];
 
-   // $result=listar_aluno_da_turma($conexao,$idturma); 
- $result=  listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
     
+ // $res_alunos=  listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
+    if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
+             $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+    }else{
+             $res_alunos=listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+    }
+
     $return="";
-                    foreach ($result as $key => $value) {
+                    foreach ($res_alunos as $key => $value) {
                          $id=$value['idaluno'];
                          $nome=$value['nome_aluno'];
                   

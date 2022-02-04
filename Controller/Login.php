@@ -2,6 +2,7 @@
 session_start();
 include'../Model/Conexao.php';
 include'../Model/Login.php';
+ 
 // incluir a funcionalidade do recaptcha
 require_once "recaptchalib.php";
 try {
@@ -39,7 +40,8 @@ try {
  // $response->success=true;
  //comentar apos colocar em produção =>  \^/
 
- $ano_letivo=date("Y");
+  $ano_letivo=date("Y");
+
 
   if(isset($_POST["email"]) ){  //&& $response != null && $response->success==true){
 
@@ -55,6 +57,9 @@ try {
       $login_coordenador=0;
       $login_professor=0;
       $login_secretario=0;
+
+
+
 
       ####################### FUNCIONARIO ####################################
           foreach ($resultado as $key => $row) {

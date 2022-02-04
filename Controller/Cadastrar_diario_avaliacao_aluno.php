@@ -14,6 +14,8 @@
     $iddisciplina=$_POST['iddisciplina'];
     $idserie=$_POST['idserie'];
 
+    $ano_nota=$_SESSION['ano_letivo'];
+
     $periodo=$_POST['periodo'];
 
    $data=date("Y-m-d");
@@ -33,7 +35,9 @@ try {
     $nota=0;
     $url_get=$_POST['url_get'];
 
- include_once"Bloqueio_funcoes_para_professor.php";
+ if($_SESSION['ano_letivo_vigente'] != $_SESSION['ano_letivo']){
+     include_once"Bloqueio_funcoes_para_professor.php";                              
+  }
 
 foreach ($_POST['aluno_id'] as $key => $value) {
       $aluno_id=$_POST['aluno_id'][$key];
@@ -144,7 +148,7 @@ foreach ($_POST['aluno_id'] as $key => $value) {
                       }
 
                       cadastro_nota($conexao,$nota, 
-                      $parecer_disciplina_id, $parecer_descritivo, $sigla,$idescola, $idturma, $iddisciplina, $aluno_id, $periodo, $data,$avaliacao,$funcionario_id);
+                      $parecer_disciplina_id, $parecer_descritivo, $sigla,$idescola, $idturma, $iddisciplina, $aluno_id, $periodo, $data,$avaliacao,$funcionario_id,$ano_nota);
                   }
               }
 
@@ -163,7 +167,7 @@ foreach ($_POST['aluno_id'] as $key => $value) {
 
              if ($conta_total_nota ==0) {
                 cadastro_nota($conexao,$nota, 
-                      $parecer_disciplina_id, $parecer_descritivo, $sigla,$idescola, $idturma, $iddisciplina, $aluno_id, $periodo, $data,$avaliacao,$funcionario_id);
+                      $parecer_disciplina_id, $parecer_descritivo, $sigla,$idescola, $idturma, $iddisciplina, $aluno_id, $periodo, $data,$avaliacao,$funcionario_id,$ano_nota);
              }else if ($conta_total_nota==1) {
 
                 $verifica_duplicidade=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$aluno_id,$periodo,$avaliacao);

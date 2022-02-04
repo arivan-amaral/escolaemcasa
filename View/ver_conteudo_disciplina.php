@@ -180,16 +180,16 @@ if (!isset($_SESSION['idfuncionario'])) {
                            </a>
 
 
-                           <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat'>
+                           <a   href='impressao_diario_frequencia.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat'>
                            <i class='fa fa-calendar'></i> 
                            FICHA DE RENDIMENTO TRI I
                            </a> 
 
-                           <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=2' class='btn btn-secondary btn-block btn-flat'>
+                           <a   href='impressao_diario_frequencia.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=2' class='btn btn-secondary btn-block btn-flat'>
                            <i class='fa fa-calendar'></i> 
                            FICHA DE RENDIMENTO TRI II
                            </a>   
-                           <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=3' class='btn btn-secondary btn-block btn-flat'>
+                           <a   href='impressao_diario_frequencia.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=3' class='btn btn-secondary btn-block btn-flat'>
                            <i class='fa fa-calendar'></i> 
                            FICHA DE RENDIMENTO TRI III
                            </a>   
@@ -319,16 +319,16 @@ if (!isset($_SESSION['idfuncionario'])) {
                                    </a>
 
 
-                                   <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-info btn-block btn-flat'>
+                                   <a   href='impressao_diario_frequencia.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-info btn-block btn-flat'>
                                      <i class='fa fa-calendar'></i> 
                                      FICHA DE RENDIMENTO TRI I
                                    </a> 
 
-                                   <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=2' class='btn btn-info btn-block btn-flat'>
+                                   <a   href='impressao_diario_frequencia.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=2' class='btn btn-info btn-block btn-flat'>
                                      <i class='fa fa-calendar'></i> 
                                      FICHA DE RENDIMENTO TRI II
                                    </a>   
-                                   <a   href='diario_frequencia_fund2.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=3' class='btn btn-info btn-block btn-flat'>
+                                   <a   href='impressao_diario_frequencia.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=3' class='btn btn-info btn-block btn-flat'>
                                      <i class='fa fa-calendar'></i> 
                                      FICHA DE RENDIMENTO TRI III
                                    </a>      

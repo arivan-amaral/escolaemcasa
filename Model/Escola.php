@@ -1,4 +1,18 @@
 <?php 
+function listar_data_periodo($conexao,$ano){
+   $sql = $conexao->query("SELECT * from calendario_letivo WHERE ano='$ano' order by calendario_letivo.periodo_id ASC
+      ");
+   return $sql->fetchAll();
+}
+
+function listar_data_por_periodo($conexao,$ano,$periodo_id){
+   $sql = $conexao->query("SELECT * from calendario_letivo,periodo WHERE
+      calendario_letivo.periodo_id=periodo.id and 
+    ano='$ano' and periodo_id=$periodo_id order by calendario_letivo.periodo_id ASC
+      ");
+   return $sql->fetchAll();
+}
+
 function pesquisar_solicitacao_transferencia_por_aluno($conexao,$matricula,$aceita){
    $sql = $conexao->query("SELECT * from solicitacao_transferencia WHERE matricula=$matricula and aceita =$aceita
       ");

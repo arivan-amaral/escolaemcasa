@@ -1,13 +1,20 @@
 <?php 
+session_start();
 include_once"../Controller/Conversao.php";
 include_once"../Model/Conexao.php";
 include_once"../Model/Coordenador.php";
 include_once"../Model/Aluno.php";
+include_once"../Model/EScola.php";
 
-include_once"diarioFrequencia.php";
-include_once"diarioFrequenciaPaginaFinal.php";
+include_once"diarioFrequencia_infantil.php";
+include_once"diarioFrequencia_fund1.php";
+include_once"diarioFrequencia_fund2.php";
+
+include_once"diarioFrequenciaPaginaFinal_infantil.php";
 include_once"diarioFrequenciaPaginaFinal_fund1.php";
-
+include_once"diarioFrequenciaPaginaFinal_fund2.php";
+ 
+$ano_letivo=$_SESSION['ano_letivo'];
 ?>
 
 <html xmlns:v="urn:schemas-microsoft-com:vml"
@@ -99,29 +106,53 @@ $limite_aula=36;
 $periodo_id=$_GET['periodo_id'];
 $idserie=$_GET['idserie'];
 
+$descricao_trimestre="";
 $data_inicio_trimestre="";
 $data_fim_trimestre="";
 
-if ($periodo_id==1) {
-    $data_inicio_trimestre="2021-05-03";
-    $data_fim_trimestre="2021-07-09";
-    
-    // code...
-}elseif ($periodo_id==2) {
-    $data_inicio_trimestre="2021-07-27";
-    $data_fim_trimestre="2021-10-01";
-    // code...
-}elseif ($periodo_id==3) {
-    $data_inicio_trimestre="2021-10-04";
-    $data_fim_trimestre="2021-12-21";
-    // code...
-}
 
 
-if ($idserie<8) {
+  $res_calendario=listar_data_por_periodo($conexao,$ano_letivo,$periodo_id);
+  foreach ($res_calendario as $key => $value) {
+    $descricao_trimestre=$value['descricao'];
+    $data_inicio_trimestre=$value['inicio'];
+    $data_fim_trimestre=$value['fim'];
+        
+  }
+
+if ($idserie<3) {
+ 
+        //linha 409 508 
+        diario_frequencia_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo); 
+            echo "<div class='pagebreak'> </div>";
+     
+
+        $inicio=36;
+        // $conta_aula=36;
+        $conta_aula=36;
+
+        $limite_data=18;
+        $limite_aula=18;
+
+        // $limite_data=18;
+        // $limite_aula=18; 
+        $conta_data=1; //não existia
+        $fim= 17;
+        // diario_frequencia_pagina_final($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie)
+
+
+        //linha 428 600 760
+        diario_frequencia_pagina_final_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
+            $conta_aula+0,
+            $conta_data+0,
+            $limite_data+0,
+            $limite_aula+0,
+            $periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo);
+        
+}elseif ($idserie>3 && $idserie<8) {
 
         //linha 409 508 
-        diario_frequencia($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$data_inicio_trimestre,$data_fim_trimestre); 
+        diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo); 
             echo "<div class='pagebreak'> </div>";
      
 
@@ -145,11 +176,11 @@ if ($idserie<8) {
             $conta_data+0,
             $limite_data+0,
             $limite_aula+0,
-            $periodo_id,$idserie,$data_inicio_trimestre,$data_fim_trimestre);
+            $periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo);
         
 }else{
     //linha 409 508 
-        diario_frequencia($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$data_inicio_trimestre,$data_fim_trimestre); 
+        diario_frequencia_fund2($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo); 
         echo "<div class='pagebreak'> </div>";
 
 
@@ -169,13 +200,13 @@ if ($idserie<8) {
 
 
         //linha 428 600 760
-        diario_frequencia_pagina_final($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
+        diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
             $conta_aula+0,
             $conta_data+0,
             $limite_data+0,
             $limite_aula+0,
 
-            $periodo_id,$idserie,$data_inicio_trimestre,$data_fim_trimestre);
+            $periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo);
 
 }
 

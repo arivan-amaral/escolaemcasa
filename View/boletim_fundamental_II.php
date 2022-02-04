@@ -1,6 +1,24 @@
 <?php 
 function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$ano_letivo){
-  ?>
+
+  $res_calendario=listar_data_periodo($conexao,$ano_letivo);
+  foreach ($res_calendario as $key => $value) {
+  
+      if ($value['periodo_id']==1) {
+          $data_inicio_trimestre1=$value['inicio'];
+          $data_fim_trimestre1=$value['fim'];
+      }elseif ($value['periodo_id']==2){
+          $data_inicio_trimestre2=$value['inicio'];
+          $data_fim_trimestre2=$value['fim'];
+      }elseif ($value['periodo_id']==3){
+          $data_inicio_trimestre3=$value['inicio'];
+          $data_fim_trimestre3=$value['fim'];
+      }
+
+    
+  }
+  
+?>
  
 
           
@@ -175,6 +193,7 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
           escola_id=$idescola and
           turma_id=$idturma and
           disciplina_id=$iddisciplina and 
+          ano_nota=$ano_letivo and
           periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
 
 
@@ -225,6 +244,7 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
         SELECT * FROM nota WHERE
         escola_id=$idescola and
         turma_id=$idturma and
+        ano_nota=$ano_letivo and
         disciplina_id=$iddisciplina and 
         periodo_id=2 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
 
@@ -278,6 +298,7 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
      SELECT * FROM nota WHERE
      escola_id=$idescola and
      turma_id=$idturma and
+     ano_nota=$ano_letivo and
      disciplina_id=$iddisciplina and 
      periodo_id=3 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
 
@@ -468,11 +489,13 @@ $linha++;
 
 <?php
 // faltas trimestre 1
+
+
 $res_fre_t1=$conexao->query("
 SELECT * FROM frequencia WHERE
 escola_id=$idescola and
 turma_id=$idturma and
-presenca=0 and data_frequencia BETWEEN '2021-05-03' and '2021-07-09' and aluno_id=$idaluno  group by data_frequencia");
+presenca=0 and data_frequencia BETWEEN '$data_inicio_trimestre1' and '$data_fim_trimestre1' and aluno_id=$idaluno  group by data_frequencia");
 // disciplina_id=$iddisciplina and 
 $quantidade_falta1=0;
 foreach ($res_fre_t1 as $key => $value) {

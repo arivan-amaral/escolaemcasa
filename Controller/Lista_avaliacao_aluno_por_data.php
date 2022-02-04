@@ -2,6 +2,7 @@
   session_start();
     include("../Model/Conexao.php");
     include("../Model/Aluno.php");
+    include("../Model/Escola.php");
     include("Nota_final_funcao.php");
     include("Conversao.php");
     
@@ -19,6 +20,14 @@ try {
     $idserie=$_GET['idserie'];
     $tamanho=4;
     
+    $res_periodo=listar_data_por_periodo($conexao,$_SESSION['ano_letivo'],$idperiodo);
+    $data_inicio_periodo='';
+    $data_fim_periodo='';
+ 
+    foreach ($res_periodo as $key => $value) {
+       $data_inicio_periodo=$value['inicio'];
+        $data_fim_periodo=$value['fim'];
+    }
  // if ($avaliacao=='av1') {
  //    $tamanho=3;
  // }elseif ($avaliacao=='av2') {
@@ -42,10 +51,17 @@ try {
           </thead>
           <tbody>";
 
-               $result_aluno= listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
+               // $res_alunos= listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
+                
+                if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
+                  $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+                }else{
+                  $res_alunos=listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+                 }
+
                $cont=1;
                $cor_tabela='table-primary';
-               foreach ($result_aluno as $key => $value) {
+               foreach ($res_alunos as $key => $value) {
 
                     $nome_aluno=utf8_decode($value['nome_aluno']);
                     $nome_turma=($value['nome_turma']);
@@ -54,6 +70,8 @@ try {
                     $status_aluno=$value['status_aluno'];
                     $email=$value['email'];
                     $senha=$value['senha'];
+                    $data_matricula=$value['data_matricula'];
+
                 
 
                     if ($cont%2==0) {
@@ -70,10 +88,20 @@ try {
                   
                           <div class='col-sm-6'>
                             <b class='text-success'> $nome_aluno </b>
-                            <br>
+                            <br>";
+                            if(  (strtotime($data_matricula) <= strtotime($data_fim_periodo)) ){
+                                 $result.=" <input type='hidden' name='aluno_id[]' value='$id'>
+                                 <br>
+                                 
+                                 ";
+                             
+                            }else{
+                             $result.="<b class='text-success'>
+                                    <b class='text-danger'>Nessa data o aluno não estava na turma. Data matrícula: ".converte_data($data_matricula)."</b>
+                                 </b>";
+                            }
 
-                            <input type='hidden' name='aluno_id[]' value='$id'><br>
-                          </div>                      
+                          $result.="</div>                      
                         <tr class='$cor_tabela'>";
 
                       //se for diferente de diagnostico inicial

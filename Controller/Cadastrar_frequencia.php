@@ -13,6 +13,8 @@ try {
    	$idturma=$_POST['idturma'];
 
     $data=$_POST['data_frequencia'];
+    $ano_frequencia=$_SESSION['ano_letivo'];
+
     $descricao="";
     if (isset($_POST['descricao'])) {
      $descricao=escape_mimic($_POST['descricao']);
@@ -20,9 +22,12 @@ try {
 
     $aula=$_POST['aula'];
     $url_get=$_POST['url_get'];
-   	
-    include_once"Bloqueio_funcoes_para_professor.php";
-
+   	    // $data_atual=date("Y");
+       
+         if($_SESSION['ano_letivo_vigente'] != $_SESSION['ano_letivo']){
+             include_once"Bloqueio_funcoes_para_professor.php";
+                                           
+          }
     //$iddisciplina=$_POST['iddisciplina'];
     foreach ($_POST['iddisciplina'] as $key => $value) {
         $iddisciplina=$_POST['iddisciplina'][$key];
@@ -62,7 +67,7 @@ try {
             if (isset($_POST["presenca$aluno_id"])) {
                 $presenca=1;
             }
-            cadastro_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$aluno_id,$data,$idconteudo,$presenca,$aula);
+            cadastro_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$aluno_id,$data,$idconteudo,$presenca,$aula,$ano_frequencia,$ano_frequencia);
         }
     }
             $_SESSION['status']=1;

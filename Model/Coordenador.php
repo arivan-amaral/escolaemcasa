@@ -37,10 +37,10 @@
 
 
 	function inserir_imagem_padrao_coordenador($conexao,  $coordenador_id, $escola_id) {
-    	$conexao->exec("INSERT INTO imagem (id_funcionario) values ($id) ");
+    	$conexao->exec("INSERT INTO imagem (id_funcionario) values ($coordenador_id) ");
 	}
-	function associar_coordenador_a_escola($conexao,  $funcionario_id,$escola_id) {
-    	$conexao->exec("INSERT INTO relacionamento_funcionario_escola (funcionario_id,escola_id) values ($funcionario_id,$escola_id) ");
+	function associar_coordenador_a_escola($conexao,  $funcionario_id,$escola_id,$ano) {
+    	$conexao->exec("INSERT INTO relacionamento_funcionario_escola (funcionario_id,escola_id,ano) values ($funcionario_id,$escola_id,$ano) ");
 	}
 
 // *************************************************************************************************

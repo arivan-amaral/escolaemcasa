@@ -1,6 +1,8 @@
 <?php 
 session_start();
 $idserie=$_GET['idserie']; 
+$ano_letivo=$_SESSION['ano_letivo'];
+
  
 // if ($idserie< 8 && !isset($_COOKIE['notificado'])) {
     
@@ -184,7 +186,7 @@ if (!isset($_SESSION['idprofessor'])) {
             <select class="form-control" id="data_ja_lancada" onchange="listar_conteudo_cadastrado(this.value);" >
               <option></option>
               <?php 
-                $resultado=listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $idprofessor);
+                $resultado=listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $idprofessor,$ano_letivo);
                 foreach ($resultado as $key => $value) {
                   $data=$value['data'];
                   $aula=$value['aula'];
@@ -225,7 +227,7 @@ if (!isset($_SESSION['idprofessor'])) {
                   <?php
 
 
-                  //   $result_disciplinas=listar_disciplina_professor($conexao,$idprofessor);
+                  //   $result_disciplinas=listar_disciplina_professor($conexao,$idprofessor,$_SESSION['ano_letivo']);
 
 
 
@@ -306,7 +308,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
             <select multiple="multiple" class="form-control" id="atalho" >
               <?php
-              $result=listar_disciplina_professor($conexao,$idprofessor);
+              $result=listar_disciplina_professor($conexao,$idprofessor,$_SESSION['ano_letivo']);
 
 
               $conta=1;
@@ -405,7 +407,7 @@ if (!isset($_SESSION['idprofessor'])) {
                                             </thead>
                                             <tbody>
                                               <?php 
-                                              $resultado=listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $idprofessor);
+                                              $resultado=listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $idprofessor,$ano_letivo);
                                                     $conta=1;
                                                 foreach ($resultado as $key => $value) {
                                                     $professor_id=$value['professor_id'];

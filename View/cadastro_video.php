@@ -121,7 +121,7 @@ include "alertas.php";
 
                             <select multiple="multiple" class="form-control" id="atalho" >
                               <?php
-                              $result=listar_disciplina_professor($conexao,$idprofessor);
+                              $result=listar_disciplina_professor($conexao,$idprofessor,$_SESSION['ano_letivo']);
 
 
                               $conta=1;

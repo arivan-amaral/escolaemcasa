@@ -261,6 +261,7 @@
             SELECT * FROM nota WHERE
             escola_id=$idescola and
             turma_id=$idturma and
+            ano_nota=$ano_letivo and
             avaliacao='av3' and periodo_id=1 and parecer_disciplina_id=$parecer_disciplina_id and aluno_id=$idaluno ");
             $nota_tri_1='';
             foreach ($result_nota_aula1 as $key => $value) {
@@ -287,6 +288,7 @@
             SELECT * FROM nota WHERE
             escola_id=$idescola and
             turma_id=$idturma and
+            ano_nota=$ano_letivo and
             avaliacao='av3' and periodo_id=2 and parecer_disciplina_id=$parecer_disciplina_id and aluno_id=$idaluno ");
             $nota_tri_2='';
             foreach ($result_nota_aula2 as $key => $value) {
@@ -314,6 +316,7 @@
             SELECT * FROM nota WHERE
             escola_id=$idescola and
             turma_id=$idturma and
+            ano_nota=$ano_letivo and
             avaliacao='av3' and periodo_id=3 and parecer_disciplina_id=$parecer_disciplina_id and aluno_id=$idaluno ");
             $nota_tri_3='';
             foreach ($result_nota_aula3 as $key => $value) {

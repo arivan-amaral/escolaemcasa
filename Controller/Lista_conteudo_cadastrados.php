@@ -44,7 +44,7 @@ try {
     // ");
 
 
-      $result_disciplinas=listar_disciplina_professor($conexao,$idprofessor);
+      $result_disciplinas=listar_disciplina_professor($conexao,$idprofessor,$_SESSION['ano_letivo']);
 
       $conta_marcados=0;
       $total=0;
@@ -250,7 +250,7 @@ try {
 $result.="<div id='conteudos'>  
              <BR>
        ";
-      $result_disciplinas2=listar_disciplina_professor($conexao,$idprofessor);
+      $result_disciplinas2=listar_disciplina_professor($conexao,$idprofessor,$_SESSION['ano_letivo']);
 
     
     foreach ($result_disciplinas2 as $key => $value) {

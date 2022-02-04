@@ -321,7 +321,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
                           <?php 
 
-                            $result=listar_disciplina_professor($conexao,$idprofessor);
+                            $result=listar_disciplina_professor($conexao,$idprofessor,$_SESSION['ano_letivo']);
 
 
 

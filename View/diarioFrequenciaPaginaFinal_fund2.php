@@ -1,6 +1,6 @@
 <?php 
 
-function diario_frequencia_pagina_final_fund1($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
+function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
   $conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo){
 
 
@@ -24,14 +24,12 @@ function diario_frequencia_pagina_final_fund1($conexao,$idescola,$idturma,$iddis
 
 if ($idserie <3) {
   $tipo_ensino="Educação Infantil";
-
-}elseif ($idserie >=3 && $idserie <8) {
+}if ($idserie >=3 && $idserie <8) {
   $tipo_ensino="Ensino Fundamental - Anos Iniciais";
-
 }else if($idserie > 8 && $idserie <=11){
   $tipo_ensino="Ensino Fundamental - Anos Finais";
 
-}else{
+}else if ($idserie > 11){
   $tipo_ensino="Educação de Jovens e Adultos";
 
 }
@@ -46,13 +44,14 @@ if ($idserie <3) {
 
 <table  class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 
   style='width: 100%;'>
-<!-- <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=1091
+
+ <!-- <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=1091
  style='page-break-after: always; page-break-inside: auto; width:818.05pt;border-collapse:collapse;mso-yfti-tbllook:1184;
- mso-padding-alt:0cm 3.5pt 0cm 3.5pt; border: 1px solid black;'>
- --> 
+ mso-padding-alt:0cm 3.5pt 0cm 3.5pt; border: 1px solid black;'> -->
+ 
  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:15.0pt'>
  
- <td width=11 nowrap valign=bottom style='width:15.4pt;border-top:solid windowtext 1.0pt;
+ <td width=11 nowrap valign=bottom style='width:100%;border-top:solid windowtext 1.0pt;
   border-left:solid windowtext 1.0pt;border-bottom:none;border-right:none;
   padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt;'>
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
@@ -74,8 +73,8 @@ if ($idserie <3) {
   style='font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
   "Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p></o:p></span></p><br>
   
-    <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
-        style='mso-cellspacing:0cm;mso-yfti-tbllook:1184;mso-padding-alt:0cm 0cm 0cm 0cm; '>
+    <table  class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 
+  style='width: 100%;'>
         <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes;'>
         <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
             line-height:normal'><b><span style='font-size:20.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
@@ -185,7 +184,7 @@ foreach ($result_escola as $key => $value) {
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
   style='font-family:"Tw Cen MT Condensed",sans-serif;mso-fareast-font-family:
   "Times New Roman";mso-bidi-font-family:Arial;color:black;mso-fareast-language:
-  PT-BR'>TIPO DE ENSINO:  <?php echo "".$tipo_ensino; ?> <o:p></o:p></span></b></p>
+  PT-BR'>TIPO DE ENSINO:  <?php echo $tipo_ensino; ?> <o:p></o:p></span></b></p>
   </td>
   <td width=351 nowrap colspan=18 style='width:263.6pt;padding:0cm 3.5pt 0cm 3.5pt;
   height:12.0pt'>
@@ -232,7 +231,7 @@ foreach ($result_escola as $key => $value) {
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
   style='font-family:"Tw Cen MT Condensed",sans-serif;mso-fareast-font-family:
   "Times New Roman";mso-bidi-font-family:Arial;color:black;mso-fareast-language:
-  PT-BR'>PERIODO LETIVO <?php echo $_SESSION['ano_letivo']; ?><o:p></o:p></span></b></p>
+  PT-BR'>PERIODO LETIVO <?php echo "$ano_letivo"; ?><o:p></o:p></span></b></p>
   </td>
 
  </tr>
@@ -278,7 +277,7 @@ foreach ($result_escola as $key => $value) {
 //   if ($periodo_id==1) {
 //     $data_inicio_trimestre=$_SESSION['inicio_periodo'];
 //     $data_fim_trimestre=$_SESSION['fim_periodo'];
-//     echo "I TRIMESTRE ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
+//     echo "I TRIMESTRE ".converte_data($data_inicio_trimestre)." a ".converte_data($data_fim_trimestre);
 // }elseif ($periodo_id==2) {
 //     $data_inicio_trimestre="2021-07-27";
 //     $data_fim_trimestre="2021-10-01";
@@ -288,11 +287,12 @@ foreach ($result_escola as $key => $value) {
 // }elseif ($periodo_id==3) {
 //     $data_inicio_trimestre="2021-10-04";
 //     $data_fim_trimestre="2021-12-21";
-//     echo "III TRIMESTRE ".converte_data($data_inicio_trimestre)." a ".converte_data($data_fim_trimestre);
+//     echo "III TRIMESTRE ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
   
 // }
-
+// 
     echo " $descricao_trimestre ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
+
 
 ?>
 
@@ -357,7 +357,7 @@ foreach ($result_escola as $key => $value) {
 
  
 <!-- arghg -->
-  <td width=164 nowrap colspan=5 style='width:13.2pt;border-bottom:
+  <td width=164 nowrap colspan='100%' style='width:13.2pt;border-bottom:
   solid windowtext 1.0pt;border-left:
   solid windowtext 1.0pt;
   border-top:solid windowtext 1.0pt;padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
@@ -380,7 +380,7 @@ foreach ($result_escola as $key => $value) {
 
  <tr style='mso-yfti-irow:11;height:58.75pt'>
 
-  
+
   <?php
 $result_data_aula=$conexao->query("
 SELECT * FROM frequencia WHERE
@@ -441,19 +441,23 @@ for ($i=$conta_data; $conta_data<$limite_data ; $i++) {
      
   ?>
   
-  
-  <td width=41 nowrap style='width:18.8pt;border:1.0pt solid black;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt;background:#D9D9D9;'>
+  <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
+      border-left:none;background:#D9D9D9;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
+      solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
       <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-      line-height:normal'><div class="Namerotate"><span style='font-size:6.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+      line-height:normal'><div class="Namerotate">
+        <span style='font-size:6.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-      color:black;mso-fareast-language:PT-BR'>  </div></span></p>
+      color:black;mso-fareast-language:PT-BR'>  </span></div></p>
   </td>
   
 <?php
   } else{ 
 ?>
   
-  <td width=41 nowrap style='width:18.8pt;border:1.0pt solid black;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
+  <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
+      border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
+      solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
       <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
       line-height:normal'><div class="Namerotate"><span style='font-size:6.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
@@ -490,14 +494,14 @@ foreach ($result_nota_aula as $key => $value) {
   $array_avaliacao[$conta_nota]=$avaliacao;
   ?>
 
- <!-- <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
+ <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
       border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
       solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
       <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
       line-height:normal'><div class="Namerotate"><span style='font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
       color:black;mso-fareast-language:PT-BR'><?php echo converte_data($data_nota); ?> </div></span></p>
-  </td> -->
+  </td>
 
 <?php 
     $conta_nota++;
@@ -507,13 +511,30 @@ foreach ($result_nota_aula as $key => $value) {
  for($i=$conta_nota; $i < 4; $i++) {   
 ?>
 
+ <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
+      border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
+      solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
+      <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+      line-height:normal'><div class="Namerotate"><span style='font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+      mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+      color:black;mso-fareast-language:PT-BR'> </div></span></p>
+  </td>
+
   
 <?php 
   }
  ?>
 
 
- 
+  <td width=41 nowrap rowspan=2 style='width:30.8pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-left-alt:solid windowtext 1.0pt;background:#D9D9D9;padding:0cm 3.5pt 0cm 3.5pt;
+  mso-rotate:90;height:48.75pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+  line-height:normal'><b><div class="Namerotate"><span style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+  mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+  color:black;mso-fareast-language:PT-BR'>RP<o:p></o:p></span></div></b></p>
+  </td>
  <td width=41 nowrap rowspan=2 style='width:30.8pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-left-alt:solid windowtext 1.0pt;background:#D9D9D9;padding:0cm 3.5pt 0cm 3.5pt;
@@ -573,9 +594,9 @@ foreach ($result_aula as $key => $value) {
 
   $conta_aula++;
 } 
-
-
-
+?>
+ 
+<?php
 for ($i=$conta_aula; $i < $limite_aula ; $i++) { 
    if ($conta_aula%2==0) {
 ?>
@@ -619,7 +640,34 @@ for ($i=$conta_aula; $i < $limite_aula ; $i++) {
 
   <!-- ARIVAN FIM AULA 75  -->
 
-  
+  <td width=10 style='width:30.8pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;mso-border-bottom-alt:
+  solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;background:
+  #D9D9D9;padding:0cm 3.5pt 0cm 3.5pt;height:32.25pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+  line-height:normal'><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+  mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+  color:black;mso-fareast-language:PT-BR'>1-AV <o:p></o:p></span></p>
+  </td>
+
+  <td width=41 style='width:30.8pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;mso-border-bottom-alt:
+  solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;background:
+  white;padding:0cm 3.5pt 0cm 3.5pt;height:32.25pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+  line-height:normal'><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+  mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+  color:black;mso-fareast-language:PT-BR'>2-AV <o:p></o:p></span></p>
+  </td>
+
+  <td width=41 style='width:30.8pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;background:white;
+  padding:0cm 3.5pt 0cm 3.5pt;height:32.25pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+  line-height:normal'><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+  mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+  color:black;mso-fareast-language:PT-BR'>3-AV <o:p></o:p></span></p>
+  </td>
  </tr>
 
 
@@ -627,7 +675,8 @@ for ($i=$conta_aula; $i < $limite_aula ; $i++) {
 
  
 <?php
-  if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
+
+if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
   $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
 }else{
   $res_alunos=listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
@@ -681,7 +730,7 @@ for ($i=$conta_aula; $i < $limite_aula ; $i++) {
 
 
 <?php
-$presenca="-";
+$presenca="--";
 $conta_presenca=1;
  foreach ($array_aula as $key => $value) {
     $aula=$array_aula[$key];
@@ -704,7 +753,7 @@ $conta_presenca=1;
   ?>
   
 
-  <td width=10 nowrap valign=top style='border: 1.0pt solid black;
+  <td width=10 nowrap valign=top style='border:solid windowtext 1.0pt;
     border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
     solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
     white;height:13.5pt'>
@@ -720,30 +769,270 @@ $conta_presenca=1;
 
 
 //
- for ($i=$conta_presenca; $i < 18 ; $i++) {
+ for ($i=$conta_presenca; $i < $limite_aula ; $i++) {
    
   ?>
   
 
-  <td width=10 nowrap valign=top style='border: 1.0pt solid black;background:
+  <td width=10 nowrap valign=top style='border:solid windowtext 1.0pt;
+    border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
+    solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
     white;height:13.5pt'>
     <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
     line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
     mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-    color:black;mso-fareast-language:PT-BR'></span></b></p>
+    color:black;mso-fareast-language:PT-BR'>  </span></b></p>
   </td>
     
   <?php
    } 
-?>
-  
-<!-- arivan 11122021 -->
 
-             <!--  <td width=10 nowrap valign=top style='width:10.8pt;border:1.0pt solid black;  background: white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
+$conta_nota_av=1;
+
+$conta_nota_av1=0;
+$conta_nota_av2=0;
+$conta_nota_av3=0;
+
+  // ******************************************************
+     $result_nota_avaliacao=$conexao->query("
+     SELECT * FROM nota WHERE
+     escola_id=$idescola and
+     turma_id=$idturma and
+     disciplina_id=$iddisciplina and 
+     periodo_id=$periodo_id  and aluno_id=$idaluno
+     and  avaliacao='av1'
+     group by avaliacao,periodo_id ORDER  BY avaliacao DESC");
+     $nota_ava=0;
+     $nota_1=0;
+    foreach ($result_nota_avaliacao as $key => $value) {
+          $nota=$value['nota'];
+          $nota_1=$nota;
+
+
+            ?>
+           <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
+             border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
+             solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
+             white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
+             <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+             line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+             mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+             color:black;mso-fareast-language:PT-BR'> <?php echo"". $nota ?> </span></b></p>
+           </td>
+            <?php
+          
+        $conta_nota_av1++;
+        $conta_nota_av++;
+
+    }
+
+    
+    if ($conta_nota_av1==0) {
+  ?>
+
+      <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
+            border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
+            solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
+            white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+            line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+            mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+            color:black;mso-fareast-language:PT-BR'> </span></b></p>
+          </td>
+  <?php 
+    }
+
+  
+// ******************************************************
+
+
+  // ******************************************************
+     $result_nota_avaliacao=$conexao->query("
+     SELECT * FROM nota WHERE
+     escola_id=$idescola and
+     turma_id=$idturma and
+     disciplina_id=$iddisciplina and 
+     periodo_id=$periodo_id   and aluno_id=$idaluno
+     and  avaliacao='av2'
+     group by avaliacao,periodo_id ORDER  BY avaliacao DESC");
+     $nota_ava=0;
+     $nota_2=0;
+    foreach ($result_nota_avaliacao as $key => $value) {
+          $nota=$value['nota'];
+          $nota_2=$nota;
+            ?>
+           <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
+             border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
+             solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
+             white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
+             <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+             line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+             mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+             color:black;mso-fareast-language:PT-BR'> <?php echo"". $nota ?> </span></b></p>
+           </td>
+            <?php
+          
+$conta_nota_av2++;
+        $conta_nota_av++;
+    }
+
+
+
+    if ($conta_nota_av2==0) {
+  ?>
+
+      <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
+            border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
+            solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
+            white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+            line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+            mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+            color:black;mso-fareast-language:PT-BR'> </span></b></p>
+          </td>
+  <?php 
+    }
+  
+// ******************************************************
+
+
+
+  // ******************************************************
+     $result_nota_avaliacao=$conexao->query("
+     SELECT * FROM nota WHERE
+     escola_id=$idescola and
+     turma_id=$idturma and
+     disciplina_id=$iddisciplina and 
+     periodo_id=$periodo_id and aluno_id=$idaluno
+     and  avaliacao='av3'
+     group by avaliacao,periodo_id ORDER  BY avaliacao DESC");
+     $nota_ava=0;
+      $nota_3=0;
+
+    foreach ($result_nota_avaliacao as $key => $value) {
+          $nota=$value['nota'];
+          $nota_3=$nota;
+
+
+            ?>
+           <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
+             border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
+             solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
+             white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
+             <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+             line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+             mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+             color:black;mso-fareast-language:PT-BR'> <?php echo"". $nota ?> </span></b></p>
+           </td>
+            <?php
+          
+$conta_nota_av3++;
+        $conta_nota_av++;
+    }
+
+
+    if ($conta_nota_av3==0) {
+  ?>
+
+      <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
+            border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
+            solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
+            white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
+            <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+            line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+            mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+            color:black;mso-fareast-language:PT-BR'> </span></b></p>
+          </td>
+  <?php 
+    }
+  
+// ******************************************************
+
+
+
+
+
+
+
+
+##########################################################################
+
+
+
+
+
+
+$result_nota_avaliacao_rp=$conexao->query("
+     SELECT * FROM nota WHERE
+     escola_id=$idescola and
+     turma_id=$idturma and
+     disciplina_id=$iddisciplina and 
+     periodo_id=$periodo_id  and avaliacao='RP' and aluno_id=$idaluno  group by avaliacao,periodo_id");
+     $nota_ava=0;
+     $nota_rp=0;
+     foreach ($result_nota_avaliacao_rp as $key => $value) {
+         $nota=$value['nota'];
+         $nota_rp=$nota;
+
+         ?>
+         <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
+               border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
+               solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
+               white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
                <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
                line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
                mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-               color:black;mso-fareast-language:PT-BR'> -->  
+               color:black;mso-fareast-language:PT-BR'> <?php echo "$nota"; ?> </span></b></p>
+             </td>
+      <?php
+          $nota_ava++;
+      }
+
+      if ($nota_ava==0) {
+        
+      ?>
+         <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
+               border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
+               solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
+               white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
+               <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+               line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+               mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+               color:black;mso-fareast-language:PT-BR'>  </span></b></p>
+             </td>
+      <?php
+          $nota_ava++;
+      }
+
+      ?>
+       <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
+               border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
+               solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
+               white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
+               <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+               line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+               mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+               color:black;mso-fareast-language:PT-BR'> 
+
+<?php 
+if ($nota_3<5 && $nota_rp!='' && $nota_rp>$nota_3) {
+ $nota_3=($nota_3-$nota_3)+$nota_rp;
+}
+
+$soma_total_notas=  round( ($nota_1 + $nota_2 + $nota_3 ),2);
+echo "$soma_total_notas";
+?>
+                </span></b></p>
+          </td>
+
+              <td width=10 nowrap valign=top style='width:10.8pt;border:solid windowtext 1.0pt;
+               border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
+               solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
+               white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
+               <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+               line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+               mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+               color:black;mso-fareast-language:PT-BR'>  
 
 
 <?php
@@ -763,8 +1052,8 @@ foreach ($res_fre_t1 as $key => $value) {
 
 //echo "$quantidade_falta1";
 ?>
-             <!-- </span></b></p> -->
-             <!-- </td> -->
+             </span></b></p>
+             </td>
 <?php
 
  echo"</tr>";

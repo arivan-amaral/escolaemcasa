@@ -250,9 +250,9 @@ function listar_parecer_disciplina($conexao,$iddisciplina){
 }
 
 
-function cadastro_nota($conexao,$nota, $parecer_disciplina_id, $parecer_descritivo, $sigla, $escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, $data_nota,$avaliacao,$funcionario_id) {
-    $conexao->exec("INSERT INTO nota(nota, parecer_disciplina_id, parecer_descritivo, sigla, escola_id, turma_id, disciplina_id, aluno_id, periodo_id, data_nota,avaliacao,funcionario_id) VALUES ($nota, $parecer_disciplina_id, '$parecer_descritivo', '$sigla', $escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, '$data_nota','$avaliacao',$funcionario_id)");
-    return $conexao;
+function cadastro_nota($conexao,$nota, $parecer_disciplina_id, $parecer_descritivo, $sigla, $escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, $data_nota,$avaliacao,$funcionario_id,$ano_nota) {
+    $conexao->exec("INSERT INTO nota(nota, parecer_disciplina_id, parecer_descritivo, sigla, escola_id, turma_id, disciplina_id, aluno_id, periodo_id, data_nota,avaliacao,funcionario_id,ano_nota) VALUES ($nota, $parecer_disciplina_id, '$parecer_descritivo', '$sigla', $escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, '$data_nota','$avaliacao',$funcionario_id,$ano_nota)");
+  
 }
 
 function cadastro_nota_aluno_fora($conexao,$nota, $escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, $avaliacao,$funcionario_id,$escola_origem,$ano_referencia, $serie_id, $carga_horaria, $total_falta,$aluno_finalizou ) {
@@ -301,9 +301,9 @@ function excluir_notas_cadastrada_fora($conexao,$idnota) {
 }
 // ********************************************************************************
 
-function cadastro_conteudo_aula($conexao,$descricao, $disciplina_id, $turma_id, $escola_id, $professor_id, $data,$aula) {
-    $conexao->exec("INSERT INTO conteudo_aula(descricao, disciplina_id, turma_id, escola_id, professor_id, data,aula) VALUES ('$descricao', $disciplina_id, $turma_id, $escola_id, $professor_id, '$data','$aula')");
-    return $conexao;
+function cadastro_conteudo_aula($conexao,$descricao, $disciplina_id, $turma_id, $escola_id, $professor_id, $data,$aula,$ano_conteudo) {
+    $conexao->exec("INSERT INTO conteudo_aula(descricao, disciplina_id, turma_id, escola_id, professor_id, data,aula,ano_conteudo) VALUES ('$descricao', $disciplina_id, $turma_id, $escola_id, $professor_id, '$data','$aula',$ano_conteudo)");
+    
 }
 
 function editar_conteudo_aula($conexao,$descricao, $idconteudo) {
@@ -353,10 +353,11 @@ function listar_frequencia_cadastrado($conexao, $iddisciplina, $idturma, $idesco
     return $resultado;
 }
 
-function listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $professor_id) {
+function listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $professor_id,$ano_letivo) {
     $resultado=$conexao->query("SELECT * FROM conteudo_aula WHERE
       disciplina_id=$iddisciplina and 
       escola_id=$idescola and 
+      ano_conteudo=$ano_letivo and 
       turma_id=$idturma order by data, aula ");
     return $resultado;
 }
@@ -461,11 +462,11 @@ function verificar_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $
 }
 
 
-function cadastro_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$aluno_id,$data_frequencia,$conteudo_aula_id,$presenca,$aula) {
-    $conexao->exec(" INSERT INTO frequencia( aluno_id,turma_id, professor_id, data_frequencia, conteudo_aula_id, disciplina_id, escola_id,presenca,aula) VALUES (
-    	$aluno_id,$idturma, $professor_id, '$data_frequencia', $conteudo_aula_id, $iddisciplina, $idescola,$presenca,'$aula'
+function cadastro_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$aluno_id,$data_frequencia,$conteudo_aula_id,$presenca,$aula,$ano_frequencia) {
+    $conexao->exec(" INSERT INTO frequencia( aluno_id,turma_id, professor_id, data_frequencia, conteudo_aula_id, disciplina_id, escola_id,presenca,aula,ano_frequencia) VALUES (
+    	$aluno_id,$idturma, $professor_id, '$data_frequencia', $conteudo_aula_id, $iddisciplina, $idescola,$presenca,'$aula',$ano_frequencia
     )");
-    return $conexao;
+   
 }
 
 function limpar_cadastro_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data_frequencia,$aula) {

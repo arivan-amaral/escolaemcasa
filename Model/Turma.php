@@ -74,9 +74,9 @@
    }
 
 
-function associar_professor($conexao, $turma_id, $disciplina_id, $professor_id, $escola_id){
-	$result = $conexao->exec("INSERT INTO ministrada( turma_id, disciplina_id, professor_id, escola_id) 
-		VALUES ($turma_id, $disciplina_id, $professor_id, $escola_id)");
+function associar_professor($conexao, $turma_id, $disciplina_id, $professor_id, $escola_id,$ano){
+	$result = $conexao->exec("INSERT INTO ministrada( turma_id, disciplina_id, professor_id, escola_id,ano) 
+		VALUES ($turma_id, $disciplina_id, $professor_id, $escola_id, $ano)");
 }
 
 function desassociar_professor($conexao, $id){

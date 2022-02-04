@@ -14,6 +14,7 @@ try {
     // $iddisciplina=$_POST['iddisciplina'];
 
     $data=$_POST['data_frequencia'];
+    $ano_conteudo=$_SESSION['ano_letivo'];
     $descricao="";
     // if (isset($_POST['descricao'])) {
     //  $descricao=escape_mimic($_POST['descricao']);
@@ -22,7 +23,7 @@ try {
     $aula=$_POST['aula'];
     $url_get=$_POST['url_get'];
  
- include_once"Bloqueio_funcoes_para_professor.php";
+    // include_once"Bloqueio_funcoes_para_professor.php";
 
     foreach ($_POST['escola_turma_disciplina'] as $key => $value) {
 
@@ -58,7 +59,7 @@ try {
 
 
         if ($idconteudo=="") {
-            cadastro_conteudo_aula($conexao,$descricao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula);
+            cadastro_conteudo_aula($conexao,$descricao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula,$ano_conteudo);
             $conteudo_aula_id= $conexao->lastInsertId();
         }
 

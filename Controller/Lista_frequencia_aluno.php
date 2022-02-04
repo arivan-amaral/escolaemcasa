@@ -2,11 +2,13 @@
   session_start();
     include("../Model/Conexao.php");
     include("../Model/Aluno.php");
+    include("Conversao.php");
     
 
 try {
 
     $professor_id=$_SESSION['idfuncionario'];
+    $ano_letivo=$_SESSION['ano_letivo'];
 
     $idserie=$_GET['idserie'];
     $idescola=$_GET['idescola'];
@@ -30,6 +32,7 @@ try {
      ministrada.disciplina_id=iddisciplina and 
      ministrada.escola_id=idescola and
      ministrada.escola_id=idescola and
+     ministrada.ano=$ano_letivo and
 
      idescola=$idescola and
      professor_id=$professor_id and
@@ -132,7 +135,23 @@ try {
           </thead>
           <tbody>";
 
-               $result_aluno= listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
+if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
+  $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+}else{
+  $res_alunos=listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+ }
+
+$cont=1;
+ foreach ($res_alunos as $key => $value) {
+
+  $id=$value['idaluno'];
+  $nome_aluno=$value['nome_aluno'];
+  $nome_turma=$value['nome_turma'];
+  $matricula_aluno=$value['matricula'];
+  $data_matricula=$value['data_matricula'];
+  $marcado="";
+
+/*               $result_aluno= listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
                $cont=1;
                
                foreach ($result_aluno as $key => $value) {
@@ -142,7 +161,7 @@ try {
                 $status_aluno=$value['status_aluno'];
                 $email=$value['email'];
                 $senha=$value['senha'];
-                $marcado="";
+                $marcado="";*/
 
                   $resultado=verificar_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data,$id,$aula);
                     foreach ($resultado as $key2 => $value2) {
@@ -156,14 +175,28 @@ try {
 
                       <td>
                         <b class='text-success'> $nome_aluno </b> 
-                        <input type='hidden' name='aluno_id[]' value='$id'>
                       </td>
                      
                       <td> 
-              <p><input type='checkbox' class='checkbox' name='presenca$id'  value='1' $marcado> Presença ( $aula ) </p>
+              <p>";
+                
+ 
+ 
+  // Comparando as Datas
+  if(strtotime($data_matricula) <= strtotime($data)){
+     
+                          // code...
+                      $result.="<input type='hidden' name='aluno_id[]' value='$id'>
+                      <input type='checkbox' class='checkbox' name='presenca$id'  value='1' $marcado> Presença </p>
+                       ";
+                 }else{
+                  $result.="
+                    <b class='text-danger'>Nessa data o aluno não estava na turma. Data matrícula: ".converte_data($data_matricula)."</b>
+                   ";
+                 }   
 
 
-
+                $result.="
                       </td>
 
                     </tr>

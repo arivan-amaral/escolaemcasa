@@ -596,7 +596,7 @@ $idcoordenador=$_SESSION['idfuncionario'];
                           <input name="cartorio" class="form-control" required>
                         </div>
                       </div>
-                    </div>
+                    </div> 
                     <div class="row">
                       <div class="col-sm-3">
                         <div class="form-group">

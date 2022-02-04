@@ -2,6 +2,8 @@
   session_start();
     include("../Model/Conexao.php");
     include("../Model/Aluno.php");
+    include("Conversao.php");
+    
     
 
 try {
@@ -28,10 +30,16 @@ try {
           </thead>
           <tbody>";
 
-               $result_aluno= listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
+               // $res_alunos= listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
                $cont=1;
+                 if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
+                  $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+                }else{
+                  $res_alunos=listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+                 }
+
                
-               foreach ($result_aluno as $key => $value) {
+               foreach ($res_alunos as $key => $value) {
                   $idaluno=$value['idaluno'];
                   $nome_aluno=utf8_decode($value['nome_aluno']);
                   $nome_turma=($value['nome_turma']);
@@ -39,6 +47,8 @@ try {
                   $status_aluno=$value['status_aluno'];
                   $email=$value['email'];
                   $senha=$value['senha'];
+                  $data_matricula=$value['data_matricula'];
+
                   $marcado="";
 
                   $resultado=verifica_ocorrencia_cadastrada($conexao, $iddisciplina, $idturma, $idescola, $professor_id,$data,$idaluno);
@@ -55,16 +65,31 @@ try {
                       <td>
                         <b class='text-success'> $nome_aluno </b> 
                         <input type='hidden' name='aluno_id[]' value='$idaluno'>
-                      </td>
-                     
-                      <td> 
-                      <label>Ocorrência</label>
-                          <textarea class='form-control' name='ocorrencia$idaluno'>$descricao</textarea>
-                          
-                       
-                      </td>
+                      </td>";
 
-                    </tr>
+
+
+                      if(strtotime($data_matricula) <= strtotime($data)){
+                        $result.="
+                                     <td> 
+                                     <input type='hidden' name='aluno_id[]' value='$idaluno'>
+                                     <label>Ocorrência</label>
+                                         <textarea class='form-control' name='ocorrencia$idaluno'>$descricao</textarea>
+                                         
+                                      
+                                     </td>    
+                                    ";
+                      }else{
+                        $result.="
+                        <td>
+                        <b class='text-danger'>Nessa data o aluno não estava na turma. Data matrícula: ".converte_data($data_matricula)."</b>
+                        </td>
+                                       ";
+                      }
+                     
+                   
+
+                    $result.="</tr>
                   ";
                   $cont++;
                }

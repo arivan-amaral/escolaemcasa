@@ -1,5 +1,5 @@
 <?php 
-function diario_frequencia($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$data_inicio_trimestre,$data_fim_trimestre){
+function diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo){
   $nome_disciplina='';
   $tipo_ensino="";
 
@@ -218,7 +218,7 @@ foreach ($result_escola as $key => $value) {
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
   style='font-family:"Tw Cen MT Condensed",sans-serif;mso-fareast-font-family:
   "Times New Roman";mso-bidi-font-family:Arial;color:black;mso-fareast-language:
-  PT-BR'>PERIODO LETIVO 2021<o:p></o:p></span></b></p>
+  PT-BR'>PERIODO LETIVO <?php echo $ano_letivo; ?><o:p></o:p></span></b></p>
   </td>
 
  </tr>
@@ -261,22 +261,24 @@ foreach ($result_escola as $key => $value) {
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
   color:black;mso-fareast-language:PT-BR'>UNIDADE: 
   <?php 
-  if ($periodo_id==1) {
-    $data_inicio_trimestre="2021-05-03";
-    $data_fim_trimestre="2021-07-09";
-    echo "I TRIMESTRE ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
-}elseif ($periodo_id==2) {
-    $data_inicio_trimestre="2021-07-27";
-    $data_fim_trimestre="2021-10-01";
-    echo "II TRIMESTRE ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
+  // if ($periodo_id==1) {
+ 
+    echo " $descricao_trimestre ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
+ 
+    // echo "I TRIMESTRE ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
+
+// }elseif ($periodo_id==2) {
+//     $data_inicio_trimestre="2021-07-27";
+//     $data_fim_trimestre="2021-10-01";
+//     echo "II TRIMESTRE ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
 
 
-}elseif ($periodo_id==3) {
-    $data_inicio_trimestre="2021-10-04";
-    $data_fim_trimestre="2021-12-21";
-    echo "III TRIMESTRE ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
+// }elseif ($periodo_id==3) {
+//     $data_inicio_trimestre="2021-10-04";
+//     $data_fim_trimestre="2021-12-21";
+//     echo "III TRIMESTRE ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
   
-}
+// }
 
 ?>
 
@@ -543,15 +545,31 @@ for ($i=$conta_aula; $i < $limite_aula ; $i++) {
 
  
 <?php
-  $result= listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola);
-  $conta=1;
-              foreach ($result as $key => $value) {
-                $nome_aluno=utf8_decode($value['nome_aluno']);
-                $nome_turma=($value['nome_turma']);
-                $idaluno=$value['idaluno'];
-                $status_aluno=$value['status_aluno'];
-                $email=$value['email'];
-                $senha=$value['senha'];
+if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
+  $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+}else{
+  $res_alunos=listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+}
+
+
+$conta=1;
+foreach ($res_alunos as $key => $value) {
+
+  $idaluno=$value['idaluno'];
+  $nome_aluno=$value['nome_aluno'];
+  $nome_turma=$value['nome_turma'];
+  $matricula_aluno=$value['matricula'];
+  $data_matricula=$value['data_matricula'];
+
+  // $result= listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola);
+  // $conta=1;
+  //             foreach ($result as $key => $value) {
+  //               $nome_aluno=utf8_decode($value['nome_aluno']);
+  //               $nome_turma=($value['nome_turma']);
+  //               $idaluno=$value['idaluno'];
+  //               $status_aluno=$value['status_aluno'];
+  //               $email=$value['email'];
+  //               $senha=$value['senha'];
 ?>
 
 <tr style='mso-yfti-irow:13;height:13.5pt'>
@@ -587,7 +605,7 @@ $conta_presenca=1;
     $aula=$array_aula[$key];
     $data_frequencia=$array_data_aula[$key];
 
-    $res_pre=$conexao->query("SELECT presenca from frequencia where presenca=1 and aluno_id=$idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and data_frequencia='$data_frequencia' and aula='$aula' ");
+    $res_pre=$conexao->query("SELECT presenca from frequencia where presenca=1 and aluno_id=$idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and data_frequencia>='$data_matricula' and  data_frequencia='$data_frequencia' and aula='$aula' ");
      
     if ($res_pre->rowCount()>0) {
       $presenca=".";
