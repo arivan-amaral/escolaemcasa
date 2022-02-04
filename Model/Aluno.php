@@ -433,10 +433,11 @@ function listar_todas_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplin
     return $resultado;
 }
 
-function listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,$avaliacao,$aluno_id,$periodo_id) {
+function listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,$avaliacao,$aluno_id,$periodo_id,$ano_nota) {
     $resultado=$conexao->query(" SELECT * FROM nota WHERE
       disciplina_id=$iddisciplina and 
       escola_id=$idescola and 
+      ano_nota=$ano_nota and 
       turma_id=$idturma and avaliacao='$avaliacao' and aluno_id=$aluno_id and parecer_descritivo !='' and periodo_id=$periodo_id group by parecer_descritivo limit 1  ");
     return $resultado;
 }

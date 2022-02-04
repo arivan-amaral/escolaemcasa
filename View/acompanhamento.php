@@ -1,7 +1,5 @@
 <?php
-  include"../Controller/Conversao.php";
-  include"../Model/Coordenador.php";
-  include"../Model/Aluno.php";
+
 
  function acompanhamento($conexao,$idescola,$idturma,$iddisciplina,$idserie){
 ?>
