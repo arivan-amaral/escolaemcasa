@@ -1,9 +1,6 @@
 <?php
-  include"../Controller/Conversao.php";
-  include"../Model/Coordenador.php";
-  include"../Model/Aluno.php";
- 
- function diario_conteudo($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola,$data_inicial,$data_final,$periodo){
+
+ function diario_conteudo_fund1($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola,$data_inicial,$data_final,$periodo){
 ?>
 
 <div class=WordSection1>

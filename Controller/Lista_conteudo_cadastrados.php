@@ -266,22 +266,63 @@ $result.="<div id='conteudos'>
         $marca_disciplina='';
           $campo_origem_conteudo=$value['escola_id']."".$value['turma_id']."".$value['disciplina_id']."".$serie_id;
           $conteudo_aula="";
+          $quantidade_aula="";
           $conta_conteudo=0;
         foreach ($resultado as $key => $value) {
           $conteudo_aula=$value['descricao'];
+          $quantidade_aula=$value['quantidade_aula'];
           $conta_conteudo++;
         }
 
         if ($conta_conteudo>0) {
+            
+          if ($serie_id<8) {
             $result.="
               <div class='col-sm-12' id='campo_inputs$campo_origem_conteudo'>
                 <div class='form-group'>
-                  <label for='exampleInputEmail1'>Conteúdo da aula $nome_escola - $turma <font style='color:#8B0000'> => $disciplina </font></label>
+                  <label for='exampleInputEmail1'>Conteúdo da aula $turma <font style='color:#8B0000'> => $disciplina </font></label>
+
+                   <b class='text-primary'> Quantidade de aula </b>
+                  <select    name='quantidade_aula$campo_origem_conteudo' required>
+                      <option value='$quantidade_aula'>$quantidade_aula</option>
+                      <option value='1'>1</option>
+                      <option value='2'>2</option>
+                      <option value='3'>3</option>
+                      <option value='4'>4</option>
+
+                  </select>
                   <textarea class='form-control' id='descricao_conteudo' rows='5' name='descricao$campo_origem_conteudo' required>$conteudo_aula</textarea>
+
+                 
                 </div>
-              </div>
-              <br>
-              ";
+              </div>";
+          }else{
+            $result.="
+              <div class='col-sm-12' id='campo_inputs$campo_origem_conteudo'>
+                <div class='form-group'>
+                  <label for='exampleInputEmail1'>Conteúdo da aula $turma <font style='color:#8B0000'> => $disciplina </font></label>
+
+                   <!-- b class='text-primary'> Quantidade de aula </b -->
+                  <select hidden   name='quantidade_aula$campo_origem_conteudo' required>
+                      <option value='1'>1</option>
+                  </select>
+                  <textarea class='form-control' id='descricao_conteudo' rows='5' name='descricao$campo_origem_conteudo' required>$conteudo_aula</textarea>
+
+                 
+                </div>
+              </div>";
+          }
+
+
+            // $result.="
+            //   <div class='col-sm-12' id='campo_inputs$campo_origem_conteudo'>
+            //     <div class='form-group'>
+            //       <label for='exampleInputEmail1'>Conteúdo da aula $nome_escola - $turma <font style='color:#8B0000'> => $disciplina </font></label>
+            //       <textarea class='form-control' id='descricao_conteudo' rows='5' name='descricao$campo_origem_conteudo' required>$conteudo_aula</textarea>
+            //     </div>
+            //   </div>
+            //   <br>
+            //   ";
         }
         
           $conteudo_aula="";

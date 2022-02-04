@@ -33,6 +33,7 @@ try {
         $iddisciplina=$array_url[2];
         $idserie=$array_url[3];
         $campo_origem_conteudo=$idescola."".$idturma."".$iddisciplina."".$idserie;
+        $quantidade_aula=($_POST["quantidade_aula$campo_origem_conteudo"]);
 
             if (isset($_POST["descricao$campo_origem_conteudo"])) {
              $descricao=escape_mimic($_POST["descricao$campo_origem_conteudo"]);
@@ -53,13 +54,13 @@ try {
             $idconteudo=$value['id'];
 
 
-            editar_conteudo_aula($conexao,$descricao, $idconteudo);
+            editar_conteudo_aula($conexao,$descricao, $idconteudo,$quantidade_aula);
             $conteudo_aula_id=$idconteudo;
         }
 
 
         if ($idconteudo=="") {
-            cadastro_conteudo_aula($conexao,$descricao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula,$ano_conteudo);
+            cadastro_conteudo_aula($conexao,$descricao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula,$ano_conteudo,$quantidade_aula);
             $conteudo_aula_id= $conexao->lastInsertId();
         }
 

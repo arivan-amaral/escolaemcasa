@@ -301,13 +301,13 @@ function excluir_notas_cadastrada_fora($conexao,$idnota) {
 }
 // ********************************************************************************
 
-function cadastro_conteudo_aula($conexao,$descricao, $disciplina_id, $turma_id, $escola_id, $professor_id, $data,$aula,$ano_conteudo) {
-    $conexao->exec("INSERT INTO conteudo_aula(descricao, disciplina_id, turma_id, escola_id, professor_id, data,aula,ano_conteudo) VALUES ('$descricao', $disciplina_id, $turma_id, $escola_id, $professor_id, '$data','$aula',$ano_conteudo)");
+function cadastro_conteudo_aula($conexao,$descricao, $disciplina_id, $turma_id, $escola_id, $professor_id, $data,$aula,$ano_conteudo,$quantidade_aula) {
+    $conexao->exec("INSERT INTO conteudo_aula(descricao, disciplina_id, turma_id, escola_id, professor_id, data,aula,ano_conteudo,quantidade_aula) VALUES ('$descricao', $disciplina_id, $turma_id, $escola_id, $professor_id, '$data','$aula',$ano_conteudo,$quantidade_aula)");
     
 }
 
-function editar_conteudo_aula($conexao,$descricao, $idconteudo) {
-    $conexao->exec("UPDATE conteudo_aula SET descricao='$descricao' where id=$idconteudo");
+function editar_conteudo_aula($conexao,$descricao, $idconteudo,$quantidade_aula) {
+    $conexao->exec("UPDATE conteudo_aula SET descricao='$descricao', quantidade_aula=$quantidade_aula where id=$idconteudo");
 }
 
 function limpa_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula) {

@@ -500,7 +500,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
 
 
-   <div id="inputs"></div>
+   <div class="row" id="inputs"></div>
 
 
           <input type="hidden" name="url_get" value="<?php echo $url_get; ?>">
