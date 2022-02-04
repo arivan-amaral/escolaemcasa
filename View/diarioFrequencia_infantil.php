@@ -304,7 +304,7 @@ foreach ($result_escola as $key => $value) {
 
  <tr style='mso-yfti-irow:10;height:12.0pt'>
    
-  <td width=21 nowrap rowspan=3 style='width:15.4pt; border-top:none;border-left:
+  <td width=21 nowrap rowspan=2 style='width:15.4pt; border-top:none;border-left:
     solid windowtext 1.0pt;border-bottom:solid black 1.0pt;border-right:solid windowtext 1.0pt;
     padding:0cm 3.5pt 0cm 3.5pt;mso-rotate:90;height:12.0pt'>
 
@@ -318,7 +318,7 @@ foreach ($result_escola as $key => $value) {
     </p>
   </td>
 
-  <td width=261 nowrap rowspan=3 style='width:195.55pt;border-top:none;
+  <td width=261 nowrap rowspan=2 style='width:195.55pt;border-top:none;
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-left-alt:solid windowtext 1.0pt;mso-border-left-alt:solid windowtext 1.0pt;
   mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext 1.0pt;
@@ -447,99 +447,6 @@ for ($i=$conta_data; $conta_data<$limite_data ; $i++) {
 <!-- verifica as datas da avaliações -->
  </tr>
 
-
- <tr style='mso-yfti-irow:12;height:72.25pt'>
-
-
-<?php
-$result_aula=$conexao->query("
-SELECT * FROM frequencia WHERE
-escola_id=$idescola and
-turma_id=$idturma and
-disciplina_id=$iddisciplina and 
-data_frequencia BETWEEN '$data_inicio_trimestre' and '$data_fim_trimestre' limit  $inicio,$fim");
-
-foreach ($result_aula as $key => $value) {
-   if ($conta_aula%2==0) {
-?>
-  
- <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
-      border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
-      solid windowtext 1.0pt;background:
-  #D9D9D9;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
-      <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-      line-height:normal'><div class="Namerotate"><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-      mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-      color:black;mso-fareast-language:PT-BR'><?php echo "Aula $conta_aula"; ?> </div></span></p>
-  </td>
-
-  
-<?php
-  }else{
-?>
- <td  style='border:solid windowtext 1.0pt;
-      border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
-      solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
-      <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-      line-height:normal'><div class="Namerotate"><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-      mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-      color:black;mso-fareast-language:PT-BR'><?php echo "Aula $conta_aula"; ?> </div></span></p>
-  </td>
-
-  
-<?php
-  }
-
-  $conta_aula++;
-} 
-
-
-
-for ($i=$conta_aula; $i < $limite_aula ; $i++) { 
-   if ($conta_aula%2==0) {
-?>
-  
- <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
-      border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
-      solid windowtext 1.0pt;background:
-  #D9D9D9;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:.25pt'>
-      <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-      line-height:normal'><div class="Namerotate"><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-      mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-      color:black;mso-fareast-language:PT-BR'><?php echo "Aula $conta_aula"; ?> </div></span></p>
-  </td>
-
-  
-<?php
-  }else{
-?>
- <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
-      border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
-      solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
-      <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-      line-height:normal'><div class="Namerotate"><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-      mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-      color:black;mso-fareast-language:PT-BR'><?php echo "Aula $conta_aula"; ?> </div></span></p>
-  </td>
-
-  
-<?php
-  }
-
-  $conta_aula++;
-} 
- 
-?>
- 
-
-  
-
-
-
-  <!-- ARIVAN FIM AULA 75  -->
-
-
- </tr>
 
 
 <!-- ************************************************ARIVAN COMECO DAS LINHAS******************************************* -->

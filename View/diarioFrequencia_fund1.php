@@ -261,12 +261,10 @@ foreach ($result_escola as $key => $value) {
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
   color:black;mso-fareast-language:PT-BR'>UNIDADE: 
   <?php 
-  // if ($periodo_id==1) {
- 
-    echo " $descricao_trimestre ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
- 
-    // echo "I TRIMESTRE ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
-
+//   if ($periodo_id==1) {
+//     $data_inicio_trimestre=$_SESSION['inicio_periodo'];
+//     $data_fim_trimestre=$_SESSION['fim_periodo'];
+//     echo "I TRIMESTRE ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
 // }elseif ($periodo_id==2) {
 //     $data_inicio_trimestre="2021-07-27";
 //     $data_fim_trimestre="2021-10-01";
@@ -279,6 +277,9 @@ foreach ($result_escola as $key => $value) {
 //     echo "III TRIMESTRE ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
   
 // }
+// 
+     echo " $descricao_trimestre ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
+
 
 ?>
 
@@ -303,7 +304,7 @@ foreach ($result_escola as $key => $value) {
 
  <tr style='mso-yfti-irow:10;height:12.0pt'>
    
-  <td width=21 nowrap rowspan=3 style='width:15.4pt; border-top:none;border-left:
+  <td width=21 nowrap rowspan=2 style='width:15.4pt; border-top:none;border-left:
     solid windowtext 1.0pt;border-bottom:solid black 1.0pt;border-right:solid windowtext 1.0pt;
     padding:0cm 3.5pt 0cm 3.5pt;mso-rotate:90;height:12.0pt'>
 
@@ -317,7 +318,7 @@ foreach ($result_escola as $key => $value) {
     </p>
   </td>
 
-  <td width=261 nowrap rowspan=3 style='width:195.55pt;border-top:none;
+  <td width=261 nowrap rowspan=2 style='width:195.55pt;border-top:none;
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-left-alt:solid windowtext 1.0pt;mso-border-left-alt:solid windowtext 1.0pt;
   mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext 1.0pt;
@@ -356,7 +357,7 @@ $result_data_aula=$conexao->query("
 SELECT * FROM frequencia WHERE
 escola_id=$idescola and
 turma_id=$idturma and
-disciplina_id=$iddisciplina and 
+disciplina_id=$iddisciplina and
 data_frequencia BETWEEN '$data_inicio_trimestre' and '$data_fim_trimestre' group by aula,data_frequencia order by data_frequencia asc limit $inicio,$fim ");
 $array_data_aula=array();
 $array_aula=array();
@@ -447,113 +448,22 @@ for ($i=$conta_data; $conta_data<$limite_data ; $i++) {
  </tr>
 
 
- <tr style='mso-yfti-irow:12;height:72.25pt'>
-
-
-<?php
-$result_aula=$conexao->query("
-SELECT * FROM frequencia WHERE
-escola_id=$idescola and
-turma_id=$idturma and
-disciplina_id=$iddisciplina and 
-data_frequencia BETWEEN '$data_inicio_trimestre' and '$data_fim_trimestre' limit  $inicio,$fim");
-
-foreach ($result_aula as $key => $value) {
-   if ($conta_aula%2==0) {
-?>
-  
- <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
-      border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
-      solid windowtext 1.0pt;background:
-  #D9D9D9;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
-      <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-      line-height:normal'><div class="Namerotate"><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-      mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-      color:black;mso-fareast-language:PT-BR'><?php echo "Aula $conta_aula"; ?> </div></span></p>
-  </td>
-
-  
-<?php
-  }else{
-?>
- <td  style='border:solid windowtext 1.0pt;
-      border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
-      solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
-      <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-      line-height:normal'><div class="Namerotate"><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-      mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-      color:black;mso-fareast-language:PT-BR'><?php echo "Aula $conta_aula"; ?> </div></span></p>
-  </td>
-
-  
-<?php
-  }
-
-  $conta_aula++;
-} 
-
-
-
-for ($i=$conta_aula; $i < $limite_aula ; $i++) { 
-   if ($conta_aula%2==0) {
-?>
-  
- <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
-      border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
-      solid windowtext 1.0pt;background:
-  #D9D9D9;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:.25pt'>
-      <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-      line-height:normal'><div class="Namerotate"><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-      mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-      color:black;mso-fareast-language:PT-BR'><?php echo "Aula $conta_aula"; ?> </div></span></p>
-  </td>
-
-  
-<?php
-  }else{
-?>
- <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
-      border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
-      solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
-      <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-      line-height:normal'><div class="Namerotate"><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-      mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-      color:black;mso-fareast-language:PT-BR'><?php echo "Aula $conta_aula"; ?> </div></span></p>
-  </td>
-
-  
-<?php
-  }
-
-  $conta_aula++;
-} 
- 
-?>
- 
-
-  
-
-
-
-  <!-- ARIVAN FIM AULA 75  -->
-
-
- </tr>
-
 
 <!-- ************************************************ARIVAN COMECO DAS LINHAS******************************************* -->
 
  
 <?php
+
+
 if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
   $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
 }else{
   $res_alunos=listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
-}
+ }
 
 
-$conta=1;
-foreach ($res_alunos as $key => $value) {
+  $conta=1;
+ foreach ($res_alunos as $key => $value) {
 
   $idaluno=$value['idaluno'];
   $nome_aluno=$value['nome_aluno'];
@@ -561,15 +471,14 @@ foreach ($res_alunos as $key => $value) {
   $matricula_aluno=$value['matricula'];
   $data_matricula=$value['data_matricula'];
 
-  // $result= listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola);
-  // $conta=1;
-  //             foreach ($result as $key => $value) {
-  //               $nome_aluno=utf8_decode($value['nome_aluno']);
-  //               $nome_turma=($value['nome_turma']);
-  //               $idaluno=$value['idaluno'];
-  //               $status_aluno=$value['status_aluno'];
-  //               $email=$value['email'];
-  //               $senha=$value['senha'];
+        // $result= listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola);
+              // foreach ($result as $key => $value) {
+              //   $nome_aluno=($value['nome_aluno']);
+              //   $nome_turma=($value['nome_turma']);
+              //   $idaluno=$value['idaluno'];
+              //   $status_aluno=$value['status_aluno'];
+              //   $email=$value['email'];
+              //   $senha=$value['senha'];
 ?>
 
 <tr style='mso-yfti-irow:13;height:13.5pt'>
@@ -680,60 +589,3 @@ $conta_presenca=1;
 }
 
 ?>
-
-
-<!-- <html xmlns:v="urn:schemas-microsoft-com:vml"
-xmlns:o="urn:schemas-microsoft-com:office:office"
-xmlns:w="urn:schemas-microsoft-com:office:word"
-xmlns:x="urn:schemas-microsoft-com:office:excel"
-xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
-xmlns="http://www.w3.org/TR/REC-html40">
-
-<head>
-<meta charset="UTF-8">
-<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
-<meta name=ProgId content=Word.Document>
-<meta name=Generator content="Microsoft Word 15">
-<meta name=Originator content="Microsoft Word 15">
-<link rel=File-List href="pla_arquivos/filelist.xml">
-<link rel=Edit-Time-Data href="pla_arquivos/editdata.mso">
-
-<style>
-.Namerotate {
-  display:inline-block;
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-  -webkit-transform: rotate(270deg);
-  -ms-transform: rotate(270deg);
-  transform: rotate(270deg);
-  
-}
-
-.tblborder, .tblborder td, .tblborder th{
-  border-collapse:collapse;
-  border:1px solid #000;
-}
-
-.tblborder td, .tblborder th{
-  padding:20px 10px;
-}
-
-.positionRi {
-  position: absolute;
-  top: 10px;
-  left: 5px;
-  /*right:0; */
-  width: 200px;
-  height: 150px;
-  /*border: 3px solid #73AD21;*/
-}
-
-</style>
-
-<link rel=dataStoreItem href="pla_arquivos/item0001.xml"
-target="pla_arquivos/props002.xml">
-<link rel=themeData href="pla_arquivos/themedata.thmx">
-<link rel=colorSchemeMapping href="pla_arquivos/colorschememapping.xml">
-</head>
-
-<body lang=PT-BR style='tab-interval:35.4pt;word-wrap:break-word'>
- -->

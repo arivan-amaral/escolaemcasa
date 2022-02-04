@@ -3,7 +3,6 @@
 function diario_frequencia_pagina_final_fund1($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
   $conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo){
 
-
 /*
   ($conta_aula+$inicio,
     $conta_data+$inicio,
@@ -291,8 +290,7 @@ foreach ($result_escola as $key => $value) {
 //     echo "III TRIMESTRE ".converte_data($data_inicio_trimestre)." a ".converte_data($data_fim_trimestre);
   
 // }
-
-    echo " $descricao_trimestre ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
+    echo " $descricao_trimestre ".converte_data($data_inicio_trimestre)." a ".converte_data($data_fim_trimestre);
 
 ?>
 
@@ -317,7 +315,7 @@ foreach ($result_escola as $key => $value) {
 
  <tr style='mso-yfti-irow:10;height:12.0pt'>
    
-  <td width=21 nowrap rowspan=3 style='width:15.4pt; border-top:none;border-left:
+  <td width=21 nowrap rowspan=2 style='width:15.4pt; border-top:none;border-left:
     solid windowtext 1.0pt;border-bottom:solid black 1.0pt;border-right:solid windowtext 1.0pt;
     padding:0cm 3.5pt 0cm 3.5pt;mso-rotate:90;height:12.0pt'>
 
@@ -331,7 +329,7 @@ foreach ($result_escola as $key => $value) {
     </p>
   </td>
 
-  <td width=261 nowrap rowspan=3 style='width:195.55pt;border-top:none;
+  <td width=261 nowrap rowspan=2 style='width:195.55pt;border-top:none;
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-left-alt:solid windowtext 1.0pt;mso-border-left-alt:solid windowtext 1.0pt;
   mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext 1.0pt;
@@ -342,7 +340,7 @@ foreach ($result_escola as $key => $value) {
   color:black;mso-fareast-language:PT-BR'>ALUNO(A)<o:p></o:p></span></b></p>
   </td>
 
-  <td width=548 nowrap colspan=17 style='width:150.7pt;border:none;border-bottom:
+  <td width=548 nowrap colspan="100%" style='width:150.7pt;border:none;border-bottom:
   solid windowtext 1.0pt;border-top:
   solid windowtext 1.0pt;mso-border-left-alt:solid windowtext 1.0pt;height:12.0pt'>
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
@@ -357,7 +355,7 @@ foreach ($result_escola as $key => $value) {
 
  
 <!-- arghg -->
-  <td width=164 nowrap colspan=5 style='width:13.2pt;border-bottom:
+<!--   <td width=164 nowrap colspan=5 style='width:13.2pt;border-bottom:
   solid windowtext 1.0pt;border-left:
   solid windowtext 1.0pt;
   border-top:solid windowtext 1.0pt;padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
@@ -365,8 +363,8 @@ foreach ($result_escola as $key => $value) {
   line-height:normal'><b><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
   color:black;mso-fareast-language:PT-BR'>Rendimento<o:p></o:p></span></b></p>
-  </td>
-  <td width=60 nowrap rowspan=3 style='width:12.0pt; border-top::solid windowtext 1.0pt; border-left:
+  </td> -->
+  <td width=60 nowrap rowspan=2 style='width:12.0pt; border-top::solid windowtext 1.0pt; border-left:
   solid windowtext 1.0pt;border-bottom:solid black 1.0pt;border-right:solid windowtext 1.0pt;
   mso-rotate:90;height:12.0pt'>
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
@@ -490,14 +488,7 @@ foreach ($result_nota_aula as $key => $value) {
   $array_avaliacao[$conta_nota]=$avaliacao;
   ?>
 
- <!-- <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
-      border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
-      solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
-      <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-      line-height:normal'><div class="Namerotate"><span style='font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-      mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-      color:black;mso-fareast-language:PT-BR'><?php echo converte_data($data_nota); ?> </div></span></p>
-  </td> -->
+ 
 
 <?php 
     $conta_nota++;
@@ -513,7 +504,7 @@ foreach ($result_nota_aula as $key => $value) {
  ?>
 
 
- 
+<!--  
  <td width=41 nowrap rowspan=2 style='width:30.8pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-left-alt:solid windowtext 1.0pt;background:#D9D9D9;padding:0cm 3.5pt 0cm 3.5pt;
@@ -522,112 +513,20 @@ foreach ($result_nota_aula as $key => $value) {
   line-height:normal'><b><div class="Namerotate"><span style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
   color:black;mso-fareast-language:PT-BR'>RU<o:p></o:p></span></div></b></p>
-  </td>
+  </td> -->
 
  </tr>
 
 
- <tr style='mso-yfti-irow:12;height:72.25pt'>
-
-
-<?php
-//arivan
-
-$result_aula=$conexao->query("
-SELECT * FROM frequencia WHERE
-escola_id=$idescola and
-turma_id=$idturma and
-disciplina_id=$iddisciplina and 
-data_frequencia BETWEEN '$data_inicio_trimestre' and '$data_fim_trimestre' limit  $inicio,$fim");
-
-foreach ($result_aula as $key => $value) {
-   if ($conta_aula%2==0) {
-?>
-  
- <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
-      border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
-      solid windowtext 1.0pt;background:
-  #D9D9D9;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
-      <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-      line-height:normal'><div class="Namerotate"><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-      mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-      color:black;mso-fareast-language:PT-BR'> <?php echo "Aula $conta_aula";  ?> </div></span></p>
-  </td>
-
-  
-<?php
-  }else{
-?>
- <td  style='border:solid windowtext 1.0pt;
-      border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
-      solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
-      <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-      line-height:normal'><div class="Namerotate"><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-      mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-      color:black;mso-fareast-language:PT-BR'><?php echo "Aula $conta_aula"; ?> </div></span></p>
-  </td>
-
-  
-<?php
-  }
-
-  $conta_aula++;
-} 
-
-
-
-for ($i=$conta_aula; $i < $limite_aula ; $i++) { 
-   if ($conta_aula%2==0) {
-?>
-  
- <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
-      border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
-      solid windowtext 1.0pt;background:
-  #D9D9D9;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:.25pt'>
-      <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-      line-height:normal'><div class="Namerotate"><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-      mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-      color:black;mso-fareast-language:PT-BR'><?php echo "Aula $conta_aula";  ?> </div></span></p>
-  </td>
-
-  
-<?php
-  }else{
-?>
- <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
-      border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
-      solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
-      <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-      line-height:normal'><div class="Namerotate"><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-      mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-      color:black;mso-fareast-language:PT-BR'><?php echo "Aula $conta_aula"; ?> </div></span></p>
-  </td>
-
-  
-<?php
-  }
-
-  $conta_aula++;
-} 
  
-?>
- 
-
-  
-
-
-
-  <!-- ARIVAN FIM AULA 75  -->
-
-  
- </tr>
-
 
 <!-- ******************** ARIVAN COMECO DAS LINHAS ************************** -->
 
  
 <?php
-  if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
+
+
+if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
   $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
 }else{
   $res_alunos=listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
@@ -642,7 +541,7 @@ for ($i=$conta_aula; $i < $limite_aula ; $i++) {
   $nome_turma=$value['nome_turma'];
   $matricula_aluno=$value['matricula'];
   $data_matricula=$value['data_matricula'];
-
+  
   // $result= listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola);
   // $conta=1;
   //             foreach ($result as $key => $value) {
@@ -687,7 +586,7 @@ $conta_presenca=1;
     $aula=$array_aula[$key];
     $data_frequencia=$array_data_aula[$key];
 
-    $res_pre=$conexao->query("SELECT presenca from frequencia where presenca=1 and aluno_id=$idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and data_frequencia>='$data_matricula' and data_frequencia='$data_frequencia' and aula='$aula' ");
+    $res_pre=$conexao->query("SELECT presenca from frequencia where presenca=1 and aluno_id=$idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and data_frequencia='$data_frequencia' and aula='$aula' ");
    
     // $res_pre=$conexao->query("SELECT presenca from frequencia where presenca=1 and aluno_id=$idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and data_frequencia='$data_frequencia' and aula='$aula'
     // 
@@ -720,7 +619,7 @@ $conta_presenca=1;
 
 
 //
- for ($i=$conta_presenca; $i < 18 ; $i++) {
+ for ($i=$conta_presenca; $i < $limite_data ; $i++) {
    
   ?>
   
@@ -754,7 +653,7 @@ SELECT count(*) as 'quantidade' FROM frequencia WHERE
 escola_id=$idescola and
 turma_id=$idturma and
 disciplina_id=$iddisciplina and 
-presenca=0 and data_frequencia>='$data_matricula' and  data_frequencia BETWEEN '$data_inicio_trimestre' and '$data_fim_trimestre' and aluno_id=$idaluno ");
+presenca=0 and data_frequencia>='$data_matricula' and data_frequencia BETWEEN '$data_inicio_trimestre' and '$data_fim_trimestre' and aluno_id=$idaluno ");
 
 $quantidade_falta1=0;
 foreach ($res_fre_t1 as $key => $value) {
