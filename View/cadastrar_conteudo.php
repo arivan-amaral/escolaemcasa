@@ -82,20 +82,9 @@ if (!isset($_SESSION['idprofessor'])) {
 
         <div class="row mb-2">
 
-          <div class="col-sm-12 alert alert-warning">
+          <div class="col-sm-12 alert alert-info text-center">
 
-            <h1 class="m-0"><b>           
-
-             <?php
-             echo "$nome_escola_global"; 
-
-             if (isset($_SESSION['nome'])) {
-
-              echo " ".$_SESSION['nome'];  
-
-            } 
-
-             ?></b></h1>
+            <h1 class="m-0"><b> ÁREA DE RIGISTRO DE CONTEÚDO</b></h1>
 
           </div><!-- /.col -->
 
@@ -118,7 +107,6 @@ if (!isset($_SESSION['idprofessor'])) {
       <div class="container-fluid">
         <!-- Info boxes -->
         <!-- .row -->
-  <form action="../Controller/Cadastrar_conteudo.php" method="post">
 
        
       <div class="row">
@@ -141,6 +129,152 @@ if (!isset($_SESSION['idprofessor'])) {
       </div>
       <br>
       <br>
+
+
+      <!-- ################################################################################# -->
+
+                  <?php
+                  echo "<div class='row'>
+                    <div class='col-lg-3 col-6'>
+                      <!-- small card -->
+                      <div class='small-box bg-info'>
+                        <div class='inner'>
+                          <h3></h3>
+
+                          <p></p>
+                        </div>
+                        <div class='icon'>
+
+                        </div>
+                        <a  href='cadastrar_conteudo.php?disc=$iddisciplina&turm=$idturma&turma=$nome_turma&disciplina=$nome_disciplina&idescola=$idescola&idserie=$idserie' class='small-box-footer' target='_blanck'>
+                          Conteúdo <ion-icon name='document-text'></ion-icon>
+                        </a>
+                      </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class='col-lg-3 col-6'>
+                      <!-- small card -->
+                      <div class='small-box bg-success'>
+                        <div class='inner'>
+                          <h3> </h3>
+
+                          <p></p>
+                        </div>
+                        <div class='icon'>
+                          <i class='ion ion-stats-bars'></i>
+                        </div>
+                        <a href='diario_frequencia.php?disc=$iddisciplina&turm=$idturma&turma=$nome_turma&disciplina=$nome_disciplina&idescola=$idescola&idserie=$idserie' class='small-box-footer' target='_blanck'>
+                          Frequência <i class='fa fa-calendar'></i>
+                        </a>
+                      </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class='col-lg-3 col-6'>
+                      <!-- small card -->
+                      <div class='small-box bg-secondary'>
+                        <div class='inner'>
+                          <h3></h3>
+
+                          <p> </p>
+                        </div>
+                        <div class='icon'>
+
+                        </div>
+                        <a  href='acompanhamento_pedagogico.php?disc=$iddisciplina&turm=$idturma&turma=$nome_turma&disciplina=$nome_disciplina&idescola=$idescola&idserie=$idserie' class='small-box-footer' target='_blanck'>
+                          Ocorrência  <ion-icon name='bookmark-outline'></ion-icon>
+                        </a>
+                      </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class='col-lg-3 col-6'>
+                      <!-- small card -->
+                      <div class='small-box bg-danger'>
+                        <div class='inner'>
+                          <h3></h3>
+
+                          <p></p>
+                        </div>
+                        <div class='icon'>
+
+                        </div>
+                        <a  href='diario_avaliacao.php?disc=$iddisciplina&turm=$idturma&turma=$nome_turma&disciplina=$nome_disciplina&idescola=$idescola&idserie=$idserie' class='small-box-footer' target='_blanck'>
+                          Avaliação <i class='fas fa-chart-pie'></i>
+                        </a>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+
+
+                         <div class='col-sm-12'>
+                          <div class='card card-secondary collapsed-card'>
+                            <div class='card-header' data-card-widget='collapse'>
+                              <h3 class='card-title'>RESULTADOS/CONTEÚDOS</h3>
+
+                              <div class='card-tools'>
+                                <button type='button' class='btn btn-tool' data-card-widget='collapse'>
+                                  <i class='fas fa-plus'></i>
+                                </button>
+                              </div>
+                              <!-- /.card-tools -->
+                            </div>
+                            <!-- /.card-header -->
+                            <div class='card-body' style='display: none;'>
+                  
+                              <a href='diario_conteudo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat'>
+                              <i class='fa fa-edit'></i> 
+                              CONTEÚDOS DE AULAS
+                              </a>";
+                              
+                                if ($idserie<3) {
+                                  echo "<a href='parecer_descritivo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat'>
+                                  <i class='fa fa-edit'></i> 
+                                  PARECER DESCRITIVO
+                                  </a>"; 
+                                }
+
+                             echo " <a class='btn btn-secondary btn-block btn-flat' href='boletim.php?idescola=$idescola&idturma=$idturma&disciplina=$nome_disciplina&idescola=$idescola&idserie=$idserie&tokem_teste=reee' >
+                                    <font style='vertical-align: inherit;'>
+                                     <font style='vertical-align: inherit;'> 
+                                       <i class='fa fa-calendar'></i>
+                                        BOLETIM
+                                        </font>
+                                      </font>
+                              </a>                                       
+
+
+                              <a   href='diario_rendimento.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat'>
+                              <i class='fa fa-calendar'></i> 
+                              RESULTADO ANUAL
+                              </a>
+
+
+                              <a   href='impressao_diario_frequencia.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat'>
+                              <i class='fa fa-calendar'></i> 
+                              FICHA DE RENDIMENTO TRI I
+                              </a> 
+
+                              <a   href='impressao_diario_frequencia.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=2' class='btn btn-secondary btn-block btn-flat'>
+                              <i class='fa fa-calendar'></i> 
+                              FICHA DE RENDIMENTO TRI II
+                              </a>   
+                              <a   href='impressao_diario_frequencia.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=3' class='btn btn-secondary btn-block btn-flat'>
+                              <i class='fa fa-calendar'></i> 
+                              FICHA DE RENDIMENTO TRI III
+                              </a>
+                            </div>
+                          <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                      </div> 
+                                                    
+
+                  </div>";
+                  ?>  
+      <!-- ################################################################################# -->
+  <form action="../Controller/Cadastrar_conteudo.php" method="post">
 
       <div class="row">
         <div class="col-sm-1"></div>
@@ -297,12 +431,10 @@ if (!isset($_SESSION['idprofessor'])) {
 
 </div>
 
-<div class="row">
+ 
+          <div class="row">
+          <div class="col-sm-12">
 
-    <div class="col-md-1"></div>
-
-
-          <div class="col-sm-10">
           <div class="form-group">
             <label for="exampleInputEmail1" style="color:red;">ATALHO PARA DIÁRIO DE CONTEÚDO EM OUTRAS TURMAS/DISCIPLINAS</label>
 
