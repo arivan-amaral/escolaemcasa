@@ -19,7 +19,7 @@ foreach ($_POST['idturma'] as $key => $value) {
     if (count($res_ministrada)==0) {
       associar_professor($conexao, $turma_id, $disciplina_id, $professor_id, $escola_id,$ano_letivo_vigente);
     }else{
-      $disciplina_ja_associada="Disciplina já esta associada a um professor: código disciplina($disciplina_id )";
+      $disciplina_ja_associada="Disciplina já esta associada a um professor: código disciplina($disciplina_id )".count($res_ministrada);
     }
 
   }
