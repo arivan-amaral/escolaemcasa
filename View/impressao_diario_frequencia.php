@@ -1,6 +1,5 @@
 <?php 
 session_start();
-try {
 include_once"../Controller/Conversao.php";
 include_once"../Model/Conexao.php";
 include_once"../Model/Coordenador.php";
@@ -16,10 +15,14 @@ include_once"diarioFrequenciaPaginaFinal_fund1.php";
 include_once"diarioFrequenciaPaginaFinal_fund2.php";
  
 $ano_letivo=$_SESSION['ano_letivo'];
-
 ?>
 
-<html>
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
 
 <head>
 <meta charset="UTF-8">
@@ -81,8 +84,7 @@ target="pla_arquivos/props002.xml">
 </style>
 </head>
 
-<body lang=PT-BR style=''>
-<!-- <body lang=PT-BR style='tab-interval:35.4pt;word-wrap:break-word' > -->
+<body lang=PT-BR style='tab-interval:35.4pt;word-wrap:break-word'>
 
 
 
@@ -211,8 +213,3 @@ if ($idserie<3) {
  ?>
 </body>
 </html>
-<?php
-} catch (Exception $e) {
-    echo "erro: $e";
-}
- ?>
