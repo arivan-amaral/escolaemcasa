@@ -1,5 +1,8 @@
 <?php 
 session_start();
+try {
+    
+
 include_once"../Controller/Conversao.php";
 include_once"../Model/Conexao.php";
 include_once"../Model/Coordenador.php";
@@ -213,3 +216,9 @@ if ($idserie<3) {
  ?>
 </body>
 </html>
+<<?php 
+
+} catch (Exception $e) {
+    echo "erro: $e";
+}
+ ?>
