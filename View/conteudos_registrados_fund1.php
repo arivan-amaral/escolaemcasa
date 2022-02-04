@@ -131,7 +131,7 @@
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><span style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'><b>AULAS PREVISTAS:</b><o:p></o:p></span></p>
+  color:black;mso-fareast-language:PT-BR'><b><!-- AULAS PREVISTAS: --></b><o:p></o:p></span></p>
   </td>
   <td width=189 nowrap style='width:5.0cm;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -141,7 +141,7 @@
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><span style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'><b>AULAS DADAS:</b> <o:p></o:p></span></p>
+  color:black;mso-fareast-language:PT-BR'><b><!-- AULAS DADAS: --></b> <o:p></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:9;height:15.0pt'>
@@ -174,7 +174,7 @@
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
   mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:#BFBFBF;padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
+  padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
@@ -184,7 +184,7 @@
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
   mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:#D0CECE;padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
+  padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><span style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
@@ -201,7 +201,7 @@
   <p class=MsoNormal align=center style='margin-bottom:0cm;line-height:normal'><span
   style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'>Nº Aula<o:p></o:p></span></p>
+  color:black;mso-fareast-language:PT-BR'>Data<o:p></o:p></span></p>
   </td>
   <td width=94 nowrap style='width:70.85pt;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -210,7 +210,7 @@
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><span style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'>Data<o:p></o:p></span></p>
+  color:black;mso-fareast-language:PT-BR'>QTD aulas<o:p></o:p></span></p>
   </td>
   <td width=406 nowrap colspan=5 style=' border-top:1.0pt;
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -229,10 +229,13 @@
 
 <?php
 $result_conteudo= $conexao->query("SELECT * FROM conteudo_aula where disciplina_id=$iddisciplina and turma_id=$idturma and escola_id=$idescola  and data BETWEEN '$data_inicial' and '$data_final' order by data asc ");
-$conta=1;
+$conta=0;
+$total_quantidade_aula=0;
 foreach ($result_conteudo as $key => $value) {
   $data_conteudo=converte_data($value['data']);
   $descricao=$value['descricao'];
+  $quantidade_aula=$value['quantidade_aula'];
+  $total_quantidade_aula=+$quantidade_aula;
 ?>
  <tr style='mso-yfti-irow:11;height:15.0pt'>
       <td width=66 nowrap valign=bottom style='width:49.65pt;border:solid windowtext 1.0pt;
@@ -242,11 +245,11 @@ foreach ($result_conteudo as $key => $value) {
       <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
       line-height:normal'><span style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-      color:black;mso-fareast-language:PT-BR'><?php echo "$conta"; ?><o:p></o:p></span></p>
+      color:black;mso-fareast-language:PT-BR'><?php echo "$data_conteudo"; ?><o:p></o:p></span></p>
       </td>
 
   
-      <td width=94  style='width:304.75pt;border-top:none;
+      <td  style='border-top:none;
       border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
       mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
       mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
@@ -254,7 +257,7 @@ foreach ($result_conteudo as $key => $value) {
       <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
       style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-      color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p><?php echo"$data_conteudo"; ?></o:p></span></p>
+      color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p><?php echo"$quantidade_aula"; ?></o:p></span></p>
       </td>  
 
       <td  colspan=5 style=' border-top:1.0pt;
@@ -286,7 +289,44 @@ $conta++;
 }
 ?>
  
+<tr style='mso-yfti-irow:11;height:15.0pt'>
+      <td width=66 nowrap valign=bottom style='width:49.65pt;border:solid windowtext 1.0pt;
+      border-top:none;mso-border-left-alt:solid windowtext .5pt;mso-border-bottom-alt:
+      solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;padding:
+      0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+      line-height:normal'><span style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+      mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+      color:black;mso-fareast-language:PT-BR'> TOTAL DATAS: <?php echo "$conta"; ?><o:p></o:p></span></p>
+      </td>
 
+  
+      <td  style='border-top:none;
+      border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+      mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
+      mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
+      padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
+      <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
+      style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+      mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+      color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p>TOTAL AULAS:<?php echo"$total_quantidade_aula"; ?></o:p></span></p>
+      </td>  
+
+      <td  colspan=5 style=' border-top:1.0pt;
+      border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+      mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
+      mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
+      padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
+      <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
+      style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+      mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+      color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p>
+        
+      </o:p></span></p>
+      </td>
+
+     
+ </tr>
 
  <tr style='mso-yfti-irow:15;height:15.0pt'>
   <td width=356 nowrap colspan=3 valign=bottom style='width:266.85pt;

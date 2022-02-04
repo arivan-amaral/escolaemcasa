@@ -44,7 +44,7 @@ foreach ($res2 as $key => $value) {
             
         }
 
-        if ($idserie<8) {
+        if ($idserie>2 && $idserie<8) {
           $result.="
             <div class='col-sm-12' id='campo_inputs$campo_origem_conteudo'>
               <div class='form-group'>

@@ -4,7 +4,7 @@
     include("../Model/Professor.php");
     include("../Model/Aluno.php");
     
-
+ 
 try {
 
     $professor_id=$_SESSION['idfuncionario'];
@@ -276,7 +276,7 @@ $result.="<div id='conteudos'>
 
         if ($conta_conteudo>0) {
             
-          if ($serie_id<8) {
+          if ($serie_id>2 && $serie_id<8) {
             $result.="
               <div class='col-sm-12' id='campo_inputs$campo_origem_conteudo'>
                 <div class='form-group'>

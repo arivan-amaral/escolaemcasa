@@ -1,6 +1,5 @@
 <?php
-
- function diario_conteudo_infantil($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola,$data_inicial,$data_final,$periodo){
+ function diario_conteudo_infantil($conexao,$idescola,$idturma,$idserie, $iddisciplina,$nome_professor,$nome_turma,$nome_escola,$data_inicial,$data_final,$periodo,$ano_letivo){
 ?>
 
 <div class=WordSection1>
@@ -121,7 +120,21 @@
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
   style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'><b>COMPONENTE CURRICULAR:</b><o:p></o:p></span></p>
+  color:black;mso-fareast-language:PT-BR'><b>COMPONENTE CURRICULAR:</b>
+<?php 
+
+  $res_disciplinas=listar_disciplina_professor_regente($conexao,$idserie,$idturma,$idescola,$ano_letivo);
+  $disciplinas_regente_abreviacao ="";
+  foreach ($res_disciplinas as $key => $value) {
+    $nome_disciplina=$value['nome_disciplina'];
+    $abreviacao=$value['abreviacao'];
+    echo "$nome_disciplina, ";
+    $disciplinas_regente_abreviacao.="$abreviacao, ";
+
+    
+  }
+ ?>
+</span></p>
   </td>
   <td width=180 nowrap colspan=2 valign=bottom style='width:134.7pt;border-top:
   none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -131,7 +144,7 @@
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><span style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'><b>AULAS PREVISTAS:</b><o:p></o:p></span></p>
+  color:black;mso-fareast-language:PT-BR'><b><!-- AULAS PREVISTAS: --></b><o:p></o:p></span></p>
   </td>
   <td width=189 nowrap style='width:5.0cm;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -141,7 +154,7 @@
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><span style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'><b>AULAS DADAS:</b> <o:p></o:p></span></p>
+  color:black;mso-fareast-language:PT-BR'><b><!-- AULAS DADAS: --></b> <o:p></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:9;height:15.0pt'>
@@ -174,7 +187,7 @@
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
   mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:#BFBFBF;padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
+  padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
@@ -184,7 +197,7 @@
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
   mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:#D0CECE;padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
+   padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><span style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
@@ -201,7 +214,7 @@
   <p class=MsoNormal align=center style='margin-bottom:0cm;line-height:normal'><span
   style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'>Nº Aula<o:p></o:p></span></p>
+  color:black;mso-fareast-language:PT-BR'>Data<o:p></o:p></span></p>
   </td>
   <td width=94 nowrap style='width:70.85pt;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -210,7 +223,7 @@
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><span style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'>Data<o:p></o:p></span></p>
+  color:black;mso-fareast-language:PT-BR'>Campo do dia<o:p></o:p></span></p>
   </td>
   <td width=406 nowrap colspan=5 style=' border-top:1.0pt;
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -221,7 +234,8 @@
   line-height:normal'><span style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
   color:black;mso-fareast-language:PT-BR'>
-<?php echo "$nome_disciplina"; ?>
+ <?php //echo "$nome_disciplina"; ?>
+ Conteúdos desenvolvidos
   <o:p></o:p></span></p>
   </td>
  
@@ -242,7 +256,7 @@ foreach ($result_conteudo as $key => $value) {
       <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
       line-height:normal'><span style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-      color:black;mso-fareast-language:PT-BR'><?php echo "$conta"; ?><o:p></o:p></span></p>
+      color:black;mso-fareast-language:PT-BR'><?php echo "$data_conteudo"; ?><o:p></o:p></span></p>
       </td>
 
   
@@ -254,7 +268,8 @@ foreach ($result_conteudo as $key => $value) {
       <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
       style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-      color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p><?php echo"$data_conteudo"; ?></o:p></span></p>
+      color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p><?php 
+      echo"$disciplinas_regente_abreviacao"; ?></o:p></span></p>
       </td>  
 
       <td  colspan=5 style=' border-top:1.0pt;

@@ -51,6 +51,28 @@
     	return $res;    
 	}	
 
+	function listar_disciplina_professor_regente($conexao,$idserie,$idturma,$idescola,$ano_letivo) {
+    	$res=$conexao->query("SELECT 
+          disciplina.nome_disciplina,
+          disciplina.abreviacao,
+          disciplina.iddisciplina,
+          funcionario.nome as 'nome_professor',
+          turma.idturma,
+          turma.nome_turma
+         FROM turma, escola, ministrada,disciplina,funcionario WHERE
+ 
+        ministrada.turma_id=turma.idturma AND
+        ministrada.escola_id=escola.idescola AND
+        ministrada.disciplina_id=disciplina.iddisciplina AND
+        ministrada.professor_id=funcionario.idfuncionario and
+        ministrada.ano='$ano_letivo' AND
+        ministrada.escola_id='$idescola' AND
+        ministrada.turma_id='$idturma' AND
+        turma.serie_id='$idserie' limit 1");
+
+    	return $res;    
+	}	
+
 
 	function pesquisar_professor_por_id($conexao,$idfuncionario) {
     	$result=$conexao->query("SELECT * FROM funcionario WHERE idfuncionario=$idfuncionario   and funcionario.status=1 ");

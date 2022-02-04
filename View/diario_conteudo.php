@@ -5,6 +5,7 @@ include_once"../Model/Escola.php";
 include"../Controller/Conversao.php";
 include"../Model/Coordenador.php";
 include"../Model/Aluno.php";
+include"../Model/Professor.php";
 
 include_once"conteudos_registrados_infantil.php";
 include_once"conteudos_registrados_fund1.php";
@@ -21,7 +22,7 @@ include_once"conteudos_registrados_fund2.php";
      
      $data_inicio_trimestre3="";
      $data_fim_trimestre3="";
-
+ 
   
   $res_calendario=listar_data_periodo($conexao,$ano_letivo);
   foreach ($res_calendario as $key => $value) {
@@ -122,51 +123,78 @@ $res=buscar_escola_por_id($conexao,$idescola);
 foreach ($res as $key => $value) {
     $nome_escola=$value['nome_escola'];
 }
-$pes=listar_disciplina_da_turma($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
 
-foreach ($pes as $chave => $linha) {
-  $nome_disciplina=($linha['nome_disciplina']);
-  $iddisciplina=$linha['iddisciplina'];
-  $nome_professor=$linha['nome'];
-  $nome_turma=$linha['nome_turma'];
-  
+ 
 if ($idserie <3) {
-    diario_conteudo_infantil($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola,$data_inicio_trimestre1,$data_fim_trimestre1,"I TRIMESTRE"); 
+
+    $pes=listar_disciplina_da_turma($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+      $nome_disciplina="";
+      $nome_professor="";
+      $nome_turma="";
+
+    foreach ($pes as $chave => $linha) {
+      $nome_disciplina=($linha['nome_disciplina']);
+      $iddisciplina=$linha['iddisciplina'];
+      $nome_professor=$linha['nome'];
+      $nome_turma=$linha['nome_turma'];
+    }
+
+
+    diario_conteudo_infantil($conexao,$idescola,$idturma,$idserie,$iddisciplina, $nome_professor,$nome_turma,$nome_escola,$data_inicio_trimestre1,$data_fim_trimestre1,"I TRIMESTRE",$ano_letivo);
+    
+   
      echo "<div class='pagebreak'> </div>";
 
 
-   diario_conteudo_infantil($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola,$data_inicio_trimestre2,$data_fim_trimestre2,"II TRIMESTRE"); 
+   diario_conteudo_infantil($conexao,$idescola,$idturma,$idserie,$iddisciplina, $nome_professor,$nome_turma,$nome_escola,$data_inicio_trimestre2,$data_fim_trimestre2,"II TRIMESTRE",$ano_letivo); 
      echo "<div class='pagebreak'> </div>";
 
 
-   diario_conteudo_infantil($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola,$data_inicio_trimestre3,$data_fim_trimestre3,"III TRIMESTRE"); 
+   diario_conteudo_infantil($conexao,$idescola,$idturma,$idserie,$iddisciplina, $nome_professor,$nome_turma,$nome_escola,$data_inicio_trimestre3,$data_fim_trimestre3,"III TRIMESTRE",$ano_letivo); 
      echo "<div class='pagebreak'> </div>";
+
+
 }elseif ($idserie>2 && $idserie<8) {
-  diario_conteudo_fund1($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola,$data_inicio_trimestre1,$data_fim_trimestre1,"I TRIMESTRE"); 
-    echo "<div class='pagebreak'> </div>";
+
+    $pes=listar_disciplina_da_turma($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+
+    foreach ($pes as $chave => $linha) {
+      $nome_disciplina=($linha['nome_disciplina']);
+      $iddisciplina=$linha['iddisciplina'];
+      $nome_professor=$linha['nome'];
+      $nome_turma=$linha['nome_turma'];
+
+      diario_conteudo_fund1($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola,$data_inicio_trimestre1,$data_fim_trimestre1,"I TRIMESTRE"); 
+        echo "<div class='pagebreak'> </div>";
 
 
-  diario_conteudo_fund1($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola,$data_inicio_trimestre2,$data_fim_trimestre2,"II TRIMESTRE"); 
-    echo "<div class='pagebreak'> </div>";
+      diario_conteudo_fund1($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola,$data_inicio_trimestre2,$data_fim_trimestre2,"II TRIMESTRE"); 
+        echo "<div class='pagebreak'> </div>";
 
 
-  diario_conteudo_fund1($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola,$data_inicio_trimestre3,$data_fim_trimestre3,"III TRIMESTRE"); 
-    echo "<div class='pagebreak'> </div>";
+      diario_conteudo_fund1($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola,$data_inicio_trimestre3,$data_fim_trimestre3,"III TRIMESTRE"); 
+        echo "<div class='pagebreak'> </div>";
+      }
 }else{
-  diario_conteudo_fund2($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola,$data_inicio_trimestre1,$data_fim_trimestre1,"I TRIMESTRE"); 
-    echo "<div class='pagebreak'> </div>";
+
+    $pes=listar_disciplina_da_turma($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+    foreach ($pes as $chave => $linha) {
+      $nome_disciplina=($linha['nome_disciplina']);
+      $iddisciplina=$linha['iddisciplina'];
+      $nome_professor=$linha['nome'];
+      $nome_turma=$linha['nome_turma'];
+      
+      diario_conteudo_fund2($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola,$data_inicio_trimestre1,$data_fim_trimestre1,"I TRIMESTRE"); 
+        echo "<div class='pagebreak'> </div>";
 
 
-  diario_conteudo_fund2($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola,$data_inicio_trimestre2,$data_fim_trimestre2,"II TRIMESTRE"); 
-    echo "<div class='pagebreak'> </div>";
+      diario_conteudo_fund2($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola,$data_inicio_trimestre2,$data_fim_trimestre2,"II TRIMESTRE"); 
+        echo "<div class='pagebreak'> </div>";
 
 
-  diario_conteudo_fund2($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola,$data_inicio_trimestre3,$data_fim_trimestre3,"III TRIMESTRE"); 
-    echo "<div class='pagebreak'> </div>";
-
-}
-
-  
+      diario_conteudo_fund2($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_disciplina,$nome_professor,$nome_turma,$nome_escola,$data_inicio_trimestre3,$data_fim_trimestre3,"III TRIMESTRE"); 
+        echo "<div class='pagebreak'> </div>";
+    }
 
 }
 
