@@ -216,7 +216,7 @@ if ($idserie<3) {
  ?>
 </body>
 </html>
-
+<?php
 } catch (Exception $e) {
     echo "erro: $e";
 }
