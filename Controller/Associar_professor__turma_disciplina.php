@@ -15,11 +15,15 @@ foreach ($_POST['idturma'] as $key => $value) {
   if (isset($_POST['idturma'])) {
     $turma_id=$_POST['idturma'][$key];
     $res_ministrada=$conexao->query("SELECT * FROM ministrada WHERE escola_id = $escola_id and turma_id=$turma_id and $disciplina_id=$disciplina_id and ano=$ano_letivo_vigente");
-    $res_ministrada=$res_ministrada->fetchAll();
-    if (count($res_ministrada)==0) {
+    
+    $conta_ministrada=0;
+    foreach ($res_ministrada as $key => $value) {
+      $conta_ministrada++;
+    }
+    if ($conta_ministrada==0) {
       associar_professor($conexao, $turma_id, $disciplina_id, $professor_id, $escola_id,$ano_letivo_vigente);
     }else{
-      $disciplina_ja_associada="Disciplina já esta associada a um professor: código disciplina($disciplina_id )".count($res_ministrada);
+      $disciplina_ja_associada="Disciplina já esta associada a um professor: código disciplina($disciplina_id )".$conta_ministrada;
     }
 
   }
