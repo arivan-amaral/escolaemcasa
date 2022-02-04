@@ -32,7 +32,7 @@ if ($disciplina_ja_associada=='') {
   exit();
 }else{
 
-  $_SESSION['status']=1;
+  $_SESSION['status']=2;
   $_SESSION['mensagem']=$disciplina_ja_associada;
    header("location:../View/pesquisar_professor_associar.php");
   exit();
