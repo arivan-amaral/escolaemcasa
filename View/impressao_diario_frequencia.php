@@ -86,7 +86,129 @@ target="pla_arquivos/props002.xml">
 
 
 
-jhkhkj
+<?php 
+$idescola=$_GET['idescola'];
+$idturma=$_GET['idturma'];
+$iddisciplina=$_GET['iddisciplina'];
+$idserie=$_GET['idserie'];
+
+$inicio=0;
+$fim=36;
+
+$conta_aula=1;
+$conta_data=1;
+
+$limite_data=36;
+$limite_aula=36;
+
+$periodo_id=$_GET['periodo_id'];
+$idserie=$_GET['idserie'];
+
+$descricao_trimestre="";
+$data_inicio_trimestre="";
+$data_fim_trimestre="";
+
+
+
+  $res_calendario=listar_data_por_periodo($conexao,$ano_letivo,$periodo_id);
+  foreach ($res_calendario as $key => $value) {
+    $descricao_trimestre=$value['descricao'];
+    $data_inicio_trimestre=$value['inicio'];
+    $data_fim_trimestre=$value['fim'];
+        
+  }
+
+if ($idserie<3) {
+ 
+        //linha 409 508 
+        //diario_frequencia_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo); 
+            echo "nmbn<div class='pagebreak'> </div>";
+     
+
+        $inicio=36;
+        // $conta_aula=36;
+        $conta_aula=36;
+
+        $limite_data=18;
+        $limite_aula=18;
+
+        // $limite_data=18;
+        // $limite_aula=18; 
+        $conta_data=1; //não existia
+        $fim= 17;
+        // diario_frequencia_pagina_final($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie)
+
+
+        //linha 428 600 760
+        diario_frequencia_pagina_final_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
+            $conta_aula+0,
+            $conta_data+0,
+            $limite_data+0,
+            $limite_aula+0,
+            $periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo);
+        
+}elseif ($idserie>3 && $idserie<8) {
+
+        //linha 409 508 
+        diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo); 
+            echo "<div class='pagebreak'> </div>";
+     
+
+        $inicio=36;
+        // $conta_aula=36;
+        $conta_aula=36;
+
+        $limite_data=18;
+        $limite_aula=18;
+
+        // $limite_data=18;
+        // $limite_aula=18; 
+        $conta_data=1; //não existia
+        $fim= 17;
+        // diario_frequencia_pagina_final($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie)
+
+
+        //linha 428 600 760
+        diario_frequencia_pagina_final_fund1($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
+            $conta_aula+0,
+            $conta_data+0,
+            $limite_data+0,
+            $limite_aula+0,
+            $periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo);
+        
+}else{
+    //linha 409 508 
+        diario_frequencia_fund2($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo); 
+        echo "<div class='pagebreak'> </div>";
+
+
+        $inicio=36;//36;
+        // $conta_aula=36;
+        $conta_aula=37;
+
+        // $limite_data=26;
+        // $limite_aula=26;    
+         $limite_data=31; //30
+        $limite_aula=31; //30
+
+        $conta_data=1; //não existia
+        $fim= 30; //era 29 tirei para teste
+        
+        // diario_frequencia_pagina_final($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie)
+
+
+        //linha 428 600 760
+        diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
+            $conta_aula+0,
+            $conta_data+0,
+            $limite_data+0,
+            $limite_aula+0,
+
+            $periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo);
+
+}
+
+ ?>
 </body>
 </html>
 <?php
