@@ -5,7 +5,7 @@ include_once"../Controller/Conversao.php";
 include_once"../Model/Conexao.php";
 include_once"../Model/Coordenador.php";
 include_once"../Model/Aluno.php";
-include_once"../Model/EScola.php";
+include_once"../Model/Escola.php";
 
 include_once"diarioFrequencia_infantil.php";
 include_once"diarioFrequencia_fund1.php";
@@ -121,8 +121,8 @@ $data_fim_trimestre="";
 if ($idserie<3) {
  
         //linha 409 508 
-        //diario_frequencia_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo); 
-            echo "nmbn<div class='pagebreak'> </div>";
+        diario_frequencia_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo); 
+            echo "<div class='pagebreak'> </div>";
      
 
         $inicio=36;
