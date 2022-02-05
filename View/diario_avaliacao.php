@@ -76,29 +76,19 @@ if (!isset($_SESSION['idfuncionario'])) {
 
       <div class="container-fluid">
 
-        <div class="row mb-2">
+                <div class="row mb-2">
 
-          <div class="col-sm-1"></div>
-          <div class="col-sm-10 alert alert-warning text-center">
+                  <div class="col-sm-12 alert alert-danger text-center">
 
-            <h1 class="m-0"><b>           
+                    <h1 class="m-0"><b>           
+        ÁREA DE RIGISTRO DE NOTAS
+                     </b></h1>
 
-             <?php
-             echo "$nome_escola_global"; 
+                  </div><!-- /.col -->
 
-             if (isset($_SESSION['nome'])) {
+                  
 
-              echo " ".$_SESSION['nome'];  
-
-            } 
-
-             ?></b></h1>
-
-          </div><!-- /.col -->
-
-          
-
-        </div><!-- /.row -->
+                </div><!-- /.row -->
 
       </div><!-- /.container-fluid -->
 
