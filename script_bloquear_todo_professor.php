@@ -1,13 +1,13 @@
 <?php
 session_start();
-    include("/Model/Conexao.php");
+    include("Model/Conexao.php");
 
     
 
 try {
 if (isset($_GET['tokem_arivan'])) {
   // code...
-$res=$conexao->query("SELECT * FROM funcionario WHERE descricao_funcao !='Coordenador' and  descricao_funcao =='Professor' or descricao_funcao =='Professora' ");
+$res=$conexao->query("SELECT * FROM funcionario WHERE   descricao_funcao ='Professor' or descricao_funcao ='Professora' ");
   $conta=1;
   foreach ($res as $key => $value) {
     $funcionario_id=$value['idfuncionario'];
