@@ -4184,6 +4184,7 @@ function troca_de_turma_escola_por_serie(){
 }
 
 
+
 function editar_aluno(){     
       var formData = new FormData(document.getElementById("form1"));      
       $.ajax({
@@ -4224,3 +4225,27 @@ function editar_aluno(){
           });
     }
 
+
+  
+function mudar_bloqueio_funcionario(campo){
+  var status = document.getElementById("status"+campo).value;
+  var idcalendario = document.getElementById("idcalendario"+campo).value;
+  var idfuncionario = document.getElementById("idfuncionario"+campo).value;
+  
+  var result = document.getElementById("aguarde"+idcalendario+""+idfuncionario);
+  var input = document.getElementById("calendario"+idcalendario+""+idfuncionario);
+   
+  var xmlreq = CriaRequest();   
+  url="status="+status+"&idcalendario="+idcalendario+"&idfuncionario="+idfuncionario;
+   xmlreq.open("GET", "../Controller/Mudar_bloqueio_funcionario.php?"+url, true);
+    xmlreq.onreadystatechange = function(){      
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {
+               result.innerHTML =xmlreq.responseText;
+            }else{
+                alert("Erro, tente novamente");
+            }
+        }
+    };
+    xmlreq.send(null);
+}

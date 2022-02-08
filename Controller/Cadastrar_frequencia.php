@@ -2,6 +2,7 @@
 	session_start();
     include("../Model/Conexao.php");
     include("../Model/Aluno.php");
+    include("../Model/Escola.php");
     include("Conversao.php");
     
 
@@ -22,12 +23,16 @@ try {
 
     $aula=$_POST['aula'];
     $url_get=$_POST['url_get'];
-   	    // $data_atual=date("Y");
-       
-         if($_SESSION['ano_letivo_vigente'] != $_SESSION['ano_letivo']){
-             include_once"Bloqueio_funcoes_para_professor.php";
+   	// $data_atual=date("Y");
+    
+    // verificar_bloqueio_funcionario($conexao,$idcalendario,$professor_id,1);
+   
+   if($_SESSION['ano_letivo_vigente'] != $_SESSION['ano_letivo']){
+        include_once"Bloqueio_funcoes_para_professor.php";
                                            
-          }
+    }
+
+
     //$iddisciplina=$_POST['iddisciplina'];
     foreach ($_POST['iddisciplina'] as $key => $value) {
         $iddisciplina=$_POST['iddisciplina'][$key];

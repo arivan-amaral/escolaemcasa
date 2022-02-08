@@ -1,4 +1,25 @@
 <?php 
+function listar_calendario_letivo($conexao){
+   $sql = $conexao->query("SELECT * from calendario_letivo   order by calendario_letivo.inicio ASC
+      ");
+   return $sql->fetchAll();
+}
+function verificar_bloqueio_funcionario($conexao,$idcalendario,$funcionario_id,$status){
+   $sql = $conexao->query("SELECT * from bloquear_acesso  where funcionario_id = $funcionario_id and calendario_letivo_id=$idcalendario and status=$status
+      ");
+   return $sql->fetchAll();
+}
+
+function desativa_bloqueio_funcionario($conexao,$idcalendario,$funcionario_id,$funcionario_responsavel,$status){
+   $conexao->exec("UPDATE bloquear_acesso SET status=$status, funcionario_responsavel=$funcionario_responsavel  where funcionario_id = $funcionario_id and calendario_letivo_id=$idcalendario and status=1
+      "); 
+}
+function ativa_bloqueio_funcionario($conexao,$idcalendario,$funcionario_id,$funcionario_responsavel){
+  
+   $conexao->exec("INSERT INTO bloquear_acesso(funcionario_id, calendario_letivo_id, funcionario_responsavel) VALUES($funcionario_id,$idcalendario,$funcionario_responsavel)");
+ 
+}
+
 function listar_data_periodo($conexao,$ano){
    $sql = $conexao->query("SELECT * from calendario_letivo WHERE ano='$ano' order by calendario_letivo.periodo_id ASC
       ");
@@ -12,6 +33,13 @@ function listar_data_por_periodo($conexao,$ano,$periodo_id){
       ");
    return $sql->fetchAll();
 }
+// function listar_calendario_por_data($conexao,$data){
+//    $sql = $conexao->query("SELECT * from calendario_letivo,periodo WHERE
+//       calendario_letivo.periodo_id=periodo.id and 
+//       inicio BETWEEM  order by calendario_letivo.periodo_id ASC
+//       ");
+//    return $sql->fetchAll();
+// }
 
 function pesquisar_solicitacao_transferencia_por_aluno($conexao,$matricula,$aceita){
    $sql = $conexao->query("SELECT * from solicitacao_transferencia WHERE matricula=$matricula and aceita =$aceita

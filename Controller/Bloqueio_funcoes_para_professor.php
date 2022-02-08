@@ -1,5 +1,12 @@
  <?php 
  /////////////////////////////////////////////////////////
+
+// $fallback = 'index.php';
+
+// $anterior = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : $fallback;
+
+// header("location: {$anterior}");
+exit;
    if (isset($_SESSION['idprofessor'])) {
         if(
          $_SESSION['idprofessor']==382  ||

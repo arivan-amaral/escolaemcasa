@@ -4,6 +4,8 @@ session_start();
     include("../Model/Professor.php");
     include("../Model/Coordenador.php");
     include("../Model/Turma.php");
+    include("../Model/Escola.php");
+    include("Conversao.php");
     
 
 try {
@@ -17,6 +19,9 @@ foreach ($res_turma as $key => $value) {
   $array_escolas_coordenador[$conta_escolas]=$value['idescola'];
   $conta_escolas++;
 }
+
+$res_calendario=listar_calendario_letivo($conexao);
+
 
 $result=pesquisar_professor_associacao($conexao,$pesquisa);
 
@@ -101,7 +106,7 @@ foreach ($result as $key => $value) {
               if ($_SESSION['nivel_acesso_id']>=100) { 
                $return.="
                 
-                 <a  onclick='bloquear_acesso_professo($idfuncionario);' name='bloquear$idfuncionario' class='btn btn-block btn-secondary'>Bloquear acessos</a>
+                 <a data-toggle='modal' data-target='#modal-bloquear-funcionario$idfuncionario' class='btn btn-block btn-secondary'>Bloquear acessos</a>
                ";
               }
               $return.="
@@ -109,6 +114,67 @@ foreach ($result as $key => $value) {
             </ul>
         </div>
       </td>
+
+
+        <div class='modal fade' id='modal-bloquear-funcionario$idfuncionario'>
+          <div class='modal-dialog modal-lg'>
+            <div class='modal-content'>
+              <div class='modal-header alert alert-danger'>
+                <h4 class='modal-title'>BLOQUEAR ACESSOS: $nome_professor!</h4>
+                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                  <span aria-hidden='true'>&times;</span>
+                </button>
+              </div>
+               <div class='modal-body'>
+          ";
+              foreach ($res_calendario as $key => $value) {
+                $idcalendario=$value['id'];
+                $ano_calendario=$value['ano'];
+                $data_inicio_trimestre=converte_data($value['inicio']);
+                $data_fim_trimestre=converte_data($value['fim']);
+                $verificar_bloqueio=verificar_bloqueio_funcionario($conexao,$idcalendario,$idfuncionario,1);
+                if (count($verificar_bloqueio)>0) {
+                 $marcado="<b class='text-danger'>BLOQUEADO</b>";
+                  
+                  $return.="
+                    <input type='hidden' id='status$idcalendario$idfuncionario' value='0'>                      
+                    <input type='hidden' id='idcalendario$idcalendario$idfuncionario' value='$idcalendario'>                      
+                    <input type='hidden' id='idfuncionario$idcalendario$idfuncionario' value='$idfuncionario'>
+
+                     <button onclick=mudar_bloqueio_funcionario('$idcalendario$idfuncionario');>
+                    $data_fim_trimestre - $data_fim_trimestre
+                    </button>
+                     <span id='aguarde$idcalendario$idfuncionario'>$marcado</span>
+                    <br>
+                     
+                   ";
+                }else{
+                 $marcado="<b class='text-success'>LIBERADO</b>";
+                  $return.="<input type='hidden' id='status$idcalendario$idfuncionario' value='1'>                      
+                    <input type='hidden' id='idcalendario$idcalendario$idfuncionario' value='$idcalendario'>                      
+                    <input type='hidden' id='idfuncionario$idcalendario$idfuncionario' value='$idfuncionario'>
+
+                    <button onclick=mudar_bloqueio_funcionario('$idcalendario$idfuncionario');>
+                    $data_fim_trimestre - $data_fim_trimestre
+                    </button>
+                     <span id='aguarde$idcalendario$idfuncionario'>$marcado</span>
+                    <br>
+                     
+                      ";
+
+                }
+                 
+            
+              }
+
+         
+               $return.=" </div>
+            <button type='button' class='btn btn-default' data-dismiss='modal'><font style='vertical-align: inherit;'><font style='vertical-align: inherit;'>Fechar</font></font></button>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
 
 ";
 
@@ -148,6 +214,8 @@ foreach ($result as $key => $value) {
 
 
                           $return.="</td>
+
+
 
                     </tr> ";
       } 

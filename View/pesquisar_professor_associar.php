@@ -16,7 +16,7 @@ if (!isset($_SESSION['idcoordenador'])) {
 
 
  
-?>
+?> 
 
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 
@@ -80,15 +80,6 @@ if (!isset($_SESSION['idcoordenador'])) {
 
 
 
-  <!-- /.content-wrapper -->
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-
-
-  
 
 
 <script type="text/javascript">
