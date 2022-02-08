@@ -2,18 +2,20 @@
  /////////////////////////////////////////////////////////
    if (isset($_SESSION['idprofessor'])) {
         if(
-         $_SESSION['idprofessor']==379 ||
-         $_SESSION['idprofessor']==277 ||
+         $_SESSION['idprofessor']==382  ||
+         $_SESSION['idprofessor']==411  ||
+         $_SESSION['idprofessor']==379  ||
+         $_SESSION['idprofessor']==277  ||
          $_SESSION['idprofessor']==388  ||
          $_SESSION['idprofessor']==1365 ||
          $_SESSION['idprofessor']==1025 ||
          $_SESSION['idprofessor']==486  ||
          $_SESSION['idprofessor']==1032 ||
          $_SESSION['idprofessor']==1020 ||
-         $_SESSION['idprofessor']==401 ||
-         $_SESSION['idprofessor']==339 ||
+         $_SESSION['idprofessor']==401  ||
+         $_SESSION['idprofessor']==339  ||
          $_SESSION['idprofessor']==1030 ||
-         $_SESSION['idprofessor']==504 ||
+         $_SESSION['idprofessor']==504  ||
          $_SESSION['idprofessor']==409 ||
          $_SESSION['idprofessor']==523 ||
          $_SESSION['idprofessor']==772 ||
