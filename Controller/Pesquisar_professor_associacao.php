@@ -36,9 +36,8 @@ $return="
                   
                   <th>#</th>
                   <th>Professor</th>
-                  <th>Associações</th>
-                  <th>Editar</th>
-                  <th>Excluir</th>
+                  <th>Opções</th>
+                   
                 </tr>
               </thead>
 
@@ -63,34 +62,58 @@ foreach ($result as $key => $value) {
         <b>id: $idfuncionario</b><br>
       </td> 
 
-      <td>
+      <td> 
         <b>$nome_professor</b><br>
         <a href='https://api.whatsapp.com/send?phone=$whatsapp&text=Ol%C3%A1%2C%20sou%20do%20suporte%20da%20EDUCA%20LEM%20estou%20entrando%20em%20contato%2C%20pois%20preciso%20tirar%20uma%20d%C3%BAvida%20com%20voc%C3%AA%20sobre%20as%20notas%20lan%C3%A7adas.' >$whatsapp</a><br>
         $login<br>
         $senha
 
       </td>
-
       <td>
+        <div class = 'btn-group text-right'>
+          <button type = 'button' class = 'btn btn-primary fs12 dropdown-toggle' data-toggle = 'dropdown' aria-expanded = 'false'> 
+               Mais opções
+                <span class = 'caret ml5'></span>
+            </button>
+            <ul class = 'dropdown-menu' role = 'menu'>
+                
+                <li>
 
-       <a href='#asso$idfuncionario' onclick='listar_opcao_associacao_professor($idfuncionario);' name='asso$idfuncionario' class='btn btn-primary'>Associar a turmas</a>
-       </td>
+                <a href='#asso$idfuncionario' onclick='listar_opcao_associacao_professor($idfuncionario);' name='asso$idfuncionario' class='btn btn-block btn-primary'>Associar a turmas</a>
+                  
+                </li>
+<br>
+                <li>
+                <a href='alterar_dados_funcionario_administracao.php?idfuncionario=$idfuncionario'  class='btn btn-block btn-warning'>Editar dados</a>
+                </li>
+                <br>
+                <li>";
+              if ($_SESSION['nivel_acesso_id']>=100) { 
+               $return.="
+                 <input id='nome_professor$idfuncionario' hidden value='$nome_professor'>
+                 <a  onclick='excluir_professor($idfuncionario);' name='pro$idfuncionario' class='btn btn-block btn-danger'>Excluir professor</a>
+               ";
+              }
+              $return.="
+              </li> 
+              <br>
+                <li>";
+              if ($_SESSION['nivel_acesso_id']>=100) { 
+               $return.="
+                
+                 <a  onclick='bloquear_acesso_professo($idfuncionario);' name='bloquear$idfuncionario' class='btn btn-block btn-secondary'>Bloquear acessos</a>
+               ";
+              }
+              $return.="
+              </li>
+            </ul>
+        </div>
+      </td>
 
-       <td>
-       <a href='alterar_dados_funcionario_administracao.php?idfuncionario=$idfuncionario'  class='btn btn-warning'>Editar dados</a>
-
-       <br>
-       <br>
-       </td>";
+";
 
  
-           if ($_SESSION['nivel_acesso_id']>=100) { 
-               $return.="
-             <td>
-             <input id='nome_professor$idfuncionario' hidden value='$nome_professor'>
-             <a  onclick='excluir_professor($idfuncionario);' name='pro$idfuncionario' class='btn btn-danger'>Excluir professor</a>
-            </td>";
-            }
+
 
       
   $return.="
