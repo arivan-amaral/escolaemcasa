@@ -196,8 +196,12 @@ if (isset($_GET['tokem_arivan'])) {
              $nome_responsavel=$value['aluno_nomeresp'];
              $cpf_responsavel='';
             $transposte_escolar=$value['transposte_escolar'];
-            $aluno_transpublico =$value['aluno_transpublico '];
-               
+               if ($value['aluno_transpublico ']=='') {
+                   $aluno_transpublico =0;
+               }else{
+                    $aluno_transpublico =$value['aluno_transpublico '];
+
+               }
                 $uf_municipio_cartorio=$value['uf_municipio_cartorio'];
                 $idaluno=$value['idaluno'];
 
