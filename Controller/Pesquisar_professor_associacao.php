@@ -142,7 +142,7 @@ foreach ($result as $key => $value) {
                     <input type='hidden' id='idfuncionario$idcalendario$idfuncionario' value='$idfuncionario'>
 
                      <button onclick=mudar_bloqueio_funcionario('$idcalendario$idfuncionario');>
-                    $data_fim_trimestre - $data_fim_trimestre
+                    $data_inicio_trimestre - $data_fim_trimestre
                     </button>
                      <span id='aguarde$idcalendario$idfuncionario'>$marcado</span>
                     <br>
@@ -155,7 +155,7 @@ foreach ($result as $key => $value) {
                     <input type='hidden' id='idfuncionario$idcalendario$idfuncionario' value='$idfuncionario'>
 
                     <button onclick=mudar_bloqueio_funcionario('$idcalendario$idfuncionario');>
-                    $data_fim_trimestre - $data_fim_trimestre
+                    $data_inicio_trimestre - $data_fim_trimestre
                     </button>
                      <span id='aguarde$idcalendario$idfuncionario'>$marcado</span>
                     <br>

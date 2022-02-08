@@ -33,13 +33,18 @@ function listar_data_por_periodo($conexao,$ano,$periodo_id){
       ");
    return $sql->fetchAll();
 }
-// function listar_calendario_por_data($conexao,$data){
-//    $sql = $conexao->query("SELECT * from calendario_letivo,periodo WHERE
-//       calendario_letivo.periodo_id=periodo.id and 
-//       inicio BETWEEM  order by calendario_letivo.periodo_id ASC
-//       ");
-//    return $sql->fetchAll();
-// }
+
+function listar_calendario_por_data($conexao,$data){
+   $sql = $conexao->query("
+      SELECT calendario_letivo.id as 'idcalendario' from 
+      calendario_letivo,
+      periodo 
+      WHERE
+         calendario_letivo.periodo_id=periodo.id and 
+         '$data' BETWEEN  calendario_letivo.inicio and calendario_letivo.fim
+      ");
+   return $sql->fetchAll();
+}
 
 function pesquisar_solicitacao_transferencia_por_aluno($conexao,$matricula,$aceita){
    $sql = $conexao->query("SELECT * from solicitacao_transferencia WHERE matricula=$matricula and aceita =$aceita

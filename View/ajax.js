@@ -4234,6 +4234,7 @@ function mudar_bloqueio_funcionario(campo){
   
   var result = document.getElementById("aguarde"+idcalendario+""+idfuncionario);
   var input = document.getElementById("calendario"+idcalendario+""+idfuncionario);
+  var campo_status = document.getElementById("status"+idcalendario+""+idfuncionario);
    
   var xmlreq = CriaRequest();   
   url="status="+status+"&idcalendario="+idcalendario+"&idfuncionario="+idfuncionario;
@@ -4242,6 +4243,13 @@ function mudar_bloqueio_funcionario(campo){
         if (xmlreq.readyState == 4) {
             if (xmlreq.status == 200) {
                result.innerHTML =xmlreq.responseText;
+               
+               if (status=='1') {
+                    campo_status.value='0';
+               }else{
+                    campo_status.value='1';
+               }
+
             }else{
                 alert("Erro, tente novamente");
             }
