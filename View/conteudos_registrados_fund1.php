@@ -235,7 +235,7 @@ foreach ($result_conteudo as $key => $value) {
   $data_conteudo=converte_data($value['data']);
   $descricao=$value['descricao'];
   $quantidade_aula=$value['quantidade_aula'];
-  $total_quantidade_aula=+$quantidade_aula;
+  $total_quantidade_aula+=$quantidade_aula;
 ?>
  <tr style='mso-yfti-irow:11;height:15.0pt'>
       <td width=66 nowrap valign=bottom style='width:49.65pt;border:solid windowtext 1.0pt;
