@@ -181,7 +181,7 @@
             $res_rowspan=$conexao->query("SELECT count(*) as 'quantidade' FROM parecer_disciplina,serie
               WHERE 
               parecer_disciplina.serie_base_id=serie.id AND
-              parecer_disciplina.serie_base_id=3 and modalidade_id =$idmodalidade  order by modalidade_id asc");   
+              parecer_disciplina.serie_base_id=3 and modalidade_id =$idmodalidade  and parecer_disciplina.ano=$ano_letivo order by modalidade_id asc");   
               $rowspan=1;
               foreach ($res_rowspan as $key => $value) {
                 $rowspan+=$value['quantidade'];
@@ -212,7 +212,7 @@
           $res_parec1=$conexao->query("SELECT parecer_disciplina.descricao,parecer_disciplina.id FROM parecer_disciplina,serie
           WHERE 
           parecer_disciplina.serie_base_id=serie.id AND
-          parecer_disciplina.serie_base_id=3 and modalidade_id =$idmodalidade  order by modalidade_id asc");   
+          parecer_disciplina.serie_base_id=3 and modalidade_id =$idmodalidade  and parecer_disciplina.ano=$ano_letivo  order by modalidade_id asc");   
 
           foreach ($res_parec1 as $key => $value) {
             $parecer_disciplina_id=$value['id'];
