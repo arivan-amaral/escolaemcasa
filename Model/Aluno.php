@@ -243,9 +243,9 @@ function quantidade_nota_pareceres_individual_diario($conexao,$idescola,$idturma
 
 // ************************************************************************
 
-function listar_parecer_disciplina($conexao,$iddisciplina){
+function listar_parecer_disciplina($conexao,$iddisciplina,$ano_letivo){
     $resultado=$conexao->query(" SELECT * FROM parecer_disciplina WHERE
-       disciplina_id =$iddisciplina  and status=1");
+       disciplina_id =$iddisciplina  and status=1  and parecer_disciplina.ano=$ano_letivo ");
     return $resultado;
 }
 

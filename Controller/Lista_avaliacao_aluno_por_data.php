@@ -408,7 +408,7 @@ try {
             if ($idperiodo!=6) {
               // $result.="";
              
-                 $res_par=listar_parecer_disciplina($conexao,$iddisciplina,$idturma);
+                 $res_par=listar_parecer_disciplina($conexao,$iddisciplina,$idturma,$_SESSION['ano_letivo']);
                   foreach ($res_par as $key => $value) {
                     $idparecer=$value['id'];
                     $serie_id=$value['serie_id'];
