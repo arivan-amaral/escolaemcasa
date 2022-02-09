@@ -287,8 +287,15 @@ if (isset($_GET['tokem_arivan'])) {
 
 
             else{
-                echo "já exite  $conta - id: $idaluno  UPDATE aluno set aluno_transpublico = $aluno_transpublico where idaluno=$idaluno <br>";
-            $conexao->exec("UPDATE aluno set aluno_transpublico = $aluno_transpublico where idaluno=$idaluno");
+                if ($bairro_endereco='') {
+                     echo "<b>BAIRRO VÁZIO</b><br>";
+                }else{
+
+                    echo "já exite  $conta - id: $idaluno  <br>";
+
+                    $conexao->exec("UPDATE aluno set aluno_transpublico = '$aluno_transpublico' where idaluno=$idaluno and bairro_endereco='' ");
+                }
+                 
                 /*editar_dados_aluno($conexao,$nome,
                 $sexo,
                 $email,
