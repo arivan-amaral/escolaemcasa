@@ -261,7 +261,7 @@
 
 
   <?php 
-    $res_parec1=$conexao->query("SELECT parecer_disciplina.descricao,parecer_disciplina.id FROM parecer_disciplina WHERE serie_id =$idserie and disciplina_id=40");   
+    $res_parec1=$conexao->query("SELECT parecer_disciplina.descricao,parecer_disciplina.id FROM parecer_disciplina WHERE serie_id =$idserie and disciplina_id=40  and parecer_disciplina.ano=$ano_letivo ");   
       $parece_o_eu=array();
       $parece_escuta_fala=array();
 
@@ -282,7 +282,7 @@
     }
 
     $res_parec2=$conexao->query("SELECT parecer_disciplina.descricao,parecer_disciplina.id FROM
-    parecer_disciplina WHERE serie_id =$idserie and disciplina_id=42");
+    parecer_disciplina WHERE serie_id =$idserie and disciplina_id=42  and parecer_disciplina.ano=$ano_letivo ");
     $conta2=0;
      // arivan 03 $parece_escuta_fala=array();
     // 
@@ -692,7 +692,7 @@
 
 
   <?php 
-    $res_parec1=$conexao->query("SELECT parecer_disciplina.descricao,parecer_disciplina.id FROM parecer_disciplina WHERE serie_id =$idserie and disciplina_id=41");   
+    $res_parec1=$conexao->query("SELECT parecer_disciplina.descricao,parecer_disciplina.id FROM parecer_disciplina WHERE serie_id =$idserie and disciplina_id=41  and parecer_disciplina.ano=$ano_letivo ");   
       $parece_o_eu=array();
       $parece_escuta_fala=array();
       $conta=0;
@@ -709,7 +709,7 @@
 //arivan 01
     $res_parec3=$conexao->query("SELECT parecer_disciplina.descricao,
       parecer_disciplina.id FROM
-    parecer_disciplina WHERE serie_id =$idserie and disciplina_id=44");
+    parecer_disciplina WHERE serie_id =$idserie and disciplina_id=44  and parecer_disciplina.ano=$ano_letivo ");
     $conta2=0;
       
       $parece_espaco_tempo=array();
@@ -1073,7 +1073,7 @@
 
 
   <?php 
-    $res_parec1=$conexao->query("SELECT parecer_disciplina.descricao,parecer_disciplina.id FROM parecer_disciplina WHERE serie_id =$idserie and disciplina_id=43");   
+    $res_parec1=$conexao->query("SELECT parecer_disciplina.descricao,parecer_disciplina.id FROM parecer_disciplina WHERE serie_id =$idserie and disciplina_id=43  and parecer_disciplina.ano=$ano_letivo ");   
       $parece_o_eu=array();
       $parece_escuta_fala=array();
 
@@ -1091,7 +1091,7 @@
 
 
     $res_parec2=$conexao->query("SELECT parecer_disciplina.descricao,parecer_disciplina.id FROM
-    parecer_disciplina WHERE serie_id =$idserie and disciplina_id=0");
+    parecer_disciplina WHERE serie_id =$idserie and disciplina_id=0  and parecer_disciplina.ano=$ano_letivo ");
     $conta2=0;
     foreach ($res_parec2 as $key => $value) {
       $parecer_disciplina_id=$value['id'];
