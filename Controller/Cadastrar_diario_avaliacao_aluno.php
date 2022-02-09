@@ -1,6 +1,8 @@
 <?php
   session_start();
     include("../Model/Conexao.php");
+    include("../Model/Escola.php");
+    
     include("../Model/Aluno.php");
     
     if (!isset($_SESSION['idfuncionario'])) {
@@ -35,9 +37,34 @@ try {
     $nota=0;
     $url_get=$_POST['url_get'];
 
- if($_SESSION['ano_letivo_vigente'] != $_SESSION['ano_letivo']){
-     include_once"Bloqueio_funcoes_para_professor.php";                              
-  }
+    ##################### FUNÇÃO VERIFICA BLOQUEIO DE PROFESSOR ##################
+    $res_bloqueio=listar_data_por_periodo_ano($conexao,$ano_nota,$periodo);
+    $verificar_bloqueio=0;
+    $idcalendario=0;
+    foreach ($res_bloqueio as $key => $value) {
+        $idcalendario=$value['idcalendario'];
+    }
+    $verificar_bloqueio=verificar_bloqueio_funcionario($conexao,$idcalendario,$funcionario_id,1);
+    $conta_bloqueio=0;
+
+    foreach ($verificar_bloqueio as $key => $value) {
+       $conta_bloqueio++;
+    }
+    echo "$idcalendario = $conta_bloqueio | SELECT * from bloquear_acesso  where funcionario_id = $professor_id and calendario_letivo_id=$idcalendario and status=1";
+    if ($conta_bloqueio>0) {
+    
+        $_SESSION['status']=2;
+        $_SESSION['mensagem']='BLOQUEADO PARA PROFESSOR!';
+        $fallback = '../View/index.php';
+        $anterior = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : $fallback;
+         header("location: {$anterior}");
+        exit;
+    }
+      
+
+    ##################### FIM FUNÇÃO VERIFICA BLOQUEIO DE PROFESSOR ##################
+
+
 
 foreach ($_POST['aluno_id'] as $key => $value) {
       $aluno_id=$_POST['aluno_id'][$key];

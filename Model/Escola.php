@@ -34,6 +34,14 @@ function listar_data_por_periodo($conexao,$ano,$periodo_id){
    return $sql->fetchAll();
 }
 
+function listar_data_por_periodo_ano($conexao,$ano,$periodo_id){
+   $sql = $conexao->query("SELECT calendario_letivo.id as 'idcalendario' from calendario_letivo,periodo WHERE
+      calendario_letivo.periodo_id=periodo.id and 
+    ano='$ano' and periodo_id=$periodo_id order by calendario_letivo.periodo_id ASC
+      ");
+   return $sql->fetchAll();
+}
+
 function listar_calendario_por_data($conexao,$data){
    $sql = $conexao->query("
       SELECT calendario_letivo.id as 'idcalendario' from 
