@@ -287,7 +287,7 @@ if (isset($_GET['tokem_arivan'])) {
 
 
             else{
-                if ($bairro_endereco='') {
+                if ($bairro_endereco=='') {
                      echo "<b>BAIRRO VÁZIO</b><br>";
                 }else{
 
