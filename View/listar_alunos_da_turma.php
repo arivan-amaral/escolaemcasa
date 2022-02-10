@@ -29,6 +29,7 @@ include '../Model/Turma.php';
 
 $idturma=$_GET['idturma']; 
 $idescola=$_GET['idescola'];
+$idescola_get=$_GET['idescola'];
 
 $rematricula_escola_id=$_GET['idescola']; 
 $serie_id=$_GET['idserie']; 
@@ -117,24 +118,24 @@ $url_get=$array_url[1];
     }    
 
 
-          echo "$nome_escola - <b class='text-warning'>$nome_turma </b>"  ; ?></button>
+          echo "$nome_escola -  <b class='text-warning'>$nome_turma </b>"  ; ?></button>
         </div>
       </div>
       <br>
 
 
       <?php 
-      if (isset($_GET['teste'])) { 
+      // if (isset($_GET['teste'])) { 
         if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
       
         ?>
         <div class="row">
           <div class="col-sm-3">
-            <a  class="btn btn-block btn-info" onclick="mudar_action_form('Solicitacao_transferencia.php');"  data-toggle='modal' data-target='#modal_transferencia'>Transferir selecionados</a>
+            <a  class="btn btn-block btn-danger" onclick="mudar_action_form('Solicitacao_transferencia.php');"  data-toggle='modal' data-target='#modal_transferencia'>Transferir selecionados</a>
           </div>
           <?php
         }
-   }
+   // }
         if ($_SESSION['ano_letivo']!=$_SESSION['ano_letivo_vigente']) {
          ?>
          <div class="col-sm-3">
@@ -606,7 +607,7 @@ function addChecked(id) {
 <div class="modal fade bd-example-modal-lg" id="modal_transferencia">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header alert alert-danger">
         <h4 class="modal-title">PROCEDIMENTO TRANSFERÊNCIA</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -615,57 +616,59 @@ function addChecked(id) {
       <div class="modal-body">    
 
         <div class="row">
+            <input type="hidden" name="escola_id_origem" id="escola_id_origem" value="<?php echo $idescola_get; ?>">
+                 <div class="col-sm-2">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Ano letivo</label>
+                    <select  id="ano_letivo" class="form-control" onchange="mudar_ano_letivo(this.value);">
+                     <?php 
+                     if (isset($_SESSION['ano_letivo'])) {    
+                      $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
+                      echo "<option value='$ano_letivo_vigente' selected>$ano_letivo_vigente</option>";                            
+                    }
+                    ?>
 
-         <div class="col-sm-2">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Ano letivo</label>
-            <select  id="ano_letivo" class="form-control" onchange="mudar_ano_letivo(this.value);">
-             <?php 
-             if (isset($_SESSION['ano_letivo'])) {    
-              $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
-              echo "<option value='$ano_letivo_vigente' selected>$ano_letivo_vigente</option>";                            
-            }
-            ?>
+                  </select>
+                </div>
+              </div> 
 
-          </select>
+
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Escola pretendida</label>
+              <select class="form-control"  name="escola_id" id="escola"  onchange="listar_vagas_turma_transferencia_aluno()">
+                <option></option>
+                <!-- ESCOLA FORA DO MUNICÍPIO -->
+                <option value='0' style='color: black; background-color:#D2691E;'>ESCOLA FORA DO MUNICÍPIO </option>
+                <?php 
+                $res_turma=escola_associada($conexao,$idfuncionario); 
+                $array_escolas_coordenador=array();
+                $conta_escolas=0;
+                foreach ($res_turma as $key => $value) {
+                  $array_escolas_coordenador[$conta_escolas]=$value['idescola'];
+                  $conta_escolas++;
+                }
+
+                $res_escola=lista_escola($conexao);
+                foreach ($res_escola as $key => $value) {
+                 $idescola=$value['idescola'];
+                 $nome_escola=$value['nome_escola'];
+                  if ($idescola_get != $idescola) {
+                    // code...
+                     if (in_array($idescola, $array_escolas_coordenador) ) { 
+                      echo"<option value='$idescola' style='color: white; background-color:#A9A9A9;'>$nome_escola </option>";
+                    }else{
+                      echo"<option value='$idescola'>$nome_escola </option>";
+                    }
+
+                  }
+
+                  }
+              ?>
+            </select>
+          </div>
         </div>
-      </div> 
-
-
-      <div class="col-sm-4">
-        <div class="form-group">
-          <label for="exampleInputEmail1">Escola pretendida</label>
-          <select class="form-control"  name="escola_id" id="escola"  onchange="listar_vagas_turma_transferencia_aluno()">
-            <option></option>
-            <!-- ESCOLA FORA DO MUNICÍPIO -->
-            <option value='0' style='color: black; background-color:#D2691E;'>ESCOLA FORA DO MUNICÍPIO </option>
-            <?php 
-            $res_turma=escola_associada($conexao,$idfuncionario); 
-            $array_escolas_coordenador=array();
-            $conta_escolas=0;
-            foreach ($res_turma as $key => $value) {
-              $array_escolas_coordenador[$conta_escolas]=$value['idescola'];
-              $conta_escolas++;
-            }
-
-            $res_escola=lista_escola($conexao);
-            foreach ($res_escola as $key => $value) {
-             $idescola=$value['idescola'];
-             $nome_escola=$value['nome_escola'];
-
-             if (in_array($idescola, $array_escolas_coordenador) ) { 
-              echo"<option value='$idescola' style='color: white; background-color:#A9A9A9;'>$nome_escola </option>";
-            }else{
-              echo"<option value='$idescola'>$nome_escola </option>";
-            }
-
-
-          }
-          ?>
-        </select>
-      </div>
-    </div>
-    <div class="col-sm-2">
+    <div class="col-sm-3">
       <div class="form-group">
         <label for="exampleInputEmail1">Série</label>
         <select class="form-control"  name="serie_id" id="serie" >
@@ -682,14 +685,19 @@ function addChecked(id) {
         </select>
       </div>
     </div>       
-    <div class="col-sm-4">
+    <div class="col-sm-8">
       <div class="form-group">
-        <label for="exampleInputEmail1">Observação</label>
-        <textarea class="form-control"  name="observacao" ></textarea>
+        <label for="exampleInputEmail1">Observação <b class="text-danger"> ( Obrigatório )</b></label>
+        <textarea class="form-control"  name="observacao" rows="5"><?php echo "Solicito a aceitação da transferência do aluno que está sendo transferido da ESCOLA: $nome_escola e TURMA: $nome_turma"; ?></textarea>
       </div>
     </div>
 
   </div>
+  <div class="row">
+    <div class="col-sm-12" id="resultado">
+    </div>
+  </div>
+
 
 
 
@@ -714,7 +722,7 @@ function addChecked(id) {
 <div class="modal fade bd-example-modal-lg" id="modal_rematricula">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header alert alert-success">
         <h4 class="modal-title">PROCEDIMENTO REMATRÍCULA</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
