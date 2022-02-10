@@ -102,12 +102,12 @@ $url_get=$array_url[1];
       <div class="col-sm-10">
         <button class="btn btn-block btn-lg btn-secondary">
           <?php
-          $nome_turma='';
+          $nome_turma_global='';
           $nome_disciplina='';
           $res_turma=lista_de_turmas_por_id($conexao,$idturma);
 
           foreach ($res_turma as $key => $value) {
-            $nome_turma=$value['nome_turma'];
+            $nome_turma_global=$value['nome_turma'];
           }           
 
           $nome_escola='';
@@ -688,7 +688,7 @@ function addChecked(id) {
     <div class="col-sm-8">
       <div class="form-group">
         <label for="exampleInputEmail1">Observação <b class="text-danger"> ( Obrigatório )</b></label>
-        <textarea class="form-control"  name="observacao" rows="5"><?php echo "Solicito a aceitação da transferência do aluno que está sendo transferido da ESCOLA: $nome_escola e TURMA: $nome_turma"; ?></textarea>
+        <textarea class="form-control"  name="observacao" rows="5"><?php echo "Solicito a aceitação da transferência do aluno que está sendo transferido da ESCOLA: $nome_escola_global e TURMA: $nome_turma_global"; ?></textarea>
       </div>
     </div>
 
