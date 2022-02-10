@@ -142,7 +142,7 @@ $url_get=$array_url[1];
                 $quantidade
               </td>
               <td>
-                          <a href='lista_solicitacao_transferencia.php' class='dropdown-item'>
+                  
                  <div class='media'>
                    <img src='fotos/user.png' alt='Profissional' class='img-size-50 mr-3 img-circle'>
                    
@@ -160,7 +160,7 @@ $url_get=$array_url[1];
                    </div>
                  </div>
                  
-               </a>
+      
 
                </td>
                <td>
