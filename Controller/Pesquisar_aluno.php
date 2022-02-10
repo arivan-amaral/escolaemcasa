@@ -353,6 +353,7 @@ foreach ($result_ecidade_matricula as $key => $value) {
                                 $result.="
                                   <li>
                                   <form name='declaracao$idaluno' action='declaracao.php' method='post' target='_blank'>
+                                      <input type='hidden' name='ano_letivo_post' value='$calendario_ano'>
                                       <input type='hidden' name='aluno_id' value='$idaluno'>
                                       <input type='hidden' name='escola_id' value='$idescola'>
                                       <input type='hidden' name='turma_id' value='$idturma'>

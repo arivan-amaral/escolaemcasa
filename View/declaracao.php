@@ -21,7 +21,7 @@ $serie_id=$_POST['serie_id'];
 $nome_aluno=$_POST['nome_aluno'];
 $idfuncionario=$_SESSION['idfuncionario'];
 // $ano=2021;
-$ano=$_SESSION['ano_letivo'];
+$ano_letivo=$_POST['ano_letivo_post'];
 $status=1;
 
 ?>
@@ -42,7 +42,7 @@ $status=1;
     </div><!-- /.col -->
   </div>
 
-    <H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>
+    <!-- <H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR> -->
 
   <!-- Main content -->
   <section class="content">
@@ -67,18 +67,48 @@ $status=1;
                           <textarea name="texto_declaracao" id="summernote" style="height: 245.719px;">
                             <p class="MsoNormal" align="center" style="margin-top:0cm;margin-right:0cm;margin-bottom:21.3pt;margin-left:15.85pt;text-align:center;"><b><span style="font-size:18.0pt;line-height:107%;sans-serif;">Atestado de Frequência</span></b></p>
 <?php 
-  $res_aluno= pesquisar_dados_aluno_por_id($conexao,$aluno_id,$ano,$status);
+  $res_aluno= pesquisar_dados_aluno_por_id($conexao,$aluno_id);
   foreach ($res_aluno as $key => $value) {
     $nome_aluno=$value['nome'];
     $naturalidade=$value['naturalidade'];
     $uf_naturalidade=$value['uf_cartorio'];
     $data_nascimento= converte_data($value['data_nascimento']);
-  
-    $nome_escola=$value['nome_escola'];
     $filiacao1=$value['filiacao1'];
     $filiacao2=$value['filiacao2'];
-    $nome_serie=$value['nome_serie'];
-    $nome_turma=$value['nome_turma'];
+  
+         $result_ecidade_matricula=$conexao->query("SELECT
+                    turma.nome_turma,
+                    escola.nome_escola,
+                    escola.idescola,
+                    serie.nome as 'nome_serie',
+                    ecidade_matricula.matricula_codigo as 'matricula',
+                    ecidade_matricula.matricula_datamatricula as 'data_matricula',
+                    ecidade_matricula.datasaida as 'datasaida',
+                    ecidade_matricula.turma_escola as 'idescola',
+                    ecidade_matricula.turma_id as 'idturma',
+                    turma.serie_id as 'idserie',
+                    ecidade_matricula.calendario_ano as 'calendario_ano'
+
+                    FROM
+                      ecidade_matricula,
+                      turma,escola,serie
+                    where
+                
+                      turma.serie_id = serie.id and 
+                      ecidade_matricula.aluno_id = $aluno_id and 
+                      ecidade_matricula.calendario_ano = $ano_letivo and 
+                      ecidade_matricula.turma_id = turma.idturma and 
+                      ecidade_matricula.turma_escola = escola.idescola and 
+                      ecidade_matricula.matricula_situacao !='CANCELADO'
+                      ORDER by ecidade_matricula.calendario_ano desc");
+                       $nome_escola="";
+                       $nome_turma="";
+                       $nome_serie="";
+                      foreach ($result_ecidade_matricula as $key => $value) {
+                         $nome_escola=$value['nome_escola'];
+                         $nome_turma=($value['nome_turma']);
+                         $nome_serie=$value['nome_serie'];
+                      }
  ?>
 <p class="MsoNormal" style="margin-top:0cm;margin-right:3.25pt;margin-bottom:22.55pt;margin-left:19.6pt;text-align:justify;text-justify:inter-ideograph;text-indent:-.5pt;line-height:111%;"><span style="font-size:14.0pt;line-height:111%;font-family:&quot;Arial&quot;,sans-serif;">Atesto que <b> <?php echo $nome_aluno; ?> </b> natural de <?php echo $naturalidade .",". $uf_naturalidade; ?>, nascido(a) em <?php echo $data_nascimento; ?>, filho(a) de
 <?php

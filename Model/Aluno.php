@@ -1224,32 +1224,10 @@ function meus_dados_aluno($conexao,$idaluno){
 function dados_aluno($conexao,$idaluno){
   $res=$conexao->query("SELECT imagem.nome as 'foto', aluno.nome as 'nome',aluno.idaluno as 'idaluno', aluno.whatsapp, aluno.email,aluno.senha, aluno.whatsapp_responsavel FROM aluno,imagem where  id_aluno=idaluno and idaluno = $idaluno  ORDER by nome ASC");
   return $res;
-}
+} 
 
-function pesquisar_dados_aluno_por_id($conexao,$idaluno,$ano,$status){
-  $res=$conexao->query("
-    SELECT 
-        aluno.nome as 'nome',
-        naturalidade,
-        uf_cartorio, 
-        data_nascimento,
-        filiacao1,
-        filiacao2,
-        nome_turma, 
-        nome_escola,
-        serie.nome as 'nome_serie' 
-    FROM 
-        aluno,ano_letivo,serie, turma, escola 
-    where 
-            turma.serie_id=serie.id and
-            escola_id=idescola and
-            turma_id=idturma and
-            aluno_id=idaluno and
-            ano_letivo.ano='$ano' and
-            ano_letivo.status_letivo=$status and
-            idaluno = $idaluno  
-
-            ");
+function pesquisar_dados_aluno_por_id($conexao,$idaluno){
+  $res=$conexao->query("SELECT * FROM aluno WHERE aluno.idaluno =$idaluno");
 
   return $res;
 }
