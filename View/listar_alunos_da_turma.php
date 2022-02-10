@@ -110,15 +110,15 @@ $url_get=$array_url[1];
             $nome_turma_global=$value['nome_turma'];
           }           
 
-          $nome_escola='';
+          $nome_escola_global='';
     $res_escola=buscar_escola_por_id($conexao,$idescola);
-    $nome_escola="";
+    $nome_escola_global="";
     foreach ($res_escola as $key => $value) {
-      $nome_escola=$value['nome_escola'];
+      $nome_escola_global=$value['nome_escola'];
     }    
 
 
-          echo "$nome_escola -  <b class='text-warning'>$nome_turma </b>"  ; ?></button>
+          echo "$nome_escola_global-  <b class='text-warning'>$nome_turma_global </b>"  ; ?></button>
         </div>
       </div>
       <br>
