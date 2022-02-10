@@ -452,7 +452,7 @@ $idcoordenador=$_SESSION['idfuncionario'];
                         <label for="exampleInputEmail1">Estado onde nasceu</label>
                          
                          <select  class="form-control" id="exampleInputEmail1" name="localidade" >
-
+                          <option></option>
                         <?php 
                         $pesquisa_cidadade=listar_estado($conexao);
                         foreach ($pesquisa_cidadade as $key => $value) {

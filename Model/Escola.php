@@ -67,9 +67,55 @@ function pesquisar_solicitacao_transferencia_por_escola($conexao,$visualizada,$a
       escola_id=idescola 
        and visualizada= $visualizada and aceita = $aceita  $sql_escolas ) order by solicitacao_transferencia.id desc 
       ");
+   return $sql->fetchAll();
+}
 
+function lista_solicitacao_transferencia_recebida($conexao,$visualizada,$aceita, $sql_escolas){
+   $sql = $conexao->query("SELECT 
+              solicitacao_transferencia.id as 'idsolicitacao',
+              aluno.nome,
+              data_solicitacao,
+              solicitacao_transferencia.observacao,
+              escola_id_origem,
+              escola_id,
+              serie_id,
+              serie.nome as 'nome_serie',
+              aceita
+               from  funcionario,aluno,escola,solicitacao_transferencia,serie WHERE 
+      aluno_id=idaluno and
+      funcionario.idfuncionario = profissional_solicitante and 
+      solicitacao_transferencia.serie_id = serie.id and 
+      escola_id=idescola 
+       and visualizada= $visualizada   $sql_escolas ) order by solicitacao_transferencia.id desc 
+      ");
+   return $sql->fetchAll();
+}
+function lista_solicitacao_transferencia_enviada($conexao,$visualizada, $sql_escolas){
+   $sql = $conexao->query("SELECT * from  funcionario,aluno,escola,solicitacao_transferencia WHERE 
+      aluno_id=idaluno and
+      funcionario.idfuncionario = profissional_solicitante and 
+      escola_id_origem=idescola 
+       and visualizada= $visualizada  $sql_escolas ) order by solicitacao_transferencia.id desc 
+      ");
+   return $sql->fetchAll();
+}
 
-
+function quantidade_solicitacao_transferencia_enviada_por_escola($conexao,$aceita, $sql_escolas){
+   $sql = $conexao->query("SELECT COUNT(*) as 'quantidade' from  aluno,escola,solicitacao_transferencia WHERE 
+      aluno_id=idaluno and
+      escola_id_origem=idescola  and
+       aceita = $aceita 
+        $sql_escolas ) order by solicitacao_transferencia.id desc 
+      ");
+   return $sql->fetchAll();
+}
+function quantidade_solicitacao_transferencia_recebida_por_escola($conexao,$aceita, $sql_escolas){
+   $sql = $conexao->query("SELECT COUNT(*) as 'quantidade' from aluno,escola,solicitacao_transferencia WHERE 
+      aluno_id=idaluno and
+      escola_id=idescola  and
+       aceita = $aceita 
+        $sql_escolas ) order by solicitacao_transferencia.id desc 
+      ");
    return $sql->fetchAll();
 }
 
@@ -77,8 +123,8 @@ function pesquisar_solicitacao_transferencia_por_escola($conexao,$visualizada,$a
 function solicitacao_transferencia($conexao,$matricula,$aluno_id, $serie_id,
 $profissional_solicitante,
 $escola_id,
-$observacao,$ano_letivo,$ano_letivo_vigente,$aceita){
-   $sql = $conexao->prepare("INSERT INTO solicitacao_transferencia(aluno_id, serie_id, profissional_solicitante,  escola_id,   observacao, ano_letivo,ano_letivo_vigente,matricula,aceita) VALUES ( :aluno_id, :serie_id, :profissional_solicitante,  :escola_id,:observacao,:ano_letivo,:ano_letivo_vigente,:matricula,:aceita)
+$observacao,$ano_letivo,$ano_letivo_vigente,$aceita,$escola_id_origem){
+   $sql = $conexao->prepare("INSERT INTO solicitacao_transferencia(aluno_id, serie_id, profissional_solicitante,  escola_id,   observacao, ano_letivo,ano_letivo_vigente,matricula,aceita,escola_id_origem) VALUES ( :aluno_id, :serie_id, :profissional_solicitante,  :escola_id,:observacao,:ano_letivo,:ano_letivo_vigente,:matricula,:aceita,:escola_id_origem)
       ");
 
    $sql->bindParam('aluno_id',$aluno_id);
@@ -91,6 +137,7 @@ $observacao,$ano_letivo,$ano_letivo_vigente,$aceita){
    $sql->bindParam('ano_letivo_vigente',$ano_letivo_vigente);
    $sql->bindParam('matricula',$matricula);
    $sql->bindParam('aceita',$aceita);
+   $sql->bindParam('escola_id_origem',$escola_id_origem);
 
    $sql->execute();
 }  

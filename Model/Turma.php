@@ -30,6 +30,29 @@
       return $sql->fetchAll();
    }
 
+
+   function listar_turma_turno_escola($conexao,$idescola,$idserie){
+  
+      $sql=$conexao->prepare("SELECT * FROM 
+         relacionamento_turma_escola,escola,turma
+       WHERE
+
+      relacionamento_turma_escola.escola_id= escola.idescola AND
+      relacionamento_turma_escola.turma_id= turma.idturma 
+    
+      AND escola_id= :idescola 
+      AND turma.serie_id= :idserie 
+
+      GROUP BY turma.idturma
+      ORDER BY turma.nome_turma
+      ");
+      $sql->bindParam("idescola",$idescola);
+      $sql->bindParam("idserie",$idserie);
+
+      $sql->execute();
+      return $sql->fetchAll();
+   }
+
    function cadastrar_turma_escola($conexao,$idEscola,$idTurma,$turno,$ano,$vagas) {
       $sql = $conexao->prepare("INSERT INTO relacionamento_turma_escola (escola_id,turma_id,turno,ano,quantidade_vaga) VALUES (:idEscola,:idTurma,:turno,:ano,:vagas)");
       $sql->execute(array(

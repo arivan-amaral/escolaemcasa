@@ -10,6 +10,7 @@ try {
 
 	$serie_id=$_POST['serie_id'];
 	$escola_id=$_POST['escola_id'];
+	$escola_id_origem=$_POST['escola_id_origem'];
 	$observacao=$_POST['observacao'];
 	$url_get=$_POST['url_get'];
 	$ano_letivo=$_SESSION['ano_letivo'];
@@ -27,7 +28,7 @@ try {
 		foreach ($_POST['idaluno'] as $key => $value) {
 			$aluno_id=$_POST['idaluno'][$key];
 			$nome_aluno=$_POST['nome_aluno'][$key];
-			$matricula_aluno=$_POST['matricula_aluno'][$key];
+			$matricula_aluno=$_POST["matricula_aluno".$aluno_id];
 			$resultado=$_POST['resultado'][$key];
 			
 			$aceita=0; //neutra
@@ -50,7 +51,7 @@ try {
 					$serie_id,	
 					$profissional_solicitante,
 					$escola_id,
-					$observacao,$ano_letivo,$ano_letivo_vigente,$aceita);
+					$observacao,$ano_letivo,$ano_letivo_vigente,$aceita,$escola_id_origem);
 			 	}
 			 }else{
 			 	$solicitacao_pendente.=" | $nome_aluno ";

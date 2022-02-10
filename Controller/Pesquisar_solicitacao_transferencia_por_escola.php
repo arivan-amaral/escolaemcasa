@@ -27,7 +27,7 @@ $res= pesquisar_solicitacao_transferencia_por_escola($conexao,$visualizada,$acei
     $data_solicitacao= converte_data_hora($value['data_solicitacao']);
 
      $result .="
-    <a href='#' class='dropdown-item'>
+    <a href='lista_solicitacao_transferencia.php' class='dropdown-item'>
        <div class='media'>
          <img src='fotos/user.png' alt='Profissional' class='img-size-50 mr-3 img-circle'>
          

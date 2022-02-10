@@ -70,7 +70,7 @@
 
    
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">Ver tudo</a>
+          <a href="lista_solicitacao_transferencia.php" class="dropdown-item dropdown-footer">Ver tudo</a>
         </div> 
       </li>
 

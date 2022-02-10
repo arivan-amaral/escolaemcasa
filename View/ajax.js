@@ -326,6 +326,8 @@ function pesquisar_solicitacao_transferencia_por_escola(){
 
 
 
+
+
 function alert_preencha_todos_campos(mensagem) {
  Swal.fire({
           position: 'center',
@@ -537,13 +539,13 @@ function listar_vagas_turma_transferencia_aluno(){
     var escola = document.getElementById('escola').value;
     var serie = document.getElementById('serie').value;
      
+            result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
         var xmlreq = CriaRequest();
         xmlreq.open("GET", "../Controller/Listar_vagas_turma_transferencia_aluno.php?escola="+escola+"&serie="+serie, true);
 
         xmlreq.onreadystatechange = function(){
       
          if (xmlreq.readyState == 4) {
-            result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
 
              if (xmlreq.status == 200) {
                 result.innerHTML = xmlreq.responseText;
@@ -4257,3 +4259,4 @@ function mudar_bloqueio_funcionario(campo){
     };
     xmlreq.send(null);
 }
+

@@ -47,24 +47,24 @@ function buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idal
 }
 
 
-function quantidade_aluno_turma($conexao,$idturma,$idescola){
-  $sql=$conexao->prepare("SELECT COUNT(*) as 'quantidade' FROM
-   aluno, ano_letivo,turma 
-   WHERE 
-   ano_letivo.status_letivo=1 AND 
-   turma.idturma=:idturma and
-    aluno_id=idaluno and 
-    turma_id=idturma and 
-    escola_id=:idescola  
+// function quantidade_aluno_turma($conexao,$idturma,$idescola){
+//   $sql=$conexao->prepare("SELECT COUNT(*) as 'quantidade' FROM
+//    aluno, turma 
+//    WHERE 
 
-    ORDER by nome ASC");
+//    turma.idturma=:idturma and
+//     aluno_id=idaluno and 
+//     turma_id=idturma and 
+//     escola_id=:idescola  
+
+//     ORDER by nome ASC");
   
-  $sql->bindParam("idturma",$idturma);
-  $sql->bindParam("idescola",$idescola);
-  $sql->execute();
+//   $sql->bindParam("idturma",$idturma);
+//   $sql->bindParam("idescola",$idescola);
+//   $sql->execute();
 
-  return $sql->fetchAll();
-}
+//   return $sql->fetchAll();
+// }
 
 
 function pesquisar_aluno($conexao,$pesquisa,$codigo_sql ) {
