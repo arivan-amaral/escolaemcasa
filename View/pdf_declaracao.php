@@ -2,16 +2,47 @@
 include_once '../Model/Conexao.php';
 include_once '../Model/Aluno.php';
 $idaluno=$_POST['aluno_id'];
-$res=pesquisar_dados_aluno_por_id($conexao,$idaluno,date("Y"),1); 
+$ano_letivo=$_POST['ano_letivo'];
+
 $texto_declaracao=$_POST['texto_declaracao'];
 $nome_escola="";
 $nome_turma="";
 $nome_aluno="";
-foreach ($res as $key => $value) {
-  $nome_aluno=$value['nome'];
-  $nome_escola=$value['nome_escola'];
-  $nome_turma=$value['nome_turma'];
-}
+
+
+$result_ecidade_matricula=$conexao->query("SELECT
+           turma.nome_turma,
+           escola.nome_escola,
+           escola.idescola,
+           serie.nome as 'nome_serie',
+           ecidade_matricula.matricula_codigo as 'matricula',
+           ecidade_matricula.matricula_datamatricula as 'data_matricula',
+           ecidade_matricula.datasaida as 'datasaida',
+           ecidade_matricula.turma_escola as 'idescola',
+           ecidade_matricula.turma_id as 'idturma',
+           turma.serie_id as 'idserie',
+           ecidade_matricula.calendario_ano as 'calendario_ano'
+
+           FROM
+             ecidade_matricula,
+             turma,escola,serie
+           where
+       
+             turma.serie_id = serie.id and 
+             ecidade_matricula.aluno_id = $idaluno and 
+             ecidade_matricula.calendario_ano = $ano_letivo and 
+             ecidade_matricula.turma_id = turma.idturma and 
+             ecidade_matricula.turma_escola = escola.idescola and 
+             ecidade_matricula.matricula_situacao !='CANCELADO'
+             ORDER by ecidade_matricula.calendario_ano desc");
+              $nome_escola="";
+              $nome_turma="";
+              $nome_serie="";
+             foreach ($result_ecidade_matricula as $key => $value) {
+                $nome_escola=$value['nome_escola'];
+                $nome_turma=($value['nome_turma']);
+                $nome_serie=$value['nome_serie'];
+             }
 
 ?>
 <html xmlns:v="urn:schemas-microsoft-com:vml"
@@ -98,7 +129,7 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
 
 <div class="content-wrapper" style="min-height: 529px;">
  <section class="content">
-    <div class="container-fluid">
+    <div class="container-fluid" style="border: 3px solid black;">
 <br>
  <!-- <H1 class="no-print"> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR> -->
 
@@ -107,7 +138,7 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
  <table>
 
   <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:15.75pt'>
-   <td width=100 nowrap rowspan=1 valign=top style='width:102.6pt;border:solid windowtext 1.0pt;
+   <td width='100%' nowrap rowspan=1 valign=top style='width:102.6pt;border:solid windowtext 1.0pt;
    border-right:none;mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:
    solid windowtext .5pt;mso-border-bottom-alt:solid windowtext .5pt;padding:
    0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
