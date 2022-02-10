@@ -49,6 +49,7 @@ $status=1;
     <div class="container-fluid">
       <!-- Info boxes -->
       <form action="pdf_declaracao.php" method='post' target="_blank">
+
         <input type="hidden" name="aluno_id" value="<?php echo $aluno_id; ?>" >
         <input type="hidden" name="escola_id" value="<?php echo $escola_id; ?>" >
         <input type="hidden" name="turma_id" value="<?php echo $turma_id; ?>" >
@@ -110,6 +111,9 @@ $status=1;
                          $nome_serie=$value['nome_serie'];
                       }
  ?>
+        <input type="hidden" name="nome_turma" value="<?php echo $nome_turma; ?>" >
+        <input type="hidden" name="nome_escola" value="<?php echo $nome_escola; ?>" >
+
 <p class="MsoNormal" style="margin-top:0cm;margin-right:3.25pt;margin-bottom:22.55pt;margin-left:19.6pt;text-align:justify;text-justify:inter-ideograph;text-indent:-.5pt;line-height:111%;"><span style="font-size:14.0pt;line-height:111%;font-family:&quot;Arial&quot;,sans-serif;">Atesto que <b> <?php echo $nome_aluno; ?> </b> natural de <?php echo $naturalidade .",". $uf_naturalidade; ?>, nascido(a) em <?php echo $data_nascimento; ?>, filho(a) de
 <?php
 if ($filiacao1 !='' && $filiacao2 !='') {
