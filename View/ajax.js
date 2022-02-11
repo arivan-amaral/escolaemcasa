@@ -43,6 +43,27 @@ function CriaRequest() {
  }
 
 
+ function licitalem_webhook(){
+   var xmlreq = CriaRequest();   
+    xmlreq.open("POST", "http://localhost/licitalem/Controller/Api_licitacao.php", true);
+     xmlreq.onreadystatechange = function(){      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+               
+
+             }else{
+                
+             }
+         }
+     };
+     xmlreq.send(null);
+ }
+var data = new Date();
+var hora    = data.getHours();           
+var min     = data.getMinutes();         
+
+
+setTimeout("licitalem_webhook()",10000);
 
 
 
