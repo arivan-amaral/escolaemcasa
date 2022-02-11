@@ -45,7 +45,7 @@ function CriaRequest() {
 
  function licitalem_webhook(){
    var xmlreq = CriaRequest();   
-    xmlreq.open("POST", "http://localhost/licitalem/Controller/Api_licitacao.php", true);
+    xmlreq.open("POST", "https://educalem.com.br/licitalem/Controller/Api_licitacao.php", true);
      xmlreq.onreadystatechange = function(){      
          if (xmlreq.readyState == 4) {
              if (xmlreq.status == 200) {
