@@ -41,6 +41,16 @@
   <link rel="stylesheet" href="plugins/codemirror/theme/monokai.css">
   <link rel="stylesheet" href="plugins/simplemde/simplemde.min.css">
   
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Bootstrap Color Picker -->
+  <link rel="stylesheet" href="plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  
+
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHETRNN05Z"></script>
   <script>
