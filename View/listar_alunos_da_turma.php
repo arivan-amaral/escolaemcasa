@@ -616,7 +616,8 @@ function addChecked(id) {
       <div class="modal-body">    
 
         <div class="row">
-            <input type="hidden" name="escola_id_origem" id="escola_id_origem" value="<?php echo $idescola_get; ?>">
+            <input type="hidden" name="escola_id_origem" id="escola_id_origem" value="<?php echo $idescola_get; ?>">  
+            <input type="hidden" name="turma_id_origem" id="turma_id_origem" value="<?php echo $idturma; ?>">
                  <div class="col-sm-2">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Ano letivo</label>

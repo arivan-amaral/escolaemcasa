@@ -4281,3 +4281,118 @@ function mudar_bloqueio_funcionario(campo){
     xmlreq.send(null);
 }
 
+
+  
+function listar_turma_aceita_transferencia(idsolicitacao){
+  
+  var aceitar_idescola_destino =document.getElementById("aceitar_idescola_destino"+idsolicitacao).value;
+  var aceitar_ano_letivo=document.getElementById("aceitar_ano_letivo"+idsolicitacao).value;
+  var aceitar_turno=document.getElementById("aceitar_turno"+idsolicitacao).value;
+  var aceitar_idserie_destino=document.getElementById("aceitar_idserie_destino"+idsolicitacao).value;
+  var vaga_escola=document.getElementById("vaga_escola"+idsolicitacao);
+  var aceitar_nova_turma=document.getElementById("aceitar_nova_turma"+idsolicitacao);
+
+  var xmlreq = CriaRequest();   
+  url="aceitar_idescola_destino="+aceitar_idescola_destino;
+  url+="&aceitar_ano_letivo="+aceitar_ano_letivo;
+  url+="&aceitar_turno="+aceitar_turno;
+  url+="&idsolicitacao="+idsolicitacao;
+  url+="&aceitar_idserie_destino="+aceitar_idserie_destino;
+
+   xmlreq.open("GET", "../Controller/Listar_turma_aceita_transferencia.php?"+url, true);
+    xmlreq.onreadystatechange = function(){      
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {
+               aceitar_nova_turma.innerHTML =xmlreq.responseText;
+               vaga_escola.value=0;
+
+            }else{
+                alert("Erro, tente novamente");
+            }
+        }
+    };
+    xmlreq.send(null);
+}
+
+
+
+
+function aceitar_solicitacao_transferencia(form1){     
+      var formData = new FormData(document.getElementById("aceita_solicitacao"+form1));      
+      $.ajax({
+              type: 'POST',
+              url: '../Controller/Aceitar_solicitacao_transferencia.php',
+              data: formData,
+              contentType: false,
+              cache: false,
+              processData:false,
+              beforeSend: function(){
+                    $('#btnSendaceita_solicitacao'+form1).attr("disabled","disabled");
+                    $('#aceita_solicitacao'+form1).css("opacity",".5");
+              },
+              success: function(msg){  
+              console.log(msg);               
+                  if(msg == 'Ação concluída')
+                  {
+                      $('#aceita_solicitacao'+form1)[0].reset();
+                      
+                      Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Ação Concluída',
+                           text: ' '+msg,
+                        showConfirmButton: false,
+                        timer: 3000
+                      });
+                       setTimeout(function(){window.location.href="lista_solicitacao_transferencia.php";},1000);
+
+                  }
+                  else
+                  {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: 'ATENÇÃO: '+msg,
+                           text: ' ',
+                        showConfirmButton: false,
+                        timer: 3000
+                      });
+                  }
+                  $('#aceita_solicitacao'+form1).css("opacity","");
+                  $("#btnSendaceita_solicitacao"+form1).removeAttr("disabled");
+              }
+          });
+    }
+
+
+
+
+
+    function quantidade_vaga_restante_transferencia_turma(idsolicitacao){
+        var result = document.getElementById("vaga_escola"+idsolicitacao);
+        var xmlreq = CriaRequest();   
+        var aceitar_idescola_destino = document.getElementById("aceitar_idescola_destino"+idsolicitacao).value;
+        var aceitar_ano_letivo = document.getElementById("aceitar_ano_letivo"+idsolicitacao).value;
+        var aceitar_turno = document.getElementById("aceitar_turno"+idsolicitacao).value;
+        var aceitar_nova_turma = document.getElementById("aceitar_nova_turma"+idsolicitacao).value;
+ 
+        var url="aceitar_idescola_destino="+aceitar_idescola_destino;
+         url+="&aceitar_ano_letivo="+aceitar_ano_letivo;
+         url+="&aceitar_turno="+aceitar_turno;
+         url+="&aceitar_nova_turma="+aceitar_nova_turma;
+
+       xmlreq.open("GET", "../Controller/Quantidade_vaga_restante_transferencia_turma.php?"+url, true);
+        xmlreq.onreadystatechange = function(){      
+            if (xmlreq.readyState == 4) {
+                if (xmlreq.status == 200) {
+                      result.value =  xmlreq.responseText;
+                }else{
+                    alert("Erro ao pesquisar");                   
+                    
+                }
+            }
+        };
+        xmlreq.send(null);
+    }
+
+

@@ -9,6 +9,7 @@ try {
 
 
 	$serie_id=$_POST['serie_id'];
+	$turma_id_origem=$_POST['turma_id_origem'];
 	$escola_id=$_POST['escola_id'];
 	$escola_id_origem=$_POST['escola_id_origem'];
 	$observacao=$_POST['observacao'];
@@ -51,7 +52,7 @@ try {
 					$serie_id,	
 					$profissional_solicitante,
 					$escola_id,
-					$observacao,$ano_letivo,$ano_letivo_vigente,$aceita,$escola_id_origem);
+					$observacao,$ano_letivo,$ano_letivo_vigente,$aceita,$escola_id_origem,$turma_id_origem);
 			 	}
 			 }else{
 			 	$solicitacao_pendente.=" | $nome_aluno ";

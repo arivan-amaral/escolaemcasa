@@ -73,9 +73,12 @@ function pesquisar_solicitacao_transferencia_por_escola($conexao,$visualizada,$a
 function lista_solicitacao_transferencia_recebida($conexao,$visualizada,$aceita, $sql_escolas){
    $sql = $conexao->query("SELECT 
               solicitacao_transferencia.id as 'idsolicitacao',
+              solicitacao_transferencia.matricula as 'matricula_aluno',
+              aluno.idaluno,
               aluno.nome,
               data_solicitacao,
               solicitacao_transferencia.observacao,
+              solicitacao_transferencia.turma_id_origem,
               escola_id_origem,
               escola_id,
               serie_id,
@@ -119,12 +122,22 @@ function quantidade_solicitacao_transferencia_recebida_por_escola($conexao,$acei
    return $sql->fetchAll();
 }
 
+
+               
+function aceitar_solicitacao_transferencia($conexao,$profissional_resposta,$idsolicitacao,$aceita){
+   $sql = $conexao->prepare("UPDATE solicitacao_transferencia SET profissional_resposta= :profissional_resposta , aceita= :aceita WHERE id = :idsolicitacao ");
+
+   $sql->bindParam('profissional_resposta',$profissional_resposta);
+   $sql->bindParam('aceita',$aceita);
+   $sql->bindParam('idsolicitacao',$idsolicitacao);
+   $sql->execute();
+}  
                
 function solicitacao_transferencia($conexao,$matricula,$aluno_id, $serie_id,
 $profissional_solicitante,
 $escola_id,
-$observacao,$ano_letivo,$ano_letivo_vigente,$aceita,$escola_id_origem){
-   $sql = $conexao->prepare("INSERT INTO solicitacao_transferencia(aluno_id, serie_id, profissional_solicitante,  escola_id,   observacao, ano_letivo,ano_letivo_vigente,matricula,aceita,escola_id_origem) VALUES ( :aluno_id, :serie_id, :profissional_solicitante,  :escola_id,:observacao,:ano_letivo,:ano_letivo_vigente,:matricula,:aceita,:escola_id_origem)
+$observacao,$ano_letivo,$ano_letivo_vigente,$aceita,$escola_id_origem,$turma_id_origem){
+   $sql = $conexao->prepare("INSERT INTO solicitacao_transferencia(aluno_id, serie_id, profissional_solicitante,  escola_id,   observacao, ano_letivo,ano_letivo_vigente,matricula,aceita,escola_id_origem,turma_id_origem) VALUES ( :aluno_id, :serie_id, :profissional_solicitante,  :escola_id,:observacao,:ano_letivo,:ano_letivo_vigente,:matricula,:aceita,:escola_id_origem,:turma_id_origem)
       ");
 
    $sql->bindParam('aluno_id',$aluno_id);
@@ -138,6 +151,7 @@ $observacao,$ano_letivo,$ano_letivo_vigente,$aceita,$escola_id_origem){
    $sql->bindParam('matricula',$matricula);
    $sql->bindParam('aceita',$aceita);
    $sql->bindParam('escola_id_origem',$escola_id_origem);
+   $sql->bindParam('turma_id_origem',$turma_id_origem);
 
    $sql->execute();
 }  
@@ -187,6 +201,13 @@ $sql->bindParam("turno_nome",$turno_nome);
 
 
 function mudar_situacao_rematricular_aluno($conexao,$matricula_codigo){
+   $sql = $conexao->prepare("UPDATE ecidade_matricula set matricula_concluida='S', matricula_ativa='N' where matricula_codigo =:matricula_codigo
+      ");
+   $sql->bindParam("matricula_codigo",$matricula_codigo);
+   $sql->execute();
+}
+
+function mudar_situacao_transferencia_aluno($conexao,$matricula_codigo,$procedimento){
    $sql = $conexao->prepare("UPDATE ecidade_matricula set matricula_concluida='S', matricula_ativa='N' where matricula_codigo =:matricula_codigo
       ");
    $sql->bindParam("matricula_codigo",$matricula_codigo);

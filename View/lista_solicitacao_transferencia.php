@@ -25,7 +25,7 @@ include '../Model/Serie.php';
 include '../Model/Turma.php';
 
  
-$array_url=explode('php?', $_SERVER["REQUEST_URI"]);
+$array_url=explode('php', $_SERVER["REQUEST_URI"]);
 $url_get=$array_url[1];
 $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
 
@@ -67,8 +67,7 @@ $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
 <!-- /.content-header -->
 
 
-<h1 class="text-danger
-">PÁGINA EM MANUTENÇÃO</h1>
+
 
 <!-- Main content -->
 
@@ -105,7 +104,10 @@ $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
           $res= lista_solicitacao_transferencia_recebida($conexao,$visualizada,$aceita,$sql_escolas);
             foreach ($res as $key => $value) {
               $idsolicitacao=$value['idsolicitacao'];
+              $idaluno=$value['idaluno'];
+              $turma_id_origem=$value['turma_id_origem'];
               $nome_aluno=$value['nome'];
+              $matricula_aluno=$value['matricula_aluno'];
               $data_solicitacao= converte_data_hora($value['data_solicitacao']);
 
               $observacao=$value['observacao'];
@@ -127,9 +129,12 @@ $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
                 $cor="primary";
                 $status="PENDENTE";
                 $opcao="
-                <a class='btn btn-$cor'  data-toggle='modal' data-target='#modal_transferencia$idsolicitacao'>VER VAGAS/ACEITAR</a><br><br>
-                <a class='btn btn-danger'>REJEITAR</a><br>
+                <a class='btn btn-$cor'  data-toggle='modal' data-target='#modal_transferencia$idsolicitacao'>VER VAGAS/ACEITAR</a><br><br> 
+
+                <a class='btn btn-danger'  data-toggle='modal' data-target='#rejeitar_transferencia$idsolicitacao'>REJEITAR</a><br><br>
+
                 ";
+                // <a class='btn btn-danger' ata-toggle='modal' data-target='#rejeita_solicitacao$idsolicitacao'>REJEITAR</a><br>
 
 
               }
@@ -184,45 +189,49 @@ $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
                <div class='modal fade bd-example-modal-lg' id='modal_transferencia$idsolicitacao'>
                  <div class='modal-dialog modal-lg'>
                    <div class='modal-content'>
-                     <div class='modal-header alert alert-danger'>
+                     <div class='modal-header alert alert-primary'>
                        <h4 class='modal-title'>ACEITAR TRANSFERÊNCIA DO ALUNO: $nome_aluno</h4>
                        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                          <span aria-hidden='true'>&times;</span>
                        </button>
                      </div>
+                  <form method='post'  id='aceita_solicitacao$idsolicitacao' name='aceita_solicitacao$idsolicitacao'>
                      <div class='modal-body'>    
 
                         <div class='row'>
                               <div class='col-sm-3'>
+
+
+                <input  type='hidden' name='aceitar_idserie_destino' id='aceitar_idserie_destino$idsolicitacao' class='form-control' value='$idserie'>      
+                  
+                <input  type='hidden' name='turma_id_origem' id='turma_id_origem$idsolicitacao' class='form-control' value='$turma_id_origem'>      
+               
+                <input  type='hidden' name='idsolicitacao' class='form-control' value='$idsolicitacao'>
+                <input  type='hidden' name='matricula_aluno' class='form-control' value='$matricula_aluno'>
+                                   
                                     <div class='form-group'>
                                       <label for='exampleInputEmail1'>Ano letivo</label>
-                                      <select  id='ano_letivo' class='form-control' onchange='mudar_ano_letivo(this.value);'>
+                                      <select  id='aceitar_ano_letivo$idsolicitacao' name='aceitar_ano_letivo' class='form-control' >
                                        <option value='$ano_letivo_vigente' selected>$ano_letivo_vigente</option>
-
                                     </select>
 
-                                    <select hidden class='form-control'  name='troca_turma_serie_id_antiga' id='troca_turma_serie_id_antiga'>
-                                        <option value='$idserie'>$idserie </option>';
+                                
+                                      </div>
+                                    </div>
                               
-                                    </select>
-                                  
 
-                                <input type='hidden' class='form-control'  name='troca_turma_serie_id' id='troca_turma_serie_id' value='$idserie'>
+                                <input type='hidden' class='form-control' id='aceitar_idescola_destino$idsolicitacao' name='aceitar_idescola_destino' value='$id_escola_destino'>    
 
-                                <input type='hidden' class='form-control'  name='rematricula_escola_id' id='rematricula_escola_id' value='$id_escola_destino'> 
-                                  </div>
-                                </div>   
+                                <input type='hidden' class='form-control' id='idaluno$idsolicitacao' name='idaluno' value='$idaluno'> 
 
-                               
-
-
-
+                                <input type='hidden' class='form-control'    id='aceitar_idescola_origem$idsolicitacao' name='aceitar_idescola_origem' value='$id_escola_destino'> 
+                                   
 
                                 <div class='col-sm-3'>
                                  <div class='form-group'>
 
                                    <label for='exampleInputEmail1' class='text-danger'>Novo Turno</label>
-                                   <select class='form-control' onchange=troca_de_turma_escola_por_serie('rematricula'); name='troca_turma_turno' id='troca_turma_turno'  >
+                                   <select class='form-control' name='aceitar_turno' id='aceitar_turno$idsolicitacao' onchange='listar_turma_aceita_transferencia($idsolicitacao);'>
                                      <option></option>
                                      <option value='MATUTINO'>MATUTINO</option>
                                      <option value='VESPERTINO'>VESPERTINO</option>
@@ -237,16 +246,17 @@ $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
                                <div class='col-sm-3'>
                                  <div class='form-group' >
                                     <label class='text-danger'>Nova turma</label>
-                                    <select id='lista_de_turmas_rematricula' name='lista_de_turmas_troca_turma' class='form-control' onchange=quantidade_vaga_turma('troca_turma');>
+                                    <select id='aceitar_nova_turma$idsolicitacao' name='aceitar_nova_turma' class='form-control' onchange='quantidade_vaga_restante_transferencia_turma($idsolicitacao);' >
 
                                     </select>
                                  </div>
-                               </div> 
+                               </div>
+
                                 <div class='col-sm-4'>
                                  <div class='form-group' >
                                    <label for='exampleInputEmail1' class='text-danger'>Vagas restantes na turma</label>
 
-                                   <input type='text'  name='quantidade_vagas_restante_troca_turma' id='quantidade_vagas_restante_troca_turma' value='0' readonly class='alert alert-secondary'>
+                                   <input type='text'  name='vaga_escola' id='vaga_escola$idsolicitacao' value='0' readonly class='alert alert-secondary'>
 
                                  </div>
                                </div>
@@ -257,7 +267,52 @@ $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
                   <button type='button' class='btn btn-default' data-dismiss='modal'>FECHAR</button>
                   <!-- onclick='carregando_login()' -->
                   <div id='botao_continuar'>
-                    <button type='submit' class='btn btn-primary' >ACEITAR</button>
+                    <button type='button' name='btnSendaceita_solicitacao$idsolicitacao' id='btnSendaceita_solicitacao$idsolicitacao' class='btn btn-primary' onclick=aceitar_solicitacao_transferencia('$idsolicitacao');>ACEITAR</button>
+                  </div>
+                </div>
+
+            </form>
+
+                <!-- /corpo -->
+               </div>
+               </div>
+               <!-- /.modal-content -->
+               </div>
+               <!-- /.modal-dialog -->
+              </div>
+           
+    <!-- ****************** /.regeitar solicitacao *********************************************** -->
+
+
+     <div class='modal fade bd-example-modal-lg' id='rejeitar_transferencia$idsolicitacao'>
+                 <div class='modal-dialog modal-lg'>
+                   <div class='modal-content'>
+                     <div class='modal-header alert alert-danger'>
+                       <h4 class='modal-title'>REJEITAR TRANSFERÊNCIA DO ALUNO: $nome_aluno</h4>
+                       <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                         <span aria-hidden='true'>&times;</span>
+                       </button>
+                     </div>
+                     <div class='modal-body'>    
+                        <div class='row'>
+<h1 class='text-danger'>FUNCIONALIDADE EM MANUTENÇÃO</h1>
+
+  <input  type='' name='idsolicitacao' class='form-control' value='$idsolicitacao'>
+  <input  type='' name='matricula_aluno' class='form-control' value='$matricula_aluno'>
+
+                              <div class='col-sm-10'>
+                                   <label for='exampleInputEmail1' class='text-danger'>Motivo da rejeição</label>
+                              <textarea class='form-control' rows='5' placeholder='Descreva o motivo da rejeição dessa solicitação'></textarea>
+                              </div>
+                        </div>
+
+                             </div>
+
+                 <div class='modal-footer justify-content-between'>
+                  <button type='button' class='btn btn-default' data-dismiss='modal'>FECHAR</button>
+                  
+                  <div id='botao_continuar'>
+                    <button type='submit' class='btn btn-danger' >REJEITAR SOLICITAÇÃO</button>
                   </div>
                 </div>
 
@@ -267,7 +322,8 @@ $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
                <!-- /.modal-content -->
                </div>
                <!-- /.modal-dialog -->
-               </div>
+              </div>
+
                ";
                $quantidade++;
 
