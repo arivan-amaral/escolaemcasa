@@ -293,7 +293,7 @@ if (isset($_GET['tokem_arivan'])) {
 
                     echo "já exite  $conta - id: $idaluno  <br>";
 
-                    $conexao->exec("UPDATE aluno set bairro_endereco = '$bairro_endereco' where idaluno=$idaluno and bairro_endereco IS NULL "); 
+                    $conexao->exec("UPDATE aluno set endereco = '$endereco' where idaluno=$idaluno and endereco IS NULL "); 
                     
                     // $conexao->exec("UPDATE aluno set aluno_transpublico = '$aluno_transpublico' where idaluno=$idaluno  ");
                 }
