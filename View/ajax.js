@@ -4460,3 +4460,54 @@ function aceitar_solicitacao_transferencia(form1){
     }
 
 
+
+    function verifica_dia_letivo(campo){
+        var result = document.getElementById(campo);
+        var xmlreq = CriaRequest();   
+      
+        var data = document.getElementById(campo).value;
+ 
+        var url="data="+data;
+        if (data>'2021-01-01') {
+
+        console.log(data);
+ 
+           xmlreq.open("GET", "../Controller/Verifica_dia_letivo.php?"+url, true);
+            xmlreq.onreadystatechange = function(){      
+                if (xmlreq.readyState == 4) {
+                    if (xmlreq.status == 200) {
+                          
+                    if (xmlreq.responseText !='certo') {
+
+                          result.value='';
+                          Swal.fire({
+                              position: 'center',
+                              icon: 'info',
+                              title: 'ATENÇÃO',
+                                 text: 'A data informada não corresponde a um dia letivo ',
+                              showConfirmButton: false,
+                              timer: 1500
+                            });
+                    }
+
+                    }else{
+                        alert("Erro ao pesquisar");                   
+                        
+                    }
+                }
+            };
+            xmlreq.send(null);
+        }else{
+            result.value='';
+            Swal.fire({
+                position: 'center',
+                icon: 'info',
+                title: 'ATENÇÃO',
+                   text: 'A data informada não corresponde a um dia letivo ',
+                showConfirmButton: false,
+                timer: 1500
+              });
+        }
+    }
+
+

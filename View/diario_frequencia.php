@@ -271,7 +271,7 @@ if (!isset($_SESSION['idprofessor'])) {
       <div class="row">
         <div class="col-sm-1"></div>
         
-       <div class="col-sm-4">
+       <div class="col-sm-4" hidden>
           <div class="form-group">
              <label for="exampleInputEmail1">Data da aula</label>
             <input  type="date" class="form-control" name="data_frequencia" id="data_frequencia" required="" min="2021-01-01" >
@@ -279,11 +279,11 @@ if (!isset($_SESSION['idprofessor'])) {
            </div>
         </div>    
 
-        <div class="col-sm-4">
+        <div class="col-sm-4" hidden>
           <div class="form-group">
-            <label for="exampleInputEmail1">Escolha a aula</label>
+            <label for="exampleInputEmail1" hidden>Escolha a aula</label>
 
-            <select class="form-control" id='aula' required  name='aula' onchange="lista_frequencia_aluno();">
+            <select  class="form-control" id='aula' required  name='aula' onchange="lista_frequencia_aluno();">
               <?php
               if ($idserie<8) {
                 echo "
@@ -305,7 +305,7 @@ if (!isset($_SESSION['idprofessor'])) {
           </div>
         </div>
       
-        <div class="col-sm-3">
+        <div class="col-sm-4">
           <div class="form-group">
             <label class="text-danger" >Datas dos contéudos lançados</label>
 

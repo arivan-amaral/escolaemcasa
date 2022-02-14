@@ -1,4 +1,10 @@
 <?php 
+function verifica_dia_letivo($conexao,$data){
+   $sql = $conexao->query("SELECT * from dia_nao_letivo where data='$data'
+      ");
+   return $sql->fetchAll();
+}
+
 function listar_calendario_letivo($conexao){
    $sql = $conexao->query("SELECT * from calendario_letivo   order by calendario_letivo.inicio ASC
       ");

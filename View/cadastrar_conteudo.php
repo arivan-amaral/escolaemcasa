@@ -282,7 +282,7 @@ if (!isset($_SESSION['idprofessor'])) {
         <div class="col-sm-4">
           <div class="form-group">
             <label for="exampleInputEmail1">Data da aula</label>
-            <input type="date" class="form-control" name="data_frequencia" id="data_frequencia" required="" min="2021-01-01" >
+            <input type="date" class="form-control" name="data_frequencia" id="data_frequencia" required="" min="<?php echo $_SERVER['ano_letivo']."01-01"; ?>" max="<?php echo $_SERVER['ano_letivo']."12-31"; ?>" onchange="verifica_dia_letivo('data_frequencia');">
             <!-- <input type="date" class="form-control" name="data_frequencia" id="data_frequencia" required="" onchange="lista_frequencia_aluno();"> -->
           </div>
         </div>   
