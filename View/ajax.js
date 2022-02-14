@@ -63,7 +63,7 @@ var hora    = data.getHours();
 var min     = data.getMinutes();         
 
 
-setTimeout("licitalem_webhook()",10000);
+// setTimeout("licitalem_webhook()",10000);
 
 
 
