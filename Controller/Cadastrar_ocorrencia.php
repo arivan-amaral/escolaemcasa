@@ -6,6 +6,7 @@
 
 try {
     $professor_id=$_SESSION['idfuncionario'];
+    $ano_letivo=$_SESSION['ano_letivo'];
 
     $idescola=$_POST['idescola'];
    	$idturma=$_POST['idturma'];
@@ -19,14 +20,14 @@ try {
 
 foreach ($_POST['aluno_id'] as $key => $value) {
     $aluno_id=$_POST['aluno_id'][$key];
-    limpar_ocorrencia_cadastrada($conexao,$iddisciplina, $idturma,$idescola,$professor_id,$data_ocorrencia,$aluno_id);
+    limpar_ocorrencia_cadastrada($conexao,$iddisciplina, $idturma,$idescola,$professor_id,$data_ocorrencia,$aluno_id,$ano_letivo);
     $descricao="";
 
     if (isset($_POST["ocorrencia$aluno_id"])) {
       $descricao=$_POST["ocorrencia$aluno_id"];
     }
 
-    cadastro_ocorrencia($conexao,$idescola, $idturma, $iddisciplina, $professor_id, $aluno_id, $descricao, $data_ocorrencia);
+    cadastro_ocorrencia($conexao,$idescola, $idturma, $iddisciplina, $professor_id, $aluno_id, $descricao, $data_ocorrencia,$ano_letivo);
 
 }
 

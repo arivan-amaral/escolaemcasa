@@ -96,9 +96,9 @@ function pesquisar_aluno2($conexao,$id) {
    return $sql->fetchAll();
 }
 
-function cadastro_ocorrencia($conexao,$escola_id, $turma_id, $disciplina_id, $professor_id, $aluno_id, $descricao, $data_ocorrencia){
+function cadastro_ocorrencia($conexao,$escola_id, $turma_id, $disciplina_id, $professor_id, $aluno_id, $descricao, $data_ocorrencia,$ano_letivo){
 
-	$resultado=$conexao->exec(" INSERT INTO ocorrencia_pedagogica(escola_id, turma_id, disciplina_id, professor_id, aluno_id, descricao, data_ocorrencia) VALUES ($escola_id, $turma_id, $disciplina_id, $professor_id, $aluno_id, '$descricao', '$data_ocorrencia')		
+	$resultado=$conexao->exec(" INSERT INTO ocorrencia_pedagogica(escola_id, turma_id, disciplina_id, professor_id, aluno_id, descricao, data_ocorrencia,ano) VALUES ($escola_id, $turma_id, $disciplina_id, $professor_id, $aluno_id, '$descricao', '$data_ocorrencia',$ano_letivo)		
 		");	
 }
 
@@ -117,7 +117,7 @@ function verifica_ocorrencia_cadastrada($conexao, $iddisciplina, $idturma, $ides
 	
 }
 
-function limpar_ocorrencia_cadastrada($conexao, $iddisciplina, $idturma, $idescola, $idprofessor,$data_ocorrencia,$aluno_id){
+function limpar_ocorrencia_cadastrada($conexao, $iddisciplina, $idturma, $idescola, $idprofessor,$data_ocorrencia,$aluno_id,$ano_letivo){
 
 	$resultado=$conexao->query(" DELETE FROM ocorrencia_pedagogica WHERE
 		escola_id=$idescola and 
@@ -125,7 +125,8 @@ function limpar_ocorrencia_cadastrada($conexao, $iddisciplina, $idturma, $idesco
 		disciplina_id=$iddisciplina and
 		aluno_id=$aluno_id and
 		data_ocorrencia='$data_ocorrencia' and
-		professor_id=$idprofessor
+		professor_id=$idprofessor and
+        ano=$ano_letivo
 		
 		");
 	return $resultado;
