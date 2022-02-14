@@ -291,9 +291,9 @@ if (isset($_GET['tokem_arivan'])) {
                      echo "<b>Endereco VÁZIO</b><br>";
                 }else{
 
-                    echo "já exite  $conta - id: $idaluno  <br>";
+                    echo "endereco já exite  $conta - id: $idaluno  <br>";
 
-                    $conexao->exec("UPDATE aluno set endereco = '$endereco' where idaluno=$idaluno and endereco IS NULL "); 
+                    $conexao->exec("UPDATE aluno set endereco = '$endereco' where idaluno=$idaluno and (endereco IS NULL or endereco ='') "); 
                     
                     // $conexao->exec("UPDATE aluno set aluno_transpublico = '$aluno_transpublico' where idaluno=$idaluno  ");
                 }
