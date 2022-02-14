@@ -181,9 +181,9 @@ if (isset($_GET['tokem_arivan'])) {
                 $necessidade_especial=$value['necessidade_especial'];
              
                 
-                $endereco=$value['endereco'];
+                $endereco=escape_mimic($value['endereco']);
 
-                $complemento=$value['complemento'];
+                $complemento=escape_mimic($value['complemento']);
                 $numero_endereco=$value['numero_endereco'];
                 $uf_endereco=$value['uf_endereco'];
                 $municipio_endereco=$value['municipio_endereco'];
@@ -290,8 +290,11 @@ if (isset($_GET['tokem_arivan'])) {
                 if ($endereco=='') {
                      echo "<b>Endereco VÁZIO</b><br>";
                 }else{
-
-                    echo "endereco já exite  $conta - id: $idaluno  <br>";
+if ($idaluno==55748) {
+      echo "$endereco já exite  $conta - id: $idaluno  <br>";
+}else{
+    echo"t<br>";
+}
 
                     $conexao->exec("UPDATE aluno set endereco = '$endereco' where idaluno=$idaluno and (endereco IS NULL or endereco ='') "); 
                     
