@@ -287,8 +287,8 @@ if (isset($_GET['tokem_arivan'])) {
 
 
             else{
-                if ($bairro_endereco=='') {
-                     echo "<b>BAIRRO VÁZIO</b><br>";
+                if ($endereco=='') {
+                     echo "<b>Endereco VÁZIO</b><br>";
                 }else{
 
                     echo "já exite  $conta - id: $idaluno  <br>";
