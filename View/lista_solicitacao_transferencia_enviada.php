@@ -65,8 +65,8 @@ $url_get=$array_url[1];
 
 <!-- /.content-header -->
 
-<h1 class="text-danger
-">PÁGINA EM MANUTENÇÃO</h1>
+<!-- <h1 class="text-danger
+">PÁGINA EM MANUTENÇÃO</h1> -->
 
 <!-- Main content -->
 

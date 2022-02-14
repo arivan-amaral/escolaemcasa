@@ -4366,6 +4366,70 @@ function aceitar_solicitacao_transferencia(form1){
 
 
 
+    function rejeitar_solicitacao_transferencia(form1){     
+      var formData = new FormData(document.getElementById("rejeita_solicitacao"+form1));      
+      var descricao_regeitar_solicitacao =  document.getElementById("descricao_regeitar_solicitacao"+form1).value;      
+      
+      if (descricao_regeitar_solicitacao.length < 5) {
+        Swal.fire({
+          position: 'center',
+          icon: 'info',
+          title: 'ATENÇÃO',
+             text: 'Descreva o motivo ',
+          showConfirmButton: true
+        });
+
+      }else{
+
+      $.ajax({
+              type: 'POST',
+              url: '../Controller/Rejeitar_solicitacao_transferencia.php',
+              data: formData,
+              contentType: false,
+              cache: false,
+              processData:false,
+              beforeSend: function(){
+                    $('#btnSendrejeita_solicitacao'+form1).attr("disabled","disabled");
+                    $('#rejeita_solicitacao'+form1).css("opacity",".5");
+              },
+              success: function(msg){  
+              console.log(msg);               
+                  if(msg == 'Ação concluída')
+                  {
+                      $('#rejeita_solicitacao'+form1)[0].reset();
+                      
+                      Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Ação Concluída',
+                           text: ' '+msg,
+                        showConfirmButton: false,
+                        timer: 3000
+                      });
+                       setTimeout(function(){window.location.href="lista_solicitacao_transferencia.php";},1000);
+
+                  }
+                  else
+                  {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: 'ATENÇÃO: '+msg,
+                           text: ' ',
+                        showConfirmButton: false,
+                        timer: 3000
+                      });
+                  }
+                  $('#rejeita_solicitacao'+form1).css("opacity","");
+                  $("#btnSendrejeita_solicitacao"+form1).removeAttr("disabled");
+              }
+          });
+      }
+
+    }
+
+
+
 
 
     function quantidade_vaga_restante_transferencia_turma(idsolicitacao){

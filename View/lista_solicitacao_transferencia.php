@@ -295,14 +295,15 @@ $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
                      </div>
                      <div class='modal-body'>    
                         <div class='row'>
-<h1 class='text-danger'>FUNCIONALIDADE EM MANUTENÇÃO</h1>
+<!-- h1 class='text-danger'>FUNCIONALIDADE EM MANUTENÇÃO</h1 -->
+<form method='post'  id='rejeita_solicitacao$idsolicitacao' name='aceita_solicitacao$idsolicitacao'>
 
-  <input  type='' name='idsolicitacao' class='form-control' value='$idsolicitacao'>
-  <input  type='' name='matricula_aluno' class='form-control' value='$matricula_aluno'>
+  <input  type='hidden' name='idsolicitacao' class='form-control' value='$idsolicitacao'>
+  <input  type='hidden' name='matricula_aluno' class='form-control' value='$matricula_aluno'>
 
                               <div class='col-sm-10'>
                                    <label for='exampleInputEmail1' class='text-danger'>Motivo da rejeição</label>
-                              <textarea class='form-control' rows='5' placeholder='Descreva o motivo da rejeição dessa solicitação'></textarea>
+                              <textarea class='form-control' rows='5' placeholder='Descreva o motivo da rejeição dessa solicitação' name='resposta_solicitacao' id='descricao_regeitar_solicitacao$idsolicitacao'></textarea>
                               </div>
                         </div>
 
@@ -312,11 +313,13 @@ $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
                   <button type='button' class='btn btn-default' data-dismiss='modal'>FECHAR</button>
                   
                   <div id='botao_continuar'>
-                    <button type='submit' class='btn btn-danger' >REJEITAR SOLICITAÇÃO</button>
+                    <button type='button' class='btn btn-danger' onclick='rejeitar_solicitacao_transferencia($idsolicitacao);' id='btnSendrejeita_solicitacao$idsolicitacao' name='btnSendrejeita_solicitacao$idsolicitacao' >REJEITAR SOLICITAÇÃO</button>
                   </div>
                 </div>
 
-                <!-- /corpo -->
+   </form>
+
+  <!-- /corpo -->
                </div>
                </div>
                <!-- /.modal-content -->

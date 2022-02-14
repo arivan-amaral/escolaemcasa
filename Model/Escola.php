@@ -124,7 +124,17 @@ function quantidade_solicitacao_transferencia_recebida_por_escola($conexao,$acei
 
 
                
-function aceitar_solicitacao_transferencia($conexao,$profissional_resposta,$idsolicitacao,$aceita){
+function rejeitar_solicitacao_transferencia($conexao,$profissional_resposta,$idsolicitacao,$resposta_solicitacao,$aceita){
+   $sql = $conexao->prepare("UPDATE solicitacao_transferencia SET profissional_resposta= :profissional_resposta , aceita= :aceita, resposta_solicitacao=:resposta_solicitacao WHERE id = :idsolicitacao ");
+
+   $sql->bindParam('profissional_resposta',$profissional_resposta);
+   $sql->bindParam('aceita',$aceita);
+   $sql->bindParam('idsolicitacao',$idsolicitacao);
+   $sql->bindParam('resposta_solicitacao',$resposta_solicitacao);
+   $sql->execute();
+}  
+
+ function aceitar_solicitacao_transferencia($conexao,$profissional_resposta,$idsolicitacao,$aceita){
    $sql = $conexao->prepare("UPDATE solicitacao_transferencia SET profissional_resposta= :profissional_resposta , aceita= :aceita WHERE id = :idsolicitacao ");
 
    $sql->bindParam('profissional_resposta',$profissional_resposta);
