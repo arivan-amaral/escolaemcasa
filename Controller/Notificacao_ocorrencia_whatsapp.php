@@ -27,10 +27,11 @@ ocorrencia_pedagogica.disciplina_id =disciplina.iddisciplina and
  ocorrencia_pedagogica.escola_id = escola.idescola AND
 ocorrencia_pedagogica.aluno_id = aluno.idaluno AND
  ocorrencia_pedagogica.ano=2021 AND 
- ocorrencia_pedagogica.descricao IS NOT NULL AND 
 
+ ocorrencia_pedagogica.descricao IS NOT NULL and ocorrencia_pedagogica.descricao !=''
+and
  ocorrencia_pedagogica.id NOT IN (SELECT ocorrencia_pedagogica_id FROM ocorrencia_enviada_whatsapp ) AND
- ocorrencia_pedagogica.aluno_id NOT IN (SELECT ocorrencia_enviada_whatsapp.aluno_id FROM ocorrencia_enviada_whatsapp )  LIMIT 5;");
+ ocorrencia_pedagogica.aluno_id NOT IN (SELECT ocorrencia_enviada_whatsapp.aluno_id FROM ocorrencia_enviada_whatsapp )  LIMIT 5");
 
 foreach ($res_ocorrencias as $key => $value) {
     $idocorrencia=$value['id'];
