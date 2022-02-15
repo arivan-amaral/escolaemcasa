@@ -538,7 +538,10 @@ setTimeout('dia_doservidor_publico();',3000);
           <div class="form-group">
 
             <label for="exampleInputEmail1">Escolha a escola</label>
-            <select class="form-control select2" id="idescola" onchange="listar_turmas_coordenador(this.value);" required="">
+            <select class="form-control form-control-lg select2" id="idescola" onchange="listar_turmas_coordenador(this.value);" required="">
+                 
+               
+
                 
                 <?php 
                   echo "$lista_escola_associada";

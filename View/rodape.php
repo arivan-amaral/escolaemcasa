@@ -251,6 +251,19 @@ if (isset($_SESSION['cargo'])) {
 
 <script type="text/javascript">
 
+
+
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    });
+
+    });
+
  function carregando_login(){
 
 
@@ -300,9 +313,7 @@ if (isset($_SESSION['cargo'])) {
 
 
 
-
-
-
+ 
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
