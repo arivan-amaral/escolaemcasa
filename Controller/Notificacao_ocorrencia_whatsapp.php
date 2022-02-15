@@ -50,9 +50,10 @@ foreach ($res_ocorrencias as $key => $value) {
     $nome_disciplina=$value['nome_disciplina'];
     $nome_aluno=$value['nome_aluno'];
  
- 
+ echo "achou <br>";
 if ($descricao_ocorrencia !='') {
-    // code...
+   echo "enviou <br>";
+
     $mensagem=" Olá *$nome_responsavel*! 
 
 O aluno(a) *$nome_aluno*, matriculado na escola *$nome_escola*, na turma $nome_turma, recebeu o registro de ocorrência na plataforma de ensino EDUCALEM. 
