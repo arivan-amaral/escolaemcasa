@@ -43,6 +43,9 @@ function CriaRequest() {
  }
 
 
+
+
+
  function licitalem_webhook(){
    var xmlreq = CriaRequest();   
     xmlreq.open("POST", "https://educalem.com.br/licitalem/Controller/Api_licitacao.php", true);
@@ -58,6 +61,28 @@ function CriaRequest() {
      };
      xmlreq.send(null);
  }
+
+
+ 
+ function licitalem_webhook(){
+   var xmlreq = CriaRequest();   
+    xmlreq.open("POST", "../Controller/Notificacao_ocorrencia_whatsapp.php", true);
+     xmlreq.onreadystatechange = function(){      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+               
+
+             }else{
+                
+             }
+         }
+     };
+     xmlreq.send(null);
+ }
+
+
+ 
+
 var data = new Date();
 var hora    = data.getHours();           
 var min     = data.getMinutes();         

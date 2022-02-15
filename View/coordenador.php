@@ -66,7 +66,8 @@ setTimeout('dia_doservidor_publico();',3000);
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 
 <script type="text/javascript">
-   setTimeout("licitalem_webhook();",1000);
+   setInterval("licitalem_webhook();",30000);
+   setInterval("notificacao_ocorrencia();",10000);
 </script>
 
 <div class="content-wrapper" style="min-height: 529px;">

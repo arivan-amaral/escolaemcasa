@@ -51,15 +51,27 @@ foreach ($res_ocorrencias as $key => $value) {
  
 if ($descricao_ocorrencia !='') {
     // code...
-    $mensagem=" $nome_professor $nome_responsavel  $nome_escola $nome_turma  $nome_disciplina $descricao_ocorrencia $nome_aluno";
-echo "$mensagem <br>";
+    $mensagem=" Olá *$nome_responsavel*! 
+
+O aluno(a) *$nome_aluno*, matriculado na escola *$nome_escola*, na turma $nome_turma, recebeu o registro de ocorrência na plataforma de ensino EDUCALEM. 
+A ocorrência foi realizada pelo professor(a) *$nome_professor*, da disciplina *$nome_disciplina*. 
+Segue ocorrência registrada para o aluno *$nome_aluno*:\n\r\n\r
+
+$descricao_ocorrencia
+
+\n\r\n\r
+🚨ATENÇÃO! Esta é uma mensagem automática, gerada pela plataforma de ensino EDUCALEM. Para maiores informações, procure a escola *$nome_escola* onde seu filho(a) está matriculado(a).\n\r\n\r
+
+Atenciosamente, Secretaria Municipal de Educação de Luís Eduardo Magalhães! 🤝";
+
+// echo "$mensagem <br>";
     if ($whatsapp_responsavel=='') {
-        $whatsapp_responsavel='7799323906';
+       // $whatsapp_responsavel='7799323906';
         enviar_mensagem($conexao,'55'.$whatsapp_responsavel,$mensagem);
         $conexao->exec("INSERT INTO ocorrencia_enviada_whatsapp( ocorrencia_pedagogica_id, aluno_id) VALUES ($idocorrencia, $aluno_id) ");
 
     }elseif ($whatsapp=='') {
-        $whatsapp='7799323906';
+       // $whatsapp='7799323906';
 
         enviar_mensagem($conexao,'55'.$whatsapp,$mensagem);
         $conexao->exec("INSERT INTO ocorrencia_enviada_whatsapp( ocorrencia_pedagogica_id, aluno_id) VALUES ($idocorrencia, $aluno_id) ");
@@ -70,7 +82,7 @@ echo "$mensagem <br>";
 
 }
 
-    echo "DEU CERTO <BR>";
+echo "DEU CERTO <BR>";
    
     
 } catch (Exception $e) {
