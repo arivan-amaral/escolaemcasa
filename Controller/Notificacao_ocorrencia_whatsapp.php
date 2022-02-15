@@ -85,9 +85,9 @@ Atenciosamente, Secretaria Municipal de Educação de Luís Eduardo Magalhães! 
 
 $data_hora_atual=date("Y-m-d H:i:s");
 $data_banco=verifica_validade_api($conexao,$data_hora_atual);
-$diferenca=(strtotime($data_banco) - strtotime($data_hora_atual));
+$diferenca=(strtotime($data_hora_atual) - strtotime($data_banco));
 
-if($diferenca < 45876){
+if($diferenca > 125876){
         enviar_mensagem($conexao,'558999342837','CADASTRO Z-API.IO PARA EUCALEM');
 
 }
