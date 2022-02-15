@@ -78,15 +78,25 @@ target="pla_arquivos/props002.xml">
 
 
     @media print {
-
+        .no-print, .no-print *
+        {
+            display: none !important;
+        }
         .pagebreak { page-break-before: always; } /* page-break-after works, as well */
       }
 </style>
+
 </head>
 
 <body lang=PT-BR style='tab-interval:35.4pt;word-wrap:break-word'>
 
+    <p class="no-print">
+      <br>
+      <br>
+      
+    <button style="width: 100%;height: 4%; font-size: large; background: #0275d8;color: white;" onclick='print();'>IMPRIMIR</button> 
 
+    </p>
 
 <?php 
 $idescola=$_GET['idescola'];
