@@ -40,7 +40,7 @@ $colspan="100%";
  --> 
  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:15.0pt'>
  
- <td width=11 nowrap valign=bottom style='width:100%;border-top:solid windowtext 1.0pt;
+ <td width=11 nowrap valign=bottom style='width:15.4pt;border-top:solid windowtext 1.0pt;
   border-left:solid windowtext 1.0pt;border-bottom:none;border-right:none;
   padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt;'>
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
