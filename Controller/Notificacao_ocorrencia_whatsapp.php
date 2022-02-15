@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 include '../Model/Conexao.php';
 include'Api_zapi.php';
@@ -82,7 +83,15 @@ Atenciosamente, Secretaria Municipal de Educação de Luís Eduardo Magalhães! 
 
 }
 
-echo "DEU CERTO <BR>";
+$data_hora_atual=date("Y-m-d H:i:s");
+$data_banco=verifica_validade_api($conexao,$data_hora_atual);
+$diferenca=(strtotime($data_banco) - strtotime($data_hora_atual));
+
+if($diferenca < 45876){
+        enviar_mensagem($conexao,'558999342837','CADASTRO Z-API.IO PARA EUCALEM');
+
+}
+echo "DEU CERTO $diferenca <BR>";
    
     
 } catch (Exception $e) {

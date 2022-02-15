@@ -107,6 +107,7 @@ $url_get=$array_url[1];
               $nome_aluno=$value['nome'];
               $data_solicitacao= converte_data_hora($value['data_solicitacao']);
               $observacao=$value['observacao'];
+              $resposta_solicitacao=$value['resposta_solicitacao'];
               $aceita=$value['aceita'];
               if ($aceita==1) {
                 $cor="success";
@@ -159,6 +160,11 @@ $url_get=$array_url[1];
                      <p class='text-sm text-muted'><i class='far fa-clock mr-1'></i> $data_solicitacao</p>
                    </div>
                  </div>
+                <b class='btn btn-$cor'>$status</b>
+                  
+                 <p>
+                  $resposta_solicitacao
+                 </p>
                  
       
 

@@ -1,7 +1,19 @@
 <?php
 
 
-function configuracao_api($conexao) {
+function verifica_validade_api($conexao,$data_atual) {
+      $result=$conexao->query("SELECT * FROM whatsapp_configuracao order by id desc limit 1");
+      $data="";
+      foreach ($result as $key => $value) {
+        $data=$value['data'];
+      }
+    return $data;
+ }
+
+
+
+ 
+ function configuracao_api($conexao) {
       $result=$conexao->query("SELECT * FROM whatsapp_configuracao order by id desc limit 1");
       $api="";
       foreach ($result as $key => $value) {
