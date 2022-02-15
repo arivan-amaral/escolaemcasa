@@ -26,7 +26,7 @@ ocorrencia_pedagogica.turma_id =turma.idturma and
 ocorrencia_pedagogica.disciplina_id =disciplina.iddisciplina and 
  ocorrencia_pedagogica.escola_id = escola.idescola AND
 ocorrencia_pedagogica.aluno_id = aluno.idaluno AND
- ocorrencia_pedagogica.ano=2021 AND 
+ ocorrencia_pedagogica.ano=$ano_letivo_vigente AND 
 
  ocorrencia_pedagogica.descricao IS NOT NULL and ocorrencia_pedagogica.descricao !=''
 and
@@ -37,18 +37,17 @@ foreach ($res_ocorrencias as $key => $value) {
     $idocorrencia=$value['id'];
     $aluno_id=$value['aluno_id'];
     $descricao_ocorrencia=$value['descricao'];
-    $nome_disciplina=$value['nome_disciplina'];
-    
-    $nome_responsavel=$value['nome_responsavel'];
-    $whatsapp=$value['whatsapp'];
-    $whatsapp_responsavel=$value['whatsapp_responsavel'];
+     
+    $nome_responsavel=trim($value['nome_responsavel']);
+    $whatsapp=trim($value['whatsapp']);
+    $whatsapp_responsavel=trim($value['whatsapp_responsavel']);
     $data_hora=converte_data_hora($value['data_hora']);
-    $nome_responsavel=$value['nome_responsavel'];
-    $nome_professor=$value['nome_professor'];
-    $nome_escola=$value['nome_escola'];
-    $nome_turma=$value['nome_turma'];
-    $nome_disciplina=$value['nome_disciplina'];
-    $nome_aluno=$value['nome_aluno'];
+    $nome_responsavel=trim($value['nome_responsavel']);
+    $nome_professor=trim($value['nome_professor']);
+    $nome_escola=trim($value['nome_escola']);
+    $nome_turma=trim($value['nome_turma']);
+    $nome_disciplina=trim($value['nome_disciplina']);
+    $nome_aluno=trim($value['nome_aluno']);
  
  echo "achou <br>";
 if ($descricao_ocorrencia !='') {
@@ -68,12 +67,12 @@ $descricao_ocorrencia
 Atenciosamente, Secretaria Municipal de Educação de Luís Eduardo Magalhães! 🤝";
 
 // echo "$mensagem <br>";
-    if ($whatsapp_responsavel=='') {
+    if ($whatsapp_responsavel !='') {
        // $whatsapp_responsavel='7799323906';
         enviar_mensagem($conexao,'55'.$whatsapp_responsavel,$mensagem);
         $conexao->exec("INSERT INTO ocorrencia_enviada_whatsapp( ocorrencia_pedagogica_id, aluno_id) VALUES ($idocorrencia, $aluno_id) ");
 
-    }elseif ($whatsapp=='') {
+    }elseif ($whatsapp !='') {
        // $whatsapp='7799323906';
 
         enviar_mensagem($conexao,'55'.$whatsapp,$mensagem);
