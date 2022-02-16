@@ -1563,23 +1563,29 @@ function listar_disciplina_aluno($conexao,$idaluno,$ano_letivo){
 }
 
 
-function listar_disciplina_para_boletim($conexao,$idaluno,$ano_letivo){
+function listar_disciplina_para_boletim($conexao,$idturma,$escola_id,$ano_letivo){
   $res=$conexao->query("SELECT 
    disciplina.nome_disciplina,
    disciplina.abreviacao,
    disciplina.iddisciplina,
    funcionario.nome as 'nome_professor',
    turma.idturma,
-   turma.nome_turma
-   FROM turma,  aluno , escola, ministrada,disciplina,funcionario WHERE
-   
+   turma.nome_turma,
+   carga_horaria.CH AS 'carga_horaria'
+
+   FROM carga_horaria, turma,   escola, ministrada,disciplina,funcionario WHERE
+    carga_horaria.serie_id=turma.serie_id AND
+    carga_horaria.disciplina_id=disciplina.iddisciplina AND
+    
     ministrada.turma_id=turma.idturma AND
    ministrada.escola_id=escola.idescola AND
    ministrada.disciplina_id=disciplina.iddisciplina AND
    ministrada.professor_id=funcionario.idfuncionario AND
    disciplina.facultativo=0 AND
-   ministrada.ano=$ano_letivo and 
-   aluno.idaluno = $idaluno");
+   ministrada.ano = $ano_letivo and
+   turma.idturma = $idturma and
+   escola.idescola = $escola_id
+   ");
   return $res;
 }
 
