@@ -32,7 +32,7 @@ try {
     echo"$quantidade_vaga_restante";
   
 } catch (Exception $e) {
-  echo "Erro: $e";
+  echo "0";
 }
 
 ?>
