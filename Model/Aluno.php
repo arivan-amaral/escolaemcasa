@@ -1571,14 +1571,9 @@ function listar_disciplina_para_boletim($conexao,$idaluno,$ano_letivo){
    funcionario.nome as 'nome_professor',
    turma.idturma,
    turma.nome_turma
-   FROM turma, ano_letivo, aluno , escola, ministrada,disciplina,funcionario WHERE
-    ano_letivo.status_letivo=1 AND 
-   aluno.idaluno=ano_letivo.aluno_id AND
-   turma.idturma=ano_letivo.turma_id AND
-   escola.idescola=ano_letivo.escola_id AND
-    ano_letivo.status_letivo=1 AND
-
-   ministrada.turma_id=turma.idturma AND
+   FROM turma,  aluno , escola, ministrada,disciplina,funcionario WHERE
+   
+    ministrada.turma_id=turma.idturma AND
    ministrada.escola_id=escola.idescola AND
    ministrada.disciplina_id=disciplina.iddisciplina AND
    ministrada.professor_id=funcionario.idfuncionario AND
