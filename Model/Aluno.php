@@ -1563,7 +1563,7 @@ function listar_disciplina_aluno($conexao,$idaluno,$ano_letivo){
 }
 
 
-function listar_disciplina_para_boletim($conexao,$idaluno){
+function listar_disciplina_para_boletim($conexao,$idaluno,$ano_letivo){
   $res=$conexao->query("SELECT 
    disciplina.nome_disciplina,
    disciplina.abreviacao,
@@ -1583,6 +1583,7 @@ function listar_disciplina_para_boletim($conexao,$idaluno){
    ministrada.disciplina_id=disciplina.iddisciplina AND
    ministrada.professor_id=funcionario.idfuncionario AND
    disciplina.facultativo=0 AND
+   ministrada.ano=$ano_letivo and 
    aluno.idaluno = $idaluno");
   return $res;
 }

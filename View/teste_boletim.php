@@ -134,7 +134,7 @@ function teste_boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$nume
 
 
   <?php 
-  $res_disc=listar_disciplina_para_boletim($conexao,$idaluno);
+  $res_disc=listar_disciplina_para_boletim($conexao,$idaluno,$ano_letivo);
   $conta_parecer=0;
   $linha=0;
 
