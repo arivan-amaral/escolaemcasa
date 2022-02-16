@@ -152,7 +152,8 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
 
 
   <?php 
-  $res_disc=array();
+  $res_disc=listar_disciplina_para_boletim($conexao,$idturma,$idescola,$ano_letivo);
+
   // $res_disc=listar_disciplina_para_boletim($conexao,$idturma,$idescola,$ano_letivo);
   // $res_disc=listar_disciplina_para_boletim($conexao,$idaluno,$ano_letivo);
   $conta_parecer=0;
