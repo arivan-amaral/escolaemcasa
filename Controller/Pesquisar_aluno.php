@@ -136,7 +136,8 @@ foreach ($result_ecidade_matricula as $key => $value) {
                     $result.="
                         <b class='text-primary'> $nome_escola -</b> 
                         <b class='text-primary'> $nome_turma </b> 
-                        <b class='text-danger'> Ano: $calendario_ano </b> <br>
+                        <b class='text-danger'> Ano: $calendario_ano </b>
+                        
                       ";
 
 
@@ -271,11 +272,13 @@ foreach ($result_ecidade_matricula as $key => $value) {
                       $result.="
                         <b class='text-black'> $nome_escola -</b> 
                         <b class='text-black'> $nome_turma </b> 
-                        <b class='text-success'> Ano: $calendario_ano</b> <br>
+                        <b class='text-success'> Ano: $calendario_ano</b> 
                       ";
                 }
+                if ($calendario_ano>2020) {
+                    $result.="<a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma&ano=$calendario_ano'  target='_blank' class='dropdown-item'  > Boletim  $calendario_ano  </a>  ";
 
-
+                }
   $conta_ano_cursado++;
          
 }//final => foreach ($result_ecidade_matricula as $key => $value) {

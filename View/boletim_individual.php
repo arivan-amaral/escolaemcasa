@@ -25,6 +25,13 @@ $nome_aluno=$_GET['nome_aluno'];
 $nome_escola=$_GET['nome_escola'];
 $nome_turma=$_GET['nome_turma'];
 
+if (isset($_GET['ano'])) {
+  $ano_letivo = $_GET['ano'];
+
+}else{
+  $ano_letivo = $_SESSION['ano_letivo'];
+
+}
 
 ?>
 
@@ -35,7 +42,7 @@ $nome_turma=$_GET['nome_turma'];
 if ($idserie==3) {
 
 
-  $res=listar_nome_professor_turma($conexao,$idaluno,$_SESSION['ano_letivo']);
+  $res=listar_nome_professor_turma($conexao,$idaluno,$ano_letivo);
   $conta_virgula=0;
   foreach ($res as $key => $value) {
     if($conta_virgula>0){
@@ -46,16 +53,16 @@ if ($idserie==3) {
   }
   $nome_professor.= ".";
 
-     boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno, $nome_escola,$nome_turma,$nome_professor,$_SESSION['ano_letivo']);
+     boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno, $nome_escola,$nome_turma,$nome_professor,$ano_letivo);
 
 }else if ($idserie >3 && $idserie <=8) {
-   boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$_SESSION['ano_letivo']);
+   boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$ano_letivo);
 
 
 }else if ($idserie<3){
 
 
-        $res=listar_nome_professor_turma($conexao,$idaluno,$_SESSION['ano_letivo']);
+        $res=listar_nome_professor_turma($conexao,$idaluno,$ano_letivo);
         $conta_virgula=0;
         foreach ($res as $key => $value) {
           if($conta_virgula>0){
@@ -66,7 +73,7 @@ if ($idserie==3) {
         }
         $nome_professor.= ".";
 
-         boletim_maternal_1_2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno ,$nome_escola,$nome_turma,$nome_professor,$_SESSION['ano_letivo']);
+         boletim_maternal_1_2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno ,$nome_escola,$nome_turma,$nome_professor,$ano_letivo);
         $nome_professor='';
         
 
@@ -75,7 +82,7 @@ if ($idserie==3) {
 }else if ($idserie > 8) {
     //echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
 
-    boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$_SESSION['ano_letivo']);
+    boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$ano_letivo);
             
 }
 
