@@ -1585,7 +1585,7 @@ function listar_disciplina_para_boletim($conexao,$idturma,$escola_id,$ano_letivo
   return $res;
 }
 
-function listar_disciplina_para_ata($conexao,$escola_id,$idturma){
+function listar_disciplina_para_ata($conexao,$escola_id,$idturma,$ano_letivo){
   $res=$conexao->query("SELECT 
    disciplina.nome_disciplina,
    disciplina.abreviacao,
@@ -1603,6 +1603,7 @@ function listar_disciplina_para_ata($conexao,$escola_id,$idturma){
    ministrada.escola_id=escola.idescola AND
    ministrada.disciplina_id=disciplina.iddisciplina AND
    ministrada.professor_id=funcionario.idfuncionario AND
+   ministrada.ano=$ano_letivo AND
    disciplina.facultativo=0 AND
    turma.idturma = $idturma and
    escola.idescola = $escola_id

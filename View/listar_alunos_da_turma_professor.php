@@ -29,6 +29,7 @@ include '../Model/Turma.php';
 
 $idturma=$_GET['idturma']; 
 $idescola=$_GET['idescola'];
+  $ano_letivo=$_SESSION['ano_letivo'];
 
 $rematricula_escola_id=$_GET['idescola']; 
 $serie_id=$_GET['idserie']; 
@@ -271,7 +272,7 @@ $url_get=$array_url[1];
             $iddisciplina="";
             $media_aprovacao=false;
             $aprovacao_conselho=false;
-            $res_disc=listar_disciplina_para_ata($conexao,$idescola,$idturma);
+            $res_disc=listar_disciplina_para_ata($conexao,$idescola,$idturma,$ano_letivo);
             foreach ($res_disc as $key => $value) {
              $media_aprovacao=false;
              $aprovacao_conselho=false;

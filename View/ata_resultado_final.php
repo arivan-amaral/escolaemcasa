@@ -205,7 +205,7 @@ $idturma=$_POST['idturma'];
 $idserie=$_POST['idserie'];
 
   //capa_turma($conexao,$idescola,$idturma);
- ata_resultados_finais($conexao,$idescola,$idturma,$idserie);
+ ata_resultados_finais($conexao,$idescola,$idturma,$idserie,$_SESSION['ano_letivo']);
 ?>
 </table>
 

@@ -1,5 +1,5 @@
 <?php 
-function ata_resultados_finais($conexao,$idescola,$idturma,$idserie){
+function ata_resultados_finais($conexao,$idescola,$idturma,$idserie,$ano_letivo){
 
 ?>
 
@@ -23,7 +23,7 @@ function ata_resultados_finais($conexao,$idescola,$idturma,$idserie){
   </td>
 
  <?php 
-  $res_disc=listar_disciplina_para_ata($conexao,$idescola,$idturma);
+  $res_disc=listar_disciplina_para_ata($conexao,$idescola,$idturma,$ano_letivo);
   $conta_disciplina=0;
   $array_disciplina=array();
   $array_nome_sigla_disciplina=array();

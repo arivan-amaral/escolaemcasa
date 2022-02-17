@@ -41,7 +41,7 @@
 
 <?php 
 
-  $result_prova=$conexao->query("SELECT * FROM questionario WHERE escola_id=$idescola and turma_id=$idturma and data<='$data' and data_fim>='$data' and status=1");
+  $result_prova=$conexao->query("SELECT * FROM questionario WHERE escola_id=$idescola and turma_id=$idturma and data<='$data' and data_fim >='$data' and status=1");
 
 $prova_ativa=0;
 echo "
@@ -681,21 +681,19 @@ if ($idserie>2) {
                         <h3>
                           Trabalhos 
                           <?php
-                            $res_pendencia=$conexao->query("SELECT * FROM trabalho WHERE escola_id=$idescola and turma_id=$idturma");
-                            $cont_trabalho=0;
-                            foreach ($res_pendencia as $key => $value) {
-                              $idtrabalho=$value['id'];
-                              $res=$conexao->query("SELECT * FROM trabalho_entregue WHERE trabalho_id=$idtrabalho  and aluno_id=$idaluno  limit 1");
+                            //       $ano_letivo= $_SESSION['ano_letivo_vigente'];
+
+                            // $res_pendencia=$conexao->query("SELECT COUNT(*) as 'quantidade' FROM
+                            //  trabalho
+                            //  WHERE escola_id=$idescola and turma_id=$idturma and ano =$ano_letivo  ");
+                              
+                            //   $cont_trabalho=0;
+                            //   foreach ($res_pendencia as $key => $value) {
+                            //     $cont_trabalho=$value['quantidade'];
+                            //   }
                              
-                              $cont=0;
-                              foreach ($res as $key => $value) {
-                                $cont++;
-                              }
-                              if ($cont==0) {
-                                $cont_trabalho=$cont_trabalho+ 1;
-                              }
-                          }
-                                                           
+                         
+                             // echo "$cont_trabalho";                              
 
                           ?>
                         </h3>

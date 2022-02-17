@@ -1,4 +1,5 @@
 <?php
+session_start();
   include 'seguranca_aluno.php';
 
   include "cabecalho.php";
@@ -92,7 +93,8 @@
                                   </div>
 
                                   <?php
-                                    $res_pendencia=$conexao->query("SELECT * FROM trabalho WHERE escola_id=$idescola and turma_id=$idturma and data_hora_visivel<='$data' order by id desc");
+                                  $ano_letivo= $_SESSION['ano_letivo_vigente'];
+                                    $res_pendencia=$conexao->query("SELECT * FROM trabalho WHERE escola_id=$idescola and turma_id=$idturma and data_hora_visivel<='$data' and ano =$ano_letivo order by id desc");
                                     foreach ($res_pendencia as $key => $value) {
                                       $idtrabalho=$value['id'];
                                       $titulo=$value['titulo'];

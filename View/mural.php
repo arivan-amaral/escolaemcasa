@@ -20,6 +20,8 @@
   $idescola=$_SESSION['escola_id'];
   $idturma=$_SESSION['turma_id'];
   $serie_id=$_SESSION['serie_id'];
+  $ano_letivo= $_SESSION['ano_letivo_vigente'];
+
 
 
 ?>
@@ -91,7 +93,7 @@
                                   </div>
 
                                   <?php
-                                    $res_mural_secret=$conexao->query("SELECT * FROM mural where serie_id=$serie_id and setor='Secretaria' order by id desc");
+                                    $res_mural_secret=$conexao->query("SELECT * FROM mural where serie_id=$serie_id and setor='Secretaria' and ano_mural =$ano_letivo order by id desc");
 
                                     foreach ($res_mural_secret as $key => $value) {
                                       $idtrabalho=$value['id'];
