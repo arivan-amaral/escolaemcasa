@@ -80,7 +80,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
           <div class="col-sm-12 alert alert-success text-center">
 
-            <h1 class="m-0"><b> ÁREA DE RIGISTRO DE FREQUÊNCIA</b></h1>
+            <h1 class="m-0"><b> ÁREA DE REGISTRO DE FREQUÊNCIA</b></h1>
 
           </div><!-- /.col -->
 

@@ -81,7 +81,7 @@ if (!isset($_SESSION['idfuncionario'])) {
                   <div class="col-sm-12 alert alert-danger text-center">
 
                     <h1 class="m-0"><b>           
-        ÁREA DE RIGISTRO DE NOTAS
+        ÁREA DE REGISTRO DE NOTAS
                      </b></h1>
 
                   </div><!-- /.col -->
