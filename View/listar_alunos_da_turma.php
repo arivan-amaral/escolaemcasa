@@ -640,7 +640,7 @@ function addChecked(id) {
               <select class="form-control"  name="escola_id" id="escola"  onchange="listar_vagas_turma_transferencia_aluno()">
                 <option></option>
                 <!-- ESCOLA FORA DO MUNICÍPIO -->
-                <option value='0' style='color: black; background-color:#D2691E;'>ESCOLA FORA DO MUNICÍPIO </option>
+                <option value='0' style='color: black; background-color:#D2691E;'>ESCOLA FORA DA REDE </option>
                 <?php 
                 $res_turma=escola_associada($conexao,$idfuncionario); 
                 $array_escolas_coordenador=array();
