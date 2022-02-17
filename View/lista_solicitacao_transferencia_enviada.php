@@ -105,6 +105,7 @@ $url_get=$array_url[1];
           $res= lista_solicitacao_transferencia_enviada($conexao,$visualizada,$sql_escolas);
             foreach ($res as $key => $value) {
               $nome_aluno=$value['nome'];
+              $idaluno=$value['aluno_id'];
               $data_solicitacao= converte_data_hora($value['data_solicitacao']);
               $observacao=$value['observacao'];
               $resposta_solicitacao=$value['resposta_solicitacao'];
@@ -133,7 +134,12 @@ $url_get=$array_url[1];
               }              
 
               $res_escola_destino=buscar_escola_por_id($conexao,$id_escola_destino);
+              if ($id_escola_destino==0) {
+                  $nome_escola_destino="ESCOLA FORA DA REDE MUNICIPAL";
+              }else{
+
               $nome_escola_destino="";
+              }
               foreach ($res_escola_destino as $key => $value) {
                 $nome_escola_destino=$value['nome_escola']; 
               }
@@ -160,7 +166,18 @@ $url_get=$array_url[1];
                      <p class='text-sm text-muted'><i class='far fa-clock mr-1'></i> $data_solicitacao</p>
                    </div>
                  </div>
-                <b class='btn btn-$cor'>$status</b>
+                <b class='btn btn-$cor'>";
+
+                  if ($id_escola_destino==0) {
+                   echo "<form action='declaracao_transferencia.php' method='post' target='_blanck'>
+                     <input type='hidden' name='aluno_id' value='$idaluno'>
+                      <button type='submit' class='btn btn-primary'>GUIA DE TRANSFERÊNCIA</button>
+                   </form>";
+                  }else{
+
+                  echo "$status";
+                  }
+              echo"</b>
                   
                  <p>
                   $resposta_solicitacao

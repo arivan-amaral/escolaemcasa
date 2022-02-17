@@ -28,9 +28,9 @@ try {
 		$solicitacao_pendente='';
 		foreach ($_POST['idaluno'] as $key => $value) {
 			$aluno_id=$_POST['idaluno'][$key];
-			$nome_aluno=$_POST['nome_aluno'][$key];
+			$nome_aluno=$_POST["nome_aluno$aluno_id"];
 			$matricula_aluno=$_POST["matricula_aluno".$aluno_id];
-			$resultado=$_POST['resultado'][$key];
+			$resultado=$_POST["resultado".$aluno_id];
 			
 			$aceita=0; //neutra
 			//$aceita=1;// 1 aceita
@@ -41,7 +41,15 @@ try {
 			 if (count($solicitacao_tranferencia)==0) {
 			 	if ($escola_id==0) {
 			 		$aceita=1;// 1 aceita
-
+			 	 
+			 			solicitacao_transferencia(
+			 				$conexao,
+			 				$matricula_aluno,
+			 				$aluno_id,
+			 				$serie_id,	
+			 				$profissional_solicitante,
+			 				$escola_id,
+			 				$observacao,$ano_letivo,$ano_letivo_vigente,$aceita,$escola_id_origem,$turma_id_origem);
 			 		
 			 	}else{
 			 		$aceita=0;// 0 neutra(pendente)
@@ -54,6 +62,10 @@ try {
 					$escola_id,
 					$observacao,$ano_letivo,$ano_letivo_vigente,$aceita,$escola_id_origem,$turma_id_origem);
 			 	}
+
+			 $procedimento="TRANSFERIDO FORA";
+			  mudar_situacao_transferencia_aluno($conexao,$matricula_aluno,$procedimento);
+
 			 }else{
 			 	$solicitacao_pendente.=" | $nome_aluno ";
 			 }
