@@ -95,7 +95,7 @@ function lista_solicitacao_transferencia_recebida($conexao,$visualizada,$aceita,
       funcionario.idfuncionario = profissional_solicitante and 
       solicitacao_transferencia.serie_id = serie.id and 
       escola_id=idescola 
-       and visualizada= $visualizada   $sql_escolas ) order by solicitacao_transferencia.aceita asc solicitacao_transferencia.id desc 
+       and visualizada= $visualizada   $sql_escolas ) order by solicitacao_transferencia.aceita asc,solicitacao_transferencia.id desc 
       ");
    return $sql->fetchAll();
 }
