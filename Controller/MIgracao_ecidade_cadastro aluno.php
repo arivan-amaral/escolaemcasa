@@ -296,7 +296,33 @@ if ($idaluno==55748) {
     echo"t<br>";
 }
 
-                    $conexao->exec("UPDATE aluno set endereco = '$endereco' where idaluno=$idaluno and (endereco IS NULL or endereco ='') "); 
+                    $conexao->exec("UPDATE aluno set cpf = '$cpf' where idaluno=$idaluno and (cpf IS NULL or cpf ='') ");   
+
+                    $conexao->exec("UPDATE aluno set data_expedicao = '$data_expedicao' where idaluno=$idaluno and (data_expedicao IS NULL or data_expedicao ='') ");
+
+                     $conexao->exec("UPDATE aluno set numero_termo = '$numero_termo' where idaluno=$idaluno and (numero_termo IS NULL or numero_termo ='') "); 
+
+                     $conexao->exec("UPDATE aluno set folha = '$folha' where idaluno=$idaluno and (folha IS NULL or folha ='') ");         
+
+
+                     $conexao->exec("UPDATE aluno set nome_cartorio = '$nome_cartorio' where idaluno=$idaluno and (nome_cartorio IS NULL or nome_cartorio ='') "); 
+
+                     $conexao->exec("UPDATE aluno set numero_indentidade = '$numero_indentidade' where idaluno=$idaluno and (numero_indentidade IS NULL or numero_indentidade ='') ");  
+
+
+                     $conexao->exec("UPDATE aluno set data_expedicao = '$data_expedicao' where idaluno=$idaluno and (data_expedicao IS NULL or data_expedicao ='') ");
+
+                     $conexao->exec("UPDATE aluno set numero_cnh = '$numero_cnh' where idaluno=$idaluno and (numero_cnh IS NULL or numero_cnh ='') ");  
+
+                      $conexao->exec("UPDATE aluno set matricula_certidao = '$matricula_certidao' where idaluno=$idaluno and (matricula_certidao IS NULL or matricula_certidao ='') ");   
+
+                      $conexao->exec("UPDATE aluno set naturalidade = '$naturalidade' where idaluno=$idaluno and (naturalidade IS NULL or naturalidade ='') ");
+
+                      $conexao->exec("UPDATE aluno set orgao_emissor_indentidade = '$orgao_emissor_indentidade' where idaluno=$idaluno and (orgao_emissor_indentidade IS NULL or orgao_emissor_indentidade ='') ");
+
+                      $conexao->exec("UPDATE aluno set orgao_emissor_indentidade = '$cartao_sus' where idaluno=$idaluno and (cartao_sus IS NULL or cartao_sus ='') "); 
+                              
+                      $conexao->exec("UPDATE aluno set raca_aluno = '$raca_aluno' where idaluno=$idaluno and (raca_aluno IS NULL or raca_aluno ='') "); 
                     
                     // $conexao->exec("UPDATE aluno set aluno_transpublico = '$aluno_transpublico' where idaluno=$idaluno  ");
                 }
