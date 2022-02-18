@@ -287,43 +287,87 @@ if (isset($_GET['tokem_arivan'])) {
 
 
             else{
-                if ($endereco=='') {
-                     echo "<b>Endereco VÁZIO</b><br>";
-                }else{
-if ($idaluno==55748) {
-      echo "$endereco já exite  $conta - id: $idaluno  <br>";
-}else{
-    echo"t<br>";
-}
+                // if ($endereco=='') {
+                //      echo "<b>Endereco VÁZIO</b><br>";
+                // }else{
+// if ($idaluno==55748) {
+//       echo "$endereco já exite  $conta - id: $idaluno  <br>";
+// }else{
+//     echo"t<br>";
+// }
 
+if ($cpf !="") {
+    // code...
+echo " cpf<br>";
+    // 
                     $conexao->exec("UPDATE aluno set cpf = '$cpf' where idaluno=$idaluno and (cpf IS NULL or cpf ='') ");   
+}
+if ($data_expedicao !="") {
+echo " data_expedicao<br>";
 
                     $conexao->exec("UPDATE aluno set data_expedicao = '$data_expedicao' where idaluno=$idaluno and (data_expedicao IS NULL or data_expedicao ='') ");
+}
+
+if ($numero_termo !="") {
+echo " numero_termo<br>";
 
                      $conexao->exec("UPDATE aluno set numero_termo = '$numero_termo' where idaluno=$idaluno and (numero_termo IS NULL or numero_termo ='') "); 
+}
+
+if ($folha !="") {
+echo " folha<br>";
 
                      $conexao->exec("UPDATE aluno set folha = '$folha' where idaluno=$idaluno and (folha IS NULL or folha ='') ");         
+}
 
+if ($nome_cartorio !="") {
+echo " nome_cartorio<br>";
 
                      $conexao->exec("UPDATE aluno set nome_cartorio = '$nome_cartorio' where idaluno=$idaluno and (nome_cartorio IS NULL or nome_cartorio ='') "); 
+}
+
+if ($numero_indentidade !="") {
+echo " numero_indentidade<br>";
 
                      $conexao->exec("UPDATE aluno set numero_indentidade = '$numero_indentidade' where idaluno=$idaluno and (numero_indentidade IS NULL or numero_indentidade ='') ");  
 
+}
+if ($numero_cnh !="") {
+echo " numero_cnh<br>";
 
-                     $conexao->exec("UPDATE aluno set data_expedicao = '$data_expedicao' where idaluno=$idaluno and (data_expedicao IS NULL or data_expedicao ='') ");
+                    $conexao->exec("UPDATE aluno set numero_cnh = '$numero_cnh' where idaluno=$idaluno and (numero_cnh IS NULL or numero_cnh ='') ");  
+}
 
-                     $conexao->exec("UPDATE aluno set numero_cnh = '$numero_cnh' where idaluno=$idaluno and (numero_cnh IS NULL or numero_cnh ='') ");  
+if ($matricula_certidao !="") {
+echo " matricula_certidao<br>";
 
                       $conexao->exec("UPDATE aluno set matricula_certidao = '$matricula_certidao' where idaluno=$idaluno and (matricula_certidao IS NULL or matricula_certidao ='') ");   
+}
+if ($naturalidade !="") {
+echo " naturalidade<br>";
 
                       $conexao->exec("UPDATE aluno set naturalidade = '$naturalidade' where idaluno=$idaluno and (naturalidade IS NULL or naturalidade ='') ");
+}
+
+if ($orgao_emissor_indentidade !="") {
+echo " orgao_emissor_indentidade<br>";
 
                       $conexao->exec("UPDATE aluno set orgao_emissor_indentidade = '$orgao_emissor_indentidade' where idaluno=$idaluno and (orgao_emissor_indentidade IS NULL or orgao_emissor_indentidade ='') ");
+}
 
-                      $conexao->exec("UPDATE aluno set orgao_emissor_indentidade = '$cartao_sus' where idaluno=$idaluno and (cartao_sus IS NULL or cartao_sus ='') "); 
-                              
+if ($cartao_sus !="") {
+echo " cartao_sus<br>";
+
+
+
+                      $conexao->exec("UPDATE aluno set cartao_sus = '$cartao_sus' where idaluno=$idaluno and (cartao_sus IS NULL or cartao_sus ='') "); 
+}
+
+if ($raca_aluno !="") {
+echo " raca_aluno<br>";
+
                       $conexao->exec("UPDATE aluno set raca_aluno = '$raca_aluno' where idaluno=$idaluno and (raca_aluno IS NULL or raca_aluno ='') "); 
-                    
+}
                     // $conexao->exec("UPDATE aluno set aluno_transpublico = '$aluno_transpublico' where idaluno=$idaluno  ");
                 }
                  
