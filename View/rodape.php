@@ -315,6 +315,9 @@ if (isset($_SESSION['cargo'])) {
 
  
 <script src="plugins/jquery/jquery.min.js"></script>
+
+
+ <script type="text/javascript" src="jquery.mask.min.js"></script>
 <!-- Bootstrap -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- overlayScrollbars -->
@@ -323,6 +326,7 @@ if (isset($_SESSION['cargo'])) {
 <script src="dist/js/adminlte.js"></script>
 <!-- PAGE PLUGINS -->
 <!-- jQuery Mapael -->
+
 <script src="plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
 <script src="plugins/raphael/raphael.min.js"></script>
 <script src="plugins/jquery-mapael/jquery.mapael.min.js"></script>
@@ -337,7 +341,6 @@ if (isset($_SESSION['cargo'])) {
 <!-- ############################################################################################ -->
 
 
-
  
 <script src="plugins/select2/js/select2.full.min.js"></script>
 <!-- Bootstrap4 Duallistbox -->
@@ -345,6 +348,7 @@ if (isset($_SESSION['cargo'])) {
 <!-- InputMask -->
 <script src="plugins/moment/moment.min.js"></script>
 <script src="plugins/inputmask/jquery.inputmask.min.js"></script>
+
 <!-- date-range-picker -->
 <script src="plugins/daterangepicker/daterangepicker.js"></script>
 <!-- bootstrap color picker -->

@@ -130,13 +130,13 @@ $idcoordenador=$_SESSION['idfuncionario'];
                       <div class="col-sm-4">
                          <div class="form-group">
                           <label for="exampleInputEmail1">Whatsapp aluno</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="whatsapp"  >
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="whatsapp" onkeypress="$(this).mask('(00) 0000-00009')" >
                         </div>
                       </div>                      
                       <div class="col-sm-4">
                          <div class="form-group">
                           <label for="exampleInputEmail1">Whatsapp responsável</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="whatsapp_responsavel"  >
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="whatsapp_responsavel" onkeypress="$(this).mask('(00) 0000-00009')" >
                         </div>
                       </div>
                     </div>
@@ -804,6 +804,7 @@ $idcoordenador=$_SESSION['idfuncionario'];
 
 <!-- ######################################################################## -->
 </div>
+
 <?php include_once "rodape.php"; ?>
 
 

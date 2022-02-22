@@ -40,7 +40,11 @@
   <link rel="stylesheet" href="plugins/codemirror/codemirror.css">
   <link rel="stylesheet" href="plugins/codemirror/theme/monokai.css">
   <link rel="stylesheet" href="plugins/simplemde/simplemde.min.css">
-  
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script>
   <!-- daterange picker -->
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- iCheck for checkboxes and radio inputs -->
@@ -49,7 +53,7 @@
   <link rel="stylesheet" href="plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
   <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  
+
 
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHETRNN05Z"></script>
