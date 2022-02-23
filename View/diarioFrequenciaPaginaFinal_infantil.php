@@ -581,7 +581,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
 
 
 <?php
-$presenca="-";
+$presenca="F";
 $conta_presenca=1;
  foreach ($array_aula as $key => $value) {
     $aula=$array_aula[$key];
