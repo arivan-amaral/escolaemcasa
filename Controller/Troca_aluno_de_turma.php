@@ -72,7 +72,12 @@ try {
 			 	// echo "UPDATE ecidade_matricula set turma_id=$turma_id and turno_nome=$turno WHERE matricula_codigo=$matricula_aluno<br>";
 
 			 	$conexao->exec("UPDATE ecidade_matricula set turma_id=$turma_id, turno_nome='$turno' WHERE matricula_codigo=$matricula_aluno ");
-		 
+
+			 	// $conexao->exec("UPDATE nota set turma_id=$turma_id
+
+			 	//  where    aluno_id=$aluno_id and ano_nota=$_SESSION['ano_letivo_vigente'] ");
+
+ 
 
 				 
 				$quantidade_vagas_restante--;

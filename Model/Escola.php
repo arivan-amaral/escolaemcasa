@@ -231,6 +231,14 @@ function mudar_situacao_transferencia_aluno($conexao,$matricula_codigo,$procedim
 }
 
 
+function mudar_situacao_transferencia_aluno_aceita($conexao,$matricula_codigo,$procedimento,$data_saida){
+   $sql = $conexao->prepare("UPDATE ecidade_matricula set matricula_concluida='S', matricula_ativa='N' , matricula_situacao='$procedimento', datasaida='$data_saida' where matricula_codigo =:matricula_codigo
+      ");
+   $sql->bindParam("matricula_codigo",$matricula_codigo);
+   $sql->execute();
+}
+
+
 
 
 

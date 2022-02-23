@@ -22,7 +22,8 @@ try {
     if ($vaga_escola>0) {
         $aceita=1;
         $procedimento="TRANSFERIDO REDE";
-         mudar_situacao_transferencia_aluno($conexao,$matricula_aluno,$procedimento);
+        $data_saida=date("Y-m-d");
+         mudar_situacao_transferencia_aluno_aceita($conexao,$matricula_aluno,$procedimento,$data_saida);
         //transferencia
         $aluno_id=$idaluno;
         $turma_id=$aceitar_nova_turma;
