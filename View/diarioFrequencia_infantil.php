@@ -520,7 +520,7 @@ $conta_presenca=1;
       $presenca=".";
     }else{
       $presenca="";
-       $presenca="<span style='font-size:12.0pt;'>F</span>";
+       $presenca="F";
 
     }
    
