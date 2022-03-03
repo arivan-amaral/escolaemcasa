@@ -14,8 +14,8 @@ function converte_telefone($whatsapp){
 $nome=$_POST['nome'];
 $email=$_POST['email'];
 $senha=$_POST['senha'];
-$whatsapp="55".converte_telefone($_POST['whatsapp']);
-$whatsapp_responsavel="55".converte_telefone($_POST['whatsapp_responsavel']);
+$whatsapp="".converte_telefone($_POST['whatsapp']);
+$whatsapp_responsavel="".converte_telefone($_POST['whatsapp_responsavel']);
 $idaluno=$_SESSION['idaluno'];
 
 

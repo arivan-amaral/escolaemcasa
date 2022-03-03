@@ -4496,7 +4496,6 @@ function aceitar_solicitacao_transferencia(form1){
 
     var data_1 = new Date(data);
     var data_2 = new Date('2021-01-01');
-
     if (data_1 > data_2) {
         
         console.log(data);
@@ -4526,7 +4525,7 @@ function aceitar_solicitacao_transferencia(form1){
                 }
             };
             xmlreq.send(null);
-        }
+        } 
     }
 
 
