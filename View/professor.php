@@ -922,7 +922,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
 
                                 
-                              }else if ( (!in_array($iddisciplina, $array_disciplina_regente_creche)) && (!in_array($iddisciplina, $array_disciplina_regente_pre_escola ))  ) {
+                              }else if ( !(in_array($iddisciplina, $array_disciplina_regente_creche)) || !(in_array($iddisciplina, $array_disciplina_regente_pre_escola ))  ) {
                           
 
                               echo "
