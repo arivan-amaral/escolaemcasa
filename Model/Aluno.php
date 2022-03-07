@@ -1383,6 +1383,8 @@ AND ecidade_matricula.matricula_situacao !='REMATRICULAR ALUNO'
 
 
 function listar_aluno_da_turma_ata_resultado_final($conexao,$turma_id,$escola_id,$ano_letivo){
+//     ecidade_matricula.matricula_concluida='N' and
+// ecidade_matricula.matricula_ativa='S' and
   $res=$conexao->query("
     SELECT 
 aluno.nome as 'nome_aluno',
@@ -1409,8 +1411,7 @@ ecidade_matricula.turma_id = turma.idturma and
 ecidade_matricula.turma_escola = escola.idescola and 
 ecidade_matricula.calendario_ano ='$ano_letivo' and 
  
-ecidade_matricula.matricula_concluida='N' and
-ecidade_matricula.matricula_ativa='S' and
+
 ecidade_matricula.turma_escola=$escola_id and
 ecidade_matricula.matricula_situacao !='CANCELADO' and
 ecidade_matricula.turma_id=$turma_id  ORDER by aluno.nome ASC");
@@ -1420,8 +1421,6 @@ ecidade_matricula.turma_id=$turma_id  ORDER by aluno.nome ASC");
 } 
 
 function listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,$turma_id,$escola_id,$ano_letivo){
-//  ecidade_matricula.matricula_concluida='S' and
-//  ecidade_matricula.matricula_ativa='N' and
   $res=$conexao->query("
     SELECT 
 aluno.nome as 'nome_aluno',
@@ -1448,7 +1447,8 @@ ecidade_matricula.turma_id = turma.idturma and
 ecidade_matricula.turma_escola = escola.idescola and 
 ecidade_matricula.calendario_ano ='$ano_letivo' and 
  
-
+ecidade_matricula.matricula_concluida='S' and
+ecidade_matricula.matricula_ativa='N' and
 ecidade_matricula.turma_escola=$escola_id and
 ecidade_matricula.matricula_situacao !='CANCELADO' and
 ecidade_matricula.turma_id=$turma_id  ORDER by aluno.nome ASC");
