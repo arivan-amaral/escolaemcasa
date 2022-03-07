@@ -340,7 +340,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
                           $conta=0;
                           $array_disciplina_regente_creche = array('0' => 40,'1' => 42,'2' => 43,'3' => 44);
-                          $array_disciplina_regente_pre_escola = array('0' => 40,'1' => 42,'2' => 43,'3' => 44);        
+                          $array_disciplina_regente_pre_escola = array('0' => 40,'1' => 42,'2' => 44);        
 
                             $array_turma_regente_creche = array();
                             $array_turma_regente_pre_escola = array();
@@ -639,7 +639,7 @@ setTimeout('dia_doservidor_publico();',3000);
                                 ";
 
                               
-                              }elseif ($idserie==1 && (in_array($iddisciplina, $array_turma_regente_pre_escola)) && (!in_array($idturma, $array_turma_regente_pre_escola)) && $conta_disciplina_regetes_pre_escola ==1) {
+                              }elseif ($idserie==2 && (in_array($iddisciplina, $array_turma_regente_pre_escola)) && (!in_array($idturma, $array_turma_regente_pre_escola)) && $conta_disciplina_regetes_pre_escola ==1) {
                                 $conta_disciplina_regetes_pre_escola++;
 
                                    $iddisciplina= 1000;
