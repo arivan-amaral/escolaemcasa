@@ -111,7 +111,7 @@ where
                       ecidade_matricula.turma_id = turma.idturma and 
                       ecidade_matricula.turma_escola = escola.idescola and 
                       ecidade_matricula.matricula_situacao !='CANCELADO'
-                      ORDER by ecidade_matricula.calendario_ano asc");
+                      ORDER by ecidade_matricula.matricula_codigo asc,  ecidade_matricula.calendario_ano asc");
 $conta_ano_cursado=1;
 $result_ecidade_matricula=$result_ecidade_matricula->fetchAll();
 
