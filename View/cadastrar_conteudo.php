@@ -112,7 +112,7 @@ if (!isset($_SESSION['idprofessor'])) {
       <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
-            <button class="btn btn-block btn-lg btn-secondary"><?php
+            <button class="btn btn-block btn-lg btn-secondary" id="descricao_escola_turma"><?php
 
             $nome_turma='';
             $nome_disciplina='';
@@ -431,6 +431,10 @@ if (!isset($_SESSION['idprofessor'])) {
 
 </div>
 
+<?php 
+if ($idserie>2) {
+
+?>
  
           <div class="row">
           <div class="col-sm-12">
@@ -472,6 +476,12 @@ if (!isset($_SESSION['idprofessor'])) {
 
 </div>
 
+        <?php 
+
+
+          // code...
+}
+?>
 
 
 <div class="row">

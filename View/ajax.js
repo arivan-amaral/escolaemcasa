@@ -1258,6 +1258,12 @@ function limpa_data_frequencia_ja_cadastrada(){
 }
 
 
+function limpa_avaliacao(){
+   document.getElementById("listagem_avaliacao").innerHTML='';
+   document.getElementById("botao_continuar").innerHTML='';
+}
+
+
 function lista_avaliacao_ja_cadastrada_por_periodo(periodo){
   document.getElementById("data_frequencia").value='';
 
@@ -1459,6 +1465,7 @@ function lista_conteudo_aluno(){
   var idescola = document.getElementById("idescola").value;
   var idturma = document.getElementById("idturma").value;
   var iddisciplina = document.getElementById("iddisciplina").value;
+  var descricao_escola_turma = document.getElementById("descricao_escola_turma").innerHTML;
 
    var data_frequencia = document.getElementById("data_frequencia").value;
    var aula = document.getElementById("aula").value;
@@ -1467,7 +1474,7 @@ function lista_conteudo_aluno(){
         result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
 
           
-      var url="idserie="+idserie+"&aula="+aula+"&data_frequencia="+data_frequencia+"&idescola="+idescola+"&idturma="+idturma+"&iddisciplina="+iddisciplina;
+      var url="descricao_escola_turma="+descricao_escola_turma+"&idserie="+idserie+"&aula="+aula+"&data_frequencia="+data_frequencia+"&idescola="+idescola+"&idturma="+idturma+"&iddisciplina="+iddisciplina;
        xmlreq.open("GET", "../Controller/Lista_conteudo_cadastrados.php?"+url, true);
         xmlreq.onreadystatechange = function(){      
             if (xmlreq.readyState == 4) {
@@ -1583,6 +1590,12 @@ function editar_avaliacao_aluno_por_data(conta){
 }
 
 
+function lista_avaliacao_aluno_por_data() {
+    document.getElementById("listagem_avaliacao").innerHTML="";
+    document.getElementById("botao_continuar").innerHTML="";
+
+}
+
 
 
 function lista_avaliacao_aluno_por_data(){
@@ -1596,9 +1609,9 @@ function lista_avaliacao_aluno_por_data(){
   var idturma = document.getElementById("idturma").value;
   var iddisciplina = document.getElementById("iddisciplina").value;
   var idperiodo = document.getElementById("periodo").value;
+ 
 
-
-   if ( idperiodo !="" ) {
+   if ( idperiodo !="" &&  iddisciplina !=""  ) {
         result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
           var url="idserie="+idserie+"&idperiodo="+idperiodo+"&idescola="+idescola+"&idturma="+idturma+"&iddisciplina="+iddisciplina;
            xmlreq.open("GET", "../Controller/Lista_avaliacao_aluno_por_data.php?"+url, true);
@@ -1609,7 +1622,7 @@ function lista_avaliacao_aluno_por_data(){
                         botao_continuar.innerHTML=""+
                         "<div class='col-sm-1'></div>"+
                         "<div class='col-sm-10'>"+
-                          "<button type='submit' id='btn_diario_avaliacao' class='btn btn-block btn-primary'  onclick='aguarde_acao(60000);bloquear_botao();'>Concluir</button>"+
+                          "<button type='submit' id='btn_diario_avaliacao' class='btn btn-block btn-primary'  onclick='enviar_notas();'>Concluir</button>"+
                         "</div>";
                         
                     }else{
@@ -1624,20 +1637,41 @@ function lista_avaliacao_aluno_por_data(){
 
     }else{
         
-        if (idperiodo =="") {
-            Swal.fire({
+             Swal.fire({
                       icon: 'info',
                       title: 'Atenção...',
-                      text: 'Selecione o período!',
+                      text: 'Selecione o período e a disciplina!',
                       showConfirmButton: false,
-                      timer: 1500
+                      timer: 2000
                       
                     });
-        }
+ 
+    }
+}
 
 
 
+function enviar_notas(){
 
+  var botao_continuar = document.getElementById("botao_continuar");
+  var iddisciplina = document.getElementById("iddisciplina").value;
+  var idperiodo = document.getElementById("periodo").value;
+ 
+
+   if ( idperiodo !="" &&  iddisciplina !=""  ) {
+        aguarde_acao(60000);bloquear_botao();
+  
+    }else{
+        
+             Swal.fire({
+                      icon: 'info',
+                      title: 'Atenção...',
+                      text: 'Selecione o período e a disciplina!',
+                      showConfirmButton: false,
+                      timer: 2000
+                      
+                    });
+ 
     }
 }
 

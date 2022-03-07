@@ -127,53 +127,7 @@ if (!isset($_SESSION['idfuncionario'])) {
       <br>
 
 
-<div class="row">
 
-    <div class="col-md-1"></div>
-
-<?php 
-
-if ($funcionario!='secretaria') {
-?>
-          <div class="col-sm-10">
-          <div class="form-group">
-            <label for="exampleInputEmail1" style="color:red;">ATALHO PARA DIÁRIO DE AVALIAÇÃO EM OUTRAS TURMAS/DISCIPLINAS</label>
-
-            <select multiple="multiple" class="form-control" id="atalho" >
-              <?php
-              $result=listar_disciplina_professor($conexao,$idprofessor,$_SESSION['ano_letivo']);
-
-
-              $conta=1;
-              foreach ($result as $key => $value) {
-
-                $disciplina=($value['nome_disciplina']);
-                $nome_escola_atalho=($value['nome_escola']);
-                $idescola_atalho=($value['idescola']);
-                $iddisciplina_atalho=$value['iddisciplina'];
-                $idturma_atalho=$value['idturma'];
-                $nome_turma_atalho=($value['nome_turma']);
-                $idserie_atalho=$value['serie_id'];
-
-                echo "
-                <option value='diario_avaliacao.php?disc=$iddisciplina_atalho&turm=$idturma_atalho&turma=$nome_turma_atalho&disciplina=$disciplina&idescola=$idescola_atalho&idserie=$idserie_atalho' onclick='atalho();' >
-                    Mudar para turma =>  $nome_turma_atalho - $disciplina  
-                  </option> 
-
-                ";
-                $conta++;
-              }
-
-
-              ?>
-            </select>
-          </div>
-        </div>
-<?php 
-}
-?>
-
-</div>
 
 <!-- ################################################################################# -->
 
@@ -321,14 +275,40 @@ if ($funcionario!='secretaria') {
       <br>
       <div class="row">
         
-        <div class="col-sm-1"></div>
   
 
-        <div class="col-sm-6">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-4">
+          <?php  ?>
+          <div class="form-group">
+            <label for="exampleInputEmail1" class="text-danger">Disciplina da turma <?php echo $nome_turma; ?></label>
+
+            <select class="form-control" id='iddisciplina' name='iddisciplina' required=""  onchange="limpa_avaliacao();">
+              <option></option>
+              <?php 
+             
+                $resultado_disciplina=listar_disciplina_professor_na_turma($conexao,$idescola,$idturma,$idprofessor,$_SESSION['ano_letivo']);
+                  
+                  foreach ($resultado_disciplina as $key => $value) {
+                  $iddisciplina=$value['iddisciplina'];
+                  $nome_disciplina=$value['nome_disciplina'];
+                   
+                    echo"<option value='$iddisciplina'>$nome_disciplina</option>";
+
+                  
+                  
+                }
+
+               ?>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-4">
           <div class="form-group">
             <label for="exampleInputEmail1">Período</label>
 
-            <select class="form-control" id='periodo' name='periodo' required="">
+            <select class="form-control" id='periodo' name='periodo' required="" onchange="limpa_avaliacao();">
               <option></option>
               <?php 
                 $resultado=listar_trimestre($conexao);
@@ -356,7 +336,7 @@ if ($funcionario!='secretaria') {
             <br>
             <label for="exampleInputEmail1"> <br></label>
 
-              <a href="#" class="btn btn-primary" onclick="lista_avaliacao_aluno_por_data();">BUSCAR </a>
+              <a class="btn btn-primary" onclick="lista_avaliacao_aluno_por_data();">BUSCAR </a>
           </div>
         </div>
 
@@ -368,7 +348,7 @@ if ($funcionario!='secretaria') {
 <input type="hidden" name="idserie" id="idserie" value="<?php echo $idserie; ?>" >
 <input type="hidden" name="idescola" id="idescola" value="<?php echo $idescola; ?>">
 <input type="hidden" name="idturma" id="idturma" value="<?php echo $idturma; ?>">
-<input type="hidden" name="iddisciplina" id="iddisciplina" value="<?php echo $iddisciplina; ?>" readonly>
+<!-- <input type="hidden" name="iddisciplina" id="iddisciplina" value="<?php echo $iddisciplina; ?>" readonly> -->
 
 
 

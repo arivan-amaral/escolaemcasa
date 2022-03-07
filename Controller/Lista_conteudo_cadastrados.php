@@ -11,13 +11,18 @@ try {
     $idprofessor=$_SESSION['idfuncionario'];
 
     $idserie=$_GET['idserie'];
+    $idserie_get=$_GET['idserie'];
+
     $idescola=$_GET['idescola'];
     $idescola_get=$_GET['idescola'];
 
     $idturma=$_GET['idturma'];
     $idturma_get=$_GET['idturma'];
+
     $iddisciplina=$_GET['iddisciplina'];
     $iddisciplina_get=$_GET['iddisciplina'];
+    $descricao_escola_turma=$_GET['descricao_escola_turma'];
+
     $data=$_GET['data_frequencia'];
     $aula=$_GET['aula'];
    $result="
@@ -51,6 +56,18 @@ try {
       $iddisciplina_array=array(); 
       $idturma_array=array(); 
       $idescola_array=array(); 
+
+if($iddisciplina_get==1000){
+ $result.="
+                <div class='custom-control custom-checkbox'>
+                <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$idescola_get$idturma_get$iddisciplina_get$idserie_get' value='$idescola_get-$idturma_get-$iddisciplina_get-$idserie_get'  required onclick='adicinar_campo_conteudo($idescola$idturma_get$iddisciplina_get$idserie_get
+                )'> 
+                
+                <label for='customCheckbox$idescola_get$idturma_get$iddisciplina_get$idserie_get' class='custom-control-label'  id='label$idescola_get$idturma_get$iddisciplina_get$idserie_get'>
+                 $descricao_escola_turma <font style='color:#8B0000' > - DISCIPLINAS REGENTES </font> </label>
+                </div>";
+
+}else{
 
       foreach ($result_disciplinas as $key => $value) {
 
@@ -94,6 +111,7 @@ try {
                 $result.="
                 <div class='custom-control custom-checkbox'>
                 <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$escola_id$turma_id$disciplina_id$serie_id' value='$escola_id-$turma_id-$disciplina_id-$serie_id' $marca_disciplina required onclick='adicinar_campo_conteudo($escola_id$turma_id$disciplina_id$serie_id)'> 
+
                 <label for='customCheckbox$escola_id$turma_id$disciplina_id$serie_id' class='custom-control-label'  id='label$escola_id$turma_id$disciplina_id$serie_id'> $nome_escola - <font style='color:#8B0000' >$turma -$disciplina</font> </label>
                 </div>";
 
@@ -121,6 +139,9 @@ try {
 
 
           }
+}//else se disciplina não fr regente
+
+
 
     // }
 

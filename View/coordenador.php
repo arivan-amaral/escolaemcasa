@@ -57,7 +57,7 @@ setTimeout('dia_doservidor_publico();',3000);
                          
                             background-size: 100% 100%;
                       }
-                      </style>
+                       </style>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
    
@@ -66,8 +66,8 @@ setTimeout('dia_doservidor_publico();',3000);
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 
 <script type="text/javascript">
-   setInterval("licitalem_webhook();",30000);
-   setInterval("notificacao_ocorrencia();",10000);
+   // setInterval("licitalem_webhook();",30000);
+   // setInterval("notificacao_ocorrencia();",10000);
 </script>
 
 <div class="content-wrapper" style="min-height: 529px;">
