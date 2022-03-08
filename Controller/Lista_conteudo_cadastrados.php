@@ -31,7 +31,7 @@ try {
      <div class='col-sm-12'>
 
       <div style='background-color:#B0C4DE; padding:10px;border-radius: 1%;''>
-      <b> <font color='blue'>Escolha as turma que receberão o mesmo conteúdo cadastrado aqui. </font></b>
+      <b> <font color='blue'>Escolha as turmas que receberão o mesmo conteúdo cadastrado aqui. </font></b>
   
    ";
     
