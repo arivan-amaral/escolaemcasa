@@ -1607,7 +1607,7 @@ function listar_disciplina_para_ata($conexao,$escola_id,$idturma,$ano_letivo){
    ministrada.ano=$ano_letivo AND
    disciplina.facultativo=0 AND
    turma.idturma = $idturma and
-   escola.idescola = $escola_id
+   escola.idescola = $escola_id order by disciplina.ordem asc
    ");
   return $res;
 }
