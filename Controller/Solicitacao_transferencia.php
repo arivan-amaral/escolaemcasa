@@ -50,7 +50,11 @@ try {
 			 				$profissional_solicitante,
 			 				$escola_id,
 			 				$observacao,$ano_letivo,$ano_letivo_vigente,$aceita,$escola_id_origem,$turma_id_origem);
-			 		
+
+			 		$procedimento="TRANSFERIDO FORA";
+			 		$data_saida=date("Y-m-d");
+			  		mudar_situacao_transferencia_aluno($conexao,$matricula_aluno,$procedimento,$data_saida);
+			 		echo "$procedimento";
 			 	}else{
 			 		$aceita=0;// 0 neutra(pendente)
 				solicitacao_transferencia(
@@ -63,8 +67,8 @@ try {
 					$observacao,$ano_letivo,$ano_letivo_vigente,$aceita,$escola_id_origem,$turma_id_origem);
 			 	}
 
-			 $procedimento="TRANSFERIDO FORA";
-			  mudar_situacao_transferencia_aluno($conexao,$matricula_aluno,$procedimento);
+			 // $procedimento="TRANSFERIDO FORA";
+			 //  mudar_situacao_transferencia_aluno($conexao,$matricula_aluno,$procedimento);
 
 			 }else{
 			 	$solicitacao_pendente.=" | $nome_aluno ";
@@ -83,7 +87,9 @@ try {
 		$_SESSION['mensagem']="Aluno com solicitação de transferência pendente: ".$solicitacao_realizada;
 		header("location:../View/listar_alunos_da_turma.php?$url_get");	
 		exit();
-	}else{
+	}
+	
+	else{
 	 
 	$_SESSION['status']=1;
 		header("location:../View/listar_alunos_da_turma.php?$url_get");	
