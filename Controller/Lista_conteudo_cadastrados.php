@@ -57,17 +57,17 @@ try {
       $idturma_array=array(); 
       $idescola_array=array(); 
 
-if($iddisciplina_get==1000){
- $result.="
-                <div class='custom-control custom-checkbox'>
-                <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$idescola_get$idturma_get$iddisciplina_get$idserie_get' value='$idescola_get-$idturma_get-$iddisciplina_get-$idserie_get'  required onclick='adicinar_campo_conteudo($idescola$idturma_get$iddisciplina_get$idserie_get
-                )'> 
+// if($iddisciplina_get==1000){
+//  $result.="
+//                 <div class='custom-control custom-checkbox'>
+//                 <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$idescola_get$idturma_get$iddisciplina_get$idserie_get' value='$idescola_get-$idturma_get-$iddisciplina_get-$idserie_get'  required onclick='adicinar_campo_conteudo($idescola$idturma_get$iddisciplina_get$idserie_get
+//                 )'> 
                 
-                <label for='customCheckbox$idescola_get$idturma_get$iddisciplina_get$idserie_get' class='custom-control-label'  id='label$idescola_get$idturma_get$iddisciplina_get$idserie_get'>
-                 $descricao_escola_turma <font style='color:#8B0000' > - DISCIPLINAS REGENTES </font> </label>
-                </div>";
+//                 <label for='customCheckbox$idescola_get$idturma_get$iddisciplina_get$idserie_get' class='custom-control-label'  id='label$idescola_get$idturma_get$iddisciplina_get$idserie_get'>
+//                  $descricao_escola_turma <font style='color:#8B0000' > - DISCIPLINAS REGENTES </font> </label>
+//                 </div>";
 
-}else{
+// }else{
 
       foreach ($result_disciplinas as $key => $value) {
 
@@ -129,7 +129,7 @@ if($iddisciplina_get==1000){
 
                 $result.="
                 <div class='custom-control custom-checkbox'>
-                <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$escola_id$turma_id$disciplina_id$serie_id' value='$escola_id-$turma_id-$disciplina_id-$serie_id' $marca_disciplina onclick='adicinar_campo_conteudo($escola_id$turma_id$disciplina_id$serie_id)'> 
+                <input class='custom-control-input checkbox ' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$escola_id$turma_id$disciplina_id$serie_id' value='$escola_id-$turma_id-$disciplina_id-$serie_id' $marca_disciplina onclick='adicinar_campo_conteudo($escola_id$turma_id$disciplina_id$serie_id)'> 
                 <label for='customCheckbox$escola_id$turma_id$disciplina_id$serie_id'   id='label$escola_id$turma_id$disciplina_id$serie_id' class='custom-control-label'> $nome_escola - <font style='color:#8B0000'>$turma -$disciplina</font> </label>
                 </div>";
             }
@@ -139,7 +139,7 @@ if($iddisciplina_get==1000){
 
 
           }
-}//else se disciplina não fr regente
+//}//else se disciplina não fr regente
 
 
 
@@ -327,7 +327,17 @@ $result.="<div id='conteudos'>
                   <select hidden   name='quantidade_aula$campo_origem_conteudo' required>
                       <option value='1'>1</option>
                   </select>
-                  <textarea class='form-control' id='descricao_conteudo' rows='5' name='descricao$campo_origem_conteudo' required>$conteudo_aula</textarea>
+                  <textarea class='form-control mesmo_conteudo_regente' id='descricao_conteudo$idescola$idturma$idserie$iddisciplina' rows='5' name='descricao$campo_origem_conteudo' 
+
+            
+                  
+                  onkeyup=duplica_texto_em_capos_selecionados('descricao_conteudo$idescola$idturma$idserie$iddisciplina');
+          
+
+                  onBlur=duplica_texto_em_capos_selecionados('descricao_conteudo$idescola$idturma$idserie$iddisciplina');
+
+            
+                   required>$conteudo_aula</textarea>
 
                  
                 </div>

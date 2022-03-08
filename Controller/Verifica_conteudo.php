@@ -74,7 +74,15 @@ foreach ($res2 as $key => $value) {
                 <select hidden   name='quantidade_aula$campo_origem_conteudo' required>
                     <option value='1'>1</option>
                 </select>
-                <textarea class='form-control' id='descricao_conteudo' rows='5' name='descricao$campo_origem_conteudo' required>$conteudo_aula</textarea>
+                <textarea class='form-control mesmo_conteudo_regente' id='descricao_conteudo$idescola$idturma$idserie$iddisciplina' 
+
+                  onkeyup=duplica_texto_em_capos_selecionados('descricao_conteudo$idescola$idturma$idserie$iddisciplina');
+          
+
+                  onBlur=duplica_texto_em_capos_selecionados('descricao_conteudo$idescola$idturma$idserie$iddisciplina');
+
+
+                rows='5' name='descricao$campo_origem_conteudo' required>$conteudo_aula</textarea>
 
                
               </div>

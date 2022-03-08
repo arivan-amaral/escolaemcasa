@@ -678,9 +678,23 @@ if ($idserie>2) {
 <script type="text/javascript">
 
 
+  function duplica_texto_em_capos_selecionados(id_sendo_digitado){
+   
+    var mesmo_conteudo_regente = document.querySelectorAll('.mesmo_conteudo_regente');
+    mesmo_conteudo_regente.forEach(function(elemento_mesmo_conteudo_regente) {
+      if(elemento_mesmo_conteudo_regente.id !=id_sendo_digitado){
+        elemento_mesmo_conteudo_regente.value=document.getElementById(id_sendo_digitado).value
+
+      }
+    });
+             
+  }
+
+
   function seleciona_tudo(){
 
       var checkBoxes = document.querySelectorAll('.checkbox');
+
       var selecionados = 0;
       checkBoxes.forEach(function(el) {
          if(el.checked) {
