@@ -64,7 +64,8 @@ foreach ($res2 as $key => $value) {
                
               </div>
             </div>";
-        }else{
+
+        }else if($idserie<3){
           $result.="
             <div class='col-sm-12' id='campo_inputs$campo_origem_conteudo'>
               <div class='form-group'>
@@ -80,6 +81,36 @@ foreach ($res2 as $key => $value) {
           
 
                   onBlur=duplica_texto_em_capos_selecionados('descricao_conteudo$idescola$idturma$idserie$iddisciplina');
+
+
+                rows='5' name='descricao$campo_origem_conteudo' required>$conteudo_aula</textarea>
+
+               
+              </div>
+            </div>";
+        }else{
+
+
+           // id='descricao_conteudo$idescola$idturma$idserie$iddisciplina' 
+
+           //        onkeyup=duplica_texto_em_capos_selecionados('descricao_conteudo$idescola$idturma$idserie$iddisciplina');
+          
+
+           //        onBlur=duplica_texto_em_capos_selecionados('descricao_conteudo$idescola$idturma$idserie$iddisciplina');
+           //        
+           //        
+          $result.="
+            <div class='col-sm-12' id='campo_inputs$campo_origem_conteudo'>
+              <div class='form-group'>
+                <label for='exampleInputEmail1'>Conteúdo da aula $turma <font style='color:#8B0000'> => $disciplina </font></label>
+
+                 <!-- b class='text-primary'> Quantidade de aula </b -->
+                <select hidden   name='quantidade_aula$campo_origem_conteudo' required>
+                    <option value='1'>1</option>
+                </select>
+                <textarea class='form-control mesmo_conteudo_regente' 
+
+
 
 
                 rows='5' name='descricao$campo_origem_conteudo' required>$conteudo_aula</textarea>
