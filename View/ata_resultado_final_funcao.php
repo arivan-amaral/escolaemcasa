@@ -33,6 +33,7 @@ function ata_resultados_finais($conexao,$idescola,$idturma,$idserie,$ano_letivo)
     $carga_horaria=$value['carga_horaria'];
 
     $nome_disciplina=$value['nome_disciplina'];
+    
     $abreviacao=$value['abreviacao'];
     $array_disciplina[$conta_disciplina]=$iddisciplina;
     $array_nome_sigla_disciplina[$abreviacao]=$nome_disciplina;

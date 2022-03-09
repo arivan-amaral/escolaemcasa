@@ -279,7 +279,11 @@ if (!isset($_SESSION['idfuncionario'])) {
 
         <div class="col-sm-1"></div>
         <div class="col-sm-4">
-          <?php  ?>
+          <?php
+
+          if (!isset($_GET['funcionario'])) {
+     
+          ?>
           <div class="form-group">
             <label for="exampleInputEmail1" class="text-danger">Disciplina da turma <?php echo $nome_turma; ?></label>
 
@@ -302,6 +306,15 @@ if (!isset($_SESSION['idfuncionario'])) {
                ?>
             </select>
           </div>
+          <?php 
+
+          }else{
+            echo "
+            <label class='text-danger'>Disciplina da turma $nome_turma</label>
+            <input type='text' class='form-control' name='iddisciplina' id='iddisciplina' value='$iddisciplina' readonly> ";
+          }
+
+          ?>
         </div>
 
         <div class="col-sm-4">
