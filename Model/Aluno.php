@@ -357,9 +357,21 @@ function listar_frequencia_cadastrado($conexao, $iddisciplina, $idturma, $idesco
 function listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $professor_id,$ano_letivo) {
     $resultado=$conexao->query("SELECT * FROM conteudo_aula WHERE
       disciplina_id=$iddisciplina and 
+       
       escola_id=$idescola and 
       ano_conteudo=$ano_letivo and 
       turma_id=$idturma order by data, aula ");
+    return $resultado;
+}
+
+function listar_conteudo_aula_cadastrado_regente($conexao, $iddisciplina, $idturma, $idescola, $professor_id,$ano_letivo) {
+    $resultado=$conexao->query("SELECT * FROM conteudo_aula WHERE
+        -- $iddisciplina 
+        -- and 
+       -- disciplina.iddisciplina= disciplina_id and 
+      escola_id=$idescola and 
+      ano_conteudo=$ano_letivo and 
+      turma_id=$idturma and professor_id=$professor_id GROUP BY data  order by data, aula  ");
     return $resultado;
 }
 
@@ -523,6 +535,17 @@ function verificar_frequencia_na_data($conexao,$idescola,$idturma,$iddisciplina,
       escola_id=$idescola and 
       aula='$aula' and 
       turma_id=$idturma group by data_frequencia");
+    return $resultado;
+}
+
+function verificar_conteudo_na_data($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data,$aula) {
+    $resultado=$conexao->query(" SELECT * FROM conteudo_aula WHERE
+
+      data='$data' and 
+      disciplina_id=$iddisciplina and 
+      escola_id=$idescola and 
+      aula='$aula' and 
+      turma_id=$idturma group by data");
     return $resultado;
 }
 

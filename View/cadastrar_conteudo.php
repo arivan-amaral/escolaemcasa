@@ -277,9 +277,8 @@ if (!isset($_SESSION['idprofessor'])) {
   <form action="../Controller/Cadastrar_conteudo.php" method="post">
 
       <div class="row">
-        <div class="col-sm-1"></div>
-        
-        <div class="col-sm-4">
+
+        <div class="col-sm-3">
           <div class="form-group">
             <label for="exampleInputEmail1">Data da aula</label>
             <input type="date" class="form-control" name="data_frequencia" id="data_frequencia" required="" min="<?php echo $_SERVER['ano_letivo']."01-01"; ?>" max="<?php echo $_SERVER['ano_letivo']."12-31"; ?>" onchange="verifica_dia_letivo('data_frequencia');">
@@ -287,7 +286,7 @@ if (!isset($_SESSION['idprofessor'])) {
           </div>
         </div>   
 
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <div class="form-group">
             <label for="exampleInputEmail1">Escolha a aula</label>
 
@@ -313,14 +312,30 @@ if (!isset($_SESSION['idprofessor'])) {
           </div>
         </div>
       
-        <div class="col-sm-3">
+        <div class="col-sm-6">
           <div class="form-group">
             <label for="exampleInputEmail1">Datas dos conteúdos lançadas</label>
 
             <select class="form-control" id="data_ja_lancada" onchange="listar_conteudo_cadastrado(this.value);" >
               <option></option>
-              <?php 
+              <?php  
+              if ($idserie<3) {
+                $iddisciplina="";
+                // $array_disciplina_regente_creche = array('0' => 40,'1' => 42,'2' => 43,'3' => 44);
+                // $array_disciplina_regente_pre_escola = array('0' => 40,'1' => 42,'2' => 44);        
+
+                //   if ($idserie==1) {
+                //     $iddisciplina=" disciplina_id = 40 or disciplina_id = 42 or  disciplina_id = 43 or disciplina_id = 44  ";
+
+                //   }else{
+                //     $iddisciplina=" disciplina_id = 40 or  disciplina_id = 42 or disciplina_id = 44  ";
+                //   }
+                $resultado=listar_conteudo_aula_cadastrado_regente($conexao, $iddisciplina, $idturma, $idescola, $idprofessor ,$ano_letivo);
+              }else{
+
                 $resultado=listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $idprofessor,$ano_letivo);
+              }
+
                 foreach ($resultado as $key => $value) {
                   $data=$value['data'];
                   $aula=$value['aula'];
@@ -549,11 +564,31 @@ if ($idserie>2) {
                                             </thead>
                                             <tbody>
                                               <?php 
-                                              $resultado=listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $idprofessor,$ano_letivo);
+
+                                              if ($idserie<3) {
+                                                $iddisciplina="";
+                                                // $array_disciplina_regente_creche = array('0' => 40,'1' => 42,'2' => 43,'3' => 44);
+                                                // $array_disciplina_regente_pre_escola = array('0' => 40,'1' => 42,'2' => 44);        
+
+                                                //   if ($idserie==1) {
+                                                //     $iddisciplina=" disciplina_id = 40 or disciplina_id = 42 or  disciplina_id = 43 or disciplina_id = 44  ";
+
+                                                //   }else{
+                                                //     $iddisciplina=" disciplina_id = 40 or  disciplina_id = 42 or disciplina_id = 44  ";
+                                                //   }
+                                                $resultado=listar_conteudo_aula_cadastrado_regente($conexao, $iddisciplina, $idturma, $idescola, $idprofessor,$ano_letivo);
+                                              }else{
+
+                                                $resultado=listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $idprofessor,$ano_letivo);
+                                              }
                                                     $conta=1;
                                                 foreach ($resultado as $key => $value) {
                                                     $professor_id=$value['professor_id'];
                                                     $conteudo_aula_id=$value['id'];
+                                                   $nome_disciplina="";
+                                                    if (isset($value['nome_disciplina'])) {
+                                                      $nome_disciplina=$value['nome_disciplina'];
+                                                    }
                                                     $data=$value['data'];
                                                     $aula=$value['aula'];
                                                     echo"
@@ -562,7 +597,7 @@ if ($idserie>2) {
                                                     $conta
                                                     <input type='hidden' id='conteudo_aula_id$conta' value='$conteudo_aula_id'>
                                                     </td>
-                                                      <td>$aula - ".converte_data($data)."<br>
+                                                      <td>$nome_disciplina $aula - ".converte_data($data)."<br>
                                                       ";
                                                       $res_prof=pesquisar_professor_por_id_status($conexao,$idprofessor);
                                                       foreach ($res_prof as $key => $value) {

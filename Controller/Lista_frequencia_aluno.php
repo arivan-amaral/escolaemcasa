@@ -50,11 +50,20 @@ try {
     
        if ($escola_id_bd==$idescola_get) {
 
-        $resultado2=verificar_frequencia_na_data($conexao,$escola_id_bd,$turma_id_bd,$disciplina_id,$professor_id,$data,$aula);
+        $resultado2=verificar_conteudo_na_data($conexao,$escola_id_bd,$turma_id_bd,$disciplina_id,$professor_id,$data,$aula);
+        // 10/03/2022
+        // $resultado2=verificar_frequencia_na_data($conexao,$escola_id_bd,$turma_id_bd,$disciplina_id,$professor_id,$data,$aula);
           $marcado2='';
           foreach ($resultado2 as $key22 => $value22) {
             $marcado2='checked';
           }
+// $result.=" SELECT * FROM frequencia WHERE
+
+//       data_frequencia='$data' and 
+//       disciplina_id=$disciplina_id and 
+//       escola_id=$idescola and 
+//       aula='$aula' and 
+//       turma_id=$idturma group by data_frequencia";
 
           if ($iddisciplina==$disciplina_id) {
             $result.="
@@ -66,7 +75,7 @@ try {
             $result.="
             <div class='custom-control custom-checkbox'>
                 <input class='custom-control-input' name='iddisciplina[]' type='checkbox' id='customCheckbox$disciplina_id' value='$disciplina_id' $marcado2>
-                <label for='customCheckbox$disciplina_id' class='custom-control-label'> $nome_escola - $nome_turma - $nome_disciplina</label>
+                <label for='customCheckbox$disciplina_id' class='custom-control-label'> $nome_escola - $nome_turma - $nome_disciplina </label>
             </div>";
           }
 

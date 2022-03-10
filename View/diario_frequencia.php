@@ -312,7 +312,24 @@ if (!isset($_SESSION['idprofessor'])) {
             <select class="form-control" id="data_ja_lancada" onchange="data_frequencia_ja_cadastrada(this.value);" >
               <option></option>
               <?php 
-                $resultado=listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $idprofessor,$ano_letivo);
+                // $resultado=listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $idprofessor,$ano_letivo);
+
+                if ($idserie<3) {
+                  // $iddisciplina="";
+                  // $array_disciplina_regente_creche = array('0' => 40,'1' => 42,'2' => 43,'3' => 44);
+                  // $array_disciplina_regente_pre_escola = array('0' => 40,'1' => 42,'2' => 44);        
+
+                  //   if ($idserie==1) {
+                  //     $iddisciplina=" disciplina_id = 40 or disciplina_id = 42 or  disciplina_id = 43 or disciplina_id = 44  ";
+
+                  //   }else{
+                  //     $iddisciplina=" disciplina_id = 40 or  disciplina_id = 42 or disciplina_id = 44  ";
+                  //   }
+                  $resultado=listar_conteudo_aula_cadastrado_regente($conexao, $iddisciplina, $idturma, $idescola, $idprofessor,$ano_letivo);
+                }else{
+
+                  $resultado=listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $idprofessor,$ano_letivo);
+                }
                 foreach ($resultado as $key => $value) {
                   $data=$value['data'];
                   $aula=$value['aula'];
