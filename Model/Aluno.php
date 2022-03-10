@@ -396,11 +396,11 @@ function verificar_conteudo_aula_cadastrado_por_data_aula($conexao, $iddisciplin
 
 
 
-function excluir_frequencia_lancada($conexao,$conteudo_aula_id) {
-    $conexao->exec("DELETE FROM frequencia WHERE conteudo_aula_id=$conteudo_aula_id
+function excluir_frequencia_lancada($conexao,$conteudo_aula_id,$idprofessor) {
+    $conexao->exec("DELETE FROM frequencia WHERE conteudo_aula_id=$conteudo_aula_id and professor_id=$idprofessor
       ");
     $conexao->exec("DELETE FROM conteudo_aula WHERE
-       id=$conteudo_aula_id
+       id=$conteudo_aula_id and professor_id=$idprofessor
        ");
 
 
