@@ -130,13 +130,13 @@ setTimeout('dia_doservidor_publico();',3000);
 
 <script>
      
-        Swal.fire({
-          position: 'center',
-          icon: 'info',
-          title: 'ATENÇÃO PROFESSOR(A)',
-             text: 'Informamos que os trabalhos, atividades, avaliações e simulados do ano letivo 2021 serão excluídos da plataforma dia 10/03/2022. Caso queiram ter acesso após essa data, orientamos que façam o download do material.',
-          showConfirmButton: true
-        });
+        // Swal.fire({
+        //   position: 'center',
+        //   icon: 'info',
+        //   title: 'ATENÇÃO PROFESSOR(A)',
+        //      text: 'Informamos que os trabalhos, atividades, avaliações e simulados do ano letivo 2021 serão excluídos da plataforma dia 10/03/2022. Caso queiram ter acesso após essa data, orientamos que façam o download do material.',
+        //   showConfirmButton: true
+        // });
   
 </script>
 
