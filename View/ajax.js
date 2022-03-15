@@ -1005,9 +1005,11 @@ function colar_conteudo_ja_cadastrados(conteudo) {
     /* Read more about isConfirmed, isDenied below */
     if (result.isConfirmed) {
      
-        var descricao_conteudo = document.getElementById("descricao_conteudo");
-         descricao_conteudo.value = descricao_conteudo.value +" "+conteudo;  
-        Swal.fire('O CONTÉUDO SELECIONADO FOI COLADO NO CAMPO DO CONTEÚDO DESSA FREQUÊNCIA A SER CADASTRADA/EDITADA.', '', 'info')
+        // var descricao_conteudo = document.getElementById("descricao_conteudo");
+         // descricao_conteudo.value = descricao_conteudo.value +" "+conteudo;  
+         navigator.clipboard.writeText(conteudo);
+         
+        Swal.fire('Texto copiado para área de transferência! Ctrl+V em algum local para colar.', '', 'info')
     } else if (result.isDenied) {
     }
   })
