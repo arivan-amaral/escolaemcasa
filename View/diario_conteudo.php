@@ -22,7 +22,7 @@ include_once"conteudos_registrados_fund2.php";
      
      $data_inicio_trimestre3="";
      $data_fim_trimestre3="";
- 
+  
   
   $res_calendario=listar_data_periodo($conexao,$ano_letivo);
   foreach ($res_calendario as $key => $value) {

@@ -68,7 +68,7 @@
         ministrada.ano='$ano_letivo' AND
         ministrada.escola_id='$idescola' AND
         ministrada.turma_id='$idturma' AND
-        turma.serie_id='$idserie' limit 1");
+        turma.serie_id='$idserie' ");
 
     	return $res;    
 	}	
