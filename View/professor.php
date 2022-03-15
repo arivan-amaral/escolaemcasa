@@ -340,6 +340,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
                           $conta=0;
                           $array_disciplina_regente_creche = array('0' => 40,'1' => 42,'2' => 43,'3' => 44);
+
                           $array_disciplina_regente_pre_escola = array('0' => 40,'1' => 42,'2' => 44);        
 
                             $array_turma_regente_creche = array();
@@ -353,10 +354,10 @@ setTimeout('dia_doservidor_publico();',3000);
                               $nome_escola=($value['nome_escola']);
                               $idescola=($value['idescola']);
                               $iddisciplina=$value['iddisciplina'];
+                              $iddisciplina_aux=$value['iddisciplina'];
                               $idturma=$value['idturma'];
                               $turma=($value['nome_turma']);
                               $idserie=$value['serie_id'];
-
 
                               if ($idserie==1 && (in_array($iddisciplina, $array_disciplina_regente_creche))  && (!in_array($idturma, $array_turma_regente_creche)) && $conta_disciplina_regetes_cheche ==1 ) {
                                 $conta_disciplina_regetes_cheche++;
@@ -639,15 +640,22 @@ setTimeout('dia_doservidor_publico();',3000);
                                 ";
 
                               
-                              }elseif ($idserie==2 && (in_array($iddisciplina, $array_turma_regente_pre_escola)) && (!in_array($idturma, $array_turma_regente_pre_escola)) && $conta_disciplina_regetes_pre_escola ==1) {
+                              }
+
+                              // elseif ($idserie==2 && (in_array($iddisciplina, $array_turma_regente_pre_escola)) && (!in_array($idturma, $array_turma_regente_pre_escola)) && $conta_disciplina_regetes_pre_escola ==1) {
+
+
+                              elseif($idserie==2 && (in_array($iddisciplina, $array_disciplina_regente_pre_escola))  && (!in_array($idturma, $array_turma_regente_pre_escola)) && $conta_disciplina_regetes_pre_escola ==1 ){
+
+
                                 $conta_disciplina_regetes_pre_escola++;
 
-                                   $iddisciplina= 1000;
+                                $iddisciplina= 1000;
                                 $disciplina= "DISCIPLINAS REGENTES";
 
                                 echo "
 
-                                <div class='card card-primary'>
+                                <div class='card card-secondary'>
 
                                   <div class='card-header'>
 
@@ -1206,13 +1214,15 @@ setTimeout('dia_doservidor_publico();',3000);
 
                               if ($idserie==1 && (in_array($iddisciplina, $array_disciplina_regente_creche)) ){
                                 $array_turma_regente_creche[$turma]=$idturma;
+ 
+                              
+                              }else
+                              if ($idserie==2 && (in_array($iddisciplina_aux, $array_disciplina_regente_pre_escola))){
+                                $array_turma_regente_pre_escola[$conta]=$idturma;
                               
                               }
-                              if ($idserie==2 && (in_array($iddisciplina, $array_disciplina_regente_pre_escola)) ){
-                                $array_turma_regente_pre_escola[$turma]=$idturma;
-                              
-                              }
-
+// echo "$idturma - $conta<br>";
+// var_dump($array_turma_regente_pre_escola);
                               $conta++;
                             }
 

@@ -15,7 +15,7 @@
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><span style='font-size:20.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'><b>PREFEITURA DE LUIS EDUARDO MAGALHÃES</b></span><span
+  color:black;mso-fareast-language:PT-BR'><b>PREFEITURA DE LUÍS EDUARDO MAGALHÃES</b></span><span
   style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
   mso-fareast-language:PT-BR;mso-no-proof:yes'> </span>
