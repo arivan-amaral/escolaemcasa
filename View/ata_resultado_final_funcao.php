@@ -32,7 +32,7 @@ function ata_resultados_finais($conexao,$idescola,$idturma,$idserie,$ano_letivo)
     $iddisciplina=$value['iddisciplina'];
     $carga_horaria=$value['carga_horaria'];
     
-    if ($idserie > 7 && $idserie <12 && $nome_disciplina=='CIÊNCIAS') {
+    if ($idserie > 7 && $idserie <12 && $value['nome_disciplina']=='CIÊNCIAS') {
       $nome_disciplina="Ciências Físicas e Biológicas";
       $abreviacao="CFB";
     }else{
