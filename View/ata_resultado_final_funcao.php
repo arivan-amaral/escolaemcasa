@@ -31,10 +31,17 @@ function ata_resultados_finais($conexao,$idescola,$idturma,$idserie,$ano_letivo)
   foreach ($res_disc as $key => $value) {
     $iddisciplina=$value['iddisciplina'];
     $carga_horaria=$value['carga_horaria'];
+    
+    if ($idserie > 7 && $idserie <12 && $nome_disciplina=='CIÊNCIAS') {
+      $nome_disciplina="Ciências Físicas e Biológicas";
+      $abreviacao="CFB";
+    }else{
 
     $nome_disciplina=$value['nome_disciplina'];
-    
     $abreviacao=$value['abreviacao'];
+    }
+
+
     $array_disciplina[$conta_disciplina]=$iddisciplina;
     $array_nome_sigla_disciplina[$abreviacao]=$nome_disciplina;
     $conta_disciplina++;
