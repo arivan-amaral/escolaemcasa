@@ -644,11 +644,10 @@ setTimeout('dia_doservidor_publico();',3000);
 
                               // elseif ($idserie==2 && (in_array($iddisciplina, $array_turma_regente_pre_escola)) && (!in_array($idturma, $array_turma_regente_pre_escola)) && $conta_disciplina_regetes_pre_escola ==1) {
 
+                              elseif($idserie==2 && $iddisciplina==40  && (in_array($idturma, $array_turma_regente_pre_escola))  ){
 
-                              elseif($idserie==2 && (in_array($iddisciplina, $array_disciplina_regente_pre_escola))  && (!in_array($idturma, $array_turma_regente_pre_escola)) && $conta_disciplina_regetes_pre_escola ==1 ){
 
-
-                                $conta_disciplina_regetes_pre_escola++;
+                                 $conta_disciplina_regetes_pre_escola++;
 
                                 $iddisciplina= 1000;
                                 $disciplina= "DISCIPLINAS REGENTES";
@@ -1216,10 +1215,11 @@ setTimeout('dia_doservidor_publico();',3000);
                                 $array_turma_regente_creche[$turma]=$idturma;
  
                               
-                              }else
+                              }
+                              else
                               if ($idserie==2 && (in_array($iddisciplina_aux, $array_disciplina_regente_pre_escola))){
                                 $array_turma_regente_pre_escola[$conta]=$idturma;
-                              
+                              // echo "$idturma = $conta_disciplina_regetes_pre_escola <br>";
                               }
 // echo "$idturma - $conta<br>";
 // var_dump($array_turma_regente_pre_escola);
