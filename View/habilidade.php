@@ -47,7 +47,15 @@ if ($idserie<8){
 
  // echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
   $numero=1;
-    $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
+    // $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
+
+
+    if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
+      $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+    }else{
+      $res_alunos=listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+    }
+    
     $nome_professor= " ";
     foreach ($res_alunos as $key => $value) {
       $idaluno=$value['idaluno'];
