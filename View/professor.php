@@ -359,9 +359,13 @@ setTimeout('dia_doservidor_publico();',3000);
                               $turma=($value['nome_turma']);
                               $idserie=$value['serie_id'];
 
-                              if ($idserie==1 && (in_array($iddisciplina, $array_disciplina_regente_creche))  && (!in_array($idturma, $array_turma_regente_creche)) && $conta_disciplina_regetes_cheche ==1 ) {
-                                $conta_disciplina_regetes_cheche++;
+                              // if ($idserie==1 &&$iddisciplina==40  && (!in_array($idturma, $array_turma_regente_creche)) && $conta_disciplina_regetes_cheche ==1 ) {
+                              //   $conta_disciplina_regetes_cheche++;
                                 
+                                if($idserie==1 && $iddisciplina==40  && (!in_array($idturma, $array_turma_regente_creche))  ){
+
+                                  $array_turma_regente_creche[$conta]=$idturma;
+
                                 $iddisciplina= 1000;
                                 $disciplina= "DISCIPLINAS REGENTES";
 
