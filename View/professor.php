@@ -1217,7 +1217,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
 
                               if ($idserie==1 && (in_array($iddisciplina, $array_disciplina_regente_creche)) ){
-                                $array_turma_regente_creche[$turma]=$idturma;
+                                // $array_turma_regente_creche[$turma]=$idturma;
  
                               
                               }
