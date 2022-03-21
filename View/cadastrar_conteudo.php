@@ -584,6 +584,7 @@ if ($idserie>2) {
                                                     $conta=1;
                                                 foreach ($resultado as $key => $value) {
                                                     $professor_id=$value['professor_id'];
+                                                    
                                                     $conteudo_aula_id=$value['id'];
                                                    $nome_disciplina="";
                                                     if (isset($value['nome_disciplina'])) {
