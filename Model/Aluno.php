@@ -539,7 +539,7 @@ function verificar_frequencia_na_data($conexao,$idescola,$idturma,$iddisciplina,
 }
 
 function verificar_conteudo_na_data($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data,$aula) {
-    $resultado=$conexao->query(" SELECT * FROM conteudo_aula WHERE
+    $resultado=$conexao->query(" SELECT data,disciplina_id,escola_id,aula,turma_id FROM conteudo_aula WHERE
 
       data='$data' and 
       disciplina_id=$iddisciplina and 

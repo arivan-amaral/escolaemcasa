@@ -244,7 +244,7 @@ foreach ($res_conteu as $key_con => $value_con) {
 
       echo $result;
   }catch (Exception $e) {
-      echo "VERIFIQUE SUA CONEXÃO COM A INTERNET";
+      echo "VERIFIQUE SUA CONEXÃO COM A INTERNET". $e;
   }
 
 ?>
