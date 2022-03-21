@@ -795,13 +795,13 @@ $conta_nota_av3=0;
 
   // ******************************************************
      $result_nota_avaliacao=$conexao->query("
-     SELECT * FROM nota_parecer WHERE
+     SELECT nota FROM nota_parecer WHERE
      escola_id=$idescola and
      turma_id=$idturma and
      disciplina_id=$iddisciplina and 
      periodo_id=$periodo_id  and aluno_id=$idaluno
      and  avaliacao='av1'
-     group by avaliacao,periodo_id ORDER  BY avaliacao DESC");
+     group by avaliacao,periodo_id,nota ORDER  BY avaliacao DESC");
      $nota_ava=0;
      $nota_1=0;
     foreach ($result_nota_avaliacao as $key => $value) {
@@ -848,13 +848,13 @@ $conta_nota_av3=0;
 
   // ******************************************************
      $result_nota_avaliacao=$conexao->query("
-     SELECT * FROM nota_parecer WHERE
+     SELECT nota FROM nota_parecer WHERE
      escola_id=$idescola and
      turma_id=$idturma and
      disciplina_id=$iddisciplina and 
      periodo_id=$periodo_id   and aluno_id=$idaluno
      and  avaliacao='av2'
-     group by avaliacao,periodo_id ORDER  BY avaliacao DESC");
+     group by avaliacao,periodo_id,nota ORDER  BY avaliacao DESC");
      $nota_ava=0;
      $nota_2=0;
     foreach ($result_nota_avaliacao as $key => $value) {
@@ -899,13 +899,13 @@ $conta_nota_av2++;
 
   // ******************************************************
      $result_nota_avaliacao=$conexao->query("
-     SELECT * FROM nota_parecer WHERE
+     SELECT nota FROM nota_parecer WHERE
      escola_id=$idescola and
      turma_id=$idturma and
      disciplina_id=$iddisciplina and 
      periodo_id=$periodo_id and aluno_id=$idaluno
      and  avaliacao='av3'
-     group by avaliacao,periodo_id ORDER  BY avaliacao DESC");
+     group by avaliacao,periodo_id,nota ORDER  BY avaliacao DESC");
      $nota_ava=0;
       $nota_3=0;
 
@@ -963,11 +963,11 @@ $conta_nota_av3++;
 
 
 $result_nota_avaliacao_rp=$conexao->query("
-     SELECT * FROM nota_parecer WHERE
+     SELECT nota FROM nota_parecer WHERE
      escola_id=$idescola and
      turma_id=$idturma and
      disciplina_id=$iddisciplina and 
-     periodo_id=$periodo_id  and avaliacao='RP' and aluno_id=$idaluno  group by avaliacao,periodo_id");
+     periodo_id=$periodo_id  and avaliacao='RP' and aluno_id=$idaluno  group by avaliacao,periodo_id,nota");
      $nota_ava=0;
      $nota_rp=0;
      foreach ($result_nota_avaliacao_rp as $key => $value) {
