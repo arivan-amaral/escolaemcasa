@@ -330,7 +330,7 @@
           $parecer_disciplina_id1=$array_parece_o_eu[$i];
 
             $result_nota_aula1=$conexao->query("
-            SELECT * FROM nota WHERE
+            SELECT * FROM nota_parecer WHERE
             escola_id=$idescola and
             turma_id=$idturma and
             ano_nota=$ano_letivo and
@@ -360,7 +360,7 @@
                  $parecer_disciplina_id1=$array_parece_o_eu[$i];
 
                    $result_nota_aula2=$conexao->query("
-                   SELECT * FROM nota WHERE
+                   SELECT * FROM nota_parecer WHERE
                    escola_id=$idescola and
                    turma_id=$idturma and
                    ano_nota=$ano_letivo and
@@ -390,7 +390,7 @@
                  $parecer_disciplina_id1=$array_parece_o_eu[$i];
 
                    $result_nota_aula3=$conexao->query("
-                   SELECT * FROM nota WHERE
+                   SELECT * FROM nota_parecer WHERE
                    escola_id=$idescola and
                    turma_id=$idturma and
                    ano_nota=$ano_letivo and
@@ -483,7 +483,7 @@
  $parecer_disciplina_id2=$array_parece_escuta_fala[$i];
 
   $result_nota_aula1=$conexao->query("
-  SELECT * FROM nota WHERE
+  SELECT * FROM nota_parecer WHERE
   escola_id=$idescola and
   turma_id=$idturma and
   ano_nota=$ano_letivo and
@@ -513,7 +513,7 @@
        $parecer_disciplina_id2=$array_parece_escuta_fala[$i];
 
         $result_nota_aula2=$conexao->query("
-        SELECT * FROM nota WHERE
+        SELECT * FROM nota_parecer WHERE
         escola_id=$idescola and
         turma_id=$idturma and
         ano_nota=$ano_letivo and
@@ -543,7 +543,7 @@
        $parecer_disciplina_id2=$array_parece_escuta_fala[$i];
 
         $result_nota_aula3=$conexao->query("
-        SELECT * FROM nota WHERE
+        SELECT * FROM nota_parecer WHERE
         escola_id=$idescola and
         turma_id=$idturma and
         ano_nota=$ano_letivo and
@@ -761,7 +761,7 @@
 <?php 
  $parecer_disciplina_id1=$array_parece_o_eu[$i];
   $result_nota_aula1=$conexao->query("
-  SELECT * FROM nota WHERE
+  SELECT * FROM nota_parecer WHERE
   escola_id=$idescola and
   turma_id=$idturma and
   ano_nota=$ano_letivo and
@@ -790,7 +790,7 @@
            $parecer_disciplina_id1=$array_parece_o_eu[$i];
 
             $result_nota_aula2=$conexao->query("
-            SELECT * FROM nota WHERE
+            SELECT * FROM nota_parecer WHERE
             escola_id=$idescola and
             turma_id=$idturma and
             ano_nota=$ano_letivo and
@@ -819,7 +819,7 @@
            $parecer_disciplina_id1=$array_parece_o_eu[$i];
 
             $result_nota_aula3=$conexao->query("
-            SELECT * FROM nota WHERE
+            SELECT * FROM nota_parecer WHERE
             escola_id=$idescola and
             turma_id=$idturma and
             ano_nota=$ano_letivo and
@@ -911,7 +911,7 @@
  $parecer_disciplina_id2=$array_parece_escuta_fala[$i];
 
   $result_nota_aula1=$conexao->query("
-  SELECT * FROM nota WHERE
+  SELECT * FROM nota_parecer WHERE
   escola_id=$idescola and
   turma_id=$idturma and
   ano_nota=$ano_letivo and
@@ -940,7 +940,7 @@
  $parecer_disciplina_id2=$array_parece_escuta_fala[$i];
 
   $result_nota_aula2=$conexao->query("
-  SELECT * FROM nota WHERE
+  SELECT * FROM nota_parecer WHERE
   escola_id=$idescola and
   turma_id=$idturma and
   ano_nota=$ano_letivo and
@@ -968,7 +968,7 @@
        $parecer_disciplina_id2=$parece_espaco_tempo[$i];
 
         $result_nota_aula3=$conexao->query("
-        SELECT * FROM nota WHERE
+        SELECT * FROM nota_parecer WHERE
         escola_id=$idescola and
         turma_id=$idturma and
         ano_nota=$ano_letivo and
@@ -1140,7 +1140,7 @@
            $parecer_disciplina_id1=$array_parece_o_eu[$i];
 
             $result_nota_aula1=$conexao->query("
-            SELECT * FROM nota WHERE
+            SELECT * FROM nota_parecer WHERE
             escola_id=$idescola and
             turma_id=$idturma and
             ano_nota=$ano_letivo and
@@ -1173,7 +1173,7 @@
            $parecer_disciplina_id1=$array_parece_o_eu[$i];
 
             $result_nota_aula2=$conexao->query("
-            SELECT * FROM nota WHERE
+            SELECT * FROM nota_parecer WHERE
             escola_id=$idescola and
             turma_id=$idturma and
             ano_nota=$ano_letivo and
@@ -1205,7 +1205,7 @@
            $parecer_disciplina_id1=$array_parece_o_eu[$i];
 
             $result_nota_aula3=$conexao->query("
-            SELECT * FROM nota WHERE
+            SELECT * FROM nota_parecer WHERE
             escola_id=$idescola and
             turma_id=$idturma and
             ano_nota=$ano_letivo and
@@ -1241,7 +1241,7 @@
       <?php
 
             $result_parecer_tri1=$conexao->query("
-              SELECT * FROM nota WHERE
+              SELECT * FROM nota_parecer WHERE
               escola_id=$idescola and
               turma_id=$idturma and
               ano_nota=$ano_letivo and
@@ -1260,7 +1260,7 @@
           //echo "$parecer_tri_1";
 
             $result_parecer_tri2=$conexao->query("
-              SELECT * FROM nota WHERE
+              SELECT * FROM nota_parecer WHERE
               escola_id=$idescola and
               turma_id=$idturma and
               ano_nota=$ano_letivo and
@@ -1278,7 +1278,7 @@
             //echo "$parecer_tri_2";
 
             $result_parecer_tri3=$conexao->query("
-              SELECT * FROM nota WHERE
+              SELECT * FROM nota_parecer WHERE
               escola_id=$idescola and
               turma_id=$idturma and
               ano_nota=$ano_letivo and

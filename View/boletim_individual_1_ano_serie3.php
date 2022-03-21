@@ -244,7 +244,7 @@
             <?php
 
             $result_nota_aula1=$conexao->query("
-            SELECT * FROM nota WHERE
+            SELECT * FROM nota_parecer WHERE
             escola_id=$idescola and
             turma_id=$idturma and
             avaliacao='av3' and periodo_id=1 and parecer_disciplina_id=$parecer_disciplina_id and aluno_id=$idaluno ");

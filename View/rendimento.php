@@ -905,7 +905,7 @@ if ($procedimento !='') {
 <?php
 
     $result_nota_aula1=$conexao->query("
-    SELECT * FROM nota WHERE
+    SELECT * FROM nota_parecer WHERE
     escola_id=$idescola and
     turma_id=$idturma and
     disciplina_id=$iddisciplina and 
@@ -988,7 +988,7 @@ echo "-";
 
 <?php
 $result_nota_aula2=$conexao->query("
-SELECT * FROM nota WHERE
+SELECT * FROM nota_parecer WHERE
 escola_id=$idescola and
 turma_id=$idturma and
 disciplina_id=$iddisciplina and 
@@ -1065,7 +1065,7 @@ echo "-";
 
 <?php
 $result_nota_aula3=$conexao->query("
-SELECT * FROM nota WHERE
+SELECT * FROM nota_parecer WHERE
 escola_id=$idescola and
 turma_id=$idturma and
 disciplina_id=$iddisciplina and 

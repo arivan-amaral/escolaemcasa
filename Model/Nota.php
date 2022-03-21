@@ -3,7 +3,7 @@
 		$result=$conexao->query("
         SELECT
         avaliacao,periodo_id,escola_id,nota
-         FROM nota WHERE
+         FROM nota_parecer WHERE
         escola_id=$idescola and
         turma_id=$idturma and
         disciplina_id=$iddisciplina and 

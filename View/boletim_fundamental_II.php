@@ -192,7 +192,7 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
         <?php
 
         $result_nota_aula1=$conexao->query("
-          SELECT * FROM nota WHERE
+          SELECT * FROM nota_parecer WHERE
           escola_id=$idescola and
           turma_id=$idturma and
           disciplina_id=$iddisciplina and 
@@ -244,7 +244,7 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
       <?php
 
       $result_nota_aula2=$conexao->query("
-        SELECT * FROM nota WHERE
+        SELECT * FROM nota_parecer WHERE
         escola_id=$idescola and
         turma_id=$idturma and
         ano_nota=$ano_letivo and
@@ -298,7 +298,7 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
    <?php
 
    $result_nota_aula3=$conexao->query("
-     SELECT * FROM nota WHERE
+     SELECT * FROM nota_parecer WHERE
      escola_id=$idescola and
      turma_id=$idturma and
      ano_nota=$ano_letivo and
@@ -405,7 +405,7 @@ if ($conta_parecer==0 && $linha==0) {
   color:black;mso-fareast-language:PT-BR'>I TRIMESTRE: <?php
 
         // $result_parecer_tri1=$conexao->query("
-        //   SELECT * FROM nota WHERE
+        //   SELECT * FROM nota_parecer WHERE
         //   escola_id=$idescola and
         //   turma_id=$idturma and
         

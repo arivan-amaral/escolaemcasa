@@ -470,7 +470,7 @@ for ($i=$conta_data; $conta_data<$limite_data ; $i++) {
 <!-- verifica as datas da avaliações -->
 <?php
 $result_nota_aula=$conexao->query("
-SELECT * FROM nota WHERE
+SELECT * FROM nota_parecer WHERE
 escola_id=$idescola and
 turma_id=$idturma and
 disciplina_id=$iddisciplina and 

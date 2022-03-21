@@ -182,7 +182,7 @@ foreach ($_POST['aluno_id'] as $key => $value) {
 
 
           }else{
-              // $conexao->query("SELECT * FROM nota where aluno_id=$aluno_id and escola_id =$idescola and disciplina_id=$iddisciplina and a  ");
+              // $conexao->query("SELECT * FROM nota_parecer where aluno_id=$aluno_id and escola_id =$idescola and disciplina_id=$iddisciplina and a  ");
 
             $verifica_duplicidade=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$aluno_id,$periodo,$avaliacao);
              $conta_total_nota=0;

@@ -10,7 +10,7 @@ include '../Model/Questionario.php';
 try {
 $id = $_GET['id'];
 	
-	$res=$conexao->query("SELECT * from nota WHERE idnota=$id");
+	$res=$conexao->query("SELECT * from nota_parecer WHERE idnota=$id");
 	foreach ($res as $key => $value) {
 
 		$idnota=$value['idnota'];
@@ -31,7 +31,7 @@ $id = $_GET['id'];
 		
 	}
 
-			$conexao->exec("DELETE FROM nota where idnota=$id");
+			$conexao->exec("DELETE FROM nota_parecer where idnota=$id");
 
 
 	//header("Location:../View/cadastrar_questionario.php");

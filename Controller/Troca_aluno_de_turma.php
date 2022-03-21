@@ -49,7 +49,7 @@ try {
 			// $existe_frequencia=0;
 			
 		
-			$verificar_nota=$conexao->query("SELECT * FROM nota WHERE aluno_id=$aluno_id and ano_nota='$ano_letivo_vigente' ");
+			$verificar_nota=$conexao->query("SELECT * FROM nota_parecer WHERE aluno_id=$aluno_id and ano_nota='$ano_letivo_vigente' ");
 			$verificar_nota=$verificar_nota->fetchAll();
 			// $existe_nota=0;
 			

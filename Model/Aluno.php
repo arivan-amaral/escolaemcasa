@@ -150,7 +150,7 @@ function listar_ocorrencia_cadastrado($conexao, $iddisciplina, $idturma, $idesco
 // ***********************************************************************************************
 
 function limpa_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$data_nota,$parecer_disciplina_id,$avaliacao){
-    $resultado=$conexao->exec(" DELETE FROM nota WHERE
+    $resultado=$conexao->exec(" DELETE FROM nota_parecer WHERE
     	escola_id=$idescola and 
     	turma_id=$idturma and 
     	disciplina_id=$iddisciplina and
@@ -165,7 +165,7 @@ function limpa_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id
 }
 
 function limpa_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$data_nota,$avaliacao){
-    $conexao->exec(" DELETE FROM nota WHERE
+    $conexao->exec(" DELETE FROM nota_parecer WHERE
     	escola_id=$idescola and 
     	turma_id=$idturma and 
     	disciplina_id=$iddisciplina and
@@ -179,7 +179,7 @@ function limpa_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$i
 
 
 function verifica_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$parecer_disciplina_id,$avaliacao){
-    $resultado=$conexao->query(" SELECT * FROM nota WHERE
+    $resultado=$conexao->query(" SELECT * FROM nota_parecer WHERE
     	escola_id=$idescola and 
     	turma_id=$idturma and 
     	disciplina_id=$iddisciplina and
@@ -192,7 +192,7 @@ function verifica_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,
 }
 
 function verifica_nota_diario_av3_fund1($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$avaliacao){
-    $resultado=$conexao->query(" SELECT * FROM nota WHERE
+    $resultado=$conexao->query(" SELECT * FROM nota_parecer WHERE
     	escola_id=$idescola and 
     	turma_id=$idturma and 
     	disciplina_id=$iddisciplina and
@@ -205,7 +205,7 @@ function verifica_nota_diario_av3_fund1($conexao,$idescola,$idturma,$iddisciplin
 }
 
 function verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$avaliacao){
-    $resultado=$conexao->query(" SELECT * FROM nota WHERE
+    $resultado=$conexao->query(" SELECT * FROM nota_parecer WHERE
         escola_id=$idescola and 
         turma_id=$idturma and 
         disciplina_id=$iddisciplina and
@@ -217,7 +217,7 @@ function verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno
 }
 
 function verifica_sigla_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$avaliacao,$parecer_disciplina_id){
-    $resultado=$conexao->query(" SELECT * FROM nota WHERE
+    $resultado=$conexao->query(" SELECT * FROM nota_parecer WHERE
         escola_id=$idescola and 
         turma_id=$idturma and 
         disciplina_id=$iddisciplina and
@@ -231,7 +231,7 @@ function verifica_sigla_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$i
 
 
 function quantidade_nota_pareceres_individual_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$avaliacao){
-    $resultado=$conexao->query(" SELECT count(*) AS 'quantidade' FROM nota WHERE
+    $resultado=$conexao->query(" SELECT count(*) AS 'quantidade' FROM nota_parecer WHERE
         escola_id=$idescola and 
         turma_id=$idturma and 
         disciplina_id=$iddisciplina and
@@ -269,27 +269,27 @@ function cadastro_nota_aluno_fora($conexao,$nota, $escola_id, $turma_id, $discip
 function listar_nota_aluno_fora($conexao,$aluno_id) {
     
   $resultado=  $conexao->query("SELECT 
- nota.idnota as 'idnota',
+ nota_parecer.idnota as 'idnota',
  aluno.nome as 'nome_aluno',
- nota.escola_origem as 'escola_origem',
+ nota_parecer.escola_origem as 'escola_origem',
  serie.nome as 'nome_serie',
  escola.nome_escola as 'escola_atual',
- nota.nota as 'nota',
+ nota_parecer.nota as 'nota',
  periodo.descricao as 'periodo',
  disciplina.nome_disciplina as 'nome_disciplina',
- nota.avaliacao as 'tipo_avaliacao'
+ nota_parecer.avaliacao as 'tipo_avaliacao'
 
      FROM 
         nota,serie,aluno,turma,disciplina,escola,periodo
         WHERE 
-     nota.aluno_finalizou !='' and 
-     nota.escola_id=escola.idescola and
-     nota.disciplina_id=disciplina.iddisciplina and
-     nota.aluno_id=aluno.idaluno and
-     nota.serie_id= serie.id and 
-     nota.turma_id= turma.idturma and 
-     nota.periodo_id= periodo.id and 
-     nota.aluno_id=$aluno_id order by serie.nome
+     nota_parecer.aluno_finalizou !='' and 
+     nota_parecer.escola_id=escola.idescola and
+     nota_parecer.disciplina_id=disciplina.iddisciplina and
+     nota_parecer.aluno_id=aluno.idaluno and
+     nota_parecer.serie_id= serie.id and 
+     nota_parecer.turma_id= turma.idturma and 
+     nota_parecer.periodo_id= periodo.id and 
+     nota_parecer.aluno_id=$aluno_id order by serie.nome
 
      ");
 
@@ -298,7 +298,7 @@ function listar_nota_aluno_fora($conexao,$aluno_id) {
 
 
 function excluir_notas_cadastrada_fora($conexao,$idnota) {
-    $conexao->exec("DELETE FROM nota where idnota=$idnota");
+    $conexao->exec("DELETE FROM nota_parecer where idnota=$idnota");
 }
 // ********************************************************************************
 
@@ -426,7 +426,7 @@ function excluir_frequencia_lancada($conexao,$conteudo_aula_id,$idprofessor) {
 
 
 function excluir_avaliacao_lancada($conexao,$escola_id,$turma_id,$disciplina_id,$periodo_id,$data_nota,$avaliacao) {
-    $conexao->exec(" DELETE FROM nota WHERE
+    $conexao->exec(" DELETE FROM nota_parecer WHERE
       disciplina_id=$disciplina_id and 
       escola_id=$escola_id and 
       turma_id=$turma_id and
@@ -438,7 +438,7 @@ function excluir_avaliacao_lancada($conexao,$escola_id,$turma_id,$disciplina_id,
 }
 
 function listar_todas_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplina,$avaliacao) {
-    $resultado=$conexao->query(" SELECT * FROM nota WHERE
+    $resultado=$conexao->query(" SELECT * FROM nota_parecer WHERE
 
       disciplina_id=$iddisciplina and 
       escola_id=$idescola and 
@@ -447,7 +447,7 @@ function listar_todas_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplin
 }
 
 function listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,$avaliacao,$aluno_id,$periodo_id,$ano_nota) {
-    $resultado=$conexao->query(" SELECT * FROM nota WHERE
+    $resultado=$conexao->query(" SELECT * FROM nota_parecer WHERE
       disciplina_id=$iddisciplina and 
       escola_id=$idescola and 
       ano_nota=$ano_nota and 
@@ -457,7 +457,7 @@ function listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$idd
 
 
 function listar_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplina) {
-    $resultado=$conexao->query(" SELECT * FROM nota WHERE
+    $resultado=$conexao->query(" SELECT * FROM nota_parecer WHERE
 
       disciplina_id=$iddisciplina and 
       escola_id=$idescola and 
