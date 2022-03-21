@@ -381,11 +381,12 @@ foreach ($result_escola as $key => $value) {
   
   <?php
 $result_data_aula=$conexao->query("
-SELECT * FROM frequencia WHERE
+SELECT  data_frequencia,aula FROM frequencia WHERE
 escola_id=$idescola and
 turma_id=$idturma and
 disciplina_id=$iddisciplina and 
-data_frequencia BETWEEN '$data_inicio_trimestre' and '$data_fim_trimestre' group by data_frequencia, aula order by data_frequencia asc limit $inicio,$fim ");
+data_frequencia BETWEEN '$data_inicio_trimestre' and '$data_fim_trimestre' GROUP BY data_frequencia, aula  LIMIT $inicio,$fim ");
+
 $array_data_aula=array();
 $array_aula=array();
 foreach ($result_data_aula as $key => $value) {
@@ -470,11 +471,11 @@ for ($i=$conta_data; $conta_data<$limite_data ; $i++) {
 <!-- verifica as datas da avaliações -->
 <?php
 $result_nota_aula=$conexao->query("
-SELECT * FROM nota_parecer WHERE
+SELECT avaliacao,data_nota FROM nota_parecer WHERE
 escola_id=$idescola and
 turma_id=$idturma and
 disciplina_id=$iddisciplina and 
-periodo_id=$periodo_id  group by avaliacao,periodo_id limit 3");
+periodo_id=$periodo_id  group by avaliacao,periodo_id,data_nota limit 3");
 
 $array_data_nota=array();
 $array_avaliacao=array();

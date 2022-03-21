@@ -354,11 +354,11 @@ foreach ($result_escola as $key => $value) {
 
   <?php
 $result_data_aula=$conexao->query("
-SELECT * FROM frequencia WHERE
+SELECT  data_frequencia,aula FROM frequencia WHERE
 escola_id=$idescola and
 turma_id=$idturma and
 disciplina_id=$iddisciplina and
-data_frequencia BETWEEN '$data_inicio_trimestre' and '$data_fim_trimestre' group by aula,data_frequencia order by data_frequencia asc limit $inicio,$fim ");
+data_frequencia BETWEEN '$data_inicio_trimestre' and '$data_fim_trimestre' group by aula,data_frequencia order by data_frequencia,aula asc limit $inicio,$fim ");
 $array_data_aula=array();
 $array_aula=array();
 foreach ($result_data_aula as $key => $value) {
