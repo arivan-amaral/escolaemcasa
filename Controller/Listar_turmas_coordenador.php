@@ -142,6 +142,6 @@ try {
   }
   echo "$result";
 } catch (Exception $e) {
-  
+  echo "$e";
 }
 ?>
