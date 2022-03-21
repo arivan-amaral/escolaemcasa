@@ -23,7 +23,7 @@ $ano_letivo=$_SESSION['ano_letivo'];
 if (!isset($_SESSION['idprofessor'])) {
        header("location:index.php?status=0");
 
-}else{
+}else{ 
 
   $idprofessor=$_SESSION['idprofessor'];
 
