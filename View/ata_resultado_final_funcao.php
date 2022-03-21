@@ -262,12 +262,13 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
   
       $result_nota_aula2=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,2);
 
+
       $conexao->query("
-        SELECT * FROM nota_parecer WHERE
+        SELECT avaliacao,periodo_id,nota FROM nota_parecer WHERE
         escola_id=$idescola and
         turma_id=$idturma and
         disciplina_id=$iddisciplina and 
-        periodo_id=2 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
+        periodo_id=2 and aluno_id=$idaluno  group by avaliacao,periodo_id, nota");
 
 
       $nota_tri_2=0;
