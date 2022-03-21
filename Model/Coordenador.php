@@ -84,10 +84,11 @@
 		escola.idescola='$idescola' AND 
 		relacionamento_turma_escola.ano='$ano_letivo'
 
-	 GROUP BY turma.idturma
 	 ORDER BY turma.nome_turma");
 
 		return $res;
+		
+	 // GROUP BY turma.idturma
 	}
 
 
