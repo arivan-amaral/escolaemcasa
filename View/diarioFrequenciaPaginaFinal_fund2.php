@@ -383,7 +383,7 @@ foreach ($result_escola as $key => $value) {
 
   <?php
 $result_data_aula=$conexao->query("
-SELECT * FROM frequencia WHERE
+SELECT data_frequencia, aula FROM frequencia WHERE
 escola_id=$idescola and
 turma_id=$idturma and
 disciplina_id=$iddisciplina and 
@@ -476,11 +476,11 @@ for ($i=$conta_data; $conta_data<$limite_data ; $i++) {
 <!-- verifica as datas da avaliações -->
 <?php
 $result_nota_aula=$conexao->query("
-SELECT * FROM nota_parecer WHERE
+SELECT data_nota,avaliacao FROM nota_parecer WHERE
 escola_id=$idescola and
 turma_id=$idturma and
 disciplina_id=$iddisciplina and 
-periodo_id=$periodo_id  group by avaliacao,periodo_id limit 3");
+periodo_id=$periodo_id  group by avaliacao,periodo_id,data_nota limit 3");
 
 $array_data_nota=array();
 $array_avaliacao=array();

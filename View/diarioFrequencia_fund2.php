@@ -354,7 +354,7 @@ foreach ($result_escola as $key => $value) {
 
   <?php
 $result_data_aula=$conexao->query("
-SELECT * FROM frequencia WHERE
+SELECT aula,data_frequencia  FROM frequencia WHERE
 escola_id=$idescola and
 turma_id=$idturma and
 disciplina_id=$iddisciplina and 
