@@ -724,6 +724,19 @@ if ($idserie>2) {
       }
     });
              
+  }  
+
+  function duplica_texto_em_campos_selecionados_mesmo_conteudo_acima_inicias(id_sendo_digitado){
+   var mesma_serie_mesma_disciplina= document.getElementById("mesma_"+id_sendo_digitado).value;
+    var mesmo_conteudo_regente = document.querySelectorAll(".mesmo_conteudo"+mesma_serie_mesma_disciplina);
+    mesmo_conteudo_regente.forEach(function(elemento_mesmo_conteudo_regente) {
+      if(elemento_mesmo_conteudo_regente.id !=id_sendo_digitado){
+        elemento_mesmo_conteudo_regente.value=document.getElementById(id_sendo_digitado).value
+
+      }
+    });
+   console.log(mesma_serie_mesma_disciplina);
+             
   }
 
 

@@ -352,8 +352,19 @@ $result.="<div id='conteudos'>
                   <select hidden   name='quantidade_aula$campo_origem_conteudo' required>
                       <option value='1'>1</option>
                   </select>
-                  <textarea class='form-control mesmo_conteudo_regente' name='descricao$campo_origem_conteudo'
-            
+
+                  <input type='hidden' id='mesma_descricao_conteudo$idescola$idturma$serie_id$iddisciplina' value='$serie_id$iddisciplina'>
+
+                  <textarea class='form-control mesmo_conteudo$serie_id$iddisciplina' 
+
+                  id='descricao_conteudo$idescola$idturma$serie_id$iddisciplina' 
+
+                  name='descricao$campo_origem_conteudo' 
+
+                  onkeyup=duplica_texto_em_campos_selecionados_mesmo_conteudo_acima_inicias('descricao_conteudo$idescola$idturma$serie_id$iddisciplina');
+
+                  onBlur=duplica_texto_em_campos_selecionados_mesmo_conteudo_acima_inicias('descricao_conteudo$idescola$idturma$serie_id$iddisciplina');
+
                    required>$conteudo_aula</textarea>
 
                  
