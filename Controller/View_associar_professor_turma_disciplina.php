@@ -38,6 +38,15 @@ session_start();
                     <input type="hidden" name="professor_id" value="<?php echo $idprofessor; ?>">
                     <div class='card-body'>
 
+                
+                      
+                      <div class='form-group'>
+                        <div class='custom-control custom-checkbox'>
+                          <input class='custom-control-input' name='mesma_disciplpina' type='checkbox' id='customCheckboxMesmaTurma' value='sim' >
+                          <label for='customCheckboxMesmaTurma' class='custom-control-label'>ASSOCIAR MAIS DE 1 PROFESSOR(A) NA MESMA ESCOLA,TURMA E MESMA DISCIPLINA?</label>
+                        </div>
+                      </div>
+
                       <label>Selecione a escola</label>
 
                       <select name='escola'  class="custom-select rounded-0" required>

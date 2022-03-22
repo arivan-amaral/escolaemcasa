@@ -9,17 +9,25 @@ try {
  $disciplina_id= $_POST['disciplina'];
  $professor_id= $_POST['professor_id'];
  $ano_letivo_vigente= $_SESSION['ano_letivo_vigente'];
+ 
+
  $disciplina_ja_associada='';
 
 foreach ($_POST['idturma'] as $key => $value) {
   if (isset($_POST['idturma'])) {
     $turma_id=$_POST['idturma'][$key];
-    $res_ministrada=$conexao->query("SELECT * FROM ministrada WHERE escola_id = $escola_id and turma_id=$turma_id and disciplina_id=$disciplina_id and ano=$ano_letivo_vigente");
-    
     $conta_ministrada=0;
-    foreach ($res_ministrada as $key => $value) {
-      $conta_ministrada++;
+
+   if ($_POST['mesma_disciplpina'] !="sim") {
+
+      $res_ministrada=$conexao->query("SELECT * FROM ministrada WHERE escola_id = $escola_id and turma_id=$turma_id and disciplina_id=$disciplina_id and ano=$ano_letivo_vigente");
+      
+        // code...
+      foreach ($res_ministrada as $key => $value) {
+        $conta_ministrada++;
+      }
     }
+
     if ($conta_ministrada==0) {
       associar_professor($conexao, $turma_id, $disciplina_id, $professor_id, $escola_id,$ano_letivo_vigente);
     }else{
