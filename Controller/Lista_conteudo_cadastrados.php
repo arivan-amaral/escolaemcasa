@@ -352,7 +352,7 @@ $result.="<div id='conteudos'>
                   <select hidden   name='quantidade_aula$campo_origem_conteudo' required>
                       <option value='1'>1</option>
                   </select>
-                  <textarea class='form-control mesmo_conteudo_regente'
+                  <textarea class='form-control mesmo_conteudo_regente' name='descricao$campo_origem_conteudo'
             
                    required>$conteudo_aula</textarea>
 

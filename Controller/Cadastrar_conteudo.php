@@ -37,7 +37,7 @@ try {
     foreach ($verificar_bloqueio as $key => $value) {
        $conta_bloqueio++;
     }
-    echo "$idcalendario = $conta_bloqueio | SELECT * from bloquear_acesso  where funcionario_id = $professor_id and calendario_letivo_id=$idcalendario and status=1";
+    //echo "$idcalendario = $conta_bloqueio | SELECT * from bloquear_acesso  where funcionario_id = $professor_id and calendario_letivo_id=$idcalendario and status=1";
     if ($conta_bloqueio>0) {
  
         $_SESSION['status']=2;
@@ -83,15 +83,16 @@ try {
 
             editar_conteudo_aula($conexao,$descricao, $idconteudo,$quantidade_aula);
             $conteudo_aula_id=$idconteudo;
+
         }
 
-
+ 
         if ($idconteudo=="") {
             cadastro_conteudo_aula($conexao,$descricao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula,$ano_conteudo,$quantidade_aula);
             $conteudo_aula_id= $conexao->lastInsertId();
         }
 
-        echo "$iddisciplina <br>";
+        //echo "$iddisciplina <br>";
 
         // arivan 17/09/2021
 
