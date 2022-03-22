@@ -20,7 +20,9 @@
       AND escola_id= :idescola 
       AND turma.serie_id= :idserie 
 
-      GROUP BY turma.idturma
+      GROUP BY turma.idturma,serie.id,serie.nome,nome_turma,
+         nome_escola,
+         idescola
       ORDER BY turma.nome_turma
       ");
       $sql->bindParam("idescola",$idescola);
@@ -32,8 +34,8 @@
 
 
    function listar_turma_turno_escola($conexao,$idescola,$idserie){
-  
-      $sql=$conexao->prepare("SELECT * FROM 
+   
+      $sql=$conexao->prepare("SELECT idturma,nome_escola,nome_turma,turno FROM 
          relacionamento_turma_escola,escola,turma
        WHERE
 
@@ -42,8 +44,8 @@
     
       AND escola_id= :idescola 
       AND turma.serie_id= :idserie 
-
-      GROUP BY turma.idturma
+ 
+      GROUP BY idturma,nome_escola,nome_turma,turno
       ORDER BY turma.nome_turma
       ");
       $sql->bindParam("idescola",$idescola);
