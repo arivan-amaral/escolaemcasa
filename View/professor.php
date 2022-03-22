@@ -943,7 +943,7 @@ setTimeout('dia_doservidor_publico();',3000);
                             
                                 echo "
 
-                                <div class='card card-secondary'>
+                                <div class='card card-primary'>
 
                                   <div class='card-header'>
 
