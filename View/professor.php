@@ -940,9 +940,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
                                  $conta_disciplina_regetes_pre_escola++;
 
-                                $iddisciplina= 1000;
-                                $disciplina= "DISCIPLINAS REGENTES";
-
+                            
                                 echo "
 
                                 <div class='card card-secondary'>
