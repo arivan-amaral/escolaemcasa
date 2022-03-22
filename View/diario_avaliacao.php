@@ -64,7 +64,7 @@ if (!isset($_SESSION['idfuncionario'])) {
 <script type="text/javascript">
 
 
-                   // Swal.fire('ATENÇÃO, A PÁGINA DE NOTAS ESTÁ EM MANUTENÇÃO PARA FACILITAR O LANÇAMENTO.', '', 'info');
+                  Swal.fire('ATENÇÃO, A PÁGINA DE NOTAS ESTÁ EM MANUTENÇÃO ATÉ DIA 26/03/2022.', '', 'info');
 
 </script>
 
