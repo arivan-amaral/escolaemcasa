@@ -148,7 +148,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
   $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
 }else{
   $res_alunos=listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
- }
+ } 
 
 $cont=1;
  foreach ($res_alunos as $key => $value) {
@@ -159,6 +159,21 @@ $cont=1;
   $matricula_aluno=$value['matricula'];
   $data_matricula=$value['data_matricula'];
   $marcado="";
+
+  $res_movimentacao=pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula_aluno,$_SESSION['ano_letivo']);
+
+  
+   
+  $procedimento="";
+   $datasaida="";
+
+  foreach ($res_movimentacao as $key => $value) {
+      $datasaida=($value['datasaida']);
+      $procedimento=$value['procedimento'];
+      if ($datasaida!="") {
+        $datasaida=converte_data($datasaida);
+      }
+  }
 
 /*               $result_aluno= listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
                $cont=1;
@@ -193,16 +208,20 @@ $cont=1;
  
   // Comparando as Datas
   if(strtotime($data_matricula) <= strtotime($data)){
-     
-                          // code...
-                      $result.="<input type='hidden' name='aluno_id[]' value='$id'>
-                      <input type='checkbox' class='checkbox' name='presenca$id'  value='1' $marcado> Presença </p>
+   
+    if ($procedimento !="") {
+        $result.="<b class='text-danger'>$procedimento | $datasaida </b>";
+    }else{
+        $result.="<input type='hidden' name='aluno_id[]' value='$id'>
+        <input type='checkbox' class='checkbox' name='presenca$id'  value='1' $marcado> Presença </p>
                        ";
-                 }else{
-                  $result.="
-                    <b class='text-danger'>Nessa data o aluno não estava na turma. Data matrícula: ".converte_data($data_matricula)."</b>
+    }
+
+
+  }else{
+      $result.="<b class='text-danger'>Nessa data o aluno não estava na turma. Data matrícula: ".converte_data($data_matricula)."</b>
                    ";
-                 }   
+  }   
 
 
                 $result.="
