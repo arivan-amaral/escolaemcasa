@@ -905,11 +905,11 @@ if ($procedimento !='') {
 <?php
 
     $result_nota_aula1=$conexao->query("
-    SELECT * FROM nota_parecer WHERE
+    SELECT avaliacao,periodo_id,nota  FROM nota_parecer WHERE
     escola_id=$idescola and
     turma_id=$idturma and
     disciplina_id=$iddisciplina and 
-    periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
+    periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id,nota ");
 
 
     $nota_tri_1=0;
@@ -988,11 +988,11 @@ echo "-";
 
 <?php
 $result_nota_aula2=$conexao->query("
-SELECT * FROM nota_parecer WHERE
+SELECT avaliacao,periodo_id,nota  FROM nota_parecer WHERE
 escola_id=$idescola and
 turma_id=$idturma and
 disciplina_id=$iddisciplina and 
-periodo_id=2 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
+periodo_id=2 and aluno_id=$idaluno  group by avaliacao,periodo_id,nota ");
 
 
 $nota_tri_2=0;
@@ -1065,11 +1065,11 @@ echo "-";
 
 <?php
 $result_nota_aula3=$conexao->query("
-SELECT * FROM nota_parecer WHERE
+SELECT avaliacao,periodo_id,nota  FROM nota_parecer WHERE
 escola_id=$idescola and
 turma_id=$idturma and
 disciplina_id=$iddisciplina and 
-periodo_id=3 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
+periodo_id=3 and aluno_id=$idaluno  group by avaliacao,periodo_id,nota ");
 
 
 $nota_tri_3=0;
