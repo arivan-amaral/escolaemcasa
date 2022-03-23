@@ -1,4 +1,5 @@
 <?php 
+set_time_limit(0);
 session_start();
 $ano_letivo=$_SESSION['ano_letivo'];
 

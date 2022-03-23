@@ -1,4 +1,5 @@
 <?php
+set_time_limit(0);
 session_start();
 include_once"../Model/Conexao.php";
 include_once"rendimento.php";

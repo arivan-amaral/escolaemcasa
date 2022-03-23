@@ -71,8 +71,19 @@ try {
                     $email=$value['email'];
                     $senha=$value['senha'];
                     $data_matricula=$value['data_matricula'];
+                      $matricula_aluno=$value['matricula'];
 
-                
+                $res_movimentacao=pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula_aluno,$_SESSION['ano_letivo']);
+
+                $procedimento="";
+                 $datasaida="";
+                foreach ($res_movimentacao as $key => $value) {
+                    $datasaida=($value['datasaida']);
+                    $procedimento=$value['procedimento'];
+                    if ($datasaida!="") {
+                      $datasaida=converte_data($datasaida);
+                    }
+                }
 
                     if ($cont%2==0) {
                       $cor_tabela='table-primary';
@@ -89,7 +100,14 @@ try {
                           <div class='col-sm-6'>
                             <b class='text-success'> $nome_aluno </b>
                             <br>";
-                            if(  (strtotime($data_matricula) <= strtotime($data_fim_periodo)) ){
+
+
+                            if(  $procedimento!=""){
+                                $result.="<b class='text-success'>
+                                    <b class='text-danger'> $procedimento | $datasaida </b>
+                                 </b>";
+                             
+                            }else if(  (strtotime($data_matricula) <= strtotime($data_fim_periodo)) ){
                                  $result.=" <input type='hidden' name='aluno_id[]' value='$id'>
                                  <br>
                                  
