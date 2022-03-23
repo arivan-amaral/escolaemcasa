@@ -23,7 +23,10 @@
         ministrada.escola_id=escola.idescola AND
         ministrada.disciplina_id=disciplina.iddisciplina AND
         ministrada.professor_id=funcionario.idfuncionario AND
-        aluno.idaluno = $idaluno group by funcionario.nome asc");
+        aluno.idaluno = $idaluno group by funcionario.nome,turma.idturma,
+          turma.nome_turma,
+          disciplina.iddisciplina,
+         disciplina.nome_disciplina asc");
 
     	return $res;    
 	}	

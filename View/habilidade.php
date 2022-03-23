@@ -9,6 +9,7 @@ session_start();
   include"boletim_maternall_II.php";
   include"boletim_serie_1ano_id_3.php";
   include"boletim_fundamental_II.php";
+try {
 
 $idescola=$_GET['idescola'];
 $idturma=$_GET['idturma'];
@@ -75,7 +76,7 @@ if ($idserie<8){
         boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno, $nome_escola,$nome_turma,$nome_professor,$_SESSION['ano_letivo']);
         $nome_professor='';
 
-echo"<div class='pagebreak'> </div>";
+echo"aaa<div class='pagebreak'> </div>";
         
         
       $numero++;
@@ -83,7 +84,10 @@ echo"<div class='pagebreak'> </div>";
     }
 
 }
-
+  echo "string";
+} catch (Exception $e) {
+  echo "$e";
+}
 ?>
 </div>
 
