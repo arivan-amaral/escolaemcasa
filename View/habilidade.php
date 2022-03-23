@@ -76,7 +76,7 @@ if ($idserie<8){
         boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno, $nome_escola,$nome_turma,$nome_professor,$_SESSION['ano_letivo']);
         $nome_professor='';
 
-echo"aaa<div class='pagebreak'> </div>";
+echo"<div class='pagebreak'> </div>";
         
         
       $numero++;
@@ -84,7 +84,7 @@ echo"aaa<div class='pagebreak'> </div>";
     }
 
 }
-  echo "string";
+ 
 } catch (Exception $e) {
   echo "$e";
 }
