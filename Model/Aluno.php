@@ -438,16 +438,16 @@ function excluir_avaliacao_lancada($conexao,$escola_id,$turma_id,$disciplina_id,
 }
 
 function listar_todas_avaliacao_lancada($conexao,$idescola,$idturma,$iddisciplina,$avaliacao) {
-    $resultado=$conexao->query(" SELECT * FROM nota_parecer WHERE
+    $resultado=$conexao->query(" SELECT data_nota,escola_id,disciplina_id,turma_id,nota FROM nota_parecer WHERE
 
       disciplina_id=$iddisciplina and 
       escola_id=$idescola and 
-      turma_id=$idturma and avaliacao='$avaliacao' group by data_nota ");
+      turma_id=$idturma and avaliacao='$avaliacao' group by data_nota,escola_id,disciplina_id,turma_id,nota ");
     return $resultado;
 }
 
 function listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,$avaliacao,$aluno_id,$periodo_id,$ano_nota) {
-    $resultado=$conexao->query(" SELECT * FROM nota_parecer WHERE
+    $resultado=$conexao->query(" SELECT parecer_descritivo FROM nota_parecer WHERE
       disciplina_id=$iddisciplina and 
       escola_id=$idescola and 
       ano_nota=$ano_nota and 
