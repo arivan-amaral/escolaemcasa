@@ -245,19 +245,19 @@ function quantidade_nota_pareceres_individual_diario($conexao,$idescola,$idturma
 // ************************************************************************
 
 function listar_parecer_disciplina($conexao,$iddisciplina,$ano_letivo){
-    $resultado=$conexao->query(" SELECT * FROM parecer_disciplina WHERE
+    $resultado=$conexao->query("SELECT * FROM parecer_disciplina WHERE
        disciplina_id =$iddisciplina  and status=1  and parecer_disciplina.ano=$ano_letivo ");
-    return $resultado;
+    return $resultado->fetchAll();
 }
 
 
 function cadastro_nota($conexao,$nota, $parecer_disciplina_id, $parecer_descritivo, $sigla, $escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, $data_nota,$avaliacao,$funcionario_id,$ano_nota) {
-    $conexao->exec("INSERT INTO nota(nota, parecer_disciplina_id, parecer_descritivo, sigla, escola_id, turma_id, disciplina_id, aluno_id, periodo_id, data_nota,avaliacao,funcionario_id,ano_nota) VALUES ($nota, $parecer_disciplina_id, '$parecer_descritivo', '$sigla', $escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, '$data_nota','$avaliacao',$funcionario_id,$ano_nota)");
+    $conexao->exec("INSERT INTO nota_parecer(nota, parecer_disciplina_id, parecer_descritivo, sigla, escola_id, turma_id, disciplina_id, aluno_id, periodo_id, data_nota,avaliacao,funcionario_id,ano_nota) VALUES ($nota, $parecer_disciplina_id, '$parecer_descritivo', '$sigla', $escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, '$data_nota','$avaliacao',$funcionario_id,$ano_nota)");
   
 }
 
 function cadastro_nota_aluno_fora($conexao,$nota, $escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, $avaliacao,$funcionario_id,$escola_origem,$ano_referencia, $serie_id, $carga_horaria, $total_falta,$aluno_finalizou ) {
-    $conexao->exec("INSERT INTO nota
+    $conexao->exec("INSERT INTO nota_parecer
 (nota, escola_id, turma_id, disciplina_id, aluno_id, periodo_id, avaliacao,funcionario_id,escola_origem,ano_referencia, serie_id, carga_horaria, total_falta,aluno_finalizou) VALUES
 
 ($nota, $escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, '$avaliacao',
