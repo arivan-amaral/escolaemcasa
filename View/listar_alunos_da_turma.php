@@ -463,7 +463,9 @@ if ( count($verificar_aluno_na_turna_rematricula)==0 && $_SESSION['ano_letivo'] 
   // echo "<a class='btn btn-danger' onclick='excluir_aluno_matriculado($idaluno);' >Excluir aluno</a> <br> <br>";
 
 }elseif ( count($verificar_aluno_na_turna_rematricula)>0 && $_SESSION['ano_letivo'] == $_SESSION['ano_letivo_vigente']) {
-  echo "Atenção a forma correta de transferir o aluno é dada pela funcionalidade acima (<b class='text-danger'>Transferir selecionados</b>)<br><a class='btn btn-danger' onclick='cancelar_rematricula($idaluno);' >Cancelar rematricula</a> <br> <br>";
+  echo "Atenção a forma correta de transferir o aluno é dada pela funcionalidade acima (<b class='text-danger'>Transferir selecionados</b>)<br>";
+
+  echo"<a class='btn btn-danger' onclick='cancelar_rematricula($idaluno);' >Cancelar rematricula</a> <br> <br>";
 
 }
 

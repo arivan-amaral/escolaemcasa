@@ -10,7 +10,7 @@
 		return $result;
 	}	
 	function listar_estado_por_id($conexao,$idestado){
-		$result=$conexao->query("SELECT * FROM estado where id = $idestado  order by nome asc");
+		$result=$conexao->query("SELECT * FROM estado where id = '$idestado'  order by nome asc");
 		return $result;
 	}
 
