@@ -538,9 +538,30 @@ foreach ($res as $key => $value) {
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">localidade</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="localidade" value='<?php echo $localidade; ?>' >
-                        </div>
+             <!--              <label for="exampleInputEmail1">localidade</label>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="localidade" value='$localidade;' >
+                        </div> -->
+
+
+                        <label for="exampleInputEmail1">Estado onde nasceu</label>
+                         
+                         <select  class="form-control" id="exampleInputEmail1" name="localidade" >
+                          <option></option>
+                        <?php 
+                        $pesquisa_cidadade=listar_estado($conexao);
+                        foreach ($pesquisa_cidadade as $key => $value) {
+                          $id=$value['id'];
+                          $nome_cidade=$value['nome'];
+                          if ($id==$localidade) {
+                            echo"<option value='$id' selected >$nome_cidade</option>"; 
+
+                          }else{
+
+                          echo"<option value='$id'>$nome_cidade</option>"; 
+                          }
+                        }
+                        ?>
+                          </select>
                       </div>
                     </div>
                     <div class="row">
