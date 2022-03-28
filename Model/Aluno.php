@@ -136,7 +136,7 @@ function limpar_ocorrencia_cadastrada($conexao, $iddisciplina, $idturma, $idesco
 
 function listar_ocorrencia_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $idprofessor){
 
-	$resultado=$conexao->query(" SELECT * FROM ocorrencia_pedagogica WHERE
+	$resultado=$conexao->query(" SELECT data_ocorrencia FROM ocorrencia_pedagogica WHERE
 		escola_id=$idescola and 
 		turma_id=$idturma and 
 		disciplina_id=$iddisciplina and

@@ -1364,6 +1364,7 @@ function lista_ocorrencia_aluno(){
      document.getElementById("data_ocorrencia").value=data_ocorrencia_lancada;
      data_ocorrencia=data_ocorrencia_lancada;//EDITADO
   }
+    console.log('Inicio ocorrencias');
 
   var idescola = document.getElementById("idescola").value;
   var idturma = document.getElementById("idturma").value;
