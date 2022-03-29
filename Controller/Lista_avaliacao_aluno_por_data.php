@@ -107,7 +107,7 @@ try {
                                     <b class='text-danger'> $procedimento | $datasaida </b>
                                  </b>";
                              
-                            }else if(  (strtotime($data_matricula) <= strtotime($data_fim_periodo)) ){
+                            }else if(  (strtotime($data_matricula) > strtotime($data_fim_periodo)) ){
                                  $result.=" <input type='hidden' name='aluno_id[]' value='$id'>
                                  <br>
                                  
