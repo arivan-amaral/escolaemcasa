@@ -6,7 +6,7 @@ if (!isset($_SESSION['idprofessor']) && !isset($_SESSION['idcoordenador'])) {
 
 }else{
 
-  $idprofessor=$_SESSION['idprofessor'];
+  //$idprofessor=$_SESSION['idprofessor'];
 
 }
 include "cabecalho.php";
@@ -85,12 +85,12 @@ include "alertas.php";
             <!-- Main content -->
 
             <section class="content">
-
+               <h4 align="center">Criar Chamada</h4>
               <div class="container-fluid">
+             
 
-
-                <div class="row">
-                  <h4 align="center">Criar Chamada</h4>
+                <div class="row" >
+                  
                   <br>
                   <form class="mt-12" action="../Controller/Cadastro_chamada.php" method="post" enctype="multipart/form-data">
                   <div class="col-md-12">

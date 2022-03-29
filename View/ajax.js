@@ -44,7 +44,65 @@ function CriaRequest() {
 
 
 
+function finalizar_chat(id_chamado){
+    var xmlreq = CriaRequest();
+        xmlreq.open("GET", "../Controller/Finalizar_chamado.php?id_chamado="+id_chamado, true);
 
+        xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                  Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Ação Concluída',
+                   text: ' $mensagem',
+                showConfirmButton: false,
+                timer: 1500
+              });
+
+             }else{
+                 Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: ' $mensagem'
+                
+              });                
+             }
+         }
+        };
+     xmlreq.send(null);
+}
+
+function responder_chat(id_chamado){
+    var xmlreq = CriaRequest();
+        xmlreq.open("GET", "../Controller/Responder_chamado.php?id_chamado="+id_chamado, true);
+
+        xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                  Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Ação Concluída',
+                   text: ' $mensagem',
+                showConfirmButton: false,
+                timer: 1500
+              });
+
+             }else{
+                 Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: ' $mensagem'
+                
+              });                
+             }
+         }
+        };
+     xmlreq.send(null);
+}
 
  function licitalem_webhook(){
    var xmlreq = CriaRequest();   
@@ -73,7 +131,7 @@ function CriaRequest() {
                
 
              }else{
-                
+               
              }
          }
      };

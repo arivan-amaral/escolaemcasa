@@ -5,12 +5,11 @@ include '../Model/Chamada.php';
 
 try {
 
-	$funcionario_id = $_POST['funcionario'];
-	$descricao = $_POST['descricao'];
-	$setor_id = $_POST['setor'];
+	$funcionario_id = $_POST['id_funcionario'];
+	$descricao = $_POST['resposta'];
 	$arquivo = $_FILES['arquivo'];
 	$data = date('Y-m-d H:i');
-	$novoNome= '';
+	$id_chamada = $_POST['id_chamado'];
 	//$url_get = $_POST['url_get'];
 
 	if ( isset( $_FILES["arquivo"][ 'name' ] ) && $_FILES[ "arquivo"][ 'error' ] == 0 ) {
@@ -24,32 +23,29 @@ try {
 		    $destino = '../View/chamadas/' . $novoNome;
 		    if(move_uploaded_file($arquivo_tmp, $destino)){
 		    		
-		    	criar_chamada($conexao,$funcionario_id,$setor_id,'esperando_resposta');
-		    	$id_chamada = $conexao->lastInsertId();
-		    	conversa_chat($conexao,$id_chamada,$funcionario_id,$descricao, $novoNome,$data);
+		    	responder_chat($conexao,$id_chamada,$funcionario_id,$descricao,$novoNome,$data);
 
 				$_SESSION['status']=1;
-				header("Location:../View/cadastrar_chamada.php");
+				header("Location:../View/chamada.php");
 
 	 		}else{
 				$_SESSION['status']=0;
-						header("Location:../View/cadastrar_chamada.php");
+						header("Location:../View/chamada.php");
 
 
 	 		}
 	    }else{
 				$_SESSION['status']=0;
-				header("Location:../View/cadastrar_chamada.php");
+				header("Location:../View/chamada.php");
 
 
 	 	}
 
 	}else{
-		criar_chamada($conexao,$funcionario_id,$setor_id,$descricao,'esperando_resposta');
-		$id_chamada = $conexao->lastInsertId();
-    	conversa_chat($conexao,$id_chamada,$funcionario_id,$descricao,'',$data);
+		responder_chat($conexao,$id_chamada,$funcionario_id,$descricao,$novoNome,$data);
+
 		$_SESSION['status']=1;
-		header("Location:../View/cadastrar_chamada.php");
+		header("Location:../View/chamada.php");
 		 
 	}
 
