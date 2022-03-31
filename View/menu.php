@@ -142,51 +142,51 @@
             // </li>
             // </ul>
             // </li>";
-=======
-                echo"<li class='nav-item menu'>
-                    <a href='./index.php' class='nav-link'>
-                    <ion-icon name='easel-outline'></ion-icon>
-                    <p>Setor<i class='right fas fa-angle-left'></i></p>
-                    </a>
-                    
-                    <ul class='nav nav-treeview'>
-                    <li class='nav-item'>
-                    <a href='cadastro_setor.php' class='nav-link'>
-                    <i class='far fa-circle nav-icon text-primary'></i>
-                    <p>Cadastrar Novo Setor</p>
-                    </a>
-                    </li>
-                    </ul>
-                    </li>";
 
-                echo"<li class='nav-item menu'>
-            <a href='./index.php' class='nav-link'>
-            <ion-icon name='chatbox-outline'></ion-icon>
-            <p>Chamadas <i class='right fas fa-angle-left'></i></p>
-            </a>
+            //     echo"<li class='nav-item menu'>
+            //         <a href='./index.php' class='nav-link'>
+            //         <ion-icon name='easel-outline'></ion-icon>
+            //         <p>Setor<i class='right fas fa-angle-left'></i></p>
+            //         </a>
+                    
+            //         <ul class='nav nav-treeview'>
+            //         <li class='nav-item'>
+            //         <a href='cadastro_setor.php' class='nav-link'>
+            //         <i class='far fa-circle nav-icon text-primary'></i>
+            //         <p>Cadastrar Novo Setor</p>
+            //         </a>
+            //         </li>
+            //         </ul>
+            //         </li>";
+
+            //     echo"<li class='nav-item menu'>
+            // <a href='./index.php' class='nav-link'>
+            // <ion-icon name='chatbox-outline'></ion-icon>
+            // <p>Chamadas <i class='right fas fa-angle-left'></i></p>
+            // </a>
             
-            <ul class='nav nav-treeview'>
-            <li class='nav-item'>
-            <a href='cadastrar_chamada.php' class='nav-link'>
-            <i class='far fa-circle nav-icon text-primary'></i>
-            <p>Criar chamado </p>
-            </a>
-            </li>
-            <li class='nav-item'>
-            <a href='lista_minhas_chamadas.php' class='nav-link'>
-            <i class='far fa-circle nav-icon text-primary'></i>
-            <p>Ver meus chamados</p>
-            </a>
-            </li>
-            <li class='nav-item'>
-            <a href='chamada.php' class='nav-link'>
-            <i class='far fa-circle nav-icon text-primary'></i>
-            <p>Ver chamados</p>
-            </a>
-            </li>
-            </ul>
-            </li>";
->>>>>>> Stashed changes
+            // <ul class='nav nav-treeview'>
+            // <li class='nav-item'>
+            // <a href='cadastrar_chamada.php' class='nav-link'>
+            // <i class='far fa-circle nav-icon text-primary'></i>
+            // <p>Criar chamado </p>
+            // </a>
+            // </li>
+            // <li class='nav-item'>
+            // <a href='lista_minhas_chamadas.php' class='nav-link'>
+            // <i class='far fa-circle nav-icon text-primary'></i>
+            // <p>Ver meus chamados</p>
+            // </a>
+            // </li>
+            // <li class='nav-item'>
+            // <a href='chamada.php' class='nav-link'>
+            // <i class='far fa-circle nav-icon text-primary'></i>
+            // <p>Ver chamados</p>
+            // </a>
+            // </li>
+            // </ul>
+            // </li>";
+
 
                echo "
                <ul class='nav nav-treeview'>
