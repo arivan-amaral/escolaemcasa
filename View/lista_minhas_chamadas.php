@@ -20,7 +20,6 @@ include '../Model/Conexao.php';
 include '../Model/Setor.php';
 include '../Model/Chamada.php';
 
- $setor_id=$_POST['setor'];
 
 ?>
 
@@ -75,14 +74,13 @@ include '../Model/Chamada.php';
        <tr>
          <th>Informações</th>
          <th>Descrição</th>
-         <th>Opção</th>
-
+         <th>Opções</th>
        </tr>
      </thead>
      <tbody>
-      
+
         <?php 
-          $res_chamada = buscar_chamada($conexao,$setor_id);
+          $res_chamada =  buscar_minhas_chamada($conexao,$idfuncionario);
           foreach ($res_chamada as $key => $value) {
             $id_chamada = $value['id'];
             $status = $value['status'];
@@ -92,7 +90,7 @@ include '../Model/Chamada.php';
             $email = '';
             $whatsapp = '';
             $descricao = '';
-            $destino = '';
+            $destino= '';
             foreach ($res_funcionario as $key => $value) {
               $nome = $value['nome'];
               $email = $value['email'];
@@ -113,26 +111,23 @@ include '../Model/Chamada.php';
               <td>
               Descrição: $descricao
               </td>
-              <td>";
-              if($status == 'esperando_resposta'){
+              <td>
+                <div class='row'>
+                  <div class='col-sm-6'>
+                    <form method='POST' action='responder_chamada.php'>
+                      <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
+                      <button class='btn btn-success'>Ver Chat</button>
+                    </form>
+                  </div>";
+                  if($status != 'finalizado'){
 
-                echo "<form method='POST' action='responder_chamada.php'>
-                  <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
-                  <button class='btn btn-success' onclick='responder_chat($id_chamada);'>RESPONDER</button>
-                </form>";
-              }else if($status == 'em_andamento'){
-                echo "<form method='POST' action='responder_chamada.php'>
-                  <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
-                  <button class='btn btn-success' onclick='responder_chat($id_chamada);'>Ver Chat</button>
-                </form>";
-              }else if($status == 'finalizado'){
-                echo "<form method='POST' action='responder_chamada.php'>
-                  <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
-                  <button class='btn btn-success' onclick='responder_chat($id_chamada);'>Ver Chat</button>
-                </form>";
-              }
+                    echo "<div class='col-sm-6'>
+                    <button class='btn btn-info' onclick='finalizar_chat($id_chamada);'>Finalizar</button>
+                  </div>";
+
+                  }
+               echo" </div>
                 
-            echo "    
               </td>
             </tr>
             ";
@@ -155,9 +150,6 @@ include '../Model/Chamada.php';
 
 </div>
 
-<script type="text/javascript">
-  
-</script>
 
 
 <?php 

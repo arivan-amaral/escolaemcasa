@@ -144,23 +144,20 @@ setTimeout('dia_doservidor_publico();',3000);
                       $quantidade = $value['chamada'];
                     }
                     echo $quantidade;
-                ?>
-                </h4>
-                <p></p>
-              </div>
-              <div class='icon'>
 
+                    echo "</h4>
+                <p></p>
               </div>
               <form method='POST' action='lista_chamada.php'>
               <input type='hidden' name='setor' id='setor' value='$id_setor'>
-              <button class='small-box-footer'>
-                Chamadas pendentes <ion-icon name='cloud-upload'></ion-icon>
+              <button class='btn btn-block btn-danger'>
+                Chamadas pendentes
               </button>
               </form>
               
               
-            </div>
-            <?php 
+            </div>";
+                
                 }
               }
             ?>

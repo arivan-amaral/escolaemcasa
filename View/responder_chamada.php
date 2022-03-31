@@ -21,7 +21,7 @@ include "alertas.php";
 
   $idFuncionario=$_SESSION['idfuncionario'];
   $id_chamada=$_POST['id_chamada'];
-
+  $status = '';
 ?>
  
  
@@ -81,38 +81,49 @@ include "alertas.php";
             <!-- Main content -->
 
             <section class="content">
-
+              <h2 align="center">Chat</h2>
               <div class="container-fluid">
-
-
-                <div class="row">
+               
                   <?php  
-                  $res_chamada = pesquisa_chamada($conexao,$id_chamada);
+                  $res_chamada = pesquisa_chat($conexao,$id_chamada);
                   foreach ($res_chamada as $key => $value) {
-                    $descricao = $value['descricao'];
+                    $descricao = $value['mensagem'];
+                    $arquivo = $value['arquivo'];
+                    $data = $value['data'];
+
+                    echo "
+                    <br>
+                    <br>
+
+                    <center>
+                      <h5>Mensagem realizada: $data</h5>
+                      <h6>Descrição:</h6>
+                        <p>$descricao</p>
+                      <h6>Anexo:</h6>
+                      <img src='chamadas/$arquivo' width='500' height='500'>
+                    </center>
+                      " ;
                   }
                   ?>
-                  <h4 align="center">Informações da Chamada</h4>
-                  <br>
-                  <div class="col-md-12">
-                    <div class="card card-outline card-info">
-                      <div class="card-header">
-                        <h3  >
-                          Descrição da Chamada
-                        </h3>
-                      </div>
-                      <!-- /.card-header -->
-                      <div class="card-body">
-                        <textarea rows="5" style="height: 245.719px;" disabled>
-                          <?php echo $descricao;  ?>
-                        </textarea>
-                      </div>
-                    </div>
-                     <form class="mt-12" action="../Controller/.php" method="post" enctype="multipart/form-data">
+                    <?php  
+                      $res_chamado= pesquisa_chamada($conexao,$id_chamada);
+                      foreach ($res_chamado as $key => $value) {
+                        $status = $value['status'];
+                      }
+                      if($status != 'finalizado'){
+                      ?>
+                      
+                        <form class="mt-12" action="../Controller/Cadastrar_chat_chamado.php" method="post" enctype="multipart/form-data">
+
                         <br>
-                        <h4 align="center">Responder a Chamada</h4>
+                        <h4 align="center">Responder</h4>
                         <br>
-                        <input type="hidden" name="id_funcionario" id="id_funcionario" value="<<?php echo $idFuncionario ?>">
+                         <h4 class="card-title">Anexo</h4>
+                        <div class="form-group">
+                            <input type="file" name="arquivo" class="form-control" >
+                        </div>
+                        <input type="hidden" name="id_funcionario" id="id_funcionario" value="<?php echo $idFuncionario ?>">
+                        <input type="hidden" name="id_chamado" id="id_chamado" value="<?php echo $id_chamada ?>">
                         <div class="card card-outline card-info">
                       <div class="card-header">
                         <h3  >
@@ -126,9 +137,12 @@ include "alertas.php";
                       </div>
                     </div>
                       <div onclick='carregando();'>
-                        <button type="submit" class="btn btn-block btn-primary">Responder Chamado</button>
+                        <button type="submit" class="btn btn-block btn-primary">Responder</button>
                       </div>
-                    </form>                    
+                    </form>
+                    <?php
+                      }
+                    ?>
                   </div>
                 </div>
 
@@ -151,15 +165,6 @@ include "alertas.php";
 
 
     var descricao =  document.getElementById("summernote").value;
-    var setor =  document.getElementById("setor").value;
-    var funcionario =  document.getElementById("funcionario").value;
-
-  if (descricao=="" || setor=="") {
-      Swal.fire('Preencha os campos obrigatorios!', '', 'info');
-      
-    
-
-  }else{
         let timerInterval
         Swal.fire({
           title: 'Aguarde, ação está sendo realizada...',
@@ -187,7 +192,7 @@ include "alertas.php";
             console.log('I was closed by the timer')
           }
         })
-    }//else
+ 
   }
 
 
