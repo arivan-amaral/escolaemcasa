@@ -192,12 +192,12 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
         <?php
 
         $result_nota_aula1=$conexao->query("
-          SELECT * FROM nota_parecer WHERE
+          SELECT avaliacao,periodo_id,nota FROM nota_parecer WHERE
           escola_id=$idescola and
           turma_id=$idturma and
           disciplina_id=$iddisciplina and 
           ano_nota=$ano_letivo and
-          periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
+          periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id,nota,nota ");
 
 
         $nota_tri_1=0;
@@ -244,12 +244,12 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
       <?php
 
       $result_nota_aula2=$conexao->query("
-        SELECT * FROM nota_parecer WHERE
+        SELECT avaliacao,periodo_id,nota FROM nota_parecer WHERE
         escola_id=$idescola and
         turma_id=$idturma and
         ano_nota=$ano_letivo and
         disciplina_id=$iddisciplina and 
-        periodo_id=2 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
+        periodo_id=2 and aluno_id=$idaluno  group by avaliacao,periodo_id,nota ");
 
 
       $nota_tri_2=0;
@@ -298,12 +298,12 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
    <?php
 
    $result_nota_aula3=$conexao->query("
-     SELECT * FROM nota_parecer WHERE
+     SELECT avaliacao,periodo_id,nota FROM nota_parecer WHERE
      escola_id=$idescola and
      turma_id=$idturma and
      ano_nota=$ano_letivo and
      disciplina_id=$iddisciplina and 
-     periodo_id=3 and aluno_id=$idaluno  group by avaliacao,periodo_id ");
+     periodo_id=3 and aluno_id=$idaluno  group by avaliacao,periodo_id,nota ");
 
 
    $nota_tri_3=0;
@@ -495,7 +495,7 @@ $linha++;
 
 
 $res_fre_t1=$conexao->query("
-SELECT * FROM frequencia WHERE
+SELECT data_frequencia FROM frequencia WHERE
 escola_id=$idescola and
 turma_id=$idturma and
 presenca=0 and data_frequencia BETWEEN '$data_inicio_trimestre1' and '$data_fim_trimestre1' and aluno_id=$idaluno  group by data_frequencia");
