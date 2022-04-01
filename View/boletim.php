@@ -42,7 +42,7 @@ include_once"cabecalho_boletim.php";
 <a href='#'class="btn btn-block btn-primary " onclick='print();'>IMPRIMIR</a> 
 
 </p>
-<h1>PÁGINA EM MANUTENÇÃO</h1>
+<!-- <h1>PÁGINA EM MANUTENÇÃO</h1> -->
 
    
 <!-- <a href="#" onclick="demoFromHTML();">BAIXAR BOLETINS</a> -->
