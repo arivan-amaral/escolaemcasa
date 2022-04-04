@@ -48,6 +48,11 @@ try {
       <a   href='coordenador_relatorio_video_aluno.php?idturma=$idturma&nome_turma=$nome_turma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat' target='_blank'>
       <i class='fa fa-play'></i> 
       VER RELATÓRIO DE VÍDEOS DE ALUNO
+      </a>     
+
+      <a   href='relatorio_frequencia.php?idturma=$idturma&nome_turma=$nome_turma&idescola=$idescola&idserie=$idserie' class='btn btn-danger btn-block btn-flat' target='_blank'>
+      <!-- i class='fa fa-play'></i --> 
+      RELATÓRIO DE FREQUÊNCIA
       </a>  
 
 
@@ -92,7 +97,7 @@ try {
 
       <input type='hidden' name='nome_escola' value='$nome_escola'>
       <input type='hidden' name='nome_turma' value='$nome_turma'>
-      <button  class='btn btn-danger btn-block btn-flat'>
+      <button  class='btn btn-secondary btn-block btn-flat'>
       <i class='fa fa-print'></i> 
       ATA DE RESULTADOS FINAIS
       </button> 
@@ -109,7 +114,7 @@ try {
 
       <input type='hidden' name='nome_escola' value='$nome_escola'>
       <input type='hidden' name='nome_turma' value='$nome_turma'>
-      <button  class='btn btn-danger btn-block btn-flat'>
+      <button  class='btn btn-secondary btn-block btn-flat'>
       <i class='fa fa-print'></i> 
       CAPA DA TURMA
       </button> 
