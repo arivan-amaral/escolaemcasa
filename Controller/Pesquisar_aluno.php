@@ -286,6 +286,84 @@ foreach ($result_ecidade_matricula as $key => $value) {
 
                   $result.="
                 </td>
+
+
+
+
+
+                <td class = 'text-right'>
+                    <div class = 'btn-group text-right'>
+                        <button type = 'button' class = 'btn btn-info fs12 dropdown-toggle' data-toggle = 'dropdown' aria-expanded = 'false'> 
+                            Declarações
+                            <span class = 'caret ml5'></span>
+                        </button>
+                        <ul class = 'dropdown-menu' role = 'menu'>";
+                            
+                 
+                          
+                        if (in_array($idescola, $array_escolas_coordenador) ) { 
+
+                     
+                
+
+
+                          $result.="
+                            <li>
+                            <form name='declaracao$idaluno' action='declaracao.php' method='post' target='_blank'>
+                                <input type='hidden' name='ano_letivo_post' value='$calendario_ano'>
+                                <input type='hidden' name='aluno_id' value='$idaluno'>
+                                <input type='hidden' name='escola_id' value='$idescola'>
+                                <input type='hidden' name='turma_id' value='$idturma'>
+                                <input type='hidden' name='serie_id' value='$idserie'>
+                                <input type='hidden' name='nome_aluno' value='$nome_aluno'>
+                                <input type='hidden' name='tipo_declaracao' value='Declarações Bolsa Família'>
+                                
+                                <button type='submit' class='dropdown-item'  >Declarações Bolsa Família</button>
+                         
+                            </form>
+                            </li>";
+
+
+                          $result.="
+                            <li>
+                            <form name='declaracao$idaluno' action='declaracao.php' method='post' target='_blank'>
+                                <input type='hidden' name='ano_letivo_post' value='$calendario_ano'>
+                                <input type='hidden' name='aluno_id' value='$idaluno'>
+                                <input type='hidden' name='escola_id' value='$idescola'>
+                                <input type='hidden' name='turma_id' value='$idturma'>
+                                <input type='hidden' name='serie_id' value='$idserie'>
+                                <input type='hidden' name='nome_aluno' value='$nome_aluno'>
+                                <input type='hidden' name='tipo_declaracao' value='Atestado de Frequência'>
+                                <button type='submit' class='dropdown-item'  >Declaração Frequência</button>
+                         
+                            </form>
+                            </li>";                        
+
+                            // $result.="
+                            // <li>
+                            // <form name='declaracao$idaluno' action='declaracao.php' method='post' target='_blank'>
+                            //     <input type='hidden' name='ano_letivo_post' value='$calendario_ano'>
+                            //     <input type='hidden' name='aluno_id' value='$idaluno'>
+                            //     <input type='hidden' name='escola_id' value='$idescola'>
+                            //     <input type='hidden' name='turma_id' value='$idturma'>
+                            //     <input type='hidden' name='serie_id' value='$idserie'>
+                            //     <input type='hidden' name='nome_aluno' value='$nome_aluno'>
+                            //     <button type='submit' class='dropdown-item'  >Declarações Bolsa Família</button>
+                         
+                            // </form>
+                            // </li>";
+                          
+                           
+                          }
+                            
+                           $result.="
+                        </ul>
+                    </div>
+                </td>";
+                
+                
+                // **************************************************************
+                  $result.="
                       <td class = 'text-right'>
                           <div class = 'btn-group text-right'>
                               <button type = 'button' class = 'btn btn-primary fs12 dropdown-toggle' data-toggle = 'dropdown' aria-expanded = 'false'> 
