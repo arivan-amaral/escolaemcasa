@@ -51,7 +51,7 @@ $status=1;
     </div><!-- /.col -->
   </div>
 
-    <!-- <H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR> -->
+    <H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>
 
   <!-- Main content -->
   <section class="content">
