@@ -41,7 +41,7 @@ include_once "../Model/Conexao.php";
       <div class="row">
         <div class="col-sm-3">
           <div class="form-group">
-           <label for="exampleInputEmail1">DATA REGISTRO INÍCIAL</label>
+           <label for="exampleInputEmail1">DATA REGISTRO INICIAL</label>
            <input type="date" class="form-control" name="data_inicial" id="data_inicial">
           </div>
         </div>
