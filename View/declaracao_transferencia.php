@@ -15,18 +15,26 @@ include '../Model/Coordenador.php';
 include '../Model/Aluno.php';
 include '../Model/Estado.php';
 
+include"../Model/Professor.php";
+
+include"boletim_maternall_II.php";
+include"boletim_serie_1ano_id_3.php";
+include"boletim_fundamental_II.php";
+include"teste_boletim.php";
+include"../Controller/Cauculos_notas.php";
+
 $aluno_id=$_POST['aluno_id'];
 $escola_id=$_POST['escola_id'];
 $turma_id=$_POST['turma_id'];
 $serie_id=$_POST['serie_id'];
 $nome_aluno=$_POST['nome_aluno'];
+
 $idfuncionario=$_SESSION['idfuncionario'];
-// $ano=2021;
-$ano_letivo=$_POST['ano_letivo_post'];
+$ano_letivo=$_SESSION['ano_letivo'];
 $status=1;
 
 ?>
-
+ 
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 
 <div class="content-wrapper" style="min-height: 529px;">
@@ -161,9 +169,11 @@ $status=1;
 
  
 
+                                
 
 
-                              <p class="MsoNormal" style="margin: 0cm 3.25pt 22.55pt 19.6pt; text-align: justify; text-indent: -0.5pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><span style="font-size: 18pt; font-family: &quot;Source Sans Pro&quot;, sans-serif;"><b><br></b></span><span style="font-size: 16pt; font-family: &quot;Source Sans Pro&quot;, sans-serif;"><o:p></o:p></span></p><p class="MsoNormal" style="margin-top:0cm;margin-right:3.25pt;margin-bottom:22.55pt;margin-left:19.6pt;text-align:justify;text-justify:inter-ideograph;text-indent:-.5pt;line-height:111%;"><span style="font-size:14.0pt;line-height:111%;font-family:" arial",sans-serif;"=""><b><br></b></span></p><p class="MsoNormal" style="margin-top:0cm;margin-right:3.25pt;margin-bottom:22.55pt;margin-left:19.6pt;text-align:justify;text-justify:inter-ideograph;text-indent:-.5pt;line-height:111%;"><span style="font-size:14.0pt;line-height:111%;font-family:" arial",sans-serif;"=""><b><br></b></span></p><p class="MsoNormal" style="margin-top:0cm;margin-right:3.25pt;margin-bottom:22.55pt;margin-left:19.6pt;text-align:justify;text-justify:inter-ideograph;text-indent:-.5pt;line-height:111%;"><span style="font-size:14.0pt;line-height:111%;font-family:" arial",sans-serif;"=""><b><br></b></span></p><p class="MsoNormal" style="margin-top:0cm;margin-right:3.25pt;margin-bottom:22.55pt;margin-left:19.6pt;text-align:justify;text-justify:inter-ideograph;text-indent:-.5pt;line-height:111%;"><span style="font-size:14.0pt;line-height:111%;font-family:" arial",sans-serif;"=""><b><br></b></span></p><p class="MsoNormal" style="margin-top:0cm;margin-right:3.25pt;margin-bottom:22.55pt;margin-left:19.6pt;text-align:justify;text-justify:inter-ideograph;text-indent:-.5pt;line-height:111%;"><span style="font-size:14.0pt;line-height:111%;font-family:" arial",sans-serif;"=""><b><br></b></span></p><p class="MsoNormal" style="margin-top:0cm;margin-right:3.25pt;margin-bottom:22.55pt;margin-left:19.6pt;text-align:justify;text-justify:inter-ideograph;text-indent:-.5pt;line-height:111%;"><span style="font-size:14.0pt;line-height:111%;font-family:" arial",sans-serif;"=""><b><br></b></span></p><p class="MsoNormal" style="margin-top:0cm;margin-right:3.25pt;margin-bottom:22.55pt;margin-left:19.6pt;text-align:justify;text-justify:inter-ideograph;text-indent:-.5pt;line-height:111%;"><span style="font-size:14.0pt;line-height:111%;font-family:" arial",sans-serif;"=""><b> </b> </span></p><p class="MsoNormal" style="margin-top:0cm;margin-right:3.25pt;margin-bottom:22.55pt;margin-left:19.6pt;text-align:justify;text-justify:inter-ideograph;text-indent:-.5pt;line-height:111%;"></p><div style="text-align: center;"><span style="font-family: Arial, sans-serif; font-size: 9pt; text-indent: -0.5pt;"></span></div><span style="font-family: Arial, sans-serif; font-size: 9pt; text-align: left;"><div style="text-align: center;"><span style="font-size: 14pt; text-indent: -0.5pt;"><!-- OBS.: Declaro que ... --><p></p><p></p>
+
+                             
        
 
                            <div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;">______________________________</span></div><div style="text-align: center;"><span style="font-size: 1rem;"><span style="font-family: Arial, sans-serif; font-size: 9pt; text-indent: -0.5pt;">Luís Eduardo Magalhães, <?php echo date("d/m/Y"); ?> </span></span></div><p></p><p><br></p>
@@ -187,7 +197,27 @@ $status=1;
 
 
 
+     <?php 
+    // if ($serie_id>3) {
+    
+    echo "$escola_id, | $turma_id, |$serie_id ";
+    // $aluno_id,$numero,$nome_aluno,$nome_escola,$nome_turma";
+      
+         if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
+             $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$turma_id,$escola_id,$idescola,$_SESSION['ano_letivo']);
+         }else{
+             $res_alunos=listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,$turma_id,$escola_id,$_SESSION['ano_letivo']);
+         }
+    
+                boletim_fund2($conexao,$escola_id,$turma_id,$serie_id,$aluno_id,'',$nome_aluno,$nome_escola,$nome_turma,$_SESSION['ano_letivo']);
 
+    
+
+                
+             $numero++;
+         
+    // }
+     ?>
 
         <div class="row">
       <div class="col-sm-12">
