@@ -51,7 +51,7 @@ $status=1;
     </div><!-- /.col -->
   </div>
 
-    <H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>
+    <!-- <H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR> -->
 
   <!-- Main content -->
   <section class="content">
@@ -146,7 +146,10 @@ $status=1;
 
                               <p class="MsoNormal" style="text-align: center; "><b><span style="font-size: 24pt; line-height: 107%; font-family: &quot;Source Sans Pro&quot;, sans-serif; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><br></span></b></p><p class="MsoNormal" style="margin: 0cm 3.25pt 22.55pt 19.6pt; text-indent: -0.5pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><div style="text-align: center;"><b style="text-indent: -0.5pt; font-size: 1rem;"><span style="font-size: 28pt; font-family: &quot;Source Sans Pro&quot;, sans-serif; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">Guia de Transferência</span></b></div><b><span style="font-size: 18pt; font-family: &quot;Source Sans Pro&quot;, sans-serif;">
                               <!--[if !supportLineBreakNewLine]--><br>
-                              <!--[endif]--></span></b><span style="font-size: 16pt; font-family: &quot;Source Sans Pro&quot;, sans-serif;"><o:p></o:p></span></p><p class="MsoNormal" align="center" style="margin-top:0cm;margin-right:0cm;margin-bottom:21.3pt;margin-left:15.85pt;text-align:center;"><b><span style="font-size:18.0pt;line-height:107%;sans-serif;"><br></span></b></p><p class="MsoNormal" align="center" style="margin-top:0cm;margin-right:0cm;margin-bottom:21.3pt;margin-left:15.85pt;text-align:center;"><b><span style="font-size:18.0pt;line-height:107%;sans-serif;"><br></span></b></p><p class="MsoNormal" align="center" style="margin-top:0cm;margin-right:0cm;margin-bottom:21.3pt;margin-left:15.85pt;text-align:center;"><b><span style="font-size:18.0pt;line-height:107%;sans-serif;"><br></span></b></p><p class="MsoNormal" align="center" style="margin-top:0cm;margin-right:0cm;margin-bottom:21.3pt;margin-left:15.85pt;text-align:center;"><b><span style="font-size:18.0pt;line-height:107%;sans-serif;"><br></span></b></p>
+                              <!--[endif]--></span></b>
+                              <span style="font-size: 16pt; font-family: &quot;Source Sans Pro&quot;, sans-serif;"><o:p></o:p></span></p>
+
+                         <p class="MsoNormal" align="center" style="margin-top:0cm;margin-right:0cm;margin-bottom:21.3pt;margin-left:15.85pt;text-align:center;"><b><span style="font-size:18.0pt;line-height:107%;sans-serif;"><br></span></b></p><p class="MsoNormal" align="center" style="margin-top:0cm;margin-right:0cm;margin-bottom:21.3pt;margin-left:15.85pt;text-align:center;"><b><span style="font-size:18.0pt;line-height:107%;sans-serif;"><br></span></b></p>
                               <p class="MsoNormal" style="margin: 0cm 3.25pt 22.55pt 19.6pt; text-align: justify; text-indent: -0.5pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><span style="font-size: 18pt; font-family: &quot;Source Sans Pro&quot;, sans-serif;">Atesto que&nbsp;<b><?php echo $nome_aluno; ?>&nbsp;</b>natural de <?php echo "$naturalidade $localidade"; ?>, nascido(a) em <?php echo $data_nascimento; ?>, filho(a) 
                               <?php
                                 if ($filiacao1 !='' && $filiacao2 !='') {
@@ -170,7 +173,27 @@ $status=1;
                            </p>
 
  
+                           <?php 
+                           if ($serie_id>3) {
+                           
+                           
+                            
+                               if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
+                                   $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$turma_id,$escola_id,$idescola,$_SESSION['ano_letivo']);
+                               }else{
+                                   $res_alunos=listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,$turma_id,$escola_id,$_SESSION['ano_letivo']);
+                               }
+                           
+                                      boletim_fund2($conexao,$escola_id,$turma_id,$serie_id,$aluno_id,'',$nome_aluno,$nome_escola,$nome_turma,$_SESSION['ano_letivo']);
 
+                           
+
+                                      
+                                   $numero++;
+                               
+                           }
+                           
+                           ?>
                                 
 
 
@@ -199,27 +222,7 @@ $status=1;
 
 
 
-     <?php 
-    // if ($serie_id>3) {
-    
-    echo "$escola_id, | $turma_id, |$serie_id ";
-    // $aluno_id,$numero,$nome_aluno,$nome_escola,$nome_turma";
-      
-         if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
-             $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$turma_id,$escola_id,$idescola,$_SESSION['ano_letivo']);
-         }else{
-             $res_alunos=listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,$turma_id,$escola_id,$_SESSION['ano_letivo']);
-         }
-    
-                boletim_fund2($conexao,$escola_id,$turma_id,$serie_id,$aluno_id,'',$nome_aluno,$nome_escola,$nome_turma,$_SESSION['ano_letivo']);
 
-    
-
-                
-             $numero++;
-         
-    // }
-     ?>
 
         <div class="row">
       <div class="col-sm-12">

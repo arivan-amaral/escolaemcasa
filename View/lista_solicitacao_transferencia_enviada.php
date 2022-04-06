@@ -110,6 +110,9 @@ $url_get=$array_url[1];
               $observacao=$value['observacao'];
               $resposta_solicitacao=$value['resposta_solicitacao'];
               $aceita=$value['aceita'];
+              $idturma=$value['turma_id_origem'];
+              $idserie=$value['serie_id'];
+              
               if ($aceita==1) {
                 $cor="success";
                 $status="ACEITA";
@@ -174,8 +177,8 @@ $url_get=$array_url[1];
                      <input type='hidden' name='escola_id' value='$id_escola_origem'>
                      <input type='hidden' name='nome_aluno' value='$nome_aluno'>
 
-                     <input type='hidden' name='turma_id' value='$idaluno'>
-                     <input type='hidden' name='serie_id' value='$idaluno'>
+                     <input type='hidden' name='turma_id' value='$idturma'>
+                     <input type='hidden' name='serie_id' value='$idserie'>
 
 
  
