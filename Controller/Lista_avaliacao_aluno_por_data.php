@@ -107,7 +107,9 @@ try {
                                     <b class='text-danger'> $procedimento | $datasaida </b>
                                  </b>";
                              
-                            }else if(  (strtotime($data_matricula) > strtotime($data_fim_periodo)) ){
+                                
+                            }else if(  (strtotime($data_matricula) <= strtotime($data_fim_periodo)) ){
+                            //06/04/2022
                                  $result.=" <input type='hidden' name='aluno_id[]' value='$id'>
                                  <br>
                                  
@@ -448,27 +450,28 @@ try {
                        $result.="<tr class='$cor_tabela'>
                             <td colspan='2'>
 
-                            <div class='col-12'>
                                   
                                  ";
+                                 //cadu pediu para tirar os pareceres em 06/04/2022
+                            // $result.="<div class='col-12'>";
                                    
-                                  $result.="<p class='text-justify'>$descricao_parecer";
+                              //     $result.="<p class='text-justify'>$descricao_parecer";
                                     
                                     
-                                   $result.="                            
-                                      <input type='hidden' name='descricao_parecer".$id."[]' value='$idparecer'>
-                                  <select  name='parecer_sigla".$id."[]'>
-                                    <option value='$sigla'>$sigla</option>
-                                    <option ></option>
-                                    <option value='S'>S</option>
-                                    <option value='N'>N</option>
-                                    <option value='D'>D</option>
-                                    <option value='NT'>NT</option>
+                              //      $result.="                            
+                              //         <input type='hidden' name='descricao_parecer".$id."[]' value='$idparecer'>
+                              //     <select  name='parecer_sigla".$id."[]'>
+                              //       <option value='$sigla'>$sigla</option>
+                              //       <option ></option>
+                              //       <option value='S'>S</option>
+                              //       <option value='N'>N</option>
+                              //       <option value='D'>D</option>
+                              //       <option value='NT'>NT</option>
                                    
-                                  </select>
-                                </p>
+                              //     </select>
+                              //   </p>
 
-                              </div>";
+                              // </div>";
                      
                             $result.="</td>
                             </tr>";
@@ -500,26 +503,28 @@ try {
 
                               </div> ";
 
+                                //06/04/2022
+                                // $array_nota3=array();
+                                //   $result_n3=verifica_sigla_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av3',$idparecer);
 
-                                $array_nota3=array();
-                                  $result_n3=verifica_sigla_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av3',$idparecer);
+                                //   $conta_total_nota=0;
+                                //   foreach ($result_n3 as $key => $value) {
+                                //       $idnota=$value['idnota'];
+                                //       $nota3=$value['sigla'];
+                                //       $array_nota3[$idnota]="nota: ".$value['nota']." sigla: ".$value['sigla']." data: ".$value['data_nota'];
+                                //       $conta_total_nota++;
+                                //    }
 
-                                  $conta_total_nota=0;
-                                  foreach ($result_n3 as $key => $value) {
-                                      $idnota=$value['idnota'];
-                                      $nota3=$value['sigla'];
-                                      $array_nota3[$idnota]="nota: ".$value['nota']." sigla: ".$value['sigla']." data: ".$value['data_nota'];
-                                      $conta_total_nota++;
-                                   }
-
-                              if (count($array_nota3)>1) {
-                                 $result.="<font color='red'> AV3 (PARECERES) DESSE ALUNO POSSUI DUPLICIDADE  </FONT> <br>";
-                                foreach ($array_nota3 as $key_dupli => $value) {
-                                     $result.="<div id='nota_excluir$key_dupli'>
-                                     <b> nota AV3:</b> <font color='blue'> $value </FONT>  <a onclick='excluir_nota_duplicada($key_dupli);' class='btn btn-sm bg-danger'>Excluir $value</a></div><br>";
-                                }
-                                $result.="______________________________________________________<BR>";
-                              }
+                              // if (count($array_nota3)>1) {
+                              //    $result.="<font color='red'> AV3 (PARECERES) DESSE ALUNO POSSUI DUPLICIDADE  </FONT> <br>";
+                              //   foreach ($array_nota3 as $key_dupli => $value) {
+                              //        $result.="<div id='nota_excluir$key_dupli'>
+                              //        <b> nota AV3:</b> <font color='blue'> $value </FONT>  <a onclick='excluir_nota_duplicada($key_dupli);' class='btn btn-sm bg-danger'>Excluir $value</a></div><br>";
+                              //   }
+                              //   $result.="______________________________________________________<BR>";
+                              // }
+                                //06/04/2022
+                              // 
 
 
                             $result.="

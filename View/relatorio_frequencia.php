@@ -5,16 +5,57 @@ include_once 'barra_horizontal.php';
 include_once "menu.php"; 
 include_once "alertas.php"; 
 include_once "../Model/Conexao.php"; 
+include_once "../Model/Turma.php"; 
+include_once "../Model/Escola.php"; 
 
 
+$idturma=$_GET['idturma']; 
+$idescola=$_GET['idescola'];
+$idescola_get=$_GET['idescola'];
+
+$rematricula_escola_id=$_GET['idescola']; 
+$serie_id=$_GET['idserie']; 
+$idserie=$_GET['idserie']; 
+$idserie_atual=$_GET['idserie']; 
+
+$array_url=explode('php?', $_SERVER["REQUEST_URI"]);
+$url_get=$array_url[1];
 
 ?>
   <!-- Main Sidebar Container -->
 <div class="content-wrapper">
+
+
 <!-- ####################### CORPO ################################################# -->
 <script type="text/javascript" src="ajax.js?<?php echo rand(); ?>"></script>
 
       <div class="container-fluid">
+<br>
+        <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-10">
+            <button class="btn btn-block btn-lg btn-secondary">
+              <?php
+              $nome_turma_global='';
+              $nome_disciplina='';
+              $res_turma=lista_de_turmas_por_id($conexao,$idturma);
+
+              foreach ($res_turma as $key => $value) {
+                $nome_turma_global=$value['nome_turma'];
+              }           
+
+              $nome_escola_global='';
+        $res_escola=buscar_escola_por_id($conexao,$idescola);
+        $nome_escola_global="";
+        foreach ($res_escola as $key => $value) {
+          $nome_escola_global=$value['nome_escola'];
+        }    
+
+
+              echo "$nome_escola_global-  <b class='text-warning'>$nome_turma_global </b>"  ; ?></button>
+            </div>
+          </div>
+          <br>
         <div class="row mb-2">
 
           <div class="col-sm-1"></div>
@@ -51,19 +92,19 @@ include_once "../Model/Conexao.php";
            <input type="date" class="form-control" name="data_final" id="data_final">
           </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
           <div class="form-group">
-           <label for="exampleInputEmail1">QUANTIDADE DE FALTAS</label>
+           <label for="exampleInputEmail1">QUANTIDADE DE FALTAS CONSECUTIVAS</label>
            <select class="form-control"  id="falta" name="falta">
             <?php
           
             for ($i=1; $i < 26; $i++) { 
 
               if($i > 1){
-                echo"<option value='$i'>$i faltas</option>
+                echo"<option value='$i'>$i faltas consecutivas</option>
               ";
             }else{
-              echo"<option value='$i'>$i falta</option>
+              echo"<option value='$i'>$i falta consecutiva</option>
               ";
               
             }
@@ -72,7 +113,7 @@ include_once "../Model/Conexao.php";
            </select> 
           </div>
         </div>
-        <div class="col-sm-3" style="margin-top: 7px;" ><br>
+        <div class="col-sm-2" style="margin-top: 7px;" ><br>
          <a  class="btn btn-primary" onclick="pesquisa_frequencia()">Pesquisar</a>
         </div>
       </div>
@@ -98,35 +139,7 @@ include_once "../Model/Conexao.php";
 </div>
     
 
-
-<script type="text/javascript">
-  function pesquisa_frequencia(){
-
-    var result = document.getElementById('resultado');
-    var falta = document.getElementById('falta').value;
-    var data_inicial = document.getElementById('data_inicial').value;
-    var data_final = document.getElementById('data_final').value;
-      
-    result.innerHTML = "<img src='imagens/carregando.gif'>";  
-    var xmlreq = CriaRequest();
-    xmlreq.open("GET", "../Controller/Relatorio_de_frequencia.php?falta="+falta+"&data_inicial="+data_inicial+"&data_final="+data_final, true);
-
-    xmlreq.onreadystatechange = function(){
-  
-     if (xmlreq.readyState == 4) {
-         if (xmlreq.status == 200) {
-               result.innerHTML = xmlreq.responseText;
-
-         }else{
-               alert('Erro desconhecido, verifique sua conexão com a internet');
-
-            result.innerHTML ="Erro ao receber mensagens";                 
-         }
-     }
-    };
-     xmlreq.send(null);
-}
-</script>
+ 
 
 
 <!-- ######################################################################## -->

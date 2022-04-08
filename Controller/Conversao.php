@@ -71,6 +71,19 @@ function converte_data($data){
 function converte_data_hora($data){
     return date("d/m/Y H:i", strtotime($data));
 }
-	
 
+function incrementar_dia_data($data_atual,$dia){
+   
+    $d1 = $data_atual; // Data e hora que o atendimento começou
+    $d2 = "+ $dia days"; // Tempo esperado para finalizar o atendimento
+    $teste = strtotime($d1 . $d2);
+    $data_atual= date($data_atual, $teste);
+
+    return date("Y-m-d", strtotime($data_atual));
+}
+
+// 
+    // $diferenca=(strtotime($data_atual) - strtotime($data_banco));
+
+  
 ?>

@@ -4624,3 +4624,29 @@ function aceitar_solicitacao_transferencia(form1){
     }
 
 
+function pesquisa_frequencia(){
+
+    var result = document.getElementById('resultado');
+    var falta = document.getElementById('falta').value;
+    var data_inicial = document.getElementById('data_inicial').value;
+    var data_final = document.getElementById('data_final').value;
+      
+    result.innerHTML = "<img src='imagens/carregando.gif'>";  
+    var xmlreq = CriaRequest();
+    xmlreq.open("GET", "../Controller/Relatorio_de_frequencia.php?falta="+falta+"&data_inicial="+data_inicial+"&data_final="+data_final, true);
+
+    xmlreq.onreadystatechange = function(){
+  
+     if (xmlreq.readyState == 4) {
+         if (xmlreq.status == 200) {
+               result.innerHTML = xmlreq.responseText;
+
+         }else{
+               alert('Erro desconhecido, verifique sua conexão com a internet');
+
+            result.innerHTML ="Erro ao receber mensagens";                 
+         }
+     }
+    };
+     xmlreq.send(null);
+}

@@ -505,7 +505,7 @@ foreach ($res_fre_t1 as $key => $value) {
   $quantidade_falta1++;
 }
 
-//echo "$quantidade_falta1";
+echo "$quantidade_falta1";
 ?>
 </o:p></span></p>
 </td>
