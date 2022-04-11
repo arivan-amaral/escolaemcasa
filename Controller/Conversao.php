@@ -72,14 +72,14 @@ function converte_data_hora($data){
     return date("d/m/Y H:i", strtotime($data));
 }
 
-function incrementar_dia_data($data_atual,$dia){
-   
-    $d1 = $data_atual; // Data e hora que o atendimento começou
-    $d2 = "+ $dia days"; // Tempo esperado para finalizar o atendimento
-    $teste = strtotime($d1 . $d2);
-    $data_atual= date($data_atual, $teste);
+function incrementar_dia_data($data_atual){
 
-    return date("Y-m-d", strtotime($data_atual));
+    $d1 = new DateTime($data_atual); // Data e hora que o atendimento começou
+    //$d2 = "+$dia day"; // Tempo esperado para finalizar o atendimento
+    $d1->modify('+1day');
+    //$data_atual= date($data_atual, $teste);
+
+    return $d1;
 }
 
 // 

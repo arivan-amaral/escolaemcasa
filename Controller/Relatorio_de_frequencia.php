@@ -11,16 +11,22 @@ $data_final = $_GET['data_final'];
  $data_fim = new DateTime("$data_final");
  $dateInterval = $data_inicio->diff($data_fim);
  $total= $dateInterval->days;
+  
+  
+ 
+  
 
 echo "Total: $total <br>";
-$data_aux=$data_inicial;
+
+$data_aux=$data_inicio;
  for ($i=1; $i <= $total ; $i++) { 
-   $data_aux= incrementar_dia_data($data_aux,1);
-     echo "$data_aux + $i<br>";
+    $data_aux->modify('+1day');
+    echo $stringDate = $data_aux->format('Y-m-d'); 
+    echo "<br>";
  }
 
  try {
- $result="
+$result="
             <thead>
                 <tr>
                     <th></th>
@@ -28,22 +34,22 @@ $data_aux=$data_inicial;
                 </tr>
             </thead>
             <tbody>";
-
  $result.="
            <tr> 
                 <td>
-
-
-
+                    
                    </div>
                  </div>
-      			<br>
+            <br>
                 
-            	</td>
+              </td>
             <td>
                 
             </td>
             <td>";
+  
+ 
+ 
  } catch (Exception $e) {
  	echo $e;
  }
