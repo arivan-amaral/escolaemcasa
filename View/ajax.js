@@ -4630,10 +4630,12 @@ function pesquisa_frequencia(){
     var falta = document.getElementById('falta').value;
     var data_inicial = document.getElementById('data_inicial').value;
     var data_final = document.getElementById('data_final').value;
+    var idturma = document.getElementById('idturma').value;
+    var idescola = document.getElementById('idescola').value;
       
     result.innerHTML = "<img src='imagens/carregando.gif'>";  
     var xmlreq = CriaRequest();
-    xmlreq.open("GET", "../Controller/Relatorio_de_frequencia.php?falta="+falta+"&data_inicial="+data_inicial+"&data_final="+data_final, true);
+    xmlreq.open("GET", "../Controller/Relatorio_de_frequencia.php?idescola="+idescola+"&idturma="+idturma+"&falta="+falta+"&data_inicial="+data_inicial+"&data_final="+data_final, true);
 
     xmlreq.onreadystatechange = function(){
   

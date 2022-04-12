@@ -158,7 +158,6 @@ $cont=1;
   $nome_turma=$value['nome_turma'];
   $matricula_aluno=$value['matricula'];
   $data_matricula=$value['data_matricula'];
-  $marcado="";
 
   $res_movimentacao=pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula_aluno,$_SESSION['ano_letivo']);
 
@@ -186,9 +185,10 @@ $cont=1;
                 $email=$value['email'];
                 $senha=$value['senha'];
                 $marcado="";*/
+  $marcado="";
 
-                  $resultado=verificar_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data,$id,$aula);
-                    foreach ($resultado as $key2 => $value2) {
+                  $resultado_fre=verificar_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data,$id,$aula);
+                    foreach ($resultado_fre as $key2 => $value2) {
                       $marcado='checked';
                     }
 
@@ -198,7 +198,7 @@ $cont=1;
                       <td>$cont</td>
 
                       <td>
-                        <b class='text-success'> $nome_aluno </b> 
+                        <b class='text-success'> $nome_aluno</b> 
                       </td>
                      
                       <td> 

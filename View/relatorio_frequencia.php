@@ -84,6 +84,8 @@ $url_get=$array_url[1];
           <div class="form-group">
            <label for="exampleInputEmail1">DATA REGISTRO INICIAL</label>
            <input type="date" class="form-control" name="data_inicial" id="data_inicial">
+           <input type="hidden" class="form-control" name="idturma" id="idturma" value="<?php echo $idturma; ?>">
+           <input type="hidden" class="form-control" name="idescola" id="idescola" value="<?php echo $idescola; ?>">
           </div>
         </div>
          <div class="col-sm-3">
