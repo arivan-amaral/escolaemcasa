@@ -79,6 +79,8 @@
            }
        }
 
+
+
     if ($faltas_aluno>=$quantidade_falta) {
 
             $result.="
@@ -97,11 +99,11 @@
                     $faltas_aluno
                   </td>
                ";
+    $conta_aluno++;
      
     }
 
     $faltas_aluno=0;
-    $conta_aluno++;
     }
     echo "$result";
      
