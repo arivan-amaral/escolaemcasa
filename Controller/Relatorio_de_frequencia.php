@@ -62,7 +62,7 @@
        $matricula_aluno=$value['matricula'];
         $faltas_aluno=0;
        foreach ($array_datas as $key => $datas) {
-           if ($faltas_aluno<$quantidade_falta) {
+           if ($faltas_aluno<=$quantidade_falta) {
                $res=$conexao->query("SELECT * FROM frequencia WHERE ano_frequencia='$ano_letivo' and
                 data_frequencia ='$datas' and aluno_id=$idaluno and turma_id=$idturma and escola_id=$idescola and  presenca in(0) and presenca not in(1) limit 1 ");
                // echo "SELECT * FROM frequencia WHERE ano_frequencia='$ano_letivo' and
@@ -74,9 +74,9 @@
                }
            }
 
-           if ($faltas_aluno>=$quantidade_falta) {
-             break;
-           }
+           // if ($faltas_aluno>=$quantidade_falta) {
+           //   break;
+           // }
        }
 
 
