@@ -86,9 +86,9 @@ if ($faltas_aluno>=$quantidade_falta) {
 $faltas_aluno
               </td>
            ";
-  
  
 }
+  $faltas_aluno=0;
 
 }
 echo "$result";
