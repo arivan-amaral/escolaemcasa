@@ -4,6 +4,8 @@ include '../Model/Aluno.php';
 include"Conversao.php";
 
 
+$ano_letivo = $_SESSION['ano_letivo'];
+
 $idturma = $_GET['idturma'];
 $idescola = $_GET['idescola'];
 $quantidade_falta = $_GET['falta'];
@@ -17,12 +19,17 @@ $data_final = $_GET['data_final'];
   
 
  try {
-$data_aux=$data_inicio;
- for ($i=1; $i <= $total ; $i++) { 
-    $data_aux->modify('+1day');
-    // echo $stringDate = $data_aux->format('Y-m-d'); 
-    // echo "<br>";
- }
+
+
+    $data_aux=$data_inicio;
+
+    $array_datas = array();
+    for ($i=0; $i <= $total ; $i++) { 
+       $stringDate = $data_aux->format('Y-m-d'); 
+       $array_datas[$i]=$stringDate ;
+       $data_aux->modify('+1day');
+    
+    }
 
 
 // echo "$idturma<br>";
@@ -36,7 +43,7 @@ $result="
             <thead>
                 <tr>
                     <th>Aluno</th>
-                    <th>#</th>
+                    <th>Faltas consecutivas</th>
                                         
                 </tr>
             </thead>
@@ -52,8 +59,22 @@ $result="
    $data_nascimento=converte_data($value['data_nascimento']);
    $senha=$value['senha'];
    $matricula_aluno=$value['matricula'];
+    $faltas_aluno=0;
+   foreach ($array_datas as $key => $datas) {
+       if ($faltas_aluno<$quantidade_falta) {
+           $res=$conexao->query("SELECT * FROM frequencia WHERE ano_frequencia='$ano_letivo' and
+            data_frequencia ='$datas' and aluno_id=$idaluno and turma_id=$idturma and escola_id=$idescola and  presenca in(0) and presenca not in(1) limit 1 ");
+           if (count($res->fetchAll())>0) {
+              $faltas_aluno++;
+           }else{
+                $faltas_aluno=0;
+           }
+       }
+   }
 
- $result.="
+if ($faltas_aluno>=$quantidade_falta) {
+
+        $result.="
            <tr> 
                <td>
                     
@@ -62,13 +83,14 @@ $result="
               </td>
             
               <td>
-#
+$faltas_aluno
               </td>
            ";
   
  
 }
 
+}
 echo "$result";
  
  } catch (Exception $e) {
