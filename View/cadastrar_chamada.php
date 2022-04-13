@@ -97,7 +97,7 @@ include "alertas.php";
                       <input type="hidden" name="funcionario" id="funcionario" value="<?php echo  $idFuncionario ?>">
                       <div class="form-group">
                        <label for="exampleInputEmail1">Setor a enviar</label>
-                       <select class="form-control"  id="setor" name="setor">
+                       <select class="form-control"  id="setor" name="setor" onchange="javascript:mostraTipo(this);">
                         <?php 
                           $res_setores=todos_setores($conexao);
                           foreach ($res_setores as $key => $value) {
@@ -106,6 +106,12 @@ include "alertas.php";
                             echo "<option value='$setor_id'>$setor_nome</option>";
                           }
                          ?>
+                       </select> 
+                      </div>
+                      <div class="form-group">
+                       <label for="exampleInputEmail1">Tipo de Socilitação</label>
+                       <select class="form-control"  id="tipo_solicitacao" name="tipo_solicitacao">
+                        
                        </select> 
                       </div>
                         <h4 class="card-title">Anexo</h4>
@@ -119,10 +125,9 @@ include "alertas.php";
                             </h3>
                             <b style="color: red;">POR FAVOR, NÃO COLOCAR EMOJI NOS CAMPOS DA ATIVIDADE </b>
                           </div>
-                          <!-- /.card-header -->
                           <div class="card-body">
-                            <textarea name="descricao" id="summernote" rows="5" style="height: 245.719px;" required></textarea>
-
+                            <textarea rows="5" style="height: 245.719px;" name="descricao" id="summernote" required="">
+                            </textarea>
                           </div>
                         </div>
 
@@ -150,6 +155,30 @@ include "alertas.php";
 <br>
 
 <script type="text/javascript">
+  function primeiraOpcao()
+    {
+      var setor_id = 1;
+      var result = document.getElementById('tipo_solicitacao');
+      result.options.length = 0;
+     
+        var xmlreq = CriaRequest();
+        xmlreq.open("GET", "../Controller/Mudar_tipo_solicitado.php?setor_id="+setor_id, true);
+
+        xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                   result.innerHTML = xmlreq.responseText;
+             }else{
+                   alert('Erro desconhecido, verifique sua conexão com a internet');
+
+                result.innerHTML ="Erro ao receber mensagens";                 
+             }
+         }
+        };
+     xmlreq.send(null);
+    }
+ setTimeout(primeiraOpcao(), 2000);
 
  function carregando(){
 
@@ -194,7 +223,29 @@ include "alertas.php";
     }//else
   }
 
+  function mostraTipo(elemento)
+    {
+      var setor_id = elemento.value;
+      var result = document.getElementById('tipo_solicitacao');
+      result.options.length = 0;
+     
+        var xmlreq = CriaRequest();
+        xmlreq.open("GET", "../Controller/Mudar_tipo_solicitado.php?setor_id="+setor_id, true);
 
+        xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                   result.innerHTML = xmlreq.responseText;
+             }else{
+                   alert('Erro desconhecido, verifique sua conexão com a internet');
+
+                result.innerHTML ="Erro ao receber mensagens";                 
+             }
+         }
+        };
+     xmlreq.send(null);
+    }
 </script>
 
                       <div>

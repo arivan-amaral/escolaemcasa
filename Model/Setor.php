@@ -6,6 +6,11 @@ function todos_setores($conexao){
 
 }
 
+function buscar_tipo_solicitacao($conexao,$setor_id){
+   $result = $conexao->query("SELECT * FROM tipo_solicitacao_chamada where setor_id =$setor_id ORDER BY nome asc");
+    return $result;
+
+}
 
 function cadastrar_setor($conexao,$nome) {
       $sql = $conexao->prepare("INSERT INTO setor (nome) VALUES (:nome)");

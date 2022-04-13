@@ -74,7 +74,6 @@ include '../Model/Chamada.php';
     <thead>
        <tr>
          <th>Informações</th>
-         <th>Descrição</th>
          <th>Opção</th>
 
        </tr>
@@ -87,12 +86,18 @@ include '../Model/Chamada.php';
             $id_chamada = $value['id'];
             $status = $value['status'];
             $id_funcionario = $value['funcionario_id'];
+            $id_solicitacao = $value['tipo_solicitacao'];
             $res_funcionario = buscar_funcionario($conexao,$idfuncionario);
             $nome = '';
             $email = '';
             $whatsapp = '';
             $descricao = '';
+            $nome_solicitacao = '';
             $destino = '';
+            $res_solicitacao = pesquisa_tipo_solicitacao($conexao,$id_solicitacao);
+            foreach ($res_solicitacao as $key => $value) {
+               $nome_solicitacao = $value['nome'];
+            }
             foreach ($res_funcionario as $key => $value) {
               $nome = $value['nome'];
               $email = $value['email'];
@@ -108,10 +113,8 @@ include '../Model/Chamada.php';
               <td>
                 Nome do Funcionario: $nome <br>
                 Email: $email <br>
-                Whatsapp: $whatsapp
-              </td>
-              <td>
-              Descrição: $descricao
+                Whatsapp: $whatsapp <br>
+                Tipo de Solicitação: $nome_solicitacao
               </td>
               <td>";
               if($status == 'esperando_resposta'){

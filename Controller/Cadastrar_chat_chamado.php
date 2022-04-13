@@ -42,7 +42,7 @@ try {
 	 	}
 
 	}else{
-		responder_chat($conexao,$id_chamada,$funcionario_id,$descricao,$novoNome,$data);
+		responder_chat_sem_arquivo($conexao,$id_chamada,$funcionario_id,$descricao,$data);
 
 		$_SESSION['status']=1;
 		header("Location:../View/chamada.php");

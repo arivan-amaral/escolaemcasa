@@ -98,11 +98,13 @@ include "alertas.php";
                     <center>
                       <h5>Mensagem realizada: $data</h5>
                       <h6>Descrição:</h6>
-                        <p>$descricao</p>
-                      <h6>Anexo:</h6>
-                      <img src='chamadas/$arquivo' width='500' height='500'>
-                    </center>
+                        <textarea type='text' class='form-control' rows='10'disabled>$descricao</textarea>
                       " ;
+                      if($arquivo != ""){
+                        echo "<h6>Anexo:</h6>
+                      <a class='btn btn-block btn-success' href='chamadas/$arquivo' download>Arquivo</a>                      
+                    </center>";
+                      }
                   }
                   ?>
                     <?php  

@@ -121,8 +121,8 @@ setTimeout('dia_doservidor_publico();',3000);
 
        <div class="row">
 
-          <div class='col-sm-1'></div>
-          <div class='col-lg-3 col-6'>
+          <div class='col-sm-10'></div>
+          <div class='col-lg-6 col-6'>
 
             <!-- small card -->
             <?php  
@@ -136,7 +136,8 @@ setTimeout('dia_doservidor_publico();',3000);
                   $nome = $value['nome'];
                   echo "<div class='small-box bg-danger'>
               <div class='inner'>
-                <h3 class='text-center'>Setor: $nome</h3>
+                <h3 class='text-center'>Setor: </h3>
+                <h3 class='text-center'>$nome</h3>
                 <h4 class='text-center'>";
               
                     $res_quant = quantidade_chamada_pendente($conexao,$id_setor);
