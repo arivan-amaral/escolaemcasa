@@ -171,7 +171,8 @@ $url_get=$array_url[1];
                  </div>
                 <b class='btn btn-$cor'>";
 
-                  if ($id_escola_destino==0) {
+                  // 13/04/2022
+                  // if ($id_escola_destino==0) {
                    echo "<form action='declaracao_transferencia.php' method='post' target='_blanck'>
                      <input type='hidden' name='aluno_id' value='$idaluno'>
                      <input type='hidden' name='escola_id' value='$id_escola_origem'>
@@ -184,10 +185,11 @@ $url_get=$array_url[1];
  
                       <button type='submit' class='btn btn-primary'>GUIA DE TRANSFERÊNCIA.</button>
                    </form>";
-                  }else{
+                  // }
+                  // else{
 
-                  echo "$status";
-                  }
+                  // echo "$status";
+                  // }
               echo"</b>
                   
                  <p>
