@@ -13,9 +13,11 @@
  $html .= "\t</body>\n";
  $html .= "</html>\n";
 
+ //$_SERVER['HTTP_HOST']//pega a url
+
  //... e vai montando o arquivo com variáveis etc
  // e depois salva
 
- file_put_contents('arquivo.html', $html);
+ file_put_contents("$vaj".".php", $html);
 
 ?>
