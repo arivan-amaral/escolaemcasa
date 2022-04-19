@@ -447,11 +447,9 @@ try {
 
                   if ($serie_id == $idserie) {  //pareceres que ja foram prenchidos
                     // if ($serie_id == $idserie && $avaliacao=='av3') {  //pareceres que ja foram prenchidos
-                       $result.="<tr class='$cor_tabela'>
-                            <td colspan='2'>
-
-                                  
-                                 ";
+                       // $result.="<tr class='$cor_tabela'>
+                       //      <td colspan='2'>";
+                       //      
                                  //cadu pediu para tirar os pareceres em 06/04/2022
                             // $result.="<div class='col-12'>";
                                    
@@ -473,8 +471,8 @@ try {
 
                               // </div>";
                      
-                            $result.="</td>
-                            </tr>";
+                            // $result.="</td>
+                            // </tr>";
 
                     }else if ($serie_id =="" && $idserie <8 ) {//pareceres que NÃO  foram prenchidos
                        $result.="<tr class='$cor_tabela'>
