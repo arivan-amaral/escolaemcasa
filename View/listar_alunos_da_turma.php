@@ -20,6 +20,7 @@ $url_teste3 =strtr($url_teste2, "%", " ");
 $nome_url = $url_teste3.".php";
 
 $arquivoCriado = false;
+/*
 if(file_exists("pagina_estatica/".$nome_url)){
 
   include "cabecalho.php";
@@ -53,7 +54,7 @@ if(file_exists("pagina_estatica/".$nome_url)){
   $url_get=$array_url[1];
   include "pagina_estatica/$url_teste3".".php";
 
-}else{
+}else{*/
   include "cabecalho.php";
   include "alertas.php";
   include "barra_horizontal.php";
@@ -865,8 +866,8 @@ $arquivo.="
 ";
 file_put_contents("pagina_estatica/$url_teste3".".php", $arquivo);
 $arquivoCriado = true;
-}
-if ($arquivoCriado == true) {?>
+/*}
+if ($arquivoCriado == true)*/ {?>
   
 <script type="text/JavaScript"> location.reload(); </script>
 
