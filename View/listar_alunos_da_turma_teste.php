@@ -20,7 +20,8 @@ $url_teste3 =strtr($url_teste2, "%", " ");
 $nome_url = $url_teste3.".php";
 
 $arquivoCriado = false;
-if(file_exists($nome_url)){
+if(file_exists("pagina_estatica/".$nome_url)){
+
   include "cabecalho.php";
   include "alertas.php";
   include "barra_horizontal.php";
@@ -859,7 +860,7 @@ $arquivo.="
 </script>
 
 ";
-file_put_contents("$url_teste3".".php", $arquivo);
+file_put_contents("pagina_estatica/$url_teste3".".php", $arquivo);
 $arquivoCriado = true;
 }
 if ($arquivoCriado == true) {?>
