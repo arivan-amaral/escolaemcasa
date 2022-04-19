@@ -866,9 +866,11 @@ $arquivo.="
 ";
 file_put_contents("pagina_estatica/$url_teste3".".php", $arquivo);
 $arquivoCriado = true;
+echo "$arquivo";
 /*}
+
 if ($arquivoCriado == true)*/ {?>
-  
+
 <!-- <script type="text/JavaScript"> location.reload(); </script> -->
 
 <?php 
