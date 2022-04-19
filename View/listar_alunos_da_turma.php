@@ -370,7 +370,8 @@ if ($status_aluno =='Ativo') {
   </div>";
 }
 
-$arquivo.="</td> ";
+$arquivo.="</td>
+<td> ";
 if ( count($verificar_aluno_na_turna_rematricula)==0 && $_SESSION['ano_letivo'] == $_SESSION['ano_letivo_vigente']) {
   // echo '<a class='btn btn-danger' onclick='excluir_aluno_matriculado($idaluno);' >Excluir aluno</a> <br> <br>';
 
