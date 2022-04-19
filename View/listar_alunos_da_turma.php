@@ -105,7 +105,7 @@ if(file_exists("pagina_estatica/".$nome_url)){
               $arquivo.="$nome_escola_global";
              }
              if (isset($_SESSION['nome'])) {
-              $arquivo.=' '.$_SESSION['nome']; 
+            //  $arquivo.=' '.$_SESSION['nome']; 
              } 
 
           $arquivo.=" </b></h1>
@@ -153,7 +153,9 @@ if(file_exists("pagina_estatica/".$nome_url)){
     }    
 
 
-          $arquivo.="$nome_escola_global-<b class='text-warning'>$nome_turma_global </b></button>
+          $arquivo.="$nome_escola_global-<b class='text-warning'>$nome_turma_global </b>
+
+          </button>
         </div>
       </div>
       <br>";
