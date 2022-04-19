@@ -25,7 +25,6 @@ try {
 
 
 	$url_get=$_POST['url_get'];
-	$pagina_estatica=$_POST['url_get'];
 	$ano_letivo=$_SESSION['ano_letivo'];
 	$ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
 	
@@ -40,14 +39,15 @@ try {
 	// }else
 	// 
 	
-
-	// <=======RECRIA PÁGIANAS ESTATICAS =======>
-		$pagina_estatica =strtr($pagina_estatica, "&", " ");
-		$pagina_estatica =strtr($pagina_estatica, "%", " ");
-		$pagina_estatica="listar_alunos_da_turma.php ".$pagina_estatica.".php";
+// <=======RECRIA PÁGIANAS ESTATICAS =======>
+	$pagina_estatica=$_POST['url_get'];
+	$pagina_estatica =strtr($pagina_estatica, "&", " ");
+	$pagina_estatica =strtr($pagina_estatica, "%", " ");
+	$pagina_estatica="listar_alunos_da_turma.php ".$pagina_estatica.".php";
+	if (file_exists("../View/pagina_estatica/$pagina_estatica")) {
 		unlink("../View/pagina_estatica/$pagina_estatica");
-	// <=========================================>
-
+	}
+// <=========================================>
 
 
   if (isset($_POST['idaluno'])) {

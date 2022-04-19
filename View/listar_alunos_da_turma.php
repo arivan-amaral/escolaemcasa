@@ -1,5 +1,7 @@
 <?php 
 session_start();
+  include '../Model/Conexao.php';
+
 if (!isset($_SESSION['idfuncionario'])) {
  header("location:index.php?status=0");
 
@@ -18,10 +20,22 @@ $url_teste2 =strtr($url_teste1, "&", " ");
 $url_teste3 =strtr($url_teste2, "%", " ");
 /*==================================================================*/
 $nome_url = $url_teste3.".php";
-
+$pagina_estatica="pagina_estatica/".$nome_url;
 $arquivoCriado = false;
-/*
-if(file_exists("pagina_estatica/".$nome_url)){
+
+$criar_nova=false;
+$diferenca=0;
+if (file_exists($pagina_estatica)) {
+  $data_file = date("Y-m-d H:i:s", filemtime($pagina_estatica));
+  $data_atual= date('Y-m-d H:i:s');
+  $diferenca=(strtotime($data_atual) - strtotime($data_file));
+
+}
+
+if(file_exists("pagina_estatica/".$nome_url) && $diferenca<500){
+
+
+// if(file_exists("pagina_estatica/".$nome_url)){
 
   include "cabecalho.php";
   include "alertas.php";
@@ -32,7 +46,6 @@ if(file_exists("pagina_estatica/".$nome_url)){
   include '../Controller/Conversao.php';
   include '../Controller/Cauculos_notas.php';
 
-  include '../Model/Conexao.php';
 
   include '../Model/Aluno.php';
   include '../Model/Coordenador.php';
@@ -54,7 +67,8 @@ if(file_exists("pagina_estatica/".$nome_url)){
   $url_get=$array_url[1];
   include "pagina_estatica/$url_teste3".".php";
 
-}else{*/
+}else{
+
   include "cabecalho.php";
   include "alertas.php";
   include "barra_horizontal.php";
@@ -866,15 +880,10 @@ $arquivo.="
 ";
 file_put_contents("pagina_estatica/$url_teste3".".php", $arquivo);
 $arquivoCriado = true;
-echo "$arquivo";
-/*}
-
-if ($arquivoCriado == true)*/ {?>
-
-<!-- <script type="text/JavaScript"> location.reload(); </script> -->
-
-<?php 
 }
+echo "$arquivo";
+
+
 include 'rodape.php';
 
 ?>

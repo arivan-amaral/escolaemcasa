@@ -23,7 +23,18 @@ try {
 	
 	$aluno_reprovado = "";
 	$vagas_esgotada = "";
-	
+
+	// <=======RECRIA PÁGIANAS ESTATICAS =======>
+	$pagina_estatica=$_POST['url_get'];
+	$pagina_estatica =strtr($pagina_estatica, "&", " ");
+	$pagina_estatica =strtr($pagina_estatica, "%", " ");
+	$pagina_estatica="listar_alunos_da_turma.php ".$pagina_estatica.".php";
+	if (file_exists("../View/pagina_estatica/$pagina_estatica")) {
+		unlink("../View/pagina_estatica/$pagina_estatica");
+	}
+	// <=========================================>
+
+
 	if (isset($_POST['idaluno'])) {
 
 	
