@@ -869,7 +869,7 @@ $arquivoCriado = true;
 /*}
 if ($arquivoCriado == true)*/ {?>
   
-<script type="text/JavaScript"> location.reload(); </script>
+<!-- <script type="text/JavaScript"> location.reload(); </script> -->
 
 <?php 
 }
