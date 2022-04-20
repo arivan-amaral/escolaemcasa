@@ -519,7 +519,7 @@ function mtel(v){
                  <div class='col-sm-2'>
                   <div class='form-group'>
                     <label for='exampleInputEmail1'>Ano letivo</label>
-                    <select  id='ano_letivo' class='form-control' onchange='mudar_ano_letivo(this.value);'>";
+                    <select  id='ano_letivo' class='form-control' onchange=mudar_ano_letivo(this.value);>";
                      if (isset($_SESSION['ano_letivo'])) {    
                       $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
                       $arquivo.="<option value='$ano_letivo_vigente' selected>$ano_letivo_vigente</option>";                            
@@ -534,7 +534,7 @@ function mtel(v){
           <div class='col-sm-6'>
             <div class='form-group'>
               <label for='exampleInputEmail1'>Escola pretendida</label>
-              <select class='form-control'  name='escola_id' id='escola'  onchange='listar_vagas_turma_transferencia_aluno()'>
+              <select class='form-control'  name='escola_id' id='escola'  onchange='listar_vagas_turma_transferencia_aluno();'>
                 <option></option>
                 <!-- ESCOLA FORA DO MUNICÍPIO -->
                 <option value='0' style='color: black; background-color:#D2691E;'>ESCOLA FORA DA REDE </option>";
@@ -631,7 +631,7 @@ function mtel(v){
          <div class='col-sm-2'>
           <div class='form-group'>
             <label for='exampleInputEmail1'>Ano letivo</label>
-            <select  id='ano_letivo' class='form-control' onchange='mudar_ano_letivo(this.value);'>";
+            <select  id='ano_letivo' class='form-control' onchange=mudar_ano_letivo(this.value);>";
             
              if (isset($_SESSION['ano_letivo'])) {    
               $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
@@ -667,7 +667,7 @@ $arquivo.="
         <div class='form-group'>
 
           <label for='exampleInputEmail1'>Turno</label>
-          <select class='form-control' onchange='lista_turma_escola_por_serie(lista_de_turmas_rematricula);' name='rematricula_turno' id='rematricula_turno' >
+          <select class='form-control' onchange=lista_turma_escola_por_serie('lista_de_turmas_rematricula'); name='rematricula_turno' id='rematricula_turno' >
             <option></option>
             <option value='MATUTINO'>MATUTINO</option>
             <option value='VESPERTINO'>VESPERTINO</option>
@@ -680,7 +680,7 @@ $arquivo.="
       <div class='col-sm-2'>
         <div class='form-group'>
           <label for='exampleInputEmail1' class='text-danger'>Nova Série</label>
-          <select class='form-control'  name='rematricula_nova_serie' id='rematricula_nova_serie'  onchange='lista_turma_escola_por_serie(lista_de_turmas_rematricula);' >
+          <select class='form-control'  name='rematricula_nova_serie' id='rematricula_nova_serie'  onchange=lista_turma_escola_por_serie('lista_de_turmas_rematricula'); >
             <option></option>";
            
             $res_destino_rematricula=lista_ordem_serie_rematricula($conexao,$serie_id);
@@ -711,7 +711,7 @@ $arquivo.="
       <div class='col-sm-3'>
         <div class='form-group' id=''>
          <label for='exampleInputEmail1' class='text-danger'>Turma pretendida</label>
-         <select class='form-control' name='rematricula_turma' id='lista_de_turmas_rematricula' onchange='quantidade_vaga_turma(lista_de_turmas_rematricula);'>
+         <select class='form-control' name='rematricula_turma' id='lista_de_turmas_rematricula' onchange=quantidade_vaga_turma('lista_de_turmas_rematricula');>
          </select>
 
        </div>
@@ -761,7 +761,7 @@ $arquivo.="
           <div class='col-sm-3'>
             <div class='form-group'>
               <label for='exampleInputEmail1'>Ano letivo</label>
-              <select  id='ano_letivo' class='form-control' onchange='mudar_ano_letivo(this.value);'>";
+              <select  id='ano_letivo' class='form-control' onchange=mudar_ano_letivo(this.value);>";
                
                if (isset($_SESSION['ano_letivo_vigente'])) {    
                 $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
@@ -798,7 +798,7 @@ $arquivo.="
          <div class='form-group'>
 
            <label for='exampleInputEmail1' class='text-danger'>Novo Turno</label>
-           <select class='form-control' onchange='troca_de_turma_escola_por_serie(troca_turma);' name='troca_turma_turno' id='troca_turma_turno'  >
+           <select class='form-control' onchange=troca_de_turma_escola_por_serie('troca_turma'); name='troca_turma_turno' id='troca_turma_turno'  >
              <option></option>
              <option value='MATUTINO'>MATUTINO</option>
              <option value='VESPERTINO'>VESPERTINO</option>
@@ -812,7 +812,7 @@ $arquivo.="
        <div class='col-sm-2'>
          <div class='form-group'>
            <label for='exampleInputEmail1' class='text-danger'>Nova Série</label>
-           <select class='form-control'  name='troca_turma_serie_id' id='troca_turma_serie_id'  onchange='troca_de_turma_escola_por_serie();' >
+           <select class='form-control'  name='troca_turma_serie_id' id='troca_turma_serie_id'  onchange=troca_de_turma_escola_por_serie(); >
              <option></option>";
            
              $res_destino_rematricula=lista_ordem_serie_rematricula($conexao,$serie_id);
@@ -833,7 +833,7 @@ $arquivo.="
        <div class='col-sm-3'>
          <div class='form-group' >
             <label class='text-danger'>Nova turma</label>
-            <select id='lista_de_turmas_troca_turma' name='lista_de_turmas_troca_turma' class='form-control' onchange='quantidade_vaga_turma(troca_turma);'>
+            <select id='lista_de_turmas_troca_turma' name='lista_de_turmas_troca_turma' class='form-control' onchange=quantidade_vaga_turma('troca_turma');>
 
             </select>
          </div>
