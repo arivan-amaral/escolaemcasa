@@ -12,6 +12,18 @@ function pesquisa_tipo_solicitacao($conexao,$id){
 
 }
 
+function mostrar_minhas_chamadas($conexao,$idsetor,$idfuncionario){
+   $result = $conexao->query("SELECT * FROM chamada where funcionario_id=$idfuncionario and setor_id =$idsetor LIMIT 5 ");
+    return $result;
+
+}
+
+function mostrar_chat_chamada($conexao,$chamada_id,$funcionario_id){
+   $result = $conexao->query("SELECT * FROM chat_chamado where chamada_id=$chamada_id and funcionario_id =$funcionario_id and status='inicial'");
+    return $result;
+
+}
+
 function buscar_minhas_chamada($conexao,$idfuncionario){
    $result = $conexao->query("SELECT * FROM chamada where funcionario_id=$idfuncionario ORDER BY id asc");
     return $result;

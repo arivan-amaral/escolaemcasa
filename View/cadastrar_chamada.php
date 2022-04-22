@@ -137,23 +137,35 @@ include "alertas.php";
                       <div onclick='carregando();'>
                         <button type="submit" class="btn btn-block btn-primary">Enviar Chamado</button>
                       </div>
-                    </form>                    
+                    </form> 
+                    <br>
+                    
+
+                                    
                   </div>
+
                 </div>
+                <br>
+                  <h4 align="center">Minhas Chamadas</h4>
+                  <br>
+                  <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">INFORMAÇÕES</th>
+                            <th scope="col">DESCRIÇÃO</th>
+                          </tr>
+                        </thead>
+                        <tbody id="tabela_chamada">
+                         
+                        </tbody>
+                    </table>
+                  </div> 
+    </div>
 
+  </section>
 
-
-                <div class="row">
-                  <div class="col-md-12">
-
-                    <!-- The time line -->
-
-
-                    <div class="timeline">
-<br>
-<br>
-<br>
-
+</div>
 <script type="text/javascript">
   function primeiraOpcao()
     {
@@ -179,7 +191,30 @@ include "alertas.php";
      xmlreq.send(null);
     }
  setTimeout(primeiraOpcao(), 2000);
+ function primeiraOpcao2()
+    {
+      var setor_id = 1;
+      var result = document.getElementById('tabela_chamada');
+      result.innerHTML = "";
+     
+        var xmlreq = CriaRequest();
+        xmlreq.open("GET", "../Controller/Mostrar_chamadas.php?setor_id="+setor_id, true);
 
+        xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                   result.innerHTML = xmlreq.responseText;
+             }else{
+                   alert('Erro desconhecido, verifique sua conexão com a internet');
+
+                result.innerHTML ="Erro ao receber mensagens";                 
+             }
+         }
+        };
+     xmlreq.send(null);
+    }
+    setTimeout(primeiraOpcao2(), 2000);
  function carregando(){
 
 
@@ -187,44 +222,45 @@ include "alertas.php";
     var setor =  document.getElementById("setor").value;
     var funcionario =  document.getElementById("funcionario").value;
 
-  if (descricao=="" || setor=="") {
-      Swal.fire('Preencha os campos obrigatorios!', '', 'info');
+    if (descricao=="" || setor=="") {
+        Swal.fire('Preencha os campos obrigatorios!', '', 'info');
+        
       
-    
 
-  }else{
-        let timerInterval
-        Swal.fire({
-          title: 'Aguarde, ação está sendo realizada...',
-          html: '',
-          timer: 200000,
-          timerProgressBar: true,
-          didOpen: () => {
-            Swal.showLoading()
-            timerInterval = setInterval(() => {
-              const content = Swal.getContent()
-              if (content) {
-                const b = content.querySelector('b')
-                if (b) {
-                  b.textContent = Swal.getTimerLeft()
+    }else{
+          let timerInterval
+          Swal.fire({
+            title: 'Aguarde, ação está sendo realizada...',
+            html: '',
+            timer: 200000,
+            timerProgressBar: true,
+            didOpen: () => {
+              Swal.showLoading()
+              timerInterval = setInterval(() => {
+                const content = Swal.getContent()
+                if (content) {
+                  const b = content.querySelector('b')
+                  if (b) {
+                    b.textContent = Swal.getTimerLeft()
+                  }
                 }
-              }
-            }, 100)
-          },
-          willClose: () => {
-            clearInterval(timerInterval)
-          }
-        }).then((result) => {
-          /* Read more about handling dismissals below */
-          if (result.dismiss === Swal.DismissReason.timer) {
-            console.log('I was closed by the timer')
-          }
-        })
-    }//else
+              }, 100)
+            },
+            willClose: () => {
+              clearInterval(timerInterval)
+            }
+          }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+              console.log('I was closed by the timer')
+            }
+          })
+      }//else
   }
 
   function mostraTipo(elemento)
     {
+      var element = elemento;
       var setor_id = elemento.value;
       var result = document.getElementById('tipo_solicitacao');
       result.options.length = 0;
@@ -245,44 +281,33 @@ include "alertas.php";
          }
         };
      xmlreq.send(null);
+     mostraChamada(element);
+    }
+
+    function mostraChamada(elemento)
+    {
+      var setor_id = elemento.value;
+      var result = document.getElementById('tabela_chamada');
+      result.innerHTML = "";
+     
+        var xmlreq = CriaRequest();
+        xmlreq.open("GET", "../Controller/Mostrar_chamadas.php?setor_id="+setor_id, true);
+
+        xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                   result.innerHTML = xmlreq.responseText;
+             }else{
+                   alert('Erro desconhecido, verifique sua conexão com a internet');
+
+                result.innerHTML ="Erro ao receber mensagens";                 
+             }
+         }
+        };
+     xmlreq.send(null);
     }
 </script>
-
-                      <div>
-                        <i class='fas fa-clock bg-gray'></i>
-                      </div>
-                    </div>
-
-                      
-
-
-
-
-
-
-
-
-
-
-
-
-
-               
-
-
-
-            <!-- /.content -->
-
-          </div>        
-
-      </div>
-
-    </div>
-
-  </section>
-
-</div>
-
 <aside class="control-sidebar control-sidebar-dark">
 
   <!-- Control sidebar content goes here -->
