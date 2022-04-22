@@ -58,20 +58,27 @@ if ($idserie<8){
     }
     
     $nome_professor= " ";
+
+    $res=listar_nome_professor_turma_ministrada($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+    // listar_nome_professor_turma($conexao,$idaluno,$_SESSION['ano_letivo']);
+    // $res=listar_nome_professor_turma($conexao,$idaluno,$_SESSION['ano_letivo']);
+    $conta_virgula=0;
+
+    foreach ($res as $key => $value) {
+      if($conta_virgula>0){
+        $nome_professor.= ", ";
+      }
+     $nome_professor.= $value['nome_professor'];
+     $conta_virgula++;
+    }
+    $nome_professor.= ".";
+
+    
     foreach ($res_alunos as $key => $value) {
       $idaluno=$value['idaluno'];
       $nome_aluno=$value['nome_aluno'];
-
-        $res=listar_nome_professor_turma($conexao,$idaluno,$_SESSION['ano_letivo']);
-        $conta_virgula=0;
-        foreach ($res as $key => $value) {
-          if($conta_virgula>0){
-            $nome_professor.= ", ";
-          }
-         $nome_professor.= $value['nome_professor'];
-         $conta_virgula++;
-        }
-        $nome_professor.= ".";
+ 
+        
 
         boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno, $nome_escola,$nome_turma,$nome_professor,$_SESSION['ano_letivo']);
         $nome_professor='';
