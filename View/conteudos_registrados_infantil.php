@@ -245,11 +245,25 @@
  </tr>
 
 <?php
-$result_conteudo= $conexao->query("SELECT * FROM conteudo_aula where disciplina_id=$iddisciplina and turma_id=$idturma and escola_id=$idescola  and data BETWEEN '$data_inicial' and '$data_final' order by data asc ");
+$disciplinas=" ( disciplina_id=40 or disciplina_id=43 or  disciplina_id=41 ) ";
+$descricao="";
+
+$result_conteudo= $conexao->query("SELECT * FROM conteudo_aula where  turma_id=$idturma and escola_id=$idescola  and data BETWEEN '$data_inicial' and '$data_final' order by data asc ");
 $conta=1;
+$array_datas = array();
 foreach ($result_conteudo as $key => $value) {
-  $data_conteudo=converte_data($value['data']);
-  $descricao=$value['descricao'];
+  $data_conte_bd=$value['data'];
+  if (!array_key_exists($data_conte_bd,$array_datas)) {
+    $array_datas[$data_conte_bd]="". $value['descricao'];
+  }else if(!in_array($value['descricao'], $array_datas)){
+    $array_datas[$data_conte_bd].="; ". $value['descricao'];
+
+  }
+}
+
+foreach ($array_datas as $key => $value) {
+  $data_conteudo=converte_data($key);
+  $descricao=$value;
 ?>
  <tr style='mso-yfti-irow:11;height:15.0pt'>
       <td width=66 nowrap valign=bottom style='width:49.65pt;border:solid windowtext 1.0pt;
@@ -286,7 +300,7 @@ foreach ($result_conteudo as $key => $value) {
       color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p>
         <?php 
         if (isset($_GET['teste'])) {
-          echo "SELECT * FROM conteudo_aula where disciplina_id=$iddisciplina and turma_id=$idturma and escola_id=$idescola  and data BETWEEN '$data_inicial' and '$data_final' order by data asc && $descricao ";
+          echo "SELECT * FROM conteudo_aula where $disciplinas and turma_id=$idturma and escola_id=$idescola  and data BETWEEN '$data_inicial' and '$data_final' order by data asc && $descricao ";
         }else{
           
         echo"$descricao"; 
