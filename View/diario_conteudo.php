@@ -126,7 +126,7 @@ foreach ($res as $key => $value) {
 
  
 if ($idserie <3) {
-echo " <h1><font color='red'> PÁGINA EM MANUTEÇÃO</font> </H1>";
+// echo " <h1><font color='red'> PÁGINA EM MANUTEÇÃO</font> </H1>";
     $pes=listar_disciplina_da_turma($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
       $nome_disciplina="";
       $nome_professor="";
