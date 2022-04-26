@@ -20,8 +20,48 @@ include "alertas.php";
   include '../Model/Chamada.php';
 
   $idFuncionario=$_SESSION['idfuncionario'];
+  $nome_gerente='';
+  $nome_diretor='';
+  $nome_escola='';
+  $res_nome_funcionario = nome_funcionario($conexao,$idFuncionario);
+  foreach ($res_nome_funcionario as $key => $value) {
+    $nome_gerente=$value['nome'];
+  }
   $id_chamada=$_POST['id_chamada'];
   $status = '';
+  $setor = '';
+  $data_previsao='';
+  $data_retorno='';
+  $data_solicitado='';
+  $validar = 0;
+  $res_chamada = pesquisa_chamada($conexao,$id_chamada);
+  foreach ($res_chamada as $key => $value) {
+    $data_previsao= $value['data_previsao'];
+    $data_retorno= $value['data_retorno'];
+    $id_setor = $value['setor_id'];
+    $funcionario_id = $value['funcionario_id'];
+
+    $res_nome_diretor = nome_funcionario($conexao,$funcionario_id);
+      foreach ($res_nome_diretor as $key => $value) {
+        $nome_diretor= $value['nome'];
+      }
+    $res_nome_escola = escola_funcionario($conexao,$funcionario_id);
+      foreach ($res_nome_escola as $key => $value) {
+        $id_escola = $value['escola_id'];
+        $res_buscar_escola = buscar_escola($conexao,$id_escola);
+        foreach ($res_buscar_escola as $key => $value) {
+          $nome_escola= $value['nome_escola'];
+        }
+      }
+    $res_nome_setor =  buscar_setor_id($conexao,$id_setor);
+      foreach ($res_nome_setor as $key => $value) {
+        $setor = $value['nome'];
+      }
+  }
+  $res_validar = validar_chamada($conexao,$idFuncionario,$id_chamada);
+  foreach ($res_validar as $key => $value) {
+    $validar = $value['chamados'];
+  }
 ?>
  
  
@@ -40,23 +80,15 @@ include "alertas.php";
 
         <div class="row mb-2">
 
-          <div class="col-sm-12 alert alert-warning">
+          <div class="col-sm-12 alert alert-Primary">
 
             <h1 class="m-0"><b>
-
-            <?php
-              if (isset($nome_escola_global)) {
-                echo $nome_escola_global; 
-              }
-              ?> 
-
-             <?php if (isset($_SESSION['nome'])) {
-
-              echo $_SESSION['nome'];  
-
-            } 
-
-             ?></b></h1>
+              <center>
+                 <?php
+              echo $setor;
+              ?><br> Protocolo: <?php echo $id_chamada; ?></b>
+              </center>
+           </h1>
 
           </div><!-- /.col -->
 
@@ -81,72 +113,57 @@ include "alertas.php";
             <!-- Main content -->
 
             <section class="content">
-              <h2 align="center">Chat</h2>
               <div class="container-fluid">
-               
-                  <?php  
-                  $res_chamada = pesquisa_chat($conexao,$id_chamada);
-                  foreach ($res_chamada as $key => $value) {
-                    $descricao = $value['mensagem'];
-                    $arquivo = $value['arquivo'];
-                    $data = $value['data'];
-
-                    echo "
-                    <br>
-                    <br>
-
-                    <center>
-                      <h5>Mensagem realizada: $data</h5>
-                      <h6>Descrição:</h6>
-                        <textarea type='text' class='form-control' rows='10'disabled>$descricao</textarea>
-                      " ;
-                      if($arquivo != ""){
-                        echo "<h6>Anexo:</h6>
-                      <a class='btn btn-block btn-success' href='chamadas/$arquivo' download>Arquivo</a>                      
-                    </center>";
-                      }
-                  }
-                  ?>
-                    <?php  
-                      $res_chamado= pesquisa_chamada($conexao,$id_chamada);
-                      foreach ($res_chamado as $key => $value) {
-                        $status = $value['status'];
-                      }
-                      if($status != 'finalizado'){
-                      ?>
-                      
-                        <form class="mt-12" action="../Controller/Cadastrar_chat_chamado.php" method="post" enctype="multipart/form-data">
-
+                <div class="row">
+                  <div class="col-md-6">
+                    <form class="mt-12" action="../Controller/Cadastrar_chat_chamado.php" method="post" enctype="multipart/form-data">
+                        <h5 >Gerente: <?php echo $nome_gerente; ?> <br>
+                       Data: <?php echo $data_retorno; ?></h5>
                         <br>
-                        <h4 align="center">Responder</h4>
-                        <br>
-                         <h4 class="card-title">Anexo</h4>
-                        <div class="form-group">
-                            <input type="file" name="arquivo" class="form-control" >
-                        </div>
+                        <h6 >Retorno Previsão de Solução:  <?php echo $data_previsao; ?></h6>
                         <input type="hidden" name="id_funcionario" id="id_funcionario" value="<?php echo $idFuncionario ?>">
                         <input type="hidden" name="id_chamado" id="id_chamado" value="<?php echo $id_chamada ?>">
-                        <div class="card card-outline card-info">
-                      <div class="card-header">
-                        <h3  >
-                          Descrição da Resposta
-                        </h3>
-                      </div>
-                      <!-- /.card-header -->
-                      <div class="card-body">
-                        <textarea rows="5" style="height: 245.719px;" name="resposta" id="summernote" required="">
-                        </textarea>
-                      </div>
+                        <textarea type='text' class='form-control' rows='10' name="resposta" id="resposta" required=""></textarea>
+                    <h4 class="card-title">Anexo</h4>
+                    <div class="form-group">
+                        <input type="file" name="arquivo" class="form-control" >
                     </div>
                       <div onclick='carregando();'>
                         <button type="submit" class="btn btn-block btn-primary">Responder</button>
                       </div>
                     </form>
-                    <?php
+                  </div>
+                  <div class="col-md-6">
+                    <?php  
+                  $res_chamada = pesquisa_chat($conexao,$id_chamada);
+                  foreach ($res_chamada as $key => $value) {
+                    $descricao = $value['mensagem'];
+                    $arquivo = $value['arquivo'];
+                    $data_solicitado = $value['data'];
+
+                    echo "
+                      <h6 >Escola: $nome_escola <br>
+                       Diretor(a): $nome_diretor</h6>
+                        <br>
+                        <h6>Solicitação  Data:$data_solicitado </h6>
+                        <textarea type='text' class='form-control' rows='10'disabled>$descricao</textarea>
+                      " ;
+                      if($arquivo != ""){
+                        echo "<h6>Anexo:</h6>
+                      <a class='btn btn-block btn-success' href='chamadas/$arquivo' download>Arquivo</a>                      
+                    ";
                       }
-                    ?>
+                    }
+                    if ($validar > 0) {
+                     
+                      echo " <br> <button class='btn btn-block btn-info' onclick='finalizar_chat($id_chamada);'>Finalizar</button>";
+                    }
+                  ?>
+
                   </div>
                 </div>
+              </div>
+            </div>
 
 
 
@@ -166,7 +183,7 @@ include "alertas.php";
  function carregando(){
 
 
-    var descricao =  document.getElementById("summernote").value;
+    var descricao =  document.getElementById("resposta").value;
         let timerInterval
         Swal.fire({
           title: 'Aguarde, ação está sendo realizada...',

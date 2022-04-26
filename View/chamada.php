@@ -119,7 +119,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
       <div class="container-fluid">
 
-       <div class="row">
+       <div class="row" >
 
           <div class='col-sm-10'></div>
           <div class='col-lg-6 col-6'>
@@ -129,35 +129,54 @@ setTimeout('dia_doservidor_publico();',3000);
 
               $res_setores = buscar_setor($conexao,$idcoordenador);
               foreach ($res_setores as $key => $value) {
+                $quantidade_pendente = 0 ;
+                $quantidade_total = 0 ;
+                $quantidade_andamento = 0 ;
+                $quantidade_resolvidos = 0 ;
                 $setor_id = $value['setor_id'];
                 $res_setor = buscar_setor_id($conexao,$setor_id);
                 foreach ($res_setor as $key => $value) {
                   $id_setor = $value['id'];
                   $nome = $value['nome'];
-                  echo "<div class='small-box bg-danger'>
-              <div class='inner'>
-                <h3 class='text-center'>Setor: </h3>
-                <h3 class='text-center'>$nome</h3>
-                <h4 class='text-center'>";
-              
-                    $res_quant = quantidade_chamada_pendente($conexao,$id_setor);
-                    foreach ($res_quant as $key => $value) {
-                      $quantidade = $value['chamada'];
-                    }
-                    echo $quantidade;
 
-                    echo "</h4>
-                <p></p>
-              </div>
-              <form method='POST' action='lista_chamada.php'>
-              <input type='hidden' name='setor' id='setor' value='$id_setor'>
-              <button class='btn btn-block btn-danger'>
-                Chamadas pendentes
-              </button>
-              </form>
-              
-              
-            </div>";
+                  $res_quant = quantidade_chamada_pendente($conexao,$id_setor);
+                  foreach ($res_quant as $key => $value) {
+                    $quantidade_pendente = $value['chamada'];
+                  }
+                  $res_quant2 = quantidade_chamada_total($conexao,$id_setor);
+                  foreach ($res_quant2 as $key => $value) {
+                    $quantidade_total = $value['chamada'];
+                  }
+                  $res_quant3 = quantidade_chamada_finalizadas($conexao,$id_setor);
+                  foreach ($res_quant3 as $key => $value) {
+                    $quantidade_resolvidos = $value['chamada'];
+                  }
+                  $res_quant4 = quantidade_chamada_andamento($conexao,$id_setor);
+                  foreach ($res_quant4 as $key => $value) {
+                    $quantidade_andamento = $value['chamada'];
+                  }
+                  echo "<div class='small-box bg-light'>
+                          <div class='inner'>
+                            <h3 class='text-center'>Setor: </h3>
+                            <h3 class='text-center'>$nome</h3>
+                            <br>
+                            <h4 class='text-center'>Total de Chamados: $quantidade_total</h4>
+                       
+                            <p class='btn btn btn-primary' >$quantidade_pendente</p> Novos Chamados<br>
+                            <p class='btn btn btn-warning'>$quantidade_andamento</p> Em Andamento <br>
+                            <p class='btn btn btn-danger'>0</p> Atrasados<br>
+                            <p class='btn btn btn-success'>$quantidade_resolvidos</p> Chamados Resolvidos
+                           
+                        
+
+                          </div>
+                          <form method='POST' action='lista_chamada.php'>
+                          <input type='hidden' name='setor' id='setor' value='$id_setor'>
+                          <button class='btn btn-block btn-light'>
+                            Ver Chamadas 
+                          </button>
+                          </form>
+                        </div>";
                 
                 }
               }
