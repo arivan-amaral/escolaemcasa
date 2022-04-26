@@ -127,15 +127,33 @@ foreach ($res as $key => $value) {
  
 if ($idserie <3) {
 // echo " <h1><font color='red'> PÁGINA EM MANUTEÇÃO</font> </H1>";
+// 
+// 
+  $nome_professor= " ";
+
+  $res=listar_nome_professor_turma_ministrada($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+  // listar_nome_professor_turma($conexao,$idaluno,$_SESSION['ano_letivo']);
+  // $res=listar_nome_professor_turma($conexao,$idaluno,$_SESSION['ano_letivo']);
+  $conta_virgula=0;
+
+  foreach ($res as $key => $value) {
+    if($conta_virgula>0){
+      $nome_professor.= ", ";
+    }
+   $nome_professor.= $value['nome_professor'];
+   $conta_virgula++;
+  }
+  $nome_professor.= ".";
+  
     $pes=listar_disciplina_da_turma($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
       $nome_disciplina="";
-      $nome_professor="";
+      // $nome_professor="";
       $nome_turma="";
 
     foreach ($pes as $chave => $linha) {
       $nome_disciplina=($linha['nome_disciplina']);
       $iddisciplina=$linha['iddisciplina'];
-      $nome_professor=$linha['nome'];
+      // $nome_professor=$linha['nome'];
       $nome_turma=$linha['nome_turma'];
     }
 
