@@ -86,6 +86,7 @@ include '../Model/Chamada.php';
   <table class='table table-bordered'>
     <thead>
        <tr>
+         <th>Status</th>
          <th>Informações</th>
          <th>Opção</th>
 
@@ -142,7 +143,9 @@ include '../Model/Chamada.php';
                 $destino = $value['arquivo'];
             }
             echo "
-            <tr>
+            <tr><td style='width:14%; background-color:#F1C40F; transform: rotate(-90deg);
+            text-align: center'>
+            Andamento</td>
               <td>
                 Data de Solicitação: $data_solicitado <br>
                 ";
@@ -151,8 +154,7 @@ include '../Model/Chamada.php';
                 echo " Status: <font color='danger'>Esperando Resposta</font> ";
               }else if($status == 'em_andamento'){
                 echo "
-                Data de Retorno: <br>
-                Status: <font color='yellow'>Em Andamento</font> ";
+                Data de Retorno: ";
               }else if($status == 'finalizado'){
                 echo "Data de Retorno: <br>
                 Status: <font color='green'>Finalizado</font> ";

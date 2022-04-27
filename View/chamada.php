@@ -155,27 +155,39 @@ setTimeout('dia_doservidor_publico();',3000);
                   foreach ($res_quant4 as $key => $value) {
                     $quantidade_andamento = $value['chamada'];
                   }
-                  echo "<div class='small-box bg-light'>
-                          <div class='inner'>
-                            <h3 class='text-center'>Setor: </h3>
-                            <h3 class='text-center'>$nome</h3>
-                            <br>
-                            <h4 class='text-center'>Total de Chamados: $quantidade_total</h4>
-                       
-                            <p class='btn btn btn-primary' >$quantidade_pendente</p> Novos Chamados<br>
-                            <p class='btn btn btn-warning'>$quantidade_andamento</p> Em Andamento <br>
-                            <p class='btn btn btn-danger'>0</p> Atrasados<br>
-                            <p class='btn btn btn-success'>$quantidade_resolvidos</p> Chamados Resolvidos
-                           
-                        
+                  echo "<div class='row'>
+                          <div class='card bg-light mb-3' style='max-width: 20rem;' align='center'>
+                            <div class='card-header'>
+                              <!--h3 class='text-center'>Setor: </h3-->
+                              <h3 class='text-center' style='background-color: #E5E7E9'>
+                              <strong>$nome</strong></h3>
+                              
+                              <h4 class='text-center'>
+                                Total de Chamados: $quantidade_total
+                              </h4>
+                         
+                              <p class='btn btn btn-primary' >$quantidade_pendente
+                              &nbsp;&nbsp; Novos Chamados &nbsp;&nbsp;&nbsp;&nbsp;
+                              &nbsp;&nbsp;&nbsp;&nbsp;</p><br>
+                              <p class='btn btn btn-warning'>$quantidade_andamento 
+                              &nbsp;&nbsp; Em Andamento &nbsp;&nbsp;&nbsp;&nbsp;
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><br>
+                              <p class='btn btn btn-danger'>0
+                              &nbsp;&nbsp; Atrasados&nbsp;&nbsp;&nbsp;&nbsp;
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              &nbsp;&nbsp;</p><br>
+                              <p class='btn btn btn-success'>$quantidade_resolvidos
+                              &nbsp;&nbsp; Chamados Resolvidos</p> 
+                            </div>
 
+                            <form method='POST' action='lista_chamada.php'>
+                              <input type='hidden' name='setor' id='setor' value='$id_setor'>
+                              <button class='btn btn-block btn-light'>
+                                Ver Chamadas 
+                              </button>
+                            </form>
                           </div>
-                          <form method='POST' action='lista_chamada.php'>
-                          <input type='hidden' name='setor' id='setor' value='$id_setor'>
-                          <button class='btn btn-block btn-light'>
-                            Ver Chamadas 
-                          </button>
-                          </form>
                         </div>";
                 
                 }
