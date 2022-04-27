@@ -11,7 +11,6 @@ try {
 	$setor_id = $_POST['setor'];
 	$arquivo = $_FILES['arquivo'];
 	$data = date('Y-m-d H:i');
-	$data_prevista = $_POST['data_previsao'];
 	$novoNome= '';
 	//$url_get = $_POST['url_get'];
 
@@ -26,7 +25,7 @@ try {
 		    $destino = '../View/chamadas/' . $novoNome;
 		    if(move_uploaded_file($arquivo_tmp, $destino)){
 		    		
-		    	criar_chamada($conexao,$funcionario_id,$setor_id,'esperando_resposta',$tipo_solicitacao,$data_prevista);
+		    	criar_chamada($conexao,$funcionario_id,$setor_id,'esperando_resposta',$tipo_solicitacao);
 		    	$id_chamada = $conexao->lastInsertId();
 		    	conversa_chat($conexao,$id_chamada,$funcionario_id,$descricao, $novoNome,$data);
 
@@ -47,7 +46,7 @@ try {
 	 	}
 
 	}else{
-		criar_chamada($conexao,$funcionario_id,$setor_id,'esperando_resposta',$tipo_solicitacao,$data_prevista);
+		criar_chamada($conexao,$funcionario_id,$setor_id,'esperando_resposta',$tipo_solicitacao);
 		$id_chamada = $conexao->lastInsertId();
     	conversa_chat($conexao,$id_chamada,$funcionario_id,$descricao,'',$data);
 		$_SESSION['status']=1;

@@ -126,6 +126,7 @@ setTimeout('dia_doservidor_publico();',3000);
               $res_setores = buscar_setor($conexao,$idcoordenador);
               foreach ($res_setores as $key => $value) {
                 $quantidade_pendente = 0 ;
+                $quantidade_atraso = 0 ;
                 $quantidade_total = 0 ;
                 $quantidade_andamento = 0 ;
                 $quantidade_resolvidos = 0 ;
@@ -134,7 +135,18 @@ setTimeout('dia_doservidor_publico();',3000);
                 foreach ($res_setor as $key => $value) {
                   $id_setor = $value['id'];
                   $nome = $value['nome'];
-
+                  //------------------------Verificar Atrasos-------------------
+                  $res_atualizar_chamado = buscar_chamada($conexao,$setor_id);
+                  foreach ($res_atualizar_chamado as $key => $value) {
+                    $id_chamado = $value['id'];
+                    $data_previsão = new DateTime($value['data_previsao']);  
+                    $data = new datetime('now');
+                    $intvl = $data_previsão->diff($data);
+                    if ($intvl->days > 2) {
+                      //atualizar_chamado($conexao,$id_chamado);
+                    }
+                  }
+                  //----------------------------------------------------------
                   $res_quant = quantidade_chamada_pendente($conexao,$id_setor);
                   foreach ($res_quant as $key => $value) {
                     $quantidade_pendente = $value['chamada'];
@@ -150,6 +162,10 @@ setTimeout('dia_doservidor_publico();',3000);
                   $res_quant4 = quantidade_chamada_andamento($conexao,$id_setor);
                   foreach ($res_quant4 as $key => $value) {
                     $quantidade_andamento = $value['chamada'];
+                  }
+                  $res_quant5 = quantidade_chamada_atraso($conexao,$id_setor);
+                  foreach ($res_quant5 as $key => $value) {
+                    $quantidade_atraso = $value['chamada'];
                   }
                   echo "<div class='col-sm-4'>
                           <div class='card bg-light mb-3' style='max-width: 20rem;' align='center'>
@@ -168,7 +184,7 @@ setTimeout('dia_doservidor_publico();',3000);
                               <p class='btn btn btn-warning'>$quantidade_andamento 
                               &nbsp;&nbsp; Em Andamento &nbsp;&nbsp;&nbsp;&nbsp;
                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><br>
-                              <p class='btn btn btn-danger'>0
+                              <p class='btn btn btn-danger'>$quantidade_atraso
                               &nbsp;&nbsp; Atrasados&nbsp;&nbsp;&nbsp;&nbsp;
                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

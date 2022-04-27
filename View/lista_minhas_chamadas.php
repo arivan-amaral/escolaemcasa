@@ -39,11 +39,11 @@ include '../Model/Chamada.php';
 
       <div class="row mb-2">
 
-        <div class="col-sm-12 alert alert-danger">
+        <div class="col-sm-12 alert alert-primary">
           <center>
             <h1 class="m-0"><b>
 
-         LISTA DE CHAMADAS PENDENTES</b></h1>
+         MEUS CHAMADOS</b></h1>
         </center>
 
       </div><!-- /.col -->
@@ -85,29 +85,45 @@ include '../Model/Chamada.php';
             $id_chamada = $value['id'];
             $status = $value['status'];
             $id_funcionario = $value['funcionario_id'];
-            $res_funcionario = buscar_funcionario($conexao,$idfuncionario);
-            $nome = '';
-            $email = '';
-            $whatsapp = '';
             $descricao = '';
             $destino= '';
-            foreach ($res_funcionario as $key => $value) {
-              $nome = $value['nome'];
-              $email = $value['email'];
-              $whatsapp = $value['whatsapp'];
-            }
             $res_chat= buscar_chat($conexao,$id_chamada);
             foreach ($res_chat as $key => $value) {
                $descricao = $value['mensagem'];
                 $destino = $value['arquivo'];
             }
-            echo "
+
+            if ($status=='esperando_resposta') {
+              echo "
             <tr>
               <td>
-                Nome do Funcionario: $nome <br>
-                Email: $email <br>
-                Whatsapp: $whatsapp
+                Status: <font color='warning'>Esperando Resposta</font>
               </td>
+              "; 
+            }elseif ($status=='em_andamento') {
+              echo "
+            <tr>
+              <td>
+                Status: <font color='primary'>Chamado em Andamento</font> 
+              </td>
+              "; 
+            }elseif ($status=='finalizado') {
+              echo "
+            <tr>
+              <td>
+                Status: <font color='green'> Chamado Finalizado</font>
+              </td>
+              "; 
+            }elseif ($status=='atrasado') {
+              echo "
+            <tr>
+              <td>
+                Status: <font color='danger'>Chamado Atrasado</font>
+              </td>
+              "; 
+            }
+            
+            echo"
               <td>
               Descrição: $descricao
               </td>
@@ -116,7 +132,7 @@ include '../Model/Chamada.php';
                   <div class='col-sm-6'>
                     <form method='POST' action='responder_chamada.php'>
                       <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
-                      <button class='btn btn-success'>Ver Chat</button>
+                      <button class='btn btn-success'>Retorno</button>
                     </form>
                   </div>";
                   if($status != 'finalizado'){

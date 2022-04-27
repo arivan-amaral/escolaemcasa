@@ -7,6 +7,7 @@ try {
 
 	$funcionario_id = $_POST['id_funcionario'];
 	$descricao = $_POST['resposta'];
+	$data_previsao = $_POST['data_previsao'];
 	$arquivo = $_FILES['arquivo'];
 	$data = date('Y-m-d H:i');
 	$id_chamada = $_POST['id_chamado'];
@@ -24,7 +25,7 @@ try {
 		    if(move_uploaded_file($arquivo_tmp, $destino)){
 		    		
 		    	responder_chat($conexao,$id_chamada,$funcionario_id,$descricao,$novoNome,$data);
-
+		    	atualizar_chamado_data_prevista($conexao,$id_chamada,$data_previsao);
 				$_SESSION['status']=1;
 				header("Location:../View/chamada.php");
 
@@ -43,7 +44,7 @@ try {
 
 	}else{
 		responder_chat_sem_arquivo($conexao,$id_chamada,$funcionario_id,$descricao,$data);
-
+		atualizar_chamado_data_prevista($conexao,$id_chamada,$data_previsao);
 		$_SESSION['status']=1;
 		header("Location:../View/chamada.php");
 		 

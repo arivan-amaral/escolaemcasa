@@ -95,7 +95,7 @@ include '../Model/Chamada.php';
      <tbody id="tabela_chamados">
       
         <?php 
-          $res_chamada = buscar_chamada($conexao,$setor_id);
+          $res_chamada = buscar_chamada2($conexao,$setor_id);
           foreach ($res_chamada as $key => $value) {
             $id_chamada = $value['id'];
             $status = $value['status'];
@@ -183,8 +183,8 @@ include '../Model/Chamada.php';
               </td>
               <td>";
               if($status == 'esperando_resposta'){
-
-                echo "<form method='POST'>
+ 
+                echo "<form method='POST' action='responder_chamada.php'>
                   <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
                   <button class='btn btn-success' onclick='responder_chat($id_chamada);'>RESPONDER</button>
                 </form>";

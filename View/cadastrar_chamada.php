@@ -114,10 +114,6 @@ include "alertas.php";
                         
                        </select> 
                       </div>
-                        <h4 class="card-title">Data de Previsão do Retorno</h4>
-                        <div class="form-group">
-                            <input type="datetime-local" name="data_previsao" id="data_previsao" class="form-control" required="">
-                        </div>
                         <h4 class="card-title">Anexo</h4>
                         <div class="form-group">
                             <input type="file" name="arquivo" class="form-control" >
