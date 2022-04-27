@@ -263,8 +263,15 @@ include "alertas.php";
                     ?>
                   </div>
                   <div class="col-md-6">
+                        <?php 
+                          $nome_ge = ''; 
+                          $res_nome_funcionario = nome_funcionario($conexao,$id_funci_respondeu);
+                          foreach ($res_nome_funcionario as $key => $value) {
+                            $nome_ge =$value['nome'];
+                          }
 
-                        <h5 >Gerente: <?php echo $nome_gerente; ?> <br>
+                        ?>
+                        <h5 >Gerente: <?php echo $nome_ge; ?> <br>
                        Data: <?php echo $data_retorno; ?></h5>
                     <?php  
                       $res_retorno =  buscar_pessoa_chat($conexao,$id_chamada,$id_funci_respondeu);
