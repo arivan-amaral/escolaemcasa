@@ -66,6 +66,13 @@ function pesquisa_chamada($conexao,$chamada_id){
 
 }
 
+
+function validar_funcionario($conexao,$chamada_id,$idfuncionario){
+   $result = $conexao->query("SELECT count(*) as 'id' FROM chamada where id=$chamada_id and func_respondeu_id=$idfuncionario");
+    return $result;
+
+}
+
 function pesquisa_chat($conexao,$chamada_id){
    $result = $conexao->query("SELECT * FROM chat_chamado where chamada_id=$chamada_id and status='inicial'");
     return $result;
@@ -108,6 +115,13 @@ function buscar_chat($conexao,$chamada_id){
     return $result;
 
 }
+
+function buscar_pessoa_chat($conexao,$chamada_id,$funcionario_id){
+   $result = $conexao->query("SELECT * FROM chat_chamado where chamada_id=$chamada_id and funcionario_id=$funcionario_id");
+    return $result;
+
+}
+
 
 function criar_chamada($conexao,$funcionario_id,$setor_id,$status,$tipo_solicitacao,$data_previsao) {
   $sql = $conexao->prepare("INSERT INTO chamada (funcionario_id,setor_id,status,tipo_solicitacao,func_respondeu_id,data_retorno,data_previsao) VALUES (:funcionario_id,:setor_id,:status,:tipo_solicitacao,0,'0001-01-01 00:00:00',:data_previsao)");
@@ -153,7 +167,7 @@ function responder_chat_sem_arquivo($conexao,$chamada_id,$funcionario_id,$mensag
 }  
 
 function responder_chamada($conexao,$chamada_id,$funcionario_id,$data_retorno) {
-      $conexao->exec("UPDATE chamada SET func_respondeu_id=$funcionario_id, status='em_andamento', data_retorno=$data_retorno  where id=$chamada_id");
+      $conexao->exec("UPDATE chamada SET func_respondeu_id=$funcionario_id, status='em_andamento',data_retorno='$data_retorno' where id=$chamada_id");
 }
 
 function finalizar_chamada($conexao,$chamada_id) {

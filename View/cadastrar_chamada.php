@@ -173,7 +173,7 @@ include "alertas.php";
 <script type="text/javascript">
   function primeiraOpcao()
     {
-      var setor_id = 1;
+      var setor_id = 6;
       var result = document.getElementById('tipo_solicitacao');
       result.options.length = 0;
      

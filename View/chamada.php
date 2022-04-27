@@ -119,11 +119,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
       <div class="container-fluid">
 
-       <div class="row" >
-
-          <div class='col-sm-10'></div>
-          <div class='col-lg-6 col-6'>
-
+       <div class="row">
             <!-- small card -->
             <?php  
 
@@ -155,7 +151,7 @@ setTimeout('dia_doservidor_publico();',3000);
                   foreach ($res_quant4 as $key => $value) {
                     $quantidade_andamento = $value['chamada'];
                   }
-                  echo "<div class='row'>
+                  echo "<div class='col-sm-4'>
                           <div class='card bg-light mb-3' style='max-width: 20rem;' align='center'>
                             <div class='card-header'>
                               <!--h3 class='text-center'>Setor: </h3-->
@@ -196,7 +192,7 @@ setTimeout('dia_doservidor_publico();',3000);
             
 
             
-          </div>
+         
        </div>  
 
     </div>

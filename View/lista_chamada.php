@@ -143,10 +143,27 @@ include '../Model/Chamada.php';
                 $destino = $value['arquivo'];
             }
             echo "
-            <tr><td style='width:14%; background-color:#F1C40F; transform: rotate(-90deg);
-            text-align: center'>
-            Andamento</td>
-              <td>
+            <tr>";
+            if ($status == 'esperando_resposta') {
+              echo "<td style='background-color:#2E64FE;writing-mode: vertical-lr;
+              text-align: center;color: white;'>
+              Novo</td>";
+            }elseif ($status == 'em_andamento') {
+              echo "<td style=' background-color:#F1C40F; writing-mode: vertical-lr;
+              text-align: center;color: white'>
+              Andamento</td>";
+            }elseif ($status == 'finalizado') {
+              echo "<td style=' background-color:#82FA58; writing-mode: vertical-lr;
+              text-align: center;color: white'>
+              Resolvido</td>";
+            }elseif ($status == 'atrasado') {
+              echo "<td style=' background-color:#FE2E2E; writing-mode: vertical-lr;
+              text-align: center;color: white'>
+              Atrasado</td>";
+            }
+             
+
+               echo "<td>
                 Data de Solicitação: $data_solicitado <br>
                 ";
                  if($status == 'esperando_resposta'){
@@ -167,7 +184,7 @@ include '../Model/Chamada.php';
               <td>";
               if($status == 'esperando_resposta'){
 
-                echo "<form method='POST' action='responder_chamada.php'>
+                echo "<form method='POST'>
                   <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
                   <button class='btn btn-success' onclick='responder_chat($id_chamada);'>RESPONDER</button>
                 </form>";
