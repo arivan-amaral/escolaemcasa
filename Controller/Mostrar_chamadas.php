@@ -14,10 +14,13 @@ try {
         $nome_solicitado = "";
         $data_hora = "";
         $descricao = "";
-        $res_nome_solicitacao = pesquisa_tipo_solicitacao($conexao,$tipo_solicitacao);
-        foreach ($res_nome_solicitacao as $key => $value) {
-            $nome_solicitado = $value['nome'];
+        if ($tipo_solicitacao != '') {
+            $res_nome_solicitacao = pesquisa_tipo_solicitacao($conexao,$tipo_solicitacao);
+            foreach ($res_nome_solicitacao as $key => $value) {
+                $nome_solicitado = $value['nome'];
+            }
         }
+       
         $res_chat_chamada = mostrar_chat_chamada($conexao,$id,$_SESSION["idfuncionario"]);
         foreach ($res_chat_chamada as $key => $value) {
             $data_hora = $value['data'];

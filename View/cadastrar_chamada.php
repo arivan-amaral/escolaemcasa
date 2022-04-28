@@ -193,7 +193,7 @@ include "alertas.php";
  setTimeout(primeiraOpcao(), 2000);
  function primeiraOpcao2()
     {
-      var setor_id = 1;
+      var setor_id = 6;
       var result = document.getElementById('tabela_chamada');
       result.innerHTML = "";
      
