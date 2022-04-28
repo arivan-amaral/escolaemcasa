@@ -241,6 +241,25 @@ include "alertas.php";
                       </form>
                    
                     <?php 
+                       $res_chat_inicial =  buscar_chat_inical($conexao,$id_chamada,$id_diretor);
+                      foreach ($res_chat_inicial as $key => $value) {
+                        $mensagem1 = $value['mensagem'];
+                        $arquivo1 = $value['arquivo'];
+                        $data_anterior1 = $value['data'];
+                        echo "<div class='col-md-12'>
+                              <br>
+                              <h6 >Solicitação Inicial  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Data de Emissão:$data_anterior1 </h6>
+                              <textarea type='text' class='form-control' rows='10'  disabled>$mensagem1</textarea>
+                              <br>
+                              ";
+                              if ($arquivo1 != "") {
+                                echo"<h4 class='card-title'>Anexo</h4>
+                              <br><a class='btn btn-block btn-success' href='chamadas/$arquivo1' download>Arquivo</a> ";
+                              }
+                            echo"</div>";
+
+                        
+                      }
                       $res_solicitacao = buscar_pessoa_chat($conexao,$id_chamada,$id_diretor);
                       foreach ($res_solicitacao as $key => $value) {
                       $mensagem = $value['mensagem'];

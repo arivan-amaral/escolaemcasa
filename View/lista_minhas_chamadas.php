@@ -128,13 +128,23 @@ include '../Model/Chamada.php';
               Descrição: $descricao
               </td>
               <td>
-                <div class='row'>
-                  <div class='col-sm-6'>
+                <div class='row'>";
+                  if($status=='em_andamento' ){
+                    echo"<div class='col-sm-6'>
                     <form method='POST' action='responder_chamada.php'>
                       <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
                       <button class='btn btn-success'>Retorno</button>
                     </form>
                   </div>";
+                  }else{
+                    echo"<div class='col-sm-6'>
+                    <form method='POST' action='responder_chamada.php'>
+                      <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
+                      <button class='btn btn-success' disabled >Retorno</button>
+                    </form>
+                  </div>";
+                  }
+                  
                   if($status != 'finalizado'){
 
                     echo "<div class='col-sm-6'>

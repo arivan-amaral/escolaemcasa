@@ -134,6 +134,13 @@ function buscar_pessoa_chat($conexao,$chamada_id,$funcionario_id){
 
 }
 
+function buscar_chat_inical($conexao,$chamada_id,$funcionario_id){
+   $result = $conexao->query("SELECT * FROM chat_chamado where chamada_id=$chamada_id and funcionario_id=$funcionario_id and status = 'inicial'");
+    return $result;
+
+}
+
+
 
 function criar_chamada($conexao,$funcionario_id,$setor_id,$status,$tipo_solicitacao) {
   $sql = $conexao->prepare("INSERT INTO chamada (funcionario_id,setor_id,status,tipo_solicitacao,func_respondeu_id,data_retorno,data_previsao) VALUES (:funcionario_id,:setor_id,:status,:tipo_solicitacao,0,'0001-01-01 00:00:00','0001-01-01 00:00:00')");
