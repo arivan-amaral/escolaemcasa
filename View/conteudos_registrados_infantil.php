@@ -124,14 +124,17 @@
 <?php 
 
   $res_disciplinas=listar_disciplina_professor_regente($conexao,$idserie,$idturma,$idescola,$ano_letivo);
-  $disciplinas_regente_abreviacao ="";
-    $nome_disciplina="";
+  $disciplinas_regente_abreviacao =array();
+  
+  $nome_disciplina="";
 
   foreach ($res_disciplinas as $key => $value) {
+    $disciplina_id=$value['disciplina_id'];
+
     $nome_disciplina.=$value['nome_disciplina'];
     $abreviacao=$value['abreviacao'];
     //echo "$nome_disciplina, ";
-    $disciplinas_regente_abreviacao.="$abreviacao, ";
+    $disciplinas_regente_abreviacao[$disciplina_id]=$abreviacao;
 
     
   }
@@ -251,14 +254,26 @@ $descricao="";
 $result_conteudo= $conexao->query("SELECT * FROM conteudo_aula where  turma_id=$idturma and escola_id=$idescola  and data BETWEEN '$data_inicial' and '$data_final' order by data asc ");
 $conta=1;
 $array_datas = array();
+$abreviacao_displina_da_data = array();
+
 foreach ($result_conteudo as $key => $value) {
+  $disciplina_id=$value['disciplina_id'];
+  
   $data_conte_bd=$value['data'];
   if (!array_key_exists($data_conte_bd,$array_datas)) {
     $array_datas[$data_conte_bd]="". $value['descricao'];
+      
+   
+    // $array_abreviacao_displina_da_data[$data_conte_bd]="". $value['descricao'];
   }else if(!in_array($value['descricao'], $array_datas)){
     $array_datas[$data_conte_bd].="; ". $value['descricao'];
+     
 
   }
+
+   if (!array_key_exists($disciplina_id,$abreviacao_displina_da_data[$data_conte_bd] )) {
+      $abreviacao_displina_da_data[$data_conte_bd][$disciplina_id]=$disciplinas_regente_abreviacao[$disciplina_id];
+   }
 }
 
 foreach ($array_datas as $key => $value) {
@@ -285,8 +300,20 @@ foreach ($array_datas as $key => $value) {
       <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
       style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-      color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p><?php 
-      echo"$disciplinas_regente_abreviacao"; ?></o:p></span></p>
+      color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p>
+        <?php
+        $abrev="";
+        //var_dump($abreviacao_displina_da_data);
+
+        foreach ($abreviacao_displina_da_data[$key] as $chave => $value) {
+             $abrev.= $value .", ";
+             
+             
+
+        }
+          echo $abrev; 
+
+    ?></o:p></span></p>
       </td>  
 
       <td  colspan=5 style=' border-top:1.0pt;

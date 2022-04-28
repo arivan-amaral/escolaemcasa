@@ -77,6 +77,7 @@
 
 	function listar_disciplina_professor_regente($conexao,$idserie,$idturma,$idescola,$ano_letivo) {
     	$res=$conexao->query("SELECT 
+          disciplina.iddisciplina as 'disciplina_id',
           disciplina.nome_disciplina,
           disciplina.abreviacao,
           disciplina.iddisciplina,
