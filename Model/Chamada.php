@@ -73,11 +73,6 @@ function pesquisa_chamada($conexao,$chamada_id){
 }
 
 
-function validar_funcionario($conexao,$chamada_id,$idfuncionario){
-   $result = $conexao->query("SELECT count(*) as 'id' FROM chamada where id=$chamada_id and func_respondeu_id=$idfuncionario");
-    return $result;
-
-}
 
 function pesquisa_chat($conexao,$chamada_id){
    $result = $conexao->query("SELECT * FROM chat_chamado where chamada_id=$chamada_id and status='inicial'");

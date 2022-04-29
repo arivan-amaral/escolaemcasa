@@ -128,10 +128,13 @@ include '../Model/Chamada.php';
             foreach ($res_chat as $key => $value) {
               $data_solicitado = $value['data'];
             }
-            $res_solicitacao = pesquisa_tipo_solicitacao($conexao,$id_solicitacao);
-            foreach ($res_solicitacao as $key => $value) {
-               $nome_solicitacao = $value['nome'];
+            if($id_solicitacao != null){
+              $res_solicitacao = pesquisa_tipo_solicitacao($conexao,$id_solicitacao);
+              foreach ($res_solicitacao as $key => $value) {
+                 $nome_solicitacao = $value['nome'];
+              }
             }
+            
             foreach ($res_funcionario as $key => $value) {
               $nome = $value['nome'];
               $email = $value['email'];
