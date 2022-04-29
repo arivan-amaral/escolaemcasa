@@ -136,16 +136,35 @@ setTimeout('dia_doservidor_publico();',3000);
                   $id_setor = $value['id'];
                   $nome = $value['nome'];
                   //------------------------Verificar Atrasos-------------------
-                  $res_atualizar_chamado = buscar_chamada($conexao,$setor_id);
+                  $res_atualizar_chamado = buscar_chamada_atraso($conexao,$setor_id);
                   foreach ($res_atualizar_chamado as $key => $value) {
                     $id_chamado = $value['id'];
                     $data_previsão = new DateTime($value['data_previsao']);  
                     $data = new datetime('now');
-                    $intvl = $data_previsão->diff($data);
-                    if ($intvl->days > 2) {
-                      //atualizar_chamado($conexao,$id_chamado);
+
+                    if($data_previsão < $data){//verifica se a data prevista já passou 
+                       $intvl = $data_previsão->diff($data);//conta os dias entre as duas datas
+
+                       if ($intvl->days > 2) {//verifica se passou 3 dias desda da data prevista
+                          $quant_dias = 0;
+                          for ($i=1; $i < 4; $i++) {//verifica se os dias passados são dias uteis
+
+                            $data_especifica =  date('d/m/Y', strtotime("+ $i days",strtotime('$data_previsão'))); 
+                            $diasemana_numero = date('w', strtotime($data_especifica));
+
+                            if($diasemana_numero == 0 || $diasemana_numero == 6){}else{// se são dias uteis ele aumenta a quantidade de dias
+                              $quant_dias += 1;
+                            }
+                          }
+                          if($quant_dias >= 3){// se a quantidade de dias uteis for 3 ou mais atualiza chamada 
+
+                             atualizar_chamado($conexao,$id_chamado);
+                          }  
+                       }
                     }
                   }
+
+
                   //----------------------------------------------------------
                   $res_quant = quantidade_chamada_pendente($conexao,$id_setor);
                   foreach ($res_quant as $key => $value) {

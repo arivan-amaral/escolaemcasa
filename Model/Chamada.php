@@ -6,6 +6,14 @@ function buscar_chamada($conexao,$setor_id){
 
 }
 
+
+function buscar_chamada_atraso($conexao,$setor_id){
+   $result = $conexao->query("SELECT * FROM chamada where setor_id=$setor_id and status ='em_andamento' ORDER BY id asc");
+    return $result;
+
+}
+
+
 function buscar_chamada2($conexao,$setor_id){
    $result = $conexao->query("SELECT * FROM chamada where setor_id=$setor_id and (status ='em_andamento' or status='esperando_resposta' or status ='atrasado')  ORDER BY id asc");
     return $result;

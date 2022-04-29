@@ -73,7 +73,12 @@ include "alertas.php";
   if($id_funci_respondeu == $_SESSION['idfuncionario']){
     $validar_func = true;
   }else{ 
-    $validar_func = false;
+    if($id_funci_respondeu == 0){
+      $validar_func = true;
+    }else{
+      $validar_func = false;
+    }
+    
   }
 ?>
  
@@ -266,9 +271,9 @@ include "alertas.php";
                             
 
                             <div class='form-group'>
-                                <a class='btn btn btn-danger' style='width:30%;' href='#abrirModal'>
+                                <button class='btn btn btn-danger' style='width:30%;' data-toggle='modal' data-target='#abrirModal'>
                                   Andamento
-                                </a>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                                </button>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                                 <button class='btn btn btn-info' style='width: 30%;' onclick='finalizar_chat($id_chamada);'>
                                   Finalizar
                                 </button><br><br>
@@ -425,9 +430,33 @@ include "alertas.php";
       </div>
 
     </div>
-
+    
   </section>
+  <div id="abrirModal" class="modal">
+        <div class="row">
+          <form class='mt-12' action='../Controller/Cadastrar_chat_chamado.php' method='post' enctype='multipart/form-data'>
+          <h5 ><b>Escola:</b> <?php echo $nome_escola; ?>
+           <b>Diretor(a):</b> <?php echo $nome_diretor; ?></h5>
 
+          h6>Solicitação: &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Data:&nbsp; <!?php echo $data_solicitado; ?>
+            </h6>
+
+            <input type='hidden' name='id_funcionario' id='id_funcionario' value='$idFuncionario'>
+            <input type='hidden' name='id_chamado' id='id_chamado' value='$id_chamada'>
+             <textarea type='text' class='form-control' rows='10' name='resposta' id='resposta' required=''></textarea><br>
+
+              h4 class='card-title'>Anexo</h4>
+              <div class='form-group' >
+                  <input type='file' name='arquivo' class='form-control' >
+              </div>
+              <br> 
+              <div class='form-group'>
+
+              <button class='btn btn btn-info' style='width: 30%;'>Enviar</button>
+              </div>
+          </form>
+        </div>
+    </div>
 </div>
 
 <aside class="control-sidebar control-sidebar-dark">
