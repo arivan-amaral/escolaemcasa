@@ -72,7 +72,7 @@ include '../Model/Chamada.php';
   <table class='table table-bordered'>
     <thead>
        <tr>
-         <th>Informações</th>
+         <th>Status</th>
          <th>Descrição</th>
          <th>Opções</th>
        </tr>
@@ -96,22 +96,22 @@ include '../Model/Chamada.php';
             if ($status=='esperando_resposta') {
               echo "
             <tr>
-              <td>
-                Status: <font color='warning'>Esperando Resposta</font>
+              <td style='background-color: #007bff;'>
+                <font style='color: white;'>Aguardando retorno...</font>
               </td>
               "; 
             }elseif ($status=='em_andamento') {
               echo "
             <tr>
-              <td>
-                Status: <font color='primary'>Chamado em Andamento</font> 
+              <td style='background-color: #F1C40F;'>
+                Andamento...
               </td>
               "; 
             }elseif ($status=='finalizado') {
               echo "
             <tr>
-              <td>
-                Status: <font color='green'> Chamado Finalizado</font>
+              <td style='background-color:  #33CD09;'>
+                Finalizado
               </td>
               "; 
             }elseif ($status=='atrasado') {
@@ -148,7 +148,8 @@ include '../Model/Chamada.php';
                   if($status != 'finalizado'){
 
                     echo "<div class='col-sm-6'>
-                    <button class='btn btn-info' onclick='finalizar_chat($id_chamada);'>Finalizar</button>
+                    <button class='btn btn-info' disabled 
+                    onclick='finalizar_chat($id_chamada);'>Finalizar</button>
                   </div>";
 
                   }

@@ -95,7 +95,7 @@ include "alertas.php";
               <center>
                  <?php
               echo $setor;
-              ?><br> Protocolo: <?php echo $id_chamada; ?></b>
+              ?> - Protocolo: <?php echo $id_chamada; ?></b>
               </center>
            </h1>
 
@@ -127,7 +127,7 @@ include "alertas.php";
                 <div class="row">
                   <div class="col-md-6">
                     <form class="mt-12" action="../Controller/Cadastrar_chat_chamado.php" method="post" enctype="multipart/form-data">
-                        <h5 >Gerente: <?php echo $nome_gerente; ?> <br>
+                        <h5>Gerente: <?php echo $nome_gerente; ?> <br>
                        Data: <?php echo $data_retorno; ?></h5>
                         <br>
                         <h6 >Retorno &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Previsão de Solução:  <?php echo $data_previsao; ?></h6>
@@ -153,9 +153,8 @@ include "alertas.php";
                       $arquivo = $value['arquivo'];
                       $data_anterior = $value['data'];
 
-                      echo "<div class='col-md-12'>
-                              <br>
-                              <h6 >Retorno Anterior &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Data de Emissão:$data_anterior </h6>
+                      echo "<div class='col-md-12'><br>
+                              <h6 >Retorno &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Data &nbsp;&nbsp;:$data_anterior </h6>
                               <textarea type='text' class='form-control' rows='10'  disabled>$mensagem</textarea>
                               <br>
                               ";
@@ -176,11 +175,11 @@ include "alertas.php";
                         $data_solicitado = $value['data'];
 
                     echo "
-                      <h5 >Escola: $nome_escola <br>
-                       Diretor(a): $nome_diretor</h5>
-                        <br>
+                      <h5>Escola: $nome_escola <br>
+                       Diretor(a): $nome_diretor</h5><br>
+
                         <h6>Solicitação &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Data:$data_solicitado </h6>
-                        <textarea type='text' class='form-control' rows='10'disabled>$descricao</textarea>
+                        <textarea type='text' class='form-control' rows='6'disabled >$descricao</textarea>
                       " ;
                       if($arquivo != ""){
                         echo "<h6>Anexo:</h6>
@@ -196,9 +195,8 @@ include "alertas.php";
                       $data_anterior = $value['data'];
                         echo "<div class='col-md-12'>
                               <br>
-                              <h6 >Andamento &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Data de Emissão:$data_anterior </h6>
-                              <textarea type='text' class='form-control' rows='10'  disabled>$mensagem</textarea>
-                              <br>
+                              <h6 >Andamento xx&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Data de Emissão:$data_anterior </h6>
+                              <textarea type='text' class='form-control' rows='10' disabled>$mensagem</textarea><br>
                               ";
                               if ($arquivo != "") {
                                 echo"<h4 class='card-title'>Anexo</h4>
@@ -221,15 +219,17 @@ include "alertas.php";
                         $data_solicitado = $value['data'];
                     } ?>
                     <form class='mt-12' action='../Controller/Cadastrar_chat_chamado.php' method='post' enctype='multipart/form-data'>
-                    <h5 >Escola: <?php echo $nome_escola; ?><br>
-                     Diretor(a): <?php echo $nome_diretor; ?></h5>
-                      <br>
-                      <h6>Solicitação &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Data: <?php echo $data_solicitado; ?></h6>
+                    <h5 ><b>Escola:</b> <?php echo $nome_escola; ?>
+                     <b>Diretor(a):</b> <?php echo $nome_diretor; ?></h5>
+
+                      <!--h6>Solicitação: &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Data:&nbsp; <!?php echo $data_solicitado; ?>
+                      </h6>
+
                       <input type='hidden' name='id_funcionario' id='id_funcionario' value='$idFuncionario'>
                       <input type='hidden' name='id_chamado' id='id_chamado' value='$id_chamada'>
-                       <textarea type='text' class='form-control' rows='10' name='resposta' id='resposta' required=''></textarea>
+                       <textarea type='text' class='form-control' rows='10' name='resposta' id='resposta' required=''></textarea><br-->
 
-                        <h4 class='card-title'>Anexo</h4>
+                        <!--h4 class='card-title'>Anexo</h4>
                         <div class='form-group' >
                             <input type='file' name='arquivo' class='form-control' >
                         </div>
@@ -237,7 +237,7 @@ include "alertas.php";
                         <div class='form-group'>
                         <button class='btn btn btn-danger' style='width: 30%;'>Andamento</button>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                         <button class='btn btn btn-info' style='width: 30%;' onclick='finalizar_chat($id_chamada);'>Finalizar</button>
-                        </div>
+                        </div-->
                       </form>
                    
                     <?php 
@@ -246,17 +246,37 @@ include "alertas.php";
                         $mensagem1 = $value['mensagem'];
                         $arquivo1 = $value['arquivo'];
                         $data_anterior1 = $value['data'];
-                        echo "<div class='col-md-12'>
-                              <br>
-                              <h6 >Solicitação Inicial  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Data de Emissão:$data_anterior1 </h6>
-                              <textarea type='text' class='form-control' rows='10'  disabled>$mensagem1</textarea>
+                        echo "<div class='col-md-12'><br>
+                              <h6><b>Solicitação Inicial:</b>  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Data:&nbsp;$data_anterior1</h6>
+                              <textarea type='text' class='form-control' rows='7' disabled>$mensagem1</textarea>
                               <br>
                               ";
                               if ($arquivo1 != "") {
                                 echo"<h4 class='card-title'>Anexo</h4>
                               <br><a class='btn btn-block btn-success' href='chamadas/$arquivo1' download>Arquivo</a> ";
                               }
-                            echo"</div>";
+                            echo"</div>
+
+
+                            
+
+                            <div class='form-group'>
+                                <button class='btn btn btn-danger' style='width:30%;'>
+                                  Andamento
+                                </button>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                                <button class='btn btn btn-info' style='width: 30%;' onclick='finalizar_chat($id_chamada);'>
+                                  Finalizar
+                                </button><br><br>
+
+                                <h4 class='card-title'>Anexo</h4>
+
+                                <div class='form-group' >
+                                    <input type='file' name='arquivo' class='form-control' >
+                                </div>
+
+                              
+                        </div>
+                            ";
 
                         
                       }
@@ -266,7 +286,6 @@ include "alertas.php";
                       $arquivo = $value['arquivo'];
                       $data_anterior = $value['data'];
                         echo "<div class='col-md-12'>
-                              <br>
                               <h6 >Andamento &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Data de Emissão:$data_anterior </h6>
                               <textarea type='text' class='form-control' rows='10'  disabled>$mensagem</textarea>
                               <br>
@@ -290,8 +309,8 @@ include "alertas.php";
                           }
 
                         ?>
-                        <h5 >Gerente: <?php echo $nome_ge; ?> <br>
-                       Data: <?php echo $data_retorno; ?></h5>
+                        <h5><b>Gerente:</b> <?php echo $nome_ge; ?>
+                        <!--?php echo $data_retorno; ?--></h5><br>
                     <?php  
                       $res_retorno =  buscar_pessoa_chat($conexao,$id_chamada,$id_funci_respondeu);
                       foreach ($res_retorno as $key => $value) {
@@ -299,10 +318,9 @@ include "alertas.php";
                       $arquivo = $value['arquivo'];
                       $data_anterior = $value['data'];
 
-                      echo "<div class='col-md-12'>
-                              <br>
-                              <h6 >Retorno Anterior &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Data de Emissão:$data_anterior </h6>
-                              <textarea type='text' class='form-control' rows='10'  disabled>$mensagem</textarea>
+                      echo "<div class='col-md-12'><br>
+                              <h6><b>Retorno:</b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Previsão da Solução: $data_anterior</h6>
+                              <textarea type='text' class='form-control' rows='7'  disabled>$mensagem</textarea>
                               <br>
                               ";
                               if ($arquivo != "") {

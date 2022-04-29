@@ -145,19 +145,19 @@ include '../Model/Chamada.php';
             echo "
             <tr>";
             if ($status == 'esperando_resposta') {
-              echo "<td style='background-color:#2E64FE;writing-mode: vertical-lr;
+              echo "<td style='background-color:#2E64FE; transform: rotate(270deg);
               text-align: center;color: white;'>
               Novo</td>";
             }elseif ($status == 'em_andamento') {
-              echo "<td style=' background-color:#F1C40F; writing-mode: vertical-lr;
-              text-align: center;color: white'>
+              echo "<td style=' background-color:#F1C40F; transform: rotate(270deg); 
+              text-align: center;'>
               Andamento</td>";
             }elseif ($status == 'finalizado') {
-              echo "<td style=' background-color:#82FA58; writing-mode: vertical-lr;
+              echo "<td style=' background-color:#82FA58; transform: rotate(270deg);
               text-align: center;color: white'>
               Resolvido</td>";
             }elseif ($status == 'atrasado') {
-              echo "<td style=' background-color:#FE2E2E; writing-mode: vertical-lr;
+              echo "<td style=' background-color:#FE2E2E; transform: rotate(270deg);
               text-align: center;color: white'>
               Atrasado</td>";
             }
@@ -168,7 +168,7 @@ include '../Model/Chamada.php';
                 ";
                  if($status == 'esperando_resposta'){
 
-                echo " Status: <font color='danger'>Esperando Resposta</font> ";
+                //echo " Status: <font color='danger'>Esperando Resposta</font> ";
               }else if($status == 'em_andamento'){
                 echo "
                 Data de Retorno: ";
@@ -176,7 +176,7 @@ include '../Model/Chamada.php';
                 echo "Data de Retorno: <br>
                 Status: <font color='green'>Finalizado</font> ";
               }
-                echo"<br>
+                echo"
                 Escola: $nome_escola - Diretor: $nome_funcionario <br> 
                 Tipo de Solicitação: $nome_solicitacao <br>             
                 Protocolo: $id_chamada
