@@ -144,22 +144,24 @@ setTimeout('dia_doservidor_publico();',3000);
 
                     if($data_previsão < $data){//verifica se a data prevista já passou 
                        $intvl = $data_previsão->diff($data);//conta os dias entre as duas datas
-
+                       echo "data intervalo =  $intvl->days";
                        if ($intvl->days > 2) {//verifica se passou 3 dias desda da data prevista
                           $quant_dias = 0;
                           for ($i=1; $i < 4; $i++) {//verifica se os dias passados são dias uteis
 
-                            $data_especifica =  date('d/m/Y', strtotime("+ $i days",strtotime('$data_previsão'))); 
-                            $diasemana_numero = date('w', strtotime($data_especifica));
+                            $data_especifica =  date('Y-m-d', strtotime("+ $i days",strtotime('$data_previsão'))); 
+                            $diasemana_numero = date('w', strtotime('$data_especifica'));
 
                             if($diasemana_numero == 0 || $diasemana_numero == 6){}else{// se são dias uteis ele aumenta a quantidade de dias
                               $quant_dias += 1;
                             }
                           }
+                          echo "dias =  $quant_dias";
                           if($quant_dias >= 3){// se a quantidade de dias uteis for 3 ou mais atualiza chamada 
 
                              atualizar_chamado($conexao,$id_chamado);
-                          }  
+
+                          } 
                        }
                     }
                   }
