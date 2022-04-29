@@ -85,7 +85,14 @@ include "alertas.php";
             <!-- Main content -->
 
             <section class="content">
-               <h4 align="center">Criar Chamada</h4>
+               <div>
+                 <nav class="navbar navbar-light bg-dark" style="justify-content: center;">
+                    <a class="navbar-bran">
+                      <img src="assets/img/logos/logo.png" width="40" height="50">
+                      <strong>&nbsp;&nbsp;&nbsp;&nbsp;SOLICITAÇÃO DE CHAMADO</strong>
+                    </a>
+                  </nav><br>
+               </div>
               <div class="container-fluid">
              
 
@@ -126,7 +133,8 @@ include "alertas.php";
                             <b style="color: red;">POR FAVOR, NÃO COLOCAR EMOJI NOS CAMPOS DA ATIVIDADE </b>
                           </div>
                           <div class="card-body">
-                            <textarea rows="5" style="height: 245.719px;" name="descricao" id="summernote" required="">
+                            <textarea rows="5" style="height: 245.719px;" name="descricao"
+                            id="summernote" required="">
                             </textarea>
                           </div>
                         </div>
@@ -144,9 +152,14 @@ include "alertas.php";
                                     
                   </div>
 
-                </div>
-                <br>
-                  <h4 align="center">Minhas Chamadas</h4>
+                </div><br>
+                  <div>
+                     <nav class="navbar navbar-light bg-dark" style="justify-content: center;">
+                        <a class="navbar-bran">
+                          <strong>&nbsp;&nbsp;&nbsp;&nbsp;LISTA DE CHAMADOS</strong>
+                        </a>
+                      </nav><br>
+                  </div>
                   <br>
                   <div class="table-responsive">
                       <table class="table">
