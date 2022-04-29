@@ -34,13 +34,10 @@ include "alertas.php";
   $data_retorno='';
   $data_solicitado='';
   $validar = 0;
-  $validar_func = 0;
+  $validar_func = false;
   $id_diretor = 0;
   $id_funci_respondeu = 0;
-  $res_validar_funcionario = validar_funcionario($conexao,$id_chamada,$idFuncionario);
-  foreach ($res_validar_funcionario as $key => $value) {
-    $validar_func = $value['id'];
-  }
+
   $res_chamada = pesquisa_chamada($conexao,$id_chamada);
   foreach ($res_chamada as $key => $value) {
     $id_diretor = $value['funcionario_id'];
@@ -71,6 +68,12 @@ include "alertas.php";
   $res_validar = validar_chamada($conexao,$idFuncionario,$id_chamada);
   foreach ($res_validar as $key => $value) {
     $validar = $value['chamados'];
+  }
+
+  if($id_funci_respondeu == $_SESSION['idfuncionario']){
+    $validar_func = true;
+  }else{ 
+    $validar_func = false;
   }
 ?>
  
@@ -124,7 +127,7 @@ include "alertas.php";
 
             <section class="content">
               <div class="container-fluid">
-                <?php if ($validar_func > 0) { ?>
+                <?php if ($validar_func == true) { ?>
                 <div class="row">
                   <div class="col-md-6">
                      <h5>Gerente: <?php echo $nome_gerente; ?> <br>
@@ -164,7 +167,7 @@ include "alertas.php";
                             <input type="datetime-local" name="data_previsao" id="data_previsao" class="form-control" required="">
                         </div>
                       <div onclick='carregando();'>
-                        <button type="submit" class="btn btn-block btn-primary" onclick='responder_chat($id_chamada);'>Responder</button>
+                        <button type="submit" class="btn btn-block btn-primary" onclick='responder_chat(<?php echo $id_chamada ?>);'>Responder</button>
                       </div>
                     </form>
                   </div>
@@ -212,7 +215,7 @@ include "alertas.php";
 
                   </div>
                 </div>
-                <?php }elseif ( $validar_func == 0) {?>
+                <?php }elseif ($validar_func == false) { ?>
                 <div class="row">
                   <div class="col-md-6">
                      <?php  
@@ -263,9 +266,9 @@ include "alertas.php";
                             
 
                             <div class='form-group'>
-                                <button class='btn btn btn-danger' style='width:30%;'>
+                                <a class='btn btn btn-danger' style='width:30%;' href='#abrirModal'>
                                   Andamento
-                                </button>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                                </a>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                                 <button class='btn btn btn-info' style='width: 30%;' onclick='finalizar_chat($id_chamada);'>
                                   Finalizar
                                 </button><br><br>
@@ -389,6 +392,8 @@ include "alertas.php";
 
 
 </script>
+
+
 
                       <div>
                         <i class='fas fa-clock bg-gray'></i>
