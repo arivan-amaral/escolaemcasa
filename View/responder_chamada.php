@@ -45,7 +45,8 @@ include "alertas.php";
   foreach ($res_chamada as $key => $value) {
     $id_diretor = $value['funcionario_id'];
     $id_funci_respondeu = $value['func_respondeu_id'];
-    $data_previsao= $value['data_previsao'];
+    $data_pre= new DateTime($value['data_previsao']);
+    $data_previsao = $data_pre->format('d-m-Y');
     $data_retorno= $value['data_retorno'];
     $id_setor = $value['setor_id'];
     $funcionario_id = $value['funcionario_id'];
@@ -126,11 +127,31 @@ include "alertas.php";
                 <?php if ($validar_func > 0) { ?>
                 <div class="row">
                   <div class="col-md-6">
+                     <h5>Gerente: <?php echo $nome_gerente; ?> <br>
+                      <br>
+                      </h5>
+                    <?php  
+                      $res_retorno =  buscar_pessoa_chat($conexao,$id_chamada,$idFuncionario);
+                      foreach ($res_retorno as $key => $value) {
+                      $mensagem = $value['mensagem'];
+                      $arquivo = $value['arquivo'];
+                      $data_anterior = $value['data'];
+
+                      echo "<div class='col-md-12'><br>
+                              <h6 >Retorno &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Data:$data_anterior </h6>
+                              <textarea type='text' class='form-control' rows='10'  disabled>$mensagem</textarea>
+                              <br>
+                              ";
+                              if ($arquivo != "") {
+                                echo"<h4 class='card-title'>Anexo</h4>
+                              <br><a class='btn btn-block btn-success' href='chamadas/$arquivo' download>Arquivo</a> ";
+                              }
+                            echo"</div>";
+                          }
+                    ?>
                     <form class="mt-12" action="../Controller/Cadastrar_chat_chamado.php" method="post" enctype="multipart/form-data">
-                        <h5>Gerente: <?php echo $nome_gerente; ?> <br>
-                       Data: <?php echo $data_retorno; ?></h5>
-                        <br>
-                        <h6 >Retorno &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Previsão de Solução:  <?php echo $data_previsao; ?></h6>
+                       
+                        <h6 >Retorno &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Previsão de Solução:  </h6>
                         <input type="hidden" name="id_funcionario" id="id_funcionario" value="<?php echo $idFuncionario ?>">
                         <input type="hidden" name="id_chamado" id="id_chamado" value="<?php echo $id_chamada ?>">
                         <textarea type='text' class='form-control' rows='10' name="resposta" id="resposta" required=""></textarea>
@@ -143,28 +164,9 @@ include "alertas.php";
                             <input type="datetime-local" name="data_previsao" id="data_previsao" class="form-control" required="">
                         </div>
                       <div onclick='carregando();'>
-                        <button type="submit" class="btn btn-block btn-primary">Responder</button>
+                        <button type="submit" class="btn btn-block btn-primary" onclick='responder_chat($id_chamada);'>Responder</button>
                       </div>
                     </form>
-                    <?php  
-                      $res_retorno =  buscar_pessoa_chat($conexao,$id_chamada,$idFuncionario);
-                      foreach ($res_retorno as $key => $value) {
-                      $mensagem = $value['mensagem'];
-                      $arquivo = $value['arquivo'];
-                      $data_anterior = $value['data'];
-
-                      echo "<div class='col-md-12'><br>
-                              <h6 >Retorno &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Data &nbsp;&nbsp;:$data_anterior </h6>
-                              <textarea type='text' class='form-control' rows='10'  disabled>$mensagem</textarea>
-                              <br>
-                              ";
-                              if ($arquivo != "") {
-                                echo"<h4 class='card-title'>Anexo</h4>
-                              <br><a class='btn btn-block btn-success' href='chamadas/$arquivo' download>Arquivo</a> ";
-                              }
-                            echo"</div>";
-                          }
-                    ?>
                   </div>
                   <div class="col-md-6">
                     <?php  

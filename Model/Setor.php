@@ -17,8 +17,8 @@ function cadastrar_setor($conexao,$nome) {
       $sql->execute(array('nome' =>$nome));
 }
 
-function buscar_setor($conexao,$funcionario_id){
-   $result = $conexao->query("SELECT * FROM relacao_setor_funcionario where funcionario_id=$funcionario_id ORDER BY id asc");
+function buscar_setor($conexao){
+   $result = $conexao->query("SELECT * FROM setor ORDER BY id asc");
     return $result;
 
 }

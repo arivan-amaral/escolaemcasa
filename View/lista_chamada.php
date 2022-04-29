@@ -20,7 +20,7 @@ include '../Model/Conexao.php';
 include '../Model/Setor.php';
 include '../Model/Chamada.php';
 
- $setor_id=1;
+ $setor_id= $_POST['setor'];
  $nome_setor = "";
  $quant_total = 0;
  $quant_finalizada = 0;
@@ -186,12 +186,12 @@ include '../Model/Chamada.php';
  
                 echo "<form method='POST' action='responder_chamada.php'>
                   <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
-                  <button class='btn btn-success' onclick='responder_chat($id_chamada);'>RESPONDER</button>
+                  <button class='btn btn-success'>Responder</button>
                 </form>";
               }else{
                 echo "<form method='POST' action='responder_chamada.php'>
                   <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
-                  <button class='btn btn-success' onclick='responder_chat($id_chamada);'>Ver Chat</button>
+                  <button class='btn btn-success'>Ver</button>
                 </form>";
               }
                 
