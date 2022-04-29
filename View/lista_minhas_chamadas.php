@@ -136,6 +136,14 @@ include '../Model/Chamada.php';
                       <button class='btn btn-success'>Retorno</button>
                     </form>
                   </div>";
+                  }elseif ($status=='atrasado') {
+                    echo"<div class='col-sm-6'>
+                    <form method='POST' action='responder_chamada.php'>
+                      <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
+                      <button class='btn btn-danger'>Retorno</button>
+                    </form>
+                  </div>";
+
                   }else{
                     echo"<div class='col-sm-6'>
                     <form method='POST' action='responder_chamada.php'>
