@@ -275,7 +275,14 @@ if (!isset($_SESSION['idprofessor'])) {
                   ?>  
       <!-- ################################################################################# -->
   <form action="../Controller/Cadastrar_conteudo.php" method="post">
+    <input type="hidden" name="url_get" value="<?php echo $url_get; ?>">
 
+    <input type="hidden" name="idserie" id="idserie" value="<?php echo $idserie; ?>">
+    <input type="hidden" name="idescola" id="idescola" value="<?php echo $idescola; ?>">
+    <input type="hidden" name="idturma" id="idturma" value="<?php echo $idturma; ?>">
+    <input type="hidden" id="iddisciplina" value="<?php echo $iddisciplina; ?>">
+
+    
       <div class="row">
 
         <div class="col-sm-3">
@@ -681,12 +688,7 @@ if ($idserie>2) {
    <div class="row" id="inputs"></div>
 
 
-          <input type="hidden" name="url_get" value="<?php echo $url_get; ?>">
-
-          <input type="hidden" name="idserie" id="idserie" value="<?php echo $idserie; ?>">
-          <input type="hidden" name="idescola" id="idescola" value="<?php echo $idescola; ?>">
-          <input type="hidden" name="idturma" id="idturma" value="<?php echo $idturma; ?>">
-          <input type="hidden" id="iddisciplina" value="<?php echo $iddisciplina; ?>">
+         
 
       <div class="row" id="botao_continuar">
         
