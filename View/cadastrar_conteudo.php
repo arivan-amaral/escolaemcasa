@@ -282,13 +282,13 @@ if (!isset($_SESSION['idprofessor'])) {
     <input type="hidden" name="idturma" id="idturma" value="<?php echo $idturma; ?>">
     <input type="hidden" id="iddisciplina" value="<?php echo $iddisciplina; ?>">
 
-     
+
       <div class="row">
 
         <div class="col-sm-3">
           <div class="form-group">
             <label for="exampleInputEmail1">Data da aula</label>
-            <input type="date" class="form-control" name="data_frequencia" id="data_frequencia" required="" min="<?php echo $_SERVER['ano_letivo']."01-01"; ?>" max="<?php echo $_SERVER['ano_letivo']."12-31"; ?>" onchange="verifica_dia_letivo('data_frequencia');">
+            <input type="date" class="form-control" name="data_frequencia" id="data_frequencia" required="" min="<?php echo date("Y")."01-01"; ?>" max="<?php echo  date("Y")."12-31"; ?>" onchange="verifica_dia_letivo('data_frequencia');">
             <!-- <input type="date" class="form-control" name="data_frequencia" id="data_frequencia" required="" onchange="lista_frequencia_aluno();"> -->
           </div>
         </div>   
