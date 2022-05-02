@@ -342,17 +342,21 @@ setTimeout('dia_doservidor_publico();',3000);
 
                 var data = google.visualization.arrayToDataTable([
                   <?php 
-                      $result_ativos=$conexao->query("SELECT COUNT(*) AS ativo FROM aluno where status like 'Ativo' ");
+                  $ano_letivo=$_SESSION['ano_letivo'];
+                      $result_ativos=$conexao->query("SELECT COUNT(*) AS ativo FROM ecidade_matricula where
+
+                        ecidade_matricula.calendario_ano='$ano_letivo' AND
+                        ecidade_matricula.matricula_ativa='S' AND
+                        ecidade_matricula.matricula_concluida='N'   
+
+                           ");
                       $ativo=0;
                       foreach ($result_ativos as $key => $value) {
                         $ativo=$value['ativo'];
                       }
 
-                      $result_bloqueado=$conexao->query("SELECT COUNT(*) AS bloqueado FROM aluno where status like 'Desativado' ");
-                      $bloqueado=0;
-                      foreach ($result_bloqueado as $key => $value) {
-                        $bloqueado=$value['bloqueado'];
-                      }
+                     
+                        $bloqueado=0;
                     
                     echo "
                     ['Task', 'Hours per Day'],
