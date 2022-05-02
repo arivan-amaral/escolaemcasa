@@ -282,7 +282,7 @@ if (!isset($_SESSION['idprofessor'])) {
     <input type="hidden" name="idturma" id="idturma" value="<?php echo $idturma; ?>">
     <input type="hidden" id="iddisciplina" value="<?php echo $iddisciplina; ?>">
 
-    
+     
       <div class="row">
 
         <div class="col-sm-3">
