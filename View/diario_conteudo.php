@@ -94,9 +94,29 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
 
 
     @media print {
-
-        .pagebreak { page-break-before: always; } /* page-break-after works, as well */
+      .no-print, .no-print *
+      {
+          display: none !important;
       }
+        .pagebreak { page-break-before: always; } /* page-break-after works, as well */
+    }
+
+  
+  .button {
+    width: 100%;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: #008CBA;
+
+  } /* Blue */
 
 </style>
 
@@ -112,7 +132,13 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
 
 <body lang=PT-BR style=''>
 
+<p class="no-print">
+  <br>
+  <br>
+  
+<a href='#'class="btn btn-block btn-primary button " onclick='print();'>IMPRIMIR</a> 
 
+</p>
 
 <?php
 $idescola=$_GET['idescola'];

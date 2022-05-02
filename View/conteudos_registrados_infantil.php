@@ -22,7 +22,7 @@
   <span style='mso-ignore:vglayout;
   position:absolute;z-index:251660288;left:0px;margin-left:15px;margin-top:
   9px;width:49px;height:53px'><img width=49 height=53
-  src="regitro_conteudo_arquivos/image002.jpg" v:shapes="Imagem_x0020_2"></span><span
+  src="imagens/logo.png" v:shapes="Imagem_x0020_2"></span><span
   style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
   mso-fareast-language:PT-BR'><o:p></o:p></span></p>
@@ -271,7 +271,7 @@ foreach ($result_conteudo as $key => $value) {
 
   }
 
-   if (!array_key_exists($disciplina_id,$abreviacao_displina_da_data[$data_conte_bd] )) {
+   if (!array_key_exists($disciplina_id,$abreviacao_displina_da_data  )) {
       $abreviacao_displina_da_data[$data_conte_bd][$disciplina_id]=$disciplinas_regente_abreviacao[$disciplina_id];
    }
 }
