@@ -250,7 +250,7 @@
 <?php
 $disciplinas=" ( disciplina_id=40 or disciplina_id=43 or  disciplina_id=41 ) ";
 $descricao="";
-
+ 
 $result_conteudo= $conexao->query("SELECT * FROM conteudo_aula where  turma_id=$idturma and escola_id=$idescola  and data BETWEEN '$data_inicial' and '$data_final' order by data asc ");
 $conta=1;
 $array_datas = array();

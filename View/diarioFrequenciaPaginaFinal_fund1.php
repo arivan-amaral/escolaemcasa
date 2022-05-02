@@ -380,11 +380,11 @@ foreach ($result_escola as $key => $value) {
 
   
   <?php
+// disciplina_id=$iddisciplina and 
 $result_data_aula=$conexao->query("
 SELECT  data_frequencia,aula FROM frequencia WHERE
 escola_id=$idescola and
 turma_id=$idturma and
-disciplina_id=$iddisciplina and 
 data_frequencia BETWEEN '$data_inicio_trimestre' and '$data_fim_trimestre' GROUP BY data_frequencia, aula  LIMIT $inicio,$fim ");
 
 $array_data_aula=array();
@@ -470,11 +470,11 @@ for ($i=$conta_data; $conta_data<$limite_data ; $i++) {
 
 <!-- verifica as datas da avaliações -->
 <?php
+// disciplina_id=$iddisciplina and 
 $result_nota_aula=$conexao->query("
 SELECT avaliacao,data_nota FROM nota_parecer WHERE
 escola_id=$idescola and
 turma_id=$idturma and
-disciplina_id=$iddisciplina and 
 periodo_id=$periodo_id  group by avaliacao,periodo_id,data_nota limit 3");
 
 $array_data_nota=array();
@@ -587,19 +587,25 @@ $conta_presenca=1;
     $aula=$array_aula[$key];
     $data_frequencia=$array_data_aula[$key];
 
-    $res_pre=$conexao->query("SELECT presenca from frequencia where presenca=1 and aluno_id=$idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and data_frequencia='$data_frequencia' and aula='$aula' ");
-   
-    // $res_pre=$conexao->query("SELECT presenca from frequencia where presenca=1 and aluno_id=$idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and data_frequencia='$data_frequencia' and aula='$aula'
-    // 
+    // $res_pre=$conexao->query("SELECT presenca from frequencia where presenca=1 and aluno_id=$idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and data_frequencia='$data_frequencia' and aula='$aula' ");
 
-     foreach ($res_pre as $key_res_pre => $value_res_pre) {
-      $presenca=".";
-     }
+    //  foreach ($res_pre as $key_res_pre => $value_res_pre) {
+    //   $presenca=".";
+    //  }
 
-    if (isset($_GET['tokem'])) {
-           $presenca="|SELECT presenca from frequencia where presenca=1 and aluno_id=$idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and data_frequencia='$data_frequencia' and aula='$aula'|".$res_pre->rowCount();
-
-     }
+    $res_pre=$conexao->query("SELECT presenca from frequencia where  aluno_id=$idaluno 
+       and turma_id=$idturma and data_frequencia>='$data_matricula' and  data_frequencia='$data_frequencia' and aula='$aula'  ");
+      
+      $presenca="-";
+      foreach ($res_pre as $key => $value) {
+        
+        if ($value['presenca']==1) {
+            $presenca=".";
+        }else if ($value['presenca']==0){
+            $presenca="F";
+        }
+           
+      }
    
   ?>
   
@@ -649,11 +655,11 @@ $conta_presenca=1;
 <?php
  
 // faltas trimestre 1
+// disciplina_id=$iddisciplina and 
 $res_fre_t1=$conexao->query("
 SELECT count(*) as 'quantidade' FROM frequencia WHERE
 escola_id=$idescola and
 turma_id=$idturma and
-disciplina_id=$iddisciplina and 
 presenca=0 and data_frequencia>='$data_matricula' and data_frequencia BETWEEN '$data_inicio_trimestre' and '$data_fim_trimestre' and aluno_id=$idaluno ");
 
 $quantidade_falta1=0;

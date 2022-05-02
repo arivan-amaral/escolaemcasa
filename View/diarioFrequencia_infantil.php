@@ -357,8 +357,9 @@ $result_data_aula=$conexao->query("
 SELECT data_frequencia,aula FROM frequencia WHERE
 escola_id=$idescola and
 turma_id=$idturma and
-disciplina_id=$iddisciplina and
-data_frequencia BETWEEN '$data_inicio_trimestre' and '$data_fim_trimestre' group by aula,data_frequencia order by data_frequencia,aula asc limit $inicio,$fim ");
+
+
+data_frequencia BETWEEN '$data_inicio_trimestre' and '$data_fim_trimestre' group by data_frequencia, aula order by data_frequencia,aula asc limit $inicio,$fim ");
 $array_data_aula=array();
 $array_aula=array();
 foreach ($result_data_aula as $key => $value) {
@@ -513,16 +514,31 @@ $conta_presenca=1;
  foreach ($array_aula as $key => $value) {
     $aula=$array_aula[$key];
     $data_frequencia=$array_data_aula[$key];
+      // -- and disciplina_id=$iddisciplina
+      // 
+      // presenca=1 and
+    $res_pre=$conexao->query("SELECT presenca from frequencia where  aluno_id=$idaluno 
 
-    $res_pre=$conexao->query("SELECT presenca from frequencia where presenca=1 and aluno_id=$idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and data_frequencia>='$data_matricula' and  data_frequencia='$data_frequencia' and aula='$aula' ");
-     
-    if ($res_pre->rowCount()>0) {
-      $presenca=".";
-    }else{
-      $presenca="";
-       $presenca="F";
+       and turma_id=$idturma and data_frequencia>='$data_matricula' and  data_frequencia='$data_frequencia' and aula='$aula'  ");
+      
+      $presenca="-";
+      foreach ($res_pre as $key => $value) {
+        
+        if ($value['presenca']==1) {
+            $presenca=".";
+        }else if ($value['presenca']==0){
+            $presenca="F";
+        }
+           
+      }
 
-    }
+    // if ($res_pre->rowCount()>0) {
+    //   $presenca=".";
+    // }else{
+    //   $presenca="";
+    //    $presenca="F";
+
+    // }
    
   ?>
   

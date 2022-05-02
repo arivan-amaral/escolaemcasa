@@ -48,9 +48,32 @@ try {
       <a   href='coordenador_relatorio_video_aluno.php?idturma=$idturma&nome_turma=$nome_turma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat' target='_blank'>
       <i class='fa fa-play'></i> 
       VER RELATÓRIO DE VÍDEOS DE ALUNO
-      </a>     
+      </a> ";
 
-      <a   href='relatorio_frequencia.php?idturma=$idturma&nome_turma=$nome_turma&idescola=$idescola&idserie=$idserie' class='btn btn-danger btn-block btn-flat' target='_blank'>
+      if ($idserie<8) {
+
+          $result.= "
+            <a   href='impressao_diario_frequencia.php?iddisciplina=1000&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-danger btn-block btn-flat' target='_blank'>
+            <i class='fa fa-calendar'></i> 
+            FICHA DE RENDIMENTO TRI I
+            </a> 
+
+            <a   href='impressao_diario_frequencia.php?iddisciplina=1000&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=2' class='btn btn-danger btn-block btn-flat' target='_blank'>
+            <i class='fa fa-calendar'></i> 
+            FICHA DE RENDIMENTO TRI II
+            </a>   
+            <a   href='impressao_diario_frequencia.php?iddisciplina=1000&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=3' class='btn btn-danger btn-block btn-flat' target='_blank'>
+            <i class='fa fa-calendar'></i> 
+            FICHA DE RENDIMENTO TRI III
+            </a>  "; 
+      }
+
+
+
+
+     $result.= "
+
+      <a   href='relatorio_frequencia.php?idturma=$idturma&nome_turma=$nome_turma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat' target='_blank'>
       <!-- i class='fa fa-play'></i --> 
       RELATÓRIO DE FREQUÊNCIA
       </a>  

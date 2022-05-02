@@ -185,9 +185,14 @@ $cont=1;
                 $email=$value['email'];
                 $senha=$value['senha'];
                 $marcado="";*/
-  $marcado="";
+                $marcado="";
+                if ($idserie<8) {
+                    $resultado_fre=verificar_frequencia_infantil_fund1($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data,$id,$aula);
 
-                  $resultado_fre=verificar_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data,$id,$aula);
+                }else{
+                   $resultado_fre=verificar_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data,$id,$aula);
+                }
+
                     foreach ($resultado_fre as $key2 => $value2) {
                       $marcado='checked';
                     }

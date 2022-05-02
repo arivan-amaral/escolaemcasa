@@ -527,6 +527,17 @@ function verificar_frequencia($conexao,$idescola,$idturma,$iddisciplina,$profess
       turma_id=$idturma and aluno_id=$aluno_id and presenca=1");
     return $resultado;
 }
+function verificar_frequencia_infantil_fund1($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data_frequencia,$aluno_id,$aula) {
+    $resultado=$conexao->query(" SELECT * FROM frequencia WHERE
+
+      data_frequencia='$data_frequencia' and 
+    
+      escola_id=$idescola and 
+      aula='$aula' and 
+      turma_id=$idturma and aluno_id=$aluno_id and presenca=1");
+    return $resultado;
+}
+
 function verificar_frequencia_na_data($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data_frequencia,$aula) {
     $resultado=$conexao->query(" SELECT * FROM frequencia WHERE
 
