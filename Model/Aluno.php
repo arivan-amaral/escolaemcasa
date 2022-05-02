@@ -365,7 +365,7 @@ function listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $ide
 }
 
 function listar_conteudo_aula_cadastrado_regente($conexao, $iddisciplina, $idturma, $idescola, $professor_id,$ano_letivo) {
-    $resultado=$conexao->query("SELECT conteudo_aula.id,data,aula FROM conteudo_aula WHERE
+    $resultado=$conexao->query("SELECT conteudo_aula.id,data,aula,professor_id FROM conteudo_aula WHERE
         -- $iddisciplina 
         -- and 
        -- disciplina.iddisciplina= disciplina_id and 
