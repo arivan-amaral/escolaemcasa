@@ -4,7 +4,7 @@
     include("../Model/Aluno.php");
     include("../Model/Escola.php");
     include("Conversao.php");
-    
+     
 
 try {
 
@@ -80,10 +80,11 @@ try {
         // }
 
 
-            // if ($idconteudo=="") {
-            //      cadastro_conteudo_aula($conexao,$descricao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula);
-            //     $conteudo_aula_id= $conexao->lastInsertId();
-            // }
+            if ($idconteudo=="") {
+                 cadastro_conteudo_aula($conexao,$descricao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula,$ano_frequencia,1);
+                $conteudo_aula_id= $conexao->lastInsertId();
+               $idconteudo= $conteudo_aula_id;
+            }
 
 
 

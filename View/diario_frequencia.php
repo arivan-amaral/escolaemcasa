@@ -267,12 +267,20 @@ if (!isset($_SESSION['idprofessor'])) {
                                   </div>";
                   ?>  
       <!-- ################################################################################# -->
+
+      <?php 
+        if ($idserie>7) {
+            $esconde="";
+        }else{
+           $esconde="hidden";
+        }
+      ?>
   <form action="../Controller/Cadastrar_frequencia.php" method="post">
 
       <div class="row">
-        <div class="col-sm-1"></div>
+      
         
-       <div class="col-sm-4" hidden>
+       <div class="col-sm-3" <?php echo "$esconde"; ?> >
           <div class="form-group">
              <label for="exampleInputEmail1">Data da aula</label>
             <input  type="date" class="form-control" name="data_frequencia" id="data_frequencia" required="" min="2021-01-01" >
@@ -280,9 +288,9 @@ if (!isset($_SESSION['idprofessor'])) {
            </div>
         </div>    
 
-        <div class="col-sm-4" hidden>
+        <div class="col-sm-3" <?php echo "$esconde"; ?> >
           <div class="form-group">
-            <label for="exampleInputEmail1" hidden>Escolha a aula</label>
+            <label for="exampleInputEmail1" <?php echo "$esconde"; ?> >Escolha a aula</label>
 
             <select  class="form-control" id='aula' required  name='aula' onchange="lista_frequencia_aluno();">
               <?php

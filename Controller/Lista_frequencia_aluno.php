@@ -6,7 +6,7 @@
     
 
 try {
-
+ 
     $professor_id=$_SESSION['idfuncionario'];
     $ano_letivo=$_SESSION['ano_letivo'];
 
@@ -239,7 +239,7 @@ $cont=1;
 
 $res_conteu=verificar_conteudo_aula($conexao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula);
 
-$conteudo_aula="";
+$conteudo_aula=" ";
 foreach ($res_conteu as $key_con => $value_con) {
   $conteudo_aula=$value_con['descricao'];
 }
@@ -251,12 +251,12 @@ foreach ($res_conteu as $key_con => $value_con) {
       
    
 
-        // $result.="<div class='col-sm-12'>
-        //   <div class='form-group'>
-        //     <label for='exampleInputEmail1'>Conteúdo da aula</label>
-        //     <textarea class='form-control' id='descricao_conteudo' rows='5' name='descricao' required>$conteudo_aula</textarea>
-        //   </div>
-        // </div>";      
+        $result.="<div class='col-sm-12'>
+          <div class='form-group'>
+    
+            <textarea class='form-control' id='descricao_conteudo' rows='5' name='descricao' hidden>$conteudo_aula</textarea>
+          </div>
+        </div>";      
    
 
         $result.="<div class='col-sm-12'>
