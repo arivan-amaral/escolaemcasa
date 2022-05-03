@@ -28,7 +28,7 @@ session_start();
 
                   <div class="card-header">
 
-                    <h3 class="card-title">ASSOCIAÇÕES DO FÚNCIONÁRIO: <span class="text-warning"><?=$professor?></span></h3>
+                    <h3 class="card-title">ASSOCIAÇÕES DO FUNCIONÁRIO: <span class="text-warning"><?=$professor?></span></h3>
 
                   </div>
 
