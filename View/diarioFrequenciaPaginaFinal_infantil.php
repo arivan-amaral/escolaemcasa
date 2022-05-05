@@ -15,12 +15,29 @@ function diario_frequencia_pagina_final_infantil($conexao,$idescola,$idturma,$id
     */
   
   $nome_disciplina='';
-  $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina=$iddisciplina");
-  foreach ($result_disc as $key => $value) {
-    $nome_disciplina=$value['nome_disciplina'];
+
+  if ($idserie>2 && $iddisciplina==1000) {
+    
+      $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina in (1,5, 6,7,14, 35,47)");
+
+  }elseif ($idserie==1 && $iddisciplina==1000) {
+      $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina in (40,42,43,44)");
+      
+    
+  }elseif ($idserie==2 && $iddisciplina==1000) {
+      $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina in (40,42,44)");
+    
+  }else{
+      $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina=$iddisciplina");
+
   }
 
-    $tipo_ensino="";
+  foreach ($result_disc as $key => $value) {
+    $nome_disciplina.=$value['nome_disciplina'].", ";
+  }
+
+
+$tipo_ensino="";
 
 if ($idserie <3) {
   $tipo_ensino="Educação Infantil";

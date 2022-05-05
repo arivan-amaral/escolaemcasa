@@ -17,10 +17,27 @@ if ($idserie <3) {
 
 
 
-$result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina=$iddisciplina");
-foreach ($result_disc as $key => $value) {
-  $nome_disciplina=$value['nome_disciplina'];
+
+if ($idserie>2 && $iddisciplina==1000) {
+  
+    $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina in (1,5, 6,7,14, 35,47)");
+
+}elseif ($idserie==1 && $iddisciplina==1000) {
+    $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina in (40,42,43,44)");
+    
+  
+}elseif ($idserie==2 && $iddisciplina==1000) {
+    $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina in (40,42,44)");
+  
+}else{
+    $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina=$iddisciplina");
+
 }
+
+foreach ($result_disc as $key => $value) {
+  $nome_disciplina.=$value['nome_disciplina'].", ";
+}
+
 
 $colspan="100%";
 ?>
@@ -517,9 +534,7 @@ $conta_presenca=1;
       // -- and disciplina_id=$iddisciplina
       // 
       // presenca=1 and
-    $res_pre=$conexao->query("SELECT presenca from frequencia where  aluno_id=$idaluno 
-
-       and turma_id=$idturma and data_frequencia>='$data_matricula' and  data_frequencia='$data_frequencia' and aula='$aula'  ");
+      $res_pre=$conexao->query("SELECT presenca from frequencia where  aluno_id=$idaluno and turma_id=$idturma and data_frequencia>='$data_matricula' and  data_frequencia='$data_frequencia' and aula='$aula'  ");
       
       $presenca="-";
       foreach ($res_pre as $key => $value) {
@@ -532,13 +547,7 @@ $conta_presenca=1;
            
       }
 
-    // if ($res_pre->rowCount()>0) {
-    //   $presenca=".";
-    // }else{
-    //   $presenca="";
-    //    $presenca="F";
 
-    // }
    
   ?>
   

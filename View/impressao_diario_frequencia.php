@@ -61,7 +61,7 @@ xmlns="http://www.w3.org/TR/REC-html40">
   height: 150px;
   /*border: 3px solid #73AD21;*/
 }
-
+ 
 </style>
 
 <link rel=dataStoreItem href="pla_arquivos/item0001.xml"
@@ -155,7 +155,7 @@ if ($idserie<3) {
             $limite_aula+0,
             $periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo);
         
-}elseif ($idserie>3 && $idserie<8) {
+}elseif ($idserie>=3 && $idserie<8) {
 
         //linha 409 508 
         diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo); 

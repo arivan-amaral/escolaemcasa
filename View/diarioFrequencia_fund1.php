@@ -16,10 +16,24 @@ if ($idserie <3) {
 }
 
 
+if ($idserie>2 && $iddisciplina==1000) {
+  
+    $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina in (1,5, 6,7,14, 35,47)");
 
-$result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina=$iddisciplina");
+}elseif ($idserie==1 && $iddisciplina==1000) {
+    $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina in (40,42,43,44)");
+    
+  
+}elseif ($idserie==2 && $iddisciplina==1000) {
+    $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina in (40,42,44)");
+  
+}else{
+    $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina=$iddisciplina");
+
+}
+
 foreach ($result_disc as $key => $value) {
-  $nome_disciplina=$value['nome_disciplina'];
+  $nome_disciplina.=$value['nome_disciplina'].", ";
 }
 
 $colspan="100%";
@@ -261,23 +275,7 @@ foreach ($result_escola as $key => $value) {
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
   color:black;mso-fareast-language:PT-BR'>UNIDADE: 
   <?php 
-//   if ($periodo_id==1) {
-//     $data_inicio_trimestre=$_SESSION['inicio_periodo'];
-//     $data_fim_trimestre=$_SESSION['fim_periodo'];
-//     echo "I TRIMESTRE ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
-// }elseif ($periodo_id==2) {
-//     $data_inicio_trimestre="2021-07-27";
-//     $data_fim_trimestre="2021-10-01";
-//     echo "II TRIMESTRE ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
 
-
-// }elseif ($periodo_id==3) {
-//     $data_inicio_trimestre="2021-10-04";
-//     $data_fim_trimestre="2021-12-21";
-//     echo "III TRIMESTRE ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
-  
-// }
-// 
      echo " $descricao_trimestre ".converte_data($data_inicio_trimestre)." ".converte_data($data_fim_trimestre);
 
 
@@ -353,12 +351,45 @@ foreach ($result_escola as $key => $value) {
 
 
   <?php
+
+
+  if ($idserie>2 && $iddisciplina==1000) {
+    
+      $result_data_aula=$conexao->query("
+      SELECT  data_frequencia,aula FROM frequencia WHERE
+      disciplina_id in (1,5, 6,7,14, 35,47) and 
+      escola_id=$idescola and
+      turma_id=$idturma and
+      data_frequencia BETWEEN '$data_inicio_trimestre' and '$data_fim_trimestre' group by aula,data_frequencia order by data_frequencia,aula asc limit $inicio,$fim ");
+
+  }elseif ($idserie<3 && $iddisciplina==1000) {
+    // disciplina_id in (1,5, 6,7,14, 35,47) and 
+
+    $result_data_aula=$conexao->query("
+    SELECT  data_frequencia,aula FROM frequencia WHERE
+    escola_id=$idescola and
+    turma_id=$idturma and
+    data_frequencia BETWEEN '$data_inicio_trimestre' and '$data_fim_trimestre' group by aula,data_frequencia order by data_frequencia,aula asc limit $inicio,$fim ");
+      
+    
+  }else{
+    
+
+    $result_data_aula=$conexao->query("
+    SELECT  data_frequencia,aula FROM frequencia WHERE
+    escola_id=$idescola and
+    turma_id=$idturma and
+    disciplina_id=$iddisciplina and
+    data_frequencia BETWEEN '$data_inicio_trimestre' and '$data_fim_trimestre' group by aula,data_frequencia order by data_frequencia,aula asc limit $inicio,$fim ");
+
+  }
+
+
 // disciplina_id=$iddisciplina and
-$result_data_aula=$conexao->query("
-SELECT  data_frequencia,aula FROM frequencia WHERE
-escola_id=$idescola and
-turma_id=$idturma and
-data_frequencia BETWEEN '$data_inicio_trimestre' and '$data_fim_trimestre' group by aula,data_frequencia order by data_frequencia,aula asc limit $inicio,$fim ");
+
+
+
+
 $array_data_aula=array();
 $array_aula=array();
 foreach ($result_data_aula as $key => $value) {
@@ -514,20 +545,34 @@ $conta_presenca=1;
     $aula=$array_aula[$key];
     $data_frequencia=$array_data_aula[$key];
 
-    // $res_pre=$conexao->query("SELECT presenca from frequencia where presenca=1 and aluno_id=$idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and data_frequencia>='$data_matricula' and  data_frequencia='$data_frequencia' and aula='$aula' ");
-     
-    // if ($res_pre->rowCount()>0) {
-    //   $presenca=".";
-    // }else{
-    //   $presenca="";
-    //    $presenca="F";
 
-    // }
+    // $res_pre=$conexao->query("SELECT presenca from frequencia where  aluno_id=$idaluno 
+    //    and turma_id=$idturma and data_frequencia>='$data_matricula' and  data_frequencia='$data_frequencia' and aula='$aula'  ");
+      
 
+    if ($idserie>2 && $iddisciplina==1000) {
+       
+        $res_pre=$conexao->query("SELECT presenca from frequencia where
+        disciplina_id in (1,5, 6,7,14, 35,47) and 
+        aluno_id=$idaluno 
+       and turma_id=$idturma and data_frequencia>='$data_matricula' and  data_frequencia='$data_frequencia' and aula='$aula'  ");
 
-    $res_pre=$conexao->query("SELECT presenca from frequencia where  aluno_id=$idaluno 
+    }elseif ($idserie<3 && $iddisciplina==1000) {
+      // 
+
+      $res_pre=$conexao->query("SELECT presenca from frequencia where  aluno_id=$idaluno 
        and turma_id=$idturma and data_frequencia>='$data_matricula' and  data_frequencia='$data_frequencia' and aula='$aula'  ");
       
+    }else{
+      
+
+       $res_pre=$conexao->query("SELECT presenca from frequencia where  aluno_id=$idaluno 
+       and turma_id=$idturma and data_frequencia>='$data_matricula' and  data_frequencia='$data_frequencia' and aula='$aula'  ");
+
+    }
+
+
+
       $presenca="-";
       foreach ($res_pre as $key => $value) {
         
