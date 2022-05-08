@@ -41,7 +41,50 @@ function CriaRequest() {
          return request;
 
  }
+function total_notas(id) {
+    document.getElementById('total'+id).value=0;
 
+    var nota_av1= document.getElementById('nota_av1'+id);
+    var nota_av2= document.getElementById('nota_av2'+id);
+    var nota_av3= document.getElementById('nota_av3'+id);
+    var nota_rp= document.getElementById('nota_rp'+id);
+    
+    if (isNaN(nota_av1.value)!=false) {
+        nota_av1.value=0;
+    }    
+    if (isNaN(nota_av2.value)!=false) {
+        nota_av2.value=0;
+    }    
+    if (isNaN(nota_av3.value)!=false) {
+        nota_av3.value=0;
+    }    
+    if (isNaN(nota_rp.value)!=false) {
+        nota_rp.value=0;
+    }
+
+    var media_nota=0;
+
+    var nota =parseFloat(nota_av1.value) + parseFloat(nota_av2.value) + parseFloat(nota_av3.value) ;
+
+        if (parseFloat(nota_rp.value) > parseFloat(nota_av3.value)) {
+           media_nota= (parseFloat(nota)- parseFloat(nota_av3.value) )+ parseFloat(nota_rp.value);
+         
+         }else{
+            media_nota=parseFloat(nota);
+         }
+
+    if (isNaN(media_nota)==false) {
+        
+        var x = media_nota.toFixed(1);
+        n = parseFloat(x);
+        document.getElementById('total'+id).value=n;
+        
+     
+
+    } 
+    
+
+}
 
 
 function finalizar_chat(id_chamado){

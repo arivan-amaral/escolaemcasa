@@ -211,17 +211,17 @@ try {
 
 
                                    $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>Nota AV1:</label>
-                                  <input type='text'  name='nota_av1$id' value='$nota1' style='width:50px;' onkeyup='somenteNumeros(this,3);'>";
+                                  <input type='text' id='nota_av1$id'  name='nota_av1$id' value='$nota1' style='width:50px;' onkeyup='somenteNumeros(this,3);total_notas($id);'>";
 
 
                                    $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>Nota AV2:</label>
-                                  <input type='text'  name='nota_av2$id' value='$nota2' style='width:50px;' onkeyup='somenteNumeros(this,3);'>";
+                                  <input type='text' id='nota_av2$id' name='nota_av2$id' value='$nota2' style='width:50px;' onkeyup='somenteNumeros(this,3);total_notas($id);'>";
 
                                    $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>Nota AV3:</label>
-                                  <input type='text'  name='nota_av3$id' value='$nota3' style='width:50px;' onkeyup='somenteNumeros(this,4);'>";
+                                  <input type='text' id='nota_av3$id' name='nota_av3$id' value='$nota3' style='width:50px;' onkeyup='somenteNumeros(this,4);total_notas($id);'>";
 
                                    $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>Nota RP:</label>
-                                  <input type='text'  name='nota_RP$id' value='$notarp' style='width:50px;' onkeyup='somenteNumeros(this,4);'>
+                                  <input type='text' id='nota_rp$id'  name='nota_RP$id' value='$notarp' style='width:50px;' onkeyup='somenteNumeros(this,4);total_notas($id);'>
                                   
                                   ";                     
 
@@ -233,7 +233,7 @@ try {
 
                                 
                                     $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>Total:</label>
-                                    <input type='text'  value='$media' style='width:50px; background-color: #FFDAB9;'>"; 
+                                    <input type='text' id='total$id' value='$media' style='width:50px; background-color: #FFDAB9;'>"; 
                                   
                                   $conta_aprovado=0;
                                       
