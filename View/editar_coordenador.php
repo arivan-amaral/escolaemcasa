@@ -13,34 +13,65 @@ if (!isset($_SESSION['idcoordenador'])) {
   
   include "barra_horizontal.php";
   include 'menu.php';
+  include '../Model/Coordenador.php';
+  include '../Model/Conexao.php';
+
+  $idfuncionario=$_REQUEST['idfuncionario'];
+
+  $res_coordenador=pesquisar_coordenador_por_id($conexao,$idfuncionario);
+  $nome='';
+  $email='';
+  $coordenador="";
+  $secretario="";
+  $diretor="";
+  $whatsapp="";
+
+  foreach ($res_coordenador as $key => $value) {
+      $nome=$value['nome'];
+      $email=$value['email'];
+      if ($value['descricao_funcao']=="Coordenador") {
+        $coordenador="selected";
+        // code...
+      }  
+      if ($value['descricao_funcao']=="Secretário") {
+        $secretario="selected";
+        // code...
+      }  
+      if ($value['descricao_funcao']=="Diretor") {
+        $diretor="selected";
+        // code...
+      }
+      $whatsapp=$value['whatsapp'];
+  }
   
   
 ?>
 
-<script src="ajax.js"></script>
+<script src="ajax.js?<?php echo rand(); ?>"></script>
 
 <div class="content-wrapper">
     <div class="row">
         <div class="col-md-1">
         </div>
          <div class="col-md-10">
-            <div class="card card-primary">
+            <div class="card card-secondary">
                   <div class="card-header">
-                    <h3 class="card-title">CADASTRO DE COORDENADOR / SECRETÁRIO</h3>
+                    <h3 class="card-title">EDITANDO  COORDENADOR / SECRETARIA</h3>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
-                  <form action="../Controller/Cadastrar_coordenador.php" method="POST">
+                  <form action="../Controller/Editar_coordenador.php" method="POST">
+                    <input type="hidden" name="idfuncionario" value="<?php echo $idfuncionario; ?>">
                     <div class="card-body">
 
                       <div class="form-group">
                         <label for="exampleInputEmail1">Nome</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" name="nome" placeholder="Nome" required="">
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="nome" placeholder="Nome" required="" value="<?php echo $nome; ?>">
                       </div>
 
                       <div class="form-group">
                         <label for="exampleInputEmail1">E-MAIL ou Usuário</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" name="email" placeholder="E-mail ou Usuário" required="">
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="email" placeholder="E-mail ou Usuário" required="" value="<?php echo $email; ?>">
                       </div>
 
                       <!--< div class="form-group">
@@ -56,22 +87,22 @@ if (!isset($_SESSION['idcoordenador'])) {
                         <label for="exampleInputEmail1">Função</label>
                           <select class="form-control" name="funcao" required="">
                           <option ></option>
-                          <option value="Coordenador">Coordenador</option>
-                          <option value="Secretário">Secretário</option>
-                          <option value="Diretor">Diretor</option>
+                          <option value="Diretor" <?php echo $diretor; ?>  >Diretor</option>
+                          <option value="Coordenador" <?php echo $coordenador; ?>  >Coordenador</option>
+                          <option value="Secretário" <?php echo $secretario; ?>  >Secretário</option>
                         </select>
                       </div>
 
                       <div class="form-group">
                         <label for="exampleInputEmail1">Whatsapp</label>
-                        <input type="text" id="phone" name="whatsapp" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" class="form-control" placeholder="(xx)x xxxx-xxxx" required="" />
+                        <input type="text" id="phone" name="whatsapp" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" class="form-control" placeholder="(xx)x xxxx-xxxx" required="" value="<?php echo $whatsapp; ?>">
                       </div>
                       
 
-                      <div class="form-group">
+                 <!--      <div class="form-group">
                         <label for="exampleInputEmail1">Criar Senha</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" name="senha" placeholder="Criar Senha" required="">
-                      </div>
+                      </div> -->
                       
                     
 

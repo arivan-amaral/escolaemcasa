@@ -69,7 +69,25 @@ try {
             $cargo = $row["descricao_funcao"];               
             $nivel_acesso_id = $row["nivel_acesso_id"];               
 
-            if ($cargo=="Coordenador") {
+            if ($cargo=="Diretor") {
+
+             $_SESSION["idfuncionario"] = $id;
+
+             $_SESSION["idsecretario"] = $id;
+             $_SESSION["nivel_acesso_id"] = $nivel_acesso_id;
+
+             $_SESSION["nome"] = $nome;
+
+             $_SESSION["email"] = $email;
+
+             $_SESSION["cargo"] = "Diretor";
+             $_SESSION["ano_letivo"] = $ano_letivo;
+             $_SESSION["ano_letivo_vigente"] = $ano_letivo;
+
+             $login_diretor++;
+
+
+           }else if ($cargo=="Coordenador") {
 
              $_SESSION["idfuncionario"] = $id;
 
@@ -180,16 +198,22 @@ try {
       }else if ($login_professor>0){
           $_SESSION['status']=1;
           header("Location:../View/professor.php");
+
       }else if ($login_secretario>0){
           $_SESSION['status']=1;
           header("Location:../View/secretario.php");
+
+      }else if ($login_diretor>0){
+          $_SESSION['status']=1;
+          header("Location:../View/secretario.php");
+
       }else if ($login_coordenador>0){
           $_SESSION['status']=1;
           header("Location:../View/coordenador.php");
       }else{
           $_SESSION['status']=0;
-          $_SESSION['mensagem']="Tente novamente!!";
-          header("location:../View/index.php?tokem=0"); 
+          $_SESSION['mensagem']="Tente novamente!";
+          header("location:../View/index.php"); 
       }
 
 

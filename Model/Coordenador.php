@@ -1,4 +1,9 @@
 <?php 
+	function pesquisar_coordenador_por_id($conexao,$idfuncionario) {
+    	$result=$conexao->query("SELECT * FROM funcionario WHERE idfuncionario=$idfuncionario   and funcionario.status=1 ");
+    	return $result ;
+	}
+
 
 	function pesquisar_imagem_coordenador($conexao, $id) {
     	$result=$conexao->query("SELECT * FROM imagem WHERE id_funcionario=$id ");
@@ -6,7 +11,7 @@
 	}
 
 	function pesquisar_coordenador($conexao, $pesquisa) {
-    	$result=$conexao->query("SELECT * FROM funcionario WHERE (descricao_funcao like 'Coordenador' or descricao_funcao like 'Coordenadora' or descricao_funcao like 'Secretário') and  nome like '%$pesquisa%'
+    	$result=$conexao->query("SELECT * FROM funcionario WHERE (descricao_funcao like 'Coordenador' or descricao_funcao like 'Coordenadora' or descricao_funcao like 'Secretário' or descricao_funcao like 'Diretor') and  nome like '%$pesquisa%'
     	and status=1 order by nivel_acesso_id desc , nome asc ");
     	return $result ;
 	}	
@@ -48,6 +53,12 @@
 	function cadastro_coordenador($conexao,$nome, $email, $descricao_funcao,$whatsapp, $senha){
 		$conexao->exec("INSERT INTO funcionario( nome, email, descricao_funcao,whatsapp, senha) 
 			VALUES ('$nome', '$email', '$descricao_funcao','$whatsapp', '$senha') ");
+		
+	}	
+
+	function editar_coordenador($conexao,$nome, $email, $descricao_funcao,$whatsapp,$idfuncionario){
+		$conexao->exec("UPDATE funcionario SET nome='$nome', email='$email', descricao_funcao='$descricao_funcao', whatsapp='$whatsapp' WHERE idfuncionario= $idfuncionario ");
+		 
 		
 	}
 	function dados_coordenador($conexao,$idcoordenador){

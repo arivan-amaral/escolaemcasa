@@ -66,7 +66,9 @@ foreach ($result as $key => $value) {
       <td>
        <a href='#fica$idfuncionario' onclick='listar_opcao_associacao_coordenador($idfuncionario);' name='fica$idfuncionario' class='btn btn-primary'>Associar a escola</a>
 
-       <a href='#excluir$idfuncionario' onclick='excluir_coordenador($idfuncionario);' name='excluir$idfuncionario' class='btn btn-danger'>Excluir</a>
+       <a href='#excluir$idfuncionario' onclick='excluir_coordenador($idfuncionario);' name='excluir$idfuncionario' class='btn btn-danger'>Excluir</a> 
+
+       <a href='editar_coordenador.php?idfuncionario=$idfuncionario'   class='btn btn-secondary'>Editar</a>
       </td>
       
     </tr>
