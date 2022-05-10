@@ -184,7 +184,7 @@ foreach ($_POST['aluno_id'] as $key => $value) {
           }else{
               // $conexao->query("SELECT * FROM nota_parecer where aluno_id=$aluno_id and escola_id =$idescola and disciplina_id=$iddisciplina and a  ");
 
-            $verifica_duplicidade=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$aluno_id,$periodo,$avaliacao);
+            $verifica_duplicidade=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$aluno_id,$periodo,$avaliacao,$ano_nota);
              $conta_total_nota=0;
              $nome_aluno_nota_duplicada="";
              foreach ($verifica_duplicidade as $key => $value) {
@@ -197,7 +197,7 @@ foreach ($_POST['aluno_id'] as $key => $value) {
                       $parecer_disciplina_id, $parecer_descritivo, $sigla,$idescola, $idturma, $iddisciplina, $aluno_id, $periodo, $data,$avaliacao,$funcionario_id,$ano_nota);
              }else if ($conta_total_nota==1) {
 
-                $verifica_duplicidade=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$aluno_id,$periodo,$avaliacao);
+                $verifica_duplicidade=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$aluno_id,$periodo,$avaliacao,$ano_nota);
                  foreach ($verifica_duplicidade as $key => $value) {
                       $idnota_bd=$value['idnota'];
                       $nota_bd=$value['nota'];

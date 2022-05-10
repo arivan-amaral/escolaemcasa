@@ -19,6 +19,7 @@ try {
     //$avaliacao=$_GET['avaliacao'];
     $idserie=$_GET['idserie'];
     $tamanho=4;
+    $ano_letivo=$_SESSION['ano_letivo'];
     
     $res_periodo=listar_data_por_periodo($conexao,$_SESSION['ano_letivo'],$idperiodo);
     $data_inicio_periodo='';
@@ -149,7 +150,7 @@ try {
                                    $array_notarp=array();
 
 
-                                  $result_n1=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av1');
+                                  $result_n1=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av1',$ano_letivo);
 
                                    $conta_total_nota=0;
                                    foreach ($result_n1 as $key => $value) {
@@ -160,7 +161,7 @@ try {
                                       $conta_total_nota++;
                                    }
 
-                                  $result_n2=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av2');
+                                  $result_n2=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av2',$ano_letivo);
                                    $conta_total_nota=0;
 
                                    foreach ($result_n2 as $key => $value) {
@@ -171,7 +172,7 @@ try {
                                       $conta_total_nota++;
                                    }
 
-                                  $result_nota3=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av3');
+                                  $result_nota3=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av3',$ano_letivo);
                                    $conta_total_nota=0;
 
                                    foreach ($result_nota3 as $key => $value) {
@@ -183,7 +184,8 @@ try {
 
                                    ###################### ARIVAN 03-11-2021
 
-                                  $result_nota_fund1_3=verifica_nota_diario_av3_fund1($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av3');
+                                  $result_nota_fund1_3=verifica_nota_diario_av3_fund1($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av3',$ano_letivo);
+
                                    $conta_total_nota_fund1=0;
                                    $nota_fund1_3=0;
                                    $array_notas_fund1_3=array();
@@ -198,7 +200,8 @@ try {
                   
 
 
-                                  $result_rp=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'RP');
+                                  $result_rp=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'RP',$ano_letivo);
+
                                    $conta_total_nota=0;
                                    foreach ($result_rp as $key => $value) {
                                       $idnota=$value['idnota'];
@@ -340,7 +343,7 @@ try {
 
 
 
-                              $result_verifica_av3=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av3');
+                              $result_verifica_av3=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av3',$ano_letivo);
                               $descricao_parecer_av3='';
                               foreach ($result_verifica_av3 as $key22 => $value22) {
                                  $descricao_parecer_av3=$value22['parecer_descritivo'];
@@ -359,7 +362,7 @@ try {
 
                       }else{// se for diagnostico inicial
 
-                              $result_verifica=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'DIAGNÓSTICO INICIAL');
+                              $result_verifica=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'DIAGNÓSTICO INICIAL',$ano_letivo);
                               $descricao_parecer='';
                               foreach ($result_verifica as $key => $value) {
                                  $descricao_parecer=$value['parecer_descritivo'];
@@ -426,7 +429,6 @@ try {
 //segunda comparação , se não for diagnostico inicial
 
             if ($idperiodo!=6) {
-               $ano_letivo=$_SESSION['ano_letivo'];
        //         $result.="SELECT * FROM parecer_disciplina WHERE
        // disciplina_id =$iddisciplina  and status=1  and parecer_disciplina.ano=$ano_letivo";
              
@@ -548,7 +550,7 @@ try {
 
       echo $result;
   }catch (Exception $e) {
-      echo "VERIFIQUE SUA CONEXÃO COM A INTERNET ";
+      echo "VERIFIQUE SUA CONEXÃO COM A INTERNET $e";
   }
 
 ?>
