@@ -644,9 +644,7 @@ setTimeout('dia_doservidor_publico();',3000);
                               
                               }
 
-                              // elseif ($idserie==2 && (in_array($iddisciplina, $array_turma_regente_pre_escola)) && (!in_array($idturma, $array_turma_regente_pre_escola)) && $conta_disciplina_regetes_pre_escola ==1) {
-
-                              elseif( $idserie==2    && $iddisciplina==40  && (!in_array($idturma, $array_turma_regente_pre_escola))  ){
+                              elseif( $idserie==2    && $iddisciplina==40   ){
 
                                 $array_turma_regente_pre_escola[$conta]=$idturma;
 
