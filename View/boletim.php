@@ -68,7 +68,7 @@ if ($idserie==3) {
       $nome_aluno=$value['nome_aluno'];
       if ($numero==1) {
         
-        $res=listar_nome_professor_turma($conexao,$idaluno,$_SESSION['ano_letivo']);
+        $res=listar_nome_professor_turma_ministrada($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
         $conta_virgula=0;
         foreach ($res as $key => $value) {
           if($conta_virgula>0){
