@@ -166,7 +166,8 @@
         $parecer_descritivo=$value['parecer_descritivo'];
       }
     }
-      echo "$parecer_descritivo";
+            echo wordwrap($parecer_descritivo, 150, "<br />\n", true); 
+
 
     ?>
   </o:p></span></p>
@@ -215,7 +216,8 @@
       }
 
 
-    echo "$parecer_descritivo";
+          echo wordwrap($parecer_descritivo, 150, "<br />\n", true); 
+
 
     }else{
 
@@ -249,7 +251,8 @@
 
     }
 
-    echo "$parecer_descritivo";
+          echo wordwrap($parecer_descritivo, 150, "<br />\n", true); 
+
   }//else serie <3 
 
     ?>
@@ -304,7 +307,8 @@
       }
 
 
-    echo "$parecer_descritivo";
+          echo wordwrap($parecer_descritivo, 150, "<br />\n", true); 
+
 
     }else{
 
@@ -332,7 +336,8 @@
 
       }
 
-    echo "$parecer_descritivo";
+          echo wordwrap($parecer_descritivo, 150, "<br />\n", true); 
+
   }
 ?>
   </o:p></span></p>
@@ -385,7 +390,8 @@
       }
 
 
-    echo "$parecer_descritivo";
+          echo wordwrap($parecer_descritivo, 150, "<br />\n", true); 
+
 
     }else{
 
@@ -412,7 +418,8 @@
 
         }
 
-    echo "$parecer_descritivo";
+          echo wordwrap($parecer_descritivo, 150, "<br />\n", true); 
+
   }//else
     ?>
    </o:p></span></p>

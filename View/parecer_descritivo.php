@@ -96,20 +96,53 @@ xmlns="http://www.w3.org/TR/REC-html40">
     tfoot { display:table-footer-group }
 
 
-@media print {
+  @media print {
+      .no-print, .no-print *
+      {
+          display: none !important;
+      }
+        .pagebreak { page-break-before: always; } /* page-break-after works, as well */
+    }
 
-    .pagebreak { page-break-before: always; } /* page-break-after works, as well */
-  }
-  </style>
+  
+  .button {
+    width: 100%;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: #008CBA;
 
-<link rel=themeData href="regitro_conteudo_arquivos/themedata.thmx">
-<link rel=colorSchemeMapping
-href="regitro_conteudo_arquivos/colorschememapping.xml">
+  } /* Blue */
+
+</style>
 
  
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+ 
+
+
+
 </head>
 
-<body lang=PT-BR style='tab-interval:35.4pt;word-wrap:break-word'>
+<body lang=PT-BR style=''>
+
+<p class="no-print">
+  <br>
+  <br>
+  
+<a href='#'class="btn btn-block btn-primary button " onclick='print();'>IMPRIMIR</a> 
+
+</p>
+
 
 <?php
 $idescola=$_GET['idescola'];
