@@ -14,13 +14,13 @@ $array_url=explode('disc=', $_SERVER["REQUEST_URI"]);
 try {
 
 	excluir_frequencia_lancada($conexao,$conteudo_aula_id,$idprofessor);
-	 
+
 	 $_SESSION['status']=1;
 	 header("Location:../View/$local.php?$url_get");
 } catch (Exception $e) {
-echo "$e";
-	// $_SESSION['status']=0;
-	// header("Location:../View/$local.php?$url_get");
+//echo "$e";
+	$_SESSION['status']=0;
+	header("Location:../View/$local.php?$url_get");
 }
 
 ?>

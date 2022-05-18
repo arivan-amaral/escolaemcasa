@@ -147,7 +147,7 @@ else if ($idserie >3 && $idserie <=8) {
       $idaluno=$value['idaluno'];
       $nome_aluno=$value['nome_aluno'];
 
-        $res=listar_nome_professor_turma($conexao,$idaluno,$_SESSION['ano_letivo']);
+       $res=listar_nome_professor_turma_ministrada($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
         $conta_virgula=0;
         foreach ($res as $key => $value) {
           if($conta_virgula>0){
@@ -157,6 +157,7 @@ else if ($idserie >3 && $idserie <=8) {
          $conta_virgula++;
         }
         $nome_professor.= ".";
+
         echo "<br>";
         echo "$numero";
         boletim_maternal_1_2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno ,$nome_escola,$nome_turma,$nome_professor,$_SESSION['ano_letivo']);
