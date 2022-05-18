@@ -109,7 +109,7 @@
                echo"<li class='nav-item menu'>
               <a href='./index.php' class='nav-link'>
               <ion-icon name='chatbox-outline'></ion-icon>
-              <p>Chamada <i class='right fas fa-angle-left'></i></p>
+              <p>Chamados <i class='right fas fa-angle-left'></i></p>
               </a>
             
                <ul class='nav nav-treeview'>
