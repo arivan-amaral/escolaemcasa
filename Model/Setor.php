@@ -23,6 +23,18 @@ function buscar_setor($conexao){
 
 }
 
+function buscar_setor_funcionario($conexao,$funcionario_id){
+   $result = $conexao->query("SELECT * FROM relacao_setor_funcionario where funcionario_id = $funcionario_id ORDER BY id asc");
+    return $result;
+
+}
+function validar_setor_funcionario($conexao,$funcionario_id){
+   $result = $conexao->query("SELECT count(*) as 'id' FROM relacao_setor_funcionario where funcionario_id = $funcionario_id ORDER BY id asc");
+    return $result;
+
+}
+
+
 function buscar_setor_id($conexao,$setor_id){
    $result = $conexao->query("SELECT * FROM setor where id=$setor_id ");
     return $result;

@@ -6,8 +6,46 @@ function buscar_chamada($conexao,$setor_id){
 
 }
 
+
+function pesquisar_chamado($conexao,$chamado_id){
+   $result = $conexao->query("SELECT * FROM chamada where id=$chamado_id");
+    return $result;
+
+}
+
+function pesquisar_todos_chamado($conexao){
+   $result = $conexao->query("SELECT * FROM chamada ");
+    return $result;
+
+}
+
+function buscar_arquivos($conexao,$chamado_id){
+   $result = $conexao->query("SELECT * FROM arquivos_chamado where chamado_id=$chamado_id");
+    return $result;
+
+}
+
+function verificar_arquivos($conexao,$chamado_id){
+   $result = $conexao->query("SELECT count(*) as 'id' FROM arquivos_chamado where chamado_id=$chamado_id");
+    return $result;
+
+}
+
+function buscar_chamada_atraso($conexao,$setor_id){
+   $result = $conexao->query("SELECT * FROM chamada where setor_id=$setor_id and status ='em_andamento' ORDER BY id asc");
+    return $result;
+
+}
+
+
 function buscar_chamada2($conexao,$setor_id){
    $result = $conexao->query("SELECT * FROM chamada where setor_id=$setor_id and (status ='em_andamento' or status='esperando_resposta' or status ='atrasado')  ORDER BY id asc");
+    return $result;
+
+}
+
+function buscar_chamada_escola($conexao,$setor_id,$escola_id){
+   $result = $conexao->query("SELECT * FROM chamada where setor_id=$setor_id and (status ='em_andamento' or status='esperando_resposta' or status ='atrasado') and tipo_solicitacao = $escola_id  ORDER BY id asc");
     return $result;
 
 }
@@ -66,6 +104,31 @@ function buscar_minhas_chamada($conexao,$idfuncionario){
 
 }
 
+function buscar_minhas_chamada_atraso($conexao,$idfuncionario){
+   $result = $conexao->query("SELECT * FROM chamada where funcionario_id=$idfuncionario and status = 'atrasado' ORDER BY id asc");
+    return $result;
+
+}
+
+function buscar_minhas_chamada_andamento($conexao,$idfuncionario){
+   $result = $conexao->query("SELECT * FROM chamada where funcionario_id=$idfuncionario and status = 'em_andamento' ORDER BY id asc");
+    return $result;
+
+}
+
+function buscar_minhas_chamada_finalizado($conexao,$idfuncionario){
+   $result = $conexao->query("SELECT * FROM chamada where funcionario_id=$idfuncionario and status = 'finalizado' ORDER BY id asc");
+    return $result;
+
+}
+
+function buscar_minhas_chamada_novas($conexao,$idfuncionario){
+   $result = $conexao->query("SELECT * FROM chamada where funcionario_id=$idfuncionario and status = 'esperando_resposta' ORDER BY id asc");
+    return $result;
+
+}
+
+
 function pesquisa_chamada($conexao,$chamada_id){
    $result = $conexao->query("SELECT * FROM chamada where id=$chamada_id");
     return $result;
@@ -86,6 +149,37 @@ function quantidade_chamada_pendente($conexao,$setor_id){
     return $result;
 
 }
+
+function quantidade_chamada_pendente_escola($conexao,$setor_id,$escola_id){
+   $result = $conexao->query("SELECT count(*) as 'chamada' FROM chamada where setor_id=$setor_id and status='esperando_resposta' and tipo_solicitacao = $escola_id");
+    return $result;
+
+}
+
+function quantidade_chamada_andamento_escola($conexao,$setor_id,$escola_id){
+   $result = $conexao->query("SELECT count(*) as 'chamada' FROM chamada where setor_id=$setor_id and status='em_andamento' and tipo_solicitacao = $escola_id");
+    return $result;
+
+}
+
+function quantidade_chamada_total_escola($conexao,$setor_id,$escola_id){
+   $result = $conexao->query("SELECT count(*) as 'chamada' FROM chamada where setor_id=$setor_id and tipo_solicitacao = $escola_id");
+    return $result;
+
+}
+
+function quantidade_chamada_finalizadas_escola($conexao,$setor_id,$escola_id){
+    $result = $conexao->query("SELECT count(*) as 'chamada' FROM chamada where setor_id=$setor_id and status='finalizado' and tipo_solicitacao = $escola_id");
+    return $result;
+
+}
+
+function quantidade_chamada_atraso_escola($conexao,$setor_id,$escola_id){
+   $result = $conexao->query("SELECT count(*) as 'chamada' FROM chamada where setor_id=$setor_id and status='atrasado' and tipo_solicitacao = $escola_id");
+    return $result;
+
+}
+
 
 function quantidade_chamada_total($conexao,$setor_id){
    $result = $conexao->query("SELECT count(*) as 'chamada' FROM chamada where setor_id=$setor_id");
@@ -129,6 +223,20 @@ function buscar_pessoa_chat($conexao,$chamada_id,$funcionario_id){
 
 }
 
+function buscar_pessoa_chat_retorno($conexao,$chamada_id,$funcionario_id){
+   $result = $conexao->query("SELECT * FROM chat_chamado where chamada_id=$chamada_id and funcionario_id=$funcionario_id and status = ''LIMIT 1 ");
+    return $result;
+
+}
+
+function buscar_pessoa_retorno($conexao,$chamada_id,$funcionario_id){
+   $result = $conexao->query("SELECT * FROM chat_chamado where chamada_id=$chamada_id and funcionario_id=$funcionario_id and status = '' ORDER BY
+  id ASC LIMIT 1  ");
+    return $result;
+
+}
+
+
 function buscar_chat_inical($conexao,$chamada_id,$funcionario_id){
    $result = $conexao->query("SELECT * FROM chat_chamado where chamada_id=$chamada_id and funcionario_id=$funcionario_id and status = 'inicial'");
     return $result;
@@ -138,7 +246,7 @@ function buscar_chat_inical($conexao,$chamada_id,$funcionario_id){
 
 
 function criar_chamada($conexao,$funcionario_id,$setor_id,$status,$tipo_solicitacao) {
-  $sql = $conexao->prepare("INSERT INTO chamada (funcionario_id,setor_id,status,tipo_solicitacao,func_respondeu_id,data_retorno,data_previsao) VALUES (:funcionario_id,:setor_id,:status,:tipo_solicitacao,0,'0001-01-01 00:00:00','0001-01-01 00:00:00')");
+  $sql = $conexao->prepare("INSERT INTO chamada (funcionario_id,setor_id,status,tipo_solicitacao,func_respondeu_id,data_previsao) VALUES (:funcionario_id,:setor_id,:status,:tipo_solicitacao,0,'0001-01-01 00:00:00')");
   $sql->execute(array(
      'funcionario_id' =>$funcionario_id,
      'setor_id' =>$setor_id,
@@ -147,26 +255,34 @@ function criar_chamada($conexao,$funcionario_id,$setor_id,$status,$tipo_solicita
   ));
 }
 
-function conversa_chat($conexao,$chamada_id,$funcionario_id,$mensagem,$arquivo,$data) {
-  $sql = $conexao->prepare("INSERT INTO chat_chamado(chamada_id,funcionario_id,mensagem,arquivo,status,data) VALUES (:chamada_id,:funcionario_id,:mensagem,:arquivo,'inicial',:data)");
+function conversa_chat($conexao,$chamada_id,$funcionario_id,$mensagem,$data) {
+  $sql = $conexao->prepare("INSERT INTO chat_chamado(chamada_id,funcionario_id,mensagem,status,data) VALUES (:chamada_id,:funcionario_id,:mensagem,'inicial',:data)");
   $sql->execute(array(
      'chamada_id' =>$chamada_id,
      'funcionario_id' =>$funcionario_id,
      'mensagem' =>$mensagem,
-     'arquivo' =>$arquivo,
      'data' =>$data
   ));
 }  
 
-function responder_chat($conexao,$chamada_id,$funcionario_id,$mensagem,$arquivo,$data) {
-  $sql = $conexao->prepare("INSERT INTO chat_chamado(chamada_id,funcionario_id,mensagem,arquivo,status,data) VALUES (:chamada_id,:funcionario_id,:mensagem,:arquivo,' ',:data)");
+function responder_chat($conexao,$chamada_id,$funcionario_id,$mensagem,$data) {
+  $sql = $conexao->prepare("INSERT INTO chat_chamado(chamada_id,funcionario_id,mensagem,status,data) VALUES (:chamada_id,:funcionario_id,:mensagem,' ',:data)");
   $sql->execute(array(
      'chamada_id' =>$chamada_id,
      'funcionario_id' =>$funcionario_id,
      'mensagem' =>$mensagem,
-     'arquivo' =>$arquivo,
      'data' =>$data
   ));
+}
+
+function cadastra_arquivos($conexao,$chamado_id,$arquivo) {
+  $sql = $conexao->prepare("INSERT INTO arquivos_chamado(chamado_id,arquivo) values (:chamado_id,:arquivo)");
+  
+  $sql->execute(
+    array(
+      'chamado_id' => $chamado_id,
+      'arquivo' => $arquivo
+     ));
 }
 
 function responder_chat_sem_arquivo($conexao,$chamada_id,$funcionario_id,$mensagem,$data) {
@@ -179,8 +295,8 @@ function responder_chat_sem_arquivo($conexao,$chamada_id,$funcionario_id,$mensag
   ));
 }  
 
-function responder_chamada($conexao,$chamada_id,$funcionario_id,$data_retorno) {
-      $conexao->exec("UPDATE chamada SET func_respondeu_id=$funcionario_id, status='em_andamento',data_retorno='$data_retorno' where id=$chamada_id");
+function responder_chamada($conexao,$chamada_id,$funcionario_id) {
+      $conexao->exec("UPDATE chamada SET func_respondeu_id=$funcionario_id, status='em_andamento' where id=$chamada_id");
 }
 
 function atualizar_chamado($conexao,$chamada_id) {
@@ -195,4 +311,9 @@ function finalizar_chamada($conexao,$chamada_id) {
       $conexao->exec("UPDATE chamada SET status='finalizado' where id=$chamada_id");
 }
 
+function buscar_id_escola($conexao,$funcionario_id){
+   $result = $conexao->query("SELECT * FROM relacionamento_funcionario_escola where funcionario_id=$funcionario_id ");
+    return $result;
+
+}
 ?>
