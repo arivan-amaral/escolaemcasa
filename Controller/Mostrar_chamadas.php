@@ -12,12 +12,20 @@ try {
         $id = $value['id'];
         $tipo_solicitacao = $value['tipo_solicitacao'];
         $nome_solicitado = "";
+        $setor_id = $value['setor_id'];
         $data_hora = "";
+        $nome_escola = "";
         $descricao = "";
-        if ($tipo_solicitacao != '') {
+        if ($tipo_solicitacao != '' && $setor_id != 11) {
             $res_nome_solicitacao = pesquisa_tipo_solicitacao($conexao,$tipo_solicitacao);
             foreach ($res_nome_solicitacao as $key => $value) {
                 $nome_solicitado = $value['nome'];
+            }
+        }
+        if ($setor_id == 11) {
+            $res_nome_escola = buscar_escola($conexao,$tipo_solicitacao);
+            foreach ($res_nome_escola as $key => $value) {
+                $nome_escola = $value['nome_escola'];
             }
         }
        
@@ -29,9 +37,15 @@ try {
         
         $result.= " <tr>
                         <td><br>
-                        Protocolo: $id <br>
-                        Tipo de Solicitação:  $nome_solicitado <br>
-                        Data da Solicitação:  $data_hora 
+                        Protocolo: $id <br>";
+                         if ($tipo_solicitacao != '' && $setor_id != 11) {
+                          $result.="Tipo de Solicitação:  $nome_solicitado <br>";
+                         }
+                         if ($setor_id == 11) {
+                            $result.="Enviado Para:  $nome_escola <br>";
+                         }
+
+                        $result.="Data da Solicitação:  $data_hora 
                         </td>
                         <td>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
