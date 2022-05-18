@@ -342,12 +342,13 @@ if (!isset($_SESSION['idprofessor'])) {
 
                 $resultado=listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $idprofessor,$ano_letivo);
               }
+          
+                $array_aulas = array();
 
                 foreach ($resultado as $key => $value) {
                   $data=$value['data'];
                   $aula=$value['aula'];
-                  //echo"<option value='$data' >".converte_data($data)." - $aula </option>";
-                  
+                  $array_aulas[$data]=$aula;
                   // $res_freq=verificar_frequencia_na_data_conteudo($conexao,$idescola,$idturma,$iddisciplina,$data,$aula);
                   $background='';
                   // foreach ($res_freq as $key => $value) {
@@ -355,8 +356,17 @@ if (!isset($_SESSION['idprofessor'])) {
 
                   // }
 
-                  echo"<option value='$data' style='background-color: $background'>".converte_data($data)." - $aula </option>";
-                  
+                  if ($idserie>=3) {
+                      echo"<option value='$data' style='background-color: $background'>".converte_data($data)." - $aula </option>";
+                    // code...
+                  }
+
+                }
+                if ($idserie <3) {
+                    foreach ($array_aulas as $key => $value) {
+                       
+                      echo"<option value='$data' style='background-color: $background'>".converte_data($key)." - $value </option>";
+                    }
                 }
 
                ?>
