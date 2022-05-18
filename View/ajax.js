@@ -86,7 +86,32 @@ function total_notas(id) {
 
 }
 
+function pesquisa_chamado(){
 
+
+  var result = document.getElementById('resultado');
+  var pesquisa = document.getElementById('pesquisa').value;
+
+
+      result.innerHTML = "<img src='imagens/carregando.gif'>";  
+      var xmlreq = CriaRequest();
+      xmlreq.open("GET", "../Controller/Pesquisa_chamado.php?pesquisa="+pesquisa, true);
+
+      xmlreq.onreadystatechange = function(){
+    
+       if (xmlreq.readyState == 4) {
+           if (xmlreq.status == 200) {
+                 result.innerHTML = xmlreq.responseText;
+
+           }else{
+                 alert('Erro desconhecido, verifique sua conexão com a internet');
+
+              result.innerHTML ="Erro ao receber mensagens";                 
+           }
+       }
+      };
+   xmlreq.send(null);
+}
 function finalizar_chat(id_chamado){
     var xmlreq = CriaRequest();
         xmlreq.open("GET", "../Controller/Finalizar_chamado.php?id_chamado="+id_chamado, true);
@@ -116,6 +141,29 @@ function finalizar_chat(id_chamado){
         };
      xmlreq.send(null);
 }
+
+function abrir_resposta(id_chamado, id_funcionario){
+  var resposta=document.getElementById('resp');
+
+  resposta.innerHTML= "";
+  resposta.innerHTML+=""+
+" <form class='mt-12' action='../Controller/Cadastrar_chat_chamado.php' method='post' enctype='multipart/form-data'>"+
+              "<input type='hidden' name='id_funcionario' id='id_funcionario' value='"+id_funcionario+"'>"+
+              "<input type='hidden' name='id_chamado' id='id_chamado' value='"+id_chamado+"'>"+
+              "<textarea type='text' class='form-control' rows='6' name='resposta' id='resposta' required=''></textarea>"+
+          "<h4 class='card-title'>Data de Previsão do Retorno</h4>"+
+              "<div class='form-group'>"+
+                  "<input type='datetime-local' name='data_previsao' id='data_previsao' class='form-control' required=''>"+
+              "</div>"+
+            "<div onclick='carregando();'>"+
+             "<button type='submit' class='btn btn-block btn-primary' onclick='responder_chat(<?php echo $id_chamada ?>);'>Responder</button>"+
+            "</div>"+
+          "</form>";
+
+          
+
+}
+
 
 function responder_chat(id_chamado){
     var xmlreq = CriaRequest();
