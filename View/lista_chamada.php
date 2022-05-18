@@ -21,6 +21,7 @@ include '../Model/Setor.php';
 include '../Model/Chamada.php';
 
  $setor_id= $_POST['setor'];
+ $escola_id= $_POST['escola'];
  $nome_setor = "";
  $quant_total = 0;
  $quant_finalizada = 0;
@@ -54,7 +55,8 @@ include '../Model/Chamada.php';
 
       <div class="row mb-2">
 
-        <div class="col-sm-12 alert alert-danger">
+        <!-- update by Rivaldo / alert-danger  -->
+        <div class="col-sm-12 alert alert-primary"> 
           <center>
             <h1 class="m-0"><b>
         <?php  echo"$nome_setor - $quant_total Chamados "; ?>
@@ -86,7 +88,7 @@ include '../Model/Chamada.php';
   <table class='table table-bordered'>
     <thead>
        <tr>
-         <th>Status</th>
+         <th style="text-align: center;">Status</th>
          <th>Informações</th>
          <th>Opção</th>
 
@@ -95,114 +97,288 @@ include '../Model/Chamada.php';
      <tbody id="tabela_chamados">
       
         <?php 
-          $res_chamada = buscar_chamada2($conexao,$setor_id);
-          foreach ($res_chamada as $key => $value) {
-            $id_chamada = $value['id'];
-            $status = $value['status'];
-            $id_funcionario = $value['funcionario_id'];
-            $id_solicitacao = $value['tipo_solicitacao'];
-            $nome_funcionario = '';
-            $nome_escola='';
-            $res_nome_funcionario = nome_funcionario($conexao,$id_funcionario);
-              foreach ($res_nome_funcionario as $key => $value) {
-                $nome_funcionario = $value['nome'];
+          if ($escola_id != null) {
+            $res_chamada = buscar_chamada_escola($conexao,$setor_id,$escola_id);
+            foreach ($res_chamada as $key => $value) {
+              $id_chamada = $value['id'];
+              $status = $value['status'];
+              $id_funcionario = $value['funcionario_id'];
+              $id_setor = $value['setor_id'];
+              $id_solicitacao = $value['tipo_solicitacao'];
+              $nome_funcionario = '';
+              $nome_escola='';
+              $data_retorno = '';
+              $id_func_respondeu = $value['func_respondeu_id'];
+
+              $res_chat_resposta = buscar_pessoa_chat_retorno($conexao,$id_chamada,$id_func_respondeu);
+              foreach ($res_chat_resposta as $key => $value) {
+                $data_retorno = $value['data'];
               }
-            $res_nome_escola = escola_funcionario($conexao,$id_funcionario);
-              foreach ($res_nome_escola as $key => $value) {
-                $id_escola = $value['escola_id'];
-                $res_buscar_escola = buscar_escola($conexao,$id_escola);
-                foreach ($res_buscar_escola as $key => $value) {
-                  $nome_escola= $value['nome_escola'];
+              $res_nome_funcionario = nome_funcionario($conexao,$id_funcionario);
+                foreach ($res_nome_funcionario as $key => $value) {
+                  $nome_funcionario = $value['nome'];
+                }
+              $res_nome_escola = escola_funcionario($conexao,$id_funcionario);
+                foreach ($res_nome_escola as $key => $value) {
+                  $id_escola = $value['escola_id'];
+                  $res_buscar_escola = buscar_escola($conexao,$id_escola);
+                  foreach ($res_buscar_escola as $key => $value) {
+                    $nome_escola= $value['nome_escola'];
+                  }
+                }
+              
+              $res_funcionario = buscar_funcionario($conexao,$idfuncionario);
+              $nome = '';
+              $email = '';
+              $whatsapp = '';
+              $descricao = '';
+              $nome_solicitacao = '';
+
+              $data_solicitado = '';
+              $res_chat = mostrar_chat_chamada($conexao,$id_chamada,$id_funcionario);
+              foreach ($res_chat as $key => $value) {
+                $data_solicitado = $value['data'];
+              }
+              if($id_solicitacao != null){
+                $res_solicitacao = pesquisa_tipo_solicitacao($conexao,$id_solicitacao);
+                foreach ($res_solicitacao as $key => $value) {
+                   $nome_solicitacao = $value['nome'];
                 }
               }
-            
-            $res_funcionario = buscar_funcionario($conexao,$idfuncionario);
-            $nome = '';
-            $email = '';
-            $whatsapp = '';
-            $descricao = '';
-            $nome_solicitacao = '';
-            $destino = '';
-            $data_solicitado = '';
-            $res_chat = mostrar_chat_chamada($conexao,$id_chamada,$_SESSION['idfuncionario']);
-            foreach ($res_chat as $key => $value) {
-              $data_solicitado = $value['data'];
-            }
-            if($id_solicitacao != null){
-              $res_solicitacao = pesquisa_tipo_solicitacao($conexao,$id_solicitacao);
-              foreach ($res_solicitacao as $key => $value) {
-                 $nome_solicitacao = $value['nome'];
+              
+              foreach ($res_funcionario as $key => $value) {
+                $nome = $value['nome'];
+                $email = $value['email'];
+                $whatsapp = $value['whatsapp'];
               }
-            }
-            
-            foreach ($res_funcionario as $key => $value) {
-              $nome = $value['nome'];
-              $email = $value['email'];
-              $whatsapp = $value['whatsapp'];
-            }
-            $res_chat= buscar_chat($conexao,$id_chamada);
-            foreach ($res_chat as $key => $value) {
-               $descricao = $value['mensagem'];
-                $destino = $value['arquivo'];
-            }
-            echo "
-            <tr>";
-            if ($status == 'esperando_resposta') {
-              echo "<td style='background-color:#2E64FE; transform: rotate(270deg);
-              text-align: center;color: white;'>
-              Novo</td>";
-            }elseif ($status == 'em_andamento') {
-              echo "<td style=' background-color:#F1C40F; transform: rotate(270deg); 
-              text-align: center;'>
-              Andamento</td>";
-            }elseif ($status == 'finalizado') {
-              echo "<td style=' background-color:#82FA58; transform: rotate(270deg);
-              text-align: center;color: white'>
-              Resolvido</td>";
-            }elseif ($status == 'atrasado') {
-              echo "<td style=' background-color:#FE2E2E; transform: rotate(270deg);
-              text-align: center;color: white'>
-              Atrasado</td>";
-            }
-             
+              $res_chat= buscar_chat($conexao,$id_chamada);
+              foreach ($res_chat as $key => $value) {
+                 $descricao = $value['mensagem'];
+                 
+              }
+              echo "
+              <tr>";
+              if ($status == 'esperando_resposta') {
+                echo "<td style='background-color:#2E64FE;  
+                text-align: center;color: white;'>
+                Novo <br> <b>Protocolo: $id_chamada</b></td>";
+              }elseif ($status == 'em_andamento') {
+                echo "<td style=' background-color:#F1C40F; 
+                text-align: center;'>
+                Andamento<br> <b>Protocolo: $id_chamada</b></td>";
+              }elseif ($status == 'finalizado') {
+                echo "<td style=' background-color:#82FA58;
+                text-align: center;color: white'>
+                Resolvido <br> <b>Protocolo: $id_chamada</b></td>";
+              }elseif ($status == 'atrasado') {
+                echo "<td style=' background-color:#FE2E2E; 
+                text-align: center;color: white'>
+                Atrasado <br> <b>Protocolo: $id_chamada</b></td>";
+              }
+               
 
-               echo "<td>
-                Data de Solicitação: $data_solicitado <br>
-                ";
-                 if($status == 'esperando_resposta'){
+                 echo "<td>
+                  <b>Data de Solicitação:</b> $data_solicitado &nbsp;&nbsp;&nbsp; <b>";
+                  if ($id_func_respondeu > 0) {
+                    echo "Data de Retorno:</b> $data_retorno     <br>
+                  ";
+                  }else{
+                    echo "Data de Retorno:</b> Sem Retorno     <br>
+                  ";
+                  }
+                 
+                   if($status == 'esperando_resposta'){
 
-                //echo " Status: <font color='danger'>Esperando Resposta</font> ";
-              }else if($status == 'em_andamento'){
-                echo "
-                Data de Retorno: ";
-              }else if($status == 'finalizado'){
-                echo "Data de Retorno: <br>
-                Status: <font color='green'>Finalizado</font> ";
-              }
-                echo"
-                Escola: $nome_escola - Diretor: $nome_funcionario <br> 
-                Tipo de Solicitação: $nome_solicitacao <br>             
-                Protocolo: $id_chamada
-              </td>
-              <td>";
-              if($status == 'esperando_resposta'){
- 
-                echo "<form method='POST' action='responder_chamada.php'>
-                  <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
-                  <button class='btn btn-success'>Responder</button>
-                </form>";
-              }else{
-                echo "<form method='POST' action='responder_chamada.php'>
-                  <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
-                  <button class='btn btn-success'>Ver</button>
-                </form>";
-              }
+                  //echo " Status: <font color='danger'>Esperando Resposta</font> ";
+                }else if($status == 'em_andamento'){
+                  // echo "Data de Retorno: ";
+                }else if($status == 'finalizado'){
+                  echo "Data de Retorno: <br>
+                  Status: <font color='green'>Finalizado</font> ";
+                }
+                  echo"
+                  Escola: $nome_escola - Diretor: $nome_funcionario <br> ";
+                  if ($id_solicitacao != null) {
+                    if ($id_setor != 11) {
+                     echo"Tipo de Solicitação: $nome_solicitacao <br>";
+                      # code...
+                    }
+                  }
+                              
+                  echo"
+                </td>
+                <td>";
+                if ($id_funcionario != $_SESSION['idfuncionario']) {
+                  if($status == 'esperando_resposta'){
+   
+                    echo "<form method='POST' action='responder_chamada.php'>
+                      <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
+                      <button class='btn btn-success'>Responder</button>
+                    </form>";
+                  }else{
+                    if ($status == 'atrasado') {
+                      echo "<form method='POST' action='responder_chamada.php'>
+                      <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
+                      <button class='btn btn-danger'>Visualizar</button>
+                    </form>";
+                    }else{
+                      echo "<form method='POST' action='responder_chamada.php'>
+                      <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
+                      <button class='btn btn-success'>Visualizar</button>
+                    </form>";
+                    }
+                  
+                  }
+                }
                 
-            echo "    
-              </td>
-            </tr>
-            ";
-          }   
+                  
+              echo "    
+                </td>
+              </tr>
+              ";
+            } 
+          }else{
+            $res_chamada = buscar_chamada2($conexao,$setor_id);
+            foreach ($res_chamada as $key => $value) {
+              $id_chamada = $value['id'];
+              $status = $value['status'];
+              $id_funcionario = $value['funcionario_id'];
+              $id_setor = $value['setor_id'];
+              $id_solicitacao = $value['tipo_solicitacao'];
+              $nome_funcionario = '';
+              $nome_escola='';
+              $data_retorno = '';
+              $id_func_respondeu = $value['func_respondeu_id'];
+
+              $res_chat_resposta = buscar_pessoa_chat_retorno($conexao,$id_chamada,$id_func_respondeu);
+              foreach ($res_chat_resposta as $key => $value) {
+                $data_retorno = $value['data'];
+              }
+              $res_nome_funcionario = nome_funcionario($conexao,$id_funcionario);
+                foreach ($res_nome_funcionario as $key => $value) {
+                  $nome_funcionario = $value['nome'];
+                }
+              $res_nome_escola = escola_funcionario($conexao,$id_funcionario);
+                foreach ($res_nome_escola as $key => $value) {
+                  $id_escola = $value['escola_id'];
+                  $res_buscar_escola = buscar_escola($conexao,$id_escola);
+                  foreach ($res_buscar_escola as $key => $value) {
+                    $nome_escola= $value['nome_escola'];
+                  }
+                }
+              
+              $res_funcionario = buscar_funcionario($conexao,$idfuncionario);
+              $nome = '';
+              $email = '';
+              $whatsapp = '';
+              $descricao = '';
+              $nome_solicitacao = '';
+
+              $data_solicitado = '';
+              $res_chat = mostrar_chat_chamada($conexao,$id_chamada,$id_funcionario);
+              foreach ($res_chat as $key => $value) {
+                $data_solicitado = $value['data'];
+              }
+              if($id_solicitacao != null){
+                $res_solicitacao = pesquisa_tipo_solicitacao($conexao,$id_solicitacao);
+                foreach ($res_solicitacao as $key => $value) {
+                   $nome_solicitacao = $value['nome'];
+                }
+              }
+              
+              foreach ($res_funcionario as $key => $value) {
+                $nome = $value['nome'];
+                $email = $value['email'];
+                $whatsapp = $value['whatsapp'];
+              }
+              $res_chat= buscar_chat($conexao,$id_chamada);
+              foreach ($res_chat as $key => $value) {
+                 $descricao = $value['mensagem'];
+                 
+              }
+              echo "
+              <tr>";
+              if ($status == 'esperando_resposta') {
+                echo "<td style='background-color:#2E64FE;  
+                text-align: center;color: white;'>
+                Novo <br> <b>Protocolo: $id_chamada</b></td>";
+              }elseif ($status == 'em_andamento') {
+                echo "<td style=' background-color:#F1C40F; 
+                text-align: center;'>
+                Andamento<br> <b>Protocolo: $id_chamada</b></td>";
+              }elseif ($status == 'finalizado') {
+                echo "<td style=' background-color:#82FA58;
+                text-align: center;color: white'>
+                Resolvido <br> <b>Protocolo: $id_chamada</b></td>";
+              }elseif ($status == 'atrasado') {
+                echo "<td style=' background-color:#FE2E2E; 
+                text-align: center;color: white'>
+                Atrasado <br> <b>Protocolo: $id_chamada</b></td>";
+              }
+               
+
+                 echo "<td>
+                  <b>Data de Solicitação:</b> $data_solicitado &nbsp;&nbsp;&nbsp; <b>";
+                  if ($id_func_respondeu > 0) {
+                    echo "Data de Retorno:</b> $data_retorno     <br>
+                  ";
+                  }else{
+                    echo "Data de Retorno:</b> Sem Retorno     <br>
+                  ";
+                  }
+                 
+                   if($status == 'esperando_resposta'){
+
+                  //echo " Status: <font color='danger'>Esperando Resposta</font> ";
+                }else if($status == 'em_andamento'){
+                  // echo "Data de Retorno: ";
+                }else if($status == 'finalizado'){
+                  echo "Data de Retorno: <br>
+                  Status: <font color='green'>Finalizado</font> ";
+                }
+                  echo"
+                  Escola: $nome_escola - Diretor: $nome_funcionario <br> ";
+                  if ($id_solicitacao != null) {
+                    if ($id_setor != 11) {
+                     echo"Tipo de Solicitação: $nome_solicitacao <br>";
+                      # code...
+                    }
+                  }
+                              
+                  echo"
+                </td>
+                <td>";
+                if ($id_funcionario != $_SESSION['idfuncionario']) {
+                  if($status == 'esperando_resposta'){
+   
+                    echo "<form method='POST' action='responder_chamada.php'>
+                      <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
+                      <button class='btn btn-success'>Responder</button>
+                    </form>";
+                  }else{
+                    if ($status == 'atrasado') {
+                      echo "<form method='POST' action='responder_chamada.php'>
+                      <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
+                      <button class='btn btn-danger'>Visualizar</button>
+                    </form>";
+                    }else{
+                      echo "<form method='POST' action='responder_chamada.php'>
+                      <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
+                      <button class='btn btn-success'>Visualizar</button>
+                    </form>";
+                    }
+                  
+                  }
+                }
+                
+                  
+              echo "    
+                </td>
+              </tr>
+              ";
+            } 
+          }
+            
         ?>
 
     </tbody>

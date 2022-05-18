@@ -121,9 +121,110 @@ setTimeout('dia_doservidor_publico();',3000);
 
        <div class="row">
             <!-- small card -->
-            <?php  
+            <?php
+            //------------------------Verificar Atrasos-------------------
+                  $res_atualizar_chamado = buscar_chamada($conexao,11);
+                  foreach ($res_atualizar_chamado as $key => $value) {
+                    $id_chamado = $value['id'];
+                    $jarespondeu = $value['func_respondeu_id'];
+                    $data_previsão = new DateTime($value['data_previsao']);  
+                    $data = new datetime('now');
+                    if ($jarespondeu > 0) {
+                      if ($data_previsão < $data) {
+                      $intvl = $data_previsão->diff($data);
+                      if ($intvl->days > 2) {
+                        $quant_dias = 0;
+                        for ($i=1; $i < 4; $i++) { 
+                          $data_especifica = date('d-m-Y',strtotime("+ $i days", strtotime('$data_previsão')));
+                          $diasemana_numero = date('w',strtotime('$data_especifica'));
+                          if ($diasemana_numero == 0 || $diasemana_numero == 6) {}else{
+                            $quant_dias +=1;
+                          }
+                        }
+                        if ($quant_dias >= 3) {
+                          atualizar_chamado($conexao,$id_chamado);
+                        }
+                      }
 
-              $res_setores = buscar_setor($conexao);
+
+                      }
+                    }
+                    
+                  }
+                  //----------------------------------------------------------
+              // escola cadastrada
+                $id_escola = 0;
+                $quantidade_pendente_escola = 0 ;
+                $quantidade_atraso_escola = 0 ;
+                $quantidade_tota_escolal = 0 ;
+                $quantidade_andamento_escola = 0 ;
+                $quantidade_resolvidos_escola = 0 ;
+
+                $res_id_escola = buscar_id_escola($conexao,$_SESSION['idfuncionario']);
+                foreach ($res_id_escola as $key => $value) {
+                  $id_escola = $value['escola_id'];
+                }
+    
+                $res_quant_escola = quantidade_chamada_pendente_escola($conexao,11,$id_escola);
+                foreach ($res_quant_escola as $key => $value) {
+                  $quantidade_pendente_escola = $value['chamada'];
+                }
+                $res_quant2_escola = quantidade_chamada_total_escola($conexao,11,$id_escola);
+                foreach ($res_quant2_escola as $key => $value) {
+                  $quantidade_total_escola = $value['chamada'];
+                }
+                $res_quant3_escola = quantidade_chamada_finalizadas_escola($conexao,11,$id_escola);
+                foreach ($res_quant3_escola as $key => $value) {
+                  $quantidade_resolvidos_escola = $value['chamada'];
+                }
+                $res_quant4_escola = quantidade_chamada_andamento_escola($conexao,11,$id_escola);
+                foreach ($res_quant4_escola as $key => $value) {
+                  $quantidade_andamento_escola = $value['chamada'];
+                }
+                $res_quant5_escola = quantidade_chamada_atraso_escola($conexao,11,$id_escola);
+                foreach ($res_quant5_escola as $key => $value) {
+                  $quantidade_atraso_escola = $value['chamada'];
+                }
+                echo "<div class='col-sm-4'>
+                        <div class='card bg-light mb-3' style='max-width: 20rem;' align='center'>
+                          <div class='card-header'>
+                            <!--h3 class='text-center'>Setor: </h3-->
+                            <h3 class='text-center' style='background-color: #E5E7E9'>
+                            <strong>Minha Escola</strong></h3>
+                            
+                            <h4 class='text-center'>
+                              Total de Chamados: $quantidade_total_escola
+                            </h4>
+                       
+                            <p class='btn btn btn-primary' >$quantidade_pendente_escola
+                            &nbsp;&nbsp; Novos Chamados &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;</p><br>
+                            <p class='btn btn btn-warning'>$quantidade_andamento_escola 
+                            &nbsp;&nbsp; Em Andamento &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><br>
+                            <p class='btn btn btn-danger'>$quantidade_atraso_escola
+                            &nbsp;&nbsp; Atrasados&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;</p><br>
+                            <p class='btn btn btn-success'>$quantidade_resolvidos_escola
+                            &nbsp;&nbsp; Chamados Resolvidos</p> 
+                          </div>
+
+                          <form method='POST' action='lista_chamada.php'>
+                            <input type='hidden' name='setor' id='setor' value='11'>
+                            <input type='hidden' name='escola' id='escola' value='$id_escola'>
+                            <button class='btn btn-block btn-light'>
+                              Ver Chamadas 
+                            </button>
+                          </form>
+                        </div>
+                      </div>";
+                
+                
+              
+              // setores cadastrados
+              $res_setores = buscar_setor_funcionario($conexao,$_SESSION['idfuncionario']);
               foreach ($res_setores as $key => $value) {
                 $quantidade_pendente = 0 ;
                 $quantidade_atraso = 0 ;
@@ -139,12 +240,30 @@ setTimeout('dia_doservidor_publico();',3000);
                   $res_atualizar_chamado = buscar_chamada($conexao,$setor_id);
                   foreach ($res_atualizar_chamado as $key => $value) {
                     $id_chamado = $value['id'];
+                    $jarespondeu = $value['func_respondeu_id'];
                     $data_previsão = new DateTime($value['data_previsao']);  
                     $data = new datetime('now');
-                    $intvl = $data_previsão->diff($data);
-                    if ($intvl->days > 2) {
-                      //atualizar_chamado($conexao,$id_chamado);
+                    if ($jarespondeu > 0) {
+                      if ($data_previsão < $data) {
+                      $intvl = $data_previsão->diff($data);
+                      if ($intvl->days > 2) {
+                        $quant_dias = 0;
+                        for ($i=1; $i < 4; $i++) { 
+                          $data_especifica = date('d-m-Y',strtotime("+ $i days", strtotime('$data_previsão')));
+                          $diasemana_numero = date('w',strtotime('$data_especifica'));
+                          if ($diasemana_numero == 0 || $diasemana_numero == 6) {}else{
+                            $quant_dias +=1;
+                          }
+                        }
+                        if ($quant_dias >= 3) {
+                          atualizar_chamado($conexao,$id_chamado);
+                        }
+                      }
+
+
+                      }
                     }
+                    
                   }
                   //----------------------------------------------------------
                   $res_quant = quantidade_chamada_pendente($conexao,$id_setor);

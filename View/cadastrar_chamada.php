@@ -116,14 +116,14 @@ include "alertas.php";
                        </select> 
                       </div>
                       <div class="form-group">
-                       <label for="exampleInputEmail1">Tipo de Socilitação</label>
+                       <label for="exampleInputEmail1" id="titulo_solicitacao">Tipo de Socilitação</label>
                        <select class="form-control"  id="tipo_solicitacao" name="tipo_solicitacao">
                         
                        </select> 
                       </div>
                         <h4 class="card-title">Anexo</h4>
                         <div class="form-group">
-                            <input type="file" name="arquivo" class="form-control" >
+                            <input name="arquivo[]" class="form-control"  type="file" multiple>
                         </div>
                         <div class="card card-outline card-info">
                           <div class="card-header">
@@ -182,10 +182,11 @@ include "alertas.php";
 <script type="text/javascript">
   function primeiraOpcao()
     {
-      var setor_id = 6;
+      var setor_id = 1;
       var result = document.getElementById('tipo_solicitacao');
+      
       result.options.length = 0;
-     
+        
         var xmlreq = CriaRequest();
         xmlreq.open("GET", "../Controller/Mudar_tipo_solicitado.php?setor_id="+setor_id, true);
 
@@ -206,7 +207,7 @@ include "alertas.php";
  setTimeout(primeiraOpcao(), 2000);
  function primeiraOpcao2()
     {
-      var setor_id = 6;
+      var setor_id = 1;
       var result = document.getElementById('tabela_chamada');
       result.innerHTML = "";
      
@@ -277,8 +278,11 @@ include "alertas.php";
       var setor_id = elemento.value;
       var result = document.getElementById('tipo_solicitacao');
       result.options.length = 0;
-     
         var xmlreq = CriaRequest();
+        var titulo = document.getElementById('titulo_solicitacao');
+        titulo.innerHTML = "";
+      if (setor_id != 11) {
+        titulo.innerHTML = "Tipo de Socilitação";
         xmlreq.open("GET", "../Controller/Mudar_tipo_solicitado.php?setor_id="+setor_id, true);
 
         xmlreq.onreadystatechange = function(){
@@ -291,9 +295,30 @@ include "alertas.php";
 
                 result.innerHTML ="Erro ao receber mensagens";                 
              }
-         }
-        };
-     xmlreq.send(null);
+           }
+          };
+        xmlreq.send(null);
+      }else{
+        titulo.innerHTML = "Escolas";
+
+        xmlreq.open("GET", "../Controller/Mudar_tipo_solicitado_escola.php", true);
+
+        xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                   result.innerHTML = xmlreq.responseText;
+             }else{
+                   alert('Erro desconhecido, verifique sua conexão com a internet');
+
+                result.innerHTML ="Erro ao receber mensagens";                 
+             }
+           }
+          };
+        xmlreq.send(null);
+      }
+     
+        
      mostraChamada(element);
     }
 
