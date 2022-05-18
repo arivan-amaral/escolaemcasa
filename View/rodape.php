@@ -160,6 +160,40 @@ if (isset($_SESSION['cargo'])) {
  
  
 
+<div class="modal fade" id="abrirModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Digite os Dados</h4>
+      
+        </div>
+          <div class="modal-body">
+          <form class='mt-12' action='../Controller/Cadastrar_chat_chamado_diretor.php' method='post' enctype='multipart/form-data'>
+            <h4 class='card-title'>Solicitação</h4>
+            <input type='hidden' name='id_funcionario' id='id_funcionario' value='<?php echo $idFuncionario; ?>'>
+            <input type='hidden' name='id_chamado' id='id_chamado' value=' <?php echo $id_chamada; ?>'>
+             <textarea type='text' class='form-control' rows='10' name='resposta' id='resposta' required=''></textarea><br>
+
+              <h4 class='card-title'>Anexo</h4>
+              <div class='form-group' >
+                  <input name="arquivo[]" class="form-control"  type="file" multiple>
+              </div>
+              <br> 
+              <div class='form-group'>
+
+              <button class='btn btn btn-info' style='width: 30%;'>Enviar</button>
+              </div>
+          </form>
+        
+              <!-- /corpo -->
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
 
 
 <div class="modal fade" id="modal-default">

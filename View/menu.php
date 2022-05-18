@@ -1,3 +1,4 @@
+  
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     
@@ -37,7 +38,7 @@
 
 
             <?php 
-
+             
             echo "<ul class='nav nav-treeview'>
             <li class='nav-item'>";
             if (isset($_SESSION['idaluno'])) {
@@ -62,7 +63,7 @@
 
 
 
-              if ($_SESSION['cargo']=='Secretário' || $_SESSION['cargo']=='Diretor' || $_SESSION['cargo']=='Coordenador' || $_SESSION['cargo']=='Coordenadora'){
+              if ($_SESSION['cargo']=='Secretário' || $_SESSION['cargo']=='Coordenador' || $_SESSION['cargo']=='Coordenadora'){
 
                 
 
@@ -102,45 +103,51 @@
 
                </li>";  
 
-
+               //    DANIEL
                
-            //    DANIEL
 
-             //  echo"<li class='nav-item menu'>
-             //  <a href='./index.php' class='nav-link'>
-             //  <ion-icon name='chatbox-outline'></ion-icon>
-             //  <p>Chamada <i class='right fas fa-angle-left'></i></p>
-             //  </a>
+               echo"<li class='nav-item menu'>
+              <a href='./index.php' class='nav-link'>
+              <ion-icon name='chatbox-outline'></ion-icon>
+              <p>Chamada <i class='right fas fa-angle-left'></i></p>
+              </a>
             
-             //   <ul class='nav nav-treeview'>
-             //   <li class='nav-item'>
-             //   <a href='cadastrar_chamada.php' class='nav-link'>
-             //   <i class='far fa-circle nav-icon text-primary'></i>
-             //   <p>Criar chamado </p>
-             //   </a>
-             //   </li>
-             //   <li class='nav-item'>
-             //   <a href='lista_minhas_chamadas.php' class='nav-link'>
-             //   <i class='far fa-circle nav-icon text-primary'></i>
-             //   <p>Ver meus chamados</p>
-             //   </a>
-             //   </li>
-             //   <li class='nav-item'>
-             //   <a href='chamada.php' class='nav-link'>
-             //   <i class='far fa-circle nav-icon text-primary'></i>
-             //   <p>Ver chamados</p>
-             //   </a>
-             //   </li>
-             //   <li class='nav-item'>
-             //    <a href='cadastro_setor.php' class='nav-link'>
-             //    <i class='far fa-circle nav-icon text-primary'></i>
-             //    <p>Cadastrar Novo Setor</p>
-             //    </a>
-             //   </li>
-             // </ul>
-             // </li>";
-
-
+               <ul class='nav nav-treeview'>
+               <li class='nav-item'>
+               <a href='cadastrar_chamada.php' class='nav-link'>
+               <i class='far fa-circle nav-icon text-primary'></i>
+               <p>Criar chamado </p>
+               </a>
+               </li>
+               <li class='nav-item'>
+               <a href='lista_minhas_chamadas.php' class='nav-link'>
+               <i class='far fa-circle nav-icon text-primary'></i>
+               <p>Ver meus chamados</p>
+               </a>
+               </li>
+               <li class='nav-item'>
+               <a href='chamada.php' class='nav-link'>
+               <i class='far fa-circle nav-icon text-primary'></i>
+               <p>Ver chamados</p>
+               </a>
+               </li>
+               <li class='nav-item'>
+               <a href='pesquisa_chamado.php' class='nav-link'>
+               <i class='far fa-circle nav-icon text-primary'></i>
+               <p>Pesquisar chamados</p>
+               </a>
+               </li>";
+               if ($_SESSION['cargo']=='Secretário' ||  $_SESSION["idfuncionario"] == 176) {
+                 echo"<li class='nav-item'>
+                <a href='cadastro_setor.php' class='nav-link'>
+                <i class='far fa-circle nav-icon text-primary'></i>
+                <p>Cadastrar Novo Setor</p>
+                </a>
+               </li>";
+               }
+             echo"</ul>
+             </li>"; 
+              
                echo "
                <ul class='nav nav-treeview'>
                <li class='nav-item'>
