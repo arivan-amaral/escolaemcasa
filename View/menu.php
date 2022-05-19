@@ -63,7 +63,7 @@
 
 
 
-              if ($_SESSION['cargo']=='Secretário' || $_SESSION['cargo']=='Coordenador' || $_SESSION['cargo']=='Coordenadora'){
+              if ($_SESSION['cargo']=='Secretário' || $_SESSION['cargo']=='Diretor' || $_SESSION['cargo']=='Coordenador' || $_SESSION['cargo']=='Coordenadora'){
 
                 
 
