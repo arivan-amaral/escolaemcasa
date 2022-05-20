@@ -231,7 +231,7 @@ setTimeout('dia_doservidor_publico();',3000);
                 $quantidade_total = 0 ;
                 $quantidade_andamento = 0 ;
                 $quantidade_resolvidos = 0 ;
-                $setor_id = $value['id'];
+                $setor_id = $value['setor_id'];
                 $res_setor = buscar_setor_id($conexao,$setor_id);
                 foreach ($res_setor as $key => $value) {
                   $id_setor = $value['id'];

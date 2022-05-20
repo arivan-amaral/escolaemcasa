@@ -46,7 +46,9 @@ try {
 
                 }
             }else{
+            	$_SESSION['mensagem'] = "imagem não é suportado";
                 $_SESSION['status']=0;
+
                 header("Location:../View/cadastrar_chamada.php");
             }
     
