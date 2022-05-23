@@ -185,7 +185,7 @@ include '../Model/Chamada.php';
                  echo "<td>
                   <b>Data de Solicitação:</b> $data_solicitado &nbsp;&nbsp;&nbsp; <b>";
                   if ($id_func_respondeu > 0) {
-                    echo "Data de Retorno:</b> $data_retorno  <b>Retornador:</b> $nome_funcionario_retorno   <br>
+                    echo "Data de Retorno:</b> $data_retorno &emsp;<b>Retornador:</b> $nome_funcionario_retorno   <br>
                   ";
                   }else{
                     echo "Data de Retorno:</b> Sem Retorno     <br>
@@ -201,8 +201,14 @@ include '../Model/Chamada.php';
                   echo "Data de Retorno: <br>
                   Status: <font color='green'>Finalizado</font> ";
                 }
-                  echo"
+                  if ($nome_escola != '') {
+                     echo"
                   Escola: $nome_escola - Diretor: $nome_funcionario <br> ";
+                  }else if($nome_escola == ''){
+                     echo"
+                   Diretor: $nome_funcionario <br> ";
+                  }
+                 
                   if ($id_solicitacao != null) {
                     if ($id_setor != 11) {
                      echo"Tipo de Solicitação: $nome_solicitacao <br>";
@@ -331,7 +337,7 @@ include '../Model/Chamada.php';
                  echo "<td>
                   <b>Data de Solicitação:</b> $data_solicitado &nbsp;&nbsp;&nbsp; <b>";
                   if ($id_func_respondeu > 0) {
-                    echo "Data de Retorno:</b> $data_retorno  <b>Retornador:</b>  $nome_funcionario_retorno   <br>
+                    echo "Data de Retorno:</b> $data_retorno &emsp;<b>Retornador:</b>  $nome_funcionario_retorno   <br>
                   ";
                   }else{
                     echo "Data de Retorno:</b> Sem Retorno     <br>
@@ -347,8 +353,14 @@ include '../Model/Chamada.php';
                   echo "Data de Retorno: <br>
                   Status: <font color='green'>Finalizado</font> ";
                 }
-                  echo"
+                  if ($nome_escola != '') {
+                     echo"
                   Escola: $nome_escola - Diretor: $nome_funcionario <br> ";
+                  }else if($nome_escola == ''){
+                     echo"
+                   Diretor: $nome_funcionario <br> ";
+                  }
+                  
                   if ($id_solicitacao != null) {
                     if ($id_setor != 11) {
                      echo"Tipo de Solicitação: $nome_solicitacao <br>";
