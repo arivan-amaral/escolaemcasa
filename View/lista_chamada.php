@@ -106,6 +106,7 @@ include '../Model/Chamada.php';
               $id_setor = $value['setor_id'];
               $id_solicitacao = $value['tipo_solicitacao'];
               $nome_funcionario = '';
+              $nome_funcionario_retorno = '';
               $nome_escola='';
               $data_retorno = '';
               $id_func_respondeu = $value['func_respondeu_id'];
@@ -113,6 +114,10 @@ include '../Model/Chamada.php';
               $res_chat_resposta = buscar_pessoa_chat_retorno($conexao,$id_chamada,$id_func_respondeu);
               foreach ($res_chat_resposta as $key => $value) {
                 $data_retorno = $value['data'];
+              }
+              $res_nome_resposta =nome_funcionario($conexao,$id_func_respondeu);
+              foreach ($res_nome_resposta as $key => $value) {
+                $nome_funcionario_retorno = $value['nome'];
               }
               $res_nome_funcionario = nome_funcionario($conexao,$id_funcionario);
                 foreach ($res_nome_funcionario as $key => $value) {
@@ -180,7 +185,7 @@ include '../Model/Chamada.php';
                  echo "<td>
                   <b>Data de Solicitação:</b> $data_solicitado &nbsp;&nbsp;&nbsp; <b>";
                   if ($id_func_respondeu > 0) {
-                    echo "Data de Retorno:</b> $data_retorno     <br>
+                    echo "Data de Retorno:</b> $data_retorno  <b>Retornador:</b> $nome_funcionario_retorno   <br>
                   ";
                   }else{
                     echo "Data de Retorno:</b> Sem Retorno     <br>
@@ -245,6 +250,8 @@ include '../Model/Chamada.php';
               $id_funcionario = $value['funcionario_id'];
               $id_setor = $value['setor_id'];
               $id_solicitacao = $value['tipo_solicitacao'];
+              $nome_funcionario_retorno = '';
+ 
               $nome_funcionario = '';
               $nome_escola='';
               $data_retorno = '';
@@ -253,6 +260,10 @@ include '../Model/Chamada.php';
               $res_chat_resposta = buscar_pessoa_chat_retorno($conexao,$id_chamada,$id_func_respondeu);
               foreach ($res_chat_resposta as $key => $value) {
                 $data_retorno = $value['data'];
+              }
+              $res_nome_resposta =nome_funcionario($conexao,$id_func_respondeu);
+              foreach ($res_nome_resposta as $key => $value) {
+                $nome_funcionario_retorno = $value['nome'];
               }
               $res_nome_funcionario = nome_funcionario($conexao,$id_funcionario);
                 foreach ($res_nome_funcionario as $key => $value) {
@@ -320,7 +331,7 @@ include '../Model/Chamada.php';
                  echo "<td>
                   <b>Data de Solicitação:</b> $data_solicitado &nbsp;&nbsp;&nbsp; <b>";
                   if ($id_func_respondeu > 0) {
-                    echo "Data de Retorno:</b> $data_retorno     <br>
+                    echo "Data de Retorno:</b> $data_retorno  <b>Retornador:</b>  $nome_funcionario_retorno   <br>
                   ";
                   }else{
                     echo "Data de Retorno:</b> Sem Retorno     <br>

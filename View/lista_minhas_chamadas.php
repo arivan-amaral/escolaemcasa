@@ -97,9 +97,15 @@ include '../Model/Chamada.php';
             $id_funcionario = $value['funcionario_id'];
             $id_func_respondeu = $value['func_respondeu_id'];
             $data_previsão = $value['data_previsao'];
+            $id_setor = $value['setor_id'];
+            $nome_setor = '';
             $descricao = '';
             $nome_resposta = '';
             $data_emissao = '';
+            $res_setor = buscar_setor_id($conexao,$id_setor);
+            foreach ($res_setor as $key => $value) {
+              $nome_setor = $value['nome'];
+            }
             $res_funcionario = buscar_funcionario($conexao,$id_func_respondeu);
              foreach ($res_funcionario as $key => $value) {
                $nome_resposta = $value['nome'];
@@ -137,6 +143,7 @@ include '../Model/Chamada.php';
             echo"
 
               <td>
+              Setor: $nome_setor &emsp;&emsp;
                $descricao
               </td>
               <td>
@@ -164,6 +171,12 @@ include '../Model/Chamada.php';
             $id_funcionario = $value['funcionario_id'];
             $id_func_respondeu = $value['func_respondeu_id'];
             $data_previsão = $value['data_previsao'];
+            $id_setor = $value['setor_id'];
+            $nome_setor = '';
+            $res_setor = buscar_setor_id($conexao,$id_setor);
+            foreach ($res_setor as $key => $value) {
+              $nome_setor = $value['nome'];
+            }
             $descricao = '';
             $nome_resposta = '';
             $data_emissao = '';
@@ -204,6 +217,7 @@ include '../Model/Chamada.php';
             echo"
 
               <td>
+              Setor: $nome_setor  &emsp;&emsp;
                $descricao
               </td>
               <td>
@@ -231,6 +245,12 @@ include '../Model/Chamada.php';
             $id_funcionario = $value['funcionario_id'];
             $id_func_respondeu = $value['func_respondeu_id'];
             $data_previsão = $value['data_previsao'];
+            $id_setor = $value['setor_id'];
+            $nome_setor = '';
+            $res_setor = buscar_setor_id($conexao,$id_setor);
+            foreach ($res_setor as $key => $value) {
+              $nome_setor = $value['nome'];
+            }
             $descricao = '';
             $nome_resposta = '';
             $data_emissao = '';
@@ -271,6 +291,7 @@ include '../Model/Chamada.php';
             echo"
 
               <td>
+              Setor: $nome_setor  &emsp;&emsp;
                $descricao
               </td>
               <td>
@@ -298,6 +319,12 @@ include '../Model/Chamada.php';
             $id_funcionario = $value['funcionario_id'];
             $id_func_respondeu = $value['func_respondeu_id'];
             $data_previsão = $value['data_previsao'];
+            $id_setor = $value['setor_id'];
+            $nome_setor = '';
+            $res_setor = buscar_setor_id($conexao,$id_setor);
+            foreach ($res_setor as $key => $value) {
+              $nome_setor = $value['nome'];
+            }
             $descricao = '';
             $nome_resposta = '';
             $data_emissao = '';
@@ -325,6 +352,7 @@ include '../Model/Chamada.php';
 
             if ($id_func_respondeu > 0) {
               echo "<td>
+
                Gerente: $nome_resposta <br>
                Data de Emissão: $data_emissao  <br>
                Data de Previsão: $data_previsão
@@ -339,7 +367,8 @@ include '../Model/Chamada.php';
             echo"
 
               <td>
-               $descricao
+              Setor: $nome_setor  &emsp;&emsp;
+              $descricao
               </td>
               <td>
                 <div class='row'>
