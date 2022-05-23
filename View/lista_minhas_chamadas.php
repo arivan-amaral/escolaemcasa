@@ -143,7 +143,7 @@ include '../Model/Chamada.php';
             echo"
 
               <td>
-              Setor: $nome_setor &emsp;&emsp;
+              <b>$nome_setor</b> &emsp;&emsp;
                $descricao
               </td>
               <td>
@@ -217,7 +217,7 @@ include '../Model/Chamada.php';
             echo"
 
               <td>
-              Setor: $nome_setor  &emsp;&emsp;
+              <b>$nome_setor</b>  &emsp;&emsp;
                $descricao
               </td>
               <td>
@@ -291,7 +291,7 @@ include '../Model/Chamada.php';
             echo"
 
               <td>
-              Setor: $nome_setor  &emsp;&emsp;
+              <b>$nome_setor</b>  &emsp;&emsp;
                $descricao
               </td>
               <td>
@@ -367,7 +367,7 @@ include '../Model/Chamada.php';
             echo"
 
               <td>
-              Setor: $nome_setor  &emsp;&emsp;
+              <b>$nome_setor</b>  &emsp;&emsp;
               $descricao
               </td>
               <td>

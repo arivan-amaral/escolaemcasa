@@ -185,7 +185,7 @@ include '../Model/Chamada.php';
                  echo "<td>
                   <b>Data de Solicitação:</b> $data_solicitado &nbsp;&nbsp;&nbsp; <b>";
                   if ($id_func_respondeu > 0) {
-                    echo "Data de Retorno:</b> $data_retorno &emsp;<b>Retornador:</b> $nome_funcionario_retorno   <br>
+                    echo "Data de Retorno:</b> $data_retorno &emsp;<b>Retorno:</b> $nome_funcionario_retorno   <br>
                   ";
                   }else{
                     echo "Data de Retorno:</b> Sem Retorno     <br>
@@ -337,7 +337,7 @@ include '../Model/Chamada.php';
                  echo "<td>
                   <b>Data de Solicitação:</b> $data_solicitado &nbsp;&nbsp;&nbsp; <b>";
                   if ($id_func_respondeu > 0) {
-                    echo "Data de Retorno:</b> $data_retorno &emsp;<b>Retornador:</b>  $nome_funcionario_retorno   <br>
+                    echo "Data de Retorno:</b> $data_retorno &emsp;<b>Retorno:</b>  $nome_funcionario_retorno   <br>
                   ";
                   }else{
                     echo "Data de Retorno:</b> Sem Retorno     <br>
