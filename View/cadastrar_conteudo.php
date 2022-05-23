@@ -288,7 +288,7 @@ if (!isset($_SESSION['idprofessor'])) {
         <div class="col-sm-3">
           <div class="form-group">
             <label for="exampleInputEmail1">Data da aula</label>
-            <input type="date" class="form-control" name="data_frequencia" id="data_frequencia" required="" min="<?php echo date("Y")."01-01"; ?>" max="<?php echo  date("Y")."12-31"; ?>" onchange="verifica_dia_letivo('data_frequencia');">
+            <input type="date" class="form-control" name="data_frequencia" id="data_frequencia" required="" min="<?php echo date("Y")."01-01"; ?>" max="<?php echo  date("Y")."12-31"; ?>" onchange="verifica_dia_letivo('data_frequencia');lista_conteudo_aluno();">
             <!-- <input type="date" class="form-control" name="data_frequencia" id="data_frequencia" required="" onchange="lista_frequencia_aluno();"> -->
           </div>
         </div>   
