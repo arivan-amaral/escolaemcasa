@@ -363,7 +363,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
                   foreach ($array_aulas as $key => $value) {
                      
-                    echo"<option value='$data' style='background-color: $background'>".converte_data($key)." - $value </option>";
+                    echo"<option value='$key' style='background-color: $background'>".converte_data($key)." - $value </option>";
                   }
                 }
 

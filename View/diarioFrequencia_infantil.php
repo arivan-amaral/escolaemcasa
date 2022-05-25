@@ -10,8 +10,11 @@ if ($idserie <3) {
 }else if($idserie >= 8 && $idserie <=11){
   $tipo_ensino="Ensino Fundamental - Anos Finais";
 
-}else if ($idserie>11) {
+}else if ($idserie>11 && $idserie !=16) {
   $tipo_ensino="Educação de Jovens e Adultos";
+
+}else if($idserie ==16) {
+  $tipo_ensino="Multissereada";
 
 }
 
@@ -377,6 +380,16 @@ turma_id=$idturma and
 
 
 data_frequencia BETWEEN '$data_inicio_trimestre' and '$data_fim_trimestre' group by data_frequencia, aula order by data_frequencia,aula asc limit $inicio,$fim ");
+
+// echo "SELECT data_frequencia,aula FROM frequencia WHERE
+// escola_id=$idescola and
+// turma_id=$idturma and
+
+
+// data_frequencia BETWEEN '$data_inicio_trimestre' and '$data_fim_trimestre' group by data_frequencia, aula order by data_frequencia,aula asc limit $inicio,$fim";
+
+
+
 $array_data_aula=array();
 $array_aula=array();
 foreach ($result_data_aula as $key => $value) {

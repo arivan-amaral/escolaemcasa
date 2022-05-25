@@ -69,13 +69,13 @@ try {
             $result.="
             <div class='custom-control custom-checkbox'>
                 <input class='custom-control-input' name='iddisciplina[]' type='checkbox' id='customCheckbox$disciplina_id' value='$disciplina_id' required $marcado2>
-                <label for='customCheckbox$disciplina_id' class='custom-control-label'>$nome_escola - $nome_turma - $nome_disciplina</label>
+                <label for='customCheckbox$disciplina_id' class='custom-control-label'>$nome_escola - $nome_turma - $nome_disciplina yyyy</label>
             </div>";
           }else{
             $result.="
             <div class='custom-control custom-checkbox'>
                 <input class='custom-control-input' name='iddisciplina[]' type='checkbox' id='customCheckbox$disciplina_id' value='$disciplina_id' $marcado2>
-                <label for='customCheckbox$disciplina_id' class='custom-control-label'> $nome_escola - $nome_turma - $nome_disciplina </label>
+                <label for='customCheckbox$disciplina_id' class='custom-control-label'> $nome_escola - $nome_turma - $nome_disciplina .</label>
             </div>";
           }
 
@@ -187,6 +187,7 @@ $cont=1;
                 $marcado="";*/
                 $marcado="";
                 if ($idserie<8) {
+               
                     $resultado_fre=verificar_frequencia_infantil_fund1($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data,$id,$aula);
 
                 }else{

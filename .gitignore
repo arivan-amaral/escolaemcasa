@@ -10,3 +10,4 @@ View/trabalho/*
 View/pagina_estatica/*.php
 Model/Conexao.php
 
+#View/chamados/
