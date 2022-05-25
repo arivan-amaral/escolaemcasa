@@ -3,6 +3,7 @@ session_start();
 
 
   if (isset($_SESSION['cargo'])){
+      
       if ($_SESSION['cargo']=="Aluno" or $_SESSION['cargo']=="Aluna"){
  
           header("Location:../View/aluno.php");
@@ -10,11 +11,13 @@ session_start();
 
           header("Location:../View/professor.php");
       }else if ($_SESSION['cargo']=="Secretário"){
-     
+          
           header("Location:../View/secretario.php");
+        
       }else if ($_SESSION['cargo']=="Coordenador"){
-         
+  
           header("Location:../View/coordenador.php");
+
       }
 
 
@@ -27,7 +30,6 @@ session_start();
   include 'menu.php';
   include '../Model/Conexao.php';
   
-
 
 
 ?>

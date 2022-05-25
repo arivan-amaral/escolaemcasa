@@ -2,6 +2,7 @@
 session_start();
 include'../Model/Conexao.php';
 include'../Model/Login.php';
+
   
 // incluir a funcionalidade do recaptcha
 require_once "recaptchalib.php";
@@ -68,7 +69,7 @@ try {
             $email = $row["email"];
             $cargo = $row["descricao_funcao"];               
             $nivel_acesso_id = $row["nivel_acesso_id"];               
-
+            $_SESSION['total_chamados'] = 0;
             if ($cargo=="Diretor") {
 
              $_SESSION["idfuncionario"] = $id;

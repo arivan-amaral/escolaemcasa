@@ -38,7 +38,8 @@
 
 
             <?php 
-             
+            
+
             echo "<ul class='nav nav-treeview'>
             <li class='nav-item'>";
             if (isset($_SESSION['idaluno'])) {
@@ -104,7 +105,12 @@
                </li>";  
 
                //    DANIEL
-               
+                
+                
+                $total = $_SESSION['total_chamados'];
+
+
+                
 
                echo"<li class='nav-item menu'>
               <a href='./index.php' class='nav-link'>
@@ -129,6 +135,7 @@
                <a href='chamada.php' class='nav-link'>
                <i class='far fa-circle nav-icon text-primary'></i>
                <p>Ver chamados</p>
+               <span class='badge bg-warning'>$total</span>
                </a>
                </li>
                <li class='nav-item'>

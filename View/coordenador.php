@@ -29,6 +29,28 @@ if (!isset($_SESSION['idcoordenador'])) {
   include '../Model/Coordenador.php';
   include '../Model/Escola.php';
   include '../Model/Aluno.php';
+  include'../Model/Chamada.php';
+  include'../Model/Setor.php';
+
+  $idEscola = 0 ;
+  $res_verificar_funcionario = buscar_setor_funcionario($conexao,$_SESSION['idfuncionario']);
+  foreach ($res_verificar_funcionario as $key => $value) {
+    $setor_id = $value['setor_id'];
+    $res_quantidade_pendente = quantidade_chamada_pendente($conexao,$setor_id);
+    foreach ($res_quantidade_pendente as $key => $value) {
+      $_SESSION['total_chamados'] += $value['chamada'];
+    }
+  }
+  $res_verificar_escola = buscar_id_escola($conexao,$_SESSION['idfuncionario']);
+  foreach ($res_verificar_escola as $key => $value) {
+    $idEscola = $value['escola_id'];
+  }
+  $res_escola =  quantidade_chamada_pendente_escola($conexao,11,$idEscola);
+  foreach ($res_escola as $key => $value) {
+    $_SESSION['total_chamados'] += $value['chamada'];
+  }
+
+
 
 if ($_COOKIE['dia_doservidor_publico2']<2 && date("m-d")=="10-28") {
 ?>
