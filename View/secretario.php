@@ -35,10 +35,13 @@ if (!isset($_SESSION['idsecretario'])) {
   foreach ($res_verificar_escola as $key => $value) {
     $idEscola = $value['escola_id'];
   }
-  $res_escola =  quantidade_chamada_pendente_escola($conexao,11,$idEscola);
-  foreach ($res_escola as $key => $value) {
-    $_SESSION['total_chamados'] += $value['chamada'];
+  if ($idEscola != 0) {
+    $res_escola =  quantidade_chamada_pendente_escola($conexao,11,$idEscola);
+    foreach ($res_escola as $key => $value) {
+      $_SESSION['total_chamados'] += $value['chamada'];
+    }
   }
+  
   
 
 
