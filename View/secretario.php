@@ -23,6 +23,7 @@ if (!isset($_SESSION['idsecretario'])) {
   include'../Model/Setor.php';
 
   $idEscola = 0 ;
+  $_SESSION['total_chamados'] = 0;
   $res_verificar_funcionario = buscar_setor_funcionario($conexao,$_SESSION['idfuncionario']);
   foreach ($res_verificar_funcionario as $key => $value) {
     $setor_id = $value['setor_id'];

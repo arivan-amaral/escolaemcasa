@@ -31,7 +31,7 @@ if (!isset($_SESSION['idcoordenador'])) {
   include '../Model/Aluno.php';
   include'../Model/Chamada.php';
   include'../Model/Setor.php';
-
+  $_SESSION['total_chamados'] = 0;
   $idEscola = 0 ;
   $res_verificar_funcionario = buscar_setor_funcionario($conexao,$_SESSION['idfuncionario']);
   foreach ($res_verificar_funcionario as $key => $value) {
