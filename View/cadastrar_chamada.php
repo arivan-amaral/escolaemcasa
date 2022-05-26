@@ -128,7 +128,7 @@ include "alertas.php";
                         <div class="card card-outline card-info">
                           <div class="card-header">
                             <h3  >
-                              Descrição da Chamada (campo obrigatório)
+                              Descrição do Chamado (campo obrigatório)
                             </h3>
                             <b style="color: red;">POR FAVOR, NÃO COLOCAR EMOJI NOS CAMPOS DA ATIVIDADE </b>
                           </div>
