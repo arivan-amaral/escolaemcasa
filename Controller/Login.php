@@ -72,7 +72,6 @@ try {
             $email = $row["email"];
             $cargo = $row["descricao_funcao"];               
             $nivel_acesso_id = $row["nivel_acesso_id"];               
-            $_SESSION['total_chamados'] = 0;
           if ($cargo=="Diretor") {
 
              $_SESSION["idfuncionario"] = $id;
@@ -87,25 +86,7 @@ try {
              $_SESSION["cargo"] = "Diretor";
              $_SESSION["ano_letivo"] = $ano_letivo;
              $_SESSION["ano_letivo_vigente"] = $ano_letivo;
-             $idEscola = 0 ;
-            $res_verificar_funcionario = buscar_setor_funcionario($conexao,$_SESSION['idfuncionario']);
-            foreach ($res_verificar_funcionario as $key => $value) {
-              $setor_id = $value['setor_id'];
-              $res_quantidade_pendente = quantidade_chamada_pendente($conexao,$setor_id);
-              foreach ($res_quantidade_pendente as $key => $value) {
-                $_SESSION['total_chamados'] += $value['chamada'];
-              }
-            }
-            $res_verificar_escola = buscar_id_escola($conexao,$_SESSION['idfuncionario']);
-            foreach ($res_verificar_escola as $key => $value) {
-              $idEscola = $value['escola_id'];
-            }
-            if ($idEscola != 0) {
-              $res_escola =  quantidade_chamada_pendente_escola($conexao,11,$idEscola);
-              foreach ($res_escola as $key => $value) {
-                $_SESSION['total_chamados'] += $value['chamada'];
-              }
-            }
+            
              $login_diretor++;
 
 
@@ -124,25 +105,6 @@ try {
              $_SESSION["ano_letivo"] = $ano_letivo;
              $_SESSION["ano_letivo_vigente"] = $ano_letivo;
 
-             $idEscola = 0 ;
-            $res_verificar_funcionario = buscar_setor_funcionario($conexao,$_SESSION['idfuncionario']);
-            foreach ($res_verificar_funcionario as $key => $value) {
-              $setor_id = $value['setor_id'];
-              $res_quantidade_pendente = quantidade_chamada_pendente($conexao,$setor_id);
-              foreach ($res_quantidade_pendente as $key => $value) {
-                $_SESSION['total_chamados'] += $value['chamada'];
-              }
-            }
-            $res_verificar_escola = buscar_id_escola($conexao,$_SESSION['idfuncionario']);
-            foreach ($res_verificar_escola as $key => $value) {
-              $idEscola = $value['escola_id'];
-            }
-            if ($idEscola != 0) {
-              $res_escola =  quantidade_chamada_pendente_escola($conexao,11,$idEscola);
-              foreach ($res_escola as $key => $value) {
-                $_SESSION['total_chamados'] += $value['chamada'];
-              }
-            }
              $login_coordenador++;
 
 
@@ -161,25 +123,6 @@ try {
              $_SESSION["ano_letivo"] = $ano_letivo;
              $_SESSION["ano_letivo_vigente"] = $ano_letivo;
              
-             $idEscola = 0 ;
-            $res_verificar_funcionario = buscar_setor_funcionario($conexao,$_SESSION['idfuncionario']);
-            foreach ($res_verificar_funcionario as $key => $value) {
-              $setor_id = $value['setor_id'];
-              $res_quantidade_pendente = quantidade_chamada_pendente($conexao,$setor_id);
-              foreach ($res_quantidade_pendente as $key => $value) {
-                $_SESSION['total_chamados'] += $value['chamada'];
-              }
-            }
-            $res_verificar_escola = buscar_id_escola($conexao,$_SESSION['idfuncionario']);
-            foreach ($res_verificar_escola as $key => $value) {
-              $idEscola = $value['escola_id'];
-            }
-            if ($idEscola != 0) {
-              $res_escola =  quantidade_chamada_pendente_escola($conexao,11,$idEscola);
-              foreach ($res_escola as $key => $value) {
-                $_SESSION['total_chamados'] += $value['chamada'];
-              }
-            }
              $login_secretario++;
 
            }
@@ -196,7 +139,6 @@ try {
              $_SESSION["cargo"] = 'Professor';
              $_SESSION["ano_letivo"] = $ano_letivo;
              $_SESSION["ano_letivo_vigente"] = $ano_letivo;
-
 
              $login_professor++;
 

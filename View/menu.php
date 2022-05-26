@@ -62,8 +62,6 @@
 
             if (isset($_SESSION['cargo'])) {
 
-
-
               if ($_SESSION['cargo']=='Secretário' || $_SESSION['cargo']=='Diretor' || $_SESSION['cargo']=='Coordenador' || $_SESSION['cargo']=='Coordenadora'){
 
                 
@@ -107,7 +105,7 @@
                //    DANIEL
                 
                 
-              $total = $_SESSION['total_chamados'];
+              
 
                echo"<li class='nav-item menu'>
               <a href='./index.php' class='nav-link'>
@@ -132,7 +130,7 @@
                <a href='chamada.php' class='nav-link'>
                <i class='far fa-circle nav-icon text-primary'></i>
                <p>Ver chamados</p>
-               <span class='badge bg-warning'>$total</span>
+               <span class='badge bg-warning' id='total_chamados'></span>
                </a>
                </li>
                <li class='nav-item'>
@@ -566,4 +564,5 @@
                     <!-- /.sidebar-menu -->
                   </div>
                   <!-- /.sidebar -->
+                  
                 </aside>
