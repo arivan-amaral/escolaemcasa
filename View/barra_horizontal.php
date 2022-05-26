@@ -12,6 +12,8 @@
               echo "<a href='./professor.php' class='nav-link'>";
           }else if (isset($_SESSION['idcoordenador'])) {
               echo "<a href='./coordenador.php' class='nav-link'>";
+          }else if (isset($_SESSION['idsecretario'])) {
+              echo "<a href='./secretario.php' class='nav-link'>";
           }else {
               echo "<a href='./index.php' class='nav-link'>";
               

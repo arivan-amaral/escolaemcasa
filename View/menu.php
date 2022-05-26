@@ -107,10 +107,7 @@
                //    DANIEL
                 
                 
-                $total = $_SESSION['total_chamados'];
-
-
-                
+              $total = $_SESSION['total_chamados'];
 
                echo"<li class='nav-item menu'>
               <a href='./index.php' class='nav-link'>
