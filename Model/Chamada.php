@@ -50,6 +50,30 @@ function buscar_chamada_escola($conexao,$setor_id,$escola_id){
 
 }
 
+function buscar_chamada_atraso2_escola($conexao,$setor_id,$escola_id){
+   $result = $conexao->query("SELECT * FROM chamada where setor_id=$setor_id and status ='atrasado' and tipo_solicitacao = $escola_id  ORDER BY id asc");
+    return $result;
+
+}
+
+function buscar_chamada_andamento_escola($conexao,$setor_id,$escola_id){
+   $result = $conexao->query("SELECT * FROM chamada where setor_id=$setor_id and status ='em_andamento' and tipo_solicitacao = $escola_id  ORDER BY id asc");
+    return $result;
+
+}
+
+function buscar_chamada_finalizado_escola($conexao,$setor_id,$escola_id){
+   $result = $conexao->query("SELECT * FROM chamada where setor_id=$setor_id and status ='finalizado'  and tipo_solicitacao = $escola_id  ORDER BY id asc");
+    return $result;
+
+}
+
+function buscar_chamada_novas_escola($conexao,$setor_id,$escola_id){
+   $result = $conexao->query("SELECT * FROM chamada where setor_id=$setor_id and status='esperando_resposta' and tipo_solicitacao = $escola_id  ORDER BY id asc");
+    return $result;
+
+}
+
 function escola_funcionario($conexao,$id_funcionario){
    $result = $conexao->query("SELECT * FROM relacionamento_funcionario_escola where funcionario_id=$id_funcionario");
     return $result;
@@ -113,7 +137,6 @@ function buscar_minhas_chamada_atraso($conexao,$idfuncionario){
 function buscar_minhas_chamada_andamento($conexao,$idfuncionario){
    $result = $conexao->query("SELECT * FROM chamada where funcionario_id=$idfuncionario and status = 'em_andamento' ORDER BY id asc");
     return $result;
-
 }
 
 function buscar_minhas_chamada_finalizado($conexao,$idfuncionario){
@@ -127,6 +150,31 @@ function buscar_minhas_chamada_novas($conexao,$idfuncionario){
     return $result;
 
 }
+
+function buscar_chamada_atraso2($conexao,$setor_id){
+   $result = $conexao->query("SELECT * FROM chamada where setor_id=$setor_id and status = 'atrasado' ORDER BY id asc");
+    return $result;
+
+}
+
+function buscar_chamada_andamento($conexao,$setor_id){
+   $result = $conexao->query("SELECT * FROM chamada where setor_id=$setor_id and status = 'em_andamento' ORDER BY id asc");
+    return $result;
+
+}
+
+function buscar_chamada_finalizado($conexao,$setor_id){
+   $result = $conexao->query("SELECT * FROM chamada where setor_id=$setor_id and status = 'finalizado' ORDER BY id asc");
+    return $result;
+
+}
+
+function buscar_chamada_novas($conexao,$setor_id){
+   $result = $conexao->query("SELECT * FROM chamada where setor_id=$setor_id and status = 'esperando_resposta' ORDER BY id asc");
+    return $result;
+
+}
+
 
 
 function pesquisa_chamada($conexao,$chamada_id){
