@@ -124,14 +124,17 @@ setTimeout('dia_doservidor_publico();',3000);
        <div class="row">
             <!-- small card -->
             <?php
-            //------------------------Verificar Atrasos-------------------
+            //------------------------Verificar Atrasos de Novos cadastros-------------------
                   $res_atualizar_chamado = buscar_chamada($conexao,11);
                   foreach ($res_atualizar_chamado as $key => $value) {
                     $id_chamado = $value['id'];
-                    $jarespondeu = $value['func_respondeu_id'];
-                    $data_previsão = new DateTime($value['data_previsao']);  
+                    $data_previsão = new DateTime();
+                    $res_verificar_chat_chamado = pesquisa_chat($conexao,$id_chamado);
+                    foreach ($res_verificar_chat_chamado as $key => $value) {
+                      $data_previsão = new DateTime($value['data']);  
+                    }
+                    
                     $data = new datetime('now');
-                    if ($jarespondeu > 0) {
                       if ($data_previsão < $data) {
                       $intvl = $data_previsão->diff($data);
                       if ($intvl->days > 2) {
@@ -150,8 +153,6 @@ setTimeout('dia_doservidor_publico();',3000);
 
 
                       }
-                    }
-                    
                   }
 
                   $res_atualizar_chamado = buscar_chamada_em_andamento($conexao,11);
@@ -271,10 +272,13 @@ setTimeout('dia_doservidor_publico();',3000);
                   $res_atualizar_chamado = buscar_chamada($conexao,$setor_id);
                   foreach ($res_atualizar_chamado as $key => $value) {
                     $id_chamado = $value['id'];
-                    $jarespondeu = $value['func_respondeu_id'];
-                    $data_previsão = new DateTime($value['data_previsao']);  
+                    $data_previsão = new DateTime();
+                    $res_verificar_chat_chamado = pesquisa_chat($conexao,$id_chamado);
+                    foreach ($res_verificar_chat_chamado as $key => $value) {
+                      $data_previsão = new DateTime($value['data']);  
+                    }
+                    
                     $data = new datetime('now');
-                    if ($jarespondeu > 0) {
                       if ($data_previsão < $data) {
                       $intvl = $data_previsão->diff($data);
                       if ($intvl->days > 2) {
@@ -293,8 +297,6 @@ setTimeout('dia_doservidor_publico();',3000);
 
 
                       }
-                    }
-                    
                   }
 
                   $res_atualizar_chamado = buscar_chamada_em_andamento($conexao,$setor_id);
@@ -323,6 +325,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
                       }
                     }
+                  }
                   //----------------------------------------------------------
                   $res_quant = quantidade_chamada_pendente($conexao,$id_setor);
                   foreach ($res_quant as $key => $value) {

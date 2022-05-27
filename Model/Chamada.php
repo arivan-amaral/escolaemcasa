@@ -6,6 +6,8 @@ function buscar_chamada($conexao,$setor_id){
 
 }
 
+
+
 function buscar_chamada_em_andamento($conexao,$setor_id){
    $result = $conexao->query("SELECT * FROM chamada where setor_id=$setor_id and status ='em_andamento'  ORDER BY id asc");
     return $result;
