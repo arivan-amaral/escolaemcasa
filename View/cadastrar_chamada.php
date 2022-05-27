@@ -130,7 +130,6 @@ include "alertas.php";
                             <h3  >
                               Descrição do Chamado (campo obrigatório)
                             </h3>
-                            <b style="color: red;">POR FAVOR, NÃO COLOCAR EMOJI NOS CAMPOS DA ATIVIDADE </b>
                           </div>
                           <div class="card-body">
                             <textarea rows="5" style="height: 245.719px;" name="descricao"
