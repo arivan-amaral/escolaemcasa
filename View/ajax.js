@@ -166,7 +166,18 @@ function abrir_resposta(id_chamado, id_funcionario){
 
 
 function responder_chat(id_chamado){
-    var xmlreq = CriaRequest();
+    var texto= document.getElementById('resposta').value;
+    var data= document.getElementById('data_previsao').value;
+
+    if (texto == "" || data == "") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Preencha os campos de data e descrição'
+            
+          });
+    }else{
+       var xmlreq = CriaRequest();
         xmlreq.open("GET", "../Controller/Responder_chamado.php?id_chamado="+id_chamado, true);
 
         xmlreq.onreadystatechange = function(){
@@ -192,7 +203,8 @@ function responder_chat(id_chamado){
              }
          }
         };
-     xmlreq.send(null);
+     xmlreq.send(null); 
+    }
 }
 
 function ver_resolvidos(setor_id){
