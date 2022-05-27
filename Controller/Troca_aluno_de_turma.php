@@ -36,7 +36,7 @@ try {
 
 
 	if (isset($_POST['idaluno'])) {
-
+ 
 	
 		foreach ($_POST['idaluno'] as $key => $value) {
 			$aluno_id=$_POST['idaluno'][$key];
@@ -62,7 +62,7 @@ try {
 		
 			$verificar_nota=$conexao->query("SELECT * FROM nota_parecer WHERE aluno_id=$aluno_id and ano_nota='$ano_letivo_vigente' ");
 			$verificar_nota=$verificar_nota->fetchAll();
-			// $existe_nota=0;
+			 $existe_nota=0;
 			
 			##################################################################
 
@@ -70,25 +70,28 @@ try {
 			
 			//echo "$aluno_id - $nome_aluno <br>";
 			
-		if(count($existe_nota)==0 && count($existe_frequencia)==0 && $quantidade_vagas_restante> 0 && $turma_id>0) {
-			 	// ecidade_matricula
-			 	// ecidade_movimentacao
-			 	// frequencia
-			 	// nota
-			 	
+		if($existe_nota==0 && count($existe_frequencia)==0 && $quantidade_vagas_restante> 0 && $turma_id>0) {
+	
 
-			 	// echo "$matricula_aluno turma id: $turma_id <br>";
-			 	// echo "turma id: $turma_id <br>";
-			 	// echo "turma id: $turma_id <br>";
-			 	// echo "UPDATE ecidade_matricula set turma_id=$turma_id and turno_nome=$turno WHERE matricula_codigo=$matricula_aluno<br>";
+ 					$procedimento="TROCA DE TURMA";
+			 		$data_saida=date("Y-m-d");
+			  		mudar_situacao_transferencia_aluno($conexao,$matricula_aluno,$procedimento,$data_saida);
 
-			 	$conexao->exec("UPDATE ecidade_matricula set turma_id=$turma_id, turno_nome='$turno' WHERE matricula_codigo=$matricula_aluno ");
+			
+				 
+				 
+				 $matricula_situacao="MATRICULADO";
+				 $matricula_concluida="N";
+				 $matricula_datamatricula=date("Y-m-d");
+				 $matricula_ativa="S";
+				 $matricula_tipo="N";
+				 $calendario_ano=$ano_letivo_vigente;
+				 $turma_escola=$escola_id;
+				 $turno_nome=$turno;
 
-			 	// $conexao->exec("UPDATE nota set turma_id=$turma_id
+				 rematricular_aluno($conexao,$aluno_id,$turma_id,$turma_id_anterior,$matricula_situacao,$matricula_concluida,$matricula_datamatricula,$matricula_ativa,$matricula_tipo,$calendario_ano,$turma_escola,$turno_nome);
 
-			 	//  where    aluno_id=$aluno_id and ano_nota=$_SESSION['ano_letivo_vigente'] ");
-
- 
+				 $conexao->exec("UPDATE nota_parecer set turma_id=$turma_id WHERE turma_id=$turma_id_anterior and aluno_id=$aluno_id ");
 
 				 
 				$quantidade_vagas_restante--;

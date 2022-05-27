@@ -971,7 +971,7 @@ function addChecked(id) {
        <button type="button" class="btn btn-default" data-dismiss="modal">FECHAR</button>
        <!-- onclick='carregando_login()' -->
        <div id="botao_continuar" >
-         <button type="submit" class="btn btn-primary" >TOCAR DE TURMA ALUNOS SELECIONADOS</button>
+         <button type="submit" class="btn btn-primary" >TROCAR DE TURMA ALUNOS SELECIONADOS</button>
        </div>
      </div>
 
