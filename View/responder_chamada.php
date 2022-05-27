@@ -444,7 +444,11 @@ include "alertas.php";
 
 
     var descricao =  document.getElementById("resposta").value;
-        let timerInterval
+    var data= document.getElementById('data_previsao').value;
+    if(descricao == "" || data == ""){
+
+    }else{
+      let timerInterval
         Swal.fire({
           title: 'Aguarde, ação está sendo realizada...',
           html: '',
@@ -471,6 +475,8 @@ include "alertas.php";
             console.log('I was closed by the timer')
           }
         })
+    }
+        
  
   }
 
@@ -505,6 +511,7 @@ include "alertas.php";
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
+
           <h4 class="modal-title">Arquivos Anexados</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
             <span aria-hidden="true">&times;</span>
@@ -514,9 +521,32 @@ include "alertas.php";
             <?php  
             foreach ($res_arquivos as $key => $value) {
               $arquivo = $value['arquivo'];
-              echo "  <div class='card bg-light mb-3' style='max-width: 30rem;'>
+              if (mb_strpos($arquivo, '.pdf') !== false) {
+                 echo "  <div class='card bg-light mb-3' style='max-width: 30rem;'>
+                        <a href='chamados/$arquivo' class='btn btn btn-success' download>Baixar Arquivo:  $arquivo</a>
+                      </div>";
+              }else if (mb_strpos($arquivo, '.docx') !== false) {
+                 echo "  <div class='card bg-light mb-3' style='max-width: 30rem;'>
+                        <a href='chamados/$arquivo' class='btn btn-block btn-success' download>Baixar Arquivo:  $arquivo</a>
+                      </div>";
+              }else if (mb_strpos($arquivo, '.doc') !== false) {
+                 echo "  <div class='card bg-light mb-3' style='max-width: 30rem;'>
+                        <a href='chamados/$arquivo' class='btn btn btn-success' download>Baixar Arquivo:  $arquivo</a>
+                      </div>";
+              }else if (mb_strpos($arquivo, '.txt') !== false) {
+                 echo "  <div class='card bg-light mb-3' style='max-width: 30rem;'>
+                        <a href='chamados/$arquivo' class='btn btnbtn-success' download>Baixar Arquivo:  $arquivo</a>
+                      </div>";
+              }else if (mb_strpos($arquivo, '.odt') !== false) {
+                 echo "  <div class='card bg-light mb-3' style='max-width: 30rem;'>
+                        <a href='chamados/$arquivo' class='btn btn btn-success' download>Baixar Arquivo:  $arquivo</a>
+                      </div>";
+              }else{
+                 echo "  <div class='card bg-light mb-3' style='max-width: 30rem;'>
                         <img src='chamados/$arquivo'>
                       </div>";
+              }
+             
             }
 
             ?>
