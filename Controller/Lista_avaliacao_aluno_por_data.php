@@ -64,7 +64,7 @@ try {
                $cor_tabela='table-primary';
                foreach ($res_alunos as $key => $value) {
 
-                    $nome_aluno=utf8_decode($value['nome_aluno']);
+                    $nome_aluno=($value['nome_aluno']);
                     $nome_turma=($value['nome_turma']);
                     $id=$value['idaluno'];
                     $idaluno=$value['idaluno'];
