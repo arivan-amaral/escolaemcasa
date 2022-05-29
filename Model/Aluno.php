@@ -283,7 +283,7 @@ function listar_nota_aluno_fora($conexao,$aluno_id) {
  nota_parecer.avaliacao as 'tipo_avaliacao'
 
      FROM 
-        nota,serie,aluno,turma,disciplina,escola,periodo
+        nota_parecer,serie,aluno,turma,disciplina,escola,periodo
         WHERE 
      nota_parecer.aluno_finalizou !='' and 
      nota_parecer.escola_id=escola.idescola and
