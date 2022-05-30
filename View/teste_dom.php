@@ -99,7 +99,7 @@ function createPDF() {
 
 	  <span style="mso-ignore:vglayout;
 	  position:absolute;z-index:251660288;left:0px;margin-left:15px;margin-top:
-	  9px;width:49px;height:53px"><img width="49" height="53" src="regitro_conteudo_arquivos/image002.jpg" v:shapes="Imagem_x0020_2"></span><span style="mso-ascii-font-family:Calibri;mso-fareast-font-family:&quot;Times New Roman&quot;;
+	  9px;width:49px;height:53px"><img width="49" height="53" src="imagens/logo.png" v:shapes="Imagem_x0020_2"></span><span style="mso-ascii-font-family:Calibri;mso-fareast-font-family:&quot;Times New Roman&quot;;
 	  mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
 	  mso-fareast-language:PT-BR"><o:p></o:p></span></p>
 	  </td>
