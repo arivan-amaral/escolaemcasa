@@ -86,16 +86,16 @@ try {
       </a> 
 
 
-      <a href='diario_conteudo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=2' class='btn btn-danger btn-block btn-flat' target='_blank'>
+      <a href='diario_conteudo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-danger btn-block btn-flat' target='_blank'>
       <i class='fa fa-edit'></i> 
       CONTEÚDOS DE AULAS TRIMESTRE I
       </a> 
-      <a href='diario_conteudo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=3' class='btn btn-danger btn-block btn-flat' target='_blank'>
+      <a href='diario_conteudo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=2' class='btn btn-danger btn-block btn-flat' target='_blank'>
       <i class='fa fa-edit'></i> 
       CONTEÚDOS DE AULAS  TRIMESTRE II
       </a>
 
-      <a href='diario_conteudo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-danger btn-block btn-flat' target='_blank'>
+      <a href='diario_conteudo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=3' class='btn btn-danger btn-block btn-flat' target='_blank'>
       <i class='fa fa-edit'></i> 
       CONTEÚDOS DE AULAS  TRIMESTRE III
       </a> ";
