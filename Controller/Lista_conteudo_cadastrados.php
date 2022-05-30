@@ -282,6 +282,7 @@ $result.="<div id='conteudos'>
         $idturma=$value['turma_id'];
         $idescola=$value['escola_id'];
         $serie_id=$value['serie_id'];
+        $seguimento=$value['seguimento'];
 
        $resultado=verificar_conteudo_aula_cadastrado_por_data_aula($conexao, $iddisciplina, $idturma, $idescola, $data,$aula);
         $marca_disciplina='';
@@ -297,7 +298,7 @@ $result.="<div id='conteudos'>
 
         if ($conta_conteudo>0) {
             
-          if ($serie_id>2 && $serie_id<8) {
+          if ($serie_id>2 && $serie_id<8 || ($serie_id==16 && $seguimento <3) ) {
             $result.="
               <div class='col-sm-12' id='campo_inputs$campo_origem_conteudo'>
                 <div class='form-group'>
