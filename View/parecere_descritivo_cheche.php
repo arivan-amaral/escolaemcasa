@@ -197,17 +197,17 @@
   "Times New Roman";color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p>
 
     <?php 
-    $parecer_descritivo="$idserie";
+    $parecer_descritivo="";
     $array_parecer = array();
     if($idserie>3){
       if ($parecer_descritivo =="") {
         $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av3',$idaluno,1,$ano_letivo);
 
         foreach ($resultado as $key => $value) {
-          if (!in_array($value['parecer_descritivo'],$array_parecer)) {
-              $parecer_descritivo=" ".$value['parecer_descritivo'];
-              $array_parecer[]=" ".$value['parecer_descritivo'];
-      
+          if (!in_array(" ".$value['parecer_descritivo'],$array_parecer)) {
+                $parecer_descritivo.=" ".$value['parecer_descritivo'];
+                $array_parecer[]=" ".$value['parecer_descritivo'];
+        
           }
         }
       }      
@@ -216,10 +216,10 @@
         $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av1',$idaluno,1,$ano_letivo);
 
         foreach ($resultado as $key => $value) {
-         if (!in_array($value['parecer_descritivo'],$array_parecer)) {
-              $parecer_descritivo=" ".$value['parecer_descritivo'];
-              $array_parecer[]=" ".$value['parecer_descritivo'];
-      
+        if (!in_array(" ".$value['parecer_descritivo'],$array_parecer)) {
+                $parecer_descritivo.=" ".$value['parecer_descritivo'];
+                $array_parecer[]=" ".$value['parecer_descritivo'];
+        
           }
 
         }
@@ -239,7 +239,7 @@
           $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av3',$idaluno,1,$ano_letivo);
 
           foreach ($resultado as $key => $value) {
-             if (!in_array($value['parecer_descritivo'],$array_parecer)) {
+             if (!in_array(" ".$value['parecer_descritivo'],$array_parecer)) {
                 $parecer_descritivo.=" ".$value['parecer_descritivo'];
                 $array_parecer[]=" ".$value['parecer_descritivo'];
         
@@ -306,6 +306,7 @@
 <?php 
 
     $parecer_descritivo="";
+    $array_parecer = array();
 
 
 
@@ -314,7 +315,11 @@
         $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av3',$idaluno,2,$ano_letivo);
 
         foreach ($resultado as $key => $value) {
-          $parecer_descritivo=" ".$value['parecer_descritivo'];
+         if (!in_array(" ".$value['parecer_descritivo'],$array_parecer)) {
+                $parecer_descritivo.=" ".$value['parecer_descritivo'];
+                $array_parecer[]=" ".$value['parecer_descritivo'];
+        
+          }
         }
       }      
 
@@ -322,7 +327,11 @@
         $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av1',$idaluno,2,$ano_letivo);
 
         foreach ($resultado as $key => $value) {
-          $parecer_descritivo=" ".$value['parecer_descritivo'];
+          if (!in_array(" ".$value['parecer_descritivo'],$array_parecer)) {
+                $parecer_descritivo.=" ".$value['parecer_descritivo'];
+                $array_parecer[]=" ".$value['parecer_descritivo'];
+        
+          }
         }
       }
 
@@ -337,7 +346,11 @@
         $iddisciplina=$linha['iddisciplina'];
         $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av3',$idaluno,2,$ano_letivo);
         foreach ($resultado as $key => $value) {
-          $parecer_descritivo=$value['parecer_descritivo'];
+          if (!in_array(" ".$value['parecer_descritivo'],$array_parecer)) {
+                $parecer_descritivo.=" ".$value['parecer_descritivo'];
+                $array_parecer[]=" ".$value['parecer_descritivo'];
+        
+          }
         }
       
       }
@@ -349,7 +362,11 @@
           $iddisciplina=$linha['iddisciplina'];
           $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av1',$idaluno,2,$ano_letivo);
           foreach ($resultado as $key => $value) {
-            $parecer_descritivo=" ".$value['parecer_descritivo'];
+            if (!in_array(" ".$value['parecer_descritivo'],$array_parecer)) {
+                  $parecer_descritivo.=" ".$value['parecer_descritivo'];
+                  $array_parecer[]=" ".$value['parecer_descritivo'];
+          
+            }
           }
         
         }
@@ -390,6 +407,8 @@
     <?php 
 
           $parecer_descritivo="";
+          $array_parecer = array();
+
 
 
     if($idserie>3){
@@ -397,7 +416,11 @@
         $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av3',$idaluno,3,$ano_letivo);
 
         foreach ($resultado as $key => $value) {
-          $parecer_descritivo=" ".$value['parecer_descritivo'];
+           if (!in_array(" ".$value['parecer_descritivo'],$array_parecer)) {
+                  $parecer_descritivo.=" ".$value['parecer_descritivo'];
+                  $array_parecer[]=" ".$value['parecer_descritivo'];
+          
+           }
         }
       }      
 
@@ -405,7 +428,11 @@
         $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av1',$idaluno,3,$ano_letivo);
 
         foreach ($resultado as $key => $value) {
-          $parecer_descritivo=" ".$value['parecer_descritivo'];
+          if (!in_array(" ".$value['parecer_descritivo'],$array_parecer)) {
+                $parecer_descritivo.=" ".$value['parecer_descritivo'];
+                $array_parecer[]=" ".$value['parecer_descritivo'];
+        
+          }
         }
       }
 
@@ -420,7 +447,11 @@
           $iddisciplina=$linha['iddisciplina'];
           $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av3',$idaluno,3,$ano_letivo);
           foreach ($resultado as $key => $value) {
-            $parecer_descritivo=" ".$value['parecer_descritivo'];
+            if (!in_array(" ".$value['parecer_descritivo'],$array_parecer)) {
+                $parecer_descritivo.=" ".$value['parecer_descritivo'];
+                $array_parecer[]=" ".$value['parecer_descritivo'];
+        
+            }
           }
         
         }
@@ -431,7 +462,11 @@
             $iddisciplina=$linha['iddisciplina'];
             $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'av1',$idaluno,3,$ano_letivo);
             foreach ($resultado as $key => $value) {
-              $parecer_descritivo=" ".$value['parecer_descritivo'];
+              if (!in_array(" ".$value['parecer_descritivo'],$array_parecer)) {
+                $parecer_descritivo.=" ".$value['parecer_descritivo'];
+                $array_parecer[]=" ".$value['parecer_descritivo'];
+        
+              }
             }
           
           }
