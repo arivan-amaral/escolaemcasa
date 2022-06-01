@@ -69,7 +69,7 @@ try {
             $result.="
             <div class='custom-control custom-checkbox'>
                 <input class='custom-control-input' name='iddisciplina[]' type='checkbox' id='customCheckbox$disciplina_id' value='$disciplina_id' required $marcado2>
-                <label for='customCheckbox$disciplina_id' class='custom-control-label'>$nome_escola - $nome_turma - $nome_disciplina yyyy</label>
+                <label for='customCheckbox$disciplina_id' class='custom-control-label'>$nome_escola - $nome_turma - $nome_disciplina </label>
             </div>";
           }else{
             $result.="
