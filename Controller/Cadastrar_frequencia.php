@@ -27,19 +27,24 @@ try {
     // 
     ##################### FUNÇÃO VERIFICA BLOQUEIO DE PROFESSOR ##################
     $res_bloqueio=listar_calendario_por_data($conexao,$data);
-    $verificar_bloqueio=0;
+   
     $idcalendario=0;
     foreach ($res_bloqueio as $key => $value) {
         $idcalendario=$value['idcalendario'];
         break;
     }
-    $verificar_bloqueio=verificar_bloqueio_funcionario($conexao,$idcalendario,$professor_id,4);
+    $verificar_bloqueio=$conexao->query("SELECT * from bloquear_acesso  where funcionario_id = $professor_id and calendario_letivo_id=$idcalendario and status=1
+      ");;
     $conta_bloqueio=0;
 
     foreach ($verificar_bloqueio as $key => $value) {
-       $conta_bloqueio++;
+       $conta_bloqueio=1;
+       break;
     }
     // echo "$idcalendario = $conta_bloqueio | SELECT * from bloquear_acesso  where funcionario_id = $professor_id and calendario_letivo_id=$idcalendario and status=1";
+    
+    // die();
+
     if ($conta_bloqueio>0) {
  
         $_SESSION['status']=2;
@@ -47,7 +52,7 @@ try {
         $fallback = '../View/index.php';
         $anterior = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : $fallback;
          header("location: {$anterior}");
-        exit;
+        exit();
     }
       
 
