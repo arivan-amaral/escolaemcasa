@@ -31,14 +31,15 @@ try {
     $idcalendario=0;
     foreach ($res_bloqueio as $key => $value) {
         $idcalendario=$value['idcalendario'];
+        break;
     }
-    $verificar_bloqueio=verificar_bloqueio_funcionario($conexao,$idcalendario,$professor_id,1);
+    $verificar_bloqueio=verificar_bloqueio_funcionario($conexao,$idcalendario,$professor_id,4);
     $conta_bloqueio=0;
 
     foreach ($verificar_bloqueio as $key => $value) {
        $conta_bloqueio++;
     }
-    echo "$idcalendario = $conta_bloqueio | SELECT * from bloquear_acesso  where funcionario_id = $professor_id and calendario_letivo_id=$idcalendario and status=1";
+    // echo "$idcalendario = $conta_bloqueio | SELECT * from bloquear_acesso  where funcionario_id = $professor_id and calendario_letivo_id=$idcalendario and status=1";
     if ($conta_bloqueio>0) {
  
         $_SESSION['status']=2;
