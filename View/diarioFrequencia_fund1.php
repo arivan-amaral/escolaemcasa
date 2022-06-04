@@ -377,7 +377,6 @@ foreach ($result_escola as $key => $value) {
     
   }else{
     
-
     $result_data_aula=$conexao->query("
     SELECT  data_frequencia,aula FROM frequencia WHERE
     escola_id=$idescola and
@@ -396,6 +395,7 @@ foreach ($result_escola as $key => $value) {
 $array_data_aula=array();
 $array_aula=array();
 foreach ($result_data_aula as $key => $value) {
+
   $data_frequencia=$value['data_frequencia'];
   $aula=$value['aula'];
 

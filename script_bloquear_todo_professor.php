@@ -7,14 +7,22 @@ session_start();
 try {
 if (isset($_GET['tokem_arivan'])) {
   // code...
-$res=$conexao->query("SELECT * FROM funcionario WHERE   descricao_funcao ='Professor' or descricao_funcao ='Professora' ");
+$res=$conexao->query("SELECT professor_id FROM funcionario,ministrada, turma WHERE  
+professor_id=idfuncionario and 
+ministrada.turma_id = idturma and 
+serie_id >2 and 
+(
+descricao_funcao ='Professor' or descricao_funcao ='Professora'
+)
+
+ group by professor_id ");
   $conta=1;
   foreach ($res as $key => $value) {
-    $funcionario_id=$value['idfuncionario'];
+    $funcionario_id=$value['professor_id'];
    
     $conexao->exec("INSERT INTO bloquear_acesso(funcionario_id, calendario_letivo_id, funcionario_responsavel) VALUES ($funcionario_id, 1, 175) ");
-    $conexao->exec("INSERT INTO bloquear_acesso(funcionario_id, calendario_letivo_id, funcionario_responsavel) VALUES ($funcionario_id, 2, 175) "); 
-    $conexao->exec("INSERT INTO bloquear_acesso(funcionario_id, calendario_letivo_id, funcionario_responsavel) VALUES ($funcionario_id, 3, 175) ");
+    // $conexao->exec("INSERT INTO bloquear_acesso(funcionario_id, calendario_letivo_id, funcionario_responsavel) VALUES ($funcionario_id, 2, 175) "); 
+    // $conexao->exec("INSERT INTO bloquear_acesso(funcionario_id, calendario_letivo_id, funcionario_responsavel) VALUES ($funcionario_id, 3, 175) ");
     echo"$conta - id: $funcionario_id <br>";
     $conta++;
   }
