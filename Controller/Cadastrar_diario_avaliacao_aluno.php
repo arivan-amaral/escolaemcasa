@@ -7,8 +7,11 @@
     
     if (!isset($_SESSION['idfuncionario'])) {
         $funcionario_id=175;
+        $professor_id=175;
+
     }else{
         $funcionario_id=$_SESSION['idfuncionario'];
+        $professor_id=$_SESSION['idfuncionario'];
     }
 
     $idescola=$_POST['idescola'];
@@ -46,7 +49,7 @@ try {
         break;
     }
     $verificar_bloqueio=$conexao->query("SELECT * from bloquear_acesso  where funcionario_id = $professor_id and calendario_letivo_id=$idcalendario and status=1
-      ");;
+      ");
     $conta_bloqueio=0;
 
     foreach ($verificar_bloqueio as $key => $value) {
