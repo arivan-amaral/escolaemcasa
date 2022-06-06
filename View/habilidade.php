@@ -76,7 +76,7 @@ if ($idserie<8){
     
     foreach ($res_alunos as $key => $value) {
       $idaluno=$value['idaluno'];
-      $nome_aluno=$value['nome_aluno'];
+      $nome_aluno=strtoupper($value['nome_aluno']);
  
         
 

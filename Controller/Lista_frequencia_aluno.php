@@ -154,7 +154,7 @@ $cont=1;
  foreach ($res_alunos as $key => $value) {
 
   $id=$value['idaluno'];
-  $nome_aluno=$value['nome_aluno'];
+  $nome_aluno=strtoupper($value['nome_aluno']);
   $nome_turma=$value['nome_turma'];
   $matricula_aluno=$value['matricula'];
   $data_matricula=$value['data_matricula'];

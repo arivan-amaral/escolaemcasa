@@ -757,7 +757,7 @@ foreach ($result_escola as $key => $value) {
 
    foreach ($res_alunos as $key => $value) {
     $idaluno=$value['idaluno'];
-    $nome_aluno=$value['nome_aluno'];
+    $nome_aluno=strtoupper($value['nome_aluno']);
     $matricula_aluno=$value['matricula'];
 
   // pesquisar_aluno_da_turma_ata_resultado_final

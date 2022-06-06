@@ -34,7 +34,7 @@
                                   foreach ($res_nota_fora as $key => $value) {
                                           
                                           $idnota=$value['idnota'];
-                                          $nome_aluno=$value['nome_aluno'];
+                                          $nome_aluno=strtoupper($value['nome_aluno']);
                                           $escola_origem=$value['escola_origem'];
                                           $nome_serie=$value['nome_serie'];
                                           $escola_atual=$value['escola_atual'];

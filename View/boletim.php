@@ -65,7 +65,7 @@ if ($idserie==3) {
     $nome_professor= "";
     foreach ($res_alunos as $key => $value) {
       $idaluno=$value['idaluno'];
-      $nome_aluno=$value['nome_aluno'];
+      $nome_aluno=strtoupper($value['nome_aluno']);
       if ($numero==1) {
         
         $res=listar_nome_professor_turma_ministrada($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
@@ -103,7 +103,7 @@ else if ($idserie >3 && $idserie <=8) {
       // $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
       foreach ($res_alunos as $key => $value) {
         $idaluno=$value['idaluno'];
-        $nome_aluno=$value['nome_aluno'];
+        $nome_aluno=strtoupper($value['nome_aluno']);
 
             echo "--" .$numero ."--";
             // teste_boletim.php
@@ -145,7 +145,7 @@ else if ($idserie >3 && $idserie <=8) {
     $nome_professor= " ";
     foreach ($res_alunos as $key => $value) {
       $idaluno=$value['idaluno'];
-      $nome_aluno=$value['nome_aluno'];
+      $nome_aluno=strtoupper($value['nome_aluno']);
 
        $res=listar_nome_professor_turma_ministrada($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
         $conta_virgula=0;
@@ -182,7 +182,7 @@ else if ($idserie >3 && $idserie <=8) {
       // $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
       foreach ($res_alunos as $key => $value) {
         $idaluno=$value['idaluno'];
-        $nome_aluno=$value['nome_aluno'];
+        $nome_aluno=strtoupper($value['nome_aluno']);
         //echo ". <input type='hidden' value='$numero'>";
         echo "<input type='hidden' name='$numero' value='$numero'><br>";
 
