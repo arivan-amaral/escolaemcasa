@@ -37,34 +37,40 @@ try {
     $nota=0;
     $url_get=$_POST['url_get'];
 
-    ##################### FUNÇÃO VERIFICA BLOQUEIO DE PROFESSOR ##################
-    $res_bloqueio=listar_data_por_periodo_ano($conexao,$ano_nota,$periodo);
-    $verificar_bloqueio=0;
+##################### FUNÇÃO VERIFICA BLOQUEIO DE PROFESSOR ##################
+    $res_bloqueio=listar_calendario_por_data($conexao,$data);
+   
     $idcalendario=0;
     foreach ($res_bloqueio as $key => $value) {
         $idcalendario=$value['idcalendario'];
         break;
     }
-    $verificar_bloqueio=verificar_bloqueio_funcionario($conexao,$idcalendario,$funcionario_id,4);
+    $verificar_bloqueio=$conexao->query("SELECT * from bloquear_acesso  where funcionario_id = $professor_id and calendario_letivo_id=$idcalendario and status=1
+      ");;
     $conta_bloqueio=0;
 
     foreach ($verificar_bloqueio as $key => $value) {
-       $conta_bloqueio++;
+       $conta_bloqueio=1;
+       break;
     }
     // echo "$idcalendario = $conta_bloqueio | SELECT * from bloquear_acesso  where funcionario_id = $professor_id and calendario_letivo_id=$idcalendario and status=1";
-    if ($conta_bloqueio>0) {
     
+    // die();
+
+    if ($conta_bloqueio>0) {
+ 
         $_SESSION['status']=2;
         $_SESSION['mensagem']='BLOQUEADO PARA PROFESSOR!';
         $fallback = '../View/index.php';
         $anterior = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : $fallback;
          header("location: {$anterior}");
-        exit;
+        exit();
     }
       
 
     ##################### FIM FUNÇÃO VERIFICA BLOQUEIO DE PROFESSOR ##################
-
+    
+    
 
 
 foreach ($_POST['aluno_id'] as $key => $value) {
