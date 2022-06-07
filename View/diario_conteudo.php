@@ -144,6 +144,14 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
 $idescola=$_GET['idescola'];
 $idturma=$_GET['idturma'];
 $idserie=$_GET['idserie'];
+$res_seg=$conexao->query("SELECT * FROM turma WHERE idturma=$idturma LIMIT 1");
+  $seguimento='';
+
+foreach ($res_seg as $key => $value) {
+  $seguimento=$value['seguimento'];
+  // code...
+}
+
 if (isset($_GET['periodo_id'])) {
   if ($_GET['periodo_id']>0 && $_GET['periodo_id']<=3) {
     $periodo_id=$_GET['periodo_id'];
@@ -215,7 +223,7 @@ if ($idserie <3) {
     }
 
 
-}elseif ($idserie>2 && $idserie<8) {
+}elseif (($idserie>2 && $idserie<8 ) ||   $seguimento==2 ) {
 
     $pes=listar_disciplina_da_turma($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
 
