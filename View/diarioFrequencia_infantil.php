@@ -253,7 +253,7 @@ foreach ($result_escola as $key => $value) {
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
   color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
   </td>
-  <td width=261 nowrap style='width:195.55pt;padding:0cm 3.5pt 0cm 3.5pt;
+  <td width=261 colspan="10" style='width:195.55pt;padding:0cm 3.5pt 0cm 3.5pt;
   height:15.0pt'>
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
   style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
