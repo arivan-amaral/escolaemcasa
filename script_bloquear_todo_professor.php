@@ -19,8 +19,10 @@ descricao_funcao ='Professor' or descricao_funcao ='Professora'
   $conta=1;
   foreach ($res as $key => $value) {
     $funcionario_id=$value['professor_id'];
-   
-    $conexao->exec("INSERT INTO bloquear_acesso(funcionario_id, calendario_letivo_id, funcionario_responsavel) VALUES ($funcionario_id, 4, 175) ");
+    for ($i=1; $i <= 4; $i++) { 
+      $conexao->exec("INSERT INTO bloquear_acesso(funcionario_id, calendario_letivo_id, funcionario_responsavel) VALUES ($funcionario_id, $i, 175) ");
+      // code...
+    }
      
     echo"$conta - id: $funcionario_id <br>";
     $conta++;
