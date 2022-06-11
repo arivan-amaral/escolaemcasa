@@ -10,7 +10,7 @@ if (isset($_GET['tokem_arivan'])) {
 $res=$conexao->query("SELECT professor_id FROM funcionario,ministrada, turma WHERE  
 professor_id=idfuncionario and 
 ministrada.turma_id = idturma and 
-serie_id >2 and 
+serie_id <3 and 
 (
 descricao_funcao ='Professor' or descricao_funcao ='Professora'
 )
