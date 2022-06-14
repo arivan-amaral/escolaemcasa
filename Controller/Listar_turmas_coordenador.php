@@ -17,6 +17,7 @@ try {
 
     $idturma=$value['idturma'];
     $idserie=$value['idserie'];
+    $seguimento=$value['seguimento'];
 
     $nome_serie=$value['nome_serie'];
     $nome_turma=($value['nome_turma']);
@@ -50,7 +51,7 @@ try {
       VER RELATÓRIO DE VÍDEOS DE ALUNO
       </a> ";
 
-      if ($idserie<8) {
+      if ($idserie<8 || $seguimento <3) {
 
           $result.= "
             <a   href='impressao_diario_frequencia.php?iddisciplina=1000&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat' target='_blank'>
@@ -86,16 +87,16 @@ try {
       </a> 
 
 
-      <a href='diario_conteudo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-danger btn-block btn-flat' target='_blank'>
+      <a href='diario_conteudo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat' target='_blank'>
       <i class='fa fa-edit'></i> 
       CONTEÚDOS DE AULAS TRIMESTRE I
       </a> 
-      <a href='diario_conteudo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=2' class='btn btn-danger btn-block btn-flat' target='_blank'>
+      <a href='diario_conteudo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=2' class='btn btn-secondary btn-block btn-flat' target='_blank'>
       <i class='fa fa-edit'></i> 
       CONTEÚDOS DE AULAS  TRIMESTRE II
       </a>
 
-      <a href='diario_conteudo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=3' class='btn btn-danger btn-block btn-flat' target='_blank'>
+      <a href='diario_conteudo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=3' class='btn btn-secondary btn-block btn-flat' target='_blank'>
       <i class='fa fa-edit'></i> 
       CONTEÚDOS DE AULAS  TRIMESTRE III
       </a> ";
@@ -108,7 +109,7 @@ try {
                                             // code...
       }
 
-      if ($idserie>2 && $idserie< 8) {
+      if ($idserie>2 && $idserie< 8 || ($seguimento==2)) {
         $result.="<a href='habilidade.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-warning btn-block btn-flat' target='_blank'>
         <i class='fa fa-card'></i> 
         HABILIDADES

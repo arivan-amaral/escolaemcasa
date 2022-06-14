@@ -14,6 +14,15 @@ try {
 $idescola=$_GET['idescola'];
 $idturma=$_GET['idturma'];
 $idserie=$_GET['idserie'];
+$res_seg=$conexao->query("SELECT * FROM turma WHERE idturma=$idturma LIMIT 1");
+  $seguimento='';
+
+foreach ($res_seg as $key => $value) {
+  $seguimento=$value['seguimento'];
+  // code...
+}
+
+
 $res_escola=buscar_escola_por_id($conexao,$idescola);
 $nome_escola="";
 $nome_turma="";
@@ -44,7 +53,7 @@ include_once"cabecalho_boletim.php";
 $numero=1;
 
 
-if ($idserie<8){
+if ($idserie<8 || $seguimento==2){
 
  // echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
   $numero=1;

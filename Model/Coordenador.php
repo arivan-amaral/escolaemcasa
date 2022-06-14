@@ -80,6 +80,8 @@
 	function listar_turmas_inicial_coordenador($conexao,$idescola,$ano_letivo){
 	    $res=$conexao->query("SELECT 
 	       idturma,
+	       turma.seguimento,
+	       
 	       serie.id as 'idserie',
 	       serie.nome as 'nome_serie',
 	       nome_turma,
@@ -106,6 +108,7 @@
 	function listar_turmas_coordenador($conexao,$idescola,$ano_letivo){
 	    $res=$conexao->query("SELECT 
 	       idturma,
+	       turma.seguimento,
 	       serie.id as 'idserie',
 	       serie.nome as 'nome_serie',
 	       nome_turma,
