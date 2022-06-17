@@ -145,6 +145,12 @@
                 <i class='far fa-circle nav-icon text-primary'></i>
                 <p>Cadastrar Novo Setor</p>
                 </a>
+               </li>
+               <li class='nav-item'>
+                <a href='chamada_visao_geral.php' class='nav-link'>
+                <i class='far fa-circle nav-icon text-primary'></i>
+                <p>Chamados Atuais</p>
+                </a>
                </li>";
                }
              echo"</ul>

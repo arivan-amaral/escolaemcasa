@@ -260,6 +260,36 @@ function quantidade_chamada_atraso($conexao,$setor_id){
 
 }
 
+function quantidade_chamada_atraso_vg($conexao){
+   $result = $conexao->query("SELECT count(*) as 'chamada' FROM chamada where status='atrasado'");
+    return $result;
+
+}
+
+function quantidade_chamada_andamento_vg($conexao){
+   $result = $conexao->query("SELECT count(*) as 'chamada' FROM chamada where status='em_andamento'");
+    return $result;
+
+}
+
+function quantidade_chamada_finalizadas_vg($conexao){
+    $result = $conexao->query("SELECT count(*) as 'chamada' FROM chamada where status='finalizado'");
+    return $result;
+
+}
+
+function quantidade_chamada_novas_vg($conexao){
+    $result = $conexao->query("SELECT count(*) as 'chamada' FROM chamada where status='esperando_resposta'");
+    return $result;
+
+}
+
+function quantidade_chamada_total_vg($conexao){
+   $result = $conexao->query("SELECT count(*) as 'chamada' FROM chamada");
+    return $result;
+
+}
+
 function buscar_funcionario($conexao,$funcionario){
    $result = $conexao->query("SELECT * FROM funcionario where idfuncionario=$funcionario");
     return $result;
