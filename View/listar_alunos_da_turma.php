@@ -236,6 +236,7 @@ $arquivo.="
             <th>Dados do Aluno</th>
             <th>Resultado</th>
             <th>Opção</th>
+            <th>Status</th>
           </tr>
         </thead>
 
@@ -387,8 +388,20 @@ if ($status_aluno =='Ativo') {
   </div>";
 }
 
-$arquivo.="</td>
-<td> ";
+$arquivo.="</td>";
+$arquivo.="<td>
+<div class='form-group1'>
+  <label for='exampleInputEmail1'>Status</label>
+   <select class='form-control'  id='situacao_aluno' name='situacao_aluno' onchange='alterar_situacao_aluno($matricula_aluno,this);'>
+    <option value='MATRICULADO'>MATRICULADO</option>
+    <option value='EVADIDO'>EVADIDO</option>
+    <option value='DESISTENTE'>DESISTENTE</option>
+    <option value='FALECIDO'>FALECIDO</option>
+    <option value='CANCELADO'>CANCELADO</option>
+   </select> 
+  </div>
+</td>";
+$arquivo.="<td>";
 if ( count($verificar_aluno_na_turna_rematricula)==0 && $_SESSION['ano_letivo'] == $_SESSION['ano_letivo_vigente']) {
   // echo '<a class='btn btn-danger' onclick='excluir_aluno_matriculado($idaluno);' >Excluir aluno</a> <br> <br>';
 
