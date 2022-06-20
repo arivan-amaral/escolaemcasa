@@ -591,6 +591,11 @@ function mudar_status_aluno($conexao, $status, $id) {
  return $result;
 }
 
+function mudar_situacao_aluno($conexao, $matricula, $status, $data) {
+ $result = $conexao->exec("UPDATE ecidade_matricula SET datasaida = '$data', matricula_situacao = '$status',matricula_datasaida = '$data', matricula_datamodif = '$data',matricula_ativa = 'N' ,matricula_concluida = 'N' WHERE matricula_codigo = $matricula");
+ return $result;
+}
+
 function alterar_foto_aluno($conexao, $nome, $id) {
  $result = $conexao->exec("UPDATE imagem SET nome = '$nome' WHERE id_aluno = $id");
  return $result;
