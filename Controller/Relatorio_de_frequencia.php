@@ -1,14 +1,20 @@
     <?php session_start();
-    include '../Model/Conexao.php';
-    include '../Model/Aluno.php';
-    include"Conversao.php";
+    include_once '../Model/Conexao.php';
+    include_once '../Model/Aluno.php';
+    include_once "Conversao.php";
 
 
-    $ano_letivo = $_SESSION['ano_letivo'];
-
-    $idturma = $_GET['idturma'];
-    $idescola = $_GET['idescola'];
+    try {
     $quantidade_falta = $_GET['falta'];
+    $ano_letivo = $_SESSION['ano_letivo'];
+    $idturma = $_GET['idturma'];
+    $idturma = $_GET['idturma'];
+    
+    $serie_seguimento=verifica_seguimento($conexao,$idturma);
+    $seguimento=$serie_seguimento['seguimento'];
+    $idserie=$serie_seguimento['idserie'];
+
+    $idescola = $_GET['idescola'];
     $data_inicial = $_GET['data_inicial'];
     $data_final = $_GET['data_final'];
 
@@ -17,8 +23,6 @@
      $dateInterval = $data_inicio->diff($data_fim);
      $total= $dateInterval->days;
       
-
-     try {
 
 
         $data_aux=$data_inicio;
@@ -43,7 +47,7 @@
                 <thead>
                     <tr>
                         <th>Aluno</th>
-                        <th>Faltas consecutivas</th>
+                        <th>Faltas</th>
                                             
                     </tr>
                 </thead>
@@ -61,18 +65,32 @@
        $senha=$value['senha'];
        $matricula_aluno=$value['matricula'];
         $faltas_aluno=0;
-       foreach ($array_datas as $key => $datas) {
-           if ($faltas_aluno<=$quantidade_falta) {
-               $res=$conexao->query("SELECT * FROM frequencia WHERE ano_frequencia='$ano_letivo' and
-                data_frequencia ='$datas' and aluno_id=$idaluno and turma_id=$idturma and escola_id=$idescola and  presenca in(0) and presenca not in(1) limit 1 ");
-               // echo "SELECT * FROM frequencia WHERE ano_frequencia='$ano_letivo' and
-               //  data_frequencia ='$datas' and aluno_id=$idaluno and turma_id=$idturma and escola_id=$idescola and  presenca in(0) and presenca not in(1) limit 1; <br><br>";
-               if (count($res->fetchAll())>0) {
-                  $faltas_aluno++;
-               }else{
-                    $faltas_aluno=0;
+
+        if ( ($quantidade_falta=="Total" && $seguimento <3) ||($quantidade_falta=="Total" && $idserie <8) ) {
+           $faltas_aluno="Total fund1 e infantil ";
+
+
+        }else if ($quantidade_falta=="Total" && $seguimento ==3 || ($quantidade_falta=="Total" && $seguimento <3) ||($quantidade_falta=="Total" && $idserie >7 && $idserie<16)) {
+           
+           $faltas_aluno="Total fund2 ";
+
+
+        }else{
+
+           foreach ($array_datas as $key => $datas) {
+               if ($faltas_aluno<=$quantidade_falta) {
+                   $res=$conexao->query("SELECT * FROM frequencia WHERE ano_frequencia='$ano_letivo' and
+                    data_frequencia ='$datas' and aluno_id=$idaluno and turma_id=$idturma and escola_id=$idescola and  presenca in(0) and presenca not in(1) limit 1 ");
+                  
+                   if (count($res->fetchAll())>0) {
+                      $faltas_aluno++;
+                   }else{
+                        $faltas_aluno=0;
+                   }
                }
-           }
+
+               
+        }
 
            // if ($faltas_aluno>=$quantidade_falta) {
            //   break;

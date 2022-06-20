@@ -14,13 +14,10 @@ try {
 $idescola=$_GET['idescola'];
 $idturma=$_GET['idturma'];
 $idserie=$_GET['idserie'];
-$res_seg=$conexao->query("SELECT * FROM turma WHERE idturma=$idturma LIMIT 1");
-  $seguimento='';
 
-foreach ($res_seg as $key => $value) {
-  $seguimento=$value['seguimento'];
-  // code...
-}
+$serie_seguimento=verifica_seguimento($conexao,$idturma);
+
+$seguimento=$serie_seguimento['seguimento'];
 
 
 $res_escola=buscar_escola_por_id($conexao,$idescola);

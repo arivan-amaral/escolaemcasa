@@ -67,7 +67,7 @@ $url_get=$array_url[1];
               </b>
             </h1>
           </center>
-
+ 
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -96,8 +96,10 @@ $url_get=$array_url[1];
         </div>
         <div class="col-sm-4">
           <div class="form-group">
-           <label for="exampleInputEmail1">QUANTIDADE DE FALTAS CONSECUTIVAS</label>
+           <label for="exampleInputEmail1">QUANTIDADE DE FALTAS</label>
            <select class="form-control"  id="falta" name="falta">
+              <option value='Total'>Total</option>
+
             <?php
           
             for ($i=1; $i < 26; $i++) { 

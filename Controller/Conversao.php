@@ -82,6 +82,19 @@ function incrementar_dia_data($data_atual){
     return $d1;
 }
 
+function verifica_seguimento($conexao,$idturma){
+    $res_seg=$conexao->query("SELECT * FROM turma WHERE idturma=$idturma LIMIT 1");
+    
+    $serie_seguimento = array();
+    foreach ($res_seg as $key => $value) {
+      $serie_seguimento['serie_id']=$value['serie_id'];
+      $serie_seguimento['seguimento']=$value['seguimento'];
+
+    }
+
+    return $serie_seguimento;
+}
+
 // 
     // $diferenca=(strtotime($data_atual) - strtotime($data_banco));
 
