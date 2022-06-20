@@ -258,5 +258,10 @@ function buscar_escola_por_id($conexao,$id){
   
 }
 
+function buscar_escola_por_nome($conexao,$nome_escola){
+   $result = $conexao->query("SELECT * FROM escola  where nome_escola=$nome_escola");
+    return $result;
+  
+}
 
 ?>
