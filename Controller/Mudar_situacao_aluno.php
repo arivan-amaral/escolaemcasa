@@ -6,7 +6,12 @@ include'../Model/Aluno.php';
 		$matricula=$_GET['matricula'];
 		$status=$_GET['status'];
 		$data=$_GET['data'];
-		mudar_situacao_aluno($conexao, $matricula, $status, $data);
+		if ($status == 'MATRICULADO') {
+			restaurar_situacao_aluno($conexao, $matricula);
+		}else{
+			mudar_situacao_aluno($conexao, $matricula, $status, $data);
+
+		}
 		
 	} catch (Exception $e) {
 		echo $e;

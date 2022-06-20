@@ -303,7 +303,20 @@ $arquivo.="
              <td colspan='100%' valign=top style='border:solid black 1.0pt;
              ;padding:0cm 0cm 10pt 0cm;height:11.3pt; '>
              $datasaida 
-             </td> ";
+             </td> 
+
+             <td>
+              <div class='form-group1'>
+                <label for='exampleInputEmail1'>Status</label>
+                 <select class='form-control'  id='situacao_aluno' name='situacao_aluno' onchange='alterar_situacao_aluno($matricula_aluno,this);'>
+                  <option value='MATRICULADO'>MATRICULADO</option>
+                  <option value='EVADIDO'>EVADIDO</option>
+                  <option value='DESISTENTE'>DESISTENTE</option>
+                  <option value='FALECIDO'>FALECIDO</option>
+                  <option value='CANCELADO'>CANCELADO</option>
+                 </select> 
+                </div>
+              </td>";
 
 
            }else{
@@ -387,7 +400,6 @@ if ($status_aluno =='Ativo') {
   </div>
   </div>";
 }
-
 $arquivo.="</td>";
 $arquivo.="<td>
 <div class='form-group1'>
