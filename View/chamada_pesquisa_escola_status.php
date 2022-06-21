@@ -117,13 +117,13 @@ setTimeout('dia_doservidor_publico();',3000);
         <div class="col-sm-4">
           <div class="form-group">
            <label for="exampleInputEmail1">DATA REGISTRO INÍCIAL</label>
-           <input type="date" class="form-control" name="data_inicial" id="data_inicial">
+           <input type="datetime-local" class="form-control" name="data_inicial" id="data_inicial">
           </div>
         </div>
          <div class="col-sm-4">
           <div class="form-group">
            <label for="exampleInputEmail1">DATA REGISTRO FINAL</label>
-           <input type="date" class="form-control" name="data_final" id="data_final">
+           <input type="datetime-local" class="form-control" name="data_final" id="data_final">
           </div>
         </div>
       </div>

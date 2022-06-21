@@ -37,13 +37,13 @@ function pesquisar_chamado_escola($conexao,$chamado_id){
 }
 
 function pesquisar_chamado_data_solicitante($conexao,$data_inicial,$data_final){
-   $result = $conexao->query("SELECT * FROM chat_chamado where status = 'inicial' and data BETWEEN $data_inicial AND $data_final ");
+   $result = $conexao->query("SELECT * FROM chat_chamado where status = 'inicial' and data BETWEEN '$data_inicial' AND '$data_final' ");
     return $result;
 
 }
 
 function pesquisar_chamado_data_retorno($conexao,$data_inicial,$data_final){
-   $result = $conexao->query("SELECT * FROM chamado where data_previsao BETWEEN $data_inicial AND $data_final ");
+   $result = $conexao->query("SELECT * FROM chamada where data_previsao BETWEEN '$data_inicial' AND '$data_final' ");
     return $result;
 
 }
