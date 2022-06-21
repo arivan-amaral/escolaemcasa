@@ -211,10 +211,7 @@ if ($pesquisa != '' || $data_inicial != '') {
           }
         }
 
-        $res_data_retorno = pesquisar_chamado_data_retorno($conexao,$pesquisa);
-        foreach ($res_data_retorno as $key => $value) {
-          $id_chamada_data = $value['chamada_id'];
-          $res=pesquisar_chamado_data_retorno($conexao,$id_chamada_data);
+          $res=pesquisar_chamado_data_retorno($conexao,$data_inicial, $data_final);
           foreach ($res as $key => $value){
           $id_chamada = $value['id'];
           $status = $value['status'];
@@ -386,7 +383,8 @@ if ($pesquisa != '' || $data_inicial != '') {
           
           $conta++;
           }
-        }
+        
+
       }else{
 
    // PESQUISA ESCOLA
@@ -1252,7 +1250,7 @@ if ($pesquisa != '' || $data_inicial != '') {
      
    
     }
-      
+
     if ($conta==0) {
         $result.="<tr> <td> NADA ENCONTRADO </td> </tr>";
     }
