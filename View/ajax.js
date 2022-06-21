@@ -118,7 +118,8 @@ function pesquisa_chamado_setor_escola(){
 
   var result = document.getElementById('resultado');
   var pesquisa = document.getElementById('pesquisa').value;
-
+  var obj_filtro = document.getElementById('filtro');
+  //var filtro = obj_filtro.options[obj_filtro.selectedIndex].value;
 
       result.innerHTML = "<img src='imagens/carregando.gif'>";  
       var xmlreq = CriaRequest();

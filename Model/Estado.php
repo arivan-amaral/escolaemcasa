@@ -14,5 +14,9 @@
 		return $result;
 	}
 
+	function listar_cidade_por_id($conexao,$idcidade){
+		$result=$conexao->query("SELECT * FROM cidade where id = '$idcidade'  order by nome asc");
+		return $result;
+	}
 
 ?>

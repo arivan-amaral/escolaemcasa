@@ -6,8 +6,6 @@ function buscar_chamada($conexao,$setor_id){
 
 }
 
-
-
 function buscar_chamada_em_andamento($conexao,$setor_id){
    $result = $conexao->query("SELECT * FROM chamada where setor_id=$setor_id and status ='em_andamento'  ORDER BY id asc");
     return $result;
@@ -16,6 +14,48 @@ function buscar_chamada_em_andamento($conexao,$setor_id){
 
 function pesquisar_chamado($conexao,$chamado_id){
    $result = $conexao->query("SELECT * FROM chamada where id=$chamado_id");
+    return $result;
+
+}
+
+function pesquisar_chamado_status($conexao,$chamado_id){
+   $result = $conexao->query("SELECT * FROM chamada where status like '%$chamado_id%'");
+    return $result;
+
+}
+
+function pesquisar_chamado_setor($conexao,$chamado_id){
+   $result = $conexao->query("SELECT * FROM chamada where setor_id=$chamado_id");
+    return $result;
+
+}
+
+function pesquisar_chamado_escola($conexao,$chamado_id){
+   $result = $conexao->query("SELECT * FROM chamada where tipo_solicitacao=$chamado_id and setor_id = '11'");
+    return $result;
+
+}
+
+function pesquisar_chamado_data_solicitante($conexao,$chamado_id){
+   $result = $conexao->query("SELECT * FROM chat_chamado where data like $chamado_id and status = 'inicial'");
+    return $result;
+
+}
+
+function pesquisar_chamado_data_retorno($conexao,$chamado_id){
+   $result = $conexao->query("SELECT * FROM chamado where data_previsao like $chamado_id ");
+    return $result;
+
+}
+
+function pesquisar_chamado_solicitante($conexao,$chamado_id){
+   $result = $conexao->query("SELECT * FROM chamada where funcionario_id=$chamado_id");
+    return $result;
+
+}
+
+function pesquisar_chamado_retorno($conexao,$chamado_id){
+   $result = $conexao->query("SELECT * FROM chamada where func_respondeu_id=$chamado_id");
     return $result;
 
 }
@@ -92,6 +132,13 @@ function nome_funcionario($conexao,$id_funcionario){
     return $result;
 
 }
+
+function id_funcionario($conexao,$nome_funcionario){
+   $result = $conexao->query("SELECT * FROM funcionario where nome like '%$nome_funcionario%' ");
+    return $result;
+
+}
+
 
 function buscar_escola($conexao,$id_escola){
    $result = $conexao->query("SELECT * FROM escola where idescola=$id_escola");
@@ -328,6 +375,15 @@ function buscar_chat_inical($conexao,$chamada_id,$funcionario_id){
 
 }
 
+
+function cadastrar_mensagem($conexao,$mensagem,$enviado,$id_chamado) {
+  $sql = $conexao->prepare("INSERT INTO mensagem_chamado (id_chamado,mensagem,enviado) VALUES (:id_chamado,:mensagem,:enviado)");
+  $sql->execute(array(
+     'id_chamado' => $id_chamado,
+     'mensagem' => $mensagem,
+     'enviado' => $enviado
+  ));
+}
 
 
 function criar_chamada($conexao,$funcionario_id,$setor_id,$status,$tipo_solicitacao) {
