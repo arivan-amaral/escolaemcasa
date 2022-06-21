@@ -36,14 +36,14 @@ function pesquisar_chamado_escola($conexao,$chamado_id){
 
 }
 
-function pesquisar_chamado_data_solicitante($conexao,$chamado_id){
-   $result = $conexao->query("SELECT * FROM chat_chamado where data like $chamado_id and status = 'inicial'");
+function pesquisar_chamado_data_solicitante($conexao,$data_inicial,$data_final){
+   $result = $conexao->query("SELECT * FROM chat_chamado where status = 'inicial' and data BETWEEN $data_inicial AND $data_final ");
     return $result;
 
 }
 
-function pesquisar_chamado_data_retorno($conexao,$chamado_id){
-   $result = $conexao->query("SELECT * FROM chamado where data_previsao like $chamado_id ");
+function pesquisar_chamado_data_retorno($conexao,$data_inicial,$data_final){
+   $result = $conexao->query("SELECT * FROM chamado where data_previsao BETWEEN $data_inicial AND $data_final ");
     return $result;
 
 }

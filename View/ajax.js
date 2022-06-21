@@ -118,27 +118,36 @@ function pesquisa_chamado_setor_escola(){
 
   var result = document.getElementById('resultado');
   var pesquisa = document.getElementById('pesquisa').value;
-  var obj_filtro = document.getElementById('filtro');
-  //var filtro = obj_filtro.options[obj_filtro.selectedIndex].value;
-
-      result.innerHTML = "<img src='imagens/carregando.gif'>";  
-      var xmlreq = CriaRequest();
-      xmlreq.open("GET", "../Controller/Pesquisa_chamado_escola_status.php?pesquisa="+pesquisa, true);
-
-      xmlreq.onreadystatechange = function(){
+  var data_inicial = document.getElementById('data_inicial').value;
+  var data_final = document.getElementById('data_final').value;
     
-       if (xmlreq.readyState == 4) {
-           if (xmlreq.status == 200) {
-                 result.innerHTML = xmlreq.responseText;
+    if(data_inicial != '' && data_final != '' || data_inicial == '' && data_final == ''){
+        result.innerHTML = "<img src='imagens/carregando.gif'>";  
+          var xmlreq = CriaRequest();
+          xmlreq.open("GET", "../Controller/Pesquisa_chamado_escola_status.php?pesquisa="+pesquisa+"&data_inicial="+data_inicial+"&data_final="+data_final, true);
 
-           }else{
-                 alert('Erro desconhecido, verifique sua conexão com a internet');
+          xmlreq.onreadystatechange = function(){
+        
+           if (xmlreq.readyState == 4) {
+               if (xmlreq.status == 200) {
+                     result.innerHTML = xmlreq.responseText;
 
-              result.innerHTML ="Erro ao receber mensagens";                 
+               }else{
+                     alert('Erro desconhecido, verifique sua conexão com a internet');
+
+                  result.innerHTML ="Erro ao receber mensagens";                 
+               }
            }
-       }
-      };
-   xmlreq.send(null);
+          };
+       xmlreq.send(null);
+   }else{
+    Swal.fire({
+        icon: 'error',
+        title: 'Atenção',
+        text: 'Se for utilizar uma consulta com datas, por favor insira nas duas datas inicial e final.'
+      });
+   }
+      
 }
 
 function cadastrar_mensagem(id_chamada,enviado){

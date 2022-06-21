@@ -113,21 +113,20 @@ setTimeout('dia_doservidor_publico();',3000);
   <p>Digite informações no campo de entrada para pesquisar por escola, solicitante, data da solicitação,
     setor, retorno, data de retorno ou status.</p> 
    
-    <!--div class="row">
-      <div class="col-sm-8">
-         <div class="form-group">
-           <label for="exampleInputEmail1">Filtro</label>
-           <select class="form-control"  id="filtro" name="filtro" >
-            <option value="ESCOLA">ESCOLA</option>
-            <option value="SOLICITANTE">SOLICITANTE</option>
-            <option value="DATA SOLICITAÇÃO">DATA SOLICITAÇÃO</option>
-            <option value="SETOR">SETOR</option>
-            <option value="RETORNADOR">RETORNADOR</option>
-            <option value="DATA RETORNO">DATA RETORNO</option>
-           </select> 
-          </div> 
+    <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+           <label for="exampleInputEmail1">DATA REGISTRO INÍCIAL</label>
+           <input type="date" class="form-control" name="data_inicial" id="data_inicial">
+          </div>
+        </div>
+         <div class="col-sm-4">
+          <div class="form-group">
+           <label for="exampleInputEmail1">DATA REGISTRO FINAL</label>
+           <input type="date" class="form-control" name="data_final" id="data_final">
+          </div>
+        </div>
       </div>
-    </div-->
     <div class="row">
       <div class="col-sm-8">
         <input class="form-control" id="pesquisa" name="pesquisa" type="text" placeholder="Digite aqui..">
