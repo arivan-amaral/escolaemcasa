@@ -12,7 +12,7 @@
     
     $serie_seguimento=verifica_seguimento($conexao,$idturma);
     $seguimento=$serie_seguimento['seguimento'];
-    $idserie=$serie_seguimento['idserie'];
+    $idserie=$serie_seguimento['serie_id'];
 
     $idescola = $_GET['idescola'];
     $data_inicial = $_GET['data_inicial'];
@@ -66,7 +66,9 @@
        $matricula_aluno=$value['matricula'];
         $faltas_aluno=0;
 
-        if ( ($quantidade_falta=="Total" && $seguimento <3) ||($quantidade_falta=="Total" && $idserie <8) ) {
+     if ( $quantidade_falta=="Total" ) {
+
+        if ( ($seguimento!='' && $seguimento <3) ||$idserie <8 ) {
 
 
             foreach ($array_datas as $key => $datas) {
@@ -79,17 +81,23 @@
                     }
                 }
             }
-           // $faltas_aluno="Total fund1 e infantil ";
+            //$faltas_aluno="Total fund1 e infantil seg $seguimento $idserie ";
 
 
-        }else if ($quantidade_falta=="Total" && $seguimento ==3 || ($quantidade_falta=="Total" && $seguimento <3) ||($quantidade_falta=="Total" && $idserie >7 && $idserie<16)) {
+        }else if ( ($seguimento!='' && $seguimento <3)  || ( $idserie >7 && $idserie<16)) {
            
-           $res_pre=$conexao->query("SELECT presenca from frequencia where presenca=0 and aluno_id=$idaluno and escola_id=$idescola and turma_id=$idturma and data_frequencia BETWEEN '$data_inicial' and '$data_final' ");
+           $res_pre=$conexao->query("SELECT count(*) AS'quantidade' from frequencia where presenca=0 and aluno_id=$idaluno and escola_id=$idescola and turma_id=$idturma and data_frequencia BETWEEN '$data_inicial' and '$data_final' ");
 
-           $faltas_aluno=$res_pre->rowCount();
+               foreach ($res_pre as $keyPre => $valuePre) {
+                    $faltas_aluno=$valuePre['quantidade'];
+               }
 
 
-        }else{
+        }
+            // $faltas_aluno="Total fund2 ";
+
+
+    }else{
 
            foreach ($array_datas as $key => $datas) {
                if ($faltas_aluno<=$quantidade_falta) {
@@ -113,7 +121,7 @@
 
 
 
-    if ($faltas_aluno>=$quantidade_falta) {
+    if ($faltas_aluno>=$quantidade_falta || $quantidade_falta=='Total') {
 
             $result.="
                <tr> 
