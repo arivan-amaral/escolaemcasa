@@ -46,6 +46,7 @@
     $result="
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>Aluno</th>
                         <th>Faltas</th>
                                             
