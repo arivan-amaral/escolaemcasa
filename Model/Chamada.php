@@ -457,4 +457,10 @@ function buscar_id_escola($conexao,$funcionario_id){
     return $result;
 
 }
+
+function buscar_id_setor($conexao,$funcionario_id){
+   $result = $conexao->query("SELECT * FROM relacao_setor_funcionario where funcionario_id=$funcionario_id ");
+    return $result;
+
+}
 ?>
