@@ -67,12 +67,26 @@
         $faltas_aluno=0;
 
         if ( ($quantidade_falta=="Total" && $seguimento <3) ||($quantidade_falta=="Total" && $idserie <8) ) {
-           $faltas_aluno="Total fund1 e infantil ";
+
+
+            foreach ($array_datas as $key => $datas) {
+                if ($faltas_aluno<=$quantidade_falta) {
+                    $res=$conexao->query("SELECT * FROM frequencia WHERE ano_frequencia='$ano_letivo' and
+                     data_frequencia ='$datas' and aluno_id=$idaluno and turma_id=$idturma and escola_id=$idescola and  presenca in(0) and presenca not in(1) limit 1 ");
+                   
+                    if (count($res->fetchAll())>0) {
+                       $faltas_aluno++;
+                    }
+                }
+            }
+           // $faltas_aluno="Total fund1 e infantil ";
 
 
         }else if ($quantidade_falta=="Total" && $seguimento ==3 || ($quantidade_falta=="Total" && $seguimento <3) ||($quantidade_falta=="Total" && $idserie >7 && $idserie<16)) {
            
-           $faltas_aluno="Total fund2 ";
+           $res_pre=$conexao->query("SELECT presenca from frequencia where presenca=0 and aluno_id=$idaluno and escola_id=$idescola and turma_id=$idturma and data_frequencia BETWEEN '$data_inicial' and '$data_final' ");
+
+           $faltas_aluno=$res_pre->rowCount();
 
 
         }else{
