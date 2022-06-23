@@ -69,18 +69,20 @@
 
      if ( $quantidade_falta=="Total" ) {
 
-        if ( ($seguimento!='' && $seguimento <3) ||$idserie <8 ) {
+        if ( ($seguimento!='' && $seguimento <3) || $idserie <8 ) {
 
 
             foreach ($array_datas as $key => $datas) {
-                if ($faltas_aluno<=$quantidade_falta) {
+              
                     $res=$conexao->query("SELECT * FROM frequencia WHERE ano_frequencia='$ano_letivo' and
-                     data_frequencia ='$datas' and aluno_id=$idaluno and turma_id=$idturma and escola_id=$idescola and  presenca in(0) and presenca not in(1) limit 1 ");
+                     data_frequencia ='$datas' and aluno_id=$idaluno and turma_id=$idturma and escola_id=$idescola and  presenca in(0)  limit 1 ");
                    
-                    if (count($res->fetchAll())>0) {
-                       $faltas_aluno++;
-                    }
-                }
+                        foreach ($res as $keyInf => $valueInf) {
+                           $faltas_aluno+=1;
+                            // code...
+                        }
+            
+                
             }
             //$faltas_aluno="Total fund1 e infantil seg $seguimento $idserie ";
 
