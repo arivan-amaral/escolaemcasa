@@ -114,13 +114,13 @@ setTimeout('dia_doservidor_publico();',3000);
     setor, retorno, data de retorno ou status.</p> 
    
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-2">
           <div class="form-group">
            <label for="exampleInputEmail1">DATA REGISTRO INÍCIAL</label>
            <input type="date" class="form-control" name="data_inicial" id="data_inicial">
           </div>
         </div>
-         <div class="col-sm-4">
+         <div class="col-sm-2">
           <div class="form-group">
            <label for="exampleInputEmail1">DATA REGISTRO FINAL</label>
            <input type="date" class="form-control" name="data_final" id="data_final">
