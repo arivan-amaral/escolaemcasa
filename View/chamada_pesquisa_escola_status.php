@@ -117,13 +117,26 @@ setTimeout('dia_doservidor_publico();',3000);
         <div class="col-sm-4">
           <div class="form-group">
            <label for="exampleInputEmail1">DATA REGISTRO INÍCIAL</label>
-           <input type="datetime-local" class="form-control" name="data_inicial" id="data_inicial">
+           <input type="date" class="form-control" name="data_inicial" id="data_inicial">
           </div>
         </div>
          <div class="col-sm-4">
           <div class="form-group">
            <label for="exampleInputEmail1">DATA REGISTRO FINAL</label>
-           <input type="datetime-local" class="form-control" name="data_final" id="data_final">
+           <input type="date" class="form-control" name="data_final" id="data_final">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+           <label for="exampleInputEmail1">FILTRO</label>
+           <select class="form-control"  id="filtro" name="filtro">
+            <option value="TODOS">TODOS</option>
+            <option value="ESCOLA">ESCOLA</option>
+            <option value="SOLICITANTE">SOLICITANTE</option>
+            <option value="SETOR">SETOR</option>
+            <option value="RETORNADOR">RETORNADOR</option>
+            <option value="STATUS">STATUS</option>
+           </select> 
           </div>
         </div>
       </div>

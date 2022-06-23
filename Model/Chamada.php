@@ -18,8 +18,20 @@ function pesquisar_chamado($conexao,$chamado_id){
 
 }
 
+function pesquisar_mensagens($conexao,$id_funcionario){
+   $result = $conexao->query("SELECT * FROM mensagem_chamado where enviado=$id_funcionario");
+    return $result;
+
+}
+
 function pesquisar_chamado_status($conexao,$chamado_id){
    $result = $conexao->query("SELECT * FROM chamada where status like '%$chamado_id%'");
+    return $result;
+
+}
+
+function pesquisar_chamado_status_data($conexao,$chamado_id,$data_inicial,$data_final){
+   $result = $conexao->query("SELECT chamada.id,chamada.funcionario_id,chamada.setor_id,chamada.status,chamada.tipo_solicitacao,chamada.func_respondeu_id, chamada.data_previsao FROM chamada,chat_chamado where chamada.status like '%$chamado_id%'and chat_chamado.status = 'inicial' and chamada.id = chat_chamado.chamada_id and chat_chamado.data BETWEEN '$data_inicial' AND '$data_final'");
     return $result;
 
 }
@@ -30,17 +42,34 @@ function pesquisar_chamado_setor($conexao,$chamado_id){
 
 }
 
+function pesquisar_chamado_setor_data($conexao,$chamado_id,$data_inicial,$data_final){
+   $result = $conexao->query("SELECT chamada.id,chamada.funcionario_id,chamada.setor_id,chamada.status,chamada.tipo_solicitacao,chamada.func_respondeu_id, chamada.data_previsao FROM chamada,chat_chamado where chamada.setor_id=$chamado_id and chat_chamado.status = 'inicial' and chamada.id = chat_chamado.chamada_id and chat_chamado.data BETWEEN '$data_inicial' AND '$data_final'");
+    return $result;
+
+}
+
 function pesquisar_chamado_escola($conexao,$chamado_id){
    $result = $conexao->query("SELECT * FROM chamada where tipo_solicitacao=$chamado_id and setor_id = '11'");
     return $result;
 
 }
 
+function pesquisar_chamado_escola_data($conexao,$chamado_id,$data_inicial,$data_final){
+   $result = $conexao->query("SELECT chamada.id,chamada.funcionario_id,chamada.setor_id,chamada.status,chamada.tipo_solicitacao
+,chamada.func_respondeu_id, chamada.data_previsao FROM 
+chamada,chat_chamado where chamada.tipo_solicitacao=$chamado_id and chamada.setor_id = '11'and chat_chamado.status = 'inicial'
+and chamada.id = chat_chamado.chamada_id and chat_chamado.data BETWEEN '$data_inicial' AND '$data_final'");
+    return $result;
+
+}
+
+
 function pesquisar_chamado_data_solicitante($conexao,$data_inicial,$data_final){
    $result = $conexao->query("SELECT * FROM chat_chamado where status = 'inicial' and data BETWEEN '$data_inicial' AND '$data_final' ");
     return $result;
 
 }
+
 
 function pesquisar_chamado_data_retorno($conexao,$data_inicial,$data_final){
    $result = $conexao->query("SELECT * FROM chamada where data_previsao BETWEEN '$data_inicial' AND '$data_final' ");
@@ -54,8 +83,20 @@ function pesquisar_chamado_solicitante($conexao,$chamado_id){
 
 }
 
+function pesquisar_chamado_solicitante_data($conexao,$chamado_id,$data_inicial,$data_final){
+   $result = $conexao->query("SELECT chamada.id,chamada.funcionario_id,chamada.setor_id,chamada.status,chamada.tipo_solicitacao,chamada.func_respondeu_id, chamada.data_previsao FROM chamada,chat_chamado where chamada.funcionario_id = $chamado_id and chat_chamado.status = 'inicial' and chamada.id = chat_chamado.chamada_id and chamada.funcionario_id = chat_chamado.funcionario_id and chat_chamado.data BETWEEN '$data_inicial' AND '$data_final'");
+    return $result;
+
+}
+
 function pesquisar_chamado_retorno($conexao,$chamado_id){
    $result = $conexao->query("SELECT * FROM chamada where func_respondeu_id=$chamado_id");
+    return $result;
+
+}
+
+function pesquisar_chamado_retorno_data($conexao,$chamado_id,$data_inicial,$data_final){
+   $result = $conexao->query("SELECT chamada.id,chamada.funcionario_id,chamada.setor_id,chamada.status,chamada.tipo_solicitacao,chamada.func_respondeu_id, chamada.data_previsao FROM chamada,chat_chamado where chamada.func_respondeu_id=$chamado_id and chat_chamado.status = 'inicial' and chamada.id = chat_chamado.chamada_id and chat_chamado.data BETWEEN '$data_inicial' AND '$data_final'");
     return $result;
 
 }
@@ -386,13 +427,14 @@ function cadastrar_mensagem($conexao,$mensagem,$enviado,$id_chamado) {
 }
 
 
-function criar_chamada($conexao,$funcionario_id,$setor_id,$status,$tipo_solicitacao) {
-  $sql = $conexao->prepare("INSERT INTO chamada (funcionario_id,setor_id,status,tipo_solicitacao,func_respondeu_id,data_previsao) VALUES (:funcionario_id,:setor_id,:status,:tipo_solicitacao,0,'0001-01-01 00:00:00')");
+function criar_chamada($conexao,$funcionario_id,$setor_id,$status,$tipo_solicitacao,$data) {
+  $sql = $conexao->prepare("INSERT INTO chamada (funcionario_id,setor_id,status,tipo_solicitacao,func_respondeu_id,data_previsao,data) VALUES (:funcionario_id,:setor_id,:status,:tipo_solicitacao,0,'0001-01-01 00:00:00',:data)");
   $sql->execute(array(
      'funcionario_id' =>$funcionario_id,
      'setor_id' =>$setor_id,
      'status' =>$status,
-     'tipo_solicitacao' =>$tipo_solicitacao
+     'tipo_solicitacao' =>$tipo_solicitacao,
+     'data' =>$data
   ));
 }
 

@@ -15,10 +15,10 @@ try {
 
 	if(!empty(array_filter($_FILES['arquivo']['name']))) {
 		if ($tipo_solicitacao == "") {
-			criar_chamada($conexao,$funcionario_id,$setor_id,'esperando_resposta','');
+			criar_chamada($conexao,$funcionario_id,$setor_id,'esperando_resposta','',$data);
 
 		}else{
-			criar_chamada($conexao,$funcionario_id,$setor_id,'esperando_resposta',$tipo_solicitacao);
+			criar_chamada($conexao,$funcionario_id,$setor_id,'esperando_resposta',$tipo_solicitacao,$data);
 
 		}
 		$id_chamada = $conexao->lastInsertId();
@@ -57,10 +57,10 @@ try {
     }else{
 
     	if ($tipo_solicitacao == "") {
-			criar_chamada($conexao,$funcionario_id,$setor_id,'esperando_resposta','');
+			criar_chamada($conexao,$funcionario_id,$setor_id,'esperando_resposta','',$data);
 
 		}else{
-			criar_chamada($conexao,$funcionario_id,$setor_id,'esperando_resposta',$tipo_solicitacao);
+			criar_chamada($conexao,$funcionario_id,$setor_id,'esperando_resposta',$tipo_solicitacao,$data);
 
 		}
 		$id_chamada = $conexao->lastInsertId();

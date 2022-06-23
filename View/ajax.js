@@ -41,6 +41,8 @@ function CriaRequest() {
          return request;
 
  }
+
+ 
 function total_notas(id) {
     document.getElementById('total'+id).value=0;
 
@@ -120,11 +122,12 @@ function pesquisa_chamado_setor_escola(){
   var pesquisa = document.getElementById('pesquisa').value;
   var data_inicial = document.getElementById('data_inicial').value;
   var data_final = document.getElementById('data_final').value;
-    
+  var obj_filtro = document.getElementById('filtro');
+  var filtro = obj_filtro.options[obj_filtro.selectedIndex].value;
     if(data_inicial != '' && data_final != '' || data_inicial == '' && data_final == ''){
         result.innerHTML = "<img src='imagens/carregando.gif'>";  
           var xmlreq = CriaRequest();
-          xmlreq.open("GET", "../Controller/Pesquisa_chamado_escola_status.php?pesquisa="+pesquisa+"&data_inicial="+data_inicial+"&data_final="+data_final, true);
+          xmlreq.open("GET", "../Controller/Pesquisa_chamado_escola_status.php?pesquisa="+pesquisa+"&data_inicial="+data_inicial+"&data_final="+data_final+"&filtro="+filtro, true);
 
           xmlreq.onreadystatechange = function(){
         
