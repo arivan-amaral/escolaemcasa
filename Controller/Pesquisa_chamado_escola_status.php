@@ -1476,7 +1476,7 @@ if ($pesquisa != '' || $data_inicial != '') {
         $res_funcionario_2 = id_funcionario($conexao,$pesquisa);
         foreach ($res_funcionario_2 as $key => $value) {
           $id_funcionario = $value['idfuncionario'];
-          $res=pesquisar_chamado_retorno_data($conexao,$chamado_id,$data_inicial,$data_final);
+          $res=pesquisar_chamado_retorno_data($conexao,$id_funcionario,$data_inicial,$data_final);
           foreach ($res as $key => $value){
           $id_chamada = $value['id'];
           $status = $value['status'];
