@@ -113,7 +113,7 @@ else if ($idserie >3 && $idserie <=8) {
 
       echo "<input type='hidden' name='teste' value='$numero'>";
            boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$_SESSION['ano_letivo']);
-          //boletim_fund_turma($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$_SESSION['ano_letivo']);
+//boletim_fund_turma($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$_SESSION['ano_letivo']);
 
          if ($numero%3==0 ) {
             echo "<div class='pagebreak'> </div>";
