@@ -144,12 +144,18 @@
                <i class='far fa-circle nav-icon text-primary'></i>
                <p>Pesquisa Geral</p>
                </a>
+               </li> 
+               <li class='nav-item'>
+               <a href='chamada_pesquisa_escola_status.php' class='nav-link'>
+               <i class='far fa-circle nav-icon text-primary'></i>
+               <p>Pesquisa Geral</p>
+               </a>
                </li>";
                if ($_SESSION['cargo']=='Secretário' ||  $_SESSION["idfuncionario"] == 176) {
                  echo"<li class='nav-item'>
-                <a href='cadastro_setor.php' class='nav-link'>
+                <a href='chamada_por_usuario.php' class='nav-link'>
                 <i class='far fa-circle nav-icon text-primary'></i>
-                <p>Cadastrar Novo Setor</p>
+                <p>Chamada por Usuario</p>
                 </a>
                </li>
                <li class='nav-item'>

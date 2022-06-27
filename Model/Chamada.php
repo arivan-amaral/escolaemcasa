@@ -119,6 +119,30 @@ function verificar_arquivos($conexao,$chamado_id){
 
 }
 
+function quant_novos_usuario($conexao,$usuario_id){
+   $result = $conexao->query("SELECT count(*) as 'chamadas' FROM chamada where funcionario_id=$usuario_id and status = 'esperando_resposta'");
+    return $result;
+
+}
+
+function quant_andamento_usuario($conexao,$usuario_id){
+   $result = $conexao->query("SELECT count(*) as 'chamadas' FROM chamada where funcionario_id=$usuario_id and status = 'em_andamento'");
+    return $result;
+
+}
+
+function quant_atrasado_usuario($conexao,$usuario_id){
+   $result = $conexao->query("SELECT count(*) as 'chamadas' FROM chamada where funcionario_id=$usuario_id and status = 'atrasado'");
+    return $result;
+
+}
+
+function quant_finalizado_usuario($conexao,$usuario_id){
+   $result = $conexao->query("SELECT count(*) as 'chamadas' FROM chamada where funcionario_id=$usuario_id and status = 'finalizado'");
+    return $result;
+
+}
+
 function buscar_chamada_atraso($conexao,$setor_id){
    $result = $conexao->query("SELECT * FROM chamada where setor_id=$setor_id and status ='em_andamento' ORDER BY id asc");
     return $result;
@@ -499,6 +523,13 @@ function buscar_id_escola($conexao,$funcionario_id){
     return $result;
 
 }
+
+function escola_funcionarios($conexao){
+   $result = $conexao->query("SELECT * FROM relacionamento_funcionario_escola ");
+    return $result;
+
+}
+
 
 function buscar_id_setor($conexao,$funcionario_id){
    $result = $conexao->query("SELECT * FROM relacao_setor_funcionario where funcionario_id=$funcionario_id ");
