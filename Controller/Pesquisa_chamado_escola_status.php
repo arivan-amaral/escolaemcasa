@@ -14,19 +14,19 @@ try {
     $filtro = $_GET['filtro'];
     
     $result="
-           <thead>
-              <tr>
-                <th  style='text-align: center;'>Escola/Setor</th>
-                <th  style='text-align: center;'>Solicitante</th>
-                <th  style='text-align: center;'>Data Solicitação</th>
-                <th  style='text-align: center;'>Setor/Unidade Escolar</th>
-                <th  style='text-align: center;'>Retorno</th>
-                <th  style='text-align: center;'>Data Retorno</th>
-                <th  style='text-align: center;'>Status Chamados</th>
-                <th  style='text-align: center;'>Enviar</th>
-              </tr>
-            </thead>
-            <tbody>
+   <thead>
+      <tr>
+        <th  style='text-align: center;'>Escola/Setor</th>
+        <th  style='text-align: center;'>Solicitante</th>
+        <th  style='text-align: center;'>Data Solicitação</th>
+        <th  style='text-align: center;'>Setor/Unidade Escolar</th>
+        <th  style='text-align: center;'>Retorno</th>
+        <th  style='text-align: center;'>Data Retorno</th>
+        <th  style='text-align: center;'>Status Chamados</th>
+        <th  style='text-align: center;'>Enviar</th>
+      </tr>
+    </thead>
+    <tbody>
     ";
 
     $conta=0;
@@ -586,8 +586,8 @@ if ($pesquisa != '' || $data_inicial != '') {
       if ($filtro == "RETORNADOR" ||  $filtro == "TODOS") {
         $res_funcionario_2 = id_funcionario($conexao,$pesquisa);
         foreach ($res_funcionario_2 as $key => $value) {
-            $id_funcionario = $value['idfuncionario'];
-            $res=pesquisar_chamado_retorno($conexao,$id_funcionario);
+            $id_funcionario_retorno = $value['idfuncionario'];
+            $res=pesquisar_chamado_retorno($conexao,$id_funcionario_retorno);
             foreach ($res as $key => $value){
             $id_chamada = $value['id'];
             $status = $value['status'];

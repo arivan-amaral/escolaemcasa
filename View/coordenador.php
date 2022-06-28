@@ -71,6 +71,7 @@ setTimeout('dia_doservidor_publico();',3000);
    // setInterval("notificacao_ocorrencia();",10000);
 </script>
 
+
 <div class="content-wrapper" style="min-height: 529px;">
 
     <!-- Content Header (Page header) -->
@@ -638,8 +639,39 @@ setTimeout('dia_doservidor_publico();',3000);
 
 
   </script>
+  <script type="text/javascript">
+    function Mostrar_mensagens(){
+       
+    var xmlreq = CriaRequest();
+    xmlreq.open("GET", "../Controller/Notificacao_mensagem_chamado.php", true);
 
+      xmlreq.onreadystatechange = function(){
+    
+       if (xmlreq.readyState == 4) {
+           if (xmlreq.status == 200) {
+                 
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'ATENÇÃO',
+                    text: xmlreq.responseText 
+                  });
 
+           }else{
+                
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'error',
+                    text: 'xmlreq.responseText'
+                  });                  
+           }
+       }
+      };
+    xmlreq.send(null);
+      
+}
+    //setInterval(Mostrar_mensagens(),5000);
+  </script>
+  
 
  <?php 
 

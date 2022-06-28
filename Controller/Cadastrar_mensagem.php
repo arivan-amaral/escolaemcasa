@@ -19,12 +19,12 @@ try {
 	$res_funcionario = buscar_funcionario_setor($conexao,$id_setor);
 	foreach ($res_funcionario as $key => $value) {
 		$id_funcionario = $value['funcionario_id'];
-		cadastrar_mensagem($conexao,$mensagem,$id_funcionario,$id_chamada);	
+		cadastrar_mensagem($conexao,$mensagem,$id_funcionario,$id_chamada,$_SESSION['idfuncionario']);	
 	}
 	
 	}else{
 
-		cadastrar_mensagem($conexao,$mensagem,$enviado,$id_chamada);
+		cadastrar_mensagem($conexao,$mensagem,$enviado,$id_chamada,$_SESSION['idfuncionario']);
 	}
 
 

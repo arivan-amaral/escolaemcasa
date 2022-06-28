@@ -24,6 +24,11 @@ function pesquisar_mensagens($conexao,$id_funcionario){
 
 }
 
+function quant_mensagens($conexao,$id_funcionario){
+   $result = $conexao->query("SELECT count(*) as 'mensagens' FROM mensagem_chamado where enviado=$id_funcionario");
+    return $result;
+
+}
 function pesquisar_chamado_status($conexao,$chamado_id){
    $result = $conexao->query("SELECT * FROM chamada where status like '%$chamado_id%'");
     return $result;
@@ -90,7 +95,7 @@ function pesquisar_chamado_solicitante_data($conexao,$chamado_id,$data_inicial,$
 }
 
 function pesquisar_chamado_retorno($conexao,$chamado_id){
-   $result = $conexao->query("SELECT * FROM chamada where func_respondeu_id=$chamado_id");
+   $result = $conexao->query("SELECT * FROM chamada where func_respondeu_id = $chamado_id");
     return $result;
 
 }
@@ -441,12 +446,14 @@ function buscar_chat_inical($conexao,$chamada_id,$funcionario_id){
 }
 
 
-function cadastrar_mensagem($conexao,$mensagem,$enviado,$id_chamado) {
-  $sql = $conexao->prepare("INSERT INTO mensagem_chamado (id_chamado,mensagem,enviado) VALUES (:id_chamado,:mensagem,:enviado)");
+function cadastrar_mensagem($conexao,$mensagem,$enviado,$id_chamado,$idFuncionario) {
+  $sql = $conexao->prepare("INSERT INTO mensagem_chamado (id_chamado,mensagem,enviado,solicitante) VALUES (:id_chamado,:mensagem,:enviado,:idfuncionario)");
   $sql->execute(array(
      'id_chamado' => $id_chamado,
      'mensagem' => $mensagem,
-     'enviado' => $enviado
+     'enviado' => $enviado,
+     'idfuncionario' => $idFuncionario
+
   ));
 }
 

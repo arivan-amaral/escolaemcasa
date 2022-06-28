@@ -146,9 +146,9 @@
                </a>
                </li> 
                <li class='nav-item'>
-               <a href='chamada_pesquisa_escola_status.php' class='nav-link'>
+               <a href='chamada_mensagem_usuarios.php' class='nav-link'>
                <i class='far fa-circle nav-icon text-primary'></i>
-               <p>Pesquisa Geral</p>
+               <p>Mensagens</p>
                </a>
                </li>";
                if ($_SESSION['cargo']=='Secretário' ||  $_SESSION["idfuncionario"] == 176) {
