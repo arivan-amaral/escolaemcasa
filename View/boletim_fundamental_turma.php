@@ -19,9 +19,10 @@ function boletim_fund_turma($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
   }
   
 ?>
+
           <div class="row">
-            <div class="col-md-6"><h6 align="center">ALUNO: <?php echo $nome_aluno; ?></h6></div>
-            <div class="col-md-6"><h6>TURMA: <?php echo $nome_turma; ?></h6></div>
+            <div class="col-md-6 alert alert-info"><h6 align="center">ALUNO: <?php echo $nome_aluno; ?></h6></div>
+            <div class="col-md-6 alert alert-secondary"><h6>TURMA: <?php echo $nome_turma; ?></h6></div>
             
             
           </div>
@@ -33,7 +34,7 @@ function boletim_fund_turma($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
                 <th scope="col">I TRIM</th>
                 <th scope="col">II TRIM</th>
                 <th scope="col">III TRIM</th>
-                <th scope="col">NF</th>
+                <!-- <th scope="col">NF</th> -->
               </thead>
               <tbody>
                 <?php 
@@ -211,41 +212,7 @@ function boletim_fund_turma($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
                   echo "AV1: $nota_av_1 <br> AV2:$nota_av_2 <br> AV3: $nota_av_3 ";
                   ?>
                </td>
-               <td>
-                 <?php 
-                  $total=($nota_tri_1+$nota_tri_2+$nota_tri_3)/3;
-                  $total=number_format($total, 1, '.','') ;
-
-                  if ($total <5 ) {
-                    $resultado_final=false;
-                  //buscar concelho
-                            $res_conselho=buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno);
-                            $conta_aprovado=count($res_conselho);
-                            
-                             if ($conta_aprovado>0 ) {
-                                $media_conselho=5.0;
-                                $resultado_conselho=true;
-
-                                echo "<b>".number_format($media_conselho, 1, '.', ',')."</b>";
-
-                                $aprovacao_conselho=true;
-                            }else{
-                                $resultado_conselho=false;
-
-                                echo number_format($total, 1, '.', ',');
-                            }
-
-                  //buscar concelho
-                  }else{
-
-                    echo"".number_format($total, 1, '.','') ;
-                  }
-
-
-                  // }
-  
-                  ?>
-               </td>
+         
               
                </tr>
               

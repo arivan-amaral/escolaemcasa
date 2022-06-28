@@ -46,10 +46,15 @@ try {
 
       
 
+       
+
       <a   href='coordenador_relatorio_video_aluno.php?idturma=$idturma&nome_turma=$nome_turma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat' target='_blank'>
       <i class='fa fa-play'></i> 
       VER RELATÓRIO DE VÍDEOS DE ALUNO
-      </a> ";
+      </a> 
+
+
+      ";
 
       if ($idserie<8 || ($seguimento !='' && $seguimento <3)) {
 
@@ -73,6 +78,10 @@ try {
 
 
      $result.= "
+   <a   href='relatorio_trimestral.php?idturma=$idturma&nome_turma=$nome_turma&idescola=$idescola&idserie=$idserie' class='btn btn-danger btn-block btn-flat' target='_blank'>
+      <i class='fa fa-GRAFIC'></i> 
+       RELATÓRIO TRIMESTRAL
+      </a> 
 
       <a   href='relatorio_frequencia.php?idturma=$idturma&nome_turma=$nome_turma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat' target='_blank'>
       <!-- i class='fa fa-play'></i --> 
