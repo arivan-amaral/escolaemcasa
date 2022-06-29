@@ -371,7 +371,7 @@ function cadastrar_nota_fora_rede_ano_finalizado() {
 
 
     var aluno_finalizou=document.getElementsByName('aluno_finalizou')[0].value;
-    if (aluno_finalizou=="Sim") {
+    if (aluno_finalizou=="Sim" || aluno_finalizou=="Não") {
         idturma=1000;
         idperiodo=7;
     }else{

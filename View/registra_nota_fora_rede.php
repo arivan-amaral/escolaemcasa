@@ -89,7 +89,7 @@ foreach ($res_aluno as $key => $value) {
             <select class="form-control" id='ano_referencia' name='ano_referencia' required="">
            
               <?php 
-               for ($i=(date("Y") - 1); $i > 2000 ; $i--) { 
+               for ($i=(date("Y")); $i > 2000 ; $i--) { 
                 echo "<option value='$i'>$i</option>";
                 }
                ?>
@@ -148,6 +148,7 @@ foreach ($res_aluno as $key => $value) {
 
             <select class="form-control" id='aluno_finalizou' name='aluno_finalizou' required="" onchange="view_nota_fora_rede_ano_finalizado(this.value);">
               <option value="Sim">Sim</option>
+              <option value="Não">Não</option>
               <!-- <option value="Não">Não</option> -->
               </select>
           </div>
