@@ -14,7 +14,6 @@ try {
    <thead>
       <tr>
         <th  style='text-align: center;'>Escola</th>
-        <th  style='text-align: center;'>Turma</th>
         <th  style='text-align: center;'>Serie</th>
         <th  style='text-align: center;'>Matriculas</th>
       </tr>
@@ -52,7 +51,7 @@ if ($data_inicial != '') {
         }
         
         $result.="<td>$nome_escola</td>";
-        $result.="<td>$nome_turma</td>";
+        //$result.="<td>$nome_turma</td>";
         $result.="<td>$nome_serie</td>";
         $result.="<td>$quant_matriculas</td>";
         $result.="</tr>";
@@ -96,7 +95,7 @@ if ($data_inicial != '') {
         }
         
         $result.="<td>$nome_escola</td>";
-        $result.="<td>$nome_turma</td>";
+        //$result.="<td>$nome_turma</td>";
         $result.="<td>$nome_serie</td>";
         $result.="<td>$quant_matriculas</td>";
         $result.="</tr>";

@@ -37,17 +37,17 @@ function pesquisa_matricula_mensal_quant_todos($conexao,$escola,$idturma){
 
 
 function pesquisa_escola($conexao){
-   $sql = $conexao->query("SELECT * from escola");
+   $sql = $conexao->query("SELECT * from escola ORDER by nome_escola asc");
    return $sql->fetchAll();
 }
 
 function pesquisa_turma($conexao,$turma){
-   $sql = $conexao->query("SELECT * from turma where idturma = '$turma'");
+   $sql = $conexao->query("SELECT * from turma where idturma = '$turma' ORDER by idturma asc ");
    return $sql->fetchAll();
 }
 
 function pesquisa_serie($conexao,$idserie){
-   $sql = $conexao->query("SELECT * from serie where id = '$idserie'");
+   $sql = $conexao->query("SELECT * from serie where id = '$idserie' ORDER by id asc");
    return $sql->fetchAll();
 }
 
