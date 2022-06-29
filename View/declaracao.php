@@ -84,7 +84,7 @@ $status=1;
       $localidade=$value2['nome'];
     }
     $uf_naturalidade=$value['uf_cartorio'];
-    $data_nascimento= ($value['data_nascimento']);
+    $data_nascimento= converte_data(trim($value['data_nascimento']));
     $filiacao1=$value['filiacao1'];
     $filiacao2=$value['filiacao2'];
   
