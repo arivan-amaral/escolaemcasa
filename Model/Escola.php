@@ -16,25 +16,41 @@ function verificar_bloqueio_funcionario($conexao,$idcalendario,$funcionario_id,$
    return $sql->fetchAll();
 }
 
-function pesquisa_matricula_mensal($conexao,$data_inicial,$data_final,$escola,$turma){
-   $sql = $conexao->query("SELECT count(*) as 'alunos' from ecidade_matricula  where matricula_situacao = 'MATRICULADO' AND turma_escola = $escola AND turma_id = $turma AND matricula_datamatricula BETWEEN '$data_inicial' AND '$data_final'");
+function pesquisa_matricula_mensal($conexao,$data_inicial,$data_final,$escola){
+   $sql = $conexao->query("SELECT * from ecidade_matricula  where matricula_situacao = 'MATRICULADO' AND turma_escola = $escola AND matricula_datamatricula BETWEEN '$data_inicial' AND '$data_final'");
    return $sql->fetchAll();
 }
 
 function pesquisa_matricula_mensal_todos($conexao,$escola){
-   $sql = $conexao->query("SELECT count(*) as 'alunos' from ecidade_matricula  where matricula_situacao = 'MATRICULADO' AND turma_escola = $escola  AND matricula_datamatricula");
+   $sql = $conexao->query("SELECT * from ecidade_matricula  where matricula_situacao = 'MATRICULADO' AND turma_escola = $escola ");
    return $sql->fetchAll();
 }
+
+function pesquisa_matricula_mensal_quant($conexao,$data_inicial,$data_final,$escola,$idturma){
+   $sql = $conexao->query("SELECT count(*) as 'alunos' from ecidade_matricula  where matricula_situacao = 'MATRICULADO' AND turma_escola = $escola AND turma_id = $idturma AND matricula_datamatricula BETWEEN '$data_inicial' AND '$data_final'");
+   return $sql->fetchAll();
+}
+function pesquisa_matricula_mensal_quant_todos($conexao,$escola,$idturma){
+   $sql = $conexao->query("SELECT count(*) as 'alunos' from ecidade_matricula  where matricula_situacao = 'MATRICULADO' AND turma_escola = $escola AND turma_id = $idturma AND matricula_datamatricula");
+   return $sql->fetchAll();
+}
+
 
 function pesquisa_escola($conexao){
    $sql = $conexao->query("SELECT * from escola");
    return $sql->fetchAll();
 }
 
-function pesquisa_turma($conexao){
-   $sql = $conexao->query("SELECT * from turma");
+function pesquisa_turma($conexao,$turma){
+   $sql = $conexao->query("SELECT * from turma where idturma = '$turma'");
    return $sql->fetchAll();
 }
+
+function pesquisa_serie($conexao,$idserie){
+   $sql = $conexao->query("SELECT * from serie where id = '$idserie'");
+   return $sql->fetchAll();
+}
+
 
 
 function desativa_bloqueio_funcionario($conexao,$idcalendario,$funcionario_id,$funcionario_responsavel,$status){
