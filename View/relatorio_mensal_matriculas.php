@@ -109,18 +109,17 @@ setTimeout('dia_doservidor_publico();',3000);
 
   <!-- Inicio -Content Wrapper. Contains page content -->
   <div class="container">
-  <h2>Consulta com Filtros</h2>
-  <p>Digite informações no campo de entrada para pesquisar por escola, solicitante, data da solicitação,
-    setor, retorno, data de retorno ou status.</p> 
+  <h2>RELATORIO MENSAL DE MATRICULAS</h2>
    
+   <br>
     <div class="row">
-        <div class="col-sm-2">
+        <div class="col-sm-4">
           <div class="form-group">
            <label for="exampleInputEmail1">DATA INÍCIAL</label>
            <input type="date" class="form-control" name="data_inicial" id="data_inicial">
           </div>
         </div>
-         <div class="col-sm-2">
+         <div class="col-sm-4">
           <div class="form-group">
            <label for="exampleInputEmail1">DATA FINAL</label>
            <input type="date" class="form-control" name="data_final" id="data_final">
@@ -128,32 +127,14 @@ setTimeout('dia_doservidor_publico();',3000);
         </div>
         <div class="col-sm-4">
           <div class="form-group">
-           <label for="exampleInputEmail1">FILTRO</label>
-           <select class="form-control"  id="filtro" name="filtro">
-            <option value="TODOS">TODOS</option>
-            <option value="ESCOLA">ESCOLA</option>
-            <option value="SOLICITANTE">SOLICITANTE</option>
-            <option value="SETOR">SETOR</option>
-            <!--option value="RETORNADOR">RETORNADOR</option-->
-            <option value="STATUS">STATUS</option>
-           </select> 
+          <a style="margin-top: 30PX;" class="btn btn-primary" onclick="pesquisa_matricula_mensal()">Pesquisar</a>
           </div>
         </div>
       </div>
-    <div class="row">
-      <div class="col-sm-8">
-        <input class="form-control" id="pesquisa" name="pesquisa" type="text" placeholder="Digite aqui..">
-      </div>
-      <div class="col-sm-4">
-        <a  class="btn btn-primary" onclick="pesquisa_chamado_setor_escola()">Pesquisar</a>
-      </div>
-    </div>
   <br>
   <table class="table table-bordered table-striped" id="resultado">
         
   </table>
-  
-  <p>A pesquisa acontecerá mediante as informações inserida e apresentadas na tabela.</p>
 </div>
 
 <script>

@@ -182,21 +182,6 @@ if ($pesquisa != '' || $data_inicial != '') {
                         $result.="</strong></a><br>
                         <textarea id='story' name='story' rows='3' cols='40' disabled>$mensagem_retorno</textarea><br><br>
                         ";
-                       /* 
-                        $res_funcionario_setor = buscar_funcionario_setor($conexao,$setor_id);
-                        foreach ($res_funcionario_setor as $key => $value) {
-                            $id_funcionario_cadastado = $value['funcionario_id'];
-                            $nome_funcionario_cadastrado = '';
-                            $telefone_funcionario= '';
-                            $res_nome_funcionario_setor = nome_funcionario($conexao,$id_funcionario_cadastado);
-                            foreach ($res_nome_funcionario_setor as $key => $value) {
-                                $nome_funcionario_cadastrado = $value['nome'];
-                                $telefone_funcionario= $value['whatsapp'];
-                                $result.="<p> <input type='checkbox' id='enviado'>  $nome_funcionario_cadastrado $telefone_funcionario<br></p>";
-
-                            }
-                        }
-                        */
 
                         $result.="<a type='button' class='btn btn-success' data-dismiss='modal' onclick='cadastrar_mensagem($id_chamada,$id_func_respondeu)'>Enviar</a>
                       </div>
@@ -583,7 +568,7 @@ if ($pesquisa != '' || $data_inicial != '') {
           }
         }
       }
-      if ($filtro == "RETORNADOR" ||  $filtro == "TODOS") {
+      /*if ($filtro == "RETORNADOR" ||  $filtro == "TODOS") {
         $res_funcionario_2 = id_funcionario($conexao,$pesquisa);
         foreach ($res_funcionario_2 as $key => $value) {
             $id_funcionario_retorno = $value['idfuncionario'];
@@ -756,7 +741,7 @@ if ($pesquisa != '' || $data_inicial != '') {
             $conta++;
             }
         }
-      }
+      }*/
       if ($filtro == "STATUS" ||  $filtro == "TODOS") {
         $res_status=pesquisar_chamado_status($conexao,$pesquisa);
         foreach ($res_status as $key => $value){
@@ -1472,7 +1457,7 @@ if ($pesquisa != '' || $data_inicial != '') {
           }
         }
       }
-      if($filtro == "RETORNADOR" ||  $filtro == "TODOS"){
+      /*if($filtro == "RETORNADOR" ||  $filtro == "TODOS"){
         $res_funcionario_2 = id_funcionario($conexao,$pesquisa);
         foreach ($res_funcionario_2 as $key => $value) {
           $id_funcionario = $value['idfuncionario'];
@@ -1645,7 +1630,7 @@ if ($pesquisa != '' || $data_inicial != '') {
           $conta++;
           }
         }
-      }
+      }*/
       if ($filtro == "STATUS" ||  $filtro == "TODOS") {
         $res_status=pesquisar_chamado_status_data($conexao,$pesquisa,$data_inicial,$data_final);
         foreach ($res_status as $key => $value){

@@ -153,6 +153,69 @@ function pesquisa_chamado_setor_escola(){
       
 }
 
+function pesquisa_matricula_mensal(){
+
+
+  var result = document.getElementById('resultado');
+  var data_inicial = document.getElementById('data_inicial').value;
+  var data_final = document.getElementById('data_final').value;
+    if(data_inicial != '' && data_final != '' || data_inicial == '' && data_final == ''){
+        result.innerHTML = "<img src='imagens/carregando.gif'>";  
+          var xmlreq = CriaRequest();
+          xmlreq.open("GET", "../Controller/pesquisa_matricula_mensal.php?data_inicial="+data_inicial+"&data_final="+data_final, true);
+
+          xmlreq.onreadystatechange = function(){
+        
+           if (xmlreq.readyState == 4) {
+               if (xmlreq.status == 200) {
+                     result.innerHTML = xmlreq.responseText;
+
+               }else{
+                     alert('Erro desconhecido, verifique sua conexão com a internet');
+
+                  result.innerHTML ="Erro ao receber mensagens";                 
+               }
+           }
+          };
+       xmlreq.send(null);
+   }else{
+    Swal.fire({
+        icon: 'error',
+        title: 'Atenção',
+        text: 'Se for utilizar uma consulta com datas, por favor insira nas duas datas inicial e final.'
+      });
+   }
+      
+}
+function cadastrar_resposta_mensagem(id_mensagem,id_funcionario){
+
+    var mensagem = document.getElementById('mensagem').value;
+
+      var xmlreq = CriaRequest();
+      xmlreq.open("GET", "../Controller/Cadastrar_resposta_mensagem.php?mensagem="+mensagem+"&id_funcionario="+id_funcionario+"&id_mensagem="+id_mensagem, true);
+
+      xmlreq.onreadystatechange = function(){
+    
+       if (xmlreq.readyState == 4) {
+           if (xmlreq.status == 200) {
+                 
+                Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Ação Concluída',
+                 text: 'Cadastro Realizado com sucesso',
+              showConfirmButton: false,
+              timer: 1500
+            });
+           }else{
+                 alert('Erro desconhecido, verifique sua conexão com a internet');
+
+              result.innerHTML ="Erro ao receber mensagens";                 
+           }
+       }
+      };
+   xmlreq.send(null);
+}
 function cadastrar_mensagem(id_chamada,enviado){
 
     var mensagem = document.getElementById('mensagem').value;

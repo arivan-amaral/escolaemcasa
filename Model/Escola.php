@@ -16,6 +16,27 @@ function verificar_bloqueio_funcionario($conexao,$idcalendario,$funcionario_id,$
    return $sql->fetchAll();
 }
 
+function pesquisa_matricula_mensal($conexao,$data_inicial,$data_final,$escola,$turma){
+   $sql = $conexao->query("SELECT count(*) as 'alunos' from ecidade_matricula  where matricula_situacao = 'MATRICULADO' AND turma_escola = $escola AND turma_id = $turma AND matricula_datamatricula BETWEEN '$data_inicial' AND '$data_final'");
+   return $sql->fetchAll();
+}
+
+function pesquisa_matricula_mensal_todos($conexao,$escola){
+   $sql = $conexao->query("SELECT count(*) as 'alunos' from ecidade_matricula  where matricula_situacao = 'MATRICULADO' AND turma_escola = $escola  AND matricula_datamatricula");
+   return $sql->fetchAll();
+}
+
+function pesquisa_escola($conexao){
+   $sql = $conexao->query("SELECT * from escola");
+   return $sql->fetchAll();
+}
+
+function pesquisa_turma($conexao){
+   $sql = $conexao->query("SELECT * from turma");
+   return $sql->fetchAll();
+}
+
+
 function desativa_bloqueio_funcionario($conexao,$idcalendario,$funcionario_id,$funcionario_responsavel,$status){
    $conexao->exec("UPDATE bloquear_acesso SET status=$status, funcionario_responsavel=$funcionario_responsavel  where funcionario_id = $funcionario_id and calendario_letivo_id=$idcalendario and status=1
       "); 

@@ -24,8 +24,20 @@ function pesquisar_mensagens($conexao,$id_funcionario){
 
 }
 
+function pesquisar_resposta_mensagens($conexao,$id_mensagem){
+   $result = $conexao->query("SELECT * FROM resposta_mensagem_chamado where id_mensagem=$id_mensagem");
+    return $result;
+
+}
+
+function quant_resposta($conexao,$id_mensagem){
+   $result = $conexao->query("SELECT count(*) as 'resposta' FROM resposta_mensagem_chamado where id_mensagem=$id_mensagem");
+    return $result;
+
+}
+
 function quant_mensagens($conexao,$id_funcionario){
-   $result = $conexao->query("SELECT count(*) as 'mensagens' FROM mensagem_chamado where enviado=$id_funcionario");
+   $result = $conexao->query("SELECT count(*) as 'mensagens' FROM mensagem_chamado where enviado=$id_funcionario and status = 'novo'");
     return $result;
 
 }
@@ -447,7 +459,7 @@ function buscar_chat_inical($conexao,$chamada_id,$funcionario_id){
 
 
 function cadastrar_mensagem($conexao,$mensagem,$enviado,$id_chamado,$idFuncionario) {
-  $sql = $conexao->prepare("INSERT INTO mensagem_chamado (id_chamado,mensagem,enviado,solicitante) VALUES (:id_chamado,:mensagem,:enviado,:idfuncionario)");
+  $sql = $conexao->prepare("INSERT INTO mensagem_chamado (id_chamado,mensagem,enviado,solicitante,status) VALUES (:id_chamado,:mensagem,:enviado,:idfuncionario,'novo')");
   $sql->execute(array(
      'id_chamado' => $id_chamado,
      'mensagem' => $mensagem,
@@ -456,6 +468,16 @@ function cadastrar_mensagem($conexao,$mensagem,$enviado,$id_chamado,$idFuncionar
 
   ));
 }
+
+function cadastrar_resposta_mensagem($conexao,$mensagem,$id_funcionario,$id_mensagem) {
+  $sql = $conexao->prepare("INSERT INTO resposta_mensagem_chamado (id_mensagem,id_funcionario,mensagem) VALUES (:id_mensagem,:id_funcionario,:mensagem)");
+  $sql->execute(array(
+     'id_mensagem' => $id_mensagem,
+     'id_funcionario' => $id_funcionario,
+     'mensagem' => $mensagem
+  ));
+}
+
 
 
 function criar_chamada($conexao,$funcionario_id,$setor_id,$status,$tipo_solicitacao,$data) {
@@ -515,6 +537,10 @@ function responder_chamada($conexao,$chamada_id,$funcionario_id) {
 
 function atualizar_chamado($conexao,$chamada_id) {
       $conexao->exec("UPDATE chamada SET status='atrasado'where id=$chamada_id");
+}
+
+function atualizar_mensagem($conexao,$id_mensagem) {
+      $conexao->exec("UPDATE mensagem_chamado SET status='respondido'where id=$id_mensagem");
 }
 
 function atualizar_chamado_data_prevista($conexao,$chamada_id,$data_previsao) {

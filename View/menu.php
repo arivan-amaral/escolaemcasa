@@ -104,7 +104,20 @@
 
                //    DANIEL
                 
-                
+                echo "<li class='nav-item menu'>
+              <a href='./index.php' class='nav-link'>
+              <ion-icon name='text-outline'></ion-icon>
+              <p>Relatorios <i class='right fas fa-angle-left'></i></p>
+              </a>
+               <ul class='nav nav-treeview'>
+               <li class='nav-item'>
+               <a href='relatorio_mensal_matriculas.php' class='nav-link'>
+               <i class='far fa-circle nav-icon text-primary'></i>
+               <p>R. Mensal de Matrículas</p>
+               </a>
+               </li>
+               </ul>
+              </li>";
               
 
                echo"<li class='nav-item menu'>

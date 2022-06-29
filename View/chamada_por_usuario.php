@@ -129,19 +129,18 @@ setTimeout('dia_doservidor_publico();',3000);
                 <div class="row">
                   <div class="col-sm-3">
                     <!-- checkbox -->
-                    <div class="form-group">
                       <?php 
                         $res_setores = todos_setores($conexao);
                         foreach ($res_setores as $key => $value) {
                           $id_setor = $value['id'];
                           $nome_setor = $value['nome'];
-                          echo "<div class='custom-control custom-checkbox'>
-                        <input class='custom-control-input' type='checkbox' id='$id_setor' value='$id_setor' onChange = 'mudarUsuarios(this)'>
-                        <label for='customCheckbox1' class='custom-control-label'>$nome_setor</label>
+                          echo "<div class='form-check'>
+                        <input class='form-check-input' type='radio' name='exampleRadios' id='$id_setor' value='$id_setor' onChange = 'mudarUsuarios(this)'>
+                        <label for='customCheckbox1' class='form-check-label'>$nome_setor</label>
                       </div>";
                         }
                       ?>
-                    </div>
+                    
                   </div>
 
                   <div class="col-sm-6">
@@ -157,90 +156,6 @@ setTimeout('dia_doservidor_publico();',3000);
                   
 
         <div class="row" id='chamadas'>
-
-         
-
-          <!--div class="col-md-4">
-   
-            <div class="card card-widget widget-user-2">
-             
-              <div class="widget-user-header bg-danger">
-                <h3 class="widget-user-username">Antônio Pereira</h3>
-                <h5 class="widget-user-desc"><b>Infraestrutura</b></h5>
-              </div>
-              <div class="card-footer p-0">
-                <ul class="nav flex-column">
-                  <li class="nav-item">
-                    <p style="text-align: center;">
-                      <b>Administrativo </b>
-                    </p>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      Novo(s) <span class="float-right badge bg-primary">1</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      Andamento <span class="float-right badge bg-warning">15</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      Atrasado(s) <span class="float-right badge bg-danger">7</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      Finalizados <span class="float-right badge bg-success">359</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div-->
-
-          <!--div class="col-md-4">
-            <div class="card card-widget widget-user-2">
-
-              <div class="widget-user-header bg-info">
-  
-                <h3 class="widget-user-username">Nilda Pires</h3>
-                <h5 class="widget-user-desc"><b>Pedagógia</b></h5>
-              </div>
-              <div class="card-footer p-0">
-                <ul class="nav flex-column">
-                  <li class="nav-item">
-                    <p style="text-align: center;">
-                      <b>Escola - Herminio Viana </b>
-                    </p>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      Novo(s) <span class="float-right badge bg-primary">31</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      Andamento <span class="float-right badge bg-warning">5</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      Atrasado(s) <span class="float-right badge bg-danger">12</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      Finalizados <span class="float-right badge bg-success">842</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div-->
-
-
          </div>  
           <!-- /.progress-group -->
         </div>
