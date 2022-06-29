@@ -71,8 +71,8 @@ $status=1;
     $nome_cidade = '';
     if (ctype_digit($cidade_municipio)) {
       $res_nome_cidade = listar_cidade_por_id($conexao,$cidade_municipio);
-      foreach ($res_nome_cidade as $key => $value) {
-        $nome_cidade = $value['nome'];
+      foreach ($res_nome_cidade as $keyC => $valueC) {
+        $nome_cidade = $valueC['nome'];
       }
     }
 
@@ -84,7 +84,7 @@ $status=1;
       $localidade=$value2['nome'];
     }
     $uf_naturalidade=$value['uf_cartorio'];
-    $data_nascimento= converte_data($value['data_nascimento']);
+    $data_nascimento= ($value['data_nascimento']);
     $filiacao1=$value['filiacao1'];
     $filiacao2=$value['filiacao2'];
   
