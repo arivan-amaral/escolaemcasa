@@ -132,16 +132,19 @@ setTimeout('dia_doservidor_publico();',3000);
 
                       $res_verificar_mensagens = pesquisar_mensagens($conexao,$_SESSION['idfuncionario']);
                       $quant= 0;
+                      
                       $quant_resposta = 0;
+                      
                       foreach ($res_verificar_mensagens as $key => $value) {
-                        $id_mensagem = $value['id'];
-                        $id_chamada = $value['id_chamado'];
-                        $id_solicitante = $value['solicitante'];
-                        $mensagem = $value['mensagem'];
-                        $quant++;
-                        $data_pre= new DateTime($value['data_hora']);
-                        $data_mensagem = $data_pre->format('d/m/Y');
-                        $func_respondeu_id = 0;
+                          $quant++;
+                          $id_mensagem = $value['id'];
+                          $id_chamada = $value['id_chamado'];
+                          $id_solicitante = $value['solicitante'];
+                          $mensagem = $value['mensagem'];
+                          
+                          $data_pre= new DateTime($value['data_hora']);
+                          $data_mensagem = $data_pre->format('d/m/Y');
+                          $func_respondeu_id = 0;
                           $nome_solicitante_chamada = "";
                           $nome_escola = "";
                           $solicitação = "";
@@ -188,48 +191,7 @@ setTimeout('dia_doservidor_publico();',3000);
                         foreach ($res_respostas as $key => $value) {
                           $quant_resposta = $value['resposta'];
                         }
-                        if ($quant_resposta > 0) {
-                          $res_verificar_respostas = pesquisar_resposta_mensagens($conexao,$id_mensagem);
-                          foreach ($res_verificar_respostas as $key => $value) {
-                            $mensagem = $value['mensagem'];
-                            $id_funcionario = $value['id_funcionario'];
-                            $nome_resposta = '';
                         
-                            $data_pre = new DateTime($value['data_hora']);
-                            $data = $data_pre->format('d/m/Y');
-
-                              $res_nome_resposta = nome_funcionario($conexao,$id_funcionario);
-                              foreach ($res_nome_resposta as $key => $value) {
-                                $nome_resposta = $value['nome'];     
-                              } 
-                               echo"<div class='col-md-6'>
-                                <div class='card card-info'>
-                                  <div class='card-header'>
-                                    <h3 class='card-title'>$quant ª Resposta</h3>
-                                    <div class='card-tools'>
-                                      <button type='button' class='btn btn-tool' data-card-widget='collapse'>
-                                        <i class='fas fa-minus'></i>
-                                      </button>
-                                    </div>
-                                  </div>
-                                  <div class='card-body'>
-
-                                    <b>Solicitante: $nome_solicitante_chamada - $nome_escola ( Protocolo $id_chamada)</b><br><br>
-                                    <b>Locitação</b> $solicitação
-                                  </div>
-                                  <div class='card-body'>
-                                    <b>Retorno</b> $mensagem_retono
-                                    <b>Previsão de solução:</b> $data_previsão
-                                  </div>
-                                  <div class='card-body'>
-                                    <div class='card text-white bg-danger mb-3' style='text-align: left;'><b>Mensagem - $nome_resposta $data</b></div>$mensagem 
-                                  </div>
-                                <br>
-                                </div>
-                              </div>
-                              ";
-                          }
-                        }else{
                           
                           
                           echo"<div class='col-md-6'>
@@ -254,8 +216,28 @@ setTimeout('dia_doservidor_publico();',3000);
                                   </div>
                                   <div class='card-body'>
                                     <div class='card text-white bg-danger mb-3' style='text-align: left;'><b>Mensagem - $solicitante $data_mensagem</b></div>$mensagem 
-                                  </div>
-                                  <button type='button' class='btn btn-primary btn-lg btn-block' data-toggle='modal' data-target='#myModal$id_chamada' >Retorno</button>
+                                  </div>";
+                                  if ($quant_resposta > 0) {
+                                    $res_verificar_respostas = pesquisar_resposta_mensagens($conexao,$id_mensagem);
+                                    foreach ($res_verificar_respostas as $key => $value) {
+                                      $mensagem_resposta = $value['mensagem'];
+                                      $id_funcionario = $value['id_funcionario'];
+                                      $nome_resposta = '';
+                                  
+                                      $data_pre = new DateTime($value['data_hora']);
+                                      $data = $data_pre->format('d/m/Y');
+
+                                        $res_nome_resposta = nome_funcionario($conexao,$id_funcionario);
+                                        foreach ($res_nome_resposta as $key => $value) {
+                                          $nome_resposta = $value['nome'];     
+                                        }
+                                      echo "<div class='card-body'>
+                                    <div class='card text-white bg-info mb-3' style='text-align: left;'><b>Retorno  - $nome_resposta $data</b></div>$mensagem_resposta 
+                                  </div>";  
+                                    }
+                                  }
+
+                                  echo"<button type='button' class='btn btn-primary btn-lg btn-block' data-toggle='modal' data-target='#myModal$id_chamada' >Retorno</button>
                                 <br>
                                 </div>
                               </div>
@@ -292,12 +274,8 @@ setTimeout('dia_doservidor_publico();',3000);
                                   </div>
                                 </div>
                               </div>";
-                        }
-                        
 
-                     
-                            
-                          }
+                    }
                       ?>
                       
                       <!-- /.col --> 
