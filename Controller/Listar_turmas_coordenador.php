@@ -56,7 +56,7 @@ try {
 
       ";
 
-      if ($idserie<8 || ($seguimento !='' && $seguimento <3)) {
+      if ($idserie<8 || ($seguimento !='' && $seguimento <3) || ( $idserie==16 && $seguimento <3)) {
 
           $result.= "
             <a   href='impressao_diario_frequencia.php?iddisciplina=1000&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat' target='_blank'>
