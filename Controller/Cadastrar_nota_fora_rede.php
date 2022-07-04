@@ -11,7 +11,7 @@ try{
         $funcionario_id=$_SESSION['idfuncionario'];
     }
 
-    
+
 
     //generico
     $aluno_finalizou=$_REQUEST['aluno_finalizou'];

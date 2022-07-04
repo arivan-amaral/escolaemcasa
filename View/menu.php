@@ -106,7 +106,7 @@
                 
                 echo "<li class='nav-item menu'>
               <a href='./index.php' class='nav-link'>
-              <ion-icon name='text-outline'></ion-icon>
+              <ion-icon name='clipboard-outline'></ion-icon>
               <p>Relatorios <i class='right fas fa-angle-left'></i></p>
               </a>
                <ul class='nav nav-treeview'>

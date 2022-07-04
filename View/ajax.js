@@ -371,7 +371,7 @@ function cadastrar_nota_fora_rede_ano_finalizado() {
 
 
     var aluno_finalizou=document.getElementsByName('aluno_finalizou')[0].value;
-    if (aluno_finalizou=="Sim" || aluno_finalizou=="Não") {
+    if (aluno_finalizou=="Sim") {
         idturma=1000;
         idperiodo=7;
     }else{
@@ -432,7 +432,7 @@ function cadastrar_nota_fora_rede_ano_finalizado() {
              Swal.fire({
                position: 'center',
                icon: 'error',
-               title: 'Alguma coisa deu errado',
+               title: 'Preencha todos os campos obrigatorios',
                   text: ' ',
                showConfirmButton: false,
                timer: 1500
@@ -452,7 +452,17 @@ function cadastrar_nota_fora_rede_ano_finalizado() {
 
 
 function excluir_notas_cadastrada_fora(idnota) {
-   
+
+   Swal.fire({
+  title: 'Tem certeza?',
+  text: "os dados desta linha serão apagados",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Sim!'
+}).then((result) => {
+  if (result.isConfirmed) {
     var xmlreq = CriaRequest();   
    
     xmlreq.open("GET", "../Controller/Excluir_notas_cadastrada_fora.php?idnota="+idnota, true);
@@ -494,8 +504,14 @@ function excluir_notas_cadastrada_fora(idnota) {
              }
          }
      };
-     xmlreq.send(null);
+    xmlreq.send(null);
+  }
+})
+   
+    
 }
+
+
 
 function mudar_ano_letivo(ano) {
    

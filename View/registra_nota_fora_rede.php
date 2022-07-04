@@ -75,7 +75,7 @@ foreach ($res_aluno as $key => $value) {
         
         <div class='col-sm-3'>
                 <div class='form-group'>
-                  <label for='exampleInputEmail1'>Escola de origem</label>
+                  <label for='exampleInputEmail1'>Escola de origem<b class="text-danger">*</b></label>
                   <input class='form-control' id='escola_origem' name='escola_origem' required=''>
                     
                 </div>
@@ -83,7 +83,7 @@ foreach ($res_aluno as $key => $value) {
 
         <div class="col-sm-2">
           <div class="form-group">
-            <label for="exampleInputEmail1">Ano de referência</label>
+            <label for="exampleInputEmail1">Ano de referência<b class="text-danger">*</b></label>
 
 
             <select class="form-control" id='ano_referencia' name='ano_referencia' required="">
@@ -99,7 +99,7 @@ foreach ($res_aluno as $key => $value) {
 
         <div class="col-sm-2">
           <div class="form-group">
-            <label for="exampleInputEmail1">Série</label>
+            <label for="exampleInputEmail1">Série<b class="text-danger">*</b></label>
 
             <select class="form-control" id='idserie' name='idserie' required="">
               <option></option>
@@ -122,7 +122,7 @@ foreach ($res_aluno as $key => $value) {
 
         <div class="col-sm-2">
           <div class="form-group">
-            <label for="exampleInputEmail1">Disciplina</label>
+            <label for="exampleInputEmail1">Disciplina<b class="text-danger">*</b></label>
 
             <select class="form-control" id='iddisciplina' name='iddisciplina' required="">
               <option></option>
@@ -166,7 +166,7 @@ foreach ($res_aluno as $key => $value) {
    <div class="col-sm-2"></div>
    <div class="col-sm-8">
           <div class="form-group">
-           <a   class="btn btn-block btn-primary" onclick="cadastrar_nota_fora_rede_ano_finalizado();">CADASTRAR</a>
+           <button class="btn btn-block btn-primary" onclick="cadastrar_nota_fora_rede_ano_finalizado();">CADASTRAR</button>
               
           </div>
         </div>

@@ -1,10 +1,10 @@
 <?php
 if ($_SESSION['cargo']=="Secretário" || $_SESSION['cargo']=="Coordenador"){
-      echo "
-        <script>
-            setInterval('pesquisar_solicitacao_transferencia_por_escola()',20000);
-        </script>
-      ";
+      // echo "
+      //   <script>
+      //       setInterval('pesquisar_solicitacao_transferencia_por_escola()',20000);
+      //   </script>
+      // ";
 }
 
 
