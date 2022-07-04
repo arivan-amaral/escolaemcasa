@@ -94,7 +94,7 @@ try {
       <i class='fa fa-users'></i> 
       LISTAR ALUNOS DA TURMA
       </a> ";
-      if ($idserie<8 || ($seguimento !='' && $seguimento <3)) {
+      // if ($idserie<8 || ($seguimento !='' && $seguimento <3)) {
 
 
           $result.= "<a href='diario_conteudo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat' target='_blank'>
@@ -110,7 +110,7 @@ try {
           <i class='fa fa-edit'></i> 
           CONTEÚDOS DE AULAS  TRIMESTRE III
           </a> ";
-    }
+    // }
 
 
       if ($idserie<3) {
