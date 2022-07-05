@@ -257,7 +257,7 @@ setTimeout('dia_doservidor_publico();',3000);
                                     <div class='modal-body'>
                                       <h3>Lista de Usuário</h3>
                                       <a><strong>Mensagem:</strong></a><br>
-                                      <textarea id='mensagem' rows='3' cols='40' placeholder='Escreva mensagem aqui...'></textarea><br><br>
+                                      <textarea id='mensagem$id_mensagem' name='mensagem$id_mensagem' rows='3' cols='40' placeholder='Escreva mensagem aqui...'></textarea><br><br>
                                       <a><strong>Solicitação:    Data: $data_solicitado  <br>
                                       </strong></a>
                                       <textarea id='story' name='story' rows='3' cols='40' disabled>$solicitação</textarea><br><br>
