@@ -68,13 +68,13 @@ $status=1;
     $nome_aluno=$value['nome'];
     $naturalidade=$value['naturalidade'];
     $cidade_municipio= $value['municipio_endereco'];
-    $nome_cidade = '';
-    if (ctype_digit($cidade_municipio)) {
+    $nome_cidade = $value['municipio_endereco'];
+    /*)if (ctype_digit($cidade_municipio)) {
       $res_nome_cidade = listar_cidade_por_id($conexao,$cidade_municipio);
       foreach ($res_nome_cidade as $keyC => $valueC) {
         $nome_cidade = $valueC['nome'];
       }
-    }
+    }*/
 
     
     $localidade_id=$value['localidade'];
