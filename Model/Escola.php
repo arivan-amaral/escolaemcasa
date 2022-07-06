@@ -17,7 +17,7 @@ function verificar_bloqueio_funcionario($conexao,$idcalendario,$funcionario_id,$
 }
 
 function pesquisa_matricula_mensal($conexao,$data_inicial,$data_final,$escola){
-   $sql = $conexao->query("SELECT * from ecidade_matricula  where matricula_situacao ='MATRICULADO' AND turma_escola='$escola' AND matricula_datamatricula BETWEEN '$data_inicial' AND '$data_final'");
+   $sql = $conexao->query("SELECT * from ecidade_matricula  where matricula_situacao ='MATRICULADO' AND turma_escola='$escola' AND matricula_datamatricula BETWEEN '$data_inicial' AND '$data_final' order by turma_id asc");
    return $sql->fetchAll();
 }
 
