@@ -47,6 +47,30 @@ if (isset($_SESSION['cargo'])) {
   setInterval(verificar_chamado(),2000);
 </script>
 
+<script type="text/javascript">
+  function verificar_chamado(){
+   var resultado = document.getElementById("total_mensagens");          
+      var xmlreq = CriaRequest();
+      xmlreq.open("GET", "../Controller/Calcular_mensagem.php", true);
+
+      xmlreq.onreadystatechange = function(){
+    
+       if (xmlreq.readyState == 4) {
+           if (xmlreq.status == 200) {
+                 resultado.innerHTML = xmlreq.responseText;
+
+           }else{
+                 alert('Erro desconhecido, verifique sua conexão com a internet');
+
+              result.innerHTML ="Erro ao receber mensagens";                 
+           }
+       }
+      };
+   xmlreq.send(null);
+  }
+  setInterval(verificar_chamado(),2000);
+</script>
+
 <div class="modal fade" id="modal-avaliacao">
     <div class="modal-dialog">
       <div class="modal-content">

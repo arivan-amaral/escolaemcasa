@@ -30,6 +30,12 @@ function pesquisar_mensagens_quant($conexao,$id_funcionario){
 
 }
 
+function pesquisar_mensagens_quant_menu($conexao,$id_funcionario){
+   $result = $conexao->query("SELECT count(*) as 'mensagens' FROM mensagem_chamado where enviado=$id_funcionario and status = ''");
+    return $result;
+
+}
+
 function pesquisar_resposta_mensagens($conexao,$id_mensagem){
    $result = $conexao->query("SELECT * FROM resposta_mensagem_chamado where id_mensagem=$id_mensagem");
     return $result;

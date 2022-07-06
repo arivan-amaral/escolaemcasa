@@ -162,6 +162,7 @@
                <a href='chamada_mensagem_usuarios.php' class='nav-link'>
                <i class='far fa-circle nav-icon text-primary'></i>
                <p>Mensagens</p>
+               <span class='badge bg-warning' id='total_mensagens'></span>
                </a>
                </li>";
                if ($_SESSION['cargo']=='Secretário' ||  $_SESSION["idfuncionario"] == 176) {
