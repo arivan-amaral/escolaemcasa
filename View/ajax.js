@@ -160,7 +160,7 @@ function pesquisa_matricula_mensal(){
   var data_inicial = document.getElementById('data_inicial').value;
   var data_final = document.getElementById('data_final').value;
   var escola = document.getElementById('escola').value;
-    if(data_inicial != '' && data_final != '' || data_inicial == '' && data_final == ''){
+    if(data_inicial != '' && data_final != ''){
         result.innerHTML = "<img src='imagens/carregando.gif'>";  
           var xmlreq = CriaRequest();
           xmlreq.open("GET", "../Controller/pesquisa_matricula_mensal.php?data_inicial="+data_inicial+"&data_final="+data_final+"&escola="+escola, true);
@@ -183,7 +183,7 @@ function pesquisa_matricula_mensal(){
     Swal.fire({
         icon: 'error',
         title: 'Atenção',
-        text: 'Se for utilizar uma consulta com datas, por favor insira nas duas datas inicial e final.'
+        text: 'por favor insira nas duas datas inicial e final.'
       });
    }
       

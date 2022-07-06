@@ -28,6 +28,7 @@ if (!isset($_SESSION['idcoordenador'])) {
 
   include '../Model/Setor.php';
   include '../Model/Chamada.php';
+  include '../Model/Escola.php';
 
 if ($_COOKIE['dia_doservidor_publico2']<2 && date("m-d")=="10-28") {
 ?>
@@ -109,23 +110,41 @@ setTimeout('dia_doservidor_publico();',3000);
 
   <!-- Inicio -Content Wrapper. Contains page content -->
   <div class="container">
-  <h2>RELATORIO MENSAL DE MATRICULAS</h2>
+  <h2>RELATÓRIO MENSAL DE MATRÍCULAS</h2>
    
    <br>
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <div class="form-group">
            <label for="exampleInputEmail1">DATA INÍCIAL</label>
            <input type="date" class="form-control" name="data_inicial" id="data_inicial">
           </div>
         </div>
-         <div class="col-sm-4">
+         <div class="col-sm-3">
           <div class="form-group">
            <label for="exampleInputEmail1">DATA FINAL</label>
            <input type="date" class="form-control" name="data_final" id="data_final">
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
+          <div class="form-group">
+           <label for="exampleInputEmail1">ESCOLA</label>
+           <select class="form-control"  id="escola" name="escola" >
+            <?php  
+              $res_escola = lista_escola($conexao);
+              foreach ($res_escola as $key => $value) {
+                $idescola = $value['idescola'];
+                $nome_escola = $value['nome_escola'];
+                echo "<option value='$idescola'>$nome_escola</option>";
+              }
+
+            ?>
+            
+          
+           </select> 
+          </div>
+        </div> 
+        <div class="col-sm-3">
           <div class="form-group">
           <a style="margin-top: 30PX;" class="btn btn-primary" onclick="pesquisa_matricula_mensal()">Pesquisar</a>
           </div>
