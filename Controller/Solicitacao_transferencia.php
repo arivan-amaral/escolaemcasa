@@ -69,7 +69,7 @@ try {
 			 		echo "$procedimento";
 			 	}else{
 			 		$aceita=0;// 0 neutra(pendente)
-				solicitacao_transferencia(
+					solicitacao_transferencia(
 					$conexao,
 					$matricula_aluno,
 					$aluno_id,
@@ -77,6 +77,10 @@ try {
 					$profissional_solicitante,
 					$escola_id,
 					$observacao,$ano_letivo,$ano_letivo_vigente,$aceita,$escola_id_origem,$turma_id_origem);
+
+					$procedimento="TRANSFERIDO REDE";
+			 		$data_saida=date("Y-m-d");
+			  		mudar_situacao_transferencia_aluno($conexao,$matricula_aluno,$procedimento,$data_saida);
 			 	}
 
 			 // $procedimento="TRANSFERIDO FORA";
