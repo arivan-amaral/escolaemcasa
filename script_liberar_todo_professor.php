@@ -41,7 +41,7 @@ descricao_funcao ='Professor' or descricao_funcao ='Professora'
     $conta++;
   }
      
-}
+
   
 } catch (Exception $e) {
     echo "Erro:  $e";
