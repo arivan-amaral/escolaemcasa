@@ -116,7 +116,7 @@ setTimeout('dia_doservidor_publico();',3000);
     <div class="row">
         <div class="col-sm-3">
           <div class="form-group">
-           <label for="exampleInputEmail1">DATA INÍCIAL</label>
+           <label for="exampleInputEmail1">DATA INICIAL</label>
            <input type="date" class="form-control" name="data_inicial" id="data_inicial">
           </div>
         </div>
