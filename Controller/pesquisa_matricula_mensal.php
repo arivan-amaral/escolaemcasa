@@ -16,7 +16,9 @@ try {
       <tr>
         <th  style='text-align: center;'>Turma</th>
         <th  style='text-align: center;'>Série</th>
-        <th  style='text-align: center;'>Matrículas</th>
+        <th  style='text-align: center;'>Anteriores</th>
+        <th  style='text-align: center;'>Novas</th>
+        <th  style='text-align: center;'>Total</th>
       </tr>
     </thead>
     <tbody>
@@ -30,9 +32,14 @@ try {
       foreach ($res_matriculas as $key => $value) {
           $turma = $value['turma_id'];
           $quant_matriculas = 0;
+          $quant_total = 0;
           $nome_serie = "";
           $nome_turma = "";
           if ($id_turma_passado !=  $turma) {
+            $res_anterior = pesquisa_matricula_mensal_quant_anterior($conexao,$escola,$turma);
+            foreach ($res_anterior as $key => $value) {
+              $quant_total = $value['alunos'];
+            }
             $res_matriculas_quant = pesquisa_matricula_mensal_quant($conexao,$data_inicial,$data_final,$escola,$turma);
                   foreach ($res_matriculas_quant as $key => $value) {
                       $quant_matriculas = $value['alunos'];
@@ -45,10 +52,13 @@ try {
                 foreach ($res_nome_serie as $key => $value) {
                     $nome_serie = $value['nome'];
                 }  
-          }
+            }
+          $quant_anterior = $quant_total - $quant_matriculas;
           $result.="<td>$nome_turma</td>";
           $result.="<td>$nome_serie</td>";
+          $result.="<td>$quant_anterior</td>";
           $result.="<td>$quant_matriculas</td>";
+          $result.="<td>$quant_total</td>";
           $result.="</tr>";
           $id_turma_passado = $turma;
           }
@@ -68,6 +78,17 @@ try {
     
     
 $result.="</tbody>";
+$res_total_aluno =  pesquisa_aluno_mensal($conexao,$escola);
+foreach ($res_total_aluno as $key => $value) {
+  $total_aluno = $value['id'];
+  $result.="<br>
+  <div class='row'>
+        <div class='col-sm-12'>
+          <h5>TOTAL ALUNOS NA ESCOLA: $total_aluno</h5>
+        </div>
+      </div>";
+}
+
 echo "$result";
     
 } catch (Exception $exc) {

@@ -152,7 +152,7 @@ setTimeout('dia_doservidor_publico();',3000);
       </div>
   <br>
   <table class="table table-bordered table-striped" id="resultado">
-        
+      
   </table>
 </div>
 
