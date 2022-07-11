@@ -15,8 +15,8 @@ try {
    <thead>
       <tr>
         <th  style='text-align: center;'>Turma</th>
-        <th  style='text-align: center;'>Serie</th>
-        <th  style='text-align: center;'>Matriculas</th>
+        <th  style='text-align: center;'>Série</th>
+        <th  style='text-align: center;'>Matrículas</th>
       </tr>
     </thead>
     <tbody>
