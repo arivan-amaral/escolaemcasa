@@ -9,6 +9,7 @@ try {
     $data_inicial = $_GET['data_inicial'];
     $data_final = $_GET['data_final'];
     $escola = $_GET['escola'];
+    $ano_letivo = $_SESSION['ano_letivo'];
 
     
     $result="
@@ -36,7 +37,7 @@ try {
           $nome_serie = "";
           $nome_turma = "";
           if ($id_turma_passado !=  $turma) {
-            $res_anterior = pesquisa_matricula_mensal_quant_anterior($conexao,$escola,$turma);
+            $res_anterior = pesquisa_matricula_mensal_quant_anterior($conexao,$escola,$turma,$ano_letivo);
             foreach ($res_anterior as $key => $value) {
               $quant_total = $value['alunos'];
             }

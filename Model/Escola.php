@@ -35,8 +35,8 @@ function pesquisa_matricula_mensal_quant($conexao,$data_inicial,$data_final,$esc
    $sql = $conexao->query("SELECT count(*) as 'alunos' from ecidade_matricula  where matricula_situacao = 'MATRICULADO' AND turma_escola = $escola AND turma_id = $idturma AND matricula_datamatricula BETWEEN '$data_inicial' AND '$data_final'");
    return $sql->fetchAll();
 }
-function pesquisa_matricula_mensal_quant_anterior($conexao,$escola,$idturma){
-   $sql = $conexao->query("SELECT count(*) as 'alunos' from ecidade_matricula  where matricula_situacao = 'MATRICULADO' AND turma_escola = $escola AND turma_id = $idturma");
+function pesquisa_matricula_mensal_quant_anterior($conexao,$escola,$idturma,$ano_letivo){
+   $sql = $conexao->query("SELECT count(*) as 'alunos' from ecidade_matricula  where matricula_situacao = 'MATRICULADO' AND turma_escola = $escola AND turma_id = $idturma and calendario_ano='$ano_letivo'");
    return $sql->fetchAll();
 }
 
