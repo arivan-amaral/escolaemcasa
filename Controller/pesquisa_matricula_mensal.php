@@ -31,6 +31,7 @@ try {
        $res_matriculas = pesquisa_matricula_mensal($conexao,$data_inicial,$data_final,$escola);
       $id_turma_passado = 0;
       $total_alunos = 0;
+      $total_alunos_escola = 0;
       $total_matriculas = 0;
       foreach ($res_matriculas as $key => $value) {
           $turma = $value['turma_id'];
@@ -82,18 +83,28 @@ try {
     
     
 $result.="</tbody>";
+$res_total_aluno_escola = total_alunos_escola($conexao,$escola);
+foreach ($res_total_aluno_escola as $key => $value) {
+  $total_alunos_escola = $value['alunos'];
+}
 $result.="<br>
   <div class='row'>
-        <div class='col-sm-12'>
-          <h5>TOTAL ALUNOS: $total_alunos</h5>
-        </div>
-      </div>
-      <br>
+    <div class='col-sm-12'>
+      <h5>TOTAL ALUNOS POR TURMAS: $total_alunos</h5>
+    </div>
+  </div>
+  <br>
   <div class='row'>
-        <div class='col-sm-12'>
-          <h5>TOTAL MATRICULAS NOVAS: $total_matriculas</h5>
-        </div>
-      </div>";
+    <div class='col-sm-12'>
+      <h5>TOTAL ALUNOS NA ESCOLA: $total_alunos_escola</h5>
+    </div>
+  </div>
+  <br>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h5>TOTAL MATRICULAS NOVAS: $total_matriculas</h5>
+    </div>
+  </div>";
 
 echo "$result";
     

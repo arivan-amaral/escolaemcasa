@@ -31,6 +31,11 @@ function pesquisa_matricula_mensal_todos($conexao,$escola){
    return $sql->fetchAll();
 }
 
+function total_alunos_escola($conexao,$escola){
+   $sql = $conexao->query("SELECT count(*) as 'alunos' from ecidade_matricula  where matricula_situacao = 'MATRICULADO' AND turma_escola = $escola AND matricula_ativa = 'S' AND calendario_ano = '2022' ");
+   return $sql->fetchAll();
+}
+
 function pesquisa_matricula_mensal_quant($conexao,$data_inicial,$data_final,$escola,$idturma){
    $sql = $conexao->query("SELECT count(*) as 'alunos' from ecidade_matricula  where matricula_situacao = 'MATRICULADO' AND turma_escola = $escola AND turma_id = $idturma AND matricula_datamatricula BETWEEN '$data_inicial' AND '$data_final'");
    return $sql->fetchAll();
