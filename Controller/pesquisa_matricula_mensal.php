@@ -31,6 +31,7 @@ try {
        $res_matriculas = pesquisa_matricula_mensal($conexao,$data_inicial,$data_final,$escola);
       $id_turma_passado = 0;
       $total_alunos = 0;
+      $total_matriculas = 0;
       foreach ($res_matriculas as $key => $value) {
           $turma = $value['turma_id'];
           $quant_matriculas = 0;
@@ -55,7 +56,8 @@ try {
                     $nome_serie = $value['nome'];
                 }  
             }
-          $quant_anterior = $quant_total - $quant_matriculas;
+          $quant_anterior =  $quant_total - $quant_matriculas;
+          
           $result.="<td>$nome_turma</td>";
           $result.="<td>$nome_serie</td>";
           $result.="<td>$quant_anterior</td>";
@@ -66,7 +68,7 @@ try {
           }
           
           $total_alunos += $quant_total;
-          
+          $total_matriculas += $quant_matriculas;
           $conta++;
       }
       
@@ -83,7 +85,13 @@ $result.="</tbody>";
 $result.="<br>
   <div class='row'>
         <div class='col-sm-12'>
-          <h5>TOTAL ALUNOS NA ESCOLA: $total_alunos</h5>
+          <h5>TOTAL ALUNOS: $total_alunos</h5>
+        </div>
+      </div>
+      <br>
+  <div class='row'>
+        <div class='col-sm-12'>
+          <h5>TOTAL MATRICULAS NOVAS: $total_matriculas</h5>
         </div>
       </div>";
 
