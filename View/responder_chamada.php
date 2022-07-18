@@ -180,7 +180,7 @@ include "alertas.php";
                       echo "<div class='col-md-12'><br>
                               <h6><b>Retorno:</b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                               <b>Data prevista para solução:</b>&emsp; $data_previsao </h6>
-                              <textarea type='text' class='form-control' rows='7'  disabled>$mensagem</textarea>
+                              <textarea type='text' class='form-control' rows='7'  id='summernote'  disabled>$mensagem</textarea>
                               <br>
                               ";
                             echo"</div>";
@@ -251,7 +251,7 @@ include "alertas.php";
 
 
                         <h6><b>Solicitação:</b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <b>Data Emissão:</b> &nbsp;&nbsp;$data_solicitado </h6>
-                        <textarea type='text' class='form-control' rows='7'disabled >$descricao</textarea>
+                        <textarea type='text' class='form-control'  id='summernote'  rows='7'disabled >$descricao</textarea>
                       " ;
                     }else{
                        echo "
@@ -264,7 +264,7 @@ include "alertas.php";
 
                         <h6><b>Solicitação:</b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                         <b>Data:</b>&nbsp;&nbsp; $data_solicitado  </h6>
-                        <textarea type='text' class='form-control' rows='7'disabled >$descricao</textarea>
+                        <textarea type='text' class='form-control'  id='summernote'  rows='7' disabled >$descricao</textarea>
                       " ;
                     }
                    
@@ -278,7 +278,7 @@ include "alertas.php";
                       $data_anterior = $value['data'];
                         echo "<div class='col-md-12'><br><br>
                               <h6 ><b>Andamento:</b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <b>Data de Emissão:</b> &nbsp;&nbsp; $data_anterior </h6>
-                              <textarea type='text' class='form-control' rows='7' disabled>$mensagem</textarea><br>
+                              <textarea type='text'  id='summernote'  class='form-control' rows='7' disabled>$mensagem</textarea><br>
                               ";
                             echo"</div>";
 
@@ -348,7 +348,7 @@ include "alertas.php";
 
                         echo "<div class='col-md-12'>
                               <h6><b>Solicitação Inicial:</b>  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Data:&nbsp;$data_anterior1</h6>
-                              <textarea type='text' class='form-control' rows='7' disabled>$mensagem1</textarea>
+                              <textarea type='text'  id='summernote'  class='form-control' rows='7' disabled>$mensagem1</textarea>
                               <br>
                               ";
                             echo"</div>";
@@ -360,7 +360,7 @@ include "alertas.php";
                       $data_anterior = $value['data'];
                         echo "<div class='col-md-12'>
                               <h6 ><b>Andamento:</b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Data de Emissão:$data_anterior </h6>
-                              <textarea type='text' class='form-control' rows='7'  disabled>$mensagem</textarea>
+                              <textarea type='text'  id='summernote'  class='form-control' rows='7'  disabled>$mensagem</textarea>
                               <br>
                               ";
 
@@ -413,7 +413,7 @@ include "alertas.php";
 
                       echo "<div class='col-md-12'>
                               <h6><b>Retorno:</b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;   <b>Data prevista para solução:</b> $data_previsao</h6>
-                              <textarea type='text' class='form-control' rows='7'  disabled>$mensagem</textarea>
+                              <textarea type='text'  id='summernote'  class='form-control' rows='7'  disabled>$mensagem</textarea>
                               <br>
                               ";
                             echo"</div>";
