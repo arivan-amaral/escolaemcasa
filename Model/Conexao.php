@@ -6,7 +6,7 @@ date_default_timezone_set('America/Sao_Paulo');
     $username = "root";
      
      $password = "BDWRe85Oam8D";
-  
+   
     $conexao = new PDO("mysql:host=$server;dbname=educalem", $username, $password);
     $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
