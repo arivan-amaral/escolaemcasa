@@ -94,12 +94,13 @@ try {
             $escola_id=$_POST['escola'];
             $turma_id=$_POST['turma'];
             $turno_nome=$_POST['turno'];
+            $matricula_datamatricula=$_POST['data_matricula'];
         // _________________________________________________________
 
             $turma_id_anterior=null;
             $matricula_situacao='MATRICULADO';
             $matricula_concluida='N';
-            $matricula_datamatricula=date("Y-m-d");
+            
             $matricula_ativa='S';
             $matricula_tipo='N';
             $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];

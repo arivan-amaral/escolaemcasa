@@ -699,6 +699,7 @@ function cadastro_aluno(){
   // Seta paramêtros da requisição e envia a requisição
   var tudo_certo=true;
   var escola =document.getElementById('escola').value;
+  var data_matricula =document.getElementById('data_matricula').value;
   var serie =document.getElementsByName('serie')[0].value;
   var turma =document.getElementsByName('idturma')[0].value;
 
@@ -747,7 +748,7 @@ var cpf_responsavel=document.getElementsByName('cpf_responsavel')[0].value;
 var filiacao1=document.getElementsByName('filiacao1')[0].value;
 var filiacao2=document.getElementsByName('filiacao2')[0].value;
 if (escola =='' || serie =='' || turma =='' || data_nascimento =='' 
-    || nome_responsavel =='' ) {
+    || nome_responsavel =='' || data_matricula == '') {
     //alert(escola +"- "+ serie+"-"+turma)
         tudo_certo=false;
        alert_preencha_todos_campos('Preencha corretamente todos os campos de curso');
@@ -759,6 +760,7 @@ if (escola =='' || serie =='' || turma =='' || data_nascimento ==''
  "&serie="+serie+
  "&turma="+turma+
  "&etapa="+etapa+
+ "&data_matricula="+data_matricula+
 
  "&sexo="+document.getElementsByName('sexo')[0].value+
   "&email="+document.getElementsByName('email')[0].value+
