@@ -5,9 +5,8 @@
 *View/trabalho_entregue/
 *View/video/
 
-Model/Conexao.php
 View/trabalho/*
 View/pagina_estatica/*.php
-Model/Conexao.php
+#Model/Conexao.php
 
 View/chamados/
