@@ -12,8 +12,13 @@ include_once "../Model/Coordenador.php";
 include_once "../Model/Aluno.php"; 
 $idcoordenador=$_SESSION['idfuncionario'];
 $idaluno = $_POST['aluno_id'];
+$data_matricula = '';
 
-
+                
+$res_data = data_matricula($conexao,$idaluno,$_SESSION["ano_letivo"]);
+foreach ($res_data as $key => $value) {
+ $data_matricula = $value['matricula_datamatricula'];
+}
 
 $res =pesquisar_aluno2($conexao,$idaluno);
 $nome = "";
@@ -807,7 +812,14 @@ foreach ($res as $key => $value) {
                        </div>
                       </div>
                     </div>
-
+                    <div class="row">
+                       <div class="col-sm-3">
+                          <div class="form-group">
+                            <label class='text-danger'>Data Matricula <b class="text-danger">*</b></label>
+                            <input type="datetime-local" class="form-control" id="data_matricula" name="data_matricula" value="<?php echo $data_matricula ?>" required>
+                          </div>
+                        </div>
+                    </div>
                     <br>
                     <div class="row">
                       <div class="col-sm-12">

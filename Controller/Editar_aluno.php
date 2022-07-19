@@ -128,7 +128,7 @@ try {
 
     $nome_responsavel=$_POST['nome_responsavel'];
     $cpf_responsavel=$_POST['cpf_responsavel'];
-
+    $data_matricula = $_POST['data_matricula'];
 
     if($endereco==""){
         $endereco=null;
@@ -298,7 +298,9 @@ try {
      WHERE idaluno=$idaluno
 
     ");
-   
+   $conexao->exec("UPDATE ecidade_matricula SET 
+            matricula_datamatricula= '$data_matricula' WHERE aluno_id=$idaluno and calendario_ano='$calendario_ano'
+    ");
  // echo "
  // r- $nome<br>
  //         r- $sexo<br>

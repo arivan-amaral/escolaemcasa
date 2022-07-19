@@ -10,6 +10,13 @@ $res=$conexao->query("SELECT * FROM ecidade_matricula where
                      and aluno_id=$aluno_id ");
 return $res->fetchAll();
 }
+
+function data_matricula($conexao,$aluno_id,$calendario_ano){
+$res=$conexao->query("SELECT * FROM ecidade_matricula where 
+                    calendario_ano='$calendario_ano' 
+                     and aluno_id=$aluno_id ");
+return $res->fetchAll();
+}
 function cancelar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno){
   $sql=$conexao->prepare("DELETE FROM historico_nota WHERE escola_id = :idescola and turma_id = :idturma and disciplina_id = :iddisciplina and aluno_id = :idaluno");
   
