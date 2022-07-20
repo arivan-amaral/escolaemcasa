@@ -153,6 +153,10 @@ include "alertas.php";
                      echo " <h5><b>Gerente:</b> $nome_gerente &emsp;&emsp;&emsp;&emsp; <b>Data de Retorno: 
                        </b> $data_retorno &emsp;<br><br>
                       </h5>"; 
+                     }if($data_retorno != '' && $data_previsao != ''){
+                        echo " <h5><b>Gerente:</b> $nome_gerente &emsp;&emsp;&emsp;&emsp; <b>Data de Retorno: 
+                       </b> $data_previsao &emsp;<br><br>
+                      </h5>"; 
                      }else{
                       echo " <h5><b>Gerente:</b> $nome_gerente &emsp;&emsp;&emsp;&emsp; <b>Data de Retorno: 
                        </b> Sem Retorno &emsp;<br><br>
