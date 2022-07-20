@@ -153,26 +153,18 @@ include "alertas.php";
                      echo " <h5><b>Gerente:</b> $nome_gerente &emsp;&emsp;&emsp;&emsp; <b>Data de Retorno: 
                        </b> $data_retorno &emsp;<br><br>
                       </h5>"; 
-                     }if($data_retorno != '' && $data_previsao != ''){
+                     }else if($data_retorno == '' && $data_previsao != ''){
                         echo " <h5><b>Gerente:</b> $nome_gerente &emsp;&emsp;&emsp;&emsp; <b>Data de Retorno: 
                        </b> $data_previsao &emsp;<br><br>
                       </h5>"; 
-                     }else{
+                     }else if($data_retorno == '' && $data_previsao == ''){
                       echo " <h5><b>Gerente:</b> $nome_gerente &emsp;&emsp;&emsp;&emsp; <b>Data de Retorno: 
                        </b> Sem Retorno &emsp;<br><br>
                       </h5>"; 
                      } 
 
 
-                      ?>
-                     
-                   
-
-                     
-
-                     
-
-                     
+                      ?>   
                     <?php
 
 
@@ -184,7 +176,7 @@ include "alertas.php";
                       echo "<div class='col-md-12'><br>
                               <h6><b>Retorno:</b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                               <b>Data prevista para solução:</b>&emsp; $data_previsao </h6>
-                              <textarea type='text' class='form-control' rows='7'  id='summernote'  disabled>$mensagem</textarea>
+                              <textarea type='text' class='form-control' rows='7' disabled>$mensagem</textarea>
                               <br>
                               ";
                             echo"</div>";
@@ -322,26 +314,6 @@ include "alertas.php";
                       }
 
                     ?>
-                    <!--form class='mt-12' action='../Controller/Cadastrar_chat_chamado.php' method='post' enctype='multipart/form-data'-->
-
-                      
-                      <!--h6>Solicitação: &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Data:&nbsp; <!?php echo $data_solicitado; ?>
-                      </h6>
-
-                      <input type='hidden' name='id_funcionario' id='id_funcionario' value='$idFuncionario'>
-                      <input type='hidden' name='id_chamado' id='id_chamado' value='$id_chamada'>
-                       <textarea type='text' class='form-control' rows='10' name='resposta' id='resposta' required=''></textarea><br-->
-
-                        <!--h4 class='card-title'>Anexo</h4>
-                        <div class='form-group' >
-                            <input type='file' name='arquivo' class='form-control' >
-                        </div>
-                        <br> 
-                        <div class='form-group'>
-                        <button class='btn btn btn-danger' style='width: 30%;'>Andamento</button>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                        <button class='btn btn btn-info' style='width: 30%;' onclick='finalizar_chat($id_chamada);'>Finalizar</button>
-                        </div>
-                      </form-->
                    
                     <?php 
                        $res_chat_inicial =  buscar_chat_inical($conexao,$id_chamada,$id_diretor);
