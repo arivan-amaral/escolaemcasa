@@ -94,6 +94,11 @@ where
                     turma.nome_turma,
                     escola.nome_escola,
                     escola.idescola,
+
+                    ecidade_matricula.matricula_concluida as 'matricula_concluida',
+                    ecidade_matricula.matricula_ativa as 'matricula_ativa',
+                    ecidade_matricula.matricula_situacao as 'matricula_situacao',
+
                     ecidade_matricula.matricula_codigo as 'matricula',
                     ecidade_matricula.matricula_datamatricula as 'data_matricula',
                     ecidade_matricula.datasaida as 'datasaida',
@@ -123,6 +128,7 @@ $idturma='';
 $idserie=3;
 $matricula='';
 $calendario_ano='';
+$matricula_situacao='';
 foreach ($result_ecidade_matricula as $key => $value) {
                 $nome_turma=($value['nome_turma']);
                 $nome_escola=$value['nome_escola'];
@@ -131,7 +137,8 @@ foreach ($result_ecidade_matricula as $key => $value) {
                 $idserie=$value['idserie'];
                 $matricula=$value['matricula'];
                 $calendario_ano=$value['calendario_ano'];
-
+                $matricula_situacao=$value['matricula_situacao'];
+ // $result.="$detectar_ultimo==$conta_ano_cursado || $matricula_situacao==TRANSFERIDO FORA";
                 if ($detectar_ultimo==$conta_ano_cursado) {
                     $result.="
                         <b class='text-primary'> $nome_escola -</b> 
@@ -384,7 +391,7 @@ foreach ($result_ecidade_matricula as $key => $value) {
                                   }
 
                                 // if ($calendario_ano2 !='2021') {
-                                 if ($calendario_ano !=$_SESSION['ano_letivo_vigente']) {
+                                 if ($calendario_ano !=$_SESSION['ano_letivo_vigente'] || ($calendario_ano ==$_SESSION['ano_letivo_vigente'] && $matricula_situacao=="TRANSFERIDO FORA")) {
 
                                   $result.="
                                     <li>
@@ -477,5 +484,3 @@ foreach ($result_ecidade_matricula as $key => $value) {
   }catch (Exception $e) {
       echo "VERIFIQUE SUA CONEXÃO COM A INTERNET $e<br>";
   }
-
-?>
