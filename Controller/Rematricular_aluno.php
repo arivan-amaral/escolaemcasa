@@ -80,6 +80,9 @@ try {
 
 
 
+
+
+
 			// echo "$aluno_id - $nome_aluno <br>";
 
 				if ($rematriculado==0 && $quantidade_vagas_restante> 0 && $rematricula_serie_id ==$rematricula_nova_serie && ($resultado !="Apc" || $resultado !="Apr" ) ) {
