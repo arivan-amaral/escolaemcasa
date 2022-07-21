@@ -239,8 +239,15 @@ foreach ($res as $key => $value) {
                         <input type="text" class="form-control" name="idaluno" value="<?php echo $idaluno; ?>" readonly>
                       </div>
                     </div>                 
-
-                    <div class="col-sm-5">
+                  
+                       <div class="col-sm-3">
+                          <div class="form-group">
+                            <label class='text-danger'>Data Matricula <b class="text-danger">*</b></label>
+                            <input type="date" class="form-control" id="data_matricula" name="data_matricula" value="<?php echo $data_matricula ?>" required>
+                          </div>
+                        </div>
+                    
+                    <div class="col-sm-4">
                       <div class="form-group">
                         <label for="exampleInputEmail1">Nome</label>
                         <input type="text" class="form-control" id="nome" name="nome"  value='<?php echo $nome; ?>' required="">
@@ -252,7 +259,7 @@ foreach ($res as $key => $value) {
                         <input type="date" class="form-control" id="exampleInputEmail1" name="data_nascimento" value='<?php echo $data_nascimento; ?>' required="">
                       </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                       <div class="form-group">
                         <label for="exampleInputEmail1">Idade</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" name="idade" required="" disabled>
@@ -813,14 +820,7 @@ foreach ($res as $key => $value) {
                        </div>
                       </div>
                     </div>
-                    <div class="row">
-                       <div class="col-sm-3">
-                          <div class="form-group">
-                            <label class='text-danger'>Data Matricula <b class="text-danger">*</b></label>
-                            <input type="date" class="form-control" id="data_matricula" name="data_matricula" value="<?php echo $data_matricula ?>" required>
-                          </div>
-                        </div>
-                    </div>
+             
                     <br>
                     <div class="row">
                       <div class="col-sm-12">

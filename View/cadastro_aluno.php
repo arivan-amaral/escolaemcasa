@@ -772,7 +772,7 @@ $idcoordenador=$_SESSION['idfuncionario'];
                         </div>
                         <div class="col-sm-3">
                           <div class="form-group">
-                            <label class='text-danger'>Data Matricula <b class="text-danger">*</b></label>
+                            <label class='text-danger'>Data Matrícula <b class="text-danger">*</b></label>
                             <input type="date" class="form-control" id="data_matricula" name="data_matricula" required="">
                           </div>
                         </div>
