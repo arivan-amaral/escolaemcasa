@@ -5,6 +5,7 @@ include_once 'barra_horizontal.php';
 include_once "menu.php"; 
 include_once "alertas.php"; 
 include_once "../Model/Conexao.php"; 
+include_once "../Controller/Conversao.php"; 
 include_once "../Model/Serie.php"; 
 include_once "../Model/Escola.php"; 
 include_once "../Model/Estado.php"; 
@@ -17,7 +18,7 @@ $data_matricula = '';
                 
 $res_data = data_matricula($conexao,$idaluno,$_SESSION["ano_letivo"]);
 foreach ($res_data as $key => $value) {
- $data_matricula = $value['matricula_datamatricula'];
+ $data_matricula = data_simples($value['matricula_datamatricula']);
 }
 
 $res =pesquisar_aluno2($conexao,$idaluno);
@@ -816,7 +817,7 @@ foreach ($res as $key => $value) {
                        <div class="col-sm-3">
                           <div class="form-group">
                             <label class='text-danger'>Data Matricula <b class="text-danger">*</b></label>
-                            <input type="datetime-local" class="form-control" id="data_matricula" name="data_matricula" value="<?php echo $data_matricula ?>" required>
+                            <input type="date" class="form-control" id="data_matricula" name="data_matricula" value="<?php echo $data_matricula ?>" required>
                           </div>
                         </div>
                     </div>
