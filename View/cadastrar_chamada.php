@@ -132,8 +132,8 @@ include "alertas.php";
                             </h3>
                           </div>
                           <div class="card-body">
-                            <textarea rows="5" style="height: 245.719px;" name="descricao"
-                            id="summernote" required="">
+                            <textarea rows="5" style="height: 245.719px;" name="descricao" id="descricao"
+                           required="">
                             </textarea>
                           </div>
                         </div>
@@ -231,7 +231,7 @@ include "alertas.php";
  function carregando(){
 
 
-    var descricao =  document.getElementById("summernote").value;
+    var descricao =  document.getElementById("descricao").value;
     var setor =  document.getElementById("setor").value;
     var funcionario =  document.getElementById("funcionario").value;
 
