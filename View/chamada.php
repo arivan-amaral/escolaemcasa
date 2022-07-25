@@ -186,11 +186,11 @@ setTimeout('dia_doservidor_publico();',3000);
                   //----------------------------------------------------------
               // escola cadastrada
                 $id_escola = 0;
-                $quantidade_pendente_escola = 0 ;
-                $quantidade_atraso_escola = 0 ;
-                $quantidade_tota_escolal = 0 ;
-                $quantidade_andamento_escola = 0 ;
-                $quantidade_resolvidos_escola = 0 ;
+                $quantidade_pendente_escola = 0;
+                $quantidade_atraso_escola = 0;
+                $quantidade_tota_escolal = 0;
+                $quantidade_andamento_escola = 0;
+                $quantidade_resolvidos_escola = 0;
 
                 $res_id_escola = buscar_id_escola($conexao,$_SESSION['idfuncionario']);
                 foreach ($res_id_escola as $key => $value) {
