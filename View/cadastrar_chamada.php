@@ -132,7 +132,7 @@ include "alertas.php";
                             </h3>
                           </div>
                           <div class="card-body">
-                            <textarea rows="5" style="height: 245.719px;" name="descricao" id="descricao"
+                            <textarea rows="5" style="height: 280px; width: 600px;" name="descricao" id="descricao"
                            required="">
                             </textarea>
                           </div>
