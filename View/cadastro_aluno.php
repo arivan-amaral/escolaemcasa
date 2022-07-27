@@ -106,14 +106,14 @@ $idcoordenador=$_SESSION['idfuncionario'];
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Nascimento <b class="text-danger">*</b></label>
-                          <input type="date" class="form-control" id="exampleInputEmail1" name="data_nascimento" required="">
+                          <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" required="" onchange="idade_aluno();">
                         </div>
                       </div>
                       
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Idade</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="idade" required="" disabled>
+                          <input type="text" class="form-control" id="idade" name="idade" required="" disabled>
                         </div>
                       </div>             
                     </div>

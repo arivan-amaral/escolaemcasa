@@ -42,6 +42,48 @@ function CriaRequest() {
 
  }
 
+
+
+
+ function idade_aluno() {
+    var data_nascimento=document.getElementById('data_nascimento').value;
+    console.log("teste:"+data_nascimento);
+
+    var ano_aniversario;
+    var mes_aniversario;
+    var dia_aniversario;
+    
+    var array_pes= data_nascimento.split('-');
+    ano_aniversario= array_pes[0];
+    mes_aniversario= array_pes[1];
+    dia_aniversario= array_pes[2];
+
+
+     var d = new Date,
+         ano_atual = d.getFullYear(),
+         mes_atual = d.getMonth() + 1,
+         dia_atual = d.getDate(),
+
+         ano_aniversario = +ano_aniversario,
+         mes_aniversario = +mes_aniversario,
+         dia_aniversario = +dia_aniversario,
+
+         quantos_anos = ano_atual - ano_aniversario;
+
+     if (mes_atual < mes_aniversario || mes_atual == mes_aniversario && dia_atual < dia_aniversario) {
+         quantos_anos--;
+     }
+    document.getElementById('idade').value=quantos_anos;
+    
+    console.log("teste:"+quantos_anos);
+
+    // return quantos_anos < 0 ? 0 : quantos_anos;
+ }
+
+
+
+
+
  
 function total_notas(id) {
     document.getElementById('total'+id).value=0;

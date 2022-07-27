@@ -12,6 +12,10 @@ function escape_mimic($inp) {
     return $inp; 
 } 
 
+
+ 
+
+
  function converte_telefone($whatsapp){
       $whatsapp= trim($whatsapp);
 	 $whatsapp= str_replace(' ', '', $whatsapp);
