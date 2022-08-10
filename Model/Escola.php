@@ -62,7 +62,7 @@ function pesquisa_turma($conexao,$turma){
 }
 
 function pesquisa_serie($conexao,$idserie){
-   $sql = $conexao->query("SELECT * from serie where id = '$idserie' ORDER by id asc");
+   $sql = $conexao->query("SELECT * from serie where id = '$idserie' ORDER by nome asc");
    return $sql->fetchAll();
 }
 
