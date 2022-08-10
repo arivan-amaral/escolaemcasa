@@ -57,7 +57,7 @@ function pesquisa_escola($conexao){
 }
 
 function pesquisa_turma($conexao,$turma){
-   $sql = $conexao->query("SELECT * from turma where idturma = '$turma' ORDER by idturma asc ");
+   $sql = $conexao->query("SELECT * from turma where idturma = '$turma' ORDER by nome_turma asc ");
    return $sql->fetchAll();
 }
 
