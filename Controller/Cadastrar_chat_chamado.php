@@ -15,6 +15,7 @@ try {
 	if ($descricao == "" || $data_previsao == "") {
 		// code...
 	}else{
+		responder_chamada($conexao,$id_chamada,$funcionario_id);
 		responder_chat_sem_arquivo($conexao,$id_chamada,$funcionario_id,$descricao,$data);
 		atualizar_chamado_data_prevista($conexao,$id_chamada,$data_previsao);
 		$_SESSION['status']=1;
