@@ -207,13 +207,13 @@ include "alertas.php";
 
                         <div onclick='carregando();'>
 
-                          <button type="submit" class="btn btn-block btn-primary" onclick='responder_chat(<?php echo $id_chamada ?>);'>Responder</button>
+                          <button type="submit" class="btn btn-block btn-primary" >Responder</button>
                         </div>
                       </form>
                   <?php }elseif ($status == 'atrasado') {?>
                     <div id="resp">
 
-                      <button type="button" class="btn btn-block btn-primary" onclick="abrir_resposta(<?php echo $id_chamada; ?> , <?php echo $idFuncionario; ?>);">
+                      <button type="button" class="btn btn-block btn-primary" onclick="abrir_resposta();">
                       Responder
                       </button>
                     </div>
@@ -455,6 +455,23 @@ include "alertas.php";
         
  
   }
+function abrir_resposta(){
+
+   var result = document.getElementById('resp');
+    result.innerHTML = 
+    "<form class='mt-12' action='../Controller/Cadastrar_chat_chamado.php' method='post' enctype='multipart/form-data'>"+
+      "<h6 ><b>Retorno:</b> &emsp;&emsp;"+
+      "Data prevista para solução:"+
+      "<input type='datetime-local' name='data_previsao' id='data_previsao' class='form-control' required=''>"+
+      "</h6>"+
+      "<input type='hidden' name='id_funcionario' id='id_funcionario' value='<?php echo $idFuncionario ?>'>"+
+      "<input type='hidden' name='id_chamado' id='id_chamado' value='<?php echo $id_chamada ?>'>"+
+      "<textarea type='text' class='form-control' rows='6' name='resposta' id='resposta' required=''></textarea><br>"+
+      "<div onclick='carregando();'>"+
+      "<button type='submit' class='btn btn-block btn-primary'>Responder</button>"+
+      "</div>"+
+    "</form>";
+}
 
 
 </script>
