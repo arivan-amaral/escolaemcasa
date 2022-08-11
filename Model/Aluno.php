@@ -1,4 +1,10 @@
 <?php
+
+function pesquisar_dados_aluno_historico($conexao,$aluno_id,$calendario_ano){
+$res=$conexao->query(" ");
+return $res->fetchAll();
+}
+
     function excluir_questao($conexao, $idaluno) {
         $conexao->exec("DELETE FROM aluno WHERE idaluno=$idaluno");
  
@@ -272,12 +278,12 @@ function cadastro_nota($conexao,$nota, $parecer_disciplina_id, $parecer_descriti
   
 }
 
-function cadastro_nota_aluno_fora($conexao,$nota, $escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, $avaliacao,$funcionario_id,$escola_origem,$ano_referencia, $serie_id, $carga_horaria, $total_falta,$aluno_finalizou,$estado ) {
+function cadastro_nota_aluno_fora($conexao,$nota, $escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, $avaliacao,$funcionario_id,$escola_origem,$ano_referencia, $serie_id, $carga_horaria, $total_falta,$aluno_finalizou ) {
     $conexao->exec("INSERT INTO nota_parecer
-(nota, escola_id, turma_id, disciplina_id, aluno_id, periodo_id, avaliacao,funcionario_id,escola_origem,estado,ano_referencia, serie_id, carga_horaria, total_falta,aluno_finalizou) VALUES
+(nota, escola_id, turma_id, disciplina_id, aluno_id, periodo_id, avaliacao,funcionario_id,escola_origem,ano_referencia, serie_id, carga_horaria, total_falta,aluno_finalizou) VALUES
 
 ($nota, $escola_id, $turma_id, $disciplina_id, $aluno_id, $periodo_id, '$avaliacao',
-    $funcionario_id,'$escola_origem','$estado','$ano_referencia', $serie_id, '$carga_horaria', $total_falta,'$aluno_finalizou')");
+    $funcionario_id,'$escola_origem','$ano_referencia', $serie_id, '$carga_horaria', $total_falta,'$aluno_finalizou')");
 
 
 }

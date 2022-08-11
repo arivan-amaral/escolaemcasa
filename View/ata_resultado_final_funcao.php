@@ -263,12 +263,12 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
       $result_nota_aula2=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,2);
 
 
-      $conexao->query("
-        SELECT avaliacao,periodo_id,nota FROM nota_parecer WHERE
-        escola_id=$idescola and
-        turma_id=$idturma and
-        disciplina_id=$iddisciplina and 
-        periodo_id=2 and aluno_id=$idaluno  group by avaliacao,periodo_id, nota");
+      // $conexao->query("
+      //   SELECT avaliacao,periodo_id,nota FROM nota_parecer WHERE
+      //   escola_id=$idescola and
+      //   turma_id=$idturma and
+      //   disciplina_id=$iddisciplina and 
+      //   periodo_id=2 and aluno_id=$idaluno  group by avaliacao,periodo_id, nota");
 
 
       $nota_tri_2=0;
@@ -336,6 +336,50 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
   $media=($nota_tri_3+$nota_tri_2+$nota_tri_1)/3;
  //arivan
   $media=number_format($media, 1, '.', ',');
+  
+  if ($_SESSION['nivel_acesso_id']>=100) {
+
+    $res_hist=$conexao->prepare("
+      SELECT COUNT(*) as 'quantidade' from historico where 
+      aluno_id =$idaluno and 
+      ano= $ano_letivo and 
+      disciplina_id = $iddisciplina and
+      serie_id= $idserie LIMIT 1
+   
+    ");
+   $res_hist->execute();
+
+     // echo "(:". $res_hist->rowCount() .":";
+
+    if ($res_hist->rowCount()==0) {
+    // echo "(:". $res_hist->rowCount() .":";
+       $conexao->exec("
+          INSERT INTO historico (aluno_id,ano, nota_final, disciplina_id, serie_id, escola_id)
+        VALUES ($idaluno,$ano_letivo, $media, $iddisciplina, $idserie, $idescola)
+        ");
+
+    }else{
+    // echo "==". $res_hist->rowCount() .":";
+
+      $conexao->exec("
+        UPDATE historico SET 
+        aluno_id=$idaluno,
+        ano=$ano_letivo,
+        nota_final=$media,
+        disciplina_id=$iddisciplina,
+        serie_id=$idserie, 
+        escola_id=$idescola
+        where
+          aluno_id =$idaluno and 
+          ano= $ano_letivo and 
+          disciplina_id = $iddisciplina and
+          serie_id= $idserie
+      ");
+    }
+
+   
+  }
+
   if ($media >= 5) {
       echo number_format($media, 1, '.', ',');
       $media_aprovacao=true;

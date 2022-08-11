@@ -774,7 +774,7 @@ $idcoordenador=$_SESSION['idfuncionario'];
                           <div class="form-group">
                             <label class='text-danger'>Data Matrícula <b class="text-danger">*</b></label>
                             <?php 
-                              if ($_SESSION['nivel']>=100) {
+                              if ($_SESSION['nivel_acesso_id']>=100) {
                                 echo "<input type='date' class='form-control' id='data_matricula' name='data_matricula' required>";
                               }else{
                             ?>

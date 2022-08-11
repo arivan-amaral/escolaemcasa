@@ -1,5 +1,5 @@
 <?php 
-function hitorico_aluno($conexao){
+function hitorico_aluno($conexao,$idaluno,$idserie){
 
 ?>
 <div class=WordSection1>
@@ -391,7 +391,111 @@ function hitorico_aluno($conexao){
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:8.5pt;font-family:"Arial",sans-serif'><?php echo $nome_disciplina ?></span></p>
   </td>
+  <?php 
+   
+   $conexao->query("SELECT nota_final FROM
+   nota_parecer,aluno,turma
+   where 
+   nota_parecer.aluno_id=idaluno and 
+   nota_parecer.turma_id=idturma and 
+   turma.serie_id=$idserie and
+   idaluno=$idaluno");
 
+   echo "SELECT nota_final FROM
+   nota_parecer,aluno,turma
+   where 
+   nota_parecer.aluno_id=idaluno and 
+   nota_parecer.turma_id=idturma and 
+   turma.serie_id=$idserie and
+   idaluno=$idaluno";
+
+
+            $result_nota_aula1=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,1);
+
+              $nota_tri_1=0;
+              $nota_av3_1='';
+              $nota_rp_1='';
+              foreach ($result_nota_aula1 as $key => $value) {
+                if ($value['avaliacao']!='RP') {
+                  $nota_tri_1+=$value['nota'];
+                }
+             // ***************************************
+                if ($value['avaliacao']=='av3') {
+                  $nota_av3_1=$value['nota'];
+                }
+                if ($value['avaliacao']=='RP') {
+                  $nota_rp_1=$value['nota'];
+                }
+              }
+               
+             $nota_tri_1=calculos_media_notas($nota_tri_1,$nota_rp_1,$nota_av3_1);
+
+              //echo "$nota_tri_1";
+       
+         
+             $result_nota_aula2=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,2);
+
+
+             $nota_tri_2=0;
+             $nota_av3_2='';
+             $nota_rp_2='';
+             foreach ($result_nota_aula2 as $key => $value) {
+
+               if ($value['avaliacao']!='RP') {
+                 $nota_tri_2+=$value['nota'];
+
+
+               }
+                 // ***************************************
+               if ($value['avaliacao']=='av3') {
+                 $nota_av3_2=$value['nota'];
+
+               }
+
+               if ($value['avaliacao']=='RP') {
+                 $nota_rp_2=$value['nota'];
+
+
+               }
+
+             }
+
+           
+             $nota_tri_2=calculos_media_notas($nota_tri_2,$nota_rp_2,$nota_av3_2);
+            
+
+           // echo "$nota_tri_2";
+          
+
+          $result_nota_aula3=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,3);
+
+          $nota_tri_3=0;
+          $nota_av3_3='';
+          $nota_rp_3='';
+          foreach ($result_nota_aula3 as $key => $value) {
+
+                if ($value['avaliacao']!='RP') {
+                  $nota_tri_3+=$value['nota'];
+                }
+                  // ***************************************
+                if ($value['avaliacao']=='av3') {
+                  $nota_av3_3=$value['nota'];
+                }
+
+                if ($value['avaliacao']=='RP') {
+                  $nota_rp_3=$value['nota'];
+                }
+
+          }
+
+         
+         $nota_tri_3=calculos_media_notas($nota_tri_3,$nota_rp_3,$nota_av3_3);
+         
+         $media=($nota_tri_3+$nota_tri_2+$nota_tri_1)/3;
+        
+         $media=number_format($media, 1, '.', ',');
+         
+  ?>
     <?php 
       for ($i=0; $i <= 26; $i++) { 
         // code...
@@ -421,6 +525,10 @@ function hitorico_aluno($conexao){
   30.1pt;line-height:normal'><b><span style='font-size:7.5pt;font-family:"Arial",sans-serif'>Base
   Diversificada</span></b></p>
   </td>
+  <?php 
+    for ($i=0; $i < 27 ; $i++) { 
+
+  ?>
   <td width=20 valign=bottom style='width:15.3pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
@@ -428,188 +536,9 @@ function hitorico_aluno($conexao){
   normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
   color:black'>&nbsp;</span></p>
   </td>
-  <td width=28 valign=bottom style='width:21.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=14 valign=bottom style='width:10.15pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=14 valign=bottom style='width:10.15pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=14 valign=bottom style='width:10.15pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=14 valign=bottom style='width:10.15pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=14 valign=bottom style='width:10.15pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
+
+  <?php 
+  } ?>
  </tr>
 
 
@@ -652,7 +581,7 @@ function hitorico_aluno($conexao){
 
 <?php }
  ?>
- 
+
 
 
  <!-- ######################## CARGA HORARIA TOTAL HISTORICO ######################### -->
@@ -664,6 +593,10 @@ function hitorico_aluno($conexao){
   15.05pt;line-height:normal'><b><span style='font-size:7.5pt;font-family:"Arial",sans-serif'>CARGA
   HORÁRIA TOTAL</span></b></p>
   </td>
+  <?php 
+    for ($i=0; $i <9 ; $i++) { 
+   
+   ?>
   <td width=62 colspan=3 valign=bottom style='width:46.8pt;border-top:none;
   border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 3.5pt 0cm 3.5pt;height:11.45pt'>
@@ -671,62 +604,8 @@ function hitorico_aluno($conexao){
   normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
   color:black'>&nbsp;</span></p>
   </td>
-  <td width=69 colspan=3 valign=bottom style='width:51.85pt;border-top:none;
-  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:11.45pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=62 colspan=3 valign=bottom style='width:46.75pt;border-top:none;
-  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:11.45pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=77 colspan=3 valign=bottom style='width:57.85pt;border-top:none;
-  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:11.45pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=62 colspan=3 valign=bottom style='width:46.75pt;border-top:none;
-  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:11.45pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=61 colspan=3 valign=bottom style='width:45.75pt;border-top:none;
-  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:11.45pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=54 colspan=3 valign=bottom style='width:40.65pt;border-top:none;
-  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:11.45pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=61 colspan=3 valign=bottom style='width:45.75pt;border-top:none;
-  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:11.45pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=54 colspan=3 valign=bottom style='width:40.65pt;border-top:none;
-  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:11.45pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
+
+<?php } ?>
  </tr>
 
 
