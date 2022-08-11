@@ -496,7 +496,7 @@ function hitorico_aluno($conexao,$idaluno,$idserie){
     foreach ($res_notas_divers as $key => $value) {
       $nota_final=$value['nota_final'];
       $nota_final=number_format($nota_final, 1, '.', ',');
-      $conta_notas++;
+      $conta_notas_divers++;
     ?>
 
     <td width=20 valign=bottom style='width:15.3pt;border-top:none;border-left:
@@ -513,7 +513,7 @@ function hitorico_aluno($conexao,$idaluno,$idserie){
 
 
   <?php 
-    for ($i=0; $i <= 26; $i++) { 
+    for ($i=$conta_notas_divers; $i <= 26; $i++) { 
       // code...
     
   ?>
