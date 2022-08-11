@@ -1646,6 +1646,8 @@ function listar_disciplina_para_boletim($conexao,$idturma,$escola_id,$ano_letivo
   return $res;
 }
 
+
+
 function listar_disciplina_para_ata($conexao,$escola_id,$idturma,$ano_letivo){
   $res=$conexao->query("SELECT 
    disciplina.nome_disciplina,

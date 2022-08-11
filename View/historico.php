@@ -21,11 +21,11 @@ function hitorico_aluno($conexao){
   text-align:center;line-height:normal'><span style='position:absolute;
   z-index:251657216;left:0px;margin-left:8px;margin-top:0px;width:60px;
   height:62px'>
-  <img width=60 height=62 src="boletim_fundamental_II_arquivos/image002.png"></span>
+  <img width=60 height=62 src="imagens/logo.png"></span>
 </p>
   <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0>
    <tr style='height:36.0pt'>
-    <td width=741 valign=top style='width:556.0pt;border-top:none;border-left:
+    <td width=741 valign=top style='width:1000.0pt;border-top:none;border-left:
     solid black 1.0pt;border-bottom:none;border-right:solid black 1.0pt;
     padding:0cm 0cm 0cm 121.5pt;height:36.0pt'>
     <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;
@@ -117,15 +117,15 @@ function hitorico_aluno($conexao){
  </tr>
  <tr style='height:12.2pt'>
  
-  <td width=20 rowspan=4 valign=bottom style='width:15.3pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><b><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>Componentes
+  <td width=20 rowspan=2 valign=bottom style='width:15.3pt;border:solid black 1.0pt;
+  border-top:none;height:12.2pt;margin-top:50px;'>
+  <p class=MsoNormal><b><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>
+    Componentes
   Curriculares</span></b></p>
   </td>
   <td width=164 colspan=2 rowspan=2 valign=top style='width:123.1pt;border-top:
   none;border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
+  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt;'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
   15.05pt;line-height:normal'><b><span style='font-size:7.5pt;font-family:"Arial",sans-serif'>Base
   Nacional Comum</span></b></p>
@@ -204,9 +204,9 @@ function hitorico_aluno($conexao){
   </td>
  </tr>
  <tr style='height:12.2pt'>
-  <td width=164 colspan=2 valign=top style='width:123.1pt;border-top:none;
+  <td width=164 colspan=3 valign=top style='width:123.1pt;border-top:none;
   border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
+  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt;border-left:solid black 1.0pt;'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
   15.0pt;line-height:normal'><i><span style='font-size:7.5pt;font-family:"Arial",sans-serif'>Áreas
   de Conhecimento</span></i></p>
@@ -377,206 +377,39 @@ function hitorico_aluno($conexao){
 
 
  <!-- ############################## DISCIPLINAS HISTORICO ############################### -->
+  <?php 
+  $res_disc=lista_disciplina_historico($conexao);
+  foreach ($res_disc as $key => $value) {
+    $iddisciplina=$value['iddisciplina'];
+    $nome_disciplina=$value['nome_disciplina'];
 
+    ?>
  <tr style='height:12.2pt'>
-  <td width=164 colspan=2 valign=top style='width:123.1pt;border-top:none;
-  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  <td width=164 colspan=3 valign=top style='width:123.1pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;border-left:solid black 1.0pt;
   padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:8.5pt;font-family:"Arial",sans-serif'>Língua
-  Portuguesa</span></p>
+  normal'><span style='font-size:8.5pt;font-family:"Arial",sans-serif'><?php echo $nome_disciplina ?></span></p>
   </td>
-  <td width=20 valign=bottom style='width:15.3pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=14 valign=bottom style='width:10.15pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=14 valign=bottom style='width:10.15pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=14 valign=bottom style='width:10.15pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=14 valign=bottom style='width:10.15pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=14 valign=bottom style='width:10.15pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
- </tr>
 
+    <?php 
+      for ($i=0; $i <= 26; $i++) { 
+        // code...
+      
+    ?>
+      <td width=20 valign=bottom style='width:15.3pt;border-top:none;border-left:
+      none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+      padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
+      <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+      normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
+      color:black'>&nbsp;0</span></p>
+      </td>
+      <?php 
+      } ?>
+ </tr>
+<?php 
+}
+?>
 
 
  <!-- ############################## BASE DIVERSIFICADA ############################### -->
@@ -778,13 +611,29 @@ function hitorico_aluno($conexao){
   color:black'>&nbsp;</span></p>
   </td>
  </tr>
+
+
+ <?php 
+ $res_disc_diversificada=lista_disciplina_historico_base_diversificada($conexao);
+ foreach ($res_disc_diversificada as $key => $value) {
+   $iddisciplina=$value['iddisciplina'];
+   $nome_disciplina=$value['nome_disciplina'];
+
+   ?>
  <tr style='height:12.0pt'>
   <td width=185 colspan=3 valign=top style='width:138.4pt;border:solid black 1.0pt;
   border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:8.5pt;font-family:"Arial",sans-serif'>Língua
-  Estrangeira(Inglês)</span></p>
+  normal'><span style='font-size:8.5pt;font-family:"Arial",sans-serif'><?php echo $nome_disciplina ?></span></p>
   </td>
+
+
+  <?php 
+    for ($i=0; $i <= 26; $i++) { 
+      // code...
+    
+  ?>
+  
   <td width=20 valign=bottom style='width:15.3pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
@@ -792,583 +641,18 @@ function hitorico_aluno($conexao){
   normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
   color:black'>&nbsp;</span></p>
   </td>
-  <td width=28 valign=bottom style='width:21.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=14 valign=bottom style='width:10.15pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=14 valign=bottom style='width:10.15pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=14 valign=bottom style='width:10.15pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=14 valign=bottom style='width:10.15pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=14 valign=bottom style='width:10.15pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
+  <?php 
+
+  }
+
+   ?>
+
+
  </tr>
- <tr style='height:12.0pt'>
-  <td width=185 colspan=3 valign=top style='width:138.4pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:8.5pt;font-family:"Arial",sans-serif'>Produção
-  Textual</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.3pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=14 valign=bottom style='width:10.15pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=14 valign=bottom style='width:10.15pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=14 valign=bottom style='width:10.15pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=14 valign=bottom style='width:10.15pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=14 valign=bottom style='width:10.15pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
- </tr>
- <tr style='height:12.0pt'>
-  <td width=185 colspan=3 valign=top style='width:138.4pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:8.5pt;font-family:"Arial",sans-serif'>Orientação
-  para o Trabalho</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.3pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=14 valign=bottom style='width:10.15pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=14 valign=bottom style='width:10.15pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=28 valign=bottom style='width:21.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=14 valign=bottom style='width:10.15pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=14 valign=bottom style='width:10.15pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=14 valign=bottom style='width:10.15pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
-  <td width=20 valign=bottom style='width:15.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
-  </td>
- </tr>
+
+<?php }
+ ?>
+ 
 
 
  <!-- ######################## CARGA HORARIA TOTAL HISTORICO ######################### -->
@@ -1628,7 +912,7 @@ function hitorico_aluno($conexao){
   7.5pt;line-height:normal'><span style='font-size:7.5pt'>Faltas</span></p>
   </td>
   <td width=293 colspan=15 rowspan=13 valign=top style='width:219.55pt;
-  border-top:none;border-left:none;border-bottom:solid black 1.0pt;border-right:
+  border-top:none;border-left:none;border:solid black 1.0pt;border-right:
   solid black 1.0pt;padding:0cm 3.5pt 0cm 3.5pt;height:11.45pt'>
   <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
   text-align:center;line-height:normal'><span style='font-size:8.5pt'>A partir
@@ -1704,14 +988,15 @@ function hitorico_aluno($conexao){
   </td>
  </tr>
  <tr style='height:124.5pt'>
-  <td width=378 nowrap colspan=12 valign=top style='width:283.8pt;border:none;
+  <td width=378 nowrap colspan=0 valign=top style='width:283.8pt;border:none;
   border-right:solid black 1.0pt;padding:0cm 3.5pt 0cm 3.5pt;height:124.5pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
   normal'><span style='position:absolute;z-index:251658240;margin-left:0px;
   margin-top:0px;width:3px;height:7px'><img width=3 height=7
   src="hitorico_arquivos/image002.png"></span></p>
+  
   <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0>
-   <tr style='height:124.5pt'>
+   <tr style='height:124.5pt;'>
     <td width=377 valign=bottom style='width:283.0pt;border:solid black 1.0pt;
     border-top:none;padding:0cm 0cm 0cm 0cm;height:124.5pt'>
     <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:
@@ -1721,6 +1006,7 @@ function hitorico_aluno($conexao){
    </tr>
   </table>
   </td>
+
   <td width=370 colspan=18 valign=bottom style='width:277.4pt;border-top:none;
   border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 3.5pt 0cm 3.5pt;height:124.5pt'>
@@ -1730,7 +1016,7 @@ function hitorico_aluno($conexao){
   </td>
  </tr>
  <tr style='height:13.5pt'>
-  <td width=378 colspan=12 valign=top style='width:283.8pt;border-top:solid black 1.0pt;
+  <td width=378 colspan=1 valign=top style='width:283.8pt;border-top:solid black 1.0pt;
   border-left:solid black 1.0pt;border-bottom:none;border-right:none;
   padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:

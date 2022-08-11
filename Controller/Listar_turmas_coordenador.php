@@ -93,7 +93,10 @@ try {
       <a   href='listar_alunos_da_turma.php?idturma=$idturma&nome_turma=$nome_turma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat' target='_blank'>
       <i class='fa fa-users'></i> 
       LISTAR ALUNOS DA TURMA
-      </a> ";
+      </a> 
+
+
+      ";
       // if ($idserie<8 || ($seguimento !='' && $seguimento <3)) {
 
 

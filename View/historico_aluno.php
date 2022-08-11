@@ -1,5 +1,8 @@
-
- <H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>
+<?php 
+include_once "../Model/Conexao.php";
+include_once "../Model/Disciplina.php";
+?>
+ <!-- <H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR> -->
 
 <html>
 <head>

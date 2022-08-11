@@ -773,7 +773,15 @@ $idcoordenador=$_SESSION['idfuncionario'];
                         <div class="col-sm-3">
                           <div class="form-group">
                             <label class='text-danger'>Data Matrícula <b class="text-danger">*</b></label>
-                            <input type="date" class="form-control" id="data_matricula" name="data_matricula" required="">
+                            <?php 
+                              if ($_SESSION['nivel']>=100) {
+                                echo "<input type='date' class='form-control' id='data_matricula' name='data_matricula' required>";
+                              }else{
+                            ?>
+                              <input type="date" class="form-control" id="data_matricula" name="data_matricula" required="" value="<?php echo date(); ?>">
+                            <?php 
+                              }
+                            ?>
                           </div>
                         </div>
                     </div>

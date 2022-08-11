@@ -14,6 +14,18 @@ function lista_disciplina_nao_facultativa($conexao){
     return $result;
 }
 
+function lista_disciplina_historico($conexao){
+        $result = $conexao->query("SELECT * FROM disciplina where abreviacao IS NOT NULL and facultativo=0 and infantil=0 and base_diversificada=0 ORDER BY iddisciplina asc");
+    
+    return $result;
+}
+
+function lista_disciplina_historico_base_diversificada($conexao){
+        $result = $conexao->query("SELECT * FROM disciplina where abreviacao IS NOT NULL and facultativo=0 and infantil=0 and base_diversificada=1 ORDER BY iddisciplina asc");
+    
+    return $result;
+}
+
 function cadastrar_disciplina($conexao,$nome_disciplina){
     $result = $conexao->exec("INSERT INTO disciplina(nome_disciplina) VALUES ('$nome_disciplina')");
 }
