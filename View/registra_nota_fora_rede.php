@@ -22,6 +22,7 @@ if (!isset($_SESSION['idfuncionario'])) {
   include '../Model/Professor.php';
   include '../Model/Serie.php';
   include '../Model/Disciplina.php';
+  include '../Model/Estado.php';
 
   $idserie=$_REQUEST['serie_id']; 
   $idescola=$_REQUEST['escola_id']; 
