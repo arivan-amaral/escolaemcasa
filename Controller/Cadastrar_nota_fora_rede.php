@@ -40,6 +40,7 @@ try{
     $idserie=$_REQUEST['idserie'];
     $carga_horaria=$_REQUEST['carga_horaria'];
     $total_falta=$_REQUEST['total_falta'];
+    $estado=$_REQUEST['estado'];
 
 
     // aluno não finalizou o ano
@@ -47,7 +48,7 @@ try{
 
    $data=date("Y-m-d");
 
-   cadastro_nota_aluno_fora($conexao,$nota, $idescola, $idturma, $iddisciplina, $idaluno, $idperiodo, $avaliacao,$funcionario_id,$escola_origem,$ano_referencia, $idserie, $carga_horaria, $total_falta,$aluno_finalizou );
+   cadastro_nota_aluno_fora($conexao,$nota, $idescola, $idturma, $iddisciplina, $idaluno, $idperiodo, $avaliacao,$funcionario_id,$escola_origem,$ano_referencia, $idserie, $carga_horaria, $total_falta,$aluno_finalizou,$estado );
 
        
 

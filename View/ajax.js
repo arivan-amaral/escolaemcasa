@@ -434,6 +434,7 @@ function cadastrar_nota_fora_rede_ano_finalizado() {
     var media_ou_nf=document.getElementsByName('media_ou_nf')[0].value;
     var carga_horaria=document.getElementsByName('carga_horaria')[0].value;
     var total_falta=document.getElementsByName('total_falta')[0].value;
+    var estado=document.getElementsByName('estado').value;
 
 
  xmlreq.send(
@@ -441,6 +442,7 @@ function cadastrar_nota_fora_rede_ano_finalizado() {
  "&idperiodo="+idperiodo+
  "&idturma="+idturma+
  "&iddisciplina="+iddisciplina+
+ "&estado="+estado+
  
  "&escola_origem="+escola_origem+
  "&idescola="+idescola+

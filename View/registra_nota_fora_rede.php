@@ -80,6 +80,25 @@ foreach ($res_aluno as $key => $value) {
                     
                 </div>
               </div>  
+        <div class="col-sm-2">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Estado<b class="text-danger">*</b></label>
+
+
+            <select class="form-control" id='estado' name='estado' required="">
+              <option value=''>Selecione</option>
+              <?php 
+                $res_estado = listar_estado($conexao);
+                foreach ($res_estado as $key => $value) {
+                  $sigla = $value['uf'];
+                  echo "<option value='$sigla'>$sigla</option>";
+                }
+
+                
+               ?>
+            </select>
+          </div>
+        </div>  
 
         <div class="col-sm-2">
           <div class="form-group">
