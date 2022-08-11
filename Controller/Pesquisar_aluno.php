@@ -455,7 +455,7 @@ foreach ($result_ecidade_matricula as $key => $value) {
                                 
                                 $result.="
                                   <li>
-                                      <a href ='historico_aluno.php?idaluno=$idaluno&idserie=$idserie' class='dropdown-item' target='_blank' >Histórico</a>
+                                      <a href ='historico_aluno.php?idaluno=$idaluno&idserie=$idserie&idescola=$idescola' class='dropdown-item' target='_blank' >Histórico</a>
                                   </li>";
                                 }
                                   
