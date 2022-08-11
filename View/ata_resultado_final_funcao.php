@@ -339,30 +339,29 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
   
   if ($_SESSION['nivel_acesso_id']>=100) {
 
-    $res_hist=$conexao->prepare("
-      SELECT COUNT(*) as 'quantidade' from historico where 
+    $res_hist=$conexao->query("
+      SELECT * from historico where 
       aluno_id =$idaluno and 
-     
       disciplina_id = $iddisciplina and
       serie_id= $idserie LIMIT 1
    
     ");
-   $res_hist->execute();
+   // $res_hist->execute();
 
    $quantidade_hist=0;
-   foreach ($res_hist as $key => $value) {
+   foreach ($res_hist as $key_h => $value_h) {
       $quantidade_hist++;
      
    }
     if ($quantidade_hist==0) {
-    // echo "(:". $res_hist->rowCount() .":";
+     //echo "(:". $res_hist->rowCount() .":";
        $conexao->exec("
           INSERT INTO historico (aluno_id,ano, nota_final, disciplina_id, serie_id, escola_id)
         VALUES ($idaluno,$ano_letivo, $media, $iddisciplina, $idserie, $idescola)
         ");
 
     }else{
-    // echo "==". $res_hist->rowCount() .":";
+     //echo "==". $res_hist->rowCount() .":";
 
       $conexao->exec("
         UPDATE historico SET 

@@ -414,7 +414,7 @@ function hitorico_aluno($conexao,$idaluno,$idserie){
           padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
           <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
           normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-          color:black'>&nbsp;mm<?php echo "$nota_final"; ?></span></p>
+          color:black'>&nbsp;<?php echo "$nota_final"; ?></span></p>
           </td>
     <?php 
       } 
@@ -429,12 +429,7 @@ function hitorico_aluno($conexao,$idaluno,$idserie){
           padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
           <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
           normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-          color:black'>&nbsp;<?php echo "SELECT * FROM
-   historico
-   where 
-   disciplina_id=$iddisciplina and
-   serie_id=$idserie and
-   aluno_id=$idaluno"; ?></span></p>
+          color:black'>&nbsp;0</span></p>
           </td>
     <?php 
       } 
@@ -454,6 +449,9 @@ function hitorico_aluno($conexao,$idaluno,$idserie){
   30.1pt;line-height:normal'><b><span style='font-size:7.5pt;font-family:"Arial",sans-serif'>Base
   Diversificada</span></b></p>
   </td>
+
+  
+
   <?php 
     for ($i=0; $i < 27 ; $i++) { 
 
@@ -484,6 +482,34 @@ function hitorico_aluno($conexao,$idaluno,$idserie){
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:8.5pt;font-family:"Arial",sans-serif'><?php echo $nome_disciplina ?></span></p>
   </td>
+  <?php 
+   
+   $res_notas_divers=$conexao->query("SELECT * FROM
+   historico
+   where 
+   disciplina_id=$iddisciplina and
+   serie_id=$idserie and
+   aluno_id=$idaluno");
+
+  
+   $conta_notas_divers=0;
+    foreach ($res_notas_divers as $key => $value) {
+      $nota_final=$value['nota_final'];
+      $nota_final=number_format($nota_final, 1, '.', ',');
+      $conta_notas++;
+    ?>
+
+    <td width=20 valign=bottom style='width:15.3pt;border-top:none;border-left:
+    none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+    padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
+    <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+    normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
+    color:black'>&nbsp;<?php echo "$nota_final"; ?></span></p>
+
+
+  <?php 
+    }
+   ?>
 
 
   <?php 
