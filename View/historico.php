@@ -1,6 +1,27 @@
 <?php 
-function hitorico_aluno($conexao,$idaluno,$idserie){
-
+include '../Model/Escola.php';
+include '../Model/Aluno.php';
+function hitorico_aluno($conexao,$idaluno,$idserie,$idescola){
+$nome_escola ="";
+$res_escola = pesquisar_escola2($conexao,$idescola);
+foreach ($res_escola as $key => $value) {
+  $nome_escola = $value['nome_escola'];
+}
+$res_aluno = pesquisar_aluno2($conexao,$idaluno);
+$nome_aluno = "";
+$naturalidade = "";
+$data_nascimento = "";
+$afiliado1 = "";
+$afiliado2 = "";
+foreach ($res_aluno as $key => $value) {
+  $nome_aluno = $value['nome'];
+  $naturalidade = $value['naturalidade'];
+  $data = new DateTime($value['data_nascimento']);
+  $data_nascimento = $data->format('d/m/Y');
+        
+  $afiliado1 = $value['filiacao1'];
+  $afiliado2 = $value['filiacao2'];
+}
 ?>
 <div class=WordSection1>
 
@@ -32,8 +53,7 @@ function hitorico_aluno($conexao,$idaluno,$idserie){
     line-height:normal;text-align:center;'>
     <span style='font-size:11.5pt;font-family:"Arial",sans-serif;text-align:center;'> 
     SECRETARIA MUNICIPAL DA EDUCAÇÃO<br>
-    </span><b><span style='font-size:11.5pt;font-family:"Comic Sans MS"'>Escola
-    Municipal</span></b></p>
+    </span><b><span style='font-size:11.5pt;font-family:"Comic Sans MS"'><?php echo $nome_escola; ?></span></b></p>
     </td>
    </tr>
   </table>
@@ -50,7 +70,7 @@ function hitorico_aluno($conexao,$idaluno,$idserie){
   border-left:none;padding:0cm 3.5pt 0cm 3.5pt;height:16.5pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
   normal'><b><span style='font-size:8.5pt;font-family:"Comic Sans MS"'>NOME
-  DO(A) ALUNO(A)</span></b><b><span style='font-size:9.5pt;font-family:"Comic Sans MS"'>:</span></b></p>
+  DO(A) ALUNO(A): <?php echo $nome_aluno; ?></span></b><b><span style='font-size:9.5pt;font-family:"Comic Sans MS"'>:</span></b></p>
   </td>
  </tr>
  <tr style='height:13.5pt'>
@@ -65,21 +85,21 @@ function hitorico_aluno($conexao,$idaluno,$idserie){
   padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>Naturalidade:
-  Luís Eduardo Magalhães - BA</span></p>
+  <?php echo $naturalidade; ?></span></p>
   </td>
   <td width=190 colspan=10 valign=top style='width:142.3pt;border-top:none;
   border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
   9.5pt;line-height:normal'><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>Data
-  de nasc.:</span></p>
+  de nasc.:<?php echo $data_nascimento; ?></span></p>
   </td>
  </tr>
  <tr style='height:13.5pt'>
   <td width=559 colspan=20 valign=top style='width:418.9pt;border:solid black 1.0pt;
   border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>Filiação 1:</span></p>
+  normal'><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>Filiação 1: <?php echo $afiliado1; ?></span></p>
   </td>
   <td width=190 colspan=10 valign=top style='width:142.3pt;border-top:none;
   border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
@@ -93,7 +113,7 @@ function hitorico_aluno($conexao,$idaluno,$idserie){
   <td width=559 colspan=20 valign=top style='width:418.9pt;border:solid black 1.0pt;
   border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:15.6pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>Filiação 2:</span></p>
+  normal'><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>Filiação 2: <?php echo $afiliado2; ?></span></p>
   </td>
   <td width=190 colspan=10 valign=top style='width:142.3pt;border-top:none;
   border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;

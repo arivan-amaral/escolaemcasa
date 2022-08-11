@@ -57,7 +57,8 @@ text-shadow:none;
   include_once'../Model/Nota.php';
   $idaluno=$_GET['idaluno'];
   $idserie=$_GET['idserie'];
-  hitorico_aluno($conexao,$idaluno,$idserie);
+  $idescola=$_GET['idescola'];
+  hitorico_aluno($conexao,$idaluno,$idserie,$idescola);
 ?>
 
 

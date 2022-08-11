@@ -10,6 +10,13 @@ function listar_calendario_letivo($conexao){
       ");
    return $sql->fetchAll();
 }
+
+function pesquisar_escola2($conexao,$id) {
+   $sql = $conexao->prepare("SELECT * FROM escola where idescola = :id");
+   $sql->execute(array('id' =>$id));
+   return $sql->fetchAll();
+}
+
 function verificar_bloqueio_funcionario($conexao,$idcalendario,$funcionario_id,$status){
    $sql = $conexao->query("SELECT * from bloquear_acesso  where funcionario_id = $funcionario_id and calendario_letivo_id=$idcalendario and status=$status
       ");
