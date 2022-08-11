@@ -342,16 +342,19 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
     $res_hist=$conexao->prepare("
       SELECT COUNT(*) as 'quantidade' from historico where 
       aluno_id =$idaluno and 
-      ano= $ano_letivo and 
+     
       disciplina_id = $iddisciplina and
       serie_id= $idserie LIMIT 1
    
     ");
    $res_hist->execute();
 
-     // echo "(:". $res_hist->rowCount() .":";
-
-    if ($res_hist->rowCount()==0) {
+   $quantidade_hist=0;
+   foreach ($res_hist as $key => $value) {
+      $quantidade_hist++;
+     
+   }
+    if ($quantidade_hist==0) {
     // echo "(:". $res_hist->rowCount() .":";
        $conexao->exec("
           INSERT INTO historico (aluno_id,ano, nota_final, disciplina_id, serie_id, escola_id)
@@ -371,7 +374,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
         escola_id=$idescola
         where
           aluno_id =$idaluno and 
-          ano= $ano_letivo and 
+        
           disciplina_id = $iddisciplina and
           serie_id= $idserie
       ");

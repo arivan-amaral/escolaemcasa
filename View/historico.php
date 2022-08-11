@@ -29,7 +29,8 @@ function hitorico_aluno($conexao,$idaluno,$idserie){
     solid black 1.0pt;border-bottom:none;border-right:solid black 1.0pt;
     padding:0cm 0cm 0cm 121.5pt;height:36.0pt'>
     <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;
-    line-height:normal'><span style='font-size:11.5pt;font-family:"Arial",sans-serif'> 
+    line-height:normal;text-align:center;'>
+    <span style='font-size:11.5pt;font-family:"Arial",sans-serif;text-align:center;'> 
     SECRETARIA MUNICIPAL DA EDUCAÇÃO<br>
     </span><b><span style='font-size:11.5pt;font-family:"Comic Sans MS"'>Escola
     Municipal</span></b></p>
@@ -78,7 +79,7 @@ function hitorico_aluno($conexao,$idaluno,$idserie){
   <td width=559 colspan=20 valign=top style='width:418.9pt;border:solid black 1.0pt;
   border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>MÃE:</span></p>
+  normal'><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>Filiação 1:</span></p>
   </td>
   <td width=190 colspan=10 valign=top style='width:142.3pt;border-top:none;
   border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
@@ -92,7 +93,7 @@ function hitorico_aluno($conexao,$idaluno,$idserie){
   <td width=559 colspan=20 valign=top style='width:418.9pt;border:solid black 1.0pt;
   border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:15.6pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>PAI:</span></p>
+  normal'><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>Filiação 2:</span></p>
   </td>
   <td width=190 colspan=10 valign=top style='width:142.3pt;border-top:none;
   border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
@@ -393,123 +394,51 @@ function hitorico_aluno($conexao,$idaluno,$idserie){
   </td>
   <?php 
    
-   $conexao->query("SELECT nota_final FROM
-   nota_parecer,aluno,turma
+   $res_notas=$conexao->query("SELECT * FROM
+   historico
    where 
-   nota_parecer.aluno_id=idaluno and 
-   nota_parecer.turma_id=idturma and 
-   turma.serie_id=$idserie and
-   idaluno=$idaluno");
+   disciplina_id=$iddisciplina and
+   serie_id=$idserie and
+   aluno_id=$idaluno");
 
-   echo "SELECT nota_final FROM
-   nota_parecer,aluno,turma
-   where 
-   nota_parecer.aluno_id=idaluno and 
-   nota_parecer.turma_id=idturma and 
-   turma.serie_id=$idserie and
-   idaluno=$idaluno";
-
-
-            $result_nota_aula1=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,1);
-
-              $nota_tri_1=0;
-              $nota_av3_1='';
-              $nota_rp_1='';
-              foreach ($result_nota_aula1 as $key => $value) {
-                if ($value['avaliacao']!='RP') {
-                  $nota_tri_1+=$value['nota'];
-                }
-             // ***************************************
-                if ($value['avaliacao']=='av3') {
-                  $nota_av3_1=$value['nota'];
-                }
-                if ($value['avaliacao']=='RP') {
-                  $nota_rp_1=$value['nota'];
-                }
-              }
-               
-             $nota_tri_1=calculos_media_notas($nota_tri_1,$nota_rp_1,$nota_av3_1);
-
-              //echo "$nota_tri_1";
-       
-         
-             $result_nota_aula2=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,2);
-
-
-             $nota_tri_2=0;
-             $nota_av3_2='';
-             $nota_rp_2='';
-             foreach ($result_nota_aula2 as $key => $value) {
-
-               if ($value['avaliacao']!='RP') {
-                 $nota_tri_2+=$value['nota'];
-
-
-               }
-                 // ***************************************
-               if ($value['avaliacao']=='av3') {
-                 $nota_av3_2=$value['nota'];
-
-               }
-
-               if ($value['avaliacao']=='RP') {
-                 $nota_rp_2=$value['nota'];
-
-
-               }
-
-             }
-
-           
-             $nota_tri_2=calculos_media_notas($nota_tri_2,$nota_rp_2,$nota_av3_2);
-            
-
-           // echo "$nota_tri_2";
-          
-
-          $result_nota_aula3=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,3);
-
-          $nota_tri_3=0;
-          $nota_av3_3='';
-          $nota_rp_3='';
-          foreach ($result_nota_aula3 as $key => $value) {
-
-                if ($value['avaliacao']!='RP') {
-                  $nota_tri_3+=$value['nota'];
-                }
-                  // ***************************************
-                if ($value['avaliacao']=='av3') {
-                  $nota_av3_3=$value['nota'];
-                }
-
-                if ($value['avaliacao']=='RP') {
-                  $nota_rp_3=$value['nota'];
-                }
-
-          }
-
-         
-         $nota_tri_3=calculos_media_notas($nota_tri_3,$nota_rp_3,$nota_av3_3);
-         
-         $media=($nota_tri_3+$nota_tri_2+$nota_tri_1)/3;
-        
-         $media=number_format($media, 1, '.', ',');
-         
-  ?>
-    <?php 
-      for ($i=0; $i <= 26; $i++) { 
-        // code...
-      
+ 
+   $conta_notas=0;
+    foreach ($res_notas as $key => $value) {
+      $nota_final=$value['nota_final'];
+      $nota_final=number_format($nota_final, 1, '.', ',');
+      $conta_notas++;
     ?>
-      <td width=20 valign=bottom style='width:15.3pt;border-top:none;border-left:
-      none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-      padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-      <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-      normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-      color:black'>&nbsp;0</span></p>
-      </td>
-      <?php 
-      } ?>
+
+          <td width=20 valign=bottom style='width:15.3pt;border-top:none;border-left:
+          none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+          padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
+          <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+          normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
+          color:black'>&nbsp;mm<?php echo "$nota_final"; ?></span></p>
+          </td>
+    <?php 
+      } 
+    ?>
+             
+    
+    <?php 
+      for ($i=$conta_notas; $i <= 26; $i++) { 
+    ?>
+          <td width=20 valign=bottom style='width:15.3pt;border-top:none;border-left:
+          none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+          padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
+          <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+          normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
+          color:black'>&nbsp;<?php echo "SELECT * FROM
+   historico
+   where 
+   disciplina_id=$iddisciplina and
+   serie_id=$idserie and
+   aluno_id=$idaluno"; ?></span></p>
+          </td>
+    <?php 
+      } 
+    ?>
  </tr>
 <?php 
 }
@@ -534,7 +463,7 @@ function hitorico_aluno($conexao,$idaluno,$idserie){
   padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
+  color:black'>&nbsp;0</span></p>
   </td>
 
   <?php 
@@ -568,7 +497,7 @@ function hitorico_aluno($conexao,$idaluno,$idserie){
   padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
+  color:black'>&nbsp;0</span></p>
   </td>
   <?php 
 
@@ -803,8 +732,8 @@ function hitorico_aluno($conexao,$idaluno,$idserie){
   <td width=185 colspan=3 valign=top style='width:138.4pt;border:solid black 1.0pt;
   border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:8.5pt;font-family:"Arial",sans-serif'>Língua
-  Portuguesa</span></p>
+  normal'><span style='font-size:8.5pt;font-family:"Arial",sans-serif'><!-- Língua
+  Portuguesa --></span></p>
   </td>
   <td width=49 colspan=2 valign=bottom style='width:36.65pt;border-top:none;
   border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
@@ -859,11 +788,11 @@ function hitorico_aluno($conexao,$idaluno,$idserie){
  <tr style='height:22.05pt'>
   <td width=748 colspan=30 valign=top style='width:561.2pt;border:solid black 1.0pt;
   border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:22.05pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:8.5pt'>Certificamos que o(a) aluno(a) </span><b><span
+  <!-- <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:8.5pt'>tificCeramos que o(a) aluno(a) </span><b><span
   style='font-size:9.5pt'>Aluno </span></b><span style='font-size:8.5pt'>concluiu
   no ano de 2017 o <b><u>°&nbsp;Ano</u> </b>do Ensino Fundamental de 9 anos,
-  conforme Histórico Escolar.</span></p>
+  conforme Histórico Escolar.</span></p> -->
   </td>
  </tr>
  <tr style='height:124.5pt'>
