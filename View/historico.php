@@ -70,7 +70,7 @@ foreach ($res_aluno as $key => $value) {
   border-left:none;padding:0cm 3.5pt 0cm 3.5pt;height:16.5pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
   normal'><b><span style='font-size:8.5pt;font-family:"Comic Sans MS"'>NOME
-  DO(A) ALUNO(A): <?php echo $nome_aluno; ?></span></b><b><span style='font-size:9.5pt;font-family:"Comic Sans MS"'>:</span></b></p>
+  DO(A) ALUNO(A): <?php echo $nome_aluno; ?></span></b><b><span style='font-size:9.5pt;font-family:"Comic Sans MS"'></span></b></p>
   </td>
  </tr>
  <tr style='height:13.5pt'>
