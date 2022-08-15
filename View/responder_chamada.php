@@ -43,7 +43,7 @@ include "alertas.php";
   $arquivo_presente = 0;
   $id_funci_respondeu = 0;
   $status = '';
-  $verificar_quant_retorno = 0;
+
   $res_chamada = pesquisa_chamada($conexao,$id_chamada);
   foreach ($res_chamada as $key => $value) {
     $id_diretor = $value['funcionario_id'];
@@ -56,10 +56,6 @@ include "alertas.php";
     $res_data_retorno = buscar_pessoa_retorno($conexao,$id_chamada,$id_funci_respondeu);
     foreach ($res_data_retorno as $key => $value) {
       $data_retorno= $value['data'];
-    }
-    $res_verificar_quant = verificar_numero_quant($conexao,$chamada_id,$funcionario_id);
-    foreach ($res_verificar_quant as $key => $value) {
-      $verificar_quant_retorno =$value['id'];
     }
     $res_nome_diretor = nome_funcionario($conexao,$funcionario_id);
       foreach ($res_nome_diretor as $key => $value) {
@@ -153,13 +149,7 @@ include "alertas.php";
                 <?php if ($validar_func == true) { ?>
                 <div class="row">
                   <div class="col-md-6">
-                    <?php
-
-
-                    if ($verificar_quant_retorno < 2) {
-                      # code...
-                  
-                     if ($data_retorno != '') {
+                    <?php if ($data_retorno != '') {
                      echo " <h5><b>Gerente:</b> $nome_gerente &emsp;&emsp;&emsp;&emsp; <b>Data de Retorno: 
                        </b> $data_retorno &emsp;<br><br>
                       </h5>"; 
@@ -173,38 +163,35 @@ include "alertas.php";
                       </h5>"; 
                      } 
 
-                    }
+
                       ?>   
                     <?php
 
-
+                      $contador = 0;
                       $res_retorno =  buscar_pessoa_chat($conexao,$id_chamada,$idFuncionario);
                       foreach ($res_retorno as $key => $value) {
                       $mensagem = $value['mensagem'];
-                      $data_mensagem = $value['data'];
-                      if ($verificar_quant_retorno < 2) {
-                         echo "<div class='col-md-12'><br>
+                      $data_mensagem = $value['value'];
+                      if($contador <1){
+                        echo "<div class='col-md-12'><br>
                               <h6><b>Retorno:</b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                               <b>Data prevista para solução:</b>&emsp; $data_previsao </h6>
                               <textarea type='text' class='form-control' rows='7' disabled>$mensagem</textarea>
                               <br>
                               ";
                             echo"</div>";
-                      }elseif ($verificar_quant_retorno >= 2) {
-
-                        echo " <h5><b>Gerente:</b> $nome_gerente &emsp;&emsp;&emsp;&emsp; <b>Data de Retorno: 
-                       </b> $data_mensagem &emsp;<br><br>
-                      </h5>"; 
-                         echo "<div class='col-md-12'><br>
+                            $contador++;
+                          }else{
+                             echo "<div class='col-md-12'><br>
                               <h6><b>Retorno:</b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                              <b>Data prevista para solução:</b>&emsp; $data_previsao </h6>
+                              <b>Data prevista para solução:</b>&emsp; $data_mensagem </h6>
                               <textarea type='text' class='form-control' rows='7' disabled>$mensagem</textarea>
                               <br>
                               ";
                             echo"</div>";
-                      }
-
-                     
+                          }
+                      
+                            
                           }
                       if ($status == 'esperando_resposta') { ?>
                       <br>
