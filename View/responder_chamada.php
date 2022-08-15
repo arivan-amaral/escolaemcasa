@@ -171,7 +171,8 @@ include "alertas.php";
                       $res_retorno =  buscar_pessoa_chat($conexao,$id_chamada,$idFuncionario);
                       foreach ($res_retorno as $key => $value) {
                       $mensagem = $value['mensagem'];
-                      $data_mensagem = $value['value'];
+                      $data_teste= new DateTime($value['data']);
+                      $data_mensagem = $data_teste->format('d-m-Y');
                       if($contador <1){
                         echo "<div class='col-md-12'><br>
                               <h6><b>Retorno:</b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
@@ -393,18 +394,32 @@ include "alertas.php";
                         <h5><b>Gerente:</b> <?php echo $nome_ge; ?>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                         <b>Data de Retorno:</b> &emsp;<?php echo $data_retorno; ?></h5><br><br>
                     <?php  
+                      $contador_teste = 0;
                       $res_retorno =  buscar_pessoa_chat($conexao,$id_chamada,$id_funci_respondeu);
                       foreach ($res_retorno as $key => $value) {
                       $mensagem = $value['mensagem'];
 
-                      $data_anterior = $value['data'];
-
-                      echo "<div class='col-md-12'>
-                              <h6><b>Retorno:</b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;   <b>Data prevista para solução:</b> $data_previsao</h6>
+                    
+                      $data_teste= new DateTime($value['data']);
+                      $data_anterior = $data_teste->format('d-m-Y');
+                      if($contador_teste <1){
+                            echo "<div class='col-md-12'>
+                              <h6><b>Retorno:</b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;   <b>Data prevista para solução:</b> $data_anterior </h6>
                               <textarea type='text'  class='form-control' rows='7'  disabled>$mensagem</textarea>
                               <br>
                               ";
                             echo"</div>";
+                            $contador_teste++;
+                          }else{
+                            echo "<div class='col-md-12'>
+                              <h6><b>Retorno:</b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;   <b>Data prevista para solução:</b> $data_previsao </h6>
+                              <textarea type='text'  class='form-control' rows='7'  disabled>$mensagem</textarea>
+                              <br>
+                              ";
+                            echo"</div>";
+                             
+                          }
+                      
                           }
                     ?>
                   </div>
