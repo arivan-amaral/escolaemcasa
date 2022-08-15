@@ -462,6 +462,13 @@ function buscar_pessoa_retorno($conexao,$chamada_id,$funcionario_id){
 
 }
 
+function verificar_numero_quant($conexao,$chamada_id,$funcionario_id){
+   $result = $conexao->query("SELECT count(*) as 'id' FROM chat_chamado where chamada_id=$chamada_id and funcionario_id=$funcionario_id and status = '' ");
+    return $result;
+
+}
+
+
 
 function buscar_chat_inical($conexao,$chamada_id,$funcionario_id){
    $result = $conexao->query("SELECT * FROM chat_chamado where chamada_id=$chamada_id and funcionario_id=$funcionario_id and status = 'inicial'");
