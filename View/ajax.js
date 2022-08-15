@@ -602,6 +602,50 @@ function mudar_ano_letivo(ano) {
 }
 
 
+function finalizar_chat(chamada) {
+    var id_chamado = chamada;
+    var xmlreq = CriaRequest();   
+   
+    xmlreq.open("GET", "../Controller/Finalizar_chamado.php?id_chamado="+id_chamado, true);
+    xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                // result.innerHTML = xmlreq.responseText;
+                 if(xmlreq.responseText=="certo"){
+                    
+                    Swal.fire({
+                      position: 'center',
+                      icon: 'success',
+                      title: 'Ação concluída',
+                         text: ' ',
+                      showConfirmButton: false,
+                      timer: 1500
+                    });
+         
+                    location.reload();
+                 }else{
+                    Swal.fire({
+                      position: 'center',
+                      icon: 'error',
+                      title: 'Alguma coisa deu errado',
+                         text: ' ',
+                      showConfirmButton: false,
+                      timer: 1500
+                    });
+                 }
+
+             }else{
+                //result.innerHTML = 'Erro desconhecido, verifique sua conexão com a internet';
+
+                //result.innerHTML ="Erro ao receber mensagens";                 
+             }
+         }
+     };
+     xmlreq.send(null);
+}
+
+
 
 function lista_notas_cadastrada_fora() {
     var result= document.getElementById('lista_notas_cadastrada_fora');

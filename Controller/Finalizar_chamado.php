@@ -6,7 +6,7 @@ try {
 
     $id_chamada = $_GET['id_chamado'];
     finalizar_chamada($conexao,$id_chamada);
-    
+    echo "certo";
 } catch (Exception $exc) {
 
     echo $exc;
