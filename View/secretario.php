@@ -477,7 +477,9 @@ if (!isset($_SESSION['idsecretario'])) {
   <!-- Control sidebar content goes here -->
 
 </aside>
-
+<script type="text/javascript">
+    setTimeout(verificar_atraso(),2000);
+  </script>
   <!-- /.control-sidebar -->
 
   <script type="text/javascript">
