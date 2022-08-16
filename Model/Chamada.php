@@ -554,6 +554,15 @@ function responder_chamada($conexao,$chamada_id,$funcionario_id) {
       $conexao->exec("UPDATE chamada SET func_respondeu_id=$funcionario_id, status='em_andamento' where id=$chamada_id");
 }
 
+function questionar_chamado($conexao,$chamada_id,$funcionario_id,$data) {
+  $sql = $conexao->prepare("INSERT INTO chamada_atraso(id_chamada,id_funcionario,data_hora) VALUES (:chamada_id,:funcionario_id,:data)");
+  $sql->execute(array(
+     'chamada_id' =>$chamada_id,
+     'funcionario_id' =>$funcionario_id,
+     'data' =>$data
+  ));
+} 
+
 function atualizar_chamado($conexao,$chamada_id) {
       $conexao->exec("UPDATE chamada SET status='atrasado'where id=$chamada_id");
 }
@@ -582,6 +591,11 @@ function escola_funcionarios($conexao){
 
 }
 
+function verificar_atraso($conexao,$funcionario_id){
+   $result = $conexao->query("SELECT * FROM chamada_atraso where id_funcionario=$funcionario_id");
+    return $result;
+
+}
 
 function buscar_id_setor($conexao,$funcionario_id){
    $result = $conexao->query("SELECT * FROM relacao_setor_funcionario where funcionario_id=$funcionario_id ");

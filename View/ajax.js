@@ -39,13 +39,9 @@ function CriaRequest() {
      else
 
          return request;
+}
 
- }
-
-
-
-
- function idade_aluno() {
+function idade_aluno() {
     var data_nascimento=document.getElementById('data_nascimento').value;
     console.log("teste:"+data_nascimento);
 
@@ -78,13 +74,68 @@ function CriaRequest() {
     console.log("teste:"+quantos_anos);
 
     // return quantos_anos < 0 ? 0 : quantos_anos;
- }
+}
 
+function  questionar_chamada(id_chamado,id_funcionario){
 
+    var chamada= id_chamado;
+    var funcionario =id_funcionario;
 
+      var xmlreq = CriaRequest();
+      xmlreq.open("GET", "../Controller/Questionar_chamada.php?chamada="+chamada+"&funcionario="+funcionario, true);
 
+      xmlreq.onreadystatechange = function(){
+    
+       if (xmlreq.readyState == 4) {
+           if (xmlreq.status == 200) {
+                 
+                Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Ação Concluída',
+                 text: 'Questionamento Realizado com sucesso',
+              showConfirmButton: false,
+              timer: 1500
+            });
+           }else{
+                 alert('Erro desconhecido, verifique sua conexão com a internet');
 
- 
+              result.innerHTML ="Erro ao receber mensagens";                 
+           }
+       }
+      };
+   xmlreq.send(null);
+}
+
+function  verificar_atraso(){
+
+    
+      var xmlreq = CriaRequest();
+      xmlreq.open("GET", "../Controller/Verificar_atraso.php", true);
+
+      xmlreq.onreadystatechange = function(){
+    
+       if (xmlreq.readyState == 4) {
+           if (xmlreq.status == 200) {
+                 if(xmlreq.responseText != 'nada'){
+                      Swal.fire({
+                  position: 'center',
+                  icon: 'info',
+                  title: 'ATENÇÃO',
+                  text:  xmlreq.responseText,
+                   });
+                 }
+               
+           }else{
+                 alert('Erro desconhecido, verifique sua conexão com a internet');
+
+              result.innerHTML ="Erro ao receber mensagens";                 
+           }
+       }
+      };
+   xmlreq.send(null);
+}
+
 function total_notas(id) {
     document.getElementById('total'+id).value=0;
 
@@ -126,8 +177,6 @@ function total_notas(id) {
      
 
     } 
-    
-
 }
 
 function pesquisa_chamado(){

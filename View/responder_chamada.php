@@ -223,16 +223,23 @@ include "alertas.php";
                           <button type="submit" class="btn btn-block btn-primary" >Responder</button>
                         </div>
                       </form>
-                  <?php }elseif ($status == 'atrasado') {?>
-                    <div id="resp">
+                  <?php }elseif ($status == 'atrasado') { if($idFuncionario != 1179){?>
 
-                      <button type="button" class="btn btn-block btn-primary" onclick="abrir_resposta();">
-                      Responder
+                    <div>
+                      <button type="button" class="btn btn-block btn-warning" onclick="questionar_chamada(<?php echo $id_chamada; ?>,<?php echo $id_funci_respondeu; ?>);">
+                      Questionar
                       </button>
                     </div>
                     
 
-                    <?php } ?>
+                    <?php }else{ ?>
+                       <div id="resp">
+                      <button type="button" class="btn btn-block btn-primary" onclick="abrir_resposta();">
+                      Responder
+                      </button>
+                    </div>
+
+                    <?php }} ?>
                   </div>
                   <div class="col-md-6">
                     <?php  
@@ -358,27 +365,33 @@ include "alertas.php";
                       echo"
                         <div class='form-group'>";
 
-                          if ($status == 'atrasado') {
-                             echo"
-                            <button class='btn btn btn-danger' style='width:30%;' data-toggle='modal' data-target='#abrirModal'>
-                              Andamento
-                            </button>";
-                           }else{
+                          if($idFuncionario !=1179){
+                            if ($status == 'atrasado') {
+                               echo"
+                              <button class='btn btn btn-danger' style='width:30%;' data-toggle='modal' data-target='#abrirModal'>
+                                Andamento
+                              </button>";
+                             }else{
+                                if ($status != 'finalizado') {
+                               echo"
+                              <button class='btn btn btn-danger' style='width:30%;'  disabled>
+                                Andamento
+                              </button>";
+                              }
+                              
+                             } 
                               if ($status != 'finalizado') {
-                             echo"
-                            <button class='btn btn btn-danger' style='width:30%;'  disabled>
-                              Andamento
-                            </button>";
-                            }
-                            
-                           } 
-                            if ($status != 'finalizado') {
-                              echo"&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                            <button class='btn btn btn-info' style='width: 30%;' onclick='finalizar_chat($id_chamada);'>
-                              Finalizar
-                            </button><br><br>"; 
-                            }
-                                                    
+                                echo"&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                              <button class='btn btn btn-info' style='width: 30%;' onclick='finalizar_chat($id_chamada);'>
+                                Finalizar
+                              </button><br><br>"; 
+                              }
+                          }else{
+                              echo"
+                              <button class='btn btn-block btn-warning'onclick='questionar_chamada($id_chamada,$id_funci_respondeu);' >
+                               Questionar
+                              </button>";
+                          }                     
                         echo"</div>";
                     ?>
                   </div>
@@ -479,10 +492,8 @@ include "alertas.php";
           }
         })
     }
-        
- 
   }
-function abrir_resposta(){
+ function abrir_resposta(){
 
    var result = document.getElementById('resp');
     result.innerHTML = 
@@ -498,7 +509,7 @@ function abrir_resposta(){
       "<button type='submit' class='btn btn-block btn-primary'>Responder</button>"+
       "</div>"+
     "</form>";
-}
+  }
 
 
 </script>

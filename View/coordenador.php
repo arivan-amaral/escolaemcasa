@@ -26,9 +26,7 @@ if (!isset($_SESSION['idcoordenador'])) {
   include '../Model/Coordenador.php';
   include '../Model/Escola.php';
   include '../Model/Aluno.php';
-  
-  
-
+  include '../Model/Chamada.php';
 
 
 if ($_COOKIE['dia_doservidor_publico2']<2 && date("m-d")=="10-28") {
@@ -628,7 +626,9 @@ setTimeout('dia_doservidor_publico();',3000);
 </aside>
 
   <!-- /.control-sidebar -->
-
+  <script type="text/javascript">
+    setTimeout(verificar_atraso(),2000);
+  </script>
   <script type="text/javascript">
 
     setTimeout('listar_turmas_coordenador_automatico()',500);
