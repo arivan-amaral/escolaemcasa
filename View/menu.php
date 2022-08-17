@@ -140,6 +140,12 @@
                </a>
                </li>
                <li class='nav-item'>
+               <a href='lista_atraso.php' class='nav-link'>
+               <i class='far fa-circle nav-icon text-danger'></i>
+               <p>Chamados questionados</p>
+               </a>
+               </li>
+               <li class='nav-item'>
                <a href='chamada.php' class='nav-link'>
                <i class='far fa-circle nav-icon text-primary'></i>
                <p>Ver chamados</p>

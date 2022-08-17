@@ -4,7 +4,8 @@ include "../Model/Conexao.php";
 include "../Model/Chamada.php";
 try {
 	$verificar =0;
-	$texto = "CHAMADAS QUESTIONADAS PELO SECRETARIO - Protocolos:";
+	$texto = "visite a pagina chamados questionados encontra no menu chamados.
+    CHAMADAS QUESTIONADAS PELO SECRETARIO  Protocolos:";
     $funcionario=$_SESSION["idfuncionario"];
     $res = verificar_atraso($conexao,$funcionario);
     foreach ($res as $key => $value) {
