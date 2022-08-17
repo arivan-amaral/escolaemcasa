@@ -194,8 +194,11 @@ include "alertas.php";
                       
                             
                           }
-                      if ($status == 'esperando_resposta') { ?>
+                      if ($status == 'esperando_resposta') { if($idFuncionario != 1179){?>
                       <br>
+
+
+
                       <form class="mt-12" action="../Controller/Cadastrar_chat_chamado.php" method="post" enctype="multipart/form-data">
                          
                           <h6 ><b>Retorno:</b> &emsp;&emsp;
@@ -223,19 +226,26 @@ include "alertas.php";
                           <button type="submit" class="btn btn-block btn-primary" >Responder</button>
                         </div>
                       </form>
-                  <?php }elseif ($status == 'atrasado') { if($idFuncionario != 1179){?>
-
-                    <div>
+                    <?php }else{ ?>
+                       <div>
                       <button type="button" class="btn btn-block btn-warning" onclick="questionar_chamada(<?php echo $id_chamada; ?>,<?php echo $id_funci_respondeu; ?>);">
                       Questionar
+                      </button>
+                    </div>
+                  <?php }}elseif ($status == 'atrasado') { if($idFuncionario != 1179){?>
+
+                   <div id="resp">
+                      <button type="button" class="btn btn-block btn-primary" onclick="abrir_resposta();">
+                      Responder
                       </button>
                     </div>
                     
 
                     <?php }else{ ?>
-                       <div id="resp">
-                      <button type="button" class="btn btn-block btn-primary" onclick="abrir_resposta();">
-                      Responder
+                       
+                     <div>
+                      <button type="button" class="btn btn-block btn-warning" onclick="questionar_chamada(<?php echo $id_chamada; ?>,<?php echo $id_funci_respondeu; ?>);">
+                      Questionar
                       </button>
                     </div>
 
