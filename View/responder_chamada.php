@@ -153,12 +153,12 @@ include "alertas.php";
                      echo " <h5><b>Gerente:</b> $nome_gerente &emsp;&emsp;&emsp;&emsp; <b>Data de Retorno: 
                        </b> $data_retorno &emsp;<br><br>
                       </h5>"; 
-                     }else if($data_retorno == '' && $data_previsao != ''){
-                        echo " <h5><b>Gerente:</b> $nome_gerente &emsp;&emsp;&emsp;&emsp; <b>Data de Retorno: 
+                     }else if($data_retorno == '' && $data_previsao != '01-01-0001'){
+                        echo " <h5><b>Gerente:</b>  $nome_gerente &emsp;&emsp;&emsp;&emsp; <b>Data de Retorno: 
                        </b> $data_previsao &emsp;<br><br>
                       </h5>"; 
-                     }else if($data_retorno == '' && $data_previsao == ''){
-                      echo " <h5><b>Gerente:</b> $nome_gerente &emsp;&emsp;&emsp;&emsp; <b>Data de Retorno: 
+                     }else if($data_retorno == '' && $data_previsao == '01-01-0001'){
+                      echo " <h5><b>Gerente:</b> Sem Retorno &emsp;&emsp;&emsp;&emsp; <b>Data de Retorno: 
                        </b> Sem Retorno &emsp;<br><br>
                       </h5>"; 
                      } 
@@ -228,6 +228,8 @@ include "alertas.php";
                       </form>
                     <?php }else{ ?>
                        <div>
+                      <h6><b>Mensagem:</b></h6>
+                      <textarea type='text' class='form-control' rows='3' name='mensagem' id='mensagem' required=''></textarea><br>
                       <button type="button" class="btn btn-block btn-warning" onclick="questionar_chamada(<?php echo $id_chamada; ?>,<?php echo $id_funci_respondeu; ?>);">
                       Questionar
                       </button>
@@ -244,6 +246,8 @@ include "alertas.php";
                     <?php }else{ ?>
                        
                      <div>
+                      <h6><b>Mensagem:</b></h6>
+                      <textarea type='text' class='form-control' rows='3' name="mensagem" id="mensagem" required=""></textarea><br>
                       <button type="button" class="btn btn-block btn-warning" onclick="questionar_chamada(<?php echo $id_chamada; ?>,<?php echo $id_funci_respondeu; ?>);">
                       Questionar
                       </button>
@@ -398,6 +402,8 @@ include "alertas.php";
                               }
                           }else{
                               echo"
+                                <h6><b>Mensagem:</b></h6>
+                              <textarea type='text' class='form-control' rows='3' name='mensagem' id='mensagem' required=''></textarea><br>
                               <button class='btn btn-block btn-warning'onclick='questionar_chamada($id_chamada,$id_funci_respondeu);' >
                                Questionar
                               </button>";

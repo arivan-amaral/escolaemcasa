@@ -77,34 +77,45 @@ function idade_aluno() {
 }
 
 function  questionar_chamada(id_chamado,id_funcionario){
+    var mensagem=document.getElementById('mensagem').value;
 
-    var chamada= id_chamado;
-    var funcionario =id_funcionario;
+    if(mensagem == "" || mensagem == null){
+       Swal.fire({
+                  position: 'center',
+                  icon: 'info',
+                  title: 'ATENÇÃO',
+                  text:  'Preencha a mensagem',
+                   });
+    }else{
+      var chamada= id_chamado;
+      var funcionario =id_funcionario;
 
-      var xmlreq = CriaRequest();
-      xmlreq.open("GET", "../Controller/Questionar_chamada.php?chamada="+chamada+"&funcionario="+funcionario, true);
+        var xmlreq = CriaRequest();
+        xmlreq.open("GET", "../Controller/Questionar_chamada.php?chamada="+chamada+"&funcionario="+funcionario+"&mensagem="+mensagem, true);
 
-      xmlreq.onreadystatechange = function(){
+        xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                   
+                  Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Ação Concluída',
+                   text: 'Questionamento Realizado com sucesso',
+                showConfirmButton: false,
+                timer: 1500
+              });
+             }else{
+                   alert('Erro desconhecido, verifique sua conexão com a internet');
+
+                result.innerHTML ="Erro ao receber mensagens";                 
+             }
+         }
+        };
+     xmlreq.send(null);
+    }
     
-       if (xmlreq.readyState == 4) {
-           if (xmlreq.status == 200) {
-                 
-                Swal.fire({
-              position: 'center',
-              icon: 'success',
-              title: 'Ação Concluída',
-                 text: 'Questionamento Realizado com sucesso',
-              showConfirmButton: false,
-              timer: 1500
-            });
-           }else{
-                 alert('Erro desconhecido, verifique sua conexão com a internet');
-
-              result.innerHTML ="Erro ao receber mensagens";                 
-           }
-       }
-      };
-   xmlreq.send(null);
 }
 
 function  verificar_atraso(){
