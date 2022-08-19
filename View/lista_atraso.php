@@ -83,6 +83,7 @@ include '../Model/Chamada.php';
        <tr>
          <th style="text-align: center;">Status</th>
          <th style="width: 280px; text-align: center;">Informações Retorno</th>
+         <th>Questionamento</th>
          <th>Descrição</th>
          <th style="width: 200px; text-align: center;">Opções</th>
        </tr>
@@ -98,6 +99,7 @@ include '../Model/Chamada.php';
          
 
           foreach ($res as $key => $value) {
+            $mensagem=$value['mensagem'];
             $protocolo = $value['id_chamada'];
             $res_verificar = pesquisa_chamada($conexao,$protocolo);
             foreach ($res_verificar as $key => $value) {
@@ -154,8 +156,11 @@ include '../Model/Chamada.php';
                   }
                   
 
-                  echo"
-
+                  echo" 
+                    <td>
+              
+                     $mensagem
+                    </td>
                     <td>
                     <b>$nome_setor</b> &emsp;&emsp;
                      $descricao
