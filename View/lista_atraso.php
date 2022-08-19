@@ -90,8 +90,13 @@ include '../Model/Chamada.php';
      <tbody>
 
         <?php 
+          if($_SESSION['idfuncionario'] != 1179){
+            $res = verificar_atraso($conexao,$_SESSION['idfuncionario']);
+          }else{
+             $res = verificar_todos_atraso($conexao);
+          }
+         
 
-          $res = verificar_atraso($conexao,$_SESSION['idfuncionario']);
           foreach ($res as $key => $value) {
             $protocolo = $value['id_chamada'];
             $res_verificar = pesquisa_chamada($conexao,$protocolo);

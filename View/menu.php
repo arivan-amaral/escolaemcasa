@@ -126,8 +126,9 @@
               <p>Chamados <i class='right fas fa-angle-left'></i></p>
               </a>
             
-               <ul class='nav nav-treeview'>
-               <li class='nav-item'>
+               <ul class='nav nav-treeview'>";
+               if($_SESSION["idfuncionario"] != 1179){
+                echo "<li class='nav-item'>
                <a href='cadastrar_chamada.php' class='nav-link'>
                <i class='far fa-circle nav-icon text-primary'></i>
                <p>Criar chamado </p>
@@ -138,7 +139,10 @@
                <i class='far fa-circle nav-icon text-primary'></i>
                <p>Ver meus chamados</p>
                </a>
-               </li>
+               </li>";
+               }
+               
+               echo"
                <li class='nav-item'>
                <a href='lista_atraso.php' class='nav-link'>
                <i class='far fa-circle nav-icon text-danger'></i>

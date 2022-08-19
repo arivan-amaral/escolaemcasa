@@ -229,7 +229,10 @@ include "alertas.php";
                     <?php }else{ ?>
                        <div>
                       <h6><b>Mensagem:</b></h6>
-                      <textarea type='text' class='form-control' rows='3' name='mensagem' id='mensagem' required=''></textarea><br>
+                      <div id='mudar_mensagem'>
+                         <textarea type='text' class='form-control' rows='3' name='mensagem' id='mensagem' required=''></textarea><br>
+                      </div>
+                     
                       <button type="button" class="btn btn-block btn-warning" onclick="questionar_chamada(<?php echo $id_chamada; ?>,<?php echo $id_funci_respondeu; ?>);">
                       Questionar
                       </button>
@@ -247,7 +250,9 @@ include "alertas.php";
                        
                      <div>
                       <h6><b>Mensagem:</b></h6>
-                      <textarea type='text' class='form-control' rows='3' name="mensagem" id="mensagem" required=""></textarea><br>
+                     <div id='mudar_mensagem'>
+                         <textarea type='text' class='form-control' rows='3' name='mensagem' id='mensagem' required=''></textarea><br>
+                      </div>
                       <button type="button" class="btn btn-block btn-warning" onclick="questionar_chamada(<?php echo $id_chamada; ?>,<?php echo $id_funci_respondeu; ?>);">
                       Questionar
                       </button>
@@ -403,7 +408,10 @@ include "alertas.php";
                           }else{
                               echo"
                                 <h6><b>Mensagem:</b></h6>
-                              <textarea type='text' class='form-control' rows='3' name='mensagem' id='mensagem' required=''></textarea><br>
+                                <div id='mudar_mensagem'>
+                               <textarea type='text' class='form-control' rows='3' name='mensagem' id='mensagem' required=''></textarea><br>
+                            </div>
+                            
                               <button class='btn btn-block btn-warning'onclick='questionar_chamada($id_chamada,$id_funci_respondeu);' >
                                Questionar
                               </button>";

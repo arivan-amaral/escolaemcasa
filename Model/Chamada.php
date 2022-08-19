@@ -598,6 +598,12 @@ function verificar_atraso($conexao,$funcionario_id){
 
 }
 
+function verificar_todos_atraso($conexao){
+   $result = $conexao->query("SELECT * FROM chamada_atraso");
+    return $result;
+
+}
+
 function buscar_id_setor($conexao,$funcionario_id){
    $result = $conexao->query("SELECT * FROM relacao_setor_funcionario where funcionario_id=$funcionario_id ");
     return $result;

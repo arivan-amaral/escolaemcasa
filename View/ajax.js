@@ -78,7 +78,7 @@ function idade_aluno() {
 
 function  questionar_chamada(id_chamado,id_funcionario){
     var mensagem=document.getElementById('mensagem').value;
-
+    var texto = document.getElementById('mudar_mensagem');
     if(mensagem == "" || mensagem == null){
        Swal.fire({
                   position: 'center',
@@ -97,7 +97,7 @@ function  questionar_chamada(id_chamado,id_funcionario){
       
          if (xmlreq.readyState == 4) {
              if (xmlreq.status == 200) {
-                   
+                  texto.innerHTML="<textarea type='text' class='form-control' rows='3' name='mensagem' id='mensagem' required='' disabled></textarea><br>";
                   Swal.fire({
                 position: 'center',
                 icon: 'success',
@@ -106,6 +106,7 @@ function  questionar_chamada(id_chamado,id_funcionario){
                 showConfirmButton: false,
                 timer: 1500
               });
+
              }else{
                    alert('Erro desconhecido, verifique sua conexão com a internet');
 
