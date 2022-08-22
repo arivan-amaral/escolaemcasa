@@ -43,7 +43,7 @@ include "alertas.php";
   $arquivo_presente = 0;
   $id_funci_respondeu = 0;
   $status = '';
-
+  $id_setor = 0;
   $res_chamada = pesquisa_chamada($conexao,$id_chamada);
   foreach ($res_chamada as $key => $value) {
     $id_diretor = $value['funcionario_id'];
@@ -53,6 +53,7 @@ include "alertas.php";
     $id_setor = $value['setor_id'];
     $funcionario_id = $value['funcionario_id'];
     $status = $value['status'];
+    $id_setor = $value['setor_id'];
     $res_data_retorno = buscar_pessoa_retorno($conexao,$id_chamada,$id_funci_respondeu);
     foreach ($res_data_retorno as $key => $value) {
       $data_retorno= $value['data'];
@@ -233,7 +234,7 @@ include "alertas.php";
                          <textarea type='text' class='form-control' rows='3' name='mensagem' id='mensagem' required=''></textarea><br>
                       </div>
                      
-                      <button type="button" class="btn btn-block btn-warning" onclick="questionar_chamada(<?php echo $id_chamada; ?>,<?php echo $id_funci_respondeu; ?>);">
+                      <button type="button" class="btn btn-block btn-warning" onclick="questionar_chamada(<?php echo $id_chamada; ?>,<?php echo $id_funci_respondeu; ?>,<?php echo $id_setor; ?> );">
                       Questionar
                       </button>
                     </div>
@@ -253,7 +254,7 @@ include "alertas.php";
                      <div id='mudar_mensagem'>
                          <textarea type='text' class='form-control' rows='3' name='mensagem' id='mensagem' required=''></textarea><br>
                       </div>
-                      <button type="button" class="btn btn-block btn-warning" onclick="questionar_chamada(<?php echo $id_chamada; ?>,<?php echo $id_funci_respondeu; ?>);">
+                      <button type="button" class="btn btn-block btn-warning" onclick="questionar_chamada(<?php echo $id_chamada; ?>,<?php echo $id_funci_respondeu; ?>,<?php echo $id_setor; ?> );">
                       Questionar
                       </button>
                     </div>
@@ -412,7 +413,7 @@ include "alertas.php";
                                <textarea type='text' class='form-control' rows='3' name='mensagem' id='mensagem' required=''></textarea><br>
                             </div>
                             
-                              <button class='btn btn-block btn-warning'onclick='questionar_chamada($id_chamada,$id_funci_respondeu);' >
+                              <button class='btn btn-block btn-warning'onclick='questionar_chamada($id_chamada,$id_funci_respondeu,$id_setor);' >
                                Questionar
                               </button>";
                           }                     

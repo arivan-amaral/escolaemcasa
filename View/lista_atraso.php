@@ -92,6 +92,123 @@ include '../Model/Chamada.php';
 
         <?php 
           if($_SESSION['idfuncionario'] != 1179){
+            $res_teste = verificar_todos_atraso($conexao);
+            foreach ($res_teste as $key => $value) {
+              $id_setor = $value['id_setor'];
+              $res_setores = buscar_id_seto_2($conexao,$_SESSION['idfuncionario'],$id_setor);
+              foreach ($res_setores as $key => $value) {
+                $res_setor= verificar_atraso_setor($conexao,$id_setor);
+                foreach ($res_setor as $key => $value) {
+                  $mensagem=$value['mensagem'];
+                  $protocolo = $value['id_chamada'];
+                  $res_verificar = pesquisa_chamada($conexao,$protocolo);
+                  foreach ($res_verificar as $key => $value) {
+                    $status = $value['status'];
+                
+                       $res_chamada =  pesquisar_chamado($conexao,$protocolo);
+                      foreach ($res_chamada as $key => $value) {
+                        $id_chamada = $value['id'];
+                        $status = $value['status'];
+                        $id_funcionario = $value['funcionario_id'];
+                        $id_func_respondeu = $value['func_respondeu_id'];
+                        $data_previsão = $value['data_previsao'];
+                        $id_setor = $value['setor_id'];
+                        $nome_setor = '';
+                        $descricao = '';
+                        $nome_resposta = '';
+                        $data_emissao = '';
+                        $res_setor = buscar_setor_id($conexao,$id_setor);
+                        foreach ($res_setor as $key => $value) {
+                          $nome_setor = $value['nome'];
+                        }
+                        $res_funcionario = buscar_funcionario($conexao,$id_func_respondeu);
+                         foreach ($res_funcionario as $key => $value) {
+                           $nome_resposta = $value['nome'];
+                        }
+                        $res_chat_resposta = mostrar_chat_chamada($conexao,$id_chamada,$id_funcionario);
+                        foreach ($res_chat_resposta as $key => $value) {
+                          $data_emissao = $value['data'];
+                        }
+
+                        $res_chat= buscar_chat($conexao,$id_chamada);
+                        foreach ($res_chat as $key => $value) {
+                           $descricao = $value['mensagem'];
+                        }
+
+                          if ($status == 'esperando_resposta') {
+                           echo "                
+                            <tr>
+                            <td style='background-color:#2E64FE;  text-align: center;'>
+                              <font style='color: white;'>Chamado Nova <br><b>Protocolo:  $id_chamada </b></font>
+                            </td>
+                            "; 
+                          }elseif ($status == 'em_andamento') {
+                             echo "
+                            <tr>
+                              <td style='background-color: #F1C40F;  text-align: center;'>
+                                <font style='color: white;'>Andamento<br><b>Protocolo:  $id_chamada </b></font>
+                              </td>
+                              "; 
+                          }elseif ($status == 'finalizado') {
+                             echo "
+                              <tr>
+                                <td style='background-color:#82FA58;  text-align: center;'>
+                                  <font style='color: white;'>Resolvido<br><b>Protocolo:  $id_chamada </b></font>
+                                </td>
+                            "; 
+                          }elseif ($status == 'atrasado') {
+                             echo "
+                          <tr>
+                            <td style='background-color: #E43F1C;  text-align: center;'>
+                              <font style='color: white;'>Chamado Atrasado...<br><b>Protocolo:  $id_chamada </b></font>
+                            </td>
+                            "; 
+                          }
+                        
+                        if ($id_func_respondeu > 0) {
+                          echo "<td>
+                           Gerente: $nome_resposta <br>
+                           Data de Emissão: $data_emissao  <br>
+                           Data de Previsão: $data_previsão
+                          </td>";
+                        }else{
+                          echo "<td>
+                           Sem Retorno
+                          </td>";
+                        }
+                        
+
+                        echo" 
+                          <td>
+                    
+                           $mensagem
+                          </td>
+                          <td>
+                          <b>$nome_setor</b> &emsp;&emsp;
+                           $descricao
+                          </td>
+                          <td>
+                            <div class='row'>
+                            <div class='col-sm-12'>
+                                <form method='POST' action='responder_chamada.php'>
+                                  <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
+                                  <button class='btn btn-danger'>Visualizar</button>
+                                </form>
+                              </div>
+                             ";
+                           echo" </div>
+                            
+                          </td>
+                        </tr>
+                        ";
+                      }
+                    
+                  }
+                }
+              }
+            }
+       
+            
             $res = verificar_atraso($conexao,$_SESSION['idfuncionario']);
           }else{
              $res = verificar_todos_atraso($conexao);
@@ -104,83 +221,107 @@ include '../Model/Chamada.php';
             $res_verificar = pesquisa_chamada($conexao,$protocolo);
             foreach ($res_verificar as $key => $value) {
               $status = $value['status'];
-              if($status== 'atrasado'){
-                
-                 $res_chamada =  pesquisar_chamado($conexao,$protocolo);
-                foreach ($res_chamada as $key => $value) {
-                  $id_chamada = $value['id'];
-                  $status = $value['status'];
-                  $id_funcionario = $value['funcionario_id'];
-                  $id_func_respondeu = $value['func_respondeu_id'];
-                  $data_previsão = $value['data_previsao'];
-                  $id_setor = $value['setor_id'];
-                  $nome_setor = '';
-                  $descricao = '';
-                  $nome_resposta = '';
-                  $data_emissao = '';
-                  $res_setor = buscar_setor_id($conexao,$id_setor);
-                  foreach ($res_setor as $key => $value) {
-                    $nome_setor = $value['nome'];
-                  }
-                  $res_funcionario = buscar_funcionario($conexao,$id_func_respondeu);
-                   foreach ($res_funcionario as $key => $value) {
-                     $nome_resposta = $value['nome'];
-                  }
-                  $res_chat_resposta = mostrar_chat_chamada($conexao,$id_chamada,$id_funcionario);
-                  foreach ($res_chat_resposta as $key => $value) {
-                    $data_emissao = $value['data'];
-                  }
+             
+              $res_chamada =  pesquisar_chamado($conexao,$protocolo);
+              foreach ($res_chamada as $key => $value) {
+                $id_chamada = $value['id'];
+                $status = $value['status'];
+                $id_funcionario = $value['funcionario_id'];
+                $id_func_respondeu = $value['func_respondeu_id'];
+                $data_previsão = $value['data_previsao'];
+                $id_setor = $value['setor_id'];
+                $nome_setor = '';
+                $descricao = '';
+                $nome_resposta = '';
+                $data_emissao = '';
+                $res_setor = buscar_setor_id($conexao,$id_setor);
+                foreach ($res_setor as $key => $value) {
+                  $nome_setor = $value['nome'];
+                }
+                $res_funcionario = buscar_funcionario($conexao,$id_func_respondeu);
+                 foreach ($res_funcionario as $key => $value) {
+                   $nome_resposta = $value['nome'];
+                }
+                $res_chat_resposta = mostrar_chat_chamada($conexao,$id_chamada,$id_funcionario);
+                foreach ($res_chat_resposta as $key => $value) {
+                  $data_emissao = $value['data'];
+                }
 
-                  $res_chat= buscar_chat($conexao,$id_chamada);
-                  foreach ($res_chat as $key => $value) {
-                     $descricao = $value['mensagem'];
-                  }
+                $res_chat= buscar_chat($conexao,$id_chamada);
+                foreach ($res_chat as $key => $value) {
+                   $descricao = $value['mensagem'];
+                }
 
-                    echo "
+                 if ($status == 'esperando_resposta') {
+                 echo "                
                   <tr>
-                    <td style='background-color: #E43F1C;  text-align: center;'>
-                      <font style='color: white;'>Chamado Atrasado...<br><b>Protocolo:  $id_chamada </b></font>
+                  <td style='background-color:#2E64FE;  text-align: center;'>
+                    <font style='color: white;'>Chamado Nova <br><b>Protocolo:  $id_chamada </b></font>
+                  </td>
+                  "; 
+                }elseif ($status == 'em_andamento') {
+                   echo "
+                  <tr>
+                    <td style='background-color: #F1C40F;  text-align: center;'>
+                      <font style='color: white;'>Andamento<br><b>Protocolo:  $id_chamada </b></font>
                     </td>
                     "; 
-                  
-                  if ($id_func_respondeu > 0) {
-                    echo "<td>
-                     Gerente: $nome_resposta <br>
-                     Data de Emissão: $data_emissao  <br>
-                     Data de Previsão: $data_previsão
-                    </td>";
-                  }else{
-                    echo "<td>
-                     Sem Retorno
-                    </td>";
-                  }
-                  
-
-                  echo" 
-                    <td>
-              
-                     $mensagem
-                    </td>
-                    <td>
-                    <b>$nome_setor</b> &emsp;&emsp;
-                     $descricao
-                    </td>
-                    <td>
-                      <div class='row'>
-                      <div class='col-sm-12'>
-                          <form method='POST' action='responder_chamada.php'>
-                            <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
-                            <button class='btn btn-danger'>Visualizar</button>
-                          </form>
-                        </div>
-                       ";
-                     echo" </div>
-                      
-                    </td>
-                  </tr>
-                  ";
+                }elseif ($status == 'finalizado') {
+                   echo "
+                    <tr>
+                      <td style='background-color:#82FA58;  text-align: center;'>
+                        <font style='color: white;'>Resolvido<br><b>Protocolo:  $id_chamada </b></font>
+                      </td>
+                  "; 
+                }elseif ($status == 'atrasado') {
+                   echo "
+                <tr>
+                  <td style='background-color: #E43F1C;  text-align: center;'>
+                    <font style='color: white;'>Chamado Atrasado...<br><b>Protocolo:  $id_chamada </b></font>
+                  </td>
+                  "; 
                 }
+
+                 
+                
+                if ($id_func_respondeu > 0) {
+                  echo "<td>
+                   Gerente: $nome_resposta <br>
+                   Data de Emissão: $data_emissao  <br>
+                   Data de Previsão: $data_previsão
+                  </td>";
+                }else{
+                  echo "<td>
+                   Sem Retorno
+                  </td>";
+                }
+                
+
+                echo" 
+                  <td>
+            
+                   $mensagem
+                  </td>
+                  <td>
+                  <b>$nome_setor</b> &emsp;&emsp;
+                   $descricao
+                  </td>
+                  <td>
+                    <div class='row'>
+                    <div class='col-sm-12'>
+                        <form method='POST' action='responder_chamada.php'>
+                          <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
+                          <button class='btn btn-danger'>Visualizar</button>
+                        </form>
+                      </div>
+                     ";
+                   echo" </div>
+                    
+                  </td>
+                </tr>
+                ";
               }
+              
             }
           }
          

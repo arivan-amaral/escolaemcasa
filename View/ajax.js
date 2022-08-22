@@ -76,7 +76,7 @@ function idade_aluno() {
     // return quantos_anos < 0 ? 0 : quantos_anos;
 }
 
-function  questionar_chamada(id_chamado,id_funcionario){
+function  questionar_chamada(id_chamado,id_funcionario,id_setor){
     var mensagem=document.getElementById('mensagem').value;
     var texto = document.getElementById('mudar_mensagem');
     if(mensagem == "" || mensagem == null){
@@ -89,9 +89,10 @@ function  questionar_chamada(id_chamado,id_funcionario){
     }else{
       var chamada= id_chamado;
       var funcionario =id_funcionario;
+      var setor =id_setor;
 
         var xmlreq = CriaRequest();
-        xmlreq.open("GET", "../Controller/Questionar_chamada.php?chamada="+chamada+"&funcionario="+funcionario+"&mensagem="+mensagem, true);
+        xmlreq.open("GET", "../Controller/Questionar_chamada.php?chamada="+chamada+"&funcionario="+funcionario+"&mensagem="+mensagem+"&setor="+setor, true);
 
         xmlreq.onreadystatechange = function(){
       

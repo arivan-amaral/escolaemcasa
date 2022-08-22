@@ -554,11 +554,12 @@ function responder_chamada($conexao,$chamada_id,$funcionario_id) {
       $conexao->exec("UPDATE chamada SET func_respondeu_id=$funcionario_id, status='em_andamento' where id=$chamada_id");
 }
 
-function questionar_chamado($conexao,$chamada_id,$funcionario_id,$data,$mensagem) {
-  $sql = $conexao->prepare("INSERT INTO chamada_atraso(id_chamada,id_funcionario,mensagem,data_hora) VALUES (:chamada_id,:funcionario_id,:mensagem,:data)");
+function questionar_chamado($conexao,$chamada_id,$funcionario_id,$data,$mensagem,$id_setor) {
+  $sql = $conexao->prepare("INSERT INTO chamada_atraso(id_chamada,id_funcionario,id_setor,mensagem,data_hora) VALUES (:chamada_id,:funcionario_id,:id_setor,:mensagem,:data)");
   $sql->execute(array(
      'chamada_id' =>$chamada_id,
      'funcionario_id' =>$funcionario_id,
+     'id_setor' =>$id_setor,
      'mensagem' =>$mensagem,
      'data' =>$data
   ));
@@ -592,11 +593,17 @@ function escola_funcionarios($conexao){
 
 }
 
-function verificar_atraso($conexao,$funcionario_id){
-   $result = $conexao->query("SELECT * FROM chamada_atraso where id_funcionario=$funcionario_id");
+function verificar_atraso($conexao,$idfuncionario){
+   $result = $conexao->query("SELECT * FROM chamada_atraso where id_funcionario =$idfuncionario");
     return $result;
 
 }
+
+function verificar_atraso_setor($conexao,$setor){
+   $result = $conexao->query("SELECT * FROM chamada_atraso where id_setor =$setor");
+    return $result;
+
+} 
 
 function verificar_todos_atraso($conexao){
    $result = $conexao->query("SELECT * FROM chamada_atraso");
@@ -606,6 +613,12 @@ function verificar_todos_atraso($conexao){
 
 function buscar_id_setor($conexao,$funcionario_id){
    $result = $conexao->query("SELECT * FROM relacao_setor_funcionario where funcionario_id=$funcionario_id ");
+    return $result;
+
+}
+
+function buscar_id_seto_2($conexao,$funcionario_id,$setor){
+   $result = $conexao->query("SELECT * FROM relacao_setor_funcionario where funcionario_id=$funcionario_id and setor_id =$setor");
     return $result;
 
 }
