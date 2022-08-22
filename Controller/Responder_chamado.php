@@ -8,6 +8,7 @@ try {
     $idFuncionario=$_SESSION['idfuncionario'];
     if($idFuncionario != 1179){
     	responder_chamada($conexao,$id_chamada,$idFuncionario);
+    	mudar_status($conexao,$id_chamada);
     }
     
     

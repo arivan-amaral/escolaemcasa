@@ -554,6 +554,9 @@ function responder_chamada($conexao,$chamada_id,$funcionario_id) {
       $conexao->exec("UPDATE chamada SET func_respondeu_id=$funcionario_id, status='em_andamento' where id=$chamada_id");
 }
 
+function mudar_status($conexao,$chamada_id) {
+      $conexao->exec("UPDATE chamada SET status='em_andamento' where id=$chamada_id");
+}
 function questionar_chamado($conexao,$chamada_id,$funcionario_id,$data,$mensagem,$id_setor) {
   $sql = $conexao->prepare("INSERT INTO chamada_atraso(id_chamada,id_funcionario,id_setor,mensagem,data_hora) VALUES (:chamada_id,:funcionario_id,:id_setor,:mensagem,:data)");
   $sql->execute(array(
