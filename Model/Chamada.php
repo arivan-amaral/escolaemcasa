@@ -577,7 +577,7 @@ function atualizar_mensagem($conexao,$id_mensagem) {
 }
 
 function atualizar_chamado_data_prevista($conexao,$chamada_id,$data_previsao) {
-      $conexao->exec("UPDATE chamada SET data_previsao='$data_previsao' where id=$chamada_id");
+      $conexao->exec("UPDATE chamada SET data_previsao='$data_previsao' ,status='em_andamento'  where id=$chamada_id");
 }
 
 function finalizar_chamada($conexao,$chamada_id) {

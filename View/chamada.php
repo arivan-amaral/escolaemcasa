@@ -124,7 +124,7 @@ setTimeout('dia_doservidor_publico();',3000);
        <div class="row">
             <!-- small card -->
             <?php
-            //------------------------Verificar Atrasos de Novos cadastros-------------------
+            /*/------------------------Verificar Atrasos de Novos cadastros-------------------
                   $res_atualizar_chamado = buscar_chamada($conexao,11);
                   foreach ($res_atualizar_chamado as $key => $value) {
                     $id_chamado = $value['id'];
@@ -183,7 +183,7 @@ setTimeout('dia_doservidor_publico();',3000);
                     }
                     
                   }
-                  //----------------------------------------------------------
+                  //----------------------------------------------------------*/
               // escola cadastrada
                 $id_escola = 0;
                 $quantidade_pendente_escola = 0;
@@ -268,7 +268,7 @@ setTimeout('dia_doservidor_publico();',3000);
                 foreach ($res_setor as $key => $value) {
                   $id_setor = $value['id'];
                   $nome = $value['nome'];
-                  //------------------------Verificar Atrasos-------------------
+                 /*//------------------------Verificar Atrasos-------------------
                   $res_atualizar_chamado = buscar_chamada($conexao,$setor_id);
                   foreach ($res_atualizar_chamado as $key => $value) {
                     $id_chamado = $value['id'];
@@ -326,7 +326,7 @@ setTimeout('dia_doservidor_publico();',3000);
                       }
                     }
                   }
-                  //----------------------------------------------------------
+                  //----------------------------------------------------------*/
                   $res_quant = quantidade_chamada_pendente($conexao,$id_setor);
                   foreach ($res_quant as $key => $value) {
                     $quantidade_pendente = $value['chamada'];
