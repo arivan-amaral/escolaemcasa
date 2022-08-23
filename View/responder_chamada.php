@@ -195,7 +195,7 @@ include "alertas.php";
                       
                             
                           }
-                      if ($status == 'esperando_resposta') { if($idFuncionario != 1179){?>
+                      if ($status == 'esperando_resposta') { if($idFuncionario != 2121){?>
                       <br>
 
 
@@ -385,7 +385,7 @@ include "alertas.php";
                       echo"
                         <div class='form-group'>";
 
-                          if($idFuncionario !=1179){
+                          if($idFuncionario !=  2121){
                             if ($status == 'atrasado') {
                                echo"
                               <button class='btn btn btn-danger' style='width:30%;' data-toggle='modal' data-target='#abrirModal'>

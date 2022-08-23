@@ -6,7 +6,7 @@ try {
 	$verificar =0;
 	$texto = "";
     $funcionario=$_SESSION["idfuncionario"];
-    if($_SESSION["idfuncionario"] != 1179){
+    if($_SESSION["idfuncionario"] != 2121){
         $res_id_setor =  buscar_id_setor($conexao,$funcionario);
         foreach ($res_id_setor as $key => $value) {
           $setor = $value['setor_id'];

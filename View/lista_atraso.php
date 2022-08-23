@@ -91,7 +91,7 @@ include '../Model/Chamada.php';
      <tbody>
 
         <?php 
-          if($_SESSION['idfuncionario'] != 1179){
+          if($_SESSION['idfuncionario'] !=  2121){
             $res_teste = verificar_todos_atraso($conexao);
             foreach ($res_teste as $key => $value) {
               $id_setor = $value['id_setor'];
