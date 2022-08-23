@@ -13,9 +13,9 @@ try {
 	$id_chamada = $_POST['id_chamado'];
 	//$url_get = $_POST['url_get'];
 
-	//responder_chamada($conexao,$id_chamada,$funcionario_id);
-	//responder_chat_sem_arquivo($conexao,$id_chamada,$funcionario_id,$descricao,$data);
-	//atualizar_chamado_data_prevista($conexao,$id_chamada,$data_previsao);
+	responder_chamada($conexao,$id_chamada,$funcionario_id);
+	responder_chat_sem_arquivo($conexao,$id_chamada,$funcionario_id,$descricao,$data);
+	atualizar_chamado_data_prevista($conexao,$id_chamada,$data_previsao);
 	mudar_status($conexao,$id_chamada);
 	$_SESSION['status']=1;
 	header("Location:../View/chamada.php");
