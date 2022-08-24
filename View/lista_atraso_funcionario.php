@@ -91,8 +91,7 @@ include '../Model/Chamada.php';
      <tbody>
 
         <?php 
-            $id_passado= 0;
-
+           
             $res_setores = buscar_id_seto_2($conexao,$_SESSION['idfuncionario']);
               foreach ($res_setores as $key => $value) {
                 $setor_id =$value['setor_id'];
@@ -201,9 +200,6 @@ include '../Model/Chamada.php';
                 
               }
               
-
-            
-
             $res = verificar_atraso($conexao,$_SESSION['idfuncionario']);
             foreach ($res as $key => $value) {
               $mensagem=$value['mensagem'];
