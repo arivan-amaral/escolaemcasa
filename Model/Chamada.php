@@ -602,14 +602,10 @@ function verificar_atraso($conexao,$idfuncionario){
 
 }
 
-function verificar_atraso_setor($conexao,$setor){
-   $result = $conexao->query("SELECT * FROM chamada_atraso where id_setor =$setor");
-    return $result;
 
-} 
 
 function verificar_todos_atraso($conexao){
-   $result = $conexao->query("SELECT * FROM chamada_atraso");
+   $result = $conexao->query("SELECT * FROM chamada_atraso order by id_setor asc" );
     return $result;
 
 }
@@ -638,9 +634,15 @@ function buscar_id_setor($conexao,$funcionario_id){
 
 }
 
-function buscar_id_seto_2($conexao,$funcionario_id,$setor){
-   $result = $conexao->query("SELECT * FROM relacao_setor_funcionario where funcionario_id=$funcionario_id and setor_id =$setor");
+function buscar_id_seto_2($conexao,$funcionario_id){
+   $result = $conexao->query("SELECT * FROM relacao_setor_funcionario where funcionario_id=$funcionario_id order by setor_id asc");
     return $result;
 
 }
+
+function verificar_atraso_setor($conexao,$setor){
+   $result = $conexao->query("SELECT * FROM chamada_atraso where id_setor =$setor order by id asc");
+    return $result;
+
+} 
 ?>
