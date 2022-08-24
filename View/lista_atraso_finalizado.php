@@ -91,9 +91,9 @@ include '../Model/Chamada.php';
      <tbody>
 
         <?php 
-          $res = verificar_todos_atraso_atrasado($conexao);
-
-          foreach ($res as $key => $value) {
+         
+        $res = verificar_todos_atraso_finalizado($conexao);
+        foreach ($res as $key => $value) {
             $mensagem=$value['mensagem'];
             $protocolo = $value['id_chamada'];
             $res_verificar = pesquisa_chamada($conexao,$protocolo);
@@ -201,7 +201,7 @@ include '../Model/Chamada.php';
               }
               
             }
-          }
+        }
          
           
         ?>

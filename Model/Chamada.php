@@ -614,6 +614,24 @@ function verificar_todos_atraso($conexao){
 
 }
 
+function verificar_todos_atraso_atrasado($conexao){
+   $result = $conexao->query("SELECT * FROM chamada_atraso,chamada where chamada.id = chamada_atraso.id_chamada and chamada.status = 'atrasado'");
+    return $result;
+
+}
+
+function verificar_todos_atraso_finalizado($conexao){
+   $result = $conexao->query("SELECT * FROM chamada_atraso,chamada where chamada.id = chamada_atraso.id_chamada and chamada.status = 'finalizado'");
+    return $result;
+
+}
+
+function verificar_todos_atraso_andamento($conexao){
+   $result = $conexao->query("SELECT * FROM chamada_atraso,chamada where chamada.id = chamada_atraso.id_chamada and chamada.status = 'em_andamento'");
+    return $result;
+
+}
+
 function buscar_id_setor($conexao,$funcionario_id){
    $result = $conexao->query("SELECT * FROM relacao_setor_funcionario where funcionario_id=$funcionario_id ");
     return $result;

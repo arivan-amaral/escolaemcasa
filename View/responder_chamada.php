@@ -238,7 +238,7 @@ include "alertas.php";
                       Questionar
                       </button>
                     </div>
-                  <?php }}elseif ($status == 'atrasado') { if($idFuncionario != 1179){?>
+                  <?php }}elseif ($status == 'atrasado') { if($idFuncionario != 2121){?>
 
                    <div id="resp">
                       <button type="button" class="btn btn-block btn-primary" onclick="abrir_resposta();">

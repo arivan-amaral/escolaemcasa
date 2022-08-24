@@ -91,8 +91,8 @@ include '../Model/Chamada.php';
      <tbody>
 
         <?php 
-          $res = verificar_todos_atraso_atrasado($conexao);
-
+         
+          $res = verificar_todos_atraso_andamento($conexao);
           foreach ($res as $key => $value) {
             $mensagem=$value['mensagem'];
             $protocolo = $value['id_chamada'];
