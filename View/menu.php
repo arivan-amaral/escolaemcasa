@@ -153,18 +153,21 @@
                <a href='lista_atraso.php' class='nav-link'>
                <i class='far fa-circle nav-icon text-danger'></i>
                <p>Chamados atrasados</p>
+               <span class='badge bg-warning' id='total_chamadas_atrasadas'></span>
                </a>
                </li>
                <li class='nav-item'>
                <a href='lista_atraso_finalizado.php' class='nav-link'>
                <i class='far fa-circle nav-icon text-danger'></i>
                <p>Chamados finalizados</p>
+                <span class='badge bg-warning' id='total_chamadas_finalizadas'></span>
                </a>
                </li>
                <li class='nav-item'>
                <a href='lista_atraso_andamento.php' class='nav-link'>
                <i class='far fa-circle nav-icon text-danger'></i>
                <p>Chamados em andamento</p>
+                <span class='badge bg-warning' id='total_chamadas_andamento'></span>
                </a>
                </li>
               </ul>";
@@ -173,6 +176,7 @@
                <a href='lista_atraso_funcionario.php' class='nav-link'>
                <i class='far fa-circle nav-icon text-danger'></i>
                <p>Chamados Questionados </p>
+            
                </a>
                </li>";
                 }

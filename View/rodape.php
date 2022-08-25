@@ -71,6 +71,78 @@ if (isset($_SESSION['cargo'])) {
   setInterval(verificar_chamado(),2000);
 </script>
 
+<script type="text/javascript">
+  function verificar_chamado_atraso(){
+    var resultado = document.getElementById("total_chamadas_atrasadas");          
+      var xmlreq = CriaRequest();
+      xmlreq.open("GET", "../Controller/Calcular_chamada_atrasada.php", true);
+
+      xmlreq.onreadystatechange = function(){
+    
+       if (xmlreq.readyState == 4) {
+           if (xmlreq.status == 200) {
+                 resultado.innerHTML = xmlreq.responseText;
+
+           }else{
+                 alert('Erro desconhecido, verifique sua conexão com a internet');
+
+              result.innerHTML ="Erro ao receber mensagens";                 
+           }
+       }
+      };
+   xmlreq.send(null);
+    
+  }
+
+  setInterval(verificar_chamado_atraso(),2000);
+</script>
+<script type="text/javascript">
+  function verificar_chamado_finalizada(){
+   var resultado = document.getElementById("total_chamadas_finalizadas");          
+      var xmlreq = CriaRequest();
+      xmlreq.open("GET", "../Controller/Calcular_chamada_finalizado.php", true);
+
+      xmlreq.onreadystatechange = function(){
+    
+       if (xmlreq.readyState == 4) {
+           if (xmlreq.status == 200) {
+                 resultado.innerHTML = xmlreq.responseText;
+
+           }else{
+                 alert('Erro desconhecido, verifique sua conexão com a internet');
+
+              result.innerHTML ="Erro ao receber mensagens";                 
+           }
+       }
+      };
+   xmlreq.send(null);
+  }
+  setInterval(verificar_chamado_finalizada(),2000);
+</script>
+<script type="text/javascript">
+  function verificar_chamado_andamento(){
+   var resultado = document.getElementById("total_chamadas_andamento");          
+      var xmlreq = CriaRequest();
+      xmlreq.open("GET", "../Controller/Calcular_chamada_andamento.php", true);
+
+      xmlreq.onreadystatechange = function(){
+    
+       if (xmlreq.readyState == 4) {
+           if (xmlreq.status == 200) {
+                 resultado.innerHTML = xmlreq.responseText;
+
+           }else{
+                 alert('Erro desconhecido, verifique sua conexão com a internet');
+
+              result.innerHTML ="Erro ao receber mensagens";                 
+           }
+       }
+      };
+   xmlreq.send(null);
+  }
+  setInterval(verificar_chamado_andamento(),2000);
+</script>
+
 <div class="modal fade" id="modal-avaliacao">
     <div class="modal-dialog">
       <div class="modal-content">

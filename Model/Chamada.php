@@ -616,6 +616,26 @@ function verificar_todos_atraso_atrasado($conexao){
 
 }
 
+function quant_chamada_atrasada($conexao){
+   $result = $conexao->query("SELECT count(*) as 'id' FROM chamada_atraso,chamada where chamada.id = chamada_atraso.id_chamada and chamada.status = 'atrasado'");
+    return $result;
+
+}
+
+function quant_chamada_finalizado($conexao){
+   $result = $conexao->query("SELECT count(*) as 'id' FROM chamada_atraso,chamada where chamada.id = chamada_atraso.id_chamada and chamada.status = 'finalizado'");
+    return $result;
+
+}
+
+function quant_chamada_andamento($conexao){
+   $result = $conexao->query("SELECT count(*) as 'id' FROM chamada_atraso,chamada where chamada.id = chamada_atraso.id_chamada and chamada.status = 'em_andamento'");
+    return $result;
+
+}
+
+
+
 function verificar_todos_atraso_finalizado($conexao){
    $result = $conexao->query("SELECT * FROM chamada_atraso,chamada where chamada.id = chamada_atraso.id_chamada and chamada.status = 'finalizado'");
     return $result;
