@@ -94,14 +94,15 @@ session_start();
                             <select class="form-control"  name="serie_id" id="serie_id">
                             <!-- <option></option> -->
 
-                          <?php 
-                            $res_serie=pesquisar_ordem_proxima_serie($conexao,'id=1');
-                            foreach ($res_serie as $key => $value) {
-                                $id=$value['id'];
-                                $nome_serie=$value['nome'];
-                                echo "<option value='$id'>$nome_serie </option>";
-                            }
+                            <?php 
+                              $res_serie=pesquisar_ordem_proxima_serie($conexao,'id=1');
+                              foreach ($res_serie as $key => $value) {
+                                  $id=$value['id'];
+                                  $nome_serie=$value['nome'];
+                                  echo "<option value='$id'>$nome_serie </option>";
+                              }
                             ?>
+
                             </select>
                         </div>
                       </div> 
@@ -169,7 +170,7 @@ session_start();
                       <div class="col-sm-12">
                         <div class="form-group">
                         <br>
-                            <button onclick="submit_post_generico('../Controller/Cadastrar_lista_espera.php','form_lista_espera','btn_lista_espera')"  class="btn btn-block btn-success" id="btn_lista_espera" >Cadastrar na lista</button>
+                            <button onclick="submit_post_generico('../Controller/Cadastrar_lista_espera.php','form_lista_espera','btn_lista_espera'); lista_espera();"  class="btn btn-block btn-success" id="btn_lista_espera" >Cadastrar na lista</button>
 
                              
                         </div>
@@ -196,7 +197,7 @@ session_start();
 
                             </tr>
                           </thead>
-                          <tbody id="tabela">
+                          <tbody id="tabela_lista_espera">
                             
                           </tbody>
                         </table>
@@ -208,6 +209,10 @@ session_start();
     </div>
 
   </section>
+
+  <script type="text/javascript">
+    setTimeout("lista_espera();",1000);
+  </script>
 
 </div>
 

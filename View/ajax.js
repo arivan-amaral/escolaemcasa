@@ -41,6 +41,27 @@ function CriaRequest() {
          return request;
 }
 
+function lista_espera(){
+
+
+  var result = document.getElementById('tabela_lista_espera');
+  result.innerHTML = "<img src='imagens/carregando.gif'>";  
+  var xmlreq = CriaRequest();
+  xmlreq.open("GET", "../Controller/Pesquisa_lista_espera.php", true);
+
+      xmlreq.onreadystatechange = function(){
+    
+       if (xmlreq.readyState == 4) {
+           if (xmlreq.status == 200) {
+                 result.innerHTML = xmlreq.responseText;
+
+           }else{
+              result.innerHTML ="Erro ao receber mensagens";                 
+           }
+       }
+      };
+   xmlreq.send(null);
+}
 
 
 
@@ -77,7 +98,7 @@ function submit_post_generico(caminho,formulario,botao){
                   }
                   else
                   {
-                      alert('Problemas no envio');
+                      alert(msg);
                   }
                   $('#'+formulario+'').css("opacity","");
                   $("#"+botao+"").removeAttr("disabled");

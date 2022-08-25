@@ -17,10 +17,18 @@ try {
     $escola_id=$_POST['escola_id'];
     $serie_id=$_POST['serie_id'];
      
+    $res=verificar_cadastro_lista_espera($conexao,$cpf_aluno);
 
-    cadastrar_lista_espera($conexao,$nome_aluno,$cpf_aluno,$data_nascimento,$nome_responsavel,$cpf_responsavel,$telefone,$endereco,$escola_id,$serie_id,$funcionario_id);
+    if (!$res) {
+        // code...
+        cadastrar_lista_espera($conexao,$nome_aluno,$cpf_aluno,$data_nascimento,$nome_responsavel,$cpf_responsavel,$telefone,$endereco,$escola_id,$serie_id,$idfuncionario);
+        echo "certo";
+    }else{
+        echo "Aluno já possui cadastro de espera na rede municipal!";
+    }
 
-    echo "certo";
+
+
 } catch (Exception $e) {
     echo "errado $e";
 }
