@@ -66,14 +66,14 @@ session_start();
                 <div class="row">
                   <div class="col-md-12">
                     <br>
-                <form class="mt-12"  method="GET">
+                <form class="mt-12"  method="POST" id="form_lista_espera">
                   <div class="card-body">
                     <div class="row">
-                      <div class="col-sm-3">
+                      <div class="col-sm-5">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Escola</label>
-                         <select class="form-control"  name="escola" id="escola" onchange="lista_turma_cadastrada_escola_por_serie('tabela');" required>
-                          <option></option>
+                         <select class="form-control"  name="escola_id" id="escola" onchange="lista_turma_cadastrada_escola_por_serie('tabela');" required>
+                          <!-- <option></option> -->
                        <?php 
                          // $res_escola=lista_escola($conexao);
 
@@ -87,11 +87,11 @@ session_start();
                          </select>
                         </div>
                       </div>                      
-                       
+         
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Série</label>
-                            <select class="form-control"  name="idserie" id="idserie">
+                            <select class="form-control"  name="serie_id" id="serie_id">
                             <!-- <option></option> -->
 
                           <?php 
@@ -109,15 +109,15 @@ session_start();
                       <div class="col-sm-3">
                         <div class="form-group">
                            <label for="exampleInputEmail1">Nome do aluno</label>
-                           <input type="text" class="form-control"  required>
+                           <input type="text" class="form-control" name="nome_aluno" required>
                              
                         </div>
                       </div>                     
-
+          
                        <div class="col-sm-3">
                         <div class="form-group">
                            <label for="exampleInputEmail1">Data nasc. do aluno</label>
-                           <input type="date" class="form-control"   required>
+                           <input type="date" class="form-control"  name="data_nascimento" required>
                              
                         </div>
                       </div>                       
@@ -125,7 +125,8 @@ session_start();
                       <div class="col-sm-3">
                         <div class="form-group">
                            <label for="exampleInputEmail1">Cpf do aluno</label>
-                           <input type="text" class="form-control"   required>
+
+                           <input type="text" name="cpf_aluno"  id="cpf_aluno" class="form-control" placeholder="Digite seu CPF do aluno" required=""  onkeyup="fMasc( this, mCPF ); ValidaCPF('cpf_aluno');" maxlength="14">
                              
                         </div>
                       </div>
@@ -133,14 +134,18 @@ session_start();
                       <div class="col-sm-3">
                         <div class="form-group">
                            <label for="exampleInputEmail1">Nome do responsável</label>
-                           <input type="text" class="form-control"   required="">
+                           <input type="text" class="form-control"  name="nome_responsavel" required="">
                              
                         </div>
                       </div> 
                       <div class="col-sm-3">
                         <div class="form-group">
                            <label for="exampleInputEmail1">Cpf do responsável</label>
-                           <input type="text" class="form-control"   required>
+                           <div id="status_cpf"></div>
+                  
+                           <input type="text" name="cpf_responsavel"  id="cpf" class="form-control" placeholder="Digite seu CPF do responsável" required=""  onkeyup="fMasc( this, mCPF ); ValidaCPF('cpf');" maxlength="14">
+
+
                              
                         </div>
                       </div>
@@ -148,14 +153,14 @@ session_start();
                       <div class="col-sm-3">
                         <div class="form-group">
                            <label for="exampleInputEmail1">WhatsApp do responsável</label>
-                           <input type="tel" class="form-control"     required="">
+                           <input type="tel" class="form-control" name="telefone"    required="">
                              
                         </div>
                       </div>
                       <div class="col-sm-5">
                         <div class="form-group">
                            <label for="exampleInputEmail1">Endereço</label>
-                           <input type="text" class="form-control"     required="">
+                           <input type="text" class="form-control" name="endereco"    required="">
                              
                         </div>
                       </div>
@@ -164,7 +169,7 @@ session_start();
                       <div class="col-sm-12">
                         <div class="form-group">
                         <br>
-                            <button   class="btn btn-block btn-success " >Cadastrar na lista</button>
+                            <button onclick="submit_post_generico('../Controller/Cadastrar_lista_espera.php','form_lista_espera','btn_lista_espera')"  class="btn btn-block btn-success" id="btn_lista_espera" >Cadastrar na lista</button>
 
                              
                         </div>
@@ -188,7 +193,7 @@ session_start();
                               <th scope="col">ESCOLA</th>
                               <th scope="col">SERIE</th>
                               <th scope="col">OPÇÃO</th> 
-                              
+
                             </tr>
                           </thead>
                           <tbody id="tabela">
