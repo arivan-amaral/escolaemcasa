@@ -664,5 +664,11 @@ function verificar_atraso_setor($conexao,$setor){
    $result = $conexao->query("SELECT * FROM chamada_atraso where id_setor =$setor order by id asc");
     return $result;
 
-} 
+}
+
+function pesquisa_questionado($conexao,$chamada){
+   $result = $conexao->query("SELECT count(*) as 'id' FROM chamada_atraso where id_chamada =$chamada");
+    return $result;
+
+}  
 ?>

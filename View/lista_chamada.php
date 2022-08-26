@@ -712,7 +712,7 @@ include '../Model/Chamada.php';
               $id_setor = $value['setor_id'];
               $id_solicitacao = $value['tipo_solicitacao'];
               $nome_funcionario_retorno = '';
- 
+              
               $nome_funcionario = '';
               $nome_escola='';
               $data_retorno = '';
@@ -768,21 +768,10 @@ include '../Model/Chamada.php';
                  $descricao = $value['mensagem'];
                  
               }
+
               echo "
               <tr>";
-              if ($status == 'esperando_resposta') {
-                echo "<td style='background-color:#2E64FE;  
-                text-align: center;color: white;'>
-                Novo <br> <b>Protocolo: $id_chamada</b></td>";
-              }elseif ($status == 'em_andamento') {
-                echo "<td style=' background-color:#F1C40F; 
-                text-align: center;'>
-                Andamento<br> <b>Protocolo: $id_chamada</b></td>";
-              }elseif ($status == 'finalizado') {
-                echo "<td style=' background-color:#82FA58;
-                text-align: center;color: white'>
-                Resolvido <br> <b>Protocolo: $id_chamada</b></td>";
-              }elseif ($status == 'atrasado') {
+              if ($status == 'atrasado') {
                 echo "<td style=' background-color:#FE2E2E; 
                 text-align: center;color: white'>
                 Atrasado <br> <b>Protocolo: $id_chamada</b></td>";
@@ -799,28 +788,33 @@ include '../Model/Chamada.php';
                   ";
                   }
                  
-                   if($status == 'esperando_resposta'){
 
-                  //echo " Status: <font color='danger'>Esperando Resposta</font> ";
-                }else if($status == 'em_andamento'){
-                  // echo "Data de Retorno: ";
-                }else if($status == 'finalizado'){
-                  echo "Data de Retorno: <br>
-                  Status: <font color='green'>Finalizado</font> ";
-                }
                   if ($nome_escola != '') {
                      echo"
                   Escola: $nome_escola - Diretor: $nome_funcionario <br> ";
                   }else if($nome_escola == ''){
                      echo"
-                   Diretor: $nome_funcionario <br> ";
+                   Diretor: $nome_funcionario -";
                   }
                   
                   if ($id_solicitacao != null) {
                     if ($id_setor != 11) {
                      echo"Tipo de Solicitação: $nome_solicitacao <br>";
-                      # code...
+                   
                     }
+                  }
+                    $tem_questionamento = 0;
+                  $nome_setor = "";
+                  $res_questionado = pesquisa_questionado($conexao,$id_chamada);
+                  foreach ($res_questionado as $key => $value) {
+                    $tem_questionamento = $value['id'];
+                  }
+                  $res_setor = buscar_setor_id($conexao,$id_setor);
+                  foreach ($res_setor as $key => $value) {
+                    $nome_setor = $value['nome'];
+                  }
+                  if( $tem_questionamento > 0){
+                    echo " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> CHAMADA QUESTIONADA - $nome_setor </b>";
                   }
                               
                   echo"
@@ -1074,22 +1068,10 @@ include '../Model/Chamada.php';
               }
               echo "
               <tr>";
-              if ($status == 'esperando_resposta') {
-                echo "<td style='background-color:#2E64FE;  
-                text-align: center;color: white;'>
-                Novo <br> <b>Protocolo: $id_chamada</b></td>";
-              }elseif ($status == 'em_andamento') {
+             if ($status == 'em_andamento') {
                 echo "<td style=' background-color:#F1C40F; 
                 text-align: center;'>
                 Andamento<br> <b>Protocolo: $id_chamada</b></td>";
-              }elseif ($status == 'finalizado') {
-                echo "<td style=' background-color:#82FA58;
-                text-align: center;color: white'>
-                Resolvido <br> <b>Protocolo: $id_chamada</b></td>";
-              }elseif ($status == 'atrasado') {
-                echo "<td style=' background-color:#FE2E2E; 
-                text-align: center;color: white'>
-                Atrasado <br> <b>Protocolo: $id_chamada</b></td>";
               }
                
 
@@ -1102,16 +1084,8 @@ include '../Model/Chamada.php';
                     echo "Data de Retorno:</b> Sem Retorno     <br>
                   ";
                   }
-                 
-                   if($status == 'esperando_resposta'){
+                
 
-                  //echo " Status: <font color='danger'>Esperando Resposta</font> ";
-                }else if($status == 'em_andamento'){
-                  // echo "Data de Retorno: ";
-                }else if($status == 'finalizado'){
-                  echo "Data de Retorno: <br>
-                  Status: <font color='green'>Finalizado</font> ";
-                }
                   if ($nome_escola != '') {
                      echo"
                   Escola: $nome_escola - Diretor: $nome_funcionario <br> ";
@@ -1126,7 +1100,19 @@ include '../Model/Chamada.php';
                       # code...
                     }
                   }
-                              
+                  $tem_questionamento = 0;
+                  $nome_setor = "";
+                  $res_questionado = pesquisa_questionado($conexao,$id_chamada);
+                  foreach ($res_questionado as $key => $value) {
+                    $tem_questionamento = $value['id'];
+                  }
+                  $res_setor = buscar_setor_id($conexao,$id_setor);
+                  foreach ($res_setor as $key => $value) {
+                    $nome_setor = $value['nome'];
+                  }
+                  if( $tem_questionamento > 0){
+                    echo " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> CHAMADA QUESTIONADA - $nome_setor </b>";
+                  }    
                   echo"
                 </td>
                 <td>";
@@ -1226,22 +1212,10 @@ include '../Model/Chamada.php';
               }
               echo "
               <tr>";
-              if ($status == 'esperando_resposta') {
-                echo "<td style='background-color:#2E64FE;  
-                text-align: center;color: white;'>
-                Novo <br> <b>Protocolo: $id_chamada</b></td>";
-              }elseif ($status == 'em_andamento') {
-                echo "<td style=' background-color:#F1C40F; 
-                text-align: center;'>
-                Andamento<br> <b>Protocolo: $id_chamada</b></td>";
-              }elseif ($status == 'finalizado') {
+            if ($status == 'finalizado') {
                 echo "<td style=' background-color:#82FA58;
                 text-align: center;color: white'>
                 Resolvido <br> <b>Protocolo: $id_chamada</b></td>";
-              }elseif ($status == 'atrasado') {
-                echo "<td style=' background-color:#FE2E2E; 
-                text-align: center;color: white'>
-                Atrasado <br> <b>Protocolo: $id_chamada</b></td>";
               }
                
 
@@ -1255,15 +1229,11 @@ include '../Model/Chamada.php';
                   ";
                   }
                  
-                   if($status == 'esperando_resposta'){
-
-                  //echo " Status: <font color='danger'>Esperando Resposta</font> ";
-                }else if($status == 'em_andamento'){
-                  // echo "Data de Retorno: ";
-                }else if($status == 'finalizado'){
-                  echo "Data de Retorno: <br>
+                  if($status == 'finalizado'){
+                  echo "
                   Status: <font color='green'>Finalizado</font> ";
                 }
+                
                   if ($nome_escola != '') {
                      echo"
                   Escola: $nome_escola - Diretor: $nome_funcionario <br> ";
@@ -1278,7 +1248,19 @@ include '../Model/Chamada.php';
                       # code...
                     }
                   }
-                              
+                  $tem_questionamento = 0;
+                  $nome_setor = "";
+                  $res_questionado = pesquisa_questionado($conexao,$id_chamada);
+                  foreach ($res_questionado as $key => $value) {
+                    $tem_questionamento = $value['id'];
+                  }
+                  $res_setor = buscar_setor_id($conexao,$id_setor);
+                  foreach ($res_setor as $key => $value) {
+                    $nome_setor = $value['nome'];
+                  }
+                  if( $tem_questionamento > 0){
+                    echo " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> CHAMADA QUESTIONADA - $nome_setor </b>";
+                  }      
                   echo"
                 </td>
                 <td>";
