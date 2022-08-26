@@ -41,6 +41,149 @@ function CriaRequest() {
          return request;
 }
 
+function lista_espera(){
+
+
+  var result = document.getElementById('tabela_lista_espera');
+  result.innerHTML = "<img src='imagens/carregando.gif'>";  
+  var xmlreq = CriaRequest();
+  xmlreq.open("GET", "../Controller/Pesquisa_lista_espera.php", true);
+
+      xmlreq.onreadystatechange = function(){
+    
+       if (xmlreq.readyState == 4) {
+           if (xmlreq.status == 200) {
+                 result.innerHTML = xmlreq.responseText;
+
+           }else{
+              result.innerHTML ="Erro ao receber mensagens";                 
+           }
+       }
+      };
+   xmlreq.send(null);
+}
+
+
+
+
+function submit_post_generico(caminho,formulario,botao){     
+      var formData = new FormData(document.getElementById(formulario));      
+      $.ajax({
+              type: 'POST',
+              url: ''+caminho,
+              data: formData,
+              contentType: false,
+              cache: false,
+              processData:false,
+              beforeSend: function(){
+                    $('#'+botao+'').attr("disabled","disabled");
+                    $('#'+formulario+'').css("opacity",".5");
+              },
+              success: function(msg){  
+              console.log(msg);               
+                  if(msg == 'certo')
+                  {
+                      $('#'+formulario+'')[0].reset();
+                      
+                      Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Ação Concluída',
+                           text: ' ',
+                        showConfirmButton: false,
+                        timer: 3000
+                      });
+                     // setTimeout(function(){window.location.href="pesquisa_aluno.php";},1500);
+
+                  }
+                  else
+                  {
+                      alert(msg);
+                  }
+                  $('#'+formulario+'').css("opacity","");
+                  $("#"+botao+"").removeAttr("disabled");
+              }
+          });
+    }
+
+
+
+
+function ValidaCPF(cpf_recebido){  
+    var RegraValida=document.getElementById(cpf_recebido).value; 
+
+    var r=document.getElementById("status_cpf"); 
+    r.innerHTML="";  
+    var cpfValido = /^(([0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2})|([0-9]{11}))$/;     
+    if (RegraValida.length==14) {
+
+        if (cpfValido.test(RegraValida) == true && isValidCPF(RegraValida)){ 
+               // r.innerHTML="<br><b>CPF Válido</b>";  
+            } else  {    
+               alert("CPF Inválido, verifique e preencha novamente!");
+                document.getElementById(cpf_recebido).value=""; 
+
+            }
+        }
+}
+
+function fMasc(objeto,mascara) {
+obj=objeto
+masc=mascara
+setTimeout("fMascEx()",1)
+}
+
+
+function fMascEx() {
+obj.value=masc(obj.value)
+}
+
+function mCPF(cpf){
+cpf=cpf.replace(/\D/g,"")
+cpf=cpf.replace(/(\d{3})(\d)/,"$1.$2")
+cpf=cpf.replace(/(\d{3})(\d)/,"$1.$2")
+cpf=cpf.replace(/(\d{3})(\d{1,2})$/,"$1-$2")
+return cpf
+}
+
+
+
+function isValidCPF(cpf) {
+    if (typeof cpf !== "string") return false
+    cpf = cpf.replace(/[\s.-]*/igm, '')
+    if (
+        !cpf ||
+        cpf.length != 11 ||
+        cpf == "00000000000" ||
+        cpf == "11111111111" ||
+        cpf == "22222222222" ||
+        cpf == "33333333333" ||
+        cpf == "44444444444" ||
+        cpf == "55555555555" ||
+        cpf == "66666666666" ||
+        cpf == "77777777777" ||
+        cpf == "88888888888" ||
+        cpf == "99999999999" 
+    ) {
+        return false
+    }
+    var soma = 0
+    var resto
+    for (var i = 1; i <= 9; i++) 
+        soma = soma + parseInt(cpf.substring(i-1, i)) * (11 - i)
+    resto = (soma * 10) % 11
+    if ((resto == 10) || (resto == 11))  resto = 0
+    if (resto != parseInt(cpf.substring(9, 10)) ) return false
+    soma = 0
+    for (var i = 1; i <= 10; i++) 
+        soma = soma + parseInt(cpf.substring(i-1, i)) * (12 - i)
+    resto = (soma * 10) % 11
+    if ((resto == 10) || (resto == 11))  resto = 0
+    if (resto != parseInt(cpf.substring(10, 11) ) ) return false
+    return true
+}
+
+
 function idade_aluno() {
     var data_nascimento=document.getElementById('data_nascimento').value;
     console.log("teste:"+data_nascimento);

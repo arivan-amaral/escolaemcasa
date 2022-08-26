@@ -29,6 +29,48 @@ $res=$conexao->query("SELECT * FROM ecidade_matricula where
                      and aluno_id=$aluno_id ");
 return $res->fetchAll();
 }
+
+function verificar_cadastro_lista_espera($conexao,$cpf_aluno){
+    $sql=$conexao->prepare("SELECT 
+       COUNT(*)
+    FROM  
+    lista_de_espera,serie,escola,funcionario
+    WHERE
+        cpf_aluno=?");
+
+   $sql->execute(array($cpf_aluno));
+   return $sql->fetchAll();
+
+}
+
+function pesquisa_lista_espera($conexao,$limite){
+    $sql=$conexao->prepare("SELECT 
+        lista_de_espera.id,
+        nome_aluno,
+        nome_responsavel,
+        funcionario.nome as 'nome_funcionario',
+        serie.nome as 'nome_serie',
+        escola.nome_escola,
+        lista_de_espera.data_hora
+    FROM  
+    lista_de_espera,serie,escola,funcionario
+    WHERE
+        serie_id=serie.id and escola_id=escola.idescola 
+         and funcionario.idfuncionario=funcionario_id order by lista_de_espera.id desc
+     LIMIT  $limite");
+
+   $sql->execute();
+   return $sql->fetchAll();
+
+}
+function cadastrar_lista_espera($conexao,$nome_aluno,$cpf_aluno,$data_nascimento,$nome_responsavel,$cpf_responsavel,$telefone,$endereco,$escola_id,$serie_id,$funcionario_id){
+    $sql=$conexao->prepare("INSERT INTO lista_de_espera (nome_aluno,cpf_aluno,data_nascimento,nome_responsavel,cpf_responsavel,telefone,endereco,escola_id,serie_id,funcionario_id) VALUES (?,?,?,?,?,?,?,?,?,?)");
+
+   $sql->execute(array($nome_aluno,$cpf_aluno,$data_nascimento,$nome_responsavel,$cpf_responsavel,$telefone,$endereco,$escola_id,$serie_id,$funcionario_id));
+
+}
+
+
 function cancelar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno){
   $sql=$conexao->prepare("DELETE FROM historico_nota WHERE escola_id = :idescola and turma_id = :idturma and disciplina_id = :iddisciplina and aluno_id = :idaluno");
   

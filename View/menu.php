@@ -83,7 +83,14 @@
               </a>
               </li>
               </ul>";
-              
+
+               echo"<li class='nav-item menu'>
+              <a href='lista_espera.php' class='nav-link'>
+              <ion-icon name='apps-outline'></ion-icon>
+              <p>Lista de espera  </p>
+              </a>";
+
+                          
 
                echo"<li class='nav-item menu'>
                <a href='./index.php' class='nav-link'>
