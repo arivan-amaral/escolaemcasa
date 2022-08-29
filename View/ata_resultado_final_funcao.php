@@ -337,7 +337,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
  //arivan
   $media=number_format($media, 1, '.', ',');
   
-  if ($_SESSION['nivel_acesso_id']>=100) {
+  if ($_SESSION['nivel_acesso_id']>=1000) {
 
     $res_hist=$conexao->query("
       SELECT * from historico where 

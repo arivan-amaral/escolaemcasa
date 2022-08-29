@@ -45,8 +45,8 @@ try {
                     <ul class = 'dropdown-menu' role = 'menu'>
                     
                         <li>
-                            <button type='submit' class='dropdown-item'  >Aceitar</button>
-                            <button type='submit' class='dropdown-item'  >Recusar</button>
+                            <a  class='dropdown-item'  >Aceitar</a>
+                            <a  class='dropdown-item'  >Recusar</a>
                         </li>
                     </ul>
                 </div>
