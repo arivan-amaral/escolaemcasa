@@ -147,7 +147,10 @@ $url_get=$array_url[1];
                        ministrada.escola_id= escola.idescola AND
                        ministrada.professor_id= funcionario.idfuncionario and
                        ministrada.turma_id = turma.idturma AND
-                       escola_id=$idescola GROUP BY serie.id
+                       escola_id=$idescola GROUP BY serie.id,  idturma,
+                       serie.nome,
+                       nome_turma,
+                       idescola
                        ORDER BY turma.nome_turma
                        ");
 

@@ -458,10 +458,10 @@ function verificar_horario_questionario_aluno($conexao,$idaluno,$hora_atual,$que
 		return $return;
 	}
 
-	function excluir_questao($conexao, $id) {
-	    $result = $conexao->query("DELETE FROM questao WHERE id=$id");
-	    return $result;
-	}		
+	// function excluir_questao($conexao, $id) {
+	//     $result = $conexao->query("DELETE FROM questao WHERE id=$id");
+	//     return $result;
+	// }		
 	function excluir_questao_simulado($conexao, $id) {
 	    $result = $conexao->query("DELETE FROM questao_simulado WHERE id=$id");
 	    return $result;

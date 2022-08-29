@@ -9,6 +9,16 @@
 
 try {
  
+    if(isset($_GET['valor_paginacao'])){
+
+      $valor_paginacao=$_GET['valor_paginacao'];
+      $limite_antigo =$valor_paginacao-25;
+       $limite_novo=$valor_paginacao;
+    }else{
+      $limite_antigo =0;
+       $limite_novo=25;
+    }
+
     $professor_id=$_SESSION['idfuncionario'];
     $idfuncionario=$_SESSION['idfuncionario'];
  
@@ -68,7 +78,7 @@ aluno
 
 where
   aluno.nome LIKE '%$pesquisa%'   OR idaluno='$pesquisa'
-  ORDER by  aluno.nome asc limit 25");
+  ORDER by  aluno.nome asc limit $limite_antigo , $limite_novo");
 
 
                // $result_aluno= pesquisar_aluno($conexao,$pesquisa,$codigo_sql );

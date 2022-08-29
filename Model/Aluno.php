@@ -5,7 +5,7 @@ $res=$conexao->query(" ");
 return $res->fetchAll();
 }
 
-    function excluir_questao($conexao, $idaluno) {
+function excluir_questao($conexao, $idaluno) {
         $conexao->exec("DELETE FROM aluno WHERE idaluno=$idaluno");
  
     }

@@ -41,6 +41,29 @@ function CriaRequest() {
          return request;
 }
 
+
+// function aumenta_limite_pag(novolimite){
+//     console.log("teste"+novolimite);
+//      var limite_antigo = document.getElementById('limite_antigo');
+//      var limite_novo = document.getElementById('limite_novo');
+     
+//      if (parseInt(novolimite) > parseInt(limite_novo.value)) {
+//         limite_antigo.value= parseInt(limite_novo.value) +parseInt(novolimite);
+//         limite_novo.value= parseInt(novolimite);
+
+//      }else{
+//         limite_antigo.value= parseInt(limite_novo.value)-parseInt(novolimite);
+//         limite_novo.value= parseInt(novolimite);
+//      }
+
+// }
+
+function limpa_pesquisa_aluno(){
+    var result=document.getElementById('tabela_pesquisa');
+    result.innerHTML ="";
+}
+
+
 function lista_espera(){
 
 
@@ -1191,9 +1214,11 @@ function listar_vagas_turma_transferencia_aluno(){
 
 function pesquisa_aluno(){
     var result=document.getElementById('tabela_pesquisa');
+    var paginacao=document.getElementById('paginacao');
     var escola = document.getElementById('escola').value;
     var pesquisa = document.getElementById('pesquisa').value;
-     
+    
+  
         var xmlreq = CriaRequest();
         result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
 
@@ -1204,7 +1229,39 @@ function pesquisa_aluno(){
          if (xmlreq.readyState == 4) {
              if (xmlreq.status == 200) {
                 result.innerHTML = xmlreq.responseText;
-        
+                paginacao.innerHTML ="<button onclick='pesquisa_aluno_paginacao();' class='btn btn-block btn-default btn-sm'>Ver mais resultados</button> ";
+                
+             }else{
+                   alert('Erro desconhecido, verifique sua conexão com a internet');
+
+                //result.innerHTML ="Erro ao receber mensagens";                 
+             }
+         }
+     };
+     xmlreq.send(null);
+}
+
+function pesquisa_aluno_paginacao(){
+    var result=document.getElementById('tabela_pesquisa');
+    var paginacao=document.getElementById('paginacao');
+    var escola = document.getElementById('escola').value;
+    var pesquisa = document.getElementById('pesquisa').value;
+    
+    var valor_paginacao=document.getElementById('valor_paginacao');
+  
+        var xmlreq = CriaRequest();
+        paginacao.innerHTML="<center><img src='imagens/carregando.gif'></center>";
+
+        xmlreq.open("GET", "../Controller/Pesquisar_aluno.php?pesquisa="+pesquisa+"&escola="+escola+"&valor_paginacao="+valor_paginacao.value, true);
+    valor_paginacao.value=parseInt(valor_paginacao.value)+25;
+
+        xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+              result.innerHTML += xmlreq.responseText;
+                paginacao.innerHTML ="<button onclick='pesquisa_aluno_paginacao();' class='btn btn-block btn-default btn-sm'>Ver mais resultados</button> ";
+                
              }else{
                    alert('Erro desconhecido, verifique sua conexão com a internet');
 

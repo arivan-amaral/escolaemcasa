@@ -86,7 +86,9 @@ if (!isset($_SESSION['idfuncionario'])) {
                   ?>
               </select>
 
-           </div> 
+           </div>  
+
+  
            <div class="col-sm-6"> 
               <label for="exampleInputEmail1">Pesquisar aluno</label>
                 <input type="search" id="pesquisa" class="form-control form-control" 
@@ -96,7 +98,7 @@ if (!isset($_SESSION['idfuncionario'])) {
 
               <div class="col-sm-2"> 
                 <label><br></label><br>
-               <a class="btn btn-primary" onclick="pesquisa_aluno();">Buscar</a>
+               <a class="btn btn-primary" onclick="limpa_pesquisa_aluno();pesquisa_aluno();">Buscar</a>
               </div>
          </div> 
 
@@ -105,6 +107,12 @@ if (!isset($_SESSION['idfuncionario'])) {
 
 
 </div>
+
+<div id="paginacao">
+             
+</div>
+<input type="hidden" value="50" id="valor_paginacao">
+
 <!-- fim tabela pesquisa professo -->
 
 
@@ -129,6 +137,7 @@ const inputEle = document.getElementById('pesquisa');
 inputEle.addEventListener('keyup', function(e){
   var key = e.which || e.keyCode;
   if (key == 13) { // codigo da tecla enter
+    limpa_pesquisa_aluno();
    pesquisa_aluno();
   }
 });
