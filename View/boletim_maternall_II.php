@@ -400,6 +400,7 @@
                      $nota_tri_3=$value['sigla'];
                    }
 
+
                    echo "$nota_tri_3";
 
                    // 1=====

@@ -229,7 +229,9 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
        // }
       $nota_tri_1=calculos_media_notas($nota_tri_1,$nota_rp_1,$nota_av3_1);
 
-       echo "$nota_tri_1";
+       // echo "$nota_tri_1";
+      echo number_format($nota_tri_1, 1, '.', ',');
+
        ?>
      </o:p></span></p>
    </td>
@@ -281,7 +283,9 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
      // }
       $nota_tri_2=calculos_media_notas($nota_tri_2,$nota_rp_2,$nota_av3_2);
 
-     echo "$nota_tri_2";
+     // echo "$nota_tri_2";
+          echo number_format($nota_tri_2, 1, '.', ',');
+     // 
      ?>
 
    </o:p></span></p>
@@ -336,7 +340,8 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
       $nota_tri_3=calculos_media_notas($nota_tri_3,$nota_rp_3,$nota_av3_3);
   
 
-  echo "$nota_tri_3";
+          echo number_format($nota_tri_3, 1, '.', ',');
+  // echo "$nota_tri_3";
   ?>
 
 
