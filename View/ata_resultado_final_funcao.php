@@ -331,7 +331,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
   // if ($nota_tri_3<5 && $nota_rp_3!='' && $nota_rp_3>$nota_av3_3) {
   //   $nota_tri_3=($nota_tri_3-$nota_av3_3)+$nota_rp_3;
   // }
-      $nota_tri_3=calculos_media_notas($nota_tri_3,$nota_rp_3,$nota_av3_3);
+  $nota_tri_3=calculos_media_notas($nota_tri_3,$nota_rp_3,$nota_av3_3);
   
   $media=($nota_tri_3+$nota_tri_2+$nota_tri_1)/3;
  //arivan
