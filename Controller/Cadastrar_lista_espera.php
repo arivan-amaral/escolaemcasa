@@ -18,13 +18,17 @@ try {
     $serie_id=$_POST['serie_id'];
      
     $res=verificar_cadastro_lista_espera($conexao,$cpf_aluno);
+    $conta=0;
+    foreach ($res as $key => $value) {
+        $conta++;
 
-    if (!$res) {
+    }
+    if ($conta==0) {
         // code...
         cadastrar_lista_espera($conexao,$nome_aluno,$cpf_aluno,$data_nascimento,$nome_responsavel,$cpf_responsavel,$telefone,$endereco,$escola_id,$serie_id,$idfuncionario);
         echo "certo";
     }else{
-        echo "Aluno já possui cadastro de espera na rede municipal!";
+        echo "Aluno já possui cadastro de espera na rede municipal! $conta";
     }
 
 

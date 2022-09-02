@@ -32,11 +32,11 @@ return $res->fetchAll();
 
 function verificar_cadastro_lista_espera($conexao,$cpf_aluno){
     $sql=$conexao->prepare("SELECT 
-       COUNT(*)
+    *
     FROM  
-    lista_de_espera,serie,escola,funcionario
+    lista_de_espera 
     WHERE
-        cpf_aluno=?");
+        cpf_aluno=? LIMIT 1");
 
    $sql->execute(array($cpf_aluno));
    return $sql->fetchAll();
