@@ -1,12 +1,6 @@
 <?php
 session_start();
-if (!isset($_COOKIE['dia_doservidor_publico2'])) {
-  setcookie('dia_doservidor_publico2', 1, (time()+(30*24*3600)));
- // setcookie('conteudo', 1, (time()+(300*24*3600)));
-}else{
-  setcookie('dia_doservidor_publico2', 0, (time()+(30*24*3600)));
-  setcookie('dia_doservidor_publico2', $_COOKIE['dia_doservidor_publico2']+1);
-}
+
   
 ###################################################
 if (!isset($_SESSION['idcoordenador'])) {
@@ -17,15 +11,7 @@ if (!isset($_SESSION['idcoordenador'])) {
   $idcoordenador=$_SESSION['idcoordenador'];
 
 }
-  include "cabecalho.php";
-  include "alertas.php";
- 
-  include "barra_horizontal.php";
-  include 'menu.php';
-  include '../Controller/Conversao.php';
-
   include '../Model/Conexao.php';
-
   include '../Model/Setor.php';
   include '../Model/Chamada.php';
    
@@ -67,35 +53,72 @@ if (!isset($_SESSION['idcoordenador'])) {
   $porcentagem_andamento = ($quant_andamento / $quant_total) * 100;
 
 
-
-if ($_COOKIE['dia_doservidor_publico2']<2 && date("m-d")=="10-28") {
 ?>
-    <script>
-     function dia_doservidor_publico(){
-         Swal.fire({
-           title: "Parabéns!",
-           imageUrl: 'dia_doservidor_publico.png',
-           // imageWidth: 400,
-           // imageHeight: 200,
-           imageAlt: 'dia_doservidor_publico',
-         });
-     }
-setTimeout('dia_doservidor_publico();',3000);
-  </script> 
-<?php 
-  }
-?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<style>
-                      .quadro {
-                        background-image: url(imagens/logo_educalem_natal.png);
-                        background-repeat: no-repeat;
-                   
-                        background-position: center;
-                         
-                            background-size: 100% 100%;
-                      }
-                       </style>
+  <!-- #################################################################### -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="shortcut icon" href="imagens/logo.png"/>
+
+  <title><?php echo "$nome_escola_global"; ?></title>
+  
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <!-- *********************************************************************************** -->
+  
+  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+<!-- CodeMirror -->
+  <link rel="stylesheet" href="plugins/codemirror/codemirror.css">
+  <link rel="stylesheet" href="plugins/codemirror/theme/monokai.css">
+  <link rel="stylesheet" href="plugins/simplemde/simplemde.min.css">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script>
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Bootstrap Color Picker -->
+  <link rel="stylesheet" href="plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHETRNN05Z"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XHETRNN05Z');
+  </script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
+<!-- Select2 -->
+<link rel="stylesheet" href="plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed" onload="window.print()">
+<div class="wrapper">
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
    
@@ -109,48 +132,6 @@ setTimeout('dia_doservidor_publico();',3000);
 </script>
 
 <div class="content-wrapper" style="min-height: 529px;">
-
-    <!-- Content Header (Page header) -->
-
-    <div class="content-header">
-
-      <div class="container-fluid">
-
-        <div class="row mb-2">
-
-          <div class="col-sm-1">
-          </div>
-          <div class="col-sm-12 alert alert-warning">
-
-            <h1 class="m-0"><b>
-
-           <?php
-              if (isset($nome_escola_global)) {
-                echo $nome_escola_global; 
-              }
-              ?>
-
-             <?php if (isset($_SESSION['nome'])) {
-
-              echo " ".$_SESSION['nome'];  
-
-            } 
-
-             ?></b></h1>
-
-          </div><!-- /.col -->
-
-          
-
-        </div><!-- /.row -->
-
-      </div><!-- /.container-fluid -->
-
-    </div>
-
-    <!-- /.content-header -->
-
-    <!-- /.card-header -->
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-12">
@@ -195,15 +176,6 @@ setTimeout('dia_doservidor_publico();',3000);
                     <!-- /.progress-group -->
                   </div>
                   <!-- /.col -->
-                </div>
-                <br>
-                <div class="row">
-                  <div class="col-sm-3"></div>
-                  <div class="col-sm-6">
-                    <form name='gerarPDF$id' action='pdf_visao_geral_chamada.php' method='POST'  target='_blank'>
-                      <button type='submit' class='btn btn-block btn-primary' >GERAR PDF</button>
-                    </form>
-                  </div>
                 </div>
                 <!-- /.row -->
               </div>
