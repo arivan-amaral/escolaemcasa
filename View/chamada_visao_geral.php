@@ -156,6 +156,7 @@ setTimeout('dia_doservidor_publico();',3000);
                   <div class="col-md-12">
                     <p class="text-center" style="background-color: #EAEDED; font-size: 24px; ">
                       <strong>Visão Geral dos Chamados</strong>
+                      
                     </p>
 
                     <div class="progress-group">
@@ -164,6 +165,7 @@ setTimeout('dia_doservidor_publico();',3000);
                       <div class="progress progress-sm">
                         <div class="progress-bar bg-primary" style="width: <?php echo $porcentagem_novas."%" ?>"></div>
                       </div>
+
                     </div>
                     <!-- /.progress-group -->
 
