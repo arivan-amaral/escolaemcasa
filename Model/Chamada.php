@@ -54,7 +54,7 @@ function quant_mensagens($conexao,$id_funcionario){
 
 }
 function pesquisar_chamado_status($conexao,$chamado_id){
-   $result = $conexao->query("SELECT * FROM chamada where status like '%$chamado_id%'");
+   $result = $conexao->query("SELECT * FROM chamada where status like '%$chamado_id%' order by data desc ");
     return $result;
 
 }
@@ -66,7 +66,7 @@ function pesquisar_chamado_status_data($conexao,$chamado_id,$data_inicial,$data_
 }
 
 function pesquisar_chamado_setor($conexao,$chamado_id){
-   $result = $conexao->query("SELECT * FROM chamada where setor_id=$chamado_id");
+   $result = $conexao->query("SELECT * FROM chamada where setor_id=$chamado_id order by data desc ");
     return $result;
 
 }
@@ -78,7 +78,7 @@ function pesquisar_chamado_setor_data($conexao,$chamado_id,$data_inicial,$data_f
 }
 
 function pesquisar_chamado_escola($conexao,$chamado_id){
-   $result = $conexao->query("SELECT * FROM chamada where tipo_solicitacao=$chamado_id and setor_id = '11'");
+   $result = $conexao->query("SELECT * FROM chamada where tipo_solicitacao=$chamado_id and setor_id = '11' order by data desc ");
     return $result;
 
 }
@@ -87,7 +87,7 @@ function pesquisar_chamado_escola_data($conexao,$chamado_id,$data_inicial,$data_
    $result = $conexao->query("SELECT chamada.id,chamada.funcionario_id,chamada.setor_id,chamada.status,chamada.tipo_solicitacao
 ,chamada.func_respondeu_id, chamada.data_previsao FROM 
 chamada,chat_chamado where chamada.tipo_solicitacao=$chamado_id and chamada.setor_id = '11'and chat_chamado.status = 'inicial'
-and chamada.id = chat_chamado.chamada_id and chat_chamado.data BETWEEN '$data_inicial' AND '$data_final'");
+and chamada.id = chat_chamado.chamada_id and chat_chamado.data BETWEEN '$data_inicial' AND '$data_final' order by data desc ");
     return $result;
 
 }
@@ -107,7 +107,7 @@ function pesquisar_chamado_data_retorno($conexao,$data_inicial,$data_final){
 }
 
 function pesquisar_chamado_solicitante($conexao,$chamado_id){
-   $result = $conexao->query("SELECT * FROM chamada where funcionario_id=$chamado_id");
+   $result = $conexao->query("SELECT * FROM chamada where funcionario_id=$chamado_id order by data desc ");
     return $result;
 
 }
@@ -131,7 +131,7 @@ function pesquisar_chamado_retorno_data($conexao,$chamado_id,$data_inicial,$data
 }
 
 function pesquisar_todos_chamado($conexao){
-   $result = $conexao->query("SELECT * FROM chamada ");
+   $result = $conexao->query("SELECT * FROM chamada order by data desc ");
     return $result;
 
 }
