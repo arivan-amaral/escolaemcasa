@@ -171,10 +171,10 @@ $nome_disciplina='';
     $nome_aluno=strtoupper($value['nome_aluno']);
     $nome_turma=$value['nome_turma'];
     parecere_descritivo_cheche($conexao,$idescola,$idturma,$idserie,$nome_disciplina,$nome_escola,$nome_aluno,$nome_turma,$idaluno,$_SESSION['ano_letivo']); 
-    echo" <br>";
-    if ($conta%2==0) {
+    // echo" <br>";
+    // if ($conta%2==0) {
       echo "<div class='pagebreak'> </div>";
-    }
+    // }
     $conta++;
   }
 ?>
