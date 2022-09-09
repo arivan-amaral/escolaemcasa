@@ -15,6 +15,7 @@
   include '../Model/Aluno.php';
   $idescola=$_SESSION['escola_id'];
   $idturma=$_SESSION['turma_id'];
+  $idturma_boletim=$_SESSION['turma_id'];
   $idserie=$_SESSION['serie_id'];
   $etapa_id="";
   if (isset($_SESSION['etapa_id'])) {
@@ -67,7 +68,7 @@ $result_prov="";
 
 foreach ($result_prova as $key_questionario => $value_questionario) {
 
-$quantidade_questionario++;
+    $quantidade_questionario++;
 
     $questionario_id=$value_questionario['id'];
     $titulo=$value_questionario['nome'];
@@ -794,9 +795,9 @@ if ($idserie>2) {
                                   <h4 class='card-title w-100'>
                                 
                                
-                                     <a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma' class='d-block w-100 collapsed' >
+                                     <a href='boletim_individual.php?idescola=$idescola&idturma=$idturma_boletim&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma' class='d-block w-100 collapsed' >
                                     
-                                    MEU BOLETIM  Turma: $idturma<b class='text-warning'> </b> 
+                                    MEU BOLETIM  Turma: $idturma_boletim<b class='text-warning'> </b> 
 
                                    
                                       
