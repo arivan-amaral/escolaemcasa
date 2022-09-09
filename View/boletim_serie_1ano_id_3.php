@@ -1,5 +1,25 @@
 <?php 
  function boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$nome_professor,$ano_letivo){
+
+
+
+  $res_calendario=listar_data_periodo($conexao,$ano_letivo);
+  foreach ($res_calendario as $key => $value) {
+  
+      if ($value['periodo_id']==1) {
+          $data_inicio_trimestre1=$value['inicio'];
+          $data_fim_trimestre1=$value['fim'];
+      }elseif ($value['periodo_id']==2){
+          $data_inicio_trimestre2=$value['inicio'];
+          $data_fim_trimestre2=$value['fim'];
+      }elseif ($value['periodo_id']==3){
+          $data_inicio_trimestre3=$value['inicio'];
+          $data_fim_trimestre3=$value['fim'];
+      }
+
+    
+  }
+  
 ?>
   <div class=WordSection1>
 
