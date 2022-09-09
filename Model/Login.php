@@ -13,6 +13,7 @@ escola.idescola=ecidade_matricula.turma_escola and
 ecidade_matricula.aluno_id=idaluno and
 ecidade_matricula.turma_id=turma.idturma AND
 ecidade_matricula.matricula_ativa='S' AND
+ecidade_matricula.matricula_concluida='N' AND
  
 
 aluno.email='$usuario' and aluno.senha='$senha' and ecidade_matricula.calendario_ano=$ano_letivo and aluno.status='Ativo' order by matricula_codigo desc ");
