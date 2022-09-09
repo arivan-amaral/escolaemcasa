@@ -346,7 +346,7 @@
 
 
        <tr style='mso-yfti-irow:75;height:15.75pt;mso-row-margin-right:.45pt'>
-        <td width=670 nowrap colspan=3 style='width:502.15pt;border-top:none;
+        <td width=670 nowrap colspan=4 style='width:502.15pt;border-top:none;
         border-left:solid windowtext 1.0pt;border-bottom:solid windowtext 1.0pt;
         border-right:solid black 1.0pt;background:#D9D9D9;padding:0cm 3.5pt 0cm 3.5pt;
         height:15.75pt'>
@@ -358,6 +358,7 @@
         "Times New Roman";mso-bidi-font-family:Calibri;color:black;mso-fareast-language:
         PT-BR'><o:p></o:p></span></b></p>
         </td>
+
         <td width=52 nowrap valign=bottom style='width:38.85pt;border-top:none;
         border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
         mso-border-bottom-alt:solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;
@@ -365,7 +366,28 @@
         <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
         style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
         mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-        mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
+        mso-fareast-language:PT-BR'>&nbsp;
+
+          <?php
+          // faltas trimestre 1
+
+
+          $res_fre_t1=$conexao->query("
+          SELECT data_frequencia FROM frequencia WHERE
+          escola_id=$idescola and
+          turma_id=$idturma and
+          presenca=0 and data_frequencia BETWEEN '$data_inicio_trimestre1' and '$data_fim_trimestre1' and aluno_id=$idaluno  group by data_frequencia");
+          // disciplina_id=$iddisciplina and 
+          $quantidade_falta1=0;
+          foreach ($res_fre_t1 as $key => $value) {
+            $quantidade_falta1++;
+          }
+
+          echo "$quantidade_falta1";
+          ?>
+
+
+        <o:p></o:p></span></p>
         </td>
         <td width=54 nowrap valign=bottom style='width:40.85pt;border-top:none;
         border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -374,7 +396,26 @@
         <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
         style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
         mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-        mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
+        mso-fareast-language:PT-BR'>&nbsp;
+
+        <?php
+        // faltas trimestre 2
+
+
+        $res_fre_t2=$conexao->query("
+        SELECT data_frequencia FROM frequencia WHERE
+        escola_id=$idescola and
+        turma_id=$idturma and
+        presenca=0 and data_frequencia BETWEEN '$data_inicio_trimestre2' and '$data_fim_trimestre2' and aluno_id=$idaluno  group by data_frequencia");
+        // disciplina_id=$iddisciplina and 
+        $quantidade_falta2=0;
+        foreach ($res_fre_t2 as $key => $value) {
+          $quantidade_falta2++;
+        }
+
+        echo "$quantidade_falta2";
+        ?>
+        <o:p></o:p></span></p>
         </td>
         <td width=58 nowrap valign=bottom style='width:43.45pt;border-top:none;
         border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -382,7 +423,30 @@
         <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
         style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
         mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-        mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
+        mso-fareast-language:PT-BR'>&nbsp;
+     <?php
+        // faltas trimestre 3
+
+
+        $res_fre_t3=$conexao->query("
+        SELECT data_frequencia FROM frequencia WHERE
+        escola_id=$idescola and
+        turma_id=$idturma and
+        presenca=0 and data_frequencia BETWEEN '$data_inicio_trimestre3' and '$data_fim_trimestre3' and aluno_id=$idaluno  group by data_frequencia");
+        // disciplina_id=$iddisciplina and 
+        $quantidade_falta3=0;
+        foreach ($res_fre_t3 as $key => $value) {
+          $quantidade_falta3++;
+        }
+
+        echo "$quantidade_falta3";
+        ?>
+
+
+
+
+
+        <o:p></o:p></span></p>
         </td>
         <td width=10 colspan=2 style='width:7.3pt;padding:0cm 3.5pt 0cm 3.5pt;
         height:15.75pt'></td>

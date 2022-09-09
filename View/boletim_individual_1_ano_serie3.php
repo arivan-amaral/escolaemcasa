@@ -1,5 +1,22 @@
 <?php 
  function boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$nome_professor,$ano_letivo){
+    
+    $res_calendario=listar_data_periodo($conexao,$ano_letivo);
+    foreach ($res_calendario as $key => $value) {
+    
+        if ($value['periodo_id']==1) {
+            $data_inicio_trimestre1=$value['inicio'];
+            $data_fim_trimestre1=$value['fim'];
+        }elseif ($value['periodo_id']==2){
+            $data_inicio_trimestre2=$value['inicio'];
+            $data_fim_trimestre2=$value['fim'];
+        }elseif ($value['periodo_id']==3){
+            $data_inicio_trimestre3=$value['inicio'];
+            $data_fim_trimestre3=$value['fim'];
+        }
+
+      
+    }
 ?>
     
   <!-- <div id="folha-a4" class="folha a4_vertical" > -->
@@ -305,7 +322,9 @@
         color:black;mso-fareast-language:PT-BR'>TOTAL DE FALTAS</span></b><b><span
         style='font-size:9.0pt;font-family:"Arial Black",sans-serif;mso-fareast-font-family:
         "Times New Roman";mso-bidi-font-family:Calibri;color:black;mso-fareast-language:
-        PT-BR'><o:p></o:p></span></b></p>
+        PT-BR'><o:p>
+
+        </o:p></span></b></p>
         </td>
         <td width=52 nowrap valign=bottom style='width:38.85pt;border-top:none;
         border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -314,7 +333,11 @@
         <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
         style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
         mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-        mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
+        mso-fareast-language:PT-BR'>&nbsp;
+
+
+      
+        <o:p></o:p></span></p>
         </td>
         <td width=54 nowrap valign=bottom style='width:40.85pt;border-top:none;
         border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -323,7 +346,10 @@
         <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
         style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
         mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-        mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
+        mso-fareast-language:PT-BR'>&nbsp;
+
+   
+        <o:p></o:p></span></p>
         </td>
         <td width=58 nowrap valign=bottom style='width:43.45pt;border-top:none;
         border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
