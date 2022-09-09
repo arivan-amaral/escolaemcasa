@@ -1,6 +1,6 @@
 <?php 
 // header(sprintf('location: %s', $_SERVER['HTTP_REFERER']));
-//  exit;
+//  exit; 
 session_start();
   include"../Controller/Conversao.php";
   include"../Model/Conexao.php";
