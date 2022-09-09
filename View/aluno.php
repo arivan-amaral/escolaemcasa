@@ -796,7 +796,7 @@ if ($idserie>2) {
                                
                                      <a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma' class='d-block w-100 collapsed' >
                                     
-                                    MEU BOLETIM <b class='text-warning'> </b> 
+                                    MEU BOLETIM  Turma: $turma_id<b class='text-warning'> </b> 
 
                                    
                                       
