@@ -1,6 +1,6 @@
 <?php 
 session_start();
-set_time_limit(500);
+set_time_limit(0);
 include_once"../Controller/Conversao.php";
 include_once"../Model/Conexao.php";
 include_once"../Model/Coordenador.php";

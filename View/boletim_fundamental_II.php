@@ -523,7 +523,25 @@ height:15.75pt'>
 <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
 line-height:normal'><span style='mso-ascii-font-family:Calibri;mso-fareast-font-family:
 "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
+color:black;mso-fareast-language:PT-BR'>&nbsp;
+<?php
+// faltas trimestre 2
+
+
+$res_fre_t2=$conexao->query("
+SELECT data_frequencia FROM frequencia WHERE
+escola_id=$idescola and
+turma_id=$idturma and
+presenca=0 and data_frequencia BETWEEN '$data_inicio_trimestre2' and '$data_fim_trimestre2' and aluno_id=$idaluno  group by data_frequencia");
+// disciplina_id=$iddisciplina and 
+$quantidade_falta2=0;
+foreach ($res_fre_t2 as $key => $value) {
+  $quantidade_falta2++;
+}
+
+echo "$quantidade_falta2";
+?>
+<o:p></o:p></span></p>
 </td>
 <td width=53 nowrap style='width:39.4pt;border-top:none;border-left:none;
 border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -534,7 +552,27 @@ height:15.75pt'>
 <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
 line-height:normal'><span style='mso-ascii-font-family:Calibri;mso-fareast-font-family:
 "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
+color:black;mso-fareast-language:PT-BR'>&nbsp;
+
+
+<?php
+// faltas trimestre 3
+
+
+$res_fre_t3=$conexao->query("
+SELECT data_frequencia FROM frequencia WHERE
+escola_id=$idescola and
+turma_id=$idturma and
+presenca=0 and data_frequencia BETWEEN '$data_inicio_trimestre3' and '$data_fim_trimestre3' and aluno_id=$idaluno  group by data_frequencia");
+// disciplina_id=$iddisciplina and 
+$quantidade_falta3=0;
+foreach ($res_fre_t3 as $key => $value) {
+  $quantidade_falta3++;
+}
+
+echo "$quantidade_falta3";
+?>
+<o:p></o:p></span></p>
 </td>
 <td width=28 nowrap style='width:21.05pt;border-top:none;border-left:none;
 border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
