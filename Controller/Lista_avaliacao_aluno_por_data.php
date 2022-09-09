@@ -102,11 +102,12 @@ try {
                             <b class='text-success'> $nome_aluno </b>
                             <br>";
 
-
-                            if(  $procedimento!=""){
+                            $disabled="";
+                            if($procedimento!=""){
                                 $result.="<b class='text-success'>
                                     <b class='text-danger'> $procedimento | $datasaida </b>
                                  </b>";
+                            $disabled=" disabled ";
                              
                                 
                             }else if(  (strtotime($data_matricula) <= strtotime($data_fim_periodo)) ){
@@ -214,17 +215,17 @@ try {
 
 
                                    $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>Nota AV1:</label>
-                                  <input type='text' id='nota_av1$id'  name='nota_av1$id' value='$nota1' style='width:50px;' onkeyup='somenteNumeros(this,3);total_notas($id);'>";
+                                  <input type='text' id='nota_av1$id'  name='nota_av1$id' value='$nota1' style='width:50px;' onkeyup='somenteNumeros(this,3);total_notas($id);' $disabled>";
 
 
                                    $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>Nota AV2:</label>
-                                  <input type='text' id='nota_av2$id' name='nota_av2$id' value='$nota2' style='width:50px;' onkeyup='somenteNumeros(this,3);total_notas($id);'>";
+                                  <input type='text' id='nota_av2$id' name='nota_av2$id' value='$nota2' style='width:50px;' onkeyup='somenteNumeros(this,3);total_notas($id);' $disabled>";
 
                                    $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>Nota AV3:</label>
-                                  <input type='text' id='nota_av3$id' name='nota_av3$id' value='$nota3' style='width:50px;' onkeyup='somenteNumeros(this,4);total_notas($id);'>";
+                                  <input type='text' id='nota_av3$id' name='nota_av3$id' value='$nota3' style='width:50px;' onkeyup='somenteNumeros(this,4);total_notas($id);' $disabled>";
 
                                    $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>Nota RP:</label>
-                                  <input type='text' id='nota_rp$id'  name='nota_RP$id' value='$notarp' style='width:50px;' onkeyup='somenteNumeros(this,4);total_notas($id);'>
+                                  <input type='text' id='nota_rp$id'  name='nota_RP$id' value='$notarp' style='width:50px;' onkeyup='somenteNumeros(this,4);total_notas($id);' $disabled>
                                   
                                   ";                     
 
