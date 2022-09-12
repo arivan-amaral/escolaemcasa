@@ -30,6 +30,11 @@ $res=$conexao->query("SELECT * FROM ecidade_matricula where
 return $res->fetchAll();
 }
 
+function data_matricula_ativa($conexao,$aluno_id){
+$res=$conexao->query("SELECT * FROM ecidade_matricula where  aluno_id=$aluno_id order by matricula_codigo desc ");
+return $res->fetchAll();
+}
+
 function verificar_cadastro_lista_espera($conexao,$cpf_aluno){
     $sql=$conexao->prepare("SELECT 
     *

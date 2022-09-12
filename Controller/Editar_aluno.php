@@ -196,7 +196,11 @@ try {
     $turma_id_anterior=null;
     $matricula_situacao='MATRICULADO';
     $matricula_concluida='N';
-    $matricula_datamatricula=date("Y-m-d");
+    
+        $matricula_datamatricula=$_POST['data_matricula'];
+        // code...
+
+
     $matricula_ativa='S';
     $matricula_tipo='N';
     $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];

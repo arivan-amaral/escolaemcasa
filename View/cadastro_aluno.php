@@ -11,7 +11,12 @@ include_once "../Model/Estado.php";
 include_once "../Model/Coordenador.php"; 
 $idcoordenador=$_SESSION['idfuncionario'];
 
+if ($_SESSION['nivel_acesso_id']==100) {
+ $disabled='';
+}else{
+ $disabled='disabled';
 
+}
  
 ?>
 
@@ -542,7 +547,7 @@ $idcoordenador=$_SESSION['idfuncionario'];
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Matrícula da certidão </label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="matricula_certidao" required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="matricula_certidao" required>
                         </div>
                       </div>
                       <div class="col-sm-3">
@@ -773,15 +778,9 @@ $idcoordenador=$_SESSION['idfuncionario'];
                         <div class="col-sm-3">
                           <div class="form-group">
                             <label class='text-danger'>Data Matrícula <b class="text-danger">*</b></label>
-                            <?php 
-                              if ($_SESSION['nivel_acesso_id']>=100) {
-                                echo "<input type='date' class='form-control' id='data_matricula' name='data_matricula' required>";
-                              }else{
-                            ?>
-                              <input type="date" class="form-control" id="data_matricula" name="data_matricula" required="" value="<?php echo date(); ?>">
-                            <?php 
-                              }
-                            ?>
+                       
+                              <input type="date" class="form-control" id="data_matricula" name="data_matricula" required  <?php echo $disabled; ?>  value="<?php echo date('Y-m-d'); ?>" >
+                        
                           </div>
                         </div>
                     </div>

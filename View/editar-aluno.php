@@ -13,10 +13,18 @@ include_once "../Model/Coordenador.php";
 include_once "../Model/Aluno.php"; 
 $idcoordenador=$_SESSION['idfuncionario'];
 $idaluno = $_POST['aluno_id'];
-$data_matricula = '';
 
-                
-$res_data = data_matricula($conexao,$idaluno,$_SESSION["ano_letivo"]);
+
+if ($_SESSION['nivel_acesso_id']==100) {
+ $disabled='';
+}else{
+ $disabled='disabled';
+  
+}
+
+$data_matricula = '';                
+               
+$res_data = data_matricula_ativa($conexao,$idaluno);
 foreach ($res_data as $key => $value) {
  $data_matricula = data_simples($value['matricula_datamatricula']);
 }
@@ -242,8 +250,8 @@ foreach ($res as $key => $value) {
                   
                        <div class="col-sm-3">
                           <div class="form-group">
-                            <label class='text-danger'>Data Matricula <b class="text-danger">*</b></label>
-                            <input type="date" class="form-control" id="data_matricula" name="data_matricula" value="<?php echo $data_matricula ?>" required>
+                            <label class='text-danger'>Data Matricula<b class="text-danger">*</b></label>
+                            <input type="date" class="form-control" id="data_matricula" name="data_matricula" value="<?php echo $data_matricula ?>" <?php echo $disabled; ?> required >
                           </div>
                         </div>
                     

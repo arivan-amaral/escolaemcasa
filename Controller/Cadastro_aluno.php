@@ -94,7 +94,13 @@ try {
             $escola_id=$_POST['escola'];
             $turma_id=$_POST['turma'];
             $turno_nome=$_POST['turno'];
-            $matricula_datamatricula=$_POST['data_matricula'];
+            if (isset($_POST['data_matricula'])) {
+                $matricula_datamatricula=$_POST['data_matricula'];
+                // code...
+            }else{
+                $matricula_datamatricula=date('Y-m-d');
+
+            }
         // _________________________________________________________
 
             $turma_id_anterior=null;
