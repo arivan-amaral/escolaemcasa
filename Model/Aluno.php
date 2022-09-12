@@ -31,7 +31,7 @@ return $res->fetchAll();
 }
 
 function data_matricula_ativa($conexao,$aluno_id){
-$res=$conexao->query("SELECT * FROM ecidade_matricula where  aluno_id=$aluno_id order by matricula_codigo desc ");
+$res=$conexao->query("SELECT * FROM ecidade_matricula where  aluno_id=$aluno_id order by matricula_codigo asc ");
 return $res->fetchAll();
 }
 
