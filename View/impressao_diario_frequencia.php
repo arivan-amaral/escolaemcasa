@@ -194,12 +194,13 @@ if ($idserie<3) {
         $inicio=36;
         $conta_aula=36;
 
-        $limite_data=25;
+                $limite_data=29;//$fim= 25;
+
         $limite_aula=18;
 
  
         $conta_data=1; //não existia
-        $fim= 25;
+        $fim= 29;
  
 
         //linha 428 600 760
@@ -220,12 +221,13 @@ if ($idserie<3) {
         $inicio=36;
         $conta_aula=36;
 
-        $limite_data=25;
+        $limite_data=29;//$fim= 25;
+
         $limite_aula=18;
 
  
         $conta_data=1; //não existia
-        $fim= 25;
+        $fim= 29;
  
         //linha 428 600 760
         diario_frequencia_pagina_final_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
@@ -246,12 +248,12 @@ if ($idserie<3) {
     $inicio=36;
     $conta_aula=36;
 
-    $limite_data=25;
+    $limite_data=29;//$fim= 25;
     $limite_aula=18;
 
     
     $conta_data=1; //não existia
-    $fim= 25;
+    $fim= 29;
     
 
     //linha 428 600 760
