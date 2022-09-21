@@ -11,8 +11,12 @@ $idturma=$_GET['turm'];
 $iddisciplina=$_GET['disc'];
 $idserie=$_GET['idserie'];
 
-
-acompanhamento($conexao,$idescola,$idturma,$iddisciplina,$idserie); 
+try {
+    acompanhamento($conexao,$idescola,$idturma,$iddisciplina,$idserie,$_SESSION['ano_letivo']); 
+    
+} catch (Exception $e) {
+    echo "$e";
+}
 
 
  ?>

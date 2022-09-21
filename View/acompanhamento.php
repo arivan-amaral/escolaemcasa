@@ -1,7 +1,5 @@
 <?php
-
-
- function acompanhamento($conexao,$idescola,$idturma,$iddisciplina,$idserie){
+ function acompanhamento($conexao,$idescola,$idturma,$iddisciplina,$idserie,$ano_letivo){
 ?>
 
 <html xmlns:v="urn:schemas-microsoft-com:vml"
@@ -94,80 +92,80 @@ xmlns="http://www.w3.org/TR/REC-html40">
 
  /* Font Definitions */
  @font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;
-	mso-font-charset:0;
-	mso-generic-font-family:roman;
-	mso-font-pitch:variable;
-	mso-font-signature:3 0 0 0 1 0;}
+  {font-family:"Cambria Math";
+  panose-1:2 4 5 3 5 4 6 3 2 4;
+  mso-font-charset:0;
+  mso-generic-font-family:roman;
+  mso-font-pitch:variable;
+  mso-font-signature:3 0 0 0 1 0;}
 @font-face
-	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;
-	mso-font-charset:0;
-	mso-generic-font-family:swiss;
-	mso-font-pitch:variable;
-	mso-font-signature:-469750017 -1073732485 9 0 511 0;}
+  {font-family:Calibri;
+  panose-1:2 15 5 2 2 2 4 3 2 4;
+  mso-font-charset:0;
+  mso-generic-font-family:swiss;
+  mso-font-pitch:variable;
+  mso-font-signature:-469750017 -1073732485 9 0 511 0;}
 @font-face
-	{font-family:"Tw Cen MT Condensed";
-	panose-1:2 11 6 6 2 1 4 2 2 3;
-	mso-font-charset:0;
-	mso-generic-font-family:swiss;
-	mso-font-pitch:variable;
-	mso-font-signature:7 0 0 0 3 0;}
+  {font-family:"Tw Cen MT Condensed";
+  panose-1:2 11 6 6 2 1 4 2 2 3;
+  mso-font-charset:0;
+  mso-generic-font-family:swiss;
+  mso-font-pitch:variable;
+  mso-font-signature:7 0 0 0 3 0;}
 @font-face
-	{font-family:"Arial Black";
-	panose-1:2 11 10 4 2 1 2 2 2 4;
-	mso-font-charset:0;
-	mso-generic-font-family:swiss;
-	mso-font-pitch:variable;
-	mso-font-signature:-1610612049 1073772795 0 0 159 0;}
+  {font-family:"Arial Black";
+  panose-1:2 11 10 4 2 1 2 2 2 4;
+  mso-font-charset:0;
+  mso-generic-font-family:swiss;
+  mso-font-pitch:variable;
+  mso-font-signature:-1610612049 1073772795 0 0 159 0;}
  /* Style Definitions */
  p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{mso-style-unhide:no;
-	mso-style-qformat:yes;
-	mso-style-parent:"";
-	margin-top:0cm;
-	margin-right:0cm;
-	margin-bottom:8.0pt;
-	margin-left:0cm;
-	line-height:107%;
-	mso-pagination:widow-orphan;
-	font-size:11.0pt;
-	font-family:"Calibri",sans-serif;
-	mso-ascii-font-family:Calibri;
-	mso-ascii-theme-font:minor-latin;
-	mso-fareast-font-family:Calibri;
-	mso-fareast-theme-font:minor-latin;
-	mso-hansi-font-family:Calibri;
-	mso-hansi-theme-font:minor-latin;
-	mso-bidi-font-family:"Times New Roman";
-	mso-bidi-theme-font:minor-bidi;
-	mso-fareast-language:EN-US;}
+  {mso-style-unhide:no;
+  mso-style-qformat:yes;
+  mso-style-parent:"";
+  margin-top:0cm;
+  margin-right:0cm;
+  margin-bottom:8.0pt;
+  margin-left:0cm;
+  line-height:107%;
+  mso-pagination:widow-orphan;
+  font-size:11.0pt;
+  font-family:"Calibri",sans-serif;
+  mso-ascii-font-family:Calibri;
+  mso-ascii-theme-font:minor-latin;
+  mso-fareast-font-family:Calibri;
+  mso-fareast-theme-font:minor-latin;
+  mso-hansi-font-family:Calibri;
+  mso-hansi-theme-font:minor-latin;
+  mso-bidi-font-family:"Times New Roman";
+  mso-bidi-theme-font:minor-bidi;
+  mso-fareast-language:EN-US;}
 .MsoChpDefault
-	{mso-style-type:export-only;
-	mso-default-props:yes;
-	font-family:"Calibri",sans-serif;
-	mso-ascii-font-family:Calibri;
-	mso-ascii-theme-font:minor-latin;
-	mso-fareast-font-family:Calibri;
-	mso-fareast-theme-font:minor-latin;
-	mso-hansi-font-family:Calibri;
-	mso-hansi-theme-font:minor-latin;
-	mso-bidi-font-family:"Times New Roman";
-	mso-bidi-theme-font:minor-bidi;
-	mso-fareast-language:EN-US;}
+  {mso-style-type:export-only;
+  mso-default-props:yes;
+  font-family:"Calibri",sans-serif;
+  mso-ascii-font-family:Calibri;
+  mso-ascii-theme-font:minor-latin;
+  mso-fareast-font-family:Calibri;
+  mso-fareast-theme-font:minor-latin;
+  mso-hansi-font-family:Calibri;
+  mso-hansi-theme-font:minor-latin;
+  mso-bidi-font-family:"Times New Roman";
+  mso-bidi-theme-font:minor-bidi;
+  mso-fareast-language:EN-US;}
 .MsoPapDefault
-	{mso-style-type:export-only;
-	margin-bottom:8.0pt;
-	line-height:107%;}
+  {mso-style-type:export-only;
+  margin-bottom:8.0pt;
+  line-height:107%;}
 @page WordSection1
-	{size:595.3pt 841.9pt;
-	margin:70.85pt 3.0cm 70.85pt 3.0cm;
-	mso-header-margin:35.4pt;
-	mso-footer-margin:35.4pt;
-	mso-paper-source:0;}
+  {size:595.3pt 841.9pt;
+  margin:70.85pt 3.0cm 70.85pt 3.0cm;
+  mso-header-margin:35.4pt;
+  mso-footer-margin:35.4pt;
+  mso-paper-source:0;}
 div.WordSection1
-	{page:WordSection1;}
+  {page:WordSection1;}
 
 </style>
 
@@ -463,12 +461,17 @@ foreach ($result_escola as $key => $value) {
 
  
 <?php
-  $result= listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola);
+
+
+   $result= listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$ano_letivo);
+  // $result= listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola);
   $conta=1;
 foreach ($result as $key => $value) {
+  
   $nome_aluno=utf8_decode($value['nome_aluno']);
   $nome_turma=($value['nome_turma']);
   $idaluno=$value['idaluno'];
+
   $result_ocorrencia=$conexao->query("SELECT * FROM ocorrencia_pedagogica,aluno where aluno_id=aluno.idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and descricao !='' and  aluno_id=$idaluno");
   $descricao="";
   $data_ocorrencia='';
@@ -477,20 +480,20 @@ foreach ($result as $key => $value) {
     $data_ocorrencia=converte_data($value['data_ocorrencia']);
 
 
-echo "
+      echo "
 
-<tr height=0>
- <td width=77 style='border:1px solid;'> $conta </td>
- <td width=225 style='border:1px solid'> $data_ocorrencia </td>
- <td width=168 colspan='2' style='border-bottom:1px solid;font-size:8.0pt; '>$nome_aluno</td>
+      <tr height=0>
+       <td width=77 style='border:1px solid;'> $conta </td>
+       <td width=225 style='border:1px solid'> $data_ocorrencia </td>
+       <td width=168 colspan='2' style='border-bottom:1px solid;font-size:8.0pt; '>$nome_aluno</td>
 
- <td width=462 style='border:1px solid'>  $descricao </td>
-</tr>
+       <td width=462 style='border:1px solid'>  $descricao </td>
+      </tr>
 
-";
+      ";
 
-  }
-?>
+        }
+      ?>
 
  
  
