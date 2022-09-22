@@ -1,4 +1,5 @@
 <?php 
+set_time_limit(0);
 session_start();
 include_once 'cabecalho.php'; 
 include_once 'barra_horizontal.php'; 
