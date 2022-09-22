@@ -1,6 +1,6 @@
     <?php 
-    set_time_limit(0);
     session_start();
+    set_time_limit(0);
     include_once '../Model/Conexao.php';
     include_once '../Model/Aluno.php';
     include_once "Conversao.php";
