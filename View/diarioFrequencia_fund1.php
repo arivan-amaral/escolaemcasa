@@ -576,7 +576,8 @@ $conta_presenca=1;
 
 
 
-      $presenca="-";
+      $presenca="<span style='font-size: 18px;'>-</span>";
+     
       foreach ($res_pre as $key => $value) {
         
         if ($value['presenca']==1) {

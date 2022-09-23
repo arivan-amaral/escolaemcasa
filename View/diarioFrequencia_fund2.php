@@ -613,13 +613,24 @@ $conta_presenca=1;
 
     $res_pre=$conexao->query("SELECT presenca from frequencia where presenca=1 and aluno_id=$idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and data_frequencia>='$data_matricula' and  data_frequencia='$data_frequencia' and aula='$aula' ");
      
-    if ($res_pre->rowCount()>0) {
-      $presenca=".";
-    }else{
-      $presenca="";
-       $presenca="F";
+    // if ($res_pre->rowCount()>0) {
+    //   $presenca=".";
+    // }else{
+    //   $presenca="";
+    //    $presenca="F";
 
-    }
+    // }
+    // 
+      $presenca="<span style='font-size: 18px;'>-</span>";
+      foreach ($res_pre as $key => $value) {
+        
+        if ($value['presenca']==1) {
+            $presenca=".";
+        }else if ($value['presenca']==0){
+            $presenca="F";
+        }
+           
+      }
    
   ?>
   
