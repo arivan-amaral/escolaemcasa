@@ -736,19 +736,24 @@ $conta_presenca=1;
     $aula=$array_aula[$key];
     $data_frequencia=$array_data_aula[$key];
 
-    $res_pre=$conexao->query("SELECT presenca from frequencia where presenca=1 and aluno_id=$idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and data_frequencia>='$data_matricula' and data_frequencia='$data_frequencia' and aula='$aula' ");
+    $res_pre=$conexao->query("SELECT presenca from frequencia where   aluno_id=$idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and data_frequencia>='$data_matricula' and data_frequencia='$data_frequencia' and aula='$aula' ");
    
     // $res_pre=$conexao->query("SELECT presenca from frequencia where presenca=1 and aluno_id=$idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and data_frequencia='$data_frequencia' and aula='$aula'
     // 
 
-     foreach ($res_pre as $key_res_pre => $value_res_pre) {
-      $presenca=".";
-     }
+    $presenca="<span style='font-size: 18px;'>-</span>";
 
-    if (isset($_GET['tokem'])) {
-           $presenca="|SELECT presenca from frequencia where presenca=1 and aluno_id=$idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and data_frequencia='$data_frequencia' and aula='$aula'|".$res_pre->rowCount();
-
+     foreach ($res_pre as $key => $value) {
+       
+       if ($value['presenca']==1) {
+           $presenca=".";
+       }else if ($value['presenca']==0){
+           $presenca="F";
+       }
+          
      }
+    
+
    
   ?>
   

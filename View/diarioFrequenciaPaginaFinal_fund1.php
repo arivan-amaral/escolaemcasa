@@ -563,7 +563,8 @@ $conta_presenca=1;
     $res_pre=$conexao->query("SELECT presenca from frequencia where  aluno_id=$idaluno 
        and turma_id=$idturma and data_frequencia>='$data_matricula' and  data_frequencia='$data_frequencia' and aula='$aula'  ");
       
-      $presenca="-";
+     $presenca="<span style='font-size: 18px;'>-</span>";
+
       foreach ($res_pre as $key => $value) {
         
         if ($value['presenca']==1) {
