@@ -143,7 +143,13 @@ foreach ($_POST['aluno_id'] as $key => $value) {
                              idnota =$idnota_bd
                              ");
                             
-                            // echo "aluno_id= $aluno_id ($nota != $nota_bd) || ($sigla != $sigla_bd) ||($funcionario_id_bd=='') || ($parecer_descritivo_bd !=$parecer_descritivo)</br>";
+                            // echo "string1:          UPDATE nota SET
+                            //  nota=$nota,
+                            //  sigla='$sigla',
+                            //  funcionario_id=$nota,
+                            //  parecer_descritivo='$parecer_descritivo'
+                            //  WHERE 
+                            //  idnota =$idnota_bd";
                         }else{
                              $conexao->exec("
                              UPDATE nota_parecer SET
@@ -172,7 +178,7 @@ foreach ($_POST['aluno_id'] as $key => $value) {
 
 
                   // if ($conta_qnt_siglas>=0) {
-                  if ($conta_qnt_siglas==0 && $avaliacao=='av3' ) {
+                  if ($conta_qnt_siglas==0) {
                       $parecer_disciplina_id=0;
                       if (isset($_POST["descricao_parecer$aluno_id"][$key])) {
                         $parecer_disciplina_id=$_POST["descricao_parecer$aluno_id"][$key];
@@ -181,11 +187,6 @@ foreach ($_POST['aluno_id'] as $key => $value) {
                       cadastro_nota($conexao,$nota, 
                       $parecer_disciplina_id, $parecer_descritivo, $sigla,$idescola, $idturma, $iddisciplina, $aluno_id, $periodo, $data,$avaliacao,$funcionario_id,$ano_nota);
                   }
-
-
-
-                  echo "cadastro $aluno_id= $nota, 
-                      $parecer_disciplina_id, $parecer_descritivo, $sigla,$idescola, $idturma, $iddisciplina, $aluno_id, $periodo, $data,$avaliacao,$funcionario_id,$ano_nota <br>";
               }
 
 
@@ -196,8 +197,6 @@ foreach ($_POST['aluno_id'] as $key => $value) {
             $verifica_duplicidade=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$aluno_id,$periodo,$avaliacao,$ano_nota);
              $conta_total_nota=0;
              $nome_aluno_nota_duplicada="";
-
-
              foreach ($verifica_duplicidade as $key => $value) {
                 $nome_aluno_nota_duplicada.=", ".$value['aluno_id'];
                 $conta_total_nota++;
@@ -235,13 +234,13 @@ foreach ($_POST['aluno_id'] as $key => $value) {
                              idnota =$idnota_bd
                              ");
 
-                             // echo "string4:$nota != $nota_bd  UPDATE nota SET
-                             // nota=$nota,
-                             // funcionario_id=$funcionario_id,
-                             // parecer_descritivo='$parecer_descritivo'
-                             // WHERE 
-                             // idnota =$idnota_bd <br>
-                             // ";
+                            // echo "string4:$nota != $nota_bd  UPDATE nota SET
+                            //  nota=$nota,
+                            //  funcionario_id=$funcionario_id,
+                            //  parecer_descritivo='$parecer_descritivo'
+                            //  WHERE 
+                            //  idnota =$idnota_bd <br>
+                            //  ";
 
                         }else{
 
@@ -261,11 +260,11 @@ foreach ($_POST['aluno_id'] as $key => $value) {
                              // idnota =$idnota_bd <br>";
                         }
 
-                        echo " UPDATE nota SET
-                             nota=$nota,
-                             parecer_descritivo='$parecer_descritivo'
-                             WHERE 
-                             idnota =$idnota_bd an avaliacao=$avaliacao<br>";
+                        // echo " UPDATE nota SET
+                        //      nota=$nota,
+                        //      parecer_descritivo='$parecer_descritivo'
+                        //      WHERE 
+                        //      idnota =$idnota_bd an avaliacao=$avaliacao<br>";
                   }
 
                  $_SESSION['status']=1;
@@ -294,7 +293,7 @@ foreach ($_POST['aluno_id'] as $key => $value) {
    $_SESSION['status']=1;
    $_SESSION['mensagem']='Dados inseridos';
 
-  //header("location: ../View/diario_avaliacao.php?$url_get");
+  header("location: ../View/diario_avaliacao.php?$url_get");
 } catch (Exception $e) {
    $_SESSION['status']=0;
    echo "$e";
