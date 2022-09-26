@@ -34,7 +34,7 @@
       $array_avaliacao= array('0'=>'av1','1'=>'av2','2'=>'av3','3'=>'RP');
    }
 try {
-
+ 
     $sigla=null;
     $parecer_disciplina_id=0;
     $nota=0;
