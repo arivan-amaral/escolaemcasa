@@ -271,7 +271,7 @@ function verifica_nota_diario_av3_fund1($conexao,$idescola,$idturma,$iddisciplin
         ");
     return $resultado;
 }
- 
+
 function verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$avaliacao,$ano_letivo){
     $resultado=$conexao->query(" SELECT * FROM nota_parecer WHERE
         escola_id=$idescola and 

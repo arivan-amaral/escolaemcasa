@@ -1,15 +1,9 @@
 <?php
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
-
   session_start();
-
     include("../Model/Conexao.php");
     include("../Model/Escola.php");
     
     include("../Model/Aluno.php");
-try {
     
     if (!isset($_SESSION['idfuncionario'])) {
         $funcionario_id=175;
@@ -39,9 +33,7 @@ try {
    }else{
       $array_avaliacao= array('0'=>'av1','1'=>'av2','2'=>'av3','3'=>'RP');
    }
-
-
-
+try {
 
     $sigla=null;
     $parecer_disciplina_id=0;
@@ -301,9 +293,7 @@ foreach ($_POST['aluno_id'] as $key => $value) {
    $_SESSION['status']=1;
    $_SESSION['mensagem']='Dados inseridos';
 
-  //header("location: ../View/diario_avaliacao.php?$url_get");
-
-
+  header("location: ../View/diario_avaliacao.php?$url_get");
 } catch (Exception $e) {
    $_SESSION['status']=0;
    echo "$e";
