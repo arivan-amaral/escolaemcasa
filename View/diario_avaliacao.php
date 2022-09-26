@@ -64,7 +64,7 @@ if (!isset($_SESSION['idfuncionario'])) {
 <script type="text/javascript">
 
 
-                  //Swal.fire('ATENÇÃO, A PÁGINA DE NOTAS ESTÁ EM MANUTENÇÃO ATÉ DIA 26/03/2022.', '', 'info');
+                  Swal.fire('ATENÇÃO, A PÁGINA DE NOTAS ESTÁ EM MANUTENÇÃO ATÉ 09:30.', '', 'error');
 
 </script>
 
@@ -349,7 +349,7 @@ if (!isset($_SESSION['idfuncionario'])) {
             <br>
             <label for="exampleInputEmail1"> <br></label>
 
-              <a class="btn btn-primary" onclick="lista_avaliacao_aluno_por_data();">BUSCAR </a>
+             <!--  <a class="btn btn-primary" onclick="lista_avaliacao_aluno_por_data();">BUSCAR </a> -->
           </div>
         </div>
 
