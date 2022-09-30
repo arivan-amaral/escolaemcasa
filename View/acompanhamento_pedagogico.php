@@ -169,70 +169,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
 
                   
-                                                          <div class='col-sm-12'>
-                                          <div class='card card-secondary collapsed-card'>
-                                            <div class='card-header' data-card-widget='collapse'>
-                                              <h3 class='card-title'>RESULTADOS/CONTEÚDOS</h3>
-
-                                              <div class='card-tools'>
-                                                <button type='button' class='btn btn-tool' data-card-widget='collapse'>
-                                                  <i class='fas fa-plus'></i>
-                                                </button>
-                                              </div>
-                                              <!-- /.card-tools -->
-                                            </div>
-                                            <!-- /.card-header -->
-                                            <div class='card-body' style='display: none;'>
-        
-                                              <a href='diario_conteudo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat'>
-                                              <i class='fa fa-edit'></i> 
-                                              CONTEÚDOS DE AULAS
-                                              </a>";
-                                              
-                                                if ($idserie<3) {
-                                                  echo "<a href='parecer_descritivo.php?idturma=$idturma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat'>
-                                                  <i class='fa fa-edit'></i> 
-                                                  PARECER DESCRITIVO
-                                                  </a>"; 
-                                                }
-
-                                             echo " <a class='btn btn-secondary btn-block btn-flat' href='boletim.php?idescola=$idescola&idturma=$idturma&disciplina=$nome_disciplina&idescola=$idescola&idserie=$idserie&tokem_teste=reee' >
-                                                    <font style='vertical-align: inherit;'>
-                                                     <font style='vertical-align: inherit;'> 
-                                                       <i class='fa fa-calendar'></i>
-                                                        BOLETIM
-                                                        </font>
-                                                      </font>
-                                              </a>                                       
-
-
-                                              <a   href='diario_rendimento.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat'>
-                                              <i class='fa fa-calendar'></i> 
-                                              RESULTADO ANUAL
-                                              </a>
-
-
-                                              <a   href='impressao_diario_frequencia.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat'>
-                                              <i class='fa fa-calendar'></i> 
-                                              FICHA DE RENDIMENTO TRI I
-                                              </a> 
-
-                                              <a   href='impressao_diario_frequencia.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=2' class='btn btn-secondary btn-block btn-flat'>
-                                              <i class='fa fa-calendar'></i> 
-                                              FICHA DE RENDIMENTO TRI II
-                                              </a>   
-                                              <a   href='impressao_diario_frequencia.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=3' class='btn btn-secondary btn-block btn-flat'>
-                                              <i class='fa fa-calendar'></i> 
-                                              FICHA DE RENDIMENTO TRI III
-                                              </a>
-                                            </div>
-                                          <!-- /.card-body -->
-                                        </div>
-                                        <!-- /.card -->
-                                      </div> 
-                                                                    
-
-                                  </div>";
+                                    ";
                   ?>  
       <!-- ################################################################################# -->
 
