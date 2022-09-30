@@ -166,10 +166,11 @@
         $parecer_descritivo=$value['parecer_descritivo'];
       }
     }
-            echo wordwrap($parecer_descritivo, 150, "<br />\n", true); 
+            echo wordwrap($parecer_descritivo, 200, "<br />\n", true); 
 
 
     ?>
+
   </o:p></span></p>
   </td>
  </tr>
