@@ -133,7 +133,7 @@
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
   style='font-size:9.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
   "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'>ALUNO: <?php echo $nome_aluno; ?><o:p></o:p></span></p>
+  color:black;mso-fareast-language:PT-BR; text-transform: uppercase;'>ALUNO: <?php echo $nome_aluno; ?><o:p></o:p></span></p>
   </td>
  </tr>
 
