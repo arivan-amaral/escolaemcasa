@@ -125,7 +125,7 @@
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
   style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'><b>ALUNO: <?php echo"$nome_aluno"; ?></b> <o:p></o:p></span></p>
+  color:black;mso-fareast-language:PT-BR; text-transform: uppercase;'><b>ALUNO: <?php echo"$nome_aluno"; ?></b> <o:p></o:p></span></p>
   </td>
 
  </tr>

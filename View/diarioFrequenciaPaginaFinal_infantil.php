@@ -558,7 +558,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
  foreach ($res_alunos as $key => $value) {
 
   $idaluno=$value['idaluno'];
-  $nome_aluno=strtoupper($value['nome_aluno']);
+  $nome_aluno=($value['nome_aluno']);
   $nome_turma=$value['nome_turma'];
   $matricula_aluno=$value['matricula'];
   $data_matricula=$value['data_matricula'];
@@ -594,7 +594,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
   border-bottom:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext 1.0pt;
   mso-border-left-alt:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext 1.0pt;
   mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt;font-size:9.0pt'>
+  padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt;font-size:9.0pt; text-transform: uppercase;'>
 
   <?php echo "$nome_aluno"; ?> 
   </td>

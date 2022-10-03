@@ -104,7 +104,7 @@ $matricula_aluno="";
   $idaluno=$value['idaluno'];
   $datasaida=$value['datasaida'];
   $data_matricula=$value['data_matricula'];
-  $nome_aluno=strtoupper($value['nome_aluno']);
+  $nome_aluno=($value['nome_aluno']);
   $sexo_aluno=$value['sexo'];
   $data_nascimento=$value['data_nascimento'];
   $matricula_aluno=$value['matricula'];
@@ -148,7 +148,7 @@ $matricula_aluno="";
       <td  valign=top style='border:solid black 1.0pt; 
       padding:0cm 0cm 0cm 0cm;height:11.3pt;background-color: <?php echo "$cor_linha"; ?>;'>
       <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
-      0cm;margin-left:2.75pt;margin-bottom:.0001pt;'><span lang=PT ><?php echo "$nome_aluno"; ?></span></p>
+      0cm;margin-left:2.75pt;margin-bottom:.0001pt; text-transform: uppercase;'><span lang=PT ><?php echo "$nome_aluno"; ?></span></p>
       </td>
 
       <td  valign=top style='border:solid black 1.0pt; 

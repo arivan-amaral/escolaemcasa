@@ -801,7 +801,7 @@ if ($procedimento !='') {
             <p class=MsoNormal  style='margin-bottom:0cm;text-align:left;
             line-height:normal'>
             <span style='font-size:10.0pt;font-family:'Tw Cen MT Condensed',sans-serif;mso-fareast-font-family:'Times New Roman';mso-bidi-font-family:Arial;
-            color:black;mso-fareast-language:PT-BR'> $nome_aluno
+            color:black;mso-fareast-language:PT-BR; text-transform: uppercase;'> $nome_aluno
           </span>
           </p>
         </td>

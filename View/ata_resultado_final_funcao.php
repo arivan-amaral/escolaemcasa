@@ -136,7 +136,8 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
  foreach ($res_alunos as $key => $value) {
 
   $idaluno=$value['idaluno'];
-  $nome_aluno=strtoupper($value['nome_aluno']);
+  $nome_aluno=($value['nome_aluno']);
+  // $nome_aluno=strtoupper($value['nome_aluno']);
   $matricula_aluno=$value['matricula'];
 
   if ($conta_aluno%2==0) {
@@ -186,7 +187,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
       padding:0cm 0cm 0cm 0cm;height:11.3pt;background-color: <?php echo "$cor_linha"; ?>;'>
       <p class=TableParagraph style='margin-top:1.8pt;margin-right:0cm;margin-bottom:
       0cm;margin-left:2.75pt;margin-bottom:.0001pt'><span lang=PT style='font-size:
-      8.0pt'><?php echo "$nome_aluno"; ?></span></p>
+      8.0pt; text-transform: uppercase;'><?php echo "$nome_aluno"; ?></span></p>
       </td>
 
 
@@ -210,7 +211,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
   <td width=246 valign=top style='width:184.25pt;border:solid black 1.0pt;
   background:<?php echo "$cor_linha"; ?>;padding:0cm 0cm 0cm 0cm;'>
   <p class=TableParagraph style='margin-left:2.75pt'><span lang=PT
-  style='font-size:8.0pt'><?php echo $nome_aluno; ?></span></p>
+  style='font-size:8.0pt; text-transform: uppercase;'><?php echo $nome_aluno; ?></span></p>
   </td>
   
 <?php
