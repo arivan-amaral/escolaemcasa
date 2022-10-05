@@ -1,7 +1,7 @@
 <?php 
 
 function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
-  $conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo){
+  $conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento){
 
 
 /*
@@ -22,11 +22,11 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
 
     $tipo_ensino="";
 
-if ($idserie <3) {
+if ($idserie <3 || $seguimento==1) {
   $tipo_ensino="Educação Infantil";
-}if ($idserie >=3 && $idserie <8) {
+}if ($idserie >=3 && $idserie <8 || ($seguimento==2)) {
   $tipo_ensino="Ensino Fundamental - Anos Iniciais";
-}else if($idserie > 8 && $idserie <=11){
+}else if($idserie > 8 && $idserie <=11 ||($seguimento==3)){
   $tipo_ensino="Ensino Fundamental - Anos Finais";
 
 }else if ($idserie > 11){
@@ -806,7 +806,7 @@ $conta_nota_av3=0;
      disciplina_id=$iddisciplina and 
      periodo_id=$periodo_id  and aluno_id=$idaluno
      and  avaliacao='av1'
-     group by avaliacao,periodo_id,nota ORDER  BY avaliacao DESC");
+     group by avaliacao,periodo_id,nota ORDER  BY avaliacao DESC limit 1");
      $nota_ava=0;
      $nota_1=0;
     foreach ($result_nota_avaliacao as $key => $value) {
@@ -822,7 +822,7 @@ $conta_nota_av3=0;
              <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
              line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
              mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-             color:black;mso-fareast-language:PT-BR'> <?php echo"". $nota ?> </span></b></p>
+             color:black;mso-fareast-language:PT-BR'>  <?php  echo number_format($nota, 1, '.', ','); ?> </span></b></p>
            </td>
             <?php
           
@@ -859,7 +859,7 @@ $conta_nota_av3=0;
      disciplina_id=$iddisciplina and 
      periodo_id=$periodo_id   and aluno_id=$idaluno
      and  avaliacao='av2'
-     group by avaliacao,periodo_id,nota ORDER  BY avaliacao DESC");
+     group by avaliacao,periodo_id,nota ORDER  BY avaliacao DESC limit 1");
      $nota_ava=0;
      $nota_2=0;
     foreach ($result_nota_avaliacao as $key => $value) {
@@ -873,7 +873,7 @@ $conta_nota_av3=0;
              <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
              line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
              mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-             color:black;mso-fareast-language:PT-BR'> <?php echo"". $nota ?> </span></b></p>
+             color:black;mso-fareast-language:PT-BR'> <?php echo number_format($nota, 1, '.', ','); ?> </span></b></p>
            </td>
             <?php
           
@@ -910,7 +910,7 @@ $conta_nota_av2++;
      disciplina_id=$iddisciplina and 
      periodo_id=$periodo_id and aluno_id=$idaluno
      and  avaliacao='av3'
-     group by avaliacao,periodo_id,nota ORDER  BY avaliacao DESC");
+     group by avaliacao,periodo_id,nota ORDER  BY avaliacao DESC limit 1");
      $nota_ava=0;
       $nota_3=0;
 
@@ -927,7 +927,7 @@ $conta_nota_av2++;
              <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
              line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
              mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-             color:black;mso-fareast-language:PT-BR'> <?php echo"". $nota ?> </span></b></p>
+             color:black;mso-fareast-language:PT-BR'> <?php echo number_format($nota, 1, '.', ','); ?> </span></b></p>
            </td>
             <?php
           
@@ -987,7 +987,7 @@ $result_nota_avaliacao_rp=$conexao->query("
                <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
                line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
                mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-               color:black;mso-fareast-language:PT-BR'> <?php echo "$nota"; ?> </span></b></p>
+               color:black;mso-fareast-language:PT-BR'> <?php echo number_format($nota, 1, '.', ','); ?> </span></b></p>
              </td>
       <?php
           $nota_ava++;
@@ -1025,7 +1025,7 @@ if ($nota_3<5 && $nota_rp!='' && $nota_rp>$nota_3) {
 }
 
 $soma_total_notas=  round( ($nota_1 + $nota_2 + $nota_3 ),2);
-echo "$soma_total_notas";
+echo number_format($soma_total_notas, 1, '.', ',');
 ?>
                 </span></b></p>
           </td>

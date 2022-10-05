@@ -1,7 +1,7 @@
 <?php 
 
 function diario_frequencia_pagina_final_fund1($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
-  $conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo){
+  $conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento){
 
 /*
   ($conta_aula+$inicio,
@@ -34,16 +34,14 @@ foreach ($result_disc as $key => $value) {
 
     $tipo_ensino="";
 
-if ($idserie <3) {
+if ($idserie <3 || $seguimento==1) {
   $tipo_ensino="Educação Infantil";
-
-}elseif ($idserie >=3 && $idserie <8) {
+}if ($idserie >=3 && $idserie <8 || ($seguimento==2)) {
   $tipo_ensino="Ensino Fundamental - Anos Iniciais";
-
-}else if($idserie > 8 && $idserie <=11){
+}else if($idserie > 8 && $idserie <=11 ||($seguimento==3)){
   $tipo_ensino="Ensino Fundamental - Anos Finais";
 
-}else{
+}else if ($idserie > 11){
   $tipo_ensino="Educação de Jovens e Adultos";
 
 }
