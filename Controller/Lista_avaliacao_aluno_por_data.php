@@ -20,6 +20,13 @@ try {
     $idserie=$_GET['idserie'];
     $tamanho=4;
     $ano_letivo=$_SESSION['ano_letivo'];
+
+    $res_seg=$conexao->query("SELECT * FROM turma WHERE idturma=$idturma LIMIT 1");
+    $seguimento='';
+    foreach ($res_seg as $key => $value) {
+      $seguimento=$value['seguimento'];
+      // code...
+    }
     
     $res_periodo=listar_data_por_periodo($conexao,$_SESSION['ano_letivo'],$idperiodo);
     $data_inicio_periodo='';
@@ -449,6 +456,7 @@ try {
 
 
                   if ($serie_id == $idserie) {  //pareceres que ja foram prenchidos
+                  
                     // if ($serie_id == $idserie && $avaliacao=='av3') {  //pareceres que ja foram prenchidos
                        // $result.="<tr class='$cor_tabela'>
                        //      <td colspan='2'>";
@@ -477,7 +485,7 @@ try {
                             // $result.="</td>
                             // </tr>";
 
-                    }else if ($serie_id =="" && $idserie <8 ) {//pareceres que NÃO  foram prenchidos
+                    }else if ( ($serie_id =="" && $idserie <8) || ($idserie==16 && $seguimento <3) ) {//pareceres que NÃO  foram prenchidos
                        $result.="<tr class='$cor_tabela'>
                             <td colspan='2'>
 
@@ -504,29 +512,7 @@ try {
 
                               </div> ";
 
-                                //06/04/2022
-                                // $array_nota3=array();
-                                //   $result_n3=verifica_sigla_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av3',$idparecer);
-
-                                //   $conta_total_nota=0;
-                                //   foreach ($result_n3 as $key => $value) {
-                                //       $idnota=$value['idnota'];
-                                //       $nota3=$value['sigla'];
-                                //       $array_nota3[$idnota]="nota: ".$value['nota']." sigla: ".$value['sigla']." data: ".$value['data_nota'];
-                                //       $conta_total_nota++;
-                                //    }
-
-                              // if (count($array_nota3)>1) {
-                              //    $result.="<font color='red'> AV3 (PARECERES) DESSE ALUNO POSSUI DUPLICIDADE  </FONT> <br>";
-                              //   foreach ($array_nota3 as $key_dupli => $value) {
-                              //        $result.="<div id='nota_excluir$key_dupli'>
-                              //        <b> nota AV3:</b> <font color='blue'> $value </FONT>  <a onclick='excluir_nota_duplicada($key_dupli);' class='btn btn-sm bg-danger'>Excluir $value</a></div><br>";
-                              //   }
-                              //   $result.="______________________________________________________<BR>";
-                              // }
-                                //06/04/2022
-                              // 
-
+                              
 
                             $result.="
                             </td>
