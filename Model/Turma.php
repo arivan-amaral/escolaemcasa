@@ -66,6 +66,23 @@
       ));
     }
 
+
+function alterar_vagas($conexao,$id,$idEscola,$idTurma,$ano,$vagas){
+   $conexao->exec("UPDATE relacionamento_turma_escola SET quantidade_vaga=$vagas where escola_id = $idEscola and turma_id=$idTurma and ano=$ano and id=$id"); 
+}
+
+
+ function pesquisar_vagas($conexao,$id,$idEscola,$idTurma,$ano) {
+        $sql = $conexao->prepare("SELECT * FROM relacionamento_turma_escola where escola_id = :idEscola and turma_id=:idTurma and ano=:ano and id=:id");
+        $sql->execute(array(
+         'idEscola' =>$idEscola,
+         'idTurma' =>$idTurma,
+         'ano' =>$ano,
+         'id' =>$id
+      ));
+        return $sql->fetchAll();
+    }
+
    function validar_turma_escola($conexao,$idescola,$ano,$serie,$idturma,$turno) {
         $sql = $conexao->prepare("SELECT count(*) as 'id' FROM  relacionamento_turma_escola,turma where relacionamento_turma_escola.escola_id =:idescola AND turma.idturma = relacionamento_turma_escola.turma_id AND relacionamento_turma_escola.turma_id =:idturma AND turma.serie_id =:serie AND relacionamento_turma_escola.ano =:ano AND relacionamento_turma_escola.turno = :turno");
         $sql->execute(array(

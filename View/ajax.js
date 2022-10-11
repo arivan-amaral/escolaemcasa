@@ -2593,6 +2593,39 @@ function adicionar_turma_escola(){
 
 }
 
+function alterar_valor_vagas(id,escola_id,ano_letivo_vigente,idturma,quantidade_vaga){
+
+    var vagas = document.getElementById('quantidade'+id);
+    
+    var xmlreq = CriaRequest(); 
+    xmlreq.open("GET", "../Controller/Alterar_vagas.php?escola="+escola_id+"&id="+id+"&turma="+idturma+"&ano="+ano_letivo_vigente, true);
+    xmlreq.onreadystatechange = function(){      
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {                
+                     
+                vagas.innerHTML=xmlreq.responseText;
+            
+               Swal.fire({
+                icon: 'success',
+                title: 'Ação concluída',
+                text: '',
+                showConfirmButton: false,
+                timer: 1500
+              });
+
+            }else{
+                  
+                alert('Verifique sua conexão com a internet!');
+                
+            }
+        }
+    };
+    xmlreq.send(null);
+   
+    
+
+}
+
 function listar_opcao_associacao_coordenador(id){
   var result = document.getElementById("tabela_pesquisa_coordenador");
   var xmlreq = CriaRequest();   

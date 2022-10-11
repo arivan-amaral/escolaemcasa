@@ -29,7 +29,9 @@ foreach ($result as $key => $value) {
       <td></td>   
       <td><b>$nome_turma</b></td>   
       <td><b>$ano</b></td>   
-      <td><b>$quantidade_vaga</b></td>   
+      <td><a class='btn btn-block btn-danger'>-</a> </td>
+      <td id='quantidade$id'><b>$quantidade_vaga </b></td>   
+       <td><a class='btn btn-block btn-danger' onclick='alterar_valor_vagas($id,$escola_id,$ano_letivo_vigente,$idturma,$quantidade_vaga);'>+</a></td>
       <td><b><a class='btn btn-block btn-danger' onclick='remover_turma_escola($id);'>APAGAR</a></b></td>   
   </tr>   
 

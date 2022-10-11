@@ -153,7 +153,9 @@ session_start();
                               <th scope="col">SERIE</th>
                               <th scope="col">TURMA</th>
                               <th scope="col">ANO</th>
+                              <th scope="col"></th>
                               <th scope="col">VAGAS</th>
+                              <th scope="col"></th>
                               <th scope="col">OPÇÃO</th>
                             </tr>
                           </thead>
