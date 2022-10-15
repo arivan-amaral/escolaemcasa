@@ -2,14 +2,15 @@
 try {
 date_default_timezone_set('America/Sao_Paulo');
     
-    $server = "34.151.216.222";
+    $server = "177.153.64.15";
     $username = "root";
      
-     $password = "BDWRe85Oam8D";
+     $password = "Ari200120022003_";
    
     $conexao = new PDO("mysql:host=$server;dbname=educalem", $username, $password);
     $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     echo "Falha na conexão:";
+    
 }
 ?>
