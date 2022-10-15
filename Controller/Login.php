@@ -230,9 +230,8 @@ try {
 } catch (Exception $e) {
   $_SESSION['status']=0;
   $_SESSION['mensagem']="Algo deu errado, confira seus dados de acesso e tente novamente!";
-      echo "<img src='../View/imagens/estamos-em-manutencao.png'>";
-
-  //header("Location:../View/");
+  //echo "ESTAMOS EM MANUTENÇÃO:";
+  header("Location:../View/");
 }
 
 

@@ -11,6 +11,8 @@ date_default_timezone_set('America/Sao_Paulo');
     $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     echo "Falha na conexão:";
+      echo "<img src='../View/imagens/estamos-em-manutencao.png'>";
+    
     
 }
 ?>
