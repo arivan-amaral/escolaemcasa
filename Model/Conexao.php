@@ -2,7 +2,7 @@
 try {
 date_default_timezone_set('America/Sao_Paulo');
     
-    $server = "177.153.64.15";
+    $server = "177.153.50.141";
     $username = "root";
      
      $password = "Ari200120022003_";
