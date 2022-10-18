@@ -11,21 +11,20 @@ try {
     $turma = $_GET['turma'];
     $ano = $_GET['ano'];
     $id = $_GET['id'];
+    $valor = $_GET['valor'];
     //$vagas = $_GET['quantidade_vaga'];
+
+    alterar_vagas($conexao,$id,$escola,$turma,$ano,$valor);
+          
     $quant = 0;
     $pesquisa = pesquisar_vagas($conexao,$id,$escola,$turma,$ano);
     foreach ($pesquisa as $key => $value) {
         $quant = $value['quantidade_vaga'];
     }
-    $aumentar = $quant+1; 
-    alterar_vagas($conexao,$id,$escola,$turma,$ano,$aumentar);
-          
-    
-    //header("location:../View/cadastro_turma_escola.php");
-    echo $aumentar; 
+
+
+    echo $quant; 
 } catch (Exception $exc) {
-   
-   //header("location:../View/painel.php");
    echo $exc;
 }
 ?>

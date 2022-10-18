@@ -2593,12 +2593,18 @@ function adicionar_turma_escola(){
 
 }
 
-function alterar_valor_vagas(id,escola_id,ano_letivo_vigente,idturma,quantidade_vaga){
+function alterar_valor_vagas(id,escola_id,ano_letivo_vigente,idturma,quantidade_vaga,valor){
+    if (valor==0) {
+        valor=-1;
+
+    }else{
+        valor=1;
+    }
 
     var vagas = document.getElementById('quantidade'+id);
     
     var xmlreq = CriaRequest(); 
-    xmlreq.open("GET", "../Controller/Alterar_vagas.php?escola="+escola_id+"&id="+id+"&turma="+idturma+"&ano="+ano_letivo_vigente, true);
+    xmlreq.open("GET", "../Controller/Alterar_vagas.php?escola="+escola_id+"&id="+id+"&turma="+idturma+"&ano="+ano_letivo_vigente+"&valor="+valor, true);
     xmlreq.onreadystatechange = function(){      
         if (xmlreq.readyState == 4) {
             if (xmlreq.status == 200) {                

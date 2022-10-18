@@ -68,7 +68,7 @@
 
 
 function alterar_vagas($conexao,$id,$idEscola,$idTurma,$ano,$vagas){
-   $conexao->exec("UPDATE relacionamento_turma_escola SET quantidade_vaga=$vagas where escola_id = $idEscola and turma_id=$idTurma and ano=$ano and id=$id"); 
+   $conexao->exec("UPDATE relacionamento_turma_escola SET quantidade_vaga=$vagas+quantidade_vaga where escola_id = $idEscola and turma_id=$idTurma and ano=$ano and id=$id"); 
 }
 
 
