@@ -44,7 +44,9 @@ if (isset($_SESSION['cargo'])) {
       };
    xmlreq.send(null);
   }
-  setInterval(verificar_chamado(),2000);
+    setTimeout('verificar_chamado()',2000);
+  // setInterval(verificar_chamado(),2000);
+  
 </script>
 
 <script type="text/javascript">
