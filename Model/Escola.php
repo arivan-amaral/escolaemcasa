@@ -199,6 +199,20 @@ function rejeitar_solicitacao_transferencia($conexao,$profissional_resposta,$ids
    $sql->execute();
 }  
 
+function retornar_aluno_apos_transferencia_rejeitada($conexao,$matricula_codigo){
+   $sql = $conexao->prepare("UPDATE ecidade_matricula SET 
+      datasaida= '' ,
+       matricula_ativa='S', 
+       matricula_concluida='N',
+       matricula_situacao='MATRICULADO'
+
+       WHERE matricula_codigo = :matricula_codigo ");
+
+   $sql->bindParam('matricula_codigo',$matricula_codigo);
+ 
+   $sql->execute();
+}  
+
  function aceitar_solicitacao_transferencia($conexao,$profissional_resposta,$idsolicitacao,$aceita){
    $sql = $conexao->prepare("UPDATE solicitacao_transferencia SET profissional_resposta= :profissional_resposta , aceita= :aceita WHERE id = :idsolicitacao ");
 
