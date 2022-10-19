@@ -401,7 +401,7 @@ foreach ($result_ecidade_matricula as $key => $value) {
                                   }
 
                                 // if ($calendario_ano2 !='2021') {
-                                 if ($calendario_ano !=$_SESSION['ano_letivo_vigente'] || ($calendario_ano ==$_SESSION['ano_letivo_vigente'] && $matricula_situacao=="TRANSFERIDO FORA")) {
+                                 if ($calendario_ano !=$_SESSION['ano_letivo_vigente'] || ($calendario_ano ==$_SESSION['ano_letivo_vigente'] && $matricula_situacao !="MATRICULADO")) {
 
                                   $result.="
                                     <li>
