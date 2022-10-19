@@ -44,8 +44,9 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script>
-  <!-- daterange picker -->
+  
+  
+ 
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- iCheck for checkboxes and radio inputs -->
   <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
@@ -56,14 +57,15 @@
 
 
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHETRNN05Z"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M4J38HN6M9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    gtag('config', 'G-XHETRNN05Z');
-  </script>
+  gtag('config', 'G-M4J38HN6M9');
+</script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
 
 <!-- Select2 -->
