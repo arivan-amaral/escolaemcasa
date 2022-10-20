@@ -19,6 +19,10 @@ try {
     $aceitar_nova_turma=$_POST["aceitar_nova_turma"];
     $turma_id_origem=$_POST["turma_id_origem"];
     
+    // $turma_id_origem=$_POST["turma_id_origem"];
+    // aceitar_idescola_destino
+    // idaluno
+    
     if ($vaga_escola>0) {
         $aceita=1;
         $procedimento="TRANSFERIDO REDE";
@@ -41,7 +45,20 @@ try {
         rematricular_aluno($conexao,$aluno_id,$turma_id,$turma_id_anterior,$matricula_situacao,$matricula_concluida,$matricula_datamatricula,$matricula_ativa,$matricula_tipo,$calendario_ano,$turma_escola,$turno_nome);
 
         aceitar_solicitacao_transferencia($conexao,$profissional_resposta,$idsolicitacao,$aceita);
+        
 
+        
+        
+
+
+        $nova_turma=$_POST["aceitar_nova_turma"];
+
+        $nova_escola=$_POST["aceitar_idescola_destino"];
+
+         $antiga_escola=$_POST["aceitar_idescola_origem"];
+         $antiga_turma=$_POST["turma_id_origem"];
+         $ano_nota=$_POST["aceitar_ano_letivo"];
+  migrar_notas_transferencia($conexao,$nova_turma,$nova_escola, $aluno_id , $antiga_escola, $antiga_turma, $ano_nota);
         echo "Ação concluída"; 
     }else{
     echo "SEM VAGA NA TURMA "; 

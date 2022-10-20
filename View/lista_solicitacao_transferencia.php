@@ -106,6 +106,7 @@ $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
               $idsolicitacao=$value['idsolicitacao'];
               $idaluno=$value['idaluno'];
               $turma_id_origem=$value['turma_id_origem'];
+              $escola_id_origem=$value['escola_id_origem'];
               $nome_aluno=$value['nome'];
               $matricula_aluno=$value['matricula_aluno'];
               $data_solicitacao= converte_data_hora($value['data_solicitacao']);
@@ -224,7 +225,7 @@ $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
 
                                 <input type='hidden' class='form-control' id='idaluno$idsolicitacao' name='idaluno' value='$idaluno'> 
 
-                                <input type='hidden' class='form-control'    id='aceitar_idescola_origem$idsolicitacao' name='aceitar_idescola_origem' value='$id_escola_destino'> 
+                                <input type='hidden' class='form-control'    id='aceitar_idescola_origem$idsolicitacao' name='aceitar_idescola_origem' value='$escola_id_origem'> 
                                    
 
                                 <div class='col-sm-3'>

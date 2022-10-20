@@ -220,6 +220,16 @@ function retornar_aluno_apos_transferencia_rejeitada($conexao,$matricula_codigo)
    $sql->bindParam('aceita',$aceita);
    $sql->bindParam('idsolicitacao',$idsolicitacao);
    $sql->execute();
+}   
+
+
+function migrar_notas_transferencia($conexao,$nova_turma,$nova_escola, $aluno_id , $antiga_escola, $antiga_turma, $ano_nota){
+   $sql = $conexao->prepare("UPDATE nota_parecer SET 
+      turma_id= ? , escola_id = ? 
+      where aluno_id= ? and escola_id= ? and turma_id= ? and ano_nota= ? ");
+
+   
+   $sql->execute(array($nova_turma,$nova_escola, $aluno_id, $antiga_escola , $antiga_turma, $ano_nota));
 }  
                
 function solicitacao_transferencia($conexao,$matricula,$aluno_id, $serie_id,
