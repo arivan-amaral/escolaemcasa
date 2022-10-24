@@ -81,7 +81,8 @@
                         
                         $quantidade_f=0;
                         foreach ($res_cont as $keyInf => $valueInf) {
-                           $faltas_aluno+=$valueInf['quantidade'];
+                           // $faltas_aluno+=$valueInf['quantidade'];
+                           $faltas_aluno++;
                         }
             
                 
