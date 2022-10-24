@@ -74,18 +74,18 @@
         if ( ($seguimento!='' && $seguimento <3) || $idserie <8 ) {
 
 
-            foreach ($array_datas as $key => $datas) {
+            // foreach ($array_datas as $key => $datas) {
               
-                    $res=$conexao->query("SELECT * FROM frequencia WHERE ano_frequencia='$ano_letivo' and
-                     data_frequencia ='$datas' and aluno_id=$idaluno and turma_id=$idturma and escola_id=$idescola and  presenca in(0)  limit 1 ");
-                   
-                        foreach ($res as $keyInf => $valueInf) {
-                           $faltas_aluno+=1;
-                            // code...
+                    $res_cont=$conexao->query("SELECT COUNT(*) as 'quantidade',data_frequencia FROM frequencia WHERE ano_frequencia='$ano_letivo' and aluno_id=$idaluno and turma_id=$idturma and escola_id=$idescola and  presenca in(0)   and
+                     (data_frequencia BETWEEN '$data_inicial' and '$data_final') GROUP BY data_frequencia");
+                        
+                        $quantidade_f=0;
+                        foreach ($res_cont as $keyInf => $valueInf) {
+                           $faltas_aluno+=$valueInf['quantidade'];
                         }
             
                 
-            }
+            // }
             //$faltas_aluno="Total fund1 e infantil seg $seguimento $idserie ";
 
 
@@ -136,7 +136,7 @@
                     
                   </td>           <td>
                         
-                 $nome_aluno
+                 $id - $nome_aluno
                     
                   </td>
                 
@@ -153,7 +153,7 @@
     echo "$result";
      
      } catch (Exception $e) {
-     	echo $e;
+        echo $e;
      }
 
 
