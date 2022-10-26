@@ -1,5 +1,9 @@
 <?php
 session_start();
+setlocale(LC_ALL,'pt_BR.UTF8');
+mb_internal_encoding('UTF8'); 
+mb_regex_encoding('UTF8');
+
 include_once"../Model/Conexao.php";
 include_once"../Model/Escola.php";
 include"../Controller/Conversao.php";
