@@ -1,6 +1,8 @@
 <?php
 session_start();
+echo "<img src='imagens/estamos-em-manutencao.png'>";
 
+die();
 
   if (isset($_SESSION['cargo'])){
       
