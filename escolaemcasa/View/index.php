@@ -1,2 +1,2 @@
 <?php
-    header("Location:http://educalem.com.br/");
+    header("Location:http://educalem.com.br/View/");
