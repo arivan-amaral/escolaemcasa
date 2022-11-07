@@ -1,5 +1,5 @@
 <?php
-// include '../Model/Conexao.php';
+// include_once '../Model/Conexao.php';
 function media_final($conexao,$idescola,$idturma,$iddisciplina,$periodo_id, $idaluno ){
         $result_nota_aula1=$conexao->query("
           SELECT * FROM nota_parecer WHERE

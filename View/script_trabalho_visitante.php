@@ -1,5 +1,5 @@
 <?php
-    include '../Model/Conexao.php';
+    include_once '../Model/Conexao.php';
     # https://educalem.com.br/escolaemcasa/View/script_trabalho_visitante.php?idescola_anterior=&idescola_nova=&idturma_nova=
     $idescola_anterior=$_GET['idescola_anterior'];
     $idescola_nova=$_GET['idescola_nova'];

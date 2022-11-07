@@ -1,6 +1,6 @@
 <?php session_start();
  include("../View/mpdf/mpdf60/mpdf.php");
- include '../Model/Conexao.php';
+ include_once '../Model/Conexao.php';
  include '../Model/Video.php';
 
  $idaluno=$_GET['idaluno'];

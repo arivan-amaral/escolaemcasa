@@ -1,6 +1,6 @@
 <?php 
  session_start();
-include '../Model/Conexao.php';
+include_once '../Model/Conexao.php';
 
  try {
 $idfuncionario=$_SESSION['idfuncionario'];

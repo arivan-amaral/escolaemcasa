@@ -2,7 +2,7 @@
 session_start();
 $professor_id=$_SESSION['idfuncionario'];
 
-include '../Model/Conexao.php';
+include_once '../Model/Conexao.php';
 include '../Model/Questionario.php';
 include 'Conversao.php';
 try {

@@ -1,5 +1,5 @@
 <?php 
-include '../Model/Conexao.php';
+include_once '../Model/Conexao.php';
 date_default_timezone_set('America/Bahia');
 
 $res=$conexao->query("SELECT * FROM questionario where data_fim IS NULL");

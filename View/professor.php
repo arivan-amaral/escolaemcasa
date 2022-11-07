@@ -35,7 +35,7 @@ if (!isset($_SESSION['idprofessor'])) {
   include 'menu.php';
   include '../Controller/Conversao.php';
 
-  include '../Model/Conexao.php';
+  include_once '../Model/Conexao.php';
 
   include '../Model/Professor.php';
   include '../Model/Coordenador.php';

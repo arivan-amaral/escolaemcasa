@@ -16,7 +16,7 @@ include "barra_horizontal.php";
 include 'menu.php';
 include '../Controller/Conversao.php';
 
-include '../Model/Conexao.php';
+include_once '../Model/Conexao.php';
 
 include '../Model/Aluno.php';
 include '../Model/Coordenador.php';

@@ -1,6 +1,6 @@
 <?php 
 session_start();
-  include '../Model/Conexao.php';
+  include_once '../Model/Conexao.php';
 
 if (!isset($_SESSION['idfuncionario'])) {
  header("location:index.php?status=0");
@@ -78,7 +78,7 @@ if(file_exists("pagina_estatica/".$nome_url) && $diferenca<500){
   include '../Controller/Conversao.php';
   include '../Controller/Cauculos_notas.php';
 
-  include '../Model/Conexao.php';
+  include_once '../Model/Conexao.php';
 
   include '../Model/Aluno.php';
   include '../Model/Coordenador.php';

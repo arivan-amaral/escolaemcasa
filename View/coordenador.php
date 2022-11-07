@@ -20,7 +20,7 @@ if (!isset($_SESSION['idcoordenador'])) {
   include "cabecalho.php";
   include "alertas.php";
   include "barra_horizontal.php";
-  include '../Model/Conexao.php';
+  include_once '../Model/Conexao.php';
   include 'menu.php';
   include '../Controller/Conversao.php';
   include '../Model/Coordenador.php';

@@ -14,7 +14,7 @@ include "alertas.php";
 
   include "barra_horizontal.php";
   include 'menu.php';
-  include '../Model/Conexao.php';
+  include_once '../Model/Conexao.php';
   include '../Controller/Conversao.php';
   include '../Model/Setor.php';
   include '../Model/Chamada.php';

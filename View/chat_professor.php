@@ -15,7 +15,7 @@ if (!isset($_SESSION['idprofessor'])) {
   include "barra_horizontal.php";
   include 'menu.php';
 
-  include '../Model/Conexao.php';
+  include_once '../Model/Conexao.php';
 
   include '../Model/Aluno.php';
   include '../Model/Video.php';

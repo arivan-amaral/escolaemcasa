@@ -11,7 +11,7 @@ if (!isset($_SESSION['idcoordenador'])) {
   $idcoordenador=$_SESSION['idcoordenador'];
 
 }
-  include '../Model/Conexao.php';
+  include_once '../Model/Conexao.php';
   include '../Model/Setor.php';
   include '../Model/Chamada.php';
    

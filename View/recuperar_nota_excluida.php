@@ -1,5 +1,5 @@
 <?php 
-  include '../Model/Conexao.php';
+  include_once '../Model/Conexao.php';
 
   $res=$conexao->query("SELECT * FROM `nota_backup` WHERE `avaliacao` LIKE 'av1' AND `escola_id` = 162 AND `turma_id` = 6403 AND `disciplina_id` = 9 AND `periodo_id` = 1 and data_nota='2021-05-24' and data_hora>'2021-08-09 23:59:59' ORDER BY `nota_backup`.`data_hora` DESC");
   foreach ($res as $key => $value) {

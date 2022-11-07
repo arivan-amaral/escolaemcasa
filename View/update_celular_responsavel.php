@@ -1,6 +1,6 @@
 <?php 
 	include '../Model/Conexao_ecidade.php';
-	// include '../Model/Conexao.php';
+	// include_once '../Model/Conexao.php';
 	// $pdo;
 	// $res=listar_alunos($pdo);
 	$indice=800;

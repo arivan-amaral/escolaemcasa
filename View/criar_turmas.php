@@ -1,5 +1,5 @@
 <?php
-  include '../Model/Conexao.php';
+  include_once '../Model/Conexao.php';
   $res=$conexao->query("SELECT * FROM serie  where id >2 and id <12");
   foreach ($res as $key => $value) {
   	$nome_serie=$value['nome'];

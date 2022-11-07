@@ -24,7 +24,7 @@ if (!isset($_SESSION['idcoordenador'])) {
   include 'menu.php';
   include '../Controller/Conversao.php';
 
-  include '../Model/Conexao.php';
+  include_once '../Model/Conexao.php';
 
   include '../Model/Coordenador.php';
   include '../Model/Escola.php';

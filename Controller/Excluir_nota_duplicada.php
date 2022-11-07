@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../Model/Conexao.php';
+include_once '../Model/Conexao.php';
 include '../Model/Questionario.php';
 // $nome = $_GET['nome'];
 // $questionario_id = $_GET['questionario_id'];

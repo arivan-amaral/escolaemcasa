@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../Model/Conexao.php';
+include_once '../Model/Conexao.php';
 include '../Model/Trabalho.php';
  $array_url=explode('p?', $_SERVER["REQUEST_URI"]);
  $url_get=$array_url[1];

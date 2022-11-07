@@ -16,7 +16,7 @@ if (!isset($_SESSION['idprofessor']) && !isset($_SESSION['idfuncionario']) ) {
   include "barra_horizontal.php";
   include 'menu.php';
   include '../Controller/Conversao.php';
-  include '../Model/Conexao.php';
+  include_once '../Model/Conexao.php';
   include '../Model/Professor.php';
   
 

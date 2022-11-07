@@ -1,5 +1,5 @@
 <?php
-include '../Model/Conexao.php';
+include_once '../Model/Conexao.php';
 include '../Model/Questionario.php';
     $id=$_GET['id'];
     $data=$_GET['data'];

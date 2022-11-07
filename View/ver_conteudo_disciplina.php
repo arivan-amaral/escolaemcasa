@@ -13,7 +13,7 @@ if (!isset($_SESSION['idfuncionario'])) {
   include "alertas.php";
   include "barra_horizontal.php";
   include 'menu.php';
-  include '../Model/Conexao.php';
+  include_once '../Model/Conexao.php';
   include '../Model/Video.php';
   include '../Controller/Conversao.php';
 

@@ -1,5 +1,5 @@
 <?php 
-	include '../Model/Conexao.php';
+	include_once '../Model/Conexao.php';
 	include '../Controller/Conversao.php';
 
 	$res=$conexao->query("SELECT idano_letivo, COUNT(*) AS quantidade, aluno_id, escola_id, turma_id FROM ano_letivo GROUP BY aluno_id");

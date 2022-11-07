@@ -16,7 +16,7 @@ if (!isset($_SESSION['idfuncionario'])) {
 
   include '../Controller/Conversao.php';
 
-  include '../Model/Conexao.php';
+  include_once '../Model/Conexao.php';
 
   include '../Model/Aluno.php';
   include '../Model/Professor.php';

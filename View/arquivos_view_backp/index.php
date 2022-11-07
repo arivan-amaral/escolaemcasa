@@ -25,7 +25,7 @@ session_start();
 
   include "barra_horizontal.php";
   include 'menu.php';
-  include '../Model/Conexao.php';
+  include_once '../Model/Conexao.php';
   
 
 

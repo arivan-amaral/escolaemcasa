@@ -18,7 +18,7 @@ include 'menu.php';
 include '../Controller/Conversao.php';
 include '../Controller/Cauculos_notas.php';
 
-include '../Model/Conexao.php';
+include_once '../Model/Conexao.php';
 
 include '../Model/Aluno.php';
 include '../Model/Coordenador.php';

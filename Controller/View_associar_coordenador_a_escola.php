@@ -1,5 +1,5 @@
 <?php 
-  include '../Model/Conexao.php';
+  include_once '../Model/Conexao.php';
   include '../Model/Escola.php';
   include '../Model/Coordenador.php';
   include '../Model/Professor.php';

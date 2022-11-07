@@ -7,7 +7,7 @@ include "alertas.php";
 include "barra_horizontal.php";
 include 'menu.php';
 include '../Controller/Conversao.php';
-include '../Model/Conexao.php';
+include_once '../Model/Conexao.php';
 include '../Model/Escola.php';
 include '../Model/Turma.php';
 include '../Model/Serie.php';

@@ -14,7 +14,7 @@ if (!isset($_SESSION['idcoordenador'])) {
   include "barra_horizontal.php";
   include 'menu.php';
   include '../Model/Coordenador.php';
-  include '../Model/Conexao.php';
+  include_once '../Model/Conexao.php';
 
   $idfuncionario=$_REQUEST['idfuncionario'];
 
