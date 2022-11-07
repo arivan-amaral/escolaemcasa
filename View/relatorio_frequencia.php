@@ -29,15 +29,7 @@ $url_get=$array_url[1];
 
 <!-- ####################### CORPO ################################################# -->
 <script type="text/javascript" src="ajax.js?<?php echo rand(); ?>"></script>
-<script>      
-        Swal.fire({
-          position: 'center',
-          icon: 'info',
-          title: 'ATENÇÃO',
-             text: ' Informe o número de suporte as datas, turmas e escolas que deseja gerar o relatório. Vamos enviar o mais rápido possível '
-      
-        });
-      </script>
+
       <div class="container-fluid">
 <br>
         <div class="row">
@@ -45,23 +37,23 @@ $url_get=$array_url[1];
           <div class="col-sm-10">
             <button class="btn btn-block btn-lg btn-secondary">
               <?php
-        //       $nome_turma_global='';
-        //       $nome_disciplina='';
-        //       $res_turma=lista_de_turmas_por_id($conexao,$idturma);
+              $nome_turma_global='';
+              $nome_disciplina='';
+              $res_turma=lista_de_turmas_por_id($conexao,$idturma);
 
-        //       foreach ($res_turma as $key => $value) {
-        //         $nome_turma_global=$value['nome_turma'];
-        //       }           
+              foreach ($res_turma as $key => $value) {
+                $nome_turma_global=$value['nome_turma'];
+              }           
 
-        //       $nome_escola_global='';
-        // $res_escola=buscar_escola_por_id($conexao,$idescola);
-        // $nome_escola_global="";
-        // foreach ($res_escola as $key => $value) {
-        //   $nome_escola_global=$value['nome_escola'];
-        // }    
+              $nome_escola_global='';
+        $res_escola=buscar_escola_por_id($conexao,$idescola);
+        $nome_escola_global="";
+        foreach ($res_escola as $key => $value) {
+          $nome_escola_global=$value['nome_escola'];
+        }    
 
 
-              // echo "$nome_escola_global-  <b class='text-warning'>$nome_turma_global </b>"  ; ?></button>
+              echo "$nome_escola_global-  <b class='text-warning'>$nome_turma_global </b>"  ; ?></button>
             </div>
           </div>
           <br>
@@ -127,7 +119,7 @@ $url_get=$array_url[1];
           </div>
         </div>
         <div class="col-sm-2" style="margin-top: 7px;" ><br>
-         <!-- <a  class="btn btn-primary" onclick="pesquisa_frequencia()">Pesquisar</a> -->
+         <a  class="btn btn-primary" onclick="pesquisa_frequencia()">Pesquisar</a>
         </div>
       </div>
     </div>
