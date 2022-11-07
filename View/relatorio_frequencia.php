@@ -34,7 +34,7 @@ $url_get=$array_url[1];
           position: 'center',
           icon: 'info',
           title: 'ATENÇÃO',
-             text: ' Informe o número de suporte as datas e turmas e escolas que deseja gerar esse relatório que vamos enviar o mais rápido possível '
+             text: ' Informe o número de suporte as datas, turmas e escolas que deseja gerar o relatório. Vamos enviar o mais rápido possível '
       
         });
       </script>
