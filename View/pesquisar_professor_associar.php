@@ -94,5 +94,5 @@ inputEle.addEventListener('keyup', function(e){
 
 
  <?php 
-    include 'rodape_pesquisas.php';
+    include 'rodape.php';
  ?>

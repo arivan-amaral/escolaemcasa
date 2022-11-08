@@ -77,13 +77,6 @@ if (!isset($_SESSION['idcoordenador'])) {
 
 
 
-  <!-- /.content-wrapper -->
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-
 
   
 
@@ -112,5 +105,5 @@ if (!isset($_SESSION['idcoordenador'])) {
 
 
  <?php 
-    include 'rodape_pesquisas.php';
+    include 'rodape.php';
  ?>
