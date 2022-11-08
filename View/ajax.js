@@ -4911,13 +4911,13 @@ function cancelar_rematricula(idaluno) {
 
     });
 }
-function cancelar_transferencia(idaluno) {
+function cancelar_transferencia(idaluno,matricula) {
    
     
     var xmlreq = CriaRequest();   
    
    Swal.fire({
-     title: 'Tem certeza que deseja cancelar a REMATRICULA ?',
+     title: 'Tem certeza que deseja cancelar a Transferência ?',
      showDenyButton: true,
      confirmButtonText: `Sim`,
      denyButtonText: `Não`,
@@ -4925,7 +4925,7 @@ function cancelar_transferencia(idaluno) {
      /* Read more about isConfirmed, isDenied below */
      if (result.isConfirmed) {
 
-        xmlreq.open("GET", "../Controller/Cancelar_transferencia.php?idaluno="+idaluno, true);
+        xmlreq.open("GET", "../Controller/Cancelar_transferencia.php?idaluno="+idaluno+"&matricula="+matricula, true);
         xmlreq.onreadystatechange = function(){
           
              if (xmlreq.readyState == 4) {
@@ -4941,10 +4941,11 @@ function cancelar_transferencia(idaluno) {
                           timer: 1500
                         });
 
-                       var node = document.getElementById("linha"+idaluno);
-                       if (node.parentNode) {
-                         node.parentNode.removeChild(node);
-                       }
+                       // var node = document.getElementById("linha"+idaluno);
+                       // if (node.parentNode) {
+                       //   node.parentNode.removeChild(node);
+                       // }
+                      setTimeout(function(){window.location.href="listar_alunos_da_turma.php";},500);
 
 
                      }else{
