@@ -4911,7 +4911,66 @@ function cancelar_rematricula(idaluno) {
 
     });
 }
+function cancelar_transferencia(idaluno) {
+   
+    
+    var xmlreq = CriaRequest();   
+   
+   Swal.fire({
+     title: 'Tem certeza que deseja cancelar a REMATRICULA ?',
+     showDenyButton: true,
+     confirmButtonText: `Sim`,
+     denyButtonText: `Não`,
+   }).then((result) => {
+     /* Read more about isConfirmed, isDenied below */
+     if (result.isConfirmed) {
 
+        xmlreq.open("GET", "../Controller/Cancelar_transferencia.php?idaluno="+idaluno, true);
+        xmlreq.onreadystatechange = function(){
+          
+             if (xmlreq.readyState == 4) {
+                 if (xmlreq.status == 200) {
+                    // result.innerHTML = xmlreq.responseText;
+                     if(xmlreq.responseText=="Ação concluída"){
+                        Swal.fire({
+                          position: 'center',
+                          icon: 'success',
+                          title: 'Ação concluída!',
+                             text: ' ',
+                          showConfirmButton: false,
+                          timer: 1500
+                        });
+
+                       var node = document.getElementById("linha"+idaluno);
+                       if (node.parentNode) {
+                         node.parentNode.removeChild(node);
+                       }
+
+
+                     }else{
+                        Swal.fire({
+                          position: 'center',
+                          icon: 'error',
+                          title: 'Alguma coisa deu errado',
+                             text: '',
+                          showConfirmButton: true
+                        });
+                     }
+
+                 }else{
+                    alert('Erro desconhecido, verifique sua conexão com a internet');
+
+                    //result.innerHTML ="Erro ao receber mensagens";                 
+                 }
+             }
+         };
+         xmlreq.send(null);
+
+      } else if (result.isDenied) {
+      }
+
+    });
+}
 
 // #########################################################################
 
