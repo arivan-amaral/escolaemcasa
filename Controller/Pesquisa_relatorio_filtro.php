@@ -10,6 +10,7 @@ try {
     $parametro = $_GET['parametro'];
     $titulo = $_GET['titulo'];
     $escola = $_GET['escola'];
+    $sexo = $_GET['sexo'];
     $ano_letivo = $_SESSION['ano_letivo'];
 
     $titulos = explode ("-", $titulo);
@@ -33,7 +34,23 @@ try {
     $conta=1;
     $tamanho = count($parametros);
     $result.="<tr>";
-      $res_matriculas = pesquisa_relatorio_filtro($conexao,$texto,$escola,$ano_letivo);
+    if($sexo == "todos"){
+    $res_matriculas = pesquisa_relatorio_filtro_todos($conexao,$texto,$escola,$ano_letivo);
+        
+         
+          foreach ($res_matriculas as $key => $value) {
+                $result.="<td>$conta</td>";
+
+              for ($i=0; $i < $tamanho; $i++) { 
+                $dado = $value[$parametros[$i]];
+                $result.="<td>$dado</td>";
+              }
+              $result.="</tr>";
+              $conta++;
+              
+          }
+    }else{
+       $res_matriculas = pesquisa_relatorio_filtro($conexao,$texto,$sexo,$escola,$ano_letivo);
     
      
       foreach ($res_matriculas as $key => $value) {
@@ -47,6 +64,8 @@ try {
           $conta++;
           
       }
+    }
+     
      
       if ($conta==1) {
 

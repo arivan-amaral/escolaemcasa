@@ -466,6 +466,7 @@ function pesquisa_relatorio_filtros(){
   var titulo = "";
   var result = document.getElementById('resultado');
   var escola = document.getElementById('escola').value;
+  var sexo = document.getElementById('sexo').value;
 
   var idaluno = document.getElementById('idaluno');
   var nome = document.getElementById('nome');
@@ -647,7 +648,7 @@ function pesquisa_relatorio_filtros(){
 
     result.innerHTML = "<img src='imagens/carregando.gif'>";  
       var xmlreq = CriaRequest();
-      xmlreq.open("GET", "../Controller/Pesquisa_relatorio_filtro.php?texto="+texto+"&escola="+escola+"&titulo="+titulo+"&parametro="+parametro, true);
+      xmlreq.open("GET", "../Controller/Pesquisa_relatorio_filtro.php?texto="+texto+"&escola="+escola+"&sexo="+sexo+"&titulo="+titulo+"&parametro="+parametro, true);
 
       xmlreq.onreadystatechange = function(){
     

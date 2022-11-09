@@ -170,8 +170,17 @@ if (!isset($_SESSION['idfuncionario'])) {
         </div>
       </div>
       
-
-        <div class="col-sm-6">
+        <div class="col-sm-3">
+          <div class="form-group">
+           <label for="exampleInputEmail1">SEXO</label>
+           <select class="form-control"  id="sexo" name="sexo" >
+             <option value='todos'>Todos</option>
+             <option value='M'>Masculino</option>
+             <option value='F'>Feminino</option>
+           </select> 
+          </div>
+        </div> 
+        <div class="col-sm-3">
           <div class="form-group">
            <label for="exampleInputEmail1">ESCOLA</label>
            <select class="form-control"  id="escola" name="escola" >
