@@ -458,6 +458,216 @@ function pesquisa_matricula_mensal(){
    }
       
 }
+function pesquisa_relatorio_filtros(){
+
+  var contador = 0;
+  var texto = "";
+  var parametro = "";
+  var titulo = "";
+  var result = document.getElementById('resultado');
+  var escola = document.getElementById('escola').value;
+
+  var idaluno = document.getElementById('idaluno');
+  var nome = document.getElementById('nome');
+  var filiacao1 = document.getElementById('filiacao1');
+  var filiacao2 = document.getElementById('filiacao2');
+  var cartao_sus = document.getElementById('cartao_sus');
+  var whatsapp = document.getElementById('whatsapp');
+  var whatsapp_responsavel = document.getElementById('whatsapp_responsavel');
+  var bairro = document.getElementById('bairro');
+  var endereco = document.getElementById('endereco');
+  var nome_escola = document.getElementById('nome_escola');
+  var nome_turma = document.getElementById('nome_turma');
+  var bolsa_familia = document.getElementById('bolsa_familia');
+
+  if(idaluno.checked) {
+     if(contador == 0){
+      texto+=idaluno.value;
+      titulo+="ID Aluno";
+      parametro+="idaluno";
+      contador++;
+     }else{
+      texto+=","+idaluno.value;
+      titulo+="-ID Aluno";
+      parametro+="-idaluno";
+      contador++;
+     }
+  }
+  if(nome.checked) {
+      if(contador == 0){
+      texto+=nome.value;
+      titulo+="Nome";
+      parametro+="nome";
+      contador++;
+     }else{
+      texto+=","+nome.value;
+      titulo+="-Nome";
+      parametro+="-nome";
+      contador++;
+     }
+  }
+  if(filiacao1.checked) {
+      if(contador == 0){
+      texto+=filiacao1.value;
+      titulo+="1° Filiação";
+      parametro+="filiacao1";
+      contador++;
+     }else{
+      texto+=","+filiacao1.value;
+      titulo+="-1° Filiação";
+      parametro+="-filiacao1";
+      contador++;
+     }
+  }
+  if(filiacao2.checked) {
+      if(contador == 0){
+      texto+=filiacao2.value;
+      titulo+="2° Filiação";
+      parametro+="filiacao2";
+      contador++;
+     }else{
+      texto+=","+filiacao2.value;
+      titulo+="-2° Filiação";
+      parametro+="-filiacao2";
+      contador++;
+     }
+  }
+  if(cartao_sus.checked) {
+     if(contador == 0){
+      texto+=cartao_sus.value;
+      titulo+="Cartão Sus";
+      parametro+="cartao_sus";
+      contador++;
+     }else{
+      texto+=","+cartao_sus.value;
+      titulo+="-Cartão Sus";
+      parametro+="-cartao_sus";
+      contador++;
+     }
+  }
+  if(whatsapp.checked) {
+      if(contador == 0){
+      texto+=whatsapp.value;
+      titulo+="Whatsapp";
+      parametro+="whatsapp";
+      contador++;
+     }else{
+      texto+=","+whatsapp.value;
+      titulo+="-Whatsapp";
+      parametro+="-whatsapp";
+      contador++;
+     }
+  }
+  if(whatsapp_responsavel.checked) {
+      if(contador == 0){
+      texto+=whatsapp_responsavel.value;
+      titulo+="Whatsapp do Responsável";
+      parametro+="whatsapp_responsavel";
+      contador++;
+     }else{
+      texto+=","+whatsapp_responsavel.value;
+      titulo+="-Whatsapp do Responsável";
+      parametro+="-whatsapp_responsavel";
+      contador++;
+     }
+  }
+  if(bairro.checked) {
+     if(contador == 0){
+      texto+=bairro.value;
+      titulo+="Bairro";
+      parametro+="bairro_endereco";
+      contador++;
+     }else{
+      texto+=","+bairro.value;
+      titulo+="-Bairro";
+      parametro+="-bairro_endereco";
+      contador++;
+     }
+  }
+  if(endereco.checked) {
+     if(contador == 0){
+      texto+=endereco.value;
+      titulo+="Endereço";
+      parametro+="endereco";
+      contador++;
+     }else{
+      texto+=","+endereco.value;
+      titulo+="-Endereço";
+      parametro+="-endereco";
+      contador++;
+     }
+  }
+  if(nome_escola.checked) {
+     if(contador == 0){
+      texto+=nome_escola.value;
+      titulo+="Nome da Escola";
+      parametro+="nome_escola";
+      contador++;
+     }else{
+      texto+=","+nome_escola.value;
+      titulo+="-Nome da Escola";
+      parametro+="-nome_escola";
+      contador++;
+     }
+  }
+  if(nome_turma.checked) {
+      if(contador == 0){
+      texto+=nome_turma.value;
+      titulo+="Nome da Turma";
+      parametro+="nome_turma";
+      contador++;
+     }else{
+      texto+=","+nome_turma.value;
+      titulo+="-Nome da Turma";
+      parametro+="-nome_turma";
+      contador++;
+     }
+  }
+  if(bolsa_familia.checked) {
+      if(contador == 0){
+      texto+=bolsa_familia.value;
+      titulo+="Recebe Bolsa Familia";
+      parametro+="bolsa_familia";
+      contador++;
+     }else{
+      texto+=","+bolsa_familia.value;
+      titulo+="-Recebe Bolsa Familia";
+      parametro+="-bolsa_familia";
+      contador++;
+     }
+  }
+  if(texto == ""){
+     Swal.fire({
+                icon: 'warning',
+                title: 'ATENÇÃO',
+                text: 'Marque pelo menos um campo para pesquisar'
+                
+              });  
+  }else{
+
+    result.innerHTML = "<img src='imagens/carregando.gif'>";  
+      var xmlreq = CriaRequest();
+      xmlreq.open("GET", "../Controller/pesquisa_relatorio_filtro.php?texto="+texto+"&escola="+escola+"&titulo="+titulo+"&parametro="+parametro, true);
+
+      xmlreq.onreadystatechange = function(){
+    
+       if (xmlreq.readyState == 4) {
+           if (xmlreq.status == 200) {
+                 result.innerHTML = xmlreq.responseText;
+                 contador = 0;
+           }else{
+                 alert('Erro desconhecido, verifique sua conexão com a internet');
+
+              result.innerHTML ="Erro ao receber mensagens";                 
+           }
+       }
+      };
+   xmlreq.send(null);
+  }
+
+ 
+      
+}
 function cadastrar_resposta_mensagem(id_mensagem,id_funcionario,mensagem){
 
     var mensagem = document.getElementById('mensagem'+id_mensagem).value;
