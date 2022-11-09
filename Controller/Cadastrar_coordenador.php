@@ -32,12 +32,14 @@ include'../Model/Coordenador.php';
  	 $coordenador_id= $conexao->lastInsertId();
 	 $ano= $_SESSION['ano_letivo'];
 	
-
+if (isset($_POST['escola_id'])) {
+	// code...
 	foreach ($_POST['escola_id'] as $key => $value) {
 	   $escola_id= $_POST['escola_id'][$key];
 	   associar_coordenador_a_escola($conexao,  $coordenador_id,$escola_id,$ano);
 	}
  	 $_SESSION['status']=1;
+}
 
 
  	 
