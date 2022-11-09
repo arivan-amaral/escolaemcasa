@@ -19,7 +19,7 @@
         escola_id=$idescola and
         serie_id=$serie_id and
         disciplina_id=$iddisciplina and 
-        periodo_id=$periodo_id and aluno_id=$idaluno  limit 1 ");
+        periodo_id=$periodo_id and aluno_id=$idaluno  ");
 
         return $result;
     }
