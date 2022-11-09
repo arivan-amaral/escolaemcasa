@@ -335,7 +335,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
   $res_fora=pesquisa_nota_fora_rede($conexao,$idescola,$idturma,$iddisciplina,$idaluno,7,$ano_letivo,$idserie);
   $media_fora_rede=0;
   foreach ($res_fora as $key_fora => $value_f) {
-    $media_fora_rede=$value_f['nota'];
+    $media_fora_rede+=$value_f['nota'];
   }
 if ($media_fora_rede==0) {
   $nota_tri_3=calculos_media_notas($nota_tri_3,$nota_rp_3,$nota_av3_3);
