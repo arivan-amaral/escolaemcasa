@@ -647,7 +647,7 @@ function pesquisa_relatorio_filtros(){
 
     result.innerHTML = "<img src='imagens/carregando.gif'>";  
       var xmlreq = CriaRequest();
-      xmlreq.open("GET", "../Controller/pesquisa_relatorio_filtro.php?texto="+texto+"&escola="+escola+"&titulo="+titulo+"&parametro="+parametro, true);
+      xmlreq.open("GET", "../Controller/Pesquisa_relatorio_filtro.php?texto="+texto+"&escola="+escola+"&titulo="+titulo+"&parametro="+parametro, true);
 
       xmlreq.onreadystatechange = function(){
     

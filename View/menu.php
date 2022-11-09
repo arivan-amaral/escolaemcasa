@@ -126,7 +126,7 @@
                 <li class='nav-item'>
                <a href='relatorio_aluno.php' class='nav-link'>
                <i class='far fa-circle nav-icon text-primary'></i>
-               <p>RA</p>
+               <p>Relatório de aluno</p>
                </a>
                </li>
                </ul>

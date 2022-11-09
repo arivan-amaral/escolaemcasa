@@ -1,20 +1,13 @@
 <?php
 session_start();
-if (!isset($_COOKIE['dia_doservidor_publico2'])) {
-  setcookie('dia_doservidor_publico2', 1, (time()+(30*24*3600)));
- // setcookie('conteudo', 1, (time()+(300*24*3600)));
-}else{
-  setcookie('dia_doservidor_publico2', 0, (time()+(30*24*3600)));
-  setcookie('dia_doservidor_publico2', $_COOKIE['dia_doservidor_publico2']+1);
-}
-  
+
 ###################################################
 if (!isset($_SESSION['idcoordenador'])) {
   //header("location:index.php?status=0");
 
 }else{
 
-  $idcoordenador=$_SESSION['idcoordenador'];
+  $idcoordenador=$_SESSION['idfuncionario'];
 
 }
   include "cabecalho.php";
@@ -25,25 +18,13 @@ if (!isset($_SESSION['idcoordenador'])) {
   include '../Controller/Conversao.php';
 
   include_once '../Model/Conexao.php';
+  include_once '../Model/Coordenador.php';
 
   include '../Model/Setor.php';
   include '../Model/Chamada.php';
   include '../Model/Escola.php';
 
-if ($_COOKIE['dia_doservidor_publico2']<2 && date("m-d")=="10-28") {
-?>
-    <script>
-     function dia_doservidor_publico(){
-         Swal.fire({
-           title: "Parabéns!",
-           imageUrl: 'dia_doservidor_publico.png',
-           imageAlt: 'dia_doservidor_publico',
-         });
-     }
-setTimeout('dia_doservidor_publico();',3000);
-  </script> 
-<?php 
-  }
+
 ?>
 
 <style>
@@ -190,17 +171,29 @@ setTimeout('dia_doservidor_publico();',3000);
       </div>
       
 
-        <div class="col-sm-3">
+        <div class="col-sm-6">
           <div class="form-group">
            <label for="exampleInputEmail1">ESCOLA</label>
            <select class="form-control"  id="escola" name="escola" >
             <?php  
-              $res_escola = lista_escola($conexao);
+       
+              $res_escola= escola_associada($conexao,$idcoordenador);
+                $lista_escola_associada=""; 
+              $sql_escolas="AND ( escola_id = -1 ";
+              $sql_escolas_enviada="AND ( escola_id_origem = -1 ";
               foreach ($res_escola as $key => $value) {
-                $idescola = $value['idescola'];
-                $nome_escola = $value['nome_escola'];
-                echo "<option value='$idescola'>$nome_escola</option>";
+                  $id=$value['idescola'];
+                 $nome_escola=($value['nome_escola']);
+                  $sql_escolas.=" OR escola_id = $id ";
+                  $sql_escolas_enviada.=" OR escola_id_origem = $id ";
+
+                  $lista_escola_associada.= "
+                       <option value='$id'>$nome_escola </option>
+
+                   ";
               }
+
+              echo "$lista_escola_associada";
 
             ?>
             
@@ -208,7 +201,7 @@ setTimeout('dia_doservidor_publico();',3000);
            </select> 
           </div>
         </div> 
-        <div class="col-sm-3">
+        <div class="col-sm-2">
           <div class="form-group">
           <a style="margin-top: 30PX;" class="btn btn-primary" onclick="pesquisa_relatorio_filtros()">Pesquisar</a>
           </div>
