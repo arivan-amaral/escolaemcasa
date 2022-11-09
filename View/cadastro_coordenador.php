@@ -13,7 +13,8 @@ if (!isset($_SESSION['idcoordenador'])) {
   
   include "barra_horizontal.php";
   include 'menu.php';
-  
+  include_once '../Model/Conexao.php';
+  include '../Model/Escola.php';
   
 ?>
 
@@ -73,7 +74,43 @@ if (!isset($_SESSION['idcoordenador'])) {
                         <input type="text" class="form-control" id="exampleInputEmail1" name="senha" placeholder="Criar Senha" required="">
                       </div>
                       
-                    
+                <div class="card card-primary">
+
+                  <div class="card-header">
+
+                    <h3 class="card-title">ASSOCIAÇÕES DE COORDENADOR: </h3>
+
+                  </div>
+                  <div class='card-body'>
+
+                      <label>Selecione a escola</label>
+                        <?php
+
+                        $res_turma=lista_escola($conexao); 
+
+                        foreach ($res_turma as $key => $value) {
+
+                            $idescola= $value['idescola'];
+
+                            $nome = ($value['nome_escola']);
+                            
+                            echo "
+                              <div class='form-group'>
+                                <div class='custom-control custom-checkbox'>
+                                  <input class='custom-control-input' name='escola_id[]' type='checkbox' id='customCheckbox$idescola' value='$idescola'>
+                                  <label for='customCheckbox$idescola' class='custom-control-label'>$nome</label>
+                                </div>
+                              </div>
+
+                            ";
+
+                          
+
+                        }
+
+                        ?>
+                    </div>
+                  </div>
 
                       
                     <div class="card-footer">
