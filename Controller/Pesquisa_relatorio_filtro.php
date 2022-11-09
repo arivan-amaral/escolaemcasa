@@ -18,6 +18,8 @@ try {
    <thead>
       <tr>
       ";
+         $result.="<th  style='text-align: center;'>#</th>";
+
       foreach ($titulos as $key => $value) {
          $result.="<th  style='text-align: center;'>".$titulos[$key]."</th>";
       }
@@ -28,13 +30,14 @@ try {
     <tbody>
     ";
 
-    $conta=0;
+    $conta=1;
     $tamanho = count($parametros);
     $result.="<tr>";
-      $res_matriculas = pesquisa_relatorio_filtro($conexao,$texto,$escola);
+      $res_matriculas = pesquisa_relatorio_filtro($conexao,$texto,$escola,$ano_letivo);
     
      
       foreach ($res_matriculas as $key => $value) {
+            $result.="<td>$conta</td>";
 
           for ($i=0; $i < $tamanho; $i++) { 
             $dado = $value[$parametros[$i]];
@@ -45,7 +48,7 @@ try {
           
       }
      
-      if ($conta==0) {
+      if ($conta==1) {
 
         $result.="<tr> <td> NADA ENCONTRADO </td> </tr>";
       }
