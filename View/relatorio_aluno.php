@@ -2,7 +2,7 @@
 session_start();
 
 ###################################################
-if (!isset($_SESSION['idcoordenador'])) {
+if (!isset($_SESSION['idfuncionario'])) {
   //header("location:index.php?status=0");
 
 }else{
