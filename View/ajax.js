@@ -1282,6 +1282,7 @@ if (escola =='' || serie =='' || turma =='' || data_nascimento ==''
   }
 
  ajax.send(
+
  "nome="+document.getElementsByName('nome')[0].value+
  "&escola="+ escola+
  "&serie="+serie+
@@ -2773,6 +2774,8 @@ function adicionar_turma_escola(){
                         if (xmlreq.responseText=='certo') {
                             document.getElementById('idturma').value = "";
                             document.getElementById('quantidade_vaga').value = "";
+
+                            lista_turma_cadastrada_escola_por_serie('tabela');
                              Swal.fire({
                               icon: 'success',
                               title: 'Ação concluída',
@@ -5156,9 +5159,7 @@ function cancelar_transferencia(idaluno,matricula) {
                        // if (node.parentNode) {
                        //   node.parentNode.removeChild(node);
                        // }
-                      setTimeout(function(){window.location.href="listar_alunos_da_turma.php";},500);
-
-
+                         refresh();
                      }else{
                         Swal.fire({
                           position: 'center',
