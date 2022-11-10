@@ -89,7 +89,7 @@ try {
             $cartorio=$_POST['cartorio'];
           
             $nome_responsavel=$_POST['nome_responsavel'];
-            $cpf_responsavel=$_POST['cpf_responsavel'];
+            $cpf_responsavel=converte_telefone($_POST['cpf_responsavel']); 
 
             $escola_id=$_POST['escola'];
             $turma_id=$_POST['turma'];

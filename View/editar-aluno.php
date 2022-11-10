@@ -812,7 +812,7 @@ foreach ($res as $key => $value) {
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Cpf</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="cpf"  value='<?php echo $cpf; ?>'  >
+                          <input type="text" id="RegraValida" value="<?php echo $cpf; ?>" name="cpf" onkeyup="javascript: fMasc( this, mCPF ); ValidaCPF();"class="form-control" maxlength="14" required>
                         </div>
                       </div>
                       <div class="col-sm-2">

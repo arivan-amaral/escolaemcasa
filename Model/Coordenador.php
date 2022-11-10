@@ -50,14 +50,14 @@
 
 // *************************************************************************************************
 
-	function cadastro_coordenador($conexao,$nome, $email, $descricao_funcao,$whatsapp, $senha){
-		$conexao->exec("INSERT INTO funcionario( nome, email, descricao_funcao,whatsapp, senha) 
-			VALUES ('$nome', '$email', '$descricao_funcao','$whatsapp', '$senha') ");
+	function cadastro_coordenador($conexao,$nome, $email, $descricao_funcao,$whatsapp, $senha,$cpf){
+		$conexao->exec("INSERT INTO funcionario( nome, email, descricao_funcao,whatsapp, senha,cpf) 
+			VALUES ('$nome', '$email', '$descricao_funcao','$whatsapp', '$senha','$cpf') ");
 		
 	}	
 
-	function editar_coordenador($conexao,$nome, $email, $descricao_funcao,$whatsapp,$idfuncionario){
-		$conexao->exec("UPDATE funcionario SET nome='$nome', email='$email', descricao_funcao='$descricao_funcao', whatsapp='$whatsapp' WHERE idfuncionario= $idfuncionario ");
+	function editar_coordenador($conexao,$nome, $email, $descricao_funcao,$whatsapp,$idfuncionario,$cpf){
+		$conexao->exec("UPDATE funcionario SET nome='$nome', email='$email', descricao_funcao='$descricao_funcao', whatsapp='$whatsapp', cpf='$cpf' WHERE idfuncionario= $idfuncionario ");
 		 
 		
 	}

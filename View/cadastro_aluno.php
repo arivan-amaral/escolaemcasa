@@ -335,7 +335,7 @@ if ($_SESSION['nivel_acesso_id']==100) {
                         <div class="form-group">
                           <label for="exampleInputEmail1">Cpf filiação 2  </label>
                           <input type="text" id="RegraValida" value="" name="cpf_filiacao2" onkeyup="javascript: fMasc( this, mCPF ); ValidaCPF();"class="form-control" maxlength="14" required>
-                          <span class="text-success" id="status_cpf"></span>
+                          
                         </div>
                       </div>
                       <!-- <div class="col-sm-4"><br><br>
@@ -664,7 +664,7 @@ if ($_SESSION['nivel_acesso_id']==100) {
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Cpf</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="cpf"    >
+                          <input type="text" id="RegraValida" value="" name="cpf" onkeyup="javascript: fMasc( this, mCPF ); ValidaCPF();"class="form-control" maxlength="14" required>
                         </div>
                       </div>
               

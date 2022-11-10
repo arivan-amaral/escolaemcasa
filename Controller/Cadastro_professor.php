@@ -12,7 +12,7 @@ include'../Model/Professor.php';
  	 $whatsapp= str_replace('(', '', $whatsapp);
  	 $whatsapp= str_replace(')', '', $whatsapp);
  	 $whatsapp= str_replace('-', '', $whatsapp);
-
+ 	 $cpf=converte_telefone($_POST['cpf']);
  	 // echo "$nome <br>";
  	 // echo "$email <br>";
  	 // echo "$senha <br>";
@@ -25,7 +25,7 @@ if ($_POST['sexo']=="Masculino") {
 	$funcao='Professora';
 	
 }
- 	 cadastro_professor($conexao,$nome, $email, $funcao,$whatsapp, $senha,$_POST['cpf']);
+ 	 cadastro_professor($conexao,$nome, $email, $funcao,$whatsapp, $senha,$cpf);
 
  	 $_SESSION['status']=1;
 

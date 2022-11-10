@@ -29,6 +29,7 @@ if (!isset($_SESSION['idcoordenador'])) {
   foreach ($res_coordenador as $key => $value) {
       $nome=$value['nome'];
       $email=$value['email'];
+      $cpf=$value['cpf'];
       if ($value['descricao_funcao']=="Coordenador") {
         $coordenador="selected";
         // code...
@@ -82,6 +83,10 @@ if (!isset($_SESSION['idcoordenador'])) {
                             <option value="Feminino">Feminino</option>
                         </select>
                       </div> -->
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Cpf</label>
+                        <input type="text" id="RegraValida" value="<?php echo $cpf; ?>" name="cpf" onkeyup="javascript: fMasc( this, mCPF ); ValidaCPF();"class="form-control" maxlength="14" required>
+                      </div>
 
                       <div class="form-group">
                         <label for="exampleInputEmail1">Função</label>

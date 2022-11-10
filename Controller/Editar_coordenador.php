@@ -8,7 +8,7 @@ include'../Model/Coordenador.php';
  	 $email=$_POST['email'];
  	 $senha=$_POST['senha'];
  	 $whatsapp="".$_POST['whatsapp'];
-
+ 	 $cpf = converte_telefone($_POST['cpf']);
  	 $whatsapp= str_replace(' ', '', $whatsapp);
  	 $whatsapp= str_replace('(', '', $whatsapp);
  	 $whatsapp= str_replace(')', '', $whatsapp);
@@ -29,7 +29,7 @@ include'../Model/Coordenador.php';
  	 // echo "$senha <br>";
  	 // echo "$whatsapp <br>";
 
- 	 editar_coordenador($conexao,$nome, $email, $funcao,$whatsapp, $idfuncionario);
+ 	 editar_coordenador($conexao,$nome, $email, $funcao,$whatsapp, $idfuncionario,$cpf);
 
  	 $_SESSION['status']=1;
 

@@ -7,6 +7,7 @@ include'../Model/Coordenador.php';
  	 $email=$_POST['email'];
  	 $senha=$_POST['senha'];
  	 $whatsapp="55".$_POST['whatsapp'];
+ 	 $cpf =converte_telefone($_POST['cpf']);
 
  	 $whatsapp= str_replace(' ', '', $whatsapp);
  	 $whatsapp= str_replace('(', '', $whatsapp);
@@ -28,7 +29,7 @@ include'../Model/Coordenador.php';
  	 // echo "$senha <br>";
  	 // echo "$whatsapp <br>";
 
- 	 cadastro_coordenador($conexao,$nome, $email, $funcao,$whatsapp, $senha);
+ 	 cadastro_coordenador($conexao,$nome, $email, $funcao,$whatsapp, $senha,$cpf);
  	 $coordenador_id= $conexao->lastInsertId();
 	 $ano= $_SESSION['ano_letivo'];
 	

@@ -45,6 +45,12 @@ if (!isset($_SESSION['idcoordenador'])) {
                         <input type="text" class="form-control" id="exampleInputEmail1" name="email" placeholder="E-mail ou Usuário" required="">
                       </div>
 
+                  
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Cpf</label>
+                        <input type="text" id="RegraValida" value="" name="cpf" onkeyup="javascript: fMasc( this, mCPF ); ValidaCPF();"class="form-control" maxlength="14" required>
+                      </div>
+                 
                       <!--< div class="form-group">
                         <label for="exampleInputEmail1">Sexo</label>
                           <select class="form-control" name="sexo" required="">
