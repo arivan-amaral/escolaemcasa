@@ -26,7 +26,7 @@ try {
                 $res=listar_turmas_inicial_coordenador($conexao,$escola,$_SESSION['ano_letivo']);
               
 
-              // $array_turmas = array();
+               $array_turmas = array();
               // $array_turmas = array();
               // ORDER BY turma.nome_turma
              
@@ -41,6 +41,7 @@ try {
                 $idescola=($value['idescola']);
                 $turno=($value['turno']);
                 $result.="<th  style=''>$nome_turma</th>";
+                $array_turmas[$idturma]=$idturma;
             }
                
                 
@@ -53,16 +54,16 @@ try {
             </thead>
             <tbody>";
             
-            $res_total=pesquisa_relatorio_filtro_quantidade_sexo($conexao,$escola,$ano_letivo);
+            foreach ($array_turmas as  $value_turma) {
+                $idturm=$value_turma;
+                $res_total=pesquisa_relatorio_filtro_quantidade_sexo($conexao,$escola,$ano_letivo,$idturm);
 
-
-            foreach ($res_total as $key => $value) {
-                $result.="
-                <tr>
-                    <td><b>$value[$key] = ". $value['quantidade']."</b></td>
-                </tr>";
+                $result.="<tr><td>";
+                foreach ($res_total as $key => $value) {
+                    $result.=" <b>$value[$key] = ". $value['quantidade']."</b> <br>";
+                }
+                $result.="</td> </tr>";
             }
-
 
             $result.="
  
