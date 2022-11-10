@@ -223,10 +223,8 @@ if (!isset($_SESSION['idfuncionario'])) {
         </div>
       </div>
   <br>
-  <div class="table-responsive">
-    <table class="table table-bordered table-striped" id="resultado">
-      
-    </table>
+  <div class="table-responsive" id="resultado">
+ 
   </div>
   
 </div>

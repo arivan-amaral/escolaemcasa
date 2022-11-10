@@ -2,6 +2,8 @@
 session_start();
 include_once '../Model/Conexao.php';
 include '../Model/Escola.php';
+include '../Model/Coordenador.php';
+include 'Conversao.php';
 
 
 try {
@@ -16,6 +18,62 @@ try {
     $titulos = explode ("-", $titulo);
     $parametros = explode ("-", $parametro);
     $result="
+    <table class=table table-bordered table-striped' >
+      
+           <thead>
+              <tr>";
+
+                $res=listar_turmas_inicial_coordenador($conexao,$escola,$_SESSION['ano_letivo']);
+              
+
+              // $array_turmas = array();
+              // $array_turmas = array();
+              // ORDER BY turma.nome_turma
+             
+              foreach ($res as $key => $value) {
+
+                $idturma=$value['idturma'];
+                $idserie=$value['idserie'];
+                $seguimento=$value['seguimento'];
+
+                $nome_serie=$value['nome_serie'];
+                $nome_turma=($value['nome_turma']);
+                $idescola=($value['idescola']);
+                $turno=($value['turno']);
+                $result.="<th  style=''>$nome_turma</th>";
+            }
+               
+                
+           
+                
+              $result.="
+                
+                
+                </tr>
+            </thead>
+            <tbody>";
+            
+            $res_total=pesquisa_relatorio_filtro_quantidade_sexo($conexao,$escola,$ano_letivo);
+
+
+            foreach ($res_total as $key => $value) {
+                $result.="
+                <tr>
+                    <td><b>$value[$key] = ". $value['quantidade']."</b></td>
+                </tr>";
+            }
+
+
+            $result.="
+ 
+            </tbody>
+    </table>
+    ";
+
+
+    $result.="
+    <table class=table table-bordered table-striped' >
+      
    <thead>
       <tr>
       ";
@@ -41,8 +99,13 @@ try {
           foreach ($res_matriculas as $key => $value) {
                 $result.="<td>$conta</td>";
 
-              for ($i=0; $i < $tamanho; $i++) { 
-                $dado = $value[$parametros[$i]];
+               for ($i=0; $i < $tamanho; $i++) { 
+                if ($parametros[$i]=='data_nascimento') {
+                        $dado = converte_data($value[$parametros[$i]]);
+
+                }else{
+                    $dado = $value[$parametros[$i]];
+                }
                 $result.="<td>$dado</td>";
               }
               $result.="</tr>";
@@ -57,7 +120,12 @@ try {
             $result.="<td>$conta</td>";
 
           for ($i=0; $i < $tamanho; $i++) { 
-            $dado = $value[$parametros[$i]];
+            if ($parametros[$i]=='data_nascimento') {
+                    $dado = converte_data($value[$parametros[$i]]);
+
+            }else{
+                $dado = $value[$parametros[$i]];
+            }
             $result.="<td>$dado</td>";
           }
           $result.="</tr>";
@@ -76,7 +144,8 @@ try {
 
     
     
-$result.="</tbody>";
+$result.="</tbody>    </table>
+";
 
 
 

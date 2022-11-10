@@ -38,6 +38,11 @@ function pesquisa_relatorio_filtro_todos($conexao,$texto,$escola,$ano_letivo){
    
    return $sql->fetchAll();
 }
+function pesquisa_relatorio_filtro_quantidade_sexo($conexao,$escola,$ano_letivo){
+   $sql = $conexao->query("SELECT aluno.sexo, count(*) as 'quantidade' FROM aluno,ecidade_matricula,escola,turma WHERE ecidade_matricula.aluno_id = aluno.idaluno AND ecidade_matricula.turma_escola = escola.idescola AND ecidade_matricula.turma_id = turma.idturma AND ecidade_matricula.calendario_ano='$ano_letivo' AND ecidade_matricula.matricula_ativa='S' AND ecidade_matricula.matricula_concluida='N'   AND ecidade_matricula.turma_escola=$escola GROUP BY aluno.sexo ORDER BY  turma.nome_turma ASC;");
+   
+   return $sql->fetchAll();
+}
 
 
 function pesquisa_aluno_mensal($conexao,$escola){
