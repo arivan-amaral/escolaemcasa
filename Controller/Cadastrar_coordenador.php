@@ -1,6 +1,7 @@
 <?php session_start();
 include'../Model/Conexao.php';
 include'../Model/Coordenador.php';
+include'Conversao.php';
  try {
 
  	 $nome=$_POST['nome'];

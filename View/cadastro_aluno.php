@@ -26,7 +26,8 @@ if ($_SESSION['nivel_acesso_id']==100) {
 <div class="content-wrapper">
 <!-- ####################### CORPO ################################################# -->
    <!-- <H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR> -->
-
+<form name="form1" id="form1">
+  
  
         <div class="card card-primary card-tabs">
           <div class="card-header p-0 pt-1">
@@ -758,15 +759,14 @@ if ($_SESSION['nivel_acesso_id']==100) {
                         <div class="col-sm-4">
                         <div class="form-group">
                         <label for='exampleInputEmail1' class='text-danger'>Turma pretendida</label>
-                          <select class='form-control'  name='idturma' id='idturma' onchange=" listar_etapas_cad_aluno();quantidade_vaga_turma_cadastro_aluno();"> 
+                          <select class='form-control'  name='turma' id='idturma' onchange=" listar_etapas_cad_aluno();quantidade_vaga_turma_cadastro_aluno();"> 
                           
                         </select>
                          </div>
                        </div>
 
-                       <span id="etapa">
+                      <span id="etapa">
                         <input type="hidden" name="etapa" value="">
-                    
                       </span>
 
 
@@ -791,7 +791,7 @@ if ($_SESSION['nivel_acesso_id']==100) {
       <div class="row">
         <div class="col-sm-12">
           <div class="form-group">
-             <button   class="btn btn-block btn-success " id="btn_cadastro_aluno" onclick="cadastro_aluno();">Cadastrar Aluno</button>
+             <button  type="button" class="btn btn-block btn-success " id="btnSend" name="btnSend" onclick="cadastro_aluno();">Cadastrar Aluno</button>
 
          </div>
         </div>
@@ -816,6 +816,7 @@ if ($_SESSION['nivel_acesso_id']==100) {
 
 
 
+</form>
 
 
 <!-- ######################################################################## -->

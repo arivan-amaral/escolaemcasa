@@ -1231,177 +1231,287 @@ function bloquear_botao_concluir(botao){
 }
 
 
-function cadastro_aluno(){
-  var ajax = new XMLHttpRequest();
-    bloquear_botao_concluir("btn_cadastro_aluno");
-  // Seta tipo de requisição: Post e a URL da API
-  ajax.open("POST", "../Controller/Cadastro_aluno.php", true);
-  ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  // Seta paramêtros da requisição e envia a requisição
-  var tudo_certo=true;
-  var escola =document.getElementById('escola').value;
-  var data_matricula =document.getElementById('data_matricula').value;
-  var serie =document.getElementsByName('serie')[0].value;
-  var turma =document.getElementsByName('idturma')[0].value;
+// function cadastro_aluno(){
+//   var ajax = new XMLHttpRequest();
+//     bloquear_botao_concluir("btn_cadastro_aluno");
+//   // Seta tipo de requisição: Post e a URL da API
+//   ajax.open("POST", "../Controller/Cadastro_aluno.php", true);
+//   ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//   // Seta paramêtros da requisição e envia a requisição
+//   var tudo_certo=true;
+//   var escola =document.getElementById('escola').value;
+//   var data_matricula =document.getElementById('data_matricula').value;
+//   var serie =document.getElementsByName('serie')[0].value;
+//   var turma =document.getElementsByName('idturma')[0].value;
 
-   if (!!document.getElementsByName('etapa')) {
-    var etapa ="";
-  }else{
-     var etapa =document.getElementsByName('etapa')[0].value;
-  }
+//    if (!!document.getElementsByName('etapa')) {
+//     var etapa ="";
+//   }else{
+//      var etapa =document.getElementsByName('etapa')[0].value;
+//   }
   
 
-   if (!!document.getElementsByName('uf_identidade')) {
-    var uf_identidade="";
+//    if (!!document.getElementsByName('uf_identidade')) {
+//     var uf_identidade="";
 
-   }else{
-    var uf_identidade=document.getElementsByName('uf_identidade')[0].value;
+//    }else{
+//     var uf_identidade=document.getElementsByName('uf_identidade')[0].value;
 
-   }   
+//    }   
 
-   if (!!document.getElementsByName('uf_municipio_cartorio')) {
-    var uf_municipio_cartorio="";
+//    if (!!document.getElementsByName('uf_municipio_cartorio')) {
+//     var uf_municipio_cartorio="";
 
-   }else{
-    var uf_municipio_cartorio=document.getElementsByName('uf_municipio_cartorio')[0].value;
+//    }else{
+//     var uf_municipio_cartorio=document.getElementsByName('uf_municipio_cartorio')[0].value;
 
-   }   
+//    }   
 
-   if (!!document.getElementsByName('uf_cartorio')) {
-    var uf_cartorio="";
+//    if (!!document.getElementsByName('uf_cartorio')) {
+//     var uf_cartorio="";
 
-   }else{
-    var uf_cartorio=document.getElementsByName('uf_cartorio')[0].value;
+//    }else{
+//     var uf_cartorio=document.getElementsByName('uf_cartorio')[0].value;
 
-   }   
+//    }   
 
-   if (!!document.getElementsByName('municipio_endereco')) {
-    var municipio_endereco="";
-   }else{
-    var municipio_endereco=document.getElementsByName('municipio_endereco')[0].value;
+//    if (!!document.getElementsByName('municipio_endereco')) {
+//     var municipio_endereco="";
+//    }else{
+//     var municipio_endereco=document.getElementsByName('municipio_endereco')[0].value;
 
-   }
-var data_nascimento=document.getElementsByName('data_nascimento')[0].value;
-var cpf_filiacao1=document.getElementsByName('cpf_filiacao1')[0].value;
-var cpf_filiacao2=document.getElementsByName('cpf_filiacao2')[0].value;
-var nome_responsavel=document.getElementsByName('nome_responsavel')[0].value;
-var cpf_responsavel=document.getElementsByName('cpf_responsavel')[0].value;
-var filiacao1=document.getElementsByName('filiacao1')[0].value;
-var filiacao2=document.getElementsByName('filiacao2')[0].value;
-if (escola =='' || serie =='' || turma =='' || data_nascimento =='' 
+//    }
+// var data_nascimento=document.getElementsByName('data_nascimento')[0].value;
+// var cpf_filiacao1=document.getElementsByName('cpf_filiacao1')[0].value;
+// var cpf_filiacao2=document.getElementsByName('cpf_filiacao2')[0].value;
+// var nome_responsavel=document.getElementsByName('nome_responsavel')[0].value;
+// var cpf_responsavel=document.getElementsByName('cpf_responsavel')[0].value;
+// var filiacao1=document.getElementsByName('filiacao1')[0].value;
+// var filiacao2=document.getElementsByName('filiacao2')[0].value;
+// if (escola =='' || serie =='' || turma =='' || data_nascimento =='' 
+//     || nome_responsavel =='' || data_matricula == '') {
+//     //alert(escola +"- "+ serie+"-"+turma)
+//         tudo_certo=false;
+//        alert_preencha_todos_campos('Preencha corretamente todos os campos de curso');
+//   }
+
+//  ajax.send(
+
+//  "nome="+document.getElementsByName('nome')[0].value+
+//  "&escola="+ escola+
+//  "&serie="+serie+
+//  "&turma="+turma+
+//  "&etapa="+etapa+
+//  "&data_matricula="+data_matricula+
+//  "&etapa="+etapa+
+//  "&sexo="+document.getElementsByName('sexo')[0].value+
+//   "&email="+document.getElementsByName('email')[0].value+
+//   "&filiacao1="+document.getElementsByName('filiacao1')[0].value+
+//   "&filiacao2="+document.getElementsByName('filiacao2')[0].value+
+//   "&senha="+document.getElementsByName('senha')[0].value+
+//   "&whatsapp="+document.getElementsByName('whatsapp')[0].value+
+//   "&whatsapp_responsavel="+document.getElementsByName('whatsapp_responsavel')[0].value+
+//   "&data_nascimento="+document.getElementsByName('data_nascimento')[0].value+
+//   "&numero_nis="+document.getElementsByName('numero_nis')[0].value+
+//   "&codigo_inep="+document.getElementsByName('codigo_inep')[0].value+
+//   "&bolsa_familia="+document.getElementsByName('bolsa_familia')[0].value+
+//   "&tipo_responsavel="+document.getElementsByName('tipo_responsavel')[0].value+
+//   "&raca_aluno="+document.getElementsByName('raca_aluno')[0].value+
+//   "&estado_civil_aluno="+document.getElementsByName('estado_civil_aluno')[0].value+
+//   "&tipo_sanguinio_aluno="+document.getElementsByName('tipo_sanguinio_aluno')[0].value+
+//   "&profissao="+document.getElementsByName('profissao')[0].value+
+//   "&situacao_documentacao="+document.getElementsByName('situacao_documentacao')[0].value+
+//   "&tipo_certidao="+document.getElementsByName('tipo_certidao')[0].value+
+//   "&numero_termo="+document.getElementsByName('numero_termo')[0].value+
+//   "&folha="+document.getElementsByName('folha')[0].value+
+//   "&uf_cartorio="+uf_cartorio+
+//   "&uf_municipio_cartorio="+uf_municipio_cartorio+
+//   "&cartorio="+document.getElementsByName('cartorio')[0].value+
+//   "&numero_indentidade="+document.getElementsByName('numero_indentidade')[0].value+
+//   "&uf_identidade="+uf_identidade+
+//   "&orgao_emissor_indentidade="+document.getElementsByName('orgao_emissor_indentidade')[0].value+
+//   "&data_expedicao="+document.getElementsByName('data_expedicao')[0].value+
+//   "&numero_cnh="+document.getElementsByName('numero_cnh')[0].value+
+//   "&categoria_cnh="+document.getElementsByName('categoria_cnh')[0].value+
+//   "&cpf="+document.getElementsByName('cpf')[0].value+
+//   "&cartao_sus="+document.getElementsByName('cartao_sus')[0].value+
+//   "&observacao="+document.getElementsByName('observacao')[0].value+
+
+// "&necessidade_especial="+document.getElementsByName('necessidade_especial')[0].value+
+//  "&apoio_pedagogico="+document.getElementsByName('apoio_pedagogico')[0].value+
+//  "&tipo_diagnostico="+document.getElementsByName('tipo_diagnostico')[0].value+
+//  "&cpf_filiacao1="+document.getElementsByName('cpf_filiacao1')[0].value+
+//  "&cpf_filiacao2="+document.getElementsByName('cpf_filiacao2')[0].value+
+//  "&endereco="+document.getElementsByName('endereco')[0].value+
+//  "&complemento="+document.getElementsByName('complemento')[0].value+
+//  "&numero_endereco="+document.getElementsByName('numero_endereco')[0].value+
+//  "&uf_endereco="+document.getElementsByName('uf_endereco')[0].value+
+//  "&municipio_endereco="+municipio_endereco+
+//  "&bairro_endereco="+document.getElementsByName('bairro_endereco')[0].value+
+//  "&zona_endereco="+document.getElementsByName('zona_endereco')[0].value+
+//  "&cep_endereco="+document.getElementsByName('cep_endereco')[0].value+
+//  "&nacionalidade="+document.getElementsByName('nacionalidade')[0].value+
+//  "&pais="+document.getElementsByName('pais')[0].value+
+//  "&naturalidade="+document.getElementsByName('naturalidade')[0].value+
+//  "&localidade="+document.getElementsByName('localidade')[0].value+
+//  "&transposte_escolar="+document.getElementsByName('transposte_escolar')[0].value+
+//  "&poder_publico_responsavel="+document.getElementsByName('poder_publico_responsavel')[0].value+
+//  "&recebe_escolaridade_outro_espaco="+document.getElementsByName('recebe_escolaridade_outro_espaco')[0].value+
+//  "&matricula_certidao="+document.getElementsByName('matricula_certidao')[0].value+
+
+//  "&cartorio="+document.getElementsByName('cartorio')[0].value+
+//  "&turno="+document.getElementsByName('turno')[0].value+
+//  "&nome_responsavel="+document.getElementsByName('nome_responsavel')[0].value+
+//  "&cpf_responsavel="+document.getElementsByName('cpf_responsavel')[0].value+
+//  "&quantidade_vagas_restante="+document.getElementsByName('quantidade_vagas_restante')[0].value
+
+
+
+//   );
+
+
+
+//     if (tudo_certo==true) {
+//          aguarde();
+//         // Cria um evento para receber o retorno.
+//           ajax.onreadystatechange = function() {
+//             // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
+//             if (ajax.readyState == 4 && ajax.status == 200) {
+//                 var data = ajax.responseText;
+//                   if(data == 'certo'){
+//                     Swal.fire({
+//                       position: 'center',
+//                       icon: 'success',
+//                       title: 'Ação Concluída',
+//                          text: ' ',
+//                       showConfirmButton: false,
+//                       timer: 2500
+//                     });
+//                     setTimeout(function(){window.location.href="cadastro_aluno.php";},1500);
+                    
+//                   }else{
+//                     Swal.fire({
+//                       position: 'center',
+//                       icon: 'error',
+//                       title: 'Alguma coisa deu errado',
+//                          text: data,
+//                       showConfirmButton: true
+//                     });
+//                   }
+//             }
+//           }
+//     }
+// }
+
+
+
+
+
+function cadastro_aluno(){
+
+      var serie =document.getElementsByName('serie')[0].value;
+      var data_nascimento=document.getElementsByName('data_nascimento')[0].value;
+      var turma=document.getElementsByName('turma')[0].value;
+      var nome_responsavel=document.getElementsByName('nome_responsavel')[0].value;
+      var data_matricula=document.getElementsByName('data_matricula')[0].value;
+
+
+
+      if (!!document.getElementsByName('etapa')) {
+        var etapa ="";
+      }else{
+         var etapa = document.getElementsByName('etapa')[0].value;
+      } 
+      
+    console.log("etapa:"+etapa);
+
+       if (!!document.getElementsByName('uf_identidade')) {
+        var uf_identidade="";
+
+       }else{
+        var uf_identidade=document.getElementsByName('uf_identidade')[0].value;
+
+       }   
+
+       if (!!document.getElementsByName('uf_municipio_cartorio')) {
+        var uf_municipio_cartorio="";
+
+       }else{
+        var uf_municipio_cartorio=document.getElementsByName('uf_municipio_cartorio')[0].value;
+
+       }   
+
+       if (!!document.getElementsByName('uf_cartorio')) {
+        var uf_cartorio="";
+
+       }else{
+        var uf_cartorio=document.getElementsByName('uf_cartorio')[0].value;
+
+       }   
+
+       if (!!document.getElementsByName('municipio_endereco')) {
+        var municipio_endereco="";
+       }else{
+        var municipio_endereco=document.getElementsByName('municipio_endereco')[0].value;
+
+       }
+
+
+       if (escola =='' || serie =='' || turma =='' || data_nascimento =='' 
     || nome_responsavel =='' || data_matricula == '') {
-    //alert(escola +"- "+ serie+"-"+turma)
         tudo_certo=false;
        alert_preencha_todos_campos('Preencha corretamente todos os campos de curso');
+       return;
   }
 
- ajax.send(
-
- "nome="+document.getElementsByName('nome')[0].value+
- "&escola="+ escola+
- "&serie="+serie+
- "&turma="+turma+
- "&etapa="+etapa+
- "&data_matricula="+data_matricula+
- "&etapa="+etapa+
- "&sexo="+document.getElementsByName('sexo')[0].value+
-  "&email="+document.getElementsByName('email')[0].value+
-  "&filiacao1="+document.getElementsByName('filiacao1')[0].value+
-  "&filiacao2="+document.getElementsByName('filiacao2')[0].value+
-  "&senha="+document.getElementsByName('senha')[0].value+
-  "&whatsapp="+document.getElementsByName('whatsapp')[0].value+
-  "&whatsapp_responsavel="+document.getElementsByName('whatsapp_responsavel')[0].value+
-  "&data_nascimento="+document.getElementsByName('data_nascimento')[0].value+
-  "&numero_nis="+document.getElementsByName('numero_nis')[0].value+
-  "&codigo_inep="+document.getElementsByName('codigo_inep')[0].value+
-  "&bolsa_familia="+document.getElementsByName('bolsa_familia')[0].value+
-  "&tipo_responsavel="+document.getElementsByName('tipo_responsavel')[0].value+
-  "&raca_aluno="+document.getElementsByName('raca_aluno')[0].value+
-  "&estado_civil_aluno="+document.getElementsByName('estado_civil_aluno')[0].value+
-  "&tipo_sanguinio_aluno="+document.getElementsByName('tipo_sanguinio_aluno')[0].value+
-  "&profissao="+document.getElementsByName('profissao')[0].value+
-  "&situacao_documentacao="+document.getElementsByName('situacao_documentacao')[0].value+
-  "&tipo_certidao="+document.getElementsByName('tipo_certidao')[0].value+
-  "&numero_termo="+document.getElementsByName('numero_termo')[0].value+
-  "&folha="+document.getElementsByName('folha')[0].value+
-  "&uf_cartorio="+uf_cartorio+
-  "&uf_municipio_cartorio="+uf_municipio_cartorio+
-  "&cartorio="+document.getElementsByName('cartorio')[0].value+
-  "&numero_indentidade="+document.getElementsByName('numero_indentidade')[0].value+
-  "&uf_identidade="+uf_identidade+
-  "&orgao_emissor_indentidade="+document.getElementsByName('orgao_emissor_indentidade')[0].value+
-  "&data_expedicao="+document.getElementsByName('data_expedicao')[0].value+
-  "&numero_cnh="+document.getElementsByName('numero_cnh')[0].value+
-  "&categoria_cnh="+document.getElementsByName('categoria_cnh')[0].value+
-  "&cpf="+document.getElementsByName('cpf')[0].value+
-  "&cartao_sus="+document.getElementsByName('cartao_sus')[0].value+
-  "&observacao="+document.getElementsByName('observacao')[0].value+
-
-"&necessidade_especial="+document.getElementsByName('necessidade_especial')[0].value+
- "&apoio_pedagogico="+document.getElementsByName('apoio_pedagogico')[0].value+
- "&tipo_diagnostico="+document.getElementsByName('tipo_diagnostico')[0].value+
- "&cpf_filiacao1="+document.getElementsByName('cpf_filiacao1')[0].value+
- "&cpf_filiacao2="+document.getElementsByName('cpf_filiacao2')[0].value+
- "&endereco="+document.getElementsByName('endereco')[0].value+
- "&complemento="+document.getElementsByName('complemento')[0].value+
- "&numero_endereco="+document.getElementsByName('numero_endereco')[0].value+
- "&uf_endereco="+document.getElementsByName('uf_endereco')[0].value+
- "&municipio_endereco="+municipio_endereco+
- "&bairro_endereco="+document.getElementsByName('bairro_endereco')[0].value+
- "&zona_endereco="+document.getElementsByName('zona_endereco')[0].value+
- "&cep_endereco="+document.getElementsByName('cep_endereco')[0].value+
- "&nacionalidade="+document.getElementsByName('nacionalidade')[0].value+
- "&pais="+document.getElementsByName('pais')[0].value+
- "&naturalidade="+document.getElementsByName('naturalidade')[0].value+
- "&localidade="+document.getElementsByName('localidade')[0].value+
- "&transposte_escolar="+document.getElementsByName('transposte_escolar')[0].value+
- "&poder_publico_responsavel="+document.getElementsByName('poder_publico_responsavel')[0].value+
- "&recebe_escolaridade_outro_espaco="+document.getElementsByName('recebe_escolaridade_outro_espaco')[0].value+
- "&matricula_certidao="+document.getElementsByName('matricula_certidao')[0].value+
-
- "&cartorio="+document.getElementsByName('cartorio')[0].value+
- "&turno="+document.getElementsByName('turno')[0].value+
- "&nome_responsavel="+document.getElementsByName('nome_responsavel')[0].value+
- "&cpf_responsavel="+document.getElementsByName('cpf_responsavel')[0].value+
- "&quantidade_vagas_restante="+document.getElementsByName('quantidade_vagas_restante')[0].value
-
-
-
-  );
-
-
-
-    if (tudo_certo==true) {
-         aguarde();
-        // Cria um evento para receber o retorno.
-          ajax.onreadystatechange = function() {
-            // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
-            if (ajax.readyState == 4 && ajax.status == 200) {
-                var data = ajax.responseText;
-                  if(data == 'certo'){
+    var formData = new FormData(document.getElementById("form1"));      
+    $.ajax({
+            type: 'POST',
+            url: '../Controller/Cadastro_aluno.php',
+            data: formData,
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+                  $('#btnSend').attr("disabled","disabled");
+                  $('#form1').css("opacity",".5");
+            },
+            success: function(msg){  
+            console.log(msg);               
+                if(msg == 'certo')
+                {
+                    $('#form1')[0].reset();
+                    
                     Swal.fire({
                       position: 'center',
                       icon: 'success',
                       title: 'Ação Concluída',
                          text: ' ',
                       showConfirmButton: false,
-                      timer: 2500
+                      timer: 3000
                     });
-                    setTimeout(function(){window.location.href="cadastro_aluno.php";},1500);
                     
-                  }else{
+                    refresh();
+                }
+                else
+                {
+                    $('#form1').css("opacity","");
+                    $("#btnSend").removeAttr("disabled");
+                    
                     Swal.fire({
-                      position: 'center',
-                      icon: 'error',
-                      title: 'Alguma coisa deu errado',
-                         text: data,
-                      showConfirmButton: true
-                    });
-                  }
+                         position: 'center',
+                         icon: 'error',
+                         title: 'Erro: '+msg,
+                            text: ' ',
+                         showConfirmButton: true
+                       });
+                }
             }
-          }
-    }
+        });
 }
+
+
+ 
 
 
 function refresh() {    

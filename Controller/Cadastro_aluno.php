@@ -85,7 +85,8 @@ try {
             $poder_publico_responsavel=$_POST['poder_publico_responsavel'];
             $recebe_escolaridade_outro_espaco=$_POST['recebe_escolaridade_outro_espaco'];
             $matricula_certidao=$_POST['matricula_certidao'];
-            $uf_municipio_cartorio=$_POST['uf_municipio_cartorio'];
+            $uf_municipio_cartorio=$_POST['uf_cartorio'];
+            // $uf_municipio_cartorio=$_POST['uf_municipio_cartorio'];
             $cartorio=$_POST['cartorio'];
           
             $nome_responsavel=$_POST['nome_responsavel'];
