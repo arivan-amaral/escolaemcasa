@@ -183,7 +183,7 @@ $url_get=$array_url[1];
 
 
  
-                      <button type='submit' class='btn btn-primary'>GUIA DE TRANSFERÊNCIA.</button>
+                      <button type='submit' class='btn btn-primary'>GUIA DE TRANSFERÊNCIA (escola $id_escola_origem)</button>
                    </form>";
                   // }
                   // else{
