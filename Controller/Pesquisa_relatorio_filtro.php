@@ -21,29 +21,14 @@ try {
     <table class=table table-bordered table-striped' >
       
            <thead>
-              <tr>";
+              <tr>
+                <th>
+                    TURMAS
+                </th>   <th>
+                    TOTAIS 
+                </th>
+              ";
 
-                $res=listar_turmas_inicial_coordenador($conexao,$escola,$_SESSION['ano_letivo']);
-              
-
-               $array_turmas = array();
-              // $array_turmas = array();
-              // ORDER BY turma.nome_turma
-             
-              foreach ($res as $key => $value) {
-
-                $idturma=$value['idturma'];
-                $idserie=$value['idserie'];
-                $seguimento=$value['seguimento'];
-
-                $nome_serie=$value['nome_serie'];
-                $nome_turma=($value['nome_turma']);
-                $idescola=($value['idescola']);
-                $turno=($value['turno']);
-                $result.="<th  style=''>$nome_turma</th>";
-                $array_turmas[$idturma]=$idturma;
-            }
-               
                 
            
                 
@@ -54,15 +39,32 @@ try {
             </thead>
             <tbody>";
             
-            foreach ($array_turmas as  $value_turma) {
-                $idturm=$value_turma;
-                $res_total=pesquisa_relatorio_filtro_quantidade_sexo($conexao,$escola,$ano_letivo,$idturm);
+               $res=listar_turmas_inicial_coordenador($conexao,$escola,$_SESSION['ano_letivo']);
+             
 
-                $result.="<tr><td>";
-                foreach ($res_total as $key => $value) {
-                    $result.=" <b>$value[$key] = ". $value['quantidade']."</b> <br>";
-                }
-                $result.="</td> </tr>";
+        
+             foreach ($res as $key => $value) {
+
+               $idturma=$value['idturma'];
+               $idserie=$value['idserie'];
+               $seguimento=$value['seguimento'];
+
+               $nome_serie=$value['nome_serie'];
+               $nome_turma=($value['nome_turma']);
+               $idescola=($value['idescola']);
+               $turno=($value['turno']);
+           
+           
+                $result.="<tr>
+                    <td>$nome_turma</td>
+                    <td>";
+                    $res_total=pesquisa_relatorio_filtro_quantidade_sexo($conexao,$escola,$ano_letivo,$idturma);
+                    foreach ($res_total as $key => $value) {
+                        $result.=" <b>$value[$key] = ". $value['quantidade']."</b> <br>";
+                    }
+                    $result.="
+                    </td> 
+                </tr>";
             }
 
             $result.="
