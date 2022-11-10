@@ -480,6 +480,7 @@ function pesquisa_relatorio_filtros(){
   var nome_escola = document.getElementById('nome_escola');
   var nome_turma = document.getElementById('nome_turma');
   var bolsa_familia = document.getElementById('bolsa_familia');
+  var data_nascimento = document.getElementById('data_nascimento');
 
   if(idaluno.checked) {
      if(contador == 0){
@@ -634,6 +635,19 @@ function pesquisa_relatorio_filtros(){
       texto+=","+bolsa_familia.value;
       titulo+="-Recebe Bolsa Familia";
       parametro+="-bolsa_familia";
+      contador++;
+     }
+  }
+  if(data_nascimento.checked) {
+      if(contador == 0){
+      texto+=data_nascimento.value;
+      titulo+="Data de Nascimento";
+      parametro+="data_nascimento";
+      contador++;
+     }else{
+      texto+=","+data_nascimento.value;
+      titulo+="-Data de Nascimento";
+      parametro+="-data_nascimento";
       contador++;
      }
   }

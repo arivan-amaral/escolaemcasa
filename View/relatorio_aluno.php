@@ -168,6 +168,12 @@ if (!isset($_SESSION['idfuncionario'])) {
             Recebe Bolsa Familia
           </label>
         </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="aluno.data_nascimento" id="data_nascimento">
+          <label class="form-check-label" for="flexCheckDefault">
+            Data de Nascimento
+          </label>
+        </div>
       </div>
       
         <div class="col-sm-3">
