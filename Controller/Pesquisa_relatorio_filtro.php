@@ -60,7 +60,7 @@ try {
                     <td>";
                     $res_total=pesquisa_relatorio_filtro_quantidade_sexo($conexao,$escola,$ano_letivo,$idturma);
                     foreach ($res_total as $key => $value) {
-                        $result.=" <b>$value[$key] = ". $value['quantidade']."</b> <br>";
+                        $result.=" <b>".$value['sexo']." = ". $value['quantidade']."</b> <br>";
                     }
                     $result.="
                     </td> 
