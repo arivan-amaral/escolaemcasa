@@ -1289,7 +1289,7 @@ if (escola =='' || serie =='' || turma =='' || data_nascimento ==''
  "&turma="+turma+
  "&etapa="+etapa+
  "&data_matricula="+data_matricula+
-
+ "&etapa="+etapa+
  "&sexo="+document.getElementsByName('sexo')[0].value+
   "&email="+document.getElementsByName('email')[0].value+
   "&filiacao1="+document.getElementsByName('filiacao1')[0].value+

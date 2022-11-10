@@ -15,7 +15,7 @@ try {
 		if ($idserie==16) {
 
 	  		$result="<label for='exampleInputEmail1'>Escolha a etapa </label>
-	                <select class='form-control' name='etapa'  required>
+	                <select class='form-control' name='etapa'   required>
 	                <option></option>";
 			$res=$conexao->query("SELECT * FROM etapa_multissereada WHERE turma_id=$turma_id");
 			foreach ($res as $key => $value) {

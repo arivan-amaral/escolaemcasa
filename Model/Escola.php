@@ -288,8 +288,8 @@ function verificar_solicitacao_tranferencia(
 }
 
 
-function rematricular_aluno($conexao,$aluno_id,$turma_id,$turma_id_anterior,$matricula_situacao,$matricula_concluida,$matricula_datamatricula,$matricula_ativa,$matricula_tipo,$calendario_ano,$turma_escola,$turno_nome){
-   $sql = $conexao->prepare("INSERT INTO ecidade_matricula( aluno_id, turma_id, turma_id_anterior,  matricula_situacao, matricula_concluida,  matricula_datamatricula,  matricula_ativa, matricula_tipo,   calendario_ano, turma_escola, turno_nome) VALUES (:aluno_id,:turma_id,:turma_id_anterior,:matricula_situacao,:matricula_concluida,:matricula_datamatricula,:matricula_ativa,:matricula_tipo,:calendario_ano,:turma_escola,:turno_nome)
+function rematricular_aluno($conexao,$aluno_id,$turma_id,$turma_id_anterior,$matricula_situacao,$matricula_concluida,$matricula_datamatricula,$matricula_ativa,$matricula_tipo,$calendario_ano,$turma_escola,$turno_nome,$etapa){
+   $sql = $conexao->prepare("INSERT INTO ecidade_matricula( aluno_id, turma_id, turma_id_anterior,  matricula_situacao, matricula_concluida,  matricula_datamatricula,  matricula_ativa, matricula_tipo,   calendario_ano, turma_escola, turno_nome, etapa) VALUES (:aluno_id,:turma_id,:turma_id_anterior,:matricula_situacao,:matricula_concluida,:matricula_datamatricula,:matricula_ativa,:matricula_tipo,:calendario_ano,:turma_escola,:turno_nome,:etapa)
       ");
 
 $sql->bindParam("aluno_id",$aluno_id);
@@ -305,6 +305,7 @@ $sql->bindParam("matricula_tipo",$matricula_tipo);
 $sql->bindParam("calendario_ano",$calendario_ano);
 $sql->bindParam("turma_escola",$turma_escola);
 $sql->bindParam("turno_nome",$turno_nome);
+$sql->bindParam("etapa",$etapa);
 
    $sql->execute();
 }

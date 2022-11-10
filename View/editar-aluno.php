@@ -409,7 +409,8 @@ foreach ($res as $key => $value) {
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Cpf do responsável</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="cpf_responsavel"  required="" value="<?php echo $cpf_responsavel; ?>">
+                          <input type="text" id="RegraValida"  name="cpf_responsavel" onkeyup="javascript: fMasc( this, mCPF ); ValidaCPF();"class="form-control" maxlength="14" value="<?php echo $cpf_responsavel; ?>"required>
+                          <span class="text-success" id="status_cpf"></span>
                         </div>
                       </div>
                     </div> 
@@ -424,7 +425,8 @@ foreach ($res as $key => $value) {
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Cpf filiação 1</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="cpf_filiacao1" value='<?php echo $cpf_filiacao1 ?>' required="">
+                       
+                            <input type="text" id="RegraValida" name="cpf_filiacao1" onkeyup="javascript: fMasc( this, mCPF ); ValidaCPF();"class="form-control" maxlength="14" value="<?php echo $cpf_filiacao1; ?>"required>
                         </div>
                       </div>
                     </div>
@@ -439,7 +441,7 @@ foreach ($res as $key => $value) {
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Cpf filiação 2</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="cpf_filiacao2" value='<?php echo $cpf_filiacao2 ?>' required="">
+                          <input type="text" id="RegraValida" name="cpf_filiacao2" onkeyup="javascript: fMasc( this, mCPF ); ValidaCPF();"class="form-control" maxlength="14" value="<?php echo $cpf_filiacao2; ?>"required>
                         </div>
                       </div>
                     </div>           

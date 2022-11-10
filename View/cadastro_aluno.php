@@ -285,7 +285,8 @@ if ($_SESSION['nivel_acesso_id']==100) {
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Cpf do responsável </label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="cpf_responsavel" required="">
+                           <input type="text" id="RegraValida" value="" name="cpf_responsavel" onkeyup="javascript: fMasc( this, mCPF ); ValidaCPF();"class="form-control" maxlength="14" required>
+                          <span class="text-success" id="status_cpf"></span>
                         </div>
                       </div>
                       <!-- <div class="col-sm-4"><br><br>
@@ -311,7 +312,8 @@ if ($_SESSION['nivel_acesso_id']==100) {
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Cpf filiação 1  </label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="cpf_filiacao1" required="">
+                           <input type="text" id="RegraValida" value="" name="cpf_filiacao1" onkeyup="javascript: fMasc( this, mCPF ); ValidaCPF();"class="form-control" maxlength="14" required>
+                          <span class="text-success" id="status_cpf"></span>
                         </div>
                       </div>
                       <!-- <div class="col-sm-4"><br><br>
@@ -332,7 +334,8 @@ if ($_SESSION['nivel_acesso_id']==100) {
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Cpf filiação 2  </label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="cpf_filiacao2" required="">
+                          <input type="text" id="RegraValida" value="" name="cpf_filiacao2" onkeyup="javascript: fMasc( this, mCPF ); ValidaCPF();"class="form-control" maxlength="14" required>
+                          <span class="text-success" id="status_cpf"></span>
                         </div>
                       </div>
                       <!-- <div class="col-sm-4"><br><br>
@@ -755,7 +758,7 @@ if ($_SESSION['nivel_acesso_id']==100) {
                         <div class="col-sm-4">
                         <div class="form-group">
                         <label for='exampleInputEmail1' class='text-danger'>Turma pretendida</label>
-                          <select class='form-control'  name='idturma' id='idturma' onchange="quantidade_vaga_turma_cadastro_aluno();"> 
+                          <select class='form-control'  name='idturma' id='idturma' onchange=" listar_etapas_cad_aluno();quantidade_vaga_turma_cadastro_aluno();"> 
                           
                         </select>
                          </div>

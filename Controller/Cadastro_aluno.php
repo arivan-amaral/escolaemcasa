@@ -9,7 +9,7 @@ try {
  
     $nome=trim($_POST['nome']);
     $data_nascimento=$_POST['data_nascimento'];
-
+    $etapa = $_POST['etapa'];
     $res_aluno_existente=$conexao->query("SELECT * FROM aluno WHERE data_nascimento='$data_nascimento' and nome='$nome'");
     $res_aluno_existente=$res_aluno_existente->fetchAll();
     if (count($res_aluno_existente)==0) {
@@ -192,7 +192,8 @@ try {
                 $uf_municipio_cartorio,
                 $cartorio,
                 $nome_responsavel,
-                $cpf_responsavel
+                $cpf_responsavel,
+
             );
 
 
@@ -205,7 +206,7 @@ try {
             // cadastrar_ecidade_matricula($conexao, $aluno_id, $turma_id, $observacao, $matricula_tipo, $calendario_ano, $escola_id, $turno_nome);
             
 
-        rematricular_aluno($conexao,$aluno_id,$turma_id,$turma_id_anterior,$matricula_situacao,$matricula_concluida,$matricula_datamatricula,$matricula_ativa,$matricula_tipo,$calendario_ano,$escola_id,$turno_nome);
+        rematricular_aluno($conexao,$aluno_id,$turma_id,$turma_id_anterior,$matricula_situacao,$matricula_concluida,$matricula_datamatricula,$matricula_ativa,$matricula_tipo,$calendario_ano,$escola_id,$turno_nome,$etapa);
 
         $matricula_codigo= $conexao->lastInsertId();
         $matriculamov_descr="ALUNO MATRICULADO NA TURMA";
