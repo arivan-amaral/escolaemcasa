@@ -14,6 +14,7 @@ if (!isset($_SESSION['idcoordenador'])) {
   include "barra_horizontal.php";
   include 'menu.php';
   include_once '../Model/Conexao.php';
+  include_once '../Model/Coordenador.php';
   include '../Model/Escola.php';
   
 ?>
@@ -86,9 +87,10 @@ if (!isset($_SESSION['idcoordenador'])) {
                       <label>Selecione a escola</label>
                         <?php
 
-                        $res_turma=lista_escola($conexao); 
+                       $res_escola= escola_associada($conexao,$idcoordenador);
 
-                        foreach ($res_turma as $key => $value) {
+
+                        foreach ($res_escola as $key => $value) {
 
                             $idescola= $value['idescola'];
 
