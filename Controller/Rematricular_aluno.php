@@ -61,6 +61,12 @@ try {
 				$nome_aluno=$_POST["nome_aluno$aluno_id"];
 				$matricula_aluno=$_POST["matricula_aluno$aluno_id"];
 				$resultado=$_POST["resultado$aluno_id"];
+				if (isset($_POST['etapa'])) {
+				  $etapa=$_POST['etapa'];
+				}else{
+				  $etapa='';
+
+				}
 
 				// echo "$aluno_id - $nome_aluno ;;<br>";
 
@@ -86,7 +92,7 @@ try {
 			// echo "$aluno_id - $nome_aluno <br>";
 
 				if ($rematriculado==0 && $quantidade_vagas_restante> 0 && $rematricula_serie_id ==$rematricula_nova_serie && ($resultado !="Apc" || $resultado !="Apr" ) ) {
-					rematricular_aluno($conexao,$aluno_id,$turma_id,$turma_id_anterior,$matricula_situacao,$matricula_concluida,$matricula_datamatricula,$matricula_ativa,$matricula_tipo,$calendario_ano,$turma_escola,$turno_nome);
+					rematricular_aluno($conexao,$aluno_id,$turma_id,$turma_id_anterior,$matricula_situacao,$matricula_concluida,$matricula_datamatricula,$matricula_ativa,$matricula_tipo,$calendario_ano,$turma_escola,$turno_nome,$etapa);
 
 					mudar_situacao_rematricular_aluno($conexao,$matricula_aluno);
 					$quantidade_vagas_restante--;
@@ -94,7 +100,7 @@ try {
 
 				}elseif ($rematriculado==0 && $quantidade_vagas_restante> 0 && ($resultado=="Apc" || $resultado=="Apr") ) {
 
-				rematricular_aluno($conexao,$aluno_id,$turma_id,$turma_id_anterior,$matricula_situacao,$matricula_concluida,$matricula_datamatricula,$matricula_ativa,$matricula_tipo,$calendario_ano,$turma_escola,$turno_nome);
+				rematricular_aluno($conexao,$aluno_id,$turma_id,$turma_id_anterior,$matricula_situacao,$matricula_concluida,$matricula_datamatricula,$matricula_ativa,$matricula_tipo,$calendario_ano,$turma_escola,$turno_nome,$etapa);
 
 				mudar_situacao_rematricular_aluno($conexao,$matricula_aluno);
 				$quantidade_vagas_restante--;

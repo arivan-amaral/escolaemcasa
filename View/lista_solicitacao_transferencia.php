@@ -268,7 +268,7 @@ $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
                   <button type='button' class='btn btn-default' data-dismiss='modal'>FECHAR</button>
                   <!-- onclick='carregando_login()' -->
                   <div id='botao_continuar'>
-                    <button   name='btnSendaceita_solicitacao$idsolicitacao' id='btnSendaceita_solicitacao$idsolicitacao' class='btn btn-primary' onclick=aceitar_solicitacao_transferencia('$idsolicitacao');>ACEITAR</button>
+                    <button  name='btnSendaceita_solicitacao$idsolicitacao' id='btnSendaceita_solicitacao$idsolicitacao' class='btn btn-primary' onclick=aceitar_solicitacao_transferencia('$idsolicitacao');>ACEITAR</button>
                   </div>
                 </div>
 

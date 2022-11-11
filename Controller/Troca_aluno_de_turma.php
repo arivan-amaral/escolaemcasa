@@ -15,7 +15,12 @@ try {
 	$turno=$_POST['troca_turma_turno'];
 	$escola_id=$_POST['rematricula_escola_id'];
 	$serie_id=$_POST['troca_turma_serie_id'];
-	
+	if (isset($_POST['etapa'])) {
+	    $etapa=$_POST['etapa'];
+	  }else{
+	    $etapa='';
+
+	  }
 
 	$url_get=$_POST['url_get'];
 	$ano_letivo=$_SESSION['ano_letivo'];
@@ -89,7 +94,7 @@ try {
 				 $turma_escola=$escola_id;
 				 $turno_nome=$turno;
 
-				 rematricular_aluno($conexao,$aluno_id,$turma_id,$turma_id_anterior,$matricula_situacao,$matricula_concluida,$matricula_datamatricula,$matricula_ativa,$matricula_tipo,$calendario_ano,$turma_escola,$turno_nome);
+				 rematricular_aluno($conexao,$aluno_id,$turma_id,$turma_id_anterior,$matricula_situacao,$matricula_concluida,$matricula_datamatricula,$matricula_ativa,$matricula_tipo,$calendario_ano,$turma_escola,$turno_nome,$etapa);
 
 				 $conexao->exec("UPDATE nota_parecer set turma_id=$turma_id WHERE turma_id=$turma_id_anterior and aluno_id=$aluno_id ");
 

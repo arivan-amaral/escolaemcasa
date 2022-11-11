@@ -18,7 +18,12 @@ try {
     $vaga_escola=$_POST["vaga_escola"];
     $aceitar_nova_turma=$_POST["aceitar_nova_turma"];
     $turma_id_origem=$_POST["turma_id_origem"];
-    
+    if (isset($_POST['etapa'])) {
+      $etapa=$_POST['etapa'];
+    }else{
+      $etapa='';
+
+    }
     // $turma_id_origem=$_POST["turma_id_origem"];
     // aceitar_idescola_destino
     // idaluno
@@ -42,7 +47,7 @@ try {
         $turma_escola=$aceitar_idescola_destino;
         $turno_nome=$aceitar_turno;
 
-        rematricular_aluno($conexao,$aluno_id,$turma_id,$turma_id_anterior,$matricula_situacao,$matricula_concluida,$matricula_datamatricula,$matricula_ativa,$matricula_tipo,$calendario_ano,$turma_escola,$turno_nome);
+        rematricular_aluno($conexao,$aluno_id,$turma_id,$turma_id_anterior,$matricula_situacao,$matricula_concluida,$matricula_datamatricula,$matricula_ativa,$matricula_tipo,$calendario_ano,$turma_escola,$turno_nome,$etapa);
 
         aceitar_solicitacao_transferencia($conexao,$profissional_resposta,$idsolicitacao,$aceita);
         
