@@ -64,7 +64,7 @@ try {
 				if (isset($_POST['etapa'])) {
 				  $etapa=$_POST['etapa'];
 				}else{
-				  $etapa='';
+				  $etapa=NULL;
 
 				}
 

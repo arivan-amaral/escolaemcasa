@@ -19,7 +19,7 @@ try {
 	if (isset($_GET['etapa'])) {
 	  $etapa=$_GET['etapa'];
 	}else{
-	  $etapa='';
+	  $etapa=NULL;
 
 	}
 

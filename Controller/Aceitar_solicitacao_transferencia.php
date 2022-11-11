@@ -21,7 +21,7 @@ try {
     if (isset($_POST['etapa'])) {
       $etapa=$_POST['etapa'];
     }else{
-      $etapa='';
+      $etapa=NULL;
 
     }
     // $turma_id_origem=$_POST["turma_id_origem"];
