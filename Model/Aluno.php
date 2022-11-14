@@ -440,7 +440,7 @@ function listar_conteudo_aula_cadastrado_regente($conexao, $iddisciplina, $idtur
        -- disciplina.iddisciplina= disciplina_id and 
       escola_id=$idescola and 
       ano_conteudo=$ano_letivo and 
-      turma_id=$idturma and professor_id=$professor_id GROUP BY data,aula,conteudo_aula.id order by data, aula ");
+      turma_id=$idturma  GROUP BY data,aula,conteudo_aula.id order by data, aula ");
     return $resultado;
 }
 
