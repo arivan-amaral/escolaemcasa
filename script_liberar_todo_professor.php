@@ -37,10 +37,10 @@ descricao_funcao ='Professor' or descricao_funcao ='Professora'
     
       $conexao->exec("DELETE FROM bloquear_acesso where funcionario_id=$funcionario_id and calendario_letivo_id= $calendario_letivo_id");
       // code...
-    }
-     
     echo"$conta - id: $funcionario_id <br>";
     $conta++;
+    }
+     
   }
      
 
