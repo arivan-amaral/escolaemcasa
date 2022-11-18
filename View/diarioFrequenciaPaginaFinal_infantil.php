@@ -399,11 +399,16 @@ foreach ($result_escola as $key => $value) {
   
   <?php
   // disciplina_id=$iddisciplina and 
+    $disciplina_individual="";
+  // 
+  if ($iddisciplina !=1000) {
+    $disciplina_individual="  disciplina_id = $iddisciplina and";
+  }
 $result_data_aula=$conexao->query("
 SELECT data_frequencia,aula FROM frequencia WHERE
 escola_id=$idescola and
 turma_id=$idturma and
-
+$disciplina_individual
 data_frequencia BETWEEN '$data_inicio_trimestre' and '$data_fim_trimestre' group by data_frequencia, aula order by data_frequencia,aula asc limit $inicio,$fim ");
 $array_data_aula=array();
 $array_aula=array();
