@@ -477,6 +477,7 @@ for ($i=$conta_data; $conta_data<$limite_data ; $i++) {
 <?php
 $result_nota_aula=$conexao->query("
 SELECT data_nota,avaliacao FROM nota_parecer WHERE
+ano_nota='$ano_letivo' and
 escola_id=$idescola and
 turma_id=$idturma and
 disciplina_id=$iddisciplina and 
@@ -801,6 +802,8 @@ $conta_nota_av3=0;
   // ******************************************************
      $result_nota_avaliacao=$conexao->query("
      SELECT nota FROM nota_parecer WHERE
+ano_nota='$ano_letivo' and
+
      escola_id=$idescola and
      turma_id=$idturma and
      disciplina_id=$iddisciplina and 
@@ -854,6 +857,8 @@ $conta_nota_av3=0;
   // ******************************************************
      $result_nota_avaliacao=$conexao->query("
      SELECT nota FROM nota_parecer WHERE
+ano_nota='$ano_letivo' and
+
      escola_id=$idescola and
      turma_id=$idturma and
      disciplina_id=$iddisciplina and 
@@ -905,6 +910,8 @@ $conta_nota_av2++;
   // ******************************************************
      $result_nota_avaliacao=$conexao->query("
      SELECT nota FROM nota_parecer WHERE
+ano_nota='$ano_letivo' and
+
      escola_id=$idescola and
      turma_id=$idturma and
      disciplina_id=$iddisciplina and 
@@ -969,6 +976,8 @@ $conta_nota_av3++;
 
 $result_nota_avaliacao_rp=$conexao->query("
      SELECT nota FROM nota_parecer WHERE
+ano_nota='$ano_letivo' and
+     
      escola_id=$idescola and
      turma_id=$idturma and
      disciplina_id=$iddisciplina and 
