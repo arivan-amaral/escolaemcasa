@@ -109,7 +109,7 @@
 	}
 
 	function pesquisar_professor_associacao($conexao,$pesquisa) {
-    	$result=$conexao->query("SELECT * FROM funcionario WHERE descricao_funcao !='Coordenador' and  descricao_funcao !='Secretário' AND descricao_funcao !='Coordenadora' and nome like '%$pesquisa%'  and funcionario.status=1 ");
+    	$result=$conexao->query("SELECT * FROM funcionario WHERE descricao_funcao like '%Professo%'  and nome like '%$pesquisa%'  and funcionario.status=1 ");
     	return $result ;
 	}
 
