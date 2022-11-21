@@ -10,7 +10,8 @@ session_start();
   include"../Model/Professor.php";
 
   include"boletim_maternall_II.php";
-  include"boletim_individual_1_ano_serie3.php";
+ include"boletim_serie_1ano_id_3.php";
+
   include"boletim_fundamental_II.php";
   include"../Controller/Cauculos_notas.php";
   
@@ -54,7 +55,7 @@ if ($idserie==3) {
   $nome_professor.= ".";
 
      boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno, $nome_escola,$nome_turma,$nome_professor,$ano_letivo);
-
+ 
 }else if ($idserie >3 && $idserie <=8) {
    boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$ano_letivo);
 
