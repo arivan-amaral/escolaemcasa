@@ -56,17 +56,13 @@ if ($idserie==3) {
   //echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
     // $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
 
-    if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
-      $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
-    }else{
-      $res_alunos=listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
-     }
+ 
 
     
     $nome_professor= "";
-    foreach ($res_alunos as $key => $value) {
-      $idaluno=$value['idaluno'];
-      $nome_aluno=($value['nome_aluno']);
+ 
+      $idaluno=$_GET['idaluno'];
+      $nome_aluno=($_GET['nome_aluno']);
       if ($numero==1) {
         
         $res=listar_nome_professor_turma_ministrada($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
@@ -84,27 +80,17 @@ if ($idserie==3) {
       boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno, $nome_escola,$nome_turma,$nome_professor,$_SESSION['ano_letivo']);
 
       echo"<div class='pagebreak'> </div>";
-      
-      $numero++;
-    }
+ 
 
 }
 else if ($idserie >3 && $idserie <=8) {
     
   
   if (isset($_GET['tokem_teste'])) {
-
-    if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
-      $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
-    }else{
-      $res_alunos=listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
-     }
-
-
-      // $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
-      foreach ($res_alunos as $key => $value) {
-        $idaluno=$value['idaluno'];
-        $nome_aluno=($value['nome_aluno']);
+ 
+      
+      $idaluno=$_GET['idaluno'];
+      $nome_aluno=($_GET['nome_aluno']);
 
             echo "--" .$numero ."--";
             // teste_boletim.php
@@ -118,17 +104,11 @@ else if ($idserie >3 && $idserie <=8) {
          if ($numero%3==0 ) {
             echo "<div class='pagebreak'> </div>";
             echo "<input type='hidden' name='teste2' value='$numero'>";
-            // echo "<br>";
-            // echo "<br>";
-            // echo"<br>";
-            // echo"<br>";
-            
-         
+ 
           }
 
-          // echo"<a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma'>IMPRIMIR - $nome_aluno</a> <br><br>";
-        $numero++;
-      }
+ 
+     
        
   }//tokem
 
@@ -137,17 +117,14 @@ else if ($idserie >3 && $idserie <=8) {
 
  // echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
   $numero=1;
-    if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
-  $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
-}else{
-  $res_alunos=listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
- }
+ 
 
     // $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
     $nome_professor= " ";
-    foreach ($res_alunos as $key => $value) {
-      $idaluno=$value['idaluno'];
-      $nome_aluno=($value['nome_aluno']);
+     
+
+      $idaluno=$_GET['idaluno'];
+      $nome_aluno=($_GET['nome_aluno']);
 
        $res=listar_nome_professor_turma_ministrada($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
         $conta_virgula=0;
@@ -165,10 +142,10 @@ else if ($idserie >3 && $idserie <=8) {
         boletim_maternal_1_2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno ,$nome_escola,$nome_turma,$nome_professor,$_SESSION['ano_letivo']);
         $nome_professor='';
         
-      $numero++;
+     
       //break;
       echo"<div class='pagebreak'> </div>"; 
-    }
+    
 
 }else if ($idserie > 8) {
     //echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
@@ -176,15 +153,12 @@ else if ($idserie >3 && $idserie <=8) {
         echo "<input type='hidden' name='$numero' value='$numero'>";
         echo "<input type='hidden' name='uuuunumero' value='numero'>";
   if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
-  $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
-}else{
-  $res_alunos=listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
- }
+ 
 
-      // $res_alunos=listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
-      foreach ($res_alunos as $key => $value) {
-        $idaluno=$value['idaluno'];
-        $nome_aluno=($value['nome_aluno']);
+       
+      
+      $idaluno=$_GET['idaluno'];
+      $nome_aluno=($_GET['nome_aluno']);
         //echo ". <input type='hidden' value='$numero'>";
         echo "<input type='hidden' name='$numero' value='$numero'><br>";
 
@@ -195,16 +169,11 @@ else if ($idserie >3 && $idserie <=8) {
         echo ".<input type='hidden' name='tt$numero' value='$numero'>";
 
             echo "<div class='pagebreak'> </div>";
-            // echo "<br>";
-            // echo "<br>";
-            // echo"<br>";
-            // echo"<br>";
+         
             
          
           }
-        // echo"<a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma'>IMPRIMIR - $nome_aluno</a> <br><br>";
-        $numero++;
-      }
+    
       
 }
 
