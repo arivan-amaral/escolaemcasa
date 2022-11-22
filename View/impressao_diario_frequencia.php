@@ -162,7 +162,7 @@ $data_fim_trimestre="";
 if ($idserie<3) {
   
         //linha 409 508 
-        diario_frequencia_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo); 
+        diario_frequencia_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento); 
             echo "<div class='pagebreak'> </div>";
      
 
@@ -182,7 +182,7 @@ if ($idserie<3) {
             $conta_data+0,
             $limite_data+0,
             $limite_aula+0,
-            $periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo);
+            $periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento);
         
 }elseif ($idserie>=3 && $idserie<8) {
 
@@ -214,7 +214,7 @@ if ($idserie<3) {
 }elseif ($seguimento==1) {
   
         //linha 409 508 
-        diario_frequencia_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo); 
+        diario_frequencia_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento); 
             echo "<div class='pagebreak'> </div>";
      
 
@@ -230,12 +230,7 @@ if ($idserie<3) {
         $fim= 29;
  
         //linha 428 600 760
-        diario_frequencia_pagina_final_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
-            $conta_aula+0,
-            $conta_data+0,
-            $limite_data+0,
-            $limite_aula+0,
-            $periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo);
+        diario_frequencia_pagina_final_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento);
         
 }elseif ($seguimento==2) {
   

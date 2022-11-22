@@ -1,7 +1,7 @@
 <?php 
 
 function diario_frequencia_pagina_final_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
-  $conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre){
+  $conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$seguimento){
 
 
 /*
@@ -39,20 +39,31 @@ function diario_frequencia_pagina_final_infantil($conexao,$idescola,$idturma,$id
 
 $tipo_ensino="";
 
-if ($idserie <3) {
-  $tipo_ensino="Educação Infantil";
+    if ($idserie==16) {
+      if ($seguimento==1) {
+        $tipo_ensino="Educação Infantil";
 
-}elseif ($idserie >=3 && $idserie <8) {
-  $tipo_ensino="Ensino Fundamental - Anos Iniciais";
+      }if ($seguimento==2) {
+        $tipo_ensino="Ensino Fundamental - Anos Iniciais";
 
-}else if($idserie > 8 && $idserie <=11){
-  $tipo_ensino="Ensino Fundamental - Anos Finais";
+      }else if($seguimento==3){
+       $tipo_ensino="Ensino Fundamental - Anos Finais";
+        
 
-}else{
-  $tipo_ensino="Educação de Jovens e Adultos";
+      }
+    }else if($idserie <3 ){
+      $tipo_ensino="Educação Infantil";
 
-}
+    }else if ($idserie >=3 && $idserie <8 ) {
+       $tipo_ensino="Ensino Fundamental - Anos Iniciais";
 
+    }else if ($idserie >= 8 && $idserie <=11) {
+       $tipo_ensino="Ensino Fundamental - Anos Finais";
+
+    }else if ($idserie > 11){
+      $tipo_ensino="Educação de Jovens e Adultos";
+
+    }
 
 ?>
 
@@ -234,12 +245,20 @@ foreach ($result_escola as $key => $value) {
   "Times New Roman";mso-bidi-font-family:Arial;color:black;mso-fareast-language:
   PT-BR'>ANO: <o:p>
 <?php 
-$result_escola= $conexao->query("SELECT * FROM serie where id =$idserie");
-foreach ($result_escola as $key => $value) {
-  $nome_serie=$value['nome'];
-  echo "$nome_serie";
-}
+if ($idserie==16) {
+  $result_escola= $conexao->query("SELECT * FROM turma where idturma =$idturma");
+  foreach ($result_escola as $key => $value) {
+    $nome_serie=$value['nome_turma'];
+    echo "$nome_serie";
+  }
+}else{
 
+  $result_escola= $conexao->query("SELECT * FROM serie where id =$idserie");
+  foreach ($result_escola as $key => $value) {
+    $nome_serie=$value['nome'];
+    echo "$nome_serie";
+  }
+}
 ?>
 
   </o:p></span></b></p>
