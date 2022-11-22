@@ -234,12 +234,24 @@ foreach ($result_escola as $key => $value) {
   "Times New Roman";mso-bidi-font-family:Arial;color:black;mso-fareast-language:
   PT-BR'>ANO: <o:p>
 <?php 
-$result_escola= $conexao->query("SELECT * FROM serie where id =$idserie");
-foreach ($result_escola as $key => $value) {
-  $nome_serie=$value['nome'];
-  echo "$nome_serie";
+  $nome_serie="";
+
+if ($idserie==16) {
+  // code...
+  $result_escola= $conexao->query("SELECT * FROM turma where id =$idturma");
+  $nome_serie="";
+  foreach ($result_escola as $key => $value) {
+    $nome_serie=$value['nome_turma'];
+  }
+  
+}else{
+  $result_escola= $conexao->query("SELECT * FROM serie where id =$idserie");
+  foreach ($result_escola as $key => $value) {
+    $nome_serie=$value['nome'];
+  }
 }
 
+  echo "$nome_serie";
 ?>
 
   </o:p></span></b></p>
