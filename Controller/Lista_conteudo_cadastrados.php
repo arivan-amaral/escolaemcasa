@@ -267,7 +267,7 @@ $result.="<div id='conteudos'>
 
                   </select>
                   
-                  <a class='btn btn-danger' onclick='excluir_conteudo($campo_origem_conteudo,$idconteudo);';> Excluir</a>
+                  <a class='btn btn-danger' onclick='excluir_conteudo($campo_origem_conteudo,$idconteudo);';> Deseja Excluir ?</a>
 
 
                   <textarea class='form-control' id='descricao_conteudo' rows='5' name='descricao$campo_origem_conteudo' required>$conteudo_aula</textarea>  
@@ -286,7 +286,7 @@ $result.="<div id='conteudos'>
                       <option value='1'>1</option>
                   </select>
                   
-                  <a class='btn btn-danger' onclick='excluir_conteudo($campo_origem_conteudo,$idconteudo);';> Excluir</a>
+                  <a class='btn btn-danger' onclick='excluir_conteudo($campo_origem_conteudo,$idconteudo);';> Deseja Excluir ?</a>
 
 
                   <textarea class='form-control mesmo_conteudo_regente' id='descricao_conteudo$idescola$idturma$idserie$iddisciplina' rows='5' name='descricao$campo_origem_conteudo' 
@@ -317,7 +317,7 @@ $result.="<div id='conteudos'>
 
                   <input type='hidden' id='mesma_descricao_conteudo$idescola$idturma$serie_id$iddisciplina' value='$serie_id$iddisciplina'>
 
-                  <a class='btn btn-danger' onclick='excluir_conteudo($campo_origem_conteudo,$idconteudo);';> Excluir</a>
+                  <a class='btn btn-danger' onclick='excluir_conteudo($campo_origem_conteudo,$idconteudo);';> Deseja Excluir ?</a>
 
                   <textarea class='form-control mesmo_conteudo$serie_id$iddisciplina' 
 
