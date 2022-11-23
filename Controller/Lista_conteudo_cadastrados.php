@@ -216,58 +216,9 @@ try {
 <br>
 <br>
         ";
-          // $result.="
-       // <div class='card-body'>
-       //  <table class='table table-bordered'>
-       //    <thead>
-       //      <tr>
-       //        <th style='width: 10px'>#</th>
-       //        <th>Aluno</th>
-       //        <th>
-       //        <p><input type='checkbox' id='checkTodos' class='checkbox' name='checkTodos' onclick='seleciona_tudo();'> Selecionar Todos</p>
-       //        </th>
-       //      </tr>
-       //    </thead>
-       //    <tbody>";
-
-              //  $result_aluno= listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
-              //  $cont=1;
-               
-              //  foreach ($result_aluno as $key => $value) {
-              //   $nome_aluno=utf8_decode($value['nome_aluno']);
-              //   $nome_turma=($value['nome_turma']);
-              //   $id=$value['idaluno'];
-              //   $status_aluno=$value['status_aluno'];
-              //   $email=$value['email'];
-              //   $senha=$value['senha'];
-              //   $marcado="";
-
-              //     $resultado=verificar_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$data,$id,$aula);
-              //       foreach ($resultado as $key2 => $value2) {
-              //         $marcado='checked';
-              //       }
+        
 
 
-              //     $result.=" 
-              //        <tr>
-              //         <td>$cont</td>
-
-              //         <td>
-              //           <b class='text-success'> $nome_aluno </b> 
-              //           <input type='hidden' name='aluno_id[]' value='$id'>
-              //         </td>
-                     
-              //         <td> 
-              // <p><input type='checkbox' class='checkbox' name='presenca$id'  value='1' $marcado> Presença ( $aula ) </p>
-
-
-
-              //         </td>
-
-              //       </tr>
-              //     ";
-              //     $cont++;
-              //  }
 $result.="<div id='conteudos'>  
              <BR>
        ";
@@ -290,7 +241,9 @@ $result.="<div id='conteudos'>
           $conteudo_aula="";
           $quantidade_aula="";
           $conta_conteudo=0;
+          $idconteudo='';
         foreach ($resultado as $key => $value) {
+          $idconteudo=$value['id'];
           $conteudo_aula=$value['descricao'];
           $quantidade_aula=$value['quantidade_aula'];
           $conta_conteudo++;
@@ -313,7 +266,11 @@ $result.="<div id='conteudos'>
                       <option value='4'>4</option>
 
                   </select>
-                  <textarea class='form-control' id='descricao_conteudo' rows='5' name='descricao$campo_origem_conteudo' required>$conteudo_aula</textarea>
+                  
+                  <a class='btn btn-danger' onclick='excluir_conteudo($campo_origem_conteudo,$idconteudo);';> Excluir</a>
+
+
+                  <textarea class='form-control' id='descricao_conteudo' rows='5' name='descricao$campo_origem_conteudo' required>$conteudo_aula</textarea>  
 
                  
                 </div>
@@ -328,6 +285,10 @@ $result.="<div id='conteudos'>
                   <select hidden   name='quantidade_aula$campo_origem_conteudo' required>
                       <option value='1'>1</option>
                   </select>
+                  
+                  <a class='btn btn-danger' onclick='excluir_conteudo($campo_origem_conteudo,$idconteudo);';> Excluir</a>
+
+
                   <textarea class='form-control mesmo_conteudo_regente' id='descricao_conteudo$idescola$idturma$idserie$iddisciplina' rows='5' name='descricao$campo_origem_conteudo' 
 
             
@@ -338,7 +299,7 @@ $result.="<div id='conteudos'>
                   onBlur=duplica_texto_em_capos_selecionados('descricao_conteudo$idescola$idturma$idserie$iddisciplina');
 
             
-                   required>$conteudo_aula</textarea>
+                   required>$conteudo_aula</textarea>   
 
                  
                 </div>
@@ -356,6 +317,8 @@ $result.="<div id='conteudos'>
 
                   <input type='hidden' id='mesma_descricao_conteudo$idescola$idturma$serie_id$iddisciplina' value='$serie_id$iddisciplina'>
 
+                  <a class='btn btn-danger' onclick='excluir_conteudo($campo_origem_conteudo,$idconteudo);';> Excluir</a>
+
                   <textarea class='form-control mesmo_conteudo$serie_id$iddisciplina' 
 
                   id='descricao_conteudo$idescola$idturma$serie_id$iddisciplina' 
@@ -366,23 +329,14 @@ $result.="<div id='conteudos'>
 
                   onBlur=duplica_texto_em_campos_selecionados_mesmo_conteudo_acima_inicias('descricao_conteudo$idescola$idturma$serie_id$iddisciplina');
 
-                   required>$conteudo_aula</textarea>
-
+                   required>$conteudo_aula</textarea>  
                  
                 </div>
               </div>";
           }
 
 
-            // $result.="
-            //   <div class='col-sm-12' id='campo_inputs$campo_origem_conteudo'>
-            //     <div class='form-group'>
-            //       <label for='exampleInputEmail1'>Conteúdo da aula $nome_escola - $turma <font style='color:#8B0000'> => $disciplina </font></label>
-            //       <textarea class='form-control' id='descricao_conteudo' rows='5' name='descricao$campo_origem_conteudo' required>$conteudo_aula</textarea>
-            //     </div>
-            //   </div>
-            //   <br>
-            //   ";
+            
         }
         
           $conteudo_aula="";
@@ -393,23 +347,7 @@ $result.="<div id='conteudos'>
 
   
  
-    // $res_conteu=verificar_conteudo_aula($conexao, $iddisciplina_get, $idturma_get, $idescola_get, $professor_id, $data,$aula);
-
-    //  $conteudo_aula="";
-    // foreach ($res_conteu as $key => $value) {
-    //   $conteudo_aula=$value['descricao'];
-    // }
-
-      // $result.="
-      //   <div class='col-sm-12' id='campo_inputs$campo_origem_conteudo'>
-      //     <div class='form-group'>
-      //       <label for='exampleInputEmail1'>Conteúdo da aula $escola_origem_conteudo</label>
-      //       <textarea class='form-control' id='descricao_conteudo' rows='5' name='descricao$campo_origem_conteudo' required>$conteudo_aula</textarea>
-      //     </div>
-      //   </div>
-      //   <br>
-
-      //   ";
+ 
 
 
 

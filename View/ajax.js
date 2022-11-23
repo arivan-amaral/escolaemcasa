@@ -5188,6 +5188,70 @@ function excluir_aluno_matriculado(idaluno) {
     });
 }
 
+
+
+
+
+
+function excluir_conteudo(excluir_conteudo,idconteudo){
+  
+  console.log(excluir_conteudo+"=t="+idconteudo);
+     Swal.fire({
+     title: 'Tem certeza que deseja excluir o conteúdo ?',
+     showDenyButton: true,
+     confirmButtonText: `Sim`,
+     denyButtonText: `Não`,
+   }).then((result) => {
+     /* Read more about isConfirmed, isDenied below */
+     if (result.isConfirmed) {
+              var result=document.getElementById("campo_inputs"+excluir_conteudo);
+              var xmlreq = CriaRequest();   
+              var url="idconteudo="+idconteudo;
+               xmlreq.open("GET", "../Controller/Excluir_conteudo.php?"+url, true);
+                xmlreq.onreadystatechange = function(){      
+                    if (xmlreq.readyState == 4) {
+                        if (xmlreq.status == 200) {
+                            
+                            if (xmlreq.responseText=="Ação concluída") {
+                               Swal.fire({
+                                 position: 'center',
+                                 icon: 'success',
+                                 title: 'Ação concluída',
+                                    text: ' ',
+                                 showConfirmButton: false,
+                                 timer: 2500
+                               });
+
+                               if (result.parentNode) {
+                                 result.parentNode.removeChild(result);
+                               }
+
+                            }else{
+                                    Swal.fire({
+                                   position: 'center',
+                                   icon: 'info',
+                                   title: 'Alguma coisa deu errado',
+                                      text: ''+xmlreq.responseText,
+                                   showConfirmButton: true
+                                 });
+                            }
+
+                        }else{
+                             alert("Erro desconhecido");  
+                        }
+                    }
+                };
+                xmlreq.send(null);
+        } else if (result.isDenied) {
+        }
+
+        });
+}
+
+
+
+
+
 function cancelar_rematricula(idaluno) {
    
     var matricula = document.getElementById("matricula"+idaluno).value;
