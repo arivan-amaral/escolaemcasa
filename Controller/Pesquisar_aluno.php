@@ -353,7 +353,7 @@ foreach ($result_ecidade_matricula as $key => $value) {
                                   <input type='hidden' name='nome_aluno' value='$nome_aluno'>
                                   <input type='hidden' name='tipo_declaracao' value='Declarações Auxílio Brasil'>
                                   
-                                  <button type='submit' class='dropdown-item'  >Declarações termino pre </button>
+                                  <button type='submit' class='dropdown-item'  >Declaração de terminalidade Pré-escola </button>
                            
                               </form>
                               </li>";
