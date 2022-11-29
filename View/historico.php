@@ -11,16 +11,17 @@ $res_aluno = pesquisar_aluno2($conexao,$idaluno);
 $nome_aluno = "";
 $naturalidade = "";
 $data_nascimento = "";
-$afiliado1 = "";
-$afiliado2 = "";
+$filiado1 = "";
+$filiado2 = "";
 foreach ($res_aluno as $key => $value) {
+  $idaluno = $value['idaluno'];
   $nome_aluno = $value['nome'];
   $naturalidade = $value['naturalidade'];
   $data = new DateTime($value['data_nascimento']);
   $data_nascimento = $data->format('d/m/Y');
         
-  $afiliado1 = $value['filiacao1'];
-  $afiliado2 = $value['filiacao2'];
+  $filiado1 = $value['filiacao1'];
+  $filiado2 = $value['filiacao2'];
 }
 ?>
 <div class=WordSection1>
@@ -70,7 +71,7 @@ foreach ($res_aluno as $key => $value) {
   border-left:none;padding:0cm 3.5pt 0cm 3.5pt;height:16.5pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
   normal'><b><span style='font-size:8.5pt;font-family:"Comic Sans MS"'>NOME
-  DO(A) ALUNO(A): <?php echo $nome_aluno; ?></span></b><b><span style='font-size:9.5pt;font-family:"Comic Sans MS"'></span></b></p>
+  DO(A) ALUNO(A): <?php echo"$idaluno - $nome_aluno"; ?></span></b><b><span style='font-size:9.5pt;font-family:"Comic Sans MS"'></span></b></p>
   </td>
  </tr>
  <tr style='height:13.5pt'>
@@ -99,7 +100,7 @@ foreach ($res_aluno as $key => $value) {
   <td width=559 colspan=20 valign=top style='width:418.9pt;border:solid black 1.0pt;
   border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>Filiação 1: <?php echo $afiliado1; ?></span></p>
+  normal'><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>Filiação 1: <?php echo $filiado1; ?></span></p>
   </td>
   <td width=190 colspan=10 valign=top style='width:142.3pt;border-top:none;
   border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
@@ -113,7 +114,7 @@ foreach ($res_aluno as $key => $value) {
   <td width=559 colspan=20 valign=top style='width:418.9pt;border:solid black 1.0pt;
   border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:15.6pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>Filiação 2: <?php echo $afiliado2; ?></span></p>
+  normal'><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>Filiação 2: <?php echo $filiado2; ?></span></p>
   </td>
   <td width=190 colspan=10 valign=top style='width:142.3pt;border-top:none;
   border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
@@ -414,48 +415,50 @@ foreach ($res_aluno as $key => $value) {
   </td>
   <?php 
    
-   $res_notas=$conexao->query("SELECT * FROM
-   historico
-   where 
-   disciplina_id=$iddisciplina and
-   serie_id=$idserie and
-   aluno_id=$idaluno");
+    for ($i=3; $i <= 11 ; $i++) { 
+   //   // code...
+     $res_notas=$conexao->query("SELECT * FROM
+     historico
+     where 
+     disciplina_id=$iddisciplina and
+     serie_id=$i and
+     aluno_id=$idaluno");
 
- 
-   $conta_notas=0;
-    foreach ($res_notas as $key => $value) {
-      $nota_final=$value['nota_final'];
-      $nota_final=number_format($nota_final, 1, '.', ',');
-      $conta_notas++;
-    ?>
+   
+     $conta_notas=0;
+      foreach ($res_notas as $key => $value) {
+        $nota_final=$value['nota_final'];
+        $nota_final=number_format($nota_final, 1, '.', ',');
+        $conta_notas++;
+      ?>
 
-          <td width=20 valign=bottom style='width:15.3pt;border-top:none;border-left:
-          none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-          padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-          <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-          normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-          color:black'>&nbsp;<?php echo "$nota_final"; ?></span></p>
-          </td>
-    <?php 
-      } 
-    ?>
-             
+            <td width=20 valign=bottom style='width:15.3pt;border-top:none;border-left:
+            none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+            padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
+            <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+            normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
+            color:black'>&nbsp;<?php echo "$nota_final"; ?></span></p>
+            </td>
+      <?php 
+        } 
+       
+        for ($j=$conta_notas; $j <= 2; $j++) { 
+      ?>
+            <td width=20 valign=bottom style='width:15.3pt;border-top:none;border-left:
+            none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+            padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
+            <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+            normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
+            color:black'>&nbsp;<?php echo $i ;?>0</span></p>
+            </td>
+      <?php 
+        } 
+   }
+
+
     
-    <?php 
-      for ($i=$conta_notas; $i <= 26; $i++) { 
-    ?>
-          <td width=20 valign=bottom style='width:15.3pt;border-top:none;border-left:
-          none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-          padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
-          <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-          normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-          color:black'>&nbsp;0</span></p>
-          </td>
-    <?php 
-      } 
-    ?>
- </tr>
-<?php 
+    echo"</tr>";
+ 
 }
 ?>
 
@@ -485,7 +488,8 @@ foreach ($res_aluno as $key => $value) {
   </td>
 
   <?php 
-  } ?>
+  } 
+  ?>
  </tr>
 
 
@@ -503,20 +507,21 @@ foreach ($res_aluno as $key => $value) {
   normal'><span style='font-size:8.5pt;font-family:"Arial",sans-serif'><?php echo $nome_disciplina ?></span></p>
   </td>
   <?php 
-   
-   $res_notas_divers=$conexao->query("SELECT * FROM
-   historico
-   where 
-   disciplina_id=$iddisciplina and
-   serie_id=$idserie and
-   aluno_id=$idaluno");
+    for ($i=3; $i <= 11 ; $i++) { 
+       
+       $res_notas_divers=$conexao->query("SELECT * FROM
+       historico
+       where 
+       disciplina_id=$iddisciplina and
+       serie_id=$idserie and
+       aluno_id=$idaluno");
 
-  
-   $conta_notas_divers=0;
-    foreach ($res_notas_divers as $key => $value) {
-      $nota_final=$value['nota_final'];
-      $nota_final=number_format($nota_final, 1, '.', ',');
-      $conta_notas_divers++;
+      
+       $conta_notas_divers=0;
+        foreach ($res_notas_divers as $key => $value) {
+          $nota_final=$value['nota_final'];
+          $nota_final=number_format($nota_final, 1, '.', ',');
+          $conta_notas_divers++;
     ?>
 
     <td width=20 valign=bottom style='width:15.3pt;border-top:none;border-left:
@@ -529,11 +534,8 @@ foreach ($res_aluno as $key => $value) {
 
   <?php 
     }
-   ?>
-
-
-  <?php 
-    for ($i=$conta_notas_divers; $i <= 26; $i++) { 
+  
+    for ($j=$conta_notas_divers; $j <= 2; $j++) { 
       // code...
     
   ?>
@@ -548,13 +550,14 @@ foreach ($res_aluno as $key => $value) {
   <?php 
 
   }
-
+}
    ?>
 
 
  </tr>
 
-<?php }
+<?php 
+}
  ?>
 
 

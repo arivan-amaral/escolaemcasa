@@ -481,11 +481,14 @@ foreach ($result_ecidade_matricula as $key => $value) {
                                
                                   </form>
                                   </li>";
-                                
-                                $result.="
-                                  <li>
-                                      <a href ='historico_aluno.php?idaluno=$idaluno&idserie=$idserie&idescola=$idescola' class='dropdown-item' target='_blank' >Histórico</a>
-                                  </li>";
+                                  if ($idserie>2) {
+
+                                      
+                                      $result.="
+                                        <li>
+                                            <a href ='historico_aluno.php?idaluno=$idaluno&idserie=$idserie&idescola=$idescola' class='dropdown-item' target='_blank' >Histórico</a>
+                                        </li>";
+                                  }
                                 }
                                   
                                  $result.="
