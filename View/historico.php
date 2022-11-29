@@ -513,7 +513,7 @@ foreach ($res_aluno as $key => $value) {
        historico
        where 
        disciplina_id=$iddisciplina and
-       serie_id=$idserie and
+       serie_id=$i and
        aluno_id=$idaluno");
 
       
