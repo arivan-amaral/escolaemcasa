@@ -346,7 +346,7 @@ if ($media_fora_rede==0) {
  //arivan
   $media=number_format($media, 1, '.', ',');
   
-  if ($_SESSION['nivel_acesso_id']>=1000) {
+  if ($_SESSION['nivel_acesso_id']>=100) {
 
     $res_hist=$conexao->query("
       SELECT * from historico where 
