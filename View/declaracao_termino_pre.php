@@ -319,6 +319,13 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
 
                                <div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;"><br></span></div><div style="text-align: center;"><span style="font-size: 1rem;">______________________________</span></div><div style="text-align: center;"><span style="font-size: 1rem;"><span style="font-family: Arial, sans-serif; font-size: 9pt; text-indent: -0.5pt;">Luís Eduardo Magalhães, <?php echo date("d/m/Y"); ?> </span></span></div><p></p><p><br></p>
                                   </span></div></span>
+                                  <center>
+                                    
+                                  <footer class="no-print">
+                                    <i class="fa fa-print"></i>
+                                    <a href='#'class="btn btn-primary " onclick='print();'>IMPRIMIR</a> <br><br>
+                                  </footer>
+                                  </center>
 </p>
 </td>
 </tr>
@@ -330,6 +337,8 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
 </div>
 </section>
 </div>
+
+
 
 </body>
 </html>
