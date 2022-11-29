@@ -521,38 +521,16 @@ foreach ($res_aluno as $key => $value) {
         foreach ($res_notas_divers as $key => $value) {
           $nota_final=$value['nota_final'];
           $nota_final=number_format($nota_final, 1, '.', ',');
-          $conta_notas_divers=2;
+          $conta_notas_divers++;
     ?>
 
-          <td width=20 valign=bottom style='width:15.3pt;border-top:none;border-left:
-          none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-          padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-          <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-          normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-          color:black'>&nbsp;<?php echo "$nota_final"; ?></span></p>
-        </td>          
+    <td width=20 valign=bottom style='width:15.3pt;border-top:none;border-left:
+    none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+    padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
+    <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+    normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
+    color:black'>&nbsp;<?php echo "$nota_final"; ?></span></p>
 
-        <td width=20 valign=bottom style='width:15.3pt;border-top:none;border-left:
-          none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-          padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-          <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-          normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-          color:black'>&nbsp;<?php echo "-"; ?></span></p>
-        </td>      
-        <?php 
-          $res_ch=$conexao->query("SELECT * FROM carga_horaria where ano_ch='$ano_letivo' and disciplina_id=$iddisciplina and  serie_id=$i");
-          foreach ($res_ch as $key2 => $value2) {
-           $ch= $value2['ch'];
-          
-         ?>  
-        <td width=20 valign=bottom style='width:15.3pt;border-top:none;border-left:
-          none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-          padding:0cm 3.5pt 0cm 3.5pt;height:9.75pt'>
-          <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-          normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-          color:black'>&nbsp;<?php echo "$ch"; ?></span></p>
-        </td>
-      }
 
   <?php 
     }
