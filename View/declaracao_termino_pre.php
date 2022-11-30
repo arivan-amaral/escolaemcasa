@@ -299,7 +299,7 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
 
                                   <p class="MsoNormal" style="text-align: center; "><b><span style="font-size: 24pt; line-height: 107%; font-family: " source="" sans="" pro",="" sans-serif;="" background-image:="" initial;="" background-position:="" background-size:="" background-repeat:="" background-attachment:="" background-origin:="" background-clip:="" initial;"=""><br></span></b></p><p class="MsoNormal" style="margin: 0cm 3.25pt 22.55pt 19.6pt; text-indent: -0.5pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"></p><div style="text-align: center; text-indent: -0.666667px;"><span id="docs-internal-guid-06891f45-7fff-4fd8-3fb0-5ef60b2488a1"><span style="font-size: 20pt; font-family: Calibri, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">DECLARAÇÃO DE TERMINALIDADE DA EDUCAÇÃO INFANTIL – ETAPA
                                    <?php 
-                                  if ($idserie==1) {
+                                  if ($serie_id==1) {
                                     echo "MATERNAL";
                                   }else{
                                     echo "PRÉ-ESCOLA";
@@ -318,7 +318,7 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
                                 }
 
                                 ?>, </span><span style="background-color: transparent; color: rgb(0, 0, 0); font-family: Calibri, sans-serif; font-size: 18pt; white-space: pre-wrap; text-align: left;">concluiu a      <?php 
-                                  if ($idserie==1) {
+                                  if ($serie_id==1) {
                                     echo "MATERNAL";
                                   }else{
                                     echo "PRÉ-ESCOLA";
