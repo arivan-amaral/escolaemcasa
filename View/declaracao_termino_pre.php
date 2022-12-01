@@ -317,12 +317,11 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
                                   echo " ". $filiacao2." "; 
                                 }
 
-                                ?>, </span><span style="background-color: transparent; color: rgb(0, 0, 0); font-family: Calibri, sans-serif; font-size: 18pt; white-space: pre-wrap; text-align: left;">concluiu a      <?php 
-                                  if ($serie_id==1) {
-                                    echo "MATERNAL";
-                                  }else{
-                                    echo "PRÉ-ESCOLA";
-                                  } ?> II no ano letivo 2022, na  <?php echo $nome_escola; ?>. </span><span style="background-color: transparent; color: rgb(0, 0, 0); font-family: Calibri, sans-serif; font-size: 18pt; white-space: pre-wrap;">Estando apto a cursar o 1° ano do Ensino Fundamental.</span></p><p class="MsoNormal" style="margin: 0cm 3.25pt 22.55pt 19.6pt; text-align: justify; text-indent: -0.5pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><span style="font-size: 18pt; font-family: " source="" sans="" pro",="" sans-serif;"=""><b><br></b></span></p>
+                                ?>, </span><span style="background-color: transparent; color: rgb(0, 0, 0); font-family: Calibri, sans-serif; font-size: 18pt; white-space: pre-wrap; text-align: left;">concluiu a <?php 
+                                   
+                                    echo substr($nome_turma, 0, -1);
+
+                                  ?>  no ano letivo 2022, na  <?php echo $nome_escola; ?>. </span><span style="background-color: transparent; color: rgb(0, 0, 0); font-family: Calibri, sans-serif; font-size: 18pt; white-space: pre-wrap;">Estando apto a cursar o 1° ano do Ensino Fundamental.</span></p><p class="MsoNormal" style="margin: 0cm 3.25pt 22.55pt 19.6pt; text-align: justify; text-indent: -0.5pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><span style="font-size: 18pt; font-family: " source="" sans="" pro",="" sans-serif;"=""><b><br></b></span></p>
                    
                    <p class="MsoNormal" style="margin: 0cm 3.25pt 22.55pt 19.6pt; text-align: justify; text-indent: -0.5pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><span style="font-size: 18pt; font-family:  sans-serif;"><b><br></b></span></p><p class="MsoNormal" style="margin: 0cm 3.25pt 22.55pt 19.6pt; text-align: justify; text-indent: -0.5pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><br></p><p class="MsoNormal" style="margin: 0cm 3.25pt 22.55pt 19.6pt; text-align: justify; text-indent: -0.5pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><br></p>
 
