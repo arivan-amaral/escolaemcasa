@@ -317,7 +317,7 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
                                   echo " ". $filiacao2." "; 
                                 }
 
-                                ?>, </span><span style="background-color: transparent; color: rgb(0, 0, 0); font-family: Calibri, sans-serif; font-size: 18pt; white-space: pre-wrap; text-align: left;">concluiu na <?php 
+                                ?>, </span><span style="background-color: transparent; color: rgb(0, 0, 0); font-family: Calibri, sans-serif; font-size: 18pt; white-space: pre-wrap; text-align: left;">concluiu no <?php 
                                     $res_serie=trim(substr($nome_turma, 0, -1));
                                     echo $res_serie;
                                     if ($res_serie =='MATERNAL I') {
