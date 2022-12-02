@@ -317,7 +317,7 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
                                   echo " ". $filiacao2." "; 
                                 }
 
-                                ?>, </span><span style="background-color: transparent; color: rgb(0, 0, 0); font-family: Calibri, sans-serif; font-size: 18pt; white-space: pre-wrap; text-align: left;">concluiu a <?php 
+                                ?>, </span><span style="background-color: transparent; color: rgb(0, 0, 0); font-family: Calibri, sans-serif; font-size: 18pt; white-space: pre-wrap; text-align: left;">concluiu na <?php 
                                     $res_serie=trim(substr($nome_turma, 0, -1));
                                     echo $res_serie;
                                     if ($res_serie =='MATERNAL I') {
@@ -334,7 +334,7 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
                                     }
 
 
-                                  ?>  no ano letivo 2022, na  <?php echo $nome_escola; ?>. </span><span style="background-color: transparent; color: rgb(0, 0, 0); font-family: Calibri, sans-serif; font-size: 18pt; white-space: pre-wrap;">Estando apto a cursar <?php echo $cursar; ?>.</span></p><p class="MsoNormal" style="margin: 0cm 3.25pt 22.55pt 19.6pt; text-align: justify; text-indent: -0.5pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><span style="font-size: 18pt; font-family: " source="" sans="" pro",="" sans-serif;"=""><b><br></b></span></p>
+                                  ?>  no ano letivo 2022, no  <?php echo $nome_escola; ?>. </span><span style="background-color: transparent; color: rgb(0, 0, 0); font-family: Calibri, sans-serif; font-size: 18pt; white-space: pre-wrap;">Estando apto a cursar <?php echo $cursar; ?>.</span></p><p class="MsoNormal" style="margin: 0cm 3.25pt 22.55pt 19.6pt; text-align: justify; text-indent: -0.5pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><span style="font-size: 18pt; font-family: " source="" sans="" pro",="" sans-serif;"=""><b><br></b></span></p>
                    
                    <p class="MsoNormal" style="margin: 0cm 3.25pt 22.55pt 19.6pt; text-align: justify; text-indent: -0.5pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><span style="font-size: 18pt; font-family:  sans-serif;"><b><br></b></span></p><p class="MsoNormal" style="margin: 0cm 3.25pt 22.55pt 19.6pt; text-align: justify; text-indent: -0.5pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><br></p><p class="MsoNormal" style="margin: 0cm 3.25pt 22.55pt 19.6pt; text-align: justify; text-indent: -0.5pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><br></p>
 
