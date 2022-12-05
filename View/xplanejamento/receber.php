@@ -52,7 +52,7 @@ echo json_encode($body);
           'Messages' => [
             [
               'From' => [
-                'Email' => "valleteclablem@gmail.com",
+                'Email' => "no-reply@valleteclab.com.br",
                 'Name' => "Prefeitura de Luís Eduardo Magalhães - XPlanejamento"
               ],
               'To' => [
