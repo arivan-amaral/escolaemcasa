@@ -1,6 +1,7 @@
 <?php 
 session_start();
 $idserie=$_GET['idserie']; 
+$idserie_t=$_GET['idserie']; 
 $ano_letivo=$_SESSION['ano_letivo'];
 
  
@@ -61,6 +62,15 @@ if (!isset($_SESSION['idprofessor'])) {
     $nome_disciplina=$_GET['disciplina'];
 
  }
+
+ $res_seg=$conexao->query("SELECT * FROM turma WHERE idturma=$idturma LIMIT 1");
+   $seguimento='';
+
+ foreach ($res_seg as $key => $value) {
+   $seguimento=$value['seguimento'];
+   // code...
+ }
+
 ?>
 
 
@@ -258,7 +268,7 @@ if (!isset($_SESSION['idprofessor'])) {
             <select class="form-control" id="data_ja_lancada" onchange="listar_conteudo_cadastrado(this.value);" >
               <option></option>
               <?php  
-              if ($idserie<3) {
+              if ($idserie<3 || ( $idserie==16 && $seguimento<2 )) {
                 $iddisciplina="";
                 // $array_disciplina_regente_creche = array('0' => 40,'1' => 42,'2' => 43,'3' => 44);
                 // $array_disciplina_regente_pre_escola = array('0' => 40,'1' => 42,'2' => 44);        
@@ -514,7 +524,7 @@ if ($idserie>2) {
                                             <tbody>
                                               <?php 
 
-                                              if ($idserie<3) {
+                                              if ($idserie<3 || ( $idserie==16 && $seguimento<2 )) {
                                                 $iddisciplina="";
                                                 // $array_disciplina_regente_creche = array('0' => 40,'1' => 42,'2' => 43,'3' => 44);
                                                 // $array_disciplina_regente_pre_escola = array('0' => 40,'1' => 42,'2' => 44);        
