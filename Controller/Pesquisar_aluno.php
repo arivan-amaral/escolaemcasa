@@ -326,7 +326,7 @@ foreach ($result_ecidade_matricula as $key => $value) {
 
                           $result.="
                             <li>
-                            <form name='declaracao$idaluno' action='declaracao.php' method='post' target='_blank'>
+                            <form name='declaracao$idaluno' action='declaracao_auxilio_brasil.php' method='post' target='_blank'>
                                 <input type='hidden' name='ano_letivo_post' value='$calendario_ano'>
                                 <input type='hidden' name='aluno_id' value='$idaluno'>
                                 <input type='hidden' name='escola_id' value='$idescola'>
@@ -351,7 +351,7 @@ foreach ($result_ecidade_matricula as $key => $value) {
                                   <input type='hidden' name='turma_id' value='$idturma'>
                                   <input type='hidden' name='serie_id' value='$idserie'>
                                   <input type='hidden' name='nome_aluno' value='$nome_aluno'>
-                                  <input type='hidden' name='tipo_declaracao' value='Declarações Auxílio Brasil'>
+                                  
                                   
                                   <button type='submit' class='dropdown-item'  >Declaração de terminalidade </button>
                            
