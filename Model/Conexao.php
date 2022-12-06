@@ -3,7 +3,7 @@ try {
 date_default_timezone_set('America/Sao_Paulo');
     
     $server = "localhost";
-    $username = "root";
+    $username = "educ_lem";
      
      $password = "Ari200120022003_";
     
