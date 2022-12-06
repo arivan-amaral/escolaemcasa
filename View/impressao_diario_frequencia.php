@@ -169,12 +169,12 @@ if ($idserie<3) {
         $inicio=36;
         $conta_aula=36;
 
-        $limite_data=29;//$fim= 25;
-        $limite_aula=18;
+        $limite_data=34;//$fim= 29;
+        $limite_aula=23;//18
 
  
         $conta_data=1; //não existia
-        $fim= 29;//$fim= 25;
+        $fim= 34;//$fim= 29;
  
         //linha 428 600 760
         diario_frequencia_pagina_final_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
@@ -190,17 +190,15 @@ if ($idserie<3) {
         diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento); 
             echo "<div class='pagebreak'> </div>";
      
-
-        $inicio=36;
+      $inicio=36;
         $conta_aula=36;
 
-                $limite_data=29;//$fim= 25;
-
-        $limite_aula=18;
+        $limite_data=34;//$fim= 29;
+        $limite_aula=23;//18
 
  
         $conta_data=1; //não existia
-        $fim= 29;
+        $fim= 34;//$fim= 29;
  
 
         //linha 428 600 760
@@ -218,17 +216,16 @@ if ($idserie<3) {
             echo "<div class='pagebreak'> </div>";
      
 
-        $inicio=36;
+              $inicio=36;
         $conta_aula=36;
 
-        $limite_data=29;//$fim= 25;
-
-        $limite_aula=18;
+        $limite_data=34;//$fim= 29;
+        $limite_aula=23;//18
 
  
         $conta_data=1; //não existia
-        $fim= 29;
- 
+        $fim= 34;//$fim= 29;
+        
         //linha 428 600 760
         diario_frequencia_pagina_final_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento);
         
@@ -240,16 +237,15 @@ if ($idserie<3) {
         echo "<div class='pagebreak'> </div>";
     
 
-    $inicio=36;
-    $conta_aula=36;
+        $inicio=36;
+        $conta_aula=36;
 
-    $limite_data=29;//$fim= 25;
-    $limite_aula=18;
+        $limite_data=34;//$fim= 29;
+        $limite_aula=23;//18
 
-    
-    $conta_data=1; //não existia
-    $fim= 29;
-    
+ 
+        $conta_data=1; //não existia
+        $fim= 34;//$fim= 29;
 
     //linha 428 600 760
     diario_frequencia_pagina_final_fund1($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
