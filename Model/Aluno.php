@@ -35,6 +35,12 @@ $res=$conexao->query("SELECT * FROM ecidade_matricula where  aluno_id=$aluno_id 
 return $res->fetchAll();
 }
 
+
+function verificar_matricula_ativa($conexao,$aluno_id, $ano_letivo){
+$res=$conexao->query("SELECT  turma.serie_id,turno_nome,turma_escola,turma_id,ecidade_matricula.etapa, matricula_datamatricula, matricula_codigo  FROM ecidade_matricula, turma where  turma_id = idturma and matricula_ativa='S' and matricula_concluida='N' and aluno_id=$aluno_id and calendario_ano='$ano_letivo'  ");
+return $res->fetchAll();
+}
+
 function verificar_cadastro_lista_espera($conexao,$cpf_aluno){
     $sql=$conexao->prepare("SELECT 
     *
@@ -434,10 +440,8 @@ function listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $ide
 }
 
 function listar_conteudo_aula_cadastrado_regente($conexao, $iddisciplina, $idturma, $idescola, $professor_id,$ano_letivo) {
+  
     $resultado=$conexao->query("SELECT conteudo_aula.id,data,aula,professor_id FROM conteudo_aula WHERE
-        -- $iddisciplina 
-        -- and 
-       -- disciplina.iddisciplina= disciplina_id and 
       escola_id=$idescola and 
       ano_conteudo=$ano_letivo and 
       turma_id=$idturma  GROUP BY data,aula,conteudo_aula.id order by data, aula ");
@@ -454,10 +458,11 @@ function verificar_conteudo_aula_cadastrado_por_data($conexao, $iddisciplina, $i
 }
 
 function verificar_conteudo_aula_cadastrado_por_data_aula($conexao, $iddisciplina, $idturma, $idescola, $data,$aula) {
+    // disciplina_id=$iddisciplina and removido 06/12/2022 problema disciplinas regentes
     $resultado=$conexao->query("SELECT * FROM conteudo_aula WHERE
       data='$data' and 
       aula='$aula' and 
-      disciplina_id=$iddisciplina and 
+      
       escola_id=$idescola and 
       turma_id=$idturma order by data");
     return $resultado;

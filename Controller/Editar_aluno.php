@@ -208,69 +208,6 @@ try {
 // _________________________________________________________
 
 
-    // editar_dados_aluno($conexao,$nome,
-    //     $sexo,
-    //     $email,
-    //     $filiacao1,
-    //     $filiacao2,
-    //     $senha,
-    //     $whatsapp,
-    //     $whatsapp_responsavel,
-    //     $data_nascimento,
-
-    //     $numero_nis,
-    //     $codigo_inep,
-    //     $bolsa_familia,
-    //     $tipo_responsavel,
-    //     $raca_aluno,
-    //     $estado_civil_aluno,
-    //     $tipo_sanguinio_aluno,
-    //     $profissao,
-    //     $situacao_documentacao,
-    //     $tipo_certidao,
-    //     $numero_termo,
-    //     $folha,
-    //     $uf_cartorio,
-    //     $municipio_cartorio,
-    //     $nome_cartorio,
-    //     $numero_indentidade,
-    //     $uf_identidade,
-    //     $orgao_emissor_indentidade,
-    //     $data_expedicao,
-    //     $numero_cnh,
-    //     $categoria_cnh,
-    //     $cpf,
-    //     $cartao_sus,
-    //     $observacao,
-
-    //     $necessidade_especial,
-    //     $apoio_pedagogico,
-    //     $tipo_diagnostico,
-    //     $cpf_filiacao1,
-    //     $cpf_filiacao2,
-    //     $endereco,
-    //     $complemento,
-    //     $numero_endereco,
-    //     $uf_endereco,
-    //     $municipio_endereco,
-    //     $bairro_endereco,
-    //     $zona_endereco,
-    //     $cep_endereco,
-    //     $nacionalidade,
-    //     $pais,
-    //     $naturalidade,
-    //     $localidade,
-    //     $transposte_escolar,
-    //     $poder_publico_responsavel,
-    //     $recebe_escolaridade_outro_espaco,
-    //     $matricula_certidao,
-    //     $uf_municipio_cartorio,
-    //     $cartorio,
-    //     $idaluno,
-    //     $nome_responsavel,
-    //     $cpf_responsavel
-    // );
-
     $conexao->exec("UPDATE aluno SET 
             nome= '$nome', sexo='$sexo', email='$email', filiacao1='$filiacao1', filiacao2='$filiacao2', whatsapp = '$whatsapp', whatsapp_responsavel='$whatsapp_responsavel', data_nascimento='$data_nascimento', numero_nis= '$numero_nis', codigo_inep='$codigo_inep', bolsa_familia='$bolsa_familia', tipo_responsavel='$tipo_responsavel', raca_aluno= '$raca_aluno', estado_civil_aluno='$estado_civil_aluno', tipo_sanguinio_aluno='$tipo_sanguinio_aluno', profissao= '$profissao', situacao_documentacao='$situacao_documentacao', tipo_certidao='$tipo_certidao', numero_termo='$numero_termo', folha='$folha', uf_cartorio='$uf_cartorio', uf_municipio_cartorio='$municipio_cartorio', nome_cartorio='$nome_cartorio', numero_indentidade='$numero_indentidade', uf_identidade='$uf_identidade', orgao_emissor_indentidade='$orgao_emissor_indentidade', data_expedicao='$data_expedicao', numero_cnh='$numero_cnh', categoria_cnh='$categoria_cnh', cpf='$cpf', cartao_sus='$cartao_sus', observacao='$observacao', 
     necessidade_especial='$necessidade_especial',
@@ -302,73 +239,45 @@ try {
      WHERE idaluno=$idaluno
 
     ");
-   $conexao->exec("UPDATE ecidade_matricula SET 
-            matricula_datamatricula= '$data_matricula' WHERE aluno_id=$idaluno and calendario_ano='$calendario_ano'
-    ");
- // echo "
- // r- $nome<br>
- //         r- $sexo<br>
- //         r- $email<br>
- //         r- $filiacao1<br>
- //         r- $filiacao2<br>
- //         r- $senha<br>
- //         r- $whatsapp<br>
- //         r- $whatsapp_responsavel<br>
- //         r- $data_nascimento<br>
 
- //         r- $numero_nis<br>
- //         r- $codigo_inep<br>
- //         r- $bolsa_familia<br>
- //         r- $tipo_responsavel<br>
- //         r- $raca_aluno<br>
- //         r- $estado_civil_aluno<br>
- //         r- $tipo_sanguinio_aluno<br>
- //         r- $profissao<br>
- //         r- $situacao_documentacao<br>
- //         r- $tipo_certidao<br>
- //         r- $numero_termo<br>
- //         r- $folha<br>
- //         r- $uf_cartorio<br>
- //         r- $municipio_cartorio<br>
- //         r- $nome_cartorio<br>
- //         r- $numero_indentidade<br>
- //         r- $uf_identidade<br>
- //         r- $orgao_emissor_indentidade<br>
- //         r- $data_expedicao<br>
- //         r- $numero_cnh<br>
- //         r- $categoria_cnh<br>
- //         r- $cpf<br>
- //         r- $cartao_sus<br>
- //         r- $observacao<br>
+    if ($_POST['matricula_codigo'] !='' && $_POST['quantidade_vagas_restante']>0) {
+        $matricula_codigo=$_POST['matricula_codigo'];
+        $turno=$_POST['turno'];
+        $turma_escola=$_POST['escola'];
+        $turma_id=$_POST['turma'];
+   
+        if ($_POST['etapa']!="") {
+            $etapa=$_POST['etapa'];
+                  $conexao->exec("UPDATE ecidade_matricula SET 
+                matricula_datamatricula= '$data_matricula',
+                turno_nome='$turno',
+                turma_escola=$turma_escola,
+                turma_id=$turma_id,
+                etapa =$etapa
 
- //         r- $necessidade_especial<br>
- //         r- $apoio_pedagogico<br>
- //         r- $tipo_diagnostico<br>
- //         r- $cpf_filiacao1<br>
- //         r- $cpf_filiacao2<br>
- //         r- $endereco<br>
- //         r- $complemento<br>
- //         r- $numero_endereco<br>
- //         r- $uf_endereco<br>
- //         r- $municipio_endereco<br>
- //         r- $bairro_endereco<br>
- //         r- $zona_endereco<br>
- //         r- $cep_endereco<br>
- //         r- $nacionalidade<br>
- //         r- $pais<br>
- //         r- $naturalidade<br>
- //         r- $localidade<br>
- //         r- $transposte_escolar<br>
- //         r- $poder_publico_responsavel<br>
- //         r- $recebe_escolaridade_outro_espaco<br>
- //         r- $matricula_certidao<br>
- //         r- $uf_municipio_cartorio<br>
- //         r- $cartorio<br>
- //         rid- $idaluno<br>
- //         r- $nome_responsavel<br>
- //         r- $cpf_responsavel<br>
- //    ";
+                 WHERE matricula_codigo=$matricula_codigo  limit 1
+        ");
+        }else{
+              $conexao->exec("UPDATE ecidade_matricula SET 
+                     matricula_datamatricula= '$data_matricula',
+                     turno_nome='$turno',
+                     turma_escola=$turma_escola,
+                     turma_id=$turma_id
+
+                      WHERE matricula_codigo=$matricula_codigo  limit 1
+     ");
+        }
+        
  
+
+   
+
+    }else{
+
+         $conexao->exec("UPDATE ecidade_matricula SET 
+            matricula_datamatricula= '$data_matricula' WHERE aluno_id=$idaluno and calendario_ano='$calendario_ano' limit 1
+    ");
+    }
 
     echo "certo";
  

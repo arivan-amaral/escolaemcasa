@@ -2214,7 +2214,7 @@ function listar_conteudo_cadastrado(data){
   var valor= option.value; //data
   var texto = option.text; //descricao data +  aula ...
 
-  var data_frequencia = document.getElementById("data_frequencia").value=data;
+  var data_frequencia = document.getElementById("data_frequencia").value=valor;
   var array_d=texto.split(' - ');
   var texto_aux=array_d[1];
 
@@ -4928,6 +4928,7 @@ function lista_turma_escola_por_serie_cadatro_aluno(){
     var turno = document.getElementById("turno").value;
     var turma_id = document.getElementById("idturma").value;
 
+    var etapa = document.getElementById("etapa").innerHTML='';
 
   var xmlreq = CriaRequest();   
   result.innerHTML="<center><img src='imagens/carregando.gif'></center>";

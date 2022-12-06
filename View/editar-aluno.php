@@ -9,10 +9,14 @@ include_once "../Controller/Conversao.php";
 include_once "../Model/Serie.php"; 
 include_once "../Model/Escola.php"; 
 include_once "../Model/Estado.php"; 
+include_once "../Model/Turma.php"; 
 include_once "../Model/Coordenador.php"; 
 include_once "../Model/Aluno.php"; 
 $idcoordenador=$_SESSION['idfuncionario'];
+$ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
+
 $idaluno = $_POST['aluno_id'];
+
 
 
 if ($_SESSION['nivel_acesso_id']==100) {
@@ -154,6 +158,28 @@ foreach ($res as $key => $value) {
     $cpf_responsavel = $value['cpf_responsavel'];
 }
 
+
+
+
+$res_editar_curso=verificar_matricula_ativa($conexao,$idaluno, $ano_letivo_vigente);
+$escola_id='';
+$turno='';
+$serie_id='';
+$turma_id='';
+$etapa='';
+$data_matricula='';
+$matricula_codigo='';
+
+foreach ($res_editar_curso as $key => $value) {
+  $escola_id=$value['turma_escola'];
+  $turno=$value['turno_nome'];
+  $serie_id=$value['serie_id'];
+  $turma_id=$value['turma_id'];
+  $etapa=$value['etapa'];
+  $data_matricula=$value['matricula_datamatricula'];
+  $matricula_codigo=$value['matricula_codigo'];
+
+}
  
 ?>
 
@@ -169,17 +195,21 @@ foreach ($res as $key => $value) {
           <div class="card-header p-0 pt-1">
             <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
               <li class="pt-2 px-3"><h3 class="card-title">EDITANDO DADOS DO ALUNO</h3></li>
+            
             <li class="nav-item">
                 <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Dados Pessoais</a>
-              </li>
+            </li>
               <li class="nav-item">
                 <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill" href="#custom-tabs-two-profile" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false">Endereço</a>
               </li>
+
               <li class="nav-item">
                 <a class="nav-link" id="custom-tabs-two-messages-tab" data-toggle="pill" href="#custom-tabs-two-messages" role="tab" aria-controls="custom-tabs-two-messages" aria-selected="false">Documentos</a>
               </li>
        
-             
+               <li class="nav-item">
+                <a class="nav-link" id="custom-tabs-two-settings-tab" data-toggle="pill" href="#custom-tabs-two-settings" role="tab" aria-controls="custom-tabs-two-settings" aria-selected="false">Curso</a>
+              </li>
                
             </ul>
           </div>
@@ -447,6 +477,8 @@ foreach ($res as $key => $value) {
                     </div>           
                  </div>
               </div>
+
+
               <div class="tab-pane fade" id="custom-tabs-two-profile" role="tabpanel" aria-labelledby="custom-tabs-two-profile-tab">
                  <div class="card-body">
                     <div class="row">
@@ -560,10 +592,11 @@ foreach ($res as $key => $value) {
                         </div>
                       </div>
                       <div class="col-sm-3">
+                       
                         <div class="form-group">
-             <!--              <label for="exampleInputEmail1">localidade</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="localidade" value='$localidade;' >
-                        </div> -->
+                          <!-- <label for="exampleInputEmail1">localidade</label>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="localidade" value='$localidade;' >-->
+                        </div> 
 
 
                         <label for="exampleInputEmail1">Estado onde nasceu</label>
@@ -831,7 +864,191 @@ foreach ($res as $key => $value) {
                       </div>
                     </div>
              
-                    <br>
+              
+              </div>
+              
+
+
+
+<div class="tab-pane fade" id="custom-tabs-two-settings" role="tabpanel" aria-labelledby="custom-tabs-two-settings-tab">
+                  <div class="card-body">
+                 
+<script>
+ document.getElementById("idserie").onchange = function(){
+    var value = document.getElementById("idserie").value;
+ };
+</script>
+
+    <?php 
+
+    if ($escola_id !='') {
+      echo "<input type='hidden' name='matricula_codigo' value='$matricula_codigo'>";
+
+     }else{
+      echo "<input type='hidden' name='matricula_codigo' value=''>";
+    }
+    ?>
+          <div class="row">
+                      <div class="col-sm-5">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Escola</label>
+                         <select class="form-control"  name="escola" id="escola" onchange="lista_turma_escola_por_serie_cadatro_aluno();">
+                          <option></option>
+                       <?php 
+                         // $res_escola=lista_escola($conexao);
+
+                        $res_escola= escola_associada($conexao,$idcoordenador);
+                         foreach ($res_escola as $key => $value) {
+                             $idescola=$value['idescola'];
+                             $nome_escola=$value['nome_escola'];
+                            if ($idescola==$escola_id) {
+                              echo "<option value='$idescola' selected>$nome_escola </option>";
+
+                            }else{
+
+                             echo "<option value='$idescola'>$nome_escola </option>";
+                            }
+                         }
+                         ?>
+                         </select>
+                        </div>
+                      </div>                      
+
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Turno</label>
+    
+                         <select class="form-control"  name="turno" id="turno" onchange="lista_turma_escola_por_serie_cadatro_aluno();" >
+                          <option value="<?php echo "$turno"; ?>"><?php echo "$turno"; ?></option>
+                          <option value="MATUTINO">MATUTINO</option>
+                          <option value="VESPERTINO">VESPERTINO</option>
+                          <option value="NOTURNO">NOTURNO</option>
+                          <option value="INTEGRAL">INTEGRAL</option>
+                         </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Série</label>
+                            <select class="form-control"  name="serie" id="idserie" onchange="lista_turma_escola_por_serie_cadatro_aluno();">
+                              <!--    <select class="form-control"  name="serie" id="idserie" onchange="listar_turmas_por_serie(this.value);"> -->
+                            <option></option>
+
+                          <?php 
+                            $res_serie=lista_todas_series($conexao);
+                            foreach ($res_serie as $key => $value) {
+                                $id=$value['id'];
+                                $nome_serie=$value['nome'];
+                                if ($id==$serie_id) {
+                                    echo "<option value='$id' selected>$nome_serie </option>";
+
+                                }else{
+
+                                echo "<option value='$id'>$nome_serie </option>";
+                                }
+                            }
+                            ?>
+                            </select>
+                        </div>
+                      </div>
+                      
+
+                                
+                        <div class="col-sm-4">
+                        <div class="form-group">
+                        <label for='exampleInputEmail1' class='text-danger'>Turma pretendida</label>
+                          <select class='form-control'  name='turma' id='idturma' onchange=" listar_etapas_cad_aluno();quantidade_vaga_turma_cadastro_aluno();"> 
+                            <?php 
+
+                            $result=lista_de_turmas_das_escolas($conexao,$serie_id,$escola_id,$turno,$ano_letivo_vigente);
+                           
+                             foreach ($result as $key => $value) {
+                               $idturma=$value['idturma'];
+                               $nome_turma=$value['nome_turma'];
+                               if ($turma_id==$idturma) {
+                               echo "<option value='$idturma' selected> $nome_turma</option>";
+                                 
+                               }else{
+
+                               echo "<option value='$idturma'> $nome_turma</option>";
+                               }
+                             }
+                             ?>
+                          
+                        </select>
+                         </div>
+                       </div>
+
+                      <span id="etapa">
+                        <?php 
+
+                          if ($serie_id==16) {
+                                $result="<label for='exampleInputEmail1'>Escolha a etapa </label>
+                                             <select class='form-control' name='etapa'   required>
+                                             <option></option>";
+                                $res=$conexao->query("SELECT * FROM etapa_multissereada WHERE turma_id=$turma_id");
+                                foreach ($res as $key => $value) {
+                                  $idetapa=$value['id'];
+                                  $nome_etapa=$value['etapa'];
+                                  if ($etapa==$idetapa) {
+                                     $result.="<option value='$idetapa' selected>$nome_etapa</option>
+                                    ";
+
+                                  }
+                                  $result.="
+                                  <option value='$idetapa'>$nome_etapa</option>
+                                  ";
+                                }
+
+                                $result.="</select>";
+                              echo "$result";
+                              
+                          }else{
+                            echo"<input type='hidden' name='etapa' value=''>";
+                          }
+                         ?>
+
+                      </span>
+
+
+                        <div class="col-sm-3">
+                          <div class="form-group" >
+                            <label for='exampleInputEmail1' class='text-danger'>Vagas restantes na turma</label>
+                              <?php 
+
+
+                              $quantidade_vaga_total=0;
+                              $quantidade_vaga_restante=0;
+
+                                $res_quantidade= quantidade_vaga_turma($conexao,$escola_id,$turma_id,$turno,$ano_letivo_vigente);
+                                foreach ($res_quantidade as $key => $value) {
+                                   $quantidade_vaga_total=$value['quantidade_vaga'];
+                                }
+
+                                $res_quantidade_vaga_restante= quantidade_aluno_na_turma($conexao,$escola_id,$turma_id,$turno,$ano_letivo_vigente);
+                                foreach ($res_quantidade_vaga_restante as $key => $value) {
+                                   $quantidade_vaga_restante=$value['quantidade'];
+                                }
+                               $quantidade_vaga_restante=$quantidade_vaga_total-$quantidade_vaga_restante;
+                              
+
+                               ?>
+                            <input type="text"  name="quantidade_vagas_restante" id="quantidade_vagas_restante" value="<?php echo $quantidade_vaga_restante ?>" readonly class="form-control">
+                             
+                          </div>
+                        </div>
+                        <div class="col-sm-3">
+                          <div class="form-group">
+                            <label class='text-danger'>Data Matrícula <b class="text-danger">*</b></label>
+                       
+                              <input type="date" class="form-control" id="data_matricula" name="data_matricula" required  <?php echo $disabled; ?>  value="<?php echo date('Y-m-d'); ?>" >
+                        
+                          </div>
+                        </div>
+                    </div>
+ 
+
+                  <br>
                     <div class="row">
                       <div class="col-sm-12">
                         <div class="form-group">
@@ -839,10 +1056,17 @@ foreach ($res as $key => $value) {
 
                        </div>
                       </div>                   
-                 </div>
-              </div>
-              
+                 </div>  
 
+
+          
+          </div>
+          <!-- /.card -->
+
+
+
+           
+        </div>
          
 
       </form>        
