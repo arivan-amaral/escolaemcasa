@@ -307,7 +307,7 @@ if (!isset($_SESSION['idprofessor'])) {
                 if ($idserie <3) {
                     foreach ($array_aulas as $key => $value) {
                        
-                      echo"<option value='$data' style='background-color: $background'>".converte_data($key)." - $value </option>";
+                      echo"<option value='$data' style='background-color: $background'>".converte_data($data)." - $aula </option>";
                     }
                 }
 
