@@ -458,11 +458,10 @@ function verificar_conteudo_aula_cadastrado_por_data($conexao, $iddisciplina, $i
 }
 
 function verificar_conteudo_aula_cadastrado_por_data_aula($conexao, $iddisciplina, $idturma, $idescola, $data,$aula) {
-    // disciplina_id=$iddisciplina and removido 06/12/2022 problema disciplinas regentes
     $resultado=$conexao->query("SELECT * FROM conteudo_aula WHERE
       data='$data' and 
       aula='$aula' and 
-      
+      disciplina_id=$iddisciplina and 
       escola_id=$idescola and 
       turma_id=$idturma order by data");
     return $resultado;
