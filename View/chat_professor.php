@@ -188,8 +188,7 @@ foreach ($res as $key => $value) {
 </div>
 
 <script>
-chat_receber_professor();
-setInterval("chat_receber_professor();",3000);
+
 
 </script>
 

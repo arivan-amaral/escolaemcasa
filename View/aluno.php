@@ -623,7 +623,7 @@ if ($idserie>2) {
                         <h3>Bate papo</h3>
                         <h3></h3>
                         <script type="text/javascript">
-                              setInterval("chat_receber();",5000);
+                             
                         </script>
                       
                       </div>
