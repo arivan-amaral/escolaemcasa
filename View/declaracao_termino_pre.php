@@ -292,10 +292,7 @@ $result_ecidade_matricula=$conexao->query("SELECT
 
 
 
-
-
-</body>
-</html>
+ 
 
 <?php  
 
