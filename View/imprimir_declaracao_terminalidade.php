@@ -121,7 +121,7 @@ if (isset($_POST['escola_id_origem'])) {
 foreach ($_POST['idaluno'] as $key => $value) {
 		$aluno_id=$_POST['idaluno'][$key];
    gerar_declaracao_terminalidade($conexao, $aluno_id, $escola_id, $turma_id, $serie_id,$ano_letivo);
-   echo "	<div class='no-print'><br><br><br><br></div>
+   echo "	<div class='no-print'><br><br><br><br><br><br><br><br></div>
 ";
 }
 
