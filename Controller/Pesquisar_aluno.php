@@ -340,7 +340,7 @@ foreach ($result_ecidade_matricula as $key => $value) {
                             </form>
                             </li>";         
 
-                            if ($idserie<3) {
+                            if ($idserie<3 || $idserie==7 || $idserie ==11 || $idserie==15) {
                               // code...
                                $result.="
                               <li>

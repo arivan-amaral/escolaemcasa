@@ -297,13 +297,25 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
 
 
 
-                                  <p class="MsoNormal" style="text-align: center; "><b><span style="font-size: 24pt; line-height: 107%; font-family: " source="" sans="" pro",="" sans-serif;="" background-image:="" initial;="" background-position:="" background-size:="" background-repeat:="" background-attachment:="" background-origin:="" background-clip:="" initial;"=""><br></span></b></p><p class="MsoNormal" style="margin: 0cm 3.25pt 22.55pt 19.6pt; text-indent: -0.5pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"></p><div style="text-align: center; text-indent: -0.666667px;"><span id="docs-internal-guid-06891f45-7fff-4fd8-3fb0-5ef60b2488a1"><span style="font-size: 20pt; font-family: Calibri, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">DECLARAÇÃO DE TERMINALIDADE DA EDUCAÇÃO INFANTIL – ETAPA
+                                  <p class="MsoNormal" style="text-align: center; "><b><span style="font-size: 24pt; line-height: 107%; font-family: " source="" sans="" pro",="" sans-serif;="" background-image:="" initial;="" background-position:="" background-size:="" background-repeat:="" background-attachment:="" background-origin:="" background-clip:="" initial;"=""><br></span></b></p><p class="MsoNormal" style="margin: 0cm 3.25pt 22.55pt 19.6pt; text-indent: -0.5pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"></p><div style="text-align: center; text-indent: -0.666667px;"><span id="docs-internal-guid-06891f45-7fff-4fd8-3fb0-5ef60b2488a1"><span style="font-size: 20pt; font-family: Calibri, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">DECLARAÇÃO DE TERMINALIDADE 
                                    <?php 
                                   if ($serie_id==1) {
-                                    echo "MATERNAL";
-                                  }else{
-                                    echo "PRÉ-ESCOLA";
-                                  } ?>
+                                    echo "DA EDUCAÇÃO INFANTIL – ETAPA MATERNAL";
+                                  }else if ($serie_id==2) {
+                                    echo "DA EDUCAÇÃO INFANTIL – ETAPA PRÉ-ESCOLA";
+                                  } 
+                                  else if ($serie_id==7) {
+                                    echo "DA EDUCAÇÃO FUNDALMENTAL – ETAPA 5º ANO";
+                                  }  
+                                  else if ($serie_id==11) {
+                                    echo "DA EDUCAÇÃO FUNDALMENTAL – ETAPA 9º ANO";
+                                  }   
+                                  else if ($serie_id==15) {
+                                    echo "DA EDUCAÇÃO FUNDALMENTAL – ETAPA 9º ANO";
+                                  } 
+
+
+                                  ?>
                                     
                                   </span></span><br></div><b><span style="font-size: 18pt; font-family: " source="" sans="" pro",="" sans-serif;"="">
                                   <!--[if !supportLineBreakNewLine]--><br>
@@ -317,21 +329,43 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
                                   echo " ". $filiacao2." "; 
                                 }
 
-                                ?>, </span><span style="background-color: transparent; color: rgb(0, 0, 0); font-family: Calibri, sans-serif; font-size: 18pt; white-space: pre-wrap; text-align: left;">concluiu no <?php 
+                                ?>, </span><span style="background-color: transparent; color: rgb(0, 0, 0); font-family: Calibri, sans-serif; font-size: 18pt; white-space: pre-wrap; text-align: left;">concluiu  <?php 
                                     $res_serie=trim(substr($nome_turma, 0, -1));
-                                    echo $res_serie;
                                     if ($res_serie =='MATERNAL I') {
+                                      echo "no ".$res_serie;
                                       $cursar="o MATERNAL II do Ensino Infantil";
                                     }elseif ($res_serie =='MATERNAL II') {
-                                      // code...
+                                      echo "no ".$res_serie;
+                                      
                                       $cursar="o PRE I do Ensino Infantil";
                                     
                                     }elseif ($res_serie =='PRE I') {
+                                      echo "no ".$res_serie;
+
                                       $cursar="o PRE II do Ensino Infantil";
 
                                     }elseif ($res_serie =='PRE II') {
-                                     $cursar="o 1° ano do Ensino Fundamental";
-                                    }
+                                      echo "no ".$res_serie;
+                                     $cursar="o 1° ano do Ensino Fundamental 1";
+                                    } 
+                                    else if ($serie_id==7) {
+                                      echo " O 5º ANO ";
+
+                                      $cursar=" o 6º ano do Ensino Fundamental 2";
+                                     
+
+                                    }  
+                                    else if ($serie_id==11) {
+                                      echo " O 9º ANO ";
+
+                                     $cursar= " a 1ª série do ensino médio ";
+
+                                    }   
+                                    else if ($serie_id==15) {
+                                      echo " O 9º ANO ";
+
+                                     $cursar= " a 1ª série do ensino médio ";
+                                    } 
 
 
                                   ?>  no ano letivo 2022, no  <?php echo $nome_escola; ?>. </span><span style="background-color: transparent; color: rgb(0, 0, 0); font-family: Calibri, sans-serif; font-size: 18pt; white-space: pre-wrap;">Estando apto a cursar <?php echo $cursar; ?>.</span></p><p class="MsoNormal" style="margin: 0cm 3.25pt 22.55pt 19.6pt; text-align: justify; text-indent: -0.5pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><span style="font-size: 18pt; font-family: " source="" sans="" pro",="" sans-serif;"=""><b><br></b></span></p>
