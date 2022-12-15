@@ -169,12 +169,12 @@ if ($idserie<3) {
         $inicio=36;
         $conta_aula=36;
 
-        $limite_data=34;//$fim= 29;
-        $limite_aula=23;//18
+        $limite_data=41;//$fim= 34;
+        $limite_aula=30;//23
 
  
         $conta_data=1; //não existia
-        $fim= 34;//$fim= 29;
+        $fim= 41;//$fim= 34;
  
         //linha 428 600 760
         diario_frequencia_pagina_final_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
@@ -193,12 +193,12 @@ if ($idserie<3) {
       $inicio=36;
         $conta_aula=36;
 
-        $limite_data=34;//$fim= 29;
-        $limite_aula=23;//18
+             $limite_data=41;//$fim= 34;
+        $limite_aula=30;//23
 
  
         $conta_data=1; //não existia
-        $fim= 34;//$fim= 29;
+        $fim= 41;//$fim= 34;
  
 
         //linha 428 600 760
@@ -219,12 +219,12 @@ if ($idserie<3) {
               $inicio=36;
         $conta_aula=36;
 
-        $limite_data=34;//$fim= 29;
-        $limite_aula=23;//18
+            $limite_data=41;//$fim= 34;
+        $limite_aula=30;//23
 
  
         $conta_data=1; //não existia
-        $fim= 34;//$fim= 29;
+        $fim= 41;//$fim= 34;
         
         //linha 428 600 760
         diario_frequencia_pagina_final_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento);
@@ -240,12 +240,12 @@ if ($idserie<3) {
         $inicio=36;
         $conta_aula=36;
 
-        $limite_data=34;//$fim= 29;
-        $limite_aula=23;//18
+          $limite_data=41;//$fim= 34;
+        $limite_aula=30;//23
 
  
         $conta_data=1; //não existia
-        $fim= 34;//$fim= 29;
+        $fim= 41;//$fim= 34;
 
     //linha 428 600 760
     diario_frequencia_pagina_final_fund1($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
