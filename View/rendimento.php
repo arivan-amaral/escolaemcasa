@@ -5,7 +5,7 @@
   include"../Model/Professor.php";
   include"../Controller/Cauculos_notas.php";
 
- function rendimento($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_professor){
+ function rendimento($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_professor,$ano_letivo){
 
 
 if ($idserie <3) {
@@ -1174,7 +1174,7 @@ $media_final=  round( ($nota_tri_1 + $nota_tri_2 + $nota_tri_3 )/3 ,2);
 if ($media_final <5 ) {
   //$resultado_final=false;
 //buscar concelho
-          $res_conselho=buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno);
+          $res_conselho=buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$ano_letivo);
           $conta_aprovado=count($res_conselho);
           
            if ($conta_aprovado>0 ) {
@@ -1224,7 +1224,7 @@ if ($media_final <5 ) {
 
     if ($media_final<5) {
    
-      $res_conselho=buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno);
+      $res_conselho=buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$ano_letivo);
       $conta_aprovado=count($res_conselho);
       
        if ($conta_aprovado>0 ) {

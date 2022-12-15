@@ -93,26 +93,28 @@ function cancelar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$id
 
 }
 
-function aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno){
+function aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno, $ano_letivo){
   $sql=$conexao->prepare("INSERT INTO historico_nota 
-    ( escola_id, turma_id, disciplina_id, aluno_id) VALUES 
-    ( :idescola, :idturma, :iddisciplina, :idaluno)");
+    ( escola_id, turma_id, disciplina_id, aluno_id, ano) VALUES 
+    ( :idescola, :idturma, :iddisciplina, :idaluno, :ano_letivo)");
   
   $sql->bindParam("idescola",$idescola);
   $sql->bindParam("idturma",$idturma);
   $sql->bindParam("iddisciplina",$iddisciplina);
   $sql->bindParam("idaluno",$idaluno);
+  $sql->bindParam("ano_letivo",$ano_letivo);
   $sql->execute();
 
 }
 
-function buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno){
-  $sql=$conexao->prepare("SELECT * FROM historico_nota WHERE escola_id = :idescola and turma_id = :idturma and disciplina_id = :iddisciplina and aluno_id = :idaluno and status=1");
+function buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno, $ano_letivo){
+  $sql=$conexao->prepare("SELECT * FROM historico_nota WHERE escola_id = :idescola and turma_id = :idturma and disciplina_id = :iddisciplina and aluno_id = :idaluno and ano=:ano_letivo and status=1");
   
   $sql->bindParam("idescola",$idescola);
   $sql->bindParam("idturma",$idturma);
   $sql->bindParam("iddisciplina",$iddisciplina);
   $sql->bindParam("idaluno",$idaluno);
+  $sql->bindParam("ano_letivo",$ano_letivo);
   $sql->execute();
   return $sql->fetchAll();
 

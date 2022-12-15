@@ -390,7 +390,7 @@ if ($media_fora_rede==0) {
 
 
   }else{
-      $res_conselho=buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno);
+      $res_conselho=buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$ano_letivo);
       $conta_aprovado=count($res_conselho);
       
        if ($conta_aprovado>0 ) {

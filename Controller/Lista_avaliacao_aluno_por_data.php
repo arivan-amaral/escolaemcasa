@@ -252,7 +252,7 @@ try {
                                       //     $nf=media_final($conexao,$idescola,$idturma,$iddisciplina,$idperiodo, $idaluno );
                                       // }
                                   
-                                    $res_conselho=buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno);
+                                    $res_conselho=buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno, $ano_letivo);
                                     $conta_aprovado=count($res_conselho);
                                    
                                        if ($idserie >3 && $idperiodo==3) {  

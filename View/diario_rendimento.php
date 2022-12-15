@@ -15,7 +15,7 @@ $nome_professor='';
 foreach ($res_pro as $key => $value) {
     $nome_professor=$value['nome_professor'];
 }
-rendimento($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_professor); 
+rendimento($conexao,$idescola,$idturma,$iddisciplina,$idserie,$nome_professor,$ano_letivo); 
 
 
  ?>

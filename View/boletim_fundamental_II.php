@@ -368,7 +368,7 @@ $total=number_format($total, 1, '.','') ;
 if ($total <5 ) {
   $resultado_final=false;
 //buscar concelho
-          $res_conselho=buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno);
+          $res_conselho=buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$ano_letivo);
           $conta_aprovado=count($res_conselho);
           
            if ($conta_aprovado>0 ) {
