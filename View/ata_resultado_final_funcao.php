@@ -434,9 +434,9 @@ else{
         echo "<b style='color: green;'>Apr</b>";
 
     }elseif ($aprovacao_conselho == "Apc" && $conta_apr_apc==count($array_disciplina) ) {
-         echo "<b style='color: blue;'>Apc </b> count:". count($array_disciplina)."";
+         echo "<b style='color: blue;'>Apc </b> ";
     }elseif ($media_aprovacao == "Apr" && $conta_apr_apc==count($array_disciplina)) {
-         echo "<b style='color: green;'>Apr</b> count:". count($array_disciplina)."";
+         echo "<b style='color: green;'>Apr</b>";
     }elseif ($media_aprovacao == "Não"){
       $media_aprovacao="Não";
          echo "<b style='color: red;'>Rep</b>";
