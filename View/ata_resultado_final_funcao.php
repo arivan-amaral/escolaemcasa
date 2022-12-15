@@ -384,9 +384,9 @@ if ($media_fora_rede==0) {
   }
 
   if ($media >= 5) {
-      echo "1ma:".$media_aprovacao."ac:".$aprovacao_conselho."". number_format($media, 1, '.', ',');
       $media_aprovacao="Apr";
       $aprovacao_conselho="Não";
+      echo "1ma:".$media_aprovacao."ac:".$aprovacao_conselho."". number_format($media, 1, '.', ',');
 
 
   }else{
@@ -400,8 +400,8 @@ if ($media_fora_rede==0) {
           $media_aprovacao="Não";
           $aprovacao_conselho="Apc";
       }else{
-          echo "2ma:".$media_aprovacao."ac:".$aprovacao_conselho."".number_format($media, 1, '.', ',');
           $media_aprovacao="Não";
+          echo "2ma:".$media_aprovacao."ac:".$aprovacao_conselho."".number_format($media, 1, '.', ',');
 
       }
 
@@ -426,7 +426,7 @@ else{
   text-align:center'><span lang=PT style='font-size:8.0pt'>
 <?php 
     if($idserie<3){
-        echo "<b style='color: green;'>Apr</b>";
+        echo "<b style='color: green;'>$idserie Apr</b>";
 
     }elseif ($aprovacao_conselho == "Apc") {
          echo "<b style='color: blue;'>Apc </b>";
