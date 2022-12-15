@@ -219,6 +219,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
       $iddisciplina="";
       $media_aprovacao="Não";
       $aprovacao_conselho="Não";
+      $conta_apr_apc=0;
       foreach ($array_disciplina as $key => $value) {
            $media_aprovacao="Não";
            $aprovacao_conselho="Não";
@@ -384,9 +385,10 @@ if ($media_fora_rede==0) {
   }
 
   if ($media >= 5) {
+      $conta_apr_apc++;
       $media_aprovacao="Apr";
       $aprovacao_conselho="Não";
-      echo "1ma:".$media_aprovacao."ac:".$aprovacao_conselho."". number_format($media, 1, '.', ',');
+      echo  number_format($media, 1, '.', ',');
 
 
   }else{
@@ -399,9 +401,11 @@ if ($media_fora_rede==0) {
           
           $media_aprovacao="Não";
           $aprovacao_conselho="Apc";
+          $conta_apr_apc++;
+
       }else{
           $media_aprovacao="Não";
-          echo "2ma:".$media_aprovacao."ac:".$aprovacao_conselho."".number_format($media, 1, '.', ',');
+          echo  number_format($media, 1, '.', ',');
 
       }
 
@@ -411,6 +415,7 @@ if ($media_fora_rede==0) {
 else{
   echo "Apr";
   $media_aprovacao="Apr";
+
 
 }
 ?>
@@ -426,12 +431,12 @@ else{
   text-align:center'><span lang=PT style='font-size:8.0pt'>
 <?php 
     if($idserie<3){
-        echo "<b style='color: green;'>$idserie Apr</b>";
+        echo "<b style='color: green;'>Apr</b>";
 
-    }elseif ($aprovacao_conselho == "Apc") {
-         echo "<b style='color: blue;'>Apc </b>";
-    }elseif ($media_aprovacao == "Apr") {
-         echo "<b style='color: green;'>Apr</b>";
+    }elseif ($aprovacao_conselho == "Apc" && $conta_apr_apc==count($array_disciplina) ) {
+         echo "<b style='color: blue;'>Apc </b> count:". count($array_disciplina)."";
+    }elseif ($media_aprovacao == "Apr" && $conta_apr_apc==count($array_disciplina)) {
+         echo "<b style='color: green;'>Apr</b> count:". count($array_disciplina)."";
     }elseif ($media_aprovacao == "Não"){
       $media_aprovacao="Não";
          echo "<b style='color: red;'>Rep</b>";
