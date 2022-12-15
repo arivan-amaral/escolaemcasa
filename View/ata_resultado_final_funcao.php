@@ -3,7 +3,7 @@ function ata_resultados_finais($conexao,$idescola,$idturma,$idserie,$ano_letivo)
 
 ?>
 
-
+ 
  <tr style='width:100%'>
  
   <td width=19 valign=top style='width:14.15pt;border:solid black 1.0pt;
@@ -217,11 +217,11 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
 <?php
 
       $iddisciplina="";
-      $media_aprovacao=false;
-      $aprovacao_conselho=false;
+      $media_aprovacao="não";
+      $aprovacao_conselho="Não";
       foreach ($array_disciplina as $key => $value) {
-           $media_aprovacao=false;
-           $aprovacao_conselho=false;
+           $media_aprovacao="não";
+           $aprovacao_conselho="Não";
             
             $iddisciplina=$array_disciplina[$key];
          
@@ -255,11 +255,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
       $nota_tri_1=calculos_media_notas($nota_tri_1,$nota_rp_1,$nota_av3_1);
 
             //echo "$nota_tri_1";
-            ?>
-
-
-
- <?php
+    
   
       $result_nota_aula2=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,2);
 
@@ -301,11 +297,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
      
 
     // echo "$nota_tri_2";
-     ?>
-
-
-
-      <?php
+ 
 
    $result_nota_aula3=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,3);
 
@@ -392,9 +384,9 @@ if ($media_fora_rede==0) {
   }
 
   if ($media >= 5) {
-      echo number_format($media, 1, '.', ',');
-      $media_aprovacao=true;
-      $aprovacao_conselho=false;
+      echo "ma:".$media_aprovacao."ac:".$aprovacao_conselho."". number_format($media, 1, '.', ',');
+      $media_aprovacao="Apr";
+      $aprovacao_conselho="Não";
 
 
   }else{
@@ -405,11 +397,11 @@ if ($media_fora_rede==0) {
           $media_conselho=number_format('5', 1, '.', ',');
           echo "<b>$media_conselho</b>";
           
-          $media_aprovacao=false;
-          $aprovacao_conselho=true;
+          $media_aprovacao="não";
+          $aprovacao_conselho="Apc";
       }else{
-          echo number_format($media, 1, '.', ',');
-          $media_aprovacao=false;
+          echo "ma:".$media_aprovacao."ac:".$aprovacao_conselho."".number_format($media, 1, '.', ',');
+          $media_aprovacao="não";
 
       }
 
@@ -418,7 +410,7 @@ if ($media_fora_rede==0) {
 }//se serie for menor que 3
 else{
   echo "Apr";
-  $media_aprovacao=true;
+  $media_aprovacao="Apr";
 
 }
 ?>
@@ -436,12 +428,16 @@ else{
     if($idserie<3){
         echo "<b style='color: green;'>Apr</b>";
 
-    }elseif ($aprovacao_conselho == true) {
+    }elseif ($aprovacao_conselho == "Apc") {
          echo "<b style='color: blue;'>Apc </b>";
-    }elseif ($media_aprovacao == true) {
+    }elseif ($media_aprovacao == "Apr") {
          echo "<b style='color: green;'>Apr</b>";
-    }elseif ($media_aprovacao == false){
-      $media_aprovacao=false;
+    }elseif ($media_aprovacao == "Não"){
+      $media_aprovacao="não";
+         echo "<b style='color: red;'>Rep</b>";
+
+    }elseif ($aprovacao_conselho == "Não"){
+      $media_aprovacao="não";
          echo "<b style='color: red;'>Rep</b>";
 
     }
