@@ -82,13 +82,14 @@ function cadastrar_lista_espera($conexao,$nome_aluno,$cpf_aluno,$data_nascimento
 }
 
 
-function cancelar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno){
-  $sql=$conexao->prepare("DELETE FROM historico_nota WHERE escola_id = :idescola and turma_id = :idturma and disciplina_id = :iddisciplina and aluno_id = :idaluno");
+function cancelar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$ano_letivo){
+  $sql=$conexao->prepare("DELETE FROM historico_nota WHERE escola_id = :idescola and turma_id = :idturma and disciplina_id = :iddisciplina and aluno_id = :idaluno and ano = :ano_letivo");
   
   $sql->bindParam("idescola",$idescola);
   $sql->bindParam("idturma",$idturma);
   $sql->bindParam("iddisciplina",$iddisciplina);
   $sql->bindParam("idaluno",$idaluno);
+  $sql->bindParam("ano_letivo",$ano_letivo);
   $sql->execute();
 
 }

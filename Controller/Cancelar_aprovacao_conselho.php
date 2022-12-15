@@ -1,4 +1,5 @@
 <?php 
+session_start();
 include_once '../Model/Conexao.php';
 include_once '../Model/Aluno.php';
 try {
@@ -6,8 +7,8 @@ try {
 	$idturma=$_GET['idturma'];
 	$iddisciplina=$_GET['iddisciplina'];
 	$idaluno=$_GET['idaluno'];
- 
-	cancelar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno);
+ 	$ano_letivo=$_SESSION['ano_letivo_vigente'];
+	cancelar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno, $ano_letivo);
 	echo "certo";
 	 
 
