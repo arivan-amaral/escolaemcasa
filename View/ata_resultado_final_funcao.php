@@ -217,10 +217,10 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
 <?php
 
       $iddisciplina="";
-      $media_aprovacao="não";
+      $media_aprovacao="Não";
       $aprovacao_conselho="Não";
       foreach ($array_disciplina as $key => $value) {
-           $media_aprovacao="não";
+           $media_aprovacao="Não";
            $aprovacao_conselho="Não";
             
             $iddisciplina=$array_disciplina[$key];
@@ -384,7 +384,7 @@ if ($media_fora_rede==0) {
   }
 
   if ($media >= 5) {
-      echo "ma:".$media_aprovacao."ac:".$aprovacao_conselho."". number_format($media, 1, '.', ',');
+      echo "1ma:".$media_aprovacao."ac:".$aprovacao_conselho."". number_format($media, 1, '.', ',');
       $media_aprovacao="Apr";
       $aprovacao_conselho="Não";
 
@@ -397,11 +397,11 @@ if ($media_fora_rede==0) {
           $media_conselho=number_format('5', 1, '.', ',');
           echo "<b>$media_conselho</b>";
           
-          $media_aprovacao="não";
+          $media_aprovacao="Não";
           $aprovacao_conselho="Apc";
       }else{
-          echo "ma:".$media_aprovacao."ac:".$aprovacao_conselho."".number_format($media, 1, '.', ',');
-          $media_aprovacao="não";
+          echo "2ma:".$media_aprovacao."ac:".$aprovacao_conselho."".number_format($media, 1, '.', ',');
+          $media_aprovacao="Não";
 
       }
 
@@ -433,11 +433,11 @@ else{
     }elseif ($media_aprovacao == "Apr") {
          echo "<b style='color: green;'>Apr</b>";
     }elseif ($media_aprovacao == "Não"){
-      $media_aprovacao="não";
+      $media_aprovacao="Não";
          echo "<b style='color: red;'>Rep</b>";
 
     }elseif ($aprovacao_conselho == "Não"){
-      $media_aprovacao="não";
+      $media_aprovacao="Não";
          echo "<b style='color: red;'>Rep</b>";
 
     }
