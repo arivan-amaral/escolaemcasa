@@ -9,6 +9,9 @@ if (!isset($_SESSION['idfuncionario'])) {
   $idfuncionario=$_SESSION['idfuncionario'];
 
 }
+echo "página em manutenção para o professor!!";
+exit();
+
 include "cabecalho.php";
 include "alertas.php";
 include "barra_horizontal.php";
