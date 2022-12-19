@@ -42,5 +42,5 @@ include'../Model/Conexao.php';
    
 ?>
 <script>
-	setInterval('location.reload()',15000);
+//	setInterval('location.reload()',15000);
 </script>
