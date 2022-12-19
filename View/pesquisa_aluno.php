@@ -26,7 +26,7 @@ if (!isset($_SESSION['idfuncionario'])) {
   Swal.fire({
     position: 'center',
     icon: 'error',
-    title: 'A página de pesquisa de alunos está em manutenção para melhorar o desempenho da plataforma, caso precise de alguma funcionalidade dela, entre em contato com o suporte ',
+    title: 'A página de pesquisa de alunos está em manutenção para melhorar o desempenho da plataforma, caso precise de alguma funcionalidade dela, entre em contato com o suporte !! previsão de retorno para as 15:30',
        text: ' ',
     showConfirmButton: true
   });
