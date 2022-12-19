@@ -108,7 +108,7 @@ if (!isset($_SESSION['idfuncionario'])) {
 
               <div class="col-sm-2"> 
                 <label><br></label><br>
-               <a class="btn btn-primary" onclick="limpa_pesquisa_aluno();pesquisa_aluno();">Buscar</a>
+            <!-- /   <a class="btn btn-primary" onclick="limpa_pesquisa_aluno();pesquisa_aluno();">Buscar</a> -->
               </div>
          </div> 
 
@@ -143,14 +143,14 @@ if (!isset($_SESSION['idfuncionario'])) {
 
 
 <script type="text/javascript">
-const inputEle = document.getElementById('pesquisa');
-inputEle.addEventListener('keyup', function(e){
-  var key = e.which || e.keyCode;
-  if (key == 13) { // codigo da tecla enter
-    limpa_pesquisa_aluno();
-   pesquisa_aluno();
-  }
-});
+// const inputEle = document.getElementById('pesquisa');
+// inputEle.addEventListener('keyup', function(e){
+//   var key = e.which || e.keyCode;
+//   if (key == 13) { // codigo da tecla enter
+//     limpa_pesquisa_aluno();
+//    pesquisa_aluno();
+//   }
+// });
 </script>
 
 
