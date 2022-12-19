@@ -511,7 +511,7 @@ if ($idserie>2) {
 
                           
 
-                                   <b class="text-danger">Essa funcionalidade está em manutenção previsão de retorno da mesma até as 13:00 do dia 19/12/2022. Pedimos desculpas pelo transtorno </b>
+                                   <b class="text-danger">Essa funcionalidade está em manutenção previsão de retorno da mesma até as 15:00 do dia 19/12/2022. Pedimos desculpas pelo transtorno </b>
                                   
               
 
