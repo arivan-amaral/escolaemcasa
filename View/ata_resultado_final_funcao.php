@@ -430,7 +430,7 @@ else{
   10.25pt;margin-bottom:0cm;margin-left:11.6pt;
   text-align:center'><span lang=PT style='font-size:8.0pt'>
 <?php 
-    if($idserie<3){
+    if($idserie=<3){
         echo "<b style='color: green;'>Apr</b>";
 
     }elseif ($aprovacao_conselho == "Apc" && $conta_apr_apc==count($array_disciplina) ) {
