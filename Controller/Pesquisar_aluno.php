@@ -16,7 +16,8 @@ try {
        $limite_novo=$valor_paginacao;
     }else{
       $limite_antigo =0;
-       $limite_novo=25;
+       $limite_novo=5;
+       // $limite_novo=25;
     }
 
     $professor_id=$_SESSION['idfuncionario'];
