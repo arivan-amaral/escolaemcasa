@@ -272,7 +272,8 @@ $arquivo.="
             $senha=$value['senha'];
             $matricula_aluno=$value['matricula'];
 
-            $res_movimentacao=pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula_aluno,$_SESSION['ano_letivo']);
+            $res_movimentacao=array();
+ // $res_movimentacao=pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula_aluno,$_SESSION['ano_letivo']);
 
             $data_evento='';
             $descricao_procedimento='';
