@@ -108,7 +108,7 @@ if (!isset($_SESSION['idfuncionario'])) {
 
               <div class="col-sm-2"> 
                 <label><br></label><br>
-            /   <a class="btn btn-primary" onclick="limpa_pesquisa_aluno();pesquisa_aluno();">Buscar</a>
+              <a class="btn btn-primary" onclick="limpa_pesquisa_aluno();pesquisa_aluno();">Buscar</a>
               </div>
          </div> 
 
