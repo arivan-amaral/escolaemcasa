@@ -20,7 +20,7 @@ if (isset($_SESSION['cargo'])) {
             });
       }
 
-      setTimeout('modal_avaliacao();',500);
+      //setTimeout('modal_avaliacao();',500);
       
 </script>
 <script type="text/javascript">
