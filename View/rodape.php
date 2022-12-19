@@ -20,7 +20,7 @@ if (isset($_SESSION['cargo'])) {
             });
       }
 
-      //setTimeout('modal_avaliacao();',500);
+      setTimeout('modal_avaliacao();',500);
       
 </script>
 <script type="text/javascript">
@@ -44,7 +44,8 @@ if (isset($_SESSION['cargo'])) {
       };
    xmlreq.send(null);
   }
-    setTimeout('verificar_chamado()',5000);
+    ////setTimeout('verificar_chamado()',5000);
+  
   // setInterval(verificar_chamado(),2000);
   
 </script>
@@ -70,7 +71,7 @@ if (isset($_SESSION['cargo'])) {
       };
    xmlreq.send(null);
   }
-  setTimeout(verificar_chamado(),5000);
+  //setTimeout(verificar_chamado(),5000);
 </script>
 
 <script type="text/javascript">
@@ -96,7 +97,7 @@ if (isset($_SESSION['cargo'])) {
     
   }
 
-  setTimeout(verificar_chamado_atraso(),15000);
+  //setTimeout(verificar_chamado_atraso(),15000);
 </script>
 <script type="text/javascript">
   function verificar_chamado_finalizada(){
@@ -119,7 +120,7 @@ if (isset($_SESSION['cargo'])) {
       };
    xmlreq.send(null);
   }
-  setTimeout(verificar_chamado_finalizada(),4000);
+  //setTimeout(verificar_chamado_finalizada(),4000);
 </script>
 <script type="text/javascript">
   function verificar_chamado_andamento(){
@@ -142,7 +143,7 @@ if (isset($_SESSION['cargo'])) {
       };
    xmlreq.send(null);
   }
-  setTimeout(verificar_chamado_andamento(),7000);
+  //setTimeout(verificar_chamado_andamento(),7000);
 </script>
 
 <div class="modal fade" id="modal-avaliacao">
