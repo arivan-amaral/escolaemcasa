@@ -385,27 +385,27 @@ setTimeout('dia_doservidor_publico();',3000);
                 <h3 class="text-center">RECEBIDAS</h3>
                 <h4 class="text-center">
                   <?php
-                 //  $res_escola= escola_associada($conexao,$idcoordenador);
-                 //   $lista_escola_associada=""; 
-                 // $sql_escolas="AND ( escola_id = -1 ";
-                 // $sql_escolas_enviada="AND ( escola_id_origem = -1 ";
-                 // foreach ($res_escola as $key => $value) {
-                 //     $id=$value['idescola'];
-                 //    $nome_escola=($value['nome_escola']);
-                 //     $sql_escolas.=" OR escola_id = $id ";
-                 //     $sql_escolas_enviada.=" OR escola_id_origem = $id ";
+                  $res_escola= escola_associada($conexao,$idcoordenador);
+                   $lista_escola_associada=""; 
+                 $sql_escolas="AND ( escola_id = -1 ";
+                 $sql_escolas_enviada="AND ( escola_id_origem = -1 ";
+                 foreach ($res_escola as $key => $value) {
+                     $id=$value['idescola'];
+                    $nome_escola=($value['nome_escola']);
+                     $sql_escolas.=" OR escola_id = $id ";
+                     $sql_escolas_enviada.=" OR escola_id_origem = $id ";
 
-                 //     $lista_escola_associada.= "
-                 //          <option value='$id'>$nome_escola </option>
+                     $lista_escola_associada.= "
+                          <option value='$id'>$nome_escola </option>
 
-                 //      ";
-                 // }
-                 //  $res_recebida=quantidade_solicitacao_transferencia_recebida_por_escola($conexao,0, $sql_escolas);
-                 //  $quantidade_recebida=0;
-                 //  foreach ($res_recebida as $key => $value) {
-                 //    $quantidade_recebida=$value['quantidade'];
-                 //  }
-                 //  echo "$quantidade_recebida";
+                      ";
+                 }
+                  $res_recebida=quantidade_solicitacao_transferencia_recebida_por_escola($conexao,0, $sql_escolas);
+                  $quantidade_recebida=0;
+                  foreach ($res_recebida as $key => $value) {
+                    $quantidade_recebida=$value['quantidade'];
+                  }
+                  echo "$quantidade_recebida";
                    ?>
                 </h4>
 
