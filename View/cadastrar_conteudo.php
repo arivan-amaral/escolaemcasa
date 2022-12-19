@@ -511,73 +511,7 @@ if ($idserie>2) {
 
                           
 
-                                       <table class='table table-primary'>
-                                            <thead>
-                                              <tr>
-                                                <th style='width: 10px'>#</th>
-                                                <th>Conteúdo</th>
-                                                <th>
-                                                Opções
-                                                </th>
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                              <?php 
-
-                                              if ($idserie<3 || ( $idserie==16 && $seguimento<2 )) {
-                                                $iddisciplina="";
-                                                // $array_disciplina_regente_creche = array('0' => 40,'1' => 42,'2' => 43,'3' => 44);
-                                                // $array_disciplina_regente_pre_escola = array('0' => 40,'1' => 42,'2' => 44);        
-
-                                                //   if ($idserie==1) {
-                                                //     $iddisciplina=" disciplina_id = 40 or disciplina_id = 42 or  disciplina_id = 43 or disciplina_id = 44  ";
-
-                                                //   }else{
-                                                //     $iddisciplina=" disciplina_id = 40 or  disciplina_id = 42 or disciplina_id = 44  ";
-                                                //   }
-                                                $resultado=listar_conteudo_aula_cadastrado_regente($conexao, $iddisciplina, $idturma, $idescola, $idprofessor,$ano_letivo);
-                                              }else{
-
-                                                $resultado=listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $idprofessor,$ano_letivo);
-                                              }
-                                                    $conta=1;
-                                                foreach ($resultado as $key => $value) {
-                                                    $professor_id=$value['professor_id'];
-                                                    
-                                                    $conteudo_aula_id=$value['id'];
-                                                   $nome_disciplina="";
-                                                    if (isset($value['nome_disciplina'])) {
-                                                      $nome_disciplina=$value['nome_disciplina'];
-                                                    }
-                                                    $data=$value['data'];
-                                                    $aula=$value['aula'];
-                                                    echo"
-                                                    <tr>
-                                                    <td>
-                                                    $conta
-                                                    <input type='hidden' id='conteudo_aula_id$conta' value='$conteudo_aula_id'>
-                                                    </td>
-                                                      <td>$nome_disciplina $aula - ".converte_data($data)."<br>
-                                                      ";
-                                                      $res_prof=pesquisar_professor_por_id_status($conexao,$idprofessor);
-                                                      foreach ($res_prof as $key => $value) {
-                                                        $nome_funcionario=$value['nome'];
-                                                        
-                                                        echo"<b>Professor: $professor_id - $nome_funcionario </b>";
-                                                      }
-
-                                                      echo "
-                                                      </td>
-                                                      <td><a onclick='excluir_frequencia($conta);' class='btn btn-danger'>EXCLUIR</a></td>
-                                                    </tr>";
-                                                    $conta++;
-                                                  }
-
-
-                                              ?>
-
-                                            </tbody>
-                                      </table>
+                                   <b class="text-danger">Essa funcionalidade está em manutenção previsão de retorno da mesma até as 13:00 do dia 19/12/2022. Pedimos desculpas pelo transtorno </b>
                                   
               
 
