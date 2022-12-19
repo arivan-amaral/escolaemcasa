@@ -54,13 +54,16 @@ if (!isset($_SESSION['idcoordenador'])) {
 
         <div class="row">
            <div class="col-md-1"></div> 
-           <div class="col-md-10"> 
+           <div class="col-md-8"> 
                             <label for="exampleInputEmail1">Pesquise o coordenador a ser associado</label>
             
                 <input type="search" id='pesquisa_coordenador' class="form-control form-control" 
-                onkeyup ="pesquisar_coordenador_associacao();" value="" placeholder="Pesquise aqui">
+                value="" placeholder="Pesquise aqui">
               
-
+           </div>
+           <div class="col-sm-2"> 
+             <label><br></label><br>
+           <a class="btn btn-primary" onclick="pesquisar_coordenador_associacao();">Buscar</a>
            </div>
          </div> 
 
@@ -102,6 +105,15 @@ if (!isset($_SESSION['idcoordenador'])) {
 
   </script>
 
+  <script type="text/javascript">
+  const inputEle = document.getElementById('pesquisa_coordenador');
+  inputEle.addEventListener('keyup', function(e){
+    var key = e.which || e.keyCode;
+    if (key == 13) { // codigo da tecla enter
+      pesquisar_coordenador_associacao();
+    }
+  });
+  </script>
 
 
  <?php 
