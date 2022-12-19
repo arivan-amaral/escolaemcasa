@@ -343,17 +343,17 @@ setTimeout('dia_doservidor_publico();',3000);
                 var data = google.visualization.arrayToDataTable([
                   <?php 
                   $ano_letivo=$_SESSION['ano_letivo'];
-                      $result_ativos=$conexao->query("SELECT COUNT(*) AS ativo FROM ecidade_matricula where
+                      // $result_ativos=$conexao->query("SELECT COUNT(*) AS ativo FROM ecidade_matricula where
 
-                        ecidade_matricula.calendario_ano='$ano_letivo' AND
-                        ecidade_matricula.matricula_ativa='S' AND
-                        ecidade_matricula.matricula_concluida='N'   
+                      //   ecidade_matricula.calendario_ano='$ano_letivo' AND
+                      //   ecidade_matricula.matricula_ativa='S' AND
+                      //   ecidade_matricula.matricula_concluida='N'   
 
-                           ");
-                      $ativo=0;
-                      foreach ($result_ativos as $key => $value) {
-                        $ativo=$value['ativo'];
-                      }
+                      //      ");
+                       $ativo=0;
+                      // foreach ($result_ativos as $key => $value) {
+                      //   $ativo=$value['ativo'];
+                      // }
 
                      
                         $bloqueado=0;
@@ -627,7 +627,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
   <!-- /.control-sidebar -->
   <script type="text/javascript">
-    setTimeout(verificar_atraso(),2000);
+    setTimeout(verificar_atraso(),10000);
   </script>
   <script type="text/javascript">
 

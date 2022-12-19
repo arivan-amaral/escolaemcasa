@@ -18,10 +18,20 @@ if (!isset($_SESSION['idfuncionario'])) {
   include_once '../Model/Escola.php';
 
 
- 
+  
 ?>
 
 <script src="ajax.js?<?php echo rand(); ?>"></script>
+<script type="text/javascript">
+  Swal.fire({
+    position: 'center',
+    icon: 'error',
+    title: 'A página de pesquisa de alunos está em manutenção para melhorar o desempenho da plataforma, caso precise de alguma funcionalidade dela, entre em contato com o suporte ',
+       text: ' ',
+    showConfirmButton: true
+  });
+  
+</script>
  
 <div class="content-wrapper" style="min-height: 529px;">
     <!-- Content Header (Page header) -->
