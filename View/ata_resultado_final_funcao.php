@@ -390,7 +390,7 @@ if ($media_fora_rede==0) {
       $aprovacao_conselho="Não";
       
       if ($_SESSION['idcoordenador']==176) {
-        echo 't:'. number_format($media, 1, '.', ',');
+        echo "$media = ( $nota_tri_3 + $nota_tri_2 + $nota_tri_1 ) / 3";
       }else{
         echo  number_format($media, 1, '.', ',');
       }
