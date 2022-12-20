@@ -1,10 +1,11 @@
 <?php 
-	function pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$periodo_id){
+	function pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$periodo_id,$ano_letivo){
 		$result=$conexao->query("
         SELECT
         avaliacao,periodo_id,escola_id,nota
          FROM nota_parecer WHERE
         escola_id=$idescola and
+        ano_letivo=$ano_letivo and
         turma_id=$idturma and
         disciplina_id=$iddisciplina and 
         periodo_id=$periodo_id and aluno_id=$idaluno  group by avaliacao,periodo_id,nota ");

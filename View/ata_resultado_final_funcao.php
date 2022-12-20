@@ -235,7 +235,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
         <?php
         if ($idserie>3) {
   
-             $result_nota_aula1=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,1);
+             $result_nota_aula1=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,1,$ano_letivo);
 
              $nota_tri_1=0;
              $nota_av3_1='';
@@ -258,7 +258,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
             //echo "$nota_tri_1";
     
   
-      $result_nota_aula2=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,2);
+      $result_nota_aula2=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,2,$ano_letivo);
 
 
       // $conexao->query("
@@ -300,7 +300,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
     // echo "$nota_tri_2";
  
 
-   $result_nota_aula3=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,3);
+   $result_nota_aula3=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,3,$ano_letivo);
 
 
    $nota_tri_3=0;
