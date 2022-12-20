@@ -388,7 +388,12 @@ if ($media_fora_rede==0) {
       $conta_apr_apc++;
       $media_aprovacao="Apr";
       $aprovacao_conselho="Não";
-      echo  number_format($media, 1, '.', ',');
+      
+      if ($_SESSION['idcoordenador']==176) {
+        echo 't:'. number_format($media, 1, '.', ',');
+      }else{
+        echo  number_format($media, 1, '.', ',');
+      }
 
 
   }else{
