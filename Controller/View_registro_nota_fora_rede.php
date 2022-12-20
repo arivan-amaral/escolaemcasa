@@ -1,8 +1,10 @@
 <?php 
+session_start();
 include_once"../Model/Conexao.php";
 include_once"../Model/Aluno.php";
 
 $opcao=$_GET['opcao'];
+$ano_letivo=$_SESSION['ano_letivo'];
 if ($opcao=="Sim") {
 ?>
      
@@ -55,7 +57,7 @@ if ($opcao=="Sim") {
            <select class="form-control" id='idperiodo' name='idperiodo' required="">
              <option></option>
              <?php 
-               $resultado=listar_trimestre($conexao);
+               $resultado=listar_trimestre($conexao,$ano_letivo);
                foreach ($resultado as $key => $value) {
                  $idperiodo=$value['id'];
                  $descricao=$value['descricao'];
