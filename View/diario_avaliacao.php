@@ -47,6 +47,7 @@ if (!isset($_SESSION['idfuncionario'])) {
   $idescola=$_GET['idescola']; 
   $idturma=$_GET['turm']; 
   $iddisciplina=$_GET['disc']; 
+  $ano_letivo=$_SESSION['ano_letivo']; 
  $array_url=explode('p?', $_SERVER["REQUEST_URI"]);
 
   $funcionario='';
@@ -259,7 +260,7 @@ if (!isset($_SESSION['idfuncionario'])) {
             <select class="form-control" id='periodo' name='periodo' required="" onchange="limpa_avaliacao();">
               <option></option>
               <?php 
-                $resultado=listar_trimestre($conexao);
+                $resultado=listar_trimestre($conexao,$ano_letivo);
                 foreach ($resultado as $key => $value) {
                   $idperiodo=$value['id'];
                   $descricao=$value['descricao'];

@@ -48,7 +48,9 @@ if (!isset($_SESSION['idprofessor'])) {
   $idturma=$_GET['turm']; 
   $idturma_get=$_GET['turm']; 
   $iddisciplina=$_GET['disc']; 
-  $iddisciplina_get=$_GET['disc']; 
+  $iddisciplina_get=$_GET['disc'];
+  $ano_letivo=$_SESSION['ano_letivo']; 
+
 
  $array_url=explode('p?', $_SERVER["REQUEST_URI"]);
  $url_get=$array_url[1];
@@ -223,6 +225,7 @@ if (!isset($_SESSION['idprofessor'])) {
     <input type="hidden" name="idescola" id="idescola" value="<?php echo $idescola; ?>">
     <input type="hidden" name="idturma" id="idturma" value="<?php echo $idturma; ?>">
     <input type="hidden" id="iddisciplina" value="<?php echo $iddisciplina; ?>">
+    <input type="hidden" id="seguimento" value="<?php echo $seguimento; ?>">
 
 
       <div class="row">
@@ -322,140 +325,8 @@ if (!isset($_SESSION['idprofessor'])) {
 <!-- ####################################################################### -->
 
 
-<div class="row">
+  
 
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
-
-
-              <?php 
-                if ($idserie>=8) {
-              ?>
-               
-                  <?php
-
-
-                  //   $result_disciplinas=listar_disciplina_professor($conexao,$idprofessor,$_SESSION['ano_letivo']);
-
-
-
-                  //   foreach ($result_disciplinas as $key => $value) {
-
-                  //     $disciplina=($value['nome_disciplina']);
-                  //     $nome_escola=($value['nome_escola']);
-                  //     $turma=($value['nome_turma']);
-                  //     $idescola=($value['idescola']);
-                  //     $iddisciplina=$value['iddisciplina'];
-                  //     $idturma=$value['idturma'];
-                  //     $idserie=$value['serie_id'];
-                  //      if ($idturma==$idturma_get && $idescola==$idescola_get && $iddisciplina=$iddisciplina_get) {
-                  //         echo"
-                  //         <div class='custom-control custom-checkbox'>
-                  //         <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$idturma$idescola$iddisciplina' value='$idescola+$idturma+$iddisciplina+$idserie' required checked>
-                  //         <label for='customCheckbox$idturma$idescola$iddisciplina' class='custom-control-label'> $nome_escola - <font style='color:#8B0000'>$turma -$disciplina</font> </label>
-                  //         </div>";
-                  //       }else{
-                  //         echo"
-                  //         <div class='custom-control custom-checkbox'>
-                  //         <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$idturma$idescola$iddisciplina' value='$idescola+$idturma+$iddisciplina+$idserie'>
-                  //         <label for='customCheckbox$idturma$idescola$iddisciplina' class='custom-control-label'> $nome_escola - <font style='color:#8B0000'>$turma -$disciplina</font> </label>
-                  //         </div>";
-                  //       }
-
-
-
-
-                  // }
-
-
-                  // $result_disciplinas=listar_turmas_com_mesma_disciplinas_do_professor($conexao,$idescola,$idprofessor,$idserie,$iddisciplina);
-
-                  //  foreach ($result_disciplinas as $key => $value) {
-                  //      $turma_id=$value['idturma'];
-                  //      $nome_turma=$value['nome_turma'];
-                  //      $nome_disciplina=$value['nome_disciplina'];
-                    
-                  //      if ($idturma==$turma_id) {
-                  //         echo"
-                  //         <div class='custom-control custom-checkbox'>
-                  //             <input class='custom-control-input' name='idturma_conteudo[]' type='checkbox' id='customCheckbox$turma_id' value='$turma_id' required checked>
-                  //             <label for='customCheckbox$turma_id' class='custom-control-label'>$nome_turma - $nome_disciplina</label>
-                  //         </div>";
-
-                  //      } else {
-                  //       echo"
-                  //       <div class='custom-control custom-checkbox'>
-                  //           <input class='custom-control-input' name='idturma_conteudo[]' type='checkbox' id='customCheckbox$turma_id' value='$turma_id'  >
-                  //           <label for='customCheckbox$turma_id' class='custom-control-label'>$nome_turma - $nome_disciplina</label>
-                  //       </div>";
-
-                        
-                  //     }
-                  // }
-
-                  ?>
-
-
-      <?php 
-
-      }
-
-      ?>
-    </div>
-
-</div>
-
-<?php 
-if ($idserie>2) {
-
-?>
- 
-          <div class="row">
-          <div class="col-sm-12">
-
-          <div class="form-group">
-            <label for="exampleInputEmail1" style="color:red;">ATALHO PARA DIÁRIO DE CONTEÚDO EM OUTRAS TURMAS/DISCIPLINAS</label>
-
-            <select multiple="multiple" class="form-control" id="atalho" >
-              <?php
-              $result=listar_disciplina_professor($conexao,$idprofessor,$_SESSION['ano_letivo']);
-
-
-              $conta=1;
-              foreach ($result as $key => $value) {
-
-                $disciplina=($value['nome_disciplina']);
-                $nome_escola_atalho=($value['nome_escola']);
-                $idescola_atalho=($value['idescola']);
-                $iddisciplina_atalho=$value['iddisciplina'];
-                $idturma_atalho=$value['idturma'];
-                $nome_turma_atalho=($value['nome_turma']);
-                $idserie_atalho=$value['serie_id'];
-
-                echo "
-                <option value='cadastrar_conteudo.php?disc=$iddisciplina_atalho&turm=$idturma_atalho&turma=$nome_turma_atalho&disciplina=$disciplina&idescola=$idescola_atalho&idserie=$idserie_atalho' onclick='atalho();' >
-                    Mudar para turma =>  $nome_turma_atalho - $disciplina  
-                  </option> 
-
-                ";
-                $conta++;
-              }
-
-
-              ?>
-            </select>
-          </div>
-        </div>
-
-
-</div>
-
-        <?php 
-
-
-          // code...
-}
-?>
 
 
 <div class="row">
@@ -507,14 +378,52 @@ if ($idserie>2) {
                             <div id='collapseOne' class='collapse' data-parent='#accordion' style=''>
 
                               <div class='card-body'>
-
-
-                          
-
-                                   <b class="text-danger">Essa funcionalidade está em manutenção previsão de retorno da mesma até as 16:30 do dia 19/12/2022. Pedimos desculpas pelo transtorno </b>
+                                <?php 
+                                  $resultado=listar_trimestre($conexao,$ano_letivo);
+                                  foreach ($resultado as $key => $value) {
+                                    $idperiodo=$value['id'];
+                                    $descricao=$value['descricao'];
+                                    $inicio=$value['inicio'];
+                                    $fim=$value['fim'];
+                                    if ($idperiodo !=6) {
+                                   
+                                    
                                   
-              
 
+                                  echo " <div class='row' onclick='buscar_datas_conteudos($idperiodo);'>";
+                                 ?>
+
+                                  <input type="hidden" id="periodo_inicio<?php echo $idperiodo ;?>" value="<?php echo $inicio; ?>">
+                                  <input type="hidden" id="periodo_fim<?php echo $idperiodo ;?>" value="<?php echo $fim; ?>">
+                                   <input type="hidden" id="periodo<?php echo $idperiodo ;?>" value="0">
+                                   
+                                   <div class='col-sm-12'>
+                                     <div class='card card-info'>
+                                       <div class='card-header' data-card-widget='collapse'>
+                                         <h3 class='card-title'>  <?php echo $descricao; ?> </h3>
+
+                                         <div class='card-tools'>
+                                           <button type='button' class='btn btn-tool' data-card-widget='collapse'>
+                                             <i class='fas fa-plus'></i>
+                                           </button>
+                                         </div>
+                                         <!-- /.card-tools -->
+                                       </div>
+                                       <!-- /.card-header -->
+                                       <div class='card-body' style='display: none;'>
+
+                                          <span id="resultado<?php echo $idperiodo ;?>"></span>  
+ 
+                
+                                           </div>
+                                         </div>
+                                       </div>
+                                     </div>
+
+                                  <?php 
+                                      }
+                                    }
+                                  ?>
                             </div>
 
                           </div>

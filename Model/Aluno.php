@@ -418,8 +418,8 @@ function verificar_conteudo_aula_em_aluno_trasferido_escola($conexao, $idconteud
 }
 
 
-function listar_trimestre($conexao) {
-    $resultado=$conexao->query("SELECT * FROM periodo where status =1");
+function listar_trimestre($conexao,$ano) {
+    $resultado=$conexao->query("SELECT periodo.id , periodo.descricao, calendario_letivo.inicio, calendario_letivo.fim FROM periodo , calendario_letivo where calendario_letivo.periodo_id = periodo.id and calendario_letivo.ano=$ano and periodo.status =1");
     return $resultado;
 }
 
@@ -441,6 +441,15 @@ function listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $ide
       turma_id=$idturma order by data, aula ");
     return $resultado;
 }
+function listar_conteudo_aula_cadastrado_por_data($conexao, $iddisciplina, $idturma, $idescola, $professor_id,$ano_letivo,$inicio,$fim) {
+    $resultado=$conexao->query("SELECT * FROM conteudo_aula WHERE
+      disciplina_id=$iddisciplina and 
+       
+      escola_id=$idescola and 
+      ano_conteudo=$ano_letivo and 
+      turma_id=$idturma and conteudo_aula.data BETWEEN '$inicio' and '$fim'order by data, aula ");
+    return $resultado;
+}
 
 function listar_conteudo_aula_cadastrado_regente($conexao, $iddisciplina, $idturma, $idescola, $professor_id,$ano_letivo) {
   
@@ -448,6 +457,14 @@ function listar_conteudo_aula_cadastrado_regente($conexao, $iddisciplina, $idtur
       escola_id=$idescola and 
       ano_conteudo=$ano_letivo and 
       turma_id=$idturma  GROUP BY data,aula,conteudo_aula.id order by data, aula ");
+    return $resultado;
+}
+function listar_conteudo_aula_cadastrado_regente_por_data($conexao, $iddisciplina, $idturma, $idescola, $professor_id,$ano_letivo,$inicio,$fim) {
+  
+    $resultado=$conexao->query("SELECT conteudo_aula.id,data,aula,professor_id FROM conteudo_aula WHERE
+      escola_id=$idescola and 
+      ano_conteudo=$ano_letivo and 
+      turma_id=$idturma and conteudo_aula.data BETWEEN '$inicio' and '$fim'  GROUP BY data,aula,conteudo_aula.id order by data, aula ");
     return $resultado;
 }
 

@@ -86,6 +86,43 @@ function lista_espera(){
    xmlreq.send(null);
 }
 
+function buscar_datas_conteudos(idperiodo){
+  var inicio = document.getElementById('periodo_inicio'+idperiodo).value;
+  var fim = document.getElementById('periodo_fim'+idperiodo).value;
+  var periodo = document.getElementById('periodo'+idperiodo)
+  var result = document.getElementById('resultado'+idperiodo);
+console.log("teste:"+periodo.value);
+ 
+
+  var iddisciplina = document.getElementById('iddisciplina').value;
+  var idserie = document.getElementById('idserie').value;
+  var seguimento = document.getElementById('seguimento').value;
+  var idturma = document.getElementById('idturma').value;
+  var idescola = document.getElementById('idescola').value;
+
+var url="iddisciplina="+iddisciplina+"&idserie="+idserie+"&seguimento="+seguimento+"&idturma="+idturma+"&idescola="+idescola+"&inicio="+inicio+"&fim="+fim;
+ 
+    if (parseInt(periodo.value)=='0') {
+      periodo.value=1;
+      result.innerHTML = "<img src='imagens/carregando.gif'>";  
+      var xmlreq = CriaRequest();
+      xmlreq.open("GET", "../Controller/Buscar_datas_conteudos.php?"+url, true);
+
+          xmlreq.onreadystatechange = function(){
+        
+           if (xmlreq.readyState == 4) {
+               if (xmlreq.status == 200) {
+                     result.innerHTML = xmlreq.responseText;
+
+               }else{
+                  result.innerHTML ="Erro ao receber dados";                 
+               }
+           }
+          };
+       xmlreq.send(null);
+    }
+}
+
 
 
 
