@@ -242,7 +242,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
              $nota_rp_1='';
              foreach ($result_nota_aula1 as $key => $value) {
                if ($value['avaliacao']!='RP') {
-                 $nota_tri_1+=$value['nota'];
+                 $nota_tri_1=$nota_tri_1+$value['nota'];
                }
             // ***************************************
                if ($value['avaliacao']=='av3') {
@@ -275,7 +275,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
       foreach ($result_nota_aula2 as $key => $value) {
 
         if ($value['avaliacao']!='RP') {
-          $nota_tri_2+=$value['nota'];
+          $nota_tri_2=$nota_tri_2+$value['nota'];
 
 
         }
@@ -309,7 +309,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
    foreach ($result_nota_aula3 as $key => $value) {
 
          if ($value['avaliacao']!='RP') {
-           $nota_tri_3+=$value['nota'];
+           $nota_tri_3=$nota_tri_3+$value['nota'];
          }
            // ***************************************
          if ($value['avaliacao']=='av3') {
@@ -390,7 +390,15 @@ if ($media_fora_rede==0) {
       $aprovacao_conselho="Não";
       
       if ($_SESSION['idcoordenador']==176) {
-        echo "$media = ( $nota_tri_3 + $nota_tri_2 + $nota_tri_1 ) / 3";
+       
+        echo "SELECT
+        avaliacao,periodo_id,escola_id,nota
+         FROM nota_parecer WHERE
+        escola_id=$idescola and
+        turma_id=$idturma and
+        disciplina_id=$iddisciplina and 
+        periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id,nota";
+
       }else{
         echo  number_format($media, 1, '.', ',');
       }
