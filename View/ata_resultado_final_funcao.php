@@ -391,13 +391,13 @@ if ($media_fora_rede==0) {
       
       if ($_SESSION['idcoordenador']==176) {
        
-        echo "SELECT
-        avaliacao,periodo_id,escola_id,nota
-         FROM nota_parecer WHERE
-        escola_id=$idescola and
-        turma_id=$idturma and
-        disciplina_id=$iddisciplina and 
-        periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id,nota <br><br>";
+        // echo "SELECT
+        // avaliacao,periodo_id,escola_id,nota
+        //  FROM nota_parecer WHERE
+        // escola_id=$idescola and
+        // turma_id=$idturma and
+        // disciplina_id=$iddisciplina and 
+        // periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id,nota <br><br>";
         echo  number_format($media, 1, '.', ',');
 
       }else{
