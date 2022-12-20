@@ -119,7 +119,7 @@ $url_get=$array_url[1];
           </div>
         </div>
         <div class="col-sm-2" style="margin-top: 7px;" ><br>
-         <!-- <a  class="btn btn-primary" onclick="pesquisa_frequencia()">Pesquisar</a> -->
+         <a  class="btn btn-primary" onclick="pesquisa_frequencia()">Pesquisar</a>
         </div>
       </div>
     </div>
