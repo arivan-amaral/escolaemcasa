@@ -5,7 +5,7 @@
         avaliacao,periodo_id,escola_id,nota
          FROM nota_parecer WHERE
         escola_id=$idescola and
-        ano_letivo=$ano_letivo and
+        ano_nota=$ano_letivo and
         turma_id=$idturma and
         disciplina_id=$iddisciplina and 
         periodo_id=$periodo_id and aluno_id=$idaluno  group by avaliacao,periodo_id,nota ");
