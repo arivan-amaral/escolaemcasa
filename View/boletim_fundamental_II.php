@@ -160,10 +160,17 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
   $linha=0;
   $resultado_final=true;
   $resultado_conselho=false;
+  
+  $conta_dis=0;
+  $conta_conselho=0;
+  $conta_apr=0;
+
+
 
   foreach ($res_disc as $key => $value) {
     $iddisciplina=$value['iddisciplina'];
     $nome_disciplina=$value['nome_disciplina'];
+    $conta_dis++;
 
     ?>
     <tr style='mso-yfti-irow:5;height:15.0pt;mso-row-margin-right:.75pt'>
@@ -374,6 +381,7 @@ if ($total <5 ) {
            if ($conta_aprovado>0 ) {
               $media_conselho=5.0;
               $resultado_conselho=true;
+              $conta_conselho++;
 
               echo "<b>".number_format($media_conselho, 1, '.', ',')."</b>";
 
@@ -386,6 +394,8 @@ if ($total <5 ) {
 
 //buscar concelho
 }else{
+              $conta_apr++;
+
 
   echo"".number_format($total, 1, '.','') ;
 }
@@ -608,14 +618,14 @@ color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
         mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
 
         mso-fareast-language:PT-BR'>Resultado Final:<o:p><?php 
-        
-        if ($resultado_conselho==true) {
+        $conta_total=($conta_conselho+$conta_apr);
+        if ($conta_dis==$conta_total && $conta_conselho>0) {
           echo " <b>Apc</b>";
 
-        }elseif ($resultado_final==false) {
-          echo " <b>Rep</b>";
-        }else{
+        }elseif ($conta_apr==$conta_dis) {
           echo " <b>Apr</b>";
+        }else{
+          echo " <b>Rep</b>";
 
         }
       ?></o:p></span></p>
