@@ -37,19 +37,23 @@
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
         <select  id="ano_letivo" class="" onchange="mudar_ano_letivo(this.value);">
-          <?php 
+      <?php 
             if (isset($_SESSION['ano_letivo'])) {
               if ( $_SESSION['cargo']!="Aluno" && $_SESSION['cargo']!="Aluna") {
-                 
-                if ($_SESSION['ano_letivo'] ==2022 ) {
-                    echo "<option  value='2022' selected>2022</option>";
-                  echo "<option value='2021'>2021</option>";
+                $anos = array(2023,2022,2021 );
+                foreach ($anos as $key_a => $value_a) {
+                  // code...
+                     
+                    if ($_SESSION['ano_letivo'] ==$value_a) {
+                        echo "<option  value='$value_a' selected>$value_a</option>";
+              
 
-                }else{
-                  echo "<option value='2021' selected>2021</option>";
-                    echo "<option  value='2022' >2022</option>";
+                    }else{
+                        echo "<option  value='$value_a' >$value_a</option>";
+                   
 
 
+                    }
                 }
               }
             }
