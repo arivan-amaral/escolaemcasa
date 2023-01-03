@@ -125,7 +125,7 @@ session_start();
                          <div class="form-group">
                           <label for="exampleInputEmail1">Ano</label>
                          <select class="form-control"  name="ano" id="ano" >
-                          <option value="2022"><?php echo "$ano_letivo"; ?></option>
+                          <option value="<?php echo "$ano_letivo"; ?>"><?php echo "$ano_letivo"; ?></option>
                          </select>
                         </div>
                       </div>
