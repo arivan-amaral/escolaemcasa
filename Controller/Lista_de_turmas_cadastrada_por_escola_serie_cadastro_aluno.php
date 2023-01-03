@@ -10,7 +10,7 @@ try {
 $serie_id = $_GET["serie_id"];
 $escola_id = $_GET["escola_id"];
 $turno = $_GET["turno"];
-$ano_letivo_vigente=$_SESSION['ano_letivo'];
+$ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
 $turma_id=0;
 
 if (isset($_GET['turma_id'])) {
