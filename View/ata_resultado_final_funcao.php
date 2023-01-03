@@ -448,7 +448,7 @@ else{
 $total_conta_apc=$conta_apr+$conta_apc;
 
 if ($_SESSION['idfuncionario']==176) {
-  echo "$total_conta_apc==".count($array_disciplina) ."&& $conta_apc>0";
+  //echo "$total_conta_apc==".count($array_disciplina) ."&& $conta_apc>0";
 }
 
     if($idserie<=3){
