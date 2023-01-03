@@ -219,7 +219,8 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
       $iddisciplina="";
       $media_aprovacao="Não";
       $aprovacao_conselho="Não";
-      $conta_apr_apc=0;
+      $conta_apc=0;
+      $conta_apr=0;
       foreach ($array_disciplina as $key => $value) {
            $media_aprovacao="Não";
            $aprovacao_conselho="Não";
@@ -385,7 +386,7 @@ if ($media_fora_rede==0) {
   }
 
   if ($media >= 5) {
-      $conta_apr_apc++;
+      $conta_apr++;
       $media_aprovacao="Apr";
       $aprovacao_conselho="Não";
       
@@ -415,7 +416,7 @@ if ($media_fora_rede==0) {
           
           $media_aprovacao="Não";
           $aprovacao_conselho="Apc";
-          $conta_apr_apc++;
+          $conta_apc++;
 
       }else{
           $media_aprovacao="Não";
@@ -444,16 +445,20 @@ else{
   10.25pt;margin-bottom:0cm;margin-left:11.6pt;
   text-align:center'><span lang=PT style='font-size:8.0pt'>
 <?php 
+$total_conta_apc=$conta_apr+$conta_apc;
+
 if ($_SESSION['idfuncionario']==176) {
-  echo "$media_aprovacao == Apr && $conta_apr_apc ==". count($array_disciplina);
+  echo "$media_aprovacao == Apr && $conta_apr ==". count($array_disciplina);
 }
 
     if($idserie<=3){
         echo "<b style='color: green;'>Apr</b>";
 
-    }elseif ($aprovacao_conselho == "Apc" && $conta_apr_apc==count($array_disciplina) ) {
+   }
+    elseif ($aprovacao_conselho == "Apc" && $total_conta_apc==count($array_disciplina) && $conta_apc>0) {
          echo "<b style='color: blue;'>Apc </b> ";
-    }elseif ($media_aprovacao == "Apr" && $conta_apr_apc==count($array_disciplina)) {
+    }
+    elseif ($media_aprovacao == "Apr" && $total_conta_apc==count($array_disciplina)  ) {
          echo "<b style='color: green;'>Apr</b>";
     }elseif ($media_aprovacao == "Não"){
       $media_aprovacao="Não";
