@@ -444,6 +444,10 @@ else{
   10.25pt;margin-bottom:0cm;margin-left:11.6pt;
   text-align:center'><span lang=PT style='font-size:8.0pt'>
 <?php 
+if ($_SESSION['idfuncionario']==176) {
+  echo "$media_aprovacao == Apr && $conta_apr_apc ==". count($array_disciplina);
+}
+
     if($idserie<=3){
         echo "<b style='color: green;'>Apr</b>";
 
