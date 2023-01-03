@@ -12,6 +12,7 @@ session_start();
   include_once "../Model/Estado.php"; 
   include_once "../Model/Coordenador.php"; 
   $idcoordenador=$_SESSION['idfuncionario'];
+  $ano_letivo=$_SESSION['ano_letivo'];
 
 ?> 
 
@@ -124,7 +125,7 @@ session_start();
                          <div class="form-group">
                           <label for="exampleInputEmail1">Ano</label>
                          <select class="form-control"  name="ano" id="ano" >
-                          <option value="2022">2022</option>
+                          <option value="2022"><?php echo "$ano_letivo"; ?></option>
                          </select>
                         </div>
                       </div>
