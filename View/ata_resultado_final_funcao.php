@@ -448,14 +448,14 @@ else{
 $total_conta_apc=$conta_apr+$conta_apc;
 
 if ($_SESSION['idfuncionario']==176) {
-  echo "$total_conta_apc == Apr && $conta_apr ==". count($array_disciplina);
+  echo "$total_conta_apc==".count($array_disciplina) ."&& $conta_apc>0";
 }
 
     if($idserie<=3){
         echo "<b style='color: green;'>Apr</b>";
 
    }
-    elseif ( ($aprovacao_conselho == "Apc" || $aprovacao_conselho == "Apr") && $total_conta_apc==count($array_disciplina) && $conta_apc>0) {
+    elseif (  $total_conta_apc==count($array_disciplina) && $conta_apc>0) {
          echo "<b style='color: blue;'>Apc </b> ";
     }
     elseif ($media_aprovacao == "Apr" && $total_conta_apc==count($array_disciplina)  ) {
