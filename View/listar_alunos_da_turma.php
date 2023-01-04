@@ -258,7 +258,7 @@ $arquivo.="
           if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
             $result=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
           }else{
-    
+
             $result=listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
           }
 
@@ -304,7 +304,7 @@ $arquivo.="
              <td>
              $procedimento 
              <br>
-              <button type='button' class='btn btn-danger' onclick='cancelar_transferencia($idaluno, $matricula_aluno);' >Cancelar Transferência</button>
+              <button type='button' class='btn btn-danger' onclick='cancelar_transferencia($idaluno, $matricula_aluno);' >Cancelar </button>
 
              </td>
              <td  valign=top style='border:solid black 1.0pt;
