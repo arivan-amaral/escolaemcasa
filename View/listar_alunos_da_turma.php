@@ -258,6 +258,7 @@ $arquivo.="
           if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
             $result=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
           }else{
+    
             $result=listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
           }
 
