@@ -186,6 +186,7 @@ if(file_exists("pagina_estatica/".$nome_url) && $diferenca<500){
          ";
         }
    // }
+   // $anos_rema= $_SESSION['ano_letivo'] ."!=".$_SESSION['ano_letivo_vigente'];
         if ($_SESSION['ano_letivo']!=$_SESSION['ano_letivo_vigente']) {
         $arquivo.="
          <div class='col-sm-3'>
