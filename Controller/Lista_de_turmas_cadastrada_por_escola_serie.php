@@ -9,7 +9,7 @@ try {
 $serie_id = $_GET["serie_id"];
 $escola_id = $_GET["escola_id"];
 $turno = $_GET["turno"];
-$ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
+$ano_letivo_vigente=$_SESSION['ano_letivo'];
 $result=lista_de_turmas_das_escolas($conexao,$serie_id,$escola_id,$turno,$ano_letivo_vigente);
  
 $return="      
