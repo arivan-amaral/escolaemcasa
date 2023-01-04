@@ -186,7 +186,6 @@ if(file_exists("pagina_estatica/".$nome_url) && $diferenca<500){
          ";
         }
    // }
-   // $anos_rema= $_SESSION['ano_letivo'] ."!=".$_SESSION['ano_letivo_vigente'];
         if ($_SESSION['ano_letivo']!=$_SESSION['ano_letivo_vigente']) {
         $arquivo.="
          <div class='col-sm-3'>
@@ -660,55 +659,6 @@ function mtel(v){
 
 
 
-<div class='modal fade bd-example-modal-lg' id='modal_declaracao_terminalidade'>
-  <div class='modal-dialog modal-lg'>
-    <div class='modal-content'>
-      <div class='modal-header alert alert-warning'>
-        <h4 class='modal-title'>PROCEDIMENTO GERAR DECLARAÇÃO DE TERMINALIDADE</h4>
-        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-          <span aria-hidden='true'>&times;</span>
-        </button>
-      </div>
-      <div class='modal-body'>    
-
-        <div class='row'>
-            <input type='hidden' name='escola_id_origem' id='escola_id_origem' value=' $idescola_get'>  
-            <input type='hidden' name='turma_id_origem' id='turma_id_origem' value='$idturma'>
-                 <div class='col-sm-2'>
-                  <div class='form-group'>
-                    
-                    <select hidden id='ano_letivo' class='form-control' onchange=mudar_ano_letivo(this.value);>";
-                     if (isset($_SESSION['ano_letivo'])) {    
-                      $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
-                      $arquivo.="<option value='$ano_letivo_vigente' selected>$ano_letivo_vigente</option>";                            
-                    }
-                  $arquivo.="
-
-                  </select>
-                </div>
-              </div> 
-
-
-             
-
-
-  <div class='modal-footer justify-content-between'>
-   <button type='button' class='btn btn-default' data-dismiss='modal'>FECHAR</button>
-  
-   <div id='botao_continuar'>
-     <button type='submit' class='btn btn-primary' >GERAR DECLARAÇÃO DOS SELECIONADOS</button>
-   </div>
- </div>
-
- <!-- /corpo -->
-</div>
-</div>
-<!-- /.modal-content -->
-</div>
-<!-- /.modal-dialog -->
-</div>
-
-
 
 <div class='modal fade bd-example-modal-lg' id='modal_rematricula'>
   <div class='modal-dialog modal-lg'>
@@ -961,6 +911,65 @@ $arquivo.="
 </div>
 <!-- /.modal-dialog -->
 </div>
+
+
+
+<div class='modal fade bd-example-modal-lg' id='modal_declaracao_terminalidade'>
+  <div class='modal-dialog modal-lg'>
+    <div class='modal-content'>
+      <div class='modal-header alert alert-warning'>
+        <h4 class='modal-title'>PROCEDIMENTO GERAR DECLARAÇÃO DE TERMINALIDADE</h4>
+        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+          <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>
+      <div class='modal-body'>    
+
+        <div class='row'>
+          <input type='hidden' name='escola_id_origem' id='escola_id_origem' value=' $idescola_get'>  
+          <input type='hidden' name='turma_id_origem' id='turma_id_origem' value='$idturma'>
+          <div class='col-sm-2'>
+            <div class='form-group'>
+
+              <select hidden id='ano_letivo' class='form-control' onchange=mudar_ano_letivo(this.value);>";
+               if (isset($_SESSION['ano_letivo'])) {    
+                $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
+                $arquivo.="<option value='$ano_letivo_vigente' selected>$ano_letivo_vigente</option>";                            
+              }
+              $arquivo.="
+
+            </select>
+          </div>
+        </div> 
+
+
+
+
+
+        <div class='modal-footer justify-content-between'>
+         <button type='button' class='btn btn-default' data-dismiss='modal'>FECHAR</button>
+
+         <div id='botao_continuar'>
+           <button type='submit' class='btn btn-primary' >GERAR DECLARAÇÃO DOS SELECIONADOS</button>
+         </div>
+       </div>
+
+       <!-- /corpo -->
+     </div>
+   </div>
+   <!-- /.modal-content -->
+ </div>
+ <!-- /.modal-dialog -->
+</div>
+</div>
+
+
+
+
+
+
+
+
 
 </form>
 
