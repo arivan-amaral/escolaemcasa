@@ -219,6 +219,7 @@ foreach ($res_editar_curso as $key => $value) {
           
           <div class="card-body">
             <div class="tab-content" id="custom-tabs-two-tabContent">
+           
               <div class="tab-pane fade  active show" id="custom-tabs-two-home" role="tabpanel" aria-labelledby="custom-tabs-two-home-tab">
                  <div class="card-body">
                   <div class="row">
@@ -278,12 +279,7 @@ foreach ($res_editar_curso as $key => $value) {
                       </div>
                     </div>                 
                   
-                       <div class="col-sm-3">
-                          <div class="form-group">
-                            <label class='text-danger'>Data Matricula<b class="text-danger">*</b></label>
-                            <input type="date" class="form-control" id="data_matricula" name="data_matricula" value="<?php echo $data_matricula ?>" <?php echo $disabled; ?> required >
-                          </div>
-                        </div>
+                 
                     
                     <div class="col-sm-4">
                       <div class="form-group">
@@ -673,6 +669,7 @@ foreach ($res_editar_curso as $key => $value) {
                     </div>
                  </div>
               </div>
+
               <div class="tab-pane fade" id="custom-tabs-two-messages" role="tabpanel" aria-labelledby="custom-tabs-two-messages-tab">
                  <div class="card-body">
                     <div class="row">
@@ -873,11 +870,11 @@ foreach ($res_editar_curso as $key => $value) {
 <div class="tab-pane fade" id="custom-tabs-two-settings" role="tabpanel" aria-labelledby="custom-tabs-two-settings-tab">
                   <div class="card-body">
                  
-<script>
- document.getElementById("idserie").onchange = function(){
-    var value = document.getElementById("idserie").value;
- };
-</script>
+    <script>
+     document.getElementById("idserie").onchange = function(){
+        var value = document.getElementById("idserie").value;
+     };
+    </script>
 
     <?php 
 
@@ -960,19 +957,19 @@ foreach ($res_editar_curso as $key => $value) {
                           <select class='form-control'  name='turma' id='idturma' onchange=" listar_etapas_cad_aluno();quantidade_vaga_turma_cadastro_aluno();"> 
                             <?php 
 
-                            $result=lista_de_turmas_das_escolas($conexao,$serie_id,$escola_id,$turno,$ano_letivo_vigente);
+                            // $result=lista_de_turmas_das_escolas($conexao,$serie_id,$escola_id,$turno,$ano_letivo_vigente);
                            
-                             foreach ($result as $key => $value) {
-                               $idturma=$value['idturma'];
-                               $nome_turma=$value['nome_turma'];
-                               if ($turma_id==$idturma) {
-                               echo "<option value='$idturma' selected> $nome_turma</option>";
+                            //  foreach ($result as $key => $value) {
+                            //    $idturma=$value['idturma'];
+                            //    $nome_turma=$value['nome_turma'];
+                            //    if ($turma_id==$idturma) {
+                            //    echo "<option value='$idturma' selected> $nome_turma</option>";
                                  
-                               }else{
+                            //    }else{
 
-                               echo "<option value='$idturma'> $nome_turma</option>";
-                               }
-                             }
+                            //    echo "<option value='$idturma'> $nome_turma</option>";
+                            //    }
+                            //  }
                              ?>
                           
                         </select>
@@ -1017,19 +1014,19 @@ foreach ($res_editar_curso as $key => $value) {
                               <?php 
 
 
-                              $quantidade_vaga_total=0;
-                              $quantidade_vaga_restante=0;
+                              // $quantidade_vaga_total=0;
+                              // $quantidade_vaga_restante=0;
 
-                                $res_quantidade= quantidade_vaga_turma($conexao,$escola_id,$turma_id,$turno,$ano_letivo_vigente);
-                                foreach ($res_quantidade as $key => $value) {
-                                   $quantidade_vaga_total=$value['quantidade_vaga'];
-                                }
+                              //   $res_quantidade= quantidade_vaga_turma($conexao,$escola_id,$turma_id,$turno,$ano_letivo_vigente);
+                              //   foreach ($res_quantidade as $key => $value) {
+                              //      $quantidade_vaga_total=$value['quantidade_vaga'];
+                              //   }
 
-                                $res_quantidade_vaga_restante= quantidade_aluno_na_turma($conexao,$escola_id,$turma_id,$turno,$ano_letivo_vigente);
-                                foreach ($res_quantidade_vaga_restante as $key => $value) {
-                                   $quantidade_vaga_restante=$value['quantidade'];
-                                }
-                               $quantidade_vaga_restante=$quantidade_vaga_total-$quantidade_vaga_restante;
+                              //   $res_quantidade_vaga_restante= quantidade_aluno_na_turma($conexao,$escola_id,$turma_id,$turno,$ano_letivo_vigente);
+                              //   foreach ($res_quantidade_vaga_restante as $key => $value) {
+                              //      $quantidade_vaga_restante=$value['quantidade'];
+                              //   }
+                              //  $quantidade_vaga_restante=$quantidade_vaga_total-$quantidade_vaga_restante;
                               
 
                                ?>
@@ -1088,7 +1085,6 @@ foreach ($res_editar_curso as $key => $value) {
 
 
 <!-- ######################################################################## -->
-</div>
 <?php include_once "rodape.php"; ?>
 
 
