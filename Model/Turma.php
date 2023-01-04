@@ -192,7 +192,7 @@ function lista_de_turmas_das_escolas_rematricula($conexao,$serie_id,$escola_id,$
    turma.serie_id=serie.id and
    relacionamento_turma_escola.turma_id=turma.idturma and 
    relacionamento_turma_escola.escola_id=$escola_id and
-   turma.serie_id>=$serie_id and
+   turma.serie_id=$serie_id and
      turno='$turno' and
      ano=$ano_letivo_vigente 
 

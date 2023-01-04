@@ -86,11 +86,6 @@ try {
 
 
 
-
-
-
-			// echo "$aluno_id - $nome_aluno <br>";
-
 				if ($rematriculado==0 && $quantidade_vagas_restante> 0 && $rematricula_serie_id ==$rematricula_nova_serie && ($resultado !="Apc" || $resultado !="Apr" ) ) {
 					rematricular_aluno($conexao,$aluno_id,$turma_id,$turma_id_anterior,$matricula_situacao,$matricula_concluida,$matricula_datamatricula,$matricula_ativa,$matricula_tipo,$calendario_ano,$turma_escola,$turno_nome,$etapa);
 
@@ -98,7 +93,7 @@ try {
 					$quantidade_vagas_restante--;
 
 
-				}elseif ($rematriculado==0 && $quantidade_vagas_restante> 0 && ($resultado=="Apc" || $resultado=="Apr") ) {
+				}elseif ($rematriculado==0 && $quantidade_vagas_restante> 0 && ($resultado=="Apc" || $resultado=="Apr" || $rematricula_serie_id <=3 ) ) {
 
 				rematricular_aluno($conexao,$aluno_id,$turma_id,$turma_id_anterior,$matricula_situacao,$matricula_concluida,$matricula_datamatricula,$matricula_ativa,$matricula_tipo,$calendario_ano,$turma_escola,$turno_nome,$etapa);
 
@@ -137,7 +132,7 @@ try {
 		if ($aluno_reprovado!="") {
 			$_SESSION['status']=2;
 
-			$aluno_reprovado="Não foi possível realizar ação ".$aluno_reprovado;
+			$aluno_reprovado="Não foi possível realizar ação () ".$aluno_reprovado;
 
 			$_SESSION['mensagem']=$aluno_reprovado."".$vagas_esgotada;
 			header("location:../View/listar_alunos_da_turma.php?$url_get");	
