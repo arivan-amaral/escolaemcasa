@@ -132,7 +132,7 @@ try {
 		if ($aluno_reprovado!="") {
 			$_SESSION['status']=2;
 
-			$aluno_reprovado="Não foi possível realizar ação () ".$aluno_reprovado;
+			$aluno_reprovado="Não foi possível realizar ação (REPROVAÇÃO) ".$aluno_reprovado;
 
 			$_SESSION['mensagem']=$aluno_reprovado."".$vagas_esgotada;
 			header("location:../View/listar_alunos_da_turma.php?$url_get");	
