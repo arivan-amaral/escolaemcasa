@@ -8,7 +8,7 @@ try {
  $escola_id= $_POST['escola'];
  $disciplina_id= $_POST['disciplina'];
  $professor_id= $_POST['professor_id'];
- $ano_letivo_vigente= $_SESSION['ano_letivo_vigente'];
+ $ano_letivo_vigente= $_SESSION['ano_letivo'];
  
 
  $disciplina_ja_associada='';
