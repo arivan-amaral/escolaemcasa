@@ -105,53 +105,53 @@
 	}
 
 
-	// function listar_turmas_coordenador($conexao,$idescola,$ano_letivo){
-	//      $res=$conexao->query("SELECT 
-	//         idturma,
-	//         turma.seguimento,
-	        
-	//         serie.id as 'idserie',
-	//         serie.nome as 'nome_serie',
-	//         nome_turma,
-	//         idescola,
-	//         nome_escola,
-	//         relacionamento_turma_escola.turno
-
-	//  FROM escola,turma,serie,relacionamento_turma_escola WHERE
-
-	//  	relacionamento_turma_escola.escola_id= escola.idescola and 
-	//  	relacionamento_turma_escola.turma_id = turma.idturma AND
-	//  	turma.serie_id = serie.id AND
-	//  	escola.idescola='$idescola' AND 
-	//  	relacionamento_turma_escola.ano='$ano_letivo'
-
-	//   ORDER BY turma.nome_turma");
-
-	//  	return $res;
-	// }	
-
-
 	function listar_turmas_coordenador($conexao,$idescola,$ano_letivo){
-	    $res=$conexao->query("SELECT 
-	       idturma,
-	       turma.seguimento,
-	       serie.id as 'idserie',
-	       serie.nome as 'nome_serie',
-	       nome_turma,
-	       idescola,
-	       nome_escola
-	      FROM ministrada,escola,turma,funcionario,serie WHERE
+	     $res=$conexao->query("SELECT 
+	        idturma,
+	        turma.seguimento,
+	        
+	        serie.id as 'idserie',
+	        serie.nome as 'nome_serie',
+	        nome_turma,
+	        idescola,
+	        nome_escola,
+	        relacionamento_turma_escola.turno
 
-	    serie.id= turma.serie_id AND
-	    ministrada.escola_id= escola.idescola AND
-	    ministrada.professor_id= funcionario.idfuncionario and
-	    ministrada.turma_id = turma.idturma AND
-	    ministrada.ano = '$ano_letivo' AND
-	    escola_id=$idescola GROUP BY turma.idturma
-	    ORDER BY turma.nome_turma");
+	 FROM escola,turma,serie,relacionamento_turma_escola WHERE
 
-		return $res;
-	}
+	 	relacionamento_turma_escola.escola_id= escola.idescola and 
+	 	relacionamento_turma_escola.turma_id = turma.idturma AND
+	 	turma.serie_id = serie.id AND
+	 	escola.idescola='$idescola' AND 
+	 	relacionamento_turma_escola.ano='$ano_letivo'
+
+	  ORDER BY turma.nome_turma");
+
+	 	return $res;
+	}	
+
+
+	// function listar_turmas_coordenador($conexao,$idescola,$ano_letivo){
+	//     $res=$conexao->query("SELECT 
+	//        idturma,
+	//        turma.seguimento,
+	//        serie.id as 'idserie',
+	//        serie.nome as 'nome_serie',
+	//        nome_turma,
+	//        idescola,
+	//        nome_escola
+	//       FROM ministrada,escola,turma,funcionario,serie WHERE
+
+	//     serie.id= turma.serie_id AND
+	//     ministrada.escola_id= escola.idescola AND
+	//     ministrada.professor_id= funcionario.idfuncionario and
+	//     ministrada.turma_id = turma.idturma AND
+	//     ministrada.ano = '$ano_letivo' AND
+	//     escola_id=$idescola GROUP BY turma.idturma
+	//     ORDER BY turma.nome_turma");
+
+	// 	return $res;
+	// }
 
 function listar_disciplina_da_turma($conexao,$idturma,$idescola,$ano_letivo){
 	    $res=$conexao->query("SELECT turma.nome_turma, disciplina.iddisciplina,disciplina.nome_disciplina, funcionario.nome FROM turma, ministrada,disciplina, funcionario WHERE 
