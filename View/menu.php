@@ -84,6 +84,31 @@
               </li>
               </ul>";
 
+              echo"<li class='nav-item menu'>
+              <a href='./index.php' class='nav-link'>
+              <ion-icon name='git-network-outline'></ion-icon>
+              <p>Coordenador/Secretário <i class='right fas fa-angle-left'></i></p>
+              </a>
+
+              <ul class='nav nav-treeview'>
+              <li class='nav-item'>
+              <a href='cadastro_coordenador.php' class='nav-link'>
+              <i class='far fa-circle nav-icon text-primary'></i>
+              <p>Cadastrar</p>
+              </a>
+              </li>
+              </ul>
+
+              <ul class='nav nav-treeview'>
+              <li class='nav-item'>
+              <a href='pesquisar_coordenador_associar.php' class='nav-link'>
+              <i class='far fa-circle nav-icon text-primary'></i>
+              <p>Pesquisar </p>
+              </a>
+              </li>
+              </ul>       
+              </li>";
+              
                echo"<li class='nav-item menu'>
               <a href='lista_espera.php' class='nav-link'>
               <ion-icon name='apps-outline'></ion-icon>
@@ -224,32 +249,8 @@
 
 
 
-               echo"<li class='nav-item menu'>
-               <a href='./index.php' class='nav-link'>
-               <ion-icon name='git-network-outline'></ion-icon>
-               <p>Coordenador/Secretário <i class='right fas fa-angle-left'></i></p>
-               </a>
 
-               <ul class='nav nav-treeview'>
-               <li class='nav-item'>
-               <a href='cadastro_coordenador.php' class='nav-link'>
-               <i class='far fa-circle nav-icon text-primary'></i>
-               <p>Cadastrar</p>
-               </a>
-               </li>
-               </ul>
 
-               <ul class='nav nav-treeview'>
-               <li class='nav-item'>
-               <a href='pesquisar_coordenador_associar.php' class='nav-link'>
-               <i class='far fa-circle nav-icon text-primary'></i>
-               <p>Pesquisar </p>
-               </a>
-               </li>
-               </ul>       
-               </li>";
-
-               
                if ($_SESSION['cargo']=='Secretário' ||  $_SESSION["idfuncionario"] == 176 || $_SESSION["idfuncionario"] == 2121) {
                  echo"<li class='nav-item'>
                 <a href='chamada_por_usuario.php' class='nav-link'>
