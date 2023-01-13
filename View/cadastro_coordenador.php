@@ -65,6 +65,8 @@ if (!isset($_SESSION['idcoordenador'])) {
                           <select class="form-control" name="funcao" required="">
                           <option ></option>
                           <option value="Secretário">Secretário</option>
+                          <option value="Diretor">Vice Diretor</option>
+
                           <?php 
                             if ($_SESSION['nivel_acesso_id']==2 || $_SESSION['nivel_acesso_id']==100) {
                              ?>
