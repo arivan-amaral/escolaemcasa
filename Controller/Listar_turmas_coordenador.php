@@ -7,6 +7,8 @@ try {
   $idescola=$_GET['idescola'];
   if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
     $res=listar_turmas_inicial_coordenador($conexao,$idescola,$_SESSION['ano_letivo']);
+  }elseif ($_SESSION['ano_letivo']==2021) {
+    $res=listar_turmas_coordenador_remoto($conexao,$idescola,$_SESSION['ano_letivo']);
   }else{
     $res=listar_turmas_coordenador($conexao,$idescola,$_SESSION['ano_letivo']);
   }

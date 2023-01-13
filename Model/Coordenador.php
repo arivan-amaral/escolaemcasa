@@ -105,30 +105,30 @@
 	}
 
 
-	// function listar_turmas_coordenador($conexao,$idescola,$ano_letivo){
-	//      $res=$conexao->query("SELECT 
-	//         idturma,
-	//         turma.seguimento,
+	function listar_turmas_coordenador_remoto($conexao,$idescola,$ano_letivo){
+	     $res=$conexao->query("SELECT 
+	        idturma,
+	        turma.seguimento,
 	        
-	//         serie.id as 'idserie',
-	//         serie.nome as 'nome_serie',
-	//         nome_turma,
-	//         idescola,
-	//         nome_escola,
-	//         relacionamento_turma_escola.turno
+	        serie.id as 'idserie',
+	        serie.nome as 'nome_serie',
+	        nome_turma,
+	        idescola,
+	        nome_escola,
+	        relacionamento_turma_escola.turno
 
-	//  FROM escola,turma,serie,relacionamento_turma_escola WHERE
+	 FROM escola,turma,serie,relacionamento_turma_escola WHERE
 
-	//  	relacionamento_turma_escola.escola_id= escola.idescola and 
-	//  	relacionamento_turma_escola.turma_id = turma.idturma AND
-	//  	turma.serie_id = serie.id AND
-	//  	escola.idescola='$idescola' AND 
-	//  	relacionamento_turma_escola.ano='$ano_letivo'
+	 	relacionamento_turma_escola.escola_id= escola.idescola and 
+	 	relacionamento_turma_escola.turma_id = turma.idturma AND
+	 	turma.serie_id = serie.id AND
+	 	escola.idescola='$idescola' AND 
+	 	relacionamento_turma_escola.ano='$ano_letivo'
 
-	//   ORDER BY turma.nome_turma");
+	  ORDER BY turma.nome_turma");
 
-	//  	return $res;
-	// }	
+	 	return $res;
+	}	
 
 
 	function listar_turmas_coordenador($conexao,$idescola,$ano_letivo){
