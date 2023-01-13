@@ -17,7 +17,7 @@ if (!isset($_SESSION['idcoordenador'])) {
   include_once '../Model/Coordenador.php';
   include '../Model/Escola.php';
   
-?>
+?> 
 
 <script src="ajax.js"></script>
 
@@ -64,9 +64,15 @@ if (!isset($_SESSION['idcoordenador'])) {
                         <label for="exampleInputEmail1">Função</label>
                           <select class="form-control" name="funcao" required="">
                           <option ></option>
-                          <option value="Coordenador">Coordenador</option>
                           <option value="Secretário">Secretário</option>
-                          <option value="Diretor">Diretor</option>
+                          <?php 
+                            if ($_SESSION['nivel_acesso_id']==2 || $_SESSION['nivel_acesso_id']==100) {
+                             ?>
+                            <option value="Coordenador">Coordenador</option>
+                            <option value="Diretor">Diretor</option>
+                          <?php 
+                            }
+                          ?>
                         </select>
                       </div>
 
