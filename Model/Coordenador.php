@@ -105,7 +105,7 @@
 	}
 
 
-	function listar_turmas_coordenador_remoto($conexao,$idescola,$ano_letivo){
+	function listar_turmas_coordenador($conexao,$idescola,$ano_letivo){
 	     $res=$conexao->query("SELECT 
 	        idturma,
 	        turma.seguimento,
@@ -131,7 +131,7 @@
 	}	
 
 
-	function listar_turmas_coordenador($conexao,$idescola,$ano_letivo){
+	function listar_turmas_coordenador_remoto($conexao,$idescola,$ano_letivo){
 	    $res=$conexao->query("SELECT 
 	       idturma,
 	       turma.seguimento,

@@ -5066,7 +5066,10 @@ function quantidade_vaga_turma_rematricula_individual(idaluno){
 
 function rematricular_aluno_individual(idaluno){
 
-   
+       setTimeout(function () {
+        document.getElementById('botao_continuar').disabled = true;
+        // body...
+    },10);
 
   var turma_id_anterior=document.getElementById("turma_id_anterior"+idaluno).value;
   var quantidade_vagas_restante=document.getElementById("quantidade_vagas_restante"+idaluno).value;
@@ -5103,6 +5106,12 @@ function rematricular_aluno_individual(idaluno){
                      showConfirmButton: false,
                      timer: 2500
                    });
+
+                    setTimeout(function () {
+                       document.getElementById('botao_continuar').disabled = false;
+                       // body...
+                   },1000);
+
                 }else{
                         Swal.fire({
                        position: 'center',
