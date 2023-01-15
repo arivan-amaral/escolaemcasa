@@ -690,7 +690,7 @@ foreach ($campos as  $value) {
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Cpf</label>
-                          <input type="text" id="RegraValida" value="" name="cpf" onkeyup="javascript: fMasc( this, mCPF ); ValidaCPF();"class="form-control" maxlength="14" required value="<?php echo $cpf_aluno ?>"">
+                          <input type="text" id="RegraValida"  name="cpf" onkeyup="javascript: fMasc( this, mCPF ); ValidaCPF();" class="form-control" maxlength="14" required value="<?php echo $cpf_aluno ?>">
                         </div>
                       </div>
               
