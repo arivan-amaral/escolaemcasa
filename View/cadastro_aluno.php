@@ -77,7 +77,7 @@ foreach ($campos as  $value) {
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">N° Nis</label>
-                          <input type="text" class="form-control" id="numero_nis" name="numero_nis" required="">
+                          <input type="text" class="form-control" id="numero_nis" name="numero_nis" required=""  value="<?php echo "$cadunico"; ?>">
                         </div>
                       </div>
 
@@ -86,6 +86,15 @@ foreach ($campos as  $value) {
                           <label for="exampleInputEmail1">Bolsa familia</label><br>
                           <select  class="form-control" name="bolsa_familia" id="bolsa_familia" required>
                             <option selected></option>
+                            <?php 
+
+                              if ($bolsa_familia=="Sim") {
+                               echo "<option value='S'>Sim</option>";
+                              }else if ($bolsa_familia=="Não"){
+                                echo " <option value='N'>Não</option>";
+
+                              }
+                             ?>
                             <option value="S">Sim</option>
                             <option value="N">Não</option>
             
@@ -214,6 +223,7 @@ foreach ($campos as  $value) {
                         <div class="form-group">
                           <label for="exampleInputEmail1">Tipo responsável</label><br>
                           <select  class="form-control" required name="tipo_responsavel">
+                             <?php echo " <option value='$tipo_responsavel' >$tipo_responsavel</option>"; ?>"
                             <option value="MÃE">MÃE</option>
                             <option value="PAI">PAI</option>
                             <option value="OUTRO">OUTRO</option>
@@ -273,7 +283,16 @@ foreach ($campos as  $value) {
                         <div class="form-group">
                           <label for="exampleInputEmail1">Sexo do aluno</label><br>
                           <select  class="form-control" required id='sexo' name="sexo">
-                          
+                          <?php 
+                          if ($sexo_aluno=='Masculino') {
+                           echo " <option value='M'>$sexo_aluno</option>";
+                          }else if ($sexo_aluno=='Feminino'){
+                           echo " <option value='F'>$sexo_aluno</option>";
+
+                          }
+
+
+                           ?>
                             <option value="M">Masculino</option>
                             <option value="F">Feminino</option>
                             
