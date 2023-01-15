@@ -112,13 +112,13 @@ foreach ($campos as  $value) {
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Nome <b class="text-danger">*</b></label>
-                          <input type="text" class="form-control" id="nome" name="nome" required="" value="<?php echo "$nome_aluno"; ?>">
+                          <input type="text" class="form-control" id="nome" name="nome" required="" value="<?php echo $nome_aluno; ?>">
                         </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Nascimento <b class="text-danger">*</b></label>
-                          <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" required="" onchange="idade_aluno();"  value="<?php echo "$data_nascimento"; ?>>
+                          <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" required="" onchange="idade_aluno();"  value="<?php echo $data_nascimento; ?>">
                         </div>
                       </div>
                       
