@@ -1,5 +1,15 @@
 <?php 
 session_start();
+
+
+if (!isset($_SESSION['idfuncionario'])) {
+       header("location:index.php?status=0");
+
+}else{ 
+
+$idcoordenador=$_SESSION['idfuncionario'];
+
+}
 include_once 'cabecalho.php'; 
 include_once 'barra_horizontal.php'; 
 include_once "menu.php"; 
@@ -9,7 +19,9 @@ include_once "../Model/Serie.php";
 include_once "../Model/Escola.php"; 
 include_once "../Model/Estado.php"; 
 include_once "../Model/Coordenador.php"; 
-$idcoordenador=$_SESSION['idfuncionario'];
+
+
+
 
 if ($_SESSION['nivel_acesso_id']==100) {
  $disabled='';
