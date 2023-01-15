@@ -21,7 +21,7 @@ if ($_SESSION['nivel_acesso_id']==100) {
 $campos=array('id','cpf_aluno','cadunico','nivel_escolar_id','bairro_id','tipo_responsavel','sexo_aluno','bolsa_familia','telefone1','telefone2','data_hora','protocolo','bairro_mora_existe','enviado','idaluno','nome_aluno','data_nascimento','endereco','numero','complemento','nome_mae','nome_pai','nome_responsavel','cpf_responsavel','bolsa_familia','protocolo','bairro_id','escola_id','serie_id','turno_id','confirmado','nome_turno','nome_escola','nome_serie');
 
 foreach ($campos as  $value) {
-  $$value="";
+  $$value=$_GET[$value];
 }
  
 ?>
