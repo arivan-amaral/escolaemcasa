@@ -17,6 +17,12 @@ if ($_SESSION['nivel_acesso_id']==100) {
  $disabled='disabled';
 
 }
+
+$campos=array('id','cpf_aluno','cadunico','nivel_escolar_id','bairro_id','tipo_responsavel','sexo_aluno','bolsa_familia','telefone1','telefone2','data_hora','protocolo','bairro_mora_existe','enviado','idaluno','nome_aluno','data_nascimento','endereco','numero','complemento','nome_mae','nome_pai','nome_responsavel','cpf_responsavel','bolsa_familia','protocolo','bairro_id','escola_id','serie_id','turno_id','confirmado','nome_turno','nome_escola','nome_serie');
+
+foreach ($campos as  $value) {
+  $$value="";
+}
  
 ?>
 
@@ -106,13 +112,13 @@ if ($_SESSION['nivel_acesso_id']==100) {
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Nome <b class="text-danger">*</b></label>
-                          <input type="text" class="form-control" id="nome" name="nome" required="">
+                          <input type="text" class="form-control" id="nome" name="nome" required="" value="<?php echo "$nome_aluno"; ?>">
                         </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Nascimento <b class="text-danger">*</b></label>
-                          <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" required="" onchange="idade_aluno();">
+                          <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" required="" onchange="idade_aluno();"  value="<?php echo "$data_nascimento"; ?>>
                         </div>
                       </div>
                       
