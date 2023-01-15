@@ -151,13 +151,13 @@ foreach ($campos as  $value) {
                       <div class="col-sm-4">
                          <div class="form-group">
                           <label for="exampleInputEmail1">Whatsapp aluno</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="whatsapp" onkeypress="$(this).mask('(00) 0000-00009')" >
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="whatsapp" onkeypress="$(this).mask('(00) 0000-00009')"  value="<?php echo "$telefone2"; ?>" >
                         </div>
                       </div>                      
                       <div class="col-sm-4">
                          <div class="form-group">
                           <label for="exampleInputEmail1">Whatsapp responsável</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="whatsapp_responsavel" onkeypress="$(this).mask('(00) 0000-00009')" >
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="whatsapp_responsavel" onkeypress="$(this).mask('(00) 0000-00009')" value="<?php echo "$telefone1"; ?> >
                         </div>
                       </div>
                     </div>
@@ -305,13 +305,13 @@ foreach ($campos as  $value) {
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Nome do responsável <b class="text-danger">*</b></label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="nome_responsavel" required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="nome_responsavel" required="" value="<?php echo $nome_responsavel; ?>">
                         </div>
                       </div>
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Cpf do responsável </label>
-                           <input type="text" id="RegraValida" value="" name="cpf_responsavel" onkeyup="javascript: fMasc( this, mCPF ); ValidaCPF();"class="form-control" maxlength="14" required>
+                           <input type="text" id="RegraValida" value="" name="cpf_responsavel" onkeyup="javascript: fMasc( this, mCPF ); ValidaCPF();"class="form-control" maxlength="14" required value="<?php echo $cpf_responsavel; ?>">
                           <span class="text-success" id="status_cpf"></span>
                         </div>
                       </div>
@@ -332,7 +332,7 @@ foreach ($campos as  $value) {
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Nome filiação 1  </label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="filiacao1" required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="filiacao1" required="" value="<?php echo $nome_mae; ?>">
                         </div>
                       </div>
                       <div class="col-sm-4">
@@ -354,7 +354,7 @@ foreach ($campos as  $value) {
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Nome filiação 2  </label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="filiacao2" required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="filiacao2" required="" value="<?php echo $nome_pae; ?>">
                         </div>
                       </div>
                       <div class="col-sm-4">
@@ -382,19 +382,19 @@ foreach ($campos as  $value) {
                       <div class="col-sm-5">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Endereço</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="endereco" required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="endereco" required="" value="<?php echo $endereco; ?>">
                         </div>
                       </div>
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Complemento</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="complemento" >
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="complemento" value="<?php echo $complemento; ?>" >
                         </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Número</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="numero_endereco" required="">
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="numero_endereco" required="" value="<?php echo $numero; ?>">
                         </div>
                       </div>
                     </div>
