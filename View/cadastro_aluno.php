@@ -157,7 +157,7 @@ foreach ($campos as  $value) {
                       <div class="col-sm-4">
                          <div class="form-group">
                           <label for="exampleInputEmail1">Whatsapp responsável</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="whatsapp_responsavel" onkeypress="$(this).mask('(00) 0000-00009')" value="<?php echo "$telefone1"; ?> >
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="whatsapp_responsavel" onkeypress="$(this).mask('(00) 0000-00009')" value="<?php echo "$telefone1"; ?>" >
                         </div>
                       </div>
                     </div>
