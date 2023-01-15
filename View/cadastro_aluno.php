@@ -85,13 +85,13 @@ foreach ($campos as  $value) {
                         <div class="form-group">
                           <label for="exampleInputEmail1">Bolsa familia</label><br>
                           <select  class="form-control" name="bolsa_familia" id="bolsa_familia" required>
-                            <option selected></option>
+                            <option ></option>
                             <?php 
 
                               if ($bolsa_familia=="Sim") {
-                               echo "<option value='S'>Sim</option>";
+                               echo "<option value='S' selected>Sim</option>";
                               }else if ($bolsa_familia=="Não"){
-                                echo " <option value='N'>Não</option>";
+                                echo " <option value='N' selected>Não</option>";
 
                               }
                              ?>
