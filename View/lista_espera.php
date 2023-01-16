@@ -95,7 +95,7 @@ session_start();
                             <!-- <option></option> -->
 
                             <?php 
-                              $res_serie=pesquisar_ordem_proxima_serie($conexao,'id=1');
+                              $res_serie=pesquisar_ordem_proxima_serie($conexao,' id in (1,2) ');
                               foreach ($res_serie as $key => $value) {
                                   $id=$value['id'];
                                   $nome_serie=$value['nome'];
