@@ -27,7 +27,7 @@ try {
 
             <td>
                 $nome_responsavel <br>
-                $telefone
+               Telefone:  $telefone
             </td>
 
             <td>
