@@ -63,7 +63,8 @@ function pesquisa_lista_espera($conexao,$limite){
         serie.nome as 'nome_serie',
         escola.nome_escola,
         lista_de_espera.data_hora,
-        lista_de_espera.telefone
+        lista_de_espera.telefone,
+        lista_de_espera.status
     FROM  
     lista_de_espera,serie,escola,funcionario
     WHERE
@@ -75,6 +76,14 @@ function pesquisa_lista_espera($conexao,$limite){
    return $sql->fetchAll();
 
 }
+function aceitar_lista_espera($conexao,$id){
+    $sql=$conexao->prepare("UPDATE lista_de_espera  SET status=2 WHERE id = ?");
+
+   $sql->execute(array($id));
+
+}
+
+
 function cadastrar_lista_espera($conexao,$nome_aluno,$cpf_aluno,$data_nascimento,$nome_responsavel,$cpf_responsavel,$telefone,$endereco,$escola_id,$serie_id,$funcionario_id){
     $sql=$conexao->prepare("INSERT INTO lista_de_espera (nome_aluno,cpf_aluno,data_nascimento,nome_responsavel,cpf_responsavel,telefone,endereco,escola_id,serie_id,funcionario_id) VALUES (?,?,?,?,?,?,?,?,?,?)");
 

@@ -86,6 +86,30 @@ function lista_espera(){
    xmlreq.send(null);
 }
 
+
+function aceita_lista_espera(id){
+
+
+  
+  var xmlreq = CriaRequest();
+  xmlreq.open("GET", "../Controller/Aceita_lista_espera.php?id="+id, true);
+
+      xmlreq.onreadystatechange = function(){
+    
+       if (xmlreq.readyState == 4) {
+           if (xmlreq.status == 200) {
+                alert('Ação concluída');
+
+           }else{
+                alert('Erro');
+
+              // result.innerHTML ="Erro ao receber mensagens";                 
+           }
+       }
+      };
+   xmlreq.send(null);
+}
+
 function buscar_datas_conteudos(idperiodo){
   var inicio = document.getElementById('periodo_inicio'+idperiodo).value;
   var fim = document.getElementById('periodo_fim'+idperiodo).value;

@@ -21,7 +21,11 @@ try {
         $nome_escola=$value['nome_escola'];
         $data_hora=$value['data_hora'];
         $telefone=$value['telefone'];
-        $result.="<tr>
+        $status=$value['status'];
+        if ($status==2) {
+             $cor_status="class='alert alert-success'";
+        }
+        $result.="<tr $cor_status>
             <td>
                 $conta
             </td> 
@@ -51,7 +55,7 @@ try {
                     <ul class = 'dropdown-menu' role = 'menu'>
                     
                         <li>
-                            <a  class='dropdown-item'  >Aceitar</a>
+                            <a  class='dropdown-item' onclick='aceita_lista_espera($id);' >Aceitar</a>
                             <a  class='dropdown-item'  >Recusar</a>
                         </li>
                     </ul>
