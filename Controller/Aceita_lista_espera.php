@@ -5,7 +5,7 @@
  include 'Conversao.php';
  
 try {
-  
+  $id=$_GET['id'];
     aceitar_lista_espera($conexao,$id);
 
  
