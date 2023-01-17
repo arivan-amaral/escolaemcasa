@@ -62,7 +62,8 @@ function pesquisa_lista_espera($conexao,$limite){
         funcionario.nome as 'nome_funcionario',
         serie.nome as 'nome_serie',
         escola.nome_escola,
-        lista_de_espera.data_hora
+        lista_de_espera.data_hora,
+        lista_de_espera.telefone
     FROM  
     lista_de_espera,serie,escola,funcionario
     WHERE
