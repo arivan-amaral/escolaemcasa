@@ -69,7 +69,7 @@ function pesquisa_lista_espera($conexao,$limite){
     lista_de_espera,serie,escola,funcionario
     WHERE
         serie_id=serie.id and escola_id=escola.idescola 
-         and funcionario.idfuncionario=funcionario_id order by lista_de_espera.id asc
+         and funcionario.idfuncionario=funcionario_id order by status.asc, lista_de_espera.id asc
      LIMIT  $limite");
 
    $sql->execute();
