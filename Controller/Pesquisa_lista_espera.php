@@ -11,6 +11,7 @@ try {
      
     $result="";
    $res = pesquisa_lista_espera($conexao,2500);
+   $conta=1;
    foreach ($res as $key => $value) {
         $id=$value['id'];
         $nome_aluno=$value['nome_aluno'];
@@ -21,6 +22,9 @@ try {
         $data_hora=$value['data_hora'];
         $telefone=$value['telefone'];
         $result.="<tr>
+            <td>
+                $conta
+            </td> 
             <td>
                 $nome_aluno
             </td>
@@ -54,6 +58,7 @@ try {
                 </div>
             </td>
         </tr>";
+                $conta++;
    }
 
 echo $result;
