@@ -10,7 +10,7 @@ try {
  
      
     $result="";
-   $res = pesquisa_lista_espera($conexao,25);
+   $res = pesquisa_lista_espera($conexao,2500);
    foreach ($res as $key => $value) {
         $id=$value['id'];
         $nome_aluno=$value['nome_aluno'];
@@ -19,13 +19,15 @@ try {
         $nome_serie=$value['nome_serie'];
         $nome_escola=$value['nome_escola'];
         $data_hora=$value['data_hora'];
+        $telefone=$value['telefone'];
         $result.="<tr>
             <td>
                 $nome_aluno
             </td>
 
             <td>
-                $nome_responsavel
+                $nome_responsavel <br>
+                $telefone
             </td>
 
             <td>
