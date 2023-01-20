@@ -575,12 +575,12 @@ if(cpf_aluno.checked) {
   if(contador == 0){
   texto+=cpf_aluno.value;
   titulo+="Cpf Aluno";
-  parametro+="cpf_aluno";
+  parametro+="cpf";
   contador++;
  }else{
   texto+=","+cpf_aluno.value;
   titulo+="-Cpf aluno";
-  parametro+="-cpf_aluno";
+  parametro+="-cpf";
   contador++;
  }
 }
