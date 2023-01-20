@@ -157,7 +157,7 @@ where
                           $result.="
                               <b class='text-primary'> Matrícula: ($matricula) $nome_escola -</b> 
                               <b class='text-primary'> $nome_turma </b> 
-                              <b class='text-danger'> Ano: $calendario_ano </b> <br>
+                              <b class='text-danger'> Ano: $calendario_ano </b>
                               
                             ";
 
@@ -293,7 +293,7 @@ where
                             $result.="
                               <b class='text-black'> Matrícula: ($matricula) $nome_escola -</b> 
                               <b class='text-black'> $nome_turma </b> 
-                              <b class='text-success'> Ano: $calendario_ano</b>  <br>
+                              <b class='text-success'> Ano: $calendario_ano</b>  
                             ";
                       }
 
