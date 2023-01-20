@@ -298,7 +298,7 @@ where
                       }
 
                       if ($calendario_ano>2020) {
-                          $result.="<a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma&ano=$calendario_ano'  target='_blank' class='btn btn-primary'  > Boletim  $calendario_ano  </a> <br> ";
+                          $result.="<a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma&ano=$calendario_ano'  target='_blank' class='text-primary'  > Boletim  $calendario_ano  </a> <br> ";
 
                       }
         $conta_ano_cursado++;
