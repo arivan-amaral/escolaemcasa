@@ -542,6 +542,7 @@ function pesquisa_relatorio_filtros(){
   var nome_turma = document.getElementById('nome_turma');
   var bolsa_familia = document.getElementById('bolsa_familia');
   var data_nascimento = document.getElementById('data_nascimento');
+  var cpf_aluno = document.getElementById('cpf');
 
   if(idaluno.checked) {
      if(contador == 0){
@@ -557,18 +558,32 @@ function pesquisa_relatorio_filtros(){
      }
   }
   if(nome.checked) {
-      if(contador == 0){
-      texto+=nome.value;
-      titulo+="Nome";
-      parametro+="nome";
-      contador++;
-     }else{
-      texto+=","+nome.value;
-      titulo+="-Nome";
-      parametro+="-nome";
-      contador++;
-     }
-  }
+    if(contador == 0){
+    texto+=nome.value;
+    titulo+="Nome";
+    parametro+="nome";
+    contador++;
+   }else{
+    texto+=","+nome.value;
+    titulo+="-Nome";
+    parametro+="-nome";
+    contador++;
+   }
+}
+
+if(cpf_aluno.checked) {
+  if(contador == 0){
+  texto+=cpf_aluno.value;
+  titulo+="Cpf Aluno";
+  parametro+="cpf_aluno";
+  contador++;
+ }else{
+  texto+=","+cpf_aluno.value;
+  titulo+="-Cpf aluno";
+  parametro+="-cpf_aluno";
+  contador++;
+ }
+}
   if(filiacao1.checked) {
       if(contador == 0){
       texto+=filiacao1.value;

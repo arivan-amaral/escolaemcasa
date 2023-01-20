@@ -174,6 +174,13 @@ if (!isset($_SESSION['idfuncionario'])) {
             Data de Nascimento
           </label>
         </div>
+
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="aluno.cpf" id="cpf">
+          <label class="form-check-label" for="flexCheckDefault">
+            Cpf Aluno
+          </label>
+        </div>
       </div>
       
         <div class="col-sm-3">
