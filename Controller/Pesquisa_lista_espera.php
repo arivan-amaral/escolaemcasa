@@ -52,8 +52,8 @@ try {
                 $conta
             </td> 
             <td>
-                $nome_aluno <br>Nascimento: ".
-            converte_data($data_nascimento)."<br> <b> Idade na  data de corte: ".converte_idade_data_corte($data_nascimento)."  </b>(31/03/".$_SESSION['ano_letivo_vigente'].")
+                $nome_aluno <br><b>Nascimento: ".
+            converte_data($data_nascimento)."</b><br> <b> Idade na  data de corte: ".converte_idade_data_corte($data_nascimento)."  </b>(31/03/".$_SESSION['ano_letivo_vigente'].")
             </td>
 
             <td>
