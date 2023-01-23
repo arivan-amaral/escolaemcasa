@@ -24,7 +24,7 @@ try {
     $sql_escolas.=" ) ";
 
     $result="";
-   $res = pesquisa_lista_espera($conexao,$lista_escola_associada,2500);
+   $res = pesquisa_lista_espera($conexao,$sql_escolas,2500);
    $conta=1;
    foreach ($res as $key => $value) {
         $id=$value['id'];
