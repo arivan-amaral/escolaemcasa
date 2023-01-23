@@ -68,9 +68,10 @@ function lista_espera(){
 
 
   var result = document.getElementById('tabela_lista_espera');
+  var pesquisa = document.getElementById('escola_associada').value;
   result.innerHTML = "<img src='imagens/carregando.gif'>";  
   var xmlreq = CriaRequest();
-  xmlreq.open("GET", "../Controller/Pesquisa_lista_espera.php", true);
+  xmlreq.open("GET", "../Controller/Pesquisa_lista_espera.php?pesquisa="+pesquisa, true);
 
       xmlreq.onreadystatechange = function(){
     

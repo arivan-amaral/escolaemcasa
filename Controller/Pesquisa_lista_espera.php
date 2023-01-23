@@ -8,29 +8,18 @@
 try {
     $idfuncionario=$_SESSION['idfuncionario'];
 
-   
+   $pesquisa=$_GET['pesquisa'];
      
-     $sql_escolas="";
+    if ($pesquisa=="Todas") {
+         $sql_escolas.=" and escola_id != -1 ";
       
-     $conta=0;
-     $res_escola= escola_associada($conexao,$idfuncionario);
-
-     foreach ($res_escola as $key => $value) {
-        if ($conta==0) {
-             $sql_escolas.=" AND ( ";
-         $id=$value['idescola']; 
-         $sql_escolas.="  escola_id = $id ";
-        }else{
-             $id=$value['idescola']; 
-             $sql_escolas.=" OR  escola_id = $id ";
-        }
-        
-        $conta++;
-     }
-     if ($sql_escolas!="") {
-            $sql_escolas.=" ) ";
-         // code...
-     }
+     
+    }else{
+        $sql_escolas.=" and  escola_id = $pesquisa ";
+    }
+    
+  
+      
 
     $result="";
    $res = pesquisa_lista_espera($conexao,$sql_escolas,2500);
