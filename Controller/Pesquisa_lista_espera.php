@@ -53,7 +53,7 @@ try {
             </td> 
             <td>
                 $nome_aluno <br>Nascimento: ".
-            converte_data($data_nascimento)."
+            converte_data($data_nascimento)." <b> Idade ".converte_idade($data_nascimento)." </b>
             </td>
 
             <td>
