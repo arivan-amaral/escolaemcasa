@@ -194,7 +194,7 @@ session_start();
                              <select class="form-control" id="escola_associada" onchange="lista_espera();" >
                               <option value='Todas'>Todas </option>
                                 <?php 
-                                 $res_escola= $conexao->query("SELECT * from escola ");
+                                 $res_escola= $conexao->query("SELECT * from escola ORDER BY nome_escola asc");
                                   $lista_escola_associada=""; 
                                 
                                 foreach ($res_escola as $key => $value) {
