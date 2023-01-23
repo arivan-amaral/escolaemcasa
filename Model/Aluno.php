@@ -64,6 +64,7 @@ function pesquisa_lista_espera($conexao,$lista_escolas,$limite){
         escola.nome_escola,
         lista_de_espera.data_hora,
         lista_de_espera.telefone,
+        lista_de_espera.escola_id,
         lista_de_espera.status
     FROM  
     lista_de_espera,serie,escola,funcionario

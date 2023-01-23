@@ -18,6 +18,12 @@ try {
         $sql_escolas.=" and  escola_id = $pesquisa ";
     }
     
+    $res_escola= escola_associada($conexao,$idfuncionario);
+           $listasid = array();
+           foreach ($res_escola as $key => $value) {
+               $id=$value['idescola'];
+               $listasid[$id]=$id;
+           }
   
       
 
@@ -26,6 +32,8 @@ try {
    $conta=1;
    foreach ($res as $key => $value) {
         $id=$value['id'];
+        $escola_id=$value['escola_id'];
+
         $nome_aluno=$value['nome_aluno'];
         $nome_responsavel=$value['nome_responsavel'];
         $nome_funcionario=$value['nome_funcionario'];
@@ -56,23 +64,30 @@ try {
 
             <td>
                 $nome_serie
-            </td>
+            </td>";
 
-            <td>
-                <div class = 'btn-group text-right'>
-                    <button type = 'button' class = 'btn btn-info fs12 dropdown-toggle' data-toggle = 'dropdown' aria-expanded = 'false'> 
-                        Opções
-                        <span class = 'caret ml5'></span>
-                    </button>
-                    <ul class = 'dropdown-menu' role = 'menu'>
-                    
-                        <li>
-                            <a  class='dropdown-item' onclick='aceita_lista_espera($id);' >Aceitar</a>
-                            <a  class='dropdown-item'  >Recusar</a>
-                        </li>
-                    </ul>
-                </div>
-            </td>
+   
+
+            if (in_array($escola_id, $listasid)) {
+               $result.="<td>
+                   <div class = 'btn-group text-right'>
+                       <button type = 'button' class = 'btn btn-info fs12 dropdown-toggle' data-toggle = 'dropdown' aria-expanded = 'false'> 
+                           Opções
+                           <span class = 'caret ml5'></span>
+                       </button>
+                       <ul class = 'dropdown-menu' role = 'menu'>
+                       
+                           <li>
+                               <a  class='dropdown-item' onclick='aceita_lista_espera($id);' >Aceitar</a>
+                               <a  class='dropdown-item'  >Recusar</a>
+                           </li>
+                       </ul>
+                   </div>
+               </td>";
+
+            }
+
+    $result.="
         </tr>";
                 $conta++;
    }
