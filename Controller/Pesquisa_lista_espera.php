@@ -7,10 +7,24 @@
 try {
     $idfuncionario=$_SESSION['idfuncionario'];
 
- 
+   
      
+     $sql_escolas=" ";
+      
+     $conta=0;
+     foreach ($res_escola as $key => $value) {
+        if ($conta==0) {
+             $sql_escolas.=" AND ( "
+        }
+         $id=$value['idescola']; 
+         $sql_escolas.=" OR escola_id = $id ";
+        
+        $conta++;
+     }
+    $sql_escolas.=" ) ";
+
     $result="";
-   $res = pesquisa_lista_espera($conexao,2500);
+   $res = pesquisa_lista_espera($conexao,$lista_escola_associada,2500);
    $conta=1;
    foreach ($res as $key => $value) {
         $id=$value['id'];
