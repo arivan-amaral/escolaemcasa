@@ -10,19 +10,27 @@ try {
 
    
      
-     $sql_escolas=" ";
+     $sql_escolas="";
       
      $conta=0;
+     $res_escola= escola_associada($conexao,$idfuncionario);
+
      foreach ($res_escola as $key => $value) {
         if ($conta==0) {
              $sql_escolas.=" AND ( ";
-        }
          $id=$value['idescola']; 
-         $sql_escolas.=" OR escola_id = $id ";
+         $sql_escolas.="  escola_id = $id ";
+        }else{
+             $id=$value['idescola']; 
+             $sql_escolas.=" OR  escola_id = $id ";
+        }
         
         $conta++;
      }
-    $sql_escolas.=" ) ";
+     if ($sql_escolas!="") {
+            $sql_escolas.=" ) ";
+         // code...
+     }
 
     $result="";
    $res = pesquisa_lista_espera($conexao,$sql_escolas,2500);
