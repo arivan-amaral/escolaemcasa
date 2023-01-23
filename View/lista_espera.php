@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+use GuzzleHttp\Psr7\Query;
 
 session_start();
   include "cabecalho.php";
@@ -192,16 +194,13 @@ session_start();
                              <select class="form-control" id="escola_associada" onchange="lista_espera();" >
                               <option value='Todas'>Todas </option>
                                 <?php 
-                                 $res_escola= escola_associada($conexao,$idcoordenador);
+                                 $res_escola= $conexao->query("SELECT * from escola ");
                                   $lista_escola_associada=""; 
-                                $sql_escolas="AND ( escola_id = -1 ";
-                                $sql_escolas_enviada="AND ( escola_id_origem = -1 ";
+                                
                                 foreach ($res_escola as $key => $value) {
                                     $id=$value['idescola'];
                                    $nome_escola=($value['nome_escola']);
-                                    $sql_escolas.=" OR escola_id = $id ";
-                                    $sql_escolas_enviada.=" OR escola_id_origem = $id ";
-
+                                 
                                     $lista_escola_associada.= "
                                          <option value='$id'>$nome_escola </option>
 
