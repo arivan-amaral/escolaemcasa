@@ -133,7 +133,7 @@ where
                             ORDER by ecidade_matricula.matricula_codigo asc,  ecidade_matricula.calendario_ano asc");
       $conta_ano_cursado=1;
       $result_ecidade_matricula=$result_ecidade_matricula->fetchAll();
-
+ 
       $detectar_ultimo=count($result_ecidade_matricula);
        $nome_turma='';
       $nome_escola='';
