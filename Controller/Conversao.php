@@ -25,6 +25,20 @@ function converte_idade($data){
         $idade = floor((((($hoje - $nascimento) / 60) / 60) / 24) / 365.25);
      return $idade;
      }
+
+     function converte_idade_data_corte($data){
+
+           list($ano, $mes, $dia) = explode('-', $data);
+
+        // data atual
+        $hoje = mktime(0, 0, 0, 03, 31, date('Y'));
+        // Descobre a unix timestamp da data de nascimento do fulano
+        $nascimento = mktime( 0, 0, 0, $mes, $dia, $ano);
+
+        // cálculo
+        $idade = floor((((($hoje - $nascimento) / 60) / 60) / 24) / 365.25);
+     return $idade;
+     }
  
 
 

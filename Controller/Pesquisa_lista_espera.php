@@ -53,7 +53,7 @@ try {
             </td> 
             <td>
                 $nome_aluno <br>Nascimento: ".
-            converte_data($data_nascimento)." <b> Idade ".converte_idade($data_nascimento)." </b>
+            converte_data($data_nascimento)."<br> <b> Idade ".converte_idade_data_corte($data_nascimento)."  </b>(31/03/".$_SESSION['ano_letivo_vigente'].")
             </td>
 
             <td>
