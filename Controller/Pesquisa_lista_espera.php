@@ -14,7 +14,7 @@ try {
      $conta=0;
      foreach ($res_escola as $key => $value) {
         if ($conta==0) {
-             $sql_escolas.=" AND ( "
+             $sql_escolas.=" AND ( ";
         }
          $id=$value['idescola']; 
          $sql_escolas.=" OR escola_id = $id ";
