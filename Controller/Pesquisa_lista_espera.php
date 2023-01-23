@@ -41,7 +41,9 @@ try {
         $nome_escola=$value['nome_escola'];
         $data_hora=$value['data_hora'];
         $telefone=$value['telefone'];
+        $data_nascimento=$value['data_nascimento'];
         $status=$value['status'];
+        $observacao=$value['observacao'];
         if ($status==2) {
              $cor_status="class='alert alert-success'";
         }
@@ -50,7 +52,8 @@ try {
                 $conta
             </td> 
             <td>
-                $nome_aluno
+                $nome_aluno <br>Nascimento: ".
+            converte_data($data_nascimento)."
             </td>
 
             <td>
@@ -64,6 +67,9 @@ try {
 
             <td>
                 $nome_serie
+            </td>
+              <td>
+                $observacao
             </td>";
 
    
@@ -84,6 +90,9 @@ try {
                        </ul>
                    </div>
                </td>";
+
+            }else{
+                      $result.="<td></td>";
 
             }
 

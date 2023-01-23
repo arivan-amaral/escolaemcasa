@@ -65,6 +65,8 @@ function pesquisa_lista_espera($conexao,$lista_escolas,$limite){
         lista_de_espera.data_hora,
         lista_de_espera.telefone,
         lista_de_espera.escola_id,
+        lista_de_espera.observacao,
+        lista_de_espera.data_nascimento,
         lista_de_espera.status
     FROM  
     lista_de_espera,serie,escola,funcionario
@@ -85,10 +87,10 @@ function aceitar_lista_espera($conexao,$id){
 }
 
 
-function cadastrar_lista_espera($conexao,$nome_aluno,$cpf_aluno,$data_nascimento,$nome_responsavel,$cpf_responsavel,$telefone,$endereco,$escola_id,$serie_id,$funcionario_id){
-    $sql=$conexao->prepare("INSERT INTO lista_de_espera (nome_aluno,cpf_aluno,data_nascimento,nome_responsavel,cpf_responsavel,telefone,endereco,escola_id,serie_id,funcionario_id) VALUES (?,?,?,?,?,?,?,?,?,?)");
+function cadastrar_lista_espera($conexao,$nome_aluno,$cpf_aluno,$data_nascimento,$nome_responsavel,$cpf_responsavel,$telefone,$endereco,$escola_id,$serie_id,$funcionario_id,$observacao){
+    $sql=$conexao->prepare("INSERT INTO lista_de_espera (nome_aluno,cpf_aluno,data_nascimento,nome_responsavel,cpf_responsavel,telefone,endereco,escola_id,serie_id,funcionario_id,observacao) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
 
-   $sql->execute(array($nome_aluno,$cpf_aluno,$data_nascimento,$nome_responsavel,$cpf_responsavel,$telefone,$endereco,$escola_id,$serie_id,$funcionario_id));
+   $sql->execute(array($nome_aluno,$cpf_aluno,$data_nascimento,$nome_responsavel,$cpf_responsavel,$telefone,$endereco,$escola_id,$serie_id,$funcionario_id,$observacao));
 
 }
 

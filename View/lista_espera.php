@@ -166,6 +166,13 @@ session_start();
                            <input type="text" class="form-control" name="endereco"    required="">
                              
                         </div>
+                      </div> 
+                      <div class="col-sm-5">
+                        <div class="form-group">
+                           <label for="exampleInputEmail1">Observação</label>
+                           <textarea class="form-control" name="observacao" rows="5"></textarea>
+                             
+                        </div>
                       </div>
                   </div>
                   <div class="row">
@@ -226,10 +233,12 @@ session_start();
                         <table class="table">
                           <thead>
                             <tr>
+                              <th scope="col">#</th>
                               <th scope="col">DADOS ALUNO</th>
                               <th scope="col">DADOS RESPONSÁVEL</th>
                               <th scope="col">ESCOLA</th>
                               <th scope="col">SERIE</th>
+                              <th scope="col">OBSERVAÇÃO</th>
                               <th scope="col">OPÇÃO</th> 
 
                             </tr>

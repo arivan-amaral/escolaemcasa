@@ -16,6 +16,7 @@ try {
     $endereco=$_POST['endereco'];
     $escola_id=$_POST['escola_id'];
     $serie_id=$_POST['serie_id'];
+    $observacao=$_POST['observacao'];
      
     $res=verificar_cadastro_lista_espera($conexao,$cpf_aluno);
     $conta=0;
@@ -25,7 +26,7 @@ try {
     }
     if ($conta==0) {
         // code...
-        cadastrar_lista_espera($conexao,$nome_aluno,$cpf_aluno,$data_nascimento,$nome_responsavel,$cpf_responsavel,$telefone,$endereco,$escola_id,$serie_id,$idfuncionario);
+        cadastrar_lista_espera($conexao,$nome_aluno,$cpf_aluno,$data_nascimento,$nome_responsavel,$cpf_responsavel,$telefone,$endereco,$escola_id,$serie_id,$idfuncionario,$observacao);
         echo "certo";
     }else{
         echo "Aluno já possui cadastro de espera na rede municipal! $conta";
