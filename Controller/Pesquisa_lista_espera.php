@@ -2,6 +2,7 @@
  session_start();
  include_once '../Model/Conexao.php';
  include '../Model/Aluno.php';
+ include '../Model/Coordenador.php';
  include 'Conversao.php';
  
 try {
