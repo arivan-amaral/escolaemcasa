@@ -6,7 +6,8 @@
  
 try {
   $id=$_GET['id'];
-    aceitar_lista_espera($conexao,$id);
+  $status=$_GET['status'];
+    aceitar_lista_espera($conexao,$id,$status);
 
  
 } catch (Exception $e) {

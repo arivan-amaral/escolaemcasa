@@ -79,10 +79,10 @@ function pesquisa_lista_espera($conexao,$lista_escolas,$limite){
    return $sql->fetchAll();
 
 }
-function aceitar_lista_espera($conexao,$id){
-    $sql=$conexao->prepare("UPDATE lista_de_espera  SET status=2 WHERE id = ?");
+function aceitar_lista_espera($conexao,$id,$status){
+    $sql=$conexao->prepare("UPDATE lista_de_espera  SET status=? WHERE id = ?");
 
-   $sql->execute(array($id));
+   $sql->execute(array($status,$id));
 
 }
 

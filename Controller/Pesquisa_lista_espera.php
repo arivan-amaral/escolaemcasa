@@ -5,7 +5,7 @@
  include '../Model/Coordenador.php';
  include 'Conversao.php';
  
-try {
+try { 
     $idfuncionario=$_SESSION['idfuncionario'];
 
    $pesquisa=$_GET['pesquisa'];
@@ -46,6 +46,9 @@ try {
         $observacao=$value['observacao'];
         if ($status==2) {
              $cor_status="class='alert alert-success'";
+        }elseif ($status==3){
+             $cor_status="class='alert alert-danger'";
+
         }
         $result.="<tr $cor_status>
             <td>
@@ -84,8 +87,9 @@ try {
                        <ul class = 'dropdown-menu' role = 'menu'>
                        
                            <li>
-                               <a  class='dropdown-item' onclick='aceita_lista_espera($id);' >Aceitar</a>
-                               <a  class='dropdown-item'  >Recusar</a>
+                               <a  class='dropdown-item text-primary' onclick=aceita_recusar_lista_espera($id,2); >Aceitar</a>
+                               <a  class='dropdown-item text-danger' onclick=aceita_recusar_lista_espera($id,3); >Recusar</a>
+                               <a  class='dropdown-item text-info'  data-toggle='modal' data-target='#modal-lista-espera' buscar_dados_editar_lista($id)><b>Editar dados</b></a>
                            </li>
                        </ul>
                    </div>

@@ -88,19 +88,19 @@ function lista_espera(){
 }
 
 
-function aceita_lista_espera(id){
+function aceita_recusar_lista_espera(id,status){
 
 
   
   var xmlreq = CriaRequest();
-  xmlreq.open("GET", "../Controller/Aceita_lista_espera.php?id="+id, true);
+  xmlreq.open("GET", "../Controller/Aceita_lista_espera.php?id="+id+"&status="+status, true);
 
       xmlreq.onreadystatechange = function(){
     
        if (xmlreq.readyState == 4) {
            if (xmlreq.status == 200) {
                 alert('Ação concluída');
-
+                lista_espera();
            }else{
                 alert('Erro');
 

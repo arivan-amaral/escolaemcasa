@@ -22,7 +22,7 @@ session_start();
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 
 
-
+ 
 <div class="content-wrapper" style="min-height: 529px;">
 
     <!-- Content Header (Page header) -->
@@ -269,6 +269,41 @@ session_start();
 </aside>
 
   <!-- /.control-sidebar -->
+  <div class="modal fade" id="modal-lista-espera">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Editar dados lista de espera!</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+
+        <div class="modal-body">
+       
+        <!-- corpo -->
+
+
+
+
+        <form class="mt-12"  method="POST" id="form_lista_espera_editar">
+               
+
+        </form>
+
+
+
+        <!-- /corpo -->          
+      </div>
+      
+
+      <button type="button" class="btn btn-primary" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Concluir edição</font></font></button>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+  </div>
 
 
  <?php 
