@@ -440,7 +440,7 @@ where
                                         <input type='hidden' name='nome_aluno' value='$nome_aluno' -->
 
                                         <!-- button type='submit' class='dropdown-item'  >Rematricular </button -->
-                                        <a   class='dropdown-item' data-toggle='modal' data-target='#modal_rematricula$idaluno' >Rematricular </a>
+                                        <a   class='dropdown-item' data-toggle='modal' data-target='#modal_rematricula$idaluno' >Rematricular. </a>
                                   
                                     <!--/form>
                                     </li -->";
