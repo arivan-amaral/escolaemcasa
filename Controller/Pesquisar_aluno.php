@@ -305,6 +305,128 @@ where
                
       }//final => foreach ($result_ecidade_matricula as $key => $value) {
 
+
+
+        if ($conta_ano_cursado==1) {
+
+
+                $result.="
+
+
+
+            <input type='hidden' name='aluno_id$idaluno'  id='idaluno$idaluno' value='$idaluno'>     
+            <input type='hidden' id='matricula_aluno$idaluno'  value='$matricula'>
+            <input type='hidden' name='turma_id_anterior$idaluno' id='turma_id_anterior$idaluno' value='$idturma'>
+
+                <div class='modal fade bd-example-modal-lg' id='modal_rematricula$idaluno'>
+                  <div class='modal-dialog modal-lg'>
+                    <div class='modal-content'>
+                      <div class='modal-header'>
+                        <h4 class='modal-title'>REMATRICULAR: $nome_aluno</h4>
+                        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>
+                        <div class='modal-body'>    
+                            <div class='row'>
+                               <div class='col-sm-2'>
+                               <div class='form-group'>
+                                <label for='exampleInputEmail1'>Ano</label>
+                                <select  id='ano_letivo' class='form-control' onchange=mudar_ano_letivo(this.value);>";
+                              
+                                           if (isset($_SESSION['ano_letivo'])) {    
+                                                $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
+                                                $result.="<option value='$ano_letivo_vigente' selected>$ano_letivo_vigente</option>";                            
+                                           }
+                              
+                                        
+                                $result.=" </select>
+                              </div>
+                            </div>  
+                              <div class='col-sm-5'>
+                              <div class='form-group'>
+                                <label>Escola</label>
+                                <select id='rematricula_escola_id$idaluno' class='form-control'  name='rematricula_escola_id$idaluno' >".                                            $lista_escolas
+                                ." </select>
+
+                                <!--label for='exampleInputEmail1'>Série atual</label -->
+                                <select hidden class='form-control'  name='rematricula_serie_id$idserie' id='rematricula_serie_id$idaluno' >";  
+                                $result.="<option value='$idserie'></option>";
+                                  $result.="
+                               </select>
+                              </div>
+                            </div>    
+
+                            <div class='col-sm-2'>
+                              <div class='form-group'>
+                           
+                                <label for='exampleInputEmail1'>Turno</label>
+                                <select class='form-control' onchange='lista_turma_escola_por_serie_escola_individual($idaluno);' name='rematricula_turno$idaluno' id='rematricula_turno$idaluno' >
+                                      <option></option>
+                                       <option value='MATUTINO'>MATUTINO</option>
+                                       <option value='VESPERTINO'>VESPERTINO</option>
+                                          <option value='NOTURNO'>NOTURNO</option>
+                                          <option value='INTEGRAL'>INTEGRAL</option>
+                                </select>
+                              </div>
+                            </div>              
+
+                            <div class='col-sm-2'>
+                              <div class='form-group'>
+                                <label for='exampleInputEmail1' class='text-danger'>Nova Série</label>
+                                <select class='form-control'  name='rematricula_nova_serie$idserie' id='rematricula_nova_serie$idaluno'  onchange='lista_turma_escola_por_serie_escola_individual($idaluno);' >
+                                  <option></option>";
+                                $res_serie=lista_todas_series($conexao);
+                                foreach ($res_serie as $key => $value) {
+                                    $id=$value['id'];
+                                    $nome_serie=$value['nome'];
+                                    $result.="<option value='$id'>$nome_serie </option>";
+                                }
+                               
+                                $result.="</select>
+                              </div>
+                            </div>
+
+
+
+                            <div class='col-sm-3'>
+                              <div class='form-group' id=''>
+                                 <label for='exampleInputEmail1' class='text-danger'>Turma pretendida</label>
+                                  <select class='form-control' name='rematricula_turma$idaluno' id='lista_de_turmas_rematricula$idaluno' onchange=quantidade_vaga_turma_rematricula_individual($idaluno);>
+                                  </select>
+                                
+                              </div>
+                            </div>      
+                    
+                          <div class='col-sm-5'>
+                              <div class='form-group' >
+                                <label for='exampleInputEmail1' class='text-danger'>Vagas restantes na turma</label>
+
+                                <input type='text'  name='quantidade_vagas_restante$idaluno' id='quantidade_vagas_restante$idaluno' value='0' readonly class='alert alert-secondary'>
+                                 
+                              </div>
+                            </div>
+                          </div>
+                        
+                          <div class='modal-footer justify-content-between'>
+                                   <button type='button' class='btn btn-default' data-dismiss='modal'>FECHAR</button>
+                                   
+                                   <div id='botao_continuar' >
+                                     <a class='btn btn-primary' onclick='rematricular_aluno_individual($idaluno);' >REMATRICULAR ALUNO</a>
+                                   </div>
+                              </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+          ";
+
+
+          // code...
+        }
+
      #
      #
      #
