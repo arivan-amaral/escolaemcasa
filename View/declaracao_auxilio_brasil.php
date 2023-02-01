@@ -215,7 +215,7 @@ if ( ($seguimento!='' && $seguimento <3) || $idserie <8 ) {
                                   echo " ". $filiacao2." "; 
                                 }
 
-                                ?>, está cursando a(o)  <?php echo $nome_turma; ?>, turno <?php echo $turno; ?> na &nbsp;<b><?php echo $nome_escola; ?>, contabilizou <?php echo $faltas_aluno ?> falta(s) no período 14/02/2022 a <?php echo date("d/m/Y"); ?>.
+                                ?>, está cursando a(o)  <?php echo $nome_turma; ?>, turno <?php echo $turno; ?> na &nbsp;<b><?php echo $nome_escola; ?>, contabilizou <?php echo $faltas_aluno ?> falta(s) no período <?php echo $data_inicial; ?> a <?php echo date("d/m/Y"); ?>.
 
                                </span></p><p class="MsoNormal" style="margin: 0cm 3.25pt 22.55pt 19.6pt; text-align: justify; text-indent: -0.5pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><span style="font-size: 18pt; font-family: &quot;Source Sans Pro&quot;, sans-serif;"><b><br></b></span></p>
                
