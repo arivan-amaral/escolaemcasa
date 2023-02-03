@@ -88,6 +88,30 @@ function lista_espera(){
 }
 
 
+function buscar_dados_editar_lista(id){
+
+
+  var result = document.getElementById('form_lista_espera_editar');
+  result.innerHTML="";
+  result.innerHTML = "<img src='imagens/carregando.gif'>";  
+  var xmlreq = CriaRequest();
+  xmlreq.open("GET", "../Controller/Pesquisa_editar_lista_espera.php?id="+id, true);
+
+      xmlreq.onreadystatechange = function(){
+    
+       if (xmlreq.readyState == 4) {
+           if (xmlreq.status == 200) {
+                 result.innerHTML = xmlreq.responseText;
+
+           }else{
+              result.innerHTML ="Erro ao receber mensagens";                 
+           }
+       }
+      };
+   xmlreq.send(null);
+}
+
+
 function aceita_recusar_lista_espera(id,status){
 
 
@@ -152,7 +176,14 @@ var url="iddisciplina="+iddisciplina+"&idserie="+idserie+"&seguimento="+seguimen
 
 
 function submit_post_generico(caminho,formulario,botao){     
-      var formData = new FormData(document.getElementById(formulario));      
+      console.log(caminho);   
+      var array_pes= caminho.split(',');
+      caminho= array_pes[0];
+      formulario= array_pes[1];
+      botao= array_pes[2];
+
+
+      var formData = new FormData(document.getElementById(formulario));   
       $.ajax({
               type: 'POST',
               url: ''+caminho,

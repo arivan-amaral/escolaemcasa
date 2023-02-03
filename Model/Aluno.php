@@ -58,6 +58,7 @@ function pesquisa_lista_espera($conexao,$lista_escolas,$limite){
     $sql=$conexao->prepare("SELECT 
         lista_de_espera.id,
         nome_aluno,
+
         nome_responsavel,
         funcionario.nome as 'nome_funcionario',
         serie.nome as 'nome_serie',
@@ -79,6 +80,33 @@ function pesquisa_lista_espera($conexao,$lista_escolas,$limite){
    return $sql->fetchAll();
 
 }
+
+function pesquisa_editar_lista_espera($conexao,$id){
+    $sql=$conexao->prepare("SELECT 
+        lista_de_espera.id,
+        nome_aluno,
+        nome_responsavel,
+     cpf_aluno,
+     cpf_responsavel,
+     endereco,
+        lista_de_espera.data_hora,
+        lista_de_espera.telefone,
+        lista_de_espera.escola_id,
+        lista_de_espera.observacao,
+        lista_de_espera.data_nascimento,
+        lista_de_espera.status
+    FROM  
+    lista_de_espera
+    WHERE
+         lista_de_espera.id =$id LIMIT  1");
+
+   $sql->execute();
+   return $sql->fetchAll();
+
+}
+
+
+
 function aceitar_lista_espera($conexao,$id,$status){
     $sql=$conexao->prepare("UPDATE lista_de_espera  SET status=? WHERE id = ?");
 
@@ -87,10 +115,10 @@ function aceitar_lista_espera($conexao,$id,$status){
 }
 
 
-function cadastrar_lista_espera($conexao,$nome_aluno,$cpf_aluno,$data_nascimento,$nome_responsavel,$cpf_responsavel,$telefone,$endereco,$escola_id,$serie_id,$funcionario_id,$observacao){
-    $sql=$conexao->prepare("INSERT INTO lista_de_espera (nome_aluno,cpf_aluno,data_nascimento,nome_responsavel,cpf_responsavel,telefone,endereco,escola_id,serie_id,funcionario_id,observacao) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+function editar_lista_espera($conexao,$nome_aluno,$cpf_aluno,$data_nascimento,$nome_responsavel,$cpf_responsavel,$telefone,$endereco,$escola_id,$serie_id,$funcionario_id,$observacao,$id){
+    $sql=$conexao->prepare("UPDATE lista_de_espera SET nome_aluno=?,cpf_aluno=?,data_nascimento=?,nome_responsavel=?,cpf_responsavel=?,telefone=?,endereco=?,escola_id=?,serie_id=?,funcionario_id=?,observacao=? WHERE id = ?");
 
-   $sql->execute(array($nome_aluno,$cpf_aluno,$data_nascimento,$nome_responsavel,$cpf_responsavel,$telefone,$endereco,$escola_id,$serie_id,$funcionario_id,$observacao));
+   $sql->execute(array($nome_aluno,$cpf_aluno,$data_nascimento,$nome_responsavel,$cpf_responsavel,$telefone,$endereco,$escola_id,$serie_id,$funcionario_id,$observacao,$id));
 
 }
 

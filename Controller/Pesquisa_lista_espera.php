@@ -89,7 +89,7 @@ try {
                            <li>
                                <a  class='dropdown-item text-primary' onclick=aceita_recusar_lista_espera($id,2); >Aceitar</a>
                                <a  class='dropdown-item text-danger' onclick=aceita_recusar_lista_espera($id,3); >Recusar</a>
-                               <a  class='dropdown-item text-info'  data-toggle='modal' data-target='#modal-lista-espera' buscar_dados_editar_lista($id)><b>Editar dados</b></a>
+                               <a  class='dropdown-item text-info'  data-toggle='modal' data-target='#modal-lista-espera' onclick='buscar_dados_editar_lista($id);'><b>Editar dados</b></a>
                            </li>
                        </ul>
                    </div>
