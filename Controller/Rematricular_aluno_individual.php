@@ -9,11 +9,11 @@ try {
 	$profissional_solicitante=$_SESSION['idfuncionario'];
 
 	$turma_id=$_GET['turma_id'];
-	if (isset($_GET['turma_id_anterior'])) {
+	if ($_GET['turma_id_anterior']!="") {
 		$turma_id_anterior=$_GET['turma_id_anterior'];
 
 	}else{
-		$turma_id_anterior=null;
+		$turma_id_anterior=NULL;
 
 	}
 	$quantidade_vagas_restante=$_GET['quantidade_vagas_restante'];
