@@ -9,7 +9,13 @@ try {
 	$profissional_solicitante=$_SESSION['idfuncionario'];
 
 	$turma_id=$_GET['turma_id'];
-	$turma_id_anterior=$_GET['turma_id_anterior'];
+	if (isset($_GET['turma_id_anterior'])) {
+		$turma_id_anterior=$_GET['turma_id_anterior'];
+
+	}else{
+		$turma_id_anterior=null;
+
+	}
 	$quantidade_vagas_restante=$_GET['quantidade_vagas_restante'];
 	$turma_escola=$_GET['turma_escola'];
 	$turno_nome=$_GET['turno_nome'];
