@@ -69,6 +69,10 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
 
 
       @media print {
+        table, thead, tbody, tr, th, td {
+           page-break-inside: avoid !important;
+         }
+         
           body {
             background: none;
             -ms-zoom: 1.665;
