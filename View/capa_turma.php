@@ -72,7 +72,10 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
         table, thead, tbody, tr, th, td {
            page-break-inside: avoid !important;
          }
-         
+         @page {
+            margin: 1cm;
+          }
+          
           body {
             background: none;
             -ms-zoom: 1.665;
