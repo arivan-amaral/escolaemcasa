@@ -50,7 +50,7 @@ try {
         <table class='table table-bordered'>
           <thead>
             <tr>
-              <th style='width: 10px'>Códido Aluno</th>
+              <th style='width: 10px'>Código Aluno</th>
               <th>Aluno</th>
               <th>
               Opções
