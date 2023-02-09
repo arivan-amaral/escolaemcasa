@@ -122,6 +122,13 @@ function editar_lista_espera($conexao,$nome_aluno,$cpf_aluno,$data_nascimento,$n
 
 }
 
+function cadastrar_lista_espera($conexao,$nome_aluno,$cpf_aluno,$data_nascimento,$nome_responsavel,$cpf_responsavel,$telefone,$endereco,$escola_id,$serie_id,$funcionario_id,$observacao){
+    $sql=$conexao->prepare("INSERT INTO lista_de_espera ( nome_aluno,cpf_aluno,data_nascimento,nome_responsavel,cpf_responsavel,telefone,endereco,escola_id,serie_id,funcionario_id,observacao) values (?,?,?,?,?,?,?,?,?,?,?) ");
+
+   $sql->execute(array($nome_aluno,$cpf_aluno,$data_nascimento,$nome_responsavel,$cpf_responsavel,$telefone,$endereco,$escola_id,$serie_id,$funcionario_id,$observacao));
+
+}
+
 
 function cancelar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$ano_letivo){
   $sql=$conexao->prepare("DELETE FROM historico_nota WHERE escola_id = :idescola and turma_id = :idturma and disciplina_id = :iddisciplina and aluno_id = :idaluno and ano = :ano_letivo");
