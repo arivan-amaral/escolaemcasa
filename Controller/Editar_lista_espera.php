@@ -16,7 +16,7 @@ try {
     $endereco=$_POST['endereco'];
     $escola_id=$_POST['escola_id'];
     $serie_id=$_POST['serie_id'];
-    
+
     if (empty($_POST['observacao'])) {
         $observacao=NULL;
     }else{
@@ -35,5 +35,6 @@ try {
 
 } catch (Exception $e) {
     echo "errado $e";
+    echo "$nome_aluno,$cpf_aluno,$data_nascimento,$nome_responsavel,$cpf_responsavel,$telefone,$endereco,$escola_id,$serie_id,$idfuncionario,$observacao,$id";
 }
 ?>
