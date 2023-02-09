@@ -85,7 +85,7 @@ try {
 
 			  		//envia notificação no whatsapp dos secretarios associados que receberão o aluno na nova escola
 			  		$res_associados=verificar_vinculo_funcionario_escola($conexao,$escola_id,$ano_letivo);
-			  		foreach ($resultado as $key => $value) {
+			  		foreach ($res_associados as $key => $value) {
 					  		// $telefone ="55".converte_telefone($phone);
 					  		 $telefone ="5589999342837";
 					  		$newdata= array(
