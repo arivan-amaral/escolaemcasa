@@ -48,6 +48,10 @@ try {
 
 
   if(isset($_POST["email"]) ){  //&& $response != null && $response->success==true){
+      
+
+      $_SESSION['whatsapp']="educalem";
+
 
       $email = $_POST["email"];
       $email=($email);

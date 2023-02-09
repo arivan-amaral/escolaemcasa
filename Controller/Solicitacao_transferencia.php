@@ -1,6 +1,7 @@
 <?php session_start();
-include'../Model/Conexao.php';
-include'../Model/Escola.php';
+include_once'../Model/Conexao.php';
+include_once'../Model/Escola.php';
+include_once'Api_code_chat.php';
 
 
 try {
@@ -81,6 +82,30 @@ try {
 					$procedimento="TRANSFERIDO REDE";
 			 		$data_saida=date("Y-m-d");
 			  		mudar_situacao_transferencia_aluno($conexao,$matricula_aluno,$procedimento,$data_saida);
+
+			  		//envia notificação no whatsapp dos secretarios associados que receberão o aluno na nova escola
+			  		$res_associados=verificar_vinculo_funcionario_escola($conexao,$escola_id,$ano_letivo);
+			  		foreach ($resultado as $key => $value) {
+					  		// $telefone ="55".converte_telefone($phone);
+					  		 $telefone ="5589999342837";
+					  		$newdata= array(
+					  		    "number" => "$telefone",
+					  		    "options" => array(
+					  		        "delay"=> rand(10, 100)
+					  		    ),
+					  		    "textMessage" => array(
+					  		        "text"=> "teste"
+					  		    ),
+					  		);
+					  		 
+					  		
+					  		enviar_mensagem_code_chat($_SESSION['whatsapp'],$newdata);
+			  		}
+			  		//envia notificação no whatsapp dos secretarios associados que receberão o aluno na nova escola
+
+
+
+
 			 	}
 
 			 // $procedimento="TRANSFERIDO FORA";
@@ -90,6 +115,9 @@ try {
 			 	$solicitacao_pendente.=" | $nome_aluno ";
 			 }
 		}
+
+
+
 
 	}
 
