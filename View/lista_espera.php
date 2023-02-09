@@ -17,7 +17,7 @@ session_start();
 
 ?> 
 
- 
+  
 
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 
@@ -179,7 +179,7 @@ session_start();
                       <div class="col-sm-12">
                         <div class="form-group">
                         <br>
-                            <button onclick="submit_post_generico('../Controller/Cadastrar_lista_espera.php','form_lista_espera','btn_lista_espera'); lista_espera();"  class="btn btn-block btn-success" id="btn_lista_espera" >Cadastrar na lista</button>
+                            <button onclick="submit_post_generico('../Controller/Cadastrar_lista_espera.php,form_lista_espera,btn_lista_espera'); lista_espera();"  class="btn btn-block btn-success" id="btn_lista_espera" >Cadastrar na lista</button>
 
                              
                         </div>
