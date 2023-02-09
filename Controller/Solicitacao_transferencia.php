@@ -84,23 +84,23 @@ try {
 			  		mudar_situacao_transferencia_aluno($conexao,$matricula_aluno,$procedimento,$data_saida);
 
 			  		//envia notificação no whatsapp dos secretarios associados que receberão o aluno na nova escola
-			  		$res_associados=verificar_vinculo_funcionario_escola($conexao,$escola_id,$ano_letivo);
-			  		foreach ($res_associados as $key => $value) {
-					  		// $telefone ="55".converte_telefone($phone);
-					  		 $telefone ="5589999342837";
-					  		$newdata= array(
-					  		    "number" => "$telefone",
-					  		    "options" => array(
-					  		        "delay"=> rand(10, 100)
-					  		    ),
-					  		    "textMessage" => array(
-					  		        "text"=> "teste"
-					  		    ),
-					  		);
+			  		// $res_associados=verificar_vinculo_funcionario_escola($conexao,$escola_id,$ano_letivo);
+			  		// foreach ($res_associados as $key => $value) {
+					//   		// $telefone ="55".converte_telefone($phone);
+					//   		 $telefone ="5589999342837";
+					//   		$newdata= array(
+					//   		    "number" => "$telefone",
+					//   		    "options" => array(
+					//   		        "delay"=> rand(10, 100)
+					//   		    ),
+					//   		    "textMessage" => array(
+					//   		        "text"=> "teste"
+					//   		    ),
+					//   		);
 					  		 
 					  		
-					  		enviar_mensagem_code_chat($_SESSION['whatsapp'],$newdata);
-			  		}
+					//   		enviar_mensagem_code_chat($_SESSION['whatsapp'],$newdata);
+			  		// }
 			  		//envia notificação no whatsapp dos secretarios associados que receberão o aluno na nova escola
 
 
