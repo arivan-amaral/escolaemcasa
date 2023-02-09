@@ -1,11 +1,19 @@
 <?php session_start();
 include_once'../Model/Conexao.php';
 include_once'../Model/Escola.php';
+include_once'../Model/Coordenador.php';
 include_once'Api_code_chat.php';
+include_once'Conversao.php';
 
 
 try {
 
+if (isset($_SESSION['whatsapp'])) {
+	$sessao_whatsapp=$_SESSION['whatsapp'];
+}else{
+	$sessao_whatsapp="educalem";
+
+}
 	$profissional_solicitante=$_SESSION['idfuncionario'];
 
 
@@ -84,25 +92,28 @@ try {
 			  		mudar_situacao_transferencia_aluno($conexao,$matricula_aluno,$procedimento,$data_saida);
 
 			  		//envia notificação no whatsapp dos secretarios associados que receberão o aluno na nova escola
-			  		// $res_associados=verificar_vinculo_funcionario_escola($conexao,$escola_id,$ano_letivo);
-			  		// foreach ($res_associados as $key => $value) {
-					//   		// $telefone ="55".converte_telefone($phone);
-					//   		 $telefone ="5589999342837";
-					//   		$newdata= array(
-					//   		    "number" => "$telefone",
-					//   		    "options" => array(
-					//   		        "delay"=> rand(10, 100)
-					//   		    ),
-					//   		    "textMessage" => array(
-					//   		        "text"=> "teste"
-					//   		    ),
-					//   		);
+			  		$res_associados=verificar_vinculo_funcionario_escola($conexao,$escola_id);
+			  		foreach ($res_associados as $key => $value) {
+					  		$nome_funcionario=$value['nome'];
+					  		$telefone=converte_telefone($value['whatsapp']);
+					  		// $telefone ="5589999342837";
+					  		$newdata= array(
+					  		    "number" => "$telefone",
+					  		    "options" => array(
+					  		        "delay"=> rand(10, 100)
+					  		    ),
+					  		    "textMessage" => array(
+					  		        "text"=> "Olá sr(a) *".$nome_funcionario."* , \n\nESSA MESNSAGEM FOI ENVIADA DE FORMA AUTOMÁTICA PELO SISTEMA ".strtoupper($sessao_whatsapp)." COM A FINALIDADE DE INFORMA SOBRE UMA MOVIMENTAÇÃO OCORRIDA NA SUA ESCOLA DE ATUAÇÃO\n\n\n $observacao"
+					  		    ),
+					  		);
 					  		 
 					  		
-					//   		enviar_mensagem_code_chat($_SESSION['whatsapp'],$newdata);
-			  		// }
+					  		enviar_mensagem_code_chat($sessao_whatsapp,$newdata);
+					  		// echo "$observacao";
+			  		}
 			  		//envia notificação no whatsapp dos secretarios associados que receberão o aluno na nova escola
 
+					  		// echo $sessao_whatsapp;
 
 
 
@@ -143,6 +154,8 @@ try {
 
 
 } catch (Exception $e) {
+	// echo "$e";
+	// exit();
 	$_SESSION['status']=0;
 	$_SESSION['mensagem']='Alguma coisa deu errado, tente novamente!';
 	header("location:../View/listar_alunos_da_turma.php?$url_get");

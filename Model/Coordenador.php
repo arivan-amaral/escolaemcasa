@@ -105,11 +105,10 @@
 	}
 
 
-	function verificar_vinculo_funcionario_escola($conexao,$idescola,$ano_letivo){
+	function verificar_vinculo_funcionario_escola($conexao,$idescola){
 	     $res=$conexao->query("SELECT funcionario.nome , funcionario.whatsapp FROM funcionario,relacionamento_funcionario_escola WHERE
 relacionamento_funcionario_escola.funcionario_id= funcionario.idfuncionario and 
-relacionamento_funcionario_escola.escola_id='$idescola' AND 
-relacionamento_funcionario_escola.ano='$ano_letivo' ");
+relacionamento_funcionario_escola.escola_id='$idescola' ");
 
 	 	return $res;
 	}		

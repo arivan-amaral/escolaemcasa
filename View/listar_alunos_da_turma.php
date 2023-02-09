@@ -653,7 +653,7 @@ function mtel(v){
    <button type='button' class='btn btn-default' data-dismiss='modal'>FECHAR</button>
   
    <div id='botao_continuar'>
-     <button type='submit' class='btn btn-primary' >TRANSFERIR SELECIONADOS</button>
+     <button id='botao_transferir' type='submit' class='btn btn-primary' onclick=bloquear_botao_concluir('botao_transferir'); >TRANSFERIR SELECIONADOS</button>
    </div>
  </div>
 
