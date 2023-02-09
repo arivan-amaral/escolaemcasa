@@ -16,13 +16,20 @@ try {
     $endereco=$_POST['endereco'];
     $escola_id=$_POST['escola_id'];
     $serie_id=$_POST['serie_id'];
-    $observacao=$_POST['observacao'];
+    
+    if (empty($_POST['observacao'])) {
+        $observacao=NULL;
+    }else{
+        $observacao=$_POST['observacao'];
+
+    }
     $id=$_POST['id'];
      
  
         // code...
         editar_lista_espera($conexao,$nome_aluno,$cpf_aluno,$data_nascimento,$nome_responsavel,$cpf_responsavel,$telefone,$endereco,$escola_id,$serie_id,$idfuncionario,$observacao,$id);
         echo "certo";
+
     
 
 
