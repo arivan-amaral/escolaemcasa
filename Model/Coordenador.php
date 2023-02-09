@@ -106,8 +106,7 @@
 
 
 	function verificar_vinculo_funcionario_escola($conexao,$idescola){
-	     $res=$conexao->query("SELECT funcionario.nome , funcionario.whatsapp FROM funcionario,relacionamento_funcionario_escola WHERE
-relacionamento_funcionario_escola.funcionario_id= funcionario.idfuncionario and 
+	     $res=$conexao->query("SELECT funcionario.nome , funcionario.whatsapp FROM funcionario,relacionamento_funcionario_escola WHERE funcionario.descricao_funcao !='Professor' and funcionario.descricao_funcao !='Professora' and relacionamento_funcionario_escola.funcionario_id= funcionario.idfuncionario and 
 relacionamento_funcionario_escola.escola_id='$idescola' ");
 
 	 	return $res;
