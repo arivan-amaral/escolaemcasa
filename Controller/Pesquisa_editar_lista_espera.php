@@ -77,7 +77,7 @@ try {
                                 $idserie=$value['id'];
                                 $nome_serie=$value['nome'];
                                
-                                $result.="<option value='$id'>$nome_serie </option>";
+                                $result.="<option value='$idserie'>$nome_serie </option>";
                               }
                             
                             $result.="</select>
