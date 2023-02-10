@@ -520,7 +520,7 @@ $conta_aluno++;
 
   E, para constar, foi lavrada esta Ata. <br>
   ___________________________________________<br>
-Luís Eduardo Magalhães - BA, <?php echo date("d/m/Y"); ?>
+<?php echo $_SESSION['CIDADE']; ?>, <?php echo date("d/m/Y"); ?>
 </p> 
   </td>
   <!-- <td width=404 colspan=10  style='border:solid black 1.0pt;

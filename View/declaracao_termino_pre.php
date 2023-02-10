@@ -156,7 +156,7 @@ $result_ecidade_matricula=$conexao->query("SELECT
    <p class=MsoNormal style='margin-bottom:5pt;line-height:normal'><b><span
    style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
    mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-   color:black;mso-fareast-language:PT-BR'>PREFEITURA LUÍS EDUARDO MAGALHÃES<o:p></o:p></span></b></p>
+   color:black;mso-fareast-language:PT-BR'><?php echo $_SESSION['ORGAO']; ?><o:p></o:p></span></b></p>
 
      <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
      style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;

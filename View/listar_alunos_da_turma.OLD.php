@@ -63,7 +63,7 @@ $url_get=$array_url[1];
 
              <?php
              if (isset($nome_escola_global)) {
-              echo NOME_APLICACAO; 
+              echo $_SESSION['NOME_APLICACAO']; 
             }
             ?>
 

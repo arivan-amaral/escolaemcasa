@@ -54,7 +54,7 @@ if (!isset($_SESSION['idprofessor'])) {
 
              <?php
               if (isset($nome_escola_global)) {
-                echo NOME_APLICACAO; 
+                echo $_SESSION['NOME_APLICACAO']; 
               }
               ?>
              <?php if (isset($_SESSION['nome'])) {

@@ -240,7 +240,7 @@ div.WordSection1
       <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
       line-height:normal'><b><span style='font-size:23.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-      color:black;mso-fareast-language:PT-BR'>PREFEITURA DE LUÍS EDUARDO MAGALHÃES<o:p></o:p></span></b></p>
+      color:black;mso-fareast-language:PT-BR'><?php echo $_SESSION['ORGAO']; ?><o:p></o:p></span></b></p>
       <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
       line-height:normal'><b><span style='font-size:18.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;

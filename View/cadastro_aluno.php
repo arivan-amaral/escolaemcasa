@@ -433,7 +433,7 @@ foreach ($campos as  $value) {
                         <div class='form-group'>
                           <label for='exampleInputEmail1'>Município</label>
                           <select type='text' class='form-control'  name='municipio_endereco' >
-                            <option value="515">Luís Eduardo Magalhães</option>
+                            <option value="<?php echo $_SESSION["IDCIDADE"] ?>"><?php echo $_SESSION["CIDADE"] ?></option>
                             <?php 
                         $pesquisa_cidadade=listar_cidade_por_idestado($conexao,5);
                         foreach ($pesquisa_cidadade as $key => $value) {

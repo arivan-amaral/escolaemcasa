@@ -85,7 +85,7 @@ $colspan="100%";
             line-height:normal'><b><span style='font-size:20.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
             mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
             color:black;mso-fareast-language:PT-BR;margin-left: 100px;'>
-            PREFEITURA MUNICIPAL LUÍS EDUARDO MAGALHÃES <o:p></o:p></span></b>
+            <?php echo $_SESSION['ORGAO']; ?> <o:p></o:p></span></b>
         </p>
         
         </tr>

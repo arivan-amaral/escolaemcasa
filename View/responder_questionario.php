@@ -52,7 +52,7 @@ $data=date("Y-m-d H:i:s");
 
             <?php
             if (isset($nome_escola_global)) {
-              echo NOME_APLICACAO; 
+              echo $_SESSION['NOME_APLICACAO']; 
             }
             ?>
 

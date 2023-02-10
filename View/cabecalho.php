@@ -5,11 +5,20 @@
 //  header("location:index.php");
 // }
 
-   $nome_escola_global="EDUCA LEM -";
+   // $nome_escola_global="EDUCA LEM -";
 
-   define("NOME_APLICACAO", "EDUCA LEM");
-   define("ORGAO", "PREFEITURA MUNICIPAL LUÍS EDUARDO MAGALHÃES");
-   define("CIDADE", "LUÍS EDUARDO MAGALHÃES");
+   // define("NOME_APLICACAO", "EDUCA LEM");
+ 
+
+if ( session_status() !== PHP_SESSION_ACTIVE )
+ {
+    session_start();
+}
+   $_SESSION["NOME_APLICACAO"]="EDUCA LEM";
+    $_SESSION["ORGAO"]= "PREFEITURA MUNICIPAL LUÍS EDUARDO MAGALHÃES";
+    $_SESSION["CIDADE"]= "LUÍS EDUARDO MAGALHÃES- BA";
+    $_SESSION["CEP"]= "47850-000";
+    $_SESSION["IDCIDADE"]=515;
 
 ?>
 <!DOCTYPE html>
@@ -23,7 +32,7 @@
   
   <link rel="shortcut icon" href="imagens/logo.png"/>
 
-  <title><?php echo NOME_APLICACAO; ?></title>
+  <title><?php echo $_SESSION['NOME_APLICACAO']; ?></title>
   
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">

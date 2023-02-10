@@ -13,8 +13,8 @@ function diario_frequencia_pagina_final_infantil($conexao,$idescola,$idturma,$id
     $periodo_id,$idserie,$data_inicio_trimestre,$data_fim_trimestre)
 
     */
-  
-  $nome_disciplina='';
+ 
+   $nome_disciplina='';
 
   if ($idserie>2 && $iddisciplina==1000) {
     

@@ -25,7 +25,7 @@
             <h1 class="m-0"><b>
               <?php
               if (isset($nome_escola_global)) {
-                echo NOME_APLICACAO; 
+                echo $_SESSION['NOME_APLICACAO']; 
               }
               ?>
               
