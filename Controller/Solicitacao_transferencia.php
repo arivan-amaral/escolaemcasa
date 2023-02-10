@@ -103,7 +103,7 @@ if (isset($_SESSION['whatsapp'])) {
 					  		        "delay"=> rand(10, 100)
 					  		    ),
 					  		    "textMessage" => array(
-					  		        "text"=> "Olá sr(a) *".$nome_funcionario."* , \n\nESSA MESNSAGEM FOI ENVIADA DE FORMA AUTOMÁTICA PELO SISTEMA ".strtoupper($sessao_whatsapp)." COM A FINALIDADE DE INFORMA SOBRE UMA MOVIMENTAÇÃO OCORRIDA NA SUA ESCOLA DE ATUAÇÃO\n\n\n $observacao ⚠️*para a escola onde você trabalha!*⚠️"
+					  		        "text"=> "Olá sr(a) *".$nome_funcionario."* , \n\nESSA MESNSAGEM FOI ENVIADA DE FORMA AUTOMÁTICA PELO SISTEMA ".strtoupper($sessao_whatsapp)." COM A FINALIDADE DE INFORMAR SOBRE UMA MOVIMENTAÇÃO OCORRIDA NA SUA ESCOLA DE ATUAÇÃO\n\n\n $observacao ⚠️*para a escola onde você trabalha!*⚠️"
 					  		    ),
 					  		);
 					  		 
