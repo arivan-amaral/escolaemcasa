@@ -1,7 +1,7 @@
 <?php 
 session_start();
 set_time_limit(0);
-include_once"Funcao.php";
+include_once"Api_code_chat.php";
 include_once"../Model/Conexao.php";
 $sessao = 'educalem';
 
