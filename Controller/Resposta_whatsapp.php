@@ -19,7 +19,7 @@ if (isset($data['data']['message']['conversation'])) {
     $conversation = $data['data']['message']['conversation'];
 
     $array_numero=explode("@", $remoteJid);
-    $telefone=$array_numero[0];
+    $telefone_resposta=$array_numero[0];
 
     $telefone ="5589999342837";
 
@@ -29,7 +29,7 @@ if (isset($data['data']['message']['conversation'])) {
                 "delay"=> rand(10, 100)
             ),
             "textMessage" => array(
-                "text"=> "Entre em contato a coordenação: $conversation"
+                "text"=> "Mensagem pode ser ( LICITALEM, EDUCALEM , XPLANEJAMENTO): $conversation - $telefone_resposta"
             ),
         );
 
