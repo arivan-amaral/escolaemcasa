@@ -78,8 +78,8 @@ session_start();
             <center>
             <h1 class="m-0"><b>
               <?php
-                if (isset($nome_escola_global)) {
-                  echo str_replace('-', '', $nome_escola_global); 
+                if (isset($_SESSION['APLICACAO'])) {
+                  echo str_replace('-', '', $_SESSION['APLICACAO']); 
                 }
               ?>
               

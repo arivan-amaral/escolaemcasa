@@ -5,7 +5,7 @@
 //  header("location:index.php");
 // }
 
-   // $nome_escola_global="EDUCA LEM -";
+   $nome_escola_global="-";
 
    // define("NOME_APLICACAO", "EDUCA LEM");
  
