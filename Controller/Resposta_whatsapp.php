@@ -3,17 +3,18 @@ session_start();
 set_time_limit(0);
 include_once"Funcao.php";
 include_once"../Model/Conexao.php";
-include_once"../Model/BotZap.php";
+$sessao = 'educalem';
 
 
-$arquivo = file_get_contents('php://input');
-$json= json_decode($arquivo);
+
 
 try {
-    
+   
+$arquivo = file_get_contents('php://input');
+ $data = json_decode($arquivo, true);
+ 
 
 if (isset($data['data']['key']['remoteJid'])) {
-    $data = json_decode($json, true);
     $remoteJid = $data['data']['key']['remoteJid'];
     $conversation = $data['data']['message']['conversation'];
 
@@ -21,7 +22,6 @@ if (isset($data['data']['key']['remoteJid'])) {
     $telefone=$array_numero[0];
 
     $telefone ="5589999342837";
-    $sessao =$_SESSION['whatsaap'];
 
         $newdata= array(
             "number" => "$telefone",
