@@ -6,6 +6,11 @@
 // }
 
    $nome_escola_global="EDUCA LEM -";
+
+   define("NOME_APLICACAO", "EDUCA LEM");
+   define("ORGAO", "PREFEITURA MUNICIPAL LUÍS EDUARDO MAGALHÃES");
+   define("CIDADE", "LUÍS EDUARDO MAGALHÃES");
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -18,7 +23,7 @@
   
   <link rel="shortcut icon" href="imagens/logo.png"/>
 
-  <title><?php echo "$nome_escola_global"; ?></title>
+  <title><?php echo NOME_APLICACAO; ?></title>
   
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">

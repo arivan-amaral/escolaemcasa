@@ -91,7 +91,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
            <?php
               if (isset($nome_escola_global)) {
-                echo $nome_escola_global; 
+                echo NOME_APLICACAO; 
               }
               ?>
 

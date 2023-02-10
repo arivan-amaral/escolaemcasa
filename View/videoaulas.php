@@ -51,7 +51,7 @@
             <h1 class="m-0"><b>
               <?php
               if (isset($nome_escola_global)) {
-                echo $nome_escola_global; 
+                echo NOME_APLICACAO; 
               }
               ?>
 
