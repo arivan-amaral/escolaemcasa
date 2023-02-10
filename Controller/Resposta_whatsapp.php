@@ -36,6 +36,8 @@ if (isset($data['data']['key']['remoteJid'])) {
 
 
      enviar_mensagem_code_chat($sessao,$newdata);
+}else{
+    echo "Funcionado ";
 }
 
 } catch (Exception $e) {
