@@ -14,7 +14,7 @@ $arquivo = file_get_contents('php://input');
  $data = json_decode($arquivo, true);
  
 
-if (isset($data['data']['key']['remoteJid'])) {
+if (isset($data['data']['message']['conversation'])) {
     $remoteJid = $data['data']['key']['remoteJid'];
     $conversation = $data['data']['message']['conversation'];
 
@@ -35,7 +35,7 @@ if (isset($data['data']['key']['remoteJid'])) {
 
 
 
-     //enviar_mensagem_code_chat($sessao,$newdata);
+     enviar_mensagem_code_chat($sessao,$newdata);
 }else{
     echo "Funcionado ";
 }
