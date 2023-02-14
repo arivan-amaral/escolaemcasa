@@ -82,7 +82,7 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
 
         .pagebreak { page-break-before: always; } /* page-break-after works, as well */
       }
-      @media print{@page {size: landscape}}
+
 
 </style>
 <style type="text/css" media="print">
