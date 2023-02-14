@@ -202,10 +202,36 @@ $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
                         <div class='row'>
                               <div class='col-sm-3'>
 
+                              <div class='form-group'>
+                                <label for='exampleInputEmail1'>Série</label>
+                                    <select name='aceitar_idserie_destino' id='aceitar_idserie_destino$idsolicitacao' class='form-control'>";
 
-                <input  type='hidden' name='aceitar_idserie_destino' id='aceitar_idserie_destino$idsolicitacao' class='form-control' value='$idserie'>      
+                                    $res_destino_rematricula=lista_ordem_serie_rematricula($conexao,$idserie
+                                    );
+                                    foreach ($res_destino_rematricula as $key_re => $value_re) {
+                                        $possivel_destino=$value_re['possivel_destino'];
+
+                                        $res_serie=pesquisar_serie_por_id($conexao,$possivel_destino);
+                                        foreach ($res_serie as $key => $value) {
+                                          $serie_id_bd=$value['id'];
+                                          $nome_serie=$value['nome'];
+                                          if ($idserie==$serie_id_bd) {
+                                            echo "<option value='$serie_id_bd' selected>$nome_serie </option>";
+                                            // code...
+                                          }else{
+                                            echo "<option value='$serie_id_bd'>$nome_serie </option>";
+
+                                          }
+                                        } 
+                                    }  
+                                 
+                                    echo "</select> 
+
+                                  
+                                </div>
+                                   
                   
-                <input  type='hidden' name='turma_id_origem' id='turma_id_origem$idsolicitacao' class='form-control' value='$turma_id_origem'>      
+                <input  type='hidden' name='turma_id_origem' id='turma_id_origem$idsolicitacao' class='form-control' value='$turma_id_origem' readonly>      
                
                 <input  type='hidden' name='idsolicitacao' class='form-control' value='$idsolicitacao'>
                 <input  type='hidden' name='matricula_aluno' class='form-control' value='$matricula_aluno'>
