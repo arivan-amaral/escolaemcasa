@@ -84,6 +84,7 @@
               </li>
               </ul>";
 
+              if ($_SESSION['nivel_acesso_id']==100) {
               echo"<li class='nav-item menu'>
               <a href='./index.php' class='nav-link'>
               <ion-icon name='git-network-outline'></ion-icon>
@@ -108,7 +109,7 @@
               </li>
               </ul>       
               </li>";
-              
+              }
                echo"<li class='nav-item menu'>
               <a href='lista_espera.php' class='nav-link'>
               <ion-icon name='apps-outline'></ion-icon>
