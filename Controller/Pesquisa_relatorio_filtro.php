@@ -9,6 +9,16 @@ include 'Conversao.php';
 try {
 
     $texto = $_GET['texto'];
+    
+    $ordenacao = $_GET['ordenacao'];
+    if ($ordenacao=="endereco") {
+        $ordenacao="  aluno.bairro_endereco asc, aluno.endereco asc, aluno.nome asc ";
+    }else{
+        $ordenacao="  aluno.nome asc ";
+
+    }
+
+
     $parametro = $_GET['parametro'];
     $titulo = $_GET['titulo'];
     $escola = $_GET['escola'];
@@ -116,7 +126,7 @@ try {
               
           }
     }else{
-       $res_matriculas = pesquisa_relatorio_filtro($conexao,$texto,$sexo,$escola,$ano_letivo);
+       $res_matriculas = pesquisa_relatorio_filtro($conexao,$texto,$sexo,$escola,$ano_letivo,$ordenacao);
     
      
       foreach ($res_matriculas as $key => $value) {

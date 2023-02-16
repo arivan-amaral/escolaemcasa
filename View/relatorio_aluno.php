@@ -183,7 +183,7 @@ if (!isset($_SESSION['idfuncionario'])) {
         </div>
       </div>
       
-        <div class="col-sm-3">
+        <div class="col-sm-2">
           <div class="form-group">
            <label for="exampleInputEmail1">SEXO</label>
            <select class="form-control"  id="sexo" name="sexo" >
@@ -192,7 +192,20 @@ if (!isset($_SESSION['idfuncionario'])) {
              <option value='F'>Feminino</option>
            </select> 
           </div>
+        </div>  
+
+        <div class="col-sm-3">
+          <div class="form-group">
+           <label for="exampleInputEmail1">Ordenação</label>
+           <select class="form-control"  id="ordenacao" name="ordenacao" >
+             <option value='aluno'>Nome aluno</option>
+             <option value='endereco'>Endereço</option>
+        
+           </select> 
+          </div>
         </div> 
+
+        
         <div class="col-sm-3">
           <div class="form-group">
            <label for="exampleInputEmail1">ESCOLA</label>
@@ -223,9 +236,9 @@ if (!isset($_SESSION['idfuncionario'])) {
            </select> 
           </div>
         </div> 
-        <div class="col-sm-2">
+        <div class="col-sm-12">
           <div class="form-group">
-          <a style="margin-top: 30PX;" class="btn btn-primary" onclick="pesquisa_relatorio_filtros()">Pesquisar</a>
+          <a style="margin-top: 30PX;" class="btn btn-block btn-primary" onclick="pesquisa_relatorio_filtros()">Pesquisar</a>
           </div>
         </div>
       </div>
