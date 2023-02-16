@@ -32,8 +32,7 @@ foreach ($res_aluno as $key => $value) {
   <td width=748 colspan=30 valign=top style='width:561.2pt;border:solid black 1.0pt;
   border-bottom:none;padding:0cm 3.5pt 0cm 3.5pt;height:19.5pt'>
   <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
-  text-align:center;line-height:normal'><b><span style='font-size:13.0pt'>PREFEITURA
-  MUNICIPAL LUÍS EDUARDO MAGALHÃES - BA</span></b></p>
+  text-align:center;line-height:normal'><b><span style='font-size:13.0pt'><?php echo $_SESSION['ORGAO'] ?></span></b></p>
   </td>
  </tr>
  <tr style='height:36.0pt'>
