@@ -22,7 +22,7 @@ $idaluno = $_POST['aluno_id'];
 if ($_SESSION['nivel_acesso_id']==100) {
  $disabled='';
 }else{
- $disabled='disabled';
+ $disabled='readonly';
   
 }
 
