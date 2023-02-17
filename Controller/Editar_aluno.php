@@ -282,6 +282,7 @@ try {
     echo "certo";
  
 } catch (Exception $e) {
+    echo "Matricula: $data_matricula";
     echo $e;
      //$_SESSION['status']=0;
     // header("location$../View/cadastro_aluno.php");
