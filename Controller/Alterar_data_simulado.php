@@ -1,6 +1,6 @@
 <?php
 include_once '../Model/Conexao.php';
-include '../Model/Questionario.php';
+include_once '../Model/Questionario.php';
     $id=$_GET['id'];
     $data=$_GET['data'];
     $data_final=$_GET['data_fim'];

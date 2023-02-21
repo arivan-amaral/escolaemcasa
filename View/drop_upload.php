@@ -1,5 +1,5 @@
 <?php
-include 'ImageResize.php';
+include_once 'ImageResize.php';
 
 $ds = DIRECTORY_SEPARATOR;  //1
  

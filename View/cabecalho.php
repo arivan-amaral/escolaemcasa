@@ -4,6 +4,8 @@
 //  unset($_SESSION['cargo']);
 //  header("location:index.php");
 // }
+  include_once '../Model/Conexao.php';
+
 
    $nome_escola_global="-";
 

@@ -1,7 +1,7 @@
 <?php 
-  include "cabecalho.php";
-  include "barra_horizontal.php";
-  include 'menu.php';
+  include_once "cabecalho.php";
+  include_once "barra_horizontal.php";
+  include_once 'menu.php';
 
 
   if (isset($_SESSION['status'])) {
@@ -95,5 +95,5 @@
 
 
  <?php 
-    include 'rodape.php';
+    include_once 'rodape.php';
  ?>

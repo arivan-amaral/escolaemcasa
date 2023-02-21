@@ -1,7 +1,7 @@
 <?php
-include "cabecalho.php";
-include "barra_horizontal.php";
-include 'menu.php';
+include_once "cabecalho.php";
+include_once "barra_horizontal.php";
+include_once 'menu.php';
 include_once '../Model/Conexao.php';
 
 ?>
@@ -79,5 +79,5 @@ include_once '../Model/Conexao.php';
 
 <?php
 
-include 'rodape.php';
+include_once 'rodape.php';
 ?>

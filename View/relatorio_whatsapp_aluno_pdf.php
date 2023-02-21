@@ -2,8 +2,8 @@
 
  include("mpdf/mpdf60/mpdf.php");
 
-include'../Model/Conexao.php';
-include'../Controller/Conversao.php';
+include_once '../Model/Conexao.php';
+include_once '../Controller/Conversao.php';
 
  $html = "
  <html>

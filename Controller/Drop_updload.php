@@ -1,8 +1,8 @@
 <?php
 session_start();
-include 'ImageResize.php';
+include_once 'ImageResize.php';
 include_once '../Model/Conexao.php';
-include '../Model/Trabalho.php';
+include_once '../Model/Trabalho.php';
 $ds = DIRECTORY_SEPARATOR;  //1
 
 	

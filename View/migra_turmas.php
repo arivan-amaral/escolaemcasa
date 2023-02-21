@@ -1,7 +1,7 @@
 <?php 
 set_time_limit(0);
   include_once '../Model/Conexao.php';
-	include '../Controller/Conversao.php';
+	include_once '../Controller/Conversao.php';
 
 	$indice=0;
 	$limite=250;

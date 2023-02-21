@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once '../Model/Conexao.php';
-include '../Model/Questionario.php';
+include_once '../Model/Questionario.php';
 // $nome = $_GET['nome'];
 // $questionario_id = $_GET['questionario_id'];
 // $origem_questionario_id = $_GET['origem_questionario_id'];

@@ -1,8 +1,8 @@
 <?php 
   include_once '../Model/Conexao.php';
-  include '../Model/Escola.php';
-  include '../Model/Coordenador.php';
-  include '../Model/Professor.php';
+  include_once '../Model/Escola.php';
+  include_once '../Model/Coordenador.php';
+  include_once '../Model/Professor.php';
   $idcoordenador=$_GET['idcoordenador'];
   $res=pesquisar_professor_por_id($conexao,$idcoordenador);
   foreach ($res as $key => $value) {

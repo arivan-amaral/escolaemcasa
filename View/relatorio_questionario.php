@@ -1,8 +1,8 @@
-<?php include './header.php'; 
+<?php include_once './header.php'; 
 
-include '../DAO/conexao.php';
-include '../DAO/Questionario.php';
-include '../DAO/Aluno.php';
+include_once '../DAO/conexao.php';
+include_once '../DAO/Questionario.php';
+include_once '../DAO/Aluno.php';
 
 if (isset($_SESSION['id_funcionario']))  {
     $id_funcionario=$_SESSION['id_funcionario'];
@@ -203,4 +203,4 @@ $idescola = $_GET['idescola'];
  </div>
 </div>
 
-<?php include 'rodape.php'; ?>
+<?php include_once 'rodape.php'; ?>

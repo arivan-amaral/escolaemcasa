@@ -1,10 +1,10 @@
 <?php 
 set_time_limit(0);
 // session_start();
-include'../Model/Conexao.php';
-include'../Model/Aluno.php';
-include'../Model/Turma.php';
-include'Conversao.php';
+include_once '../Model/Conexao.php';
+include_once '../Model/Aluno.php';
+include_once '../Model/Turma.php';
+include_once 'Conversao.php';
 
 
 

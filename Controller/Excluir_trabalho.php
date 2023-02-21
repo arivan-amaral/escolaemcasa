@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once '../Model/Conexao.php';
-include '../Model/Trabalho.php';
+include_once '../Model/Trabalho.php';
 
 $id = $_GET['id'];
 try {

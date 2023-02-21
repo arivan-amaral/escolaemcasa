@@ -3,8 +3,8 @@ session_start();
 $professor_id=$_SESSION['idfuncionario'];
 
 include_once '../Model/Conexao.php';
-include '../Model/Questionario.php';
-include 'Conversao.php';
+include_once '../Model/Questionario.php';
+include_once 'Conversao.php';
 try {
 $nome_descricao =escape_mimic($_POST['nome']);
 $origem_questionario_id = $_POST['origem_questionario_id'];

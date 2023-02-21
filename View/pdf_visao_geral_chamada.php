@@ -12,8 +12,8 @@ if (!isset($_SESSION['idcoordenador'])) {
 
 }
   include_once '../Model/Conexao.php';
-  include '../Model/Setor.php';
-  include '../Model/Chamada.php';
+  include_once '../Model/Setor.php';
+  include_once '../Model/Chamada.php';
    
   $res_chamadas_totais_novas = quantidade_chamada_novas_vg($conexao);
   $res_chamadas_totais_atrasadas = quantidade_chamada_atraso_vg($conexao);
@@ -227,6 +227,6 @@ if (!isset($_SESSION['idcoordenador'])) {
 
  <?php 
 
-    include 'rodape.php';
+    include_once 'rodape.php';
 
  ?>

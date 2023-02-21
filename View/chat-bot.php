@@ -1,6 +1,6 @@
 <?php
-include'../Model/Conexao.php';
-include'../Controller/Conversao.php';
+include_once '../Model/Conexao.php';
+include_once '../Controller/Conversao.php';
 
 $indice=$_GET['indice'];
 

@@ -2,8 +2,8 @@
 
 session_start();
 include_once '../Model/Conexao.php';
-include'Api_zapi.php';
-include'Conversao.php';
+include_once 'Api_zapi.php';
+include_once 'Conversao.php';
  
 try {
     $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];

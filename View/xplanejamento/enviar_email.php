@@ -1,6 +1,6 @@
 <?php
 require 'vendor/autoload.php';
-include "../../Model/Conexao.php";
+include_once "../../Model/Conexao.php";
   use \Mailjet\Resources;
   $mj = new \Mailjet\Client('fb0930913dd858032e6a14bd60933a0c','1bfb6a601b112df1dd1cdfeba591ed6c',true,['version' => 'v3.1']);
 

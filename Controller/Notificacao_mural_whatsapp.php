@@ -1,7 +1,7 @@
 <?php
 session_start();
-include'../Model/Conexao.php';
-include'Conversao.php';
+include_once '../Model/Conexao.php';
+include_once 'Conversao.php';
 function configuracao_api($conexao) {
       $result=$conexao->query("SELECT * FROM whatsapp_configuracao order by id desc limit 1");
       $api="";

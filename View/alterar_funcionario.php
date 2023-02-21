@@ -6,10 +6,10 @@ if (isset($_SESSION['funcao'])) {
   }
 }
 
-  include "cabecalho.php";
-  include "barra_horizontal.php";
-  include 'menu.php';
-  include '../Model/Funcionario.php';
+  include_once "cabecalho.php";
+  include_once "barra_horizontal.php";
+  include_once 'menu.php';
+  include_once '../Model/Funcionario.php';
   include_once '../Model/Conexao.php';
  
   
@@ -177,5 +177,5 @@ if (isset($_SESSION['funcao'])) {
     }
     </script>
  <?php 
-    include 'rodape.php';
+    include_once 'rodape.php';
  ?>

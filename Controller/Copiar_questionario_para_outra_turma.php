@@ -1,8 +1,8 @@
 <?php
 session_start();
 include_once '../Model/Conexao.php';
-include '../Model/Questionario.php';
-include '../Model/Aluno.php';
+include_once '../Model/Questionario.php';
+include_once '../Model/Aluno.php';
 $professor_id=$_SESSION['idfuncionario'];
 
 $idquestionario = $_POST['idquestionario'];

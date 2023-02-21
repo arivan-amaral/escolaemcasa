@@ -9,14 +9,14 @@ if (!isset($_SESSION['idprofessor']) && !isset($_SESSION['idcoordenador'])) {
   $idfuncionario=$_SESSION['idfuncionario'];
 
 }
-include "cabecalho.php";
-include "alertas.php";
+include_once "cabecalho.php";
+include_once "alertas.php";
 
-  include "barra_horizontal.php";
-  include 'menu.php';
+  include_once "barra_horizontal.php";
+  include_once 'menu.php';
   include_once '../Model/Conexao.php';
-  include '../Controller/Conversao.php';
-  include '../Model/Trabalho.php';
+  include_once '../Controller/Conversao.php';
+  include_once '../Model/Trabalho.php';
 
 
 ?>
@@ -223,6 +223,6 @@ include "alertas.php";
 
  <?php 
 
-    include 'rodape.php';
+    include_once 'rodape.php';
 
  ?>

@@ -12,23 +12,23 @@ if (!isset($_SESSION['idfuncionario'])) {
 echo "página em manutenção para o professor!!";
 exit();
 
-include "cabecalho.php";
-include "alertas.php";
-include "barra_horizontal.php";
+include_once "cabecalho.php";
+include_once "alertas.php";
+include_once "barra_horizontal.php";
 
-include 'menu.php';
+include_once 'menu.php';
 
-include '../Controller/Conversao.php';
-include '../Controller/Cauculos_notas.php';
+include_once '../Controller/Conversao.php';
+include_once '../Controller/Cauculos_notas.php';
 
 include_once '../Model/Conexao.php';
 
-include '../Model/Aluno.php';
-include '../Model/Coordenador.php';
-include '../Model/Escola.php';
-include '../Model/Serie.php';
-include '../Model/Nota.php';
-include '../Model/Turma.php';
+include_once '../Model/Aluno.php';
+include_once '../Model/Coordenador.php';
+include_once '../Model/Escola.php';
+include_once '../Model/Serie.php';
+include_once '../Model/Nota.php';
+include_once '../Model/Turma.php';
 
 $idturma=$_GET['idturma']; 
 $idescola=$_GET['idescola'];
@@ -478,6 +478,6 @@ echo"</td>
 
 <?php 
 
-include 'rodape.php';
+include_once 'rodape.php';
 
 ?>

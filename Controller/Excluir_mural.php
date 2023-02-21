@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once '../Model/Conexao.php';
-include '../Model/Mural.php';
+include_once '../Model/Mural.php';
 
 $idmural=$_GET['idmural'];
 $pagina=$_GET['pagina'];

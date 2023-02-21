@@ -1,5 +1,5 @@
 <?php
-  include'../Model/Conexao.php';
+  include_once '../Model/Conexao.php';
   // $arquivo = file_get_contents('php://input');
   // $json= json_decode($arquivo);
   

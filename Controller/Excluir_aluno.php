@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once '../Model/Conexao.php';
-include '../Model/Aluno.php';
+include_once '../Model/Aluno.php';
 try {
  	if (isset($_SESSION['idfuncionario'])) {
 		$idaluno = $_GET['idaluno'];

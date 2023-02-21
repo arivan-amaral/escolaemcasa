@@ -227,7 +227,7 @@ $this->BMPonly = array(
 // 2. The first font in each array will be the font which is substituted in circumstances as above
 //     (Otherwise the order is irrelevant)
 // Use the mPDF font-family names i.e. lowercase and no spaces (after any translations in $fonttrans)
-// Always include "sans-serif", "serif" and "monospace" etc.
+// Always include_once "sans-serif", "serif" and "monospace" etc.
 $this->sans_fonts = array('dejavusanscondensed','sans','sans-serif','cursive','fantasy','dejavusans','freesans','liberationsans', 
 				'arial','helvetica','verdana','geneva','lucida','arialnarrow','arialblack','arialunicodems',
 				'franklin','franklingothicbook','tahoma','garuda','calibri','trebuchet','lucidagrande','microsoftsansserif',

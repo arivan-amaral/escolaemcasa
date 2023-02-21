@@ -1,5 +1,5 @@
 <?php
-include'../Model/Conexao.php';
+include_once '../Model/Conexao.php';
 
 	try {
 		$res=$conexao->query("SELECT * from questionario where origem_questionario_id='muda' ");

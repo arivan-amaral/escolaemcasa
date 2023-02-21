@@ -10,17 +10,17 @@ if (!isset($_SESSION['idprofessor'])) {
   $idprofessor=$_SESSION['idprofessor'];
 
 }
-  include "cabecalho.php";
-  include "alertas.php";
-  include "barra_horizontal.php";
-  include 'menu.php';
+  include_once "cabecalho.php";
+  include_once "alertas.php";
+  include_once "barra_horizontal.php";
+  include_once 'menu.php';
 
   include_once '../Model/Conexao.php';
 
-  include '../Model/Aluno.php';
-  include '../Model/Video.php';
+  include_once '../Model/Aluno.php';
+  include_once '../Model/Video.php';
 
-  include '../Controller/Conversao.php';
+  include_once '../Controller/Conversao.php';
 
 
 $idescola=$_GET['escola_id'];
@@ -240,6 +240,6 @@ foreach ($res as $key => $value) {
 
  <?php 
 
-    include 'rodape_pesquisas.php';
+    include_once 'rodape_pesquisas.php';
 
  ?>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once '../Model/Conexao.php';
-include '../Model/Escola.php';
+include_once '../Model/Escola.php';
 
 
 try {

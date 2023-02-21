@@ -10,17 +10,17 @@ if (!isset($_SESSION['idfuncionario'])) {
   $idfuncionario=$_SESSION['idfuncionario'];
 
 }
-include "cabecalho.php";
-include "alertas.php";
+include_once "cabecalho.php";
+include_once "alertas.php";
 
-include "barra_horizontal.php";
-include 'menu.php';
+include_once "barra_horizontal.php";
+include_once 'menu.php';
 include_once '../Model/Conexao.php';
-include '../Controller/Conversao.php';
-include '../Model/Questionario.php';
-include '../Model/Turma.php';
-include '../Model/Coordenador.php';
-include '../Model/Escola.php';
+include_once '../Controller/Conversao.php';
+include_once '../Model/Questionario.php';
+include_once '../Model/Turma.php';
+include_once '../Model/Coordenador.php';
+include_once '../Model/Escola.php';
 
 
 
@@ -552,6 +552,6 @@ $url_get=$array_url[1];
 
 <?php 
 
-include 'rodape.php';
+include_once 'rodape.php';
 
 ?>

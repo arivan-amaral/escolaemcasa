@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once '../Model/Conexao.php';
-include '../Model/Turma.php';
+include_once '../Model/Turma.php';
 
 $id = $_GET['id'];
 try {

@@ -1,7 +1,7 @@
 <?php session_start();
  include("mpdf/mpdf60/mpdf.php");
  include_once '../Model/Conexao.php';
- include '../Model/Video.php';
+ include_once '../Model/Video.php';
 
  $idaluno=$_GET['idaluno'];
  $idturma=$_GET['idturma'];

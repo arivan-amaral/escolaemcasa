@@ -2,9 +2,9 @@
 session_start();
 include_once '../Model/Conexao.php';
 
-include '../Model/Mural.php';
-include '../Model/Serie.php';
-include 'Conversao.php';
+include_once '../Model/Mural.php';
+include_once '../Model/Serie.php';
+include_once 'Conversao.php';
 
 try {
 

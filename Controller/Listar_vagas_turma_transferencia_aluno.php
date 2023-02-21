@@ -1,8 +1,8 @@
 <?php
 session_start();
 include_once '../Model/Conexao.php';
-include '../Model/Turma.php';
-include '../Model/Aluno.php';
+include_once '../Model/Turma.php';
+include_once '../Model/Aluno.php';
 
 
 

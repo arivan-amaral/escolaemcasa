@@ -1,8 +1,8 @@
 <?php 
  session_start();
  include_once '../Model/Conexao.php';
- include '../Model/Aluno.php';
- include 'Conversao.php';
+ include_once '../Model/Aluno.php';
+ include_once 'Conversao.php';
  
 try {
   $id=$_GET['id'];

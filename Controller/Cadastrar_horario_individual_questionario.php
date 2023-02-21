@@ -1,6 +1,6 @@
 <?php
 include_once '../Model/Conexao.php';
-include '../Model/Questionario.php';
+include_once '../Model/Questionario.php';
     $aluno_id=$_GET['idaluno'];
 
     $idquestionario=$_GET['idquestionario'];

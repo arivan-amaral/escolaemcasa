@@ -1,6 +1,6 @@
 <?php
 set_time_limit(0);
-include 'Model/Conexao.php';
+include_once 'Model/Conexao.php';
 try {
 	$inicio=$_GET['inicio'];
 	$fim=$_GET['fim'];

@@ -1,6 +1,6 @@
 <?php 
-include '../Model/Escola.php';
-include '../Model/Aluno.php';
+include_once '../Model/Escola.php';
+include_once '../Model/Aluno.php';
 function hitorico_aluno($conexao,$idaluno,$idserie,$idescola){
 $nome_escola ="";
 $res_escola = pesquisar_escola2($conexao,$idescola);

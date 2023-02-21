@@ -10,22 +10,22 @@ if (!isset($_SESSION['idcoordenador'])) {
   $idcoordenador=$_SESSION['idcoordenador'];
 
 }
- include "cabecalho.php";
-  include "alertas.php";
+ include_once "cabecalho.php";
+  include_once "alertas.php";
 
-  include "barra_horizontal.php";
+  include_once "barra_horizontal.php";
 
-  include 'menu.php';
+  include_once 'menu.php';
 
-  include '../Controller/Conversao.php';
+  include_once '../Controller/Conversao.php';
 
   include_once '../Model/Conexao.php';
 
-  include '../Model/Disciplina.php';
+  include_once '../Model/Disciplina.php';
 
-  include '../Model/Turma.php';
-  include '../Model/Escola.php';
-  include '../Model/Video.php';
+  include_once '../Model/Turma.php';
+  include_once '../Model/Escola.php';
+  include_once '../Model/Video.php';
 
   
 
@@ -380,6 +380,6 @@ if (!isset($_SESSION['idcoordenador'])) {
 
  <?php 
 
-    include 'rodape.php';
+    include_once 'rodape.php';
 
  ?>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once '../Model/Conexao.php';
-include '../Model/Coordenador.php';
+include_once '../Model/Coordenador.php';
 
 $id = $_GET['id'];
 try {

@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once '../Model/Conexao.php';
-include '../Model/Material_apoio.php';
+include_once '../Model/Material_apoio.php';
 
 try {
 	$titulo = $_POST['titulo'];

@@ -3,12 +3,12 @@ session_start();
 
 include_once '../Model/Conexao.php';
 include_once '../Model/Aluno.php';
-include '../Controller/Conversao.php';
-include '../Model/Escola.php';
-include '../Model/Turma.php';
-include '../Model/Serie.php';
-include '../Model/Coordenador.php';
-include '../Model/Estado.php';
+include_once '../Controller/Conversao.php';
+include_once '../Model/Escola.php';
+include_once '../Model/Turma.php';
+include_once '../Model/Serie.php';
+include_once '../Model/Coordenador.php';
+include_once '../Model/Estado.php';
 include_once 'declaracao_termino_pre.php';
 
 $idfuncionario=$_SESSION['idfuncionario'];

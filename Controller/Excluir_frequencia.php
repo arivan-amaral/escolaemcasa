@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once '../Model/Conexao.php';
-include '../Model/Aluno.php';
+include_once '../Model/Aluno.php';
 
 $idprofessor=$_SESSION['idfuncionario'];
 $conteudo_aula_id=$_GET['conteudo_aula_id'];

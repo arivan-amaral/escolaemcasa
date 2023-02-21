@@ -1,5 +1,5 @@
 <?php
-include 'Model/Conexao.php';
+include_once 'Model/Conexao.php';
 // ajusta_turma.php
  set_time_limit(0);
 try {

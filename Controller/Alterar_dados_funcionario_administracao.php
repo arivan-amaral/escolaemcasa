@@ -1,7 +1,7 @@
 <?php 
  session_start();
  include_once '../Model/Conexao.php';
- include '../Model/Professor.php';
+ include_once '../Model/Professor.php';
  
  try {
 $idfuncionario=$_POST['idfuncionario'];

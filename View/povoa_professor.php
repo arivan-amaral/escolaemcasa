@@ -1,5 +1,5 @@
 <?php 
-	include '../Model/Conexao_ecidade.php';
+	include_once '../Model/Conexao_ecidade.php';
 	include_once '../Model/Conexao.php';
 	// $pdo;
 	// $res=listar_alunos($pdo);

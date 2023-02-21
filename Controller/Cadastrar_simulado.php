@@ -1,9 +1,9 @@
 <?php
 session_start();
 include_once '../Model/Conexao.php';
-include '../Model/Questionario.php';
-include '../Model/Aluno.php';
-include '../Model/Turma.php';
+include_once '../Model/Questionario.php';
+include_once '../Model/Aluno.php';
+include_once '../Model/Turma.php';
 
 
 try {

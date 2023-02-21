@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once '../Model/Conexao.php';
-include '../Model/Questionario.php';
+include_once '../Model/Questionario.php';
     $id=$_GET['id'];
     $status=$_GET['status'];
     

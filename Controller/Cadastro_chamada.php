@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once '../Model/Conexao.php';
-include '../Model/Chamada.php';
+include_once '../Model/Chamada.php';
 
 try {
 

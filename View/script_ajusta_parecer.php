@@ -1,6 +1,6 @@
 <?php 
 	include_once '../Model/Conexao.php';
-	include '../Controller/Conversao.php';
+	include_once '../Controller/Conversao.php';
     include("../Model/Aluno.php");
 
 try {

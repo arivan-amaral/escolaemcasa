@@ -1,8 +1,8 @@
 <?php
 session_start();
 include_once '../Model/Conexao.php';
-include '../Model/Video.php';
-include '../Model/Coordenador.php';
+include_once '../Model/Video.php';
+include_once '../Model/Coordenador.php';
 
 try {
 

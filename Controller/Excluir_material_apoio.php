@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once '../Model/Conexao.php';
-include '../Model/Material_apoio.php';
+include_once '../Model/Material_apoio.php';
  $array_url=explode('p?', $_SERVER["REQUEST_URI"]);
  $url_get=$array_url[1];
  $id = $_GET['id'];

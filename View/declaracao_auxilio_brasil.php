@@ -1,19 +1,19 @@
 <?php
 session_start();
 
-include "cabecalho.php";
-include "alertas.php";
+include_once "cabecalho.php";
+include_once "alertas.php";
 
-include "barra_horizontal.php";
-include 'menu.php';
-include '../Controller/Conversao.php';
+include_once "barra_horizontal.php";
+include_once 'menu.php';
+include_once '../Controller/Conversao.php';
 include_once '../Model/Conexao.php';
-include '../Model/Escola.php';
-include '../Model/Turma.php';
-include '../Model/Serie.php';
-include '../Model/Coordenador.php';
-include '../Model/Aluno.php';
-include '../Model/Estado.php';
+include_once '../Model/Escola.php';
+include_once '../Model/Turma.php';
+include_once '../Model/Serie.php';
+include_once '../Model/Coordenador.php';
+include_once '../Model/Aluno.php';
+include_once '../Model/Estado.php';
 
 $aluno_id=$_POST['aluno_id'];
 $escola_id=$_POST['escola_id'];
@@ -292,5 +292,5 @@ if ( ($seguimento!='' && $seguimento <3) || $idserie <8 ) {
     </script>
 
     <?php 
-    include 'rodape.php';
+    include_once 'rodape.php';
   ?>

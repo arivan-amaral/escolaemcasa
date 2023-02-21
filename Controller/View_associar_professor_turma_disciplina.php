@@ -1,11 +1,11 @@
 <?php 
 session_start();
   include_once '../Model/Conexao.php';
-  include '../Model/Escola.php';
-  include '../Model/Turma.php';
-  include '../Model/Disciplina.php';
-  include '../Model/Professor.php';
-  include '../Model/Coordenador.php';
+  include_once '../Model/Escola.php';
+  include_once '../Model/Turma.php';
+  include_once '../Model/Disciplina.php';
+  include_once '../Model/Professor.php';
+  include_once '../Model/Coordenador.php';
   $idprofessor=$_GET['idprofessor'];
   $res=pesquisar_professor_por_id($conexao,$idprofessor);
   foreach ($res as $key => $value) {

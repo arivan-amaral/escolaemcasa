@@ -17,17 +17,17 @@ if (!isset($_SESSION['idcoordenador'])) {
   $idcoordenador=$_SESSION['idcoordenador'];
 
 }
-  include "cabecalho.php";
-  include "alertas.php";
+  include_once "cabecalho.php";
+  include_once "alertas.php";
  
-  include "barra_horizontal.php";
-  include 'menu.php';
-  include '../Controller/Conversao.php';
+  include_once "barra_horizontal.php";
+  include_once 'menu.php';
+  include_once '../Controller/Conversao.php';
 
   include_once '../Model/Conexao.php';
 
-  include '../Model/Setor.php';
-  include '../Model/Chamada.php';
+  include_once '../Model/Setor.php';
+  include_once '../Model/Chamada.php';
    
  
 
@@ -263,6 +263,6 @@ setTimeout('dia_doservidor_publico();',3000);
 
  <?php 
 
-    include 'rodape.php';
+    include_once 'rodape.php';
 
  ?>
