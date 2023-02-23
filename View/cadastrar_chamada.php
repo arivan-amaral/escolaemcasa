@@ -9,12 +9,12 @@ if (!isset($_SESSION['idprofessor']) && !isset($_SESSION['idcoordenador']) && !i
   //$idprofessor=$_SESSION['idprofessor'];
 
 }
+  include_once '../Model/Conexao.php';
 include_once "cabecalho.php";
 include_once "alertas.php";
 
   include_once "barra_horizontal.php";
   include_once 'menu.php';
-  include_once '../Model/Conexao.php';
   include_once '../Controller/Conversao.php';
   include_once '../Model/Setor.php';
   include_once '../Model/Chamada.php';

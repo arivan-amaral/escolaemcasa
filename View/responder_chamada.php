@@ -392,7 +392,7 @@ include_once "alertas.php";
                                 Andamento
                               </button>";
                              }else{
-                                if ($status != 'finalizado') {
+                                if ($status != 'finalizado' ) {
                                echo"
                               <button class='btn btn btn-danger' style='width:30%;'  disabled>
                                 Andamento
@@ -400,10 +400,10 @@ include_once "alertas.php";
                               }
                               
                              } 
-                              if ($status != 'finalizado' ) {
+                              if ($status != 'finalizado' && $idFuncionario == $id_diretor ) {
                                 echo"&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                               <button class='btn btn btn-info' style='width: 30%;' onclick='finalizar_chat($id_chamada);'>
-                                Finalizar.
+                                Finalizar
                               </button><br><br>"; 
                               }
                           }else{

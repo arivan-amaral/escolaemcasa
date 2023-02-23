@@ -3,6 +3,7 @@ session_start();
 include_once '../Model/Conexao.php';
 include_once '../Model/Chamada.php';
 
+        $idfuncionario = $_SESSION['idfuncionario'];
 
 try {
 
@@ -139,7 +140,8 @@ try {
             $result.="<tr> <td> NADA ENCONTRADO </td> </tr>";
         }
     }else{
-        $res_todos = pesquisar_todos_chamado($conexao);
+        //
+        $res_todos = pesquisar_todos_chamado($conexao,$idfuncionario);
         foreach ($res_todos as $key => $value){
         $id_chamada = $value['id'];
         $status = $value['status'];
@@ -217,6 +219,7 @@ try {
                </div>
              </div>
             ";
+
         $result.= "<td>
                 <b>Data de Solicitação:</b> $data_solicitado &nbsp;&nbsp;&nbsp; <b>";
                 if ($id_func_respondeu > 0) {
@@ -261,6 +264,6 @@ echo "$result";
     
 } catch (Exception $exc) {
    //echo " VERIFIQUE SUA CONEXÃO COM A INTERNET";
-   echo $exc;
+   echo "A pesquisa aceita apenas números";
 }
 ?>

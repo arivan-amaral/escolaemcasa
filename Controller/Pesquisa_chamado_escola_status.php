@@ -12,6 +12,11 @@ try {
     $data_inicial = $_GET['data_inicial'];
     $data_final = $_GET['data_final'];
     $filtro = $_GET['filtro'];
+    $filtro = $_GET['filtro'];
+    
+    //arivan chamados
+    $idfuncionario = $_SESSION['idfuncionario'];
+
     
     $result="
    <thead>
@@ -1799,7 +1804,7 @@ if ($pesquisa != '' || $data_inicial != '') {
       $result.="<tr> <td> NADA ENCONTRADO </td> </tr>";
     }
 }else{
-    $res_todos = pesquisar_todos_chamado($conexao);
+    $res_todos = pesquisar_todos_chamado($conexao,$idfuncionario);
     foreach ($res_todos as $key => $value){
     $id_chamada = $value['id'];
     $status = $value['status'];

@@ -130,8 +130,8 @@ function pesquisar_chamado_retorno_data($conexao,$chamado_id,$data_inicial,$data
 
 }
 
-function pesquisar_todos_chamado($conexao){
-   $result = $conexao->query("SELECT * FROM chamada order by data desc ");
+function pesquisar_todos_chamado($conexao,$idfuncionario){
+   $result = $conexao->query("SELECT * FROM chamada where funcionario_id=$idfuncionario order by data desc ");
     return $result;
 
 }
