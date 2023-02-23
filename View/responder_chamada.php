@@ -400,10 +400,10 @@ include_once "alertas.php";
                               }
                               
                              } 
-                              if ($status != 'finalizado') {
+                              if ($status != 'finalizado' ) {
                                 echo"&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                               <button class='btn btn btn-info' style='width: 30%;' onclick='finalizar_chat($id_chamada);'>
-                                Finalizar
+                                Finalizar.
                               </button><br><br>"; 
                               }
                           }else{
