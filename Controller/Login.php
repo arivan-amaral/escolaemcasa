@@ -169,30 +169,30 @@ try {
           $sexo = $row2["sexo"];
           $etapa_id = $row2["etapa_id"];
 
-          // $_SESSION["idaluno"] = $id;
-          // $_SESSION["nome"] = $nome;
-          // $_SESSION["etapa_id"] = $etapa_id;
+          $_SESSION["idaluno"] = $id;
+          $_SESSION["nome"] = $nome;
+          $_SESSION["etapa_id"] = $etapa_id;
 
-          // $_SESSION["email"] = $email;
-          // $_SESSION["nome_escola"] = $nome_escola;
+          $_SESSION["email"] = $email;
+          $_SESSION["nome_escola"] = $nome_escola;
 
 
-          // if ($sexo=='Masculino') {
-          //   $_SESSION["cargo"] = "Aluno";
-          // }else{
-          //   $_SESSION["cargo"] = "Aluna";
+          if ($sexo=='Masculino') {
+            $_SESSION["cargo"] = "Aluno";
+          }else{
+            $_SESSION["cargo"] = "Aluna";
 
-          // }
+          }
 
-         //  $_SESSION["escola_id"] = $escola_id;
-         //  $_SESSION["turma_id"] = $turma_id;
-         //  $_SESSION["serie_id"] = $serie_id;
-         //     $_SESSION["ano_letivo"] = $ano_letivo;
-         //     $_SESSION["ano_letivo_vigente"] = $ano_letivo;
+          $_SESSION["escola_id"] = $escola_id;
+          $_SESSION["turma_id"] = $turma_id;
+          $_SESSION["serie_id"] = $serie_id;
+             $_SESSION["ano_letivo"] = $ano_letivo;
+             $_SESSION["ano_letivo_vigente"] = $ano_letivo;
           
 
-         // // $conexao->exec("INSERT INTO acesso (aluno_id) values($id)");
-         //  $_SESSION['status']=1;
+          $conexao->exec("INSERT INTO acesso (aluno_id) values($id)");
+          $_SESSION['status']=1;
           $login_aluno++;
 
         }
@@ -202,7 +202,7 @@ try {
           $_SESSION['status']=0;
           $_SESSION['mensagem']="ACESSO DE ALUNO ESTÁ SUSPENSO TEMPORARIAMENTE, ESTAMOS EM MANUTENÇÃO!";
 
-          // header("Location:../View/aluno.php");
+         header("Location:../View/aluno.php");
           header("Location:../View/");
           exit();
 
