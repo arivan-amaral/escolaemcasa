@@ -206,6 +206,14 @@ if(file_exists("pagina_estatica/".$nome_url) && $diferenca<500){
         $arquivo.="data-toggle='modal' data-target='#modal_troca_de_turma'>Trocar de turma os selecionados</a>
       </div>
       ";
+       $arquivo.="
+       <div class='col-sm-3'>
+        <a href='' class='btn btn-block btn-secondary'";  $arquivo.=' onclick=
+        "mudar_action_form(
+        ';$arquivo.="'Carteirinha_transporte.php'";$arquivo.=');"'; 
+        $arquivo.="data-toggle='modal' data-target='#modal_carteirinha_transporte'>Gerar carterinha de trasp</a>
+      </div>
+      ";
     }
 
       if ($serie_id==1 || $serie_id==2 || $serie_id==7 || $serie_id==11 || $serie_id==15) {
@@ -919,6 +927,44 @@ $arquivo.="
 </div>
 <!-- /.modal-dialog -->
 </div>
+
+
+
+<div class='modal fade bd-example-modal-lg' id='modal_carteirinha_transporte'>
+  <div class='modal-dialog modal-lg'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h4 class='modal-title'>PROCEDIMENTO GERAR CARTERINHA DE TRANSPOSTE ESCOLAR</h4>
+        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+          <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>
+      <div class='modal-body'>    
+
+        <div class='row'>
+            <div class='col-sm-3'>
+            
+            </div>
+        </div>
+
+
+     <div class='modal-footer justify-content-between'>
+       <button type='button' class='btn btn-default' data-dismiss='modal'>FECHAR</button>
+       <!-- onclick='carregando_login()' -->
+       <div id='botao_continuar' >
+         <button type='submit' class='btn btn-primary' >GERAR CARTEIRINHA DOS ALUNOS SELECIONADOS</button>
+       </div>
+     </div>
+
+     <!-- /corpo -->
+   </div>
+ </div>
+ <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div>
+
+
 
 
 
