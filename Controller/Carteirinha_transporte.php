@@ -1,6 +1,6 @@
 <?php session_start();
 include_once'../Model/Conexao.php';
-include_once'../Model/Escola.php';
+include_once'../Model/Aluno.php';
 include_once'../Model/Coordenador.php';
 include_once'Api_code_chat.php';
 include_once'Conversao.php';
@@ -29,16 +29,6 @@ if (isset($_SESSION['whatsapp'])) {
 	$ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
 	$aluno_reprovado = "";
 
-// // <=======RECRIA PÁGIANAS ESTATICAS =======>
-// 	$pagina_estatica=$_POST['url_get'];
-// 	$pagina_estatica =strtr($pagina_estatica, "&", " ");
-// 	$pagina_estatica =strtr($pagina_estatica, "%", " ");
-// 	$pagina_estatica="listar_alunos_da_turma.php ".$pagina_estatica.".php";
-// 	if (file_exists("../View/pagina_estatica/$pagina_estatica")) {
-// 		unlink("../View/pagina_estatica/$pagina_estatica");
-// 	}
-// 	// <=========================================>
-
 
 if (isset($_POST['idaluno'])) {
 		$solicitacao_pendente='';
@@ -47,7 +37,8 @@ if (isset($_POST['idaluno'])) {
 			$nome_aluno=$_POST["nome_aluno$aluno_id"];
 			$matricula_aluno=$_POST["matricula_aluno".$aluno_id];
 			$resultado=$_POST["resultado".$aluno_id];
-			echo "$aluno_id";
+			alterar_status_carteirinha_transporte($conexao,$aluno_id, 1);
+
 		
 		}
 
@@ -56,13 +47,17 @@ if (isset($_POST['idaluno'])) {
 	}
 
 
-if (!isset($_POST['idaluno'])) {
+	if (!isset($_POST['idaluno'])) {
 		$_SESSION['status']=0;
 		$_SESSION['mensagem']='Nenhum aluno selecionado!';
 		header("location:../View/listar_alunos_da_turma.php?$url_get");
 		exit();
 	
 	}else{
+
+
+		
+
 		$_SESSION['status']=1;
 		header("location:../View/listar_alunos_da_turma.php?$url_get");	
 		exit();

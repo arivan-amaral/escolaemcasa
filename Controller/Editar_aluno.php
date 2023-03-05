@@ -279,6 +279,23 @@ try {
     ");
     }
 
+    if ( isset( $_FILES["imagem_aluno"][ 'name' ] ) && $_FILES[ "imagem"][ 'error' ] == 0 ) {
+        $arquivo_tmp = $_FILES[ "imagem_aluno"][ 'tmp_name' ];
+        $nome = $_FILES[ "imagem_aluno"][ 'name' ];
+        $extensao = pathinfo ( $nome, PATHINFO_EXTENSION );
+        $extensao = strtolower ( $extensao );
+        if ( strstr ( '.jpg;.jpeg;.gif;.png;.PNG', $extensao ) ) {
+            $novoNome = uniqid ( time () ) . '.' . $extensao;
+            $destino = '../View/imagem_carteirinha_transporte/' . $novoNome;
+            if(move_uploaded_file($arquivo_tmp, $destino)){
+                alterar_foto_carterinha_aluno($conexao, $novoNome, $idaluno);
+                
+                
+            }
+        }
+    }
+
+
     echo "certo";
  
 } catch (Exception $e) {

@@ -744,6 +744,10 @@ function alterar_foto_aluno($conexao, $nome, $id) {
  return $result;
 }
 
+function alterar_foto_carterinha_aluno($conexao, $imagem_carteirinha_transporte, $id) {
+ $result = $conexao->exec("UPDATE aluno SET imagem_carteirinha_transporte = '$imagem_carteirinha_transporte' WHERE idaluno = $id");
+ return $result;
+}
 	// *****************************************************************************************
 function cadastrar_ano_letivo($conexao,$escola_id, $turma_id, $aluno_id, $ano) {
     $sql=$conexao->prepare("INSERT INTO ano_letivo(escola_id, turma_id,  aluno_id, ano) VALUES (:escola_id, :turma_id, :aluno_id, :ano)");
@@ -1566,19 +1570,67 @@ AND ecidade_matricula.matricula_situacao !='REMATRICULAR ALUNO'
 
 
 
-function listar_aluno_da_turma_ata_resultado_final($conexao,$turma_id,$escola_id,$ano_letivo){
+function listar_aluno_da_escola_carteirinha($conexao,$escola_id,$ano_letivo){
 //     ecidade_matricula.matricula_concluida='N' and
 // ecidade_matricula.matricula_ativa='S' and
   $res=$conexao->query("
     SELECT 
 aluno.nome as 'nome_aluno',
+aluno.linha_transporte,
+aluno.imagem_carteirinha_transporte ,
+escola.nome_escola,
 aluno.sexo,
 aluno.data_nascimento,
+aluno.cpf as cpf_aluno,
+aluno.whatsapp_responsavel,
+aluno.nome_responsavel,
 aluno.idaluno,
 aluno.email,
 aluno.status as 'status_aluno',
-aluno.senha,
 turma.nome_turma,
+
+ecidade_matricula.matricula_codigo as 'matricula',
+ecidade_matricula.matricula_datamatricula as 'data_matricula',
+ecidade_matricula.datasaida as 'datasaida'
+
+FROM
+ ecidade_matricula,
+aluno,turma,escola
+
+where
+
+ecidade_matricula.aluno_id= aluno.idaluno AND
+ecidade_matricula.turma_id = turma.idturma and 
+ecidade_matricula.turma_escola = escola.idescola and 
+ecidade_matricula.calendario_ano ='$ano_letivo' and 
+ 
+
+ecidade_matricula.turma_escola=$escola_id and
+ecidade_matricula.matricula_situacao !='CANCELADO' and
+ecidade_matricula.matricula_ativa ='S' and
+aluno.aluno_transpublico=1  ORDER by aluno.nome ASC");
+
+
+   return $res;
+} 
+
+function listar_aluno_da_turma_ata_resultado_final($conexao,$turma_id,$escola_id,$ano_letivo){
+//     ecidade_matricula.matricula_concluida='N' and
+// ecidade_matricula.matricula_ativa='S' and
+  $res=$conexao->query("
+    SELECT
+    aluno.aluno_transpublico, 
+    aluno.linha_transporte,
+    aluno.imagem_carteirinha_transporte ,
+
+    aluno.nome as 'nome_aluno',
+    aluno.sexo,
+    aluno.data_nascimento,
+    aluno.idaluno,
+    aluno.email,
+    aluno.status as 'status_aluno',
+    aluno.senha,
+    turma.nome_turma,
 
 ecidade_matricula.matricula_codigo as 'matricula',
 ecidade_matricula.matricula_datamatricula as 'data_matricula',
@@ -1604,9 +1656,17 @@ ecidade_matricula.turma_id=$turma_id  ORDER by aluno.nome ASC");
    return $res;
 } 
 
+
+
+
+
 function listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,$turma_id,$escola_id,$ano_letivo){
   $res=$conexao->query("
     SELECT 
+      aluno.aluno_transpublico, 
+    aluno.linha_transporte,
+    aluno.imagem_carteirinha_transporte ,
+
 aluno.nome as 'nome_aluno',
 aluno.sexo,
 aluno.data_nascimento,
@@ -1830,11 +1890,12 @@ function listar_disciplina_para_ata($conexao,$escola_id,$idturma,$ano_letivo){
 }
 
 
-// function transferir_fora($conexao,$matricula_codigo, $data_saida){
-//   $sql=$conexao->prepare("UPDATE ecidade_matricula set procedimento= : WHERE matricula_codigo = :matricula_codigo");
+function alterar_status_carteirinha_transporte($conexao,$idaluno, $status){
+  $sql=$conexao->prepare("UPDATE aluno set aluno_transpublico= :status WHERE idaluno = :idaluno");
   
-//   $sql->bindParam("matricula_codigo",$matricula_codigo);
+  $sql->bindParam("status",$status);
+  $sql->bindParam("idaluno",$idaluno);
   
-//   $sql->execute();
+  $sql->execute();
 
-// }
+}

@@ -14,6 +14,27 @@ include_once '../Model/Serie.php';
 include_once '../Model/Coordenador.php';
 include_once '../Model/Aluno.php';
 include_once '../Model/Estado.php';
+
+$idfuncionario=$_SESSION['idfuncionario'];
+
+
+ $res_escola= escola_associada($conexao,$idfuncionario);
+  $lista_escola_associada=""; 
+$sql_escolas="AND ( escola_id = -1 ";
+$sql_escolas_enviada="AND ( escola_id_origem = -1 ";
+foreach ($res_escola as $key => $value) {
+    $id=$value['idescola'];
+   $nome_escola=($value['nome_escola']);
+    $sql_escolas.=" OR escola_id = $id ";
+    $sql_escolas_enviada.=" OR escola_id_origem = $id ";
+
+    $lista_escola_associada.= "
+         <option value='$id'>$nome_escola </option>
+
+     ";
+}
+
+
 ?>
 <style type="text/css">
 
@@ -35,11 +56,12 @@ include_once '../Model/Estado.php';
     }
 
     .div_carteirinha{
+      border-radius: 5%;
       width: 135.6mm;
       height: 83.98mm ;
       background-image: url("imagens/carteirinha.png");
-      font-size: 16px;
-      background-size: contain;
+  
+      background-size: 480px;
       background-repeat: no-repeat;
 
     }
@@ -53,18 +75,43 @@ include_once '../Model/Estado.php';
     }
 
     .imagem_perfil{
-      border: 2px solid white;
+/*      border: 2px solid white;*/
       border-radius: 10%;
 
       margin-top: 15mm;
       width: 105.6mm;
       height: 40.98mm ;
-      background-color: #a7a7a7;
+/*      background-color: #a7a7a7;*/
       font-size: 16px;
       background-size: contain;
       background-repeat: no-repeat;
 
     }
+
+
+    .outros_dados_aluno br {
+
+    display: block;
+    margin: -12px 0px 3px 40px;
+    height: 8px;
+    content: "A";
+
+}
+
+p.outros_dados_aluno {
+
+font-size: 8pt;     
+
+   
+}
+
+.validade {
+ padding: 15px 0px 0px 20px;
+font-size: 12pt;     
+
+}
+
+   
 
 @media print {
 
@@ -77,83 +124,33 @@ include_once '../Model/Estado.php';
 
 <div class="content-wrapper" style="min-height: 529px;">
  
-        <div class="row">
-            <div class="col-sm-12  ">
-                <h1 class="m-1">CARTEIRINHA DE TRANSPORTE </h1>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-6">
+   
+        <div class="form-group">
 
-            </div>
+          <label for="exampleInputEmail1">Escolha a escola</label>
+          <select class="form-control form-lg select2" id="idescola" onchange="lista_carteirinha_escola();" required="">
+              
+              <?php 
+                echo "$lista_escola_associada";
 
-           
+              ?>
+          </select>
         </div>
+      </div>
+  </div>
+  <div id="resultado_carteirinha">
+    
+
+  </div>
 
 
+<script type="text/javascript">
+  setTimeout(lista_carteirinha_escola(), 100);
+</script>
 
-<?php for ($i=1; $i <100 ; $i++) { 
-?>
-
-        <br>
-        <div class="row">
-            <div class="col-sm-5 div_carteirinha ">
-                  <div class="row">
-
-                        <div class="col-sm-1"></div>
-                        
-                        <div class="col-sm-3 imagem_perfil" >
-                          <img src="imagens/avatar_carteirinha.png" alt="">
-                        </div>
-                        
-                        <div class="col-sm-8 dados_aluno">
-                          <b class="nome_aluno">ARIVAN DO AMARAL LISBOA</b><br>
-                          <b  class="outros_dados_aluno">RESPONSÁVEL:</b><br>
-                          <b  class="outros_dados_aluno">DATA NASC:</b><br>
-                          <b  class="outros_dados_aluno">MATRÍCULA:</b><br>
-                          <b  class="outros_dados_aluno">CPF/RG:</b><br>
-                          <b  class="outros_dados_aluno">TIPO SANGUÍNHO:</b><br>
-                          <b class="outros_dados_aluno">TELEFONE:</b><br>
-
-                        </div>
-
-                  </div>
-                       
-
-            </div>             
-            
-            <div class="col-sm-1 "></div>
-
-            <div class="col-sm-5 div_carteirinha ">
-                  <div class="row">
-
-                        <div class="col-sm-1"></div>
-                        
-                        <div class="col-sm-3 imagem_perfil" >
-                          <img src="imagens/avatar_carteirinha.png" alt="">
-                        </div>
-                        
-                        <div class="col-sm-8 dados_aluno">
-                          <b >RESPONSÁVEL:</b><br>
-                          <b>DATA NASC:</b><br>
-                          <b>MATRÍCULA:</b><br>
-                          <b>CPF/RG:</b><br>
-                          <b>TIPO SANGUÍNHO:</b><br>
-                          <b>TELEFONE:</b><br>
-
-                        </div>
-
-                  </div>
-                       
-
-            </div> 
-
-
-            
-        </div>     
-
-
-
-    <?php 
-    if ($i%4==0) {
-     echo "<div class='pagebreak'> </div>";
-    }
-  }
+<?php 
     include_once 'rodape.php';
   ?>

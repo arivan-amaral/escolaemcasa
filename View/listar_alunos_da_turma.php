@@ -252,6 +252,7 @@ $arquivo.="
 
             <th style='width: 50px'>Situação Matrícula</th>
             <th>Dados do Aluno</th>
+            <th>Carterinha</th>
             <th>Resultado</th>
             
             <th>Status</th>
@@ -280,6 +281,7 @@ $arquivo.="
             $data_nascimento=converte_data($value['data_nascimento']);
             $senha=$value['senha'];
             $matricula_aluno=$value['matricula'];
+            $aluno_transpublico=$value['aluno_transpublico'];
 
             // $res_movimentacao=array();
   $res_movimentacao=pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula_aluno,$_SESSION['ano_letivo']);
@@ -327,6 +329,7 @@ $arquivo.="
              ;padding:0cm 0cm 10pt 0cm;height:11.3pt; '>
              $datasaida 
              </td> 
+             
 
              <td>
               <div class='form-group1'>
@@ -402,7 +405,17 @@ $arquivo.="
           // $arquivo.="<td>";   
 
 // $arquivo.="</td>";
-$arquivo.="<td>";
+             
+if ($aluno_transpublico==1) {
+  $alerta_trans="alert-success";
+  $aluno_transpublico="SIM";
+}else{
+  $alerta_trans="alert-danger";
+  $aluno_transpublico="NÃO";
+
+
+}
+$arquivo.="<td class='alert $alerta_trans'>";
 
 $arquivo.="<input type='hidden' name='nome_aluno$idaluno' value='$nome_aluno'>";
 $arquivo.="<input type='hidden' name='matricula_aluno$idaluno' value='$matricula_aluno'>";
@@ -411,31 +424,15 @@ $arquivo.="<input type='hidden' disable name='resultado$idaluno' value='Apr'>";
 $arquivo.="<input type='hidden' name='idturma' value='$idturma'>";
 $arquivo.="<input type='hidden' name='url_get' value='$url_get'>";
 
-##############################################################
-// if ($status_aluno =='Ativo') {
-//   $arquivo.="<div class='form-group'>
-//   <div class='custom-control custom-switch custom-switch-on-success custom-switch-off-danger'>
-//   <input type='checkbox' class='custom-control-input' id='customSwitch3$id' onclick='mudar_status_aluno(0,$id)' checked>
-
-//   <label class='custom-control-label' for='customSwitch3$id' id='customSwitch3$id' ></label>
-//   </div>
-//   </div>";
-// }else{
-//  $arquivo.="<div class='form-group'>
-//   <div class='custom-control custom-switch custom-switch-off-danger custom-switch-on-success '>
-//   <input type='checkbox' class='custom-control-input' id='customSwitch3$id' onclick='mudar_status_aluno(1,$id)'>
-
-//   <label class='custom-control-label' for='customSwitch3$id'></label>
-//   </div>
-//   </div>";
-// }
+ 
 
 
 
 
 
+$arquivo.="$aluno_transpublico</td>";
+ 
 
-$arquivo.="</td>";
 $arquivo.="<td>
 <div class='form-group1'>
   <label for='exampleInputEmail1'>Status</label>

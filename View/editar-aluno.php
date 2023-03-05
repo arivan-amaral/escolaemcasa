@@ -94,6 +94,8 @@ $cpf = "";
 $whatsapp_responsavel = "";
 $nome_responsavel = "";
 $cpf_responsavel = "";
+$caminho_foto_carteirinha = "";
+
 
 foreach ($res as $key => $value) {
     $nome = $value['nome'];
@@ -156,6 +158,8 @@ foreach ($res as $key => $value) {
     $cpf = $value['cpf'];
     $nome_responsavel = $value['nome_responsavel'];
     $cpf_responsavel = $value['cpf_responsavel'];
+    
+    $caminho_foto_carteirinha = $value['imagem_carteirinha_transporte'];
 }
 
 
@@ -216,16 +220,79 @@ foreach ($res_editar_curso as $key => $value) {
 
       <form id="form1" name="form1" method="POST" enctype="multipart/form-data">
         
-          
+          <?php 
+          if ($caminho_foto_carteirinha !="") {
+              // code...
+            $caminho_foto_carteirinha="imagem_carteirinha_transporte/".$caminho_foto_carteirinha;
+          }else{
+             $caminho_foto_carteirinha="imagens/user.png"; 
+
+          }
+           ?>
           <div class="card-body">
             <div class="tab-content" id="custom-tabs-two-tabContent">
            
               <div class="tab-pane fade  active show" id="custom-tabs-two-home" role="tabpanel" aria-labelledby="custom-tabs-two-home-tab">
                  <div class="card-body">
+
+                  <style type="text/css">
+                    .imagem_perfil img{
+                      margin-right:1px ;
+                      border: 2px solid black;
+                      border-radius: 10%;
+                      width: 27.6mm;
+                      height: 38.98mm ;
+                    
+                    }
+                  </style>
                   <div class="row">
-                    <div class="col-sm-1">
-                      <img src="imagens/user.png" class="img-thumbnail" alt="...">
-                    </div>
+                    <div class="col-sm-12 imagem_perfil">
+                              <!-- <canvas id="canvas" width="640" height="480"></canvas> -->
+
+                      <img src="<?php echo $caminho_foto_carteirinha; ?>"  id="imagem_aluno">
+              
+                    <input type="hidden" name="croppedImage" id="croppedImage">
+
+                    </div>        
+
+                 
+
+
+
+                      
+                       <!-- <button type="button"   data-toggle='modal' data-target='#modal-editar-imagem-aluno'>WEbCAM</button>
+
+                        <br> -->
+                        <label>Adicionar Foto (por arquivo)</label>
+                        <div class="form-group">
+                                <input type="file" accept="image/*" id="files" name="imagem_aluno" class="form-control" required="">
+                        </div>
+
+
+                      <script>
+                         document.getElementById("files").onchange = function () {
+                             var reader = new FileReader();
+
+                             reader.onload = function (e) {
+                                 // get loaded data and render thumbnail.
+                                 document.getElementById("imagem_aluno").src = e.target.result;
+                             };
+
+                             // read the image file as a data URL.
+                             reader.readAsDataURL(this.files[0]);
+                         };
+                       </script>
+                      
+
+
+
+
+
+                   
+                  </div>
+
+                    <div class="row">
+
                     <div class="col-sm-2">
                       <div class="form-group">
                         <label for="exampleInputEmail1">Código INEP</label>
@@ -1081,7 +1148,31 @@ foreach ($res_editar_curso as $key => $value) {
     
 
 
+<div class="modal fade" id="modal-editar-imagem-aluno">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">AJUSTES NA IMAGEM!</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
 
+          <div class="modal-body">
+           <!-- <canvas id="croppedCanvas"></canvas>
+           <video id="video" width="180" height="180" autoplay></video>
+
+           <button type="button" id="snap" >Tirar Foto</button>
+           <canvas id="canvas" width="640" height="480"></canvas> -->
+              <!-- /corpo -->          
+          </div>
+      <button type="button" class="btn btn-primary" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OK</font></font></button>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
 
 
 <!-- ######################################################################## -->
