@@ -47,7 +47,7 @@ if ($caminho_foto_carteirinha !="") {
 
         <br>
         <div class='row'>
-            <div class='col-sm-4 div_carteirinha '>
+            <div class='col-sm-6 div_carteirinha '>
                   <div class='row'>
 
                 
@@ -88,7 +88,7 @@ if ($caminho_foto_carteirinha !="") {
 
             </div>                
 
-            <div class='col-sm-4 div_carteirinha '>
+            <div class='col-sm-6 div_carteirinha '>
                   <div class='row'>
 
                 
