@@ -50,13 +50,13 @@ if ($caminho_foto_carteirinha !="") {
             <div class='col-sm-5 div_carteirinha '>
                   <div class='row'>
 
-                        <div class='col-sm-1'></div>
+                
                         
                         <div class='col-sm-2 imagem_perfil' >
                           <img src='$caminho_foto_carteirinha' >
                         </div>
                         
-                        <div class='col-sm-9 dados_aluno'>
+                        <div class='col-sm-10 dados_aluno'>
                             <b class='nome_aluno'>$nome_aluno</b><br>
                           <p class='outros_dados_aluno'> 
                           <b>$nome_escola</b> <br>
