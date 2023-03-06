@@ -65,7 +65,7 @@ if ($caminho_foto_carteirinha !="") {
                           <b>DATA NASC: $data_nascimento</b><br>
                           <b>MATRÍCULA: $matricula_aluno</b><br>
                           <b>CPF/RG:</b><br>
-                          <b>TIPO SANGUÍNHO: </b><br>
+                          <b>TIPO SANGUINEO: </b><br>
                           <b>TELEFONE: $whatsapp_responsavel</b><br>
                              <b>LINHA:$linha_transporte</b>
                         </p>
@@ -104,7 +104,7 @@ if ($caminho_foto_carteirinha !="") {
                           <b>DATA NASC:</b><br>
                           <b>MATRÍCULA:</b><br>
                           <b>CPF/RG:</b><br>
-                          <b>TIPO SANGUÍNHO:</b><br>
+                          <b>TIPO SANGUINEO:</b><br>
                           <b>TELEFONE:</b><br>
 
                         </div>
