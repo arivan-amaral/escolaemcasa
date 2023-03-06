@@ -77,7 +77,7 @@ if ($caminho_foto_carteirinha !="") {
 
                    <div class='row'>
 
-                        <div class='col-sm-10'></div>
+                        <div class='col-sm-8'></div>
                         <div class='col-sm-2 validade'> <b>".$_SESSION['ano_letivo_vigente']."</b> </div>
                         
                         
@@ -116,9 +116,10 @@ if ($caminho_foto_carteirinha !="") {
 
                   </div> 
 
+        
                    <div class='row'>
 
-                        <div class='col-sm-10'></div>
+                        <div class='col-sm-9'></div>
                         <div class='col-sm-2 validade'> <b>".$_SESSION['ano_letivo_vigente']."</b> </div>
                         
                         
