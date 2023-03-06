@@ -110,6 +110,11 @@ font-size: 8pt;
 font-size: 12pt;     
 
 }
+.nome_aluno {
+
+font-size: 18pt;     
+
+}
 
    
 
