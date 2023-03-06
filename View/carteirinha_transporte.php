@@ -89,7 +89,7 @@ foreach ($res_escola as $key => $value) {
     }
 
 
-    .outros_dados_aluno br {
+.outros_dados_aluno br {
 
     display: block;
     margin: -12px 0px 3px 40px;
@@ -111,7 +111,6 @@ font-size: 12pt;
 
 }
 .nome_aluno {
-
 font-size: 18pt;     
 
 }
