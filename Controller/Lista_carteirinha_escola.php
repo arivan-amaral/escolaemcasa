@@ -42,12 +42,15 @@ if ($caminho_foto_carteirinha !="") {
    $caminho_foto_carteirinha="imagens/avatar_carteirinha.png"; 
 
 }
+if ($conta%2!=0) {
 
-    $result.="
+    $result.="<br>
+        <div class='row'>";
+}
 
-        <br>
-        <div class='row'>
-            <div class='col-sm-6 div_carteirinha '>
+
+
+    $result.="<div class='col-sm-6 div_carteirinha '>
                   <div class='row'>
 
                 
@@ -77,46 +80,18 @@ if ($caminho_foto_carteirinha !="") {
 
                        
 
-            </div>                
+            </div>";            
 
-            <div class='col-sm-6 div_carteirinha '>
-                  <div class='row'>
-
-                
-                        
-                        <div class='col-sm-3 imagem_perfil' >
-                          <img src='$caminho_foto_carteirinha' >
-                        </div>
-                        
-                        <div class='col-sm-9 dados_aluno'>
-                            <b class='nome_aluno'>$nome_aluno</b><br>
-                          <p class='outros_dados_aluno'> 
-                          <b>$nome_escola</b> <br>
-                          <b>TURMA: $nome_turma</b><br>
-                          <b>RESPONSÁVEL: $nome_responsavel </b><br>
-                          <b>DATA NASC: $data_nascimento</b><br>
-                          <b>MATRÍCULA: $matricula_aluno</b><br>
-                          <b>CPF/RG:</b><br>
-                          <b>TIPO SANGUINEO: </b><br>
-                          <b>TELEFONE: $whatsapp_responsavel</b><br>
-                             <b>LINHA:$linha_transporte</b>
-                        </p>
-                         
-
-                        </div>
-
-                  </div> 
-
-                       
-
-            </div>             
+                      
             
 
 
+if ($conta%2==0) {
+   $result.="       
+        </div> "; // code...
+}
 
 
-            
-        </div>     ";
 
 
 
@@ -125,6 +100,9 @@ if ($caminho_foto_carteirinha !="") {
     if ($conta%4==0) {
     $result.="<div class='pagebreak'> </div>";
     }
+
+
+
     $conta++;
   }
 
