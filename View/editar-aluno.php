@@ -1105,7 +1105,7 @@ foreach ($res_editar_curso as $key => $value) {
                           <div class="form-group">
                             <label class='text-danger'>Data Matrícula <b class="text-danger">*</b></label>
                        
-                              <input type="date" class="form-control" id="data_matricula" name="data_matricula" required  <?php echo $disabled; ?>  value="<?php echo date('Y-m-d'); ?>" >
+                              <input type="date" class="form-control" id="data_matricula" name="data_matricula" required  <?php echo $disabled; ?>  value="<?php echo $data_matricula; ?>" >
                         
                           </div>
                         </div>

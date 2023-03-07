@@ -55,10 +55,11 @@ if ($conta%2!=0) {
 
                 
                         
-                        <div class='col-sm-3 imagem_perfil' >
+                        
+                        <div class='col-sm-2 imagem_perfil' >
                           <img src='$caminho_foto_carteirinha' >
                         </div>
-                        
+                        <div class='col-sm-1' ></div>
                         <div class='col-sm-9 dados_aluno'>
                             <b class='nome_aluno'>$nome_aluno</b><br>
                           <p class='outros_dados_aluno'> 
