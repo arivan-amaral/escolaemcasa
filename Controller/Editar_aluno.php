@@ -274,8 +274,8 @@ try {
 
     }else{
 
-         // $conexao->exec("UPDATE ecidade_matricula SET 
-         //    matricula_datamatricula= '$data_matricula' WHERE aluno_id=$idaluno and calendario_ano='$calendario_ano' limit 1
+         $conexao->exec("UPDATE ecidade_matricula SET 
+            matricula_datamatricula= '$data_matricula' WHERE aluno_id=$idaluno and calendario_ano='$calendario_ano' limit 1
     ");
          
     }
