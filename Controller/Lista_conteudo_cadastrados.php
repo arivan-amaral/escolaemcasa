@@ -110,7 +110,7 @@ try {
 
                 $result.="
                 <div class='custom-control custom-checkbox'>
-                <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$escola_id$turma_id$disciplina_id$serie_id' value='$escola_id-$turma_id-$disciplina_id-$serie_id' $marca_disciplina required onclick='adicinar_campo_conteudo($escola_id$turma_id$disciplina_id$serie_id)'> 
+                <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$escola_id$turma_id$disciplina_id$serie_id' value='$escola_id-$turma_id-$disciplina_id-$serie_id' $marca_disciplina  onclick='adicinar_campo_conteudo($escola_id$turma_id$disciplina_id$serie_id)'> 
 
                 <label for='customCheckbox$escola_id$turma_id$disciplina_id$serie_id' class='custom-control-label'  id='label$escola_id$turma_id$disciplina_id$serie_id'> $nome_escola - <font style='color:#8B0000' >$turma -$disciplina</font> </label>
                 </div>";
@@ -119,7 +119,7 @@ try {
 
                 $result.="
                 <div class='custom-control custom-checkbox'>
-                <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$escola_id$turma_id$disciplina_id$serie_id' value='$escola_id-$turma_id-$disciplina_id-$serie_id' $marca_disciplina required onclick='adicinar_campo_conteudo($escola_id$turma_id$disciplina_id$serie_id)'>
+                <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$escola_id$turma_id$disciplina_id$serie_id' value='$escola_id-$turma_id-$disciplina_id-$serie_id' $marca_disciplina  onclick='adicinar_campo_conteudo($escola_id$turma_id$disciplina_id$serie_id)'>
 
                 <label for='customCheckbox$escola_id$turma_id$disciplina_id$serie_id' id='label$escola_id$turma_id$disciplina_id$serie_id' class='custom-control-label'> $nome_escola - <font style='color:#8B0000'>$turma -$disciplina</font> </label>
                 </div>";
