@@ -156,7 +156,7 @@ try {
       ####################### ALUNO ####################################
          $login_aluno=0;
          $resultado2 = array();
-         // $resultado2 = login_aluno($conexao, $email, $senha,$ano_letivo);
+          $resultado2 = login_aluno($conexao, $email, $senha,$ano_letivo);
 
          foreach ($resultado2 as $key2 => $row2) {
           $id = $row2["idaluno"];
