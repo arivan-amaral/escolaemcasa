@@ -280,7 +280,8 @@ try {
          
     }
 
-    if ( isset( $_FILES["imagem_aluno"][ 'name' ] ) && $_FILES[ "imagem"][ 'error' ] == 0 ) {
+ 
+    if (!empty( $_FILES["imagem_aluno"][ 'name' ] ) && $_FILES[ "imagem"][ 'error' ] == 0 ) {
         $arquivo_tmp = $_FILES[ "imagem_aluno"][ 'tmp_name' ];
         $nome = $_FILES[ "imagem_aluno"][ 'name' ];
         $extensao = pathinfo ( $nome, PATHINFO_EXTENSION );
