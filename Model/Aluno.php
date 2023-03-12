@@ -1570,7 +1570,7 @@ AND ecidade_matricula.matricula_situacao !='REMATRICULAR ALUNO'
 
 
 
-function listar_aluno_da_escola_carteirinha($conexao,$escola_id,$ano_letivo){
+function listar_aluno_da_escola_carteirinha($conexao,$escola_id,$idturma,$ano_letivo){
 //     ecidade_matricula.matricula_concluida='N' and
 // ecidade_matricula.matricula_ativa='S' and
   $res=$conexao->query("
@@ -1598,7 +1598,7 @@ FROM
 aluno,turma,escola
 
 where
-
+$idturma 
 ecidade_matricula.aluno_id= aluno.idaluno AND
 ecidade_matricula.turma_id = turma.idturma and 
 ecidade_matricula.turma_escola = escola.idescola and 

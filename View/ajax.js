@@ -2840,18 +2840,20 @@ function lista_turma_escola_por_serie(campo_listagem){
 function lista_carteirinha_escola(){
 
   var idescola = document.getElementById("idescola").value;
+  var idturma = document.getElementById("turma_carterinha").value;
   var result = document.getElementById("resultado_carteirinha");
    
 
   var xmlreq = CriaRequest();   
   result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
 
-   xmlreq.open("GET", "../Controller/Lista_carteirinha_escola.php?idescola="+idescola, true);
+   xmlreq.open("GET", "../Controller/Lista_carteirinha_escola.php?idescola="+idescola+"&idturma="+idturma, true);
     xmlreq.onreadystatechange = function(){      
         if (xmlreq.readyState == 4) {
             if (xmlreq.status == 200) {
                 var recebe =xmlreq.responseText;
                 result.innerHTML =  xmlreq.responseText;
+
                 
             }else{
                    result.innerHTML = "Erro ao pesquisar";
@@ -4999,6 +5001,31 @@ function rolar() {
     document.getElementById('myAudio').play();
 }
 
+
+ function listar_turma_escola_carterinha() {
+    var result = document.getElementById("turma_carterinha");
+    var idescola = document.getElementById("idescola").value;
+    var xmlreq = CriaRequest();   
+    result.innerHTML="<img src='imagens/carregando.gif'>";
+    xmlreq.open("GET", "../Controller/Listar_turma_escola_carterinha.php?idescola="+idescola, true);
+
+
+    xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                 result.innerHTML = xmlreq.responseText;
+
+             }else{
+
+                 result.innerHTML ="Verifique sua conexão com a internet!";
+               
+                 
+             }
+         }
+     };
+     xmlreq.send(null);
+ } 
 
  function listar_turmas_coordenador(idescola) {
     var result = document.getElementById("accordion");

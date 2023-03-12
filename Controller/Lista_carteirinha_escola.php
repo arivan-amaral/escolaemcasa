@@ -12,8 +12,16 @@ try {
 
 $idfuncionario=$_SESSION['idfuncionario'];
 $idescola=$_GET['idescola'];
+$idturma=$_GET['idturma'];
 
-$resultado=listar_aluno_da_escola_carteirinha($conexao,$idescola,$_SESSION['ano_letivo_vigente']);
+if ($idturma=="Todas") {
+    $idturma=" idturma > 0 and ";
+}else{
+    $idturma=" idturma = $idturma and ";
+
+}
+
+$resultado=listar_aluno_da_escola_carteirinha($conexao,$idescola,$idturma, $_SESSION['ano_letivo_vigente']);
 
   $result="";
   $conta=1;

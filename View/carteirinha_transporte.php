@@ -120,7 +120,11 @@ font-size: 18pt;
 @media print {
 
     .pagebreak { page-break-before: always; } /* page-break-after works, as well */
+
+  .grafico {
+    display: block;
   }
+ }
 
 </style>
 
@@ -129,13 +133,14 @@ font-size: 18pt;
 <div class="content-wrapper" style="min-height: 529px;">
  
     <div class="row">
-      <div class="col-md-1"></div>
-      <div class="col-md-6">
+
+      <div class="col-md-5">
    
         <div class="form-group">
-
+ 
           <label for="exampleInputEmail1">Escolha a escola</label>
-          <select class="form-control form-lg select2" id="idescola" onchange="lista_carteirinha_escola();" required="">
+               
+          <select class="form-control form-lg select2" id="idescola" onchange="listar_turma_escola_carterinha();" required="">
               
               <?php 
                 echo "$lista_escola_associada";
@@ -144,8 +149,26 @@ font-size: 18pt;
           </select>
         </div>
       </div>
+      <div class="col-md-4">
+          <label for="exampleInputEmail1">Escolha a turma</label>
+          <select class="form-control form-lg select2" id="turma_carterinha"  required="">
+          </select>
+
+      </div>
+
+  <div class="col-md-3">
+          <br>
+              <a class="btn btn-primary" onclick="lista_carteirinha_escola();">Buscar</a>
+
+
+      </div>
+
+
+
   </div>
-  <div id="resultado_carteirinha">
+
+
+  <div id="resultado_carteirinha" class="grafico">
     
 
   </div>
@@ -153,6 +176,7 @@ font-size: 18pt;
 
 <script type="text/javascript">
   setTimeout(lista_carteirinha_escola(), 100);
+  setTimeout(listar_turma_escola_carterinha(), 150);
 </script>
 
 <?php 
