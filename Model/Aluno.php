@@ -1450,12 +1450,29 @@ function listar_aluno_da_turma_coordenador($conexao,$idturma,$idescola){
   return $res;
 }
  ///
-function listar_aluno_da_turma_professor($conexao,$idturma,$escola_id){
-  $res=$conexao->query("SELECT aluno.senha,aluno.email,aluno.nome as 'nome_aluno', aluno.idaluno, aluno.status as 'status_aluno', turma.nome_turma,ano_letivo.etapa_id FROM aluno, ano_letivo,turma where 
-        ano_letivo.status_letivo=1 AND
-   turma_id=$idturma and aluno_id=idaluno and turma_id=idturma and escola_id=$escola_id and status like'Ativo' ORDER by nome ASC");
-  return $res;
-}	
+function listar_aluno_da_turma_professor($conexao, $idturma, $escola_id) {
+        $stmt = $conexao->prepare("SELECT aluno.senha, aluno.email, aluno.nome as nome_aluno, aluno.idaluno, aluno.status as status_aluno, turma.nome_turma, ano_letivo.etapa_id 
+        FROM aluno
+        JOIN ano_letivo ON aluno.ano_letivo_id = ano_letivo.idano_letivo
+        JOIN turma ON aluno.turma_id = turma.idturma
+        WHERE ano_letivo.status_letivo = 1
+        AND turma_id = ?
+        AND escola_id = ?
+        AND status = 'Ativo'
+        ORDER BY nome_aluno ASC");
+    
+     $stmt->execute(array($idturma, $escola_id));
+
+    return $stmt->fetchAll();
+}
+
+
+// function listar_aluno_da_turma_professor($conexao,$idturma,$escola_id){
+//   $res=$conexao->query("SELECT aluno.senha,aluno.email,aluno.nome as 'nome_aluno', aluno.idaluno, aluno.status as 'status_aluno', turma.nome_turma,ano_letivo.etapa_id FROM aluno, ano_letivo,turma where 
+//         ano_letivo.status_letivo=1 AND
+//    turma_id=$idturma and aluno_id=idaluno and turma_id=idturma and escola_id=$escola_id and status like'Ativo' ORDER by nome ASC");
+//   return $res;
+// }	
 ///
 
 function pesquisar_aluno_da_turma_ata_resultado_final($conexao, $matricula, $ano_letivo) {

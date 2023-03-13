@@ -29,6 +29,7 @@ if (!isset($_SESSION['idcoordenador'])) {
   include_once '../Model/Setor.php';
   include_once '../Model/Chamada.php';
   include_once '../Model/Escola.php';
+  include_once '../Model/Turma.php';
 
 if ($_COOKIE['dia_doservidor_publico2']<2 && date("m-d")=="10-28") {
 ?>
@@ -114,19 +115,20 @@ setTimeout('dia_doservidor_publico();',3000);
    
    <br>
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-2">
           <div class="form-group">
            <label for="exampleInputEmail1">DATA INICIAL</label>
            <input type="date" class="form-control" name="data_inicial" id="data_inicial">
           </div>
         </div>
-         <div class="col-sm-3">
+         <div class="col-sm-2">
           <div class="form-group">
            <label for="exampleInputEmail1">DATA FINAL</label>
            <input type="date" class="form-control" name="data_final" id="data_final">
           </div>
         </div>
-        <div class="col-sm-3">
+       
+        <div class="col-sm-4">
           <div class="form-group">
            <label for="exampleInputEmail1">ESCOLA</label>
            <select class="form-control"  id="escola" name="escola" >
@@ -143,10 +145,42 @@ setTimeout('dia_doservidor_publico();',3000);
           
            </select> 
           </div>
-        </div> 
-        <div class="col-sm-3">
+        </div>  
+
+        <div class="col-sm-2">
           <div class="form-group">
-          <a style="margin-top: 30PX;" class="btn btn-primary" onclick="pesquisa_matricula_mensal()">Pesquisar</a>
+           <label for="exampleInputEmail1">Série</label>
+           <select class="form-control"  id="serie" name="serie" >
+      <?php
+
+                        $res_serie=lista_serie($conexao); 
+
+                        foreach ($res_serie as $key => $value) {
+
+                            $id = $value['id'];
+
+                            $nome_serie = ($value['nome']);
+
+                            echo "<option value='$id' class='text-black'>$nome_serie</option>";
+
+                          
+
+                        }
+
+
+
+                        ?>
+            
+          
+           </select> 
+          </div>
+        </div> 
+
+
+
+        <div class="col-sm-2">
+          <div class="form-group">
+          <a style="margin-top: 30PX;" class="btn btn-primary" onclick="pesquisa_matricula_mensal()">Buscar</a>
           </div>
         </div>
       </div>

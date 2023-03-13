@@ -9,6 +9,7 @@ try {
     $data_inicial = $_GET['data_inicial'];
     $data_final = $_GET['data_final'];
     $escola = $_GET['escola'];
+    $turma = $_GET['turma'];
     $ano_letivo = $_SESSION['ano_letivo'];
 
     
@@ -28,7 +29,7 @@ try {
     $conta=0;
 
     if ( $data_inicial != "") {
-       $res_matriculas = pesquisa_matricula_mensal($conexao,$escola,$_SESSION["ano_letivo"]);
+       $res_matriculas = pesquisa_matricula_mensal($conexao,$escola,$serie_id,$_SESSION["ano_letivo"]);
       $id_turma_passado = 0;
       $total_alunos = 0;
       $total_alunos_escola = 0;
