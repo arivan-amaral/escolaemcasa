@@ -1969,29 +1969,50 @@ return $res;
 
 
 function listar_disciplina_para_ata($conexao,$escola_id,$idturma,$ano_letivo){
-  $res=$conexao->query("SELECT 
-   disciplina.nome_disciplina,
-   disciplina.abreviacao,
-   disciplina.iddisciplina,
-   funcionario.nome as 'nome_professor',
-   turma.idturma,
-   turma.nome_turma,
-   carga_horaria.CH AS 'carga_horaria'
-
-   FROM carga_horaria, turma,   escola, ministrada,disciplina,funcionario WHERE
-    carga_horaria.serie_id=turma.serie_id AND
-    carga_horaria.disciplina_id=disciplina.iddisciplina AND
     
-    ministrada.turma_id=turma.idturma AND
-   ministrada.escola_id=escola.idescola AND
-   ministrada.disciplina_id=disciplina.iddisciplina AND
-   ministrada.professor_id=funcionario.idfuncionario AND
-   ministrada.ano=$ano_letivo AND
-   disciplina.facultativo=0 AND
-   turma.idturma = $idturma and
-   escola.idescola = $escola_id order by disciplina.ordem asc
+
+  $res=$conexao->query("SELECT disciplina.nome_disciplina, 
+           disciplina.abreviacao, 
+           disciplina.iddisciplina, 
+           funcionario.nome AS nome_professor, 
+           turma.idturma, 
+           turma.nome_turma, 
+           carga_horaria.CH AS carga_horaria 
+    FROM carga_horaria 
+    JOIN turma ON carga_horaria.serie_id = turma.serie_id 
+    JOIN disciplina ON carga_horaria.disciplina_id = disciplina.iddisciplina 
+    JOIN ministrada ON ministrada.disciplina_id = disciplina.iddisciplina 
+    JOIN escola ON ministrada.escola_id = escola.idescola 
+    JOIN funcionario ON ministrada.professor_id = funcionario.idfuncionario 
+    WHERE ministrada.turma_id = turma.idturma 
+      AND ministrada.ano = $ano_letivo 
+      AND disciplina.facultativo = 0 
+      AND turma.idturma = $idturma 
+      AND escola.idescola = $escola_id 
+    ORDER BY disciplina.ordem ASC;
    ");
   return $res;
+  // SELECT 
+  //  disciplina.nome_disciplina,
+  //  disciplina.abreviacao,
+  //  disciplina.iddisciplina,
+  //  funcionario.nome as 'nome_professor',
+  //  turma.idturma,
+  //  turma.nome_turma,
+  //  carga_horaria.CH AS 'carga_horaria'
+
+  //  FROM carga_horaria, turma,   escola, ministrada,disciplina,funcionario WHERE
+  //   carga_horaria.serie_id=turma.serie_id AND
+  //   carga_horaria.disciplina_id=disciplina.iddisciplina AND
+    
+  //   ministrada.turma_id=turma.idturma AND
+  //  ministrada.escola_id=escola.idescola AND
+  //  ministrada.disciplina_id=disciplina.iddisciplina AND
+  //  ministrada.professor_id=funcionario.idfuncionario AND
+  //  ministrada.ano=$ano_letivo AND
+  //  disciplina.facultativo=0 AND
+  //  turma.idturma = $idturma and
+  //  escola.idescola = $escola_id order by disciplina.ordem asc
 }
 
 
