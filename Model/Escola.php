@@ -23,16 +23,39 @@ function verificar_bloqueio_funcionario($conexao,$idcalendario,$funcionario_id,$
    return $sql->fetchAll();
 }
 
-function pesquisa_matricula_mensal($conexao,$escola,$serie_id,$ano){
-   $sql = $conexao->query("SELECT * from ecidade_matricula, turma  where 
-      turma.idturma = turma_id and
-      turma.serie_id = $serie_id and
-       matricula_situacao ='MATRICULADO' AND
-        turma_escola='$escola' and
-         calendario_ano = $ano  
-         order by nome_turma asc");
-   return $sql->fetchAll();
-}
+ function pesquisa_matricula_mensal($conexao,$escola,$serie_id,$ano){
+    $sql = "SELECT *
+            FROM ecidade_matricula
+            INNER JOIN turma ON turma.idturma = ecidade_matricula.turma_id
+            WHERE turma.serie_id = :serie_id 
+              AND ecidade_matricula.matricula_situacao = 'MATRICULADO' 
+              AND ecidade_matricula.turma_escola = :escola
+              AND ecidade_matricula.calendario_ano = :ano  
+            ORDER BY turma.nome_turma ASC";
+
+       $stmt = $conexao->prepare($sql);
+       $stmt->bindValue(':serie_id', $serie_id, PDO::PARAM_INT);
+       $stmt->bindValue(':escola', $escola, PDO::PARAM_STR);
+       $stmt->bindValue(':ano', $ano, PDO::PARAM_INT);
+       $stmt->execute();
+       $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+       return $resultados;
+ }
+ 
+
+// function pesquisa_matricula_mensal($conexao,$escola,$serie_id,$ano){
+//    $sql = $conexao->query("SELECT * from ecidade_matricula, turma  where 
+//       turma.idturma = turma_id and
+//       turma.serie_id = $serie_id and
+//        matricula_situacao ='MATRICULADO' AND
+//         turma_escola='$escola' and
+//          calendario_ano = $ano  
+//          order by nome_turma asc");
+//    return $sql->fetchAll();
+// }
+
+
+
 
 function pesquisa_relatorio_filtro($conexao,$texto,$sexo,$escola,$ano_letivo,$ordenacao){
    $sql = $conexao->query("SELECT $texto FROM aluno,ecidade_matricula,escola,turma WHERE ecidade_matricula.aluno_id = aluno.idaluno AND ecidade_matricula.turma_escola = escola.idescola AND ecidade_matricula.turma_id = turma.idturma AND ecidade_matricula.calendario_ano='$ano_letivo' AND ecidade_matricula.matricula_ativa='S' AND ecidade_matricula.matricula_concluida='N' AND aluno.sexo = '$sexo'  AND ecidade_matricula.turma_escola=$escola ORDER BY $ordenacao ");
