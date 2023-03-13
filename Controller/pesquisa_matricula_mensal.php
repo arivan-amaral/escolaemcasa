@@ -9,7 +9,7 @@ try {
     $data_inicial = $_GET['data_inicial'];
     $data_final = $_GET['data_final'];
     $escola = $_GET['escola'];
-    $serie = $_GET['serie'];
+    $serie_id = $_GET['serie'];
     $ano_letivo = $_SESSION['ano_letivo'];
 
     
