@@ -1650,45 +1650,68 @@ aluno.aluno_transpublico=1  ORDER by aluno.nome ASC");
 } 
 
 function listar_aluno_da_turma_ata_resultado_final($conexao,$turma_id,$escola_id,$ano_letivo){
-//     ecidade_matricula.matricula_concluida='N' and
-// ecidade_matricula.matricula_ativa='S' and
   $res=$conexao->query("
     SELECT
     aluno.aluno_transpublico, 
     aluno.linha_transporte,
     aluno.imagem_carteirinha_transporte ,
-
-    aluno.nome as 'nome_aluno',
+    aluno.nome AS nome_aluno,
     aluno.sexo,
     aluno.data_nascimento,
     aluno.idaluno,
     aluno.email,
-    aluno.status as 'status_aluno',
+    aluno.status AS status_aluno,
     aluno.senha,
     turma.nome_turma,
-
-ecidade_matricula.matricula_codigo as 'matricula',
-ecidade_matricula.matricula_datamatricula as 'data_matricula',
-ecidade_matricula.datasaida as 'datasaida'
-
-FROM
- ecidade_matricula,
-aluno,turma,escola
-
-where
-
-ecidade_matricula.aluno_id= aluno.idaluno AND
-ecidade_matricula.turma_id = turma.idturma and 
-ecidade_matricula.turma_escola = escola.idescola and 
-ecidade_matricula.calendario_ano ='$ano_letivo' and 
- 
-
-ecidade_matricula.turma_escola=$escola_id and
-ecidade_matricula.matricula_situacao !='CANCELADO' and
-ecidade_matricula.turma_id=$turma_id  ORDER by aluno.nome ASC");
+    ecidade_matricula.matricula_codigo AS matricula,
+    ecidade_matricula.matricula_datamatricula AS data_matricula,
+    ecidade_matricula.datasaida AS datasaida
+FROM ecidade_matricula
+INNER JOIN aluno ON ecidade_matricula.aluno_id = aluno.idaluno
+INNER JOIN turma ON ecidade_matricula.turma_id = turma.idturma
+INNER JOIN escola ON ecidade_matricula.turma_escola = escola.idescola
+WHERE ecidade_matricula.turma_escola = $escola_id
+  AND ecidade_matricula.turma_id = $turma_id
+  AND ecidade_matricula.calendario_ano = '$ano_letivo'
+  AND ecidade_matricula.matricula_situacao != 'CANCELADO'
+ORDER BY aluno.nome ASC");
 
 
    return $res;
+
+//    SELECT
+//     aluno.aluno_transpublico, 
+//     aluno.linha_transporte,
+//     aluno.imagem_carteirinha_transporte ,
+
+//     aluno.nome as 'nome_aluno',
+//     aluno.sexo,
+//     aluno.data_nascimento,
+//     aluno.idaluno,
+//     aluno.email,
+//     aluno.status as 'status_aluno',
+//     aluno.senha,
+//     turma.nome_turma,
+
+// ecidade_matricula.matricula_codigo as 'matricula',
+// ecidade_matricula.matricula_datamatricula as 'data_matricula',
+// ecidade_matricula.datasaida as 'datasaida'
+
+// FROM
+//  ecidade_matricula,
+// aluno,turma,escola
+
+// where
+
+// ecidade_matricula.aluno_id= aluno.idaluno AND
+// ecidade_matricula.turma_id = turma.idturma and 
+// ecidade_matricula.turma_escola = escola.idescola and 
+// ecidade_matricula.calendario_ano ='$ano_letivo' and 
+ 
+
+// ecidade_matricula.turma_escola=$escola_id and
+// ecidade_matricula.matricula_situacao !='CANCELADO' and
+// ecidade_matricula.turma_id=$turma_id  ORDER by aluno.nome ASC
 } 
 
 
@@ -1698,42 +1721,66 @@ ecidade_matricula.turma_id=$turma_id  ORDER by aluno.nome ASC");
 function listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,$turma_id,$escola_id,$ano_letivo){
   $res=$conexao->query("
     SELECT 
-      aluno.aluno_transpublico, 
+    aluno.aluno_transpublico, 
     aluno.linha_transporte,
-    aluno.imagem_carteirinha_transporte ,
-
-aluno.nome as 'nome_aluno',
-aluno.sexo,
-aluno.data_nascimento,
-aluno.idaluno,
-aluno.email,
-aluno.status as 'status_aluno',
-aluno.senha,
-turma.nome_turma,
-
-ecidade_matricula.matricula_codigo as 'matricula',
-ecidade_matricula.matricula_datamatricula as 'data_matricula',
-ecidade_matricula.datasaida as 'datasaida'
-
-FROM
- ecidade_matricula,
-aluno,turma,escola
-
-where
-
-ecidade_matricula.aluno_id= aluno.idaluno AND
-ecidade_matricula.turma_id = turma.idturma and 
-ecidade_matricula.turma_escola = escola.idescola and 
-ecidade_matricula.calendario_ano ='$ano_letivo' and 
- 
--- ecidade_matricula.matricula_concluida='S' and
--- ecidade_matricula.matricula_ativa='N' and
-ecidade_matricula.turma_escola=$escola_id and
-ecidade_matricula.matricula_situacao !='CANCELADO' and
-ecidade_matricula.turma_id=$turma_id  ORDER by aluno.nome ASC");
+    aluno.imagem_carteirinha_transporte,
+    aluno.nome AS nome_aluno,
+    aluno.sexo,
+    aluno.data_nascimento,
+    aluno.idaluno,
+    aluno.email,
+    aluno.status AS status_aluno,
+    aluno.senha,
+    turma.nome_turma,
+    ecidade_matricula.matricula_codigo AS matricula,
+    ecidade_matricula.matricula_datamatricula AS data_matricula,
+    ecidade_matricula.datasaida AS datasaida
+FROM ecidade_matricula
+INNER JOIN aluno ON ecidade_matricula.aluno_id = aluno.idaluno
+INNER JOIN turma ON ecidade_matricula.turma_id = turma.idturma
+INNER JOIN escola ON ecidade_matricula.turma_escola = escola.idescola
+WHERE ecidade_matricula.turma_escola = $escola_id
+  AND ecidade_matricula.turma_id = $turma_id
+  AND ecidade_matricula.calendario_ano = '$ano_letivo'
+  AND ecidade_matricula.matricula_situacao <> 'CANCELADO'
+ORDER BY aluno.nome ASC
+  ");
 
 
    return $res;
+
+//      SELECT 
+//       aluno.aluno_transpublico, 
+//     aluno.linha_transporte,
+//     aluno.imagem_carteirinha_transporte ,
+
+// aluno.nome as 'nome_aluno',
+// aluno.sexo,
+// aluno.data_nascimento,
+// aluno.idaluno,
+// aluno.email,
+// aluno.status as 'status_aluno',
+// aluno.senha,
+// turma.nome_turma,
+
+// ecidade_matricula.matricula_codigo as 'matricula',
+// ecidade_matricula.matricula_datamatricula as 'data_matricula',
+// ecidade_matricula.datasaida as 'datasaida'
+
+// FROM
+//  ecidade_matricula,
+// aluno,turma,escola
+
+// where
+
+// ecidade_matricula.aluno_id= aluno.idaluno AND
+// ecidade_matricula.turma_id = turma.idturma and 
+// ecidade_matricula.turma_escola = escola.idescola and 
+// ecidade_matricula.calendario_ano ='$ano_letivo' and 
+
+// ecidade_matricula.turma_escola=$escola_id and
+// ecidade_matricula.matricula_situacao !='CANCELADO' and
+// ecidade_matricula.turma_id=$turma_id  ORDER by aluno.nome ASC
 } 
 
 
