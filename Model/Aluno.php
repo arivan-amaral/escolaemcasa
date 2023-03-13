@@ -1458,25 +1458,43 @@ function listar_aluno_da_turma_professor($conexao,$idturma,$escola_id){
 }	
 ///
 
-function pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula,$ano_letivo){
-  $res=$conexao->query("SELECT 
-        ecidade_matricula.matricula_situacao as 'procedimento',
+function pesquisar_aluno_da_turma_ata_resultado_final($conexao, $matricula, $ano_letivo) {
+    $stmt = $conexao->prepare("SELECT 
+        m.matricula_situacao,
+        m.datasaida,
+        m.destinosaida
+        FROM ecidade_matricula m
+        WHERE m.matricula_codigo = ?
+        AND m.calendario_ano = ?
+        AND m.matricula_situacao NOT IN ('MATRICULADO', 'REMATRICULAR ALUNO')");
+    
+   
+     $stmt->execute(array($matricula, $ano_letivo));
 
-        ecidade_matricula.datasaida as 'datasaida',
-        ecidade_matricula.destinosaida as 'destinosaida',
-        ecidade_matricula.matricula_situacao as 'procedimento'
-FROM
-ecidade_matricula
+    return $stmt->fetchAll();
 
-WHERE 
-ecidade_matricula.matricula_codigo=$matricula and 
-ecidade_matricula.calendario_ano ='$ano_letivo' and 
-ecidade_matricula.matricula_situacao !='MATRICULADO' 
-AND ecidade_matricula.matricula_situacao !='REMATRICULAR ALUNO' 
- ");
   
-  return $res;
 }
+
+// function pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula,$ano_letivo){
+//   $res=$conexao->query("SELECT 
+//         ecidade_matricula.matricula_situacao as 'procedimento',
+
+//         ecidade_matricula.datasaida as 'datasaida',
+//         ecidade_matricula.destinosaida as 'destinosaida',
+//         ecidade_matricula.matricula_situacao as 'procedimento'
+// FROM
+// ecidade_matricula
+
+// WHERE 
+// ecidade_matricula.matricula_codigo=$matricula and 
+// ecidade_matricula.calendario_ano ='$ano_letivo' and 
+// ecidade_matricula.matricula_situacao !='MATRICULADO' 
+// AND ecidade_matricula.matricula_situacao !='REMATRICULAR ALUNO' 
+//  ");
+  
+//   return $res;
+// }
 
 function pesquisar_aluno_da_turma_listagem($conexao,$matricula,$ano_letivo){
   $res=$conexao->query("SELECT 
