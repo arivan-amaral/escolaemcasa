@@ -1022,21 +1022,22 @@ foreach ($res_editar_curso as $key => $value) {
                         <div class="form-group">
                         <label for='exampleInputEmail1' class='text-danger'>Turma pretendida</label>
                           <select class='form-control'  name='turma' id='idturma' onchange=" listar_etapas_cad_aluno();quantidade_vaga_turma_cadastro_aluno();"> 
+                            <option value=""></option>
                             <?php 
 
-                            // $result=lista_de_turmas_das_escolas($conexao,$serie_id,$escola_id,$turno,$ano_letivo_vigente);
+                            $result=lista_de_turmas_das_escolas($conexao,$serie_id,$escola_id,$turno,$ano_letivo_vigente);
                            
-                            //  foreach ($result as $key => $value) {
-                            //    $idturma=$value['idturma'];
-                            //    $nome_turma=$value['nome_turma'];
-                            //    if ($turma_id==$idturma) {
-                            //    echo "<option value='$idturma' selected> $nome_turma</option>";
+                             foreach ($result as $key => $value) {
+                               $idturma=$value['idturma'];
+                               $nome_turma=$value['nome_turma'];
+                               if ($turma_id==$idturma) {
+                               echo "<option value='$idturma' selected> $nome_turma</option>";
                                  
-                            //    }else{
+                               }else{
 
-                            //    echo "<option value='$idturma'> $nome_turma</option>";
-                            //    }
-                            //  }
+                               echo "<option value='$idturma'> $nome_turma</option>";
+                               }
+                             }
                              ?>
                           
                         </select>
