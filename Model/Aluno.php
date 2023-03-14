@@ -1477,7 +1477,7 @@ function listar_aluno_da_turma_professor($conexao, $idturma, $escola_id) {
 
 function pesquisar_aluno_da_turma_ata_resultado_final($conexao, $matricula, $ano_letivo) {
     $stmt = $conexao->prepare("SELECT 
-        m.matricula_situacao,
+        m.matricula_situacao as 'procedimento',
         m.datasaida,
         m.destinosaida
         FROM ecidade_matricula m
