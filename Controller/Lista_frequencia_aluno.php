@@ -27,18 +27,30 @@ try {
    ";
     
 
-    $result_disciplinas=$conexao->query("SELECT * FROM ministrada,escola,turma,disciplina where
-     ministrada.turma_id=idturma and
-     ministrada.disciplina_id=iddisciplina and 
-     ministrada.escola_id=idescola and
-     ministrada.escola_id=idescola and
-     ministrada.ano=$ano_letivo and
-
-     idescola=$idescola and
-     professor_id=$professor_id and
-     idturma=$idturma 
-     order by disciplina_id=$iddisciplina
+    $result_disciplinas=$conexao->query("SELECT *
+      FROM ministrada
+      INNER JOIN escola ON ministrada.escola_id = escola.idescola
+      INNER JOIN turma ON ministrada.turma_id = turma.idturma
+      INNER JOIN disciplina ON ministrada.disciplina_id = disciplina.iddisciplina
+      WHERE ministrada.ano = $ano_letivo
+      AND escola.idescola = $idescola
+      AND ministrada.professor_id = $professor_id
+      AND turma.idturma = $idturma
+      AND disciplina.iddisciplina = $iddisciplina
+      ORDER BY disciplina.iddisciplina
     ");
+    // $result_disciplinas=$conexao->query("SELECT * FROM ministrada,escola,turma,disciplina where
+    //  ministrada.turma_id=idturma and
+    //  ministrada.disciplina_id=iddisciplina and 
+    //  ministrada.escola_id=idescola and
+    //  ministrada.escola_id=idescola and
+    //  ministrada.ano=$ano_letivo and
+
+    //  idescola=$idescola and
+    //  professor_id=$professor_id and
+    //  idturma=$idturma 
+    //  order by disciplina_id=$iddisciplina
+    // ");
 
     foreach ($result_disciplinas as $key => $value) {
        $disciplina_id=$value['iddisciplina'];
@@ -204,7 +216,7 @@ $cont=1;
                       <td>$cont</td>
 
                       <td>
-                        <b class='text-success'> $nome_aluno</b> 
+                        <b class='text-success'>$id - $nome_aluno</b> 
                       </td>
                      
                       <td> 
