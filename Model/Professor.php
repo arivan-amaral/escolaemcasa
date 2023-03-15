@@ -54,48 +54,85 @@
 
 	function listar_nome_professor_turma_por_disciplina($conexao,$idturma,$iddisciplina,$idescola,$ano_letivo) {
     	        $res=$conexao->query("
-    	    SELECT 
-          disciplina.nome_disciplina,
-          disciplina.iddisciplina,
-          funcionario.nome as 'nome_professor',
-          turma.idturma,
-          turma.nome_turma
-         FROM turma, escola, ministrada,disciplina,funcionario WHERE
+								    	   SELECT 
+								    disciplina.nome_disciplina,
+								    disciplina.iddisciplina,
+								    funcionario.nome AS nome_professor,
+								    turma.idturma,
+								    turma.nome_turma
+								FROM ministrada
+								INNER JOIN turma ON ministrada.turma_id = turma.idturma
+								INNER JOIN escola ON ministrada.escola_id = escola.idescola
+								INNER JOIN disciplina ON ministrada.disciplina_id = disciplina.iddisciplina
+								INNER JOIN funcionario ON ministrada.professor_id = funcionario.idfuncionario
+								WHERE ministrada.ano = '$ano_letivo'
+								AND ministrada.escola_id = '$idescola'
+								AND ministrada.turma_id = '$idturma'
+								AND ministrada.disciplina_id = '$iddisciplina'
+								LIMIT 1 ");
+
+    	return $res;  
+
+    	 // SELECT 
+       //    disciplina.nome_disciplina,
+       //    disciplina.iddisciplina,
+       //    funcionario.nome as 'nome_professor',
+       //    turma.idturma,
+       //    turma.nome_turma
+       //   FROM turma, escola, ministrada,disciplina,funcionario WHERE
  
-        ministrada.turma_id=turma.idturma AND
-        ministrada.escola_id=escola.idescola AND
-        ministrada.disciplina_id=disciplina.iddisciplina AND
-        ministrada.professor_id=funcionario.idfuncionario and
+       //  ministrada.turma_id=turma.idturma AND
+       //  ministrada.escola_id=escola.idescola AND
+       //  ministrada.disciplina_id=disciplina.iddisciplina AND
+       //  ministrada.professor_id=funcionario.idfuncionario and
 
-        ministrada.ano='$ano_letivo' AND
-        ministrada.escola_id='$idescola' AND
-        ministrada.turma_id='$idturma' AND
-        ministrada.disciplina_id='$iddisciplina' limit 1");
-
-    	return $res;    
+       //  ministrada.ano='$ano_letivo' AND
+       //  ministrada.escola_id='$idescola' AND
+       //  ministrada.turma_id='$idturma' AND
+       //  ministrada.disciplina_id='$iddisciplina' limit 1  
 	}	
 
 	function listar_disciplina_professor_regente($conexao,$idserie,$idturma,$idescola,$ano_letivo) {
     	$res=$conexao->query("SELECT 
-          disciplina.iddisciplina as 'disciplina_id',
-          disciplina.nome_disciplina,
-          disciplina.abreviacao,
-          disciplina.iddisciplina,
-          funcionario.nome as 'nome_professor',
-          turma.idturma,
-          turma.nome_turma
-         FROM turma, escola, ministrada,disciplina,funcionario WHERE
- 
-        ministrada.turma_id=turma.idturma AND
-        ministrada.escola_id=escola.idescola AND
-        ministrada.disciplina_id=disciplina.iddisciplina AND
-        ministrada.professor_id=funcionario.idfuncionario and
-        ministrada.ano='$ano_letivo' AND
-        ministrada.escola_id='$idescola' AND
-        ministrada.turma_id='$idturma' AND
-        turma.serie_id='$idserie' ");
+		  d.iddisciplina as disciplina_id,
+		  d.nome_disciplina,
+		  d.abreviacao,
+		  f.nome as nome_professor,
+		  t.idturma,
+		  t.nome_turma
+		FROM ministrada m
+		JOIN turma t ON m.turma_id = t.idturma
+		JOIN escola e ON m.escola_id = e.idescola
+		JOIN disciplina d ON m.disciplina_id = d.iddisciplina
+		JOIN funcionario f ON m.professor_id = f.idfuncionario
+		WHERE 
+		  m.ano = $ano_letivo AND
+		  m.escola_id = $idescola AND
+		  m.turma_id = $idturma AND
+		  t.serie_id = $idserie ");
 
-    	return $res;    
+
+    	return $res;
+
+
+    	//SELECT 
+      //     disciplina.iddisciplina as 'disciplina_id',
+      //     disciplina.nome_disciplina,
+      //     disciplina.abreviacao,
+      //     disciplina.iddisciplina,
+      //     funcionario.nome as 'nome_professor',
+      //     turma.idturma,
+      //     turma.nome_turma
+      //    FROM turma, escola, ministrada,disciplina,funcionario WHERE
+ 
+      //   ministrada.turma_id=turma.idturma AND
+      //   ministrada.escola_id=escola.idescola AND
+      //   ministrada.disciplina_id=disciplina.iddisciplina AND
+      //   ministrada.professor_id=funcionario.idfuncionario and
+      //   ministrada.ano='$ano_letivo' AND
+      //   ministrada.escola_id='$idescola' AND
+      //   ministrada.turma_id='$idturma' AND
+      //   turma.serie_id='$idserie'    
 	}	
 
 
@@ -165,30 +202,63 @@
 	}
 	
 	function listar_disciplina_professor($conexao,$idprofessor,$ano_letivo){
-	    $res=$conexao->query("SELECT * FROM turma,  escola, ministrada,disciplina,funcionario WHERE
-                          ministrada.turma_id=turma.idturma AND
-                          ministrada.escola_id=escola.idescola AND
-                          ministrada.disciplina_id=disciplina.iddisciplina AND
-                          ministrada.professor_id=funcionario.idfuncionario AND
-                          funcionario.idfuncionario = $idprofessor and
-                          ministrada.ano = $ano_letivo and
-                           funcionario.status=1 order by nome_escola asc, nome_turma asc");
+	    $res=$conexao->query("SELECT *
+FROM ministrada
+INNER JOIN turma ON ministrada.turma_id = turma.idturma
+INNER JOIN escola ON ministrada.escola_id = escola.idescola
+INNER JOIN disciplina ON ministrada.disciplina_id = disciplina.iddisciplina
+INNER JOIN funcionario ON ministrada.professor_id = funcionario.idfuncionario
+WHERE funcionario.idfuncionario = $idprofessor
+AND ministrada.ano = $ano_letivo
+AND funcionario.status = 1
+ORDER BY escola.nome_escola ASC, turma.nome_turma ASC
+");
 
 		return $res;
+		// SELECT * FROM turma,  escola, ministrada,disciplina,funcionario WHERE
+		//                           ministrada.turma_id=turma.idturma AND
+		//                           ministrada.escola_id=escola.idescola AND
+		//                           ministrada.disciplina_id=disciplina.iddisciplina AND
+		//                           ministrada.professor_id=funcionario.idfuncionario AND
+		//                           funcionario.idfuncionario = $idprofessor and
+		//                           ministrada.ano = $ano_letivo and
+		//                            funcionario.status=1 order by nome_escola asc, nome_turma asc
 	}
+
+
+
+
 	function listar_disciplina_professor_na_turma($conexao,$idescola,$idturma,$idprofessor,$ano_letivo){
-	    $res=$conexao->query("SELECT * FROM turma,  escola, ministrada,disciplina,funcionario WHERE
-                          ministrada.turma_id=turma.idturma AND
-                          ministrada.escola_id=escola.idescola AND
-                          ministrada.disciplina_id=disciplina.iddisciplina AND
-                          ministrada.professor_id=funcionario.idfuncionario AND
-                          funcionario.idfuncionario = $idprofessor and
-                          ministrada.escola_id = $idescola and
-                          ministrada.turma_id = $idturma and
-                          ministrada.ano = '$ano_letivo' and
-                           funcionario.status=1 order by nome_escola asc, nome_turma asc");
+	    $res=$conexao->query("
+
+	    	SELECT *
+	    	FROM ministrada
+	    	INNER JOIN turma ON ministrada.turma_id = turma.idturma
+	    	INNER JOIN escola ON ministrada.escola_id = escola.idescola
+	    	INNER JOIN disciplina ON ministrada.disciplina_id = disciplina.iddisciplina
+	    	INNER JOIN funcionario ON ministrada.professor_id = funcionario.idfuncionario
+	    	WHERE funcionario.idfuncionario = $idprofessor
+	    	AND ministrada.escola_id = $idescola
+	    	AND ministrada.turma_id = $idturma
+	    	AND ministrada.ano = '$ano_letivo'
+	    	AND funcionario.status = 1
+	    	ORDER BY escola.nome_escola ASC, turma.nome_turma ASC
+
+	    	");
 
 		return $res;
+
+
+		// SELECT * FROM turma,  escola, ministrada,disciplina,funcionario WHERE
+    //                       ministrada.turma_id=turma.idturma AND
+    //                       ministrada.escola_id=escola.idescola AND
+    //                       ministrada.disciplina_id=disciplina.iddisciplina AND
+    //                       ministrada.professor_id=funcionario.idfuncionario AND
+    //                       funcionario.idfuncionario = $idprofessor and
+    //                       ministrada.escola_id = $idescola and
+    //                       ministrada.turma_id = $idturma and
+    //                       ministrada.ano = '$ano_letivo' and
+    //                        funcionario.status=1 order by nome_escola asc, nome_turma asc
 	}
 	
 ?>
