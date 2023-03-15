@@ -6,29 +6,56 @@
 	}	
 	function listar_nome_professor_turma($conexao,$idaluno,$ano_letivo) {
     	        $res=$conexao->query("SELECT 
-          disciplina.nome_disciplina,
-          disciplina.iddisciplina,
-          funcionario.nome as 'nome_professor',
-          turma.idturma,
-          turma.nome_turma
-         FROM turma, ano_letivo, aluno , escola, ministrada,disciplina,funcionario WHERE
-          ano_letivo.status_letivo=1 AND 
-        aluno.idaluno=ano_letivo.aluno_id AND
-        ano_letivo.status_letivo=1 AND
-        turma.idturma=ano_letivo.turma_id AND
-        escola.idescola=ano_letivo.escola_id AND
+  disciplina.nome_disciplina,
+  disciplina.iddisciplina,
+  funcionario.nome as nome_professor,
+  turma.idturma,
+  turma.nome_turma
+FROM ministrada
+JOIN disciplina ON ministrada.disciplina_id = disciplina.iddisciplina
+JOIN funcionario ON ministrada.professor_id = funcionario.idfuncionario
+JOIN turma ON ministrada.turma_id = turma.idturma
+JOIN ano_letivo ON turma.idturma = ano_letivo.turma_id
+JOIN aluno ON ano_letivo.aluno_id = aluno.idaluno
+JOIN escola ON ministrada.escola_id = escola.idescola AND escola.idescola = ano_letivo.escola_id
+WHERE 
+  ministrada.ano = $ano_letivo AND
+  aluno.idaluno = $idaluno AND
+  ano_letivo.status_letivo = 1
+GROUP BY 
+  disciplina.iddisciplina,
+  disciplina.nome_disciplina,
+  funcionario.nome,
+  turma.idturma,
+  turma.nome_turma
+ORDER BY 
+  disciplina.nome_disciplina ASC
+");
 
-        ministrada.ano='$ano_letivo' AND
-        ministrada.turma_id=turma.idturma AND
-        ministrada.escola_id=escola.idescola AND
-        ministrada.disciplina_id=disciplina.iddisciplina AND
-        ministrada.professor_id=funcionario.idfuncionario AND
-        aluno.idaluno = $idaluno group by funcionario.nome,turma.idturma,
-          turma.nome_turma,
-          disciplina.iddisciplina,
-         disciplina.nome_disciplina asc");
+    	return $res;  
 
-    	return $res;    
+    	// SELECT 
+    	//           disciplina.nome_disciplina,
+    	//           disciplina.iddisciplina,
+    	//           funcionario.nome as 'nome_professor',
+    	//           turma.idturma,
+    	//           turma.nome_turma
+    	//          FROM turma, ano_letivo, aluno , escola, ministrada,disciplina,funcionario WHERE
+    	//           ano_letivo.status_letivo=1 AND 
+    	//         aluno.idaluno=ano_letivo.aluno_id AND
+    	//         ano_letivo.status_letivo=1 AND
+    	//         turma.idturma=ano_letivo.turma_id AND
+    	//         escola.idescola=ano_letivo.escola_id AND
+
+    	//         ministrada.ano='$ano_letivo' AND
+    	//         ministrada.turma_id=turma.idturma AND
+    	//         ministrada.escola_id=escola.idescola AND
+    	//         ministrada.disciplina_id=disciplina.iddisciplina AND
+    	//         ministrada.professor_id=funcionario.idfuncionario AND
+    	//         aluno.idaluno = $idaluno group by funcionario.nome,turma.idturma,
+    	//           turma.nome_turma,
+    	//           disciplina.iddisciplina,
+    	//          disciplina.nome_disciplina asc  
 	}	
 
 	function listar_nome_professor_turma_ministrada($conexao,$idturma,$idescola,$ano_letivo) {
