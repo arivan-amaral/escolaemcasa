@@ -274,6 +274,7 @@ $arquivo.="
           foreach ($result as $key => $value) {
             $nome_aluno=($value['nome_aluno']);
             $nome_turma=($value['nome_turma']);
+            $data_matricula=($value['data_matricula']);
             $id=$value['idaluno'];
             $idaluno=$value['idaluno'];
             $status_aluno=$value['status_aluno'];
@@ -322,6 +323,7 @@ $arquivo.="
              padding:0cm 0cm 0cm 0cm;height:11.3pt; '>
              $nome_aluno
              Data nascimento: $data_nascimento <BR>
+             Data matrícula: $data_matricula <BR>
              </td>
 
 
@@ -392,6 +394,7 @@ $arquivo.="
             <td>$id -
             <b class='text-success'> $nome_aluno </b> <BR>
             Data nascimento: $data_nascimento <BR>
+            Data matrícula: $data_matricula
 
             <b class='text-primary'> $nome_turma</b><BR>
             <b class='text-danger'>$email  </b><BR>
