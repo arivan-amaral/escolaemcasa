@@ -249,7 +249,7 @@ try {
         if ($_POST['etapa']!="") {
             $etapa=$_POST['etapa'];
                   $conexao->exec("UPDATE ecidade_matricula SET 
-                matricula_datamatricula= '$data_matricula',
+               
                 turno_nome='$turno',
                 turma_escola=$turma_escola,
                 turma_id=$turma_id,
@@ -259,7 +259,7 @@ try {
         ");
         }else{
               $conexao->exec("UPDATE ecidade_matricula SET 
-                     matricula_datamatricula= '$data_matricula',
+                   
                      turno_nome='$turno',
                      turma_escola=$turma_escola,
                      turma_id=$turma_id
