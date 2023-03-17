@@ -273,9 +273,7 @@ try {
    
 
     }elseif ($data_matricula !="") {
-        // code...
-    }{
-
+ 
          $conexao->exec("UPDATE ecidade_matricula SET 
             matricula_datamatricula= '$data_matricula' WHERE aluno_id=$idaluno and calendario_ano='$calendario_ano' limit 1
     ");
