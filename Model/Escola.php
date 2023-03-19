@@ -27,17 +27,19 @@ function verificar_bloqueio_funcionario($conexao,$idcalendario,$funcionario_id,$
     $sql = "SELECT *
             FROM ecidade_matricula
             INNER JOIN turma ON turma.idturma = ecidade_matricula.turma_id
-            WHERE turma.serie_id = :serie_id 
+            WHERE 
+               $escola AND
+               $serie_id 
               AND ecidade_matricula.matricula_situacao = 'MATRICULADO' 
-              AND ecidade_matricula.turma_escola = :escola
-              AND ecidade_matricula.calendario_ano = :ano  
+              
+              AND ecidade_matricula.calendario_ano = $ano  
             ORDER BY turma.nome_turma ASC";
-
-       $stmt = $conexao->prepare($sql);
-       $stmt->bindValue(':serie_id', $serie_id, PDO::PARAM_INT);
-       $stmt->bindValue(':escola', $escola, PDO::PARAM_STR);
-       $stmt->bindValue(':ano', $ano, PDO::PARAM_INT);
-       $stmt->execute();
+echo "$sql";
+       $stmt = $conexao->query($sql);
+       // $stmt->bindValue(':serie_id', $serie_id, PDO::PARAM_INT);
+       // $stmt->bindValue(':escola', $escola, PDO::PARAM_STR);
+       // $stmt->bindValue(':ano', $ano, PDO::PARAM_INT);
+       // $stmt->execute();
        $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
        return $resultados;
  }
@@ -90,11 +92,15 @@ function total_alunos_escola($conexao,$escola){
 }
 
 function pesquisa_matricula_mensal_quant($conexao,$data_inicial,$data_final,$escola,$idturma){
-   $sql = $conexao->query("SELECT count(*) as 'alunos' from ecidade_matricula  where matricula_situacao = 'MATRICULADO' AND turma_escola = $escola AND turma_id = $idturma AND matricula_datamatricula BETWEEN '$data_inicial' AND '$data_final'");
+   $sql = $conexao->query("SELECT count(*) as 'alunos' from ecidade_matricula  where  $escola AND matricula_situacao = 'MATRICULADO'  AND turma_id = $idturma AND matricula_datamatricula BETWEEN '$data_inicial' AND '$data_final'");
    return $sql->fetchAll();
 }
 function pesquisa_matricula_mensal_quant_anterior($conexao,$escola,$idturma,$ano_letivo){
-   $sql = $conexao->query("SELECT count(*) as 'alunos' from ecidade_matricula  where matricula_situacao = 'MATRICULADO' AND turma_escola = $escola AND turma_id = $idturma and calendario_ano='$ano_letivo'");
+   $sql = $conexao->query("SELECT count(*) as 'alunos' from ecidade_matricula  where 
+       $escola AND
+      matricula_situacao = 'MATRICULADO' AND
+    
+      turma_id = $idturma and calendario_ano='$ano_letivo'");
    return $sql->fetchAll();
 }
 

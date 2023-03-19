@@ -2838,6 +2838,33 @@ function lista_turma_escola_por_serie(campo_listagem){
     xmlreq.send(null);
 }
 
+function pesquisar_por_nome_carteirinha_escola(){
+
+ 
+  var nome_aluno = document.getElementById("nome_aluno").value;
+  var result = document.getElementById("resultado_carteirinha");
+   
+
+  var xmlreq = CriaRequest();   
+  result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
+
+   xmlreq.open("GET", "../Controller/Pesquisar_por_nome_carteirinha_escola.php?nome_aluno="+nome_aluno, true);
+    xmlreq.onreadystatechange = function(){      
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {
+                var recebe =xmlreq.responseText;
+                result.innerHTML =  xmlreq.responseText;
+
+                
+            }else{
+                   result.innerHTML = "Erro ao pesquisar";
+                
+                
+            }
+        }
+    };
+    xmlreq.send(null);
+}
 function lista_carteirinha_escola(){
 
   var idescola = document.getElementById("idescola").value;

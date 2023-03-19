@@ -132,6 +132,7 @@ setTimeout('dia_doservidor_publico();',3000);
           <div class="form-group">
            <label for="exampleInputEmail1">ESCOLA</label>
            <select class="form-control"  id="escola" name="escola" >
+            <option value="todas">TODAS</option>
             <?php  
               $res_escola = lista_escola($conexao);
               foreach ($res_escola as $key => $value) {
@@ -149,28 +150,14 @@ setTimeout('dia_doservidor_publico();',3000);
 
         <div class="col-sm-2">
           <div class="form-group">
-           <label for="exampleInputEmail1">Série</label>
+           <label for="exampleInputEmail1">Seguimento</label>
            <select class="form-control"  id="serie" name="serie" >
-      <?php
-
-                        $res_serie=lista_serie($conexao); 
-
-                        foreach ($res_serie as $key => $value) {
-
-                            $id = $value['id'];
-
-                            $nome_serie = ($value['nome']);
-
-                            echo "<option value='$id' class='text-black'>$nome_serie</option>";
-
-                          
-
-                        }
-
-
-
-                        ?>
-            
+              <option value="todos">TODOS</option>      
+              <option value="1">Infántil</option>      
+              <option value="2">Fundamental 1</option>      
+              <option value="3">Fundamental 2</option>      
+              <option value="4">EJA</option>      
+              <option value="5">MULTISERRADA</option>      
           
            </select> 
           </div>

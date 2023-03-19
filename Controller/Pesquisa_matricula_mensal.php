@@ -8,8 +8,35 @@ try {
 
     $data_inicial = $_GET['data_inicial'];
     $data_final = $_GET['data_final'];
-    $escola = $_GET['escola'];
-    $serie_id = $_GET['serie'];
+
+    if ($_GET['escola']=='todas') {
+     $escola = "ecidade_matricula.turma_escola >0  ";
+      
+    }else{
+     $escola = " ecidade_matricula.turma_escola = ".$_GET['escola']." ";
+
+    }
+   
+      $serie_id =$_GET['serie'];
+   
+
+if ($_GET['serie'] == 1 ) {
+  $serie_id = " turma.serie_id >= 1 and turma.serie_id <= 2 ";
+} else if ($_GET['serie'] == 2) {
+  $serie_id = " turma.serie_id >= 3 and turma.serie_id <= 7 ";
+} else if ($_GET['serie'] == 3) {
+  $serie_id = " turma.serie_id >= 8 and turma.serie_id <= 11 ";
+} else if ($_GET['serie'] == 4) {
+  $serie_id = " turma.serie_id >= 12 and turma.serie_id <= 15 ";
+} else if ($_GET['serie'] == 5) {
+  $serie_id = " turma.serie_id = 16 ";
+} else {
+  $serie_id = " turma.serie_id>0 "; // nenhuma condição foi satisfeita
+}
+
+
+
+
     $ano_letivo = $_SESSION['ano_letivo'];
 
     
@@ -17,7 +44,7 @@ try {
    <thead>
       <tr>
         <th  style='text-align: center;'>Turma</th>
-        <th  style='text-align: center;'>Série</th>
+        <th  style='text-align: center;'>Seguimento</th>
         <th  style='text-align: center;'>Anteriores</th>
         <th  style='text-align: center;'>Novas</th>
         <th  style='text-align: center;'>Total</th>
@@ -41,10 +68,12 @@ try {
           $nome_serie = "";
           $nome_turma = "";
           if ($id_turma_passado !=  $turma) {
+            //
             $res_anterior = pesquisa_matricula_mensal_quant_anterior($conexao,$escola,$turma,$ano_letivo);
             foreach ($res_anterior as $key => $value) {
               $quant_total = $value['alunos'];
             }
+            //
             $res_matriculas_quant = pesquisa_matricula_mensal_quant($conexao,$data_inicial,$data_final,$escola,$turma);
                   foreach ($res_matriculas_quant as $key => $value) {
                       $quant_matriculas = $value['alunos'];
@@ -53,11 +82,32 @@ try {
           foreach ($res_turma as $key => $value) {             
                 $serie_id = $value['serie_id'];
                 $nome_turma = $value['nome_turma'];
-                $res_nome_serie = pesquisa_serie($conexao,$serie_id);
-                foreach ($res_nome_serie as $key => $value) {
-                    $nome_serie = $value['nome'];
-                }  
+                // $res_nome_serie = pesquisa_serie($conexao,$serie_id);
+                // foreach ($res_nome_serie as $key => $value) {
+                //     $nome_serie .= $value['nome'].  " | ";
+                // }  
             }
+
+            if ($_GET['serie'] == 'todos') {
+                $nome_serie="Todas as series.";
+              }
+              else if ($_GET['serie'] == '1') {
+                $nome_serie="Seguimento Infántil.";
+              }
+              else if ($_GET['serie'] == '2') {
+                $nome_serie="Seguimento Fundamental 1.";
+              }
+              else if ($_GET['serie'] == '3') {
+                $nome_serie="Seguimento Fundamental 2.";
+              }
+              else if ($_GET['serie'] == '4') {
+                $nome_serie="Seguimento EJA.";
+              }
+              else if ($_GET['serie'] == '5') {
+                $nome_serie="Seguimento MULTISERRADA.";
+              }
+
+
           $quant_anterior =  $quant_total - $quant_matriculas;
           
           $result.="<td>$nome_turma</td>";

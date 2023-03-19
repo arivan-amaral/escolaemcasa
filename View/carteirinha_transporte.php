@@ -134,6 +134,7 @@ font-size: 18pt;
  
     <div class="row">
 
+      <div class="col-md-1"></div>
       <div class="col-md-5">
    
         <div class="form-group">
@@ -156,7 +157,7 @@ font-size: 18pt;
 
       </div>
 
-  <div class="col-md-3">
+  <div class="col-md-2">
           <br>
               <a class="btn btn-primary" onclick="lista_carteirinha_escola();">Buscar</a>
 
@@ -165,6 +166,22 @@ font-size: 18pt;
 
 
 
+  </div>
+ <center>OU</center>
+  <br>
+  <div class="row">
+    
+    <div class="col-md-1"></div>
+    <div class="col-md-7">
+          <input class="form-control " id="nome_aluno" placeholder="Pesquisar por nome do aluno">
+      
+    </div>
+    <div class="col-md-3">
+         
+                <a class="btn btn-warning" onclick="pesquisar_por_nome_carteirinha_escola();">Buscar Por nome</a>
+
+
+        </div>
   </div>
 
 
