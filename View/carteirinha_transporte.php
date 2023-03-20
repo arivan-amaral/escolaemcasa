@@ -119,7 +119,10 @@ font-size: 18pt;
    
 
 @media print {
-
+  .no-print, .no-print *
+  {
+      display: none !important;
+  }
     .pagebreak { page-break-before: always; } /* page-break-after works, as well */
 
   .grafico {
@@ -133,7 +136,7 @@ font-size: 18pt;
 
 <div class="content-wrapper" style="min-height: 529px;">
  
-    <div class="row">
+    <div class="row no-print">
 
       <div class="col-md-1"></div>
       <div class="col-md-5">
@@ -170,7 +173,7 @@ font-size: 18pt;
   </div>
  <center>OU</center>
   <br>
-  <div class="row">
+  <div class="row no-print">
     
     <div class="col-md-1"></div>
     <div class="col-md-7">
