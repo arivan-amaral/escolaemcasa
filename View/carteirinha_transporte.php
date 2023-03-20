@@ -59,12 +59,13 @@ foreach ($res_escola as $key => $value) {
       border-radius: 5%;
       width: 135.6mm;
       height: 83.98mm ;
-      background-image: url("imagens/carteirinha.png");
+      background-image: url("imagens/2023.png");
   
       background-size: 480px;
       background-repeat: no-repeat;
 
     }
+
     .imagem_perfil img{
       margin-right:1px ;
       border: 2px solid white;
