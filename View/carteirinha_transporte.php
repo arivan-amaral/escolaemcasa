@@ -67,6 +67,8 @@ foreach ($res_escola as $key => $value) {
     }
 
     .imagem_perfil img{
+      margin-left: 7mm;
+
       margin-right:1px ;
       border: 2px solid white;
       border-radius: 10%;
