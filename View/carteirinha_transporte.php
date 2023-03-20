@@ -171,7 +171,10 @@ font-size: 18pt;
 
 
   </div>
- <center>OU</center>
+ 
+  <div class="no-print">
+    <center>OU</center>
+  </div>
   <br>
   <div class="row no-print">
     
