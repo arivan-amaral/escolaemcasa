@@ -100,7 +100,7 @@ if ($conta%2==0) {
 
 
    
-    if ($conta%4==0) {
+    if ($conta%8==0) {
     $result.="<div class='pagebreak'> </div>";
     }
 
