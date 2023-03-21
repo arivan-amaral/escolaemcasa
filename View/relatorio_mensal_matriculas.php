@@ -150,7 +150,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
         <div class="col-sm-2">
           <div class="form-group">
-           <label for="exampleInputEmail1">Seguimento</label>
+           <label for="exampleInputEmail1">Segmento</label>
            <select class="form-control"  id="serie" name="serie" >
               <option value="todos">TODOS</option>      
               <option value="1">Infántil</option>      

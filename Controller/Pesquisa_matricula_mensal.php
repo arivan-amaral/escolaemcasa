@@ -44,7 +44,7 @@ if ($_GET['serie'] == 1 ) {
    <thead>
       <tr>
         <th  style='text-align: center;'>Turma</th>
-        <th  style='text-align: center;'>Seguimento</th>
+        <th  style='text-align: center;'>Segmento</th>
         <th  style='text-align: center;'>Anteriores</th>
         <th  style='text-align: center;'>Novas</th>
         <th  style='text-align: center;'>Total</th>
@@ -92,19 +92,19 @@ if ($_GET['serie'] == 1 ) {
                 $nome_serie="Todas as series.";
               }
               else if ($_GET['serie'] == '1') {
-                $nome_serie="Seguimento Infántil.";
+                $nome_serie="Segmento Infántil.";
               }
               else if ($_GET['serie'] == '2') {
-                $nome_serie="Seguimento Fundamental 1.";
+                $nome_serie="Segmento Fundamental 1.";
               }
               else if ($_GET['serie'] == '3') {
-                $nome_serie="Seguimento Fundamental 2.";
+                $nome_serie="Segmento Fundamental 2.";
               }
               else if ($_GET['serie'] == '4') {
-                $nome_serie="Seguimento EJA.";
+                $nome_serie="Segmento EJA.";
               }
               else if ($_GET['serie'] == '5') {
-                $nome_serie="Seguimento MULTISERRADA.";
+                $nome_serie="Segmento MULTISERRADA.";
               }
 
 
