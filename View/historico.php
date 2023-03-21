@@ -428,6 +428,14 @@ foreach ($res_aluno as $key => $value) {
       foreach ($res_notas as $key => $value) {
         $nota_final=$value['nota_final'];
         $nota_final=number_format($nota_final, 1, '.', ',');
+        if ($nota_final>10) {
+         
+          $nota_final="<font color='red'> $nota_final </font>";
+
+        }else{
+          $nota_final="<font color='black'> $nota_final </font>";
+
+        }
         $conta_notas++;
       ?>
 
