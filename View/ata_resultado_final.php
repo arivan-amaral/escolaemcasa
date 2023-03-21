@@ -11,10 +11,8 @@ include_once '../Controller/Cauculos_notas.php';
  
 $idescola=$_POST['idescola'];
 $idturma=$_POST['idturma'];
-
- 
-  $nome_escola=$_POST['nome_escola'];
-  $nome_turma=$_POST['nome_turma'];
+$nome_escola=$_POST['nome_escola'];
+$nome_turma=$_POST['nome_turma'];
  
 
 ?>

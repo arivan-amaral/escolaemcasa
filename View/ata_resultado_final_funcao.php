@@ -102,30 +102,7 @@ function ata_resultados_finais($conexao,$idescola,$idturma,$idserie,$ano_letivo)
 <?php
 $conta_aluno=1; 
 $matricula_aluno="";
-// echo"    SELECT 
-// aluno.nome as 'nome_aluno',
-// aluno.sexo,
-// aluno.data_nascimento,
-// aluno.idaluno,
-// turma.nome_turma,
-
-// ecidade_matricula.matricula_codigo as 'matricula',
-// ecidade_matricula.matricula_datamatricula as 'data_matricula',
-// ecidade_matricula.datasaida as 'datasaida'
-// FROM
-//  ecidade_matricula,
-// aluno,turma,escola
-
-// where
-
-// ecidade_matricula.aluno_id= aluno.idaluno AND
-// ecidade_matricula.turma_id = turma.idturma and 
-// ecidade_matricula.turma_escola = escola.idescola and 
-// ecidade_matricula.calendario_ano ='2021' and 
  
-// ecidade_matricula.turma_escola=$idescola and
-// ecidade_matricula.matricula_situacao !='CANCELADO' and
-// ecidade_matricula.turma_id=$idturma  ORDER by aluno.nome ASC";
 if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
   $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
 }else{
@@ -137,7 +114,6 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
 
   $idaluno=$value['idaluno'];
   $nome_aluno=($value['nome_aluno']);
-  // $nome_aluno=strtoupper($value['nome_aluno']);
   $matricula_aluno=$value['matricula'];
 
   if ($conta_aluno%2==0) {
@@ -156,9 +132,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
   $matricula="";
   foreach ($res_movimentacao as $key => $value) {
       $datasaida=($value['datasaida']);
-      // $matricula=($value['matricula']);
-      // $data_evento=converte_data($value['data_evento']);
-      // $descricao_procedimento=$value['descricao_procedimento'];
+      
       $procedimento=$value['procedimento'];
       
       if ($datasaida!="") {
@@ -234,7 +208,10 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
           2.7pt;margin-bottom:0cm;margin-left:3.35pt;text-align:
           center'><span lang=PT style='font-size:8.0pt'>
         <?php
-        if ($idserie>3) {
+        if ($idserie>3 && $_SESSION['nivel_acesso_id']==100) {
+          echo "n: ".gerar_media_ata($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$ano_letivo,$idserie);
+
+        }elseif ($idserie>3) {
   
              $result_nota_aula1=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,1,$ano_letivo);
 
@@ -260,16 +237,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
     
   
       $result_nota_aula2=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,2,$ano_letivo);
-
-
-      // $conexao->query("
-      //   SELECT avaliacao,periodo_id,nota FROM nota_parecer WHERE
-      //   escola_id=$idescola and
-      //   turma_id=$idturma and
-      //   disciplina_id=$iddisciplina and 
-      //   periodo_id=2 and aluno_id=$idaluno  group by avaliacao,periodo_id, nota");
-
-
+ 
       $nota_tri_2=0;
       $nota_av3_2='';
       $nota_rp_2='';
@@ -535,4 +503,5 @@ $conta_aluno++;
 
 <?php 
 }
+
 ?>
