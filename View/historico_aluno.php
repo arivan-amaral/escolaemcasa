@@ -61,6 +61,8 @@ text-shadow:none;
 
 </p>
 <?php
+try {
+  
 
   $idaluno=$_GET['idaluno'];
   $idserie=$_GET['idserie'];
@@ -86,6 +88,10 @@ if ($_SESSION['nivel_acesso_id']==1010) {
 
 
   hitorico_aluno($conexao,$idaluno,$idserie,$idescola);
+  } catch (Exception $e) {
+    echo "Divergência de dados encontrada: $e";
+    
+  }
 ?>
 
 
