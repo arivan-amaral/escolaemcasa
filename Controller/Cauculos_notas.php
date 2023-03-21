@@ -102,6 +102,9 @@ function gerar_media_ata($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$ano
         ");
     }
 
+    if ($media>0) {
+    	$media=$media/3;
+    }
     return $media;
 
 }

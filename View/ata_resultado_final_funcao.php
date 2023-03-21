@@ -208,12 +208,11 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
           2.7pt;margin-bottom:0cm;margin-left:3.35pt;text-align:
           center'><span lang=PT style='font-size:8.0pt'>
         <?php
-        // if ($idserie>3 && $_SESSION['nivel_acesso_id']==1010) {
-        //   echo "n: ".gerar_media_ata($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$ano_letivo,$idserie);
+        if ($idserie>3 && $_SESSION['nivel_acesso_id']==1010) {
+          $media=gerar_media_ata($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$ano_letivo,$idserie);
+          echo "manutenção:".$media;
 
-        // }
-
-        if ($idserie>3) {
+        }elseif ($idserie>3) {
   
              $result_nota_aula1=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,1,$ano_letivo);
 
