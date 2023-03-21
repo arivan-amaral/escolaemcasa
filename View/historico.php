@@ -651,9 +651,12 @@ foreach ($res_escola_origem as $key => $value) {
   $ano_referencia=$value['ano_referencia'];
   $nome_serie=$value['nome_serie'];
   $estado=$value['estado'];
+
   if ($estabelecimento_ensino =="") {
     $estabelecimento_ensino="NÃO DEFINIDO";
   }
+  
+  $cidade="NÃO DEFINIDO";
 
 ?>
  <tr style='height:11.25pt'>
@@ -685,7 +688,7 @@ foreach ($res_escola_origem as $key => $value) {
   padding:0cm 3.5pt 0cm 3.5pt;height:11.25pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp; </span></p>
+  color:black'>&nbsp;  <?php echo $cidade; ?> </span></p>
   </td>
 
   <td width=54 colspan=3 valign=bottom style='width:40.65pt;border-top:none;
