@@ -1,8 +1,7 @@
 <?php
 
 function registrar_sistema_atual_nota_historico_($conexao, $idaluno, $ano){
-
-   $result_ecidade_matricula=$conexao->query("SELECT 
+    $sql="SELECT 
      turma.nome_turma,
      escola.nome_escola,
      escola.idescola,
@@ -26,8 +25,10 @@ function registrar_sistema_atual_nota_historico_($conexao, $idaluno, $ano){
      AND ecidade_matricula.matricula_situacao in('MATRICULADO', 'REMATRICULADO')
    ORDER BY 
      ecidade_matricula.matricula_codigo DESC, 
-     ecidade_matricula.calendario_ano ASC LIMIT 1");
+     ecidade_matricula.calendario_ano ASC LIMIT 1";
 
+   $result_ecidade_matricula=$conexao->query($sql);
+echo "$sql <br>";
    return $result_ecidade_matricula->fetchAll();
 }
 
