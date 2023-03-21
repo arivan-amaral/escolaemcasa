@@ -208,7 +208,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
           2.7pt;margin-bottom:0cm;margin-left:3.35pt;text-align:
           center'><span lang=PT style='font-size:8.0pt'>
         <?php
-        if ($idserie>3 && $_SESSION['nivel_acesso_id']==100) {
+        if ($idserie>3 && $_SESSION['nivel_acesso_id']==1010) {
           echo "n: ".gerar_media_ata($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$ano_letivo,$idserie);
 
         }elseif ($idserie>3) {
