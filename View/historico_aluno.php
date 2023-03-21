@@ -80,7 +80,13 @@ if ($_SESSION['nivel_acesso_id']==1010) {
       $matricula=$value['matricula'];
       $calendario_ano=$value['calendario_ano'];
       $matricula_situacao=$value['matricula_situacao'];
-      $media=gerar_media_ata($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$ano_letivo,$idserie);
+      $res_displina=$conexao->query("SELECT * FROM disciplina where facultativo =0 and infantil=0");
+      foreach ($res_displina as $key_dis => $value_dis) {
+        $iddisciplina=$value_dis['iddisciplina'];
+         $media=gerar_media_ata($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$ano_letivo,$idserie);
+
+        // code...
+      }
     }
 
   }
