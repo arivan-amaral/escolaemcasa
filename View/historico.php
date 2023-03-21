@@ -644,10 +644,13 @@ foreach ($res_aluno as $key => $value) {
  </tr>
 
 <?php 
-$res_escola_origem=$conexao->query("SELECT * FROM nota_parecer where aluno_id=$idaluno and nota_parecer.escola_origem IS NOT NULL  GROUP BY nota_parecer.escola_origem");
+$res_escola_origem=$conexao->query("SELECT nota_parecer.ano_referencia, serie.nome as nome_serie , nota_parecer.escola_origem,  nota_parecer.estado FROM nota_parecer,serie where serie_id=serie.id and  aluno_id=$idaluno and nota_parecer.escola_origem IS NOT NULL  GROUP BY nota_parecer.escola_origem");
 
 foreach ($res_escola_origem as $key => $value) {
   $estabelecimento_ensino=$value['escola_origem'];
+  $ano_referencia=$value['ano_referencia'];
+  $nome_serie=$value['nome_serie'];
+  $estado=$value['estado'];
   if ($estabelecimento_ensino =="") {
     $estabelecimento_ensino="NÃO DEFINIDO";
   }
@@ -658,7 +661,7 @@ foreach ($res_escola_origem as $key => $value) {
   border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:11.25pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
+  color:black'>&nbsp;<?php echo $ano_referencia; ?></span></p>
   </td>
 
   <td width=106 valign=bottom style='width:79.35pt;border-top:none;border-left:
@@ -666,7 +669,7 @@ foreach ($res_escola_origem as $key => $value) {
   padding:0cm 3.5pt 0cm 3.5pt;height:11.25pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
+  color:black'>&nbsp;<?php echo $ano_referencia; ?></span></p>
   </td>
 
   <td width=354 colspan=16 valign=bottom style='width:265.25pt;border-top:none;
@@ -682,7 +685,7 @@ foreach ($res_escola_origem as $key => $value) {
   padding:0cm 3.5pt 0cm 3.5pt;height:11.25pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
+  color:black'>&nbsp;<?php echo $nome_serie; ?></span></p>
   </td>
 
   <td width=54 colspan=3 valign=bottom style='width:40.65pt;border-top:none;
@@ -690,7 +693,7 @@ foreach ($res_escola_origem as $key => $value) {
   padding:0cm 3.5pt 0cm 3.5pt;height:11.25pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
+  color:black'>&nbsp;<?php echo $estado; ?></span></p>
   </td>
 
  </tr>
