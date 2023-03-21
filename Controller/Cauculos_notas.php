@@ -64,7 +64,12 @@ function gerar_media_ata($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$ano
 
     }
 
-  
+   if ($media>0) {
+    	$media=$media/3;
+    	$media=number_format($media, 1, '.', ',');
+    }
+
+
     $res_hist=$conexao->query("
         SELECT * from historico where 
         aluno_id =$idaluno and 
@@ -102,9 +107,7 @@ function gerar_media_ata($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$ano
         ");
     }
 
-    if ($media>0) {
-    	$media=$media/3;
-    }
+   
 
 
     return number_format($media, 1, '.', ',');
