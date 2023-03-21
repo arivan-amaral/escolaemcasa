@@ -72,7 +72,7 @@ try {
 
 
 
-if ($_SESSION['nivel_acesso_id']=1010) {
+if ($_SESSION['nivel_acesso_id']>0) {
   for ($ano_conta=2021; $ano_conta <= date("Y") ; $ano_conta++) { 
     $resultado=registrar_sistema_atual_nota_historico($conexao, $idaluno, $ano_conta); 
     foreach ($resultado as $key => $value) {

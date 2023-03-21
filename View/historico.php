@@ -430,10 +430,10 @@ foreach ($res_aluno as $key => $value) {
         $nota_final=number_format($nota_final, 1, '.', ',');
         if ($nota_final>10) {
          
-          $cor="red";
+          $nota_final="erro";
 
         }else{
-          $cor="black";
+          $nota_final="";
 
         }
         $conta_notas++;
@@ -444,7 +444,7 @@ foreach ($res_aluno as $key => $value) {
             padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
             <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
             normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-            color:black'>&nbsp;<?php echo "<b class='text-$cor'>$nota_final </b>"; ?></span></p>
+            color:black'>&nbsp;<?php echo "$nota_final "; ?></span></p>
             </td>
       <?php 
         } 
