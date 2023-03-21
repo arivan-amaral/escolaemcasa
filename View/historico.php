@@ -669,7 +669,7 @@ foreach ($res_escola_origem as $key => $value) {
   padding:0cm 3.5pt 0cm 3.5pt;height:11.25pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;<?php echo $ano_referencia; ?></span></p>
+  color:black'>&nbsp;<?php echo $nome_serie; ?></span></p>
   </td>
 
   <td width=354 colspan=16 valign=bottom style='width:265.25pt;border-top:none;
@@ -685,7 +685,7 @@ foreach ($res_escola_origem as $key => $value) {
   padding:0cm 3.5pt 0cm 3.5pt;height:11.25pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;<?php echo $nome_serie; ?></span></p>
+  color:black'>&nbsp; </span></p>
   </td>
 
   <td width=54 colspan=3 valign=bottom style='width:40.65pt;border-top:none;
