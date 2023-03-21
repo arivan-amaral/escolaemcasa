@@ -28,7 +28,7 @@ function registrar_sistema_atual_nota_historico($conexao, $idaluno, $ano){
      ecidade_matricula.calendario_ano ASC LIMIT 1";
 
    $result_ecidade_matricula=$conexao->query($sql);
-echo "$sql <br>";
+// echo "$sql <br>";
    return $result_ecidade_matricula->fetchAll();
 }
 

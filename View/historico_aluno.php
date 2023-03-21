@@ -71,7 +71,7 @@ try {
 
 
 
-if ($_SESSION['nivel_acesso_id']==1010) {
+if ($_SESSION['nivel_acesso_id']=1010) {
   for ($ano_conta=2021; $ano_conta <= date("Y") ; $ano_conta++) { 
     $resultado=registrar_sistema_atual_nota_historico($conexao, $idaluno, $ano_conta); 
     foreach ($resultado as $key => $value) {
@@ -84,9 +84,7 @@ if ($_SESSION['nivel_acesso_id']==1010) {
       $res_displina=$conexao->query("SELECT * FROM disciplina where facultativo =0 and infantil=0");
       foreach ($res_displina as $key_dis => $value_dis) {
         $iddisciplina=$value_dis['iddisciplina'];
-         $media=gerar_media_ata($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$ano_letivo,$idserie);
-
-        // code...
+         $media=gerar_media_ata($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$ano_conta,$idserie);
       }
     }
 
