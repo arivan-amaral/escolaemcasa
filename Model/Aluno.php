@@ -1,5 +1,37 @@
 <?php
 
+function registrar_sistema_atual_nota_historico_($conexao, $idaluno, $ano){
+
+   $result_ecidade_matricula=$conexao->query("SELECT 
+     turma.nome_turma,
+     escola.nome_escola,
+     escola.idescola,
+     ecidade_matricula.matricula_codigo AS 'matricula',
+     ecidade_matricula.matricula_datamatricula AS 'data_matricula',
+     ecidade_matricula.matricula_concluida AS 'matricula_concluida',
+     ecidade_matricula.matricula_ativa AS 'matricula_ativa',
+     ecidade_matricula.matricula_situacao AS 'matricula_situacao',
+     ecidade_matricula.datasaida AS 'datasaida',
+     ecidade_matricula.turma_escola AS 'idescola',
+     ecidade_matricula.turma_id AS 'idturma',
+     turma.serie_id AS 'idserie',
+     ecidade_matricula.calendario_ano AS 'calendario_ano'
+   FROM 
+     ecidade_matricula
+     JOIN turma ON ecidade_matricula.turma_id = turma.idturma
+     JOIN escola ON ecidade_matricula.turma_escola = escola.idescola
+   WHERE 
+     ecidade_matricula.aluno_id = $idaluno and 
+     ecidade_matricula.calendario_ano = '$ano' 
+     AND ecidade_matricula.matricula_situacao in('MATRICULADO', 'REMATRICULADO')
+   ORDER BY 
+     ecidade_matricula.matricula_codigo DESC, 
+     ecidade_matricula.calendario_ano ASC LIMIT 1");
+
+   return $result_ecidade_matricula->fetchAll();
+}
+
+
 function pesquisar_dados_aluno_historico($conexao,$aluno_id,$calendario_ano){
 $res=$conexao->query(" ");
 return $res->fetchAll();

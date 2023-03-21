@@ -1,6 +1,6 @@
 <?php 
-include_once '../Model/Escola.php';
-include_once '../Model/Aluno.php';
+
+
 function hitorico_aluno($conexao,$idaluno,$idserie,$idescola){
 $nome_escola ="";
 $res_escola = pesquisar_escola2($conexao,$idescola);
@@ -642,6 +642,17 @@ foreach ($res_aluno as $key => $value) {
   text-align:center;line-height:normal'><b><span style='font-size:9.5pt'>UF</span></b></p>
   </td>
  </tr>
+
+<?php 
+$res_escola_origem=$conexao->query("SELECT * FROM nota_parecer where aluno_id=$idaluno and nota_parecer.escola_origem IS NOT NULL  GROUP BY nota_parecer.escola_origem");
+
+foreach ($res_escola_origem as $key => $value) {
+  $estabelecimento_ensino=$value['escola_origem'];
+  if ($estabelecimento_ensino =="") {
+    $estabelecimento_ensino="NÃO DEFINIDO";
+  }
+
+?>
  <tr style='height:11.25pt'>
   <td width=79 colspan=2 valign=bottom style='width:59.05pt;border:solid black 1.0pt;
   border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:11.25pt'>
@@ -649,6 +660,7 @@ foreach ($res_aluno as $key => $value) {
   normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
   color:black'>&nbsp;</span></p>
   </td>
+
   <td width=106 valign=bottom style='width:79.35pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 3.5pt 0cm 3.5pt;height:11.25pt'>
@@ -656,13 +668,15 @@ foreach ($res_aluno as $key => $value) {
   normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
   color:black'>&nbsp;</span></p>
   </td>
+
   <td width=354 colspan=16 valign=bottom style='width:265.25pt;border-top:none;
   border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 3.5pt 0cm 3.5pt;height:11.25pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
+  color:black'>&nbsp;<?php echo $estabelecimento_ensino; ?></span></p>
   </td>
+
   <td width=156 colspan=8 valign=bottom style='width:116.9pt;border-top:none;
   border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 3.5pt 0cm 3.5pt;height:11.25pt'>
@@ -670,6 +684,7 @@ foreach ($res_aluno as $key => $value) {
   normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
   color:black'>&nbsp;</span></p>
   </td>
+
   <td width=54 colspan=3 valign=bottom style='width:40.65pt;border-top:none;
   border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 3.5pt 0cm 3.5pt;height:11.25pt'>
@@ -677,9 +692,12 @@ foreach ($res_aluno as $key => $value) {
   normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
   color:black'>&nbsp;</span></p>
   </td>
+
  </tr>
  
-
+<?php 
+}
+ ?>
 
  <tr style='height:14.1pt'>
   <td width=748 colspan=30 valign=top style='width:561.2pt;border:solid black 1.0pt;

@@ -1,6 +1,10 @@
 <?php 
 include_once "../Model/Conexao.php";
 include_once "../Model/Disciplina.php";
+
+include_once '../Model/Escola.php';
+include_once '../Model/Aluno.php';
+include_once '../Controller/Cauculos_notas.php';
 ?>
  <!-- <H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR> -->
 
@@ -58,6 +62,24 @@ text-shadow:none;
   $idaluno=$_GET['idaluno'];
   $idserie=$_GET['idserie'];
   $idescola=$_GET['idescola'];
+
+
+  // $resultado=registrar_sistema_atual_nota_historico_($conexao, $idaluno, $ano);
+
+   
+  // foreach ($resultado as $key => $value) {
+  //   $idescola=$value['idescola'];
+  //   $idturma=$value['idturma'];
+  //   $idserie=$value['idserie'];
+  //   $matricula=$value['matricula'];
+  //   $calendario_ano=$value['calendario_ano'];
+  //   $matricula_situacao=$value['matricula_situacao'];
+    // $media=gerar_media_ata($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$ano_letivo,$idserie);
+  // }
+
+
+
+
   hitorico_aluno($conexao,$idaluno,$idserie,$idescola);
 ?>
 
