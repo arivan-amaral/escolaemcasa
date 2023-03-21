@@ -1,6 +1,6 @@
 <?php
 
-function registrar_sistema_atual_nota_historico_($conexao, $idaluno, $ano){
+function registrar_sistema_atual_nota_historico($conexao, $idaluno, $ano){
     $sql="SELECT 
      turma.nome_turma,
      escola.nome_escola,
