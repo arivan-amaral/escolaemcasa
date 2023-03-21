@@ -57,6 +57,47 @@ function CriaRequest() {
 //      }
 
 // }
+function criar_linha_para_cada_aluno_carteirinha() {
+     document.getElementById('carteirinha_linha_transporte').innerHTML="";
+    // Seleciona todos os checkboxes que possuem id iniciado por "idaluno"
+    let checkboxes = document.querySelectorAll('[id^="idaluno_carterinha"]:checked');
+   
+    let label = document.getElementById("nome_aluno");
+    
+    // Cria um input para cada checkbox selecionado
+    checkboxes.forEach(function(checkbox) {
+        let input = document.createElement('input');
+        input.type = 'text';
+        input.name = checkbox.id;
+        input = checkbox.id + '_input';
+        nome = document.getElementById(checkbox.id + '_nome').value;
+       document.getElementById('carteirinha_linha_transporte').innerHTML+="<div class='form-group'><label for='exampleInputEmail1'>Linha transporte para: "+nome+"</label>"+
+                           "<input type='text' class='form-control' id='"+input+"' name='linha_transporte_aluno[]' placeholder='Linha do transporte' required value='01' >"+
+                     "</div>";
+    });
+
+    // Adiciona um listener para cada checkbox que remove o input correspondente quando ele é desmarcado
+    let allCheckboxes = document.querySelectorAll('[id^="idaluno_carterinha"]');
+    allCheckboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            if (checkbox.checked) {
+                
+        document.getElementById('carteirinha_linha_transporte').innerHTML="<div class='form-group'><label for='exampleInputEmail1'>Endereço</label>"+
+                            "<input type='text' class='form-control' id='"+input+"' name='endereco_escola' placeholder='Endereço da escola' required='>"+
+                      "</div>";
+            } else {
+                let input_campo = document.getElementById(input);
+                if (input_campo) {
+                    input_campo.remove();
+                }
+            }
+        });
+    });
+}
+
+
+
+
 
 function limpa_pesquisa_aluno(){
     var result=document.getElementById('tabela_pesquisa');

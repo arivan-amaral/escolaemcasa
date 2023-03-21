@@ -208,8 +208,8 @@ if(file_exists("pagina_estatica/".$nome_url) && $diferenca<500){
       ";
        $arquivo.="
        <div class='col-sm-3'>
-        <a href='' class='btn btn-block btn-secondary'";  $arquivo.=' onclick=
-        "mudar_action_form(
+        <a  class='btn btn-block btn-secondary'";  $arquivo.=' onclick=
+        "criar_linha_para_cada_aluno_carteirinha();mudar_action_form(
         ';$arquivo.="'Carteirinha_transporte.php'";$arquivo.=');"'; 
         $arquivo.="data-toggle='modal' data-target='#modal_carteirinha_transporte'>Gerar carterinha de trasp</a>
       </div>
@@ -352,13 +352,13 @@ $arquivo.="
            
             if (count($res_solicitacao_trasferencia)==0 && count($verificar_aluno_na_turna_rematricula)==0) {
 
-               $arquivo.="  <td>$conta_aluno - <p><input type='checkbox' class='checkbox' name='idaluno[]' value='$idaluno'>   </p></td>";
+               $arquivo.="  <td>$conta_aluno - <p><input type='checkbox' class='checkbox' name='idaluno[]' id='idaluno_carterinha$idaluno' value='$idaluno'>   </p></td>";
                $arquivo.=" <td><B>MATRICULADO</B></td>";
 
             }else{
 
               if ( count($verificar_aluno_na_turna_rematricula)>0 && $_SESSION['ano_letivo'] == $_SESSION['ano_letivo_vigente']) {
-                $arquivo.=" <td>$conta_aluno -  <p><input type='checkbox' class='checkbox' name='idaluno[]' value='$idaluno'></p> </td>";
+                $arquivo.=" <td>$conta_aluno -  <p><input type='checkbox' class='checkbox' id='idaluno_carterinha$idaluno' name='idaluno[]' value='$idaluno'></p> </td>";
                 $arquivo.="<td><B>ALUNO REMATRICULADO</B>
                
                 </td>";
@@ -393,6 +393,7 @@ $arquivo.="
             $arquivo.="
             <td>$id -
             <b class='text-success'> $nome_aluno </b> <BR>
+            <input type='hidden' id='idaluno_carterinha$idaluno"."_nome' value='$nome_aluno' >
             Data nascimento: $data_nascimento <BR>
             Data matrícula: $data_matricula
 
@@ -942,7 +943,8 @@ $arquivo.="
       <div class='modal-body'>    
 
         <div class='row'>
-            <div class='col-sm-3'>
+        <input name='teste[]' value='teste'>
+            <div class='col-sm-12' id='carteirinha_linha_transporte'>
             
             </div>
         </div>
