@@ -1169,7 +1169,7 @@ foreach ($result_nota_aula3 as $key => $value) {
 <?php 
 $media_final=  round( ($nota_tri_1 + $nota_tri_2 + $nota_tri_3 )/3 ,2);
 //echo "$media_final";
-
+$media_final=number_format($media_final, 1, '.', ',');
 
 if ($media_final <5 ) {
   //$resultado_final=false;
@@ -1237,14 +1237,14 @@ if ($media_final <5 ) {
 
       }else{
          
-      echo "<font color='red'>REPROVADO.</font>";
+      echo "<font color='red'>REPROVADO</font>";
 
           // echo number_format($media_final, 1, '.', ',');
       }
       // echo "<font color='red'>REPROVADO</font>";
 
     }else{
-      echo "<font color='blue'>APROVADO.</font>";
+      echo "<font color='blue'>APROVADO</font>";
 
     }
 
