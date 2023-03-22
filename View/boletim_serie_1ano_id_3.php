@@ -74,7 +74,7 @@
         <![endif]>
        </tr>
        <tr style='mso-yfti-irow:5;height:15.0pt'>
-        <td width=834 nowrap colspan=7 style='width:625.75pt;border:solid windowtext 1.0pt;
+        <td  nowrap colspan=7 style='width:100%;border:solid windowtext 1.0pt;
         border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
         padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
         <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
@@ -89,7 +89,7 @@
        </tr>
 
        <tr style='mso-yfti-irow:5;height:15.0pt'>
-        <td width=834 nowrap colspan=7 style='width:625.75pt;border:solid windowtext 1.0pt;
+        <td  nowrap colspan=7 style='width:100%;border:solid windowtext 1.0pt;
         border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
         padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
         <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
@@ -105,7 +105,7 @@
 
 
        <tr style='mso-yfti-irow:6;height:15.0pt'>
-        <td width=834 nowrap colspan=7 style='border:solid windowtext 1.0pt;
+        <td    colspan=7 style='border:solid windowtext 1.0pt;
         border-top:none;mso-border-top-alt:solid windowtext .1pt;mso-border-alt:solid windowtext .1pt;
         padding:0cm 3.5pt 0cm 3.5pt;height:10.0pt'>
         <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
