@@ -153,11 +153,11 @@ setTimeout('dia_doservidor_publico();',3000);
            <label for="exampleInputEmail1">Segmento</label>
            <select class="form-control"  id="serie" name="serie" >
               <option value="todos">TODOS</option>      
-              <option value="1">Infántil</option>      
-              <option value="2">Fundamental 1</option>      
-              <option value="3">Fundamental 2</option>      
+              <option value="1">Infantil</option>      
+              <option value="2">Anos Iniciais</option>      
+              <option value="3">Anos Finais</option>      
               <option value="4">EJA</option>      
-              <option value="5">MULTISERRADA</option>      
+              <option value="5">Multisseriada</option>      
           
            </select> 
           </div>

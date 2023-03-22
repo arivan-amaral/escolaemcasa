@@ -92,19 +92,19 @@ if ($_GET['serie'] == 1 ) {
                 $nome_serie="Todas as series.";
               }
               else if ($_GET['serie'] == '1') {
-                $nome_serie="Segmento Infántil.";
+                $nome_serie="Segmento Infantil.";
               }
               else if ($_GET['serie'] == '2') {
-                $nome_serie="Segmento Fundamental 1.";
+                $nome_serie="Anos Iniciais.";
               }
               else if ($_GET['serie'] == '3') {
-                $nome_serie="Segmento Fundamental 2.";
+                $nome_serie="Anos Finais.";
               }
               else if ($_GET['serie'] == '4') {
                 $nome_serie="Segmento EJA.";
               }
               else if ($_GET['serie'] == '5') {
-                $nome_serie="Segmento MULTISERRADA.";
+                $nome_serie="Multisseriada.";
               }
 
 
