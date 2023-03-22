@@ -1237,14 +1237,14 @@ if ($media_final <5 ) {
 
       }else{
          
-      echo "<font color='red'>REPROVADO</font>";
+      echo "<font color='red'>REPROVADO.</font>";
 
           // echo number_format($media_final, 1, '.', ',');
       }
       // echo "<font color='red'>REPROVADO</font>";
 
     }else{
-      echo "<font color='blue'>APROVADO</font>";
+      echo "<font color='blue'>APROVADO.</font>";
 
     }
 
