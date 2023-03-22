@@ -432,9 +432,6 @@ foreach ($res_aluno as $key => $value) {
          
           $nota_final="erro";
 
-        }else{
-          $nota_final="";
-
         }
         $conta_notas++;
       ?>
