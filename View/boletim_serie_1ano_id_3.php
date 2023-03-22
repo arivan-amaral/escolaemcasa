@@ -21,10 +21,9 @@
   }
   
 ?>
-  <div class=WordSection1>
 
-      <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=844
-       style='width:633.05pt;margin-left:9.0pt;border-collapse:collapse;mso-yfti-tbllook:
+      <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0  
+       style='width:100%;margin-left:9.0pt;border-collapse:collapse;mso-yfti-tbllook:
        1184;mso-padding-alt:0cm 3.5pt 0cm 3.5pt'>
        
 
@@ -520,7 +519,7 @@
   
        <!-- *********************** RODAPÉ *********************************************************** -->
 
-      </div>
+
 
 <?php 
 }
