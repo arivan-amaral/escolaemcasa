@@ -202,11 +202,11 @@ div.WordSection1
 
 <body lang=PT-BR style='tab-interval:35.4pt;word-wrap:break-word'>
 
-<div class=WordSection1>
+
 
  <!-- FECHANDO A LINHA NO TOPO DO NOME PREFEITURA -->
- <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=1091
- style='width:818.05pt;border-collapse:collapse;mso-yfti-tbllook:1184;
+ <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0  
+ style='width:100%;border-collapse:collapse;mso-yfti-tbllook:1184;
  mso-padding-alt:0cm 3.5pt 0cm 3.5pt; border: 1px solid black;'>
 
  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:15.0pt' >
@@ -1274,9 +1274,7 @@ if ($media_final <5 ) {
 
 </table>
 
-<p class=MsoNormal><o:p>&nbsp;</o:p></p>
-
-</div>
+ 
 
 </body>
 
