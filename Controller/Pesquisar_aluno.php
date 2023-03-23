@@ -172,6 +172,7 @@ where
       $matricula='';
       $calendario_ano='';
       $matricula_situacao='';
+      $datasaida='';
       foreach ($result_ecidade_matricula as $key => $value) {
                       $nome_turma=($value['nome_turma']);
                       $nome_escola=$value['nome_escola'];
@@ -181,12 +182,15 @@ where
                       $matricula=$value['matricula'];
                       $calendario_ano=$value['calendario_ano'];
                       $matricula_situacao=$value['matricula_situacao'];
+                      $datasaida=$value['datasaida'];
        // $result.="$detectar_ultimo==$conta_ano_cursado || $matricula_situacao==TRANSFERIDO FORA";
                       if ($detectar_ultimo==$conta_ano_cursado) {
                           $result.="
                               <b class='text-primary'> Matr: ($matricula) $nome_escola -</b> 
                               <b class='text-primary'> $nome_turma </b> 
                               <b class='text-danger'> Ano: $calendario_ano </b>
+                              <b class='text-danger'> Situação: $matricula_situacao </b>
+                              
                               
                             ";
 
