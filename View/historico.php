@@ -522,8 +522,10 @@ foreach ($res_aluno as $key => $value) {
 
       
        $conta_notas_divers=0;
+       // $array_lista_escolas = array();
         foreach ($res_notas_divers as $key => $value) {
           $nota_final=$value['nota_final'];
+          // $array_lista_escolas[$escola_id$serie_id]=$value['nota_final'];
           $nota_final=number_format($nota_final, 1, '.', ',');
           $conta_notas_divers++;
     ?>
@@ -852,7 +854,7 @@ foreach ($res_escola_origem as $key => $value) {
   padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;fhgfhgf</span></p>
+  color:black'>&nbsp;</span></p>
   </td>
  </tr>
 

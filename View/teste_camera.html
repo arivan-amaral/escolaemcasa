@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Reconhecimento facial na webcam</title>
+  <style>
+    #video {
+      width: 100%;
+      height: auto;
+      transform: scaleX(-1);
+    }
+    #canvas {
+      display: none;
+    }
+    #face-image {
+      max-width: 100%;
+      max-height: 200px;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl"></script>
+  <script src="https://cdn.jsdelivr.net/npm/face-api.js"></script>
+</head>
+<body>
+  <h1>Reconhecimento facial na webcam tt</h1>
+    <button id="take-photo-button">Tirar foto</button>
+  <div>
+    <video id="video"></video>
+    <canvas id="canvas"></canvas>
+  </div>
+  <div>
+    <img id="face-image" />
+  </div>
+  
+  <script>
+    // Carregar os modelos de reconhecimento facial
+    Promise.all([
+      faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
+      faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
+      faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
+      faceapi.nets.faceExpressionNet.loadFromUri('/models')
+    ]);
+
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    // Capturar a imagem da webcam
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
+        video.srcObject = stream;
+        video.play();
+      })
+      .catch(error => {
+        console.log('Erro ao capturar imagem da webcam: ', error);
+      });
+
+    // Quando o usuário clicar em um botão para tirar uma foto, desenhar a imagem da webcam em um elemento <canvas> e usar a biblioteca face-api.js para detectar o rosto na imagem.
+    const takePhotoButton = document.getElementById('take-photo-button');
+    takePhotoButton.addEventListener('click', async () => {
+      // Desenhar a imagem da webcam no elemento <canvas>
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      // Detectar o rosto na imagem usando a biblioteca face-api.js
+      const detection = await faceapi.detectSingleFace(canvas);
+
+      // Se o rosto foi detectado, desenhar um retângulo em torno do rosto
+      if (detection) {
+        const box = detection.box;
+        ctx.strokeStyle = 'red';
+        ctx.lineWidth = 4;
+        ctx.strokeRect(box.x, box.y, box.width, box.height);
+
+           // Redimensionar a imagem do rosto para centralizá-la no rosto
+        const resizedFaceCanvas = document.createElement('canvas');
+        const resizedFaceCtx = resizedFaceCanvas.getContext('2d');
+        const targetWidth = 200; // largura desejada da imagem redimensionada
+        const targetHeight = 200; // altura desejada da imagem redimensionada
+        const scaleFactor = Math.max(box.width / targetWidth, box.height / targetHeight);
+        const scaledWidth = box.width / scaleFactor;
+        const scaledHeight = box.height / scaleFactor;
+        resizedFaceCanvas.width = targetWidth;
+        resizedFaceCanvas.height = targetHeight;
+        resizedFaceCtx.drawImage(faceCanvas, (targetWidth - scaledWidth) / 2, (targetHeight - scaledHeight) / 2, scaledWidth, scaledHeight, 0, 0, targetWidth, targetHeight);
+        faceImage.src = resizedFaceCanvas.toDataURL();
+      } else {
+        console.log('Nenhum rosto detectado.');
+      }
+    });
+  </script>
+</body>
+</html>
