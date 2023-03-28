@@ -852,7 +852,7 @@ foreach ($res_escola_origem as $key => $value) {
   padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  color:black'>&nbsp;</span></p>
+  color:black'>&nbsp;fhgfhgf</span></p>
   </td>
  </tr>
 
@@ -872,9 +872,10 @@ foreach ($res_escola_origem as $key => $value) {
   conforme Histórico Escolar.</span></p> -->
   </td>
  </tr>
+
  <tr style='height:124.5pt'>
   <td width=378 nowrap colspan=0 valign=top style='width:283.8pt;border:none;
-  border-right:solid black 1.0pt;padding:0cm 3.5pt 0cm 3.5pt;height:124.5pt'>
+  border-right:solid black 1.0pt;padding:0cm;height:124.5pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
   normal'><span style='position:absolute;z-index:251658240;margin-left:0px;
   margin-top:0px;width:3px;height:7px'><img width=3 height=7
