@@ -943,7 +943,7 @@ $arquivo.="
       <div class='modal-body'>    
 
         <div class='row'>
-        <input name='teste[]' value='teste'>
+        <input type='hidden' name='teste[]' value='teste'>
             <div class='col-sm-12' id='carteirinha_linha_transporte'>
             
             </div>
