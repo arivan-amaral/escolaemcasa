@@ -274,6 +274,11 @@ $arquivo.="
           foreach ($result as $key => $value) {
             $nome_aluno=($value['nome_aluno']);
             $nome_turma=($value['nome_turma']);
+            $linha_transporte=($value['linha_transporte']);
+            if ($linha_transporte ==NULL) {
+             $linha_transporte=01;
+            }
+
             $data_matricula=($value['data_matricula']);
             $id=$value['idaluno'];
             $idaluno=$value['idaluno'];
@@ -392,8 +397,9 @@ $arquivo.="
 
             $arquivo.="
             <td>$id -
-            <b class='text-success'> $nome_aluno </b> <BR>
+            <b class='text-success'> $nome_aluno </b><br> Linha:
             <input type='hidden' id='idaluno_carterinha$idaluno"."_nome' value='$nome_aluno' >
+            <input type='text' name='idaluno_carterinha_linha$idaluno' id='idaluno_carterinha$idaluno"."_nome_linha' value='$linha_transporte' ><BR>
             Data nascimento: $data_nascimento <BR>
             Data matrícula: $data_matricula
 

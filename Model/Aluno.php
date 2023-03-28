@@ -2091,10 +2091,11 @@ function listar_disciplina_para_ata($conexao,$escola_id,$idturma,$ano_letivo){
 }
 
 
-function alterar_status_carteirinha_transporte($conexao,$idaluno, $status){
-  $sql=$conexao->prepare("UPDATE aluno set aluno_transpublico= :status WHERE idaluno = :idaluno");
+function alterar_status_carteirinha_transporte($conexao,$idaluno, $status, $linha_transporte){
+  $sql=$conexao->prepare("UPDATE aluno set aluno_transpublico= :status, linha_transporte= :linha_transporte WHERE idaluno = :idaluno");
   
   $sql->bindParam("status",$status);
+  $sql->bindParam("linha_transporte",$linha_transporte);
   $sql->bindParam("idaluno",$idaluno);
   
   $sql->execute();

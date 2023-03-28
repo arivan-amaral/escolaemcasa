@@ -1,7 +1,7 @@
 function CriaRequest() {
 
      try{
-
+ 
          request = new XMLHttpRequest();        
 
      }catch (IEAtual){
@@ -57,6 +57,11 @@ function CriaRequest() {
 //      }
 
 // }
+function alterar_input_linha_transporte(valor,id) {
+    // alert(id);
+    //  document.getElementById(id).value=valor;
+ }
+
 function criar_linha_para_cada_aluno_carteirinha() {
      document.getElementById('carteirinha_linha_transporte').innerHTML="";
     // Seleciona todos os checkboxes que possuem id iniciado por "idaluno"
@@ -71,8 +76,10 @@ function criar_linha_para_cada_aluno_carteirinha() {
         input.name = checkbox.id;
         input = checkbox.id + '_input';
         nome = document.getElementById(checkbox.id + '_nome').value;
+        linha_transporte = document.getElementById(checkbox.id + '_nome_linha').value;
+
        document.getElementById('carteirinha_linha_transporte').innerHTML+="<div class='form-group'><label for='exampleInputEmail1'>Linha transporte para: "+nome+"</label>"+
-                           "<input type='text' class='form-control' id='"+input+"' name='linha_transporte_aluno[]' placeholder='Linha do transporte' required value='01' >"+
+                           "<input type='text' class='form-control' id='"+input+"' name='linha_transporte_aluno[]' placeholder='Linha do transporte' readonly value='"+linha_transporte+"' oninput=alterar_input_linha_transporte(this.value,"+input+"); >"+
                      "</div>";
     });
 

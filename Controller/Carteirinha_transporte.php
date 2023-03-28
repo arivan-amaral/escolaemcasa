@@ -34,10 +34,13 @@ if (isset($_POST['idaluno'])) {
 		$solicitacao_pendente='';
 		foreach ($_POST['idaluno'] as $key => $value) {
 			$aluno_id=$_POST['idaluno'][$key];
+			$linha_transporte=$_POST["idaluno_carterinha_linha$aluno_id"];
+
+			$aluno_id=$_POST['idaluno'][$key];
 			$nome_aluno=$_POST["nome_aluno$aluno_id"];
 			$matricula_aluno=$_POST["matricula_aluno".$aluno_id];
 			$resultado=$_POST["resultado".$aluno_id];
-			alterar_status_carteirinha_transporte($conexao,$aluno_id, 1);
+			alterar_status_carteirinha_transporte($conexao,$aluno_id, 1, $linha_transporte);
 
 		
 		}
