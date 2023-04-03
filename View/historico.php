@@ -26,8 +26,8 @@ foreach ($res_aluno as $key => $value) {
 ?>
 <div class=WordSection1>
 
-<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=748
- style='width:561.2pt;margin-left:-.15pt;border-collapse:collapse'>
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 
+ style='width:98%margin-left:-.15pt;border-collapse:collapse'>
  <tr style='height:19.5pt'>
   <td width=748 colspan=30 valign=top style='width:561.2pt;border:solid black 1.0pt;
   border-bottom:none;padding:0cm 3.5pt 0cm 3.5pt;height:19.5pt'>
