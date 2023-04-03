@@ -165,12 +165,7 @@
                </a>
                </li>
 
-                <li class='nav-item'>
-               <a  class='nav-link'>
-               <i class='far fa-circle nav-icon text-primary'></i>
-               <p>Relat. alunos especiais</p>
-               </a>
-               </li>        
+                  
 
 
                </ul>

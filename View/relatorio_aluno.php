@@ -185,6 +185,17 @@ if (!isset($_SESSION['idfuncionario'])) {
       
         <div class="col-sm-2">
           <div class="form-group">
+           <label for="exampleInputEmail1">ESPECIAL</label>
+           <select class="form-control"  id="necessidade_especial" name="necessidade_especial" >
+             <option value='todos'>Ambos</option>
+             <option value='sim'>Sim </option>
+             <option value='nao'>Não</option>
+           </select> 
+          </div>
+        </div>         
+
+        <div class="col-sm-2">
+          <div class="form-group">
            <label for="exampleInputEmail1">SEXO</label>
            <select class="form-control"  id="sexo" name="sexo" >
              <option value='todos'>Todos</option>
@@ -194,7 +205,7 @@ if (!isset($_SESSION['idfuncionario'])) {
           </div>
         </div>  
 
-        <div class="col-sm-3">
+        <div class="col-sm-2">
           <div class="form-group">
            <label for="exampleInputEmail1">Ordenação</label>
            <select class="form-control"  id="ordenacao" name="ordenacao" >

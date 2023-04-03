@@ -625,6 +625,7 @@ function pesquisa_relatorio_filtros(){
   var data_nascimento = document.getElementById('data_nascimento');
   var cpf_aluno = document.getElementById('cpf');
   var ordenacao = document.getElementById('ordenacao');
+  var necessidade_especial = document.getElementById('necessidade_especial').value;
 
   if(idaluno.checked) {
      if(contador == 0){
@@ -820,7 +821,7 @@ if(cpf_aluno.checked) {
 
     result.innerHTML = "<img src='imagens/carregando.gif'>";  
       var xmlreq = CriaRequest();
-      xmlreq.open("GET", "../Controller/Pesquisa_relatorio_filtro.php?ordenacao="+ordenacao+"&texto="+texto+"&escola="+escola+"&sexo="+sexo+"&titulo="+titulo+"&parametro="+parametro, true);
+      xmlreq.open("GET", "../Controller/Pesquisa_relatorio_filtro.php?necessidade_especial="+necessidade_especial+"&ordenacao="+ordenacao+"&texto="+texto+"&escola="+escola+"&sexo="+sexo+"&titulo="+titulo+"&parametro="+parametro, true);
 
       xmlreq.onreadystatechange = function(){
     
