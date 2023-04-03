@@ -265,8 +265,7 @@ foreach ($res_editar_curso as $key => $value) {
                         <br> -->
                         <label>Adicionar Foto (por arquivo)</label>
                         <div class="form-group">
-                          <!-- accept="image/*" -->
-                                <input type="file"  id="files" name="imagem_aluno" class="form-control" required="">
+                                <input type="file" accept="image/*" id="files" name="imagem_aluno" class="form-control" required="">
                         </div>
 
 
