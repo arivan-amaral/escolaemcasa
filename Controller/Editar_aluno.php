@@ -292,10 +292,10 @@ try {
             if(move_uploaded_file($arquivo_tmp, $destino)){
                 alterar_foto_carterinha_aluno($conexao, $novoNome, $idaluno);
 
- 
 
-                $new_width = 800;
-                $new_height = 700;
+
+                $new_width = 1000;
+                $new_height = 900;
 
                 // Carregue a imagem original
                 $original_image = imagecreatefromjpeg($destino);
