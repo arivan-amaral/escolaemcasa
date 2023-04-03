@@ -7,11 +7,11 @@ foreach ($res as $key => $value) {
 
 $imagem_carteirinha_transporte=$value['imagem_carteirinha_transporte'];
 
-$new_width = 900;
-$new_height = 800;
+$new_width = 1000;
+$new_height = 900;
 
 // Carregue a imagem original
-$original_image = imagecreatefromjpeg("imagem_carteirinha_transporte/$imagem_carteirinha_transporte");
+$original_image = imagecreatefromjpeg("imagem_carteirinha_transporte/bkp_fotos/$imagem_carteirinha_transporte");
 
 // Obtenha as dimensões da imagem original
 $original_width = imagesx($original_image);
