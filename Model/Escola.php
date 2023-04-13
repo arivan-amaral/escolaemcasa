@@ -35,7 +35,7 @@ function verificar_bloqueio_funcionario($conexao,$idcalendario,$funcionario_id,$
               
               AND ecidade_matricula.calendario_ano = $ano  
             ORDER BY escola.nome_escola ASC, turma.nome_turma ASC";
-echo $sql;
+// echo $sql;
        $stmt = $conexao->query($sql);
       
        $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -89,6 +89,7 @@ function pesquisa_matricula_mensal_quant_anterior($conexao,$escola,$idturma,$ano
       matricula_situacao = 'MATRICULADO' AND
     
       turma_id = $idturma and calendario_ano='$ano_letivo'");
+   echo "$sql";
    return $sql->fetchAll();
 }
 
