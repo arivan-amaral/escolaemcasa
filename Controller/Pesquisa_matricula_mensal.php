@@ -188,7 +188,7 @@ $result.="<br>
   <br>
   <div class='row'>
     <div class='col-sm-12'>
-      <h5>TOTAL ALUNOS NA ESCOLA: $total_alunos_escola</h5>
+      <!-- <h5>TOTAL ALUNOS NA ESCOLA: $total_alunos_escola</h5> -->
     </div>
   </div>
   <br>
