@@ -105,6 +105,35 @@
 	}
 
 
+	function relatorio_turmas_inicial_coordenador($conexao,$escola,$ano_letivo){
+	    $res=$conexao->query("SELECT 
+	       idturma,
+	       turma.seguimento,
+	       
+	       serie.id as 'idserie',
+	       serie.nome as 'nome_serie',
+	       nome_turma,
+	       idescola,
+	       nome_escola,
+	       relacionamento_turma_escola.turno
+
+	FROM escola,turma,serie,relacionamento_turma_escola WHERE
+
+		relacionamento_turma_escola.escola_id= escola.idescola and 
+		relacionamento_turma_escola.turma_id = turma.idturma AND
+		turma.serie_id = serie.id AND
+		
+		relacionamento_turma_escola.ano='$ano_letivo' AND
+
+		escola.idescola escola
+
+	 ORDER BY turma.nome_turma");
+
+		return $res;
+		
+	 // GROUP BY turma.idturma
+	}
+
 	function verificar_vinculo_funcionario_escola($conexao,$idescola){
 	     $res=$conexao->query("SELECT funcionario.nome , funcionario.whatsapp FROM funcionario,relacionamento_funcionario_escola WHERE funcionario.descricao_funcao like 'Secretario' and relacionamento_funcionario_escola.funcionario_id= funcionario.idfuncionario and 
 relacionamento_funcionario_escola.escola_id='$idescola' ");

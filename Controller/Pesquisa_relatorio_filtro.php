@@ -70,7 +70,7 @@ try {
             </thead>
             <tbody>";
             
-               $res=listar_turmas_inicial_coordenador($conexao,$escola,$_SESSION['ano_letivo']);
+               $res=relatorio_turmas_inicial_coordenador($conexao,$escola,$_SESSION['ano_letivo']);
              
 
         
@@ -89,7 +89,7 @@ try {
                 $result.="<tr>
                     <td>$nome_turma</td>
                     <td>";
-                    $res_total=pesquisa_relatorio_filtro_quantidade_sexo($conexao,$escola,$ano_letivo,$idturma,$necessidade_especial);
+                    $res_total=relatorio_pesquisa_relatorio_filtro_quantidade_sexo($conexao,$escola,$ano_letivo,$idturma,$necessidade_especial);
                     foreach ($res_total as $key => $value) {
                         $result.=" <b>".$value['sexo']." = ". $value['quantidade']."</b> <br>";
                     }
@@ -127,7 +127,7 @@ try {
     $tamanho = count($parametros);
     $result.="<tr>";
     if($sexo == "todos"){
-    $res_matriculas = pesquisa_relatorio_filtro_todos($conexao,$texto,$escola,$ano_letivo,$necessidade_especial);
+    $res_matriculas = relatorio_pesquisa_relatorio_filtro_todos($conexao,$texto,$escola,$ano_letivo,$necessidade_especial);
         
          
           foreach ($res_matriculas as $key => $value) {
@@ -147,7 +147,7 @@ try {
               
           }
     }else{
-       $res_matriculas = pesquisa_relatorio_filtro($conexao,$texto,$sexo,$escola,$ano_letivo,$ordenacao,$necessidade_especial);
+       $res_matriculas = relatorio_pesquisa_relatorio_filtro($conexao,$texto,$sexo,$escola,$ano_letivo,$ordenacao,$necessidade_especial);
     
      
       foreach ($res_matriculas as $key => $value) {
