@@ -88,19 +88,7 @@ if (!isset($_SESSION['idfuncionario'])) {
   opacity: 1;
 }
 </style>
-<script type="text/javascript">
-  const checkboxBtn = document.querySelector('.checkbox-btn input[type="checkbox"]');
 
-  checkboxBtn.addEventListener('change', () => {
-    const checkboxImage = checkboxBtn.parentNode.querySelector('.checkbox-btn__image');
-    if (checkboxBtn.checked) {
-      checkboxImage.style.opacity = 1;
-    } else {
-      checkboxImage.style.opacity = 0.5;
-    }
-  });
-
-</script>
 
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -335,7 +323,7 @@ if (!isset($_SESSION['idfuncionario'])) {
 
 
         <div class="col-sm-4">
-          
+          <br>
           <div class="checkbox-btn">
             <input type="checkbox" id="opcao1" name="opcoes">
             <label for="opcao1" class="checkbox-btn__label">
@@ -372,14 +360,19 @@ $(document).ready(function(){
             
 </div>
 
-<aside class="control-sidebar control-sidebar-dark">
+<script type="text/javascript">
+  const checkboxBtn = document.querySelector('.checkbox-btn input[type="checkbox"]');
 
-  <!-- Control sidebar content goes here -->
+  checkboxBtn.addEventListener('change', () => {
+    const checkboxImage = checkboxBtn.parentNode.querySelector('.checkbox-btn__image');
+    if (checkboxBtn.checked) {
+      checkboxImage.style.opacity = 1;
+    } else {
+      checkboxImage.style.opacity = 0.5;
+    }
+  });
 
-</aside>
-
-  <!-- /.control-sidebar -->
-
+</script>
  <?php 
 
     include_once 'rodape.php';
