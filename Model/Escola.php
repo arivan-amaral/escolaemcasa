@@ -35,7 +35,7 @@ function verificar_bloqueio_funcionario($conexao,$idcalendario,$funcionario_id,$
               
               AND ecidade_matricula.calendario_ano = $ano  
             ORDER BY turma.nome_turma ASC";
-
+echo $sql;
        $stmt = $conexao->query($sql);
       
        $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
