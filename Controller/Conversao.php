@@ -19,7 +19,7 @@ function data_minima_para_idade($idade) {
 }
 function data_maxima_para_idade($idade) {
  $today = new DateTime(); // data atual
-  $latestBirthdate = $today->sub(new DateInterval('P' . $age . 'Y')); // subtrai a idade da data atual
+  $latestBirthdate = $today->sub(new DateInterval('P' . $idade . 'Y')); // subtrai a idade da data atual
   return $latestBirthdate->format('Y-m-d'); // formata a data no formato desejado
 }
 
