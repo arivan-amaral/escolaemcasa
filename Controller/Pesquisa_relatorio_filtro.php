@@ -201,7 +201,7 @@ echo "$result";
 
 
 
-if ($_GET['excel']==1) {
+if ($_GET['excel']==100) {
 
         // Cria um array com os dados
         $dados = array(
