@@ -601,6 +601,14 @@ function pesquisa_matricula_mensal(){
       
 }
 function pesquisa_relatorio_filtros(){
+ 
+  const baixar_excel = document.querySelector('#baixar_excel');
+  if (baixar_excel.checked) {
+   var excel=1;
+  } else {
+      var excel=0;
+
+  }
 
   var contador = 0;
   var texto = "";
@@ -824,7 +832,7 @@ if(cpf_aluno.checked) {
 
     result.innerHTML = "<img src='imagens/carregando.gif'>";  
       var xmlreq = CriaRequest();
-      xmlreq.open("GET", "../Controller/Pesquisa_relatorio_filtro.php?operacao_cond_idade="+operacao_cond_idade+"&operacao_idade="+operacao_idade+"&necessidade_especial="+necessidade_especial+"&ordenacao="+ordenacao+"&texto="+texto+"&escola="+escola+"&sexo="+sexo+"&titulo="+titulo+"&parametro="+parametro, true);
+      xmlreq.open("GET", "../Controller/Pesquisa_relatorio_filtro.php?excel="+excel+"operacao_cond_idade="+operacao_cond_idade+"&operacao_idade="+operacao_idade+"&necessidade_especial="+necessidade_especial+"&ordenacao="+ordenacao+"&texto="+texto+"&escola="+escola+"&sexo="+sexo+"&titulo="+titulo+"&parametro="+parametro, true);
 
       xmlreq.onreadystatechange = function(){
     

@@ -325,8 +325,8 @@ if (!isset($_SESSION['idfuncionario'])) {
         <div class="col-sm-4">
           <br>
           <div class="checkbox-btn">
-            <input type="checkbox" id="opcao1" name="opcoes">
-            <label for="opcao1" class="checkbox-btn__label">
+            <input type="checkbox" id="baixar_excel" name="baixar_excel">
+            <label for="baixar_excel" class="checkbox-btn__label">
               <span class="checkbox-btn__image"></span>
               Baixar em excel?
             </label>
