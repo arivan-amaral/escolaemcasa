@@ -84,16 +84,16 @@ if ($_GET['serie'] == 1 ) {
 
     if ( $data_inicial != "") {
 
-      $res_series=pesquisar_serie_por_intervalo($conexao,$serie_inicial, $serie_final);
-
-    foreach ($res_series as $key => $value) {
-      $idserie=$value['id'];
-      $serie_id = " turma.serie_id = $idserie ";
+    
        $res_matriculas = pesquisa_matricula_mensal($conexao,$escola,$serie_id,$_SESSION["ano_letivo"]);
       $id_turma_passado = 0;
       $total_alunos = 0;
       $total_alunos_escola = 0;
       $total_matriculas = 0;
+
+      $array_quant_anterior = array();
+      $array_quant_matriculas = array();
+      $array_quant_total = array();
       foreach ($res_matriculas as $key => $value) {
           $turma = $value['turma_id'];
           $quant_matriculas = 0;
@@ -123,11 +123,18 @@ if ($_GET['serie'] == 1 ) {
 
           $quant_anterior =  $quant_total - $quant_matriculas;
           
-          $result.="<td>$nome_turma</td>";
-          $result.="<td>$quant_anterior</td>";
-          $result.="<td>$quant_matriculas</td>";
-          $result.="<td>$quant_total</td>";
-          $result.="</tr>";
+          // $result.="<tr>
+          //   <td>$nome_turma</td>";
+          // $result.="<td>$quant_anterior</td>";
+          // $result.="<td>$quant_matriculas</td>";
+          // $result.="<td>$quant_total</td>";
+          // $result.="</tr>";
+          // 
+          $array_quant_anterior[$serie_id]=$array_quant_anterior[$serie_id]+$quant_anterior;
+          $array_quant_matriculas[$serie_id]=$array_quant_matriculas[$serie_id]+$quant_matriculas;
+          $array_quant_total[$serie_id]=$array_quant_total[$serie_id]+$quant_total;
+
+
           $id_turma_passado = $turma;
           }
           
@@ -135,7 +142,7 @@ if ($_GET['serie'] == 1 ) {
           $total_matriculas += $quant_matriculas;
           $conta++;
 
-        }
+        
 
 
       }
@@ -143,6 +150,22 @@ if ($_GET['serie'] == 1 ) {
       if ($conta==0) {
 
         $result.="<tr> <td> NADA ENCONTRADO </td> </tr>";
+      }else{
+
+          $res_series=pesquisar_serie_por_intervalo($conexao,$serie_inicial, $serie_final);
+
+        foreach ($res_series as $key => $value) {
+          $idserie=$value['id'];
+          $nome_serie=$value['nome_serie'];
+
+          $serie_id = " turma.serie_id = $idserie ";
+          $result.="<tr>
+            <td>$nome_serie</td>";
+          $result.="<td>".$array_quant_anterior[$idserie]."</td>";
+          $result.="<td>".$array_quant_matriculas[$idserie]."</td>";
+          $result.="<td>".$array_quant_total[$idserie]."</td>";
+          $result.="</tr>";
+        }
       }
 
 
