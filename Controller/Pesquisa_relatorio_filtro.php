@@ -13,6 +13,15 @@ try {
     $ordenacao = $_GET['ordenacao'];
     $necessidade_especial = $_GET['necessidade_especial'];
     
+
+    if ($_GET['escola']=='todas') {
+     $escola = "  >0  ";
+      
+    }else{
+     $escola = "  = ".$_GET['escola']." ";
+ 
+    }
+
     if ($ordenacao=="endereco") {
         $ordenacao="  aluno.bairro_endereco asc, aluno.endereco asc, aluno.nome asc ";
     }else{
@@ -33,7 +42,7 @@ try {
 
     $parametro = $_GET['parametro'];
     $titulo = $_GET['titulo'];
-    $escola = $_GET['escola'];
+  
     $sexo = $_GET['sexo'];
     $ano_letivo = $_SESSION['ano_letivo'];
 

@@ -221,6 +221,7 @@ if (!isset($_SESSION['idfuncionario'])) {
           <div class="form-group">
            <label for="exampleInputEmail1">ESCOLA</label>
            <select class="form-control"  id="escola" name="escola" >
+            <option value="Todas">TODAS</option>
             <?php  
        
               $res_escola= escola_associada($conexao,$idcoordenador);

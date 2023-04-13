@@ -77,7 +77,7 @@
 		return $res;
 	}		
 
-	function listar_turmas_inicial_coordenador($conexao,$idescola,$ano_letivo){
+	function listar_turmas_inicial_coordenador($conexao,$escola,$ano_letivo){
 	    $res=$conexao->query("SELECT 
 	       idturma,
 	       turma.seguimento,
@@ -94,8 +94,10 @@
 		relacionamento_turma_escola.escola_id= escola.idescola and 
 		relacionamento_turma_escola.turma_id = turma.idturma AND
 		turma.serie_id = serie.id AND
-		escola.idescola='$idescola' AND 
-		relacionamento_turma_escola.ano='$ano_letivo'
+		
+		relacionamento_turma_escola.ano='$ano_letivo' AND
+
+		escola.idescola escola
 
 	 ORDER BY turma.nome_turma");
 
