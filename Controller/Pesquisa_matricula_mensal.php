@@ -103,6 +103,9 @@ if ($_GET['serie'] == 1 ) {
           $serie_id = $value['serie_id'];
           $nome_turma = $value['nome_turma'];
           $nome_escola = $value['nome_escola'];
+          $idescola = $value['turma_escola'];
+          $escola = " ecidade_matricula.turma_escola = $idescola";
+
           //12/04/2023
 
 
