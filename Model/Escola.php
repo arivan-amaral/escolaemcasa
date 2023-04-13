@@ -27,6 +27,7 @@ function verificar_bloqueio_funcionario($conexao,$idcalendario,$funcionario_id,$
     $sql = "SELECT *
             FROM ecidade_matricula
             INNER JOIN turma ON turma.idturma = ecidade_matricula.turma_id
+            INNER JOIN escola ON escola.idescola = ecidade_matricula.turma_escola
             WHERE 
                $escola AND
                $serie_id 

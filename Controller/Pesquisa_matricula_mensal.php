@@ -94,16 +94,15 @@ if ($_GET['serie'] == 1 ) {
       $array_quant_anterior = array();
       $array_quant_matriculas = array();
       $array_quant_total = array();
+      $result_por_turma="";
       foreach ($res_matriculas as $key => $value) {
           $turma = $value['turma_id'];
           $quant_matriculas = 0;
           $quant_total = 0;
           $nome_serie = "";
-          $nome_turma = "";
-
-          //12/04/2023
           $serie_id = $value['serie_id'];
           $nome_turma = $value['nome_turma'];
+          $nome_escola = $value['nome_escola'];
           //12/04/2023
 
 
@@ -123,13 +122,8 @@ if ($_GET['serie'] == 1 ) {
 
           $quant_anterior =  $quant_total - $quant_matriculas;
           
-          // $result.="<tr>
-          //   <td>$nome_turma</td>";
-          // $result.="<td>$quant_anterior</td>";
-          // $result.="<td>$quant_matriculas</td>";
-          // $result.="<td>$quant_total</td>";
-          // $result.="</tr>";
-          // 
+          $result_por_turma.="<b>$nome_escola</b><br> $nome_turma -  Qnt Anterior = $quant_anterior + Qnt Matriculas novas=$quant_matriculas Total=$quant_total";
+          
           $array_quant_anterior[$serie_id]=$array_quant_anterior[$serie_id]+$quant_anterior;
           $array_quant_matriculas[$serie_id]=$array_quant_matriculas[$serie_id]+$quant_matriculas;
           $array_quant_total[$serie_id]=$array_quant_total[$serie_id]+$quant_total;
@@ -160,7 +154,10 @@ if ($_GET['serie'] == 1 ) {
 
           $serie_id = " turma.serie_id = $idserie ";
           $result.="<tr>
-            <td>$nome_serie</td>";
+            <td>$nome_serie<br>
+                b
+
+            </td>";
           $result.="<td>".$array_quant_anterior[$idserie]."</td>";
           $result.="<td>".$array_quant_matriculas[$idserie]."</td>";
           $result.="<td>".$array_quant_total[$idserie]."</td>";
