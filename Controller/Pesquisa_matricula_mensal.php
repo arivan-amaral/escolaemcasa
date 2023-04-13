@@ -165,9 +165,9 @@ if ($_GET['serie'] == 1 ) {
 
       if ($array_quant_anterior[$idserie]>0) {
            if ($array_quant_matriculas[$idserie]>0) {
-             $cor_card="primary";
+             $cor_card="info";
            }else{
-             $cor_card="secundary";
+             $cor_card="";
 
            }
 
