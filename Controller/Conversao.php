@@ -12,6 +12,13 @@ function escape_mimic($inp) {
     return $inp; 
 } 
 
+function data_minima_para_idade($idade) {
+ $today = new DateTime();
+  $earliestBirthdate = $today->sub(new DateInterval('P' . ($idade + 1) . 'Y'))->add(new DateInterval('P1D'));
+  return $earliestBirthdate->format('Y-m-d');
+}
+
+
 function converte_idade($data){
 
            list($ano, $mes, $dia) = explode('-', $data);

@@ -248,6 +248,29 @@ if (!isset($_SESSION['idfuncionario'])) {
            </select> 
           </div>
         </div> 
+
+        <div class="col-sm-3">
+          <div class="form-group">
+           <label for="exampleInputEmail1">Operador Idade</label>
+           <select class="form-control"  id="operacao_cond_idade" name="operacao_cond_idade" >
+            <option value=">">Idade ></option>
+            <option value="<">Idade <</option>
+            <option value=">=">Idade >=</option>
+            <option value="<=">Idade <=</option>
+            <option value="=">Idade =</option>
+                      
+           </select> 
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="form-group">
+           <label for="exampleInputEmail1">Idade</label>
+           <input class="form-control"  type="number" id="operacao_idade" name="operacao_idade" value="1">  
+          </div>
+        </div>
+
+
         <div class="col-sm-12">
           <div class="form-group">
           <a style="margin-top: 30PX;" class="btn btn-block btn-primary" onclick="pesquisa_relatorio_filtros()">Pesquisar</a>

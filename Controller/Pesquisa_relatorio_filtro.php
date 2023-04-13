@@ -13,6 +13,11 @@ try {
     $ordenacao = $_GET['ordenacao'];
     $necessidade_especial = $_GET['necessidade_especial'];
     
+    $operacao_cond_idade = $_GET['operacao_cond_idade'];
+    $operacao_idade = $_GET['operacao_idade'];
+    $data_maxima_idade=data_minima_para_idade($operacao_idade);
+
+    $data_nascimento =" AND data_nascimento $operacao_cond_idade $data_maxima_idade ";
 
     if ($_GET['escola']=='Todas') {
      $escola = "  > 0  ";
@@ -89,7 +94,7 @@ try {
                 $result.="<tr>
                     <td>$nome_turma</td>
                     <td>";
-                    $res_total=relatorio_pesquisa_relatorio_filtro_quantidade_sexo($conexao,$escola,$ano_letivo,$idturma,$necessidade_especial);
+                    $res_total=relatorio_pesquisa_relatorio_filtro_quantidade_sexo($conexao,$escola,$ano_letivo,$idturma,$necessidade_especial, $data_nascimento);
                     foreach ($res_total as $key => $value) {
                         $result.=" <b>".$value['sexo']." = ". $value['quantidade']."</b> <br>";
                     }
@@ -127,7 +132,7 @@ try {
     $tamanho = count($parametros);
     $result.="<tr>";
     if($sexo == "todos"){
-    $res_matriculas = relatorio_pesquisa_relatorio_filtro_todos($conexao,$texto,$escola,$ano_letivo,$necessidade_especial);
+    $res_matriculas = relatorio_pesquisa_relatorio_filtro_todos($conexao,$texto,$escola,$ano_letivo,$necessidade_especial, $data_nascimento);
         
          
           foreach ($res_matriculas as $key => $value) {
@@ -147,7 +152,7 @@ try {
               
           }
     }else{
-       $res_matriculas = relatorio_pesquisa_relatorio_filtro($conexao,$texto,$sexo,$escola,$ano_letivo,$ordenacao,$necessidade_especial);
+       $res_matriculas = relatorio_pesquisa_relatorio_filtro($conexao,$texto,$sexo,$escola,$ano_letivo,$ordenacao,$necessidade_especial, $data_nascimento);
     
      
       foreach ($res_matriculas as $key => $value) {
