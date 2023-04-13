@@ -156,7 +156,7 @@ if ($_GET['serie'] == 1 ) {
 
         foreach ($res_series as $key => $value) {
           $idserie=$value['id'];
-          $nome_serie=$value['nome_serie'];
+          $nome_serie=$value['nome'];
 
           $serie_id = " turma.serie_id = $idserie ";
           $result.="<tr>
