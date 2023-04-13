@@ -39,28 +39,28 @@ if ($_GET['serie'] == 1 ) {
 
 
             if ($_GET['serie'] == 'todos') {
-                $valor_serie_inicial=1;
-                $valor_serie_final=16;
+                $serie_inicial=1;
+                $serie_final=16;
               }
               else if ($_GET['serie'] == '1') {
-                $valor_serie_inicial=1;
-                $valor_serie_final=16;
+                $serie_inicial=1;
+                $serie_final=16;
               }
               else if ($_GET['serie'] == '2') {
-                $valor_serie_inicial=3;
-                $valor_serie_final=7;
+                $serie_inicial=3;
+                $serie_final=7;
               }
               else if ($_GET['serie'] == '3') {
-                $valor_serie_inicial=8;
-                $valor_serie_final=11;
+                $serie_inicial=8;
+                $serie_final=11;
               }
               else if ($_GET['serie'] == '4') {
-               $valor_serie_inicial=12;
-                $valor_serie_final=15;
+               $serie_inicial=12;
+                $serie_final=15;
               }
               else if ($_GET['serie'] == '5') {
-               $valor_serie_inicial=16;
-                $valor_serie_final=16;
+               $serie_inicial=16;
+                $serie_final=16;
               }
 
 
