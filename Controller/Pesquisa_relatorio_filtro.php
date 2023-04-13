@@ -14,7 +14,7 @@ try {
     $necessidade_especial = $_GET['necessidade_especial'];
     
 
-    if ($_GET['escola']=='todas') {
+    if ($_GET['escola']=='Todas') {
      $escola = "  >0  ";
       
     }else{
