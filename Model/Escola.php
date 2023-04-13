@@ -34,27 +34,14 @@ function verificar_bloqueio_funcionario($conexao,$idcalendario,$funcionario_id,$
               
               AND ecidade_matricula.calendario_ano = $ano  
             ORDER BY turma.nome_turma ASC";
-// echo "$sql";
+
        $stmt = $conexao->query($sql);
-       // $stmt->bindValue(':serie_id', $serie_id, PDO::PARAM_INT);
-       // $stmt->bindValue(':escola', $escola, PDO::PARAM_STR);
-       // $stmt->bindValue(':ano', $ano, PDO::PARAM_INT);
-       // $stmt->execute();
+      
        $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
        return $resultados;
  }
  
 
-// function pesquisa_matricula_mensal($conexao,$escola,$serie_id,$ano){
-//    $sql = $conexao->query("SELECT * from ecidade_matricula, turma  where 
-//       turma.idturma = turma_id and
-//       turma.serie_id = $serie_id and
-//        matricula_situacao ='MATRICULADO' AND
-//         turma_escola='$escola' and
-//          calendario_ano = $ano  
-//          order by nome_turma asc");
-//    return $sql->fetchAll();
-// }
 
 
 

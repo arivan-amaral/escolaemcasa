@@ -2,6 +2,7 @@
 session_start();
 include_once '../Model/Conexao.php';
 include_once '../Model/Escola.php';
+include_once '../Model/Serie.php';
 
 
 try {
@@ -37,14 +38,40 @@ if ($_GET['serie'] == 1 ) {
 
 
 
+            if ($_GET['serie'] == 'todos') {
+                $valor_serie_inicial=1;
+                $valor_serie_final=16;
+              }
+              else if ($_GET['serie'] == '1') {
+                $valor_serie_inicial=1;
+                $valor_serie_final=16;
+              }
+              else if ($_GET['serie'] == '2') {
+                $valor_serie_inicial=3;
+                $valor_serie_final=7;
+              }
+              else if ($_GET['serie'] == '3') {
+                $valor_serie_inicial=8;
+                $valor_serie_final=11;
+              }
+              else if ($_GET['serie'] == '4') {
+               $valor_serie_inicial=12;
+                $valor_serie_final=15;
+              }
+              else if ($_GET['serie'] == '5') {
+               $valor_serie_inicial=16;
+                $valor_serie_final=16;
+              }
+
+
+
     $ano_letivo = $_SESSION['ano_letivo'];
 
     
     $result="
    <thead>
       <tr>
-        <th  style='text-align: center;'>Turma</th>
-        <th  style='text-align: center;'>Segmento</th>
+        <th  style='text-align: center;'>Série/Turma</th>
         <th  style='text-align: center;'>Anteriores</th>
         <th  style='text-align: center;'>Novas</th>
         <th  style='text-align: center;'>Total</th>
@@ -57,6 +84,11 @@ if ($_GET['serie'] == 1 ) {
 
     if ( $data_inicial != "") {
 
+      $res_series=pesquisar_serie_por_intervalo($conexao,$serie_inicial, $serie_final);
+
+    foreach ($res_series as $key => $value) {
+      $idserie=$value['id'];
+      $serie_id = " turma.serie_id = $idserie ";
        $res_matriculas = pesquisa_matricula_mensal($conexao,$escola,$serie_id,$_SESSION["ano_letivo"]);
       $id_turma_passado = 0;
       $total_alunos = 0;
@@ -71,7 +103,7 @@ if ($_GET['serie'] == 1 ) {
 
           //12/04/2023
           $serie_id = $value['serie_id'];
-          $nome_turma = ",".$value['nome_turma'];
+          $nome_turma = $value['nome_turma'];
           //12/04/2023
 
 
@@ -87,35 +119,11 @@ if ($_GET['serie'] == 1 ) {
                   foreach ($res_matriculas_quant as $key => $value) {
                       $quant_matriculas = $value['alunos'];
                   }
-          
-
-
-
-
-            if ($_GET['serie'] == 'todos') {
-                $nome_serie="Todas as series.";
-              }
-              else if ($_GET['serie'] == '1') {
-                $nome_serie="Segmento Infantil.";
-              }
-              else if ($_GET['serie'] == '2') {
-                $nome_serie="Anos Iniciais.";
-              }
-              else if ($_GET['serie'] == '3') {
-                $nome_serie="Anos Finais.";
-              }
-              else if ($_GET['serie'] == '4') {
-                $nome_serie="Segmento EJA.";
-              }
-              else if ($_GET['serie'] == '5') {
-                $nome_serie="Multisseriada.";
-              }
-
+        
 
           $quant_anterior =  $quant_total - $quant_matriculas;
           
           $result.="<td>$nome_turma</td>";
-          $result.="<td>$nome_serie</td>";
           $result.="<td>$quant_anterior</td>";
           $result.="<td>$quant_matriculas</td>";
           $result.="<td>$quant_total</td>";
@@ -126,12 +134,18 @@ if ($_GET['serie'] == 1 ) {
           $total_alunos += $quant_total;
           $total_matriculas += $quant_matriculas;
           $conta++;
+
+        }
+
+
       }
       
       if ($conta==0) {
 
         $result.="<tr> <td> NADA ENCONTRADO </td> </tr>";
       }
+
+
     }
    
 

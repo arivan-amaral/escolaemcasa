@@ -10,6 +10,13 @@ function pesquisar_serie_por_id($conexao,$idserie){
     return $result;
 
 }
+
+function pesquisar_serie_por_intervalo($conexao,$serie_inicial, $serie_final){
+   $result = $conexao->query("SELECT * FROM serie where id >=$serie_inicial and id <=$serie_inicial  ORDER BY id asc");
+    return $result;
+
+}
+
 function lista_serie_rematricula($conexao,$idserie){
    $result = $conexao->query("SELECT * FROM serie where id >=$idserie  ORDER BY id asc");
     return $result;
