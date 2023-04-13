@@ -124,7 +124,7 @@ if ($_GET['serie'] == 1 ) {
 
           $quant_anterior =  $quant_total - $quant_matriculas;
           if ($quant_matriculas>0) {
-            $cor="text-danger";
+            $cor="text-red";
           }else{
             $cor="";
 
