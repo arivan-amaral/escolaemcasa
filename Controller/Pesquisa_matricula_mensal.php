@@ -181,8 +181,9 @@ if ($_GET['serie'] == 1 ) {
 
                               <div class='card-body' style='display: none;'>
                               <div class='card-body'>
-                                <div class='callout callout-info'>
-                                </div>
+                                
+                                <!-- <div class='callout callout-info'>
+                                </div> -->
                                   
                                   ".$result_por_turma[$idserie]."
                                    
