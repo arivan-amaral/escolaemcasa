@@ -58,6 +58,7 @@ try {
     $titulos = explode ("-", $titulo);
     $parametros = explode ("-", $parametro);
     $result="
+    <a href='baixar_excel_relatorio_alunos_rmm.php'> <img src='imagens/excel.png' width='100' heith='100'> </a>
     <table class=table table-bordered table-striped' >
       
            <thead>

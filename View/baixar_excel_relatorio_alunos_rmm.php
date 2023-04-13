@@ -6,17 +6,15 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 // Cria um array com os dados
 $dados = array(
-    array('Nome', 'Idade', 'E-mail'),
-    array('João', '25', 'joao@email.com'),
-    array('Maria', '30', 'maria@email.com'),
-    array('José', '40', 'jose@email.com')
+    array('Nome', 'Idade'),
+  
 );
 
 // Cria um objeto Spreadsheet
 $spreadsheet = new Spreadsheet();
 
 // Define o título da planilha
-$spreadsheet->getActiveSheet()->setTitle('Dados');
+$spreadsheet->getActiveSheet()->setTitle('relatorio RMM');
 
 // Define os dados na planilha
 $spreadsheet->getActiveSheet()->fromArray($dados, null, 'A1');
