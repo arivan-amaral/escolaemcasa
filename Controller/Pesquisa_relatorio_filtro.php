@@ -97,16 +97,16 @@ try {
                $turno=($value['turno']);
            
            
-                $result.="<tr>
-                    <td>$nome_turma</td>
-                    <td>";
                     $res_total=relatorio_pesquisa_relatorio_filtro_quantidade_sexo($conexao,$escola,$ano_letivo,$idturma,$necessidade_especial, $data_nascimento);
                     foreach ($res_total as $key => $value) {
-                        $result.=" <b>".$value['sexo']." = ". $value['quantidade']."</b> <br>";
+                        $result.="<tr>
+                            <td>$nome_turma</td>
+                            <td>";
+                                $result.=" <b>".$value['sexo']." = ". $value['quantidade']."</b> <br>";
+                            $result.="
+                            </td> 
+                        </tr>";
                     }
-                    $result.="
-                    </td> 
-                </tr>";
             }
 
             $result.="
