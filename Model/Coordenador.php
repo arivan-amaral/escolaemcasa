@@ -125,7 +125,7 @@
 		
 		relacionamento_turma_escola.ano='$ano_letivo' AND
 
-		escola.idescola escola
+		escola.idescola $escola
 
 	 ORDER BY turma.nome_turma");
 

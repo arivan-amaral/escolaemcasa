@@ -15,7 +15,7 @@ try {
     
 
     if ($_GET['escola']=='Todas') {
-     $escola = "  >0  ";
+     $escola = "  > 0  ";
       
     }else{
      $escola = "  = ".$_GET['escola']." ";
