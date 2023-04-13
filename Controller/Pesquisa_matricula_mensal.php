@@ -71,9 +71,9 @@ if ($_GET['serie'] == 1 ) {
 
           //12/04/2023
           $serie_id = $value['serie_id'];
-          $nome_turma = $value['nome_turma'];
+          $nome_turma = ",".$value['nome_turma'];
           //12/04/2023
-          
+
 
 
           if ($id_turma_passado !=  $turma) {
@@ -88,16 +88,6 @@ if ($_GET['serie'] == 1 ) {
                       $quant_matriculas = $value['alunos'];
                   }
           
-
-          // $res_turma = pesquisa_turma($conexao,$turma);
-          // foreach ($res_turma as $key => $value) {             
-          //       $serie_id = $value['serie_id'];
-          //       $nome_turma = $value['nome_turma'];
-          //       // $res_nome_serie = pesquisa_serie($conexao,$serie_id);
-          //       // foreach ($res_nome_serie as $key => $value) {
-          //       //     $nome_serie .= $value['nome'].  " | ";
-          //       // }  
-          //   }
 
 
 
@@ -173,6 +163,9 @@ $result.="<br>
 
 echo "$result";
     
+
+
+
 } catch (Exception $exc) {
    //echo " VERIFIQUE SUA CONEXÃO COM A INTERNET";
    echo $exc;
