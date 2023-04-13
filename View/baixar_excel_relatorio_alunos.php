@@ -14,7 +14,7 @@ $dados = array(
 $spreadsheet = new Spreadsheet();
 
 // Define o título da planilha
-$spreadsheet->getActiveSheet()->setTitle('relatorio RMM');
+$spreadsheet->getActiveSheet()->setTitle('Relatorio de alunos');
 
 // Define os dados na planilha
 $spreadsheet->getActiveSheet()->fromArray($dados, null, 'A1');
