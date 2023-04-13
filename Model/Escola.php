@@ -89,7 +89,12 @@ function pesquisa_matricula_mensal_quant_anterior($conexao,$escola,$idturma,$ano
       matricula_situacao = 'MATRICULADO' AND
     
       turma_id = $idturma and calendario_ano='$ano_letivo'");
-   echo "$sql";
+   echo "SELECT count(*) as 'alunos' from ecidade_matricula  where 
+       $escola AND
+      matricula_situacao = 'MATRICULADO' AND
+    
+      turma_id = $idturma and calendario_ano='$ano_letivo'";
+      
    return $sql->fetchAll();
 }
 
