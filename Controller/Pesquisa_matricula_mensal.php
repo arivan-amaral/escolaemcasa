@@ -125,12 +125,15 @@ if ($_GET['serie'] == 1 ) {
           $quant_anterior =  $quant_total - $quant_matriculas;
           if ($quant_matriculas>0) {
             $cor="text-red";
+             $cor_card="text-info";
+
           }else{
             $cor="";
+             $cor_card="";
 
           }
 
-          $result_por_turma[$serie_id]=$result_por_turma[$serie_id]."<br> <b>$nome_escola</b><br> $nome_turma -  Qnt Anterior = $quant_anterior + Qnt Matriculas novas=<b class='$cor'>$quant_matriculas</b> Total=$quant_total <br>";
+          $result_por_turma[$serie_id]=$result_por_turma[$serie_id]."<br> <b class='$cor_card'>$nome_escola</b><br> $nome_turma -  Qnt Anterior = $quant_anterior + Qnt Matriculas novas=<b class='$cor'>$quant_matriculas</b> Total=$quant_total <br>";
           
           $array_quant_anterior[$serie_id]=$array_quant_anterior[$serie_id]+$quant_anterior;
           $array_quant_matriculas[$serie_id]=$array_quant_matriculas[$serie_id]+$quant_matriculas;
