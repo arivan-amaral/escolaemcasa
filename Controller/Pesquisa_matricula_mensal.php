@@ -163,12 +163,19 @@ if ($_GET['serie'] == 1 ) {
 
  
 
+      if ($array_quant_anterior[$idserie]>0) {
+           if ($array_quant_matriculas[$idserie]>0) {
+             $cor_card="primary";
+           }else{
+             $cor_card="secundary";
+
+           }
 
           $result.="
             <tr>
               <td>
 
-              <div class='card card-secondary collapsed-card'>
+              <div class='card card-$cor_card collapsed-card'>
                               <div class='card-header' data-card-widget='collapse'>
                                 <h3 class='card-title'>$nome_serie - (Qnt Anterior=".$array_quant_anterior[$idserie]." + Qnt Nova=".$array_quant_matriculas[$idserie].") Total=".$array_quant_total[$idserie]."</h3>
 
@@ -194,6 +201,7 @@ if ($_GET['serie'] == 1 ) {
 
               </td>
             </tr>";
+        }
           //       $result_por_turma
           //     ".$array_quant_anterior[$idserie]."</td>";
           // $result.="<td>".$array_quant_matriculas[$idserie]."</td>";
