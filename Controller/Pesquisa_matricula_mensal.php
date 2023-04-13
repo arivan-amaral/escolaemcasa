@@ -163,7 +163,7 @@ if ($_GET['serie'] == 1 ) {
 
               <div class='card card-secondary collapsed-card'>
                               <div class='card-header' data-card-widget='collapse'>
-                                <h3 class='card-title'>$nome_serie - ".$array_quant_anterior[$idserie]." + ".$array_quant_matriculas[$idserie]." ".$array_quant_total[$idserie]."</h3>
+                                <h3 class='card-title'>$nome_serie - (Qnt Anterior=".$array_quant_anterior[$idserie]." + Qnt Nova=".$array_quant_matriculas[$idserie].") Total=".$array_quant_total[$idserie]."</h3>
 
                                 <div class='card-tools'>
                                   <button type='button' class='btn btn-tool' data-card-widget='collapse'>
@@ -175,10 +175,10 @@ if ($_GET['serie'] == 1 ) {
                               <div class='card-body' style='display: none;'>
                               <div class='card-body'>
                                 <div class='callout callout-info'>
+                                </div>
                                   
                                   ".$result_por_turma[$idserie]."
                                    
-                                </div>
                                 </div>
                           </div>
                        </div>
