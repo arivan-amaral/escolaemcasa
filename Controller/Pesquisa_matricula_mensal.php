@@ -44,7 +44,7 @@ if ($_GET['serie'] == 1 ) {
               }
               else if ($_GET['serie'] == '1') {
                 $serie_inicial=1;
-                $serie_final=16;
+                $serie_final=2;
               }
               else if ($_GET['serie'] == '2') {
                 $serie_inicial=3;
