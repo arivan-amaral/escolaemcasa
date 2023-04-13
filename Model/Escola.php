@@ -78,6 +78,7 @@ function pesquisa_relatorio_filtro_quantidade_sexo($conexao,$escola,$ano_letivo,
 function relatorio_pesquisa_relatorio_filtro_quantidade_sexo($conexao,$escola,$ano_letivo,$idturma, $necessidade_especial, $data_nascimento){
    $sql = $conexao->query("SELECT aluno.sexo, count(*) as 'quantidade' FROM aluno,ecidade_matricula,escola,turma WHERE ecidade_matricula.aluno_id = aluno.idaluno AND ecidade_matricula.turma_escola = escola.idescola AND ecidade_matricula.turma_id = turma.idturma AND ecidade_matricula.calendario_ano='$ano_letivo' AND ecidade_matricula.matricula_ativa='S'AND ecidade_matricula.matricula_ativa='S' and ecidade_matricula.turma_id='$idturma'  AND ecidade_matricula.matricula_concluida='N'   AND ecidade_matricula.turma_escola $escola  $necessidade_especial $data_nascimento GROUP BY aluno.sexo ORDER BY  aluno.sexo ASC;");
    
+   echo "SELECT aluno.sexo, count(*) as 'quantidade' FROM aluno,ecidade_matricula,escola,turma WHERE ecidade_matricula.aluno_id = aluno.idaluno AND ecidade_matricula.turma_escola = escola.idescola AND ecidade_matricula.turma_id = turma.idturma AND ecidade_matricula.calendario_ano='$ano_letivo' AND ecidade_matricula.matricula_ativa='S'AND ecidade_matricula.matricula_ativa='S' and ecidade_matricula.turma_id='$idturma'  AND ecidade_matricula.matricula_concluida='N'   AND ecidade_matricula.turma_escola $escola  $necessidade_especial $data_nascimento GROUP BY aluno.sexo ORDER BY  aluno.sexo ASC;";
    return $sql->fetchAll();
 }
 
