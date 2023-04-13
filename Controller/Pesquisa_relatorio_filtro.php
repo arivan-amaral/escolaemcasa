@@ -19,7 +19,7 @@ try {
     $data_maxima_idade=data_maxima_para_idade($operacao_idade);
 
     // if ($operacao_cond_idade=="=") {
-        $data_nascimento =" AND data_nascimento  '$data_minima_idade' BETWEEN '$data_maxima_idade' ";
+        $data_nascimento =" AND ( data_nascimento  BETWEEN '$data_minima_idade'  and  '$data_maxima_idade' ) ";
     // }else{
     //     $data_nascimento =" AND data_nascimento $operacao_cond_idade '$data_minima_idade' ";
 
