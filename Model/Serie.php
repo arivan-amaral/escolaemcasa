@@ -12,7 +12,7 @@ function pesquisar_serie_por_id($conexao,$idserie){
 }
 
 function pesquisar_serie_por_intervalo($conexao,$serie_inicial, $serie_final){
-   $result = $conexao->query("SELECT * FROM serie where id >=$serie_inicial and id <=$serie_inicial  ORDER BY id asc");
+   $result = $conexao->query("SELECT * FROM serie where id >=$serie_inicial and id <=$serie_final  ORDER BY id asc");
     return $result;
 
 }
