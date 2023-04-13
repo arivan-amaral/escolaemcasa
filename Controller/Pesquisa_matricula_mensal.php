@@ -72,9 +72,7 @@ if ($_GET['serie'] == 1 ) {
    <thead>
       <tr>
         <th  style='text-align: center;'>Série/Turma</th>
-        <th  style='text-align: center;'>Anteriores</th>
-        <th  style='text-align: center;'>Novas</th>
-        <th  style='text-align: center;'>Total</th>
+        
       </tr>
     </thead>
     <tbody>
@@ -154,17 +152,45 @@ if ($_GET['serie'] == 1 ) {
         foreach ($res_series as $key => $value) {
           $idserie=$value['id'];
           $nome_serie=$value['nome'];
-
           $serie_id = " turma.serie_id = $idserie ";
-          $result.="<tr>
-            <td>$nome_serie<br>
-                $result_por_turma
 
-            </td>";
-          $result.="<td>".$array_quant_anterior[$idserie]."</td>";
-          $result.="<td>".$array_quant_matriculas[$idserie]."</td>";
-          $result.="<td>".$array_quant_total[$idserie]."</td>";
-          $result.="</tr>";
+ 
+
+
+          $result.="
+            <tr>
+              <td>
+
+              <div class='card card-secondary collapsed-card'>
+                              <div class='card-header' data-card-widget='collapse'>
+                                <h3 class='card-title'>$nome_serie - ".$array_quant_anterior[$idserie]." + ".$array_quant_matriculas[$idserie]." ".$array_quant_total[$idserie]."</h3>
+
+                                <div class='card-tools'>
+                                  <button type='button' class='btn btn-tool' data-card-widget='collapse'>
+                                    <i class='fas fa-plus'></i>
+                                  </button>
+                                </div>               
+                              </div>
+
+                              <div class='card-body' style='display: none;'>
+                              <div class='card-body'>
+                                <div class='callout callout-info'>
+                                  
+                                  $result_por_turma
+                                   
+                                </div>
+                                </div>
+                          </div>
+                       </div>
+                 </div>
+
+              </td>
+            </tr>";
+          //       $result_por_turma
+          //     ".$array_quant_anterior[$idserie]."</td>";
+          // $result.="<td>".$array_quant_matriculas[$idserie]."</td>";
+          // $result.="<td>".$array_quant_total[$idserie]."</td>";
+          // $result.="</tr>";
         }
       }
 
