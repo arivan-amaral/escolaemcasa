@@ -27,7 +27,7 @@ foreach ($res_aluno as $key => $value) {
 <div class=WordSection1>
 
 <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 
- style='width:98%margin-left:-.15pt;border-collapse:collapse'>
+ style='width:98%;'>
  <tr style='height:19.5pt'>
   <td width=748 colspan=30 valign=top style='width:561.2pt;border:solid black 1.0pt;
   border-bottom:none;padding:0cm 3.5pt 0cm 3.5pt;height:19.5pt'>
@@ -44,9 +44,9 @@ foreach ($res_aluno as $key => $value) {
   height:62px'>
   <img width=60 height=62 src="imagens/logo.png"></span>
 </p>
-  <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0>
+  <table  style='width:1000.0pt;'  border=0 cellspacing=0 cellpadding=0>
    <tr style='height:36.0pt'>
-    <td width=741 valign=top style='width:1000.0pt;border-top:none;border-left:
+    <td width=741 valign=top style='width:100%;border-top:none;border-left:
     solid black 1.0pt;border-bottom:none;border-right:solid black 1.0pt;
     padding:0cm 0cm 0cm 121.5pt;height:36.0pt'>
     <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;

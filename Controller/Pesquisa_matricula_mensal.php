@@ -14,7 +14,7 @@ try {
       
     }else{
      $escola = " ecidade_matricula.turma_escola = ".$_GET['escola']." ";
-
+ 
     }
    
       $serie_id =$_GET['serie'];
@@ -56,6 +56,7 @@ if ($_GET['serie'] == 1 ) {
     $conta=0;
 
     if ( $data_inicial != "") {
+
        $res_matriculas = pesquisa_matricula_mensal($conexao,$escola,$serie_id,$_SESSION["ano_letivo"]);
       $id_turma_passado = 0;
       $total_alunos = 0;
@@ -67,6 +68,14 @@ if ($_GET['serie'] == 1 ) {
           $quant_total = 0;
           $nome_serie = "";
           $nome_turma = "";
+
+          //12/04/2023
+          $serie_id = $value['serie_id'];
+          $nome_turma = $value['nome_turma'];
+          //12/04/2023
+          
+
+
           if ($id_turma_passado !=  $turma) {
             //
             $res_anterior = pesquisa_matricula_mensal_quant_anterior($conexao,$escola,$turma,$ano_letivo);
@@ -78,15 +87,20 @@ if ($_GET['serie'] == 1 ) {
                   foreach ($res_matriculas_quant as $key => $value) {
                       $quant_matriculas = $value['alunos'];
                   }
-          $res_turma = pesquisa_turma($conexao,$turma);
-          foreach ($res_turma as $key => $value) {             
-                $serie_id = $value['serie_id'];
-                $nome_turma = $value['nome_turma'];
-                // $res_nome_serie = pesquisa_serie($conexao,$serie_id);
-                // foreach ($res_nome_serie as $key => $value) {
-                //     $nome_serie .= $value['nome'].  " | ";
-                // }  
-            }
+          
+
+          // $res_turma = pesquisa_turma($conexao,$turma);
+          // foreach ($res_turma as $key => $value) {             
+          //       $serie_id = $value['serie_id'];
+          //       $nome_turma = $value['nome_turma'];
+          //       // $res_nome_serie = pesquisa_serie($conexao,$serie_id);
+          //       // foreach ($res_nome_serie as $key => $value) {
+          //       //     $nome_serie .= $value['nome'].  " | ";
+          //       // }  
+          //   }
+
+
+
 
             if ($_GET['serie'] == 'todos') {
                 $nome_serie="Todas as series.";
