@@ -155,7 +155,7 @@ if ($_GET['serie'] == 1 ) {
           $serie_id = " turma.serie_id = $idserie ";
           $result.="<tr>
             <td>$nome_serie<br>
-                b
+                $result_por_turma
 
             </td>";
           $result.="<td>".$array_quant_anterior[$idserie]."</td>";
