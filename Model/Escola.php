@@ -34,7 +34,7 @@ function verificar_bloqueio_funcionario($conexao,$idcalendario,$funcionario_id,$
               AND ecidade_matricula.matricula_situacao = 'MATRICULADO' 
               
               AND ecidade_matricula.calendario_ano = $ano  
-            ORDER BY turma.nome_turma ASC";
+            ORDER BY escola.nome_escola ASC, turma.nome_turma ASC";
 echo $sql;
        $stmt = $conexao->query($sql);
       
