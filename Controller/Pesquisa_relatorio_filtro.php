@@ -16,12 +16,14 @@ try {
     $operacao_cond_idade = $_GET['operacao_cond_idade'];
     $operacao_idade = $_GET['operacao_idade'];
     $data_minima_idade=data_minima_para_idade($operacao_idade);
-    // $data_maxima_idade=data_maxima_para_idade($operacao_idade);
+    $data_maxima_idade=data_maxima_para_idade($operacao_idade);
 
-    // if ($operacao_cond_idade) {
-    //     // code...
-    // }
-    $data_nascimento =" AND data_nascimento $operacao_cond_idade '$data_minima_idade' ";
+    if ($operacao_cond_idade=="=") {
+        $data_nascimento =" AND data_nascimento  '$data_minima_idade' BETWEEN ' $data_maxima_idade' ";
+    }else{
+        $data_nascimento =" AND data_nascimento $operacao_cond_idade '$data_minima_idade' ";
+
+    }
 
     if ($_GET['escola']=='Todas') {
      $escola = "  > 0  ";
