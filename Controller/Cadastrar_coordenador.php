@@ -4,7 +4,7 @@ include_once '../Model/Coordenador.php';
 include_once 'Conversao.php';
  try {
 
- 	 $nome=$_POST['nome'];
+ 	 $nome= escape_mimic($_POST['nome']);
  	 $email=$_POST['email'];
  	 $senha=$_POST['senha'];
  	 $whatsapp="55".$_POST['whatsapp'];
