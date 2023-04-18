@@ -260,6 +260,7 @@ if (!isset($_SESSION['idfuncionario'])) {
           <div class="form-group">
            <label for="exampleInputEmail1">Ordenação</label>
            <select class="form-control"  id="ordenacao" name="ordenacao" >
+             <option value='turma.nome_turma'>Nome Turma</option>
              <option value='aluno'>Nome aluno</option>
              <option value='endereco'>Endereço</option>
         
