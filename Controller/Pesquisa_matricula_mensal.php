@@ -180,7 +180,7 @@ if ($_GET['serie'] == 1 ) {
 
               <div class='card card-$cor_card collapsed-card'>
                               <div class='card-header' data-card-widget='collapse'>
-                                <h3 class='card-title'>$nome_serie - (Qnt Anterior=".$array_quant_anterior[$idserie]." + Qnt Nova=".$array_quant_matriculas[$idserie].") Total=".$array_quant_total[$idserie]."</h3>
+                                <h3 class='card-title'>$nome_serie Total=".$array_quant_total[$idserie]."</h3>
 
                                 <div class='card-tools'>
                                   <button type='button' class='btn btn-tool' data-card-widget='collapse'>
