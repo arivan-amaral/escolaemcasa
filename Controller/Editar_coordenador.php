@@ -5,7 +5,7 @@ include_once 'Conversao.php';
  try {
 
  	 $idfuncionario=$_POST['idfuncionario'];
-    $nome=$_POST['nome'];
+    $nome=escape_mimic($_POST['nome']);
  	 $email=$_POST['email'];
  	 $senha=$_POST['senha'];
  	 $whatsapp="".$_POST['whatsapp'];
