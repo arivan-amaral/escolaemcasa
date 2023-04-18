@@ -37,6 +37,8 @@ try {
 
     if ($ordenacao=="endereco") {
         $ordenacao="  aluno.bairro_endereco asc, aluno.endereco asc, aluno.nome asc ";
+    }elseif ($ordenacao=="turma.nome_turma") {
+        $ordenacao="  turma.nome_turma asc,  aluno.nome asc, aluno.endereco asc ";
     }else{
         $ordenacao="  aluno.nome asc ";
 
