@@ -14,7 +14,7 @@ if (!isset($_SESSION['idcoordenador'])) {
 
 }else{
 
-  $idcoordenador=$_SESSION['idcoordenador'];
+  $idcoordenador=$_SESSION['idfuncionario'];
 
 }
   include_once "cabecalho.php";
@@ -132,9 +132,16 @@ setTimeout('dia_doservidor_publico();',3000);
           <div class="form-group">
            <label for="exampleInputEmail1">ESCOLA</label>
            <select class="form-control"  id="escola" name="escola" >
-            <option value="todas">TODAS</option>
+            <?php 
+              if ($_SESSION['nivel_acesso_id']>=100) {
+            ?>
+                <option value="todas">TODAS</option>
+
+         
             <?php  
-              $res_escola = lista_escola($conexao);
+              }
+              // $res_escola = lista_escola($conexao); 
+              $res_escola= escola_associada($conexao,$idcoordenador);
               foreach ($res_escola as $key => $value) {
                 $idescola = $value['idescola'];
                 $nome_escola = $value['nome_escola'];
