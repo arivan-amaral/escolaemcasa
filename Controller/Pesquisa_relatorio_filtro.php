@@ -22,8 +22,10 @@ try {
     $data_minima_idade=data_minima_para_idade($operacao_idade);
     $data_maxima_idade=data_maxima_para_idade($operacao_idade);
 
-     if ($operacao_cond_idade==">=") {//idade menor
-        $data_nascimento =" AND  data_nascimento  $operacao_cond_idade '$data_maxima_idade' ";
+     if ($operacao_cond_idade==">=") {//idade maior
+        $data_nascimento =" AND  data_nascimento  <= '$data_maxima_idade' ";
+    }elseif ($operacao_cond_idade==">=") {//idade menor
+        $data_nascimento =" AND  data_nascimento  >= '$data_maxima_idade' ";
     }else{
         $data_nascimento =" AND ( data_nascimento  BETWEEN '$data_minima_idade'  and  '$data_maxima_idade' ) ";
     }
