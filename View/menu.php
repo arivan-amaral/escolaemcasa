@@ -159,7 +159,7 @@
                </a>
                </li> 
                 <li class='nav-item'>
-               <a href='relatorio_aluno.php' class='nav-link'>
+               <a href='relatorio_desempenho.php' class='nav-link'>
                <i class='far fa-circle nav-icon text-primary'></i>
                <p>Relatório de desempenho</p>
                </a>
