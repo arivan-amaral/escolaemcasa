@@ -131,8 +131,10 @@ try {
       ";
          $result.="<th  style='text-align: center;'>#</th>";
 
+     $cabecalho_excel="";
       foreach ($titulos as $key => $value) {
          $result.="<th  style='text-align: center;'>".$titulos[$key]."</th>";
+         $cabecalho_excel.=$titulos[$key].",";
       }
         
         
@@ -209,7 +211,7 @@ if ($_GET['excel']==1) {
 
         // Cria um array com os dados
         $dados = array(
-            array('Nome', 'Idade'),
+            array($cabecalho_excel),
           
         );
 
