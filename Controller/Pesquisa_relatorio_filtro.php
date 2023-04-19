@@ -131,10 +131,11 @@ try {
       ";
          $result.="<th  style='text-align: center;'>#</th>";
 
-     $cabecalho_excel="";
+     $cabecalho_excel=array();
       foreach ($titulos as $key => $value) {
          $result.="<th  style='text-align: center;'>".$titulos[$key]."</th>";
-         $cabecalho_excel.=$titulos[$key].",";
+          
+         array_push($cabecalho_excel,$titulos[$key]);
       }
         
         
