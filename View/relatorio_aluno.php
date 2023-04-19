@@ -305,8 +305,7 @@ if (!isset($_SESSION['idfuncionario'])) {
           <div class="form-group">
            <label for="exampleInputEmail1">Operador Idade</label>
            <select class="form-control"  id="operacao_cond_idade" name="operacao_cond_idade" >
-            <option value="<">Idade maior</option>
-            <option value=">">Idade menor</option>
+             
             <option value="<=">Idade maior ou igual</option>
             <option value=">=">Idade menor ou igual</option>
             <option value="=">Idade igual</option>
