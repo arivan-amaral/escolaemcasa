@@ -144,8 +144,8 @@ if ($_GET['serie'] == 1 ) {
 
 
 if (array_key_exists( $idescola."".$idserie ,$result_por_escola_total )) {
-
-     $result_por_escola_total[$idescola."".$idserie]+= $quant_total;
+ $result_por_turma[$serie_id]=$result_por_turma[$serie_id]."<br> <b class='$cor_card'>$nome_escola</b><br> $nome_turma - Anterior = $quant_anterior + Novas=<b class='$cor'>$quant_matriculas</b> Total=$quant_total <br>";
+     // $result_por_escola_total[$idescola."".$idserie]+= $quant_total;
       
 }else{
 
