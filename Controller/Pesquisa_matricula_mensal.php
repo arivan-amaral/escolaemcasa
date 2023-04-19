@@ -140,16 +140,18 @@ if ($_GET['serie'] == 1 ) {
 
           $array_nome_turma = explode(" ", $nome_turma);
           $nome_generico_turma=$array_nome_turma[0]."".$array_nome_turma[1];
-          $array_controle_escola_serie_turma[$idescola."".$nome_generico_turma]=10;
+          $array_controle_escola_serie_turma[$idescola."".$nome_generico_turma]=0;
 
 
 if (array_key_exists( $idescola."".$idserie ,$result_por_escola_total )) {
  $result_por_turma[$serie_id]=$result_por_turma[$serie_id]."<br> <b class='$cor_card'>$nome_escola</b><br> $nome_turma - Anterior = $quant_anterior + Novas=<b class='$cor'>$quant_matriculas</b> Total=$quant_total <br>";
-     // $result_por_escola_total[$idescola."".$idserie]+= $quant_total;
+  $array_controle_escola_serie_turma[$nome_generico_turma]+= $quant_total;
       
 }else{
 
-          $result_por_turma[$serie_id]=$result_por_turma[$serie_id]."<br> <b class='$cor_card'>$nome_escola</b><br> $nome_turma - Anterior = $quant_anterior + Novas=<b class='$cor'>$quant_matriculas</b> Total=$quant_total <br>";
+          $result_por_turma[$serie_id]=
+          "valor: ".$array_controle_escola_serie_turma[$nome_generico_turma]."<br>
+          ".$result_por_turma[$serie_id]."<br> <b class='$cor_card'>$nome_escola</b><br> $nome_turma - Anterior = $quant_anterior + Novas=<b class='$cor'>$quant_matriculas</b> Total=$quant_total <br>";
 
           $result_por_escola_total[ $idescola."".$idserie]+=$quant_total;
 
