@@ -94,6 +94,7 @@ if ($_GET['serie'] == 1 ) {
       $array_quant_matriculas = array();
       $array_quant_total = array();
       $result_por_turma=array();
+      $result_por_escola=array();
       $array_controle_escola_serie_turma=array();
       foreach ($res_matriculas as $key => $value) {
           $turma = $value['turma_id'];
@@ -139,7 +140,33 @@ if ($_GET['serie'] == 1 ) {
           $nome_generico_turma=$array_nome_turma[0]."".$array_nome_turma[1];
           $array_controle_escola_serie_turma[$idescola."".$nome_generico_turma]=10;
 
-          $result_por_turma[$serie_id]=$result_por_turma[$serie_id]."<br> <b class='$cor_card'>$nome_escola</b><br> $nome_turma - Anterior = $quant_anterior + Novas=<b class='$cor'>$quant_matriculas</b> Total=$quant_total <br>";
+          // $result_por_turma[$serie_id]=$result_por_turma[$serie_id]."<br> <b class='$cor_card'>$nome_escola</b><br> $nome_turma - Anterior = $quant_anterior + Novas=<b class='$cor'>$quant_matriculas</b> Total=$quant_total <br>";
+
+
+          if (!$result_por_escola[$nome_escola]==$nome_escola) {
+      
+
+                $result_por_turma[$serie_id]="<div class='card card-$cor_card collapsed-card'>
+                              <div class='card-header' data-card-widget='collapse'>
+                                <h3 class='card-title'>$nome_escola </h3>
+
+                                <div class='card-tools'>
+                                  <button type='button' class='btn btn-tool' data-card-widget='collapse'>
+                                    <i class='fas fa-plus'></i>
+                                  </button>
+                                </div>               
+                              </div>
+
+                              <div class='card-body' style='display: none;'>
+                              <div class='card-body'>
+
+                            </div>
+                          </div>
+                       </div>
+                 </div>";
+            $result_por_escola[$nome_escola]=$nome_escola;
+
+          }
 
           //   
           // if ($array_controle_escola_serie_turma[$idescola$serie_id$idturma]) {
@@ -211,7 +238,7 @@ if ($_GET['serie'] == 1 ) {
                                 </div> -->
                                   
                                   ".$result_por_turma[$idserie]."
-                                   hegdjfhas
+                                   
                                 </div>
                           </div>
                        </div>
