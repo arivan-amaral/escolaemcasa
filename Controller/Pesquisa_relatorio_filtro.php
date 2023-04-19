@@ -212,7 +212,7 @@ if ($_GET['excel']==1) {
 
         // Cria um array com os dados
         $dados = array(
-            array($cabecalho_excel),
+            $cabecalho_excel
           
         );
 
