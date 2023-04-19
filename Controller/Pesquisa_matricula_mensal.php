@@ -140,7 +140,7 @@ if ($_GET['serie'] == 1 ) {
           $nome_generico_turma=$array_nome_turma[0]."".$array_nome_turma[1];
           $array_controle_escola_serie_turma[$idescola."".$nome_generico_turma]=10;
 
-          $result_por_turma[$serie_id]=$result_por_turma[$serie_id]."<br> <b class='$cor_card'>$nome_escola</b><br> $nome_turma - Anterior = $quant_anterior + Novas=<b class='$cor'>$quant_matriculas</b> Total=$quant_total <br>";
+          // $result_por_turma[$serie_id]=$result_por_turma[$serie_id]."<br> <b class='$cor_card'>$nome_escola</b><br> $nome_turma - Anterior = $quant_anterior + Novas=<b class='$cor'>$quant_matriculas</b> Total=$quant_total <br>";
 
 
           if (!$result_por_escola[$idescola]==$idescola) {
@@ -158,7 +158,7 @@ if ($_GET['serie'] == 1 ) {
                               </div>
 
                               <div class='card-body' style='display: none;'>
-                              <div class='card-body'>
+                              <div class='card-body'> <b class='$cor_card'>$nome_escola</b><br> $nome_turma - Anterior = $quant_anterior + Novas=<b class='$cor'>$quant_matriculas</b> Total=$quant_total <br>
 
                             </div>
                           </div>
