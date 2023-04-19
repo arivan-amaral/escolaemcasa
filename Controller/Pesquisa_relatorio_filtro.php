@@ -143,7 +143,7 @@ try {
     $tamanho = count($parametros);
     $result.="<tr>";
     if($sexo == "todos"){
-    $res_matriculas = relatorio_pesquisa_relatorio_filtro_todos($conexao,$texto,$escola,$ano_letivo,$necessidade_especial, $data_nascimento);
+    $res_matriculas = relatorio_pesquisa_relatorio_filtro_todos($conexao,$texto,$escola,$ano_letivo,$necessidade_especial, $data_nascimento,$ordenacao);
         
          
           foreach ($res_matriculas as $key => $value) {
