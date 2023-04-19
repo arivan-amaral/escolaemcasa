@@ -139,7 +139,7 @@ if ($_GET['serie'] == 1 ) {
           }
 
           $array_nome_turma = explode(" ", $nome_turma);
-          $nome_generico_turma=$array_nome_turma[0]."".$array_nome_turma[1];
+          $nome_generico_turma=$array_nome_turma[0]." ".$array_nome_turma[1];
 
 
  $result_por_turma[$serie_id]=$result_por_turma[$serie_id]."<br> <b class='$cor_card'>$nome_escola</b><br> $nome_turma - Anterior = $quant_anterior + Novas=<b class='$cor'>$quant_matriculas</b> Total=$quant_total <br>";
@@ -147,7 +147,6 @@ if ($_GET['serie'] == 1 ) {
 if (!array_key_exists( $idescola."".$nome_generico_turma ,$array_controle_escola_serie_turma )) {
   $array_controle_escola_serie_turma[$idescola."".$nome_generico_turma]=0;
 
-  $result_por_turma[$serie_id]=$result_por_turma[$serie_id]."VALOR: $nome_generico_turma ".$array_controle_escola_serie_turma[$idescola."".$idserie];
   $array_controle_escola_serie_turma[$idescola."".$idserie]+= $quant_total;
     
 }else{
@@ -155,6 +154,7 @@ if (!array_key_exists( $idescola."".$nome_generico_turma ,$array_controle_escola
 
     $array_controle_escola_serie_turma[$idescola."".$nome_generico_turma]=$array_controle_escola_serie_turma[$idescola."".$nome_generico_turma]+$quant_total;
 
+  $result_por_turma[$serie_id]=$result_por_turma[$serie_id]."VALOR: $nome_generico_turma ".$array_controle_escola_serie_turma[$idescola."".$idserie];
 
 }
 
