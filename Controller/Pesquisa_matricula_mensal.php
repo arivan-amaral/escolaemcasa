@@ -135,11 +135,20 @@ if ($_GET['serie'] == 1 ) {
 
           }
 
+          $array_nome_turma = explode(" ", $nome_turma);
+          $nome_generico_turma=$array_nome_turma[0]."".$array_nome_turma[1];
+          $array_controle_escola_serie_turma[$idescola."".$nome_generico_turma]=10;
+
           $result_por_turma[$serie_id]=$result_por_turma[$serie_id]."<br> <b class='$cor_card'>$nome_escola</b><br> $nome_turma - Anterior = $quant_anterior + Novas=<b class='$cor'>$quant_matriculas</b> Total=$quant_total <br>";
-          //   $array_controle_escola_serie_turma[$idescola$serie_id$idturma]=
+
+          //   
           // if ($array_controle_escola_serie_turma[$idescola$serie_id$idturma]) {
           //   // code...
           // }
+          // 
+          // 
+          
+          
           
           $array_quant_anterior[$serie_id]=$array_quant_anterior[$serie_id]+$quant_anterior;
           $array_quant_matriculas[$serie_id]=$array_quant_matriculas[$serie_id]+$quant_matriculas;
@@ -202,7 +211,7 @@ if ($_GET['serie'] == 1 ) {
                                 </div> -->
                                   
                                   ".$result_por_turma[$idserie]."
-                                   
+                                   hegdjfhas
                                 </div>
                           </div>
                        </div>
