@@ -30,6 +30,7 @@ if (!isset($_SESSION['idcoordenador'])) {
   include_once '../Model/Chamada.php';
   include_once '../Model/Escola.php';
   include_once '../Model/Turma.php';
+  include_once '../Model/Coordenador.php';
 
 if ($_COOKIE['dia_doservidor_publico2']<2 && date("m-d")=="10-28") {
 ?>

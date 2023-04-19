@@ -94,6 +94,7 @@ if ($_GET['serie'] == 1 ) {
       $array_quant_matriculas = array();
       $array_quant_total = array();
       $result_por_turma=array();
+      $array_controle_escola_serie_turma=array();
       foreach ($res_matriculas as $key => $value) {
           $turma = $value['turma_id'];
           $quant_matriculas = 0;
@@ -103,6 +104,7 @@ if ($_GET['serie'] == 1 ) {
           $nome_turma = $value['nome_turma'];
           $nome_escola = $value['nome_escola'];
           $idescola = $value['turma_escola'];
+          $idturma = $value['idturma'];
           $escola = " ecidade_matricula.turma_escola = $idescola";
 
           //12/04/2023
@@ -134,6 +136,10 @@ if ($_GET['serie'] == 1 ) {
           }
 
           $result_por_turma[$serie_id]=$result_por_turma[$serie_id]."<br> <b class='$cor_card'>$nome_escola</b><br> $nome_turma - Anterior = $quant_anterior + Novas=<b class='$cor'>$quant_matriculas</b> Total=$quant_total <br>";
+
+          if ($array_controle_escola_serie_turma[]) {
+            // code...
+          }
           
           $array_quant_anterior[$serie_id]=$array_quant_anterior[$serie_id]+$quant_anterior;
           $array_quant_matriculas[$serie_id]=$array_quant_matriculas[$serie_id]+$quant_matriculas;
