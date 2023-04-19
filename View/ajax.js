@@ -828,7 +828,7 @@ if(cpf_aluno.checked) {
                 text: 'Marque pelo menos um campo para pesquisar'
                 
               });  
-  }elseif(excel !=1){
+  }else if(excel !=1){
 
     result.innerHTML = "<img src='imagens/carregando.gif'>";  
       var xmlreq = CriaRequest();
