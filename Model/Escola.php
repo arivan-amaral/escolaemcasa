@@ -66,7 +66,7 @@ function pesquisa_relatorio_filtro_todos($conexao,$texto,$escola,$ano_letivo, $n
 function relatorio_pesquisa_relatorio_filtro_todos($conexao,$texto,$escola,$ano_letivo, $necessidade_especial,$data_nascimento,$ordenacao){
    $sql = $conexao->query("SELECT $texto FROM aluno,ecidade_matricula,escola,turma WHERE ecidade_matricula.aluno_id = aluno.idaluno AND ecidade_matricula.turma_escola = escola.idescola AND ecidade_matricula.turma_id = turma.idturma AND ecidade_matricula.calendario_ano='$ano_letivo' AND ecidade_matricula.matricula_ativa='S' AND ecidade_matricula.matricula_concluida='N'   AND ecidade_matricula.turma_escola $escola $necessidade_especial $data_nascimento ORDER BY $ordenacao");
 
-   echo "SELECT $texto FROM aluno,ecidade_matricula,escola,turma WHERE ecidade_matricula.aluno_id = aluno.idaluno AND ecidade_matricula.turma_escola = escola.idescola AND ecidade_matricula.turma_id = turma.idturma AND ecidade_matricula.calendario_ano='$ano_letivo' AND ecidade_matricula.matricula_ativa='S' AND ecidade_matricula.matricula_concluida='N'   AND ecidade_matricula.turma_escola $escola $necessidade_especial $data_nascimento ORDER BY $ordenacao";
+
    // escola.nome_escola ASC, turma.nome_turma ASC, aluno.nome asc
    return $sql->fetchAll();
 }
