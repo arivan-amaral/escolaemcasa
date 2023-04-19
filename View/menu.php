@@ -142,6 +142,8 @@
               <ion-icon name='clipboard-outline'></ion-icon>
               <p>Relatórios <i class='right fas fa-angle-left'></i></p>
               </a>
+              
+
                <ul class='nav nav-treeview'>
                <li class='nav-item'>
                <a href='relatorio_mensal_matriculas.php' class='nav-link'>
@@ -154,6 +156,12 @@
                <a href='relatorio_aluno.php' class='nav-link'>
                <i class='far fa-circle nav-icon text-primary'></i>
                <p>Relatório de aluno</p>
+               </a>
+               </li> 
+                <li class='nav-item'>
+               <a href='relatorio_aluno.php' class='nav-link'>
+               <i class='far fa-circle nav-icon text-primary'></i>
+               <p>Relatório de desempenho</p>
                </a>
                </li>        
 
