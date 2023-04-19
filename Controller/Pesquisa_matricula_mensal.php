@@ -146,7 +146,7 @@ if ($_GET['serie'] == 1 ) {
           if (!$result_por_escola[$nome_escola]==$nome_escola) {
       
 
-                $result_por_turma[$serie_id]="<div class='card card-$cor_card collapsed-card'>
+                $result_por_turma[$serie_id].="<div class='card card-$cor_card collapsed-card'>
                               <div class='card-header' data-card-widget='collapse'>
                                 <h3 class='card-title'>$nome_escola </h3>
 
