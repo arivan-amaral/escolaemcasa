@@ -200,9 +200,9 @@ $result.="</tbody>    </table>
 ";
 
 
-
-echo "$result";
-
+if ($_GET['excel']!=1) {
+    echo "$result";
+}
 
 
 if ($_GET['excel']==1) {
