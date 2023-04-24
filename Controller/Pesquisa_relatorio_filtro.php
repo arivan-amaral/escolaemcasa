@@ -12,6 +12,20 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 try {
 
+    function transformArray($arr){
+        $newArr = array();
+        $index = 0;
+        foreach($arr as $key => $value){
+            $innerIndex = $key % 3;
+            if($innerIndex == 0){
+                $index++;
+            }
+            $newArr[$index][$innerIndex] = $value[1];
+        }
+        return $newArr;
+    }
+
+
     $texto = $_GET['texto'];
     
     $ordenacao = $_GET['ordenacao'];
@@ -235,22 +249,15 @@ if ($_GET['excel']!=1) {
 if ($_GET['excel']==1) {
 
         // Cria um array com os dados
+$newArr = transformArray($dados_excel);
         $dados = array(
-            $cabecalho_excel
+            $cabecalho_excel,
+            $newArr
           
         );
+
         // $dados_excel
-        $dados_aux=array();
-        for ($i=0; $i < count($dados_excel); $i++) { 
-            array_push($dados_aux,$dados_excel[$i]);
-
-              
-            if ($i%count($cabecalho_excel)==0) {
-                 array_push($dados,$dados_aux);
-                $dados_aux=array();
-
-            }
-        }
+    
         // foreach ($dados as $key => $value) {
         //     array_push($dados,array($conta,$dado));
         // }
@@ -258,8 +265,8 @@ if ($_GET['excel']==1) {
 
 // var_dump($cabecalho_excel);
 // echo "<br><br><br><br><br><br><br><br><br>";
-var_dump($dados_excel);
-exit();
+// var_dump($dados_excel);
+// exit();
         // Cria um objeto Spreadsheet
         $spreadsheet = new Spreadsheet();
 
