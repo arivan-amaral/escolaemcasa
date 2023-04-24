@@ -175,6 +175,7 @@ try {
               
           }
 
+echo "$result";
 
     }else{
        $res_matriculas = relatorio_pesquisa_relatorio_filtro($conexao,$texto,$sexo,$escola,$ano_letivo,$ordenacao,$necessidade_especial, $data_nascimento);
@@ -201,6 +202,7 @@ try {
           $conta++;
           
       }
+
     }
      
      
