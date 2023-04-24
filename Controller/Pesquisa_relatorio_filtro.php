@@ -256,7 +256,7 @@ echo $dados_excel[0][$i]." | ".$dados_excel[1][$i]." | ".$dados_excel[2][$i]."<b
 // echo "<br><br><br><br><br><br><br><br><br>";
 
 
-
+exit();
 
         // Cria um objeto Spreadsheet
         $spreadsheet = new Spreadsheet();
