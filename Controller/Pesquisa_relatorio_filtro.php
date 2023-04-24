@@ -172,8 +172,8 @@ try {
 
               $conta++;
               
-          }
       echo "$result";
+          }
 
 
 
