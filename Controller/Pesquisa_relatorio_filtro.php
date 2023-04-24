@@ -242,8 +242,8 @@ if ($_GET['excel']==1) {
         // $dados_excel
         $dados_aux=array();
         for ($i=0; $i < count($dados_excel); $i++) { 
-            array_push($dados_aux,$dados_excel[0][$i]);
-echo $dados_excel[0][$i]." | ".$dados_excel[1][$i]." | ".$dados_excel[2][$i]."<br>";
+            array_push($dados_aux,$dados_excel[$i]);
+
               
             if ($i%count($cabecalho_excel)==0) {
                  array_push($dados,$dados_aux);
@@ -251,13 +251,15 @@ echo $dados_excel[0][$i]." | ".$dados_excel[1][$i]." | ".$dados_excel[2][$i]."<b
 
             }
         }
+        // foreach ($dados as $key => $value) {
+        //     array_push($dados,array($conta,$dado));
+        // }
+
 
 // var_dump($cabecalho_excel);
 // echo "<br><br><br><br><br><br><br><br><br>";
-
-
+var_dump($dados_excel);
 exit();
-
         // Cria um objeto Spreadsheet
         $spreadsheet = new Spreadsheet();
 
