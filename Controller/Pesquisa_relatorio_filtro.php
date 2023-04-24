@@ -241,7 +241,7 @@ if ($_GET['excel']==1) {
         );
         // $dados_excel
         // 
-        for ($i=count($dados_excel); $i <= count($dados_excel); $i++) { 
+        for ($i=1; $i <= count($dados_excel); $i++) { 
             
                 echo "$i | ";
             if ($i%count($cabecalho_excel)==0) {
