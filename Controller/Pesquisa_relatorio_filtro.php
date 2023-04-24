@@ -228,7 +228,8 @@ if ($_GET['excel']==1) {
         //     $dados_excel
           
         // );
-
+var_dump($dados_excel);
+exit();
         // Cria um objeto Spreadsheet
         $spreadsheet = new Spreadsheet();
 
@@ -247,7 +248,7 @@ if ($_GET['excel']==1) {
         header('Cache-Control: max-age=0');
 
         // Salva a planilha no formato Excel
-        $writer->save('php://output');
+         $writer->save('php://output');
 }
 
     
