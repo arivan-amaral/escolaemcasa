@@ -137,27 +137,27 @@ try {
     ";
 
 
-    $result.="
+    $html.="
     <table class=table table-bordered table-striped' >
       
    <thead>
       <tr>
       ";
-         $result.="<th  style='text-align: center;'>#</th>";
+         $html.="<th  style='text-align: center;'>#</th>";
 
      $cabecalho_excel=array();
      $dados_excel=array();
          array_push($cabecalho_excel,'#');
 
       foreach ($titulos as $key => $value) {
-         $result.="<th  style='text-align: center;'>".$titulos[$key]."</th>";
+         $html.="<th  style='text-align: center;'>".$titulos[$key]."</th>";
           
          array_push($cabecalho_excel,$titulos[$key]);
       }
         
     // array_push($dados_excel,$cabecalho_excel);
         
-    $result.="</tr>
+    $html.="</tr>
     </thead>
     <tbody>
     ";
@@ -170,7 +170,7 @@ try {
         
          
           foreach ($res_matriculas as $key => $value) {
-                $result.="<td>$conta</td>";
+                $html.="<td>$conta</td>";
 
                for ($i=0; $i < $tamanho; $i++) { 
                 if ($parametros[$i]=='data_nascimento') {
@@ -179,14 +179,14 @@ try {
                 }else{
                     $dado = $value[$parametros[$i]];
                 }
-                $result.="<td>$dado</td>";
+                $html.="<td>$dado</td>";
 
                 array_push($dados_excel,array($conta,$dado));
 
 
 
               }
-              $result.="</tr>";
+              $html.="</tr>";
                 
 
               $conta++;
@@ -204,7 +204,7 @@ try {
         
 
 
-            $result.="<td>$conta</td>";
+            $html.="<td>$conta</td>";
 
           for ($i=0; $i < $tamanho; $i++) { 
             if ($parametros[$i]=='data_nascimento') {
@@ -213,11 +213,11 @@ try {
             }else{
                 $dado = $value[$parametros[$i]];
             }
-            $result.="<td>$dado</td>";
+            $html.="<td>$dado</td>";
             array_push($dados_excel,array($conta,$dado));
           }
 
-          $result.="</tr>";
+          $html.="</tr>";
 
           $conta++;
           
@@ -237,55 +237,56 @@ try {
 
     
     
-$result.="</tbody>    </table>
+$html.="</tbody>    </table>
 ";
 
 
 if ($_GET['excel']!=1) {
-    echo "$result";
+    echo "$result ";
+    echo "$html";
 }
 
 
 if ($_GET['excel']==1) {
 
-        // Cria um array com os dados
-$newArr = transformArray($dados_excel);
-        $dados = array(
-            $cabecalho_excel,
-            $newArr
-          
-        );
-
-        // $dados_excel
-    
-        // foreach ($dados as $key => $value) {
-        //     array_push($dados,array($conta,$dado));
-        // }
 
 
-// var_dump($cabecalho_excel);
-// echo "<br><br><br><br><br><br><br><br><br>";
-// var_dump($dados_excel);
-// exit();
-        // Cria um objeto Spreadsheet
-        $spreadsheet = new Spreadsheet();
+         // Crie um novo objeto PhpSpreadsheet
+         $spreadsheet = new Spreadsheet();
 
-        // Define o título da planilha
-        $spreadsheet->getActiveSheet()->setTitle('Relatorio de alunos');
+         // Crie uma nova planilha e defina-a como a planilha ativa
+         $worksheet = $spreadsheet->getActiveSheet();
 
-        // Define os dados na planilha
-        $spreadsheet->getActiveSheet()->fromArray($dados, null, 'A1');
+         // Analise o conteúdo HTML da tabela usando a classe DOMDocument do PHP
+         $dom = new DOMDocument();
+         $dom->loadHTML($html);
+         $tables = $dom->getElementsByTagName('table');
+         $rows = $tables->item(0)->getElementsByTagName('tr');
 
-        // Cria um objeto Writer para salvar a planilha em formato Excel
-        $writer = new Xlsx($spreadsheet);
+         // Percorra as linhas da tabela HTML e adicione os dados na planilha do Excel
+         $rowIndex = 1;
+         foreach ($rows as $row) {
+             $cellIndex = 1;
+             $cells = $row->getElementsByTagName('td');
+             foreach ($cells as $cell) {
+                 $value = $cell->nodeValue;
+                 $worksheet->setCellValueByColumnAndRow($cellIndex, $rowIndex, $value);
+                 $cellIndex++;
+             }
+             $rowIndex++;
+         }
 
-        // Define o cabeçalho para download do arquivo
-        header('Content-Type: application/vnd.ms-excel');
-        header('Content-Disposition: attachment;filename="relatorio-de-alunos.xlsx"');
-        header('Cache-Control: max-age=0');
+         // Salve o arquivo Excel no formato desejado
+         $writer = new Xlsx($spreadsheet);
+         // $writer->save('planilha.xlsx');
 
-        // Salva a planilha no formato Excel
-         $writer->save('php://output');
+         // Define o cabeçalho para download do arquivo
+                 header('Content-Type: application/vnd.ms-excel');
+                 header('Content-Disposition: attachment;filename="relatorio-de-alunos.xlsx"');
+                 header('Cache-Control: max-age=0');
+
+                 // Salva a planilha no formato Excel
+                  $writer->save('php://output');
 }
 
     
