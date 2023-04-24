@@ -240,10 +240,10 @@ if ($_GET['excel']==1) {
             $dados_excel
           
         );
-var_dump($cabecalho_excel);
-echo "<br><br><br><br><br><br><br><br><br>";
-var_dump($dados_excel);
-exit();
+// var_dump($cabecalho_excel);
+// echo "<br><br><br><br><br><br><br><br><br>";
+// var_dump($dados_excel);
+// exit();
         // Cria um objeto Spreadsheet
         $spreadsheet = new Spreadsheet();
 
