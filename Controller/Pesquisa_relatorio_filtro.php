@@ -173,6 +173,7 @@ try {
               $conta++;
               
           }
+      echo "$result";
 
 
 
@@ -203,7 +204,6 @@ try {
       }
 
 
-      echo "$result";
 
     }
      
