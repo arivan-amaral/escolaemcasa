@@ -133,6 +133,8 @@ try {
 
      $cabecalho_excel=array();
      $dados_excel=array();
+         array_push($cabecalho_excel,'#');
+
       foreach ($titulos as $key => $value) {
          $result.="<th  style='text-align: center;'>".$titulos[$key]."</th>";
           
