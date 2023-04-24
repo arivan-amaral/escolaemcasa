@@ -202,6 +202,9 @@ try {
           
       }
 
+
+      echo "$result";
+
     }
      
      
