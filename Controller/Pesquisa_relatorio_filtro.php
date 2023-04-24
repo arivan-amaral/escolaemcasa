@@ -243,8 +243,7 @@ if ($_GET['excel']==1) {
         $dados_aux=array();
         for ($i=0; $i < count($dados_excel); $i++) { 
             array_push($dados_aux,$dados_excel[0][$i]);
-echo $dados_excel[0][$i]."<br><br><br>";
-echo $dados_excel[1][$i]."<br><br><br>";
+echo $dados_excel[0][$i]." | ".$dados_excel[1][$i]." | ".$dados_excel[2][$i]."<br>"
               
             if ($i%count($cabecalho_excel)==0) {
                  array_push($dados,$dados_aux);
