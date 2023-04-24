@@ -169,13 +169,12 @@ try {
               }
               $result.="</tr>";
                 
-              array_push($dados_excel,array($conta,$dado));
 
               $conta++;
               
           }
 
-echo "$result";
+
 
     }else{
        $res_matriculas = relatorio_pesquisa_relatorio_filtro($conexao,$texto,$sexo,$escola,$ano_letivo,$ordenacao,$necessidade_especial, $data_nascimento);
