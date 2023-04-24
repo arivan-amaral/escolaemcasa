@@ -197,7 +197,7 @@ try {
           }
           $result.="</tr>";
 
-            array_push($dados_excel,",".array($conta,$dado));
+            array_push($dados_excel,array($conta,$dado));
           $conta++;
           
       }
