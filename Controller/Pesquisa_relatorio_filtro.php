@@ -236,14 +236,28 @@ if ($_GET['excel']==1) {
 
         // Cria um array com os dados
         $dados = array(
-            $cabecalho_excel,
-            $dados_excel
+            $cabecalho_excel
           
         );
+        // $dados_excel
+        // 
+        for ($i=count($dados_excel); $i <= count($dados_excel); $i++) { 
+            
+                echo "$i | ";
+            if ($i%count($cabecalho_excel)==0) {
+                echo "<br>";
+
+            }
+        }
+        // foreach ($dados as $key => $value) {
+        //     array_push($dados,array($conta,$dado));
+        // }
+
+
 // var_dump($cabecalho_excel);
 // echo "<br><br><br><br><br><br><br><br><br>";
 // var_dump($dados_excel);
-// exit();
+exit();
         // Cria um objeto Spreadsheet
         $spreadsheet = new Spreadsheet();
 
