@@ -139,6 +139,7 @@ try {
          array_push($cabecalho_excel,$titulos[$key]);
       }
         
+    array_push($dados_excel,$cabecalho_excel);
         
     $result.="</tr>
     </thead>
@@ -217,11 +218,11 @@ if ($_GET['excel']!=1) {
 if ($_GET['excel']==1) {
 
         // Cria um array com os dados
-        $dados = array(
-            $cabecalho_excel,
-            $dados_excel
+        // $dados = array(
+        //     $cabecalho_excel,
+        //     $dados_excel
           
-        );
+        // );
 
         // Cria um objeto Spreadsheet
         $spreadsheet = new Spreadsheet();
@@ -230,7 +231,7 @@ if ($_GET['excel']==1) {
         $spreadsheet->getActiveSheet()->setTitle('Relatorio de alunos');
 
         // Define os dados na planilha
-        $spreadsheet->getActiveSheet()->fromArray($dados, null, 'A1');
+        $spreadsheet->getActiveSheet()->fromArray($dados_excel, null, 'A1');
 
         // Cria um objeto Writer para salvar a planilha em formato Excel
         $writer = new Xlsx($spreadsheet);
