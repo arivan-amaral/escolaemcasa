@@ -139,19 +139,19 @@ try {
 
 
     $html.="
-    <table class=table table-bordered table-striped' >
+    <table>
       
    <thead>
       <tr>
       ";
-         $html.="<th  style='text-align: center;'>#</th>";
+         $html.="<th>#</th>";
 
      $cabecalho_excel=array();
      $dados_excel=array();
          array_push($cabecalho_excel,'#');
 
       foreach ($titulos as $key => $value) {
-         $html.="<th  style='text-align: center;'>".$titulos[$key]."</th>";
+         $html.="<th>".$titulos[$key]."</th>";
           
          array_push($cabecalho_excel,$titulos[$key]);
       }
