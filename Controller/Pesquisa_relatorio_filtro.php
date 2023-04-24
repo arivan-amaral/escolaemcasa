@@ -79,6 +79,7 @@ try {
 
     $titulos = explode ("-", $titulo);
     $parametros = explode ("-", $parametro);
+    $html="";
     $result="
   
     <table class=table table-bordered table-striped' >
