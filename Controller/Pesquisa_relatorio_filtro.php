@@ -243,7 +243,7 @@ if ($_GET['excel']==1) {
 
         // Define o cabeçalho para download do arquivo
         header('Content-Type: application/vnd.ms-excel');
-        header('Content-Disposition: attachment;filename="dados.xlsx"');
+        header('Content-Disposition: attachment;filename="relatorio-de-alunos.xlsx"');
         header('Cache-Control: max-age=0');
 
         // Salva a planilha no formato Excel
