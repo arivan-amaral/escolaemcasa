@@ -244,6 +244,7 @@ if ($_GET['excel']==1) {
         for ($i=0; $i < count($dados_excel); $i++) { 
             array_push($dados_aux,$dados_excel[0][$i]);
 echo $dados_excel[0][$i]."<br><br><br>";
+echo $dados_excel[1][$i]."<br><br><br>";
               
             if ($i%count($cabecalho_excel)==0) {
                  array_push($dados,$dados_aux);
@@ -254,8 +255,8 @@ echo $dados_excel[0][$i]."<br><br><br>";
 
 // var_dump($cabecalho_excel);
 // echo "<br><br><br><br><br><br><br><br><br>";
- print_r($dados_excel);
-exit();
+
+
 
 
         // Cria um objeto Spreadsheet
