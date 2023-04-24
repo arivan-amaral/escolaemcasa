@@ -195,10 +195,11 @@ try {
                 $dado = $value[$parametros[$i]];
             }
             $result.="<td>$dado</td>";
+            array_push($dados_excel,array($conta,$dado));
           }
+          
           $result.="</tr>";
 
-            array_push($dados_excel,array($conta,$dado));
           $conta++;
           
       }
