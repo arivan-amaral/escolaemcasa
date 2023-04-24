@@ -166,6 +166,9 @@ try {
                 $result.="<td>$dado</td>";
               }
               $result.="</tr>";
+                
+              array_push($dados_excel,array($conta,$dado));
+
               $conta++;
               
           }
