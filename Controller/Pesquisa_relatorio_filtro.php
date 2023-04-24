@@ -132,6 +132,7 @@ try {
          $result.="<th  style='text-align: center;'>#</th>";
 
      $cabecalho_excel=array();
+     $dados_excel=array();
       foreach ($titulos as $key => $value) {
          $result.="<th  style='text-align: center;'>".$titulos[$key]."</th>";
           
@@ -172,6 +173,9 @@ try {
     
      
       foreach ($res_matriculas as $key => $value) {
+        
+
+
             $result.="<td>$conta</td>";
 
           for ($i=0; $i < $tamanho; $i++) { 
@@ -184,6 +188,8 @@ try {
             $result.="<td>$dado</td>";
           }
           $result.="</tr>";
+
+            array_push($dados_excel,array($conta,$dado));
           $conta++;
           
       }
@@ -213,7 +219,7 @@ if ($_GET['excel']==1) {
         // Cria um array com os dados
         $dados = array(
             $cabecalho_excel,
-            $cabecalho_excel
+            $dados_excel
           
         );
 
