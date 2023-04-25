@@ -134,6 +134,9 @@ setTimeout('dia_doservidor_publico();',3000);
            <label for="exampleInputEmail1">ESCOLA</label>
            <select class="form-control"  id="escola" name="escola" >
             <?php 
+            try {
+              
+           
               if ($_SESSION['nivel_acesso_id']>=100) {
             ?>
                 <option value="todas">TODAS</option>
@@ -148,7 +151,9 @@ setTimeout('dia_doservidor_publico();',3000);
                 $nome_escola = $value['nome_escola'];
                 echo "<option value='$idescola'>$nome_escola</option>";
               }
-
+              } catch (Exception $e) {
+                echo "$e";
+              }
             ?>
             
           
