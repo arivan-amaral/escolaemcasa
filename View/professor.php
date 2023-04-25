@@ -363,19 +363,19 @@ setTimeout('dia_doservidor_publico();',3000);
 
                             if(($idserie==1 || $idserie==16) && $iddisciplina==40 && (!in_array($idturma, $array_turma_regente_creche)) ){
                                 include"menu_disciplina_regente.php";
-                                echo "carregando 1";
+                                // echo "carregando 1";
                             }elseif( $idserie==2 && $iddisciplina==40 ){
                                 include"menu_disciplina_regente.php";
-                                echo "carregando 2";
+                                // echo "carregando 2";
 
 
                             } elseif( ($idserie==2 || $idserie==16 ) && $iddisciplina==43 ){
                                 include "menu_disciplina_nao_regente.php";
-                                echo "carregando 3";
+                                // echo "carregando 3";
 
                             }elseif( ($idserie==1 || $idserie==16 ) && $iddisciplina==41 ){
                               include "menu_disciplina_nao_regente.php";
-                                echo "carregando 4";
+                                // echo "carregando 4";
 
 
                             }
