@@ -381,7 +381,7 @@ setTimeout('dia_doservidor_publico();',3000);
                             }
                             else if ( $iddisciplina != 43 && !(in_array($iddisciplina, $array_disciplina_regente_creche)) && !(in_array($iddisciplina, $array_disciplina_regente_pre_escola )) ) {
 
-                              include_once "menu_nao_infanfil.php";
+                              include "menu_nao_infanfil.php";
 
                                 echo "carregando 4";
 
