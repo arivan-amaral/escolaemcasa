@@ -362,19 +362,19 @@ setTimeout('dia_doservidor_publico();',3000);
 
 
                             if(($idserie==1 || $idserie==16) && $iddisciplina==40 && (!in_array($idturma, $array_turma_regente_creche)) ){
-                                include_once "menu_disciplina_regente.php";
+                                include"menu_disciplina_regente.php";
                                 echo "carregando 1";
                             }elseif( $idserie==2 && $iddisciplina==40 ){
-                                include_once "menu_disciplina_regente.php";
+                                include"menu_disciplina_regente.php";
                                 echo "carregando 2";
 
 
                             } elseif( ($idserie==2 || $idserie==16 ) && $iddisciplina==43 ){
-                                include_once "menu_disciplina_nao_regente.php";
+                                include "menu_disciplina_nao_regente.php";
                                 echo "carregando 3";
 
                             }elseif( ($idserie==1 || $idserie==16 ) && $iddisciplina==41 ){
-                              include_once "menu_disciplina_nao_regente.php";
+                              include "menu_disciplina_nao_regente.php";
                                 echo "carregando 4";
 
 
@@ -383,7 +383,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
                               include "menu_nao_infanfil.php";
 
-                                echo "carregando 4";
+                                // echo "carregando 4";
 
 
                             }//else se não for cheche ou pre escola
