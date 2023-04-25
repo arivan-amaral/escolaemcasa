@@ -141,36 +141,38 @@ try {
     $html.="
     <table>
       
-   <thead>
-      <tr>
+ 
+     
       ";
-         $html.="<th>#</th>";
+         $html.="<tr> <td>#</td>";
 
      $cabecalho_excel=array();
      $dados_excel=array();
          array_push($cabecalho_excel,'#');
 
       foreach ($titulos as $key => $value) {
-         $html.="<th>".$titulos[$key]."</th>";
+         $html.="<td>".$titulos[$key]."</td>";
           
          array_push($cabecalho_excel,$titulos[$key]);
       }
         
     // array_push($dados_excel,$cabecalho_excel);
         
-    $html.="</tr>
-    </thead>
-    <tbody>
+    $html.="
+    </tr>
+  
     ";
 
     $conta=1;
     $tamanho = count($parametros);
-    $result.="<tr>";
+    // $result.="<tr>";
     if($sexo == "todos"){
     $res_matriculas = relatorio_pesquisa_relatorio_filtro_todos($conexao,$texto,$escola,$ano_letivo,$necessidade_especial, $data_nascimento,$ordenacao);
         
          
           foreach ($res_matriculas as $key => $value) {
+              $html.="<tr>";
+
                 $html.="<td>$conta</td>";
 
                for ($i=0; $i < $tamanho; $i++) { 
@@ -203,6 +205,7 @@ try {
      
       foreach ($res_matriculas as $key => $value) {
         
+          $html.="<tr>";
 
 
             $html.="<td>$conta</td>";
@@ -238,7 +241,7 @@ try {
 
     
     
-$html.="</tbody>    </table>
+$html.="    </table>
 ";
 
 
@@ -250,11 +253,11 @@ if ($_GET['excel']!=1) {
 
 if ($_GET['excel']==1) {
 
-
-
+//    echo  htmlentities($html);
+// exit();
          // Crie um novo objeto PhpSpreadsheet
          $spreadsheet = new Spreadsheet();
-
+         $html="<meta charset='utf-8'>".$html;
          // Crie uma nova planilha e defina-a como a planilha ativa
          $worksheet = $spreadsheet->getActiveSheet();
 
@@ -279,7 +282,8 @@ if ($_GET['excel']==1) {
 
          // Salve o arquivo Excel no formato desejado
          $writer = new Xlsx($spreadsheet);
-         // $writer->save('planilha.xlsx');
+        
+                  // $writer->save('planilha.xlsx');
 
          // Define o cabeçalho para download do arquivo
                  header('Content-Type: application/vnd.ms-excel');

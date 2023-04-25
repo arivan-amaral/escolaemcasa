@@ -849,7 +849,7 @@ if(cpf_aluno.checked) {
       };
    xmlreq.send(null);
   }else{
-          window.open("https://educalem.com.br/Controller/Pesquisa_relatorio_filtro.php?excel="+excel+"&operacao_cond_idade="+operacao_cond_idade+"&operacao_idade="+operacao_idade+"&necessidade_especial="+necessidade_especial+"&ordenacao="+ordenacao.value+"&texto="+texto+"&escola="+escola+"&sexo="+sexo+"&titulo="+titulo+"&parametro="+parametro+"", "_blank");
+          window.open("../Controller/Pesquisa_relatorio_filtro.php?excel="+excel+"&operacao_cond_idade="+operacao_cond_idade+"&operacao_idade="+operacao_idade+"&necessidade_especial="+necessidade_especial+"&ordenacao="+ordenacao.value+"&texto="+texto+"&escola="+escola+"&sexo="+sexo+"&titulo="+titulo+"&parametro="+parametro+"", "_blank");
 
   }
 
