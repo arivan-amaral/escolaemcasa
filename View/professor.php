@@ -1588,7 +1588,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
                                 
                             }
-                            else if ( $iddisciplina != 43 && !(in_array($iddisciplina, $array_disciplina_regente_creche)) &&  !(in_array($iddisciplina, $array_disciplina_regente_pre_escola ))  ) {
+                            else if ( $idserie==1 && $iddisciplina != 43 && !(in_array($iddisciplina, $array_disciplina_regente_creche)) &&  !(in_array($iddisciplina, $array_disciplina_regente_pre_escola ))  ) {
                           
 
                               echo "
