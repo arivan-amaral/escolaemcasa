@@ -18,7 +18,7 @@
 
 	function escola_associada($conexao,$idfuncionario){
     	$result=$conexao->query("SELECT * FROM funcionario,relacionamento_funcionario_escola,escola WHERE relacionamento_funcionario_escola.escola_id =escola.idescola and relacionamento_funcionario_escola.funcionario_id = funcionario.idfuncionario  AND  
-			idfuncionario=$idfuncionario ");
+			idfuncionario=$idfuncionario");
     	return $result ;
 	}	
 
