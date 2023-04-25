@@ -363,6 +363,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
                             if(($idserie==1 || $idserie==16) && $iddisciplina==40 && (!in_array($idturma, $array_turma_regente_creche)) ){
                                 include_once "menu_disciplina_regente.php";
+                                echo "carregando";
                             }elseif( $idserie==2 && $iddisciplina==40 ){
                                 include_once "menu_disciplina_regente.php";
 
