@@ -17,6 +17,7 @@ if (!isset($_SESSION['idcoordenador'])) {
   $idcoordenador=$_SESSION['idfuncionario'];
 
 }
+  $idcoordenador=$_SESSION['idfuncionario'];
   include_once "cabecalho.php";
   include_once "alertas.php";
  
