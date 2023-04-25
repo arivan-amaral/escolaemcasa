@@ -89,7 +89,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
              <?php if (isset($_SESSION['nome'])) {
 
-              echo " ".$_SESSION['nome'];  
+              echo " ( ".$_SESSION['idfuncionario'].")".$_SESSION['nome'];  
 
             } 
 
