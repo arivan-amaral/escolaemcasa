@@ -595,11 +595,11 @@ function relatorio_rendimento_funcao(){
           };
        xmlreq.send(null);
    // }else{
-    Swal.fire({
-        icon: 'error',
-        title: 'Atenção',
-        text: 'por favor insira nas duas datas inicial e final.'
-      });
+    // Swal.fire({
+    //     icon: 'error',
+    //     title: 'Atenção',
+    //     text: 'por favor insira nas duas datas inicial e final.'
+    //   });
    // }
       
 }
