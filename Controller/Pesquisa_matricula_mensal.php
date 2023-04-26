@@ -164,9 +164,9 @@ if ($_GET['serie'] == 1 ) {
 
  $result_por_turma[$serie_id]=$result_por_turma[$serie_id]."<br> <b class='$cor_card'>$nome_escola</b><br> $nome_turma - Anterior = $quant_anterior + Novas=<b class='$cor'>$quant_matriculas</b> Total=$quant_total  <br>";
  
- if ($nome_generico_turma != $nome_generico_turma_aux) {
-   $result_por_turma[$serie_id].="Total  $nome_generico_turma :1 <br>";
- }
+ // if ($nome_generico_turma != $nome_generico_turma_aux) {
+ //   $result_por_turma[$serie_id].="Total  $nome_generico_turma :1 <br>";
+ // }
     $nome_generico_turma=$array_nome_turma[0]." ".$array_nome_turma[1];
           
           $array_quant_anterior[$serie_id]=$array_quant_anterior[$serie_id]+$quant_anterior;
