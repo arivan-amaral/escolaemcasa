@@ -406,7 +406,7 @@ foreach ($res_aluno as $key => $value) {
 
     ?>
  <tr style='height:12.2pt'>
-  <td width=164 colspan=3 valign=top style='width:123.1pt;border-top:none;
+  <td width=164 colspan=3 valign=top style='width:100.1pt;border-top:none;
   border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;border-left:solid black 1.0pt;
   padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
@@ -453,7 +453,7 @@ foreach ($res_aluno as $key => $value) {
             padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
             <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
             normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-            color:black'>&nbsp;-</span></p>
+            color:black'>&nbsp;<input type="text" style="width: 24px;" value="-"></span></p>
             </td>
       <?php 
         } 
