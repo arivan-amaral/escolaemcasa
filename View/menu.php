@@ -181,11 +181,11 @@
               ";
               
               if ($_SESSION['cargo']=='Coordenadora' || $_SESSION['cargo']=='Coordenadora' || $_SESSION['cargo']=='Diretor' || $_SESSION["idfuncionario"] == 176 || $_SESSION["idfuncionario"] == 2121){
-                
+
                echo"<li class='nav-item menu'>
               <a href='./index.php' class='nav-link'>
               <ion-icon name='chatbox-outline'></ion-icon>
-              <p>Chamados <i class='right fas fa-angle-left'></i></p>
+              <p>Chamados .<i class='right fas fa-angle-left'></i></p>
               </a>
             
                <ul class='nav nav-treeview'>";
