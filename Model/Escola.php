@@ -104,6 +104,12 @@ function pesquisa_matricula_mensal_quant($conexao,$data_inicial,$data_final,$esc
    $sql = $conexao->query("SELECT count(*) as 'alunos' from ecidade_matricula  where  $escola AND matricula_situacao = 'MATRICULADO'  AND turma_id = $idturma AND matricula_datamatricula BETWEEN '$data_inicial' AND '$data_final'");
    return $sql->fetchAll();
 }
+
+function pesquisa_matricula_mensal_quant_nome_generico_turma($conexao,$data_inicial,$data_final,$escola,$nome_turma){
+   $sql = $conexao->query("SELECT count(*) as 'total_serie_escola' from ecidade_matricula  where  $escola AND matricula_situacao = 'MATRICULADO'  AND nome_turma LIKE  '$nome_turma %' AND matricula_datamatricula BETWEEN '$data_inicial' AND '$data_final'");
+   return $sql->fetchAll();
+}
+
 function pesquisa_matricula_mensal_quant_anterior($conexao,$escola,$idturma,$ano_letivo){
    $sql = $conexao->query("SELECT count(*) as 'alunos' from ecidade_matricula  where 
        $escola AND
