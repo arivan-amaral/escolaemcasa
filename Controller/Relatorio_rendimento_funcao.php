@@ -10,32 +10,9 @@
  margin-right:4.8pt;mso-table-anchor-vertical:page;mso-table-anchor-horizontal:
  margin;mso-table-left:left;mso-table-top:40.55pt;mso-padding-alt:0cm 3.5pt 0cm 3.5pt'>
 
- <tr style='mso-yfti-irow:5;height:20.95pt;mso-row-margin-right:10.6pt'>
-  <td width=769 nowrap colspan=23 rowspan=2 valign=top style='width:576.85pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:20.95pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><b><span
-  style='font-size:16.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
-  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-  color:#1F497D;mso-fareast-language:PT-BR'><!-- ESCOLA MUNICIPAL S O PAULO --><o:p></o:p></span></b></p>
-  </td>
-  <td style='mso-cell-special:placeholder;border:none;padding:0cm 0cm 0cm 0cm'
-  width=14 colspan=2><p class='MsoNormal'>&nbsp;</td>
-  <![if !supportMisalignedRows]>
-  <td style='height:20.95pt;border:none' width=0 height=28></td>
-  <![endif]>
- </tr>
- <tr style='mso-yfti-irow:6;height:16.2pt'>
-  <td width=14 nowrap colspan=2 valign=bottom style='width:10.6pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:16.2pt'></td>
-  <![if !supportMisalignedRows]>
-  <td style='height:16.2pt;border:none' width=0 height=22></td>
-  <![endif]>
- </tr>
+ 
  <tr style='mso-yfti-irow:7;height:15.35pt'>
-  <td width=769 nowrap colspan=23 rowspan=2 style='width:576.85pt;border:solid windowtext 1.0pt;
+  <td width=769 nowrap colspan=23 rowspan=2 style='width:100%;border:solid windowtext 1.0pt;
   mso-border-alt:solid windowtext .5pt;background:#C5D9F1;padding:0cm 3.5pt 0cm 3.5pt;
   height:15.35pt'>
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
@@ -46,18 +23,12 @@
   "Times New Roman";mso-bidi-font-family:Calibri;color:black;mso-fareast-language:
   PT-BR'>FICHA DE DESEMPENHO ESCOLAR POR TURMA - 2023<o:p></o:p></span></b></p>
   </td>
-  <td width=14 colspan=2 style='width:10.6pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:15.35pt'></td>
-  <![if !supportMisalignedRows]>
-  <td style='height:15.35pt;border:none' width=0 height=20></td>
-  <![endif]>
+ 
  </tr>
  <tr style='mso-yfti-irow:8;height:12.3pt'>
   <td width=14 nowrap colspan=2 valign=bottom style='width:10.6pt;padding:0cm 3.5pt 0cm 3.5pt;
   height:12.3pt'></td>
-  <![if !supportMisalignedRows]>
-  <td style='height:12.3pt;border:none' width=0 height=16></td>
-  <![endif]>
+   
  </tr>
  <tr style='mso-yfti-irow:9;height:15.35pt'>
   <td width=166 nowrap colspan=4 style='width:124.65pt;border:solid windowtext 1.0pt;
@@ -110,24 +81,7 @@
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
   mso-fareast-language:PT-BR'>GRAU<o:p></o:p></span></b></p>
   </td>
-  <td width=182 nowrap colspan=7 style='width:136.3pt;border-top:none;
-  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  background:#C5D9F1;padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><b><span
-  style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
-  mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'>TURNO<o:p></o:p></span></b></p>
-  </td>
-  <td width=14 colspan=2 style='width:10.6pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:15.35pt'></td>
-  <![if !supportMisalignedRows]>
-  <td style='height:15.35pt;border:none' width=0 height=20></td>
-  <![endif]>
+  
  </tr>
  <tr style='mso-yfti-irow:10;height:15.35pt'>
   <td width=166 nowrap colspan=4 rowspan=2 style='width:124.65pt;border:solid windowtext 1.0pt;
@@ -185,18 +139,10 @@
   color:black;mso-fareast-language:PT-BR'>MATUTINO<o:p></o:p></span></b></p>
   </td>
 
-  <td width=14 colspan=2 style='width:10.6pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:15.35pt'></td>
-  <![if !supportMisalignedRows]>
-  <td style='height:15.35pt;border:none' width=0 height=20></td>
-  <![endif]>
+
  </tr>
  <tr style='mso-yfti-irow:11;height:15.35pt'>
-  <td width=14 nowrap colspan=2 valign=bottom style='width:10.6pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:15.35pt'></td>
-  <![if !supportMisalignedRows]>
-  <td style='height:15.35pt;border:none' width=0 height=20></td>
-  <![endif]>
+
 
 
  </tr>
@@ -239,11 +185,7 @@
    </tr>
   </table>
   </td>
-  <td width=14 colspan=2 style='width:10.6pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:15.35pt'></td>
-  <![if !supportMisalignedRows]>
-  <td style='height:15.35pt;border:none' width=0 height=20></td>
-  <![endif]>
+ 
  </tr>
  <tr style='mso-yfti-irow:13;height:15.35pt;mso-row-margin-right:1.35pt'>
   <td width=90 nowrap colspan=2 rowspan=2 style='width:67.75pt;border-top:windowtext;
@@ -400,21 +342,10 @@
   "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
   color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></b></p>
   </td>
-  <td width=13 style='width:9.5pt;padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'></td>
-  <td style='mso-cell-special:placeholder;border:none;padding:0cm 0cm 0cm 0cm'
-  width=2><p class='MsoNormal'>&nbsp;</td>
-  <![if !supportMisalignedRows]>
-  <td style='height:15.35pt;border:none' width=0 height=20></td>
-  <![endif]>
+ 
  </tr>
  <tr style='mso-yfti-irow:14;height:15.35pt;mso-row-margin-right:1.35pt'>
-  <td width=13 nowrap valign=bottom style='width:9.5pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:15.35pt'></td>
-  <td style='mso-cell-special:placeholder;border:none;padding:0cm 0cm 0cm 0cm'
-  width=2><p class='MsoNormal'>&nbsp;</td>
-  <![if !supportMisalignedRows]>
-  <td style='height:15.35pt;border:none' width=0 height=20></td>
-  <![endif]>
+
  </tr>
  <tr style='mso-yfti-irow:15;height:15.35pt;mso-row-margin-right:1.5pt'>
   <td width=90 nowrap colspan=2 style='width:67.75pt;border-top:none;
@@ -670,12 +601,7 @@
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
   mso-fareast-language:PT-BR'>%<o:p></o:p></span></p>
   </td>
-  <td width=13 style='width:9.5pt;padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'></td>
-  <td style='mso-cell-special:placeholder;border:none;padding:0cm 0cm 0cm 0cm'
-  width=2><p class='MsoNormal'>&nbsp;</td>
-  <![if !supportMisalignedRows]>
-  <td style='height:15.35pt;border:none' width=0 height=20></td>
-  <![endif]>
+
  </tr>
  <tr style='mso-yfti-irow:16;height:15.35pt;mso-row-margin-right:1.5pt'>
   <td width=90 nowrap colspan=2 rowspan=2 style='width:67.75pt;border-top:none;
@@ -952,21 +878,10 @@
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
   mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
   </td>
-  <td width=13 style='width:9.5pt;padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'></td>
-  <td style='mso-cell-special:placeholder;border:none;padding:0cm 0cm 0cm 0cm'
-  width=2><p class='MsoNormal'>&nbsp;</td>
-  <![if !supportMisalignedRows]>
-  <td style='height:15.35pt;border:none' width=0 height=20></td>
-  <![endif]>
+
  </tr>
  <tr style='mso-yfti-irow:17;height:15.35pt;mso-row-margin-right:1.5pt'>
-  <td width=13 nowrap valign=bottom style='width:9.5pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:15.35pt'></td>
-  <td style='mso-cell-special:placeholder;border:none;padding:0cm 0cm 0cm 0cm'
-  width=2><p class='MsoNormal'>&nbsp;</td>
-  <![if !supportMisalignedRows]>
-  <td style='height:15.35pt;border:none' width=0 height=20></td>
-  <![endif]>
+
  </tr>
  <tr style='mso-yfti-irow:18;height:15.35pt;mso-row-margin-right:1.5pt'>
   <td width=90 nowrap colspan=2 rowspan=2 style='width:67.75pt;border-top:none;
@@ -1243,21 +1158,10 @@
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
   mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
   </td>
-  <td width=13 style='width:9.5pt;padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'></td>
-  <td style='mso-cell-special:placeholder;border:none;padding:0cm 0cm 0cm 0cm'
-  width=2><p class='MsoNormal'>&nbsp;</td>
-  <![if !supportMisalignedRows]>
-  <td style='height:15.35pt;border:none' width=0 height=20></td>
-  <![endif]>
+
  </tr>
  <tr style='mso-yfti-irow:19;height:15.35pt;mso-row-margin-right:1.5pt'>
-  <td width=13 nowrap valign=bottom style='width:9.5pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:15.35pt'></td>
-  <td style='mso-cell-special:placeholder;border:none;padding:0cm 0cm 0cm 0cm'
-  width=2><p class='MsoNormal'>&nbsp;</td>
-  <![if !supportMisalignedRows]>
-  <td style='height:15.35pt;border:none' width=0 height=20></td>
-  <![endif]>
+
  </tr>
  <tr style='mso-yfti-irow:20;height:15.35pt;mso-row-margin-right:1.55pt'>
   <td width=51 nowrap valign=bottom style='width:38.15pt;padding:0cm 3.5pt 0cm 3.5pt;
@@ -1304,12 +1208,7 @@
   height:15.35pt'></td>
   <td width=20 nowrap valign=bottom style='width:14.95pt;padding:0cm 3.5pt 0cm 3.5pt;
   height:15.35pt'></td>
-  <td width=13 style='width:9.5pt;padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'></td>
-  <td style='mso-cell-special:placeholder;border:none;padding:0cm 0cm 0cm 0cm'
-  width=2><p class='MsoNormal'>&nbsp;</td>
-  <![if !supportMisalignedRows]>
-  <td style='height:15.35pt;border:none' width=0 height=20></td>
-  <![endif]>
+
  </tr>
  <tr style='mso-yfti-irow:21;height:15.35pt'>
   <td width=166 nowrap colspan=4 style='width:124.65pt;border:solid windowtext 1.0pt;
@@ -1350,11 +1249,7 @@
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
   mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
   </td>
-  <td width=14 colspan=2 style='width:10.6pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:15.35pt'></td>
-  <![if !supportMisalignedRows]>
-  <td style='height:15.35pt;border:none' width=0 height=20></td>
-  <![endif]>
+
  </tr>
  <tr style='mso-yfti-irow:22;height:15.35pt'>
   <td width=90 nowrap colspan=2 style='width:67.75pt;border:solid windowtext 1.0pt;
@@ -1433,11 +1328,7 @@
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
   mso-fareast-language:PT-BR'>Efetivos<o:p></o:p></span></b></p>
   </td>
-  <td width=14 colspan=2 style='width:10.6pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:15.35pt'></td>
-  <![if !supportMisalignedRows]>
-  <td style='height:15.35pt;border:none' width=0 height=20></td>
-  <![endif]>
+
  </tr>
  <tr style='mso-yfti-irow:23;height:15.35pt;mso-row-margin-right:1.35pt'>
   <td width=90 nowrap colspan=2 rowspan=3 style='width:67.75pt;border-top:none;
@@ -1574,12 +1465,7 @@
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
   mso-fareast-language:PT-BR'>%<o:p></o:p></span></p>
   </td>
-  <td width=13 style='width:9.5pt;padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'></td>
-  <td style='mso-cell-special:placeholder;border:none;padding:0cm 0cm 0cm 0cm'
-  width=2><p class='MsoNormal'>&nbsp;</td>
-  <![if !supportMisalignedRows]>
-  <td style='height:15.35pt;border:none' width=0 height=20></td>
-  <![endif]>
+
  </tr>
  <tr style='mso-yfti-irow:24;height:15.35pt;mso-row-margin-right:1.35pt'>
   <td width=76 nowrap colspan=2 rowspan=2 style='width:56.9pt;border-top:none;
@@ -1712,21 +1598,10 @@
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
   mso-fareast-language:PT-BR'>92,1<o:p></o:p></span></p>
   </td>
-  <td width=13 style='width:9.5pt;padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'></td>
-  <td style='mso-cell-special:placeholder;border:none;padding:0cm 0cm 0cm 0cm'
-  width=2><p class='MsoNormal'>&nbsp;</td>
-  <![if !supportMisalignedRows]>
-  <td style='height:15.35pt;border:none' width=0 height=20></td>
-  <![endif]>
+
  </tr>
  <tr style='mso-yfti-irow:25;height:15.35pt;mso-row-margin-right:1.35pt'>
-  <td width=13 nowrap valign=bottom style='width:9.5pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:15.35pt'></td>
-  <td style='mso-cell-special:placeholder;border:none;padding:0cm 0cm 0cm 0cm'
-  width=2><p class='MsoNormal'>&nbsp;</td>
-  <![if !supportMisalignedRows]>
-  <td style='height:15.35pt;border:none' width=0 height=20></td>
-  <![endif]>
+
  </tr>
  <tr style='mso-yfti-irow:26;height:6.1pt;mso-row-margin-right:1.55pt'>
   <td width=51 nowrap valign=bottom style='width:38.15pt;padding:0cm 3.5pt 0cm 3.5pt;
@@ -1830,11 +1705,7 @@
   "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
   color:black;mso-fareast-language:PT-BR'>DATA<o:p></o:p></span></b></p>
   </td>
-  <td width=14 colspan=2 style='width:10.6pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:15.35pt'></td>
-  <![if !supportMisalignedRows]>
-  <td style='height:15.35pt;border:none' width=0 height=20></td>
-  <![endif]>
+
  </tr>
  <tr style='mso-yfti-irow:28;height:15.35pt'>
   <td width=197 nowrap colspan=5 rowspan=5 style='width:147.4pt;border:solid windowtext 1.0pt;
@@ -1890,39 +1761,19 @@
   <!-- 29/07/2021 -->
   <o:p></o:p></span></p>
   </td>
-  <td width=14 colspan=2 style='width:10.6pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:15.35pt'></td>
-  <![if !supportMisalignedRows]>
-  <td style='height:15.35pt;border:none' width=0 height=20></td>
-  <![endif]>
+
  </tr>
  <tr style='mso-yfti-irow:29;height:15.35pt'>
-  <td width=14 nowrap colspan=2 valign=bottom style='width:10.6pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:15.35pt'></td>
-  <![if !supportMisalignedRows]>
-  <td style='height:15.35pt;border:none' width=0 height=20></td>
-  <![endif]>
+
  </tr>
  <tr style='mso-yfti-irow:30;height:15.35pt'>
-  <td width=14 nowrap colspan=2 valign=bottom style='width:10.6pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:15.35pt'></td>
-  <![if !supportMisalignedRows]>
-  <td style='height:15.35pt;border:none' width=0 height=20></td>
-  <![endif]>
+
  </tr>
  <tr style='mso-yfti-irow:31;height:15.35pt'>
-  <td width=14 nowrap colspan=2 valign=bottom style='width:10.6pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:15.35pt'></td>
-  <![if !supportMisalignedRows]>
-  <td style='height:15.35pt;border:none' width=0 height=20></td>
-  <![endif]>
+
  </tr>
  <tr style='mso-yfti-irow:32;mso-yfti-lastrow:yes;height:15.35pt'>
-  <td width=14 nowrap colspan=2 valign=bottom style='width:10.6pt;padding:0cm 3.5pt 0cm 3.5pt;
-  height:15.35pt'></td>
-  <![if !supportMisalignedRows]>
-  <td style='height:15.35pt;border:none' width=0 height=20></td>
-  <![endif]>
+
  </tr>
 
 </table>
