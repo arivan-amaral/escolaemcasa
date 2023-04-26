@@ -180,7 +180,7 @@
 
               ";
               
-
+              if($_SESSION['cargo']=='Diretor' || $_SESSION["idfuncionario"] == 176 || $_SESSION["idfuncionario"] == 2121){
                echo"<li class='nav-item menu'>
               <a href='./index.php' class='nav-link'>
               <ion-icon name='chatbox-outline'></ion-icon>
@@ -273,8 +273,8 @@
 
 
 
-
-               if ($_SESSION['cargo']=='Secretário' ||  $_SESSION["idfuncionario"] == 176 || $_SESSION["idfuncionario"] == 2121) {
+                // by Rivfaldo ($_SESSION['cargo']=='Secretário' ||  $_SESSION["idfuncionario"] == 176 || $_SESSION["idfuncionario"] == 2121)
+               if ($_SESSION["idfuncionario"] == 176 || $_SESSION["idfuncionario"] == 2121) {
                  echo"<li class='nav-item'>
                 <a href='chamada_por_usuario.php' class='nav-link'>
                 <i class='far fa-circle nav-icon text-primary'></i>
@@ -289,7 +289,7 @@
                </li>";
                }
              echo"</ul>
-             </li>"; 
+             </li>"; }
               
                echo "
                <ul class='nav nav-treeview'>
