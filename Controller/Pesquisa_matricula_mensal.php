@@ -165,10 +165,14 @@ if ($_GET['serie'] == 1 ) {
 
  $result_por_turma[$serie_id]=$result_por_turma[$serie_id]."<br> <b class='$cor_card'>$nome_escola</b><br> $nome_turma - Anterior = $quant_anterior + Novas=<b class='$cor'>$quant_matriculas</b> Total=$quant_total  <br>";
  
-   $res_por_serie_escola=pesquisa_matricula_mensal_quant_nome_generico_turma($conexao,$data_inicial,$data_final,$escola,$nome_generico_turma);
+   $res_por_serie_escola=pesquisa_matricula_mensal_quant_nome_generico_turma($conexao,$ano_letivo,$escola,$nome_generico_turma);
 
- 
-   $result_por_turma[$serie_id].="Total  $nome_generico_turma : <br>";
+if ( !array_key_exists("$idescola$serie_id", $array_controle_escola_serie_turma)) {
+     foreach ($res_por_serie_escola as $key => $value) {
+        $result_por_turma[$serie_id].="<b>Total  $nome_generico_turma : ".$value['total_serie_escola']."</b><br>";
+      }
+    $array_controle_escola_serie_turma["$idescola$serie_id"]="$idescola$serie_id";
+}
 
 
     
