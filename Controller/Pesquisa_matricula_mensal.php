@@ -168,7 +168,7 @@ if ($_GET['serie'] == 1 ) {
    $res_por_serie_escola=pesquisa_matricula_mensal_quant_nome_generico_turma($conexao,$data_inicial,$data_final,$escola,$nome_generico_turma);
 
  
-   $result_por_turma[$serie_id].="Total  $nome_generico_turma :".$res_por_serie_escola['total_serie_escola']." <br>";
+   $result_por_turma[$serie_id].="Total  $nome_generico_turma : <br>";
 
 
     
