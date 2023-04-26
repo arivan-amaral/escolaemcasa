@@ -564,6 +564,45 @@ function pesquisa_chamado_setor_escola(){
       
 }
 
+function relatorio_rendimento_funcao(){
+
+
+  var result = document.getElementById('resultado');
+  var data_inicial ="";
+  var data_final = "";  
+  // var data_inicial = document.getElementById('data_inicial').value;
+  // var data_final = document.getElementById('data_final').value;
+  var escola = document.getElementById('escola').value;
+  var serie ="";
+  // var serie = document.getElementById('serie').value;
+    // if(data_inicial != '' && data_final != ''){
+        result.innerHTML = "<img src='imagens/carregando.gif'>";  
+          var xmlreq = CriaRequest();
+          xmlreq.open("GET", "../Controller/Relatorio_rendimento_funcao.php?serie="+serie+"&data_inicial="+data_inicial+"&data_final="+data_final+"&escola="+escola, true);
+
+          xmlreq.onreadystatechange = function(){
+        
+           if (xmlreq.readyState == 4) {
+               if (xmlreq.status == 200) {
+                     result.innerHTML = xmlreq.responseText;
+
+               }else{
+                     alert('Erro desconhecido, verifique sua conexão com a internet');
+
+                  result.innerHTML ="Erro ao receber mensagens";                 
+               }
+           }
+          };
+       xmlreq.send(null);
+   // }else{
+    Swal.fire({
+        icon: 'error',
+        title: 'Atenção',
+        text: 'por favor insira nas duas datas inicial e final.'
+      });
+   // }
+      
+}
 function pesquisa_matricula_mensal(){
 
 
@@ -600,6 +639,8 @@ function pesquisa_matricula_mensal(){
    }
       
 }
+
+
 function pesquisa_relatorio_filtros(){
  
   const baixar_excel = document.querySelector('#baixar_excel');

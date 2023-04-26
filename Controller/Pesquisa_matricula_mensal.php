@@ -168,6 +168,7 @@ if ($_GET['serie'] == 1 ) {
    $res_por_serie_escola=pesquisa_matricula_mensal_quant_nome_generico_turma($conexao,$ano_letivo,$escola,$nome_generico_turma);
 
 if ( !array_key_exists("$idescola$nome_generico_turma", $array_controle_escola_serie_turma)) {
+     
      foreach ($res_por_serie_escola as $key => $value) {
         $result_por_turma[$serie_id].="<b>Total  $nome_generico_turma : ".$value['total_serie_escola']."</b><br>";
       }
