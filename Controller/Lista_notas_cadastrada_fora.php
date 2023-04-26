@@ -13,8 +13,8 @@
                                     </div>
                                   </div>
                                 
-                                  <div class='card-body table-responsive p-0' style='height: 300px;'>
-                                    <table class='table table-head-fixed text-nowrap'>
+                                  <div class='card-body''>
+                                    <table class='table'>
                                       <thead>
                                         <tr>
                                           <th>Disciplina</th>
