@@ -292,18 +292,20 @@ $result.="<div id='conteudos'>
                   <textarea class='form-control mesmo_conteudo_regente' id='descricao_conteudo$idescola$idturma$idserie$iddisciplina' rows='5' name='descricao$campo_origem_conteudo' 
 
             
-                  
-                  onkeyup=duplica_texto_em_capos_selecionados('descricao_conteudo$idescola$idturma$idserie$iddisciplina');
-          
-
-                  onBlur=duplica_texto_em_capos_selecionados('descricao_conteudo$idescola$idturma$idserie$iddisciplina');
-
+               
             
                    required>$conteudo_aula</textarea>   
 
                  
                 </div>
               </div>";
+
+
+                  // onkeyup=duplica_texto_em_capos_selecionados('descricao_conteudo$idescola$idturma$idserie$iddisciplina');
+          
+
+                  // onBlur=duplica_texto_em_capos_selecionados('descricao_conteudo$idescola$idturma$idserie$iddisciplina');
+
           }else{
             $result.="
               <div class='col-sm-12' id='campo_inputs$campo_origem_conteudo'>
@@ -323,16 +325,14 @@ $result.="<div id='conteudos'>
 
                   id='descricao_conteudo$idescola$idturma$serie_id$iddisciplina' 
 
-                  name='descricao$campo_origem_conteudo' 
-
-                  onkeyup=duplica_texto_em_campos_selecionados_mesmo_conteudo_acima_inicias('descricao_conteudo$idescola$idturma$serie_id$iddisciplina');
-
-                  onBlur=duplica_texto_em_campos_selecionados_mesmo_conteudo_acima_inicias('descricao_conteudo$idescola$idturma$serie_id$iddisciplina');
-
-                   required>$conteudo_aula</textarea>  
+                  name='descricao$campo_origem_conteudo' required>$conteudo_aula</textarea>  
                  
                 </div>
               </div>";
+
+               // onkeyup=duplica_texto_em_campos_selecionados_mesmo_conteudo_acima_inicias('descricao_conteudo$idescola$idturma$serie_id$iddisciplina');
+
+               //    onBlur=duplica_texto_em_campos_selecionados_mesmo_conteudo_acima_inicias('descricao_conteudo$idescola$idturma$serie_id$iddisciplina');
           }
 
 
