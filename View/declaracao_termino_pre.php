@@ -201,13 +201,13 @@ $result_ecidade_matricula=$conexao->query("SELECT
                                     echo "DA EDUCAÇÃO INFANTIL – ETAPA PRÉ-ESCOLA";
                                   } 
                                   else if ($serie_id==7) {
-                                    echo "DA EDUCAÇÃO FUNDALMENTAL – ETAPA 5º ANO";
+                                    echo "DA EDUCAÇÃO FUNDAMENTAL – ETAPA 5º ANO";
                                   }  
                                   else if ($serie_id==11) {
-                                    echo "DA EDUCAÇÃO FUNDALMENTAL – ETAPA 9º ANO";
+                                    echo "DA EDUCAÇÃO FUNDAMENTAL – ETAPA 9º ANO";
                                   }   
                                   else if ($serie_id==15) {
-                                    echo "DA EDUCAÇÃO FUNDALMENTAL – ETAPA 9º ANO";
+                                    echo "DA EDUCAÇÃO FUNDAMENTAL – ETAPA 9º ANO";
                                   } 
 
 
@@ -254,17 +254,17 @@ $result_ecidade_matricula=$conexao->query("SELECT
                                     else if ($serie_id==11) {
                                       echo " O 9º ANO ";
 
-                                     $cursar= " a 1ª série do ensino médio ";
+                                     $cursar= " o ensino médio ";
 
                                     }   
                                     else if ($serie_id==15) {
                                       echo " O 9º ANO ";
 
-                                     $cursar= " a 1ª série do ensino médio ";
+                                     $cursar= " o ensino médio ";
                                     } 
 
 
-                                  ?>  no ano letivo 2022, no  <?php echo $nome_escola; ?>. </span><span style="background-color: transparent; color: rgb(0, 0, 0); font-family: Calibri, sans-serif; font-size: 18pt; white-space: pre-wrap;">Estando apto a cursar <?php echo $cursar; ?>.</span></p><p class="MsoNormal" style="margin: 0cm 3.25pt 22.55pt 19.6pt; text-align: justify; text-indent: -0.5pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><span style="font-size: 18pt; font-family: " source="" sans="" pro",="" sans-serif;"=""><b><br></b></span></p>
+                                  ?>  no ano letivo <?php echo "$ano_letivo"; ?>, no  <?php echo $nome_escola; ?>. </span><span style="background-color: transparent; color: rgb(0, 0, 0); font-family: Calibri, sans-serif; font-size: 18pt; white-space: pre-wrap;">Estando apto a cursar <?php echo $cursar; ?>.</span></p><p class="MsoNormal" style="margin: 0cm 3.25pt 22.55pt 19.6pt; text-align: justify; text-indent: -0.5pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><span style="font-size: 18pt; font-family: " source="" sans="" pro",="" sans-serif;"=""><b><br></b></span></p>
                    
                    <p class="MsoNormal" style="margin: 0cm 3.25pt 22.55pt 19.6pt; text-align: justify; text-indent: -0.5pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><span style="font-size: 18pt; font-family:  sans-serif;"><b><br></b></span></p><p class="MsoNormal" style="margin: 0cm 3.25pt 22.55pt 19.6pt; text-align: justify; text-indent: -0.5pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><br></p><p class="MsoNormal" style="margin: 0cm 3.25pt 22.55pt 19.6pt; text-align: justify; text-indent: -0.5pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><br></p>
 
