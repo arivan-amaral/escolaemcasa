@@ -119,7 +119,7 @@ foreach ($res_aluno as $key => $value) {
   border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 3.5pt 0cm 3.5pt;height:15.6pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>D. O. :</span></p>
+  normal'><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>D. O. : <input type="text" name=""></span></p>
   </td>
  </tr>
 
