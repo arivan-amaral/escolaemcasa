@@ -58,10 +58,12 @@ text-shadow:none;
 <p class="no-print">
   <br>
   <br>
-  
+  <center>
+    
 <a href='#'class="form-submit-button" onclick='print();'><img src="imagens/imprimir.png" alt="" width="50"></a> 
 <a href="#"><img src="imagens/recarregar.png" alt="" width="50"></a>
 <a href="#"><img src="imagens/salvar.png" alt=""  width="50"></a>
+  </center>
 
 </p>
 <?php
