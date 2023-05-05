@@ -453,7 +453,7 @@ foreach ($res_aluno as $key => $value) {
             padding:0cm 3.5pt 0cm 3.5pt;height:12.2pt'>
             <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
             normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-            color:black'>&nbsp;<input type="text" style="width: 24px;" value="-"></span></p>
+            color:black'>&nbsp;-</span></p>
             </td>
       <?php 
         } 
@@ -587,6 +587,7 @@ foreach ($res_aluno as $key => $value) {
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
   color:black'>&nbsp;</span></p>
+  <!-- TOTAL CARGA HORARIAS -->
   </td>
 
 <?php } ?>
