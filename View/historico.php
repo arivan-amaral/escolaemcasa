@@ -757,7 +757,7 @@ foreach ($res_escola_origem as $key => $value) {
   <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
   text-align:center;line-height:normal'><b><span style='font-size:7.5pt;
   font-family:"Arial",sans-serif'>OBSERVAÇÕES</span></b></p>
-  <textarea rows="5" placeholder="Digitavel" width="100%"></textarea>
+  <textarea rows="5" placeholder="Digite a observação aqui" width="100%"></textarea>
   </td>
  </tr>
 
