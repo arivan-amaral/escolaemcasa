@@ -59,7 +59,9 @@ text-shadow:none;
   <br>
   <br>
   
-<a href='#'class="form-submit-button" onclick='print();'>IMPRIMIR</a> 
+<a href='#'class="form-submit-button" onclick='print();'><img src="imagens/imprimir.png" alt="" width="50"></a> 
+<a href="#"><img src="imagens/recarregar.png" alt="" width="50"></a>
+<a href="#"><img src="imagens/salvar.png" alt=""  width="50"></a>
 
 </p>
 <?php
