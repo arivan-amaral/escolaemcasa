@@ -55,17 +55,20 @@ text-shadow:none;
 </head>
 
 <body lang=PT-BR link=blue vlink="#954F72">
-<p class="no-print">
+
   <br>
   <br>
-  <center>
+  <center class="no-print">
     
 <a href='#'class="form-submit-button" onclick='print();'><img src="imagens/imprimir.png" alt="" width="50"></a> 
 <a href="#"><img src="imagens/recarregar.png" alt="" width="50"></a>
 <a href="#"><img src="imagens/salvar.png" alt=""  width="50"></a>
+<br>
+<br>
+<br>
   </center>
 
-</p>
+
 <?php
 try {
   
