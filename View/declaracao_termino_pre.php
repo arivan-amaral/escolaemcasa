@@ -199,7 +199,7 @@ $result_ecidade_matricula=$conexao->query("SELECT
                                     echo "DA EDUCAÇÃO INFANTIL – ETAPA MATERNAL";
                                   }else if ($serie_id==2) {
                                     echo "DA EDUCAÇÃO INFANTIL – ETAPA PRÉ-ESCOLA";
-                                  } 
+                                  }  
                                   else if ($serie_id==7) {
                                     echo "DA EDUCAÇÃO FUNDAMENTAL – ETAPA 5º ANO";
                                   }  
