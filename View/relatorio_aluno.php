@@ -88,7 +88,7 @@ if (!isset($_SESSION['idfuncionario'])) {
   opacity: 1;
 }
 </style>
-
+ 
 
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

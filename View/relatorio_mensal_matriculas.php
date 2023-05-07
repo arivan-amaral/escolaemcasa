@@ -62,6 +62,56 @@ setTimeout('dia_doservidor_publico();',3000);
 
  </style>
 
+<style>
+
+.checkbox-btn {
+  display: inline-block;
+  position: relative;
+}
+
+.checkbox-btn__label {
+  display: inline-block;
+  position: relative;
+  font-size: 16px;
+  line-height: 32px;
+  padding-left: 40px;
+  cursor: pointer;
+}
+
+.checkbox-btn__image {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  background-image: url("imagens/excel.png");
+  background-size: cover;
+  opacity: 0.5;
+}
+
+.checkbox-btn__image::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.checkbox-btn input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkbox-btn input[type="checkbox"]:checked ~ .checkbox-btn__image {
+  opacity: 1;
+}
+</style>
+
+
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 
@@ -118,6 +168,17 @@ setTimeout('dia_doservidor_publico();',3000);
    <br>
     <div class="row">
         <div class="col-sm-2">
+          <br>
+          <div class="checkbox-btn">
+            <input type="checkbox" id="baixar_excel" name="baixar_excel">
+            <label for="baixar_excel" class="checkbox-btn__label">
+              <span class="checkbox-btn__image"></span>
+              Baixar em excel?
+            </label>
+          </div>
+        </div>
+
+        <div class="col-sm-2">
           <div class="form-group">
            <label for="exampleInputEmail1">DATA INICIAL</label>
            <input type="date" class="form-control" name="data_inicial" id="data_inicial">
@@ -130,7 +191,7 @@ setTimeout('dia_doservidor_publico();',3000);
           </div>
         </div>
        
-        <div class="col-sm-4">
+        <div class="col-sm-5">
           <div class="form-group">
            <label for="exampleInputEmail1">ESCOLA</label>
            <select class="form-control"  id="escola" name="escola" >
@@ -162,7 +223,7 @@ setTimeout('dia_doservidor_publico();',3000);
           </div>
         </div>  
 
-        <div class="col-sm-2">
+        <div class="col-sm-4">
           <div class="form-group">
            <label for="exampleInputEmail1">Segmento</label>
            <select class="form-control"  id="serie" name="serie" >
@@ -211,6 +272,19 @@ $(document).ready(function(){
 </aside>
 
   <!-- /.control-sidebar -->
+  <script type="text/javascript">
+  const checkboxBtn = document.querySelector('.checkbox-btn input[type="checkbox"]');
+
+  checkboxBtn.addEventListener('change', () => {
+    const checkboxImage = checkboxBtn.parentNode.querySelector('.checkbox-btn__image');
+    if (checkboxBtn.checked) {
+      checkboxImage.style.opacity = 1;
+    } else {
+      checkboxImage.style.opacity = 0.5;
+    }
+  });
+
+</script>
 
  <?php 
 

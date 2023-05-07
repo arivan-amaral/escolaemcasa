@@ -605,16 +605,27 @@ function relatorio_rendimento_funcao(){
 }
 function pesquisa_matricula_mensal(){
 
+  const baixar_excel = document.querySelector('#baixar_excel');
+  if (baixar_excel.checked) {
+   var excel=1;
+  } else {
+      var excel=0;
+
+  }
 
   var result = document.getElementById('resultado');
   var data_inicial = document.getElementById('data_inicial').value;
   var data_final = document.getElementById('data_final').value;
   var escola = document.getElementById('escola').value;
   var serie = document.getElementById('serie').value;
+
     if(data_inicial != '' && data_final != ''){
+      
+      if (excel !=1) {
+
         result.innerHTML = "<img src='imagens/carregando.gif'>";  
           var xmlreq = CriaRequest();
-          xmlreq.open("GET", "../Controller/Pesquisa_matricula_mensal.php?serie="+serie+"&data_inicial="+data_inicial+"&data_final="+data_final+"&escola="+escola, true);
+          xmlreq.open("GET", "../Controller/Pesquisa_matricula_mensal.php?excel="+excel+"&serie="+serie+"&data_inicial="+data_inicial+"&data_final="+data_final+"&escola="+escola, true);
 
           xmlreq.onreadystatechange = function(){
         
@@ -630,6 +641,13 @@ function pesquisa_matricula_mensal(){
            }
           };
        xmlreq.send(null);
+    }else{
+           window.open("../Controller/Pesquisa_matricula_mensal.php?excel="+excel+"&serie="+serie+"&data_inicial="+data_inicial+"&data_final="+data_final+"&escola="+escola+"", "_blank");
+    }
+
+
+
+
    }else{
     Swal.fire({
         icon: 'error',
