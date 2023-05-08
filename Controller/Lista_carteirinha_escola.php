@@ -27,7 +27,8 @@ $resultado=listar_aluno_da_escola_carteirinha($conexao,$idescola,$idturma, $_SES
   $conta=1;
 foreach ($resultado as $key => $value) {
 
-  $nome_aluno=($value['nome_aluno']);
+   $nome_aluno=verificarNome($value['nome_aluno']);
+
   $nome_turma=($value['nome_turma']);
   $nome_escola=($value['nome_escola']);
   $id=$value['idaluno'];

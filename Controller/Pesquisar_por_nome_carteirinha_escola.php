@@ -21,7 +21,7 @@ $resultado=pesquisar_por_nome_carteirinha_escola($conexao,$nome_aluno, $_SESSION
   $conta=1;
 foreach ($resultado as $key => $value) {
 
-  $nome_aluno=($value['nome_aluno']);
+  $nome_aluno=verificarNome($value['nome_aluno']);
   $nome_turma=($value['nome_turma']);
   $nome_escola=($value['nome_escola']);
   $id=$value['idaluno'];
