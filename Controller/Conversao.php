@@ -149,7 +149,7 @@ function verificarNome($nome) {
         $sobrenomeMeio = $partesNome[1]; // Obtém o sobrenome do meio
         
         // Verifica se o sobrenome do meio é muito longo (mais de 10 caracteres)
-        if (strlen($sobrenomeMeio) > 10) {
+        if (strlen($nome) > 20) {
             // Abrevia o sobrenome do meio para a primeira letra e adiciona um ponto final
             $partesNome[1] = substr($sobrenomeMeio, 0, 1) . ".";
         }
