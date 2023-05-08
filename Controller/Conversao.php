@@ -147,11 +147,16 @@ function verificarNome($nome) {
     // Verifica se o nome tem mais de duas partes (nome próprio, sobrenome do meio e sobrenome)
     if (count($partesNome) > 2) {
         $sobrenomeMeio = $partesNome[1]; // Obtém o sobrenome do meio
+        $sobrenomeMeio2 = $partesNome[2]; // Obtém o sobrenome do meio
         
         // Verifica se o sobrenome do meio é muito longo (mais de 10 caracteres)
         if (strlen($nome) > 20) {
             // Abrevia o sobrenome do meio para a primeira letra e adiciona um ponto final
             $partesNome[1] = substr($sobrenomeMeio, 0, 1) . ".";
+        }else if (strlen($nome) > 20){
+            $partesNome[1] = substr($sobrenomeMeio, 0, 1) . ".";
+            $partesNome[2] = substr($sobrenomeMeio2, 0, 1) . ".";
+
         }
         
         // Reconstroi o nome com a abreviação do sobrenome do meio
