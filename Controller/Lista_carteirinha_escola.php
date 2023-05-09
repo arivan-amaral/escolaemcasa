@@ -60,6 +60,14 @@ if ($conta%2!=0) {
 
 
     $result.="<div class='col-sm-6 div_carteirinha '>
+
+         <div class='row'>
+                  <div class='col-sm-6' ></div>
+                
+                  <div class='col-sm-6 nome_linha' >
+                     LINHA: $linha_transporte
+                  </div>
+                </div>
                   <div class='row'>
 
                 
@@ -79,8 +87,7 @@ if ($conta%2!=0) {
                           <b>MATRÍCULA: $matricula_aluno</b><br>
                           <b>CPF/RG:</b><br>
                           <b>TIPO SANGUINEO: </b><br>
-                          <b>TELEFONE: $whatsapp_responsavel</b><br>
-                             <b>LINHA:$linha_transporte</b>
+                          <b>TELEFONE: $whatsapp_responsavel</b>
                         </p>
                          
 

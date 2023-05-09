@@ -38,13 +38,19 @@ foreach ($res_escola as $key => $value) {
 ?>
 <style type="text/css">
 
+    .nome_linha{
+      margin-top: 1mm;
+      color: white;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
 
   .div_carteirinha b{
     color: black;
     text-transform: uppercase;
   }
     .dados_aluno {
-      margin-top: 15mm;    
+      margin-top: 3mm;    
     }
 
     .dados_aluno b{
@@ -67,7 +73,7 @@ foreach ($res_escola as $key => $value) {
     }
 
     .imagem_perfil img{
-      margin-left: 7mm;
+      margin-left: 3mm;
 
       margin-right:1px ;
       border: 2px solid white;
@@ -81,7 +87,7 @@ foreach ($res_escola as $key => $value) {
 /*      border: 2px solid white;*/
       border-radius: 10%;
 
-      margin-top: 15mm;
+      margin-top: 7mm;
       width: 105.6mm;
       height: 40.98mm ;
 /*      background-color: #a7a7a7;*/
