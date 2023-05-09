@@ -1633,7 +1633,7 @@ $ano_letivo=$_SESSION['ano_letivo'];
   style='font-size:10.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
   "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
   color:black;mso-fareast-language:PT-BR'>ASSINATURA E CARIMBO DO(A)
-  SECRET RIO(A)<o:p></o:p></span></b></p>
+  SECRETÁRIO(A)<o:p></o:p></span></b></p>
   </td>
   <td width=111 nowrap colspan=4 style='width:83.05pt;border:solid windowtext 1.0pt;
   border-left:none;mso-border-top-alt:solid windowtext .5pt;mso-border-bottom-alt:
