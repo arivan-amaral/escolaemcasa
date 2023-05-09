@@ -2,8 +2,11 @@
 include_once '../Model/Conexao.php';
 include_once '../Model/Coordenador.php';
 include_once '../Model/Turma.php';
+include_once '../Model/Aluno.php';
 
-
+$idturma=$_GET['idturma'];
+$idescola=$_GET['idescola'];
+$ano_letivo=$_SESSION['ano_letivo'];
 ?>
 
 
@@ -207,6 +210,31 @@ include_once '../Model/Turma.php';
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
   mso-fareast-language:PT-BR'>Disciplinas<o:p></o:p></span></b></p>
   </td>
+
+  //disciplinas
+  <?php 
+  $res_disc=listar_disciplina_para_boletim($conexao,$idturma,$idescola,$ano_letivo);
+
+  // $res_disc=listar_disciplina_para_boletim($conexao,$idturma,$idescola,$ano_letivo);
+  // $res_disc=listar_disciplina_para_boletim($conexao,$idaluno,$ano_letivo);
+  $conta_parecer=0;
+  $linha=0;
+  $resultado_final=true;
+  $resultado_conselho=false;
+  
+  $conta_dis=0;
+  $conta_conselho=0;
+  $conta_apr=0;
+
+
+
+  foreach ($res_disc as $key => $value) {
+    $iddisciplina=$value['iddisciplina'];
+    $nome_disciplina=$value['nome_disciplina'];
+    $conta_dis++;
+
+
+   ?>
   <td width=76 colspan=2 rowspan=2 style='width:56.9pt;border-top:solid windowtext 1.0pt;
   border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   mso-border-left-alt:solid windowtext .5pt;mso-border-top-alt:windowtext;
@@ -219,120 +247,13 @@ include_once '../Model/Turma.php';
   margin;mso-element-top:40.55pt;mso-height-rule:exactly'><b><span
   style='font-size:10.5pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
   "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'>L ngua Portuguesa<o:p></o:p></span></b></p>
-  </td>
-  <td width=80 nowrap colspan=2 rowspan=2 style='width:60.2pt;border-top:solid windowtext 1.0pt;
-  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-left-alt:solid windowtext .5pt;mso-border-top-alt:windowtext;
-  mso-border-left-alt:windowtext;mso-border-bottom-alt:black;mso-border-right-alt:
-  black;mso-border-style-alt:solid;mso-border-width-alt:.5pt;background:#C5D9F1;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><b><span
-  style='font-size:10.5pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
-  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'>Matem tica<o:p></o:p></span></b></p>
-  </td>
-  <td width=68 nowrap colspan=2 rowspan=2 style='width:51.1pt;border-top:solid windowtext 1.0pt;
-  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-left-alt:solid windowtext .5pt;mso-border-top-alt:windowtext;
-  mso-border-left-alt:windowtext;mso-border-bottom-alt:black;mso-border-right-alt:
-  black;mso-border-style-alt:solid;mso-border-width-alt:.5pt;background:#C5D9F1;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><b><span
-  style='font-size:10.5pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
-  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'>Ci ncias<o:p></o:p></span></b></p>
-  </td>
-  <td width=68 nowrap colspan=2 rowspan=2 style='width:51.1pt;border-top:solid windowtext 1.0pt;
-  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-left-alt:solid windowtext .5pt;mso-border-top-alt:windowtext;
-  mso-border-left-alt:windowtext;mso-border-bottom-alt:black;mso-border-right-alt:
-  black;mso-border-style-alt:solid;mso-border-width-alt:.5pt;background:#C5D9F1;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><b><span
-  style='font-size:10.5pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
-  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'>Hist ria<o:p></o:p></span></b></p>
-  </td>
-  <td width=68 nowrap colspan=2 rowspan=2 style='width:51.1pt;border-top:solid windowtext 1.0pt;
-  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-left-alt:solid windowtext .5pt;mso-border-top-alt:windowtext;
-  mso-border-left-alt:windowtext;mso-border-bottom-alt:black;mso-border-right-alt:
-  black;mso-border-style-alt:solid;mso-border-width-alt:.5pt;background:#C5D9F1;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><b><span
-  style='font-size:10.5pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
-  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'>Geografia<o:p></o:p></span></b></p>
-  </td>
-  <td width=68 nowrap colspan=2 rowspan=2 style='width:51.1pt;border-top:solid windowtext 1.0pt;
-  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-left-alt:solid windowtext .5pt;mso-border-top-alt:windowtext;
-  mso-border-left-alt:windowtext;mso-border-bottom-alt:black;mso-border-right-alt:
-  black;mso-border-style-alt:solid;mso-border-width-alt:.5pt;background:#C5D9F1;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><b><span
-  style='font-size:10.5pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
-  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'>Arte<o:p></o:p></span></b></p>
-  </td>
-  <td width=68 colspan=2 rowspan=2 style='width:51.1pt;border-top:solid windowtext 1.0pt;
-  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-left-alt:solid windowtext .5pt;mso-border-top-alt:windowtext;
-  mso-border-left-alt:windowtext;mso-border-bottom-alt:black;mso-border-right-alt:
-  black;mso-border-style-alt:solid;mso-border-width-alt:.5pt;background:#C5D9F1;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><b><span
-  style='font-size:10.5pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
-  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'>Ensino Religioso<o:p></o:p></span></b></p>
-  </td>
-  <td width=68 colspan=2 rowspan=2 style='width:51.1pt;border-top:solid windowtext 1.0pt;
-  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-left-alt:solid windowtext .5pt;mso-border-top-alt:windowtext;
-  mso-border-left-alt:windowtext;mso-border-bottom-alt:black;mso-border-right-alt:
-  black;mso-border-style-alt:solid;mso-border-width-alt:.5pt;background:#C5D9F1;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><b><span
-  style='font-size:10.5pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
-  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'>Educa  o F sica<o:p></o:p></span></b></p>
-  </td>
-  <td width=68 nowrap colspan=3 rowspan=2 style='width:51.3pt;border-top:solid windowtext 1.0pt;
-  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-left-alt:solid windowtext .5pt;mso-border-top-alt:windowtext;
-  mso-border-left-alt:windowtext;mso-border-bottom-alt:black;mso-border-right-alt:
-  black;mso-border-style-alt:solid;mso-border-width-alt:.5pt;background:#C5D9F1;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><b><span
-  style='font-size:10.5pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
-  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'>Ingl s<o:p></o:p></span></b></p>
-  </td>
+  color:black;mso-fareast-language:PT-BR'><?php echo "$nome_disciplina"; ?><o:p></o:p></span></b></p>
+  <?php
+     // code...
+   }
+  ?>
+
+
   <td width=45 nowrap colspan=2 rowspan=2 style='width:33.85pt;border-top:solid windowtext 1.0pt;
   border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   mso-border-left-alt:solid windowtext .5pt;mso-border-top-alt:windowtext;
