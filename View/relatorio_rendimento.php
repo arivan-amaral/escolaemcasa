@@ -20,7 +20,7 @@ if (!isset($_SESSION['idcoordenador'])) {
   $idcoordenador=$_SESSION['idfuncionario'];
   include_once "cabecalho.php";
   include_once "alertas.php";
- 
+  
   include_once "barra_horizontal.php";
   include_once 'menu.php';
   include_once '../Controller/Conversao.php';
@@ -32,6 +32,8 @@ if (!isset($_SESSION['idcoordenador'])) {
   include_once '../Model/Escola.php';
   include_once '../Model/Turma.php';
   include_once '../Model/Coordenador.php';
+  include_once '../Model/Aluno.php';
+$ano_letivo=$_SESSION['ano_letivo'];
 
 if ($_COOKIE['dia_doservidor_publico2']<2 && date("m-d")=="10-28") {
 ?>
@@ -130,10 +132,10 @@ setTimeout('dia_doservidor_publico();',3000);
           </div>
         </div> -->
        
-        <div class="col-sm-6">
+        <div class="col-sm-4">
           <div class="form-group">
            <label for="exampleInputEmail1">ESCOLA</label>
-           <select class="form-control"  id="escola" name="escola" >
+           <select class="form-control"  id="idescola" name="idescola"  onchange="relatorio_rendimento_turma_funcao()">
             <?php 
             try {
               
@@ -161,21 +163,43 @@ setTimeout('dia_doservidor_publico();',3000);
            </select> 
           </div>
         </div>  
-<!-- 
-        <div class="col-sm-2">
+
+        <div class="col-sm-3">
           <div class="form-group">
-           <label for="exampleInputEmail1">Segmento</label>
-           <select class="form-control"  id="serie" name="serie" >
+           <label for="exampleInputEmail1">Turma</label>
+           <select class="form-control"  id="idturma" name="idturma" >
         
-              <option value="1">Infantil</option>      
-              <option value="2">Anos Iniciais</option>      
-              <option value="3">Anos Finais</option>      
-              <option value="4">EJA</option>      
-              <option value="5">Multisseriada</option>      
+               
           
            </select> 
           </div>
-        </div>  -->
+        </div>  
+
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Período</label>
+
+            <select class="form-control" id='periodo' name='periodo' required="" >
+           
+              <?php 
+                $resultado=listar_trimestre($conexao,$ano_letivo);
+                foreach ($resultado as $key => $value) {
+                  $idperiodo=$value['id'];
+                  $descricao=$value['descricao'];
+                  if ($idserie <3 && $idperiodo==6) {
+                    echo"<option value='$idperiodo'>$descricao</option>";
+
+                  }else if ($idperiodo !=6) {
+                    echo"<option value='$idperiodo'> $descricao</option>";
+                  }
+                  
+                }
+
+               ?>
+            </select>
+          </div>
+        </div>
+
 
 
 
@@ -211,7 +235,9 @@ $(document).ready(function(){
 </aside>
 
   <!-- /.control-sidebar -->
-
+<script>
+  setTimeout(relatorio_rendimento_turma_funcao(),100);
+</script>
  <?php 
 
     include_once 'rodape.php';

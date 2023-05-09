@@ -572,7 +572,7 @@ function relatorio_rendimento_funcao(){
   var data_final = "";  
   // var data_inicial = document.getElementById('data_inicial').value;
   // var data_final = document.getElementById('data_final').value;
-  var escola = document.getElementById('escola').value;
+  var escola = document.getElementById('idescola').value;
   var serie ="";
   // var serie = document.getElementById('serie').value;
     // if(data_inicial != '' && data_final != ''){
@@ -944,6 +944,61 @@ function cadastrar_resposta_mensagem(id_mensagem,id_funcionario,mensagem){
       };
    xmlreq.send(null);
 }
+function cadastrar_mensagem(id_chamada,enviado){
+
+    var mensagem = document.getElementById('mensagem').value;
+
+      var xmlreq = CriaRequest();
+      xmlreq.open("GET", "../Controller/Cadastrar_mensagem.php?mensagem="+mensagem+"&enviado="+enviado+"&id_chamada="+id_chamada, true);
+
+      xmlreq.onreadystatechange = function(){
+    
+       if (xmlreq.readyState == 4) {
+           if (xmlreq.status == 200) {
+                 
+                Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Ação Concluída',
+                 text: 'Cadastro Realizado com sucesso',
+              showConfirmButton: false,
+              timer: 1500
+            });
+           }else{
+                 alert('Erro desconhecido, verifique sua conexão com a internet');
+
+              result.innerHTML ="Erro ao receber mensagens";                 
+           }
+       }
+      };
+   xmlreq.send(null);
+}
+
+function relatorio_rendimento_turma_funcao(){
+
+    var result = document.getElementById('idturma');
+    var idescola = document.getElementById('idescola').value;
+
+      var xmlreq = CriaRequest();
+      xmlreq.open("GET", "../Controller/Listar_turma_relatorio_rendimento.php?idescola="+idescola, true);
+
+      xmlreq.onreadystatechange = function(){
+    
+       if (xmlreq.readyState == 4) {
+           if (xmlreq.status == 200) {
+              result.innerHTML =xmlreq.responseText;                 
+           
+           }else{
+      
+              result.innerHTML ="Erro ao receber mensagens";                 
+           }
+       }
+      };
+   xmlreq.send(null);
+}
+
+
+
 function cadastrar_mensagem(id_chamada,enviado){
 
     var mensagem = document.getElementById('mensagem').value;
