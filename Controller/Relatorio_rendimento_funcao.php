@@ -1,5 +1,10 @@
+<?php session_start();
+include_once '../Model/Conexao.php';
+include_once '../Model/Coordenador.php';
+include_once '../Model/Turma.php';
 
 
+?>
 
 
  
@@ -1756,7 +1761,7 @@
   margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
   style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'>QUINTA-FEIRA<span style='mso-spacerun:yes'>    
+  mso-fareast-language:PT-BR'> <?php echo date("d/m/Y"); ?> <span style='mso-spacerun:yes'>    
   </span>
   <!-- 29/07/2021 -->
   <o:p></o:p></span></p>
