@@ -21,7 +21,30 @@ $ano_letivo=$_SESSION['ano_letivo'];
   $nome_turma="";
   foreach ($res2 as $key => $value) {
     $nome_turma=$value['nome_turma'];
-    // code...
+  }
+
+    $res_calendario=listar_data_periodo($conexao,$ano_letivo);
+    $data_inicio_trimestre1="";
+    $data_fim_trimestre1="";    
+    $data_inicio_trimestre2="";
+    $data_fim_trimestre2="";
+
+    $data_inicio_trimestre3="";
+    $data_fim_trimestre3="";
+  foreach ($res_calendario as $key => $value) {
+  
+      if ($value['periodo_id']==1) {
+          $data_inicio_trimestre1=$value['inicio'];
+          $data_fim_trimestre1=$value['fim'];
+      }elseif ($value['periodo_id']==2){
+          $data_inicio_trimestre2=$value['inicio'];
+          $data_fim_trimestre2=$value['fim'];
+      }elseif ($value['periodo_id']==3){
+          $data_inicio_trimestre3=$value['inicio'];
+          $data_fim_trimestre3=$value['fim'];
+      }
+
+    
   }
 ?>
 
@@ -1285,7 +1308,7 @@ $ano_letivo=$_SESSION['ano_letivo'];
   margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
   style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'>38<o:p></o:p></span></p>
+  mso-fareast-language:PT-BR'>28<o:p></o:p></span></p>
   </td>
   <td width=76 nowrap colspan=2 style='width:56.9pt;border:none;border-right:
   solid black 1.0pt;mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:
