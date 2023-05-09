@@ -12,7 +12,7 @@ include_once '../Controller/Cauculos_notas.php';
   include_once'historico.php';
  
   include_once'../Model/Nota.php';
-?>
+
  <!-- <H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR> -->
 
 <html>
