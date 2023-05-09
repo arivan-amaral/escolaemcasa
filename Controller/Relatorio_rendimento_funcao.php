@@ -127,7 +127,7 @@ $ano_letivo=$_SESSION['ano_letivo'];
   mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
   margin;mso-element-top:40.55pt;mso-height-rule:exactly'><b><span
   style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
-  color:black;mso-fareast-language:PT-BR'>6 <o:p></o:p></span></b></p>
+  color:black;mso-fareast-language:PT-BR'><?php echo "$nome_turma"; ?> <o:p></o:p></span></b></p>
   </td>
   <td width=111 nowrap colspan=3 rowspan=2 style='width:83.35pt;border-top:
   none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
