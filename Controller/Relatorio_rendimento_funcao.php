@@ -211,7 +211,7 @@ $ano_letivo=$_SESSION['ano_letivo'];
   mso-fareast-language:PT-BR'>Disciplinas<o:p></o:p></span></b></p>
   </td>
 
-  //disciplinas
+  <!-- //disciplinas -->
   <?php 
   $res_disc=listar_disciplina_para_boletim($conexao,$idturma,$idescola,$ano_letivo);
 
