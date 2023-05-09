@@ -3,10 +3,26 @@ include_once '../Model/Conexao.php';
 include_once '../Model/Coordenador.php';
 include_once '../Model/Turma.php';
 include_once '../Model/Aluno.php';
+include_once '../Model/Escola.php';
 
 $idturma=$_GET['idturma'];
 $idescola=$_GET['idescola'];
+$idperiodo=$_GET['periodo'];
 $ano_letivo=$_SESSION['ano_letivo'];
+
+  $res_periodo=listar_data_por_periodo($conexao,$ano_letivo,$idperiodo);
+  $nome_periodo="";
+
+  foreach ($res_periodo as $key => $value) {
+    $nome_periodo=$value['descricao'];
+  }
+
+  $res2=lista_de_turmas_por_id($conexao,$idturma);
+  $nome_turma="";
+  foreach ($res2 as $key => $value) {
+    $nome_turma=$value['nome_turma'];
+    // code...
+  }
 ?>
 
 
@@ -29,7 +45,7 @@ $ano_letivo=$_SESSION['ano_letivo'];
   margin;mso-element-top:40.55pt;mso-height-rule:exactly'><b><span
   style='font-size:14.0pt;font-family:"Cambria",serif;mso-fareast-font-family:
   "Times New Roman";mso-bidi-font-family:Calibri;color:black;mso-fareast-language:
-  PT-BR'>FICHA DE DESEMPENHO ESCOLAR POR TURMA - 2023<o:p></o:p></span></b></p>
+  PT-BR'>FICHA DE DESEMPENHO ESCOLAR POR TURMA - <?php echo $_SESSION['ano_letivo']; ?><o:p></o:p></span></b></p>
   </td>
  
  </tr>
@@ -100,7 +116,7 @@ $ano_letivo=$_SESSION['ano_letivo'];
   mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
   margin;mso-element-top:40.55pt;mso-height-rule:exactly'><b><span
   style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
-  color:black;mso-fareast-language:PT-BR'>FINAL<o:p></o:p></span></b></p>
+  color:black;mso-fareast-language:PT-BR'> <?php echo $nome_periodo; ?> <o:p></o:p></span></b></p>
   </td>
   <td width=105 nowrap colspan=3 rowspan=2 style='width:79.1pt;border-top:none;
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -122,7 +138,7 @@ $ano_letivo=$_SESSION['ano_letivo'];
   mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
   margin;mso-element-top:40.55pt;mso-height-rule:exactly'><b><span
   style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
-  color:black;mso-fareast-language:PT-BR'> NICA<o:p></o:p></span></b></p>
+  color:black;mso-fareast-language:PT-BR'> <?php echo $nome_turma; ?><o:p></o:p></span></b></p>
   </td>
   <td width=204 nowrap colspan=6 rowspan=2 style='width:153.35pt;border-top:
   none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -133,7 +149,7 @@ $ano_letivo=$_SESSION['ano_letivo'];
   mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
   margin;mso-element-top:40.55pt;mso-height-rule:exactly'><b><span
   style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
-  color:black;mso-fareast-language:PT-BR'>FUNDAMENTAL II<o:p></o:p></span></b></p>
+  color:black;mso-fareast-language:PT-BR'><!-- FUNDAMENTAL II --><o:p></o:p></span></b></p>
   </td>
   <td width=182 nowrap colspan=7 rowspan=2 style='width:136.3pt;border-top:
   none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -144,7 +160,7 @@ $ano_letivo=$_SESSION['ano_letivo'];
   mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
   margin;mso-element-top:40.55pt;mso-height-rule:exactly'><b><span
   style='font-family:"Arial",sans-serif;mso-fareast-font-family:"Times New Roman";
-  color:black;mso-fareast-language:PT-BR'>MATUTINO<o:p></o:p></span></b></p>
+  color:black;mso-fareast-language:PT-BR'><!-- MATUTINO --><o:p></o:p></span></b></p>
   </td>
 
 
