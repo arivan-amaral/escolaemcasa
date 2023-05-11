@@ -276,7 +276,7 @@ $arquivo.="
             $nome_turma=($value['nome_turma']);
             $linha_transporte=($value['linha_transporte']);
             if ($linha_transporte ==NULL) {
-             $linha_transporte=01;
+             $linha_transporte=0;
             }
 
             $data_matricula=($value['data_matricula']);
