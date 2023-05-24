@@ -369,11 +369,11 @@ setTimeout('dia_doservidor_publico();',3000);
                                 // echo "carregando 2";
 
 
-                            } elseif( ($idserie==2 || $idserie==16 ) && $iddisciplina==43 ){
+                            } elseif( ($idserie==2 || $idserie==16 ) && $iddisciplina==43  ){
                                 include "menu_disciplina_nao_regente.php";
                                 // echo "carregando 3";
 
-                            }elseif( ($idserie==1 || $idserie==16 ) && $iddisciplina==41 ){
+          }elseif( ($idserie==1 || $idserie==16 ) && ($iddisciplina==41 || ($iddisciplina==43 && $idescola==20 ) ) ){
                               include "menu_disciplina_nao_regente.php";
                                 // echo "carregando 4";
 
