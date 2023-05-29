@@ -62,7 +62,7 @@ try {
                                                   foreach ($res_prof as $key => $value) {
                                                     $nome_funcionario=$value['nome'];
                                                     
-                                                    $result.="<b>Professor: $professor_id - $nome_funcionario </b>";
+                                                    $result.="<b>Professor: $idprofessor - $nome_funcionario </b>";
                                                   }
 
                                                   $result.= "
