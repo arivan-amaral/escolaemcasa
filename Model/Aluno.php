@@ -334,9 +334,10 @@ function limpa_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$i
 }
 
 
-function verifica_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$parecer_disciplina_id,$avaliacao){
+function verifica_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$parecer_disciplina_id,$avaliacao,$ano_letivo){
     $resultado=$conexao->query(" SELECT * FROM nota_parecer WHERE
     	escola_id=$idescola and 
+        ano_nota=$ano_letivo and 
     	turma_id=$idturma and 
     	disciplina_id=$iddisciplina and
     	aluno_id=$idaluno and
@@ -375,9 +376,10 @@ function verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno
     return $resultado;
 }
 
-function verifica_sigla_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$avaliacao,$parecer_disciplina_id){
+function verifica_sigla_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$idperiodo,$avaliacao,$parecer_disciplina_id,$ano_letivo){
     $resultado=$conexao->query(" SELECT * FROM nota_parecer WHERE
         escola_id=$idescola and 
+        ano_nota=$ano_letivo and 
         turma_id=$idturma and 
         disciplina_id=$iddisciplina and
         aluno_id=$idaluno and

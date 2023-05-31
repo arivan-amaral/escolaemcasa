@@ -450,10 +450,10 @@ try {
                     $descricao_parecer=$value['descricao'];
                     $res_verif_parece=verifica_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,$idparecer,'av3', $ano_letivo);
                     $sigla="";
-                    $idnota_sigla="";
+                    // $idnota_sigla="";
                     foreach ($res_verif_parece as $key => $value) {
                       $sigla=$value['sigla'];
-                      $idnota_sigla=$value['idnota'];
+                     // $idnota_sigla=$value['idnota'];
                     }
 
 
@@ -502,7 +502,7 @@ try {
                                    $result.="                            
                                       <input type='hidden' name='descricao_parecer".$id."[]' value='$idparecer'>
                                   <select  name='parecer_sigla".$id."[]'>
-                                    <option value='$sigla'>$sigla ( $idnota_sigla )</option>
+                                    <option value='$sigla'>$sigla </option>
                                     <option value='S'>S</option>
                                     <option></option>
                                     <option value='N'>N</option>
