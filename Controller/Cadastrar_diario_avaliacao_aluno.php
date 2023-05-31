@@ -20,6 +20,7 @@
     $idserie=$_POST['idserie'];
 
     $ano_nota=$_SESSION['ano_letivo'];
+    $ano_letivo=$_SESSION['ano_letivo'];
 
     $periodo=$_POST['periodo'];
 
