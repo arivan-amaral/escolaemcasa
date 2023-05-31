@@ -360,7 +360,7 @@ try {
 
                                 $result.="
                              <label for='exampleInputEmail1'>Relatório descritivo</label>
-                                <textarea  class='form-control' rows='5' name='parecer_descritivo$id'>$descricao_parecer_av3 </textarea>
+                                <textarea  class='form-control' rows='5' name='parecer_descritivo$id'>($descricao_parecer_av3 )</textarea>
 
                               </td>
                               </tr>
