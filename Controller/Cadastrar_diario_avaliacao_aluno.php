@@ -114,7 +114,7 @@ foreach ($_POST['aluno_id'] as $key => $value) {
 
                  // limpa_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$aluno_id,$periodo,$data,$parecer_disciplina_id,$avaliacao);
 
-                  $verifica_duplicidade=verifica_sigla_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$aluno_id,$periodo,'av3',$parecer_disciplina_id);
+                  $verifica_duplicidade=verifica_sigla_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$aluno_id,$periodo,'av3',$parecer_disciplina_id, $ano_letivo);
                   $conta_qnt_siglas=0;
                   foreach ($verifica_duplicidade as $key => $value) {
                         $idnota_bd=$value['idnota'];
