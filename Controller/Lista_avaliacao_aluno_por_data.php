@@ -448,7 +448,7 @@ try {
                     $serie_id=$value['serie_id'];
 
                     $descricao_parecer=$value['descricao'];
-                    $res_verif_parece=verifica_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,$idparecer,'av3');
+                    $res_verif_parece=verifica_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,$idparecer,'av3', $ano_letivo);
                     $sigla="";
                     foreach ($res_verif_parece as $key => $value) {
                       $sigla=$value['sigla'];
