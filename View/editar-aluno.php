@@ -801,6 +801,7 @@ foreach ($res_editar_curso as $key => $value) {
                           <select  class="form-control"  required name="uf_cartorio"  onchange="pesquisar_municipio(this.value,'uf_municipio_cartorio');">
                             <option value=''></option>
                              <?php 
+                             $idestado_cartorio="";
                               $resultado_estado= listar_estado($conexao);
                               foreach ($resultado_estado as $key => $value) {
                                 $idestado_cartorio=$value['id'];
@@ -824,7 +825,7 @@ foreach ($res_editar_curso as $key => $value) {
                    <option></option>
  
                             <?php 
-                        $pesquisa_cidadade=listar_cidade_por_idestado($conexao,5);
+                        $pesquisa_cidadade=listar_cidade_por_idestado($conexao,$idestado_cartorio);
                         foreach ($pesquisa_cidadade as $key => $value) {
                           $idmunicipo_cartorio=$value['id'];
                           $nome_cidade=$value['nome'];
