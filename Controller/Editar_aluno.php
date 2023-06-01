@@ -198,7 +198,11 @@ try {
     $matricula_concluida='N';
     
         $matricula_datamatricula=$_POST['data_matricula'];
+        $uf_municipio_cartorio=$_POST['uf_municipio_cartorio'];
         // code...
+        if ($uf_municipio_cartori=="") {
+           $uf_municipio_cartori=null;
+        }
 
 
     $matricula_ativa='S';
@@ -209,7 +213,7 @@ try {
 
 
     $conexao->exec("UPDATE aluno SET 
-            nome= '$nome', sexo='$sexo', email='$email', filiacao1='$filiacao1', filiacao2='$filiacao2', whatsapp = '$whatsapp', whatsapp_responsavel='$whatsapp_responsavel', data_nascimento='$data_nascimento', numero_nis= '$numero_nis', codigo_inep='$codigo_inep', bolsa_familia='$bolsa_familia', tipo_responsavel='$tipo_responsavel', raca_aluno= '$raca_aluno', estado_civil_aluno='$estado_civil_aluno', tipo_sanguinio_aluno='$tipo_sanguinio_aluno', profissao= '$profissao', situacao_documentacao='$situacao_documentacao', tipo_certidao='$tipo_certidao', numero_termo='$numero_termo', folha='$folha', uf_cartorio='$uf_cartorio', uf_municipio_cartorio='$municipio_cartorio', nome_cartorio='$nome_cartorio', numero_indentidade='$numero_indentidade', uf_identidade='$uf_identidade', orgao_emissor_indentidade='$orgao_emissor_indentidade', data_expedicao='$data_expedicao', numero_cnh='$numero_cnh', categoria_cnh='$categoria_cnh', cpf='$cpf', cartao_sus='$cartao_sus', observacao='$observacao', 
+            nome= '$nome', sexo='$sexo', email='$email', filiacao1='$filiacao1', filiacao2='$filiacao2', whatsapp = '$whatsapp', whatsapp_responsavel='$whatsapp_responsavel', data_nascimento='$data_nascimento', numero_nis= '$numero_nis', codigo_inep='$codigo_inep', bolsa_familia='$bolsa_familia', tipo_responsavel='$tipo_responsavel', raca_aluno= '$raca_aluno', estado_civil_aluno='$estado_civil_aluno', tipo_sanguinio_aluno='$tipo_sanguinio_aluno', profissao= '$profissao', situacao_documentacao='$situacao_documentacao', tipo_certidao='$tipo_certidao', numero_termo='$numero_termo', folha='$folha', uf_cartorio='$uf_cartorio', uf_municipio_cartorio='$uf_municipio_cartorio', nome_cartorio='$nome_cartorio', numero_indentidade='$numero_indentidade', uf_identidade='$uf_identidade', orgao_emissor_indentidade='$orgao_emissor_indentidade', data_expedicao='$data_expedicao', numero_cnh='$numero_cnh', categoria_cnh='$categoria_cnh', cpf='$cpf', cartao_sus='$cartao_sus', observacao='$observacao', 
     necessidade_especial='$necessidade_especial',
      apoio_pedagogico='$apoio_pedagogico',
      tipo_diagnostico='$tipo_diagnostico',
