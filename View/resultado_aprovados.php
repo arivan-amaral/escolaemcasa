@@ -90,14 +90,11 @@ $numero=1;
         $idaluno=$value['idaluno'];
         $nome_aluno=($value['nome_aluno']);
       
-          boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$_SESSION['ano_letivo']); 
-
 
 
           $res_disc=listar_disciplina_para_boletim($conexao,$idturma,$idescola,$ano_letivo);
 
-          // $res_disc=listar_disciplina_para_boletim($conexao,$idturma,$idescola,$ano_letivo);
-          // $res_disc=listar_disciplina_para_boletim($conexao,$idaluno,$ano_letivo);
+          
           $conta_parecer=0;
           $linha=0;
           $resultado_final=true;
@@ -152,7 +149,7 @@ $numero=1;
             $nota_tri_1=calculos_media_notas($nota_tri_1,$nota_rp_1,$nota_av3_1);
 
              // echo "$nota_tri_1";
-            echo number_format($nota_tri_1, 1, '.', ',');
+            echo "nota: ".number_format($nota_tri_1, 1, '.', ',');
 
 
           }
