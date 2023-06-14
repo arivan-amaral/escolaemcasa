@@ -22,6 +22,7 @@ $idserie=$_GET['idserie'];
 $res_escola=buscar_escola_por_id($conexao,$idescola);
 $nome_escola="";
 $nome_turma="";
+$ano_letivo=$_SESSION['ano_letivo'];
 
 foreach ($res_escola as $key => $value) {
   $nome_escola=$value['nome_escola'];
