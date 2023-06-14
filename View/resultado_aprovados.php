@@ -90,6 +90,7 @@ $numero=1;
         $idaluno=$value['idaluno'];
         $nome_aluno=($value['nome_aluno']);
       
+        echo "$nome_aluno";
 
 
           $res_disc=listar_disciplina_para_boletim($conexao,$idturma,$idescola,$ano_letivo);
