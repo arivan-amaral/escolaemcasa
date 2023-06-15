@@ -28,7 +28,7 @@ ministrada.escola_id >0
   $conta=1;
   foreach ($res as $key => $value) {
     $funcionario_id=$value['professor_id'];
-    for ($i=8; $i <= 8; $i++) { 
+    for ($i=4; $i <= 7; $i++) { 
       //$conexao->exec("DELETE FROM bloquear_acesso where funcionario_id=$funcionario_id and calendario_letivo_id=4 ");
     
         $conexao->exec("INSERT INTO bloquear_acesso(funcionario_id, calendario_letivo_id, funcionario_responsavel) VALUES ($funcionario_id, $i, 175) ");
