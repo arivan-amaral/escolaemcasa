@@ -10,7 +10,7 @@ if (isset($_GET['tokem_arivan'])) {
 $res=$conexao->query("SELECT professor_id FROM funcionario,ministrada, turma WHERE  
 professor_id=idfuncionario and 
 ministrada.turma_id = idturma and 
-ministrada.escola_id in (254, 268)
+ministrada.escola_id >0
  group by professor_id ");
 
 
@@ -28,10 +28,10 @@ ministrada.escola_id in (254, 268)
   $conta=1;
   foreach ($res as $key => $value) {
     $funcionario_id=$value['professor_id'];
-    for ($i=1; $i <= 4; $i++) { 
-      $conexao->exec("DELETE FROM bloquear_acesso where funcionario_id=$funcionario_id and calendario_letivo_id=4 ");
-
-      // $conexao->exec("INSERT INTO bloquear_acesso(funcionario_id, calendario_letivo_id, funcionario_responsavel) VALUES ($funcionario_id, $i, 175) ");
+    for ($i=8; $i <= 8; $i++) { 
+      //$conexao->exec("DELETE FROM bloquear_acesso where funcionario_id=$funcionario_id and calendario_letivo_id=4 ");
+      echo "INSERT INTO bloquear_acesso(funcionario_id, calendario_letivo_id, funcionario_responsavel) VALUES ($funcionario_id, $i, 175)";
+       // $conexao->exec("INSERT INTO bloquear_acesso(funcionario_id, calendario_letivo_id, funcionario_responsavel) VALUES ($funcionario_id, $i, 175) ");
       // code...
     }
      
