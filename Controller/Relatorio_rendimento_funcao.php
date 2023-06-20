@@ -384,31 +384,7 @@ for ($i=0; $i < $qnt_displina; $i++) {
 
 
   <?php 
-    $res_aluno=$conexao->query("
-      SELECT
-      aluno.aluno_transpublico, 
-      aluno.linha_transporte,
-      aluno.imagem_carteirinha_transporte ,
-      aluno.nome AS nome_aluno,
-      aluno.sexo,
-      aluno.data_nascimento,
-      aluno.idaluno,
-      aluno.email,
-      aluno.status AS status_aluno,
-      aluno.senha,
-      turma.nome_turma,
-      ecidade_matricula.matricula_codigo AS matricula,
-      ecidade_matricula.matricula_datamatricula AS data_matricula,
-      ecidade_matricula.datasaida AS datasaida
-  FROM ecidade_matricula
-  INNER JOIN aluno ON ecidade_matricula.aluno_id = aluno.idaluno
-  INNER JOIN turma ON ecidade_matricula.turma_id = turma.idturma
-  INNER JOIN escola ON ecidade_matricula.turma_escola = escola.idescola
-  WHERE ecidade_matricula.turma_escola = $idescola
-    AND ecidade_matricula.turma_id = $idturma
-    AND ecidade_matricula.calendario_ano = '$ano_letivo'
-    AND ecidade_matricula.matricula_ativa='S'
-  ORDER BY aluno.nome ASC");
+    
    $total_aprovados_geral=0;
    $total_reprovados_geral=0;
    $array_reprovados_disciplina=array();
@@ -417,11 +393,35 @@ for ($i=0; $i < $qnt_displina; $i++) {
 
   $res_disc=listar_disciplina_para_boletim($conexao,$idturma,$idescola,$ano_letivo);
 
-    $total_disciplina=0;
+$total_disciplina=0;
 foreach ($res_disc as $key => $value) {
     $iddisciplina=$value['iddisciplina'];
   
-
+      $res_aluno=$conexao->query("
+        SELECT
+        aluno.aluno_transpublico, 
+        aluno.linha_transporte,
+        aluno.imagem_carteirinha_transporte ,
+        aluno.nome AS nome_aluno,
+        aluno.sexo,
+        aluno.data_nascimento,
+        aluno.idaluno,
+        aluno.email,
+        aluno.status AS status_aluno,
+        aluno.senha,
+        turma.nome_turma,
+        ecidade_matricula.matricula_codigo AS matricula,
+        ecidade_matricula.matricula_datamatricula AS data_matricula,
+        ecidade_matricula.datasaida AS datasaida
+    FROM ecidade_matricula
+    INNER JOIN aluno ON ecidade_matricula.aluno_id = aluno.idaluno
+    INNER JOIN turma ON ecidade_matricula.turma_id = turma.idturma
+    INNER JOIN escola ON ecidade_matricula.turma_escola = escola.idescola
+    WHERE ecidade_matricula.turma_escola = $idescola
+      AND ecidade_matricula.turma_id = $idturma
+      AND ecidade_matricula.calendario_ano = '$ano_letivo'
+      AND ecidade_matricula.matricula_ativa='S'
+    ORDER BY aluno.nome ASC");
 
     foreach ($res_aluno as $key => $value) {
       $idaluno=$value['idaluno'];
@@ -434,7 +434,7 @@ foreach ($res_disc as $key => $value) {
         $array_aprovados_disciplina[$iddisciplina]=0;
       }
     
-            $result_nota_aula1=$conexao->query("
+      $result_nota_aula1=$conexao->query("
                 SELECT avaliacao,periodo_id,nota FROM nota_parecer WHERE
                 escola_id=$idescola and
                 turma_id=$idturma and
