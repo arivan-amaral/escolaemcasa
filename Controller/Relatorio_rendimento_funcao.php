@@ -393,9 +393,9 @@ for ($i=0; $i < $qnt_displina; $i++) {
 
   $res_disc=listar_disciplina_para_boletim($conexao,$idturma,$idescola,$ano_letivo);
 
-$total_disciplina=0;
 foreach ($res_disc as $key => $value) {
     $iddisciplina=$value['iddisciplina'];
+    $total_disciplina=0;
   
       $res_aluno=$conexao->query("
         SELECT
