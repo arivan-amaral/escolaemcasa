@@ -384,7 +384,7 @@ for ($i=0; $i < $qnt_displina; $i++) {
 
 
   <?php 
-    $res=$conexao->query("
+    $res_aluno=$conexao->query("
       SELECT
       aluno.aluno_transpublico, 
       aluno.linha_transporte,
@@ -417,23 +417,22 @@ for ($i=0; $i < $qnt_displina; $i++) {
 
   $res_disc=listar_disciplina_para_boletim($conexao,$idturma,$idescola,$ano_letivo);
 
+    $total_disciplina=0;
 foreach ($res_disc as $key => $value) {
     $iddisciplina=$value['iddisciplina'];
   
 
- $total_disciplina=0;
 
-foreach ($res as $key => $value) {
-  $idaluno=$value['idaluno'];
-
-
-  if (!array_key_exists($iddisciplina,$array_aprovados_disciplina)) {
-    $array_reprovados_disciplina[$iddisciplina]=0;
-  }
-  
-  if (!array_key_exists($iddisciplina,$array_aprovados_disciplina)) {
-    $array_aprovados_disciplina[$iddisciplina]=0;
-  }
+    foreach ($res_aluno as $key => $value) {
+      $idaluno=$value['idaluno'];
+     
+      if (!array_key_exists($iddisciplina,$array_reprovados_disciplina)) {
+        $array_reprovados_disciplina[$iddisciplina]=0;
+      }
+      
+      if (!array_key_exists($iddisciplina,$array_aprovados_disciplina)) {
+        $array_aprovados_disciplina[$iddisciplina]=0;
+      }
     
             $result_nota_aula1=$conexao->query("
                 SELECT avaliacao,periodo_id,nota FROM nota_parecer WHERE
@@ -492,15 +491,7 @@ foreach ($res as $key => $value) {
 }
           
 
-}
 
-
-
-
-  $res_disc=listar_disciplina_para_boletim($conexao,$idturma,$idescola,$ano_letivo);
- 
-  foreach ($res_disc as $key => $value) {
-    $iddisciplina=$value['iddisciplina'];
    
 
   ?>
@@ -515,15 +506,13 @@ foreach ($res as $key => $value) {
   margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
   style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'><?php 
-  if (array_key_exists($iddisciplina,$array_reprovados_disciplina)) {
-      echo $array_aprovados_disciplina[$iddisciplina];
-    // code...
-  }else{
-      echo"0";
+  mso-fareast-language:PT-BR'>
+  <?php 
+
+      echo $total_disciplina;
 
 
-  }
+  
    ?><o:p></o:p></span></p>
   </td>
   <td width=47 nowrap rowspan=2 style='width:35.4pt;border-top:none;border-left:
@@ -537,7 +526,7 @@ foreach ($res as $key => $value) {
   margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
   style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'>%<o:p></o:p></span></p>
+  mso-fareast-language:PT-BR'>*<o:p></o:p></span></p>
   </td>
 <?php 
 }
