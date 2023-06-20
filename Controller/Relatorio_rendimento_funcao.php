@@ -616,7 +616,7 @@ $ano_letivo=$_SESSION['ano_letivo'];
   WHERE ecidade_matricula.turma_escola = $idescola
     AND ecidade_matricula.turma_id = $idturma
     AND ecidade_matricula.calendario_ano = '$ano_letivo'
-    AND ecidade_matricula.matricula_situacao != 'CANCELADO'
+    AND ecidade_matricula.matricula_ativa='S'
   ORDER BY aluno.nome ASC");
    $total_aprovados_geral=0;
    $total_reprovados_geral=0;
