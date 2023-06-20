@@ -14,7 +14,7 @@ session_start();
   include"boletim_fundamental_turma.php";
   include"teste_boletim.php";
   include"../Controller/Cauculos_notas.php";
-  //include('mpdf/mpdf60/mpdf.php');
+
 
 $idescola=$_GET['idescola'];
 $idturma=$_GET['idturma'];
@@ -34,28 +34,13 @@ foreach ($res_turma as $key => $value) {
 }
 
 include_once"cabecalho_boletim.php";
-?>
-
-<!-- ################################################################################ -->
-<p class="no-print">
-  <br>
-  <br>
-  
-<a href='#'class="btn btn-block btn-primary " onclick='print();'>IMPRIMIR</a> 
-
-</p>
-<!-- <h1>PÁGINA EM MANUTENÇÃO</h1> -->
-
-   
-<!-- <a href="#" onclick="demoFromHTML();">BAIXAR BOLETINS</a> -->
-<div id="employee_detail">
-
-<?php
 
 
 
-  $res_calendario=listar_data_periodo($conexao,$ano_letivo);
-  foreach ($res_calendario as $key => $value) {
+
+
+$res_calendario=listar_data_periodo($conexao,$ano_letivo);
+foreach ($res_calendario as $key => $value) {
   
       if ($value['periodo_id']==1) {
           $data_inicio_trimestre1=$value['inicio'];
@@ -68,13 +53,14 @@ include_once"cabecalho_boletim.php";
           $data_fim_trimestre3=$value['fim'];
       }
 
+
     
-  }
+}
 
 
 $numero=1; 
 
- if ($idserie > 8) {
+ if ($idserie > 3) {
     //echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
     $numero=1;
         echo "<input type='hidden' name='$numero' value='$numero'>";
@@ -89,9 +75,7 @@ $numero=1;
       foreach ($res_alunos as $key => $value) {
         $idaluno=$value['idaluno'];
         $nome_aluno=($value['nome_aluno']);
-      
-        echo "$nome_aluno";
-
+     
 
           $res_disc=listar_disciplina_para_boletim($conexao,$idturma,$idescola,$ano_letivo);
 
@@ -105,15 +89,17 @@ $numero=1;
           $conta_conselho=0;
           $conta_apr=0;
 
+          $total_disciplina=0;
 
 
+          
           foreach ($res_disc as $key => $value) {
             $iddisciplina=$value['iddisciplina'];
             $nome_disciplina=$value['nome_disciplina'];
             $conta_dis++;
 
 
-              $result_nota_aula1=$conexao->query("
+            $result_nota_aula1=$conexao->query("
                 SELECT avaliacao,periodo_id,nota FROM nota_parecer WHERE
                 escola_id=$idescola and
                 turma_id=$idturma and
@@ -149,22 +135,15 @@ $numero=1;
            
             $nota_tri_1=calculos_media_notas($nota_tri_1,$nota_rp_1,$nota_av3_1);
 
-             // echo "$nota_tri_1";
-            echo "nota: ".number_format($nota_tri_1, 1, '.', ',');
+            $total_disciplina+=number_format($nota_tri_1, 1, '.', ',');
 
 
           }
 
-
+          echo "$nome_aluno - total: $total_disciplina";
       
       }
       
 }
 
 ?>
-</div>
- 
-
-
-</body>
-</html>
