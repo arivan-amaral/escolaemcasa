@@ -296,7 +296,7 @@ $ano_letivo=$_SESSION['ano_letivo'];
    }
   ?>
 
-
+<!-- 
   <td width=45 nowrap colspan=2 rowspan=2 style='width:33.85pt;border-top:solid windowtext 1.0pt;
   border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   mso-border-left-alt:solid windowtext .5pt;mso-border-top-alt:windowtext;
@@ -310,7 +310,7 @@ $ano_letivo=$_SESSION['ano_letivo'];
   style='font-size:10.5pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
   "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
   color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-  </td>
+  </td> -->
  
  </tr>
  <tr style='mso-yfti-irow:14;height:15.35pt;mso-row-margin-right:1.35pt'>
@@ -330,6 +330,10 @@ $ano_letivo=$_SESSION['ano_letivo'];
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
   mso-fareast-language:PT-BR'>Resultados<o:p></o:p></span></b></p>
   </td>
+  <?php 
+
+for ($i=0; $i < $qnt_displina; $i++) { 
+   ?>
   <td width=29 nowrap style='width:21.45pt;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
@@ -354,222 +358,9 @@ $ano_letivo=$_SESSION['ano_letivo'];
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
   mso-fareast-language:PT-BR'>%<o:p></o:p></span></p>
   </td>
-  <td width=30 nowrap style='width:22.7pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
-  style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
-  mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'>N <o:p></o:p></span></p>
-  </td>
-  <td width=50 nowrap style='width:37.45pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
-  style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
-  mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'>%<o:p></o:p></span></p>
-  </td>
-  <td width=25 nowrap style='width:18.85pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
-  style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
-  mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'>N <o:p></o:p></span></p>
-  </td>
-  <td width=43 nowrap style='width:32.25pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
-  style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
-  mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'>%<o:p></o:p></span></p>
-  </td>
-  <td width=25 nowrap style='width:18.85pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
-  style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
-  mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'>N <o:p></o:p></span></p>
-  </td>
-  <td width=43 nowrap style='width:32.25pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
-  style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
-  mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'>%<o:p></o:p></span></p>
-  </td>
-  <td width=25 nowrap style='width:18.85pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
-  style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
-  mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'>N <o:p></o:p></span></p>
-  </td>
-  <td width=43 nowrap style='width:32.25pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
-  style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
-  mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'>%<o:p></o:p></span></p>
-  </td>
-  <td width=25 nowrap style='width:18.85pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
-  style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
-  mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'>N <o:p></o:p></span></p>
-  </td>
-  <td width=43 nowrap style='width:32.25pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
-  style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
-  mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'>%<o:p></o:p></span></p>
-  </td>
-  <td width=25 nowrap style='width:18.85pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
-  style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
-  mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'>N <o:p></o:p></span></p>
-  </td>
-  <td width=43 nowrap style='width:32.25pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
-  style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
-  mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'>%<o:p></o:p></span></p>
-  </td>
-  <td width=25 nowrap style='width:18.85pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
-  style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
-  mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'>N <o:p></o:p></span></p>
-  </td>
-  <td width=43 nowrap style='width:32.25pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
-  style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
-  mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'>%<o:p></o:p></span></p>
-  </td>
-  <td width=25 nowrap colspan=2 style='width:19.05pt;border-top:none;
-  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
-  style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
-  mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'>N <o:p></o:p></span></p>
-  </td>
-  <td width=43 nowrap style='width:32.25pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
-  style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
-  mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'>%<o:p></o:p></span></p>
-  </td>
-  <td width=25 nowrap style='width:18.85pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
-  style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
-  mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'>N <o:p></o:p></span></p>
-  </td>
-  <td width=20 nowrap style='width:14.95pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.35pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal;mso-element:frame;mso-element-frame-hspace:7.05pt;
-  mso-element-wrap:around;mso-element-anchor-vertical:page;mso-element-anchor-horizontal:
-  margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
-  style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
-  mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'>%<o:p></o:p></span></p>
-  </td>
+  <?php 
+}
+   ?>
 
  </tr>
 
@@ -623,7 +414,7 @@ $ano_letivo=$_SESSION['ano_letivo'];
    $array_reprovados_disciplina=array();
    $array_aprovados_disciplina=array();
    $mult_displina=$qnt_displina;
-  for ($i=0; $i < $mult_displina; $i++) { 
+for ($i=0; $i < $mult_displina; $i++) { 
  $total_disciplina=0;
 
 foreach ($res as $key => $value) {
@@ -695,7 +486,17 @@ foreach ($res as $key => $value) {
 }
           
 
+}
+
+
+
+
+  $res_disc=listar_disciplina_para_boletim($conexao,$idturma,$idescola,$ano_letivo);
  
+  foreach ($res_disc as $key => $value) {
+    $iddisciplina=$value['iddisciplina'];
+   
+
   ?>
   <td width=29 nowrap rowspan=2 style='width:21.45pt;border-top:none;
   border-left:none;border-bottom:solid black 1.0pt;border-right:solid windowtext 1.0pt;
@@ -708,7 +509,16 @@ foreach ($res as $key => $value) {
   margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
   style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'><?php echo $array_aprovados_disciplina[$iddisciplina]; ?><o:p></o:p></span></p>
+  mso-fareast-language:PT-BR'><?php 
+  if (array_key_exists($iddisciplina,$array_reprovados_disciplina)) {
+      echo $array_aprovados_disciplina[$iddisciplina];
+    // code...
+  }else{
+      echo"0";
+
+
+  }
+   ?><o:p></o:p></span></p>
   </td>
   <td width=47 nowrap rowspan=2 style='width:35.4pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid windowtext 1.0pt;
@@ -724,9 +534,8 @@ foreach ($res as $key => $value) {
   mso-fareast-language:PT-BR'>%<o:p></o:p></span></p>
   </td>
 <?php 
-
-
 }
+
  ?>
 
 
