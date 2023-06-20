@@ -414,7 +414,13 @@ for ($i=0; $i < $qnt_displina; $i++) {
    $array_reprovados_disciplina=array();
    $array_aprovados_disciplina=array();
    $mult_displina=$qnt_displina;
-for ($i=0; $i < $mult_displina; $i++) { 
+
+  $res_disc=listar_disciplina_para_boletim($conexao,$idturma,$idescola,$ano_letivo);
+
+foreach ($res_disc as $key => $value) {
+    $iddisciplina=$value['iddisciplina'];
+  
+
  $total_disciplina=0;
 
 foreach ($res as $key => $value) {
@@ -473,7 +479,7 @@ foreach ($res as $key => $value) {
             if ($nota_tri_1>=5) {
               $total_disciplina++;
               $total_aprovados_geral++;
-              $array_aprovados_disciplina[$iddisciplina]=$array_aprovados_disciplina[$iddisciplina]+1;
+              $array_aprovados_disciplina[$iddisciplina]=$total_disciplina;
 
 
             }else{
