@@ -114,6 +114,15 @@ setTimeout('dia_doservidor_publico();',3000);
 }
 </style>
 
+<style>
+  .scrollable-div {
+    max-height: 150px;
+    overflow: auto;
+  }
+</style>
+
+
+
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 
@@ -214,7 +223,7 @@ setTimeout('dia_doservidor_publico();',3000);
           </div>
         </div>  
 
-        <div class="col-sm-3">
+        <div class="col-sm-3 scrollable-div">
           <div class="form-group">
            <label for="exampleInputEmail1">Turma</label>
            <span id="idturma" >
