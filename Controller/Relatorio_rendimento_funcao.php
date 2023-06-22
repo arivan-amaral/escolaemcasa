@@ -12,8 +12,19 @@ $idperiodo=$_GET['periodo'];
 $ano_letivo=$_SESSION['ano_letivo'];
   $idturmas=" IN(-1";
 
- foreach ($_GET['idturma'] as $key => $value) {
-    $idturmas.=",".$_GET['idturma'][$key];
+
+
+
+  if (isset($_GET['idturma'])) {
+    $idturma = $_GET['idturma'];
+
+    // Explode a string em um array usando a vírgula como delimitador
+     $valoresSelecionados = explode(',', $idturma);
+
+   foreach ($valoresSelecionados as $value) {
+      $idturmas.=",".$value;
+    }
+
   }
 
   $idturmas.=") ";

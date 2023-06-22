@@ -566,6 +566,26 @@ function pesquisa_chamado_setor_escola(){
 
 function relatorio_rendimento_funcao(){
 
+    // Obtém todos os checkboxes com classe iniciada por "idtuma"
+    const checkboxes = document.querySelectorAll('input[type="checkbox"].idturma');
+
+    // Variável para armazenar os valores selecionados
+    let valoresSelecionados = '';
+
+    // Itera sobre os checkboxes
+    checkboxes.forEach(function(checkbox) {
+      // Verifica se o checkbox está marcado
+      if (checkbox.checked) {
+        // Concatena o valor na variável
+        valoresSelecionados += checkbox.value + ',';
+      }
+    });
+
+    // Remove a última vírgula, se houver
+    valoresSelecionados = valoresSelecionados.replace(/,$/, '');
+
+    // Exibe os valores selecionados
+    console.log("valores check"+valoresSelecionados);
 
   var result = document.getElementById('resultado');
   var data_inicial ="";
@@ -573,7 +593,7 @@ function relatorio_rendimento_funcao(){
   // var data_inicial = document.getElementById('data_inicial').value;
   // var data_final = document.getElementById('data_final').value;
   var idescola = document.getElementById('idescola').value;
-  var idturma = document.getElementById('idturma').value;
+  var idturma =""+valoresSelecionados;
   var periodo = document.getElementById('periodo').value;
   var serie ="";
   // var serie = document.getElementById('serie').value;
