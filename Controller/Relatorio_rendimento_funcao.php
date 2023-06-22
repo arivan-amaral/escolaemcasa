@@ -11,6 +11,7 @@ $idescola=$_GET['idescola'];
 $idperiodo=$_GET['periodo'];
 $ano_letivo=$_SESSION['ano_letivo'];
 $idturmas=" IN(-1";
+$idturma_aux=" IN(-1";
 
 
 
@@ -26,10 +27,11 @@ $idturmas=" IN(-1";
       $idturmas.=",".$value;
     }
 
-    $idturma=$valoresSelecionados[0];
+    $idturma_aux=$valoresSelecionados[0];
 
   }
 
+  $idturma_aux.=") ";
   $idturmas.=") ";
 
   $res_periodo=listar_data_por_periodo($conexao,$ano_letivo,$idperiodo);
@@ -277,7 +279,7 @@ $idturmas=" IN(-1";
 
   <!-- //disciplinas -->
   <?php 
-  $res_disc=listar_disciplina_para_relatorio($conexao,$idturma,$idescola,$ano_letivo);
+  $res_disc=listar_disciplina_para_relatorio($conexao,$idturma_aux,$idescola,$ano_letivo);
 
    
   $conta_parecer=0;
@@ -414,7 +416,7 @@ for ($i=0; $i < $qnt_displina; $i++) {
    $array_aprovados_disciplina=array();
    $mult_displina=$qnt_displina;
 
-  $res_disc=listar_disciplina_para_relatorio($conexao,$idturma,$idescola,$ano_letivo);
+  $res_disc=listar_disciplina_para_relatorio($conexao,$idturma_aux,$idescola,$ano_letivo);
 
 foreach ($res_disc as $key => $value) {
     $iddisciplina=$value['iddisciplina'];
@@ -579,7 +581,7 @@ foreach ($res_disc as $key => $value) {
   </td>
 
 <?php 
-  $res_disc_resultado=listar_disciplina_para_relatorio($conexao,$idturma,$idescola,$ano_letivo);
+  $res_disc_resultado=listar_disciplina_para_relatorio($conexao,$idturma_aux,$idescola,$ano_letivo);
  
  
 foreach ($res_disc_resultado as $key_disc=> $value_disc) {
