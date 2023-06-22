@@ -10,7 +10,7 @@ $idturma=$_GET['idturma'];
 $idescola=$_GET['idescola'];
 $idperiodo=$_GET['periodo'];
 $ano_letivo=$_SESSION['ano_letivo'];
-  $idturmas=" IN(-1";
+$idturmas=" IN(-1";
 
 
 
@@ -19,11 +19,14 @@ $ano_letivo=$_SESSION['ano_letivo'];
     $idturma = $_GET['idturma'];
 
     // Explode a string em um array usando a vírgula como delimitador
-     $valoresSelecionados = explode(',', $idturma);
+    $valoresSelecionados = explode(',', $idturma);
 
-   foreach ($valoresSelecionados as $value) {
+
+    foreach ($valoresSelecionados as $value) {
       $idturmas.=",".$value;
     }
+
+    $idturma=$valoresSelecionados[0];
 
   }
 
@@ -274,7 +277,7 @@ $ano_letivo=$_SESSION['ano_letivo'];
 
   <!-- //disciplinas -->
   <?php 
-  $res_disc=listar_disciplina_para_relatorio($conexao,$idturmas,$idescola,$ano_letivo);
+  $res_disc=listar_disciplina_para_relatorio($conexao,$idturma,$idescola,$ano_letivo);
 
    
   $conta_parecer=0;
@@ -411,7 +414,7 @@ for ($i=0; $i < $qnt_displina; $i++) {
    $array_aprovados_disciplina=array();
    $mult_displina=$qnt_displina;
 
-  $res_disc=listar_disciplina_para_relatorio($conexao,$idturmas,$idescola,$ano_letivo);
+  $res_disc=listar_disciplina_para_relatorio($conexao,$idturma,$idescola,$ano_letivo);
 
 foreach ($res_disc as $key => $value) {
     $iddisciplina=$value['iddisciplina'];
@@ -576,7 +579,7 @@ foreach ($res_disc as $key => $value) {
   </td>
 
 <?php 
-  $res_disc_resultado=listar_disciplina_para_relatorio($conexao,$idturmas,$idescola,$ano_letivo);
+  $res_disc_resultado=listar_disciplina_para_relatorio($conexao,$idturma,$idescola,$ano_letivo);
  
  
 foreach ($res_disc_resultado as $key_disc=> $value_disc) {
