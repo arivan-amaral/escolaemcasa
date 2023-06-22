@@ -116,6 +116,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
 <style>
   .scrollable-div {
+    padding-left: 50px;
     max-height: 150px;
     overflow: auto;
   }
@@ -223,10 +224,10 @@ setTimeout('dia_doservidor_publico();',3000);
           </div>
         </div>  
 
-        <div class="col-sm-3 scrollable-div">
+        <div class="col-sm-3">
           <div class="form-group">
            <label for="exampleInputEmail1">Turma</label>
-           <span id="idturma" >
+           <span class=" scrollable-div" id="idturma" >
         
                
           
