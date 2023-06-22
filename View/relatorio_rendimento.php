@@ -225,13 +225,12 @@ setTimeout('dia_doservidor_publico();',3000);
         </div>  
 
         <div class="col-sm-3">
-          <div class="form-group">
+         
            <label for="exampleInputEmail1">Turma</label>
-           <div class=" scrollable-div" id="idturma" >
+          <div class=" scrollable-div" id="idturma" >
         
                
           
-           </div> 
           </div>
         </div>  
 
