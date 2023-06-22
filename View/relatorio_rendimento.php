@@ -116,9 +116,8 @@ setTimeout('dia_doservidor_publico();',3000);
 
 <style>
   .scrollable-div {
-    padding-left: 50px;
-    max-height: 150px;
-    overflow: auto;
+    padding-left: 20px;
+    
   }
 </style>
 
