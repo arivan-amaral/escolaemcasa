@@ -11,7 +11,7 @@ try {
  
     $res=lista_de_turmas_da_escola_relatorio($conexao,$idescola,$ano_letivo_vigente);
 
-  $result="<br>
+  $result="
 
       <div class='col-sm-3 '>";
   $turno="";
