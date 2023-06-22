@@ -27,7 +27,7 @@ $idturma_aux=" IN(-1";
       $idturmas.=",".$value;
     }
 
-    $idturma_aux=$valoresSelecionados[0];
+    $idturma_aux=",".$valoresSelecionados[0];
 
   }
 
