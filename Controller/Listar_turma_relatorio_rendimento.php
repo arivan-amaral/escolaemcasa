@@ -11,7 +11,9 @@ try {
  
     $res=lista_de_turmas_da_escola_relatorio($conexao,$idescola,$ano_letivo_vigente);
 
-  $result="";
+  $result="<br>
+
+      <div class='col-sm-3'>";
   $turno="";
     
 
@@ -25,10 +27,15 @@ try {
     $nome_turma=($value['nome_turma']);
     // $idescola=($value['idescola']);
     $nome_escola=($value['nome_escola']);
-     $result.="<option value='$idturma'>$nome_turma</option>";
+     $result.="
+      <input class='form-check-input' type='checkbox' value='$idturma' id='idturma'>
+          <label class='form-check-label' for='flexCheckDefault'>
+            $nome_turma
+          </label>
+           ";
 }
 
-echo "$result";
+echo "$result </div>";
 
 } catch (Exception $e) {
   

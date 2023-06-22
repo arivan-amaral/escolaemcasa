@@ -64,6 +64,56 @@ setTimeout('dia_doservidor_publico();',3000);
 
  </style>
 
+
+ <style>
+
+.checkbox-btn {
+  display: inline-block;
+  position: relative;
+}
+
+.checkbox-btn__label {
+  display: inline-block;
+  position: relative;
+  font-size: 16px;
+  line-height: 32px;
+  padding-left: 40px;
+  cursor: pointer;
+}
+
+.checkbox-btn__image {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  background-image: url("imagens/excel.png");
+  background-size: cover;
+  opacity: 0.5;
+}
+
+.checkbox-btn__image::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.checkbox-btn input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkbox-btn input[type="checkbox"]:checked ~ .checkbox-btn__image {
+  opacity: 1;
+}
+</style>
+
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 
@@ -167,11 +217,11 @@ setTimeout('dia_doservidor_publico();',3000);
         <div class="col-sm-3">
           <div class="form-group">
            <label for="exampleInputEmail1">Turma</label>
-           <select class="form-control"  id="idturma" name="idturma" >
+           <span id="idturma" >
         
                
           
-           </select> 
+           </span> 
           </div>
         </div>  
 

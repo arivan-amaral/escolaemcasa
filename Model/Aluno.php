@@ -1998,6 +1998,35 @@ function listar_disciplina_aluno($conexao,$idaluno,$ano_letivo){
 }
 
 
+function listar_disciplina_para_relatorio($conexao,$idturmas,$escola_id,$ano_letivo){
+  $res=$conexao->query("
+  SELECT
+disciplina.nome_disciplina,
+disciplina.abreviacao,
+disciplina.iddisciplina,
+funcionario.nome as nome_professor,
+turma.idturma,
+turma.nome_turma
+FROM
+ministrada
+INNER JOIN turma ON ministrada.turma_id = turma.idturma
+INNER JOIN escola ON ministrada.escola_id = escola.idescola
+INNER JOIN disciplina ON ministrada.disciplina_id = disciplina.iddisciplina
+INNER JOIN funcionario ON ministrada.professor_id = funcionario.idfuncionario
+WHERE
+disciplina.facultativo = 0
+AND ministrada.ano = $ano_letivo
+AND ministrada.escola_id = $escola_id AND ministrada.turma_id $idturmas ");
+
+
+return $res;
+
+ 
+
+
+}
+
+
 function listar_disciplina_para_boletim($conexao,$idturma,$escola_id,$ano_letivo){
   $res=$conexao->query("
   SELECT
@@ -2022,23 +2051,7 @@ AND ministrada.escola_id = $escola_id");
 
 return $res;
 
-  // SELECT 
-  //  disciplina.nome_disciplina,
-  //  disciplina.abreviacao,
-  //  disciplina.iddisciplina,
-  //  funcionario.nome as 'nome_professor',
-  //  turma.idturma,
-  //  turma.nome_turma
-  //  FROM   turma,   escola, ministrada,disciplina,funcionario WHERE
-   
-  //   ministrada.turma_id=turma.idturma AND
-  //  ministrada.escola_id=escola.idescola AND
-  //  ministrada.disciplina_id=disciplina.iddisciplina AND
-  //  ministrada.professor_id=funcionario.idfuncionario AND
-  //  disciplina.facultativo=0 AND
-  //  ministrada.ano = $ano_letivo and
-  //  ministrada.turma_id = $idturma and
-  //  ministrada.escola_id = $escola_id
+ 
 
 
 }

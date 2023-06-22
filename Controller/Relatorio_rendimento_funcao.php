@@ -10,6 +10,13 @@ $idturma=$_GET['idturma'];
 $idescola=$_GET['idescola'];
 $idperiodo=$_GET['periodo'];
 $ano_letivo=$_SESSION['ano_letivo'];
+  $idturmas=" IN(-1";
+
+ foreach ($_GET['idturma'] as $key => $value) {
+    $idturmas.=",".$_GET['idturma'][$key];
+  }
+
+  $idturmas.=") ";
 
   $res_periodo=listar_data_por_periodo($conexao,$ano_letivo,$idperiodo);
   $nome_periodo="";
@@ -18,11 +25,14 @@ $ano_letivo=$_SESSION['ano_letivo'];
     $nome_periodo=$value['descricao'];
   }
 
-  $res2=lista_de_turmas_por_id($conexao,$idturma);
+  $res2=lista_de_turmas_relatorio($conexao,$idturmas);
   $nome_turma="";
   foreach ($res2 as $key => $value) {
-    $nome_turma=$value['nome_turma'];
+    $nome_turma.=$value['nome_turma'].", ";
   }
+
+
+
 
     $res_calendario=listar_data_periodo($conexao,$ano_letivo);
     $data_inicio_trimestre1="";
@@ -253,10 +263,9 @@ $ano_letivo=$_SESSION['ano_letivo'];
 
   <!-- //disciplinas -->
   <?php 
-  $res_disc=listar_disciplina_para_boletim($conexao,$idturma,$idescola,$ano_letivo);
+  $res_disc=listar_disciplina_para_relatorio($conexao,$idturmas,$idescola,$ano_letivo);
 
-  // $res_disc=listar_disciplina_para_boletim($conexao,$idturma,$idescola,$ano_letivo);
-  // $res_disc=listar_disciplina_para_boletim($conexao,$idaluno,$ano_letivo);
+   
   $conta_parecer=0;
   $linha=0;
   $resultado_final=true;
@@ -391,7 +400,7 @@ for ($i=0; $i < $qnt_displina; $i++) {
    $array_aprovados_disciplina=array();
    $mult_displina=$qnt_displina;
 
-  $res_disc=listar_disciplina_para_boletim($conexao,$idturma,$idescola,$ano_letivo);
+  $res_disc=listar_disciplina_para_relatorio($conexao,$idturmas,$idescola,$ano_letivo);
 
 foreach ($res_disc as $key => $value) {
     $iddisciplina=$value['iddisciplina'];
@@ -418,7 +427,7 @@ foreach ($res_disc as $key => $value) {
     INNER JOIN turma ON ecidade_matricula.turma_id = turma.idturma
     INNER JOIN escola ON ecidade_matricula.turma_escola = escola.idescola
     WHERE ecidade_matricula.turma_escola = $idescola
-      AND ecidade_matricula.turma_id = $idturma
+      AND ecidade_matricula.turma_id $idturmas
       AND ecidade_matricula.calendario_ano = '$ano_letivo'
       AND ecidade_matricula.matricula_ativa='S'
     ORDER BY aluno.nome ASC");
@@ -437,7 +446,7 @@ foreach ($res_disc as $key => $value) {
       $result_nota_aula1=$conexao->query("
                 SELECT avaliacao,periodo_id,nota FROM nota_parecer WHERE
                 escola_id=$idescola and
-                turma_id=$idturma and
+                turma_id $idturmas and
                 disciplina_id=$iddisciplina and 
                 ano_nota=$ano_letivo and
                 periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id,nota,nota ");
@@ -556,7 +565,7 @@ foreach ($res_disc as $key => $value) {
   </td>
 
 <?php 
-  $res_disc_resultado=listar_disciplina_para_boletim($conexao,$idturma,$idescola,$ano_letivo);
+  $res_disc_resultado=listar_disciplina_para_relatorio($conexao,$idturmas,$idescola,$ano_letivo);
  
  
 foreach ($res_disc_resultado as $key_disc=> $value_disc) {
