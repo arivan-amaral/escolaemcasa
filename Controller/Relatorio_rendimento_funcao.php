@@ -827,7 +827,7 @@ foreach ($res_disc_resultado as $key_disc=> $value_disc) {
   margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
   style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'>N2 <o:p></o:p></span></p>
+  mso-fareast-language:PT-BR'>N <o:p></o:p></span></p>
   </td>
 
 
@@ -958,7 +958,7 @@ foreach ($res_disc_resultado as $key_disc=> $value_disc) {
   margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
   style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'><?php echo "$total_aprovados_geral"; ?><o:p></o:p></span></p>
+  mso-fareast-language:PT-BR'>*<?php //echo "$total_aprovados_geral"; ?><o:p></o:p></span></p>
   </td>
   <td width=80 nowrap colspan=2 rowspan=2 style='width:60.2pt;border-top:none;
   border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
@@ -984,7 +984,7 @@ foreach ($res_disc_resultado as $key_disc=> $value_disc) {
   margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
   style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'><?php echo "$total_reprovados_geral"; ?><o:p></o:p></span></p>
+  mso-fareast-language:PT-BR'>*<?php //echo "$total_reprovados_geral"; ?><o:p></o:p></span></p>
   </td>
   <td width=68 nowrap colspan=2 rowspan=2 style='width:51.1pt;border-top:none;
   border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
