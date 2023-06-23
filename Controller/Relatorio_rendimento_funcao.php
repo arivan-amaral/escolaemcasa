@@ -22,12 +22,12 @@ $idturma_aux=" IN(-1";
     // Explode a string em um array usando a vírgula como delimitador
     $valoresSelecionados = explode(',', $idturma);
 
+    $idturma_aux.=",".$valoresSelecionados[0];
 
     foreach ($valoresSelecionados as $value) {
       $idturmas.=",".$value;
     }
 
-    $idturma_aux=$valoresSelecionados[0];
 
   }
 
