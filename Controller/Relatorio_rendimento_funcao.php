@@ -1,4 +1,6 @@
-<?php session_start();
+<?php 
+set_time_limit(0);
+session_start();
 include_once '../Model/Conexao.php';
 include_once '../Model/Coordenador.php';
 include_once '../Model/Turma.php';
