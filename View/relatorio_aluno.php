@@ -231,6 +231,13 @@ if (!isset($_SESSION['idfuncionario'])) {
           <label class="form-check-label" for="flexCheckDefault">
             Cpf Aluno
           </label>
+        </div>        
+
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="aluno.cep_endereco" id="cep_endereco">
+          <label class="form-check-label" for="flexCheckDefault">
+            Cep
+          </label>
         </div>
       </div>
       

@@ -719,6 +719,8 @@ function pesquisa_relatorio_filtros(){
   var operacao_cond_idade = document.getElementById('operacao_cond_idade').value;
   var operacao_idade = document.getElementById('operacao_idade').value;
 
+  var cep_endereco = document.getElementById('cep_endereco');
+ 
   if(idaluno.checked) {
      if(contador == 0){
       texto+=idaluno.value;
@@ -849,7 +851,21 @@ if(cpf_aluno.checked) {
       parametro+="-endereco";
       contador++;
      }
+  }  
+  if(cep_endereco.checked) {
+     if(contador == 0){
+      texto+=cep_endereco.value;
+      titulo+="Cep";
+      parametro+="cep_endereco";
+      contador++;
+     }else{
+      texto+=","+endereco.value;
+      titulo+="-Endereço";
+      parametro+="-cep_endereco";
+      contador++;
+     }
   }
+  
   if(nome_escola.checked) {
      if(contador == 0){
       texto+=nome_escola.value;
@@ -863,6 +879,7 @@ if(cpf_aluno.checked) {
       contador++;
      }
   }
+
   if(nome_turma.checked) {
       if(contador == 0){
       texto+=nome_turma.value;
