@@ -279,7 +279,7 @@ if (!isset($_SESSION['idfuncionario'])) {
         <div class="col-sm-3">
           <div class="form-group">
            <label for="exampleInputEmail1">ESCOLA</label>
-           <select class="form-control"  id="escola" name="escola" >
+           <select class="form-control select2"  id="escola" name="escola" >
             <!-- <option value="Todas">TODAS</option> -->
             <?php  
        
