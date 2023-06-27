@@ -60,7 +60,7 @@ try {
 
     }    
 
-    if ($necessidade_especial=="Todos") {
+    if ($necessidade_especial=="todos") {
         $necessidade_especial=" ";
 
     }else if ($necessidade_especial=="sim") {
