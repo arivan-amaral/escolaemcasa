@@ -859,7 +859,7 @@ if(cpf_aluno.checked) {
       parametro+="cep_endereco";
       contador++;
      }else{
-      texto+=","+endereco.value;
+      texto+=","+cep_endereco.value;
       titulo+="-Endereço";
       parametro+="-cep_endereco";
       contador++;
