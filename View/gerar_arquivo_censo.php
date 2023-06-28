@@ -213,7 +213,25 @@ $conteudo = array(
 );
 
 // Criação do arquivo de texto
-$file = 'dados.txt';
+$file = fopen('dados.txt', 'w');
+
+// Escreve os títulos no arquivo
+foreach ($titulos as $titulo) {
+    fwrite($file, $titulo . "\t");
+}
+
+fwrite($file, "\n");
+
+// Escreve o conteúdo das variáveis no arquivo
+foreach ($conteudo as $var) {
+    fwrite($file, $$var . "|\t");
+}
+
+ 
+
+
+
+ 
 
 // Define o tipo de conteúdo como um arquivo de texto
 header('Content-Type: text/plain');
@@ -226,4 +244,6 @@ readfile($file);
 
 // Remove o arquivo após o download (opcional)
 unlink($file);
- ?>
+echo 'Arquivo criado com sucesso.';
+
+?>
