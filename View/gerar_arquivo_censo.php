@@ -219,7 +219,7 @@ $file = fopen('dados.txt', 'w');
 
 // Escreve os títulos no arquivo
 foreach ($titulos as $titulo) {
-    fwrite($file, $titulo . "|\t");
+    fwrite($file, $titulo . "|");
 }
 
 fwrite($file, "\n");
