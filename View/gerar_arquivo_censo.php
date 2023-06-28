@@ -212,6 +212,8 @@ $conteudo = array(
     'email'
 );
 
+// ... Seu código anterior ...
+
 // Criação do arquivo de texto
 $file = fopen('dados.txt', 'w');
 
@@ -227,23 +229,18 @@ foreach ($conteudo as $var) {
     fwrite($file, $$var . "|\t");
 }
 
- 
-
-
-
- 
+fclose($file);
 
 // Define o tipo de conteúdo como um arquivo de texto
 header('Content-Type: text/plain');
 
 // Define o cabeçalho Content-Disposition para fazer o download
-header('Content-Disposition: attachment; filename="' . $file . '"');
+header('Content-Disposition: attachment; filename="dados.txt"');
 
 // Lê o arquivo e o envia para a saída
-readfile($file);
+readfile('dados.txt');
 
-// Remove o arquivo após o download (opcional)
-unlink($file);
-echo 'Arquivo criado com sucesso.';
+// Remove o arquivo após o download
+unlink('dados.txt');
 
 ?>
