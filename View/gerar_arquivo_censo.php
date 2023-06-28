@@ -213,22 +213,17 @@ $conteudo = array(
 );
 
 // Criação do arquivo de texto
-$file = fopen('dados.txt', 'w');
+$file = 'dados.txt';
 
-// Escreve os títulos no arquivo
-foreach ($titulos as $titulo) {
-    fwrite($file, $titulo . "\t");
-}
+// Define o tipo de conteúdo como um arquivo de texto
+header('Content-Type: text/plain');
 
-fwrite($file, "\n");
+// Define o cabeçalho Content-Disposition para fazer o download
+header('Content-Disposition: attachment; filename="' . $file . '"');
 
-// Escreve o conteúdo das variáveis no arquivo
-foreach ($conteudo as $var) {
-    fwrite($file, $$var . "|\t");
-}
+// Lê o arquivo e o envia para a saída
+readfile($file);
 
-fclose($file);
-
-echo 'Arquivo criado com sucesso.';
-
-?>
+// Remove o arquivo após o download (opcional)
+unlink($file);
+ ?>
