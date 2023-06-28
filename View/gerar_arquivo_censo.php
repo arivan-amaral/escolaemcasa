@@ -219,14 +219,14 @@ $file = fopen('dados.txt', 'w');
 
 // Escreve os títulos no arquivo
 foreach ($titulos as $titulo) {
-    fwrite($file, $titulo . "\t");
+    fwrite($file, $titulo . "|\t");
 }
 
 fwrite($file, "\n");
 
 // Escreve o conteúdo das variáveis no arquivo
 foreach ($conteudo as $var) {
-    fwrite($file, $$var . "|\t");
+    fwrite($file, $$var . "\t");
 }
 
 fclose($file);
