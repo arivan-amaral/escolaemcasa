@@ -178,6 +178,53 @@
               </li>
 
 
+              ";  
+                echo "<li class='nav-item menu'>
+              <a href='./index.php' class='nav-link'>
+              <ion-icon name='clipboard-outline'></ion-icon>
+              <p>Busca Ativa <i class='right fas fa-angle-left'></i></p>
+              </a>
+              
+
+               <ul class='nav nav-treeview'>
+               <li class='nav-item'>
+               <a href='#' class='nav-link'>
+               <i class='far fa-circle nav-icon text-primary'></i>
+               <p>Relatório busca ativa</p>
+               </a>
+               </li>       
+
+               <ul class='nav nav-treeview'>
+               <li class='nav-item'>
+               <a href='#' class='nav-link'>
+               <i class='far fa-circle nav-icon text-primary'></i>
+               <p>Relatório de faltas</p>
+               </a>
+               </li>
+
+               <ul class='nav nav-treeview'>
+               <li class='nav-item'>
+               <a href='#' class='nav-link'>
+               <i class='far fa-circle nav-icon text-primary'></i>
+               <p>Registro de ligação</p>
+               </a>
+               </li>
+
+               <ul class='nav nav-treeview'>
+               <li class='nav-item'>
+               <a href='#' class='nav-link'>
+               <i class='far fa-circle nav-icon text-primary'></i>
+               <p>Ficai</p>
+               </a>
+               </li>
+
+               
+
+
+               </ul>
+              </li>
+
+
               ";
               
               if ($_SESSION['cargo']=='Coordenador' || $_SESSION['cargo']=='Coordenadora' || $_SESSION['cargo']=='Diretor' || $_SESSION["idfuncionario"] == 176 || $_SESSION["idfuncionario"] == 2121){
