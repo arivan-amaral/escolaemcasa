@@ -192,7 +192,8 @@
                <i class='far fa-circle nav-icon text-primary'></i>
                <p>Relatório busca ativa</p>
                </a>
-               </li>       
+               </li>  
+              </ul>     
 
                <ul class='nav nav-treeview'>
                <li class='nav-item'>
@@ -201,6 +202,8 @@
                <p>Relatório de faltas</p>
                </a>
                </li>
+              </ul>     
+
 
                <ul class='nav nav-treeview'>
                <li class='nav-item'>
@@ -209,6 +212,8 @@
                <p>Registro de ligação</p>
                </a>
                </li>
+              </ul>     
+
 
                <ul class='nav nav-treeview'>
                <li class='nav-item'>
@@ -217,6 +222,8 @@
                <p>Ficai</p>
                </a>
                </li>
+              </ul>     
+               
 
                
 
