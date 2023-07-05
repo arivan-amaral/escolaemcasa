@@ -187,43 +187,37 @@
               
 
                <ul class='nav nav-treeview'>
+              
                <li class='nav-item'>
                <a href='#' class='nav-link'>
                <i class='far fa-circle nav-icon text-primary'></i>
                <p>Relatório busca ativa</p>
                </a>
                </li>  
-              </ul>     
 
-               <ul class='nav nav-treeview'>
+
                <li class='nav-item'>
                <a href='#' class='nav-link'>
                <i class='far fa-circle nav-icon text-primary'></i>
                <p>Relatório de faltas</p>
                </a>
                </li>
-              </ul>     
 
-
-               <ul class='nav nav-treeview'>
+              
                <li class='nav-item'>
                <a href='#' class='nav-link'>
                <i class='far fa-circle nav-icon text-primary'></i>
                <p>Registro de ligação</p>
                </a>
                </li>
-              </ul>     
 
-
-               <ul class='nav nav-treeview'>
+            
                <li class='nav-item'>
                <a href='#' class='nav-link'>
                <i class='far fa-circle nav-icon text-primary'></i>
                <p>Ficai</p>
                </a>
                </li>
-              </ul>     
-               
 
                
 
