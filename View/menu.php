@@ -189,6 +189,14 @@
                <ul class='nav nav-treeview'>
               
                <li class='nav-item'>
+               <a href='relatorio_falta.php' class='nav-link'>
+               <i class='far fa-circle nav-icon text-primary'></i>
+               <p>Relatório de faltas</p>
+               </a>
+               </li>
+
+
+               <li class='nav-item'>
                <a href='#' class='nav-link'>
                <i class='far fa-circle nav-icon text-primary'></i>
                <p>Relatório busca ativa</p>
@@ -196,12 +204,6 @@
                </li>  
 
 
-               <li class='nav-item'>
-               <a href='#' class='nav-link'>
-               <i class='far fa-circle nav-icon text-primary'></i>
-               <p>Relatório de faltas</p>
-               </a>
-               </li>
 
               
                <li class='nav-item'>
@@ -215,7 +217,7 @@
                <li class='nav-item'>
                <a href='#' class='nav-link'>
                <i class='far fa-circle nav-icon text-primary'></i>
-               <p>Ficai</p>
+               <p>FICAI</p>
                </a>
                </li>
 
