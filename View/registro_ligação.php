@@ -167,13 +167,6 @@ setTimeout('dia_doservidor_publico();',3000);
    
    <br>
     <div class="row">
- <div class="col-md-4">
-          <label for="exampleInputEmail1">Escolha a turma</label>
-          <select class="form-control form-lg" id="turma_carterinha"  required="">
-            <option value="todas">TODAS</option>
-          </select>
-
-      </div>
 
 
 
@@ -209,6 +202,13 @@ setTimeout('dia_doservidor_publico();',3000);
           </div>
         </div>  
 
+ <div class="col-md-4">
+          <label for="exampleInputEmail1">Escolha a turma</label>
+          <select class="form-control form-lg" id="turma_carterinha"  required="">
+            <option value="todas">TODAS</option>
+          </select>
+
+      </div>
 
 
 

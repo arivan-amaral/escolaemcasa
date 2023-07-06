@@ -207,7 +207,7 @@
 
               
                <li class='nav-item'>
-               <a href='registro_ligação.php' class='nav-link'>
+               <a href='registro_ligacao.php' class='nav-link'>
                <i class='far fa-circle nav-icon text-primary'></i>
                <p>Registro de ligação</p>
                </a>
