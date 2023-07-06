@@ -169,7 +169,8 @@ setTimeout('dia_doservidor_publico();',3000);
     <div class="row">
  <div class="col-md-4">
           <label for="exampleInputEmail1">Escolha a turma</label>
-          <select class="form-control form-lg select2" id="turma_carterinha"  required="">
+          <select class="form-control form-lg" id="turma_carterinha"  required="">
+            <option value="todas">Todas</option>
           </select>
 
       </div>
@@ -179,7 +180,7 @@ setTimeout('dia_doservidor_publico();',3000);
         <div class="col-sm-4">
           <div class="form-group">
            <label for="exampleInputEmail1">ESCOLA</label>
-           <select class="form-control"  id="escola" name="escola" >
+           <select class="form-control"  id="idescola" onchange="listar_turma_escola_carterinha();" >
             <?php 
             try {
               
