@@ -163,11 +163,11 @@ setTimeout('dia_doservidor_publico();',3000);
 
   <!-- Inicio -Content Wrapper. Contains page content -->
   <div class="container">
-  <h2>RELATÓRIO MENSAL DE MATRÍCULAS</h2>
+  <h2>RELATÓRIO DE FALTA</h2>
    
    <br>
     <div class="row">
-        <div class="col-sm-2">
+<!--         <div class="col-sm-2">
           <br>
           <div class="checkbox-btn">
             <input type="checkbox" id="baixar_excel" name="baixar_excel">
@@ -176,7 +176,7 @@ setTimeout('dia_doservidor_publico();',3000);
               Baixar em excel?
             </label>
           </div>
-        </div>
+        </div> -->
 
         <div class="col-sm-2">
           <div class="form-group">
