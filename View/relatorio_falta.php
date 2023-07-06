@@ -163,7 +163,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
   <!-- Inicio -Content Wrapper. Contains page content -->
   <div class="container">
-  <h2>RELATÓRIO DE FALTA</h2>
+  <h2>RELATÓRIO DE FALTAS</h2>
    
    <br>
     <div class="row">
@@ -190,7 +190,32 @@ setTimeout('dia_doservidor_publico();',3000);
            <input type="date" class="form-control" name="data_final" id="data_final">
           </div>
         </div>
-       
+       <div class="col-sm-4">
+         <div class="form-group">
+          <label for="exampleInputEmail1">QUANTIDADE DE FALTAS</label>
+          <select class="form-control"  id="falta" name="falta">
+           <?php
+         
+           for ($i=1; $i < 60; $i++) { 
+
+             if($i > 1){
+               echo"<option value='$i'>$i faltas</option>
+             ";
+
+           }else{
+
+             echo"<option value='$i'>$i falta </option>
+             ";
+             
+           }
+         }
+           ?>
+          </select> 
+         </div>
+       </div>
+
+
+
         <div class="col-sm-5">
           <div class="form-group">
            <label for="exampleInputEmail1">ESCOLA</label>
