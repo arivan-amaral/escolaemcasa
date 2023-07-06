@@ -190,7 +190,7 @@ setTimeout('dia_doservidor_publico();',3000);
            <input type="date" class="form-control" name="data_final" id="data_final">
           </div>
         </div>
-       <div class="col-sm-4">
+       <div class="col-sm-2">
          <div class="form-group">
           <label for="exampleInputEmail1">QUANTIDADE DE FALTAS</label>
           <select class="form-control"  id="falta" name="falta">
@@ -216,7 +216,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
 
 
-        <div class="col-sm-5">
+        <div class="col-sm-4">
           <div class="form-group">
            <label for="exampleInputEmail1">ESCOLA</label>
            <select class="form-control"  id="escola" name="escola" >
