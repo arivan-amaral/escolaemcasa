@@ -223,20 +223,6 @@ setTimeout('dia_doservidor_publico();',3000);
           </div>
         </div>  
 
-        <div class="col-sm-4">
-          <div class="form-group">
-           <label for="exampleInputEmail1">Segmento</label>
-           <select class="form-control"  id="serie" name="serie" >
-              <option value="todos">TODOS</option>      
-              <option value="1">Infantil</option>      
-              <option value="2">Anos Iniciais</option>      
-              <option value="3">Anos Finais</option>      
-              <option value="4">EJA</option>      
-              <option value="5">Multisseriada</option>      
-          
-           </select> 
-          </div>
-        </div> 
 
 
 
