@@ -37,6 +37,7 @@ foreach ($res as $key => $value) {
 
 	$result.="<tr>";
 	$result.="<td>$nome_aluno</td>";
+	$result.="<td> <a  class='btn btn-success' >Registrar chamada</a> </td>";
 	$result.="<td>$quantidade_faltas</td>";
 	$result.="</tr>";
 }
