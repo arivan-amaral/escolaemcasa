@@ -4,9 +4,9 @@ include_once '../Model/Escola.php';
 include_once '../Model/Coordenador.php';
 include_once 'Conversao.php';
 $result="";
-$data_inicial=$_POST['data_inicial'];
-$data_final=$_POST['data_final'];
-$escola=$_POST['escola'];
+$data_inicial=$_GET['data_inicial'];
+$data_final=$_GET['data_final'];
+$escola=$_GET['escola'];
 
 $res=$conexao->query("SELECT a.nome AS nome_aluno, COUNT(f.presenca) AS quantidade_faltas
 FROM aluno a
