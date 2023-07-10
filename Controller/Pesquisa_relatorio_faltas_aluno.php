@@ -11,7 +11,7 @@ $data_final=$_GET['data_final'];
 $escola=$_GET['escola'];
 
 $res=$conexao->query("SELECT a.nome AS nome_aluno, COUNT(f.presenca) AS quantidade_faltas
-FROM aluno a , frequencia f
+FROM aluno a 
 LEFT JOIN frequencia f ON a.idaluno = f.aluno_id
 JOIN ecidade_matricula em ON a.idaluno = em.aluno_id
 WHERE f.data_frequncia BETWEEN '$data_inicial' AND '$data_final'
