@@ -1,4 +1,5 @@
 <?php 
+session_start();
 include_once '../Model/Conexao.php';
 include_once '../Model/Escola.php';
 include_once '../Model/Coordenador.php';
@@ -6,6 +7,8 @@ include_once 'Conversao.php';
 try {
 	
 $result="";
+$ano_letivo=$_SESSION['ano_letivo'];
+
 $data_inicial=$_GET['data_inicial'];
 $data_final=$_GET['data_final'];
 $escola=$_GET['escola'];
@@ -21,8 +24,8 @@ WHERE
 aluno.idaluno = frequencia.aluno_id and 
 aluno.idaluno = ecidade_matricula.aluno_id and 
 data_frequencia BETWEEN '$data_inicial' AND '$data_final'
-AND ecidade_matricula.matricula_ativa = 'S'  $escola
-GROUP BY aluno.idaluno
+AND ecidade_matricula.matricula_ativa = 'S' and ano_frequencia= '$ano_letivo'  $escola
+GROUP BY aluno.idaluno, frequencia.disciplina_id
 HAVING COUNT(frequencia.presenca) > 0
 ORDER BY quantidade_faltas desc"
 );
