@@ -163,77 +163,30 @@ setTimeout('dia_doservidor_publico();',3000);
 
   <!-- Inicio -Content Wrapper. Contains page content -->
   <div class="container">
-  <h2>REGISTRO DE LIGAÇÃO</h2>
+  <h2>CADASTRAR REGISTRO DE LIGAÇÃO</h2>
    
-   <br>
+
     <div class="row">
 
 
 
         <div class="col-sm-4">
           <div class="form-group">
-           <label for="exampleInputEmail1">ESCOLA</label>
-           <select class="form-control"  id="idescola" onchange="listar_turma_escola_carterinha();" >
-            <?php 
-            try {
-              
-           
-              if ($_SESSION['nivel_acesso_id']>=100) {
-            ?>
-                <option value="todas">TODAS</option>
-
-         
-            <?php  
-              }
-              // $res_escola = lista_escola($conexao); 
-              $res_escola= escola_associada($conexao,$idcoordenador);
-              foreach ($res_escola as $key => $value) {
-                $idescola = $value['idescola'];
-                $nome_escola = $value['nome_escola'];
-                echo "<option value='$idescola'>$nome_escola</option>";
-              }
-              } catch (Exception $e) {
-                echo "$e";
-              }
-            ?>
-            
-          
-           </select> 
+           <label for="exampleInputEmail1">Quem atendeu</label>
+           <input class="form-control"  name="quem_atendeu" > 
           </div>
-        </div>  
+        </div> 
+    </div>
 
- <div class="col-md-4">
-          <label for="exampleInputEmail1">Escolha a turma</label>
-          <select class="form-control form-lg" id="idturma"  required="">
-            <option value="todas">TODAS</option>
-          </select>
-
-      </div>
-
-
-
-        <div class="col-sm-2">
+        <div class="col-sm-4">
           <div class="form-group">
-          <a style="margin-top: 30PX;" class="btn btn-primary" onclick="pesquisa_registro_ligacao()">Buscar</a>
+           <label for="exampleInputEmail1">Descrição da chamada</label>
+           <textarea class="form-control"  name="descricao" ></textarea>
           </div>
-        </div>
-      </div>
-  <br>
-  <table class="table table-bordered table-striped" id="resultado">
-      
-  </table>
-</div>
+        </div> 
+    </div>
 
-<script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-</script>
+ 
             
 </div>
 
@@ -243,23 +196,9 @@ $(document).ready(function(){
 
 </aside>
 
-  <!-- /.control-sidebar -->
-  <script type="text/javascript">
-  const checkboxBtn = document.querySelector('.checkbox-btn input[type="checkbox"]');
-
-  checkboxBtn.addEventListener('change', () => {
-    const checkboxImage = checkboxBtn.parentNode.querySelector('.checkbox-btn__image');
-    if (checkboxBtn.checked) {
-      checkboxImage.style.opacity = 1;
-    } else {
-      checkboxImage.style.opacity = 0.5;
-    }
-  });
-
-</script>
-
  
 
+ 
  <?php 
 
     include_once 'rodape.php';

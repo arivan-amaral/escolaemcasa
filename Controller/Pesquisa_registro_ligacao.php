@@ -20,7 +20,7 @@ if ($escola =='todas') {
 	$escola=" and turma_escola = $escola ";
 
 }
-$res=$conexao->query("SELECT aluno.idaluno,aluno.whatsapp,aluno.whatsapp_responsavel, aluno.nome AS nome_aluno, COUNT(frequencia.presenca) AS quantidade_faltas
+$res=$conexao->query("SELECT aluno.nome AS nome_aluno, COUNT(frequencia.presenca) AS quantidade_faltas
 FROM aluno,ecidade_matricula,frequencia
 WHERE 
 aluno.idaluno = frequencia.aluno_id and 
@@ -32,15 +32,12 @@ HAVING COUNT(frequencia.presenca) >= $faltas
 ORDER BY quantidade_faltas desc"
 );
 foreach ($res as $key => $value) {
-	$idaluno=$value['idaluno'];
-	$whatsapp=$value['whatsapp'];
-	$whatsapp_responsavel=$value['whatsapp_responsavel'];
 	$nome_aluno=$value['nome_aluno'];
 	$quantidade_faltas=$value['quantidade_faltas'];
 
 	$result.="<tr>";
-	$result.="<td>$nome_aluno<br>CONTATO:<br> Tel1: $whatsapp<br>Tel2: $whatsapp_responsavel</td>";
-	$result.="<td> <a href='cadastro_registro_ligacao.php?data_inicial=$data_final&data_final=$data_final&idaluno=$idaluno' class='btn btn-success' >Registrar chamada</a> </td>";
+	$result.="<td>$nome_aluno</td>";
+	$result.="<td> <a  class='btn btn-success' >Registrar chamada</a> </td>";
 	$result.="<td>$quantidade_faltas</td>";
 	$result.="</tr>";
 }
