@@ -3,6 +3,8 @@ include_once '../Model/Conexao.php';
 include_once '../Model/Escola.php';
 include_once '../Model/Coordenador.php';
 include_once 'Conversao.php';
+try {
+	
 $result="";
 $data_inicial=$_GET['data_inicial'];
 $data_final=$_GET['data_final'];
@@ -28,4 +30,7 @@ foreach ($res as $key => $value) {
 	$result.="/<tr";
 }
 echo "$result";
+} catch (Exception $e) {
+echo "$e";	
+}
  ?>
