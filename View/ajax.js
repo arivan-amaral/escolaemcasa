@@ -1935,8 +1935,7 @@ function pesquisa_relatorio_faltas_aluno(){
          if (xmlreq.readyState == 4) {
              if (xmlreq.status == 200) {
                 result.innerHTML = xmlreq.responseText;
-                paginacao.innerHTML ="<button onclick='pesquisa_aluno_paginacao();' class='btn btn-block btn-default btn-sm'>Ver mais resultados</button> ";
-                
+     
              }else{
                    alert('Erro desconhecido, verifique sua conexão com a internet');
 
