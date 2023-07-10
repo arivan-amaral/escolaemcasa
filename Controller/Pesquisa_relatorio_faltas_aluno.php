@@ -12,7 +12,7 @@ $ano_letivo=$_SESSION['ano_letivo'];
 $data_inicial=$_GET['data_inicial'];
 $data_final=$_GET['data_final'];
 $escola=$_GET['escola'];
-$faltas=$_GET['faltas'];
+$faltas=$_GET['quantidade_falta'];
 
 if ($escola =='todas') {
 	$escola=" and turma_escola >0 ";
