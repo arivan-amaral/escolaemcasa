@@ -199,12 +199,12 @@ setTimeout('dia_doservidor_publico();',3000);
            for ($i=1; $i < 60; $i++) { 
 
              if($i > 1){
-               echo"<option value='$i'>$i faltas</option>
+               echo"<option value='$i'>+ de $i faltas </option>
              ";
 
            }else{
 
-             echo"<option value='$i'>$i falta </option>
+             echo"<option value='$i'>+ de $i falta </option>
              ";
              
            }
