@@ -1917,6 +1917,39 @@ function pesquisa_aluno(){
      xmlreq.send(null);
 }
 
+function pesquisa_relatorio_faltas_aluno(){
+    var result=document.getElementById('tabela_pesquisa');
+    var escola = document.getElementById('escola').value;
+    var data_inicial = document.getElementById('data_inicial').value;
+    var data_final = document.getElementById('escola').value;
+  
+
+        var xmlreq = CriaRequest();
+        result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
+
+        xmlreq.open("GET", "../Controller/Pesquisa_relatorio_faltas_aluno.php?data_inicial="+data_inicial+"&data_final="+data_final+"&escola="+escola, true);
+
+        xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                result.innerHTML = xmlreq.responseText;
+                paginacao.innerHTML ="<button onclick='pesquisa_aluno_paginacao();' class='btn btn-block btn-default btn-sm'>Ver mais resultados</button> ";
+                
+             }else{
+                   alert('Erro desconhecido, verifique sua conexão com a internet');
+
+                //result.innerHTML ="Erro ao receber mensagens";                 
+             }
+         }
+     };
+     xmlreq.send(null);
+}
+
+
+
+
+
 function pesquisa_aluno_paginacao(){
     var result=document.getElementById('tabela_pesquisa');
     var paginacao=document.getElementById('paginacao');

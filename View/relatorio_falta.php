@@ -7,7 +7,7 @@ if (!isset($_COOKIE['dia_doservidor_publico2'])) {
   setcookie('dia_doservidor_publico2', 0, (time()+(30*24*3600)));
   setcookie('dia_doservidor_publico2', $_COOKIE['dia_doservidor_publico2']+1);
 }
-  
+   
 ###################################################
 if (!isset($_SESSION['idcoordenador'])) {
   //header("location:index.php?status=0");
@@ -253,7 +253,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
         <div class="col-sm-2">
           <div class="form-group">
-          <a style="margin-top: 30PX;" class="btn btn-primary" onclick="pesquisa_matricula_mensal()">Buscar</a>
+          <a style="margin-top: 30PX;" class="btn btn-primary" onclick="pesquisa_relatorio_faltas_aluno()">Buscar</a>
           </div>
         </div>
       </div>
