@@ -38,7 +38,7 @@ foreach ($res as $key => $value) {
 	$result.="<tr";
 	$result.="<td>$nome_aluno</td>";
 	$result.="<td>$quantidade_faltas</td>";
-	$result.="/<tr";
+	$result.="</tr";
 }
 echo "$result";
 } catch (Exception $e) {
