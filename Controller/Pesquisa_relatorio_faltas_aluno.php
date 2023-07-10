@@ -28,7 +28,7 @@ aluno.idaluno = ecidade_matricula.aluno_id and
 data_frequencia BETWEEN '$data_inicial' AND '$data_final'
 AND ecidade_matricula.matricula_ativa = 'S' and ano_frequencia= '$ano_letivo'  $escola
 GROUP BY aluno.idaluno, frequencia.disciplina_id
-HAVING COUNT(frequencia.presenca) > $faltas
+HAVING COUNT(frequencia.presenca) >= $faltas
 ORDER BY quantidade_faltas desc"
 );
 foreach ($res as $key => $value) {
