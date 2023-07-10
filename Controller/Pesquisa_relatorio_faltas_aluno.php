@@ -40,7 +40,7 @@ foreach ($res as $key => $value) {
 
 	$result.="<tr>";
 	$result.="<td>$nome_aluno<br>CONTATO:<br> Tel1: $whatsapp<br>Tel2: $whatsapp_responsavel</td>";
-	$result.="<td> <a href='cadastro_registro_ligacao.php?data_inicial=$data_final&data_final=$data_final&idaluno=$idaluno' class='btn btn-success' >Registrar chamada</a> </td>";
+	$result.="<td> <a href='cadastrar_registro_ligacao.php?data_inicial=$data_final&data_final=$data_final&idaluno=$idaluno' class='btn btn-success' >Registrar chamada</a> </td>";
 	$result.="<td>$quantidade_faltas</td>";
 	$result.="</tr>";
 }
