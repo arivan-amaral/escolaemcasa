@@ -210,16 +210,20 @@ setTimeout('dia_doservidor_publico();',3000);
         </div> 
     </div>
 
+
+    <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+           <label for="exampleInputEmail1">Quem atendeu</label>
+           <input type="radio" class="form-control"  name="busca_exitosa" > 
+          </div>
+        </div> 
+    </div>
+
  
             
 </div>
-
-<aside class="control-sidebar control-sidebar-dark">
-
-  <!-- Control sidebar content goes here -->
-
-</aside>
-
+ 
  
 
  

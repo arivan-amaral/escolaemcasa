@@ -219,18 +219,18 @@ setTimeout('dia_doservidor_publico();',3000);
         <div class="col-sm-4">
           <div class="form-group">
            <label for="exampleInputEmail1">ESCOLA</label>
-           <select class="form-control"  id="escola" name="escola" >
+           <select class="form-control"  id="idescola" onchange="listar_turma_escola_carterinha();" >
             <?php 
             try {
               
            
-             // if ($_SESSION['nivel_acesso_id']>=100) {
+              if ($_SESSION['nivel_acesso_id']>=100) {
             ?>
                 <option value="todas">TODAS</option>
 
          
             <?php  
-             // }
+              }
               // $res_escola = lista_escola($conexao); 
               $res_escola= escola_associada($conexao,$idcoordenador);
               foreach ($res_escola as $key => $value) {
@@ -247,6 +247,15 @@ setTimeout('dia_doservidor_publico();',3000);
            </select> 
           </div>
         </div>  
+
+ <div class="col-md-4">
+          <label for="exampleInputEmail1">Escolha a turma</label>
+          <select class="form-control form-lg" id="idturma"  required="">
+            <option value="todas">TODAS</option>
+          </select>
+
+      </div>
+ 
 
 
 
