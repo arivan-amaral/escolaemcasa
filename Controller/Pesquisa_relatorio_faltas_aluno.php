@@ -24,6 +24,7 @@ $res=$conexao->query("SELECT aluno.idaluno,aluno.whatsapp,aluno.whatsapp_respons
 FROM aluno,ecidade_matricula,frequencia
 WHERE 
 aluno.idaluno = frequencia.aluno_id and 
+frequencia.presenca !=1 and 
 aluno.idaluno = ecidade_matricula.aluno_id and 
 data_frequencia BETWEEN '$data_inicial' AND '$data_final'
 AND ecidade_matricula.matricula_ativa = 'S' and ano_frequencia= '$ano_letivo'  $escola
