@@ -5293,6 +5293,33 @@ function rolar() {
 }
 
 
+ function listar_turma_escola_relatorio() {
+    var result = document.getElementById("idturma");
+    var idescola = document.getElementById("idescola").value;
+    var xmlreq = CriaRequest();   
+    result.innerHTML="<img src='imagens/carregando.gif'>";
+    xmlreq.open("GET", "../Controller/Listar_turma_escola_carterinha.php?idescola="+idescola, true);
+
+
+    xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                 result.innerHTML = xmlreq.responseText;
+
+             }else{
+
+                 result.innerHTML ="Verifique sua conexão com a internet!";
+               
+                 
+             }
+         }
+     };
+     xmlreq.send(null);
+ } 
+
+
+
  function listar_turma_escola_carterinha() {
     var result = document.getElementById("turma_carterinha");
     var idescola = document.getElementById("idescola").value;

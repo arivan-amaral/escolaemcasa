@@ -219,12 +219,12 @@ setTimeout('dia_doservidor_publico();',3000);
         <div class="col-sm-4">
           <div class="form-group">
            <label for="exampleInputEmail1">ESCOLA</label>
-           <select class="form-control"  id="idescola" onchange="listar_turma_escola_carterinha();" >
+           <select class="form-control"  id="idescola" onchange="listar_turma_escola_relatorio();" >
             <?php 
             try {
               
            
-              if ($_SESSION['nivel_acesso_id']>=100) {
+              if ($_SESSION['nivel_acesso_id']>=0) {
             ?>
                 <option value="todas">TODAS</option>
 
