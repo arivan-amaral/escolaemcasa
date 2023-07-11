@@ -21,15 +21,28 @@ if ($escola =='todas') {
 
 }
 $res=$conexao->query("SELECT aluno.nome AS nome_aluno, COUNT(frequencia.presenca) AS quantidade_faltas
-FROM aluno,ecidade_matricula,frequencia
+FROM aluno
+JOIN ecidade_matricula ON aluno.idaluno = ecidade_matricula.aluno_id
+LEFT JOIN (
+    SELECT DATE_ADD('$data_inicial', INTERVAL (t4.i*10000 + t3.i*1000 + t2.i*100 + t1.i*10 + t0.i) DAY) AS data
+    FROM
+        (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) AS t0,
+        (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) AS t1,
+        (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) AS t2,
+        (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) AS t3,
+        (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) AS t4
+    WHERE DATE_ADD('$data_inicial', INTERVAL (t4.i*10000 + t3.i*1000 + t2.i*100 + t1.i*10 + t0.i) DAY) <= '$data_final'
+) AS dates ON dates.data = frequencia.data_frequencia
 WHERE 
-aluno.idaluno = frequencia.aluno_id and 
-aluno.idaluno = ecidade_matricula.aluno_id and 
-data_frequencia BETWEEN '$data_inicial' AND '$data_final'
-AND ecidade_matricula.matricula_ativa = 'S' and ano_frequencia= '$ano_letivo'  $escola
+    aluno.idaluno = frequencia.aluno_id AND 
+    aluno.idaluno = ecidade_matricula.aluno_id AND 
+    ecidade_matricula.matricula_ativa = 'S' AND 
+    ano_frequencia = '$ano_letivo' $escola AND
+    (frequencia.presenca IS NULL OR frequencia.presenca != 1)
 GROUP BY aluno.idaluno, frequencia.disciplina_id
 HAVING COUNT(frequencia.presenca) >= $faltas
-ORDER BY quantidade_faltas desc"
+ORDER BY quantidade_faltas DESC;
+"
 );
 foreach ($res as $key => $value) {
 	$nome_aluno=$value['nome_aluno'];
