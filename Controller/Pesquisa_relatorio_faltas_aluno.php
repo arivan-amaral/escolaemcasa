@@ -28,7 +28,7 @@ frequencia.presenca !=1 and
 aluno.idaluno = ecidade_matricula.aluno_id and 
 data_frequencia BETWEEN '$data_inicial' AND '$data_final'
 AND ecidade_matricula.matricula_ativa = 'S' and ano_frequencia= '$ano_letivo'  $escola
-GROUP BY aluno.idaluno, frequencia.disciplina_id
+GROUP BY frequencia.aluno_id
 HAVING COUNT(frequencia.presenca) >= $faltas
 ORDER BY  aluno.nome asc, quantidade_faltas desc "
 );
