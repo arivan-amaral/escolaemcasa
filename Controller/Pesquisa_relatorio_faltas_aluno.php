@@ -12,12 +12,20 @@ $ano_letivo=$_SESSION['ano_letivo'];
 $data_inicial=$_GET['data_inicial'];
 $data_final=$_GET['data_final'];
 $escola=$_GET['escola'];
+$turmas=$_GET['turmas'];
 $faltas=$_GET['quantidade_falta'];
 
 if ($escola =='todas') {
 	$escola=" and turma_escola >0 ";
 }else{
 	$escola=" and turma_escola = $escola ";
+
+}
+if ($escola =='todas') {
+	$turmas=" and ecidade_matricula.turma_id >0 ";
+}else{
+		$turmas=" and ecidade_matricula.turma_id = $turmas ";
+
 
 }
 $res=$conexao->query("SELECT aluno.idaluno,aluno.whatsapp,aluno.whatsapp_responsavel, aluno.nome AS nome_aluno, COUNT(frequencia.presenca) AS quantidade_faltas
@@ -27,7 +35,7 @@ aluno.idaluno = frequencia.aluno_id and
 frequencia.presenca !=1 and 
 aluno.idaluno = ecidade_matricula.aluno_id and 
 data_frequencia BETWEEN '$data_inicial' AND '$data_final'
-AND ecidade_matricula.matricula_ativa = 'S' and ano_frequencia= '$ano_letivo'  $escola
+AND ecidade_matricula.matricula_ativa = 'S' and ano_frequencia= '$ano_letivo'  $escola $turmas
 GROUP BY frequencia.aluno_id
 HAVING COUNT(frequencia.presenca) >= $faltas
 ORDER BY  aluno.nome asc, quantidade_faltas desc "

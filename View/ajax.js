@@ -1920,6 +1920,7 @@ function pesquisa_aluno(){
 function pesquisa_relatorio_faltas_aluno(){
     var result=document.getElementById('tabela_pesquisa');
     var escola = document.getElementById('idescola').value;
+    var turmas = document.getElementById('idturma').value;
     var quantidade_falta = document.getElementById('quantidade_falta').value;
     var data_inicial = document.getElementById('data_inicial').value;
     var data_final = document.getElementById('data_final').value;
@@ -1928,7 +1929,7 @@ function pesquisa_relatorio_faltas_aluno(){
         var xmlreq = CriaRequest();
         result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
 
-        xmlreq.open("GET", "../Controller/Pesquisa_relatorio_faltas_aluno.php?quantidade_falta="+quantidade_falta+"&data_inicial="+data_inicial+"&data_final="+data_final+"&escola="+escola, true);
+        xmlreq.open("GET", "../Controller/Pesquisa_relatorio_faltas_aluno.php?turmas="+turmas+"&quantidade_falta="+quantidade_falta+"&data_inicial="+data_inicial+"&data_final="+data_final+"&escola="+escola, true);
 
         xmlreq.onreadystatechange = function(){
       
