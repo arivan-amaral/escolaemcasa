@@ -171,20 +171,26 @@ setTimeout('dia_doservidor_publico();',3000);
 
     <div class="row">
 
-
-
+        <div class="col-sm-3">
           <div class="form-group">
            <label for="exampleInputEmail1">Periodo inicial</label>
            <input type="date" class="form-control"  name="data_inicial" readonly> 
+          </div>
+        </div>  
+
         <div class="col-sm-3">
+          <div class="form-group">
            <label for="exampleInputEmail1">Periodo final</label>
            <input type="date" class="form-control"  name="data_final" readonly> 
           </div>
-        </div>        
+        </div>  
+              
         <div class="col-sm-3">
+          <div class="form-group">
            <label for="exampleInputEmail1">Quantidade faltas</label>
            <input type="text" class="form-control"  name="quantidade_faltas" readonly> 
           </div>
+        </div>
       
     </div>
     <div class="row">
