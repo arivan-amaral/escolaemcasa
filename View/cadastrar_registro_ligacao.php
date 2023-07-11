@@ -166,7 +166,6 @@ setTimeout('dia_doservidor_publico();',3000);
   <h2>CADASTRAR REGISTRO DE LIGAÇÃO</h2>
    
 
-    <div class="row">
 
 
 
@@ -188,6 +187,7 @@ setTimeout('dia_doservidor_publico();',3000);
           </div>
       
     </div>
+    <div class="row">
         <div class="col-sm-4">
           <div class="form-group">
            <label for="exampleInputEmail1">Quem atendeu</label>
