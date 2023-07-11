@@ -186,7 +186,7 @@ setTimeout('dia_doservidor_publico();',3000);
            <label for="exampleInputEmail1">Quantidade faltas</label>
            <input type="text" class="form-control"  name="quantidade_faltas" readonly> 
           </div>
-        </div> 
+      
     </div>
         <div class="col-sm-4">
           <div class="form-group">
