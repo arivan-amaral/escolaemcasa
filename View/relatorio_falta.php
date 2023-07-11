@@ -204,7 +204,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
            }else{
 
-             echo"<option value='$i'>+ de $i falta </option>
+             echo"<option value='$i'> $i ou + falta consecutiva</option>
              ";
              
            }
