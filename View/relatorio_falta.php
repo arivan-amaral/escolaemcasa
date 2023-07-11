@@ -190,7 +190,7 @@ setTimeout('dia_doservidor_publico();',3000);
            <input type="date" class="form-control" name="data_final" id="data_final">
           </div>
         </div>
-       <div class="col-sm-2">
+       <div class="col-sm-3">
          <div class="form-group">
           <label for="exampleInputEmail1">QUANTIDADE DE FALTAS</label>
           <select class="form-control"  id="quantidade_falta" name="quantidade_falta">
@@ -199,7 +199,7 @@ setTimeout('dia_doservidor_publico();',3000);
            for ($i=1; $i < 60; $i++) { 
 
              if($i > 1){
-               echo"<option value='$i'>+ de $i faltas </option>
+               echo"<option value='$i'> $i ou + faltas consecutiva</option>
              ";
 
            }else{
