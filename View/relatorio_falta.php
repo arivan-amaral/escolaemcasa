@@ -193,7 +193,7 @@ setTimeout('dia_doservidor_publico();',3000);
        <div class="col-sm-3">
          <div class="form-group">
           <label for="exampleInputEmail1">QUANTIDADE DE FALTAS</label>
-          <select class="form-control"  id="quantidade_falta" name="quantidade_falta">
+          <select class="form-control"  id="falta" name="quantidade_falta">
            <?php
          
            for ($i=1; $i < 60; $i++) { 
@@ -262,12 +262,12 @@ setTimeout('dia_doservidor_publico();',3000);
 
         <div class="col-sm-2">
           <div class="form-group">
-          <a style="margin-top: 30PX;" class="btn btn-primary" onclick="pesquisa_relatorio_faltas_aluno()">Buscar</a>
+          <a style="margin-top: 30PX;" class="btn btn-primary" onclick="pesquisa_frequencia()">Buscar</a>
           </div>
         </div>
       </div>
   <br>
-  <table class="table table-bordered table-striped" id="tabela_pesquisa">
+  <table class="table table-bordered table-striped" id="resultado">
       
   </table>
 </div>
