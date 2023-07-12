@@ -73,7 +73,7 @@ INNER JOIN aluno ON ecidade_matricula.aluno_id = aluno.idaluno
 INNER JOIN turma ON ecidade_matricula.turma_id = turma.idturma
 INNER JOIN escola ON ecidade_matricula.turma_escola = escola.idescola
 WHERE
-  AND ecidade_matricula.calendario_ano = '$ano_letivo'
+   ecidade_matricula.calendario_ano = '$ano_letivo'
   AND ecidade_matricula.matricula_ativa = 'S'
  $idescola $idturma
 ORDER BY aluno.nome ASC");
