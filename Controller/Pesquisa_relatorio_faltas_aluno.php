@@ -48,7 +48,32 @@ if ($idturma =='todas') {
         
         }
 
- 
+echo "SELECT
+    aluno.aluno_transpublico, 
+    aluno.linha_transporte,
+    aluno.imagem_carteirinha_transporte ,
+    aluno.nome AS nome_aluno,
+    aluno.sexo,
+    aluno.data_nascimento,
+    aluno.idaluno,
+    aluno.email,
+    aluno.status AS status_aluno,
+    aluno.senha,
+    turma.nome_turma,
+    turma.idturma as turma_id,
+    ecidade_matricula.matricula_codigo AS matricula,
+    ecidade_matricula.turma_escola AS 'escola_id',
+    ecidade_matricula.matricula_datamatricula AS data_matricula,
+    ecidade_matricula.datasaida AS datasaida
+FROM ecidade_matricula
+INNER JOIN aluno ON ecidade_matricula.aluno_id = aluno.idaluno
+INNER JOIN turma ON ecidade_matricula.turma_id = turma.idturma
+INNER JOIN escola ON ecidade_matricula.turma_escola = escola.idescola
+WHERE
+   ecidade_matricula.calendario_ano = '$ano_letivo'
+  AND ecidade_matricula.matricula_ativa = 'S'
+ $idescola $idturma
+ORDER BY aluno.nome ASC";
 
 
     $resultado=$conexao->query("
@@ -115,25 +140,25 @@ ORDER BY aluno.nome ASC");
 
    
 
-       //     foreach ($array_datas as $key => $datas) {
+           foreach ($array_datas as $key => $datas) {
              
-       //         // if ($faltas_aluno<=$quantidade_falta) {
-       //             $res=$conexao->query("SELECT * FROM frequencia WHERE ano_frequencia='$ano_letivo' and
-       //              data_frequencia ='$datas' and aluno_id=$idaluno and turma_id=$turma_id and escola_id=$escola_id  and  presenca !=1 limit 1 ");
+               // if ($faltas_aluno<=$quantidade_falta) {
+                   $res=$conexao->query("SELECT * FROM frequencia WHERE ano_frequencia='$ano_letivo' and
+                    data_frequencia ='$datas' and aluno_id=$idaluno and turma_id=$turma_id and escola_id=$escola_id  and  presenca !=1 limit 1 ");
                   
-       //             if (count($res->fetchAll())>0) {
-       //                $faltas_aluno++;
-       //             }else{
-       //                  $faltas_aluno=0;
-       //             }
-       //         // }
+                   if (count($res->fetchAll())>0) {
+                      $faltas_aluno++;
+                   }else{
+                        $faltas_aluno=0;
+                   }
+               // }
 
   
-       // }
+       }
 
 
 
-    // if ($faltas_aluno>=$quantidade_falta || $quantidade_falta=='total') {
+    if ($faltas_aluno>=$quantidade_falta || $quantidade_falta=='total') {
 
             $result.="
                <tr> 
@@ -154,7 +179,7 @@ ORDER BY aluno.nome ASC");
                ";
     $conta_aluno++;
      
-    // }
+    }
 
     $faltas_aluno=0;
     }
