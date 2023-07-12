@@ -271,11 +271,6 @@ $(document).ready(function(){
             
 </div>
 
-<aside class="control-sidebar control-sidebar-dark">
-
-  <!-- Control sidebar content goes here -->
-
-</aside>
 
   <!-- /.control-sidebar -->
   <script type="text/javascript">
@@ -292,7 +287,7 @@ $(document).ready(function(){
 
 </script>
 
- 
+ </div>
 
  <?php 
 
