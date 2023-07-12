@@ -133,7 +133,7 @@ ORDER BY aluno.nome ASC");
 
 
 
-    if ($faltas_aluno>=$quantidade_falta || $quantidade_falta=='total') {
+    // if ($faltas_aluno>=$quantidade_falta || $quantidade_falta=='total') {
 
             $result.="
                <tr> 
@@ -154,7 +154,7 @@ ORDER BY aluno.nome ASC");
                ";
     $conta_aluno++;
      
-    }
+    // }
 
     $faltas_aluno=0;
     }
