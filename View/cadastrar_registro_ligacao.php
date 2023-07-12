@@ -212,7 +212,7 @@ setTimeout('dia_doservidor_publico();',3000);
         <div class="col-sm-4">
           <div class="form-group">
            <label for="exampleInputEmail1">Descrição da chamada</label>
-           <textarea class="form-control"  name="descricao" ></textarea>
+           <textarea class="form-control"  name="descricao_chamada" ></textarea>
           </div>
         </div> 
     </div>
