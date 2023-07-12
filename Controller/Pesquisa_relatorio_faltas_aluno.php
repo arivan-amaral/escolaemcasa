@@ -64,7 +64,7 @@ if ($idturma =='todas') {
     aluno.status AS status_aluno,
     aluno.senha,
     turma.nome_turma,
-    turma.turma_id,
+    turma.idturma as turma_id,
     ecidade_matricula.matricula_codigo AS matricula,
     ecidade_matricula.matricula_datamatricula AS data_matricula,
     ecidade_matricula.datasaida AS datasaida
