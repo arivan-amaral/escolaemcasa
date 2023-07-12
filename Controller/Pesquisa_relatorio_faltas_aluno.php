@@ -66,7 +66,7 @@ if ($idturma =='todas') {
     turma.nome_turma,
     turma.idturma as turma_id,
     ecidade_matricula.matricula_codigo AS matricula,
-    ecidade_matricula.turma_escola AS escola_id,
+    ecidade_matricula.turma_escola AS 'escola_id',
     ecidade_matricula.matricula_datamatricula AS data_matricula,
     ecidade_matricula.datasaida AS datasaida
 FROM ecidade_matricula
@@ -102,7 +102,7 @@ ORDER BY aluno.nome ASC");
        $senha=$value['senha'];
        $matricula_aluno=$value['matricula'];
        $turma_id=$value['turma_id'];
-       $escola_id=$value['turma_escola'];
+       $escola_id=$value['escola_id'];
 
        // $serie_seguimento=verifica_seguimento($conexao,$turma_id);
        // $seguimento=$serie_seguimento['seguimento'];
@@ -114,10 +114,9 @@ ORDER BY aluno.nome ASC");
 
            foreach ($array_datas as $key => $datas) {
                if ($faltas_aluno<=$quantidade_falta) {
-               	echo "SELECT * FROM frequencia WHERE ano_frequencia='$ano_letivo' and
-                    data_frequencia ='$datas' and aluno_id=$idaluno and turma_id=$turma_id and escola_id=$escola_id  and  presenca !=1 limit 1 ";
-                   // $res=$conexao->query("SELECT * FROM frequencia WHERE ano_frequencia='$ano_letivo' and
-                   //  data_frequencia ='$datas' and aluno_id=$idaluno and turma_id=$turma_id and escola_id=$escola_id  and  presenca !=1 limit 1 ");
+              
+                   $res=$conexao->query("SELECT * FROM frequencia WHERE ano_frequencia='$ano_letivo' and
+                    data_frequencia ='$datas' and aluno_id=$idaluno and turma_id=$turma_id and escola_id=$escola_id  and  presenca !=1 limit 1 ");
                   
                    if (count($res->fetchAll())>0) {
                       $faltas_aluno++;
