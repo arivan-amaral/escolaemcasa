@@ -169,23 +169,31 @@ setTimeout('dia_doservidor_publico();',3000);
 
 
 
-    <div class="row">
+        <div class="row">
+   
+        <div class="col-sm-4">
+           <label for="exampleInputEmail1">idaluno</label><br>
+        
+           <input type="text"   name="idaluno" value="<?php echo $_GET['idaluno'] ?>" readonly  >  
+          </div>
+        </div> 
 
+    <div class="row">
         <div class="col-sm-3">
           <div class="form-group">
-           <label for="exampleInputEmail1">Periodo inicial</label>
-           <input type="date" class="form-control"  name="data_inicial" readonly> 
+           <label for="exampleInputEmail1">Período inicial</label>
+           <input type="date" class="form-control"  name="data_inicial" value="<?php echo $_GET['data_inicial'] ?>" readonly> 
           </div>
         </div>  
 
         <div class="col-sm-3">
           <div class="form-group">
-           <label for="exampleInputEmail1">Periodo final</label>
-           <input type="date" class="form-control"  name="data_final" readonly> 
+           <label for="exampleInputEmail1">Período final</label>
+           <input type="date" class="form-control"  name="data_final" value="<?php echo $_GET['data_final'] ?>" readonly> 
           </div>
         </div>  
               
-        <div class="col-sm-3">
+        <div class="col-sm-1">
           <div class="form-group">
            <label for="exampleInputEmail1">Quantidade faltas</label>
            <input type="text" class="form-control"  name="quantidade_faltas" readonly> 
@@ -212,7 +220,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
 
     <div class="row">
-        <div class="col-sm-1"></div>
+        <div class="col-sm-2"></div>
         <div class="col-sm-4">
            <label for="exampleInputEmail1">Busca existosa</label><br>
         
@@ -222,7 +230,7 @@ setTimeout('dia_doservidor_publico();',3000);
         </div>     
 
         <div class="row">
-        <div class="col-sm-1"></div>
+        <div class="col-sm-2"></div>
 
         <div class="col-sm-4">
            <label for="exampleInputEmail1">FICAI</label><br>
