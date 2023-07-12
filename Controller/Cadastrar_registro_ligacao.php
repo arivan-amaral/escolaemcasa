@@ -23,21 +23,17 @@ try{
     // Preparar e executar o INSERT na tabela
     $stmt = $conexao->prepare("INSERT INTO busca_ativa (aluno_id, periodo_inicial, periodo_final, quantidade_faltas, funcionario_id, quem_atendeu, descricao_chamada, exitosa, ficai) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-    if ( $stmt->execute(array( $idaluno, $data_inicial, $data_final, $quantidade_faltas,$funcionario_id, $quemAtendeu, $descricaoChamada, $exitosa, $ficai))) {
+    $stmt->execute(array( $idaluno, $data_inicial, $data_final, $quantidade_faltas,$funcionario_id, $quemAtendeu, $descricaoChamada, $exitosa, $ficai));
         $_SESSION['status']=1;
         header("Location:../View/registro_ligacao.php");
-    } else {
-        $_SESSION['status']=0;
-       header("Location:../View/relatorio_falta.php");
-
-    }
+ 
 
 
 
 } catch (Exception $e) {
             $_SESSION['status']=0;
        header("Location:../View/relatorio_falta.php");
-       //  echo $e;
+         echo $e;
 }
 
 
