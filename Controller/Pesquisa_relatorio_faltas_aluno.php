@@ -116,7 +116,8 @@ ORDER BY aluno.nome ASC");
                // if ($faltas_aluno<=$quantidade_falta) {
                    $res=$conexao->query("SELECT * FROM frequencia WHERE ano_frequencia='$ano_letivo' and
                     data_frequencia ='$datas' and aluno_id=$idaluno and turma_id=$turma_id and escola_id=$escola_id  and  presenca !=1 limit 1 ");
-                  
+                  echo "SELECT * FROM frequencia WHERE ano_frequencia='$ano_letivo' and
+                    data_frequencia ='$datas' and aluno_id=$idaluno and turma_id=$turma_id and escola_id=$escola_id  and  presenca !=1 limit 1 <br>";
                    if (count($res->fetchAll())>0) {
                       $faltas_aluno++;
                    }else{
@@ -158,7 +159,7 @@ ORDER BY aluno.nome ASC");
 
 
 
-    
+
     echo "$result";
      
      } catch (Exception $e) {
