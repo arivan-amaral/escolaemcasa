@@ -12,9 +12,6 @@
     $idturma = $_GET['idturma'];
     $idturma = $_GET['idturma'];
     
-    $serie_seguimento=verifica_seguimento($conexao,$idturma);
-    $seguimento=$serie_seguimento['seguimento'];
-    $idserie=$serie_seguimento['serie_id'];
 
     $idescola = $_GET['idescola'];
     $data_inicial = $_GET['data_inicial'];
@@ -67,6 +64,7 @@ if ($idturma =='todas') {
     aluno.status AS status_aluno,
     aluno.senha,
     turma.nome_turma,
+    turma.turma_id,
     ecidade_matricula.matricula_codigo AS matricula,
     ecidade_matricula.matricula_datamatricula AS data_matricula,
     ecidade_matricula.datasaida AS datasaida
@@ -76,7 +74,7 @@ INNER JOIN turma ON ecidade_matricula.turma_id = turma.idturma
 INNER JOIN escola ON ecidade_matricula.turma_escola = escola.idescola
 WHERE $idescola $idturma
   AND ecidade_matricula.calendario_ano = '$ano_letivo'
-  AND ecidade_matricula.matricula_situacao != 'CANCELADO'
+  AND ecidade_matricula.matricula_ativa = 'S'
 ORDER BY aluno.nome ASC");
     $result="
                 <thead>
@@ -91,6 +89,7 @@ ORDER BY aluno.nome ASC");
     $conta_aluno=1;
 
      foreach ($resultado as $key => $value) {
+
        $nome_aluno=($value['nome_aluno']);
        $nome_turma=($value['nome_turma']);
        $id=$value['idaluno'];
@@ -100,6 +99,12 @@ ORDER BY aluno.nome ASC");
        $data_nascimento=converte_data($value['data_nascimento']);
        $senha=$value['senha'];
        $matricula_aluno=$value['matricula'];
+       $turma_id=$value['turma_id'];
+
+       $serie_seguimento=verifica_seguimento($conexao,$turma_id);
+       $seguimento=$serie_seguimento['seguimento'];
+       $idserie=$serie_seguimento['serie_id'];
+
         $faltas_aluno=0;
 
      if ( $quantidade_falta=="Total" ) {
@@ -109,7 +114,7 @@ ORDER BY aluno.nome ASC");
 
             // foreach ($array_datas as $key => $datas) {
               
-                    $res_cont=$conexao->query("SELECT COUNT(*) as 'quantidade',data_frequencia FROM frequencia WHERE ano_frequencia='$ano_letivo' and aluno_id=$idaluno and turma_id=$idturma and escola_id=$idescola and  presenca !=1    and
+                    $res_cont=$conexao->query("SELECT COUNT(*) as 'quantidade',data_frequencia FROM frequencia WHERE ano_frequencia='$ano_letivo' and aluno_id=$idaluno and turma_id=$idturma and escola_id=$idescola and  presenca != 1    and
                      (data_frequencia BETWEEN '$data_inicial' and '$data_final') GROUP BY data_frequencia");
                         
                         $quantidade_f=0;
