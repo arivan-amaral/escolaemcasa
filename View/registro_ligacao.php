@@ -229,7 +229,7 @@ $sql = "SELECT id, quem_atendeu, descricao_chamada, exitosa, ficai, data FROM su
 // Executa a consulta e verifica se ocorreu algum erro
 $result = $conexao->query($sql);
 
-    echo "<table>
+    echo " 
             <tr>
                 <th>ID</th>
                 <th>Quem Atendeu</th>
@@ -248,7 +248,7 @@ $result = $conexao->query($sql);
                 <td>" . $row["data"] . "</td>
             </tr>";
     }
-    echo "</table>";
+    echo "";
  
 
  
