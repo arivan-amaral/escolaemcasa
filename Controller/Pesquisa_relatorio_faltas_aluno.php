@@ -48,7 +48,7 @@ if ($idturma =='todas') {
         
         }
 
-
+ 
 
 
     $resultado=$conexao->query("
