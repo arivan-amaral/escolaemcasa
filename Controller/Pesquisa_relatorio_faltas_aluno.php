@@ -133,8 +133,7 @@ ORDER BY aluno.nome ASC");
 
 
     if ($faltas_aluno>=$quantidade_falta || $quantidade_falta=='total') {
-     // <td> <a href='cadastrar_registro_ligacao.php?data_inicial=$data_inicio&data_final=$data_fim&idaluno=$idaluno' class='btn btn-success' >Registrar chamada</a> 
-     //              </td>
+
             $result.="
                <tr> 
                    <td>
@@ -146,7 +145,8 @@ ORDER BY aluno.nome ASC");
                  $id - $nome_aluno
                     
                   </td>
-             
+                  <td> <a href='cadastrar_registro_ligacao.php?data_inicial=$data_inicial&data_final=$data_final&idaluno=$idaluno' class='btn btn-success' >Registrar chamada</a> 
+                  </td>
                   <td>
                     $faltas_aluno
                   </td>
