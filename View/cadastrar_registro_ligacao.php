@@ -243,7 +243,7 @@ setTimeout('dia_doservidor_publico();',3000);
         <div class="row">
           <div class="col-sm-12">
             <div class="form-group">
-               <button  type="button" class="btn btn-block btn-success">Enviar</button>
+               <button  type="submit" class="btn btn-block btn-success">Enviar</button>
 
            </div>
           </div>
