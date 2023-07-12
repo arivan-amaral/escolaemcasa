@@ -223,8 +223,8 @@ setTimeout('dia_doservidor_publico();',3000);
         <div class="col-sm-4">
            <label for="exampleInputEmail1">Busca exitosa</label><br>
         
-           Sim<input type="radio"   name="busca_exitosa" value="1" checked >  
-           Não<input type="radio"   name="busca_exitosa" value="0">  
+           Sim<input type="radio"   name="exitosa" value="1" checked >  
+           Não<input type="radio"   name="exitosa" value="0">  
           </div>
         </div>     
 
