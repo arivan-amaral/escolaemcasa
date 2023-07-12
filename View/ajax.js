@@ -6216,7 +6216,7 @@ function pesquisa_relatorio_faltas_aluno(){
                result.innerHTML = xmlreq.responseText;
 
          }else{
-               alert('Erro desconhecido, verifique sua conexão com a internet');
+               alert('Erro.');
 
             result.innerHTML ="Erro ao receber mensagens";                 
          }
