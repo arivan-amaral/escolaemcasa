@@ -24,15 +24,15 @@
       
 
       if ($idescola =='todas') {
-	$idescola=" and turma_escola >0 ";
+	$idescola=" and escola.idescola >0 ";
 }else{
-	$idescola=" and turma_escola = $idescola ";
+	$idescola=" and escola.idescola = $idescola ";
 
 }
 if ($idturma =='todas') {
-	$idturma=" and ecidade_matricula.turma_id >0 ";
+	$idturma=" and turma.idturma >0 ";
 }else{
-		$idturma=" and ecidade_matricula.turma_id = $idturma ";
+		$idturma=" and turma.idturma = $idturma ";
 
 
 }
@@ -102,52 +102,18 @@ ORDER BY aluno.nome ASC");
        $matricula_aluno=$value['matricula'];
        $turma_id=$value['turma_id'];
 
-       $serie_seguimento=verifica_seguimento($conexao,$turma_id);
-       $seguimento=$serie_seguimento['seguimento'];
-       $idserie=$serie_seguimento['serie_id'];
+       // $serie_seguimento=verifica_seguimento($conexao,$turma_id);
+       // $seguimento=$serie_seguimento['seguimento'];
+       // $idserie=$serie_seguimento['serie_id'];
 
         $faltas_aluno=0;
 
-     if ( $quantidade_falta=="Total" ) {
-
-        if ( ($seguimento!='' && $seguimento <3) || $idserie <8 ) {
-
-
-            // foreach ($array_datas as $key => $datas) {
-              
-                    $res_cont=$conexao->query("SELECT COUNT(*) as 'quantidade',data_frequencia FROM frequencia WHERE ano_frequencia='$ano_letivo' and aluno_id=$idaluno and turma_id=$idturma and escola_id=$idescola and  presenca != 1    and
-                     (data_frequencia BETWEEN '$data_inicial' and '$data_final') GROUP BY data_frequencia");
-                        
-                        $quantidade_f=0;
-                        foreach ($res_cont as $keyInf => $valueInf) {
-                           // $faltas_aluno+=$valueInf['quantidade'];
-                           $faltas_aluno++;
-                        }
-            
-                
-            // }
-            //$faltas_aluno="Total fund1 e infantil seg $seguimento $idserie ";
-
-
-        }else if ( ($seguimento!='' && $seguimento <3)  || ( $idserie >7 && $idserie<16)) {
-           
-           $res_pre=$conexao->query("SELECT count(*) AS'quantidade' from frequencia where presenca=0 and aluno_id=$idaluno and escola_id=$idescola and turma_id=$idturma and data_frequencia BETWEEN '$data_inicial' and '$data_final' ");
-
-               foreach ($res_pre as $keyPre => $valuePre) {
-                    $faltas_aluno=$valuePre['quantidade'];
-               }
-
-
-        }
-            // $faltas_aluno="Total fund2 ";
-
-
-    }else{
+   
 
            foreach ($array_datas as $key => $datas) {
                if ($faltas_aluno<=$quantidade_falta) {
                    $res=$conexao->query("SELECT * FROM frequencia WHERE ano_frequencia='$ano_letivo' and
-                    data_frequencia ='$datas' and aluno_id=$idaluno and turma_id=$idturma and escola_id=$idescola and  presenca in(0) and presenca not in(1) limit 1 ");
+                    data_frequencia ='$datas' and aluno_id=$idaluno $idturma $idescola  and  presenca not in(1) limit 1 ");
                   
                    if (count($res->fetchAll())>0) {
                       $faltas_aluno++;
@@ -156,17 +122,12 @@ ORDER BY aluno.nome ASC");
                    }
                }
 
-               
-        }
-
-           // if ($faltas_aluno>=$quantidade_falta) {
-           //   break;
-           // }
+  
        }
 
 
 
-    if ($faltas_aluno>=$quantidade_falta || $quantidade_falta=='Total') {
+    if ($faltas_aluno>=$quantidade_falta || $quantidade_falta=='total') {
 
             $result.="
                <tr> 
