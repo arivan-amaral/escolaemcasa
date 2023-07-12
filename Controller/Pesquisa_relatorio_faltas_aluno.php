@@ -23,13 +23,13 @@
      $total= $dateInterval->days;
       
 
- if ($idescola =='todas') {
+ if ($idescola =='Todas') {
 	$idescola=" and escola.idescola >0 ";
 }else{
 	$idescola=" and escola.idescola = $idescola ";
 
 }
-if ($idturma =='todas') {
+if ($idturma =='Todas') {
 	$idturma=" and turma.idturma >0 ";
 }else{
 		$idturma=" and turma.idturma = $idturma ";
@@ -47,7 +47,7 @@ if ($idturma =='todas') {
            $data_aux->modify('+1day');
         
         }
-
+ 
 
     $resultado=$conexao->query("
     SELECT
