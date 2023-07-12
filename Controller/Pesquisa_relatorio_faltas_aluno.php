@@ -1,4 +1,7 @@
     <?php 
+    ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
     session_start();
     set_time_limit(0);
     include_once '../Model/Conexao.php';
@@ -6,7 +9,7 @@
     include_once "Conversao.php";
 
 
-    try {
+    // try {
     $quantidade_falta = $_GET['falta'];
     $ano_letivo = $_SESSION['ano_letivo'];
     $idturma = $_GET['idturma'];
@@ -161,9 +164,9 @@ ORDER BY aluno.nome ASC");
     
     echo "$result";
      
-     } catch (Exception $e) {
-        echo $e;
-     }
+     // } catch (Exception $e) {
+     //    echo $e;
+     // }
 
 
      
