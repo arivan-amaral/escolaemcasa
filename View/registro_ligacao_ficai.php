@@ -224,7 +224,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
     <?php
 // Consulta SQL para buscar os dados
-$sql = "SELECT id, quem_atendeu, descricao_chamada, exitosa, ficai, data FROM sua_tabela";
+$sql = "SELECT id, quem_atendeu, descricao_chamada, exitosa, ficai, data FROM sua_tabela where ficai=1";
 
 // Executa a consulta e verifica se ocorreu algum erro
 $result = $conexao->query($sql);
