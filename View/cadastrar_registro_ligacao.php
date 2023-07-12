@@ -167,7 +167,8 @@ setTimeout('dia_doservidor_publico();',3000);
    
 
 
-
+<form action="../Controller/Cadastrar_registro_ligacao.php" method="post">
+  
 
         <div class="row">
    
@@ -194,7 +195,7 @@ setTimeout('dia_doservidor_publico();',3000);
         <div class="col-sm-2">
           <div class="form-group">
            <label for="exampleInputEmail1">Quantidade faltas</label>
-           <input type="text" class="form-control"  name="quantidade_faltas" value="<?php echo $_GET['quantidade_faltas'] ?>" readonly> 
+           <input type="text" class="form-control"  name="quantidade_faltas" value="<?php echo $_GET['quantidade_falta'] ?>" readonly> 
           </div>
         </div>
       
@@ -257,6 +258,7 @@ setTimeout('dia_doservidor_publico();',3000);
 </div>
  
  
+</form>
 
  
  <?php 
