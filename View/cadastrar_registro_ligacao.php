@@ -213,11 +213,24 @@ setTimeout('dia_doservidor_publico();',3000);
 
     <div class="row">
         <div class="col-sm-4">
-          <div class="form-group">
-           <label for="exampleInputEmail1">Quem atendeu</label>
-           <input type="radio" class="form-control"  name="busca_exitosa" > 
+           <label for="exampleInputEmail1">Busca existosa</label>
+        
+           Sim<input type="radio"   name="busca_exitosa" value="1" checked >  
+           Não<input type="radio"   name="busca_exitosa" value="0">  
+          </div>
+        </div>     <div class="row">
+        <div class="col-sm-4">
+           <label for="exampleInputEmail1">FICAI</label>
+        
+           Sim<input type="radio"   name="busca_exitosa" value="1"  >  
+           Não<input type="radio"   name="busca_exitosa" value="0" checked>  
           </div>
         </div> 
+
+
+
+
+        
     </div>
 
  
