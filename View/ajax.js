@@ -1917,36 +1917,6 @@ function pesquisa_aluno(){
      xmlreq.send(null);
 }
 
-function pesquisa_relatorio_faltas_aluno(){
-    var result=document.getElementById('tabela_pesquisa');
-    var escola = document.getElementById('idescola').value;
-    var turmas = document.getElementById('idturma').value;
-    var quantidade_falta = document.getElementById('quantidade_falta').value;
-    var data_inicial = document.getElementById('data_inicial').value;
-    var data_final = document.getElementById('data_final').value;
-  
-
-        var xmlreq = CriaRequest();
-        result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
-
-        xmlreq.open("GET", "../Controller/Pesquisa_relatorio_faltas_aluno.php?turmas="+turmas+"&quantidade_falta="+quantidade_falta+"&data_inicial="+data_inicial+"&data_final="+data_final+"&escola="+escola, true);
-
-        xmlreq.onreadystatechange = function(){
-      
-         if (xmlreq.readyState == 4) {
-             if (xmlreq.status == 200) {
-                result.innerHTML = xmlreq.responseText;
-     
-             }else{
-                   alert('Erro desconhecido, verifique sua conexão com a internet');
-
-                //result.innerHTML ="Erro ao receber mensagens";                 
-             }
-         }
-     };
-     xmlreq.send(null);
-}
-
 
 
 
@@ -6209,6 +6179,35 @@ function pesquisa_frequencia(){
     result.innerHTML = "<img src='imagens/carregando.gif'>";  
     var xmlreq = CriaRequest();
     xmlreq.open("GET", "../Controller/Relatorio_de_frequencia.php?idescola="+idescola+"&idturma="+idturma+"&falta="+falta+"&data_inicial="+data_inicial+"&data_final="+data_final, true);
+
+    xmlreq.onreadystatechange = function(){
+  
+     if (xmlreq.readyState == 4) {
+         if (xmlreq.status == 200) {
+               result.innerHTML = xmlreq.responseText;
+
+         }else{
+               alert('Erro desconhecido, verifique sua conexão com a internet');
+
+            result.innerHTML ="Erro ao receber mensagens";                 
+         }
+     }
+    };
+     xmlreq.send(null);
+}
+
+function pesquisa_relatorio_faltas_aluno(){
+
+    var result = document.getElementById('resultado');
+    var falta = document.getElementById('falta').value;
+    var data_inicial = document.getElementById('data_inicial').value;
+    var data_final = document.getElementById('data_final').value;
+    var idturma = document.getElementById('idturma').value;
+    var idescola = document.getElementById('idescola').value;
+      
+    result.innerHTML = "<img src='imagens/carregando.gif'>";  
+    var xmlreq = CriaRequest();
+    xmlreq.open("GET", "../Controller/Pesquisa_relatorio_faltas_aluno.php?idescola="+idescola+"&idturma="+idturma+"&falta="+falta+"&data_inicial="+data_inicial+"&data_final="+data_final, true);
 
     xmlreq.onreadystatechange = function(){
   
