@@ -30,9 +30,9 @@
 
 }
 if ($idturma =='todas') {
-	$idturma=" and ecidade_matricula.turma_id >0 ";
+	$idturma=" and  turma_id >0 ";
 }else{
-		$idturma=" and ecidade_matricula.turma_id = $idturma ";
+		$idturma=" and  turma_id = $idturma ";
 
 
 }
