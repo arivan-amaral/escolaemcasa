@@ -197,7 +197,7 @@
 
 
                <li class='nav-item'>
-               <a href='#' class='nav-link'>
+               <a href='registro_ligacao.php' class='nav-link'>
                <i class='far fa-circle nav-icon text-primary'></i>
                <p>Relatório busca ativa</p>
                </a>
@@ -207,19 +207,13 @@
 
               
                <li class='nav-item'>
-               <a href='registro_ligacao.php' class='nav-link'>
+               <a href='registro_ligacao_ficai.php' class='nav-link'>
                <i class='far fa-circle nav-icon text-primary'></i>
-               <p>Registro de ligação</p>
+               <p>Reg. de ligação/FICAI</p>
                </a>
                </li>
 
             
-               <li class='nav-item'>
-               <a href='#' class='nav-link'>
-               <i class='far fa-circle nav-icon text-primary'></i>
-               <p>FICAI</p>
-               </a>
-               </li>
 
                
 
