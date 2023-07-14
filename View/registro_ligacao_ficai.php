@@ -163,7 +163,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
   <!-- Inicio -Content Wrapper. Contains page content -->
   <div class="container">
-  <h2>REGISTRO DE LIGAÇÃO</h2>
+  <h2>REGISTRO DE LIGAÇÃO / FICAI</h2>
    
    <br>
     <div class="row">
