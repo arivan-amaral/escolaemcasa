@@ -177,7 +177,7 @@ setTimeout('dia_doservidor_publico();',3000);
         
            <input type="text"   name="idaluno" value="<?php echo $_GET['idaluno'] ?>" readonly  >  
           </div>       
-          <div class="col-sm-2">
+          <div class="col-sm-4">
            <label for="exampleInputEmail1">idaluno</label><br>
         
            <input type="text"   name="nome_aluno" value="<?php echo $_GET['nome_aluno'] ?>" readonly  >  
