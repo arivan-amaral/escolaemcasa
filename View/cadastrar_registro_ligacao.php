@@ -197,6 +197,13 @@ setTimeout('dia_doservidor_publico();',3000);
            <label for="exampleInputEmail1">Quantidade faltas</label>
            <input type="text" class="form-control"  name="quantidade_faltas" value="<?php echo $_GET['quantidade_falta'] ?>" readonly> 
           </div>
+        </div>        
+
+        <div class="col-sm-3">
+          <div class="form-group">
+           <label for="exampleInputEmail1">DATA HORA LIGAÇÃO</label>
+           <input type="datetime" class="form-control"  name="quantidade_fadataltas" value="<?php echo date("Y-m-d H:i:s") ?>" readonly> 
+          </div>
         </div>
       
     </div>
