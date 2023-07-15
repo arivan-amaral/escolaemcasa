@@ -104,8 +104,8 @@ try {
   $html=$result;
 
 
-
-   //    echo  htmlentities($html);
+if ($_GET['excel']==1) {
+ //    echo  htmlentities($html);
    // exit();
             // Crie um novo objeto PhpSpreadsheet
             $spreadsheet = new Spreadsheet();
@@ -144,7 +144,9 @@ try {
 
                     // Salva a planilha no formato Excel
                      $writer->save('php://output');
-
+}else{
+  echo "$result";
+}
 
 } catch (Exception $e) {
   echo "$e";
