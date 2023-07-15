@@ -76,8 +76,8 @@ try {
         $nome=$linha['nome'];
 
         $result.= "
-       <tr >
      
+       <tr>
         <td>$idfuncionario</td>
          
          <td>$nome</td>
@@ -91,7 +91,8 @@ try {
         <td>$iddisciplina</td>
 
         
-        </a>      
+       </tr>
+              
         
         ";
       } 
