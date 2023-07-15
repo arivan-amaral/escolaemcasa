@@ -31,7 +31,6 @@ try {
   }
 
   $result="<table class=table table-bordered table-striped'>
-  <tbody>
     <thead>
       <tr>
        
@@ -46,6 +45,7 @@ try {
          
       </tr>
     </thead>
+  <tbody>
   ";
   $turno="";
   foreach ($res as $key => $value) {
