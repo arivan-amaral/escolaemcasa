@@ -32,17 +32,20 @@ try {
 
   $result="<table class=table table-bordered table-striped'>
   <tbody>
-  <tr>
-   
- 
-  <th>idprofessor </th>
-  <th>nome professor </th>
-  <th>idturma </th>
-  <th>nome_turma </th>
-  <th>idescola </th>
-  <th>nome_disciplina </th>
-  <th>iddisciplina </th>
-  </th>
+    <thead>
+      <tr>
+       
+     
+          <th>idprofessor </th>
+          <th>nome professor </th>
+          <th>idturma </th>
+          <th>nome_turma </th>
+          <th>idescola </th>
+          <th>nome_disciplina </th>
+          <th>iddisciplina </th>
+          </th>
+      </tr>
+    </thead>
   ";
   $turno="";
   foreach ($res as $key => $value) {
