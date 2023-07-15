@@ -1,4 +1,17 @@
 <?php 
+
+
+	function listar_disciplina_da_turma_censo($conexao,$idturma,$idescola,$ano_letivo){
+	    $res=$conexao->query("SELECT turma.nome_turma, disciplina.iddisciplina,disciplina.nome_disciplina, funcionario.nome , funcionario.idfuncionario FROM turma, ministrada,disciplina, funcionario WHERE 
+	    	funcionario.idfuncionario= ministrada.professor_id AND
+	    	disciplina.iddisciplina=ministrada.disciplina_id AND
+	    	 ministrada.turma_id=turma.idturma AND 
+	    	 ministrada.ano='$ano_letivo' AND 
+	    	 turma.idturma = $idturma and escola_id IN ($idescola) GROUP BY funcionario.idfuncionario ORDER by nome_disciplina ASC");
+
+		return $res;
+	}
+
 	function pesquisar_coordenador_por_id($conexao,$idfuncionario) {
     	$result=$conexao->query("SELECT * FROM funcionario WHERE idfuncionario=$idfuncionario   and funcionario.status=1 ");
     	return $result ;
