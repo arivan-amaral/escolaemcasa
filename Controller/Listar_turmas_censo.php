@@ -43,7 +43,7 @@ try {
           <th>idescola </th>
           <th>nome_disciplina </th>
           <th>iddisciplina </th>
-          </th>
+         
       </tr>
     </thead>
   ";
