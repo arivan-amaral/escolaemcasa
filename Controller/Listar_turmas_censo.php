@@ -30,7 +30,7 @@ try {
     $res=listar_turmas_coordenador($conexao,$idescola,$_SESSION['ano_letivo']);
   }
 
-  $result="<table class=table table-bordered table-striped'>
+  $result="<table class='table table-bordered table-striped'>
     <thead>
       <tr>
        
