@@ -7,7 +7,7 @@ if (!isset($_COOKIE['dia_doservidor_publico2'])) {
   setcookie('dia_doservidor_publico2', 0, (time()+(30*24*3600)));
   setcookie('dia_doservidor_publico2', $_COOKIE['dia_doservidor_publico2']+1);
 }
-  
+   
 ###################################################
 if (!isset($_SESSION['idcoordenador'])) {
   //header("location:index.php?status=0");
@@ -163,7 +163,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
   <!-- Inicio -Content Wrapper. Contains page content -->
   <div class="container">
-  <h2>REGISTRO DE LIGAÇÃO / FICAI</h2>
+  <h2>RELATÓRIO DE LIGAÇÃO/FICAI </h2>
    
    <br>
     <div class="row">
@@ -178,9 +178,9 @@ setTimeout('dia_doservidor_publico();',3000);
             try {
               
            
-              if ($_SESSION['nivel_acesso_id']>=100) {
+              if ($_SESSION['nivel_acesso_id']>=0) {
             ?>
-                <option value="todas">TODAS</option>
+                <option value="Todas">TODAS</option>
 
          
             <?php  
@@ -205,59 +205,27 @@ setTimeout('dia_doservidor_publico();',3000);
  <div class="col-md-4">
           <label for="exampleInputEmail1">Escolha a turma</label>
           <select class="form-control form-lg" id="idturma"  required="">
-            <option value="todas">TODAS</option>
+            <option value="Todas">TODAS</option>
           </select>
 
       </div>
+ 
+
 
 
 
         <div class="col-sm-2">
           <div class="form-group">
-          <a style="margin-top: 30PX;" class="btn btn-primary" onclick="pesquisa_registro_ligacao()">Buscar</a>
+          <a style="margin-top: 30PX;" class="btn btn-primary" onclick="pesquisa_relatorio_faltas_aluno()">Buscar</a>
           </div>
         </div>
       </div>
   <br>
   <table class="table table-bordered table-striped" id="resultado">
-
-
-    <?php
-// Consulta SQL para buscar os dados
-$sql = "SELECT id, quem_atendeu, descricao_chamada, exitosa, ficai, data FROM sua_tabela where ficai=1";
-
-// Executa a consulta e verifica se ocorreu algum erro
-$result = $conexao->query($sql);
-
-    echo " 
-            <tr>
-                <th>ID</th>
-                <th>Quem Atendeu</th>
-                <th>Descrição da Chamada</th>
-                <th>Exitosa</th>
-                <th>Ficai</th>
-                <th>Data</th>
-            </tr>";
-  foreach ($result as $key => $row) {
-       echo "<tr>
-                <td>" . $row["id"] . "</td>
-                <td>" . $row["quem_atendeu"] . "</td>
-                <td>" . $row["descricao_chamada"] . "</td>
-                <td>" . $row["exitosa"] . "</td>
-                <td>" . $row["ficai"] . "</td>
-                <td>" . $row["data"] . "</td>
-            </tr>";
-    }
-    echo "";
- 
-
- 
-?>
-
       
   </table>
 </div>
-
+ 
 <script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
@@ -291,8 +259,6 @@ $(document).ready(function(){
   });
 
 </script>
-
- 
 
  <?php 
 
