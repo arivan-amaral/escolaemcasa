@@ -24,7 +24,7 @@ try{
  
 
  $data_atual=date('Y-m-d H:i:s');
-   $stmt = $conexao->prepare("UPDATE busca_ativa  SET data='$data_atual'  where id =$busca_ativa_id ");
+   $stmt = $conexao->prepare("UPDATE busca_ativa  SET data='$data_atual', exitosa=$exitosa, ficai=$ficai  where id =$busca_ativa_id ");
    $stmt->execute();
 
 
