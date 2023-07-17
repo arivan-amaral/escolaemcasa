@@ -24,6 +24,26 @@ if (!isset($_SESSION['idcoordenador'])) {
 
 }
   $idcoordenador=$_SESSION['idfuncionario'];
+  include_once '../Model/Conexao.php';
+
+
+  
+  $aluno_id=$_GET['idaluno'];
+  $periodo_inicial=$_GET['data_inicial'];
+  $periodo_final=$_GET['data_final'];
+
+
+  $res=$conexao->query("SELECT * FROM busca_ativa where aluno_id = $aluno_id and  periodo_inicial='$periodo_inicial' and periodo_final='$periodo_final' limit 1 ");
+
+
+
+  foreach ($res as $key => $value) {
+      $id=$value['id'];
+      header("location:editar_cadastro_registro_ligacao.php?id=$id");
+        exit();
+  }
+
+
   include_once "cabecalho.php";
   include_once "alertas.php";
  
@@ -31,13 +51,15 @@ if (!isset($_SESSION['idcoordenador'])) {
   include_once 'menu.php';
   include_once '../Controller/Conversao.php';
 
-  include_once '../Model/Conexao.php';
 
   include_once '../Model/Setor.php';
   include_once '../Model/Chamada.php';
   include_once '../Model/Escola.php';
   include_once '../Model/Turma.php';
   include_once '../Model/Coordenador.php';
+
+
+
 
 if ($_COOKIE['dia_doservidor_publico2']<2 && date("m-d")=="10-28") {
 ?>
