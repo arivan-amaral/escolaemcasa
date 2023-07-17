@@ -111,6 +111,7 @@ ORDER BY aluno.nome ASC");
                         <th>#</th>
                         <th>Aluno</th>
                         <th>Faltas</th>
+                        <th>Total</th>
                                             
                     </tr>
                 </thead>
@@ -133,6 +134,7 @@ ORDER BY aluno.nome ASC");
        
 
         $faltas_aluno=0;
+        $total_faltas_aluno=0;
 
    // echo "($faltas_aluno<=$quantidade_falta)";
 
@@ -147,6 +149,7 @@ ORDER BY aluno.nome ASC");
                   
                    if (count($res->fetchAll())>0) {
                       $faltas_aluno++;
+                      $total_faltas_aluno++;
                    }else{
                         $faltas_aluno=0;
                    }
@@ -165,7 +168,7 @@ ORDER BY aluno.nome ASC");
                         
                  $conta_aluno 
                     
-                  </td>           <td>
+                  </td> <td>
                         
                  $id - $nome_aluno
                  <br>
@@ -176,6 +179,9 @@ ORDER BY aluno.nome ASC");
                   </td>
                   <td>
                     $faltas_aluno
+                  </td>  
+                   <td>
+                    $total
                   </td>
                ";
     $conta_aluno++;
