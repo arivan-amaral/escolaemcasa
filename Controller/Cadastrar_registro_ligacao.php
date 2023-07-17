@@ -18,21 +18,23 @@ try{
     $data_inicial = $_POST["data_inicial"];
     $data_final = $_POST["data_final"];
     $quantidade_faltas = $_POST["quantidade_faltas"];
+    $escola_id = $_POST["escola_id"];
+    $turma_id = $_POST["turma_id"];
  
 
     // Preparar e executar o INSERT na tabela
-    $stmt = $conexao->prepare("INSERT INTO busca_ativa (aluno_id, periodo_inicial, periodo_final, quantidade_faltas, funcionario_id, quem_atendeu, descricao_chamada, exitosa, ficai) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $conexao->prepare("INSERT INTO busca_ativa (aluno_id,escola_id,turma_id, periodo_inicial, periodo_final, quantidade_faltas, funcionario_id, quem_atendeu, descricao_chamada, exitosa, ficai) VALUES (?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-    $stmt->execute(array( $idaluno, $data_inicial, $data_final, $quantidade_faltas,$funcionario_id, $quemAtendeu, $descricaoChamada, $exitosa, $ficai));
+    $stmt->execute(array( $idaluno,$escola_id,$turma_id, $data_inicial, $data_final, $quantidade_faltas,$funcionario_id, $quemAtendeu, $descricaoChamada, $exitosa, $ficai));
         $_SESSION['status']=1;
-        header("Location:../View/registro_ligacao_ficai.php");
+         header("Location:../View/registro_ligacao_ficai.php");
  
 
 
 
 } catch (Exception $e) {
             $_SESSION['status']=0;
-       header("Location:../View/registro_ligacao_ficai.php");
+        header("Location:../View/registro_ligacao_ficai.php");
          echo $e;
 }
 

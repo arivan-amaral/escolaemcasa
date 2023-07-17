@@ -173,12 +173,14 @@ setTimeout('dia_doservidor_publico();',3000);
         <div class="row">
    
         <div class="col-sm-2">
-           <label for="exampleInputEmail1">idaluno</label><br>
+           <label for="exampleInputEmail1">ID</label><br>
         
            <input type="text"  class="form-control"  name="idaluno" value="<?php echo $_GET['idaluno'] ?>" readonly  >  
+           <input type="text"  class="form-control"  name="escola_id" value="<?php echo $_GET['escola_id'] ?>" readonly  >  
+           <input type="text"  class="form-control"  name="turma_id" value="<?php echo $_GET['turma_id'] ?>" readonly  >  
           </div>       
           <div class="col-sm-6">
-           <label for="exampleInputEmail1">idaluno</label><br>
+           <label for="exampleInputEmail1">Aluno</label><br>
         
            <input type="text" class="form-control"  name="nome_aluno" value="<?php echo $_GET['nome_aluno'] ?>" readonly  >  
           </div>

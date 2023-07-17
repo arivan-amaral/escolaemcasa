@@ -172,7 +172,7 @@ ORDER BY aluno.nome ASC");
                  $nome_turma
                     
                   </td>
-                  <td> <a href='cadastrar_registro_ligacao.php?nome_aluno=$nome_aluno&data_inicial=$data_inicial&data_final=$data_final&idaluno=$idaluno&quantidade_falta=$quantidade_falta' class='btn btn-success' >Registrar chamada</a> 
+                  <td> <a href='cadastrar_registro_ligacao.php?nome_aluno=$nome_aluno&data_inicial=$data_inicial&data_final=$data_final&idaluno=$idaluno&quantidade_falta=$quantidade_falta&escola_id=$escola_id&turma_id=$turma_id' class='btn btn-success' >Registrar chamada</a> 
                   </td>
                   <td>
                     $faltas_aluno

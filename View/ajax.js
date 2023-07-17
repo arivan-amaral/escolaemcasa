@@ -42,6 +42,29 @@ function CriaRequest() {
 }
 
 
+function pesquisa_registro_ligacao(){
+        var xmlreq = CriaRequest();
+        var result=document.getElementById('resultado');
+        var escola_id=document.getElementById('idescola').value;
+        var turma_id=document.getElementById('idturma').value;
+
+        var url = "escola_id="+escola_id+"&turma_id="+turma_id;
+    // alert();
+        result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
+        xmlreq.open("GET", "../Controller/Pesquisa_registro_ligacao.php?"+url, true);
+        xmlreq.onreadystatechange = function(){
+         if (xmlreq.readyState == 4) {           
+             if (xmlreq.status == 200) {
+               result.innerHTML = xmlreq.responseText;              
+             }else{
+                alert('Erro desconhecido, verifique sua conexão com a internet');               
+             }
+         }
+     };
+     xmlreq.send(null);
+}
+
+
 // function aumenta_limite_pag(novolimite){
 //     console.log("teste"+novolimite);
 //      var limite_antigo = document.getElementById('limite_antigo');
@@ -57,6 +80,9 @@ function CriaRequest() {
 //      }
 
 // }
+// 
+// 
+
 function alterar_input_linha_transporte(valor,id) {
     // alert(id);
     //  document.getElementById(id).value=valor;
@@ -1503,6 +1529,7 @@ function pesquisar_municipio(idestado,campo){
      };
      xmlreq.send(null);
 }
+
 
 
 
