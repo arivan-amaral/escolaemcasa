@@ -42,6 +42,31 @@ function CriaRequest() {
 }
 
 
+function pesquisa_relatorio_busca_ativa(){
+        var xmlreq = CriaRequest();
+        var result=document.getElementById('resultado');
+        var escola_id=document.getElementById('idescola').value;
+        var turma_id=document.getElementById('idturma').value;
+        var data_inicial=document.getElementById('data_inicial').value;
+        var data_final=document.getElementById('data_final').value;
+
+        var url = "escola_id="+escola_id+"&turma_id="+turma_id+"&data_inicial="+data_inicial+"&data_final="+data_final;
+    // alert();
+        result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
+        xmlreq.open("GET", "../Controller/Pesquisa_relatorio_busca_ativa.php?"+url, true);
+        xmlreq.onreadystatechange = function(){
+         if (xmlreq.readyState == 4) {           
+             if (xmlreq.status == 200) {
+               result.innerHTML = xmlreq.responseText;              
+             }else{
+                alert('Erro desconhecido, verifique sua conexão com a internet');               
+             }
+         }
+     };
+     xmlreq.send(null);
+}
+
+
 function pesquisa_registro_ligacao(){
         var xmlreq = CriaRequest();
         var result=document.getElementById('resultado');

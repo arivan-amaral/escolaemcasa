@@ -227,7 +227,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
         <div class="col-sm-2">
           <div class="form-group">
-          <a style="margin-top: 30PX;" class="btn btn-primary" onclick="pesquisa_registro_ligacao()">Buscar</a>
+          <a style="margin-top: 30PX;" class="btn btn-primary" onclick="pesquisa_relatorio_busca_ativa()">Buscar</a>
           </div>
         </div>
       </div>
