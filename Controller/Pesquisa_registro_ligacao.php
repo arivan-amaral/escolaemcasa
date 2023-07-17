@@ -45,7 +45,7 @@ if ($turma =='Todas') {
     $result.="<th>AÇÃO</th>";
     $result.="</tbody>";
 
-$res=$conexao->query("SELECT descricao_chamada,quem_atendeu,
+$res=$conexao->query("SELECT busca_ativa.id, descricao_chamada,quem_atendeu,
  aluno.nome as nome_aluno , quantidade_faltas , escola.nome_escola as nome_escola, turma.nome_turma, busca_ativa.ficai
     FROM busca_ativa,escola,aluno,turma,funcionario WHERE
 busca_ativa.escola_id = escola.idescola and 
@@ -56,7 +56,8 @@ busca_ativa.aluno_id= aluno.idaluno $escola $turma $ficai ORDER by busca_ativa.i
 
 
 foreach ($res as $key => $value) {
-	$nome_aluno=$value['nome_aluno'];
+	$id=$value['id'];
+    $nome_aluno=$value['nome_aluno'];
 	$quantidade_faltas=$value['quantidade_faltas'];
     $nome_escola=$value['nome_escola'];
     $nome_turma=$value['nome_turma'];
@@ -75,8 +76,8 @@ foreach ($res as $key => $value) {
 	$result.="<td>$nome_aluno<br>$nome_escola<br>$nome_turma</td>";
 	$result.="<td>$ficai</td>";
     $result.="<td>$quantidade_faltas</td>";
-    $result.="<td> <a  class='btn btn-info' data-toggle='modal' data-target='#modal-detalhes-busca-ativa' >Detalhes</a> </td>";
-    $result.="<div class='modal fade' id='modal-detalhes-busca-ativa'>
+    $result.="<td> <a  class='btn btn-info' data-toggle='modal' data-target='#modal-detalhes-busca-ativa$id' >Detalhes</a> </td>";
+    $result.="<div class='modal fade' id='modal-detalhes-busca-ativa$id'>
     <div class='modal-dialog'>
       <div class='modal-content'>
         <div class='modal-header'>
