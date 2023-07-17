@@ -201,7 +201,7 @@ function verificar_periodo_ligacao_busca_ativa($data1, $data2){
          
      } 
      else {
-         echo "Não está no mesmo período";
+         // echo "Não está no mesmo período";
         return 1;
      }
 
