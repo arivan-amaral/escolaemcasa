@@ -163,7 +163,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
   <!-- Inicio -Content Wrapper. Contains page content -->
   <div class="container">
-  <h2>RELATÓRIO DE BUSCA ATIVA</h2>
+  <h2>RELATÓRIO BUSCA ATIVA </h2>
    
    <br>
     <div class="row">
@@ -180,7 +180,7 @@ setTimeout('dia_doservidor_publico();',3000);
            
               if ($_SESSION['nivel_acesso_id']>=0) {
             ?>
-                <option value="Todas">TODAS</option>
+                <option value="todas">TODAS</option>
 
          
             <?php  
@@ -205,7 +205,7 @@ setTimeout('dia_doservidor_publico();',3000);
  <div class="col-md-4">
           <label for="exampleInputEmail1">Escolha a turma</label>
           <select class="form-control form-lg" id="idturma"  required="">
-            <option value="Todas">TODAS</option>
+            <option value="todas">TODAS</option>
           </select>
 
       </div>
@@ -216,7 +216,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
         <div class="col-sm-2">
           <div class="form-group">
-          <a style="margin-top: 30PX;" class="btn btn-primary" onclick="pesquisa_relatorio_faltas_aluno()">Buscar</a>
+          <a style="margin-top: 30PX;" class="btn btn-primary" onclick="pesquisa_registro_ligacao()">Buscar</a>
           </div>
         </div>
       </div>
@@ -227,6 +227,8 @@ setTimeout('dia_doservidor_publico();',3000);
 </div>
  
 <script>
+
+  setTimeout("pesquisa_registro_ligacao()",100);
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();
