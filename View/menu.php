@@ -197,7 +197,7 @@
 
 
                <li class='nav-item'>
-               <a href='registro_ligacao.php' class='nav-link'>
+               <a href='relatorio_busca_ativa.php' class='nav-link'>
                <i class='far fa-circle nav-icon text-primary'></i>
                <p>Relatório busca ativa</p>
                </a>

@@ -25,14 +25,14 @@ try{
 
     $stmt->execute(array( $idaluno, $data_inicial, $data_final, $quantidade_faltas,$funcionario_id, $quemAtendeu, $descricaoChamada, $exitosa, $ficai));
         $_SESSION['status']=1;
-        header("Location:../View/registro_ligacao.php");
+        header("Location:../View/registro_ligacao_ficai.php");
  
 
 
 
 } catch (Exception $e) {
             $_SESSION['status']=0;
-       header("Location:../View/relatorio_falta.php");
+       header("Location:../View/registro_ligacao_ficai.php");
          echo $e;
 }
 
