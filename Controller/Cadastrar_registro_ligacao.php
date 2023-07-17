@@ -23,11 +23,21 @@ try{
  
 
     // Preparar e executar o INSERT na tabela
-    $stmt = $conexao->prepare("INSERT INTO busca_ativa (aluno_id,escola_id,turma_id, periodo_inicial, periodo_final, quantidade_faltas, funcionario_id, quem_atendeu, descricao_chamada, exitosa, ficai) VALUES (?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $conexao->prepare("INSERT INTO busca_ativa (aluno_id,escola_id,turma_id, periodo_inicial, periodo_final, quantidade_faltas, exitosa, ficai) VALUES (  ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->execute(array( $idaluno,$escola_id,$turma_id, $data_inicial, $data_final, $quantidade_faltas, $exitosa, $ficai));
+    $busca_ativa_id= $conexao->lastInsertId();
 
-    $stmt->execute(array( $idaluno,$escola_id,$turma_id, $data_inicial, $data_final, $quantidade_faltas,$funcionario_id, $quemAtendeu, $descricaoChamada, $exitosa, $ficai));
-        $_SESSION['status']=1;
-         header("Location:../View/registro_ligacao_ficai.php");
+
+
+
+
+      $sql = $conexao->prepare("INSERT INTO registro_ligacao_busca_ativa(funcionario_id, busca_ativa_id, quem_atendeu, descricao_chamada) VALUES (?,?,?,?)");
+
+      $sql->execute(array($funcionario_id,$busca_ativa_id,$quemAtendeu, $descricaoChamada));
+    
+
+    $_SESSION['status']=1;
+     header("Location:../View/registro_ligacao_ficai.php");
  
 
 

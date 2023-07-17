@@ -47,9 +47,10 @@ if ($turma =='Todas') {
 
 $res=$conexao->query("SELECT busca_ativa.id, descricao_chamada,quem_atendeu,
  aluno.nome as nome_aluno , quantidade_faltas , escola.nome_escola as nome_escola, turma.nome_turma, busca_ativa.ficai
-    FROM busca_ativa,escola,aluno,turma,funcionario WHERE
+    FROM busca_ativa, registro_ligacao_busca_ativa,escola,aluno,turma,funcionario WHERE
+    registro_ligacao_busca_ativa.busca_ativa_id = busca_ativa.id and 
 busca_ativa.escola_id = escola.idescola and 
-busca_ativa.funcionario_id=funcionario.idfuncionario and 
+registro_ligacao_busca_ativa.funcionario_id=funcionario.idfuncionario and 
 busca_ativa.turma_id = turma.idturma and 
 busca_ativa.aluno_id= aluno.idaluno $escola $turma $ficai ORDER by busca_ativa.id desc LIMIT 500");
 
