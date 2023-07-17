@@ -163,7 +163,7 @@ ORDER BY aluno.nome ASC");
                <tr> 
                    <td>
                         
-                 $conta_aluno ($faltas_aluno>=$quantidade_falta || $quantidade_falta=='total')
+                 $conta_aluno 
                     
                   </td>           <td>
                         
