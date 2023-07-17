@@ -77,7 +77,14 @@ foreach ($res as $key => $value) {
 	$result.="<td>$nome_aluno<br>$nome_escola<br>$nome_turma</td>";
 	$result.="<td>$ficai</td>";
     $result.="<td>$quantidade_faltas</td>";
-    $result.="<td> <a  class='btn btn-info' data-toggle='modal' data-target='#modal-detalhes-busca-ativa$id' >Detalhes</a> </td>";
+    $result.="<td> 
+    <a  class='btn btn-info' data-toggle='modal' data-target='#modal-detalhes-busca-ativa$id' >Detalhes</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href='editar_cadastro_registro_ligacao.php?id=$id' class='btn btn-success' >Registrar nova chamada</a> 
+
+    </td>";
+
+
+
     $result.="<div class='modal fade' id='modal-detalhes-busca-ativa$id'>
     <div class='modal-dialog'>
       <div class='modal-content'>

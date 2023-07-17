@@ -1,11 +1,5 @@
 <?php
 session_start();
-if (isset($_GET['id'])) {
-  $id=$_GET['id'];
-  header("location:editar_cadastro_registro_ligacao.php?id=$id");
-  exit();
-}
-
 if (!isset($_COOKIE['dia_doservidor_publico2'])) {
   setcookie('dia_doservidor_publico2', 1, (time()+(30*24*3600)));
  // setcookie('conteudo', 1, (time()+(300*24*3600)));
@@ -169,9 +163,54 @@ setTimeout('dia_doservidor_publico();',3000);
 
   <!-- Inicio -Content Wrapper. Contains page content -->
   <div class="container">
-  <h2>CADASTRAR REGISTRO DE LIGAÇÃO</h2>
+  <h2>CADASTRAR <span class="text-danger">NOVO</span> REGISTRO DE LIGAÇÃO</h2>
    
+<?php 
+$idbusca_ativa=$_GET['id'];
 
+
+$res=$conexao->query("SELECT COUNT(*) AS quantidade_ligacao,
+  escola_id,
+  periodo_inicial,
+  periodo_final,
+  turma_id,
+   aluno_id,
+  busca_ativa.id, descricao_chamada,quem_atendeu,
+ aluno.nome as nome_aluno , quantidade_faltas , escola.nome_escola as nome_escola, turma.nome_turma, busca_ativa.ficai
+    FROM busca_ativa, registro_ligacao_busca_ativa,escola,aluno,turma,funcionario WHERE
+    registro_ligacao_busca_ativa.busca_ativa_id = busca_ativa.id and 
+busca_ativa.escola_id = escola.idescola and 
+registro_ligacao_busca_ativa.funcionario_id=funcionario.idfuncionario and 
+busca_ativa.turma_id = turma.idturma and 
+busca_ativa.aluno_id= aluno.idaluno and busca_ativa.id = $idbusca_ativa ORDER by busca_ativa.id desc LIMIT 500");
+
+
+
+foreach ($res as $key => $value) {
+  $id=$value['id'];
+  $quantidade_ligacao=$value['quantidade_ligacao'];
+
+    $idaluno=$value['aluno_id'];
+    $idescola=$value['escola_id'];
+    $idturma=$value['turma_id'];
+    $nome_aluno=$value['nome_aluno'];
+  $quantidade_faltas=$value['quantidade_faltas'];
+    $nome_escola=$value['nome_escola'];
+    $nome_turma=$value['nome_turma'];
+    $ficai=$value['ficai'];
+    $descricao_chamada=$value['descricao_chamada'];
+    $quem_atendeu=$value['quem_atendeu'];
+    $data_inicial=$value['periodo_inicial'];
+    $data_final=$value['periodo_final'];
+
+    if ($ficai==1) {
+       $ficai="SIM";
+    }else{
+       $ficai="Não";
+
+    }
+  }
+?>
 
 <form action="../Controller/Cadastrar_registro_ligacao.php" method="post">
   
@@ -181,14 +220,14 @@ setTimeout('dia_doservidor_publico();',3000);
         <div class="col-sm-2">
            <label for="exampleInputEmail1">ID</label><br>
         
-           <input type="text"  class="form-control"  name="idaluno" value="<?php echo $_GET['idaluno'] ?>" readonly  >  
-           <input type="text"  class="form-control"  name="escola_id" value="<?php echo $_GET['escola_id'] ?>" readonly  >  
-           <input type="text"  class="form-control"  name="turma_id" value="<?php echo $_GET['turma_id'] ?>" readonly  >  
+           <input type="text"  class="form-control"  name="idaluno" value="<?php echo $idaluno ?>" readonly  >  
+           <input type="text"  class="form-control"  name="escola_id" value="<?php echo $idescola ?>" readonly  >  
+           <input type="text"  class="form-control"  name="turma_id" value="<?php echo $idturma ?>" readonly  >  
           </div>       
           <div class="col-sm-6">
            <label for="exampleInputEmail1">Aluno</label><br>
         
-           <input type="text" class="form-control"  name="nome_aluno" value="<?php echo $_GET['nome_aluno'] ?>" readonly  >  
+           <input type="text" class="form-control"  name="nome_aluno" value="<?php echo $nome_aluno ?>" readonly  >  
           </div>
         </div>
         <div class="row">
@@ -197,21 +236,21 @@ setTimeout('dia_doservidor_publico();',3000);
         <div class="col-sm-3">
           <div class="form-group">
            <label for="exampleInputEmail1">Período inicial</label>
-           <input type="date" class="form-control"  name="data_inicial" value="<?php echo $_GET['data_inicial'] ?>" readonly> 
+           <input type="date" class="form-control"  name="data_inicial" value="<?php echo $data_inicial ?>" readonly> 
           </div>
         </div>  
 
         <div class="col-sm-3">
           <div class="form-group">
            <label for="exampleInputEmail1">Período final</label>
-           <input type="date" class="form-control"  name="data_final" value="<?php echo $_GET['data_final'] ?>" readonly> 
+           <input type="date" class="form-control"  name="data_final" value="<?php echo $data_final ?>" readonly> 
           </div>
         </div>  
               
         <div class="col-sm-2">
           <div class="form-group">
            <label for="exampleInputEmail1">Quantidade faltas</label>
-           <input type="text" class="form-control"  name="quantidade_faltas" value="<?php echo $_GET['quantidade_falta'] ?>" readonly> 
+           <input type="text" class="form-control"  name="quantidade_faltas" value="<?php echo $quantidade_faltas ?>" readonly> 
           </div>
         </div>        
 
@@ -249,24 +288,29 @@ setTimeout('dia_doservidor_publico();',3000);
            Sim<input type="radio"   name="exitosa" value="1" checked >  
            Não<input type="radio"   name="exitosa" value="0">  
           </div>
-        </div>    
-
-        <br> 
-        <br> 
-
+        </div>     
+<br>
+<br>
+<br>
         <div class="row">
-        <div class="col-sm-2"></div>
-
+        <div class="col-sm-1"></div>
+<?php 
+if ($quantidade_ligacao >=3) {
+?>
         <div class="col-sm-4">
-           <!-- <label for="exampleInputEmail1">FICAI</label><br> -->
+           <label for="exampleInputEmail1" class="text-danger">FICAI</label><br>
         
-           <!-- Sim--><input type="radio"  hidden name="ficai" value="1"  >   
-           <!-- Não -->
-           <input type="radio"  hidden name="ficai" value="0" checked>  
+           Sim<input type="radio"   name="ficai" value="1"  >  
+           Não<input type="radio"   name="ficai" value="0" checked>  
           </div>
+
+<?php } ?>
+
         </div> 
 
-
+<br>
+<br>
+<br>
         <div class="row">
           <div class="col-sm-12">
             <div class="form-group">
