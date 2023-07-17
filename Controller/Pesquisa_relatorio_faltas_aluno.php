@@ -182,7 +182,7 @@ ORDER BY aluno.nome ASC");
                     $faltas_aluno
                   </td>  
                    <td>
-                    $total
+                    $total_faltas_aluno
                   </td>
                ";
     $conta_aluno++;
