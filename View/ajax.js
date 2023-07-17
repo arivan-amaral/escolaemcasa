@@ -47,8 +47,9 @@ function pesquisa_registro_ligacao(){
         var result=document.getElementById('resultado');
         var escola_id=document.getElementById('idescola').value;
         var turma_id=document.getElementById('idturma').value;
+        var ficai=document.getElementById('ficai').value;
 
-        var url = "escola_id="+escola_id+"&turma_id="+turma_id;
+        var url = "escola_id="+escola_id+"&turma_id="+turma_id+"&ficai="+ficai;
     // alert();
         result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
         xmlreq.open("GET", "../Controller/Pesquisa_registro_ligacao.php?"+url, true);

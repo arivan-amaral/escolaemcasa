@@ -11,12 +11,23 @@ $ano_letivo=$_SESSION['ano_letivo'];
  ;
 $escola=$_GET['escola_id'];
 $turma=$_GET['turma_id'];
+$ficai=$_GET['ficai'];
  
 
-if ($escola =='Todas') {
-	$escola=" and busca_ativa.escola_id >0 ";
+if ($ficai =='Todos') {
+	$ficai=" ";
 }else{
-	$escola=" and busca_ativa.escola_id = $escola ";
+	$ficai=" and busca_ativa.ficai = $ficai ";
+
+}
+
+
+
+
+if ($escola =='Todas') {
+    $escola=" and busca_ativa.escola_id >0 ";
+}else{
+    $escola=" and busca_ativa.escola_id = $escola ";
 
 }
 
@@ -29,17 +40,18 @@ if ($turma =='Todas') {
     $result="<table>";
     $result.="<tbody>";
     $result.="<th>DADOS ALUNOS</th>";
+    $result.="<th> FICAI</th>";
     $result.="<th>QUANTIDADE DE FALTAS</th>";
     $result.="<th></th>";
     $result.="</tbody>";
 
 $res=$conexao->query("SELECT
- aluno.nome as nome_aluno , quantidade_faltas , escola.nome_escola as nome_escola, turma.nome_turma
+ aluno.nome as nome_aluno , quantidade_faltas , escola.nome_escola as nome_escola, turma.nome_turma, busca_ativa.ficai
     FROM busca_ativa,escola,aluno,turma,funcionario WHERE
 busca_ativa.escola_id = escola.idescola and 
 busca_ativa.funcionario_id=funcionario.idfuncionario and 
 busca_ativa.turma_id = turma.idturma and 
-busca_ativa.aluno_id= aluno.idaluno $escola $turma ORDER by busca_ativa.id desc LIMIT 500");
+busca_ativa.aluno_id= aluno.idaluno $escola $turma $ficai ORDER by busca_ativa.id desc LIMIT 500");
 
 
 
@@ -48,10 +60,19 @@ foreach ($res as $key => $value) {
 	$quantidade_faltas=$value['quantidade_faltas'];
     $nome_escola=$value['nome_escola'];
     $nome_turma=$value['nome_turma'];
+    $ficai=$value['ficai'];
+
+    if ($ficai==1) {
+       $ficai="SIM";
+    }else{
+       $ficai="Não";
+
+    }
 
 	$result.="<tr>";
 	$result.="<td>$nome_aluno<br>$nome_escola<br>$nome_turma</td>";
-	$result.="<td>$quantidade_faltas</td>";
+	$result.="<td>$ficai</td>";
+    $result.="<td>$quantidade_faltas</td>";
 	// $result.="<td> <a  class='btn btn-success' >Registrar chamada</a> </td>";
 	$result.="</tr>";
 }
