@@ -13,17 +13,17 @@ $escola=$_GET['escola_id'];
 $turma=$_GET['turma_id'];
  
 
-if ($escola =='todas') {
+if ($escola =='Todas') {
 	$escola=" and busca_ativa.escola_id >0 ";
 }else{
 	$escola=" and busca_ativa.escola_id = $escola ";
 
 }
 
-if ($turma =='todas') {
+if ($turma =='Todas') {
     $turma=" and busca_ativa.turma_id >0 ";
 }else{
-    $turma=" and busca_ativa.turma_id = $escola ";
+    $turma=" and busca_ativa.turma_id = $turma ";
 
 }
     $result="<table>";
@@ -33,7 +33,9 @@ if ($turma =='todas') {
     $result.="<th></th>";
     $result.="</tbody>";
 
-$res=$conexao->query("SELECT aluno.nome as nome_aluno , quantidade_faltas FROM busca_ativa,escola,aluno,turma,funcionario WHERE
+$res=$conexao->query("SELECT
+ aluno.nome as nome_aluno , quantidade_faltas , escola.nome_escola as nome_escola, turma.nome_turma
+    FROM busca_ativa,escola,aluno,turma,funcionario WHERE
 busca_ativa.escola_id = escola.idescola and 
 busca_ativa.funcionario_id=funcionario.idfuncionario and 
 busca_ativa.turma_id = turma.idturma and 
@@ -44,9 +46,11 @@ busca_ativa.aluno_id= aluno.idaluno $escola $turma ORDER by busca_ativa.id desc 
 foreach ($res as $key => $value) {
 	$nome_aluno=$value['nome_aluno'];
 	$quantidade_faltas=$value['quantidade_faltas'];
+    $nome_escola=$value['nome_escola'];
+    $nome_turma=$value['nome_turma'];
 
 	$result.="<tr>";
-	$result.="<td>$nome_aluno</td>";
+	$result.="<td>$nome_aluno<br>$nome_escola<br>$nome_turma</td>";
 	$result.="<td>$quantidade_faltas</td>";
 	// $result.="<td> <a  class='btn btn-success' >Registrar chamada</a> </td>";
 	$result.="</tr>";

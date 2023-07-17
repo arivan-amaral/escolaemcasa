@@ -180,7 +180,7 @@ setTimeout('dia_doservidor_publico();',3000);
            
               if ($_SESSION['nivel_acesso_id']>=0) {
             ?>
-                <option value="todas">TODAS</option>
+                <option value="Todas">TODAS</option>
 
          
             <?php  
@@ -205,7 +205,7 @@ setTimeout('dia_doservidor_publico();',3000);
  <div class="col-md-4">
           <label for="exampleInputEmail1">Escolha a turma</label>
           <select class="form-control form-lg" id="idturma"  required="">
-            <option value="todas">TODAS</option>
+            <option value="Todas">TODAS</option>
           </select>
 
       </div>
