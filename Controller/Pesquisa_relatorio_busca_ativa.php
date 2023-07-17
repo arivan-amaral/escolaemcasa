@@ -36,6 +36,7 @@ if ($turma =='Todas') {
     $result="<table>";
     $result.="<tbody>";
     $result.="<th>DADOS ALUNOS</th>";
+    $result.="<th>PROFISSIONAL</th>";
     $result.="<th>LIGAÇÕES</th>";
     $result.="<th> EXITOSA</th>";
     $result.="<th> FICAI</th>";
@@ -44,7 +45,7 @@ if ($turma =='Todas') {
     $result.="</tbody>";
 
 $res=$conexao->query("SELECT COUNT(*) AS quantidade_ligacao, exitosa, busca_ativa.data as data_ligacao, busca_ativa.id,busca_ativa.periodo_inicial,busca_ativa.periodo_final, descricao_chamada,quem_atendeu,
- aluno.nome as nome_aluno , quantidade_faltas , escola.nome_escola as nome_escola, turma.nome_turma, busca_ativa.ficai
+ aluno.nome as nome_aluno , quantidade_faltas , escola.nome_escola as nome_escola, turma.nome_turma, busca_ativa.ficai, funcionario.nome as nome_funcionario
     FROM busca_ativa, registro_ligacao_busca_ativa,escola,aluno,turma,funcionario WHERE
     registro_ligacao_busca_ativa.busca_ativa_id = busca_ativa.id and 
 busca_ativa.escola_id = escola.idescola and 
@@ -58,6 +59,7 @@ and busca_ativa.data BETWEEN '$data_inicial' and '$data_final' GROUP BY  busca_a
 foreach ($res as $key => $value) {
     $id=$value['id'];
     $nome_aluno=$value['nome_aluno'];
+    $nome_funcionario=$value['nome_funcionario'];
     $quantidade_faltas=$value['quantidade_faltas'];
     $nome_escola=$value['nome_escola'];
     $nome_turma=$value['nome_turma'];
@@ -88,6 +90,7 @@ foreach ($res as $key => $value) {
 
     $result.="<tr>";
     $result.="<td>$nome_aluno<br>$nome_escola<br>$nome_turma</td>";
+    $result.="<td>$nome_funcionario</td>";
     $result.="<td><b class='text-danger'>$quantidade_ligacao</b><br> $periodo_inicial <> $periodo_final</td>";
     $result.="<td class='alert-$cor'>$exitosa</td>";
     $result.="<td>$ficai</td>";

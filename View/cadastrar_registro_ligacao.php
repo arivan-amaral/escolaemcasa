@@ -204,13 +204,18 @@ setTimeout('dia_doservidor_publico();',3000);
            <label for="exampleInputEmail1">ID</label><br>
         
            <input type="text"  class="form-control"  name="idaluno" value="<?php echo $_GET['idaluno'] ?>" readonly  >  
-           <input type="text"  class="form-control"  name="escola_id" value="<?php echo $_GET['escola_id'] ?>" readonly  >  
-           <input type="text"  class="form-control"  name="turma_id" value="<?php echo $_GET['turma_id'] ?>" readonly  >  
+           <input type="text" hidden class="form-control"  name="escola_id" value="<?php echo $_GET['escola_id'] ?>" readonly  >  
+           <input type="text"  hidden class="form-control"  name="turma_id" value="<?php echo $_GET['turma_id'] ?>" readonly  >  
           </div>       
-          <div class="col-sm-6">
+          <div class="col-sm-5">
            <label for="exampleInputEmail1">Aluno</label><br>
         
            <input type="text" class="form-control"  name="nome_aluno" value="<?php echo $_GET['nome_aluno'] ?>" readonly  >  
+          </div>
+                   <div class="col-sm-5">
+           <label for="exampleInputEmail1">PROFISSIONAL</label><br>
+        
+           <input type="text" class="form-control"  name="nome_aluno" value="<?php echo $_SESSION['nome'] ?>" readonly  >  
           </div>
         </div>
         <div class="row">
@@ -301,7 +306,7 @@ setTimeout('dia_doservidor_publico();',3000);
           
         </div>
 
-      
+
 
         
     </div>

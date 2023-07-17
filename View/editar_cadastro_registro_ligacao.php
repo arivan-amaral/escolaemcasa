@@ -220,15 +220,20 @@ foreach ($res as $key => $value) {
         <div class="col-sm-2">
            <label for="exampleInputEmail1">ID</label><br>
         
-           <input type="text"  class="form-control"  name="idaluno" value="<?php echo $idaluno ?>" readonly  >  
-           <input type="text"  class="form-control"  name="escola_id" value="<?php echo $idescola ?>" readonly  >  
-           <input type="text"  class="form-control"  name="turma_id" value="<?php echo $idturma ?>" readonly  >  
-           <input type="text"  class="form-control"  name="busca_ativa_id" value="<?php echo $idbusca_ativa ?>" readonly  >  
+           <input type="text"  class="form-control"   name="idaluno" value="<?php echo $idaluno ?>" readonly  >  
+           <input type="text"  class="form-control" hidden  name="escola_id" value="<?php echo $idescola ?>" readonly  >  
+           <input type="text"  class="form-control" hidden name="turma_id" value="<?php echo $idturma ?>" readonly  >  
+           <input type="text"  class="form-control" hidden name="busca_ativa_id" value="<?php echo $idbusca_ativa ?>" readonly  >  
           </div>       
-          <div class="col-sm-6">
+          <div class="col-sm-5">
            <label for="exampleInputEmail1">Aluno</label><br>
         
            <input type="text" class="form-control"  name="nome_aluno" value="<?php echo $nome_aluno ?>" readonly  >  
+          </div>        
+          <div class="col-sm-5">
+           <label for="exampleInputEmail1">PROFISSIONAL</label><br>
+        
+           <input type="text" class="form-control"  name="nome_aluno" value="<?php echo $_SESSION['nome'] ?>" readonly  >  
           </div>
         </div>
         <div class="row">
