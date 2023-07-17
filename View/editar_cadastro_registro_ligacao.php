@@ -278,16 +278,18 @@ foreach ($res as $key => $value) {
            <textarea class="form-control"  name="descricao_chamada" ></textarea>
           </div>
         </div> 
-    </div>
 
 
     <div class="row">
         <!-- <div class="col-sm-1"></div> -->
         <div class="col-sm-4">
-           <label for="exampleInputEmail1">Busca exitosa</label><br>
-        
-           Sim<input type="radio"   name="exitosa" value="1" checked >  
-           Não<input type="radio"   name="exitosa" value="0">  
+              <div class="form-group">
+
+               <label for="exampleInputEmail1">Busca exitosa</label><br>
+            
+               Sim<input type="radio"   name="exitosa" value="1" checked >  
+               Não<input type="radio"   name="exitosa" value="0">  
+             </div>
           </div>
         </div>     
 <br>
@@ -322,6 +324,7 @@ if ($quantidade_ligacao >=3) {
           
         </div>
 
+    </div>
         
     </div>
 
