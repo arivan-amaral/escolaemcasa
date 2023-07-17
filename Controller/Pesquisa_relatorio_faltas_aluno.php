@@ -100,7 +100,7 @@ WHERE
    ecidade_matricula.calendario_ano = '$ano_letivo'
   AND ecidade_matricula.matricula_ativa = 'S'
  $idescola $idturma
-ORDER BY aluno.nome ASC");
+ORDER BY escola.nome_escola, turma.nome_turma, aluno.nome ASC");
 
 
 

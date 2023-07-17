@@ -282,7 +282,7 @@ foreach ($res as $key => $value) {
 
 
     <div class="row">
-        <div class="col-sm-1"></div>
+        <!-- <div class="col-sm-1"></div> -->
         <div class="col-sm-4">
            <label for="exampleInputEmail1">Busca exitosa</label><br>
         
@@ -294,7 +294,7 @@ foreach ($res as $key => $value) {
 <br>
 <br>
         <div class="row">
-        <div class="col-sm-1"></div>
+        <!-- <div class="col-sm-1"></div> -->
 <?php 
 if ($quantidade_ligacao >=3) {
 ?>
