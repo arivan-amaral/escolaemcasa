@@ -40,19 +40,20 @@ if ($turma =='Todas') {
     $result="<table>";
     $result.="<tbody>";
     $result.="<th>DADOS ALUNOS</th>";
+    $result.="<th>QUANTIDADE DE LIGAÇÃO</th>";
     $result.="<th> FICAI</th>";
     $result.="<th>QUANTIDADE DE FALTAS</th>";
     $result.="<th>AÇÃO</th>";
     $result.="</tbody>";
 
-$res=$conexao->query("SELECT busca_ativa.id, descricao_chamada,quem_atendeu,
+$res=$conexao->query("SELECT COUNT(*) AS quantidade_ligacao, busca_ativa.id, descricao_chamada,quem_atendeu,
  aluno.nome as nome_aluno , quantidade_faltas , escola.nome_escola as nome_escola, turma.nome_turma, busca_ativa.ficai
     FROM busca_ativa, registro_ligacao_busca_ativa,escola,aluno,turma,funcionario WHERE
     registro_ligacao_busca_ativa.busca_ativa_id = busca_ativa.id and 
 busca_ativa.escola_id = escola.idescola and 
 registro_ligacao_busca_ativa.funcionario_id=funcionario.idfuncionario and 
 busca_ativa.turma_id = turma.idturma and 
-busca_ativa.aluno_id= aluno.idaluno $escola $turma $ficai ORDER by busca_ativa.id desc LIMIT 500");
+busca_ativa.aluno_id= aluno.idaluno $escola $turma $ficai GROUP BY busca_ativa_id ORDER by busca_ativa.id desc LIMIT 500");
 
 
 
@@ -65,6 +66,7 @@ foreach ($res as $key => $value) {
     $ficai=$value['ficai'];
     $descricao_chamada=$value['descricao_chamada'];
     $quem_atendeu=$value['quem_atendeu'];
+    $quantidade_ligacao=$value['quantidade_ligacao'];
 
     if ($ficai==1) {
        $ficai="SIM";
@@ -75,6 +77,7 @@ foreach ($res as $key => $value) {
 
 	$result.="<tr>";
 	$result.="<td>$nome_aluno<br>$nome_escola<br>$nome_turma</td>";
+    $result.="<td><b class='text-danger'>$quantidade_ligacao</b></td>";
 	$result.="<td>$ficai</td>";
     $result.="<td>$quantidade_faltas</td>";
     $result.="<td> 

@@ -111,8 +111,8 @@ ORDER BY aluno.nome ASC");
                         <th>#</th>
                         <th>Aluno</th>
                         <th>Ação</th>
-                        <th>Faltas</th>
-                        <th>Total</th>
+                        <th>Faltas Consecutivas</th>
+                        <th>Total no período</th>
                                             
                     </tr>
                 </thead>
