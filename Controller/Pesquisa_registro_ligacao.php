@@ -42,10 +42,10 @@ if ($turma =='Todas') {
     $result.="<th>DADOS ALUNOS</th>";
     $result.="<th> FICAI</th>";
     $result.="<th>QUANTIDADE DE FALTAS</th>";
-    $result.="<th></th>";
+    $result.="<th>AÇÃO</th>";
     $result.="</tbody>";
 
-$res=$conexao->query("SELECT
+$res=$conexao->query("SELECT descricao_chamada,quem_atendeu,
  aluno.nome as nome_aluno , quantidade_faltas , escola.nome_escola as nome_escola, turma.nome_turma, busca_ativa.ficai
     FROM busca_ativa,escola,aluno,turma,funcionario WHERE
 busca_ativa.escola_id = escola.idescola and 
@@ -61,6 +61,8 @@ foreach ($res as $key => $value) {
     $nome_escola=$value['nome_escola'];
     $nome_turma=$value['nome_turma'];
     $ficai=$value['ficai'];
+    $descricao_chamada=$value['descricao_chamada'];
+    $quem_atendeu=$value['quem_atendeu'];
 
     if ($ficai==1) {
        $ficai="SIM";
@@ -73,7 +75,30 @@ foreach ($res as $key => $value) {
 	$result.="<td>$nome_aluno<br>$nome_escola<br>$nome_turma</td>";
 	$result.="<td>$ficai</td>";
     $result.="<td>$quantidade_faltas</td>";
-	// $result.="<td> <a  class='btn btn-success' >Registrar chamada</a> </td>";
+    $result.="<td> <a  class='btn btn-info' data-toggle='modal' data-target='#modal-detalhes-busca-ativa' >Detalhes</a> </td>";
+    $result.="<div class='modal fade' id='modal-detalhes-busca-ativa'>
+    <div class='modal-dialog'>
+      <div class='modal-content'>
+        <div class='modal-header'>
+          <h4 class='modal-title'>BUSCA ATIVA</h4>
+          <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+            <span aria-hidden='true'>&times;</span>
+          </button>
+        </div>
+        
+
+          <div class='modal-body'>
+              <!-- /corpo -->
+                <b> QUEM ATENDEU: $quem_atendeu</b><BR>
+            <p>$descricao_chamada </p>
+              <!-- /corpo -->
+        </div>
+      <button type='button' class='btn btn-default' data-dismiss='modal'><font style='vertical-align: inherit;'><font style='vertical-align: inherit;'>Fechar</font></font></button>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>";
 	$result.="</tr>";
 }
 
