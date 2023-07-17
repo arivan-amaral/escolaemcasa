@@ -169,9 +169,41 @@ function verificarNome($nome) {
 }
 
 // Exemplo de uso
-$nomeCompleto = "João da Silva Oliveira";
-$nomeAbreviado = verificarNome($nomeCompleto);
-return $nomeAbreviado; // Saída: João S. Oliveira
+// $nomeCompleto = "João da Silva Oliveira";
+// $nomeAbreviado = verificarNome($nomeCompleto);
+// return $nomeAbreviado; // Saída: João S. Oliveira
 
-  
+function verificar_periodo_ligacao_busca_ativa($data1, $data2){
+     
+     // Extrai o dia e a hora das datas
+     $dia1 = date('Y-m-d', strtotime($data1));
+     $hora1 = date('H', strtotime($data1));
+
+     $dia2 = date('Y-m-d', strtotime($data2));
+     $hora2 = date('H', strtotime($data2));
+
+     // Verifica se é a mesma manhã
+     if ($dia1 == $dia2 && $hora1 >= 6 && $hora1 < 12 && $hora2 >= 6 && $hora2 < 12) {
+         // echo "Está na mesma manhã";
+        return 0;
+
+     } 
+     // Verifica se é a mesma tarde
+     elseif ($dia1 == $dia2 && $hora1 >= 12 && $hora1 < 18 && $hora2 >= 12 && $hora2 < 18) {
+         // echo "Está na mesma tarde";
+        return 0;
+
+     } 
+     // Verifica se é a mesma noite
+     elseif ($dia1 == $dia2 && $hora1 >= 18 && $hora2 < 6 && $hora2 >= 18) {
+         // echo "Está na mesma noite";
+        return 0;
+         
+     } 
+     else {
+         echo "Não está no mesmo período";
+        return 1;
+     }
+
+}
 ?>

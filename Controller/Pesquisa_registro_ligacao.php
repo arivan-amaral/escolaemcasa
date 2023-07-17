@@ -46,14 +46,14 @@ if ($turma =='Todas') {
     $result.="<th>AÇÃO</th>";
     $result.="</tbody>";
 
-$res=$conexao->query("SELECT COUNT(*) AS quantidade_ligacao, busca_ativa.id,busca_ativa.periodo_inicial,busca_ativa.periodo_final, descricao_chamada,quem_atendeu,
+$res=$conexao->query("SELECT COUNT(*) AS quantidade_ligacao,  busca_ativa.data as data_ligacao, busca_ativa.id,busca_ativa.periodo_inicial,busca_ativa.periodo_final, descricao_chamada,quem_atendeu,
  aluno.nome as nome_aluno , quantidade_faltas , escola.nome_escola as nome_escola, turma.nome_turma, busca_ativa.ficai
     FROM busca_ativa, registro_ligacao_busca_ativa,escola,aluno,turma,funcionario WHERE
     registro_ligacao_busca_ativa.busca_ativa_id = busca_ativa.id and 
 busca_ativa.escola_id = escola.idescola and 
 registro_ligacao_busca_ativa.funcionario_id=funcionario.idfuncionario and 
 busca_ativa.turma_id = turma.idturma and 
-busca_ativa.aluno_id= aluno.idaluno $escola $turma $ficai GROUP BY busca_ativa_id ORDER by busca_ativa.id desc LIMIT 500");
+busca_ativa.aluno_id= aluno.idaluno $escola $turma $ficai GROUP BY  busca_ativa_id ORDER by registro_ligacao_busca_ativa.data DESC LIMIT 500");
 
 
 
@@ -69,6 +69,7 @@ foreach ($res as $key => $value) {
     $quantidade_ligacao=$value['quantidade_ligacao'];
     $periodo_inicial=$value['periodo_inicial'];
     $periodo_final=$value['periodo_final'];
+    $data_ligacao=$value['data_ligacao'];
 
     if ($ficai==1) {
        $ficai="SIM";
@@ -83,9 +84,16 @@ foreach ($res as $key => $value) {
 	$result.="<td>$ficai</td>";
     $result.="<td>$quantidade_faltas</td>";
     $result.="<td> 
-    <a  class='btn btn-info' data-toggle='modal' data-target='#modal-detalhes-busca-ativa$id' >Detalhes</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href='editar_cadastro_registro_ligacao.php?id=$id' class='btn btn-success' >Registrar nova chamada</a> 
+    <a  class='btn btn-info' data-toggle='modal' data-target='#modal-detalhes-busca-ativa$id' >Detalhes</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+     
+$mesmo_periodo=verificar_periodo_ligacao_busca_ativa($data_ligacao, date('Y-m-d H:i:s'));
+if ($mesmo_periodo==1) {
+ 
+     $result.="<a href='editar_cadastro_registro_ligacao.php?id=$id' class='btn btn-success' >Registrar nova chamada  </a> ";
+}
 
+
+ $result.="
     </td>";
 
 
