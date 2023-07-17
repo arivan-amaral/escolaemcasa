@@ -8,9 +8,37 @@ error_reporting(E_ALL);
     include_once '../Model/Aluno.php';
     include_once "Conversao.php";
 
+ 
+
+function obterDatasEntrePeriodo($dataInicial, $dataFinal) {
+    // Converte as datas para o formato do objeto DateTime
+    $dataInicial = new DateTime($dataInicial);
+    $dataFinal = new DateTime($dataFinal);
+
+    // Incrementa um dia na data inicial para garantir que ela esteja incluída no resultado
+    //  $dataInicial->modify('-1 day');
+    $dataFinal->modify('+1 day');
+
+    // Cria um intervalo de datas usando a data inicial, a data final e o passo de 1 dia
+    $intervalo = new DateInterval('P1D');
+    $periodo = new DatePeriod($dataInicial, $intervalo, $dataFinal);
+
+    // Inicializa um array para armazenar as datas
+    $datas = [];
+
+    // Itera sobre o período e adiciona cada data ao array
+    foreach ($periodo as $data) {
+        $datas[] = $data->format('Y-m-d');
+    }
+
+    return $datas;
+}
+
+ 
 
     // try {
     $quantidade_falta = $_GET['falta'];
+
     $ano_letivo = $_SESSION['ano_letivo'];
     $idturma = $_GET['idturma'];
     $idturma = $_GET['idturma'];
@@ -40,16 +68,10 @@ if ($idturma =='Todas') {
 
 }
 
+ 
+       
+$array_datas = obterDatasEntrePeriodo($data_inicial, $data_final);
 
-        $data_aux=$data_inicio;
-
-        $array_datas = array();
-        for ($i=0; $i <= $total ; $i++) { 
-           $stringDate = $data_aux->format('Y-m-d'); 
-           $array_datas[$i]=$stringDate ;
-           $data_aux->modify('+1day');
-        
-        }
  
 
     $resultado=$conexao->query("
@@ -112,13 +134,16 @@ ORDER BY aluno.nome ASC");
 
         $faltas_aluno=0;
 
-   
+   // echo "($faltas_aluno<=$quantidade_falta)";
 
            foreach ($array_datas as $key => $datas) {
-             
+          // echo "w$faltas_aluno <br>";
                if ($faltas_aluno<=$quantidade_falta) {
                    $res=$conexao->query("SELECT * FROM frequencia WHERE ano_frequencia='$ano_letivo' and
                     data_frequencia ='$datas' and aluno_id=$idaluno and turma_id=$turma_id and escola_id=$escola_id  and  presenca !=1 limit 1 ");
+
+
+                        
                   
                    if (count($res->fetchAll())>0) {
                       $faltas_aluno++;
@@ -138,7 +163,7 @@ ORDER BY aluno.nome ASC");
                <tr> 
                    <td>
                         
-                 $conta_aluno
+                 $conta_aluno ($faltas_aluno>=$quantidade_falta || $quantidade_falta=='total')
                     
                   </td>           <td>
                         
