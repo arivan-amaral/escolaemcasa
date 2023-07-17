@@ -212,7 +212,7 @@ foreach ($res as $key => $value) {
   }
 ?>
 
-<form action="../Controller/Cadastrar_registro_ligacao.php" method="post">
+<form action="../Controller/Cadastrar_novo_registro_ligacao.php" method="post">
   
 
         <div class="row">
@@ -223,6 +223,7 @@ foreach ($res as $key => $value) {
            <input type="text"  class="form-control"  name="idaluno" value="<?php echo $idaluno ?>" readonly  >  
            <input type="text"  class="form-control"  name="escola_id" value="<?php echo $idescola ?>" readonly  >  
            <input type="text"  class="form-control"  name="turma_id" value="<?php echo $idturma ?>" readonly  >  
+           <input type="text"  class="form-control"  name="busca_ativa_id" value="<?php echo $idbusca_ativa ?>" readonly  >  
           </div>       
           <div class="col-sm-6">
            <label for="exampleInputEmail1">Aluno</label><br>
