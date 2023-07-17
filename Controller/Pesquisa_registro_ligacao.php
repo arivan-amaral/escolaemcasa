@@ -40,13 +40,13 @@ if ($turma =='Todas') {
     $result="<table>";
     $result.="<tbody>";
     $result.="<th>DADOS ALUNOS</th>";
-    $result.="<th>QUANTIDADE DE LIGAÇÃO</th>";
+    $result.="<th>LIGAÇÕES</th>";
     $result.="<th> FICAI</th>";
-    $result.="<th>QUANTIDADE DE FALTAS</th>";
+    $result.="<th>FALTAS</th>";
     $result.="<th>AÇÃO</th>";
     $result.="</tbody>";
 
-$res=$conexao->query("SELECT COUNT(*) AS quantidade_ligacao, busca_ativa.id, descricao_chamada,quem_atendeu,
+$res=$conexao->query("SELECT COUNT(*) AS quantidade_ligacao, busca_ativa.id,busca_ativa.periodo_inicial,busca_ativa.periodo_final, descricao_chamada,quem_atendeu,
  aluno.nome as nome_aluno , quantidade_faltas , escola.nome_escola as nome_escola, turma.nome_turma, busca_ativa.ficai
     FROM busca_ativa, registro_ligacao_busca_ativa,escola,aluno,turma,funcionario WHERE
     registro_ligacao_busca_ativa.busca_ativa_id = busca_ativa.id and 
@@ -67,6 +67,8 @@ foreach ($res as $key => $value) {
     $descricao_chamada=$value['descricao_chamada'];
     $quem_atendeu=$value['quem_atendeu'];
     $quantidade_ligacao=$value['quantidade_ligacao'];
+    $periodo_inicial=$value['periodo_inicial'];
+    $periodo_final=$value['periodo_final'];
 
     if ($ficai==1) {
        $ficai="SIM";
@@ -77,7 +79,7 @@ foreach ($res as $key => $value) {
 
 	$result.="<tr>";
 	$result.="<td>$nome_aluno<br>$nome_escola<br>$nome_turma</td>";
-    $result.="<td><b class='text-danger'>$quantidade_ligacao</b></td>";
+    $result.="<td><b class='text-danger'>$quantidade_ligacao</b><br> $periodo_inicial <> $periodo_final</td>";
 	$result.="<td>$ficai</td>";
     $result.="<td>$quantidade_faltas</td>";
     $result.="<td> 
