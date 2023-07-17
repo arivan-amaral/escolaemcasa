@@ -110,6 +110,7 @@ ORDER BY aluno.nome ASC");
                     <tr>
                         <th>#</th>
                         <th>Aluno</th>
+                        <th>Ação</th>
                         <th>Faltas</th>
                         <th>Total</th>
                                             
