@@ -224,7 +224,7 @@ setTimeout('dia_doservidor_publico();',3000);
             try {
               
            
-              if ($_SESSION['nivel_acesso_id']>=0) {
+              if ($_SESSION['nivel_acesso_id']>=100) {
             ?>
                 <option value="Todas">TODAS</option>
 

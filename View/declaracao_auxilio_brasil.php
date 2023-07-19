@@ -66,7 +66,7 @@ if ( ($seguimento!='' && $seguimento <3) || $idserie <8 ) {
 
 }else if ( ($seguimento!='' && $seguimento <3)  || ( $idserie >7 && $idserie<16)) {
    
-   $res_pre=$conexao->query("SELECT count(*) AS'quantidade' from frequencia where presenca=0 and aluno_id=$aluno_id and escola_id=$escola_id and turma_id=$turma_id and data_frequencia BETWEEN '$data_inicial' and '$data_final' ");
+   $res_pre=$conexao->query("SELECT count(*) AS'quantidade' from frequencia where presenca=0 and aluno_id=$aluno_id and escola_id=$escola_id and turma_id=$turma_id and data_frequencia BETWEEN '$data_inicial' and '$data_final' GROUP by data_frequencia ");
 
        foreach ($res_pre as $keyPre => $valuePre) {
             $faltas_aluno=$valuePre['quantidade'];
