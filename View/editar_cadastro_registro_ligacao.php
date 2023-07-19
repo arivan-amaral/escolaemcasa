@@ -312,8 +312,12 @@ if ($quantidade_ligacao >=3) {
            Não<input type="radio"   name="ficai" value="0" checked>  
           </div>
 
-<?php } ?>
+<?php }else{
+?>
+<input type="radio"  hidden name="ficai" value="0" checked>
 
+
+<?php } ?>
         </div> 
 
 <br>
