@@ -132,9 +132,29 @@ if ($mesmo_periodo==1) {
 
           <div class='modal-body'>
               <!-- /corpo -->
+          ";
+          $res_lig=$conexao->query("SELECT funcionario.nome as quem_ligou , registro_ligacao_busca_ativa.quem_atendeu, registro_ligacao_busca_ativa.data as data_ligacao, registro_ligacao_busca_ativa.descricao_chamada FROM registro_ligacao_busca_ativa, funcionario WHERE registro_ligacao_busca_ativa.busca_ativa_id = $id AND registro_ligacao_busca_ativa.funcionario_id = funcionario.idfuncionario    "); 
+            
+            foreach ($res_lig as $key => $value) {
+                $quem_atendeu=$value['quem_atendeu'];
+                $quem_ligou=$value['quem_ligou'];
+                $data_ligacao=$value['data_ligacao'];
+                $descricao_chamada=$value['descricao_chamada'];
+
+                $result.="ID: $id
                 <b> QUEM ATENDEU: $quem_atendeu</b><BR>
-            <p>$descricao_chamada </p>
-              <!-- /corpo -->
+                <b> QUEM LIGOU: $quem_ligou</b> Data da ligação: $data_ligacao<BR>
+                <p>$descricao_chamada </p>
+
+                <hr>
+                ";
+
+            }
+
+
+
+        $result.="      
+        <!-- /corpo -->
         </div>
       <button type='button' class='btn btn-default' data-dismiss='modal'><font style='vertical-align: inherit;'><font style='vertical-align: inherit;'>Fechar</font></font></button>
       </div>
