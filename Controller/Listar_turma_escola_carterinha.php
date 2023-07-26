@@ -12,7 +12,9 @@ try {
 
   $result="";
   $turno="";
-     $result.="<option value='Todas'>Todas</option>";
+  if ($_SESSION['nivel_acesso_id']>=100) {
+    $result.="<option value='Todas'>Todas</option>";
+  }
 
   foreach ($res as $key => $value) {
 
