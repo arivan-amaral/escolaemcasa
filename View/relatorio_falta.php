@@ -273,6 +273,9 @@ setTimeout('dia_doservidor_publico();',3000);
 </div>
  
 <script>
+  setTimeout(listar_turma_escola_relatorio(),100);
+
+  
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();
