@@ -45,8 +45,8 @@ function obterDatasEntrePeriodo($dataInicial, $dataFinal) {
     $campo_turma=($_GET['idturma']);
     $delimit=",";
 
-    $turma=explode($delimit,$campo_turma);
-    $turma_aux="";
+    // $turma=explode($delimit,$campo_turma);
+    // $turma_aux="";
 
 
     
@@ -73,10 +73,9 @@ function obterDatasEntrePeriodo($dataInicial, $dataFinal) {
 if ($idturma =='' || $idturma =='Todas') {
     $idturma=" and ecidade_matricula.turma_id >0 ";
 }else{
-    $idturma="";
-    foreach ($turma as $key => $value) {
-    $idturma.=" and ecidade_matricula.turma_id = $value ";
-    }
+ 
+    $idturma.=" and ecidade_matricula.turma_id IN($value) ";
+    
 
 }
 
