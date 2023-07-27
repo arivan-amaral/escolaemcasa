@@ -73,8 +73,8 @@ function obterDatasEntrePeriodo($dataInicial, $dataFinal) {
 if ($idturma =='' || $idturma =='Todas') {
     $idturma=" and ecidade_matricula.turma_id >0 ";
 }else{
- 
-    $idturma.=" and ecidade_matricula.turma_id IN($value) ";
+    
+    $idturma.=" and ecidade_matricula.turma_id IN($campo_turma) ";
     
 
 }
