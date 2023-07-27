@@ -41,7 +41,14 @@ function obterDatasEntrePeriodo($dataInicial, $dataFinal) {
 
     $ano_letivo = $_SESSION['ano_letivo'];
     $idturma = $_GET['idturma'];
-    $idturma = $_GET['idturma'];
+    
+    $campo_turma=($_GET['idturma']);
+    $delimit=",";
+
+    $turma=explode($delimit,$campo_turma);
+    $turma_aux="";
+
+
     
 
     $idescola = $_GET['idescola'];
@@ -60,20 +67,33 @@ function obterDatasEntrePeriodo($dataInicial, $dataFinal) {
 	$idescola=" and escola.idescola = $idescola ";
 
 }
-if ($idturma =='Todas') {
-	$idturma=" and turma.idturma >0 ";
-}else{
-		$idturma=" and turma.idturma = $idturma ";
 
+
+ 
+if ($idturma =='' || $idturma =='Todas') {
+    $idturma=" and ecidade_matricula.turma_id >0 ";
+}else{
+    $idturma="";
+    foreach ($turma as $key => $value) {
+    $idturma.=" and ecidade_matricula.turma_id = $value ";
+    }
 
 }
+
+
+// if ($idturma =='Todas') {
+// 	$idturma=" and turma.idturma >0 ";
+// }else{
+// 		$idturma=" and turma.idturma = $idturma ";
+
+
+// }
 
  
        
 $array_datas = obterDatasEntrePeriodo($data_inicial, $data_final);
 
  
-
     $resultado=$conexao->query("
     SELECT
     aluno.aluno_transpublico, 
@@ -108,6 +128,7 @@ ORDER BY escola.nome_escola, turma.nome_turma, aluno.nome ASC");
 
 
     $result="
+  <table class='table table-bordered table-striped'>
                 <thead>
                     <tr>
                         <th>#</th>
@@ -203,7 +224,7 @@ ORDER BY escola.nome_escola, turma.nome_turma, aluno.nome ASC");
 
 
     
-    echo "$result";
+    echo "$result </tbody></table>";
      
      // } catch (Exception $e) {
      //    echo $e;

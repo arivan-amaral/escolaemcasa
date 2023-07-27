@@ -28,10 +28,11 @@ try {
     // $idescola=($value['idescola']);
     $nome_escola=($value['nome_escola']);
      $result.="
-      <input class='form-check-input idturma' type='checkbox' value='$idturma' id='idturma'>
+      <input class='form-check-input idturma' type='checkbox' value='$idturma' id='idturma$idturma'>
           <label class='form-check-label' for='flexCheckDefault'>
             $nome_turma
           </label>
+          <br>
            ";
 }
 

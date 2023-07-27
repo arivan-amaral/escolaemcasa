@@ -215,11 +215,11 @@ setTimeout('dia_doservidor_publico();',3000);
        </div>
 
 
-
+ 
         <div class="col-sm-4">
           <div class="form-group">
            <label for="exampleInputEmail1">ESCOLA</label>
-           <select class="form-control"  id="idescola" onchange="listar_turma_escola_relatorio();" >
+           <select class="form-control"  id="idescola" onchange="listar_turma_escola_relatorio_faltas();" >
             <?php 
             try {
               
@@ -250,9 +250,14 @@ setTimeout('dia_doservidor_publico();',3000);
 
  <div class="col-md-4">
           <label for="exampleInputEmail1">Escolha a turma</label>
-          <select class="form-control form-lg" id="idturma"  required="">
-            <option value="Todas">TODAS</option>
-          </select>
+          <div   id="resultado" style="margin-left: 15px;" >
+           <div class=" scrollable-div" id="resultado" >
+               <input class='form-check-input idturma' type='checkbox' value='Todas' id='idturma' checked>
+               <label class='form-check-label' for='flexCheckDefault'>
+                 TODAS
+               </label>
+               <br>
+          </div>
 
       </div>
  
@@ -267,15 +272,18 @@ setTimeout('dia_doservidor_publico();',3000);
         </div>
       </div>
   <br>
-  <table class="table table-bordered table-striped" id="resultado">
-      
-  </table>
-</div>
- 
-<script>
-  setTimeout(listar_turma_escola_relatorio(),100);
 
+
+</div>
+   <div  id="resultado_busca">
   
+  </div>
+
+<script>
+
+
+
+
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();
@@ -296,6 +304,11 @@ $(document).ready(function(){
 
   <!-- /.control-sidebar -->
   <script type="text/javascript">
+    setTimeout(listar_turma_escola_relatorio_faltas(),100);
+
+
+
+
   const checkboxBtn = document.querySelector('.checkbox-btn input[type="checkbox"]');
 
   checkboxBtn.addEventListener('change', () => {

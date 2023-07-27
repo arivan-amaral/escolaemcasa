@@ -44,7 +44,7 @@ function CriaRequest() {
 
 function pesquisa_relatorio_busca_ativa(){
         var xmlreq = CriaRequest();
-        var result=document.getElementById('resultado');
+        var result=document.getElementById('resultado_busca');
         var escola_id=document.getElementById('idescola').value;
         var turma_id=document.getElementById('idturma').value;
         var data_inicial=document.getElementById('data_inicial').value;
@@ -747,7 +747,7 @@ function pesquisa_relatorio_filtros(){
   var texto = "";
   var parametro = "";
   var titulo = "";
-  var result = document.getElementById('resultado');
+  var result = document.getElementById('resultado_busca');
   var escola = document.getElementById('escola').value;
   var sexo = document.getElementById('sexo').value;
 
@@ -5344,6 +5344,34 @@ function rolar() {
 
 
 
+ function listar_turma_escola_relatorio_faltas() {
+    var result = document.getElementById("resultado");
+    var idescola = document.getElementById("idescola").value;
+    var xmlreq = CriaRequest();   
+    result.innerHTML="<img src='imagens/carregando.gif'>";
+    xmlreq.open("GET", "../Controller/Listar_turma_relatorio_rendimento.php?idescola="+idescola, true);
+
+
+    xmlreq.onreadystatechange = function(){
+      
+         if (xmlreq.readyState == 4) {
+             if (xmlreq.status == 200) {
+                 result.innerHTML = xmlreq.responseText;
+
+             }else{
+
+                 result.innerHTML ="Verifique sua conexão com a internet!";
+               
+                 
+             }
+         }
+     };
+     xmlreq.send(null);
+ } 
+
+
+
+
  function listar_turma_escola_carterinha() {
     var result = document.getElementById("turma_carterinha");
     var idescola = document.getElementById("idescola").value;
@@ -6249,31 +6277,87 @@ function pesquisa_frequencia(){
      xmlreq.send(null);
 }
 
+// function pesquisa_relatorio_faltas_aluno(){
+
+//     var result = document.getElementById('resultado');
+//     var falta = document.getElementById('falta').value;
+//     var data_inicial = document.getElementById('data_inicial').value;
+//     var data_final = document.getElementById('data_final').value;
+//     var idturma = document.getElementById('idturma').value;
+//     var idescola = document.getElementById('idescola').value;
+      
+//     result.innerHTML = "<img src='imagens/carregando.gif'>";  
+//     var xmlreq = CriaRequest();
+//     xmlreq.open("GET", "../Controller/Pesquisa_relatorio_faltas_aluno.php?idescola="+idescola+"&idturma="+idturma+"&falta="+falta+"&data_inicial="+data_inicial+"&data_final="+data_final, true);
+
+//     xmlreq.onreadystatechange = function(){
+  
+//      if (xmlreq.readyState == 4) {
+//          if (xmlreq.status == 200) {
+//                result.innerHTML = xmlreq.responseText;
+
+//          }else{
+//                alert('Erro.');
+
+//             result.innerHTML ="Erro ao receber mensagens";                 
+//          }
+//      }
+//     };
+//      xmlreq.send(null);
+// }
+// 
+
+
 function pesquisa_relatorio_faltas_aluno(){
 
-    var result = document.getElementById('resultado');
-    var falta = document.getElementById('falta').value;
-    var data_inicial = document.getElementById('data_inicial').value;
-    var data_final = document.getElementById('data_final').value;
-    var idturma = document.getElementById('idturma').value;
-    var idescola = document.getElementById('idescola').value;
+    // Obtém todos os checkboxes com classe iniciada por "idtuma"
+    const checkboxes = document.querySelectorAll('input[type="checkbox"].idturma');
+
+    // Variável para armazenar os valores selecionados
+    let valoresSelecionados = '';
+
+    // Itera sobre os checkboxes
+    checkboxes.forEach(function(checkbox) {
+      // Verifica se o checkbox está marcado
+      if (checkbox.checked) {
+        // Concatena o valor na variável
+        valoresSelecionados += checkbox.value + ',';
+      }
+    });
+
+    // Remove a última vírgula, se houver
+    valoresSelecionados = valoresSelecionados.replace(/,$/, '');
+
+    // Exibe os valores selecionados
+    console.log("valores check"+valoresSelecionados);
+
+  var result = document.getElementById('resultado_busca');
+  var falta = document.getElementById('falta').value;
+  var data_inicial = document.getElementById('data_inicial').value;
+  var data_final = document.getElementById('data_final').value;
+  var idescola = document.getElementById('idescola').value;
+  var idturma =""+valoresSelecionados;
+ 
+  var serie ="";
+ 
+        result.innerHTML = "<img src='imagens/carregando.gif'>";  
+          var xmlreq = CriaRequest();
+         xmlreq.open("GET", "../Controller/Pesquisa_relatorio_faltas_aluno.php?idescola="+idescola+"&idturma="+idturma+"&falta="+falta+"&data_inicial="+data_inicial+"&data_final="+data_final, true);
+
+          xmlreq.onreadystatechange = function(){
+        
+           if (xmlreq.readyState == 4) {
+               if (xmlreq.status == 200) {
+                     result.innerHTML = xmlreq.responseText;
+
+               }else{
+                     alert('Erro desconhecido, verifique sua conexão com a internet');
+
+                  result.innerHTML ="Erro ao receber mensagens";                 
+               }
+           }
+          };
+       xmlreq.send(null);
+ 
       
-    result.innerHTML = "<img src='imagens/carregando.gif'>";  
-    var xmlreq = CriaRequest();
-    xmlreq.open("GET", "../Controller/Pesquisa_relatorio_faltas_aluno.php?idescola="+idescola+"&idturma="+idturma+"&falta="+falta+"&data_inicial="+data_inicial+"&data_final="+data_final, true);
-
-    xmlreq.onreadystatechange = function(){
-  
-     if (xmlreq.readyState == 4) {
-         if (xmlreq.status == 200) {
-               result.innerHTML = xmlreq.responseText;
-
-         }else{
-               alert('Erro.');
-
-            result.innerHTML ="Erro ao receber mensagens";                 
-         }
-     }
-    };
-     xmlreq.send(null);
 }
