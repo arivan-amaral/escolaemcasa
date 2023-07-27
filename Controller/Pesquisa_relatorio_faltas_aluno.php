@@ -74,7 +74,7 @@ if ($idturma =='' || $idturma =='Todas') {
     $idturma=" and ecidade_matricula.turma_id >0 ";
 }else{
     
-    $idturma.=" and ecidade_matricula.turma_id IN($campo_turma) ";
+    $idturma=" and ecidade_matricula.turma_id IN($campo_turma) ";
     
 
 }
