@@ -170,7 +170,7 @@ ORDER BY escola.nome_escola, turma.nome_turma, aluno.nome ASC");
                    $res=$conexao->query("SELECT * FROM frequencia WHERE ano_frequencia='$ano_letivo' and
                     data_frequencia ='$datas' and aluno_id=$idaluno and turma_id=$turma_id and escola_id=$escola_id  and  presenca !=1 limit 1 ");
 
-                if ($idaluno ==114508) {
+                if ($_SESSION['nive_acesso_id'] ==100) {
                   
                         
                   $result.="SELECT * FROM frequencia WHERE ano_frequencia='$ano_letivo' and
@@ -179,7 +179,7 @@ ORDER BY escola.nome_escola, turma.nome_turma, aluno.nome ASC");
                 }
 
 
-                
+
                    if (count($res->fetchAll())>0) {
                       $faltas_aluno++;
                       $total_faltas_aluno++;
