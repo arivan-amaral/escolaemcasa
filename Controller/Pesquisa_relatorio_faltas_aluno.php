@@ -178,7 +178,7 @@ ORDER BY escola.nome_escola, turma.nome_turma, aluno.nome ASC");
 
                 // }
                  $conta_faltas=0;
-                   foreach ($variable as $key => $value) {
+                   foreach ($res_faltas as $key => $value) {
                        $faltas_aluno++;
                         $conta_faltas++;
 
@@ -202,7 +202,7 @@ ORDER BY escola.nome_escola, turma.nome_turma, aluno.nome ASC");
 
 
 
-    // if ($faltas_aluno>0) {
+     if ($faltas_aluno>0) {
 
             $result.="
                <tr> 
@@ -231,7 +231,7 @@ ORDER BY escola.nome_escola, turma.nome_turma, aluno.nome ASC");
                ";
     $conta_aluno++;
      
-    // }
+     }
 
     $faltas_aluno=0;
     }
