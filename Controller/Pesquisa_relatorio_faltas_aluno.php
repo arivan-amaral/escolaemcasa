@@ -167,7 +167,7 @@ ORDER BY escola.nome_escola, turma.nome_turma, aluno.nome ASC");
           // echo "w$faltas_aluno <br>";
                // if ($faltas_aluno<=$quantidade_falta) {
                   
-                   $res=$conexao->query("SELECT * FROM frequencia WHERE ano_frequencia='$ano_letivo' and
+                   $res_faltas=$conexao->query("SELECT * FROM frequencia WHERE ano_frequencia='$ano_letivo' and
                     data_frequencia ='$datas' and aluno_id=$idaluno and turma_id=$turma_id and escola_id=$escola_id  and  presenca !=1 limit 1 ");
 
                 // if ($_SESSION['nivel_acesso_id'] ==100) {
@@ -177,15 +177,24 @@ ORDER BY escola.nome_escola, turma.nome_turma, aluno.nome ASC");
                 //     data_frequencia ='$datas' and aluno_id=$idaluno and turma_id=$turma_id and escola_id=$escola_id  and  presenca !=1 limit 1";
 
                 // }
+                 $conta_faltas=0;
+                   foreach ($variable as $key => $value) {
+                       $faltas_aluno++;
+                        $conta_faltas++;
 
-
-
-                   if (count($res->fetchAll())>0) {
-                      $faltas_aluno++;
                       $total_faltas_aluno++;
-                   }else{
-                        $faltas_aluno=0;
                    }
+                   if ($conta_faltas==0) {
+                     $faltas_aluno=0;
+
+                   }
+
+                   // if (count($res_faltas->fetchAll())>0) {
+                   //    $faltas_aluno++;
+                   //    $total_faltas_aluno++;
+                   // }else{
+                   //      $faltas_aluno=0;
+                   // }
                // }
 
   
@@ -193,7 +202,7 @@ ORDER BY escola.nome_escola, turma.nome_turma, aluno.nome ASC");
 
 
 
-    if ($faltas_aluno>0) {
+    // if ($faltas_aluno>0) {
 
             $result.="
                <tr> 
@@ -222,7 +231,7 @@ ORDER BY escola.nome_escola, turma.nome_turma, aluno.nome ASC");
                ";
     $conta_aluno++;
      
-    }
+    // }
 
     $faltas_aluno=0;
     }
