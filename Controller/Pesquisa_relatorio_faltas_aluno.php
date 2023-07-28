@@ -173,7 +173,7 @@ ORDER BY escola.nome_escola, turma.nome_turma, aluno.nome ASC");
                 if ($idaluno ==114508) {
                   
                         
-                  echo "SELECT * FROM frequencia WHERE ano_frequencia='$ano_letivo' and
+                  $result.="SELECT * FROM frequencia WHERE ano_frequencia='$ano_letivo' and
                     data_frequencia ='$datas' and aluno_id=$idaluno and turma_id=$turma_id and escola_id=$escola_id  and  presenca !=1 limit 1";
 
                 }
