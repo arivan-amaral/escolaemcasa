@@ -173,28 +173,31 @@ ORDER BY escola.nome_escola, turma.nome_turma, aluno.nome ASC");
                 // if ($_SESSION['nivel_acesso_id'] ==100) {
                   
                         
-                //   $result.="SELECT * FROM frequencia WHERE ano_frequencia='$ano_letivo' and
-                //     data_frequencia ='$datas' and aluno_id=$idaluno and turma_id=$turma_id and escola_id=$escola_id  and  presenca !=1 limit 1";
+                   // $result.="SELECT * FROM frequencia WHERE ano_frequencia='$ano_letivo' and
+                   // data_frequencia ='$datas' and aluno_id=$idaluno and turma_id=$turma_id and escola_id=$escola_id  and  presenca !=1 limit 1; <br>";
 
                 // }
-                 $conta_faltas=0;
-                   foreach ($res_faltas as $key => $value) {
-                       $faltas_aluno++;
-                        $conta_faltas++;
+                 // $conta_faltas=0;
+                 //   foreach ($res_faltas as $key => $value) {
+                 //       $faltas_aluno++;
+                 //        $conta_faltas++;
 
+                 //      $total_faltas_aluno++;
+                 //   }
+                 //   if ($conta_faltas==0) {
+                 //     $faltas_aluno=0;
+
+                 //   }
+
+                   if (count($res_faltas->fetchAll())>0) {
+                      $faltas_aluno++;
                       $total_faltas_aluno++;
                    }
-                   if ($conta_faltas==0) {
-                     $faltas_aluno=0;
 
+                   else if ($faltas_aluno < $quantidade_falta ) {
+                     
+                        $faltas_aluno=0;
                    }
-
-                   // if (count($res_faltas->fetchAll())>0) {
-                   //    $faltas_aluno++;
-                   //    $total_faltas_aluno++;
-                   // }else{
-                   //      $faltas_aluno=0;
-                   // }
                // }
 
   
@@ -202,7 +205,7 @@ ORDER BY escola.nome_escola, turma.nome_turma, aluno.nome ASC");
 
 
 
-     if ($faltas_aluno>0) {
+     if ($faltas_aluno>=$quantidade_falta) {
 
             $result.="
                <tr> 
