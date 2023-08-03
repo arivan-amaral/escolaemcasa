@@ -226,7 +226,7 @@ ORDER BY escola.nome_escola, turma.nome_turma, aluno.nome ASC");
                   <td> <a href='cadastrar_registro_ligacao.php?nome_aluno=$nome_aluno&data_inicial=$data_inicial&data_final=$data_final&idaluno=$idaluno&quantidade_falta=$quantidade_falta&escola_id=$escola_id&turma_id=$turma_id' class='btn btn-success' target='_blank' >Registrar chamada</a> 
                   </td>
                   <td>
-                    $quantidade_faltas ou +
+                    $quantidade_falta ou +
                   </td>  
                    <td>
                     $total_faltas_aluno
