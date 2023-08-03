@@ -203,6 +203,17 @@
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
   color:black;mso-fareast-language:PT-BR'>Data<o:p></o:p></span></p>
   </td>
+
+  <td width=66 nowrap style='width:49.65pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-left-alt:solid windowtext .5pt;mso-border-bottom-alt:
+  solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;padding:
+  0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0cm;line-height:normal'><span
+  style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+  mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+  color:black;mso-fareast-language:PT-BR'>RESPONSÁVEL<o:p></o:p></span></p>
+  </td>
+  
   <td width=94 nowrap style='width:70.85pt;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
@@ -248,8 +259,25 @@ foreach ($result_conteudo as $key => $value) {
       line-height:normal'><span style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
       color:black;mso-fareast-language:PT-BR'>
-      <?php echo"$data_conteudo <br> ";
-        $result_funcionario_conteudo= $conexao->query("SELECT * FROM 
+      <?php echo"$data_conteudo";
+
+       ?>
+
+
+      <o:p></o:p></span></p>
+      </td>
+
+
+       <td width=66 nowrap valign=bottom style='width:49.65pt;border:solid windowtext 1.0pt;
+      border-top:none;mso-border-left-alt:solid windowtext .5pt;mso-border-bottom-alt:
+      solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;padding:
+      0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+      line-height:normal'><span style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+      mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+      color:black;mso-fareast-language:PT-BR'>
+      <?php 
+              $result_funcionario_conteudo= $conexao->query("SELECT * FROM 
           funcionario,conteudo_aula
          where 
         ( funcionario_id=idfuncionario or  professor_id=idfuncionario )and  id =$idconteudo  limit 1 ");
