@@ -26,12 +26,16 @@ if (!isset($_SESSION['idprofessor']) && !isset($_GET['idprofessor'])) {
 
 }else if (isset($_GET['idprofessor'])) {
   // code...
-   $idprofessor= $_GET['idprofessor'];
+  $idprofessor= $_GET['idprofessor'];
+  $idfuncionario=$_SESSION['idfuncionario'];
+
 }else{ 
 
   $idprofessor=$_SESSION['idprofessor'];
+  $idfuncionario=$_SESSION['idprofessor'];
 
 }
+
   include_once "cabecalho.php";
   include_once "alertas.php";
   include_once "barra_horizontal.php";
@@ -178,7 +182,7 @@ if (!isset($_SESSION['idprofessor']) && !isset($_GET['idprofessor'])) {
                         <div class='icon'>
                           <i class='ion ion-stats-bars'></i>
                         </div>
-                        <a href='diario_frequencia.php?disc=$iddisciplina&turm=$idturma&turma=$nome_turma&disciplina=$nome_disciplina&idescola=$idescola&idserie=$idserie' class='small-box-footer' target='_blanck'>
+                        <a href='diario_frequencia.php?idprofessor=$idprofessor&disc=$iddisciplina&turm=$idturma&turma=$nome_turma&disciplina=$nome_disciplina&idescola=$idescola&idserie=$idserie' class='small-box-footer' target='_blanck'>
                           Frequência <i class='fa fa-calendar'></i>
                         </a>
                       </div>
@@ -224,6 +228,7 @@ if (!isset($_SESSION['idprofessor']) && !isset($_GET['idprofessor'])) {
   <form action="../Controller/Cadastrar_conteudo.php" method="post">
     <input type="hidden" name="url_get" value="<?php echo $url_get; ?>">
     <input type="hidden" name="idprofessor" id="idprofessor" value="<?php echo $idprofessor; ?>">
+    <input type="hidden" name="idfuncionario" id="idprofessor" value="<?php echo $idfuncionario; ?>">
 
     <input type="hidden" name="idserie" id="idserie" value="<?php echo $idserie; ?>">
     <input type="hidden" name="idescola" id="idescola" value="<?php echo $idescola; ?>">
