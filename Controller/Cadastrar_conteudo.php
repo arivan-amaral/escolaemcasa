@@ -8,7 +8,15 @@
 
 try {
 
-    $professor_id=$_SESSION['idfuncionario'];
+    // $professor_id=$_SESSION['idfuncionario'];
+
+if (isset($_POST['idprofessor'])) {
+   $professor_id= $_POST['idprofessor'];
+    $idfuncionario=$_SESSION['idfuncionario'];
+}
+
+  $idfuncionario=$_SESSION['idfuncionario'];
+
 
     // $idescola=$_POST['idescola'];
    	// $idturma=$_POST['idturma'];
@@ -93,7 +101,8 @@ try {
 
  
         if ($idconteudo=="") {
-            cadastro_conteudo_aula($conexao,$descricao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula,$ano_conteudo,$quantidade_aula);
+            
+            cadastro_conteudo_aula($conexao,$descricao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula,$ano_conteudo,$quantidade_aula, $idfuncionario);
             $conteudo_aula_id= $conexao->lastInsertId();
         }
 

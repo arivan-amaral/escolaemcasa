@@ -204,7 +204,7 @@ relacionamento_funcionario_escola.escola_id='$idescola' ");
 	}
 
 function listar_disciplina_da_turma($conexao,$idturma,$idescola,$ano_letivo){
-	    $res=$conexao->query("SELECT turma.nome_turma, disciplina.iddisciplina,disciplina.nome_disciplina, funcionario.nome FROM turma, ministrada,disciplina, funcionario WHERE 
+	    $res=$conexao->query("SELECT ministrada.professor_id as idprofessor, turma.nome_turma, disciplina.iddisciplina,disciplina.nome_disciplina, funcionario.nome FROM turma, ministrada,disciplina, funcionario WHERE 
 	    	funcionario.idfuncionario= ministrada.professor_id AND
 	    	disciplina.iddisciplina=ministrada.disciplina_id AND
 	    	 ministrada.turma_id=turma.idturma AND 

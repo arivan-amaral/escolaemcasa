@@ -177,13 +177,14 @@ try {
       $pes=listar_disciplina_da_turma($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
 
       foreach ($pes as $chave => $linha) {
+        $idprofessor=($linha['idprofessor']);
         $nome_disciplina=($linha['nome_disciplina']);
         $iddisciplina=$linha['iddisciplina'];
         $nome=$linha['nome'];
 
         $result.= "
         
-        <a   href='ver_conteudo_disciplina.php?iddisciplina=$iddisciplina&idturma=$idturma&nome_disciplina=$nome_disciplina&nome_turma=$nome_turma&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat' target='_blank'>
+        <a   href='ver_conteudo_disciplina.php?idprofessor=$idprofessor&iddisciplina=$iddisciplina&idturma=$idturma&nome_disciplina=$nome_disciplina&nome_turma=$nome_turma&idescola=$idescola&idserie=$idserie' class='btn btn-info btn-block btn-flat' target='_blank'>
         <i class='fa fa-book'></i> 
         $nome_disciplina -> $nome
         </a>      

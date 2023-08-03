@@ -7,8 +7,14 @@
      
 
 try {
+ 
 
-    $professor_id=$_SESSION['idfuncionario'];
+if (isset($_POST['idprofessor'])) {
+   $professor_id= $_POST['idprofessor'];
+}else{ 
+  $professor_id=$_SESSION['idfuncionario'];
+
+}
 
     $idescola=$_POST['idescola'];
    	$idturma=$_POST['idturma'];
@@ -87,7 +93,7 @@ try {
 
 
             if ($idconteudo=="") {
-                 cadastro_conteudo_aula($conexao,$descricao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula,$ano_frequencia,1);
+                 cadastro_conteudo_aula($conexao,$descricao, $iddisciplina, $idturma, $idescola, $professor_id, $data,$aula,$ano_frequencia,1,$professor_id);
                 $conteudo_aula_id= $conexao->lastInsertId();
                $idconteudo= $conteudo_aula_id;
             }

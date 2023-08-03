@@ -463,8 +463,8 @@ function excluir_notas_cadastrada_fora($conexao,$idnota) {
 }
 // ********************************************************************************
 
-function cadastro_conteudo_aula($conexao,$descricao, $disciplina_id, $turma_id, $escola_id, $professor_id, $data,$aula,$ano_conteudo,$quantidade_aula) {
-    $conexao->exec("INSERT INTO conteudo_aula(descricao, disciplina_id, turma_id, escola_id, professor_id, data,aula,ano_conteudo,quantidade_aula) VALUES ('$descricao', $disciplina_id, $turma_id, $escola_id, $professor_id, '$data','$aula',$ano_conteudo,$quantidade_aula)");
+function cadastro_conteudo_aula($conexao,$descricao, $disciplina_id, $turma_id, $escola_id, $professor_id, $data,$aula,$ano_conteudo,$quantidade_aula,$funcionario_id) {
+    $conexao->exec("INSERT INTO conteudo_aula(descricao, disciplina_id, turma_id, escola_id, professor_id, data,aula,ano_conteudo,quantidade_aula, funcionario_id) VALUES ('$descricao', $disciplina_id, $turma_id, $escola_id, $professor_id, '$data','$aula',$ano_conteudo,$quantidade_aula,$funcionario_id)");
     
 }
 

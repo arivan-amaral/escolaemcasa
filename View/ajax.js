@@ -2837,6 +2837,7 @@ function lista_conteudo_aluno(){
   var xmlreq = CriaRequest();   
 
   var idserie = document.getElementById("idserie").value;
+  var idprofessor = document.getElementById("idprofessor").value;
   var idescola = document.getElementById("idescola").value;
   var idturma = document.getElementById("idturma").value;
   var iddisciplina = document.getElementById("iddisciplina").value;
@@ -2849,7 +2850,7 @@ function lista_conteudo_aluno(){
         result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
 
           
-      var url="descricao_escola_turma="+descricao_escola_turma+"&idserie="+idserie+"&aula="+aula+"&data_frequencia="+data_frequencia+"&idescola="+idescola+"&idturma="+idturma+"&iddisciplina="+iddisciplina;
+      var url="idprofessor="+idprofessor+"&descricao_escola_turma="+descricao_escola_turma+"&idserie="+idserie+"&aula="+aula+"&data_frequencia="+data_frequencia+"&idescola="+idescola+"&idturma="+idturma+"&iddisciplina="+iddisciplina;
        xmlreq.open("GET", "../Controller/Lista_conteudo_cadastrados.php?"+url, true);
         xmlreq.onreadystatechange = function(){      
             if (xmlreq.readyState == 4) {

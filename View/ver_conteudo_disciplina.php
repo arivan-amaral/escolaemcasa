@@ -1,11 +1,16 @@
 <?php
 session_start();
-if (!isset($_SESSION['idfuncionario'])) {
-  header("location:index.php?status=0");
 
-}else{
 
-  $idfuncionario=$_SESSION['idfuncionario'];
+if (!isset($_SESSION['idfuncionario']) && !isset($_GET['idprofessor'])) {
+       header("location:index.php?status=0");
+
+}else if (isset($_GET['idprofessor'])) {
+  // code...
+   $idfuncionario= $_GET['idprofessor'];
+}else{ 
+
+  $idfuncionario=$_SESSION['idprofessor'];
 
 }
 
@@ -267,12 +272,33 @@ if (!isset($_SESSION['idfuncionario'])) {
 
 
 
-                                <a class='btn btn-danger btn-block btn-flat'
+                                <a class='btn btn-primary btn-block btn-flat'
                                   href='diario_avaliacao.php?disc=$iddisciplina&turm=$idturma&turma=$nome_turma&disciplina=$nome_disciplina&idescola=$idescola&idserie=$idserie&funcionario=secretaria' target='_blank'>
                                    <font style='vertical-align: inherit;'>
                                      <font style='vertical-align: inherit;'> 
                                          <ion-icon name='stats-chart-outline'></ion-icon>
                                           Diário - Avaliação (alunos da rede)    
+                                       </font>
+                                   </font>
+                                 </a> 
+
+
+                               <!-- <a class='btn btn-danger btn-block btn-flat'
+                                  href='diario_frequencia.php?idprofessor=$idfuncionario&disc=$iddisciplina&turm=$idturma&turma=$nome_turma&disciplina=$nome_disciplina&idescola=$idescola&idserie=$idserie&funcionario=secretaria' target='_blank'>
+                                   <font style='vertical-align: inherit;'>
+                                     <font style='vertical-align: inherit;'> 
+                                         <ion-icon name='stats-chart-outline'></ion-icon>
+                                          Cadastrar frequência (alunos da rede)    
+                                       </font>
+                                   </font>
+                                 </a> -->
+
+                                <a class='btn btn-danger btn-block btn-flat'
+                                  href='cadastrar_conteudo.php?idprofessor=$idfuncionario&disc=$iddisciplina&turm=$idturma&turma=$nome_turma&disciplina=$nome_disciplina&idescola=$idescola&idserie=$idserie&funcionario=secretaria' target='_blank'>
+                                   <font style='vertical-align: inherit;'>
+                                     <font style='vertical-align: inherit;'> 
+                                         <ion-icon name='stats-chart-outline'></ion-icon>
+                                          Cadastrar Conteúdo (alunos da rede)    
                                        </font>
                                    </font>
                                  </a> 

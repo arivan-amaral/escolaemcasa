@@ -232,6 +232,8 @@ $result_conteudo= $conexao->query("SELECT * FROM conteudo_aula where disciplina_
 $conta=0;
 $total_quantidade_aula=0;
 foreach ($result_conteudo as $key => $value) {
+  $idconteudo=$value['id'];
+
   $data_conteudo=converte_data($value['data']);
   $descricao=$value['descricao'];
   $quantidade_aula=$value['quantidade_aula'];
@@ -245,7 +247,20 @@ foreach ($result_conteudo as $key => $value) {
       <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
       line-height:normal'><span style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-      color:black;mso-fareast-language:PT-BR'><?php echo "$data_conteudo"; ?><o:p></o:p></span></p>
+      color:black;mso-fareast-language:PT-BR'>
+      <?php echo"$data_conteudo <br> ";
+        $result_funcionario_conteudo= $conexao->query("SELECT * FROM 
+          funcionario,conteudo_aula
+         where 
+        ( funcionario_id=idfuncionario or  professor_id=idfuncionario )and  id =$idconteudo  limit 1 ");
+        foreach ($result_funcionario_conteudo as $key => $value) {
+          $nome_funcionario=$value['nome'];
+          echo "<b>$nome_funcionario</b>";
+        }
+       ?>
+
+
+      <o:p></o:p></span></p>
       </td>
 
   

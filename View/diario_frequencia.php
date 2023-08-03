@@ -20,11 +20,13 @@ if ($idserie< 8 && !isset($_COOKIE['notificado'])) {
  
   
 }
-
-if (!isset($_SESSION['idprofessor'])) {
+if (!isset($_SESSION['idprofessor']) && !isset($_GET['idprofessor'])) {
        header("location:index.php?status=0");
 
-}else{
+}else if (isset($_GET['idprofessor'])) {
+  // code...
+   $idprofessor= $_GET['idprofessor'];
+}else{ 
 
   $idprofessor=$_SESSION['idprofessor'];
 

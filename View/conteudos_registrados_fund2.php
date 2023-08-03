@@ -231,6 +231,7 @@
 $result_conteudo= $conexao->query("SELECT * FROM conteudo_aula where disciplina_id=$iddisciplina and turma_id=$idturma and escola_id=$idescola  and data BETWEEN '$data_inicial' and '$data_final' order by data asc ");
 $conta=1;
 foreach ($result_conteudo as $key => $value) {
+  $idconteudo=$value['id'];
   $data_conteudo=converte_data($value['data']);
   $descricao=$value['descricao'];
 ?>
@@ -254,7 +255,20 @@ foreach ($result_conteudo as $key => $value) {
       <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
       style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-      color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p><?php echo"$data_conteudo"; ?></o:p></span></p>
+      color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p>
+   <?php echo"$data_conteudo <br> ";
+        $result_funcionario_conteudo= $conexao->query("SELECT * FROM 
+          funcionario,conteudo_aula
+         where 
+        ( funcionario_id=idfuncionario or  professor_id=idfuncionario )and  id =$idconteudo  limit 1 ");
+        foreach ($result_funcionario_conteudo as $key => $value) {
+          $nome_funcionario=$value['nome'];
+          echo "<b>$nome_funcionario</b>";
+        }
+       ?>
+
+        
+      </o:p></span></p>
       </td>  
 
       <td  colspan=5 style=' border-top:1.0pt;

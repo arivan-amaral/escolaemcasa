@@ -4,7 +4,7 @@ $idserie=$_GET['idserie'];
 $idserie_t=$_GET['idserie']; 
 $ano_letivo=$_SESSION['ano_letivo'];
 
- 
+  
 // if ($idserie< 8 && !isset($_COOKIE['notificado'])) {
     
 //   echo "<script type='text/javascript'>
@@ -21,9 +21,12 @@ $ano_letivo=$_SESSION['ano_letivo'];
   
 // }
 
-if (!isset($_SESSION['idprofessor'])) {
+if (!isset($_SESSION['idprofessor']) && !isset($_GET['idprofessor'])) {
        header("location:index.php?status=0");
 
+}else if (isset($_GET['idprofessor'])) {
+  // code...
+   $idprofessor= $_GET['idprofessor'];
 }else{ 
 
   $idprofessor=$_SESSION['idprofessor'];
@@ -220,6 +223,7 @@ if (!isset($_SESSION['idprofessor'])) {
       <!-- ################################################################################# -->
   <form action="../Controller/Cadastrar_conteudo.php" method="post">
     <input type="hidden" name="url_get" value="<?php echo $url_get; ?>">
+    <input type="hidden" name="idprofessor" id="idprofessor" value="<?php echo $idprofessor; ?>">
 
     <input type="hidden" name="idserie" id="idserie" value="<?php echo $idserie; ?>">
     <input type="hidden" name="idescola" id="idescola" value="<?php echo $idescola; ?>">

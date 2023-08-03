@@ -10,6 +10,20 @@ try {
     $professor_id=$_SESSION['idfuncionario'];
     $idprofessor=$_SESSION['idfuncionario'];
 
+
+    if (isset($_GET['idprofessor'])) {
+      // code...
+       $professor_id= $_GET['idprofessor'];
+       $idprofessor= $_GET['idprofessor'];
+    }else{ 
+
+      $professor_id=$_SESSION['idfuncionario'];
+      $idprofessor=$_SESSION['idfuncionario'];
+
+
+    }
+
+    
     $idserie=$_GET['idserie'];
     $idserie_get=$_GET['idserie'];
 
