@@ -212,6 +212,18 @@
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
   color:black;mso-fareast-language:PT-BR'>Data<o:p></o:p></span></p>
   </td>
+
+    <td width=66 nowrap style='width:49.65pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-left-alt:solid windowtext .5pt;mso-border-bottom-alt:
+  solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;padding:
+  0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0cm;line-height:normal'><span
+  style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+  mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+  color:black;mso-fareast-language:PT-BR'>RESPONSÁVEL<o:p></o:p></span></p>
+  </td>
+
+  
   <td width=406 nowrap colspan=5 style=' border-top:1.0pt;
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
@@ -355,14 +367,6 @@ $conta++;
   line-height:normal'><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
   color:black;mso-fareast-language:PT-BR'><b>DATA</b><o:p></o:p></span></p>
-  </td>
-  <td width=248 nowrap colspan=2 valign=bottom style='width:186.15pt;
-  border:none;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-  mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'><b>RESPONSÁVEL</b><o:p></o:p></span></p>
   </td>
   <td width=332 nowrap colspan=2 valign=bottom style='width:248.7pt;border-top:
   none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
