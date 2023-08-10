@@ -248,8 +248,11 @@ console.log("teste:"+periodo.value);
   var seguimento = document.getElementById('seguimento').value;
   var idturma = document.getElementById('idturma').value;
   var idescola = document.getElementById('idescola').value;
+ 
+  var idfuncionario = document.getElementById('idfuncionario').value;
 
-var url="iddisciplina="+iddisciplina+"&idserie="+idserie+"&seguimento="+seguimento+"&idturma="+idturma+"&idescola="+idescola+"&inicio="+inicio+"&fim="+fim;
+
+var url="idfuncionario="+idfuncionario+"&iddisciplina="+iddisciplina+"&idserie="+idserie+"&seguimento="+seguimento+"&idturma="+idturma+"&idescola="+idescola+"&inicio="+inicio+"&fim="+fim;
  
     if (parseInt(periodo.value)=='0') {
       periodo.value=1;
@@ -2775,6 +2778,7 @@ function lista_frequencia_aluno(){
   var idescola = document.getElementById("idescola").value;
   var idturma = document.getElementById("idturma").value;
   var iddisciplina = document.getElementById("iddisciplina").value;
+  var idprofessor = document.getElementById("idprofessor").value;
 
    var data_frequencia = document.getElementById("data_frequencia").value;
    var aula = document.getElementById("aula").value;
@@ -2783,7 +2787,7 @@ function lista_frequencia_aluno(){
         result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
 
           
-      var url="idserie="+idserie+"&aula="+aula+"&data_frequencia="+data_frequencia+"&idescola="+idescola+"&idturma="+idturma+"&iddisciplina="+iddisciplina;
+      var url="idprofessor="+idprofessor+"&idserie="+idserie+"&aula="+aula+"&data_frequencia="+data_frequencia+"&idescola="+idescola+"&idturma="+idturma+"&iddisciplina="+iddisciplina;
        xmlreq.open("GET", "../Controller/Lista_frequencia_aluno.php?"+url, true);
         xmlreq.onreadystatechange = function(){      
             if (xmlreq.readyState == 4) {

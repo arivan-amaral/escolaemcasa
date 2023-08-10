@@ -8,8 +8,8 @@ try {
 	
 	
 	$ano_letivo=$_SESSION['ano_letivo'];
-	$idprofessor=$_SESSION['idprofessor'];
-
+	$idprofessor=$_GET['idfuncionario'];
+ 
 	$idserie=$_GET['idserie'];
 	$seguimento=$_GET['seguimento'];
 	$iddisciplina=$_GET['iddisciplina'];

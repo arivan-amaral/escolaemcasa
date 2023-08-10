@@ -516,6 +516,8 @@ if (!isset($_SESSION['idprofessor']) && !isset($_GET['idprofessor'])) {
           <input type="hidden" name="idescola" id="idescola" value="<?php echo $idescola; ?>">
           <input type="hidden" name="idturma" id="idturma" value="<?php echo $idturma; ?>">
           <input type="hidden" id="iddisciplina" value="<?php echo $iddisciplina; ?>">
+          
+          <input type="hidden" id="idprofessor" value="<?php echo $idprofessor; ?>">
 
       <div class="row" id="botao_continuar">
         

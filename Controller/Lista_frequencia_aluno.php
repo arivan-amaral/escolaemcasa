@@ -7,7 +7,18 @@
 
 try {
  
+
+ if (isset($_GET['idprofessor'])) {
+   $professor_id= $_GET['idprofessor'];
+   // code...
+ }else{
+  
     $professor_id=$_SESSION['idfuncionario'];
+ }
+
+
+
+
     $ano_letivo=$_SESSION['ano_letivo'];
 
     $idserie=$_GET['idserie'];

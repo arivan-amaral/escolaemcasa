@@ -110,8 +110,15 @@ if (isset($_POST['idprofessor'])) {
             cadastro_frequencia($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$aluno_id,$data,$idconteudo,$presenca,$aula,$ano_frequencia,$ano_frequencia);
         }
     }
+
+
+
+ 
             $_SESSION['status']=1;
             header("location: ../View/diario_frequencia.php?$url_get");
+       
+
+
         } catch (Exception $e) {
             $_SESSION['status']=0;
             $_SESSION['mensagem']='Alguma coisa deu errado!';
