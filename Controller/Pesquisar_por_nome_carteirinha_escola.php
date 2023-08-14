@@ -89,11 +89,12 @@ if ($conta%2!=0) {
 
                   </div> 
           
-                    <label class='custom-checkbox no-print'>
-                        <input type='checkbox' class='no-print' name='carterinha_aluno$id' value='$id'>
-                        <span class='checkmark'></span>Selecionar
-                    </label>           
+          <label class='custom-checkbox no-print'>
+            <input type='checkbox' class='no-print carterinha_aluno' name='carterinha_aluno' value='$id'>
+            <span class='checkmark'></span>Selecionar
+        </label>
 
+        
             </div>";            
 
                       

@@ -1725,6 +1725,45 @@ aluno.aluno_transpublico=1 and aluno.nome LIKE '%$nome_aluno%'  ORDER by aluno.n
 
    return $res;
 } 
+function pesquisar_id_carteirinha_escola($conexao,$nome_aluno,$ano_letivo,$idaluno){
+ 
+  $res=$conexao->query("
+    SELECT 
+aluno.nome as 'nome_aluno',
+aluno.linha_transporte,
+aluno.imagem_carteirinha_transporte ,
+escola.nome_escola,
+aluno.sexo,
+aluno.data_nascimento,
+aluno.cpf as cpf_aluno,
+aluno.whatsapp_responsavel,
+aluno.nome_responsavel,
+aluno.idaluno,
+aluno.email,
+aluno.status as 'status_aluno',
+turma.nome_turma,
+
+ecidade_matricula.matricula_codigo as 'matricula',
+ecidade_matricula.matricula_datamatricula as 'data_matricula',
+ecidade_matricula.datasaida as 'datasaida'
+
+FROM
+ ecidade_matricula,
+aluno,turma,escola
+
+where
+ecidade_matricula.aluno_id= aluno.idaluno AND
+ecidade_matricula.turma_id = turma.idturma and 
+ecidade_matricula.turma_escola = escola.idescola and 
+ecidade_matricula.calendario_ano ='$ano_letivo' and 
+ 
+ecidade_matricula.matricula_situacao !='CANCELADO' and
+ecidade_matricula.matricula_ativa ='S' and
+aluno.aluno_transpublico=1 and aluno.id IN($idaluno)  ORDER by aluno.nome ASC");
+
+
+   return $res;
+} 
 
 function listar_aluno_da_turma_ata_resultado_final($conexao,$turma_id,$escola_id,$ano_letivo){
   $res=$conexao->query("

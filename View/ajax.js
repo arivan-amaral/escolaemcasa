@@ -6366,3 +6366,35 @@ function pesquisa_relatorio_faltas_aluno(){
  
       
 }
+
+
+
+
+
+
+function pesquisa_id_carterinha_aluno(){
+
+    // Obtém todos os checkboxes com classe iniciada por "idtuma"
+    const checkboxes = document.querySelectorAll('input[type="checkbox"].carterinha_aluno');
+
+    // Variável para armazenar os valores selecionados
+    let valoresSelecionados = '';
+
+    // Itera sobre os checkboxes
+    checkboxes.forEach(function(checkbox) {
+      // Verifica se o checkbox está marcado
+      if (checkbox.checked) {
+        // Concatena o valor na variável
+        valoresSelecionados += checkbox.value + ',';
+      }
+    });
+
+    // Remove a última vírgula, se houver
+    valoresSelecionados = valoresSelecionados.replace(/,$/, '');
+
+  var idaluno =""+valoresSelecionados;
+  window.location.href="imprimir_carteirnha_selecionada.php?idaluno="+idaluno;
+
+ 
+      
+}
