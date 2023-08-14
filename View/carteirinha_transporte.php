@@ -201,6 +201,7 @@ font-size: 18pt;
 <br>
 <br>
 <div class="row no-print">
+  <div class="col-md-1"></div>
   <div class="col-md-3">
      <a class="btn btn-danger"  >Excluir selecionados</a>
 
