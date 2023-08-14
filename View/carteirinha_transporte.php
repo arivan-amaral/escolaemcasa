@@ -199,7 +199,18 @@ font-size: 18pt;
         </div>
   </div>
 
+<div class="row no-print">
+  <div class="col-md-4">
+     <a class="btn btn-danger"  >Excluir selecionados</a>
 
+  </div>  
+
+  <div class="col-md-3">
+     <a class="btn btn-default"  >Imprimir selecionados</a>
+
+  </div>
+  
+</div>
   <div id="resultado_carteirinha" class="grafico">
     
 
