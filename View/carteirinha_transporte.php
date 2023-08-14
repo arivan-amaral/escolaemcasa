@@ -195,6 +195,18 @@ font-size: 18pt;
 }
 
 </style>
+ <script>
+    const selectAllCheckbox = document.querySelector('.todos');
+    const checkboxes = document.querySelectorAll('.custom-checkbox input[type="checkbox"]:not(.todos)');
+
+    selectAllCheckbox.addEventListener('change', function () {
+      checkboxes.forEach(checkbox => {
+        checkbox.checked = selectAllCheckbox.checked;
+      });
+    });
+  </script>
+
+
 
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 
@@ -258,6 +270,14 @@ font-size: 18pt;
 <br>
 <div class="row no-print">
   <div class="col-md-1"></div>
+  
+  <div class="col-md-3">
+           <label class='custom-checkbox no-print'>
+            <input type='checkbox' class="todos">
+            <span class='checkmark'></span>Selecionar todas
+        </label>
+  </div>    
+
   <div class="col-md-3">
      <a class="btn btn-danger"  >Excluir selecionados</a>
 
