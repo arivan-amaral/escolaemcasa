@@ -1759,7 +1759,7 @@ ecidade_matricula.calendario_ano ='$ano_letivo' and
  
 ecidade_matricula.matricula_situacao !='CANCELADO' and
 ecidade_matricula.matricula_ativa ='S' and
-aluno.aluno_transpublico=1 and aluno.id IN($idaluno)  ORDER by aluno.nome ASC");
+aluno.aluno_transpublico=1 and aluno.idaluno IN($idaluno)  ORDER by aluno.nome ASC");
 
 
    return $res;
