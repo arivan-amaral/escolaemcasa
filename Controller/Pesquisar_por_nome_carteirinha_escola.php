@@ -54,8 +54,8 @@ if ($conta%2!=0) {
 
     $result.="<div class='col-sm-6 div_carteirinha '>
                 <div class='row'>
-         <input type='checkbox' class='no-print'> name='carterinha_aluno$id' value='$id'>
-                
+              <input type='checkbox' class='no-print' name='carterinha_aluno$id' value='$id'>
+
                   <div class='col-sm-6' ></div>
                 
                   <div class='col-sm-6 nome_linha' >
