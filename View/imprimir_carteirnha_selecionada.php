@@ -281,7 +281,7 @@ font-size: 18pt;
 
     $idaluno=$_GET['idaluno'];
 
-    $resultado=pesquisar_id_carteirinha_escola($conexao,$nome_aluno, $_SESSION['ano_letivo_vigente'],$idaluno);
+$resultado=pesquisar_id_carteirinha_escola($conexao,$nome_aluno, $_SESSION['ano_letivo_vigente'],$idaluno);
 
       $result="";
       $conta=1;
@@ -391,7 +391,11 @@ font-size: 18pt;
 
   </div>
 
-
+  <script>
+    window.onload = function() {
+      window.print();
+    };
+  </script>
 
 <?php 
     include_once 'rodape.php';
