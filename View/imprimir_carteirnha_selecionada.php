@@ -279,7 +279,7 @@ font-size: 18pt;
     $idfuncionario=$_SESSION['idfuncionario'];
     $nome_aluno=$_GET['nome_aluno'];
 
-    $idaluno=$_GET['carterinha_aluno'];
+    $idaluno=$_GET['idaluno'];
 
     $resultado=pesquisar_id_carteirinha_escola($conexao,$nome_aluno, $_SESSION['ano_letivo_vigente'],$idaluno);
 
