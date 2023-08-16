@@ -268,7 +268,7 @@ function verifica_ocorrencia_cadastrada($conexao, $iddisciplina, $idturma, $ides
 		data_ocorrencia='$data_ocorrencia'
 		
 		");
-    
+
         // and professor_id=$idprofessor
 	return $resultado;
 	
@@ -296,10 +296,10 @@ function listar_ocorrencia_cadastrado($conexao, $iddisciplina, $idturma, $idesco
 	$resultado=$conexao->query(" SELECT data_ocorrencia FROM ocorrencia_pedagogica WHERE
 		escola_id=$idescola and 
 		turma_id=$idturma and 
-		disciplina_id=$iddisciplina and
-		professor_id=$idprofessor GROUP BY data_ocorrencia
+		disciplina_id=$iddisciplina  GROUP BY data_ocorrencia
 		
 		");
+    // and professor_id=$idprofessor
 	return $resultado;
 	
 }
