@@ -265,10 +265,11 @@ function verifica_ocorrencia_cadastrada($conexao, $iddisciplina, $idturma, $ides
 		turma_id=$idturma and 
 		disciplina_id=$iddisciplina and
 		aluno_id=$aluno_id and
-		data_ocorrencia='$data_ocorrencia' and
-		professor_id=$idprofessor
+		data_ocorrencia='$data_ocorrencia'
 		
 		");
+    
+        // and professor_id=$idprofessor
 	return $resultado;
 	
 }
