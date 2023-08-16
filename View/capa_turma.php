@@ -105,10 +105,28 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
 
 </style>
 
- <body>
- 
-gerar pdf
 
+<style>
+  .excel-button {
+    background-color: #217346; /* Cor verde semelhante ao símbolo do Excel */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+</style>
+
+ <body>
+    <br>
+    <br>
+
+    <center><button class="excel-button">Gerar Excel</button>
+</center>
  <div class="load"> <i class="fa fa-cog fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span> </div>
 
 <div class="content-wrapper" style="min-height: 529px;background-color: white;">
