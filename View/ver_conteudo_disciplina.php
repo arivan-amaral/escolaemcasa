@@ -282,16 +282,7 @@ if (!isset($_SESSION['idfuncionario']) && !isset($_GET['idprofessor'])) {
                                    </font>
                                  </a> 
 
-
-                               <!-- <a class='btn btn-danger btn-block btn-flat'
-                                  href='diario_frequencia.php?idprofessor=$idfuncionario&disc=$iddisciplina&turm=$idturma&turma=$nome_turma&disciplina=$nome_disciplina&idescola=$idescola&idserie=$idserie&funcionario=secretaria' target='_blank'>
-                                   <font style='vertical-align: inherit;'>
-                                     <font style='vertical-align: inherit;'> 
-                                         <ion-icon name='stats-chart-outline'></ion-icon>
-                                          Cadastrar frequência (alunos da rede)    
-                                       </font>
-                                   </font>
-                                 </a> -->
+:
 
                                 <a class='btn btn-danger btn-block btn-flat'
                                   href='cadastrar_conteudo.php?idprofessor=$idfuncionario&disc=$iddisciplina&turm=$idturma&turma=$nome_turma&disciplina=$nome_disciplina&idescola=$idescola&idserie=$idserie&funcionario=secretaria' target='_blank'>

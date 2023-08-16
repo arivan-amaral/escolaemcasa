@@ -199,7 +199,7 @@ if (!isset($_SESSION['idprofessor']) && !isset($_GET['idprofessor'])) {
                         <div class='icon'>
 
                         </div>
-                        <a  href='acompanhamento_pedagogico.php?disc=$iddisciplina&turm=$idturma&turma=$nome_turma&disciplina=$nome_disciplina&idescola=$idescola&idserie=$idserie' class='small-box-footer' target='_blanck'>
+                        <a  href='acompanhamento_pedagogico.php?idprofessor=$idprofessor&ddisc=$iddisciplina&turm=$idturma&turma=$nome_turma&disciplina=$nome_disciplina&idescola=$idescola&idserie=$idserie' class='small-box-footer' target='_blanck'>
                           Ocorrência  <ion-icon name='bookmark-outline'></ion-icon>
                         </a>
                       </div>

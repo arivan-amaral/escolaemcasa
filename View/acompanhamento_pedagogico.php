@@ -1,13 +1,21 @@
 <?php 
 session_start();
-if (!isset($_SESSION['idprofessor'])) {
+
+if (!isset($_SESSION['idprofessor']) && !isset($_GET['idprofessor'])) {
        header("location:index.php?status=0");
 
-}else{
+}else if (isset($_GET['idprofessor'])) {
+  // code...
+  $idprofessor= $_GET['idprofessor'];
+  $idfuncionario=$_SESSION['idfuncionario'];
+
+}else{ 
 
   $idprofessor=$_SESSION['idprofessor'];
+  $idfuncionario=$_SESSION['idprofessor'];
 
 }
+
   include_once "cabecalho.php";
   include_once "alertas.php";
   include_once "barra_horizontal.php";
@@ -24,7 +32,7 @@ if (!isset($_SESSION['idprofessor'])) {
   $idescola=$_GET['idescola']; 
   $idturma=$_GET['turm']; 
   $iddisciplina=$_GET['disc']; 
-  $idserie=$_GET['idserie']; 
+  $idserie=$_GET['idserie'];  
  $array_url=explode('p?', $_SERVER["REQUEST_URI"]);
  $url_get=$array_url[1];
 ?>
