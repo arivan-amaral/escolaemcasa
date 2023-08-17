@@ -228,7 +228,7 @@ if (!isset($_SESSION['idprofessor']) && !isset($_GET['idprofessor'])) {
   <form action="../Controller/Cadastrar_conteudo.php" method="post">
     <input type="hidden" name="url_get" value="<?php echo $url_get; ?>">
     <input type="hidden" name="idprofessor" id="idprofessor" value="<?php echo $idprofessor; ?>">
-    <input type="hidden" name="idfuncionario" id="idprofessor" value="<?php echo $idfuncionario; ?>">
+    <input type="hidden" name="idfuncionario" id="idfuncionario" value="<?php echo $idfuncionario; ?>">
 
     <input type="hidden" name="idserie" id="idserie" value="<?php echo $idserie; ?>">
     <input type="hidden" name="idescola" id="idescola" value="<?php echo $idescola; ?>">

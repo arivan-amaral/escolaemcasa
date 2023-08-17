@@ -18,7 +18,7 @@ try {
 	$inicio=$_GET['inicio'];
 	$fim=$_GET['fim'];
 
- $result.= "<table class='table table-primary'>
+ $result= "<table class='table table-primary'>
                                         <thead>
                                           <tr>
                                             <th style='width: 10px'>#</th>
