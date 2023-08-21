@@ -95,6 +95,7 @@ $array_datas = obterDatasEntrePeriodo($data_inicial, $data_final);
  
     $resultado=$conexao->query("
     SELECT
+    escola.nome_escola,
     aluno.aluno_transpublico, 
     aluno.linha_transporte,
     aluno.imagem_carteirinha_transporte ,
@@ -217,7 +218,8 @@ ORDER BY escola.nome_escola, turma.nome_turma, aluno.nome ASC");
                         
                  $id - $nome_aluno
                  <br>
-                 $nome_turma
+                 $nome_escola <br>
+                 $nome_turma <br>
                  <b>CONTATO:</b><br>
                  <b class='text-primary'>$whatsapp</b>/<br>
                  <b class='text-primary'>$whatsapp_responsavel</b>/<br>
