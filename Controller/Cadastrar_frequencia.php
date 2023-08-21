@@ -39,7 +39,7 @@ if (isset($_POST['idprofessor'])) {
         $idcalendario=$value['idcalendario'];
         break;
     }
-    $verificar_bloqueio=$conexao->query("SELECT * from bloquear_acesso  where funcionario_id = $professor_id and calendario_letivo_id=$idcalendario and status=1
+    $verificar_bloqueio=$conexao->query("SELECT * from bloquear_acesso  where funcionario_id = $professor_id and calendario_letivo_id=$idcalendario and status=1 or 
       ");;
     $conta_bloqueio=0;
 
@@ -50,8 +50,8 @@ if (isset($_POST['idprofessor'])) {
     // echo "$idcalendario = $conta_bloqueio | SELECT * from bloquear_acesso  where funcionario_id = $professor_id and calendario_letivo_id=$idcalendario and status=1";
     
     // die();
-
-    if ($conta_bloqueio>0) {
+$mes = date("m", strtotime($data_frequencia));
+    if ($conta_bloqueio>0 || $mes==06 || $mes ==07 ) {
  
         $_SESSION['status']=2;
         $_SESSION['mensagem']='BLOQUEADO PARA PROFESSOR!';
