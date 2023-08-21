@@ -144,6 +144,7 @@ ORDER BY escola.nome_escola, turma.nome_turma, aluno.nome ASC");
 
      foreach ($resultado as $key => $value) {
 
+       $nome_escola=($value['nome_escola']);
        $nome_aluno=($value['nome_aluno']);
        $whatsapp=($value['whatsapp']);
        $whatsapp_responsavel=($value['whatsapp_responsavel']);
