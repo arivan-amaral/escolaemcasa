@@ -50,7 +50,7 @@ if (isset($_POST['idprofessor'])) {
     // echo "$idcalendario = $conta_bloqueio | SELECT * from bloquear_acesso  where funcionario_id = $professor_id and calendario_letivo_id=$idcalendario and status=1";
     
     // die();
-$mes = date("m", strtotime($data_frequencia));
+$mes = date("m", strtotime($data));
     if ($conta_bloqueio>0 || $mes==06 || $mes ==07 ) {
  
         $_SESSION['status']=2;
