@@ -540,7 +540,8 @@ function listar_conteudo_aula_cadastrado_regente($conexao, $iddisciplina, $idtur
     $resultado=$conexao->query("SELECT conteudo_aula.id,data,aula,professor_id FROM conteudo_aula WHERE
       escola_id=$idescola and 
       ano_conteudo=$ano_letivo and 
-      turma_id=$idturma  and (professor_id = $professor_id or professor_id >0 ) GROUP BY data,aula,conteudo_aula.id order by data, aula ");
+      turma_id=$idturma  and (professor_id = $professor_id  ) GROUP BY data,aula,conteudo_aula.id order by data, aula ");
+    // or professor_id >0
     return $resultado;
 }
 function listar_conteudo_aula_cadastrado_regente_por_data($conexao, $iddisciplina, $idturma, $idescola, $professor_id,$ano_letivo,$inicio,$fim) {
