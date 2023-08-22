@@ -575,7 +575,7 @@ $conta_presenca=1;
       // -- and disciplina_id=$iddisciplina
       // 
       // presenca=1 and
-      $res_pre=$conexao->query("SELECT presenca from frequencia where  aluno_id=$idaluno and turma_id=$idturma and data_frequencia>='$data_matricula' and  data_frequencia='$data_frequencia' and aula='$aula'  ");
+      $res_pre=$conexao->query("SELECT presenca from frequencia where escola_id=$idescola and   aluno_id=$idaluno and turma_id=$idturma and data_frequencia>='$data_matricula' and  data_frequencia='$data_frequencia' and aula='$aula'  ");
       
       $presenca="-";
       foreach ($res_pre as $key => $value) {

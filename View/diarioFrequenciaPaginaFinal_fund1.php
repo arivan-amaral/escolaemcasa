@@ -579,7 +579,7 @@ $conta_presenca=1;
     //   $presenca=".";
     //  }
 
-    $res_pre=$conexao->query("SELECT presenca from frequencia where  aluno_id=$idaluno 
+    $res_pre=$conexao->query("SELECT presenca from frequencia where escola_id=$idescola and  aluno_id=$idaluno 
        and turma_id=$idturma and data_frequencia>='$data_matricula' and  data_frequencia='$data_frequencia' and aula='$aula'  ");
       
      $presenca="<span style='font-size: 18px;'>-</span>";
