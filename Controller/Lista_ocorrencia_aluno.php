@@ -77,7 +77,7 @@ try {
                                          <textarea class='form-control' name='ocorrencia$idaluno'>$descricao</textarea>
 
                                     <div class='form-group'>
-                                        <label for='comportamento'>Comportamento:</label>
+                                        <label for='comportamento'>Escolha opção da ocorrência :</label>
                                         <div class='form-check'>
                                             <input type='radio' class='form-check-input' id='bomComportamento' name='comportamento' value='justificativa' checked>
                                             <label class='form-check-label' for='bomComportamento'>Justificativa de Falta</label>
@@ -87,7 +87,7 @@ try {
                                             <label class='form-check-label' for='mauComportamento'>Comportamento</label>
                                         </div>
                                     </div>
-                                    
+
                                       
                                      </td>    
                                     ";
