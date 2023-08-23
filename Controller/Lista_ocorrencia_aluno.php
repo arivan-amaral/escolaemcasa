@@ -75,7 +75,19 @@ try {
                                      <input type='hidden' name='aluno_id[]' value='$idaluno'>
                                      <label>Ocorrência</label>
                                          <textarea class='form-control' name='ocorrencia$idaluno'>$descricao</textarea>
-                                         
+
+                                    <div class='form-group'>
+                                        <label for='comportamento'>Comportamento:</label>
+                                        <div class='form-check'>
+                                            <input type='radio' class='form-check-input' id='bomComportamento' name='comportamento' value='justificativa' checked>
+                                            <label class='form-check-label' for='bomComportamento'>Justificativa de Falta</label>
+                                        </div>
+                                        <div class='form-check'>
+                                            <input type='radio' class='form-check-input' id='mauComportamento' name='comportamento' value='comportamento'>
+                                            <label class='form-check-label' for='mauComportamento'>Comportamento</label>
+                                        </div>
+                                    </div>
+                                    
                                       
                                      </td>    
                                     ";
