@@ -4,6 +4,8 @@
     include("../Model/Aluno.php");
     include("../Model/Escola.php");
     include("Conversao.php");
+    include("Liberador.php");
+
      
 
 try {
@@ -51,7 +53,11 @@ if (isset($_POST['idprofessor'])) {
     
     // die();
 $mes = date("m", strtotime($data));
-    if ($conta_bloqueio>0 || $mes==06 || $mes ==07 ) {
+
+
+if (in_array($professor_id, $array_liberados)) {
+    // code...
+}elseif ($conta_bloqueio>0 || $mes==06 || $mes ==07 ) {
  
         $_SESSION['status']=2;
         $_SESSION['mensagem']='BLOQUEADO PARA PROFESSOR!';
