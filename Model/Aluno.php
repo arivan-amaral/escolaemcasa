@@ -2003,7 +2003,7 @@ function listar_disciplina_aluno($conexao,$idaluno,$ano_letivo){
    ministrada.disciplina_id=disciplina.iddisciplina AND
    ministrada.professor_id=funcionario.idfuncionario AND
    ecidade_matricula.calendario_ano='$ano_letivo' AND
-   aluno.idaluno = $idaluno");
+   aluno.idaluno = $idaluno limit 1");
   //  
   //  
   // $res=$conexao->query("WITH  
