@@ -55,8 +55,7 @@ $mes = date("m", strtotime($data));
 
 if (in_array($professor_id, $array_liberados)) {
     // code...
-}else
-if ($conta_bloqueio>0 || $mes==06 || $mes ==07 ) {
+}elseif ($conta_bloqueio>0 || $mes==06 || $mes ==07 ) {
  
     // if ($conta_bloqueio>0) {
  
