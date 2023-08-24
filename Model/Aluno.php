@@ -1987,54 +1987,56 @@ function listar_aluno_do_simulado_professor($conexao,$escola_id,$idserie,$indice
 	// }
 
 function listar_disciplina_aluno($conexao,$idaluno,$ano_letivo){
-  // $res=$conexao->query("SELECT 
-  //  disciplina.nome_disciplina,
-  //  disciplina.iddisciplina,
-  //  funcionario.nome as 'nome_professor',
-  //  turma.idturma,
-  //  turma.nome_turma
-  //  FROM turma, ecidade_matricula, aluno , escola, ministrada,disciplina,funcionario WHERE
-  //  aluno.idaluno=ecidade_matricula.aluno_id AND
-  //  turma.idturma=ecidade_matricula.turma_id AND
-  //  escola.idescola=ecidade_matricula.turma_escola AND
+  $res=$conexao->query("SELECT 
+   disciplina.nome_disciplina,
+   disciplina.iddisciplina,
+   funcionario.nome as 'nome_professor',
+   turma.idturma,
+   turma.nome_turma
+   FROM turma, ecidade_matricula, aluno , escola, ministrada,disciplina,funcionario WHERE
+   aluno.idaluno=ecidade_matricula.aluno_id AND
+   turma.idturma=ecidade_matricula.turma_id AND
+   escola.idescola=ecidade_matricula.turma_escola AND
 
-  //  ministrada.turma_id=turma.idturma AND
-  //  ministrada.escola_id=escola.idescola AND
-  //  ministrada.disciplina_id=disciplina.iddisciplina AND
-  //  ministrada.professor_id=funcionario.idfuncionario AND
-  //  ecidade_matricula.calendario_ano='' AND
-  //  aluno.idaluno = ");
-  $res=$conexao->query("WITH  
-    ref AS (
-    SELECT
-        turma.idturma as id_turma,
-        turma.nome_turma,
-        ecidade_matricula.calendario_ano as ano,    
-        escola.idescola as id_escola
-    FROM
-        aluno
-    INNER JOIN ecidade_matricula ON ecidade_matricula.aluno_id = aluno.idaluno AND ecidade_matricula.calendario_ano = '$ano_letivo'
-    INNER JOIN turma ON turma.idturma = ecidade_matricula.turma_id
-    INNER JOIN escola ON escola.idescola = ecidade_matricula.turma_escola
-    WHERE
-        aluno.idaluno = $idaluno
-    )
+   ministrada.turma_id=turma.idturma AND
+   ministrada.escola_id=escola.idescola AND
+   ministrada.disciplina_id=disciplina.iddisciplina AND
+   ministrada.professor_id=funcionario.idfuncionario AND
+   ecidade_matricula.calendario_ano='$ano_letivo' AND
+   aluno.idaluno = $idaluno");
+  //  
+  //  
+  // $res=$conexao->query("WITH  
+  //   ref AS (
+  //   SELECT
+  //       turma.idturma as id_turma,
+  //       turma.nome_turma,
+  //       ecidade_matricula.calendario_ano as ano,    
+  //       escola.idescola as id_escola
+  //   FROM
+  //       aluno
+  //   INNER JOIN ecidade_matricula ON ecidade_matricula.aluno_id = aluno.idaluno AND ecidade_matricula.calendario_ano = '$ano_letivo'
+  //   INNER JOIN turma ON turma.idturma = ecidade_matricula.turma_id
+  //   INNER JOIN escola ON escola.idescola = ecidade_matricula.turma_escola
+  //   WHERE
+  //       aluno.idaluno = $idaluno
+  //   )
     
     
-    SELECT 
+  //   SELECT 
     
-        disciplina.nome_disciplina,
-        disciplina.iddisciplina,
-        funcionario.nome as 'nome_professor',
-        ministrada.turma_id,
-        (SELECT ref.nome_turma FROM ref) as nome_turma
+  //       disciplina.nome_disciplina,
+  //       disciplina.iddisciplina,
+  //       funcionario.nome as 'nome_professor',
+  //       ministrada.turma_id,
+  //       (SELECT ref.nome_turma FROM ref) as nome_turma
     
-    FROM ministrada 
+  //   FROM ministrada 
     
-    INNER JOIN disciplina ON ministrada.disciplina_id=disciplina.iddisciplina
-    INNER JOIN funcionario ON ministrada.professor_id=funcionario.idfuncionario
+  //   INNER JOIN disciplina ON ministrada.disciplina_id=disciplina.iddisciplina
+  //   INNER JOIN funcionario ON ministrada.professor_id=funcionario.idfuncionario
    
-    WHERE ministrada.turma_id= (SELECT ref.id_turma FROM ref) and ministrada.ano= (SELECT ref.ano FROM ref) and ministrada.escola_id =(SELECT ref.id_escola FROM ref)");
+  //   WHERE ministrada.turma_id= (SELECT ref.id_turma FROM ref) and ministrada.ano= (SELECT ref.ano FROM ref) and ministrada.escola_id =(SELECT ref.id_escola FROM ref)");
   return $res;
 }
 
