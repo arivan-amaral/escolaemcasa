@@ -352,12 +352,12 @@ if (!isset($_SESSION['idsecretario'])) {
         <h4 class="text-center">
           <?php 
 
-           // $res_enviada=quantidade_solicitacao_transferencia_enviada_por_escola($conexao,0, $sql_escolas_enviada);
-           // $quantidade_enviada=0;
-           // foreach ($res_enviada as $key => $value) {
-           //   $quantidade_enviada=$value['quantidade'];
-           // }
-           // echo "$quantidade_enviada";
+           $res_enviada=quantidade_solicitacao_transferencia_enviada_por_escola($conexao,0, $sql_escolas_enviada);
+           $quantidade_enviada=0;
+           foreach ($res_enviada as $key => $value) {
+             $quantidade_enviada=$value['quantidade'];
+           }
+           echo "$quantidade_enviada";
         ?>
 
         </h4>
