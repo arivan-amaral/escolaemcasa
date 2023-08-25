@@ -130,6 +130,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
   /* Estilo para cada checkbox */
   .checkbox-item {
+    border: 2px solid black;
     flex: 1;
     margin: 5px;
   }
