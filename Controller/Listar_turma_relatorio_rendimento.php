@@ -30,7 +30,7 @@ try {
  
   <div class='checkbox-item'>
     <label for='idturma$idturma'> $nome_turma</label>
-    <input type='checkbox' value='$idturma' name='idturma$idturma' id='idturma$idturma'>
+    <input type='checkbox' class='idturma' value='$idturma' name='idturma$idturma' id='idturma$idturma'>
   </div>
   ";
 }
