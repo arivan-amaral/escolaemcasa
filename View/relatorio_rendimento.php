@@ -177,7 +177,7 @@ setTimeout('dia_doservidor_publico();',3000);
   <h2>RELATÓRIO DE DESEMPENHO</h2>
    
    <br>
-    <div class="row">
+    <div class="row no-print">
 <!--         <div class="col-sm-2">
           <div class="form-group">
            <label for="exampleInputEmail1">DATA INICIAL</label>
