@@ -121,7 +121,19 @@ setTimeout('dia_doservidor_publico();',3000);
   }
 </style>
 
+<style>
+  /* Estilo para criar três colunas */
+  .checkbox-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
+  /* Estilo para cada checkbox */
+  .checkbox-item {
+    flex: 1;
+    margin: 5px;
+  }
+</style>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="ajax.js?<?php echo rand(); ?>"></script>
