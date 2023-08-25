@@ -235,7 +235,7 @@ setTimeout('dia_doservidor_publico();',3000);
           </div>
         </div>  
 
-        <div class="col-sm-3">
+        <div class="col-sm-4">
          
            <label for="exampleInputEmail1">Turma</label>
           <div class=" scrollable-div" id="idturma" >
@@ -273,9 +273,9 @@ setTimeout('dia_doservidor_publico();',3000);
 
 
 
-        <div class="col-sm-2">
+        <div class="col-sm-12">
           <div class="form-group">
-          <a style="margin-top: 30PX;" class="btn btn-primary" onclick="relatorio_rendimento_funcao()">Buscar</a>
+          <a style="margin-top: 30PX;" class="btn btn-block btn-primary" onclick="relatorio_rendimento_funcao()">Buscar</a>
           </div>
         </div>
       </div>
