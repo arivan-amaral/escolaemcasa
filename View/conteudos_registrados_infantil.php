@@ -268,7 +268,7 @@ $abreviacao_displina_da_data = array();
 
 foreach ($result_conteudo as $key => $value) {
   $idconteudo=$value['id'];
-  
+
   $disciplina_id=$value['disciplina_id'];
   
   $data_conte_bd=$value['data'];
@@ -330,11 +330,11 @@ foreach ($array_datas as $key => $value) {
 
 
 
-       <td width=66 nowrap valign=bottom style='width:49.65pt;border:solid windowtext 1.0pt;
+       <td nowrap valign=bottom style=' border:solid windowtext 1.0pt;
       border-top:none;mso-border-left-alt:solid windowtext .5pt;mso-border-bottom-alt:
       solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;padding:
       0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
-      <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+      <p class=MsoNormal   style='margin-bottom:0cm; 
       line-height:normal'><span style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
       color:black;mso-fareast-language:PT-BR'>
