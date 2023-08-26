@@ -267,6 +267,8 @@ $array_datas = array();
 $abreviacao_displina_da_data = array();
 
 foreach ($result_conteudo as $key => $value) {
+  $idconteudo=$value['id'];
+  
   $disciplina_id=$value['disciplina_id'];
   
   $data_conte_bd=$value['data'];
