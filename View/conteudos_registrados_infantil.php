@@ -112,7 +112,7 @@
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
   color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
   </td>
- </tr>
+ </tr> 
  <tr style='mso-yfti-irow:8;height:15.0pt'>
   <td width=567 nowrap colspan=4 style='width:15.0cm;border:solid windowtext 1.0pt;
   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
@@ -231,6 +231,16 @@
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
   color:black;mso-fareast-language:PT-BR'>Campo do dia<o:p></o:p></span></p>
   </td>
+
+    <td   nowrap style='border:solid windowtext 1.0pt;
+  border-top:none;mso-border-left-alt:solid windowtext .5pt;mso-border-bottom-alt:
+  solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;padding:
+  0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0cm;line-height:normal'><span
+  style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+  mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+  color:black;mso-fareast-language:PT-BR'>RESPONSÁVEL<o:p></o:p></span></p>
+  </td>
   <td width=406 nowrap colspan=5 style=' border-top:1.0pt;
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
@@ -316,6 +326,30 @@ foreach ($array_datas as $key => $value) {
     ?></o:p></span></p>
       </td>  
 
+
+
+       <td width=66 nowrap valign=bottom style='width:49.65pt;border:solid windowtext 1.0pt;
+      border-top:none;mso-border-left-alt:solid windowtext .5pt;mso-border-bottom-alt:
+      solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;padding:
+      0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+      line-height:normal'><span style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+      mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+      color:black;mso-fareast-language:PT-BR'>
+      <?php 
+              $result_funcionario_conteudo= $conexao->query("SELECT * FROM 
+          funcionario,conteudo_aula
+         where 
+        ( funcionario_id=idfuncionario or  professor_id=idfuncionario )and  id =$idconteudo  limit 1 ");
+        foreach ($result_funcionario_conteudo as $key => $value) {
+          $nome_funcionario=$value['nome'];
+          echo "<b>$nome_funcionario</b>";
+        }
+       ?>
+
+
+      <o:p></o:p></span></p>
+      </td>
       <td  colspan=5 style=' border-top:1.0pt;
       border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
       mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
