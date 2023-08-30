@@ -10,7 +10,7 @@ if (!isset($_SESSION['usuariobd'])) {
     $_SESSION['usuariobd'] = 'educ_lem';
 }
 $usuariobd=$_SESSION['usuariobd'];
-include_once "../Model/Conexao_".$usuariobd.".php";
+include_once "../Model/Conexao.php";
 include_once '../Model/Login.php';
 include_once '../Model/Chamada.php';
 include_once '../Model/Setor.php';
