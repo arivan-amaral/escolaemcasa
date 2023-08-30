@@ -3,7 +3,12 @@ session_start();
   include_once "cabecalho.php";
   include_once "barra_horizontal.php";
   include_once 'menu.php';
-  include_once '../Model/Conexao.php';
+  if (!isset($_SESSION['usuariobd'])) {
+    // Se não estiver definida, atribui o valor padrão 'educ_lem'
+    $_SESSION['usuariobd'] = 'educ_lem';
+}
+$usuariobd=$_SESSION['usuariobd'];
+include_once "../Model/Conexao_".$usuariobd.".php";
   
   
  

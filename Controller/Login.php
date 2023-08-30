@@ -1,6 +1,16 @@
 <?php
-session_start();
-include_once '../Model/Conexao.php';
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+
+
+
+if (!isset($_SESSION['usuariobd'])) {
+    // Se não estiver definida, atribui o valor padrão 'educ_lem'
+    $_SESSION['usuariobd'] = 'educ_lem';
+}
+$usuariobd=$_SESSION['usuariobd'];
+include_once "../Model/Conexao_".$usuariobd.".php";
 include_once '../Model/Login.php';
 include_once '../Model/Chamada.php';
 include_once '../Model/Setor.php';
@@ -90,7 +100,8 @@ try {
              $_SESSION["cargo"] = "Diretor";
              $_SESSION["ano_letivo"] = $ano_letivo;
              $_SESSION["ano_letivo_vigente"] = $ano_letivo;
-            
+             
+             $_SESSION['usuariobd']='coordenador';
              $login_diretor++;
 
 
@@ -108,6 +119,8 @@ try {
              $_SESSION["cargo"] = "Coordenador";
              $_SESSION["ano_letivo"] = $ano_letivo;
              $_SESSION["ano_letivo_vigente"] = $ano_letivo;
+             $_SESSION['usuariobd']='coordenador';
+
 
              $login_coordenador++;
 
@@ -126,6 +139,8 @@ try {
              $_SESSION["cargo"] = 'Secretário';
              $_SESSION["ano_letivo"] = $ano_letivo;
              $_SESSION["ano_letivo_vigente"] = $ano_letivo;
+             $_SESSION['usuariobd']='secretario';
+
              
              $login_secretario++;
 
@@ -143,6 +158,8 @@ try {
              $_SESSION["cargo"] = 'Professor';
              $_SESSION["ano_letivo"] = $ano_letivo;
              $_SESSION["ano_letivo_vigente"] = $ano_letivo;
+             $_SESSION['usuariobd']='professor';
+
 
              $login_professor++;
 
@@ -189,6 +206,8 @@ try {
           $_SESSION["serie_id"] = $serie_id;
              $_SESSION["ano_letivo"] = $ano_letivo;
              $_SESSION["ano_letivo_vigente"] = $ano_letivo;
+             $_SESSION['usuariobd']='aluno';
+
           
 
           $conexao->exec("INSERT INTO acesso (aluno_id) values($id)");

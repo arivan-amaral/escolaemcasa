@@ -1,5 +1,10 @@
 <?php 
-include_once '../Model/Conexao.php';
+if (!isset($_SESSION['usuariobd'])) {
+    // Se não estiver definida, atribui o valor padrão 'educ_lem'
+    $_SESSION['usuariobd'] = 'educ_lem';
+}
+$usuariobd=$_SESSION['usuariobd'];
+include_once "../Model/Conexao_".$usuariobd.".php";
 $pagina_estatica="pagina_estatica/listar_alunos_da_turma.php idturma=6288 nome_turma=MATERNAL 20I 20A idescola=227 idserie=1.php";
 
 if (file_exists($pagina_estatica)) {

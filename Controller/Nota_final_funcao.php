@@ -1,5 +1,10 @@
 <?php
-// include_once '../Model/Conexao.php';
+// if (!isset($_SESSION['usuariobd'])) {
+    // Se não estiver definida, atribui o valor padrão 'educ_lem'
+    $_SESSION['usuariobd'] = 'educ_lem';
+}
+$usuariobd=$_SESSION['usuariobd'];
+include_once "../Model/Conexao_".$usuariobd.".php";
 function media_final($conexao,$idescola,$idturma,$iddisciplina,$periodo_id, $idaluno ){
         $result_nota_aula1=$conexao->query("
           SELECT * FROM nota_parecer WHERE

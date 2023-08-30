@@ -1,5 +1,10 @@
 <?php
-    include_once '../Model/Conexao.php';
+    if (!isset($_SESSION['usuariobd'])) {
+    // Se não estiver definida, atribui o valor padrão 'educ_lem'
+    $_SESSION['usuariobd'] = 'educ_lem';
+}
+$usuariobd=$_SESSION['usuariobd'];
+include_once "../Model/Conexao_".$usuariobd.".php";
     # https://educalem.com.br/escolaemcasa/View/script_trabalho_visitante.php?idescola_anterior=&idescola_nova=&idturma_nova=
     $idescola_anterior=$_GET['idescola_anterior'];
     $idescola_nova=$_GET['idescola_nova'];

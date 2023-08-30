@@ -1,7 +1,12 @@
 <?php session_start();
 require __DIR__.'/vendor/autoload.php';
 
-include_once '../Model/Conexao.php';
+if (!isset($_SESSION['usuariobd'])) {
+    // Se não estiver definida, atribui o valor padrão 'educ_lem'
+    $_SESSION['usuariobd'] = 'educ_lem';
+}
+$usuariobd=$_SESSION['usuariobd'];
+include_once "../Model/Conexao_".$usuariobd.".php";
 include_once '../Model/Questionario.php';
 include_once '../Model/Aluno.php';
 

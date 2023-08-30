@@ -4,16 +4,20 @@
 //  unset($_SESSION['cargo']);
 //  header("location:index.php");
 // }
-  include_once '../Model/Conexao.php';
+  if (!isset($_SESSION['usuariobd'])) {
+    // Se não estiver definida, atribui o valor padrão 'educ_lem'
+    $_SESSION['usuariobd'] = 'educ_lem';
+}
+$usuariobd=$_SESSION['usuariobd'];
+include_once "../Model/Conexao_".$usuariobd.".php";
 
 
    $nome_escola_global="-";
 
    // define("NOME_APLICACAO", "EDUCA LEM");
- 
 
-if ( session_status() !== PHP_SESSION_ACTIVE )
- {
+
+if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
    $_SESSION["NOME_APLICACAO"]="EDUCA LEM";

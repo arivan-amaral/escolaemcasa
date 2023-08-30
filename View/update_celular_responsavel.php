@@ -1,6 +1,11 @@
 <?php 
 	include_once '../Model/Conexao_ecidade.php';
-	// include_once '../Model/Conexao.php';
+	// if (!isset($_SESSION['usuariobd'])) {
+    // Se não estiver definida, atribui o valor padrão 'educ_lem'
+    $_SESSION['usuariobd'] = 'educ_lem';
+}
+$usuariobd=$_SESSION['usuariobd'];
+include_once "../Model/Conexao_".$usuariobd.".php";
 	// $pdo;
 	// $res=listar_alunos($pdo);
 	$indice=800;
