@@ -68,7 +68,7 @@ try {
 		
 			$verificar_frequencia=$conexao->query("SELECT * FROM frequencia WHERE aluno_id=$aluno_id and ano_frequencia='$ano_letivo_vigente' ");
 			$verificar_frequencia=$verificar_frequencia->fetchAll();
-			 $existe_frequencia=0;
+			 // $existe_frequencia=0;
 			
 		
 			$verificar_nota=$conexao->query("SELECT * FROM nota_parecer WHERE aluno_id=$aluno_id and ano_nota='$ano_letivo_vigente' ");
@@ -81,7 +81,7 @@ try {
 			
 			//echo "$aluno_id - $nome_aluno <br>";
 			
-		if($existe_nota==0 && count($existe_frequencia)==0 && $quantidade_vagas_restante> 0 && $turma_id>0) {
+		if($existe_nota==0  && $quantidade_vagas_restante> 0 && $turma_id>0) {
 	
 
  					$procedimento="TROCA DE TURMA";
