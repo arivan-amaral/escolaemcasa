@@ -1,4 +1,5 @@
-<?php session_start();
+<?php 
+session_start();
 if (!isset($_SESSION['usuariobd'])) {
     // Se não estiver definida, atribui o valor padrão 'educ_lem'
     $_SESSION['usuariobd'] = 'educ_lem';
@@ -67,7 +68,7 @@ try {
 		
 			$verificar_frequencia=$conexao->query("SELECT * FROM frequencia WHERE aluno_id=$aluno_id and ano_frequencia='$ano_letivo_vigente' ");
 			$verificar_frequencia=$verificar_frequencia->fetchAll();
-			// $existe_frequencia=0;
+			 $existe_frequencia=0;
 			
 		
 			$verificar_nota=$conexao->query("SELECT * FROM nota_parecer WHERE aluno_id=$aluno_id and ano_nota='$ano_letivo_vigente' ");
