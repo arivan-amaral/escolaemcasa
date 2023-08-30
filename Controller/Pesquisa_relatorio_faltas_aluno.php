@@ -1,6 +1,6 @@
 <?php 
-    session_start();
-   set_time_limit(500);
+session_start();
+set_time_limit(500);
 
     if (!isset($_SESSION['usuariobd'])) {
     // Se não estiver definida, atribui o valor padrão 'educ_lem'
