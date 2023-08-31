@@ -131,6 +131,7 @@ foreach ($result as $key => $value) {
                 </button>
               </div>
                <div class='modal-body'>
+               <h4> Selecione para bloquear
           ";
             
 
@@ -163,7 +164,10 @@ foreach ($result as $key => $value) {
 
 
          
-               $return.=" </div>
+               $return.=" 
+
+<button type='button' class='btn btn-block btn-primary'>ALTERAR</button>
+               </div>
             <button type='button' class='btn btn-default' data-dismiss='modal'><font style='vertical-align: inherit;'><font style='vertical-align: inherit;'>Fechar</font></font></button>
             </div>
             <!-- /.modal-content -->
