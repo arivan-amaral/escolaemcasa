@@ -355,7 +355,7 @@ foreach ($array_datas as $key => $value) {
               $array_nome_professor[$conta_cont]=$value['nome']
               $nome_funcionario=$value['nome'];
               echo "<b>$nome_funcionario</b> <br>";
-              $conta_cont++
+              $conta_cont++;
           }
 
         }
