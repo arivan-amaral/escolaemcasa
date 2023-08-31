@@ -42,6 +42,9 @@ function CriaRequest() {
 }
 
 
+
+
+
 function pesquisa_relatorio_busca_ativa(){
         var xmlreq = CriaRequest();
         var result=document.getElementById('resultado_busca');
