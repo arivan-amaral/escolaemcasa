@@ -60,7 +60,7 @@ if (isset($_POST['idprofessor'])) {
 $mes = date("m", strtotime($data));
 
 
-if (in_array($professor_id, $array_liberados) || $_SESSION["cargo"] =="Coordenador" ) {
+if (in_array($professor_id, $array_liberados) || $_SESSION["cargo"] !="Professor" ) {
     // code...
 }elseif ($conta_bloqueio>0 || $mes==06 || $mes ==07 ) {
  
