@@ -25,7 +25,7 @@ foreach ($res_turma as $key => $value) {
   $conta_escolas++;
 }
 
-$res_calendario=listar_calendario_letivo($conexao);
+// $res_calendario=listar_calendario_letivo($conexao);
 
 
 $result=pesquisar_professor_associacao($conexao,$pesquisa);
@@ -132,45 +132,35 @@ foreach ($result as $key => $value) {
               </div>
                <div class='modal-body'>
           ";
-              foreach ($res_calendario as $key => $value) {
-                $idcalendario=$value['id'];
-                $ano_calendario=$value['ano'];
-                $data_inicio_trimestre=converte_data($value['inicio']);
-                $data_fim_trimestre=converte_data($value['fim']);
-                $verificar_bloqueio=verificar_bloqueio_funcionario($conexao,$idcalendario,$idfuncionario,1);
-                if (count($verificar_bloqueio)>0) {
-                 $marcado="<b class='text-danger'>BLOQUEADO</b>";
-                  
-                  $return.="
-                    <input type='hidden' id='status$idcalendario$idfuncionario' value='0'>                      
-                    <input type='hidden' id='idcalendario$idcalendario$idfuncionario' value='$idcalendario'>                      
-                    <input type='hidden' id='idfuncionario$idcalendario$idfuncionario' value='$idfuncionario'>
-
-                     <button onclick=mudar_bloqueio_funcionario('$idcalendario$idfuncionario');>
-                    $data_inicio_trimestre - $data_fim_trimestre
-                    </button>
-                     <span id='aguarde$idcalendario$idfuncionario'>$marcado</span>
-                    <br>
-                     
-                   ";
-                }else{
-                 $marcado="<b class='text-success'>LIBERADO</b>";
-                  $return.="<input type='hidden' id='status$idcalendario$idfuncionario' value='1'>                      
-                    <input type='hidden' id='idcalendario$idcalendario$idfuncionario' value='$idcalendario'>                      
-                    <input type='hidden' id='idfuncionario$idcalendario$idfuncionario' value='$idfuncionario'>
-
-                    <button onclick=mudar_bloqueio_funcionario('$idcalendario$idfuncionario');>
-                    $data_inicio_trimestre - $data_fim_trimestre
-                    </button>
-                     <span id='aguarde$idcalendario$idfuncionario'>$marcado</span>
-                    <br>
-                     
-                      ";
-
-                }
-                 
             
-              }
+
+
+            // Defina o ano selecionado (você pode ajustar isso de acordo com sua lógica)
+            $anoSelecionado = $_SESSION['ano_letivo'];
+
+            // Array com os nomes dos meses
+            $meses = [
+                1 => 'Janeiro',
+                2 => 'Fevereiro',
+                3 => 'Março',
+                4 => 'Abril',
+                5 => 'Maio',
+                6 => 'Junho',
+                7 => 'Julho',
+                8 => 'Agosto',
+                9 => 'Setembro',
+                10 => 'Outubro',
+                11 => 'Novembro',
+                12 => 'Dezembro',
+            ];
+
+            // Loop para criar checkboxes para cada mês
+            foreach ($meses as $numeroMes => $nomeMes) {
+                $mesAno = sprintf("%02d/%d", $numeroMes, $anoSelecionado);
+                echo '<input type="checkbox" name="mesesSelecionados[]" value="' . $mesAno . '" id="' . $mesAno . '">';
+                echo '<label for="' . $mesAno . '">' . $nomeMes . '</label><br>';
+            }
+
 
          
                $return.=" </div>
