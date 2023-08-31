@@ -265,7 +265,7 @@ $result_conteudo= $conexao->query("SELECT * FROM conteudo_aula where  turma_id=$
 $conta=1;
 $array_datas = array();
 $abreviacao_displina_da_data = array();
- $idconteudo_prof="id IN(0,";
+ $idconteudo_prof="id IN(0";
 foreach ($result_conteudo as $key => $value) {
   $idconteudo=$value['id'];
   $idconteudo_prof.=",".$value['id'];
