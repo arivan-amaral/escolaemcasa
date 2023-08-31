@@ -127,17 +127,8 @@
   $disciplinas_regente_abreviacao =array();
   
   $nome_disciplina="";
-  $array_nome_professor= array();
-  $nome_professor= "";
 
   foreach ($res_disciplinas as $key => $value) {
-    $novo_nome_prof=$value['nome_professor'];
-    if (!in_array($novo_nome_prof, $array_nome_professor)) {
-        // Se não existir, adiciona o novo nome ao array
-        $array_nome_professor[] = $novo_nome;
-        $nome_professor.= "$novo_nome<br>";
-
-    }
     $disciplina_id=$value['disciplina_id'];
 
     $nome_disciplina.=$value['nome_disciplina'];
@@ -274,9 +265,10 @@ $result_conteudo= $conexao->query("SELECT * FROM conteudo_aula where  turma_id=$
 $conta=1;
 $array_datas = array();
 $abreviacao_displina_da_data = array();
-
+ $idconteudo="(0,";
 foreach ($result_conteudo as $key => $value) {
   $idconteudo=$value['id'];
+  $idconteudo.=",".$value['id'];
 
   $disciplina_id=$value['disciplina_id'];
   
@@ -296,6 +288,8 @@ foreach ($result_conteudo as $key => $value) {
       $abreviacao_displina_da_data[$data_conte_bd][$disciplina_id]=$disciplinas_regente_abreviacao[$disciplina_id];
    }
 }
+ $idconteudo=") ";
+
 
 foreach ($array_datas as $key => $value) {
   $data_conteudo=converte_data($key);
@@ -348,17 +342,14 @@ foreach ($array_datas as $key => $value) {
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
       color:black;mso-fareast-language:PT-BR'>
       <?php 
-        //       $result_funcionario_conteudo= $conexao->query("SELECT * FROM 
-        //   funcionario,conteudo_aula
-        //  where 
-        // ( funcionario_id=idfuncionario or  professor_id=idfuncionario )and disciplina_id =$idconteudo  limit 5 ");
-        // foreach ($result_funcionario_conteudo as $key => $value) {
-        //   $nome_funcionario=$value['nome'];
-        //   echo "<b>$nome_funcionario</b> <br>";
-        // }
-        //
-           echo "<b>$nome_professor</b> <br>";
-        
+              $result_funcionario_conteudo= $conexao->query("SELECT * FROM 
+          funcionario,conteudo_aula
+         where 
+        ( funcionario_id=idfuncionario or  professor_id=idfuncionario )and  id IN $idconteudo  limit 5 ");
+        foreach ($result_funcionario_conteudo as $key => $value) {
+          $nome_funcionario=$value['nome'];
+          echo "<b>$nome_funcionario</b> <br>";
+        }
        ?>
 
 
