@@ -265,7 +265,7 @@ $result_conteudo= $conexao->query("SELECT * FROM conteudo_aula where  turma_id=$
 $conta=1;
 $array_datas = array();
 $abreviacao_displina_da_data = array();
- $idconteudo_prof="(0,";
+ $idconteudo_prof="id IN(0,";
 foreach ($result_conteudo as $key => $value) {
   $idconteudo=$value['id'];
   $idconteudo_prof.=",".$value['id'];
@@ -288,7 +288,7 @@ foreach ($result_conteudo as $key => $value) {
       $abreviacao_displina_da_data[$data_conte_bd][$disciplina_id]=$disciplinas_regente_abreviacao[$disciplina_id];
    }
 }
- $idconteudo_prof=") ";
+ $idconteudo_prof.=") ";
 
 
 foreach ($array_datas as $key => $value) {
@@ -345,7 +345,7 @@ foreach ($array_datas as $key => $value) {
               $result_funcionario_conteudo= $conexao->query("SELECT * FROM 
           funcionario,conteudo_aula
          where 
-        ( funcionario_id=idfuncionario or  professor_id=idfuncionario )and  id IN $idconteudo_prof  limit 5 ");
+        ( funcionario_id=idfuncionario or  professor_id=idfuncionario )and   $idconteudo_prof  limit 5 ");
         foreach ($result_funcionario_conteudo as $key => $value) {
           $nome_funcionario=$value['nome'];
           echo "<b>$nome_funcionario</b> <br>";
