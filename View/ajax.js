@@ -3231,6 +3231,8 @@ function quantidade_vaga_turma(campo_listagem){
         var quantidade_vagas_restante = document.getElementById("quantidade_vagas_restante_troca_turma");
         var turma_id =document.getElementById('lista_de_turmas_troca_turma').value;
 
+    
+
     }else{
         var turma_id =document.getElementById('lista_de_turmas_rematricula').value;
         var quantidade_vagas_restante = document.getElementById("quantidade_vagas_restante");
@@ -3263,10 +3265,21 @@ function quantidade_vaga_turma(campo_listagem){
                 var recebe =xmlreq.responseText;
 
                 var vetor=recebe.split("|#|");
-                quantidade_vagas_restante.value=vetor[2];                 
-                // result.innerHTML =  vetor[0];
-                // result.innerHTML =  xmlreq.responseText;
-                
+                quantidade_vagas_restante.value=vetor[2];
+
+                var quantidade_input= vetor[2];                 
+              
+                var botaoSubmit = document.getElementById('botao_submit');
+                if (quantidade_input > 0) {
+                 
+                    botaoSubmit.removeAttribute('disabled');
+                } else {
+                   
+                    botaoSubmit.setAttribute('disabled', 'disabled');
+                }
+
+
+
             }else{
                    result.innerHTML = "Erro ao pesquisar";
                 
