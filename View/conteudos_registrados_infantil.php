@@ -347,8 +347,12 @@ foreach ($array_datas as $key => $value) {
          where 
         ( funcionario_id=idfuncionario)and   $idconteudo_prof  limit 10 ");
         foreach ($result_funcionario_conteudo as $key => $value) {
-          $nome_funcionario=$value['nome'];
-          echo "<b>$nome_funcionario</b> <br>";
+          if (!in_array($novo_nome_prof, $array_nome_professor)) {
+                 // Se não existir, adiciona o novo nome ao array
+              $nome_funcionario=$value['nome'];
+              echo "<b>$nome_funcionario</b> <br>";
+
+          }
         }
          // or  professor_id=idfuncionario 
        ?>
