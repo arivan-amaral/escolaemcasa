@@ -131,7 +131,7 @@ foreach ($result as $key => $value) {
                 </button>
               </div>
                <div class='modal-body'>
-               <h4> Selecione para bloquear
+               <h4> Selecione para bloquear</h4>
           ";
             
 
