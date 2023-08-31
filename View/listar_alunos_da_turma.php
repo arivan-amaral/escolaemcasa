@@ -933,7 +933,7 @@ $arquivo.="
        <button type='button' class='btn btn-default' data-dismiss='modal'>FECHAR</button>
        <!-- onclick='carregando_login()' -->
        <div id='botao_continuar' >
-         <button type='submit' class='btn btn-primary' >TROCAR DE TURMA ALUNOS SELECIONADOS</button>
+         <button type='submit' class='btn btn-primary' disabled >TROCAR DE TURMA ALUNOS SELECIONADOS</button>
        </div>
      </div>
 
@@ -1063,7 +1063,30 @@ $arquivo.="
 // file_put_contents("pagina_estatica/$url_teste3".".php", $arquivo);
 // $arquivoCriado = true;
 }
-echo "$arquivo";
+echo "$arquivo
+
+<script>
+    // Captura o elemento do campo de entrada e do botão de submit
+    var campoQuantidade = document.getElementById('quantidade_vagas_restante_troca_turma');
+    var botaoSubmit = document.getElementById('botao_submit');
+
+    // Adiciona um ouvinte de eventos para o campo de entrada
+    campoQuantidade.addEventListener('input', function () {
+        // Converte o valor do campo de entrada para um número
+        var valor = parseFloat(campoQuantidade.value);
+
+        // Verifica se o valor é maior que 0
+        if (valor > 0) {
+            // Se for maior que 0, habilita o botão de submit
+            botaoSubmit.removeAttribute('disabled');
+        } else {
+            // Caso contrário, desabilita o botão de submit
+            botaoSubmit.setAttribute('disabled', 'disabled');
+        }
+    });
+</script>
+
+";
 
 
 include_once 'rodape.php';
