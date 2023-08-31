@@ -157,8 +157,8 @@ foreach ($result as $key => $value) {
             // Loop para criar checkboxes para cada mês
             foreach ($meses as $numeroMes => $nomeMes) {
                 $mesAno = sprintf("%02d/%d", $numeroMes, $anoSelecionado);
-                echo '<input type="checkbox" name="mesesSelecionados[]" value="' . $mesAno . '" id="' . $mesAno . '">';
-                echo '<label for="' . $mesAno . '">' . $nomeMes . '</label><br>';
+                $return.='<input type="checkbox" name="mesesSelecionados[]" value="' . $mesAno . '" id="' . $mesAno . '">';
+                $return.= '<label for="' . $mesAno . '">' . $nomeMes . '</label><br>';
             }
 
 
