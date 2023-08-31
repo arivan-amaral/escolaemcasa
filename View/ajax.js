@@ -3269,7 +3269,7 @@ function quantidade_vaga_turma(campo_listagem){
 
                 var quantidade_input= vetor[2];                 
               
-                var botaoSubmit = document.getElementById('botao_submit');
+                var botaoSubmit = document.getElementById('btn_botao_continuar_troca_turma');
                 if (quantidade_input > 0) {
                  
                     botaoSubmit.removeAttribute('disabled');

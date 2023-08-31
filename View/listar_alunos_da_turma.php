@@ -933,7 +933,7 @@ $arquivo.="
        <button type='button' class='btn btn-default' data-dismiss='modal'>FECHAR</button>
        <!-- onclick='carregando_login()' -->
        <div id='botao_continuar' >
-         <button type='submit' class='btn btn-primary' disabled >TROCAR DE TURMA ALUNOS SELECIONADOS</button>
+         <button type='submit' id='btn_botao_continuar_troca_turma' class='btn btn-primary' disabled >TROCAR DE TURMA ALUNOS SELECIONADOS</button>
        </div>
      </div>
 
