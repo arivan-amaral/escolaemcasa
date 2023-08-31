@@ -158,7 +158,7 @@ foreach ($result as $key => $value) {
             foreach ($meses as $numeroMes => $nomeMes) {
                 $mesAno = sprintf("%02d/%d", $numeroMes, $anoSelecionado);
                 $return.='<input type="checkbox" name="mesesSelecionados[]" value="' . $mesAno . '" id="' . $mesAno . '">';
-                $return.= '<label for="' . $mesAno . '">' . $nomeMes . '</label><br>';
+                $return.= '<label for="' . $mesAno . '">' . $nomeMes  $anoSelecionado. '</label><br>';
             }
 
 
