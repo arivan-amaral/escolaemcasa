@@ -346,13 +346,18 @@ foreach ($array_datas as $key => $value) {
           funcionario,conteudo_aula
          where 
         ( funcionario_id=idfuncionario)and   $idconteudo_prof  limit 10 ");
+
+        $array_nome_professor = array();
+        $conta_cont=0;
         foreach ($result_funcionario_conteudo as $key => $value) {
+
           if (!in_array($novo_nome_prof, $array_nome_professor)) {
-                 // Se não existir, adiciona o novo nome ao array
+              $array_nome_professor[$conta_cont]=$value['nome']
               $nome_funcionario=$value['nome'];
               echo "<b>$nome_funcionario</b> <br>";
-
+              $conta_cont++
           }
+
         }
          // or  professor_id=idfuncionario 
        ?>
