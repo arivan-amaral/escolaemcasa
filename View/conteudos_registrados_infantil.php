@@ -345,7 +345,7 @@ foreach ($array_datas as $key => $value) {
               $result_funcionario_conteudo= $conexao->query("SELECT * FROM 
           funcionario,conteudo_aula
          where 
-        ( funcionario_id=idfuncionario)and   $idconteudo_prof  limit 10 ");
+        ( funcionario_id=idfuncionario)and   $idconteudo_prof  limit 2 ");
 
         $array_nome_professor = array();
         $conta_cont=0;
