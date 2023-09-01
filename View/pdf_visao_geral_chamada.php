@@ -108,7 +108,6 @@ include_once "../Model/Conexao_".$usuariobd.".php";
 
 
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHETRNN05Z"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
