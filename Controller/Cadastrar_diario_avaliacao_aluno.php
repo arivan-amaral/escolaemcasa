@@ -88,7 +88,7 @@ foreach ($_POST['aluno_id'] as $key => $value) {
       // limpa_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$aluno_id,$periodo,$data,$avaliacao);
       $parecer_descritivo='';
       if (isset($_POST["parecer_descritivo$aluno_id"])) {
-        $parecer_descritivo=$_POST["parecer_descritivo$aluno_id"];
+        $parecer_descritivo=  escape_mimic($_POST["parecer_descritivo$aluno_id"]);
       }
       
  
