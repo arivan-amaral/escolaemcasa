@@ -49,7 +49,7 @@ try{
 
 } catch (Exception $e) {
             $_SESSION['status']=0;
-        header("Location:../View/registro_ligacao_ficai.php");
+       // header("Location:../View/registro_ligacao_ficai.php");
          echo $e;
 }
 
