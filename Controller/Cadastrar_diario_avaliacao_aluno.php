@@ -6,9 +6,10 @@
 }
 $usuariobd=$_SESSION['usuariobd'];
 include_once "../Model/Conexao_".$usuariobd.".php";
-    include("../Model/Escola.php");
+    include_once"../Model/Escola.php";
+    include_once"Conversao.php";
     
-    include("../Model/Aluno.php");
+    include_once"../Model/Aluno.php";
     
     if (!isset($_SESSION['idfuncionario'])) {
         $funcionario_id=175;
