@@ -276,9 +276,9 @@ function rejeitar_solicitacao_transferencia($conexao,$profissional_resposta,$ids
 function retornar_aluno_apos_transferencia_rejeitada($conexao,$matricula_codigo){
    $sql = $conexao->prepare("UPDATE ecidade_matricula SET 
       datasaida= '' ,
-       matricula_ativa='S', 
+       matricula_ativa='N', 
        matricula_concluida='N',
-       matricula_situacao='MATRICULADO'
+       matricula_situacao='TRANSFERIDO REDE'
 
        WHERE matricula_codigo = :matricula_codigo ");
 
