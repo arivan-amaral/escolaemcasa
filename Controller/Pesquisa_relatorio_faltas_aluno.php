@@ -42,6 +42,8 @@ $ano_letivo = $_SESSION['ano_letivo'];
 $idturma = $_GET['idturma'];
 $campo_turma = $_GET['idturma'];
 $delimit = ",";
+$data_inicial=$_GET['data_inicial'];
+$data_final=$_GET['data_final'];
 
 $idescola = ($_GET['idescola'] === 'Todas') ? ' and escola.idescola > 0 ' : ' and escola.idescola = ' . $_GET['idescola'];
 
