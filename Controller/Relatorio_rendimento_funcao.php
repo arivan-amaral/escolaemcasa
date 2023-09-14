@@ -54,7 +54,7 @@ $idturma_aux=" IN(-1";
   $nome_periodo="";
 
   foreach ($res_periodo as $key => $value) {
-    $nome_periodo=$value['descricao'];
+    $nome_periodo.=",".$value['descricao'];
   }
 
   $res2=lista_de_turmas_relatorio($conexao,$ano_letivo,$idturmas,$idescola);
