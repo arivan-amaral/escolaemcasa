@@ -54,7 +54,7 @@ $idturma_aux=" IN(-1";
   $nome_periodo="";
 
   foreach ($res_periodo as $key => $value) {
-    $nome_periodo.=",".$value['descricao'];
+    $nome_periodo.=$value['descricao'].",";
   }
 
   $res2=lista_de_turmas_relatorio($conexao,$ano_letivo,$idturmas,$idescola);
@@ -483,7 +483,7 @@ foreach ($res_disc as $key => $value) {
                 turma_id $idturmas and
                 disciplina_id=$iddisciplina and 
                 ano_nota=$ano_letivo and
-                periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id,nota,nota ");
+                periodo_id IN($idperiodo) and aluno_id=$idaluno  group by avaliacao,periodo_id,nota,nota ");
 
 
               $nota_tri_1=0;
