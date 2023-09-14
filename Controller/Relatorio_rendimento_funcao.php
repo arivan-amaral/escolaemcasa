@@ -569,7 +569,7 @@ foreach ($res_disc as $key => $value) {
   margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
   style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'><?php echo porcentagem($total_disciplina,$quantidade_vaga); ?><o:p></o:p></span></p>
+  mso-fareast-language:PT-BR'><?php echo porcentagem($total_disciplina,$quantidade_vaga); ?>%<o:p></o:p></span></p>
   </td>
 <?php 
 }
@@ -639,7 +639,7 @@ foreach ($res_disc_resultado as $key_disc=> $value_disc) {
   margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
   style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'> <?php echo porcentagem($array_reprovados_disciplina[$iddisc],$quantidade_vaga) ?><o:p></o:p></span></p>
+  mso-fareast-language:PT-BR'> <?php echo porcentagem($array_reprovados_disciplina[$iddisc],$quantidade_vaga) ?>%<o:p></o:p></span></p>
   </td>
 
 <?php 
