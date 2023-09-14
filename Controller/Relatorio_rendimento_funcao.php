@@ -19,10 +19,10 @@ $idescola=$_GET['idescola'];
 
 
 if ($_GET['periodo'] == 'todos') {
-    $idperiodo="IN(1,2,3)";
+    $idperiodo="1,2,3";
 
 }else{
-  $idperiodo="IN(".$_GET['periodo'].")";
+  $idperiodo=$_GET['periodo'];
 
 }
 $ano_letivo=$_SESSION['ano_letivo'];
