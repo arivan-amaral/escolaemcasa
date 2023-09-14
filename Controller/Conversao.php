@@ -210,7 +210,8 @@ function verificar_periodo_ligacao_busca_ativa($data1, $data2){
 
 function porcentagem($valorParcial, $valorTotal) {
     if ($valorTotal != 0) {
-        return ($valorParcial / $valorTotal) * 100;
+        $total=($valorParcial / $valorTotal) * 100;
+        return number_format($total, 1, '.','');
     } else {
         // Você pode retornar um valor padrão, lançar uma exceção ou lidar com a situação de erro de outra forma.
         return 0; // Neste caso, estamos retornando 0 como valor padrão quando $valorTotal é zero.
