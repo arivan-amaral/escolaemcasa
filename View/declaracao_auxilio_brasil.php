@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 'On');
+
 session_start();
 
 include_once "cabecalho.php";
