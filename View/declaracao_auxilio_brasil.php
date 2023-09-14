@@ -1,6 +1,4 @@
 <?php
-ini_set('display_errors', 'On');
-
 session_start();
 
 include_once "cabecalho.php";
@@ -40,7 +38,7 @@ $idserie=$serie_seguimento['serie_id'];
 $descricao_trimestre="";
 $data_inicio_trimestre="";
 $data_fim_trimestre="";
-$res_calendario=listar_data_por_periodo($conexao,$ano_letivo,1);
+$res_calendario=listar_data_por_periodo($conexao,$ano_letivo,"IN(1)");
   foreach ($res_calendario as $key => $value) {
     $descricao_trimestre=$value['descricao'];
     $data_inicio_trimestre=$value['inicio'];
