@@ -264,6 +264,8 @@ setTimeout('dia_doservidor_publico();',3000);
                 }
 
                ?>
+                    <option value='todos'> TODOS</option>";
+
             </select>
           </div>
         </div>

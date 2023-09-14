@@ -165,10 +165,10 @@ function listar_data_periodo($conexao,$ano){
    return $sql->fetchAll();
 }
 
-function listar_data_por_periodo($conexao,$ano,$periodo_id){
+function listar_data_por_periodo($conexao,$ano,$idperiodo){
    $sql = $conexao->query("SELECT * from calendario_letivo,periodo WHERE
       calendario_letivo.periodo_id=periodo.id and 
-    ano='$ano' and periodo_id=$periodo_id order by calendario_letivo.periodo_id ASC
+    ano='$ano' and periodo_id $idperiodo order by calendario_letivo.periodo_id ASC
       ");
    return $sql->fetchAll();
 }

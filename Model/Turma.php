@@ -141,13 +141,30 @@ function lista_de_turmas_por_id($conexao,$idturma){
 
 }
 
-function lista_de_turmas_relatorio($conexao,$idturmas){
-
-   $result = $conexao->query("SELECT * FROM turma where idturma $idturmas");
+function lista_de_turmas_relatorio($conexao,$ano_letivo,$idturmas,$escolas){
+ 
+   $result = $conexao->query("SELECT relacionamento_turma_escola.quantidade_vaga, turma.nome_turma FROM relacionamento_turma_escola, turma WHERE
+turma.idturma= relacionamento_turma_escola.turma_id and 
+relacionamento_turma_escola.escola_id = $escolas and 
+relacionamento_turma_escola.turma_id $idturmas AND
+relacionamento_turma_escola.ano='$ano_letivo'");
 
     return $result;
 
 }
+
+
+
+// function quantidade_matriculado_turma_relatorio($conexao,$ano_letivo,$idturmas,$escolas){
+
+//    $result = $conexao->query("SELECT relacionamento_turma_escola.quantidade_vaga FROM relacionamento_turma_escola WHERE
+// relacionamento_turma_escola.escola_id $escolas and 
+// relacionamento_turma_escola.turma_id $idturmas AND
+// relacionamento_turma_escola.ano='$ano_letivo' ");
+
+//     return $result;
+
+// }
 
 function lista_de_turmas($conexao,$serie_id){
 

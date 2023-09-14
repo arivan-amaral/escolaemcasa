@@ -12,10 +12,19 @@ include_once '../Model/Turma.php';
 include_once '../Model/Aluno.php';
 include_once '../Model/Escola.php';
 include_once 'Cauculos_notas.php';
+include_once 'Conversao.php';
 
 $idturma=$_GET['idturma'];
 $idescola=$_GET['idescola'];
-$idperiodo=$_GET['periodo'];
+
+
+if ($_GET['periodo'] == 'todos') {
+    $idperiodo="IN(1,2,3)";
+
+}else{
+  $idperiodo="IN(".$_GET['periodo'].")";
+
+}
 $ano_letivo=$_SESSION['ano_letivo'];
 $idturmas=" IN(-1";
 $idturma_aux=" IN(-1";
@@ -48,10 +57,12 @@ $idturma_aux=" IN(-1";
     $nome_periodo=$value['descricao'];
   }
 
-  $res2=lista_de_turmas_relatorio($conexao,$idturmas);
+  $res2=lista_de_turmas_relatorio($conexao,$ano_letivo,$idturmas,$idescola);
   $nome_turma="";
+  $quantidade_vaga=0;
   foreach ($res2 as $key => $value) {
     $nome_turma.=$value['nome_turma'].", ";
+    $quantidade_vaga+=$value['quantidade_vaga'];
   }
 
 
@@ -558,7 +569,7 @@ foreach ($res_disc as $key => $value) {
   margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
   style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'>*<o:p></o:p></span></p>
+  mso-fareast-language:PT-BR'><?php echo porcentagem($total_disciplina,$quantidade_vaga); ?><o:p></o:p></span></p>
   </td>
 <?php 
 }
@@ -628,7 +639,7 @@ foreach ($res_disc_resultado as $key_disc=> $value_disc) {
   margin;mso-element-top:40.55pt;mso-height-rule:exactly'><span
   style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-  mso-fareast-language:PT-BR'>*<o:p></o:p></span></p>
+  mso-fareast-language:PT-BR'> <?php echo porcentagem($array_reprovados_disciplina[$iddisc],$quantidade_vaga) ?><o:p></o:p></span></p>
   </td>
 
 <?php 
