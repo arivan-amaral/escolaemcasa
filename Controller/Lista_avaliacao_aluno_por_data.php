@@ -34,7 +34,7 @@ try {
       // code...
     }
     
-    $res_periodo=listar_data_por_periodo($conexao,$_SESSION['ano_letivo'],$idperiodo);
+    $res_periodo=listar_data_por_periodo($conexao,$_SESSION['ano_letivo'], "IN(".$idperiodo.")");
     $data_inicio_periodo='';
     $data_fim_periodo='';
  
