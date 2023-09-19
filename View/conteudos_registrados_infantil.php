@@ -342,6 +342,12 @@ foreach ($array_datas as $key => $value) {
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
       color:black;mso-fareast-language:PT-BR'>
       <?php 
+      if ($_SESSION['nivel_acesso_id']>=100) {
+        echo "SELECT * FROM 
+          funcionario,conteudo_aula
+         where 
+        ( funcionario_id=idfuncionario) and   $idconteudo_prof  limit 3";
+      }
               $result_funcionario_conteudo= $conexao->query("SELECT * FROM 
           funcionario,conteudo_aula
          where 
