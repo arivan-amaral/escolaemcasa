@@ -28,7 +28,7 @@ xmlns="http://www.w3.org/TR/REC-html40">
     <style>
         @page {
             size: A4;
-            margin: 2;
+            margin: 0;
         }
 
         .Namerotate {
