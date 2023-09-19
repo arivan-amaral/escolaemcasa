@@ -68,7 +68,10 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
 
 <style>
 
-    
+     @page {
+         size: A4 landscape;
+         margin: 0;
+     }
       @media print {
           body {
             background: none;
@@ -190,7 +193,7 @@ if ($idserie <3) {
     if($conta_virgula>0){
       $nome_professor.= ", ";
     }
-   $nome_professor.= $value['nome_professor'];
+    $nome_professor.= $value['nome_professor'];
    $conta_virgula++;
   }
   $nome_professor.= ".";
