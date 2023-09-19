@@ -6,7 +6,7 @@ session_start();
 }
 $usuariobd=$_SESSION['usuariobd'];
 include_once "../Model/Conexao_".$usuariobd.".php";
-    include("../Model/Coordenador.php");
+include_once"../Model/Coordenador.php";
     
 
 try {
