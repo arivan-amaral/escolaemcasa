@@ -27,7 +27,7 @@ xmlns="http://www.w3.org/TR/REC-html40">
 
     <style>
         @page {
-            size: A4;
+            size: A4 landscape;
             margin: 0;
         }
 
