@@ -345,7 +345,7 @@ foreach ($array_datas as $key => $value) {
               $result_funcionario_conteudo= $conexao->query("SELECT * FROM 
           funcionario,conteudo_aula
          where 
-        ( funcionario_id=idfuncionario)and   $idconteudo_prof  limit 3 ");
+        ( funcionario_id=idfuncionario) and   $idconteudo_prof  limit 4 ");
 
         $array_nome_professor = array();
         $conta_cont=0;
@@ -355,7 +355,7 @@ foreach ($array_datas as $key => $value) {
           if (!in_array($novo_nome_prof, $array_nome_professor)) {
               $array_nome_professor[$conta_cont]=$value['nome'];
               $nome_funcionario=strtoupper($value['nome']);
-              echo "<b>$nome_funcionario</b> <br>..";
+              echo "<b>$nome_funcionario</b> <br>";
               $conta_cont++;
           }
 
