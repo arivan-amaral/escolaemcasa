@@ -352,9 +352,10 @@ foreach ($array_datas as $key => $value) {
 
         $array_nome_professor = array();
         $conta_cont=0;
-            $novo_nome_prof='';
+            // $novo_nome_prof='';
 
         foreach ($result_funcionario_conteudo as $key => $value) {
+            $novo_nome_prof=$value['nome'];
 
           if (!in_array($novo_nome_prof, $array_nome_professor)) {
               $array_nome_professor[$conta_cont]=$value['nome'];
@@ -362,7 +363,6 @@ foreach ($array_datas as $key => $value) {
               echo "<b>$nome_funcionario</b> <br>";
               $conta_cont++;
           }
-            $novo_nome_prof=$value['nome'];
 
         }
          // or  professor_id=idfuncionario 
