@@ -283,7 +283,7 @@ foreach ($result_conteudo as $key => $value) {
         ( funcionario_id=idfuncionario or  professor_id=idfuncionario )and  id =$idconteudo  limit 1 ");
         foreach ($result_funcionario_conteudo as $key => $value) {
           $nome_funcionario=$value['nome'];
-          echo "<b>$nome_funcionario</b>,";
+          echo "<b>$nome_funcionario</b>";
         }
        ?>
 
