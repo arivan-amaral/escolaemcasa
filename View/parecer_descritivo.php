@@ -26,6 +26,7 @@ xmlns="http://www.w3.org/TR/REC-html40">
     <link rel="Edit-Time-Data" href="registro_conteudo_arquivos/editdata.mso">
 
     <style>
+
         @page {
             size: A4 landscape;
             margin: 0;
@@ -122,6 +123,18 @@ xmlns="http://www.w3.org/TR/REC-html40">
             cursor: pointer;
             background-color: #008CBA;
         }
+
+
+
+        table {
+            table-layout: fixed;
+            width: 100%;
+        }
+        
+        th, td {
+          white-space: nowrap;
+        }
+
     </style>
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
