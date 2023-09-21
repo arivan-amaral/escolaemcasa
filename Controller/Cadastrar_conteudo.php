@@ -1,5 +1,8 @@
 <?php
-	session_start();
+	error_reporting(E_ALL);
+ini_set('display_errors', 1);
+    session_start();
+
     if (!isset($_SESSION['usuariobd'])) {
     // Se não estiver definida, atribui o valor padrão 'educ_lem'
     $_SESSION['usuariobd'] = 'educ_lem';
