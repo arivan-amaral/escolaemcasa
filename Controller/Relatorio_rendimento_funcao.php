@@ -405,12 +405,7 @@ $idturma_aux=" IN(-1";
   background:#729FCF;padding:2.75pt 2.75pt 2.75pt 2.75pt;height:27.15pt'>
   <p class=TableContents><b><span style='font-size:6.0pt;color:black'>REPROVADOS</span></b></p>
   </td>
-  <td width=40 valign=top style='width:30.3pt;border-top:none;border-left:solid black 1.0pt;
-  border-bottom:solid black 1.0pt;border-right:none;mso-border-left-alt:solid black .5pt;
-  mso-border-bottom-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt;
-  height:27.15pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
+
 
 <?php 
   $res_disc_resultado=listar_disciplina_para_relatorio($conexao,$idturma_aux,$idescola,$ano_letivo);
