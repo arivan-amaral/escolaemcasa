@@ -103,7 +103,7 @@ $idturma_aux=" IN(-1";
   height:19.8pt'>
   <p class=TableContents align=center style='text-align:center'><b><span
   style='font-size:10.0pt;color:black;mso-color-alt:windowtext'>FICHA DE
-  DESEMPENHO ESCOLAR POR TURMA - 2023</span></b></p>
+  DESEMPENHO ESCOLAR POR TURMA - <?php  echo $ano_letivo; ?></span></b></p>
   </td>
  </tr>
  <tr style='height:11.25pt'>
@@ -181,77 +181,50 @@ $idturma_aux=" IN(-1";
   <p class=TableContents><b><span style='font-size:6.0pt;color:black;
   mso-color-alt:windowtext'>DISCIPLINA</span></b></p>
   </td>
+
+
+  <!-- //disciplinas -->
+  <?php 
+  $res_disc=listar_disciplina_para_relatorio($conexao,$idturma_aux,$idescola,$ano_letivo);
+
+   
+  $conta_parecer=0;
+  $linha=0;
+  $resultado_final=true;
+  $resultado_conselho=false;
+  
+  $conta_dis=0;
+  $conta_conselho=0;
+  $conta_apr=0;
+
+
+  $qnt_displina=0;
+  $array_disciplina = array();
+  foreach ($res_disc as $key => $value) {
+    $iddisciplina=$value['iddisciplina'];
+    $nome_disciplina=$value['nome_disciplina'];
+    $conta_dis++;
+    $qnt_displina++;
+    $array_disciplina[$iddisciplina]=$nome_disciplina;
+
+  ?>
+
+
+
   <td width=76 colspan=3 valign=top style='width:2.0cm;border-top:none;
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
   none;mso-border-top-alt:solid black .5pt;mso-border-top-alt:solid black .5pt;
   mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
   background:#729FCF;padding:2.75pt 2.75pt 2.75pt 2.75pt'>
   <p class=TableContents><b><span style='font-size:6.0pt;color:black;
-  mso-color-alt:windowtext'>MATEMÁTICA</span></b></p>
+  mso-color-alt:windowtext'><?php   echo $nome_disciplina; ?></span></b></p>
   </td>
-  <td width=70 colspan=4 valign=top style='width:52.6pt;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-top-alt:solid black .5pt;mso-border-top-alt:solid black .5pt;
-  mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  background:#729FCF;padding:2.75pt 2.75pt 2.75pt 2.75pt'>
-  <p class=TableContents><b><span style='font-size:6.0pt;color:black;
-  mso-color-alt:windowtext'>LÍNGUA ESTRANGEIRA MODERNA (INGLÊS)</span></b></p>
-  </td>
-  <td width=79 colspan=3 valign=top style='width:59.2pt;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-top-alt:solid black .5pt;mso-border-top-alt:solid black .5pt;
-  mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  background:#729FCF;padding:2.75pt 2.75pt 2.75pt 2.75pt'>
-  <p class=TableContents><b><span style='font-size:6.0pt;color:black;
-  mso-color-alt:windowtext'>EDUCAÇÃO FÍSICA</span></b></p>
-  </td>
-  <td width=68 colspan=2 valign=top style='width:51.2pt;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-top-alt:solid black .5pt;mso-border-top-alt:solid black .5pt;
-  mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  background:#729FCF;padding:2.75pt 2.75pt 2.75pt 2.75pt'>
-  <p class=TableContents><b><span style='font-size:6.0pt;color:black;
-  mso-color-alt:windowtext'>GEOGRAFIA</span></b></p>
-  </td>
-  <td width=66 colspan=3 valign=top style='width:49.65pt;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-top-alt:solid black .5pt;mso-border-top-alt:solid black .5pt;
-  mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  background:#729FCF;padding:2.75pt 2.75pt 2.75pt 2.75pt'>
-  <p class=TableContents><b><span style='font-size:6.0pt;color:black;
-  mso-color-alt:windowtext'>ARTE</span></b></p>
-  </td>
-  <td width=61 colspan=3 valign=top style='width:45.45pt;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-top-alt:solid black .5pt;mso-border-top-alt:solid black .5pt;
-  mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  background:#729FCF;padding:2.75pt 2.75pt 2.75pt 2.75pt'>
-  <p class=TableContents><b><span style='font-size:6.0pt;color:black;
-  mso-color-alt:windowtext'>HISTÓRIA</span></b></p>
-  </td>
-  <td width=64 colspan=4 valign=top style='width:48.2pt;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-top-alt:solid black .5pt;mso-border-top-alt:solid black .5pt;
-  mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  background:#729FCF;padding:2.75pt 2.75pt 2.75pt 2.75pt'>
-  <p class=TableContents><b><span style='font-size:6.0pt;color:black;
-  mso-color-alt:windowtext'>CIÊNCIAS</span></b></p>
-  </td>
-  <td width=64 colspan=3 valign=top style='width:48.25pt;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-top-alt:solid black .5pt;mso-border-top-alt:solid black .5pt;
-  mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  background:#729FCF;padding:2.75pt 2.75pt 2.75pt 2.75pt'>
-  <p class=TableContents><b><span style='font-size:6.0pt;color:black;
-  mso-color-alt:windowtext'>LÍNGUA PORTUGUESA</span></b></p>
-  </td>
-  <td width=167 colspan=3 valign=top style='width:125.35pt;border:solid black 1.0pt;
-  border-top:none;mso-border-top-alt:solid black .5pt;mso-border-alt:solid black .5pt;
-  background:#729FCF;padding:2.75pt 2.75pt 2.75pt 2.75pt'>
-  <p class=TableContents><b><span style='font-size:6.0pt;color:black;
-  mso-color-alt:windowtext'>ENSINO RELIGIOSO</span></b></p>
-  </td>
+
+<?php  } ?>
  </tr>
+
+
+
  <tr style='mso-yfti-irow:5'>
   <td width=94 valign=top style='width:70.85pt;border-top:none;border-left:
   solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:none;
@@ -260,6 +233,11 @@ $idturma_aux=" IN(-1";
   background:#729FCF;padding:2.75pt 2.75pt 2.75pt 2.75pt'>
   <p class=TableContents><b><span style='font-size:6.0pt;color:black'>RESULTADO</span></b></p>
   </td>
+
+    <?php 
+
+        for ($i=0; $i < $qnt_displina; $i++) { 
+     ?>
   <td width=40 valign=top style='width:30.3pt;border-top:none;border-left:solid black 1.0pt;
   border-bottom:solid black 1.0pt;border-right:none;mso-border-top-alt:solid black .5pt;
   mso-border-top-alt:solid black .5pt;mso-border-left-alt:solid black .5pt;
@@ -273,110 +251,12 @@ $idturma_aux=" IN(-1";
   padding:2.75pt 2.75pt 2.75pt 2.75pt'>
   <p class=TableContents><b><span style='font-size:8.0pt;color:black'>%</span></b></p>
   </td>
-  <td width=30 colspan=3 valign=top style='width:22.5pt;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-top-alt:solid black .5pt;mso-border-top-alt:solid black .5pt;
-  mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'>N</span></b></p>
-  </td>
-  <td width=40 valign=top style='width:30.1pt;border-top:none;border-left:solid black 1.0pt;
-  border-bottom:solid black 1.0pt;border-right:none;mso-border-top-alt:solid black .5pt;
-  mso-border-top-alt:solid black .5pt;mso-border-left-alt:solid black .5pt;
-  mso-border-bottom-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'>%</span></b></p>
-  </td>
-  <td width=46 colspan=2 valign=top style='width:34.2pt;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-top-alt:solid black .5pt;mso-border-top-alt:solid black .5pt;
-  mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'>N</span></b></p>
-  </td>
-  <td width=33 valign=top style='width:25.0pt;border-top:none;border-left:solid black 1.0pt;
-  border-bottom:solid black 1.0pt;border-right:none;mso-border-top-alt:solid black .5pt;
-  mso-border-top-alt:solid black .5pt;mso-border-left-alt:solid black .5pt;
-  mso-border-bottom-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'>%</span></b></p>
-  </td>
-  <td width=31 valign=top style='width:23.4pt;border-top:none;border-left:solid black 1.0pt;
-  border-bottom:solid black 1.0pt;border-right:none;mso-border-top-alt:solid black .5pt;
-  mso-border-top-alt:solid black .5pt;mso-border-left-alt:solid black .5pt;
-  mso-border-bottom-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'>N</span></b></p>
-  </td>
-  <td width=37 valign=top style='width:27.8pt;border-top:none;border-left:solid black 1.0pt;
-  border-bottom:solid black 1.0pt;border-right:none;mso-border-top-alt:solid black .5pt;
-  mso-border-top-alt:solid black .5pt;mso-border-left-alt:solid black .5pt;
-  mso-border-bottom-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'>%</span></b></p>
-  </td>
-  <td width=28 valign=top style='width:21.3pt;border-top:none;border-left:solid black 1.0pt;
-  border-bottom:solid black 1.0pt;border-right:none;mso-border-top-alt:solid black .5pt;
-  mso-border-top-alt:solid black .5pt;mso-border-left-alt:solid black .5pt;
-  mso-border-bottom-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'>N</span></b></p>
-  </td>
-  <td width=38 colspan=2 valign=top style='width:1.0cm;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-top-alt:solid black .5pt;mso-border-top-alt:solid black .5pt;
-  mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'>%</span></b></p>
-  </td>
-  <td width=32 colspan=2 valign=top style='width:23.95pt;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-top-alt:solid black .5pt;mso-border-top-alt:solid black .5pt;
-  mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'>N</span></b></p>
-  </td>
-  <td width=29 valign=top style='width:21.5pt;border-top:none;border-left:solid black 1.0pt;
-  border-bottom:solid black 1.0pt;border-right:none;mso-border-top-alt:solid black .5pt;
-  mso-border-top-alt:solid black .5pt;mso-border-left-alt:solid black .5pt;
-  mso-border-bottom-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'>%</span></b></p>
-  </td>
-  <td width=34 colspan=3 valign=top style='width:25.4pt;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-top-alt:solid black .5pt;mso-border-top-alt:solid black .5pt;
-  mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'>N</span></b></p>
-  </td>
-  <td width=30 valign=top style='width:22.8pt;border-top:none;border-left:solid black 1.0pt;
-  border-bottom:solid black 1.0pt;border-right:none;mso-border-top-alt:solid black .5pt;
-  mso-border-top-alt:solid black .5pt;mso-border-left-alt:solid black .5pt;
-  mso-border-bottom-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'>%</span></b></p>
-  </td>
-  <td width=36 colspan=2 valign=top style='width:26.8pt;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-top-alt:solid black .5pt;mso-border-top-alt:solid black .5pt;
-  mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'>N</span></b></p>
-  </td>
-  <td width=29 valign=top style='width:21.45pt;border-top:none;border-left:
-  solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:none;
-  mso-border-top-alt:solid black .5pt;mso-border-top-alt:solid black .5pt;
-  mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'>%</span></b></p>
-  </td>
-  <td width=45 colspan=2 valign=top style='width:33.75pt;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-top-alt:solid black .5pt;mso-border-top-alt:solid black .5pt;
-  mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'>N</span></b></p>
-  </td>
-  <td width=122 valign=top style='width:91.6pt;border:solid black 1.0pt;
-  border-top:none;mso-border-top-alt:solid black .5pt;mso-border-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'>%</span></b></p>
-  </td>
+    <?php   } ?>
+
  </tr>
+
+
+
  <tr style='mso-yfti-irow:6;height:27.1pt'>
   <td width=94 valign=top style='width:70.85pt;border-top:none;border-left:
   solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:none;
@@ -384,115 +264,140 @@ $idturma_aux=" IN(-1";
   background:#729FCF;padding:2.75pt 2.75pt 2.75pt 2.75pt;height:27.1pt'>
   <p class=TableContents><b><span style='font-size:6.0pt;color:black'>APROVADOS</span></b></p>
   </td>
+    <?php 
+      
+     $total_aprovados_geral=0;
+     $total_reprovados_geral=0;
+     $array_reprovados_disciplina=array();
+     $array_aprovados_disciplina=array();
+     $mult_displina=$qnt_displina;
+
+    $res_disc=listar_disciplina_para_relatorio($conexao,$idturma_aux,$idescola,$ano_letivo);
+
+  foreach ($res_disc as $key => $value) {
+      $iddisciplina=$value['iddisciplina'];
+      $total_disciplina=0;
+    
+        $res_aluno=$conexao->query("
+          SELECT
+          aluno.aluno_transpublico, 
+          aluno.linha_transporte,
+          aluno.imagem_carteirinha_transporte ,
+          aluno.nome AS nome_aluno,
+          aluno.sexo,
+          aluno.data_nascimento,
+          aluno.idaluno,
+          aluno.email,
+          aluno.status AS status_aluno,
+          aluno.senha,
+          turma.nome_turma,
+          ecidade_matricula.matricula_codigo AS matricula,
+          ecidade_matricula.matricula_datamatricula AS data_matricula,
+          ecidade_matricula.datasaida AS datasaida
+      FROM ecidade_matricula
+      INNER JOIN aluno ON ecidade_matricula.aluno_id = aluno.idaluno
+      INNER JOIN turma ON ecidade_matricula.turma_id = turma.idturma
+      INNER JOIN escola ON ecidade_matricula.turma_escola = escola.idescola
+      WHERE ecidade_matricula.turma_escola = $idescola
+        AND ecidade_matricula.turma_id $idturmas
+        AND ecidade_matricula.calendario_ano = '$ano_letivo'
+        AND ecidade_matricula.matricula_ativa='S'
+      ORDER BY aluno.nome ASC");
+
+      foreach ($res_aluno as $key => $value) {
+        $idaluno=$value['idaluno'];
+       
+        if (!array_key_exists($iddisciplina,$array_reprovados_disciplina)) {
+          $array_reprovados_disciplina[$iddisciplina]=0;
+        }
+        
+        if (!array_key_exists($iddisciplina,$array_aprovados_disciplina)) {
+          $array_aprovados_disciplina[$iddisciplina]=0;
+        }
+      
+        $result_nota_aula1=$conexao->query("
+                  SELECT avaliacao,periodo_id,nota FROM nota_parecer WHERE
+                  escola_id=$idescola and
+                  turma_id $idturmas and
+                  disciplina_id=$iddisciplina and 
+                  ano_nota=$ano_letivo and
+                  periodo_id IN($idperiodo) and aluno_id=$idaluno  group by avaliacao,periodo_id,nota,nota ");
+
+
+                $nota_tri_1=0;
+                $nota_av3_1='';
+                $nota_rp_1='';
+                foreach ($result_nota_aula1 as $key => $value) {
+
+                  if ($value['avaliacao']!='RP') {
+                    $nota_tri_1+=$value['nota'];
+
+
+                  }
+                    // ***************************************
+                  if ($value['avaliacao']=='av3') {
+                    $nota_av3_1=$value['nota'];
+
+                  }
+
+                  if ($value['avaliacao']=='RP') {
+                    $nota_rp_1=$value['nota'];
+
+
+                  }
+
+                }
+
+             
+              $nota_tri_1=calculos_media_notas($nota_tri_1,$nota_rp_1,$nota_av3_1);
+              $nota_tri_1=number_format($nota_tri_1, 1, '.', ',');
+
+                if (!array_key_exists($iddisciplina,$array_reprovados_disciplina)) {
+                  $array_reprovados_disciplina[$iddisciplina]=0;
+                }
+
+              if ($nota_tri_1>=5) {
+                $total_disciplina++;
+                $total_aprovados_geral++;
+                $array_aprovados_disciplina[$iddisciplina]=$total_disciplina;
+
+
+              }else{
+              
+                $array_reprovados_disciplina[$iddisciplina]=$array_reprovados_disciplina[$iddisciplina]+1;
+                $total_reprovados_geral++;
+
+              }
+
+  }
+            
+
+
+     
+
+    ?>
+  
   <td width=40 valign=top style='width:30.3pt;border-top:none;border-left:solid black 1.0pt;
   border-bottom:solid black 1.0pt;border-right:none;mso-border-left-alt:solid black .5pt;
   mso-border-bottom-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt;
-  height:27.1pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
+  height:27.15pt'>
+  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;
+   <?php  echo $total_disciplina; ?></o:p></span></p>
   </td>
+
+
   <td width=35 colspan=2 valign=top style='width:26.4pt;border-top:none;
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
   none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt;height:27.1pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
+  padding:2.75pt 2.75pt 2.75pt 2.75pt;height:27.15pt'>
+  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;<?php echo porcentagem($total_disciplina,$quantidade_vaga); ?>%</o:p></span></p>
   </td>
-  <td width=30 colspan=3 valign=top style='width:22.5pt;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt;height:27.1pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=40 valign=top style='width:30.1pt;border-top:none;border-left:solid black 1.0pt;
-  border-bottom:solid black 1.0pt;border-right:none;mso-border-left-alt:solid black .5pt;
-  mso-border-bottom-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt;
-  height:27.1pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=46 colspan=2 valign=top style='width:34.2pt;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt;height:27.1pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=33 valign=top style='width:25.0pt;border-top:none;border-left:solid black 1.0pt;
-  border-bottom:solid black 1.0pt;border-right:none;mso-border-left-alt:solid black .5pt;
-  mso-border-bottom-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt;
-  height:27.1pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=31 valign=top style='width:23.4pt;border-top:none;border-left:solid black 1.0pt;
-  border-bottom:solid black 1.0pt;border-right:none;mso-border-left-alt:solid black .5pt;
-  mso-border-bottom-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt;
-  height:27.1pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=37 valign=top style='width:27.8pt;border-top:none;border-left:solid black 1.0pt;
-  border-bottom:solid black 1.0pt;border-right:none;mso-border-left-alt:solid black .5pt;
-  mso-border-bottom-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt;
-  height:27.1pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=28 valign=top style='width:21.3pt;border-top:none;border-left:solid black 1.0pt;
-  border-bottom:solid black 1.0pt;border-right:none;mso-border-left-alt:solid black .5pt;
-  mso-border-bottom-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt;
-  height:27.1pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=38 colspan=2 valign=top style='width:1.0cm;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt;height:27.1pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 colspan=2 valign=top style='width:23.95pt;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt;height:27.1pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=29 valign=top style='width:21.5pt;border-top:none;border-left:solid black 1.0pt;
-  border-bottom:solid black 1.0pt;border-right:none;mso-border-left-alt:solid black .5pt;
-  mso-border-bottom-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt;
-  height:27.1pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=34 colspan=3 valign=top style='width:25.4pt;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt;height:27.1pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=30 valign=top style='width:22.8pt;border-top:none;border-left:solid black 1.0pt;
-  border-bottom:solid black 1.0pt;border-right:none;mso-border-left-alt:solid black .5pt;
-  mso-border-bottom-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt;
-  height:27.1pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=36 colspan=2 valign=top style='width:26.8pt;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt;height:27.1pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=29 valign=top style='width:21.45pt;border-top:none;border-left:
-  solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:none;
-  mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt;height:27.1pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=45 colspan=2 valign=top style='width:33.75pt;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt;height:27.1pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=122 valign=top style='width:91.6pt;border:solid black 1.0pt;
-  border-top:none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:
-  solid black .5pt;mso-border-right-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt;
-  height:27.1pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
+<?php   } ?>
+  
  </tr>
+
+
+
  <tr style='mso-yfti-irow:7;height:27.15pt'>
   <td width=94 valign=top style='width:70.85pt;border-top:none;border-left:
   solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:none;
@@ -506,109 +411,51 @@ $idturma_aux=" IN(-1";
   height:27.15pt'>
   <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
   </td>
+
+<?php 
+  $res_disc_resultado=listar_disciplina_para_relatorio($conexao,$idturma_aux,$idescola,$ano_letivo);
+ 
+ 
+foreach ($res_disc_resultado as $key_disc=> $value_disc) {
+  $iddisc=$value_disc['iddisciplina'];
+ 
+
+?>
+
   <td width=35 colspan=2 valign=top style='width:26.4pt;border-top:none;
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
   none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
   padding:2.75pt 2.75pt 2.75pt 2.75pt;height:27.15pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
+  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;
+    <?php 
+      if (array_key_exists($iddisc,$array_reprovados_disciplina)) {
+          echo $array_reprovados_disciplina[$iddisc];
+      }else{
+        echo "0";
+      }
+
+    ?>
+  </o:p></span></p>
   </td>
-  <td width=30 colspan=3 valign=top style='width:22.5pt;border-top:none;
+
+  <td width=35 colspan=2 valign=top style='width:26.4pt;border-top:none;
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
   none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
   padding:2.75pt 2.75pt 2.75pt 2.75pt;height:27.15pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
+  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;
+<?php  //var_dump($array_reprovados_disciplina);
+   echo  porcentagem($array_reprovados_disciplina[$iddisc],$quantidade_vaga) ?>%
+  </o:p></span></p>
   </td>
-  <td width=40 valign=top style='width:30.1pt;border-top:none;border-left:solid black 1.0pt;
-  border-bottom:solid black 1.0pt;border-right:none;mso-border-left-alt:solid black .5pt;
-  mso-border-bottom-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt;
-  height:27.15pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=46 colspan=2 valign=top style='width:34.2pt;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt;height:27.15pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=33 valign=top style='width:25.0pt;border-top:none;border-left:solid black 1.0pt;
-  border-bottom:solid black 1.0pt;border-right:none;mso-border-left-alt:solid black .5pt;
-  mso-border-bottom-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt;
-  height:27.15pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=31 valign=top style='width:23.4pt;border-top:none;border-left:solid black 1.0pt;
-  border-bottom:solid black 1.0pt;border-right:none;mso-border-left-alt:solid black .5pt;
-  mso-border-bottom-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt;
-  height:27.15pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=37 valign=top style='width:27.8pt;border-top:none;border-left:solid black 1.0pt;
-  border-bottom:solid black 1.0pt;border-right:none;mso-border-left-alt:solid black .5pt;
-  mso-border-bottom-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt;
-  height:27.15pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=28 valign=top style='width:21.3pt;border-top:none;border-left:solid black 1.0pt;
-  border-bottom:solid black 1.0pt;border-right:none;mso-border-left-alt:solid black .5pt;
-  mso-border-bottom-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt;
-  height:27.15pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=38 colspan=2 valign=top style='width:1.0cm;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt;height:27.15pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=32 colspan=2 valign=top style='width:23.95pt;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt;height:27.15pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=29 valign=top style='width:21.5pt;border-top:none;border-left:solid black 1.0pt;
-  border-bottom:solid black 1.0pt;border-right:none;mso-border-left-alt:solid black .5pt;
-  mso-border-bottom-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt;
-  height:27.15pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=34 colspan=3 valign=top style='width:25.4pt;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt;height:27.15pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=30 valign=top style='width:22.8pt;border-top:none;border-left:solid black 1.0pt;
-  border-bottom:solid black 1.0pt;border-right:none;mso-border-left-alt:solid black .5pt;
-  mso-border-bottom-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt;
-  height:27.15pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=36 colspan=2 valign=top style='width:26.8pt;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt;height:27.15pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=29 valign=top style='width:21.45pt;border-top:none;border-left:
-  solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:none;
-  mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt;height:27.15pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=45 colspan=2 valign=top style='width:33.75pt;border-top:none;
-  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt;height:27.15pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
-  <td width=122 valign=top style='width:91.6pt;border:solid black 1.0pt;
-  border-top:none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:
-  solid black .5pt;mso-border-right-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt;
-  height:27.15pt'>
-  <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
-  </td>
+
+<?php   } ?>
+
+
  </tr>
+
+
+
+
  <tr>
   <td width=149 colspan=3 valign=top style='width:111.85pt;border-top:none;
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
@@ -812,6 +659,10 @@ $idturma_aux=" IN(-1";
   <p class=TableContents><b><span style='font-size:8.0pt;color:black'>*</span></b></p>
   </td>
  </tr>
+
+
+
+
  <tr>
   <td width=149 colspan=3 valign=top style='width:111.85pt;border-top:none;
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
