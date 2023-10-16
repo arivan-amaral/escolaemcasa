@@ -435,7 +435,7 @@ foreach ($res_disc_resultado as $key_disc=> $value_disc) {
 
   <td width=35  valign=top style='width:26.4pt;border-top:none;
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
+  nsolid black 1.0pt;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
   padding:2.75pt 2.75pt 2.75pt 2.75pt;height:27.15pt'>
   <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>&nbsp;
 <?php  //var_dump($array_reprovados_disciplina);
