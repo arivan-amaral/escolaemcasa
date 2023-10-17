@@ -477,6 +477,16 @@ WHERE ecidade_matricula.turma_escola = $idescola
     AND ecidade_matricula.turma_id $idturmas
     AND ecidade_matricula.calendario_ano = '$ano_letivo'
     AND ecidade_matricula.matricula_situacao = 'EVADIDO'
+UNION ALL
+SELECT
+    'transferido' AS situacao,
+    COUNT(*) AS quantidade_de_alunos
+FROM ecidade_matricula
+INNER JOIN aluno ON ecidade_matricula.aluno_id = aluno.idaluno
+WHERE ecidade_matricula.turma_escola = $idescola
+    AND ecidade_matricula.turma_id $idturmas
+    AND ecidade_matricula.calendario_ano = '$ano_letivo'
+    AND ecidade_matricula.matricula_situacao IN('TRANSFERIDO REDE', 'TRANSFERIDO FORA', 'TROCA DE TURMA')
 
 
 
@@ -485,19 +495,23 @@ WHERE ecidade_matricula.turma_escola = $idescola
 
   $matriculado=0;
   $evadido=0;
+  $transferido=0;
 
 
   foreach ($res_quantidade as $key => $value) {
 
     if ($value['situacao']=='matriculado') {
       $matriculado=$value['quantidade_de_alunos'];
-    }else{
+    }else if ($value['situacao']=='evadido') {
+   
       $evadido=$value['quantidade_de_alunos'];
+    }else{
+      $transferido=$value['transferido'];
     }
      
   }
 
- $efetivo= ($matriculado-$evadido);
+ $efetivo= ($matriculado-$evadido)- $transferido;
 
  ?>
 
@@ -683,13 +697,13 @@ WHERE ecidade_matricula.turma_escola = $idescola
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
   none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
   padding:2.75pt 2.75pt 2.75pt 2.75pt;height:21.75pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'>*</span></b></p>
+  <p class=TableContents><b><span style='font-size:8.0pt;color:black'><?php echo "$transferido"; ?></span></b></p>
   </td>
   <td width=56 colspan=4 valign=top style='width:42.3pt;border-top:none;
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
   none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
   padding:2.75pt 2.75pt 2.75pt 2.75pt;height:21.75pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'>*</span></b></p>
+  <p class=TableContents><b><span style='font-size:8.0pt;color:black'><?php echo porcentagem($matriculado,$transferido); ?>%</span></b></p>
   </td>
   <td width=61 colspan=3 valign=top style='width:45.55pt;border-top:none;
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
@@ -766,6 +780,7 @@ WHERE ecidade_matricula.turma_escola = $idescola
   <p class=TableContents style='layout-grid-mode:char'><o:p>&nbsp;</o:p></p>
   </td>
  </tr>
+    }
 
 </table>
 
