@@ -271,6 +271,7 @@ $idturma_aux=" IN(-1";
      $array_reprovados_disciplina=array();
      $array_aprovados_disciplina=array();
      $mult_displina=$qnt_displina;
+     $matriculado=0;
 
     $res_disc=listar_disciplina_para_relatorio($conexao,$idturma_aux,$idescola,$ano_letivo);
 
@@ -280,6 +281,7 @@ $idturma_aux=" IN(-1";
     
         $res_aluno=$conexao->query("
           SELECT
+          COUNT(*) as  'matriculado'
           aluno.aluno_transpublico, 
           aluno.linha_transporte,
           aluno.imagem_carteirinha_transporte ,
@@ -301,11 +303,12 @@ $idturma_aux=" IN(-1";
       WHERE ecidade_matricula.turma_escola = $idescola
         AND ecidade_matricula.turma_id $idturmas
         AND ecidade_matricula.calendario_ano = '$ano_letivo'
-        AND ecidade_matricula.matricula_ativa='S'
+        AND ecidade_matricula.matricula_ativa='S' AND AND ecidade_matricula.matricula_situacao='MATRICULADO'
       ORDER BY aluno.nome ASC");
 
       foreach ($res_aluno as $key => $value) {
         $idaluno=$value['idaluno'];
+        $matriculado=$value['matriculado'];
        
         if (!array_key_exists($iddisciplina,$array_reprovados_disciplina)) {
           $array_reprovados_disciplina[$iddisciplina]=0;
@@ -597,7 +600,7 @@ foreach ($res_disc_resultado as $key_disc=> $value_disc) {
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
   none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
   padding:2.75pt 2.75pt 2.75pt 2.75pt;height:21.75pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'>*</span></b></p>
+  <p class=TableContents><b><span style='font-size:8.0pt;color:black'><?php echo "$matriculado"; ?></span></b></p>
   </td>
   <td width=66 colspan=3 valign=top style='width:49.85pt;border-top:none;
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
