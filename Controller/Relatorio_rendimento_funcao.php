@@ -281,7 +281,7 @@ $idturma_aux=" IN(-1";
     
         $res_aluno=$conexao->query("
           SELECT
-          COUNT(*) as  'matriculado'
+          COUNT(*) as  'matriculado',
           aluno.aluno_transpublico, 
           aluno.linha_transporte,
           aluno.imagem_carteirinha_transporte ,
