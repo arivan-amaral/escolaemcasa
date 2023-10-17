@@ -697,7 +697,7 @@ WHERE ecidade_matricula.turma_escola = $idescola
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
   none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
   padding:2.75pt 2.75pt 2.75pt 2.75pt;height:21.75pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'>0<?php echo "$transferido"; ?></span></b></p>
+  <p class=TableContents><b><span style='font-size:8.0pt;color:black'><?php echo "$transferido"; ?></span></b></p>
   </td>
   <td width=56 colspan=4 valign=top style='width:42.3pt;border-top:none;
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
