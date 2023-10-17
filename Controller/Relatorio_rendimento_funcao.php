@@ -691,7 +691,7 @@ WHERE ecidade_matricula.turma_escola = $idescola
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
   none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
   padding:2.75pt 2.75pt 2.75pt 2.75pt;height:21.75pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'><?php echo porcentagem($matriculado,$evadido); ?>%</span></b></p>
+  <p class=TableContents><b><span style='font-size:8.0pt;color:black'><?php echo porcentagem($evadido,$matriculado); ?>%</span></b></p>
   </td>
   <td width=62 colspan=3 valign=top style='width:46.7pt;border-top:none;
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
@@ -703,7 +703,7 @@ WHERE ecidade_matricula.turma_escola = $idescola
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
   none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
   padding:2.75pt 2.75pt 2.75pt 2.75pt;height:21.75pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'><?php echo porcentagem($matriculado,$transferido); ?>%</span></b></p>
+  <p class=TableContents><b><span style='font-size:8.0pt;color:black'><?php echo porcentagem($transferido,$matriculado); ?>%</span></b></p>
   </td>
   <td width=61 colspan=3 valign=top style='width:45.55pt;border-top:none;
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
@@ -715,7 +715,7 @@ WHERE ecidade_matricula.turma_escola = $idescola
   border-top:none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:
   solid black .5pt;mso-border-right-alt:solid black .5pt;padding:2.75pt 2.75pt 2.75pt 2.75pt;
   height:21.75pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'><?php echo porcentagem($matriculado,$efetivo); ?>%</span></b></p>
+  <p class=TableContents><b><span style='font-size:8.0pt;color:black'><?php echo porcentagem($efetivo,$matriculado); ?>%</span></b></p>
   </td>
  </tr>
 
