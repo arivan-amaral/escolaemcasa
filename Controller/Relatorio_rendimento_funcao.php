@@ -438,8 +438,8 @@ foreach ($res_disc_resultado as $key_disc=> $value_disc) {
 
   <td  valign=top style='border-top:none;
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
-  solid black 1.0pt;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt;height:27.15pt'>
+  solid black 1.0pt;mso-border-left-alt:solid black 1pt;mso-border-bottom-alt:solid black 1pt;
+  '>
   <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p>
 <?php  //var_dump($array_reprovados_disciplina);
    echo  porcentagem($array_reprovados_disciplina[$iddisc],$quantidade_vaga) ?>%
