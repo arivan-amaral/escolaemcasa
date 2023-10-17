@@ -303,7 +303,7 @@ $idturma_aux=" IN(-1";
       WHERE ecidade_matricula.turma_escola = $idescola
         AND ecidade_matricula.turma_id $idturmas
         AND ecidade_matricula.calendario_ano = '$ano_letivo'
-        AND ecidade_matricula.matricula_ativa='S' AND  ecidade_matricula.matricula_situacao='MATRICULADO'
+        AND ecidade_matricula.matricula_ativa='S' AND  ecidade_matricula.matricula_situacao='MATRICULADO' GROUP BY aluno_id
       ORDER BY aluno.nome ASC");
 
       foreach ($res_aluno as $key => $value) {
