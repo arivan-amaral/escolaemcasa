@@ -271,7 +271,7 @@ $idturma_aux=" IN(-1";
      $array_reprovados_disciplina=array();
      $array_aprovados_disciplina=array();
      $mult_displina=$qnt_displina;
-     $matriculado=0;
+
 
     $res_disc=listar_disciplina_para_relatorio($conexao,$idturma_aux,$idescola,$ano_letivo);
 
@@ -281,7 +281,7 @@ $idturma_aux=" IN(-1";
     
         $res_aluno=$conexao->query("
           SELECT
-          COUNT(*) as  'matriculado',
+          
           aluno.aluno_transpublico, 
           aluno.linha_transporte,
           aluno.imagem_carteirinha_transporte ,
@@ -303,12 +303,12 @@ $idturma_aux=" IN(-1";
       WHERE ecidade_matricula.turma_escola = $idescola
         AND ecidade_matricula.turma_id $idturmas
         AND ecidade_matricula.calendario_ano = '$ano_letivo'
-        AND ecidade_matricula.matricula_ativa='S' AND  ecidade_matricula.matricula_situacao='MATRICULADO' GROUP BY aluno_id
+        AND ecidade_matricula.matricula_ativa='S' 
       ORDER BY aluno.nome ASC");
 
       foreach ($res_aluno as $key => $value) {
         $idaluno=$value['idaluno'];
-        $matriculado=$value['matriculado'];
+   
        
         if (!array_key_exists($iddisciplina,$array_reprovados_disciplina)) {
           $array_reprovados_disciplina[$iddisciplina]=0;
@@ -452,7 +452,42 @@ foreach ($res_disc_resultado as $key_disc=> $value_disc) {
  </tr>
 
 
+<?php 
 
+
+
+
+        $res_quantidade=$conexao->query("
+         SELECT
+    'matriculado' AS situacao,
+    COUNT(*) AS quantidade_de_alunos
+FROM ecidade_matricula
+INNER JOIN aluno ON ecidade_matricula.aluno_id = aluno.idaluno
+WHERE ecidade_matricula.turma_escola = $idescola
+    AND ecidade_matricula.turma_id $idturmas
+    AND ecidade_matricula.calendario_ano = '$ano_letivo'
+    AND ecidade_matricula.matricula_situacao = 'MATRICULADO'
+UNION ALL
+SELECT
+    'evadido' AS situacao,
+    COUNT(*) AS quantidade_de_alunos
+FROM ecidade_matricula
+INNER JOIN aluno ON ecidade_matricula.aluno_id = aluno.idaluno
+WHERE ecidade_matricula.turma_escola = $idescola
+    AND ecidade_matricula.turma_id $idturmas
+    AND ecidade_matricula.calendario_ano = '$ano_letivo'
+    AND ecidade_matricula.matricula_situacao = 'EVADIDO'");
+
+  $matriculado=0;
+  $evadido=0;
+
+
+  foreach ($res_quantidade as $key => $value) {
+    $matriculado=$value['matriculado'];
+    $evadido=$value['evadido'];
+  }
+
+ ?>
 
  <tr>
   <td width=149 colspan=3 valign=top style='width:111.85pt;border-top:none;
@@ -524,7 +559,7 @@ foreach ($res_disc_resultado as $key_disc=> $value_disc) {
   none;mso-border-top-alt:solid black .5pt;mso-border-top-alt:solid black .5pt;
   mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
   padding:2.75pt 2.75pt 2.75pt 2.75pt;height:22.5pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'>*</span></b></p>
+  <p class=TableContents><b><span style='font-size:8.0pt;color:black'><?php echo "$matriculado"; ?></span></b></p>
   </td>
   <td width=47 colspan=3 valign=top style='width:35.35pt;border-top:none;
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
@@ -600,7 +635,7 @@ foreach ($res_disc_resultado as $key_disc=> $value_disc) {
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
   none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
   padding:2.75pt 2.75pt 2.75pt 2.75pt;height:21.75pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'><?php echo "$matriculado"; ?></span></b></p>
+  <p class=TableContents><b><span style='font-size:8.0pt;color:black'>*</span></b></p>
   </td>
   <td width=66 colspan=3 valign=top style='width:49.85pt;border-top:none;
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
@@ -624,13 +659,13 @@ foreach ($res_disc_resultado as $key_disc=> $value_disc) {
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
   none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
   padding:2.75pt 2.75pt 2.75pt 2.75pt;height:21.75pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'>*</span></b></p>
+  <p class=TableContents><b><span style='font-size:8.0pt;color:black'><?php echo "$evadido"; ?></span></b></p>
   </td>
   <td width=53 colspan=2 valign=top style='width:39.75pt;border-top:none;
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
   none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
   padding:2.75pt 2.75pt 2.75pt 2.75pt;height:21.75pt'>
-  <p class=TableContents><b><span style='font-size:8.0pt;color:black'>*</span></b></p>
+  <p class=TableContents><b><span style='font-size:8.0pt;color:black'><?php echo porcentagem($matriculado,$evadido); ?>%</span></b></p>
   </td>
   <td width=62 colspan=3 valign=top style='width:46.7pt;border-top:none;
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
