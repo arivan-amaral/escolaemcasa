@@ -423,7 +423,7 @@ foreach ($res_disc_resultado as $key_disc=> $value_disc) {
   <td width=35 colspan=2 valign=top style='width:26.4pt;border-top:none;
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
   none;mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
-  padding:2.75pt 2.75pt 2.75pt 2.75pt;height:27.15pt'>
+  '>
   <p class=TableContents style='layout-grid-mode:char'><span style='color:black'><o:p> </o:p>
     <?php 
       if (array_key_exists($iddisc,$array_reprovados_disciplina)) {
