@@ -484,7 +484,7 @@ WHERE ecidade_matricula.turma_escola = $idescola
 
   foreach ($res_quantidade as $key => $value) {
 
-    if ($value['matricula_situacao']=='matriculado') {
+    if ($value['situacao']=='matriculado') {
       $matriculado=$value['quantidade_de_alunos'];
     }else{
       $evadido=$value['quantidade_de_alunos'];
