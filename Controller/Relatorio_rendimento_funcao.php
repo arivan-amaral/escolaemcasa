@@ -113,7 +113,7 @@ $idturma_aux=" IN(-1";
   mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
   background:#729FCF;padding:2.75pt 2.75pt 2.75pt 2.75pt;height:11.25pt'>
   <p class=TableContents><b><span style='font-size:8.0pt;color:black;
-  mso-color-alt:windowtext'>PERIODO DE REFERENCIA</span></b></p>
+  mso-color-alt:windowtext'>PERÍODO DE REFERÊNCIA</span></b></p>
   </td>
   <td width=201 colspan=8 valign=top style='width:150.4pt;border-top:none;
   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
