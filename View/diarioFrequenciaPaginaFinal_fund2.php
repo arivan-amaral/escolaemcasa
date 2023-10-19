@@ -227,22 +227,22 @@ foreach ($result_escola as $key => $value) {
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
   style='font-family:"Tw Cen MT Condensed",sans-serif;mso-fareast-font-family:
   "Times New Roman";mso-bidi-font-family:Arial;color:black;mso-fareast-language:
-  PT-BR'>ANO: <o:p>
+  PT-BR'>TURMA: <o:p>
 <?php 
-if ($idserie==16) {
+// if ($idserie==16) {
   $result_escola= $conexao->query("SELECT * FROM turma where idturma =$idturma");
   foreach ($result_escola as $key => $value) {
     $nome_serie=$value['nome_turma'];
     echo "$nome_serie";
   }
-}else{
+// }else{
 
-  $result_escola= $conexao->query("SELECT * FROM serie where id =$idserie");
-  foreach ($result_escola as $key => $value) {
-    $nome_serie=$value['nome'];
-    echo "$nome_serie";
-  }
-}
+//   $result_escola= $conexao->query("SELECT * FROM serie where id =$idserie");
+//   foreach ($result_escola as $key => $value) {
+//     $nome_serie=$value['nome'];
+//     echo "$nome_serie";
+//   }
+// }
 ?>
 
   </o:p></span></b></p>
