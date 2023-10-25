@@ -91,6 +91,7 @@ $observacao = "";
 $necessidade_especial = "";
 $apoio_pedagogico = "";
 $tipo_diagnostico = "";
+$tipo_deficiencia = "";
 $tipo_certidao = "";
 $numero_termo = "";
 $data_expedicao = "";
@@ -155,6 +156,7 @@ foreach ($res as $key => $value) {
   $necessidade_especial = $value['necessidade_especial'];
   $apoio_pedagogico = $value['apoio_pedagogico'];
   $tipo_diagnostico = $value['tipo_diagnostico'];
+  $tipo_deficiencia = $value['tipo_defici$tipo_deficiencia'];
   $matricula_certidao = $value['matricula_certidao'];
   $tipo_certidao = $value['tipo_certidao'];
   $numero_termo = $value['numero_termo'];
@@ -165,9 +167,6 @@ foreach ($res as $key => $value) {
 
   $caminho_foto_carteirinha = $value['imagem_carteirinha_transporte'];
 }
-
-
-
 
 $res_editar_curso = verificar_matricula_ativa($conexao, $idaluno, $ano_letivo_vigente);
 $escola_id = '';
@@ -190,13 +189,11 @@ foreach ($res_editar_curso as $key => $value) {
 
 ?>
 
-
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 <!-- Main Sidebar Container -->
 <div class="content-wrapper">
   <!-- ####################### CORPO ################################################# -->
   <!-- <H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR> -->
-
 
   <div class="card card-primary card-tabs">
     <div class="card-header p-0 pt-1">
@@ -259,11 +256,6 @@ foreach ($res_editar_curso as $key => $value) {
 
                 </div>
 
-
-
-
-
-
                 <!-- <button type="button"   data-toggle='modal' data-target='#modal-editar-imagem-aluno'>WEbCAM</button>
 
                         <br> -->
@@ -286,12 +278,6 @@ foreach ($res_editar_curso as $key => $value) {
                     reader.readAsDataURL(this.files[0]);
                   };
                 </script>
-
-
-
-
-
-
 
               </div>
 
@@ -348,8 +334,6 @@ foreach ($res_editar_curso as $key => $value) {
                     <input type="text" class="form-control" name="idaluno" value="<?php echo $idaluno; ?>" readonly>
                   </div>
                 </div>
-
-
 
                 <div class="col-sm-4">
                   <div class="form-group">
@@ -1150,31 +1134,18 @@ foreach ($res_editar_curso as $key => $value) {
                 </div>
               </div>
 
-
-
             </div>
             <!-- /.card -->
 
-
-
-
           </div>
-
 
     </form>
   </div>
   <!-- /.card -->
 
-
-
-
 </div>
 
-
-
 </div>
-
-
 
 <div class="modal fade" id="modal-editar-imagem-aluno">
   <div class="modal-dialog">
@@ -1185,7 +1156,6 @@ foreach ($res_editar_curso as $key => $value) {
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-
 
       <div class="modal-body">
         <!-- <canvas id="croppedCanvas"></canvas>
@@ -1205,7 +1175,6 @@ foreach ($res_editar_curso as $key => $value) {
   </div>
   <!-- /.modal-dialog -->
 </div>
-
 
 <!-- ######################################################################## -->
 <?php include_once "rodape.php"; ?>
