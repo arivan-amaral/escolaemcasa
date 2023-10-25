@@ -8,10 +8,7 @@
 // header("location: {$anterior}");
 exit;
    if (isset($_SESSION['idprofessor'])) {
-        if(
-         $_SESSION['idprofessor']==0  ||
-         
-     ) {
+        if( $_SESSION['idprofessor']==0 ) {
 
         }elseif (isset($_SESSION['cargo'])) {
             if (isset($_SESSION['idprofessor'])) {
