@@ -183,9 +183,7 @@ foreach ($campos as $value) {
               </div>
 
 
-
               <div class="row">
-
 
                 <div class="col-sm-4">
                   <div class="form-group">
@@ -221,20 +219,40 @@ foreach ($campos as $value) {
                     </select>
                   </div>
                 </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Tipo de deficiência</label><br>
+                    <select class="form-control" name="tipo_deficiencia">
+                      <option>Deficiência intelectual</option>
+                      <option>Deficiência física</option>
+                      <option>Deficiência auditiva</option>
+                      <option>Surdez</option>
+                      <option>Baixa visão</option>
+                      <option>Cegueira</option>
+                      <option>Surdo/Cegueira</option>
+                      <option>Altas habilidades ou superdotação</option>
+                      <option>Transtorno do Espectro autista (TEA)</option>
+                      <option>Transtorno opositor desafiador (TOD)</option>
+                      <option>Transtorno com défict de atenção com hiperatividade (TDAH)</option>
+                      <option>Dislexia</option>
+                      <option>Disgrafia</option>
+                      <option>Disortografia</option>
+                      <option>Síndrome de Down</option>
+                      <option>Paralisia Cerebral</option>
+                      <option>Hidrocefalia</option>
+                      <option>Microcefalia</option>
+                      <option>nenhuma</option>
+                      <option>outros</option>
+                    </select>
+                  </div>
+                </div>
               </div>
-
 
               <div class="row">
                 <div class="col-sm-12 alert alert-secondary">
 
                 </div>
               </div>
-
-
-
-
-
-
 
 
               <div class="row">
