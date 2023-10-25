@@ -45,7 +45,6 @@ foreach ($campos as $value) {
 
 ?>
 
-
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 <!-- Main Sidebar Container -->
 <div class="content-wrapper">
@@ -223,26 +222,26 @@ foreach ($campos as $value) {
                   <div class="form-group">
                     <label for="exampleInputEmail1">Tipo de deficiência</label><br>
                     <select class="form-control" name="tipo_deficiencia">
-                      <option>Deficiência intelectual</option>
-                      <option>Deficiência física</option>
-                      <option>Deficiência auditiva</option>
-                      <option>Surdez</option>
-                      <option>Baixa visão</option>
-                      <option>Cegueira</option>
-                      <option>Surdo/Cegueira</option>
-                      <option>Altas habilidades ou superdotação</option>
-                      <option>Transtorno do Espectro autista (TEA)</option>
-                      <option>Transtorno opositor desafiador (TOD)</option>
-                      <option>Transtorno com défict de atenção com hiperatividade (TDAH)</option>
-                      <option>Dislexia</option>
-                      <option>Disgrafia</option>
-                      <option>Disortografia</option>
-                      <option>Síndrome de Down</option>
-                      <option>Paralisia Cerebral</option>
-                      <option>Hidrocefalia</option>
-                      <option>Microcefalia</option>
-                      <option>nenhuma</option>
-                      <option>outros</option>
+                      <option value="deficiecia_intelectual">Deficiência intelectual</option>
+                      <option value="deficiencia_fisica">Deficiência física</option>
+                      <option value="deficiencia_auditiva">Deficiência auditiva</option>
+                      <option value="surdez">Surdez</option>
+                      <option value="baixa_visao">Baixa visão</option>
+                      <option value="cegueira">Cegueira</option>
+                      <option value="surdo_cegueira">Surdo/Cegueira</option>
+                      <option value="altas_habilidades">Altas habilidades ou superdotação</option>
+                      <option value="tea">Transtorno do Espectro autista (TEA)</option>
+                      <option value="tod">Transtorno opositor desafiador (TOD)</option>
+                      <option value="tdah">Transtorno com défict de atenção com hiperatividade (TDAH)</option>
+                      <option value="dislexia">Dislexia</option>
+                      <option value="disgrafia">Disgrafia</option>
+                      <option value="disortografia">Disortografia</option>
+                      <option value="sindrome_down">Síndrome de Down</option>
+                      <option value="paralisia_cerebral">Paralisia Cerebral</option>
+                      <option value="hidrocefalia">Hidrocefalia</option>
+                      <option value="microcefalia">Microcefalia</option>
+                      <option value="nenhuma">nenhuma</option>
+                      <option value="outros">outros</option>
                     </select>
                   </div>
                 </div>
@@ -858,32 +857,19 @@ foreach ($campos as $value) {
                 <div class="col-sm-12">
                   <div class="form-group">
                     <button type="button" class="btn btn-block btn-success " id="btnSend" name="btnSend" onclick="cadastro_aluno();">Cadastrar Aluno</button>
-
                   </div>
                 </div>
 
               </div>
 
-
-
-
             </div>
             <!-- /.card -->
 
-
-
-
           </div>
-
-
 
         </div>
 
-
-
-
   </form>
-
 
   <!-- ######################################################################## -->
 </div>
