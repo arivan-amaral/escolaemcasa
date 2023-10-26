@@ -401,7 +401,7 @@ foreach ($res_editar_curso as $key => $value) {
                     </select>
                   </div>
                 </div>
-                <!-- <div class="col-sm-3">
+                <div class="col-sm-3">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Tipo de diagnóstico</label><br>
                     <select class="form-control" name="tipo_diagnostico" onchange="anexarLaudo()" id="tipo_diagnostico">
@@ -412,6 +412,7 @@ foreach ($res_editar_curso as $key => $value) {
                     </select>
                   </div>
                 </div>
+                <!--
                 <div class="col-sm-3" id="anexar_documento" style="display: none;">
                   <div class="form-group">
                     <label for="documento">Anexar documento ou foto</label><br>
