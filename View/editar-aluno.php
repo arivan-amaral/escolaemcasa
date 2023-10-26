@@ -402,15 +402,32 @@ foreach ($res_editar_curso as $key => $value) {
                 </div>
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Tipo De Diagnóstico</label><br>
-                    <select class="form-control" name="tipo_diagnostico">
+                    <label for="exampleInputEmail1">Tipo de diagnóstico</label><br>
+                    <select class="form-control" name="tipo_diagnostico" onchange="anexarLaudo()" id="tipo_diagnostico">
                       <option selected></option>
                       <option value='SEM DIAGNÓSTICO'>SEM DIAGNÓSTICO</option>
                       <option value='FICHA DE AVALIAÇÃO'>FICHA DE AVALIAÇÃO</option>
-                      <option value='LAUDO TÉCNICO'>LAUDO TÉCNICO</option>
+                      <option value='laudo_tecnico'>LAUDO TÉCNICO</option>
                     </select>
                   </div>
                 </div>
+                <div class="col-sm-3" id="anexar_documento" style="display: none;">
+                  <div class="form-group">
+                    <label for="documento">Anexar documento ou foto</label><br>
+                    <input type="file" class="form-control" name="documento">
+                  </div>
+                </div>
+                <script>
+                  function anexarLaudo() {
+                    var select = document.getElementById("tipo_diagnostico");
+                    var anexarDocument = document.getElementById("anexar_documento");
+                    if (select.value === "laudo_tecnico") {
+                      anexarDocument.style.display = "block";
+                    } else {
+                      anexarDocument.style.display = "none";
+                    }
+                  }
+                </script>
                 <div class="col-sm-3">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Tipo de deficiência</label><br>
@@ -443,6 +460,7 @@ foreach ($res_editar_curso as $key => $value) {
                     <label for="outrosDeficiencia">Outros tipos de deficiência</label><br>
                     <input type="text" class="form-control" name="outrosDeficiencia" id="outrosDeficiencia">
                   </div>
+
                   <script>
                     function mostrarCampoOutros() {
                       var select = document.getElementById("tipo_deficiencia");
@@ -455,6 +473,7 @@ foreach ($res_editar_curso as $key => $value) {
                       }
                     }
                   </script>
+                  
                 </div>
               </div>
               <div class="row">
