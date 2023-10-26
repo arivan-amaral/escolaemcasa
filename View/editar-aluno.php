@@ -391,6 +391,7 @@ foreach ($res_editar_curso as $key => $value) {
                   <div class="form-group">
                     <label for="exampleInputEmail1">Apoio Pedagógico</label><br>
                     <select class="form-control" name="apoio_pedagogico">
+                      <option></option>
                       <option value='apae'>APAE</option>
                       <option value='amalem'>AMALEM</option>
                       <option value='nap'>NAP</option>
@@ -432,6 +433,7 @@ foreach ($res_editar_curso as $key => $value) {
                   <div class="form-group">
                     <label for="exampleInputEmail1">Tipo de deficiência</label><br>
                     <select class="form-control" id="tipo_deficiencia" name="tipo_deficiencia" onchange="mostrarCampoOutros()">
+                      <option></option>
                       <option value="deficiecia_intelectual">Deficiência intelectual</option>
                       <option value="deficiencia_fisica">Deficiência física</option>
                       <option value="deficiencia_auditiva">Deficiência auditiva</option>
@@ -473,7 +475,7 @@ foreach ($res_editar_curso as $key => $value) {
                       }
                     }
                   </script>
-                  
+
                 </div>
               </div>
               <div class="row">
