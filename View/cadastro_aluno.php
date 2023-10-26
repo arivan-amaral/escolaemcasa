@@ -222,7 +222,7 @@ foreach ($campos as $value) {
                     <input type="file" class="form-control" name="documento">
                   </div>
                 </div>
-                <script>
+                <!-- <script>
                   function anexarLaudo() {
                     var select = document.getElementById("tipo_diagnostico");
                     var anexarDocument = document.getElementById("anexar_documento");
@@ -232,9 +232,9 @@ foreach ($campos as $value) {
                       anexarDocument.style.display = "none";
                     }
                   }
-                </script>
+                </script> -->
 
-                <div class="col-sm-3">
+                <!-- <div class="col-sm-3">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Tipo de deficiência</label><br>
                     <select class="form-control" id="tipo_deficiencia" name="tipo_deficiencia" onchange="mostrarCampoOutros()">
@@ -261,8 +261,8 @@ foreach ($campos as $value) {
                       <option value="outros">outros</option>
                     </select>
                   </div>
-                </div>
-                <div class="col-sm-3" id="outros_campo" style="display: none;">
+                </div> -->
+                <!-- <div class="col-sm-3" id="outros_campo" style="display: none;">
                   <div class="form-group">
                     <label for="outrosDeficiencia">Outros tipos de deficiência</label><br>
                     <input type="text" class="form-control" name="outrosDeficiencia" id="outrosDeficiencia">
@@ -279,7 +279,8 @@ foreach ($campos as $value) {
                       }
                     }
                   </script>
-                </div>
+                </div> -->
+
                 <!--                 
                 <div class="row">
                   <div class="col-sm-12 alert alert-secondary">
@@ -390,10 +391,6 @@ foreach ($campos as $value) {
                         </div>
                       </div> -->
                 </div>
-
-
-
-
 
                 <label for="exampleInputEmail1">
                   <h5>Filiação 1 </h5>
@@ -520,7 +517,6 @@ foreach ($campos as $value) {
                         <option value="Urbana">Urbana</option>
                         <option value="Rural">Rural</option>
 
-
                       </select>
                     </div>
                   </div>
@@ -531,8 +527,6 @@ foreach ($campos as $value) {
                     </div>
                   </div>
                 </div>
-
-
 
                 <div class="row">
                   <div class="col-sm-3">
