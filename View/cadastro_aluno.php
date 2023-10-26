@@ -264,10 +264,10 @@ foreach ($campos as $value) {
                   </script>
                 </div><br><br>
 
-                <div class="row">
+                <!-- <div class="row">
                   <div class="col-sm-10 alert alert-secondary">
                   </div>
-                </div>
+                </div> -->
 
                 <div class="row">
 
