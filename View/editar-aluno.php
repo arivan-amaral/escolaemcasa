@@ -454,7 +454,7 @@ foreach ($res_editar_curso as $key => $value) {
                     }
                   </script>
                 </div><br>
-              </div>
+              </div><br>
               <div class="row">
                 <div class="col-sm-12 alert alert-secondary">
                 </div>

@@ -262,7 +262,7 @@ foreach ($campos as $value) {
                       }
                     }
                   </script>
-                </div><br>
+                </div><br><br>
 
                 <div class="row">
                   <div class="col-sm-12 alert alert-secondary">
