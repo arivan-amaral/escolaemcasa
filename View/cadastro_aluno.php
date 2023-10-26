@@ -184,7 +184,7 @@ foreach ($campos as $value) {
 
               <div class="row">
 
-                <div class="col-sm-4">
+                <div class="col-sm-2">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Necessidade especial</label><br>
                     <select class="form-control" name="necessidade_especial">
