@@ -222,7 +222,7 @@ foreach ($campos as $value) {
                   <div class="form-group">
                     <label for="exampleInputEmail1">Tipo de deficiência</label><br>
                     <select class="form-control" id="tipo_deficiencia" name="tipo_deficiencia" onchange="mostrarCampoOutros()">
-                      <option value="deficiecia_intelectual">Deficiência intelectl</option>
+                      <option value="deficiecia_intelectual">Deficiência intelectual</option>
                       <option value="deficiencia_fisica">Deficiência física</option>
                       <option value="deficiencia_auditiva">Deficiência auditiva</option>
                       <option value="surdez">Surdez</option>
