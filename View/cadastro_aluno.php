@@ -245,6 +245,17 @@ foreach ($campos as $value) {
                     </select>
                   </div>
                 </div>
+                <?php
+                if (isset($_POST['tipo_deficiencia']) && $_POST['tipo_deficiencia'] === 'outros') {
+                  echo '
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="outrosDeficiencia">Outros tipos de deficiência</label><br>
+                      <input type="text" class="form-control" name="outrosDeficiencia">
+                    </div>
+                  </div>';
+                }
+                ?>
               </div>
 
               <div class="row">
