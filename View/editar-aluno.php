@@ -391,10 +391,12 @@ foreach ($res_editar_curso as $key => $value) {
                   <div class="form-group">
                     <label for="exampleInputEmail1">Apoio Pedagógico</label><br>
                     <select class="form-control" name="apoio_pedagogico">
-                      <option selected value='<?php echo $apoio_pedagogico; ?>'><?php echo $apoio_pedagogico ?></option>
-                      <option value='SEM APOIO PEDAGÓGICO'>SEM APOIO PEDAGÓGICO</option>
-                      <option value="COM APOIO PEDAGÓGICO">COM APOIO PEDAGÓGICO</option>
-                      <option value="COM APOIO PEDAGÓGICO (OUTRO ESTABELECIMENTO)">COM APOIO PEDAGÓGICO (OUTRO ESTABELECIMENTO)</option>
+                      <option value='apae'>APAE</option>
+                      <option value='amalem'>AMALEM</option>
+                      <option value='nap'>NAP</option>
+                      <option value='aee'>AEE</option>
+                      <option value='particular'>Particular</option>
+                      <option value='nao_necessita'>Não necessita</option>
                     </select>
                   </div>
                 </div>
