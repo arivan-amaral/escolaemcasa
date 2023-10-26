@@ -193,7 +193,6 @@ foreach ($campos as $value) {
                     </select>
                   </div>
                 </div>
-
                 <div class="col-sm-3">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Apoio pedagógico</label><br>
