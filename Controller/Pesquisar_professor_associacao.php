@@ -132,6 +132,8 @@ foreach ($result as $key => $value) {
               </div>
                <div class='modal-body'>
                <h4> Selecione para bloquear</h4>
+    <form id='formulario_bloqueio'>
+
           ";
             
 
@@ -158,7 +160,7 @@ foreach ($result as $key => $value) {
             // Loop para criar checkboxes para cada mês
             foreach ($meses as $numeroMes => $nomeMes) {
                 $mesAno = sprintf("%02d/%d", $numeroMes, $anoSelecionado);
-                $return.='<input type="checkbox" name="mesesSelecionados[]" value="' . $mesAno . '" id="' . $mesAno . '">';
+                $return.='<input type="checkbox" name="mesesSelecionados[]" value="' . $nomeMes ."/".$anoSelecionado. '" id="' . $mesAno . '">';
                 $return.= '<label for="' . $mesAno . '">' . $nomeMes ."/".$anoSelecionado. '</label><br>';
             }
 
@@ -166,11 +168,14 @@ foreach ($result as $key => $value) {
          
                $return.=" 
 
-<button type='button' class='btn btn-block btn-primary'>ALTERAR</button>
+<a  class='btn btn-block btn-primary' id='botao_bloqueio' onclick= submit_post_generico('../Controller/Bloqueio_funcoes_para_professor.php,formulario_bloqueio,botao_bloqueio')>OK</a>
                </div>
             <button type='button' class='btn btn-default' data-dismiss='modal'><font style='vertical-align: inherit;'><font style='vertical-align: inherit;'>Fechar</font></font></button>
             </div>
             <!-- /.modal-content -->
+    </form>
+
+
           </div>
           <!-- /.modal-dialog -->
         </div>

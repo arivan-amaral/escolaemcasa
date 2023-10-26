@@ -7,7 +7,7 @@ $usuariobd=$_SESSION['usuariobd'];
 include_once "../Model/Conexao_".$usuariobd.".php";
 include_once '../Model/Coordenador.php';
 try {
-  
+  $idfuncionario=$_SESSION['idfuncionario'];
 
   $idescola=$_GET['idescola'];
   if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
@@ -158,8 +158,18 @@ try {
       <i class='fa fa-print'></i> 
       ATA DE RESULTADOS FINAIS
       </button> 
-      </form>   
+      </form>  
+<BR>
+      <a  href='acompanhamento_pedagogico.php?idprofessor=$idfuncionario&disc=1&turm=$idturma&turma=$nome_turma&disciplina=OCORRÊNCIAS&idescola=$idescola&idserie=$idserie' class='btn btn-warning btn-block btn-flat' target='_blank'>
+        <i class='fa fa-card'></i> 
+        OCORRÊNCIA
+        </a>
       <br>
+
+
+
+
+
 
       ";
 
@@ -177,6 +187,9 @@ try {
       </button> 
       </form>   
       <br>
+
+
+
 
       ";
       $pes=listar_disciplina_da_turma($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);

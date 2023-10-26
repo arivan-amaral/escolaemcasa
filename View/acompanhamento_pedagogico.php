@@ -190,11 +190,11 @@ include_once "../Model/Conexao_".$usuariobd.".php";
   <form action="../Controller/Cadastrar_ocorrencia.php" method="post">
       <div class="row">
         <div class="col-sm-1"></div>
-        
+         
         <div class="col-sm-5">
           <div class="form-group">
             <label for="exampleInputEmail1">Data da ocorrência</label>
-            <input type="date" class="form-control" name="data_ocorrencia" id="data_ocorrencia" required="" min="<?php echo $_SERVER['ano_letivo']."01-01"; ?>" max="<?php echo $_SERVER['ano_letivo']."12-31"; ?>" onchange="verifica_dia_letivo('data_ocorrencia');lista_ocorrencia_aluno();">
+            <input type="date" class="form-control" name="data_ocorrencia" id="data_ocorrencia" required="" min="<?php echo $_SESSION['ano_letivo']."01-01"; ?>" max="<?php echo $_SESSION['ano_letivo']."12-31"; ?>" onchange="verifica_dia_letivo('data_ocorrencia');lista_ocorrencia_aluno();">
           </div>
         </div>   
 

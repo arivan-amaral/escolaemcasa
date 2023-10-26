@@ -3,7 +3,7 @@ $array_turma_regente_creche[$conta] = $idturma;
 
 $iddisciplina = 1000;
 $disciplina = "DISCIPLINAS REGENTES";
-
+ 
 echo "
 
 <div class='card card-secondary'>
@@ -62,24 +62,7 @@ echo " <a class='d-block w-100 collapsed' data-toggle='collapse' href='#collapse
             </a>
           </div>
         </div>
-        <!-- ./col -->
-        <div class='col-lg-3 col-6'>
-          <!-- small card -->
-          <div class='small-box bg-warning'>
-            <div class='inner'>
-              <h3></h3>
 
-              <p>Ocorrência </p>
-            </div>
-            <div class='icon'>
-
-            </div>
-            <a href='acompanhamento_pedagogico.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie' class='small-box-footer'>
-              Cadastrar ocorrência <ion-icon name='bookmark-outline'></ion-icon>
-            </a>
-          </div>
-        </div>
-        <!-- ./col -->
         <div class='col-lg-3 col-6'>
           <!-- small card -->
           <div class='small-box bg-danger'>
