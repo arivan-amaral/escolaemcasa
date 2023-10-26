@@ -265,7 +265,7 @@ foreach ($campos as $value) {
                 </div><br><br>
 
                 <div class="row">
-                  <div class="col-sm-12 alert alert-secondary">
+                  <div class="col-sm-10 alert alert-secondary">
                   </div>
                 </div>
 
