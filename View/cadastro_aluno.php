@@ -198,20 +198,20 @@ foreach ($campos as $value) {
                   <div class="form-group">
                     <label for="exampleInputEmail1">Apoio pedagógico</label><br>
                     <select class="form-control" name="apoio_pedagogico">
-                      <option></option>
-                      <option value='SEM APOIO PEDAGÓGICO'>SEM APOIO PEDAGÓGICO</option>
-                      <option value="COM APOIO PEDAGÓGICO">COM APOIO PEDAGÓGICO</option>
-                      <option value="COM APOIO PEDAGÓGICO (OUTRO ESTABELECIMENTO)">COM APOIO PEDAGÓGICO (OUTRO ESTABELECIMENTO)</option>
+                      <option value='apae'>APAE</option>
+                      <option value='amalem'>AMALEM</option>
+                      <option value='nap'>NAP</option>
+                      <option value='aee'>AEE</option>
+                      <option value='particular'>Particular</option>
+                      <option value='nao_necessita'>Não necessita</option>
                     </select>
                   </div>
                 </div>
-
                 <div class="col-sm-3">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Tipo de diagnóstico</label><br>
                     <select class="form-control" name="tipo_diagnostico">
-                      <option></option>
-
+                      <option selected></option>
                       <option value='SEM DIAGNÓSTICO'>SEM DIAGNÓSTICO</option>
                       <option value='FICHA DE AVALIAÇÃO'>FICHA DE AVALIAÇÃO</option>
                       <option value='LAUDO TÉCNICO'>LAUDO TÉCNICO</option>
@@ -263,7 +263,7 @@ foreach ($campos as $value) {
                     }
                   </script>
                 </div>
-<!--                 
+                <!--                 
                 <div class="row">
                   <div class="col-sm-12 alert alert-secondary">
                   </div>
