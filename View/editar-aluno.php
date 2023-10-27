@@ -411,8 +411,7 @@ foreach ($res_editar_curso as $key => $value) {
                       <option value='laudo_tecnico'>LAUDO TÉCNICO</option>
                     </select>
                   </div>
-                </div>
-                <!--
+                </div>  
                 <div class="col-sm-3" id="anexar_documento" style="display: none;">
                   <div class="form-group">
                     <label for="documento">Anexar documento ou foto</label><br>
@@ -457,8 +456,8 @@ foreach ($res_editar_curso as $key => $value) {
                       <option value="outros">outros</option>
                     </select>
                   </div>
-                </div> -->
-                <!-- <div class="col-sm-3" id="outros_campo" style="display: none;">
+                </div>
+                <div class="col-sm-3" id="outros_campo" style="display: none;">
                   <div class="form-group">
                     <label for="outrosDeficiencia">Outros tipos de deficiência</label><br>
                     <input type="text" class="form-control" name="outrosDeficiencia" id="outrosDeficiencia">
@@ -475,7 +474,7 @@ foreach ($res_editar_curso as $key => $value) {
                         outrosCampo.style.display = "none";
                       }
                     }
-                  </script> -->
+                  </script>
 
                 </div>
               </div>
