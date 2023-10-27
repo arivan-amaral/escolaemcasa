@@ -457,6 +457,7 @@ foreach ($res_editar_curso as $key => $value) {
                     </select>
                   </div>
                 </div>
+                
                 <div class="col-sm-3" id="outros_campo" style="display: none;">
                   <div class="form-group">
                     <label for="outrosDeficiencia">Outros tipos de deficiência</label><br>
