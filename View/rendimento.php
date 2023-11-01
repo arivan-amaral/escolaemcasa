@@ -914,7 +914,7 @@ if ($procedimento !='') {
     escola_id=$idescola and
     turma_id=$idturma and
     disciplina_id=$iddisciplina and 
-    periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id,nota ");
+    periodo_id=1 and aluno_id=$idaluno and ano_nota=$ano_letivo  group by avaliacao,periodo_id,nota ");
 
 
     $nota_tri_1=0;
@@ -950,7 +950,7 @@ if ($procedimento !='') {
     
     // echo "$nota_tri_1";
   
-          echo"..". number_format($nota_tri_1, 1, '.', ',');
+          echo"". number_format($nota_tri_1, 1, '.', ',');
 
 ?>
     </o:p></span></p>
@@ -1000,7 +1000,7 @@ SELECT avaliacao,periodo_id,nota  FROM nota_parecer WHERE
 escola_id=$idescola and
 turma_id=$idturma and
 disciplina_id=$iddisciplina and 
-periodo_id=2 and aluno_id=$idaluno  group by avaliacao,periodo_id,nota ");
+periodo_id=2 and aluno_id=$idaluno and ano_nota=$ano_letivo group by avaliacao,periodo_id,nota ");
 
 
 $nota_tri_2=0;
@@ -1078,7 +1078,7 @@ SELECT avaliacao,periodo_id,nota  FROM nota_parecer WHERE
 escola_id=$idescola and
 turma_id=$idturma and
 disciplina_id=$iddisciplina and 
-periodo_id=3 and aluno_id=$idaluno  group by avaliacao,periodo_id,nota ");
+periodo_id=3 and aluno_id=$idaluno and ano_nota=$ano_letivo group by avaliacao,periodo_id,nota ");
 
 
 $nota_tri_3=0;
