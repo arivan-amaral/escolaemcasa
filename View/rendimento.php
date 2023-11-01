@@ -946,10 +946,11 @@ if ($procedimento !='') {
     //  $nota_tri_1=($nota_tri_1-$nota_av3_1)+$nota_rp_1;
     // }
       $nota_tri_1=calculos_media_notas($nota_tri_1,$nota_rp_1,$nota_av3_1);
+ 
     
-
     // echo "$nota_tri_1";
-          echo number_format($nota_tri_1, 1, '.', ',');
+  
+          echo"..". number_format($nota_tri_1, 1, '.', ',');
 
 ?>
     </o:p></span></p>
