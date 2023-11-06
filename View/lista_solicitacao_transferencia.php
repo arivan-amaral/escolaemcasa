@@ -95,7 +95,7 @@ $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
      <tbody>
         <?php 
 
-          $visualizada=0;
+          $visualizada="0,2";
           $aceita=0;
            $quantidade=1;
           $res_escola= escola_associada($conexao,$idfuncionario);
