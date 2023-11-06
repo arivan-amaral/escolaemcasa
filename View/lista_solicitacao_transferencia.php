@@ -95,7 +95,7 @@ $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
      <tbody>
         <?php 
 
-          $visualizada="0,2";
+          $visualizada=0;
           $aceita=0;
            $quantidade=1;
           $res_escola= escola_associada($conexao,$idfuncionario);
@@ -126,7 +126,7 @@ $ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
                 $status="ACEITA";
                 $opcao="<a class='btn btn-$cor' >FOI ACEITA</a>";
 
-              }elseif ($aceita==2) {
+              }else if ($aceita==2) {
                 $cor="warning";
                 $status="RECUSADA";
                 $opcao="<a class='btn btn-$cor'>FOI RECUSADA</a>";
