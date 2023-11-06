@@ -206,7 +206,7 @@ foreach ($campos as $value) {
                 <div class="col-sm-3">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Tipo de diagnóstico</label><br>
-                    <select class="form-control" name="tipo_diagnostico" onchange="anexarLaudo()" id="tipo_diagnostico">
+                    <select class="form-control" name="tipo_diagnostico" id="tipo_diagnostico">
                       <option selected></option>
                       <option value='SEM DIAGNÓSTICO'>SEM DIAGNÓSTICO</option>
                       <option value='FICHA DE AVALIAÇÃO'>FICHA DE AVALIAÇÃO</option>
@@ -214,13 +214,13 @@ foreach ($campos as $value) {
                     </select>
                   </div>
                 </div>
-                <div class="col-sm-3" id="anexar_documento" style="display: none;">
+<!--                 <div class="col-sm-3" id="anexar_documento" style="display: none;">
                   <div class="form-group">
                     <label for="documento">Anexar documento ou foto</label><br>
                     <input type="file" class="form-control" name="documento">
                   </div>
-                </div>
-                 <script>
+                </div> -->
+         <!--         <script>
                   function anexarLaudo() {
                     var select = document.getElementById("tipo_diagnostico");
                     var anexarDocument = document.getElementById("anexar_documento");
@@ -230,7 +230,7 @@ foreach ($campos as $value) {
                       anexarDocument.style.display = "none";
                     }
                   }
-                </script>
+                </script> -->
                  <div class="col-sm-3">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Tipo de deficiência</label><br>
@@ -264,7 +264,7 @@ foreach ($campos as $value) {
                     <label for="outrosDeficiencia">Outros tipos de deficiência</label><br>
                     <input type="text" class="form-control" name="outrosDeficiencia" id="outrosDeficiencia">
                   </div>
-                  <script>
+                  <!-- <script>
                     function mostrarCampoOutros() {
                       var select = document.getElementById("tipo_deficiencia");
                       var outrosCampo = document.getElementById("outros_campo");
@@ -275,7 +275,7 @@ foreach ($campos as $value) {
                         outrosCampo.style.display = "none";
                       }
                     }
-                  </script>
+                  </script> -->
                 </div>
 
                 <!--                 
@@ -368,13 +368,13 @@ foreach ($campos as $value) {
                 </div>
 
                 <div class="row">
-                  <div class="col-sm-4">
+                  <div class="col-sm-5">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Nome do responsável <b class="text-danger">*</b></label>
                       <input type="text" class="form-control" id="exampleInputEmail1" name="nome_responsavel" required="" value="<?php echo $nome_responsavel; ?>">
                     </div>
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-5">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Cpf do responsável </label>
                       <input type="text" id="RegraValida" name="cpf_responsavel" onkeyup="javascript: fMasc( this, mCPF ); ValidaCPF();" class="form-control" maxlength="14" required value="<?php echo $cpf_responsavel; ?>">
@@ -389,17 +389,19 @@ foreach ($campos as $value) {
                       </div> -->
                 </div>
 
-                <label for="exampleInputEmail1">
+              
+<br>
+<!--                 <label for="exampleInputEmail1">
                   <h5>Filiação 1 </h5>
-                </label>
+                </label> -->
                 <div class="row">
-                  <div class="col-sm-4">
+                  <div class="col-sm-6">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Nome filiação 1 </label>
                       <input type="text" class="form-control" id="exampleInputEmail1" name="filiacao1" required="" value="<?php echo $nome_mae; ?>">
                     </div>
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-6">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Cpf filiação 1 </label>
                       <input type="text" id="RegraValida" value="" name="cpf_filiacao1" onkeyup="javascript: fMasc( this, mCPF ); ValidaCPF();" class="form-control" maxlength="14" required>
@@ -413,9 +415,10 @@ foreach ($campos as $value) {
                         </div>
                       </div> -->
                 </div>
-                <label for="exampleInputEmail1">
+
+           <!--      <label for="exampleInputEmail1">
                   <h5>Filiação 2 </h5>
-                </label>
+                </label> -->
                 <div class="row">
                   <div class="col-sm-4">
                     <div class="form-group">
@@ -440,6 +443,7 @@ foreach ($campos as $value) {
 
               </div>
             </div>
+          </div>
 
 
             <div class="tab-pane fade" id="custom-tabs-two-profile" role="tabpanel" aria-labelledby="custom-tabs-two-profile-tab">
