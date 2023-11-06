@@ -17,7 +17,8 @@ try {
     $aceita=2;
    
     rejeitar_solicitacao_transferencia($conexao,$profissional_resposta,$idsolicitacao,$resposta_solicitacao,$aceita);
-//    retornar_aluno_apos_transferencia_rejeitada($conexao,$matricula_codigo);
+
+    retornar_aluno_apos_transferencia_rejeitada($conexao,$matricula_codigo);
 
     echo "Ação concluída";         
 
