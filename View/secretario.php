@@ -125,7 +125,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
 
                               <h3 class='widget-user-username text-right'>$nome</h3>
 
-                              <h5 class='widget-user-desc text-right'>Secretário (a) </h5>
+                              <h5 class='widget-user-desc text-right'> ".$_SESSION["cargo"]." (a) </h5>
 
                             </div>
 
