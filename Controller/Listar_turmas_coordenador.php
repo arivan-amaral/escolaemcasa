@@ -143,7 +143,28 @@ try {
       <i class='fa fa-calendar'></i> 
       BOLETIM
       </a>      
-      ";
+   
+
+      <a  href='acompanhamento_pedagogico.php?idprofessor=$idfuncionario&disc=1&turm=$idturma&turma=$nome_turma&disciplina=OCORRÊNCIAS&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat' target='_blank'>
+        <i class='fa fa-card'></i> 
+        OCORRÊNCIA
+        </a>
+      
+
+
+           <a class='btn btn-secondary btn-block btn-flat' href='diario_acompanhamento.php?turm=$idturma&idescola=$idescola&idserie=$idserie' target='_blank' >
+                             <font style='vertical-align: inherit;'>
+
+                           <font style='vertical-align: inherit;'> 
+
+                           <ion-icon name='clipboard-outline'></ion-icon>
+                           Impressão Ocorrências (acompanhamento pedagógico)    
+
+                           </font>
+
+                           </font>
+
+                           </a>    ";
       
       $result.="
       <br>
@@ -160,13 +181,6 @@ try {
       </button> 
       </form>  
 <BR>
-      <a  href='acompanhamento_pedagogico.php?idprofessor=$idfuncionario&disc=1&turm=$idturma&turma=$nome_turma&disciplina=OCORRÊNCIAS&idescola=$idescola&idserie=$idserie' class='btn btn-warning btn-block btn-flat' target='_blank'>
-        <i class='fa fa-card'></i> 
-        OCORRÊNCIA
-        </a>
-      <br>
-
-
 
 
 

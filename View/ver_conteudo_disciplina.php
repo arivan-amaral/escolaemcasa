@@ -208,19 +208,6 @@ include_once "../Model/Conexao_".$usuariobd.".php";
 
                       
 
-                           <a class='btn btn-secondary btn-block btn-flat' href='diario_acompanhamento.php?disc=$iddisciplina&turm=$idturma&idescola=$idescola&idserie=$idserie' >
-                             <font style='vertical-align: inherit;'>
-
-                           <font style='vertical-align: inherit;'> 
-
-                           <ion-icon name='clipboard-outline'></ion-icon>
-                           Ocorrências (acompanhamento pedagógico)    
-
-                           </font>
-
-                           </font>
-
-                           </a> 
 
 
 
@@ -370,38 +357,13 @@ include_once "../Model/Conexao_".$usuariobd.".php";
                                                 Trabalhos/Atividades                                           
 
                                       </a> 
-
-
-
-                                     <a class='btn btn-info btn-block btn-flat'
-
-                                            href='diario_acompanhamento.php?disc=$iddisciplina&turm=$idturma&idescola=$idescola&idserie=$idserie' >
-
-
-
-                                             <font style='vertical-align: inherit;'>
-
-                                               <font style='vertical-align: inherit;'> 
-
-                                                   <ion-icon name='clipboard-outline'></ion-icon>
-                                                    Ocorrências (acompanhamento pedagógico)    
-
-                                                 </font>
-
-                                             </font>
-
-                                      </a> 
-
-                         
+                        
 
                                         
 
                                   </div>
-
                                 </div>
-
                               </div>
-
                               ";
                             }
                             

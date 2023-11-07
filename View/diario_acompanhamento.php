@@ -8,7 +8,8 @@ include_once"acompanhamento.php";
 
 $idescola=$_GET['idescola'];
 $idturma=$_GET['turm'];
-$iddisciplina=$_GET['disc'];
+// $iddisciplina=$_GET['disc'];
+$iddisciplina=1;
 $idserie=$_GET['idserie'];
 
 try {
