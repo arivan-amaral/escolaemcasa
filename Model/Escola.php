@@ -228,7 +228,7 @@ function lista_solicitacao_transferencia_recebida($conexao,$visualizada,$aceita,
       funcionario.idfuncionario = profissional_solicitante and 
       solicitacao_transferencia.serie_id = serie.id and 
       escola_id=idescola 
-       and visualizada in($visualizada)   $sql_escolas ) order by data_solicitacao asc limit 200
+       and visualizada in($visualizada)   $sql_escolas ) order by aceita asc, data_solicitacao asc limit 200
       ");
    return $sql->fetchAll();
 }
