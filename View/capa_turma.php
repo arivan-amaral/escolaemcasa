@@ -119,8 +119,9 @@ $nome_turma = $_POST['nome_turma'];
     @page {
       size: landscape
     }
-
-
+    .excel-button {
+      display: none;
+    }
   }
 </style>
 
