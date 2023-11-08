@@ -140,15 +140,25 @@ $nome_turma = $_POST['nome_turma'];
     border-radius: 5px;
     cursor: pointer;
   }
-</style>
 
+
+  .excel-button:hover{
+    text-decoration: none;
+    color: white;
+  }
+</style>
+<?php        
+  $idescola = $_POST['idescola'];
+  $idturma = $_POST['idturma'];
+
+?>
 <body>
   <br>
   <br>
 
 
       <div class="no-print">
-        <center><button class="excel-button">Gerar Excel</button>
+        <center><a class="excel-button" href="../Controller/Capa_turma_excel.php?<?php echo "idescola=$idescola&idturma=$idturma"; ?>" target="_blank">Gerar Excel</a>
         </center>
       </div>
 
