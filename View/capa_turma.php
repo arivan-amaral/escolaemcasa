@@ -146,7 +146,7 @@ $nome_turma = $_POST['nome_turma'];
   <br>
 
 
-    <div>
+    <div class="no-print">
       <center><button class="excel-button">Gerar Excel</button>
       </center>
     </div>
