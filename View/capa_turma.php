@@ -125,10 +125,7 @@ $nome_turma = $_POST['nome_turma'];
       size: landscape
     }
 
-    .excel-button-div {
-      display: none;
-      /* Esconde o botão na impressão */
-    }
+
   }
 </style>
 
