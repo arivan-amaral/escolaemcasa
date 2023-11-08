@@ -86,7 +86,7 @@ try {
 
 
      $result.= "
-   <a   href='relatorio_trimestral.php?idturma=$idturma&nome_turma=$nome_turma&idescola=$idescola&idserie=$idserie' class='btn btn-danger btn-block btn-flat' target='_blank'>
+   <a   href='relatorio_trimestral.php?idturma=$idturma&nome_turma=$nome_turma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat' target='_blank'>
       <i class='fa fa-GRAFIC'></i> 
        RELATÓRIO TRIMESTRAL
       </a> 
@@ -133,7 +133,7 @@ try {
       }
 
       if ($idserie>2 && $idserie< 8 || ($seguimento==2)) {
-        $result.="<a href='habilidade.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-warning btn-block btn-flat' target='_blank'>
+        $result.="<a href='habilidade.php?idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat' target='_blank'>
         <i class='fa fa-card'></i> 
         HABILIDADES
         </a>";
