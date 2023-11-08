@@ -115,11 +115,6 @@ $nome_turma = $_POST['nome_turma'];
     /* page-break-after works, as well */
   }
 
-  .excel-button-div {
-    display: none;
-    /* Esconde o botão na impressão */
-  }
-
   @media print {
     @page {
       size: landscape
