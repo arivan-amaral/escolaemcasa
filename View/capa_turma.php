@@ -115,7 +115,7 @@ $nome_turma = $_POST['nome_turma'];
     /* page-break-after works, as well */
   }
 
-  .excel-button {
+  .excel-button-div {
     display: none;
     /* Esconde o botão na impressão */
   }
@@ -125,7 +125,7 @@ $nome_turma = $_POST['nome_turma'];
       size: landscape
     }
 
-    .excel-button {
+    .excel-button-div {
       display: none;
       /* Esconde o botão na impressão */
     }
@@ -153,8 +153,10 @@ $nome_turma = $_POST['nome_turma'];
   <br>
   <br>
 
-  <center><button class="excel-button">Gerar Excel</button>
-  </center>
+  <div class="excel-button-div">
+    <center><button class="excel-button">Gerar Excel</button>
+    </center>
+  </div>
   <div class="load"> <i class="fa fa-cog fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span> </div>
 
   <div class="content-wrapper" style="min-height: 529px;background-color: white;">
