@@ -195,7 +195,7 @@
                </a>
                </li>
 
-//relatorio_busca_ativa.php
+
                <li class='nav-item'>
                <a href='registro_ligacao_ficai.php' class='nav-link'>
                <i class='far fa-circle nav-icon text-primary'></i>
@@ -223,7 +223,7 @@
 
 
               ";
-              
+              //relatorio_busca_ativa.php
               if ($_SESSION['cargo']=='Coordenador' || $_SESSION['cargo']=='Coordenadora' || $_SESSION['cargo']=='Diretor' || $_SESSION["idfuncionario"] == 176 || $_SESSION["idfuncionario"] == 2121){
 
                echo"<li class='nav-item menu'>
