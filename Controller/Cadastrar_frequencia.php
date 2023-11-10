@@ -64,12 +64,12 @@ if (in_array($professor_id, $array_liberados) || $_SESSION["cargo"] !="Professor
     // code...
 }elseif ($conta_bloqueio>0 || $mes==06 || $mes ==07 ) {
  
-        $_SESSION['status']=2;
-        $_SESSION['mensagem']='BLOQUEADO PARA PROFESSOR!';
-        $fallback = '../View/index.php';
-        $anterior = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : $fallback;
-         header("location: {$anterior}");
-        exit();
+        // $_SESSION['status']=2;
+        // $_SESSION['mensagem']='BLOQUEADO PARA PROFESSOR!';
+        // $fallback = '../View/index.php';
+        // $anterior = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : $fallback;
+        //  header("location: {$anterior}");
+        // exit();
     }
       
 
