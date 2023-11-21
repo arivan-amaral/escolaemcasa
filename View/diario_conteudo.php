@@ -62,12 +62,34 @@ foreach ($res_calendario as $key => $value) {
 
     <style>
         @media print {
+
+
+            .no-print,
+            .no-print * {
+                display: none !important;
+            }
+
+
             body {
                 background: none;
                 -ms-zoom: 1.665;
                 margin: 0;
             }
 
+
+            .pagebreak {
+                page-break-before: always;
+            }
+/*caso de impressão pre escola */
+            body {
+                margin: 0; /* Define margem zero para o corpo */
+                padding: 0; /* Define preenchimento zero para o corpo */
+                font-size: 80%; /* Define a escala em 80% para o texto */
+            }
+
+          /*  .conteudo {
+                margin: 1rem; /* Define a margem mínima para o conteúdo */
+            }*/
             div.page {
                 margin: 0;
                 padding: 0;
@@ -101,16 +123,7 @@ foreach ($res_calendario as $key => $value) {
             display: table-footer-group;
         }
 
-        @media print {
-            .no-print,
-            .no-print * {
-                display: none !important;
-            }
 
-            .pagebreak {
-                page-break-before: always;
-            }
-        }
 
         .button {
             width: 100%;
@@ -127,6 +140,9 @@ foreach ($res_calendario as $key => $value) {
             background-color: #008CBA;
         }
     </style>
+
+
+
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>

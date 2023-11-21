@@ -131,7 +131,7 @@
   foreach ($res_disciplinas as $key => $value) {
     $disciplina_id=$value['disciplina_id'];
 
-    $nome_disciplina.=$value['nome_disciplina'];
+    //nome_disciplina.=$value['nome_disciplina'];
     $abreviacao=$value['abreviacao'];
     //echo "$nome_disciplina, ";
     $disciplinas_regente_abreviacao[$disciplina_id]=$abreviacao;
