@@ -113,13 +113,13 @@ xmlns="http://www.w3.org/TR/REC-html40">
 
 
              body {
-                margin: 0; /* Define margem zero para o corpo */
+                margin: 3; /* Define margem zero para o corpo */
                 padding: 0; /* Define preenchimento zero para o corpo */
                 font-size: 80%; /* Define a escala em 80% para o texto */
             }
 
 
-     
+
         }
 
         .button {
