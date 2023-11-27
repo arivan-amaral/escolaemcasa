@@ -26,79 +26,9 @@ xmlns="http://www.w3.org/TR/REC-html40">
     <link rel="Edit-Time-Data" href="registro_conteudo_arquivos/editdata.mso">
 
     <style>
-        @page {
-            size: A4 landscape;
-            margin: 0;
-
-
-
-        }
+ 
      
-        .Namerotate {
-            display: inline-block;
-            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-            -webkit-transform: rotate(270deg);
-            -ms-transform: rotate(270deg);
-            transform: rotate(270deg);
-        }
-
-        .tblborder,
-        .tblborder td,
-        .tblborder th {
-            border-collapse: collapse;
-            border: 1px solid #000;
-        }
-
-        .tblborder td,
-        .tblborder th {
-            padding: 20px 10px;
-        }
-
-        .positionRi {
-            position: absolute;
-            top: 10px;
-            left: 5px;
-            width: 200px;
-            height: 150px;
-        }
-
-        .positionRi2 {
-            position: absolute;
-            top: 10px;
-            left: 20px;
-        }
-
-        .positionRi3 {
-            position: absolute;
-            top: 1px;
-            left: 1px;
-            margin-top: 10px;
-            height: 20px;
-            width: 175px;
-        }
-
-        .positionNumero {
-            position: relative;
-            height: 20px;
-            width: 5px;
-        }
-
-        table {
-            page-break-inside: auto;
-        }
-
-        tr {
-            page-break-inside: avoid;
-            page-break-after: auto;
-        }
-
-        thead {
-            display: table-header-group;
-        }
-
-        tfoot {
-            display: table-footer-group;
-        }
+ 
 
         @media print {
             .no-print,
@@ -113,7 +43,7 @@ xmlns="http://www.w3.org/TR/REC-html40">
 
 
              body {
-                margin-left: 10; /* Define margem zero para o corpo */
+                margin: 3cm;
                 padding: 0; /* Define preenchimento zero para o corpo */
                 font-size: 98%; /* Define a escala em 80% para o texto */
             }
