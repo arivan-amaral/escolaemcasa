@@ -23,7 +23,7 @@
 
   <span style='mso-ignore:vglayout;
   position:absolute;z-index:251660288;left:0px;margin-left:85px;margin-top:
-  9px;width:49px;height:53px'><img width=49 height=53
+  9px;w'><img width=60 height=60
   src="imagens/logo.png"></span><span
   style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;

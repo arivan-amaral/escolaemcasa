@@ -43,7 +43,7 @@ xmlns="http://www.w3.org/TR/REC-html40">
 
 
              body {
-                margin: 3cm;
+                margin: 1cm;
                 padding: 0; /* Define preenchimento zero para o corpo */
                 font-size: 98%; /* Define a escala em 80% para o texto */
             }
