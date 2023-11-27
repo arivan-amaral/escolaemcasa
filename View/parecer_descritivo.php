@@ -27,7 +27,7 @@ xmlns="http://www.w3.org/TR/REC-html40">
 
     <style>
         @page {
-            size: A4 ;
+            size: A4 landscape;
             margin: 0;
 
 
@@ -115,9 +115,11 @@ xmlns="http://www.w3.org/TR/REC-html40">
              body {
                 margin: 3; /* Define margem zero para o corpo */
                 padding: 0; /* Define preenchimento zero para o corpo */
-                font-size: 80%; /* Define a escala em 80% para o texto */
+                font-size: 98%; /* Define a escala em 80% para o texto */
             }
-
+            @page {
+              size: landscape;
+            }
 
 
         }
