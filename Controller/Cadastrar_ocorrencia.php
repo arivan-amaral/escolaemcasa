@@ -15,7 +15,8 @@ try {
 
     $idescola=$_POST['idescola'];
    	$idturma=$_POST['idturma'];
-    $iddisciplina=$_POST['iddisciplina'];
+    // $iddisciplina=$_POST['iddisciplina'];
+     $iddisciplina=1;
     $data_ocorrencia=$_POST['data_ocorrencia'];
     $data_ocorrencia_lancada=$_POST['data_ocorrencia_lancada'];
 
