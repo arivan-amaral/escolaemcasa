@@ -84,11 +84,11 @@ try {
                         <div class='form-group'>
                             <label for='comportamento'>Escolha opção da ocorrência :</label>
                             <div class='form-check'>
-                                <input type='radio' class='form-check-input' id='bomComportamento$idaluno' name='comportamento_$idaluno' value='justificativa' checked>
+                                <input type='radio' class='form-check-input' id='bomComportamento$idaluno' name='comportamento_$idaluno' value='justificativa'>
                                 <label class='form-check-label' for='bomComportamento$idaluno'>Justificativa de Falta</label>
                             </div>
                             <div class='form-check'>
-                                <input type='radio' class='form-check-input' id='mauComportamento$idaluno' name='comportamento_$idaluno' value='comportamento'>
+                                <input type='radio' class='form-check-input' id='mauComportamento$idaluno' name='comportamento_$idaluno' value='comportamento' checked>
                                 <label class='form-check-label' for='mauComportamento$idaluno'>Comportamento</label>
                             </div>
                         </div>
