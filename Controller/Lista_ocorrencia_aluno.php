@@ -76,25 +76,23 @@ try {
 
                       if(strtotime($data_matricula) <= strtotime($data)){
                         $result.="
-                                     <td> 
-                                     <input type='hidden' name='aluno_id[]' value='$idaluno'>
-                                     <label>Ocorrência</label>
-                                         <textarea class='form-control' name='ocorrencia$idaluno'>$descricao</textarea>
-
-                                    <div class='form-group'>
-                                        <label for='comportamento'>Escolha opção da ocorrência :</label>
-                                        <div class='form-check'>
-                                            <input type='radio' class='form-check-input' id='bomComportamento' name='comportamento' value='justificativa' checked>
-                                            <label class='form-check-label' for='bomComportamento'>Justificativa de Falta</label>
-                                        </div>
-                                        <div class='form-check'>
-                                            <input type='radio' class='form-check-input' id='mauComportamento' name='comportamento' value='comportamento'>
-                                            <label class='form-check-label' for='mauComportamento'>Comportamento</label>
-                                        </div>
-                                    </div>
-
-                                      
-                                     </td>    
+                        <td> 
+                        <input type='hidden' name='aluno_id[]' value='$idaluno'>
+                        <label>Ocorrência</label>
+                        <textarea class='form-control' name='ocorrencia$idaluno'>$descricao</textarea>
+            
+                        <div class='form-group'>
+                            <label for='comportamento'>Escolha opção da ocorrência :</label>
+                            <div class='form-check'>
+                                <input type='radio' class='form-check-input' id='bomComportamento$idaluno' name='comportamento_$idaluno' value='justificativa' checked>
+                                <label class='form-check-label' for='bomComportamento$idaluno'>Justificativa de Falta</label>
+                            </div>
+                            <div class='form-check'>
+                                <input type='radio' class='form-check-input' id='mauComportamento$idaluno' name='comportamento_$idaluno' value='comportamento'>
+                                <label class='form-check-label' for='mauComportamento$idaluno'>Comportamento</label>
+                            </div>
+                        </div>
+                    </td>     
                                     ";
                       }else{
                         $result.="
