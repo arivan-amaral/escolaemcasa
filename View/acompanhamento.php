@@ -468,7 +468,7 @@ foreach ($result_escola as $key => $value) {
   $conta=1;
 foreach ($result as $key => $value) {
   
-  $nome_aluno=utf8_decode($value['nome_aluno']);
+  $nome_aluno=($value['nome_aluno']);
   $nome_turma=($value['nome_turma']);
   $idaluno=$value['idaluno'];
 
