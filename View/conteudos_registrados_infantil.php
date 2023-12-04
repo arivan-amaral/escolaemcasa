@@ -372,7 +372,7 @@ foreach ($array_datas as $key => $value) {
          
         ( funcionario_id=idfuncionario) and
          turma_id=$idturma and 
-          disciplina_id $disciplina_id_org and 
+           $disciplina_id_org and 
          escola_id = $idescola and 
          conteudo_aula.data='$data_conteudo_org' and 
          ano_conteudo=$ano_letivo
