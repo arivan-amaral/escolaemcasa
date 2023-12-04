@@ -344,17 +344,17 @@ foreach ($array_datas as $key => $value) {
       color:black;mso-fareast-language:PT-BR'>
       <?php 
       if ($_SESSION['nivel_acesso_id']>=100) {
-         echo "SELECT * FROM 
-          funcionario,conteudo_aula
-         where 
+        //  echo "SELECT * FROM 
+        //   funcionario,conteudo_aula
+        //  where 
          
-        ( funcionario_id=idfuncionario) and
-         turma_id=$idturma and 
-         disciplina_id=$iddisciplina and 
-         escola_id = $idescola and 
-         data_conteudo='$data_conteudo_org' and 
-         ano_letivo=$ano_letivo
-          GROUP by conteudo_aula.professor_id";
+        // ( funcionario_id=idfuncionario) and
+        //  turma_id=$idturma and 
+        //  disciplina_id=$iddisciplina and 
+        //  escola_id = $idescola and 
+        //  conteudo_aula.data='$data_conteudo_org' and 
+        //  ano_conteudo=$ano_letivo
+        //   GROUP by conteudo_aula.professor_id";
       }
 
 
@@ -363,8 +363,14 @@ foreach ($array_datas as $key => $value) {
               $result_funcionario_conteudo= $conexao->query("SELECT * FROM 
           funcionario,conteudo_aula
          where 
-
-        ( funcionario_id=idfuncionario) and    $idconteudo_prof  GROUP by conteudo_aula.professor_id ");
+         
+        ( funcionario_id=idfuncionario) and
+         turma_id=$idturma and 
+         disciplina_id=$iddisciplina and 
+         escola_id = $idescola and 
+         conteudo_aula.data='$data_conteudo_org' and 
+         ano_conteudo=$ano_letivo
+          GROUP by conteudo_aula.professor_id ");
 
         $array_nome_professor = array();
         $conta_cont=0;
