@@ -266,11 +266,16 @@ $conta=1;
 $array_datas = array();
 $abreviacao_displina_da_data = array();
  $idconteudo_prof="id IN(0";
+ $disciplina_id_org="disciplina_id IN(0";
+
 foreach ($result_conteudo as $key => $value) {
   $idconteudo=$value['id'];
   $idconteudo_prof.=",".$value['id'];
 
   $disciplina_id=$value['disciplina_id'];
+  
+
+  $disciplina_id_org.=",".$value['disciplina_id'];
   
   $data_conte_bd=$value['data'];
   if (!array_key_exists($data_conte_bd,$array_datas)) {
@@ -290,6 +295,7 @@ foreach ($result_conteudo as $key => $value) {
 }
  $idconteudo_prof.=") ";
 
+ $disciplina_id_org.=") ";
 
 foreach ($array_datas as $key => $value) {
   $data_conteudo_org=$key;
@@ -366,7 +372,7 @@ foreach ($array_datas as $key => $value) {
          
         ( funcionario_id=idfuncionario) and
          turma_id=$idturma and 
-         disciplina_id=$iddisciplina and 
+          disciplina_id $disciplina_id_org and 
          escola_id = $idescola and 
          conteudo_aula.data='$data_conteudo_org' and 
          ano_conteudo=$ano_letivo
