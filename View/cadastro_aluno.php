@@ -264,7 +264,7 @@ foreach ($campos as $value) {
                     <label for="outrosDeficiencia">Outros tipos de deficiência</label><br>
                     <input type="text" class="form-control" name="outrosDeficiencia" id="outrosDeficiencia">
                   </div>
-                  <!-- <script>
+                  <script>
                     function mostrarCampoOutros() {
                       var select = document.getElementById("tipo_deficiencia");
                       var outrosCampo = document.getElementById("outros_campo");
@@ -275,7 +275,7 @@ foreach ($campos as $value) {
                         outrosCampo.style.display = "none";
                       }
                     }
-                  </script> -->
+                  </script>
                 </div>
 
                 <!--                 
