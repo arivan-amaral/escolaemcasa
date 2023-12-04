@@ -343,11 +343,20 @@ foreach ($array_datas as $key => $value) {
       color:black;mso-fareast-language:PT-BR'>
       <?php 
       if ($_SESSION['nivel_acesso_id']>=100) {
-        // echo "";
+         echo "SELECT * FROM 
+          funcionario,conteudo_aula
+         where 
+         
+        ( funcionario_id=idfuncionario) and   $idconteudo_prof  GROUP by conteudo_aula.professor_id";
       }
+
+
+
+      
               $result_funcionario_conteudo= $conexao->query("SELECT * FROM 
           funcionario,conteudo_aula
          where 
+
         ( funcionario_id=idfuncionario) and   $idconteudo_prof  GROUP by conteudo_aula.professor_id ");
 
         $array_nome_professor = array();
