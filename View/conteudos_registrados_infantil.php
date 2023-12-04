@@ -292,6 +292,7 @@ foreach ($result_conteudo as $key => $value) {
 
 
 foreach ($array_datas as $key => $value) {
+  $data_conteudo_org=$key;
   $data_conteudo=converte_data($key);
   $descricao=$value;
 ?>
@@ -347,17 +348,23 @@ foreach ($array_datas as $key => $value) {
           funcionario,conteudo_aula
          where 
          
-        ( funcionario_id=idfuncionario) and   $idconteudo_prof  GROUP by conteudo_aula.professor_id";
+        ( funcionario_id=idfuncionario) and
+         turma_id=$idturma and 
+         disciplina_id=$iddisciplina and 
+         escola_id = $idescola and 
+         data_conteudo='$data_conteudo_org' and 
+         ano_letivo=$ano_letivo
+          GROUP by conteudo_aula.professor_id";
       }
 
 
 
-      
+
               $result_funcionario_conteudo= $conexao->query("SELECT * FROM 
           funcionario,conteudo_aula
          where 
 
-        ( funcionario_id=idfuncionario) and   $idconteudo_prof  GROUP by conteudo_aula.professor_id ");
+        ( funcionario_id=idfuncionario) and    $idconteudo_prof  GROUP by conteudo_aula.professor_id ");
 
         $array_nome_professor = array();
         $conta_cont=0;
