@@ -91,7 +91,7 @@ if ($conta%2!=0) {
                           <b>DATA NASC: $data_nascimento</b><br>
                           <b>MATRÍCULA: $matricula_aluno</b><br>
                           <b>CPF/RG:</b><br>
-                          <b>TIPO SANGUINEO: </b><br>
+                          <b>TIPO SANGUÍNEO: </b><br>
                           <b>TELEFONE: $whatsapp_responsavel</b>
                         </p>
                          

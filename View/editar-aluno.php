@@ -208,12 +208,12 @@ foreach ($res_editar_curso as $key => $value) {
           <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Dados Pessoais</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" id="custom-tabs-two-messages-tab" data-toggle="pill" href="#custom-tabs-two-messages" role="tab" aria-controls="custom-tabs-two-messages" aria-selected="false">Documentos</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill" href="#custom-tabs-two-profile" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false">Endereço</a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" id="custom-tabs-two-messages-tab" data-toggle="pill" href="#custom-tabs-two-messages" role="tab" aria-controls="custom-tabs-two-messages" aria-selected="false">Documentos</a>
-        </li>
 
         <li class="nav-item">
           <a class="nav-link" id="custom-tabs-two-settings-tab" data-toggle="pill" href="#custom-tabs-two-settings" role="tab" aria-controls="custom-tabs-two-settings" aria-selected="false">Curso</a>
@@ -479,6 +479,59 @@ foreach ($res_editar_curso as $key => $value) {
 
                 </div>
               </div>
+
+
+              <div class="row">
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nacionalidade</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="nacionalidade" value='<?php echo $nacionalidade; ?>' required="">
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">País</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="pais" value='<?php echo $pais; ?>' required="">
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Naturalidade</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="naturalidade" value='<?php echo $naturalidade; ?>' required="">
+                  </div>
+                </div>
+                <div class="col-sm-3">
+
+                  <div class="form-group">
+                    <!-- <label for="exampleInputEmail1">localidade</label>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="localidade" value='$localidade;' >-->
+                  </div>
+
+
+                  <label for="exampleInputEmail1">Estado onde nasceu</label>
+
+                  <select class="form-control" id="exampleInputEmail1" name="localidade">
+                    <option></option>
+                    <?php
+                    $pesquisa_cidadade = listar_estado($conexao);
+                    foreach ($pesquisa_cidadade as $key => $value) {
+                      $id = $value['id'];
+                      $nome_cidade = $value['nome'];
+                      if ($id == $localidade) {
+                        echo "<option value='$id' selected >$nome_cidade</option>";
+                      } else {
+
+                        echo "<option value='$id'>$nome_cidade</option>";
+                      }
+                    }
+                    ?>
+                  </select>
+                </div>
+              </div>
+
+
+
+              
               <div class="row">
                 <div class="col-sm-12 alert alert-secondary">
                 </div>
@@ -524,7 +577,7 @@ foreach ($res_editar_curso as $key => $value) {
                 </div>
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Tipo Sanguineo do aluno</label><br>
+                    <label for="exampleInputEmail1">Tipo Sanguíneo do aluno</label><br>
                     <select class="form-control" required name="tipo_sanguinio_aluno">
                       <option selected value='<?php echo $tipo_sanguinio_aluno; ?>'><?php echo $tipo_sanguinio_aluno ?></option>
                       <option value="Amais">A+</option>
@@ -581,7 +634,7 @@ foreach ($res_editar_curso as $key => $value) {
                 </div>
                 <div class="col-sm-4">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Cpf filiação 1</label>
+                    <label for="exampleInputEmail1">CPF filiação 1</label>
 
                     <input type="text" id="RegraValida" name="cpf_filiacao1" onkeyup="javascript: fMasc( this, mCPF ); ValidaCPF();" class="form-control" maxlength="14" value="<?php echo $cpf_filiacao1; ?>" required>
                   </div>
@@ -599,7 +652,7 @@ foreach ($res_editar_curso as $key => $value) {
                 </div>
                 <div class="col-sm-4">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Cpf filiação 2</label>
+                    <label for="exampleInputEmail1">CPF filiação 2</label>
                     <input type="text" id="RegraValida" name="cpf_filiacao2" onkeyup="javascript: fMasc( this, mCPF ); ValidaCPF();" class="form-control" maxlength="14" value="<?php echo $cpf_filiacao2; ?>" required>
                   </div>
                 </div>
@@ -699,53 +752,7 @@ foreach ($res_editar_curso as $key => $value) {
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-sm-3">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Nacionalidade</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" name="nacionalidade" value='<?php echo $nacionalidade; ?>' required="">
-                  </div>
-                </div>
-                <div class="col-sm-3">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">País</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" name="pais" value='<?php echo $pais; ?>' required="">
-                  </div>
-                </div>
-                <div class="col-sm-3">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Naturalidade</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" name="naturalidade" value='<?php echo $naturalidade; ?>' required="">
-                  </div>
-                </div>
-                <div class="col-sm-3">
-
-                  <div class="form-group">
-                    <!-- <label for="exampleInputEmail1">localidade</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="localidade" value='$localidade;' >-->
-                  </div>
-
-
-                  <label for="exampleInputEmail1">Estado onde nasceu</label>
-
-                  <select class="form-control" id="exampleInputEmail1" name="localidade">
-                    <option></option>
-                    <?php
-                    $pesquisa_cidadade = listar_estado($conexao);
-                    foreach ($pesquisa_cidadade as $key => $value) {
-                      $id = $value['id'];
-                      $nome_cidade = $value['nome'];
-                      if ($id == $localidade) {
-                        echo "<option value='$id' selected >$nome_cidade</option>";
-                      } else {
-
-                        echo "<option value='$id'>$nome_cidade</option>";
-                      }
-                    }
-                    ?>
-                  </select>
-                </div>
-              </div>
+              
               <div class="row">
                 <div class="col-sm-3">
                   <div class="form-group">

@@ -1813,6 +1813,7 @@ function cadastro_aluno(){
       var turma=document.getElementsByName('turma')[0].value;
       var nome_responsavel=document.getElementsByName('nome_responsavel')[0].value;
       var data_matricula=document.getElementsByName('data_matricula')[0].value;
+      var whatsapp_responsavel=document.getElementsByName('whatsapp_responsavel')[0].value;
 
 
 
@@ -1857,7 +1858,7 @@ function cadastro_aluno(){
 
 
        if (escola =='' || serie =='' || turma =='' || data_nascimento =='' 
-    || nome_responsavel =='' || data_matricula == '') {
+    || nome_responsavel =='' || data_matricula == '' || whatsapp_responsavel == '') {
         tudo_certo=false;
        alert_preencha_todos_campos('Preencha corretamente todos os campos de curso');
        return;
