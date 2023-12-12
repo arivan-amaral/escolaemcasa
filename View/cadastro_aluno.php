@@ -899,7 +899,11 @@ foreach ($campos as $value) {
 
             <div class="tab-pane fade" id="aba_resumo" role="tabpanel" aria-labelledby="custom-tabs-two-settings-tab">
                 <div class="card-body">
-                  <img src="imagens/carregando.gif" alt="">
+                  <!-- <img src="imagens/carregando.gif" alt=""> -->
+                  <?php 
+
+                    include_once"resumo_aluno.php";
+                   ?>
                 </div>
             </div>
 
