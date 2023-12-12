@@ -8,7 +8,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Utilizar serviço de geocodificação do OpenStreetMap (OSM)
         $usuarioLatLng = geocodeAddress($enderecoUsuario, $cep);
-        var_dump($usuarioLatLng);
 
         if ($usuarioLatLng) {
             avaliarNecessidadeOnibus($nomeEscola, $usuarioLatLng);
