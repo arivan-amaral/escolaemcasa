@@ -121,9 +121,9 @@ function avaliarNecessidadeOnibus($nomeEscola, $usuarioLatLng)
 
         echo '<h2>Resultado</h2>';
         if ($distancia <= 2000) {
-            echo '<p>Você não precisa pegar o ônibus para a escola ' . $nomeEscola . '. Distância: ' . number_format($distancia, 2) . ' km</p>';
+            echo '<p>Você não precisa pegar o ônibus para a escola ' . $nomeEscola;
         } else {
-            echo '<p>Você precisa pegar o ônibus para a escola ' . $nomeEscola . '. Distância: ' . number_format($distancia, 2) . ' km</p>';
+            echo '<p>Você precisa pegar o ônibus para a escola ' . $nomeEscola;
         }
     } else {
         echo '<h2>Resultado</h2>';
