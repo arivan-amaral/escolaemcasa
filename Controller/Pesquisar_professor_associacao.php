@@ -56,12 +56,23 @@ $return="
               
 "; 
 $conta=1;
+$ativo="<span class='text-success'>ATIVO</span>";
 foreach ($result as $key => $value) {
   $idfuncionario=$value['idfuncionario'];
   $nome_professor=$value['nome'];
   $whatsapp=$value['whatsapp'];
   $login=$value['email'];
+  $status=$value['status'];
   $senha="";
+
+
+  if ($status==0) {
+  $ativo="<span class='text-danger'>CANCELADO</span>";
+
+  }else{
+    $ativo="<span class='text-success'>ATIVO</span>";
+
+  }
   if ($_SESSION["nivel_acesso_id"]==100) {
       $senha=$value['senha'];
   }
@@ -73,7 +84,10 @@ foreach ($result as $key => $value) {
       </td> 
 
       <td> 
-        <b>$nome_professor</b><br>
+        <b>$nome_professor</b>
+          CADASTRO: $ativo <BR>
+
+        <br>
         <a href='https://api.whatsapp.com/send?phone=$whatsapp&text=Ol%C3%A1%2C%20sou%20do%20suporte%20da%20EDUCA%20LEM%20estou%20entrando%20em%20contato%2C%20pois%20preciso%20tirar%20uma%20d%C3%BAvida%20com%20voc%C3%AA%20sobre%20as%20notas%20lan%C3%A7adas.' >$whatsapp</a><br>
         $login<br>
         $senha

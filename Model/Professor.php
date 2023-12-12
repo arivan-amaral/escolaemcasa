@@ -190,7 +190,7 @@ ORDER BY
 	}
 
 	function pesquisar_professor_associacao($conexao,$pesquisa) {
-    	$result=$conexao->query("SELECT * FROM funcionario WHERE descricao_funcao like '%Professo%'  and nome like '%$pesquisa%' OR  idfuncionario = '$pesquisa'  and funcionario.status=1 ");
+    	$result=$conexao->query("SELECT * FROM funcionario WHERE descricao_funcao like '%Professo%'  and nome like '%$pesquisa%' OR  idfuncionario = '$pesquisa'  ");
     	return $result ;
 	}
 
