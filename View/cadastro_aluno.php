@@ -614,6 +614,16 @@ foreach ($campos as $value) {
 
 
                 </div>
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Buscar escola</label>
+                      <input type="text" class="form-control" id="exampleInputEmail1" name="">
+                    </div>
+                  </div>
+
+
+                </div>
 
 
 
