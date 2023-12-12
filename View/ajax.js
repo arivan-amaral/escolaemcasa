@@ -1860,7 +1860,7 @@ function cadastro_aluno(){
        if (escola =='' || serie =='' || turma =='' || data_nascimento =='' 
     || nome_responsavel =='' || data_matricula == '' || whatsapp_responsavel == '') {
         tudo_certo=false;
-       alert_preencha_todos_campos('Preencha corretamente todos os campos de curso');
+       alert_preencha_todos_campos('Preencha todos os campos obrigatórios');
        return;
   }
 
