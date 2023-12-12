@@ -1,8 +1,8 @@
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST["nome_escola"])) {
-        $nomeEscola = $_POST["nome_escola"];
+    if (isset($_POST["escola"])) {
+        $nomeEscola = $_POST["escola"];
         $enderecoUsuario = $_POST["endereco"];
         $cep = isset($_POST["cep"]) ? $_POST["cep"] : null;
 

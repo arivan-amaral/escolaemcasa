@@ -618,15 +618,22 @@ foreach ($campos as $value) {
                 <div class="col-sm-4">
                   <div class="form-group">
                     <form action="calcular_distancia.php" method="post">
-                      <label for="escola">Nome da Escola:</label>
-                      <input type="text" id="escola" name="nome_escola" required>
-                      <br>
+                      <select class="form-control" name="escola" id="escola" onchange="lista_turma_escola_por_serie_cadatro_aluno();">
+                      <option></option>
+                      <?php
+                      $res_escola = escola_associada($conexao, $idcoordenador);
+                      foreach ($res_escola as $key => $value) {
+                        $idescola = $value['idescola'];
+                        $nome_escola = $value['nome_escola'];
+                        echo "<option value='$idescola'>$nome_escola </option>";
+                      }
+                      ?>
+                      </select>
                       <label for="endereco">Seu Endereço:</label>
                       <input type="text" id="endereco" name="endereco" required>
                       <br>
                       <input type="submit" value="Procurar">
                     </form>
-                    <input type="text" class="form-control" id="exampleInputEmail1" name="">
                   </div>
                 </div>
 
