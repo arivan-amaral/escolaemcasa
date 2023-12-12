@@ -70,6 +70,10 @@ foreach ($campos as $value) {
           </li>
           <li class="nav-item">
             <a class="nav-link" id="custom-tabs-two-settings-tab" data-toggle="pill" href="#custom-tabs-two-settings" role="tab" aria-controls="custom-tabs-two-settings" aria-selected="false">Curso</a>
+          </li>          
+
+          <li class="nav-item">
+            <a class="nav-link" id="custom-tabs-two-settings-tab" data-toggle="pill" href="#aba_resumo" role="tab" aria-controls="aba_resumo" aria-selected="false">Resumo</a>
           </li>
 
 
@@ -890,6 +894,17 @@ foreach ($campos as $value) {
               <!-- /.card -->
 
             </div>
+
+
+
+            <div class="tab-pane fade" id="aba_resumo" role="tabpanel" aria-labelledby="custom-tabs-two-settings-tab">
+                <div class="card-body">
+                  <img src="imagens/carregando.gif" alt="">
+                </div>
+            </div>
+
+
+
 
           </div>
 
