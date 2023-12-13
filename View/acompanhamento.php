@@ -270,7 +270,7 @@ foreach ($result_escola as $key => $value) {
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
   style='font-size:15.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-  color:black;mso-fareast-language:PT-BR'>TIPO DE ENSINO: ANOS FINAIS <o:p></o:p></span></b></p>
+  color:black;mso-fareast-language:PT-BR'>TIPO DE ENSINO: <o:p></o:p></span></b></p>
   </td>
 
  </tr>
