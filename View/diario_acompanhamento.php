@@ -12,8 +12,16 @@ $idturma=$_GET['turm'];
 $iddisciplina=1;
 $idserie=$_GET['idserie'];
 
+ $res_seg=$conexao->query("SELECT * FROM turma WHERE idturma=$idturma LIMIT 1");
+   $seguimento='';
+ $nome_turma="";
+ foreach ($res_seg as $key => $value) {
+   $nome_turma=$value['nome_turma'];
+   $seguimento=$value['seguimento'];
+   // code...
+ }
 try {
-    acompanhamento($conexao,$idescola,$idturma,$iddisciplina,$idserie,$_SESSION['ano_letivo']); 
+    acompanhamento($conexao,$idescola,$idturma,$iddisciplina,$idserie,$_SESSION['ano_letivo'],$seguimento); 
     
 } catch (Exception $e) {
     echo "$e";

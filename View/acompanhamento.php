@@ -1,5 +1,33 @@
 <?php
- function acompanhamento($conexao,$idescola,$idturma,$iddisciplina,$idserie,$ano_letivo){
+ function acompanhamento($conexao,$idescola,$idturma,$iddisciplina,$idserie,$ano_letivo,$seguimento){
+  $tipo_ensino="";
+
+    if ($idserie==16) {
+      if ($seguimento==1) {
+        $tipo_ensino="Educação Infantil";
+
+      }if ($seguimento==2) {
+        $tipo_ensino="Ensino Fundamental - Anos Iniciais";
+
+      }else if($seguimento==3){
+       $tipo_ensino="Ensino Fundamental - Anos Finais";
+        
+
+      }
+    }else if($idserie <3 ){
+      $tipo_ensino="Educação Infantil";
+
+    }else if ($idserie >=3 && $idserie <8 ) {
+       $tipo_ensino="Ensino Fundamental - Anos Iniciais";
+
+    }else if ($idserie >= 8 && $idserie <=11) {
+       $tipo_ensino="Ensino Fundamental - Anos Finais";
+
+    }else if ($idserie > 11){
+      $tipo_ensino="Educação de Jovens e Adultos";
+
+    }
+
 ?>
 
 <html xmlns:v="urn:schemas-microsoft-com:vml"
@@ -270,7 +298,7 @@ foreach ($result_escola as $key => $value) {
   <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
   style='font-size:15.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-  color:black;mso-fareast-language:PT-BR'>TIPO DE ENSINO: <o:p></o:p></span></b></p>
+  color:black;mso-fareast-language:PT-BR'>TIPO DE ENSINO: <?php echo $tipo_ensino;  ?> <o:p></o:p></span></b></p>
   </td>
 
  </tr>
