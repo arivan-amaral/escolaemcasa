@@ -177,7 +177,7 @@ $idescola = $_GET['idescola'];
                                    
                                      echo"
                                      <br>
-                                     <b>". utf8_encode($nome_turma)."</b> - <b>".utf8_encode($nome_disciplina)."</b><br>
+                                     <b>". $nome_turma."</b> - <b>".$nome_disciplina."</b><br>
 
                                      <b>Data Postagem:</b>
                                      <span class='text-green'>".data_hora($data)."</span>                    
@@ -189,9 +189,6 @@ $idescola = $_GET['idescola'];
                                  $modal++;
                              }
                              ?>
-
-
-                         </tbody>
 
 
                      </table>

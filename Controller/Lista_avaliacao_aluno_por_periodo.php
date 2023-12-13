@@ -48,17 +48,7 @@ $conta=1;
   $data_matricula=$value['data_matricula'];
   $marcado="";
 
-               // $result_aluno= listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
-               // $cont=1;
-               
-               // foreach ($result_aluno as $key => $value) {
-               //  $nome_aluno=utf8_decode($value['nome_aluno']);
-               //  $nome_turma=($value['nome_turma']);
-               //  $id=$value['idaluno'];
-               //  $status_aluno=$value['status_aluno'];
-               //  $email=$value['email'];
-               //  $senha=$value['senha'];
-               //  $marcado="";
+        
 
                   $resultado=verificar_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$professor_id,$periodo,$id);
                     foreach ($resultado as $key2 => $value2) {
