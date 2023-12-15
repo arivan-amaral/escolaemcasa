@@ -282,23 +282,20 @@ foreach ($result_conteudo as $key => $value) {
   if (!array_key_exists($data_conte_bd,$array_datas)) {
     $array_datas[$data_conte_bd]="". $value['descricao'];
        
-  }else if(!in_array($value['descricao'], $array_datas)){
+  }else if(!in_array($value['descricao'], $array_datas[$data_conte_bd] )){
     $array_datas[$data_conte_bd].="; ". $value['descricao'];
-     
-
   }
 
    
-   if (!array_key_exists($disciplina_id,$abreviacao_displina_da_data  )) {
-      $abreviacao_displina_da_data[$data_conte_bd][$disciplina_id]=$disciplinas_regente_abreviacao[$disciplina_id];
-   }
+  if (!array_key_exists($disciplina_id,$abreviacao_displina_da_data  )) {
+    $abreviacao_displina_da_data[$data_conte_bd][$disciplina_id]=$disciplinas_regente_abreviacao[$disciplina_id];
+  }
 
 
-if ($data_conte_bd=='2023-12-15' && $_SESSION['nivel_acesso_id']>=100) {
-  echo "r=".$value['descricao'];
-}
 
 }
+
+
  $idconteudo_prof.=") ";
 
  $disciplina_id_org.=") ";
