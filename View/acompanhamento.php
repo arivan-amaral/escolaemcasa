@@ -500,7 +500,7 @@ foreach ($result as $key => $value) {
   $nome_turma=($value['nome_turma']);
   $idaluno=$value['idaluno'];
 
-  $result_ocorrencia=$conexao->query("SELECT * FROM ocorrencia_pedagogica,aluno where aluno_id=aluno.idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and descricao !='' and  aluno_id=$idaluno");
+  $result_ocorrencia=$conexao->query("SELECT * FROM ocorrencia_pedagogica,aluno where aluno_id=aluno.idaluno and disciplina_id=$iddisciplina and turma_id=$idturma and descricao !='' and  aluno_id=$idaluno ORDER BY data_ocorrencia ASC");
   $descricao="";
   $data_ocorrencia='';
   foreach ($result_ocorrencia as $key => $value) {
