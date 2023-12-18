@@ -5,7 +5,7 @@ date_default_timezone_set('America/Sao_Paulo');
     $server = "localhost";
     
 
-    $username = "educ_lem2";
+    $username = "educ_lem";
 
 
 
