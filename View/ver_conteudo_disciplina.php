@@ -2,17 +2,16 @@
 session_start();
 
 
-if (!isset($_SESSION['idfuncionario']) && !isset($_GET['idprofessor'])) {
-       header("location:index.php?status=0");
-
-}else if (isset($_GET['idprofessor'])) {
-  // code...
-   $idfuncionario= $_GET['idprofessor'];
-}else{ 
-
-  $idfuncionario=$_SESSION['idprofessor'];
-
+if (!isset($_SESSION['idfuncionario'])) {
+    header("location: index.php?status=0");
+    exit();
+} else if (isset($_GET['idprofessor'])) {
+    // código...
+    $idfuncionario = $_GET['idprofessor'];
+} else {
+    $idfuncionario = $_SESSION['idfuncionario'];
 }
+
 
   include_once "cabecalho.php";
   include_once "alertas.php";
@@ -274,7 +273,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
                                    </font>
                                  </a> 
 
-:
+
 
                                 <a class='btn btn-danger btn-block btn-flat'
                                   href='cadastrar_conteudo.php?idprofessor=$idfuncionario&disc=$iddisciplina&turm=$idturma&turma=$nome_turma&disciplina=$nome_disciplina&idescola=$idescola&idserie=$idserie&funcionario=secretaria' target='_blank'>
