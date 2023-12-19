@@ -1,29 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manutenção do Sistema</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-        }
-
-        h1 {
-            color: #ff0000; /* Vermelho para indicar importância */
-        }
-    </style>
-</head>
-<body>
-    <h1>SISTEMA EM MANUTENÇÃO</h1>
-    <p>O sistema estará de volta às 08:00. Agradecemos pela sua compreensão.</p>
-</body>
-</html>
-<?php 
-
- exit();
+ <?php
 // if (isset($_SESSION['cargo'])) {
 //   // code...
 //  unset($_SESSION['cargo']);
