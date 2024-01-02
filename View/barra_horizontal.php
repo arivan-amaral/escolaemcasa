@@ -40,7 +40,7 @@
       <?php 
             if (isset($_SESSION['ano_letivo'])) {
               if ( $_SESSION['cargo']!="Aluno" && $_SESSION['cargo']!="Aluna") {
-                $anos = array(2023,2022,2021 );
+                $anos = array(2024,2023,2022,2021 );
                 foreach ($anos as $key_a => $value_a) {
                   // code...
                      
