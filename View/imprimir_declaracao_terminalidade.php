@@ -108,7 +108,7 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
 // foreach ($_POST['idaluno'] as $key => $value) {
 $turma_id=$_POST['turma_id'];
 $serie_id=$_POST['serie_id'];
-$ano_letivo=$_SESSION['ano_letivo_vigente'];
+$ano_letivo=$_SESSION['ano_letivo'];
 $status=1;
 if (isset($_POST['escola_id_origem'])) {
 		$escola_id=$_POST['escola_id_origem'];
