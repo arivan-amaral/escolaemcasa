@@ -14,7 +14,15 @@ try {
  
     $nome=trim($_POST['nome']);
     $data_nascimento=$_POST['data_nascimento'];
-    $etapa = $_POST['etapa'];
+
+
+    if (!isset($_POST['etapa'])) {
+        $etapa = null;
+    }else{
+        $etapa = $_POST['etapa'];
+    }
+
+
     $res_aluno_existente=$conexao->query("SELECT * FROM aluno WHERE data_nascimento='$data_nascimento' and nome='$nome'");
     $res_aluno_existente=$res_aluno_existente->fetchAll();
     if (count($res_aluno_existente)==0) {

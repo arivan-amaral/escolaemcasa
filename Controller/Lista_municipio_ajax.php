@@ -13,8 +13,7 @@ include_once '../Model/Estado.php';
  // $resposta_discursiva = escape_mimic($_GET['texto']);
 $idestado = $_GET['idestado'];
 $nome_campo_id = $_GET['nome_campo_id'];
-
-
+ 
 try {
 	$result="
 	<div class='form-group'>
