@@ -72,9 +72,9 @@ foreach ($campos as $value) {
             <a class="nav-link" id="custom-tabs-two-settings-tab" data-toggle="pill" href="#custom-tabs-two-settings" role="tab" aria-controls="custom-tabs-two-settings" aria-selected="false">Curso</a>
           </li>          
 
-          <li class="nav-item">
+<!--           <li class="nav-item">
             <a class="nav-link" id="custom-tabs-two-settings-tab" data-toggle="pill" href="#aba_resumo" role="tab" aria-controls="aba_resumo" aria-selected="false">Resumo</a>
-          </li>
+          </li> -->
 
 
         </ul>
