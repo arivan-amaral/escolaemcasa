@@ -374,8 +374,7 @@ if ($media_fora_rede==0) {
         // disciplina_id=$iddisciplina and 
         // periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id,nota <br><br>";
         // 
-        echo"($nota_tri_3+$nota_tri_2+$nota_tri_1)/3";
-        
+        // 
         echo  number_format($media, 1, '.', ',');
 
       }else{
@@ -397,6 +396,11 @@ if ($media_fora_rede==0) {
 
       }else{
           $media_aprovacao="Não";
+          
+          if ($_SESSION['idcoordenador']==176) {
+             echo"($nota_tri_3+$nota_tri_2+$nota_tri_1)/3";
+          }
+
           echo  number_format($media, 1, '.', ',');
 
       }
