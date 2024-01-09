@@ -292,6 +292,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
 
    }
 
+  $nota_tri_3=calculos_media_notas($nota_tri_3,$nota_rp_3,$nota_av3_3);
  
   
 
@@ -300,6 +301,10 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
   foreach ($res_fora as $key_fora => $value_f) {
     $media_fora_rede+=$value_f['nota'];
   }
+
+
+
+
 if ($media_fora_rede==0) {
   $nota_tri_3=calculos_media_notas($nota_tri_3,$nota_rp_3,$nota_av3_3);
   $media=($nota_tri_3+$nota_tri_2+$nota_tri_1)/3;
@@ -368,6 +373,9 @@ if ($media_fora_rede==0) {
         // turma_id=$idturma and
         // disciplina_id=$iddisciplina and 
         // periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id,nota <br><br>";
+        // 
+        echo"($nota_tri_3+$nota_tri_2+$nota_tri_1)/3";
+        
         echo  number_format($media, 1, '.', ',');
 
       }else{
