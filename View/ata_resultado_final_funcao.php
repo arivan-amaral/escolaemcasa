@@ -234,7 +234,11 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
         
       $nota_tri_1=calculos_media_notas($nota_tri_1,$nota_rp_1,$nota_av3_1);
 
-            //echo "$nota_tri_1";
+
+
+      // $nota_tri_1=calculos_media_notas(5,0,2);
+
+      //   echo "$nota_tri_1";
     
   
       $result_nota_aula2=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,2,$ano_letivo);
@@ -292,6 +296,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
 
    }
 
+      $nota_tri_3=calculos_media_notas($nota_tri_3,$nota_rp_3,$nota_av3_3);
  
   
 
