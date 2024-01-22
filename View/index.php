@@ -1,33 +1,5 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site em Manutenção</title>
-    <!-- Adicione estilos conforme necessário -->
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        p {
-            color: #555;
-        }
-    </style>
-</head>
-<body>
-    <h1>Desculpe-nos, estamos em manutenção</h1>
-    <p>O site estará de volta às 13:40. Agradecemos pela sua compreensão.</p>
-</body>
-</html>
 <?php
-exit();
+
 
 
 
