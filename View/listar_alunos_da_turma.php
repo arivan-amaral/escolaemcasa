@@ -374,9 +374,10 @@ $arquivo.="
 
               if ( count($verificar_aluno_na_turna_rematricula)>0 && $_SESSION['ano_letivo'] == $_SESSION['ano_letivo_vigente']) {
                 $arquivo.=" <td>$conta_aluno -  <p><input type='checkbox' class='checkbox' id='idaluno_carterinha$idaluno' name='idaluno[]' value='$idaluno'></p> </td>";
-                $arquivo.="<td><B>ALUNO REMATRICULADO</B>
+                $arquivo.="<td><B></B>
                
                 </td>";
+                // ALUNO REMATRICULADO
 
               }elseif ( count($res_solicitacao_trasferencia)>0) {
                 $arquivo.="<td>$conta_aluno - </td>";
@@ -392,8 +393,8 @@ $arquivo.="
                 $arquivo.="<td>
                 $conta_aluno - 
                 </td>";
-                $arquivo.="<td><B>REMATRICULADO</B></td>";
-
+                $arquivo.="<td><B></B></td>";
+                // REMATRICULADO
               }
               elseif (count($verificar_aluno_na_turna_rematricula)==0) {
                $arquivo.="<td>
