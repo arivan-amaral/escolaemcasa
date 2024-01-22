@@ -300,17 +300,15 @@ $arquivo.="
             $aluno_transpublico=$value['aluno_transpublico'];
 
             // $res_movimentacao=array();
-            $res_movimentacao=pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula_aluno,$_SESSION['ano_letivo']);
+  $res_movimentacao=pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula_aluno,$_SESSION['ano_letivo']);
 
             $data_evento='';
             $descricao_procedimento='';
             $procedimento='';
-            $matricula_tipo='';
-  
+            // $matricula=';
             foreach ($res_movimentacao as $key => $value) {
               $datasaida=($value['datasaida']);     
               $procedimento=$value['procedimento'];
-              $matricula_tipo=$value['matricula_tipo'];
 
               if ($datasaida!="") {
                 $datasaida=converte_data($datasaida);
@@ -374,7 +372,7 @@ $arquivo.="
 
             }else{
 
-              if ( $matricula_tipo=="R" && $_SESSION['ano_letivo'] == $_SESSION['ano_letivo_vigente']) {
+              if ( count($verificar_aluno_na_turna_rematricula)>0 && $_SESSION['ano_letivo'] == $_SESSION['ano_letivo_vigente']) {
                 $arquivo.=" <td>$conta_aluno -  <p><input type='checkbox' class='checkbox' id='idaluno_carterinha$idaluno' name='idaluno[]' value='$idaluno'></p> </td>";
                 $arquivo.="<td><B>ALUNO REMATRICULADO</B>
                
