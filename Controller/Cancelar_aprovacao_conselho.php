@@ -12,7 +12,7 @@ try {
 	$idturma=$_GET['idturma'];
 	$iddisciplina=$_GET['iddisciplina'];
 	$idaluno=$_GET['idaluno'];
- 	$ano_letivo=$_SESSION['ano_letivo_vigente'];
+ 	$ano_letivo=$_SESSION['ano_letivo'];
 	cancelar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno, $ano_letivo);
 	echo "certo";
 	 
