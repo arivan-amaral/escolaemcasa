@@ -311,7 +311,7 @@ if ($media_fora_rede==0) {
   $nota_tri_3=calculos_media_notas($nota_tri_3,$nota_rp_3,$nota_av3_3);
   $media=($nota_tri_3+$nota_tri_2+$nota_tri_1)/3;
 }else{
-  $media= $media_fora_rede;
+  // $media= $media_fora_rede;
 }
  //arivan
   $media=number_format($media, 1, '.', ',');
@@ -403,7 +403,7 @@ if ($media_fora_rede==0) {
              //echo"($nota_tri_3+$nota_tri_2+$nota_tri_1)/3";
           }
 
-          echo "<b>". number_format($media, 1, '.', ',') ."</b>";
+          echo "". number_format($media, 1, '.', ',') ."";
 
       }
 
