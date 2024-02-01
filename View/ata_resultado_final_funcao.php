@@ -297,6 +297,8 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
   
 
   $res_fora=pesquisa_nota_fora_rede($conexao,$idescola,$idturma,$iddisciplina,$idaluno,7,$ano_letivo,$idserie);
+
+
   $media_fora_rede=0;
   foreach ($res_fora as $key_fora => $value_f) {
     $media_fora_rede+=$value_f['nota'];
@@ -314,7 +316,7 @@ if ($media_fora_rede==0) {
  //arivan
   $media=number_format($media, 1, '.', ',');
   
-  if ($_SESSION['nivel_acesso_id']>=100) {
+  if ($_SESSION['nivel_acesso_id']>=1000) {
 
     $res_hist=$conexao->query("
       SELECT * from historico where 
@@ -400,8 +402,13 @@ if ($media_fora_rede==0) {
           if ($_SESSION['idcoordenador']==176) {
              //echo"($nota_tri_3+$nota_tri_2+$nota_tri_1)/3";
           }
+        
 
-          echo "<b>". number_format($media, 1, '.', ',') ."</b>";
+        if ($_SESSION['idcoordenador']==176) {
+          echo "($nota_tri_3+$nota_tri_2+$nota_tri_1)/3";
+        }
+
+          echo "". number_format($media, 1, '.', ',') ."";
 
       }
 
