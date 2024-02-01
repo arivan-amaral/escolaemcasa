@@ -1,36 +1,25 @@
 <?php 
 
-function calculos_media_notas($nota, $nota_rp, $nota_av3) {
-    $media_nota = 0;
+	function calculos_media_notas($nota,$nota_rp,$nota_av3){
+		$media_nota=0;
+		if (!is_numeric($nota)) {
+			$nota=0;
+		}		
+		if (!is_numeric($nota_rp)) {
+			$nota_rp=0;
+		}		
+		if (!is_numeric($nota_av3)) {
+			$nota_av3=0;
+		}
+		
+		if ( $nota!='' && $nota_rp >= $nota_av3) {
 
-    if (!is_numeric($nota)) {
-        $nota = 0;
-    }
-
-    if (!is_numeric($nota_rp)) {
-        $nota_rp = 0;
-    }
-
-    if (!is_numeric($nota_av3)) {
-        $nota_av3 = 0;
-    }
-
-    // Peso das notas (ajuste conforme necessário)
-    $peso_nota = 1;
-    $peso_rp = 1;
-
-    // Verifica se a nota_rp é maior ou igual a nota_av3
-    if ($nota_rp >= $nota_av3) {
-        // Calcula a média ponderada
-        $media_nota = ($nota * $peso_nota + $nota_rp * $peso_rp) / ($peso_nota + $peso_rp);
-    } else {
-        // Se a nota_rp for menor que nota_av3, utiliza apenas a nota
-        $media_nota = $nota;
-    }
-
-    return $media_nota;
-}
-
+	       $media_nota=($nota-$nota_av3)+$nota_rp;
+	     }else{
+	     	$media_nota=$nota;
+	     }
+     return $media_nota;
+	}
 
 
 
