@@ -15,7 +15,7 @@
 		if ( $nota!='' && $nota_rp >= $nota_av3) {
 
 	       $media_nota=($nota-$nota_av3)+$nota_rp;
-         $media_nota=$media_nota+$nota_rp;
+         // $media_nota=$media_nota+$nota_rp;
 	     }else{
 	     	$media_nota=$nota;
 	     }
