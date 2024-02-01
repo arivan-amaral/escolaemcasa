@@ -14,7 +14,8 @@
 		
 		if ( $nota!='' && $nota_rp > $nota_av3) {
 
-	       $media_nota="recarregue a pag:".($nota-$nota_av3)+$nota_rp;
+	       $media_nota=($nota-$nota_av3)+$nota_rp;
+         echo "recarregue a pag:";
 	     }else{
 	     	$media_nota=$nota;
 	     }
