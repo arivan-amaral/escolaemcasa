@@ -400,7 +400,7 @@ if ($media_fora_rede==0) {
           $media_aprovacao="Não";
           
           if ($_SESSION['idcoordenador']==176) {
-             //echo"($nota_tri_3+$nota_tri_2+$nota_tri_1)/3";
+             echo"($nota_tri_3+$nota_tri_2+$nota_tri_1)/3";
           }
 
           echo "". number_format($media, 1, '.', ',') ."";
