@@ -369,25 +369,7 @@ if ($media_fora_rede==0) {
       $conta_apr++;
       $media_aprovacao="Apr";
       $aprovacao_conselho="Não";
-      
-      if ($_SESSION['idcoordenador']==176) {
-       
-        // echo "SELECT
-        // avaliacao,periodo_id,escola_id,nota
-        //  FROM nota_parecer WHERE
-        // escola_id=$idescola and
-        // turma_id=$idturma and
-        // disciplina_id=$iddisciplina and 
-        // periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id,nota <br><br>";
-        // 
-        // 
-        echo  number_format($media, 1, '.', ',');
-
-      }else{
-
-        echo  number_format($media, 1, '.', ',');
-      }
-
+      echo  number_format($media, 1, '.', ',');
 
   }else{
       $res_conselho=buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$ano_letivo);
@@ -405,7 +387,10 @@ if ($media_fora_rede==0) {
           $media_aprovacao="Não";
           
           if ($_SESSION['idcoordenador']==176) {
-             echo"s($nota_tri_3+$nota_tri_2+$nota_tri_1)/3";
+            
+            $media=calculos_media_notas($nota_tri_3,$nota_rp_3,$nota_av3_3);
+
+             echo"($nota_tri_3+$nota_tri_2+$nota_tri_1)/3";
           }
 
           echo "". number_format($media, 1, '.', ',') ."";
