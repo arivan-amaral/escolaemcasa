@@ -17,6 +17,7 @@
         SELECT
         avaliacao,periodo_id,escola_id,nota
          FROM nota_parecer WHERE
+         ano_nota='$ano_referencia' and 
         escola_id=$idescola and
         serie_id=$serie_id and
         disciplina_id=$iddisciplina and 
