@@ -275,7 +275,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
 
    $nota_tri_3=0;
    $nota_av3_3='';
-   $nota_rp_3='';
+   $nota_rp_3=0;
    foreach ($result_nota_aula3 as $key => $value) {
 
          if ($value['avaliacao']!='RP') {
@@ -286,7 +286,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
            $nota_av3_3=$value['nota'];
          }
 
-         if ($value['avaliacao']=='RP') {
+         if ($value['avaliacao']=="RP") {
            $nota_rp_3=$value['nota'];
          }
 
@@ -387,8 +387,15 @@ if ($media_fora_rede==0) {
           $media_aprovacao="Não";
           
           if ($_SESSION['idcoordenador']==176) {
-            
-            // $media=calculos_media_notas($nota_tri_3,$nota_rp_3,$nota_av3_3);
+
+
+                $media_nota=0;
+                if ( $nota_rp_3 > $nota_tri_3) {
+
+                     $media_nota=($nota-$nota_av3)+$nota_rp;
+                     // $media_nota=$media_nota+$nota_rp;
+                }
+
 
              echo"($nota_tri_3+$nota_tri_2+$nota_tri_1)/3";
           }
