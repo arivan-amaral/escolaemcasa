@@ -33,7 +33,7 @@ try {
                  $email=$_POST['email'];
             }else{
                 $primeiroNome = explode(" ",$nome);
-                 $email=$primeiroNome[0].".".$primeiroNome[1]."".rand(0,100);
+                 $email=$primeiroNome[0].".".$primeiroNome[1]."".rand(101,199);
             }
             $filiacao1=$_POST['filiacao1'];
             $filiacao2=$_POST['filiacao2'];
