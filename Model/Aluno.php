@@ -888,7 +888,8 @@ function cadastro_aluno($conexao,$nome,
  $uf_municipio_cartorio,
  $cartorio,
  $nome_responsavel,
- $cpf_responsavel
+ $cpf_responsavel,
+ $nome_identificacao_social
 ) {
 
     $sql=$conexao->prepare("INSERT INTO aluno(  nome, sexo, email, filiacao1, filiacao2,  senha, whatsapp, whatsapp_responsavel, data_nascimento, numero_nis, codigo_inep, bolsa_familia, tipo_responsavel, raca_aluno, estado_civil_aluno, tipo_sanguinio_aluno, profissao, situacao_documentacao, tipo_certidao, numero_termo, folha, uf_cartorio, municipio_cartorio, nome_cartorio, numero_indentidade, uf_identidade, orgao_emissor_indentidade, data_expedicao, numero_cnh, categoria_cnh, cpf, cartao_sus, observacao, 
@@ -916,7 +917,8 @@ necessidade_especial,
  uf_municipio_cartorio,
  cartorio,
  nome_responsavel,
- cpf_responsavel
+ cpf_responsavel,
+ nome_identificacao_social
  ) VALUES (
     :nome,
     :sexo,
@@ -977,7 +979,8 @@ necessidade_especial,
     :uf_municipio_cartorio,
     :cartorio,
     :nome_responsavel,
-    :cpf_responsavel
+    :cpf_responsavel,
+    :nome_identificacao_social
 )");
 
 
@@ -1042,6 +1045,7 @@ $sql->bindParam("necessidade_especial",$necessidade_especial);
  $sql->bindParam("cartorio", $cartorio);
  $sql->bindParam("nome_responsavel", $nome_responsavel);
  $sql->bindParam("cpf_responsavel", $cpf_responsavel);
+ $sql->bindParam("nome_identificacao_social", $nome_identificacao_social);
  $sql->execute();
  
 

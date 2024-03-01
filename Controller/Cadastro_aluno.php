@@ -12,6 +12,8 @@ include_once 'Conversao.php';
 
 try {
  
+    $nome_identificacao_social=$_POST['nome_identificacao_social'];
+
     $nome=trim($_POST['nome']);
     $data_nascimento=$_POST['data_nascimento'];
 
@@ -207,6 +209,7 @@ try {
                 $cartorio,
                 $nome_responsavel,
                 $cpf_responsavel,
+                $nome_identificacao_social
 
             );
 
