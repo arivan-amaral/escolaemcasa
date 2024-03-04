@@ -147,7 +147,7 @@ foreach ($campos as $value) {
                 </div>         
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <label for="exampleInputEmail1"><b class="text-danger">Nome de identificação Social </b></label>
+                    <label for="exampleInputEmail1">Nome de identificação Social</label>
                     <input type="text" class="form-control" id="nome_identificacao_social" name="nome_identificacao_social" required="" value="<?php echo $nome_aluno; ?>">
                   </div>
                 </div>
