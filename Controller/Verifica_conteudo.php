@@ -33,8 +33,11 @@ foreach ($res as $key => $value) {
 
 $res2=lista_de_turmas_por_id($conexao,$idturma);
 $turma="";
+$seguimento="";
 foreach ($res2 as $key => $value) {
   $turma=$value['nome_turma'];
+  $seguimento=$value['seguimento'];
+
   // code...
 }
 
@@ -48,8 +51,7 @@ foreach ($res2 as $key => $value) {
           $quantidade_aula=$value['quantidade_aula'];
             
         }
-
-        if ($idserie>2 && $idserie<8) {
+  if ($idserie>2 && $idserie<8 || ($idserie==16 && $seguimento <3) ){
           $result.="
             <div class='col-sm-12' id='campo_inputs$campo_origem_conteudo'>
               <div class='form-group'>
