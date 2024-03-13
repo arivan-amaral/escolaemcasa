@@ -753,7 +753,10 @@ function pesquisa_relatorio_filtros(){
   var texto = "";
   var parametro = "";
   var titulo = "";
-  var result = document.getElementById('resultado_busca');
+  var result = document.getElementById('resultado');
+
+
+  
   var escola = document.getElementById('escola').value;
   var sexo = document.getElementById('sexo').value;
 
