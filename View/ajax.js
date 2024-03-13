@@ -1000,7 +1000,7 @@ if(cpf_aluno.checked) {
               });  
   }else if(excel !=1){
 
-    result.innerHTML = "<img src='imagens/carregando.gif'>";  
+    result.innerHTML = "<img src='imagens/carregando2.gif'>";  
       var xmlreq = CriaRequest();
       xmlreq.open("GET", "../Controller/Pesquisa_relatorio_filtro.php?excel="+excel+"&operacao_cond_idade="+operacao_cond_idade+"&operacao_idade="+operacao_idade+"&necessidade_especial="+necessidade_especial+"&ordenacao="+ordenacao.value+"&texto="+texto+"&escola="+escola+"&sexo="+sexo+"&titulo="+titulo+"&parametro="+parametro, true);
 
