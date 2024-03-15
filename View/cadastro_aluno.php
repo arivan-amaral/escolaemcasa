@@ -247,24 +247,24 @@ foreach ($campos as $value) {
                     <label for="exampleInputEmail1">Tipo de deficiência</label><br>
                     <select class="form-control" id="tipo_deficiencia" name="tipo_deficiencia" onchange="mostrarCampoOutros()">
                       <option></option>
-                      <option value="deficiecia_intelectual">Deficiência intelectual</option>
-                      <option value="deficiencia_fisica">Deficiência física</option>
-                      <option value="deficiencia_auditiva">Deficiência auditiva</option>
-                      <option value="surdez">Surdez</option>
-                      <option value="baixa_visao">Baixa visão</option>
-                      <option value="cegueira">Cegueira</option>
-                      <option value="surdo_cegueira">Surdo/Cegueira</option>
-                      <option value="altas_habilidades">Altas habilidades ou superdotação</option>
-                      <option value="tea">Transtorno do Espectro autista (TEA)</option>
-                      <option value="tod">Transtorno opositor desafiador (TOD)</option>
-                      <option value="tdah">Transtorno com défict de atenção com hiperatividade (TDAH)</option>
-                      <option value="dislexia">Dislexia</option>
-                      <option value="disgrafia">Disgrafia</option>
-                      <option value="disortografia">Disortografia</option>
-                      <option value="sindrome_down">Síndrome de Down</option>
-                      <option value="paralisia_cerebral">Paralisia Cerebral</option>
-                      <option value="hidrocefalia">Hidrocefalia</option>
-                      <option value="microcefalia">Microcefalia</option>
+                      <option value="Deficiência intelectual">Deficiência intelectual</option>
+                      <option value="Deficiência física">Deficiência física</option>
+                      <option value="Deficiência auditiv">Deficiência auditiva</option>
+                      <option value="Surdez">Surdez</option>
+                      <option value="Baixa visão">Baixa visão</option>
+                      <option value="Cegueira">Cegueira</option>
+                      <option value="Surdo/Cegueira">Surdo/Cegueira</option>
+                      <option value="Altas habilidades ou superdotação">Altas habilidades ou superdotação</option>
+                      <option value="Transtorno do Espectro autista (TEA">Transtorno do Espectro autista (TEA)</option>
+                      <option value="Transtorno opositor desafiador (TOD)">Transtorno opositor desafiador (TOD)</option>
+                      <option value="Transtorno com défict de atenção com hiperatividade (TDAH)">Transtorno com défict de atenção com hiperatividade (TDAH)</option>
+                      <option value="Dislexia">Dislexia</option>
+                      <option value="Disgrafia">Disgrafia</option>
+                      <option value="Disortografia">Disortografia</option>
+                      <option value="Síndrome de Down">Síndrome de Down</option>
+                      <option value="Paralisia Cerebral">Paralisia Cerebral</option>
+                      <option value="Hidrocefalia">Hidrocefalia</option>
+                      <option value="Microcefalia">Microcefalia</option>
                       <option value="nenhuma">nenhuma</option>
                       <option value="outros">outros</option>
                     </select>
