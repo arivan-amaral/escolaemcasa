@@ -204,15 +204,16 @@ foreach ($campos as $value) {
                     <label for="exampleInputEmail1">Apoio pedagógico</label><br>
                     <select class="form-control" name="apoio_pedagogico">
                       <option></option>
-                      <option value='apae'>APAE</option>
-                      <option value='amalem'>AMALEM</option>
-                      <option value='nap'>NAP</option>
-                      <option value='aee'>AEE</option>
-                      <option value='particular'>Particular</option>
-                      <option value='nao_necessita'>Não necessita</option>
+                      <option value='APAE'>APAE</option>
+                      <option value='AMALEM'>AMALEM</option>
+                      <option value='NAP'>NAP</option>
+                      <option value='AEE'>AEE</option>
+                      <option value='Particular'>Particular</option>
+                      <option value='Não necessita'>Não necessita</option>
                     </select>
                   </div>
                 </div>
+
                 <div class="col-sm-3">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Tipo de diagnóstico</label><br>
