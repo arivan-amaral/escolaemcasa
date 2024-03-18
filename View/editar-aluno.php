@@ -39,6 +39,7 @@ foreach ($res_data as $key => $value) {
 
 $res = pesquisar_aluno2($conexao, $idaluno);
 $nome = "";
+$nome_nis = "";
 $sexo = "";
 $email = "";
 $filiacao1 = "";
@@ -105,6 +106,8 @@ $caminho_foto_carteirinha = "";
 
 foreach ($res as $key => $value) {
   $nome = $value['nome'];
+  $nome_nis = $value['nome_identificacao_social'];
+
   $data_nascimento = $value['data_nascimento'];
   $codigo_inep = $value['codigo_inep'];
   $sexo = $value['sexo'];
@@ -337,12 +340,22 @@ foreach ($res_editar_curso as $key => $value) {
                   </div>
                 </div>
 
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Nome</label>
                     <input type="text" class="form-control" id="nome" name="nome" value='<?php echo $nome; ?>' required="">
                   </div>
                 </div>
+
+
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nome de identificação Social</label>
+                    <input type="text" class="form-control" id="nome_identificacao_social" name="nome_identificacao_social" required="" value="<?php echo $nome_nis; ?>">
+                  </div>
+                </div>
+
+
                 <div class="col-sm-3">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Nascimento</label>
