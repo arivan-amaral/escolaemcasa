@@ -163,6 +163,13 @@
                <i class='far fa-circle nav-icon text-primary'></i>
                <p>Relatório de desempenho</p>
                </a>
+               </li>           
+
+              <li class='nav-item'>
+               <a href='relatorio_aluno_aee.php' class='nav-link'>
+               <i class='far fa-circle nav-icon text-primary'></i>
+               <p>Relatório AEE</p>
+               </a>
                </li>        
 
 
