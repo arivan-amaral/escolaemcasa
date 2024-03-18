@@ -265,8 +265,8 @@ foreach ($campos as $value) {
                       <option value="Paralisia Cerebral">Paralisia Cerebral</option>
                       <option value="Hidrocefalia">Hidrocefalia</option>
                       <option value="Microcefalia">Microcefalia</option>
-                      <option value="nenhuma">nenhuma</option>
-                      <option value="outros">outros</option>
+                       <option value="Nenhuma">Nenhuma</option>
+                      <option value="Outros">Outros</option>
                     </select>
                   </div>
                 </div>
