@@ -112,23 +112,11 @@ include_once "../Model/Conexao_".$usuariobd.".php";
 
           <div class="col-sm-1">
           </div>
-          <div class="col-sm-12 alert alert-warning">
+          <div class="col-sm-12 alert alert-info">
 
             <h1 class="m-0"><b>
 
-           <?php
-              if (isset($nome_escola_global)) {
-                echo $_SESSION['NOME_APLICACAO']; 
-              }
-              ?>
-
-             <?php if (isset($_SESSION['nome'])) {
-
-              echo " ".$_SESSION['nome'];  
-
-            } 
-
-             ?></b></h1>
+           RELATÓRIO DE ALUNO AEE</b></h1>
 
           </div><!-- /.col -->
 
@@ -147,7 +135,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
 
   <!-- Inicio -Content Wrapper. Contains page content -->
   <div class="container">
-  <h2>RELATÓRIO DE ALUNO</h2>
+ 
    
    <br>
     <div class="row">
@@ -257,9 +245,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
           <div class="form-group">
            <label for="exampleInputEmail1">ESPECIAL</label>
            <select class="form-control"  id="necessidade_especial" name="necessidade_especial" >
-             <option value='todos'>Ambos</option>
              <option value='sim'>Sim </option>
-             <option value='nao'>Não</option>
            </select> 
           </div>
         </div>         
@@ -288,7 +274,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
         </div> 
 
         
-        <div class="col-sm-3">
+        <div class="col-sm-4">
           <div class="form-group">
            <label for="exampleInputEmail1">ESCOLA</label>
            <select class="form-control select2"  id="escola" name="escola" >
@@ -348,6 +334,17 @@ include_once "../Model/Conexao_".$usuariobd.".php";
             <label for="baixar_excel" class="checkbox-btn__label">
               <span class="checkbox-btn__image"></span>
               Baixar em excel?
+            </label>
+          </div>
+
+        </div>
+        <div class="col-sm-4">
+          <br>
+          <div class="checkbox-btn">
+            <input type="checkbox" id="baixar_excel" name="baixar_excel">
+            <label for="baixar_excel" class="checkbox-btn__label">
+              <span class="checkbox-btn__image"></span>
+              Baixar em pdf?
             </label>
           </div>
 
