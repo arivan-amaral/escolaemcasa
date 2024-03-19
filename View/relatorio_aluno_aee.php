@@ -354,7 +354,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
         
           <div class="checkbox-btn">
         
-           
+           <br>
               <a href=""><img src="imagens/pdf.png" alt="" width="40" height="40"> Baixar em pdf</a>
              
            
