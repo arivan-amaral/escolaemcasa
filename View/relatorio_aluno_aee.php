@@ -350,7 +350,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
           </div>
 
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-4">
           <br>
           <div class="checkbox-btn">
         
