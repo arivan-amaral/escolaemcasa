@@ -73,6 +73,18 @@ include_once "../Model/Conexao_".$usuariobd.".php";
   opacity: 0.5;
 }
 
+.checkbox-btn__image_pdf {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  background-image: url("imagens/pdf.png");
+  background-size: cover;
+  opacity: 0.5;
+}
+
 .checkbox-btn__image::before {
   content: "";
   display: inline-block;
@@ -274,7 +286,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
         </div> 
 
         
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <div class="form-group">
            <label for="exampleInputEmail1">ESCOLA</label>
            <select class="form-control select2"  id="escola" name="escola" >
@@ -338,13 +350,13 @@ include_once "../Model/Conexao_".$usuariobd.".php";
           </div>
 
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-2">
           <br>
           <div class="checkbox-btn">
             <input type="checkbox" id="baixar_excel" name="baixar_excel">
-            <label for="baixar_excel" class="checkbox-btn__label">
+            <label for="baixar_excel" class="checkbox-btn__image_pdf">
               <span class="checkbox-btn__image"></span>
-              Baixar em pdf?
+              Baixar em pdf
             </label>
           </div>
 
