@@ -351,13 +351,13 @@ include_once "../Model/Conexao_".$usuariobd.".php";
 
         </div>
         <div class="col-sm-4">
-          <br>
+        
           <div class="checkbox-btn">
         
-            <label for="baixar_excel" class="checkbox-btn__image_pdf">
-              <span class="checkbox-btn__image_pdf"></span>
-              Baixar em pdf
-            </label>
+           
+              <a href=""><img src="imagens/pdf.png" alt="" width="40" height="40"> Baixar em pdf</a>
+             
+           
           </div>
 
         </div>
