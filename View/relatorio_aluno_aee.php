@@ -355,7 +355,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
           <div class="checkbox-btn">
             <input type="checkbox" id="baixar_excel" name="baixar_excel">
             <label for="baixar_excel" class="checkbox-btn__image_pdf">
-              <span class="checkbox-btn__image"></span>
+              <span class="checkbox-btn__image_pdf"></span>
               Baixar em pdf
             </label>
           </div>
