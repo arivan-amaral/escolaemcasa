@@ -81,8 +81,8 @@ include_once "../Model/Conexao_".$usuariobd.".php";
   width: 32px;
   height: 32px;
   background-image: url("imagens/pdf.png");
-  background-size: cover;
-  opacity: 0.5;
+/*  background-size: cover;
+  opacity: 0.5;*/
 }
 
 .checkbox-btn__image::before {
@@ -339,7 +339,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
         </div>
 
 
-        <div class="col-sm-3">
+        <div class="col-sm-4">
           <br>
           <div class="checkbox-btn">
             <input type="checkbox" id="baixar_excel" name="baixar_excel">
@@ -353,7 +353,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
         <div class="col-sm-2">
           <br>
           <div class="checkbox-btn">
-            <input type="checkbox" id="baixar_excel" name="baixar_excel">
+        
             <label for="baixar_excel" class="checkbox-btn__image_pdf">
               <span class="checkbox-btn__image_pdf"></span>
               Baixar em pdf
