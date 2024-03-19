@@ -339,7 +339,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
         </div>
 
 
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <br>
           <div class="checkbox-btn">
             <input type="checkbox" id="baixar_excel" name="baixar_excel">
@@ -362,7 +362,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
 
         </div>
 
-        <div class="col-sm-8">
+        <div class="col-sm-10">
           <div class="form-group">
           <a style="margin-top: 30PX;" class="btn btn-block btn-primary" onclick="pesquisa_relatorio_filtros()">Pesquisar</a>
           </div>
