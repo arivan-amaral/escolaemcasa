@@ -68,7 +68,7 @@ busca_ativa.escola_id = escola.idescola and
 registro_ligacao_busca_ativa.funcionario_id=funcionario.idfuncionario and 
 busca_ativa.turma_id = turma.idturma and 
 busca_ativa.aluno_id= aluno.idaluno $escola $turma $ficai 
-and busca_ativa.periodo_final BETWEEN $data_sql_inicial AND $data_sql_final 
+and busca_ativa.periodo_final BETWEEN '$data_sql_inicial' AND '$data_sql_final' 
 
 GROUP BY  busca_ativa_id ORDER by registro_ligacao_busca_ativa.data DESC LIMIT 500");
 
@@ -181,19 +181,7 @@ if ($mesmo_periodo==1) {
     $result.="</tbody>";
     $result.="</table>";
 
-echo "$result SELECT COUNT(*) AS quantidade_ligacao, exitosa,  busca_ativa.data as data_ligacao, busca_ativa.id,busca_ativa.periodo_inicial,busca_ativa.periodo_final, descricao_chamada,quem_atendeu,
- aluno.nome as nome_aluno , quantidade_faltas , escola.nome_escola as nome_escola, turma.nome_turma, busca_ativa.ficai,funcionario.nome as nome_funcionario
-    FROM 
-    busca_ativa, registro_ligacao_busca_ativa,escola,aluno,turma,funcionario
-     WHERE
-    registro_ligacao_busca_ativa.busca_ativa_id = busca_ativa.id and 
-busca_ativa.escola_id = escola.idescola and 
-registro_ligacao_busca_ativa.funcionario_id=funcionario.idfuncionario and 
-busca_ativa.turma_id = turma.idturma and 
-busca_ativa.aluno_id= aluno.idaluno $escola $turma $ficai 
-and busca_ativa.periodo_final BETWEEN $data_sql_inicial AND $data_sql_final 
-
-GROUP BY  busca_ativa_id ORDER by registro_ligacao_busca_ativa.data DESC LIMIT 500";
+echo "$result";
 
 
 } catch (Exception $e) {
