@@ -74,7 +74,14 @@ try {
 		}
 
 
-		if ($rematriculado==0 && $quantidade_vagas_restante> 0 && ($rematricula_serie_id ==$rematricula_nova_serie 	|| $rematricula_nova_serie ==17 ) ) {
+		if ($rematricula_nova_serie ==17) {
+			
+			rematricular_aluno($conexao,$aluno_id,$turma_id,$turma_id_anterior,$matricula_situacao,$matricula_concluida,$matricula_datamatricula,$matricula_ativa,$matricula_tipo,$calendario_ano,$turma_escola,$turno_nome,$etapa);
+
+			mudar_situacao_rematricular_aluno($conexao,$matricula_aluno);
+			$quantidade_vagas_restante--;
+			
+		}else if ($rematriculado==0 && $quantidade_vagas_restante> 0 && $rematricula_serie_id ==$rematricula_nova_serie  ) {
 
 			rematricular_aluno($conexao,$aluno_id,$turma_id,$turma_id_anterior,$matricula_situacao,$matricula_concluida,$matricula_datamatricula,$matricula_ativa,$matricula_tipo,$calendario_ano,$turma_escola,$turno_nome,$etapa);
 
@@ -113,7 +120,7 @@ try {
 
 	if ($aluno_reprovado!="") {
 
-		$aluno_reprovado="($rematriculado==0 && $quantidade_vagas_restante> 0 && ($rematricula_serie_id ==$rematricula_nova_serie 	|| $rematricula_nova_serie ==17 ) ) Não foi possível realizar ação ".$aluno_reprovado;
+		$aluno_reprovado="Não foi possível realizar ação ".$aluno_reprovado;
 
 		echo $aluno_reprovado."".$vagas_esgotada;
 		
