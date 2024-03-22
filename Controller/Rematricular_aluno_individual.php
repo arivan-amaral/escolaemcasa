@@ -105,7 +105,7 @@ try {
 	
 	if ($vagas_esgotada!="") {
 
-		$vagas_esgotada="Não foi possível realizar ação  motivo (VAGAS ESGOTADAS) para: ".$vagas_esgotada;
+		$vagas_esgotada="($rematriculado==0 && $quantidade_vagas_restante> 0 && ($rematricula_serie_id ==$rematricula_nova_serie 	|| $rematricula_nova_serie ==17 ) ) Não foi possível realizar ação  motivo (VAGAS ESGOTADAS) para: ".$vagas_esgotada;
 		echo $vagas_esgotada;
 
 
