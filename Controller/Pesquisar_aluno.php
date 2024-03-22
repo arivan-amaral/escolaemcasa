@@ -578,7 +578,12 @@ where
                                   
                                   <li>
                                     <a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma'  target='_blank' class='dropdown-item'  > Boletim atual </a> </b>
-                                  </li>";
+                                  </li>
+
+                                  <li>
+                                  <a   class='dropdown-item' data-toggle='modal' data-target='#modal_rematricula$idaluno' >Matricular AEE. </a>
+                                  </li>
+                                  ";
 
                                   if ($detectar_ultimo==0) {
                                    $result.= "
