@@ -64,7 +64,7 @@ xmlns="http://www.w3.org/TR/REC-html40">
   transform: rotate(270deg);*/
   
 }
-
+ 
 .tblborder, .tblborder td, .tblborder th{
   border-collapse:collapse;
   border:1px solid #000;
@@ -292,24 +292,26 @@ if ($idserie<3) {
 
 else{
     //linha 409 508 
+    //
+    $pes=listar_disciplina_da_turma($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+
+    foreach ($pes as $chave => $linha) {
+      $idprofessor=($linha['idprofessor']);
+      $nome_disciplina=($linha['nome_disciplina']);
+      $iddisciplina=$linha['iddisciplina'];
+      // $nome=$linha['nome'];
+
         diario_frequencia_fund2($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento); 
         echo "<div class='pagebreak'> </div>";
 
-
-        $inicio=36;//36;
-        // $conta_aula=36;
+        $inicio=36;
         $conta_aula=37;
-
-        // $limite_data=26;
-        // $limite_aula=26;    
          $limite_data=31; //30
         $limite_aula=31; //30
 
-        $conta_data=1; //não existia
-        $fim= 30; //era 29 tirei para teste
+        $conta_data=1; 
+        $fim= 30; 
         
-        // diario_frequencia_pagina_final($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie)
-
 
         //linha 428 600 760
         diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
@@ -319,6 +321,7 @@ else{
             $limite_aula+0,
 
             $periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento);
+    }
 
 }
 
