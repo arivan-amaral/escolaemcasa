@@ -299,14 +299,14 @@ else{
       $idprofessor=($linha['idprofessor']);
       $nome_disciplina=($linha['nome_disciplina']);
       $iddisciplina=$linha['iddisciplina'];
-      $nome_disciplina=$linha['nome'];
+      // $nome_disciplina=$linha['nome'];
 
         echo "
         <br>
         <br>      
-        <a style='width: 100%;height: 6%; font-size: large; background: #0FDEC2;color: black;' class='no-print' >
+        <button style='width: 100%;height: 6%; font-size: large; background: #0FDEC2;color: black;' class='no-print' >
             $nome_disciplina
-        </a> ";
+        </button> ";
 
 
         diario_frequencia_fund2($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento); 
