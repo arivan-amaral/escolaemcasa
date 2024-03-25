@@ -293,7 +293,7 @@ if ($idserie<3) {
 else{
     //linha 409 508 
     
-    if (isset($_GET['coordenacao']) {
+    if (isset($_GET['coordenacao'])) {
         // code...
             $pes=listar_disciplina_da_turma($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
 
