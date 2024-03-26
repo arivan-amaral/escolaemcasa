@@ -308,25 +308,24 @@ include_once "../Model/Conexao_".$usuariobd.".php";
                   $data=$value['data'];
                   $aula=$value['aula'];
                   $array_aulas[$data]=$aula;
-                  // $res_freq=verificar_frequencia_na_data_conteudo($conexao,$idescola,$idturma,$iddisciplina,$data,$aula);
+                  
                   $background='';
-                  // foreach ($res_freq as $key => $value) {
-                  //   $background='#2E8B57; color: white;';
-
-                  // }
-
-                  if ($idserie>=3) {
+                 
+                // arivan 26/03/2024
+                  // if ($idserie>=3) {
                       echo"<option value='$data' style='background-color: $background'>".converte_data($data)." - $aula </option>";
                     // code...
-                  }
+                  // }
 
                 }
-                if ($idserie <3) {
-                    foreach ($array_aulas as $key => $value) {
+                // arivan 26/03/2024
+                // 
+                // if ($idserie <3) {
+                //     foreach ($array_aulas as $key => $value) {
                        
-                      echo"<option value='$key' style='background-color: $background'>".converte_data($key)." - $value </option>";
-                    }
-                }
+                //       echo"<option value='$key' style='background-color: $background'>".converte_data($key)." - $value </option>";
+                //     }
+                // }
 
                ?>
             </select>
