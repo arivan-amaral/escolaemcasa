@@ -225,7 +225,7 @@ $cont=1;
 
                       <td>
                         <b class='text-success'>$id - $nome_aluno</b> <br>
-                        <b class='text-primary'>$nome_identificacao_social</b> <br>
+                        <b class='text-primary'>Nome social:$nome_identificacao_social</b> <br>
                       </td>
                      
                       <td> 
