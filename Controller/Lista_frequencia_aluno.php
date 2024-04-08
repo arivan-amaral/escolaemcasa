@@ -184,10 +184,11 @@ $cont=1;
 
   $id=$value['idaluno'];
   $nome_aluno=strtoupper($value['nome_aluno']);
+  $nome_identificacao_social=strtoupper($value['nome_identificacao_social']);
   $nome_turma=$value['nome_turma'];
   $matricula_aluno=$value['matricula'];
   $data_matricula=$value['data_matricula'];
-
+ 
   $res_movimentacao=pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula_aluno,$_SESSION['ano_letivo']);
 
   
@@ -223,7 +224,8 @@ $cont=1;
                       <td>$cont</td>
 
                       <td>
-                        <b class='text-success'>$id - $nome_aluno</b> 
+                        <b class='text-success'>$id - $nome_aluno</b> <br>
+                        <b class='text-primary'>$id - $nome_identificacao_social</b> <br>
                       </td>
                      
                       <td> 
