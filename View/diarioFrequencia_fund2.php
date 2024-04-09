@@ -584,6 +584,8 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
 
   $idaluno=$value['idaluno'];
   $nome_aluno=($value['nome_aluno']);
+    $nome_identificacao_social=($value['nome_identificacao_social']);
+
   $nome_turma=$value['nome_turma'];
   $matricula_aluno=$value['matricula'];
   $data_matricula=$value['data_matricula'];
@@ -613,7 +615,14 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
   mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
   padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt;font-size:9.0pt; text-transform: uppercase;'>
 
-  <?php echo "$nome_aluno"; ?> 
+  <?php 
+    if ($nome_identificacao_social=='') {
+        echo "$nome_aluno"; 
+      // code...
+    }else{
+      echo "$nome_identificacao_social";
+    }
+  ?> 
   </td>
 
 
