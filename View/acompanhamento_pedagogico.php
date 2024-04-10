@@ -205,7 +205,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
             <select class="form-control" name="data_ocorrencia_lancada" id='data_ocorrencia_lancada' onchange='lista_ocorrencia_aluno();'>
               <option></option>
               <?php 
-                $resultado=listar_ocorrencia_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $idprofessor);
+                $resultado=listar_ocorrencia_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $idprofessor,$_SESSION['ano_letivo']);
                 foreach ($resultado as $key => $value) {
                   $data_ocorrencia=$value['data_ocorrencia'];
                   echo"<option value='$data_ocorrencia'>".converte_data($data_ocorrencia)."</option>";

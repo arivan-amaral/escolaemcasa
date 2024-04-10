@@ -291,12 +291,12 @@ function limpar_ocorrencia_cadastrada($conexao, $iddisciplina, $idturma, $idesco
 }
 
 
-function listar_ocorrencia_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $idprofessor){
+function listar_ocorrencia_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $idprofessor,$ano_letivo){
 
 	$resultado=$conexao->query(" SELECT data_ocorrencia FROM ocorrencia_pedagogica WHERE
 		escola_id=$idescola and 
 		turma_id=$idturma and 
-		disciplina_id=$iddisciplina  GROUP BY data_ocorrencia
+		disciplina_id=$iddisciplina  and ano='$ano_letivo' GROUP BY data_ocorrencia
 		
 		");
     // and professor_id=$idprofessor
@@ -1849,7 +1849,7 @@ function listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,
     aluno.imagem_carteirinha_transporte,
     aluno.nome AS nome_aluno,
     aluno.nome_identificacao_social AS nome_identificacao_social,
-    
+
     aluno.sexo,
     aluno.data_nascimento,
     aluno.idaluno,
