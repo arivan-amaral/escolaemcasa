@@ -263,9 +263,8 @@ function verifica_ocorrencia_cadastrada($conexao, $iddisciplina, $idturma, $ides
 	$resultado=$conexao->query(" SELECT * FROM ocorrencia_pedagogica WHERE
 		escola_id=$idescola and 
 		turma_id=$idturma and 
-		disciplina_id=$iddisciplina and
 		aluno_id=$aluno_id and
-		data_ocorrencia='$data_ocorrencia'
+		data_ocorrencia='$data_ocorrencia' AND (disciplina_id=1 OR disciplina_id=1000)
 		
 		");
 
