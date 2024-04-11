@@ -566,8 +566,9 @@ function verificar_conteudo_aula_cadastrado_por_data_aula($conexao, $iddisciplin
     $resultado=$conexao->query("SELECT * FROM conteudo_aula WHERE
       data='$data' and 
       aula='$aula' and 
+      disciplina_id=$iddisciplina and 
       escola_id=$idescola and 
-      turma_id=$idturma  and (disciplina_id=1 or disciplina_id=1000)  order by data");
+      turma_id=$idturma order by data");
     return $resultado;
 }
 

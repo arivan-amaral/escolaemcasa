@@ -55,7 +55,17 @@ try {
    ";
     
 
-   
+    // $result_disciplinas=$conexao->query("SELECT * FROM ministrada,escola,turma,disciplina where
+    //  ministrada.turma_id=idturma and
+    //  ministrada.disciplina_id=iddisciplina and 
+    //  ministrada.escola_id=idescola and
+    //  ministrada.escola_id=idescola and
+
+    //  idescola=$idescola and
+    //  professor_id=$professor_id and
+    //  idturma=$idturma 
+    //  order by disciplina_id=$iddisciplina
+    // ");
 
 
       $result_disciplinas=listar_disciplina_professor($conexao,$idprofessor,$_SESSION['ano_letivo']);
@@ -66,7 +76,18 @@ try {
       $idturma_array=array(); 
       $idescola_array=array(); 
 
- 
+// if($iddisciplina_get==1000){
+//  $result.="
+//                 <div class='custom-control custom-checkbox'>
+//                 <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$idescola_get$idturma_get$iddisciplina_get$idserie_get' value='$idescola_get-$idturma_get-$iddisciplina_get-$idserie_get'  required onclick='adicinar_campo_conteudo($idescola$idturma_get$iddisciplina_get$idserie_get
+//                 )'> 
+                
+//                 <label for='customCheckbox$idescola_get$idturma_get$iddisciplina_get$idserie_get' class='custom-control-label'  id='label$idescola_get$idturma_get$iddisciplina_get$idserie_get'>
+//                  $descricao_escola_turma <font style='color:#8B0000' > - DISCIPLINAS REGENTES </font> </label>
+//                 </div>";
+
+// }else{
+
       foreach ($result_disciplinas as $key => $value) {
 
         $disciplina=($value['nome_disciplina']);
@@ -83,7 +104,13 @@ try {
         $disciplina_id=$value['iddisciplina'];
         $turma_id=$value['idturma'];
         $serie_id=$value['serie_id'];
-         
+         //if ($idturma==$idturma_get && $idescola==$idescola_get && $iddisciplina=$iddisciplina_get) {
+            // $result.="
+            // <div class='custom-control custom-checkbox'>
+            // <input class='custom-control-input check' name='escola_turma_disciplina[]' type='checkbox' id='customCheckbox$idturma$idescola$iddisciplina' value='$idescola+$idturma+$iddisciplina+$idserie' required >
+            // <label for='customCheckbox$idturma$idescola$iddisciplina' class='custom-control-label'> $nome_escola - <font style='color:#8B0000'>$turma -$disciplina</font> </label>
+            // </div>";
+         // }else{
              $resultado=verificar_conteudo_aula_cadastrado_por_data_aula($conexao, $iddisciplina, $idturma, $idescola, $data,$aula);
               $marca_disciplina='';
 
