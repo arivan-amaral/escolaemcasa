@@ -518,11 +518,11 @@ function listar_frequencia_cadastrado($conexao, $iddisciplina, $idturma, $idesco
 
 function listar_conteudo_aula_cadastrado($conexao, $iddisciplina, $idturma, $idescola, $professor_id,$ano_letivo) {
     $resultado=$conexao->query("SELECT * FROM conteudo_aula WHERE
-      disciplina_id=$iddisciplina and 
+
        
       escola_id=$idescola and 
       ano_conteudo=$ano_letivo and 
-      turma_id=$idturma order by data, aula ");
+      turma_id=$idturma and   (disciplina_id=1 or disciplina_id=1000)  order by data, aula ");
     return $resultado;
 }
 function listar_conteudo_aula_cadastrado_por_data($conexao, $iddisciplina, $idturma, $idescola, $professor_id,$ano_letivo,$inicio,$fim) {
