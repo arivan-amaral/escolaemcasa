@@ -295,8 +295,8 @@ function listar_ocorrencia_cadastrado($conexao, $iddisciplina, $idturma, $idesco
 
 	$resultado=$conexao->query(" SELECT data_ocorrencia FROM ocorrencia_pedagogica WHERE
 		escola_id=$idescola and 
-		turma_id=$idturma and 
-		disciplina_id=$iddisciplina  and ano='$ano_letivo' GROUP BY data_ocorrencia
+		turma_id=$idturma  and ano='$ano_letivo' and 
+        (disciplina_id=1 or disciplina_id=1000)  GROUP BY data_ocorrencia
 		
 		");
     // and professor_id=$idprofessor
