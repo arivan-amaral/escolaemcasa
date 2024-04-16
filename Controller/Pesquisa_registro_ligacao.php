@@ -128,7 +128,7 @@ if ($mesmo_periodo==1) {
 }
 if ($nivel_acesso_id>=3) {
  
-     $result.="<a class='btn btn-default' >Resposta SME</a> ";
+     $result.="<a class='btn btn-default' data-toggle='modal' data-target='#modal-busca-ativa-resposta$id'>Resposta SME</a> ";
 }
 
 
@@ -186,6 +186,37 @@ if ($nivel_acesso_id>=3) {
     </div>
     <!-- /.modal-dialog -->
   </div>";
+
+
+
+
+    $result.="<div class='modal fade' id='modal-busca-ativa-resposta$id'>
+    <div class='modal-dialog'>
+      <div class='modal-content'>
+        <div class='modal-header'>
+          <h4 class='modal-title'>Resposta SME</h4>
+          <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+            <span aria-hidden='true'>&times;</span>
+          </button>
+        </div>
+        
+
+          <div class='modal-body'>
+              <!-- /corpo -->
+          ";
+      
+
+        $result.="      
+        <!-- /corpo -->
+        </div>
+      <button type='button' class='btn btn-default' data-dismiss='modal'><font style='vertical-align: inherit;'><font style='vertical-align: inherit;'>Fechar</font></font></button>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>";
+
+
 	$result.="</tr>";
 }
 
