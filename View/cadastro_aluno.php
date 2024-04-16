@@ -214,34 +214,43 @@ foreach ($campos as $value) {
                   </div>
                 </div>
 
-                <div class="col-sm-3">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Tipo de diagnóstico</label><br>
-                    <select class="form-control" name="tipo_diagnostico" id="tipo_diagnostico">
-                      <option selected></option>
-                      <option value='SEM DIAGNÓSTICO'>SEM DIAGNÓSTICO</option>
-                      <option value='FICHA DE AVALIAÇÃO'>FICHA DE AVALIAÇÃO</option>
-                      <option value='laudo_tecnico'>LAUDO TÉCNICO</option>
-                    </select>
-                  </div>
-                </div>
-<!--                 <div class="col-sm-3" id="anexar_documento" style="display: none;">
-                  <div class="form-group">
-                    <label for="documento">Anexar documento ou foto</label><br>
-                    <input type="file" class="form-control" name="documento">
-                  </div>
-                </div> -->
-         <!--         <script>
-                  function anexarLaudo() {
-                    var select = document.getElementById("tipo_diagnostico");
-                    var anexarDocument = document.getElementById("anexar_documento");
-                    if (select.value === "laudo_tecnico") {
-                      anexarDocument.style.display = "block";
-                    } else {
-                      anexarDocument.style.display = "none";
-                    }
-                  }
-                </script> -->
+<!-- enviar laudo -->
+
+    <form method="post" enctype="multipart/form-data" action="controller.php">
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Tipo de diagnóstico</label><br>
+                <select class="form-control" name="tipo_diagnostico" id="tipo_diagnostico" onchange="anexarLaudo()">
+                    <option selected></option>
+                    <option value="SEM DIAGNÓSTICO">SEM DIAGNÓSTICO</option>
+                    <option value="FICHA DE AVALIAÇÃO">FICHA DE AVALIAÇÃO</option>
+                    <option value="laudo_tecnico">LAUDO TÉCNICO</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-3" id="anexar_documento" style="display: none;">
+            <div class="form-group">
+                <label for="laudo">Anexar laudo</label><br>
+                <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
+                <input type="file" class="btn" name="laudo">
+            </div>
+        </div>
+    </form>
+
+    <script>
+        function anexarLaudo() {
+            var select = document.getElementById("tipo_diagnostico");
+            var anexarDocument = document.getElementById("anexar_documento");
+            if (select.value === "laudo_tecnico") {
+                anexarDocument.style.display = "block";
+            } else {
+                anexarDocument.style.display = "none";
+            }
+        }
+    </script>
+
+<!-- fim do enviar laudo -->
+
                  <div class="col-sm-3">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Tipo de deficiência</label><br>
@@ -275,18 +284,18 @@ foreach ($campos as $value) {
                     <label for="outrosDeficiencia">Outros tipos de deficiência</label><br>
                     <input type="text" class="form-control" name="outrosDeficiencia" id="outrosDeficiencia">
                   </div>
-                  <!-- <script>
+                  <script>
                     function mostrarCampoOutros() {
                       var select = document.getElementById("tipo_deficiencia");
                       var outrosCampo = document.getElementById("outros_campo");
 
-                      if (select.value === "outros") {
+                      if (select.value === "Outros") {
                         outrosCampo.style.display = "block";
                       } else {
                         outrosCampo.style.display = "none";
                       }
                     }
-                  </script> -->
+                  </script>
                 </div>
 
                 <!--                 
