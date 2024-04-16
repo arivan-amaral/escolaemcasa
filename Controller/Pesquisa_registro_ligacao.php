@@ -172,11 +172,11 @@ if ($mesmo_periodo==1) {
                 if ($value['resposta_sme']!='') {
                      $resposta_sme=$value['resposta_sme'];
                     $result.="<BR><b class='text-danger'>RESPOSTA SME</b><BR>
-                    <P> $resposta_sme </p>
+                    <P> $resposta_sme </p><hr>
+                ";
                  }
 
-                <hr>
-                ";
+                
 
             }
 
