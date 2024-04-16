@@ -74,7 +74,6 @@ and busca_ativa.periodo_final BETWEEN '$data_sql_inicial' AND '$data_sql_final'
 GROUP BY  busca_ativa_id ORDER by registro_ligacao_busca_ativa.data DESC LIMIT 500");
 
 
-
 foreach ($res as $key => $value) {
 	$id=$value['id'];
     $nome_aluno=$value['nome_aluno'];
@@ -91,7 +90,8 @@ foreach ($res as $key => $value) {
     $periodo_final=$value['periodo_final'];
     $data_ligacao=$value['data_ligacao'];
     $exitosa=$value['exitosa'];
-
+    $exitosa=$value['exitosa'];
+ 
     if ($ficai==1) {
        $ficai="SIM";
     }else{
@@ -151,13 +151,16 @@ if ($mesmo_periodo==1) {
           <div class='modal-body'>
               <!-- /corpo -->
           ";
-          $res_lig=$conexao->query("SELECT funcionario.nome as quem_ligou , registro_ligacao_busca_ativa.quem_atendeu, registro_ligacao_busca_ativa.data as data_ligacao, registro_ligacao_busca_ativa.descricao_chamada FROM registro_ligacao_busca_ativa, funcionario WHERE registro_ligacao_busca_ativa.busca_ativa_id = $id AND registro_ligacao_busca_ativa.funcionario_id = funcionario.idfuncionario    "); 
+          $res_lig=$conexao->query("SELECT funcionario.nome as quem_ligou , registro_ligacao_busca_ativa.quem_atendeu, registro_ligacao_busca_ativa.data as data_ligacao, registro_ligacao_busca_ativa.descricao_chamada, registro_ligacao_busca_ativa.resposta_sme
+ FROM registro_ligacao_busca_ativa, funcionario WHERE registro_ligacao_busca_ativa.busca_ativa_id = $id AND registro_ligacao_busca_ativa.funcionario_id = funcionario.idfuncionario    "); 
             
+            $resposta_sme='';
             foreach ($res_lig as $key => $value) {
                 $quem_atendeu=$value['quem_atendeu'];
                 $quem_ligou=$value['quem_ligou'];
                 $data_ligacao=$value['data_ligacao'];
                 $descricao_chamada=$value['descricao_chamada'];
+              
 
                 $result.="ID: $id
                 <b> QUEM ATENDEU: $quem_atendeu</b><BR>
@@ -166,9 +169,11 @@ if ($mesmo_periodo==1) {
 
                 <hr>
                 ";               
-
-                $result.="<BR><b class='text-danger'>RESPOSTA SME</b><BR>
-                <P> ... </p>
+                if ($value['resposta_sme']!='') {
+                     $resposta_sme=$value['resposta_sme'];
+                    $result.="<BR><b class='text-danger'>RESPOSTA SME</b><BR>
+                    <P> $resposta_sme </p>
+                 }
 
                 <hr>
                 ";
@@ -203,6 +208,18 @@ if ($mesmo_periodo==1) {
 
           <div class='modal-body'>
               <!-- /corpo -->
+
+
+
+                         <div class='row'>
+                        <div class='col-sm-12'>
+                          <div class='form-group'>
+                            <label for='exampleInputEmail1'>Rresposta SME</label>
+                            <textarea rows='3' class='form-control' id='exampleInputEmail1' name='resposta_sme' required='></textarea>
+                          </div>
+                        </div>
+
+
           ";
       
 
