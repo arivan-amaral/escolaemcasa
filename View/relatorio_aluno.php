@@ -236,6 +236,13 @@ include_once "../Model/Conexao_".$usuariobd.".php";
           <label class="form-check-label" for="flexCheckDefault">
             Cpf Aluno
           </label>
+        </div>          
+
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="aluno.numero_nis" id="numero_nis">
+          <label class="form-check-label" for="flexCheckDefault">
+           NIS
+          </label>
         </div>        
 
         <div class="form-check">
