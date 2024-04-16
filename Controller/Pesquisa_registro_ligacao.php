@@ -215,7 +215,7 @@ if ($mesmo_periodo==1) {
                         <div class='col-sm-12'>
                           <div class='form-group'>
                             <label for='exampleInputEmail1'>Rresposta SME</label>
-                            <textarea rows='3' class='form-control' id='exampleInputEmail1' name='resposta_sme' required='></textarea>
+                            <textarea rows='3' class='form-control' id='exampleInputEmail1' name='resposta_sme'></textarea>
                           </div>
                         </div>
 
