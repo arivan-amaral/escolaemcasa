@@ -801,7 +801,7 @@ function pesquisa_relatorio_filtros(){
   if(numero_nis.checked) {
      if(contador == 0){
       texto+=numero_nis.value;
-      titulo+="NIS";
+      titulo+="-NIS";
       parametro+="-numero_nis";
       contador++;
      }else{
