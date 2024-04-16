@@ -782,6 +782,7 @@ function pesquisa_relatorio_filtros(){
 
   var cep_endereco = document.getElementById('cep_endereco');
   var raca_aluno = document.getElementById('raca_aluno');
+  var numero_nis = document.getElementById('numero_nis');
  
   if(idaluno.checked) {
      if(contador == 0){
@@ -795,7 +796,22 @@ function pesquisa_relatorio_filtros(){
       parametro+="-idaluno";
       contador++;
      }
+  } 
+
+  if(numero_nis.checked) {
+     if(contador == 0){
+      texto+=numero_nis.value;
+      titulo+="NIS";
+      parametro+="-numero_nis";
+      contador++;
+     }else{
+      texto+=","+numero_nis.value;
+      titulo+="-NIS";
+      parametro+="-numero_nis";
+      contador++;
+     }
   }
+
   if(nome.checked) {
     if(contador == 0){
     texto+=nome.value;
