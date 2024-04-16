@@ -125,10 +125,10 @@ $mesmo_periodo=verificar_periodo_ligacao_busca_ativa($data_ligacao, date('Y-m-d 
 if ($mesmo_periodo==1) {
  
      $result.="<a href='editar_cadastro_registro_ligacao.php?id=$id' class='btn btn-success' >Registrar nova chamada  </a> ";
-}
-if ($nivel_acesso_id>=3) {
- 
-     $result.="<a class='btn btn-default' data-toggle='modal' data-target='#modal-busca-ativa-resposta$id'>Resposta SME</a> ";
+    if ($nivel_acesso_id>=3) {
+     
+         $result.="<a class='btn btn-default' data-toggle='modal' data-target='#modal-busca-ativa-resposta$id'>Resposta SME</a> ";
+    }
 }
 
 
