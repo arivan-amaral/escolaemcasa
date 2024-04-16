@@ -128,7 +128,7 @@ if ($mesmo_periodo==1) {
 }
 if ($nivel_acesso_id>=3) {
  
-     $result.="<a class='btn btn-default' onclick='alert(Em breve)' >Resposta SME</a> ";
+     $result.="<a class='btn btn-default' >Resposta SME</a> ";
 }
 
 
