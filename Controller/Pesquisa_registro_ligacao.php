@@ -13,6 +13,7 @@ try {
 	
 $result="";
 $ano_letivo=$_SESSION['ano_letivo'];
+$nivel_acesso_id=$_SESSION['nivel_acesso_id'];
 
  $data_sql_inicial=$ano_letivo."-01-01";
  $data_sql_final=$ano_letivo."-12-31";
@@ -125,6 +126,10 @@ if ($mesmo_periodo==1) {
  
      $result.="<a href='editar_cadastro_registro_ligacao.php?id=$id' class='btn btn-success' >Registrar nova chamada  </a> ";
 }
+if ($nivel_acesso_id>=3) {
+ 
+     $result.="<a class='btn btn-default' >Resposta SME</a> ";
+}
 
 
  $result.="
@@ -158,6 +163,12 @@ if ($mesmo_periodo==1) {
                 <b> QUEM ATENDEU: $quem_atendeu</b><BR>
                 <b> QUEM LIGOU: $quem_ligou</b> Data da ligação: $data_ligacao<BR>
                 <p>$descricao_chamada </p>
+
+                <hr>
+                ";               
+
+                $result.="<BR><b class='text-danger'>RESPOSTA SME</b><BR>
+                <P> ... </p>
 
                 <hr>
                 ";
