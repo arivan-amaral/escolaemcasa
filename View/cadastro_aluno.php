@@ -50,7 +50,7 @@ foreach ($campos as $value) {
 <div class="content-wrapper">
   <!-- ####################### CORPO ################################################# -->
   <!-- <H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR> -->
-  <form name="form1" id="form1">
+<form name="form1" id="form1" enctype="multipart/form-data">
 
 
     <div class="card card-primary card-tabs">
