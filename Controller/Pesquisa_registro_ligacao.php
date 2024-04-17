@@ -215,13 +215,12 @@ if ($mesmo_periodo==1) {
                          <div class='row'>
                         <div class='col-sm-12'>
                           <div class='form-group'>
-                            <label for='respostasme$id_regist_lig'>Rresposta SME</label>
+                            <label for='respostasme$id_regist_lig'>Rresposta SME (#$id_regist_lig)</label>
                             <textarea rows='3' class='form-control' id='respostasme$id_regist_lig' name='resposta_sme'></textarea>
                           </div>
                         </div>
 
-                        <a class='btn btn-primary' onclick='enviar_resposta_sme($id_regist_lig);'> Enviar </a>
-
+                      
           ";
       
 
@@ -229,6 +228,8 @@ if ($mesmo_periodo==1) {
         <!-- /corpo -->
         </div>
       <button type='button' class='btn btn-default' data-dismiss='modal'><font style='vertical-align: inherit;'><font style='vertical-align: inherit;'>Fechar</font></font></button>
+        <a class='btn btn-primary' onclick='enviar_resposta_sme($id_regist_lig);'> Enviar </a>
+
       </div>
       <!-- /.modal-content -->
     </div>
