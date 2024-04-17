@@ -79,6 +79,7 @@ try {
             $necessidade_especial=$_POST['necessidade_especial'];
             $apoio_pedagogico=$_POST['apoio_pedagogico'];
             $tipo_diagnostico=$_POST['tipo_diagnostico'];
+            $outros_campo=$_POST['outros_campo'];
             $cpf_filiacao1=converte_telefone($_POST['cpf_filiacao1']);
             $cpf_filiacao2=converte_telefone($_POST['cpf_filiacao2']);
             
@@ -147,7 +148,15 @@ try {
               }
              $quantidade_vaga_restante=$quantidade_vaga_total-$quantidade_vaga_restante;
             ###########################################################################################
-        if ($quantidade_vagas_restante>0) { //buscando novamente antes de inserir
+            
+
+            if(isset($_FILES['laudo']) && $_FILES['laudo']['size'] > 0) {
+                echo saveFile($_FILES['laudo']);
+            }
+
+            ###########################################################################################
+
+            if ($quantidade_vagas_restante>0) { //buscando novamente antes de inserir
 
             cadastro_aluno($conexao,$nome,
                 $sexo,
@@ -187,6 +196,7 @@ try {
                 $necessidade_especial,
                 $apoio_pedagogico,
                 $tipo_diagnostico,
+                $outros_campo,
                 $cpf_filiacao1,
                 $cpf_filiacao2,
                 $endereco,

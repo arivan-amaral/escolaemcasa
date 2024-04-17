@@ -826,6 +826,22 @@ function cadastrar_ecidade_movimentacao_escolar($conexao,$matricula_codigo,$alun
         $sql->bindParam("matriculamov_descr",$matriculamov_descr);
     $sql->execute();
 }
+  function saveFile($file) {
+    $fileType = $file['type'];
+    if ($fileType !== 'application/pdf') {
+        return "Erro: Apenas arquivos PDF são permitidos.";
+    }
+
+    $uploadDirectory = 'laudo/';
+
+    $fileName = uniqid() . '-' . $file['name'];
+
+    if (move_uploaded_file($file['tmp_name'], $uploadDirectory . $fileName)) {
+        return "<br>Arquivo $fileName enviado com sucesso<br>";
+    } else {
+        return "Erro ao enviar o arquivo.";
+    }
+  }
 
 function cadastro_aluno($conexao,$nome,
     $sexo,
@@ -865,6 +881,7 @@ function cadastro_aluno($conexao,$nome,
 
      $necessidade_especial,
  $apoio_pedagogico,
+ $outros_campo,
  $tipo_diagnostico,
  $cpf_filiacao1,
  $cpf_filiacao2,
@@ -894,6 +911,7 @@ function cadastro_aluno($conexao,$nome,
     $sql=$conexao->prepare("INSERT INTO aluno(  nome, sexo, email, filiacao1, filiacao2,  senha, whatsapp, whatsapp_responsavel, data_nascimento, numero_nis, codigo_inep, bolsa_familia, tipo_responsavel, raca_aluno, estado_civil_aluno, tipo_sanguinio_aluno, profissao, situacao_documentacao, tipo_certidao, numero_termo, folha, uf_cartorio, municipio_cartorio, nome_cartorio, numero_indentidade, uf_identidade, orgao_emissor_indentidade, data_expedicao, numero_cnh, categoria_cnh, cpf, cartao_sus, observacao, 
 necessidade_especial,
  apoio_pedagogico,
+ outros_campo,
  tipo_diagnostico,
  cpf_filiacao1,
  cpf_filiacao2,
@@ -956,6 +974,7 @@ necessidade_especial,
 
     :necessidade_especial,
     :apoio_pedagogico,
+    :outros_campo,
     :tipo_diagnostico,
     :cpf_filiacao1,
     :cpf_filiacao2,
@@ -1021,6 +1040,7 @@ necessidade_especial,
 
 $sql->bindParam("necessidade_especial",$necessidade_especial);
  $sql->bindParam("apoio_pedagogico",$apoio_pedagogico);
+ $sql->bindParam("outros_campo",$outros_campo);
  $sql->bindParam("tipo_diagnostico",$tipo_diagnostico);
  $sql->bindParam("cpf_filiacao1",$cpf_filiacao1);
  $sql->bindParam("cpf_filiacao2",$cpf_filiacao2);
@@ -1091,6 +1111,7 @@ function cadastro_aluno_migracao($conexao,$idaluno,$nome,
 
      $necessidade_especial,
  $apoio_pedagogico,
+ $outros_campo,
  $tipo_diagnostico,
  $cpf_filiacao1,
  $cpf_filiacao2,
@@ -1121,6 +1142,7 @@ function cadastro_aluno_migracao($conexao,$idaluno,$nome,
     $sql=$conexao->prepare("INSERT INTO aluno(idaluno,  nome, sexo, email, filiacao1, filiacao2,  senha, whatsapp, whatsapp_responsavel, data_nascimento, numero_nis, codigo_inep, bolsa_familia, tipo_responsavel, raca_aluno, estado_civil_aluno, tipo_sanguinio_aluno, profissao, situacao_documentacao, tipo_certidao, numero_termo, folha, uf_cartorio, municipio_cartorio, nome_cartorio, numero_indentidade, uf_identidade, orgao_emissor_indentidade, data_expedicao, numero_cnh, categoria_cnh, cpf, cartao_sus, observacao, 
 necessidade_especial,
  apoio_pedagogico,
+ outros_campo,
  tipo_diagnostico,
  cpf_filiacao1,
  cpf_filiacao2,
@@ -1183,6 +1205,7 @@ necessidade_especial,
 
     :necessidade_especial,
     :apoio_pedagogico,
+    :outros_campo,
     :tipo_diagnostico,
     :cpf_filiacao1,
     :cpf_filiacao2,
@@ -1248,6 +1271,7 @@ necessidade_especial,
 
 $sql->bindParam("necessidade_especial",$necessidade_especial);
  $sql->bindParam("apoio_pedagogico",$apoio_pedagogico);
+ $sql->bindParam("outros_campo",$outros_campo);
  $sql->bindParam("tipo_diagnostico",$tipo_diagnostico);
  $sql->bindParam("cpf_filiacao1",$cpf_filiacao1);
  $sql->bindParam("cpf_filiacao2",$cpf_filiacao2);
@@ -1315,6 +1339,7 @@ function editar_dados_aluno($conexao,$nome,
 
  $necessidade_especial,
  $apoio_pedagogico,
+ $outros_campo,
  $tipo_diagnostico,
  $cpf_filiacao1,
  $cpf_filiacao2,
@@ -1346,6 +1371,7 @@ function editar_dados_aluno($conexao,$nome,
         nome= :nome, sexo=:sexo, email=:email, filiacao1=:filiacao1, filiacao2=:filiacao2, whatsapp = :whatsapp, whatsapp_responsavel=:whatsapp_responsavel, data_nascimento=:data_nascimento, numero_nis= :numero_nis, codigo_inep=:codigo_inep, bolsa_familia=:bolsa_familia, tipo_responsavel=:tipo_responsavel, raca_aluno= :raca_aluno, estado_civil_aluno=:estado_civil_aluno, tipo_sanguinio_aluno=:tipo_sanguinio_aluno, profissao= :profissao, situacao_documentacao=:situacao_documentacao, tipo_certidao=:tipo_certidao, numero_termo=:numero_termo, folha=:folha, uf_cartorio=:uf_cartorio, municipio_cartorio=:municipio_cartorio, nome_cartorio=:nome_cartorio, numero_indentidade=:numero_indentidade, uf_identidade=:uf_identidade, orgao_emissor_indentidade=:orgao_emissor_indentidade, data_expedicao=:data_expedicao, numero_cnh=:numero_cnh, categoria_cnh=:categoria_cnh, cpf=:cpf, cartao_sus=:cartao_sus, observacao=:observacao, 
 necessidade_especial=:necessidade_especial,
  apoio_pedagogico=:apoio_pedagogico,
+ outros_campo=:outros_campo,
  tipo_diagnostico=:tipo_diagnostico,
  cpf_filiacao1=:cpf_filiacao1,
  cpf_filiacao2=:cpf_filiacao2,
@@ -1412,6 +1438,7 @@ necessidade_especial=:necessidade_especial,
 
 $sql->bindParam("necessidade_especial",$necessidade_especial);
  $sql->bindParam("apoio_pedagogico",$apoio_pedagogico);
+ $sql->bindParam("outros_campo",$outros_campo);
  $sql->bindParam("tipo_diagnostico",$tipo_diagnostico);
  $sql->bindParam("cpf_filiacao1",$cpf_filiacao1);
  $sql->bindParam("cpf_filiacao2",$cpf_filiacao2);
