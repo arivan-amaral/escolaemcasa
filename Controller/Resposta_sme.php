@@ -12,6 +12,10 @@ try {
     
    $mensagem=$_GET['mensagem'];
    $id=$_GET['id'];
+   $conexao->exec("UPDATE registro_ligacao_busca_ativa set resposta_sme='$mensagem', funcionario_id_resposta=$usuariobd where  id=$id ");
+
+
+   echo "certo";
 
     
 } catch (Exception $exc) {

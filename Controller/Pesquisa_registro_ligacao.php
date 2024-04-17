@@ -215,7 +215,7 @@ if ($mesmo_periodo==1) {
                          <div class='row'>
                         <div class='col-sm-12'>
                           <div class='form-group'>
-                            <label for='respostasme$id_regist_lig'>Rresposta SME (#$id_regist_lig)</label>
+                            <label for='respostasme$id_regist_lig'>Rresposta SME (#$id)</label>
                             <textarea rows='3' class='form-control' id='respostasme$id_regist_lig' name='resposta_sme'></textarea>
                           </div>
                         </div>
