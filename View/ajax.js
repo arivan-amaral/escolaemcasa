@@ -1085,16 +1085,16 @@ function enviar_resposta_sme(id){
     
        if (xmlreq.readyState == 4) {
            if (xmlreq.status == 200) {
-                 alert('Funcionalidade em desenvolvimento');
+                 // alert('Funcionalidade em desenvolvimento');
                  
-            //     Swal.fire({
-            //   position: 'center',
-            //   icon: 'success',
-            //   title: 'Ação Concluída',
-            //      text: 'Cadastro Realizado com sucesso',
-            //   showConfirmButton: false,
-            //   timer: 1500
-            // });
+                Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Ação Concluída',
+                 text: 'Cadastro Realizado com sucesso',
+              showConfirmButton: false,
+              timer: 1500
+            });
 
            }else{
                  alert('Erro desconhecido, verifique sua conexão com a internet');
