@@ -216,7 +216,7 @@ foreach ($campos as $value) {
 
 <!-- enviar laudo -->
 
-    <form method="post" enctype="multipart/form-data" action="controller.php">
+    <form name="form1" id="form1" enctype="multipart/form-data">
         <div class="col-sm-3">
             <div class="form-group">
                 <label for="exampleInputEmail1">Tipo de diagnóstico</label><br>
