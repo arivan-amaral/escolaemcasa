@@ -151,11 +151,12 @@ if ($mesmo_periodo==1) {
           <div class='modal-body'>
               <!-- /corpo -->
           ";
-          $res_lig=$conexao->query("SELECT funcionario.nome as quem_ligou , registro_ligacao_busca_ativa.quem_atendeu, registro_ligacao_busca_ativa.data as data_ligacao, registro_ligacao_busca_ativa.descricao_chamada, registro_ligacao_busca_ativa.resposta_sme
+          $res_lig=$conexao->query("SELECT registro_ligacao_busca_ativa.id as 'id_regist_lig', funcionario.nome as quem_ligou , registro_ligacao_busca_ativa.quem_atendeu, registro_ligacao_busca_ativa.data as data_ligacao, registro_ligacao_busca_ativa.descricao_chamada, registro_ligacao_busca_ativa.resposta_sme
  FROM registro_ligacao_busca_ativa, funcionario WHERE registro_ligacao_busca_ativa.busca_ativa_id = $id AND registro_ligacao_busca_ativa.funcionario_id = funcionario.idfuncionario    "); 
             
             $resposta_sme='';
             foreach ($res_lig as $key => $value) {
+                $id_regist_lig=$value['id_regist_lig'];
                 $quem_atendeu=$value['quem_atendeu'];
                 $quem_ligou=$value['quem_ligou'];
                 $data_ligacao=$value['data_ligacao'];
@@ -214,11 +215,12 @@ if ($mesmo_periodo==1) {
                          <div class='row'>
                         <div class='col-sm-12'>
                           <div class='form-group'>
-                            <label for='exampleInputEmail1'>Rresposta SME</label>
-                            <textarea rows='3' class='form-control' id='exampleInputEmail1' name='resposta_sme'></textarea>
+                            <label for='respostasme$id_regist_lig'>Rresposta SME</label>
+                            <textarea rows='3' class='form-control' id='respostasme$id_regist_lig' name='resposta_sme'></textarea>
                           </div>
                         </div>
 
+                        <a class='btn btn-primary' onclick='enviar_resposta_sme($id_regist_lig);'> Enviar </a>
 
           ";
       

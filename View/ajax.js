@@ -1074,6 +1074,38 @@ function cadastrar_resposta_mensagem(id_mensagem,id_funcionario,mensagem){
       };
    xmlreq.send(null);
 }
+function enviar_resposta_sme(id){
+
+    var mensagem = document.getElementById('respostasme'+id).value;
+
+      var xmlreq = CriaRequest();
+      xmlreq.open("GET", "../Controller/Resposta_sme.php?mensagem="+mensagem+"&id="+id, true);
+
+      xmlreq.onreadystatechange = function(){
+    
+       if (xmlreq.readyState == 4) {
+           if (xmlreq.status == 200) {
+                 alert('Funcionalidade em desenvolvimento');
+                 
+            //     Swal.fire({
+            //   position: 'center',
+            //   icon: 'success',
+            //   title: 'Ação Concluída',
+            //      text: 'Cadastro Realizado com sucesso',
+            //   showConfirmButton: false,
+            //   timer: 1500
+            // });
+
+           }else{
+                 alert('Erro desconhecido, verifique sua conexão com a internet');
+
+              result.innerHTML ="Erro ao receber mensagens";                 
+           }
+       }
+      };
+   xmlreq.send(null);
+}
+
 function cadastrar_mensagem(id_chamada,enviado){
 
     var mensagem = document.getElementById('mensagem').value;
