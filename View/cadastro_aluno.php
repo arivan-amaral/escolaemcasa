@@ -649,11 +649,6 @@ foreach ($campos as $value) {
                       </select>
                     </div>
                   </div>
-
-
-
-                </div>
-                <div class="row">
                   <div class="col-sm-4">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Matrícula da certidão </label>
@@ -682,9 +677,7 @@ foreach ($campos as $value) {
                       <input type="text" class="form-control" id="exampleInputEmail1" name="folha" required="">
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-4">
+                  <div class="col-sm-3">
                     <div class="form-group">
                       <label for="exampleInputEmail1">UF cartorio</label><br>
                       <select class="form-control" required name="uf_cartorio" onchange="pesquisar_municipio(this.value,'uf_municipio_cartorio');">
@@ -701,11 +694,10 @@ foreach ($campos as $value) {
                     </div>
                   </div>
 
-                  <div class="col-sm-4" id="uf_municipio_cartorio">
-                    <!-- municipio aqui -->
-                  </div>
+                  <!-- <div class="col-sm-4" id="uf_municipio_cartorio">
+                  </div> -->
 
-                  <div class="col-sm-4">
+                  <div class="col-sm-3">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Cartório</label><br>
                       <input name="cartorio" class="form-control" required>
@@ -764,10 +756,6 @@ foreach ($campos as $value) {
                       <input type="text" class="form-control" id="exampleInputEmail1" name="categoria_cnh">
                     </div>
                   </div>
-
-
-                </div>
-                <div class="row">
                   <div class="col-sm-3">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Cpf</label>
