@@ -151,30 +151,42 @@ foreach ($campos as $value) {
                     <input type="text" class="form-control" id="nome_identificacao_social" name="nome_identificacao_social" required="" value="<?php echo $nome_aluno; ?>">
                   </div>
                 </div>
-                <div class="col-sm-3">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1"><b class="text-danger">Nascimento *</b></label>
-                    <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" required="" onchange="idade_aluno();" value="<?php echo $data_nascimento; ?>">
+                
+                <div class="row">
+                  <div class="col-sm-3">
+                      <div class="form-group">
+                          <label for="data_nascimento"><b class="text-danger">Nascimento *</b></label>
+                          <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" required="" onchange="idade_aluno();" value="<?php echo $data_nascimento; ?>">
+                      </div>
                   </div>
-                </div>
 
-                <div class="col-sm-3">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Idade</label>
-                    <input type="text" class="form-control" id="idade" name="idade" required="" disabled>
+                  <div class="col-sm-2">
+                      <div class="form-group">
+                          <label for="idade">Idade</label>
+                          <input type="text" class="form-control" id="idade" name="idade" required="" disabled>
+                      </div>
                   </div>
-                </div>
-              </div>
 
+                  <div class="col-sm-3">
+                      <div class="form-group">
+                          <label for="tamanho_uniforme">Tamanho de Uniforme</label>
+                          <input type="text" class="form-control" id="tamanho_uniforme" name="tamanho_uniforme">
+                      </div>
+                  </div>
 
-
-              <div class="row">
-                <div class="col-sm-4">
+                  <div class="col-sm-4">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Email </label>
                     <input type="text" class="form-control" id="exampleInputEmail1" name="email">
                   </div>
                 </div>
+              </div>
+
+            </div>
+
+
+
+              <div class="row">
                 <div class="col-sm-4">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Whatsapp aluno</label>
@@ -192,7 +204,7 @@ foreach ($campos as $value) {
               <div class="row">
                 <div class="col-sm-2">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Necessidade especial</label><br>
+                    <label for="exampleInputEmail1">Nec especial</label><br>
                     <select class="form-control" name="necessidade_especial">
                       <option value='N'>NÃO</option>
                       <option value='S'>SIM</option>
@@ -344,21 +356,7 @@ foreach ($campos as $value) {
 
                 <div class="row">
 
-                  <div class="col-sm-2">
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Tipo responsável</label><br>
-                      <select class="form-control" required name="tipo_responsavel">
-                        <?php echo " <option value='$tipo_responsavel' >$tipo_responsavel</option>"; ?>"
-                        <option value="MÃE">MÃE</option>
-                        <option value="PAI">PAI</option>
-                        <option value="OUTRO">OUTRO</option>
-
-                      </select>
-                    </div>
-                  </div>
-
-
-                  <div class="col-sm-2">
+                  <div class="col-sm-3">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Raça do aluno</label><br>
                       <select class="form-control" name="raca_aluno" required>
@@ -371,9 +369,9 @@ foreach ($campos as $value) {
                       </select>
                     </div>
                   </div>
-                  <div class="col-sm-2">
+                  <div class="col-sm-3">
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Estado Civil do aluno</label><br>
+                      <label for="exampleInputEmail1">Estado Civil</label><br>
                       <select class="form-control" name="estado_civil_aluno" required>
 
                         <option value="Solteiro">Solteiro</option>
@@ -386,7 +384,7 @@ foreach ($campos as $value) {
                   </div>
                   <div class="col-sm-3">
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Tipo Sanguíneo do aluno</label><br>
+                      <label for="exampleInputEmail1">Tipo Sanguíneo</label><br>
                       <select class="form-control" required name="tipo_sanguinio_aluno">
                         <option selected></option>
 
@@ -404,7 +402,7 @@ foreach ($campos as $value) {
                   </div>
 
 
-                  <div class="col-sm-2">
+                  <div class="col-sm-3">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Sexo do aluno</label><br>
                       <select class="form-control" required id='sexo' name="sexo">
@@ -426,13 +424,25 @@ foreach ($campos as $value) {
                 </div>
 
                 <div class="row">
-                  <div class="col-sm-5">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Tipo responsável</label><br>
+                      <select class="form-control" required name="tipo_responsavel">
+                        <?php echo " <option value='$tipo_responsavel' >$tipo_responsavel</option>"; ?>"
+                        <option value="MÃE">MÃE</option>
+                        <option value="PAI">PAI</option>
+                        <option value="OUTRO">OUTRO</option>
+
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
                     <div class="form-group">
                       <label for="exampleInputEmail1"><b class="text-danger">Nome do responsável *</b></label>
                       <input type="text" class="form-control" id="exampleInputEmail1" name="nome_responsavel" required="" value="<?php echo $nome_responsavel; ?>">
                     </div>
                   </div>
-                  <div class="col-sm-5">
+                  <div class="col-sm-4">
                     <div class="form-group">
                       <label for="exampleInputEmail1">CPF do responsável </label>
                       <input type="text" id="RegraValida" name="cpf_responsavel" onkeyup="javascript: fMasc( this, mCPF ); ValidaCPF();" class="form-control" maxlength="14" required value="<?php echo $cpf_responsavel; ?>">
@@ -453,27 +463,20 @@ foreach ($campos as $value) {
                   <h5>Filiação 1 </h5>
                 </label> -->
                 <div class="row">
-                  <div class="col-sm-6">
+                  <div class="col-sm-5">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Nome filiação 1 </label>
                       <input type="text" class="form-control" id="exampleInputEmail1" name="filiacao1" required="" value="<?php echo $nome_mae; ?>">
                     </div>
                   </div>
-                  <div class="col-sm-6">
+                  <div class="col-sm-4">
                     <div class="form-group">
                       <label for="exampleInputEmail1">CPF filiação 1 </label>
                       <input type="text" id="RegraValida" value="" name="cpf_filiacao1" onkeyup="javascript: fMasc( this, mCPF ); ValidaCPF();" class="form-control" maxlength="14" required>
                       <span class="text-success" id="status_cpf"></span>
                     </div>
                   </div>
-          
-                </div>
-
-           <!--      <label for="exampleInputEmail1">
-                  <h5>Filiação 2 </h5>
-                </label> -->
-                <div class="row">
-                  <div class="col-sm-4">
+                  <div class="col-sm-5">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Nome filiação 2 </label>
                       <input type="text" class="form-control" id="exampleInputEmail1" name="filiacao2" required="" value="<?php echo $nome_pai; ?>">
@@ -486,12 +489,6 @@ foreach ($campos as $value) {
 
                     </div>
                   </div>
-                  <!-- <div class="col-sm-4"><br><br>
-                        <div class="form-check form-switch">
-                          <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                          <label class="form-check-label" for="flexSwitchCheckDefault">Responsável</label>
-                        </div>
-                      </div> -->
                 </div>
 
               </div>
