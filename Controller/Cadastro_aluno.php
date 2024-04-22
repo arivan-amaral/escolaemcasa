@@ -74,6 +74,7 @@ try {
             $numero_cnh=converte_telefone($_POST['numero_cnh']);
             $cartao_sus=converte_telefone($_POST['cartao_sus']);
             $cpf=converte_telefone($_POST['cpf']);
+            $tamanho_uniforme=$_POST['tamanho_uniforme'];
 
 
             $necessidade_especial=$_POST['necessidade_especial'];
@@ -194,6 +195,7 @@ try {
                 $observacao,
 
                 $necessidade_especial,
+                $tamanho_uniforme,
                 $apoio_pedagogico,
                 $tipo_diagnostico,
                 $outros_campo,

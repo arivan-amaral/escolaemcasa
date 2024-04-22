@@ -904,6 +904,7 @@ function cadastro_aluno($conexao,$nome,
  $uf_municipio_cartorio,
  $cartorio,
  $nome_responsavel,
+ $tamanho_uniforme,
  $cpf_responsavel,
  $nome_identificacao_social
 ) {
@@ -934,6 +935,7 @@ necessidade_especial,
  uf_municipio_cartorio,
  cartorio,
  nome_responsavel,
+ tamanho_uniforme,
  cpf_responsavel,
  nome_identificacao_social
  ) VALUES (
@@ -997,6 +999,7 @@ necessidade_especial,
     :uf_municipio_cartorio,
     :cartorio,
     :nome_responsavel,
+    :tamanho_uniforme,
     :cpf_responsavel,
     :nome_identificacao_social
 )");
@@ -1063,6 +1066,7 @@ $sql->bindParam("necessidade_especial",$necessidade_especial);
  $sql->bindParam("uf_municipio_cartorio",$uf_municipio_cartorio);
  $sql->bindParam("cartorio", $cartorio);
  $sql->bindParam("nome_responsavel", $nome_responsavel);
+ $sql->bindParam("tamanho_uniforme", $tamanho_uniforme);
  $sql->bindParam("cpf_responsavel", $cpf_responsavel);
  $sql->bindParam("nome_identificacao_social", $nome_identificacao_social);
  $sql->execute();
@@ -1134,6 +1138,7 @@ function cadastro_aluno_migracao($conexao,$idaluno,$nome,
  $uf_municipio_cartorio,
  $cartorio,
  $nome_responsavel,
+ $tamanho_uniforme,
  $cpf_responsavel
  
 
@@ -1165,6 +1170,7 @@ necessidade_especial,
  uf_municipio_cartorio,
  cartorio,
  nome_responsavel,
+ tamanho_uniforme,
  cpf_responsavel
  ) VALUES (
     :idaluno,
@@ -1228,6 +1234,7 @@ necessidade_especial,
     :uf_municipio_cartorio,
     :cartorio,
     :nome_responsavel,
+    :tamanho_uniforme,
     :cpf_responsavel
 )");
 
@@ -1294,6 +1301,7 @@ $sql->bindParam("necessidade_especial",$necessidade_especial);
  $sql->bindParam("uf_municipio_cartorio",$uf_municipio_cartorio);
  $sql->bindParam("cartorio", $cartorio);
  $sql->bindParam("nome_responsavel", $nome_responsavel);
+ $sql->bindParam("tamanho_uniforme", $tamanho_uniforme);
  $sql->bindParam("cpf_responsavel", $cpf_responsavel);
  $sql->execute();
 }
@@ -1364,6 +1372,7 @@ function editar_dados_aluno($conexao,$nome,
  $idaluno,
 
  $nome_responsavel,
+ $tamanho_uniforme,
  $cpf_responsavel
 ) {
 
@@ -1394,6 +1403,7 @@ necessidade_especial=:necessidade_especial,
  uf_municipio_cartorio=:uf_municipio_cartorio,
  cartorio=:cartorio,
  nome_responsavel= :nome_responsavel,
+ tamanho_uniforme= :tamanho_uniforme,
  cpf_responsavel = :cpf_responsavel
 
  WHERE idaluno=:idaluno
