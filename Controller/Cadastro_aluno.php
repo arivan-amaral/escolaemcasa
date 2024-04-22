@@ -195,7 +195,6 @@ try {
                 $observacao,
 
                 $necessidade_especial,
-                $tamanho_uniforme,
                 $apoio_pedagogico,
                 $tipo_diagnostico,
      
@@ -221,7 +220,8 @@ try {
                 $cartorio,
                 $nome_responsavel,
                 $cpf_responsavel,
-                $nome_identificacao_social
+                $nome_identificacao_social,
+                $tamanho_uniforme
 
             );
 

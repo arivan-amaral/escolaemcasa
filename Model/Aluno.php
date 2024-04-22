@@ -904,9 +904,9 @@ function cadastro_aluno($conexao,$nome,
  $uf_municipio_cartorio,
  $cartorio,
  $nome_responsavel,
- $tamanho_uniforme,
  $cpf_responsavel,
- $nome_identificacao_social
+ $nome_identificacao_social,
+ $tamanho_uniforme
 ) {
 
     $sql=$conexao->prepare("INSERT INTO aluno(  nome, sexo, email, filiacao1, filiacao2,  senha, whatsapp, whatsapp_responsavel, data_nascimento, numero_nis, codigo_inep, bolsa_familia, tipo_responsavel, raca_aluno, estado_civil_aluno, tipo_sanguinio_aluno, profissao, situacao_documentacao, tipo_certidao, numero_termo, folha, uf_cartorio, municipio_cartorio, nome_cartorio, numero_indentidade, uf_identidade, orgao_emissor_indentidade, data_expedicao, numero_cnh, categoria_cnh, cpf, cartao_sus, observacao, 
