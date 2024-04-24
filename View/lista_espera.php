@@ -232,6 +232,20 @@ include_once "../Model/Conexao_".$usuariobd.".php";
                           </div>
                         </div> -->
                     </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label for="pesquisa" class="form-label">Pesquisar aluno</label>
+                            <div class="input-group mb-3">
+                                <input type="search" class="form-control" id="pesquisa" placeholder="Digite o nome do aluno">
+                                <button class="btn btn-primary" type="button" onclick="pesquisa_aluno();">Pesquisar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
                     <br>
                     <div class="row">
                       <div class="table-responsive">
