@@ -293,9 +293,12 @@ foreach ($result_conteudo as $key => $value) {
       $abreviacao_displina_da_data[$data_conte_bd][$disciplina_id]=$disciplinas_regente_abreviacao[$disciplina_id];
    }
 
-
 if ($_SESSION['nivel_acesso_id']>=100) {
-  echo "r=".$value['descricao'];
+  if (!array_key_exists($disciplina_id,$abreviacao_displina_da_data  )) {
+     // $abreviacao_displina_da_data[$data_conte_bd][$disciplina_id]=$disciplinas_regente_abreviacao[$disciplina_id];
+    echo "r=".$value['descricao'];
+  }
+
 }
 
 }
