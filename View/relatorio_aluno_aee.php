@@ -151,7 +151,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
    
    <br>
     <div class="row">
-      <div class="col-sm-3" style="margin-left: 20px;">
+      <div class="col-sm-3" style="margin-left: 20px; display: none;">
           <div class="form-check">
           <input class="form-check-input" type="checkbox" value="aluno.idaluno" id="idaluno">
           <label class="form-check-label" for="flexCheckDefault">
