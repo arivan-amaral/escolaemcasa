@@ -2324,40 +2324,36 @@ function pesquisa_aluno(){
      xmlreq.send(null);
 }
 
-
-
-
-
 function pesquisa_aluno_paginacao(){
-    var result=document.getElementById('tabela_pesquisa');
-    var paginacao=document.getElementById('paginacao');
-    var escola = document.getElementById('escola').value;
-    var pesquisa = document.getElementById('pesquisa').value;
-    
-    var valor_paginacao=document.getElementById('valor_paginacao');
+  var result=document.getElementById('tabela_pesquisa');
+  var paginacao=document.getElementById('paginacao');
+  var escola = document.getElementById('escola').value;
+  var pesquisa = document.getElementById('pesquisa').value;
   
-        var xmlreq = CriaRequest();
-        paginacao.innerHTML="<center><img src='imagens/carregando.gif'></center>";
+  var valor_paginacao=document.getElementById('valor_paginacao');
+  valor_paginacao.value = 30;
 
-        xmlreq.open("GET", "../Controller/Pesquisar_aluno.php?pesquisa="+pesquisa+"&escola="+escola+"&valor_paginacao="+valor_paginacao.value, true);
-    valor_paginacao.value=parseInt(valor_paginacao.value)+25;
+  var xmlreq = CriaRequest();
+  paginacao.innerHTML="<center><img src='imagens/carregando.gif'></center>";
 
-        xmlreq.onreadystatechange = function(){
-      
-         if (xmlreq.readyState == 4) {
-             if (xmlreq.status == 200) {
-              result.innerHTML += xmlreq.responseText;
-                paginacao.innerHTML ="<button onclick='pesquisa_aluno_paginacao();' class='btn btn-block btn-default btn-sm'>Ver mais resultados</button> ";
-                
-             }else{
-                   alert('Erro desconhecido, verifique sua conexão com a internet');
-
-                //result.innerHTML ="Erro ao receber mensagens";                 
-             }
-         }
-     };
-     xmlreq.send(null);
+  xmlreq.open("GET", "../Controller/Pesquisar_aluno.php?pesquisa="+pesquisa+"&escola="+escola+"&valor_paginacao="+valor_paginacao.value, true);
+  xmlreq.onreadystatechange = function(){
+      if (xmlreq.readyState == 4) {
+          if (xmlreq.status == 200) {
+              if (xmlreq.responseText === '') {
+                  alert("Não há mais resultados disponíveis.");
+              } else {
+                  result.innerHTML = xmlreq.responseText;
+                  paginacao.innerHTML = "<button onclick='pesquisa_aluno_paginacao();' class='btn btn-block btn-default btn-sm'>Ver mais resultados</button> ";
+              }
+          } else {
+              alert('Erro desconhecido, verifique sua conexão com a internet');
+          }
+      }
+  };
+  xmlreq.send(null);
 }
+
 
 function aprovar_concelho(idaluno){
     aguarde_acao(3000);
