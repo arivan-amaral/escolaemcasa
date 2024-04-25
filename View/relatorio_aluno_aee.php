@@ -364,7 +364,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
 
         <div class="col-sm-10">
           <div class="form-group">
-          <a style="margin-top: 30PX;" class="btn btn-block btn-primary" onclick="pesquisa_relatorio_filtros()">Pesquisar</a>
+          <a style="margin-top: 30PX;" class="btn btn-block btn-primary" onclick="pesquisa_relatorio_filtros_aee()">Pesquisar</a>
           </div>
         </div>
       </div>
