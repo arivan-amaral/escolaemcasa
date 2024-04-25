@@ -150,8 +150,8 @@ include_once "../Model/Conexao_".$usuariobd.".php";
  
    
    <br>
-    <div class="row">
-      <div class="col-sm-3" style="margin-left: 20px;">
+    <div class="row" hidden>
+      <div class="col-sm-3" style="margin-left: 20px;display: none;" >
           <div class="form-check">
           <input class="form-check-input" type="checkbox" value="aluno.idaluno" id="idaluno">
           <label class="form-check-label" for="flexCheckDefault">
@@ -159,7 +159,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
           </label>
         </div>
          <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="aluno.nome" id="nome">
+          <input class="form-check-input" type="checkbox" value="aluno.nome" id="nome" checked>
           <label class="form-check-label" for="flexCheckDefault">
             Nome
           </label>
@@ -183,7 +183,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
           </label>
         </div>
          <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="aluno.whatsapp" id="whatsapp">
+          <input class="form-check-input" type="checkbox" value="aluno.whatsapp" id="whatsapp" checked>
           <label class="form-check-label" for="flexCheckDefault">
             Whatsapp
           </label>
@@ -207,13 +207,13 @@ include_once "../Model/Conexao_".$usuariobd.".php";
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="escola.nome_escola" id="nome_escola">
+          <input class="form-check-input" type="checkbox" value="escola.nome_escola" id="nome_escola" checked>
           <label class="form-check-label" for="flexCheckDefault">
             Nome da Escola
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="turma.nome_turma" id="nome_turma">
+          <input class="form-check-input" type="checkbox" value="turma.nome_turma" id="nome_turma" checked>
           <label class="form-check-label" for="flexCheckDefault">
             Nome da Turma
           </label>
@@ -225,7 +225,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="aluno.data_nascimento" id="data_nascimento">
+          <input class="form-check-input" type="checkbox" value="aluno.data_nascimento" id="data_nascimento"checked>
           <label class="form-check-label" for="flexCheckDefault">
             Data de Nascimento
           </label>

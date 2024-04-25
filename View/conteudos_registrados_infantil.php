@@ -294,7 +294,7 @@ foreach ($result_conteudo as $key => $value) {
    }
 
 
-if ($data_conte_bd=='2023-12-15' && $_SESSION['nivel_acesso_id']>=100) {
+if ($_SESSION['nivel_acesso_id']>=100) {
   echo "r=".$value['descricao'];
 }
 
