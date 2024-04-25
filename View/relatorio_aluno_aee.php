@@ -151,101 +151,101 @@ include_once "../Model/Conexao_".$usuariobd.".php";
    
    <br>
     <div class="row" hidden>
-      <div class="col-sm-3" style="margin-left: 20px;display: none;" >
-          <div class="form-check">
+      <div class="col-sm-3" style="margin-left: 20px;" >
+          <div class="form-check" style="display: none;">
           <input class="form-check-input" type="checkbox" value="aluno.idaluno" id="idaluno">
           <label class="form-check-label" for="flexCheckDefault">
             ID Aluno
           </label>
         </div>
-         <div class="form-check">
+         <div class="form-check" style="display: none;">
           <input class="form-check-input" type="checkbox" value="aluno.nome" id="nome" checked>
           <label class="form-check-label" for="flexCheckDefault">
             Nome
           </label>
         </div>
-         <div class="form-check">
+         <div class="form-check" style="display: none;">
           <input class="form-check-input" type="checkbox" value="filiacao1" id="filiacao1">
           <label class="form-check-label" for="flexCheckDefault">
             1° Filiação
           </label>
         </div>
-         <div class="form-check">
+         <div class="form-check" style="display: none;">
           <input class="form-check-input" type="checkbox" value="filiacao2" id="filiacao2">
           <label class="form-check-label" for="flexCheckDefault">
             2° Filiação
           </label>
         </div>
-         <div class="form-check">
+         <div class="form-check" style="display: none;">
           <input class="form-check-input" type="checkbox" value="cartao_sus" id="cartao_sus">
           <label class="form-check-label" for="flexCheckDefault">
             Cartão Sus
           </label>
         </div>
-         <div class="form-check">
+         <div class="form-check" style="display: none;">
           <input class="form-check-input" type="checkbox" value="aluno.whatsapp" id="whatsapp" checked>
           <label class="form-check-label" for="flexCheckDefault">
             Whatsapp
           </label>
         </div>
-         <div class="form-check">
+         <div class="form-check" style="display: none;">
           <input class="form-check-input" type="checkbox" value="aluno.whatsapp_responsavel" id="whatsapp_responsavel">
           <label class="form-check-label" for="flexCheckDefault">
             Whatsapp do Responsável
           </label>
         </div>
-         <div class="form-check">
+         <div class="form-check" style="display: none;">
           <input class="form-check-input" type="checkbox" value="aluno.bairro_endereco" id="bairro">
           <label class="form-check-label" for="flexCheckDefault">
             Bairro
           </label>
         </div>
-         <div class="form-check">
+         <div class="form-check" style="display: none;">
           <input class="form-check-input" type="checkbox" value="aluno.endereco" id="endereco">
           <label class="form-check-label" for="flexCheckDefault">
             Endereço
           </label>
         </div>
-        <div class="form-check">
+        <div class="form-check" style="display: none;">
           <input class="form-check-input" type="checkbox" value="escola.nome_escola" id="nome_escola" checked>
           <label class="form-check-label" for="flexCheckDefault">
             Nome da Escola
           </label>
         </div>
-        <div class="form-check">
+        <div class="form-check" style="display: none;">
           <input class="form-check-input" type="checkbox" value="turma.nome_turma" id="nome_turma" checked>
           <label class="form-check-label" for="flexCheckDefault">
             Nome da Turma
           </label>
         </div>
-        <div class="form-check">
+        <div class="form-check" style="display: none;">
           <input class="form-check-input" type="checkbox" value="aluno.bolsa_familia" id="bolsa_familia">
           <label class="form-check-label" for="flexCheckDefault">
             Recebe Bolsa Familia
           </label>
         </div>
-        <div class="form-check">
+        <div class="form-check" style="display: none;">
           <input class="form-check-input" type="checkbox" value="aluno.data_nascimento" id="data_nascimento"checked>
           <label class="form-check-label" for="flexCheckDefault">
             Data de Nascimento
           </label>
         </div>
 
-        <div class="form-check">
+        <div class="form-check" style="display: none;">
           <input class="form-check-input" type="checkbox" value="aluno.cpf" id="cpf">
           <label class="form-check-label" for="flexCheckDefault">
             Cpf Aluno
           </label>
         </div>        
 
-        <div class="form-check">
+        <div class="form-check" style="display: none;">
           <input class="form-check-input" type="checkbox" value="aluno.cep_endereco" id="cep_endereco">
           <label class="form-check-label" for="flexCheckDefault">
             Cep
           </label>
         </div>
 
-        <div class="form-check">
+        <div class="form-check" style="display: none;">
           <input class="form-check-input" type="checkbox" value="aluno.raca_aluno" id="raca_aluno">
           <label class="form-check-label" for="flexCheckDefault">
             Raça
