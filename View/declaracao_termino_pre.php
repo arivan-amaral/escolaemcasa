@@ -228,25 +228,25 @@ $result_ecidade_matricula=$conexao->query("SELECT
                                     $res_serie=trim(substr($nome_turma, 0, -1));
                                     if ($res_serie =='MATERNAL I') {
                                       echo "no ".$res_serie;
-                                      $cursar="o MATERNAL II do Ensino Infantil";
+                                      $cursar="o MATERNAL II da Edução Infantil";
                                     }elseif ($res_serie =='MATERNAL II') {
                                       echo "no ".$res_serie;
                                       
-                                      $cursar="o PRE I do Ensino Infantil";
+                                      $cursar="o PRE I da Educão Infantil";
                                     
                                     }elseif ($res_serie =='PRE I') {
                                       echo "no ".$res_serie;
 
-                                      $cursar="o PRE II do Ensino Infantil";
+                                      $cursar="o PRE II da Educão Infantil";
 
                                     }elseif ($res_serie =='PRE II') {
                                       echo "no ".$res_serie;
-                                     $cursar="o 1° ano do Ensino Fundamental 1";
+                                     $cursar="o 1° ano do Ensino Fundamental";
                                     } 
                                     else if ($serie_id==7) {
                                       echo " O 5º ANO ";
 
-                                      $cursar=" o 6º ano do Ensino Fundamental 2";
+                                      $cursar=" o 6º ano do Ensino Fundamental";
                                      
 
                                     }  
