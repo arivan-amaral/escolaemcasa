@@ -303,6 +303,16 @@ else{
               $iddisciplina=$linha['iddisciplina'];
               // $nome_disciplina=$linha['nome'];
 
+              $inicio=0;
+              $fim=36;
+
+              $conta_aula=1;
+              $conta_data=1;
+
+              $limite_data=36;
+              $limite_aula=36;
+
+              
                 echo "
                 <br>
                 <br>      
@@ -331,6 +341,8 @@ else{
                     $limite_aula+0,
 
                     $periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento);
+
+
             }
     }else{
         diario_frequencia_fund2($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento); 
