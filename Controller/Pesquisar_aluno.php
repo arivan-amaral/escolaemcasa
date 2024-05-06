@@ -70,6 +70,7 @@ $result_aluno=$conexao->query("SELECT
 aluno.nome as 'nome_aluno',
 aluno.sexo,
 aluno.data_nascimento,
+aluno.nome_responsavel,
 aluno.idaluno,
 aluno.email,
 aluno.status as 'status_aluno',
@@ -94,6 +95,7 @@ where
                 $nome_aluno=($value['nome_aluno']);
                 $idaluno=$value['idaluno'];
                 $data_nascimento=converte_data($value['data_nascimento']);
+                $nome_responsavel=($value['nome_responsavel']);
                 $whatsapp=($value['whatsapp']);
                 $whatsapp_responsavel=($value['whatsapp_responsavel']);
                 $numero="";
@@ -102,6 +104,7 @@ where
                       <td>
                         <b class='text-success'> $nome_aluno </b> <br> 
                         <b class='text-success'> Data nascimento: $data_nascimento </b> <br> 
+                        <b class='text-success'> Responsável: $nome_responsavel </b> <br>
                         <b class='text-info'> Contato: $whatsapp | $whatsapp_responsavel </b> <br>  
                       ";
      ############################################################
