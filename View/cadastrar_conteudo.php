@@ -156,79 +156,68 @@ include_once "../Model/Conexao_".$usuariobd.".php";
 
 
       <!-- ################################################################################# -->
+      <?php
+function validarConteudo($texto) {
+    if (strlen($texto) < 10) {
+        return false;
+    }
+    if (preg_match('/(.).*\1/', $texto)) {
+        return false;
+    }
+    return true;
+}
 
-                  <?php
-                  echo "<div class='row'>
-                    <div class='col-lg-3 col-6'>
-                      <!-- small card -->
-                      <div class='small-box bg-info'>
-                        <div class='inner'>
-                          <h3></h3>
+$conteudos = array(
+    array(
+        'url' => "cadastrar_conteudo.php?disc=$iddisciplina&turm=$idturma&turma=$nome_turma&disciplina=$nome_disciplina&idescola=$idescola&idserie=$idserie",
+        'icone' => "document-text",
+        'titulo' => "",
+        'texto' => ""
+    ),
+    array(
+        'url' => "diario_frequencia.php?idprofessor=$idprofessor&disc=$iddisciplina&turm=$idturma&turma=$nome_turma&disciplina=$nome_disciplina&idescola=$idescola&idserie=$idserie",
+        'icone' => "fa fa-calendar",
+        'titulo' => "",
+        'texto' => ""
+    ),
+    array(
+        'url' => "acompanhamento_pedagogico.php?idprofessor=$idprofessor&disc=$iddisciplina&turm=$idturma&turma=$nome_turma&disciplina=$nome_disciplina&idescola=$idescola&idserie=$idserie",
+        'icone' => "bookmark-outline",
+        'titulo' => "",
+        'texto' => ""
+    ),
+    array(
+        'url' => "diario_avaliacao.php?disc=$iddisciplina&turm=$idturma&turma=$nome_turma&disciplina=$nome_disciplina&idescola=$idescola&idserie=$idserie",
+        'icone' => "fas fa-chart-pie",
+        'titulo' => "",
+        'texto' => ""
+    )
+);
 
-                          <p></p>
-                        </div>
-                        <div class='icon'>
+foreach ($conteudos as $conteudo) {
+    $tituloValido = validarConteudo($conteudo['titulo']);
+    $textoValido = validarConteudo($conteudo['texto']);
 
-                        </div>
-                        <a  href='cadastrar_conteudo.php?disc=$iddisciplina&turm=$idturma&turma=$nome_turma&disciplina=$nome_disciplina&idescola=$idescola&idserie=$idserie' class='small-box-footer' target='_blanck'>
-                          Conteúdo <ion-icon name='document-text'></ion-icon>
-                        </a>
-                      </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class='col-lg-3 col-6'>
-                      <!-- small card -->
-                      <div class='small-box bg-success'>
-                        <div class='inner'>
-                          <h3> </h3>
+    echo "<div class='small-box bg-info'>
+            <div class='inner'>
+              <h3>" . ($tituloValido ? $conteudo['titulo'] : "Título Inválido") . "</h3>
+              <p>" . ($textoValido ? $conteudo['texto'] : "Texto Inválido") . "</p>
+            </div>
+            <div class='icon'>
+            </div>
+            <a  href='" . $conteudo['url'] . "' class='small-box-footer' target='_blank'>
+              Conteúdo <ion-icon name='" . $conteudo['icone'] . "'></ion-icon>
+            </a>
+          </div>";
+}
 
-                          <p></p>
-                        </div>
-                        <div class='icon'>
-                          <i class='ion ion-stats-bars'></i>
-                        </div>
-                        <a href='diario_frequencia.php?idprofessor=$idprofessor&disc=$iddisciplina&turm=$idturma&turma=$nome_turma&disciplina=$nome_disciplina&idescola=$idescola&idserie=$idserie' class='small-box-footer' target='_blanck'>
-                          Frequência <i class='fa fa-calendar'></i>
-                        </a>
-                      </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class='col-lg-3 col-6'>
-                      <!-- small card -->
-                      <div class='small-box bg-secondary'>
-                        <div class='inner'>
-                          <h3></h3>
+echo "<script>
+        function validarConteudoPHP() {
+            return true;
+        }
+      </script>";
+?>
 
-                          <p> </p>
-                        </div>
-                        <div class='icon'>
-
-                        </div>
-                        <a  href='acompanhamento_pedagogico.php?idprofessor=$idprofessor&disc=$iddisciplina&turm=$idturma&turma=$nome_turma&disciplina=$nome_disciplina&idescola=$idescola&idserie=$idserie' class='small-box-footer' target='_blanck'>
-                          Ocorrência  <ion-icon name='bookmark-outline'></ion-icon>
-                        </a>
-                      </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class='col-lg-3 col-6'>
-                      <!-- small card -->
-                      <div class='small-box bg-danger'>
-                        <div class='inner'>
-                          <h3></h3>
-
-                          <p></p>
-                        </div>
-                        <div class='icon'>
-
-                        </div>
-                        <a  href='diario_avaliacao.php?disc=$iddisciplina&turm=$idturma&turma=$nome_turma&disciplina=$nome_disciplina&idescola=$idescola&idserie=$idserie' class='small-box-footer' target='_blanck'>
-                          Avaliação <i class='fas fa-chart-pie'></i>
-                        </a>
-                      </div>
-                    </div>
-
-                  </div>";
-                  ?>  
       <!-- ################################################################################# -->
   <form action="../Controller/Cadastrar_conteudo.php" method="post">
     <input type="hidden" name="url_get" value="<?php echo $url_get; ?>">
