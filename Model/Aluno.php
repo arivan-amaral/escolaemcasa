@@ -1,5 +1,87 @@
 <?php
 
+
+
+function listar_aluno_da_turma_ata_resultado_final_geral($conexao,$turma_id,$escola_id,$ano_letivo,$idaluno){
+
+  $res=$conexao->query("
+    SELECT 
+UPPER(aluno.nome) as 'nome_aluno',
+aluno.sexo,
+aluno.data_nascimento,
+aluno.idaluno,
+aluno.email,
+aluno.status as 'status_aluno',
+aluno.senha,
+turma.nome_turma,
+
+ecidade_matricula.matricula_codigo as 'matricula',
+ecidade_matricula.matricula_datamatricula as 'data_matricula',
+ecidade_matricula.datasaida as 'datasaida'
+
+FROM
+ ecidade_matricula,
+aluno,turma,escola
+
+where
+
+ecidade_matricula.aluno_id= aluno.idaluno AND
+ecidade_matricula.turma_id = turma.idturma and 
+ecidade_matricula.turma_escola = escola.idescola and 
+ecidade_matricula.calendario_ano ='$ano_letivo' and 
+ 
+
+ecidade_matricula.turma_escola=$escola_id and
+ecidade_matricula.matricula_situacao ='MATRICULADO' and
+
+ecidade_matricula.turma_id=$turma_id and ecidade_matricula.aluno_id=$idaluno  ORDER by aluno.nome ASC");
+
+
+   return $res;
+} 
+
+
+
+function listar_aluno_da_turma_ata_resultado_final_matricula_concluida_geral($conexao,$turma_id,$escola_id,$ano_letivo, $idaluno){
+  $res=$conexao->query("
+    SELECT 
+UPPER(aluno.nome) as 'nome_aluno',
+aluno.sexo,
+aluno.data_nascimento,
+aluno.idaluno,
+aluno.email,
+aluno.status as 'status_aluno',
+aluno.senha,
+turma.nome_turma,
+
+ecidade_matricula.matricula_codigo as 'matricula',
+ecidade_matricula.matricula_datamatricula as 'data_matricula',
+ecidade_matricula.datasaida as 'datasaida'
+
+FROM
+ ecidade_matricula,
+aluno,turma,escola
+
+where
+
+ecidade_matricula.aluno_id= aluno.idaluno AND
+ecidade_matricula.turma_id = turma.idturma and 
+ecidade_matricula.turma_escola = escola.idescola and 
+ecidade_matricula.calendario_ano ='$ano_letivo' and 
+ 
+-- ecidade_matricula.matricula_concluida='S' and
+-- ecidade_matricula.matricula_ativa='N' and
+ecidade_matricula.turma_escola=$escola_id and
+ecidade_matricula.matricula_situacao !='CANCELADO' and
+ecidade_matricula.turma_id=$turma_id and ecidade_matricula.aluno_id=$idaluno ORDER by aluno.nome ASC");
+
+
+   return $res;
+} 
+
+
+
+
 function registrar_sistema_atual_nota_historico($conexao, $idaluno, $ano){
     $sql="SELECT 
      turma.nome_turma,
@@ -2136,8 +2218,33 @@ AND ministrada.escola_id = $escola_id");
 
 return $res;
 
- 
+}
 
+
+function listar_disciplina_para_nota_geral($conexao,$idturma,$escola_id,$ano_letivo,$idfuncionario){
+  $res=$conexao->query("
+  SELECT
+disciplina.nome_disciplina,
+disciplina.abreviacao,
+disciplina.iddisciplina,
+funcionario.nome as nome_professor,
+turma.idturma,
+turma.nome_turma
+FROM
+ministrada
+INNER JOIN turma ON ministrada.turma_id = turma.idturma
+INNER JOIN escola ON ministrada.escola_id = escola.idescola
+INNER JOIN disciplina ON ministrada.disciplina_id = disciplina.iddisciplina
+INNER JOIN funcionario ON ministrada.professor_id = funcionario.idfuncionario
+WHERE
+disciplina.facultativo = 0
+AND ministrada.ano = $ano_letivo
+AND ministrada.turma_id = $idturma
+AND ministrada.escola_id = $escola_id 
+AND ministrada.f = $escola_id");
+
+
+return $res;
 
 }
 

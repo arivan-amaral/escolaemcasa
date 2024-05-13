@@ -219,9 +219,9 @@ try {
 
       if ($login_aluno>0){
           $_SESSION['status']=0;
-          $_SESSION['mensagem']="ACESSO DE ALUNO ESTÁ SUSPENSO TEMPORARIAMENTE, ESTAMOS EM MANUTENÇÃO!";
+          $_SESSION['mensagem']="ACESSO DE ALUNO ESTÁ SUSPENSO TEMPORARIAMENTE!";
 
-         header("Location:../View/aluno.php");
+        // header("Location:../View/aluno.php");
           header("Location:../View/");
           exit();
 
