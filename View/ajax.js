@@ -43,6 +43,56 @@ function CriaRequest() {
 
 
 
+function lista_avaliacao_aluno_geral(){
+
+  var botao_continuar = document.getElementById("botao_continuar");
+  var result = document.getElementById("listagem_avaliacao");
+  var xmlreq = CriaRequest();   
+
+  var idserie = document.getElementById("idserie").value;
+  var idescola = document.getElementById("idescola").value;
+  var idturma = document.getElementById("idturma").value;
+  var idaluno = document.getElementById("idaluno").value;
+  var idperiodo = document.getElementById("periodo").value;
+ 
+
+   if ( idperiodo !="" &&  idaluno !="" ) {
+        result.innerHTML="<center><img src='imagens/carregando.gif'></center>";
+          var url="idserie="+idserie+"&idperiodo="+idperiodo+"&idescola="+idescola+"&idturma="+idturma+"&idaluno="+idaluno;
+           xmlreq.open("GET", "../Controller/Lista_avaliacao_aluno_por_data_geral.php?"+url, true);
+            xmlreq.onreadystatechange = function(){      
+                if (xmlreq.readyState == 4) {
+                    if (xmlreq.status == 200) {
+                        result.innerHTML =  xmlreq.responseText;
+                        botao_continuar.innerHTML=""+
+                        "<div class='col-sm-1'></div>"+
+                        "<div class='col-sm-10'>"+
+                          "<button type='submit' id='btn_diario_avaliacao' class='btn btn-block btn-primary'  onclick='enviar_notas();'>Concluir</button>"+
+                        "</div>";
+                        
+                    }else{
+                           result.innerHTML = xmlreq.responseText;
+                        
+                        
+                    }
+                }
+            };
+        xmlreq.send(null);
+  
+
+    }else{
+        
+             Swal.fire({
+                      icon: 'info',
+                      title: 'Atenção...',
+                      text: 'Selecione o período e aluno!',
+                      showConfirmButton: false,
+                      timer: 2000
+                      
+                    });
+ 
+    }
+}
 
 
 function pesquisa_relatorio_busca_ativa(){
