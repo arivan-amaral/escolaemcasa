@@ -2241,7 +2241,7 @@ disciplina.facultativo = 0
 AND ministrada.ano = $ano_letivo
 AND ministrada.turma_id = $idturma
 AND ministrada.escola_id = $escola_id 
-AND ministrada.f = $escola_id");
+AND ministrada.funcionario_id = $idfuncionario");
 
 
 return $res;
