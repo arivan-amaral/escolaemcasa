@@ -57,7 +57,7 @@ try {
             </tr>
           </thead>
           <tbody>";
-$res_disciplina= listar_disciplina_para_nota_geral($conexao,$idturma,$escola_id,$ano_letivo,$idfuncionario);
+$res_disciplina= listar_disciplina_para_nota_geral($conexao,$idturma,$idescola,$ano_letivo,$idfuncionario);
 
 foreach ($res_disciplina as $key_disc => $value_disc) {
 
