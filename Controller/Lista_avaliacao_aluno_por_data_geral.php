@@ -19,7 +19,7 @@ try {
 
     $idescola=$_GET['idescola'];
     $idturma=$_GET['idturma'];
-    // $iddisciplina=$_GET['iddisciplina'];
+    $idaluno=$_GET['idaluno'];
     //$data=$_GET['data_avaliacao'];
     $idperiodo=$_GET['idperiodo'];
     //$avaliacao=$_GET['avaliacao'];
