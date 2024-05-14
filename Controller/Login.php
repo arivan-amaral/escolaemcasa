@@ -222,6 +222,7 @@ try {
           $_SESSION['mensagem']="ACESSO DE ALUNO ESTÁ SUSPENSO TEMPORARIAMENTE!";
 
         // header("Location:../View/aluno.php");
+         unset($_SESSION['cargo']); //não loga se estiver com isso
           header("Location:../View/");
           exit();
 
