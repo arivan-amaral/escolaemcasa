@@ -14,10 +14,11 @@ try {
  
     $idaluno=($_POST['idaluno']);
     $nome=trim($_POST['nome']);
-    $nome=escape_mimic($nome);
+
+
 
     $nome_identificacao_social=trim($_POST['nome_identificacao_social']);
-    $nome_identificacao_social=escape_mimic($nome_identificacao_social);
+   
     
     $sexo=$_POST['sexo'];
     // $quantidade_vagas_restante=$_POST['quantidade_vagas_restante'];
