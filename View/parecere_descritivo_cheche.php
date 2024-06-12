@@ -163,7 +163,7 @@
       $iddisciplina=$linha['iddisciplina'];
       $resultado=listar_todas_avaliacao_lancada_parecer($conexao,$idescola,$idturma,$iddisciplina,'DIAGNÓSTICO INICIAL',$idaluno,6,$ano_letivo);
       foreach ($resultado as $key => $value) {
-        $parecer_descritivo=$value['parecer_descritivo'];
+        $parecer_descritivo.=$value['parecer_descritivo'].";";
       }
     }
             echo wordwrap($parecer_descritivo, 200, "<br />\n", true); 
