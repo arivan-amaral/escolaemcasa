@@ -1,4 +1,5 @@
-<?php session_start();
+<?php 
+session_start();
 if (!isset($_SESSION['usuariobd'])) {
     // Se não estiver definida, atribui o valor padrão 'educ_lem'
     $_SESSION['usuariobd'] = 'educ_lem';
@@ -11,8 +12,8 @@ try {
   
 $res=$conexao->query("SELECT 
          idturma,
-         serie.id as 'idserie',
-         serie.nome as 'nome_serie',
+         serie.id as idserie,
+         serie.nome as nome_serie,
          nome_turma,
          idescola,
          nome_escola,
@@ -22,7 +23,7 @@ $res=$conexao->query("SELECT
     relacionamento_turma_escola.escola_id= escola.idescola and 
     relacionamento_turma_escola.turma_id = turma.idturma AND
     turma.serie_id = serie.id AND
-    relacionamento_turma_escola.ano='$ano_letivo_vigente' AND
+    relacionamento_turma_escola.ano=$ano_letivo_vigente AND
 
     turma.serie_id >6 AND turma.serie_id < 15
 
