@@ -23,7 +23,7 @@ $res=$conexao->query("SELECT
     relacionamento_turma_escola.escola_id= escola.idescola and 
     relacionamento_turma_escola.turma_id = turma.idturma AND
     turma.serie_id = serie.id AND
-    relacionamento_turma_escola.ano=$ano_letivo_vigente AND
+    relacionamento_turma_escola.ano='2024' AND
 
     turma.serie_id >6 AND turma.serie_id < 15
 
