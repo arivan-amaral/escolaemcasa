@@ -3,6 +3,7 @@ if (!isset($_SESSION['usuariobd'])) {
     // Se não estiver definida, atribui o valor padrão 'educ_lem'
     $_SESSION['usuariobd'] = 'educ_lem';
 }
+$ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
 $usuariobd=$_SESSION['usuariobd'];
 include_once "../Model/Conexao_".$usuariobd.".php";
 include_once '../Model/Coordenador.php';
@@ -21,7 +22,7 @@ $res=$conexao->query("SELECT
     relacionamento_turma_escola.escola_id= escola.idescola and 
     relacionamento_turma_escola.turma_id = turma.idturma AND
     turma.serie_id = serie.id AND
-    relacionamento_turma_escola.ano='2022'
+    relacionamento_turma_escola.ano='$ano_letivo_vigente'
 
    ORDER BY escola.nome_escola,turma.nome_turma");
 
