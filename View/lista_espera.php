@@ -199,52 +199,55 @@ include_once "../Model/Conexao_".$usuariobd.".php";
                     </form> 
                     <br>
 
-                      <div class="row">
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                             <label for="exampleInputEmail1">Filtrar por Escola</label>
-                             <select class="form-control" id="escola_associada" onchange="lista_espera();" >
-                              <option value='Todas'>Todas </option>
-                                <?php 
-                                 $res_escola= $conexao->query("SELECT * from escola ORDER BY nome_escola asc");
-                                  $lista_escola_associada=""; 
-                                
-                                foreach ($res_escola as $key => $value) {
-                                    $id=$value['idescola'];
-                                   $nome_escola=($value['nome_escola']);
-                                 
-                                    $lista_escola_associada.= "
-                                         <option value='$id'>$nome_escola </option>
+                    <div class="container-fluid">
 
-                                     ";
-                                }
-                                echo "$lista_escola_associada";
-                                ?>
-                             </select>
-                               
-                          </div>
-                        </div>
-                        <!-- <div class="col-sm-5">
-                          <div class="form-group">
-                             <label for="exampleInputEmail1">Endereço</label>
-                             <input type="text" class="form-control" name="endereco"    required="">
-                               
-                          </div>
-                        </div> -->
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <label for="exampleInputEmail1">Filtrar por escola</label>
+                        <select id="escola" class="form-control form-control">
+
+                            <option value="Todas" style='color: black; background-color:#A9A9A9;'>TODAS AS ESCOLAS</option>
+                            <?php 
+
+                            $res_turma=escola_associada($conexao,$idcoordenador); 
+                            $array_escolas_coordenador=array();
+                            $conta_escolas=0;
+                            foreach ($res_turma as $key => $value) {
+                              $array_escolas_coordenador[$conta_escolas]=$value['idescola'];
+                              $conta_escolas++;
+                            }
+                          $res_escola=lista_escola($conexao); 
+                          foreach ($res_escola as $key => $value) {
+                              $idescola=$value['idescola'];
+                              $nome_escola=$value['nome_escola'];
+                              if (in_array($idescola, $array_escolas_coordenador) ) { 
+                                echo"<option value='$idescola' style='color: black; background-color:#A9A9A9;'>$nome_escola </option>";
+                              }else{
+                                echo"<option value='$idescola'>$nome_escola </option>";
+
+                              }
+                          }
+                            ?>
+                        </select>
+                    </div>  
+                    <div class="col-sm-6"> 
+                        <label for="exampleInputEmail1">Pesquisar aluno</label>
+                          <input type="search" id="pesquisa" class="form-control form-control" 
+                        value="" placeholder="Pesquisar aluno">
+                        
                     </div>
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <label for="pesquisa" class="form-label">Pesquisar aluno</label>
-                            <div class="input-group mb-3">
-                                <input type="search" class="form-control" id="pesquisa" placeholder="Digite o nome do aluno">
-                                <button class="btn btn-primary" type="button" onclick="pesquisa_aluno();">Pesquisar</button>
-                            </div>
+                        <div class="col-sm-2"> 
+                          <label><br></label><br>
+                        <a class="btn btn-primary" onclick="limpa_pesquisa_aluno();pesquisa_aluno();">Buscar</a>
                         </div>
-                    </div>
-                </div>
+                  </div> 
 
+                  <div id='tabela_pesquisa'>
+                  </div>
+                  <div id="paginacao">
+                  </div>
+                  <input type="hidden" value="30" id="valor_paginacao">
+                  </div> 
 
                     <br>
                     <div class="row">
