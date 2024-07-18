@@ -374,11 +374,8 @@ $linha++;
       <td  nowrap colspan=10 style='width:260.6pt;border:solid windowtext 1.0pt;
       border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
       padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
-      <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'>
-        <span
-        style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
-        mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-        mso-fareast-language:PT-BR'> 
+ <center>
+ 
         Resultado Final:
 
  
@@ -396,8 +393,8 @@ $linha++;
              }
  
            ?>
-
-  </span> </p>
+   
+ </center>
       </td>
  
     </tr>
