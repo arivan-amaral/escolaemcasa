@@ -171,7 +171,7 @@ else if ($idserie >3 && $idserie <8) {
       echo"<div class='pagebreak'> </div>"; 
     }
 
-}else if ($idserie > 8) {
+}else if ($idserie >= 8) {
     //echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
     $numero=1;
         echo "<input type='hidden' name='$numero' value='$numero'>";
