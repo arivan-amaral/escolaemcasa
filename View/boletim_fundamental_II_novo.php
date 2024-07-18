@@ -367,117 +367,6 @@ $linha++;
 
 
 
-<tr style='mso-yfti-irow:14;height:15.75pt;mso-row-margin-right:.75pt'>
-  <td width=175 nowrap colspan=2 style='width:130.95pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
-    style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
-    mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-    mso-fareast-language:PT-BR'>Total de Faltas<o:p></o:p></span></b></p>
-  </td>
-  <td width=44 nowrap style='width:33.0pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;background:#D9D9D9;mso-background-themecolor:
-  background1;mso-background-themeshade:217;padding:0cm 3.5pt 0cm 3.5pt;
-  height:15.75pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-  line-height:normal'><span style='mso-ascii-font-family:Calibri;mso-fareast-font-family:
-  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-  color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p>
-
-<?php
-// faltas trimestre 1
-
-
-$res_fre_t1=$conexao->query("
-SELECT data_frequencia FROM frequencia WHERE
-escola_id=$idescola and
-turma_id=$idturma and
-presenca=0 and data_frequencia BETWEEN '$data_inicio_trimestre1' and '$data_fim_trimestre1' and aluno_id=$idaluno  group by data_frequencia");
-// disciplina_id=$iddisciplina and 
-$quantidade_falta1=0;
-foreach ($res_fre_t1 as $key => $value) {
-  $quantidade_falta1++;
-}
-
-echo "$quantidade_falta1";
-?>
-</o:p></span></p>
-</td>
-<td width=48 nowrap style='width:36.2pt;border-top:none;border-left:none;
-border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-mso-border-alt:solid windowtext .5pt;background:#D9D9D9;mso-background-themecolor:
-background1;mso-background-themeshade:217;padding:0cm 3.5pt 0cm 3.5pt;
-height:15.75pt'>
-<p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-line-height:normal'><span style='mso-ascii-font-family:Calibri;mso-fareast-font-family:
-"Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-color:black;mso-fareast-language:PT-BR'>&nbsp;
-<?php
-// faltas trimestre 2
-
-
-$res_fre_t2=$conexao->query("
-SELECT data_frequencia FROM frequencia WHERE
-escola_id=$idescola and
-turma_id=$idturma and
-presenca=0 and data_frequencia BETWEEN '$data_inicio_trimestre2' and '$data_fim_trimestre2' and aluno_id=$idaluno  group by data_frequencia");
-// disciplina_id=$iddisciplina and 
-$quantidade_falta2=0;
-foreach ($res_fre_t2 as $key => $value) {
-  $quantidade_falta2++;
-}
-
-echo "$quantidade_falta2";
-?>
-<o:p></o:p></span></p>
-</td>
-<td width=53 nowrap style='width:39.4pt;border-top:none;border-left:none;
-border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-mso-border-alt:solid windowtext .5pt;background:#D9D9D9;mso-background-themecolor:
-background1;mso-background-themeshade:217;padding:0cm 3.5pt 0cm 3.5pt;
-height:15.75pt'>
-<p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-line-height:normal'><span style='mso-ascii-font-family:Calibri;mso-fareast-font-family:
-"Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-color:black;mso-fareast-language:PT-BR'>&nbsp;
-
-
-<?php
-// faltas trimestre 3
-
-
-$res_fre_t3=$conexao->query("
-SELECT data_frequencia FROM frequencia WHERE
-escola_id=$idescola and
-turma_id=$idturma and
-presenca=0 and data_frequencia BETWEEN '$data_inicio_trimestre3' and '$data_fim_trimestre3' and aluno_id=$idaluno  group by data_frequencia");
-// disciplina_id=$iddisciplina and 
-$quantidade_falta3=0;
-foreach ($res_fre_t3 as $key => $value) {
-  $quantidade_falta3++;
-}
-
-echo "$quantidade_falta3";
-?>
-<o:p></o:p></span></p>
-</td>
-<td width=28 nowrap style='width:21.05pt;border-top:none;border-left:none;
-border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-mso-border-alt:solid windowtext .5pt;padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
-<p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-line-height:normal'><span style='mso-ascii-font-family:Calibri;mso-fareast-font-family:
-"Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
-</td>
-  <!--td style='mso-cell-special:placeholder;border:none;border-bottom:solid windowtext 1.0pt'
-    width=1><p class='MsoNormal'>&nbsp;</td-->
-    </tr>
 
 
 
@@ -485,33 +374,30 @@ color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
       <td width=347 nowrap colspan=5 style='width:260.6pt;border:solid windowtext 1.0pt;
       border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
       padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
-      <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
+      <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'>
+        <span
         style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
         mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-        mso-fareast-language:PT-BR'>Mínimo para aprovação: <b>5,0</b><span
-        style='mso-spacerun:yes'> </span><o:p></o:p></span></p>
+        mso-fareast-language:PT-BR'> 
+        Resultado Final:
+
+
+        <?php 
+             $conta_total=($conta_conselho+$conta_apr);
+             if ($conta_dis==$conta_total && $conta_conselho>0) {
+               echo " <b>Aprovado(a) pelo concelho</b>";
+
+             }elseif ($conta_apr==$conta_dis) {
+               echo " <b>Aprovado(a)</b>";
+             }else{
+               echo " <b>Reprovado(a)</b>";
+
+             }
+           ?>
+
+  </span> </p>
       </td>
-      <td width=230 colspan=1 style='width:172.25pt;border-top:none;border-left:
-      none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-      mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-      mso-border-alt:solid windowtext .5pt;padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
-      <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-        style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
-        mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
-
-        mso-fareast-language:PT-BR'>Resultado Final:<o:p><?php 
-        $conta_total=($conta_conselho+$conta_apr);
-        if ($conta_dis==$conta_total && $conta_conselho>0) {
-          echo " <b>Apc</b>";
-
-        }elseif ($conta_apr==$conta_dis) {
-          echo " <b>Apr</b>";
-        }else{
-          echo " <b>Rep</b>";
-
-        }
-      ?></o:p></span></p>
-      </td>
+ 
     </tr>
    
   
