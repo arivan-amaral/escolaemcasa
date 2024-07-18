@@ -90,7 +90,7 @@ if ($idserie==3) {
     }
 
 }
-else if ($idserie >3 && $idserie <=8) {
+else if ($idserie >3 && $idserie <8) {
     
   
   if (isset($_GET['tokem_teste'])) {
