@@ -196,7 +196,7 @@ else if ($idserie >3 && $idserie <8) {
      // echo "$numero";
           boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$_SESSION['ano_letivo']);
     
-        if ($numero%3==0 ) {
+        if ($numero%2==0 ) {
           echo ".<input type='hidden' name='tt$numero' value='$numero'>";
           echo "<div class='pagebreak'> </div>";
          
