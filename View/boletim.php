@@ -1,6 +1,10 @@
 <?php 
+
 set_time_limit(0);
 session_start();
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
   include"../Controller/Conversao.php";
   include"../Model/Conexao.php";
   include"../Model/Aluno.php";
@@ -90,7 +94,7 @@ if ($idserie==3) {
     }
 
 }
-else if ($idserie >3 && $idserie <=8) {
+else if ($idserie >3 && $idserie <8) {
     
   
   if (isset($_GET['tokem_teste'])) {
