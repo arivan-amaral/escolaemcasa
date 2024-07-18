@@ -24,19 +24,20 @@ function boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
           
 
             <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width=577
-            style='width:432.85pt;border-collapse:collapse;border:none;mso-border-alt:
+            style='margin-left: 10px; width:432.85pt;border-collapse:collapse;border:none;mso-border-alt:
             solid windowtext .5pt;mso-yfti-tbllook:1184;mso-padding-alt:0cm 3.5pt 0cm 3.5pt;
             mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+            
             <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:45.75pt'>
 
 
                  <tr style='mso-yfti-irow:15;mso-yfti-lastrow:yes;height:15.75pt'>
                    <td  nowrap colspan=10 style='width:260.6pt;border:solid windowtext 1.0pt;
-                   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+                   border:1px solid black;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
                    padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
                    <center>
                      
-                <img src="imagens/secretariaeducacao.png" alt=""   style="height: 6.7cm;width: 7.9cm;">
+                <img src="imagens/secretariaeducacao.png"  style="">
                    </center>
                   </td>
                 </tr>
