@@ -37,7 +37,7 @@ function boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
                    padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
                    <center>
                      
-                <img src="imagens/secretariaeducacao.png"  style="">
+                <img src="imagens/secretariaeducacao.png"  style="padding-top: 3px;padding-bottom: 3px;">
                    </center>
                   </td>
                 </tr>
