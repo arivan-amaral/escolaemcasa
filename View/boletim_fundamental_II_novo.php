@@ -381,6 +381,8 @@ $linha++;
         mso-fareast-language:PT-BR'> 
         Resultado Final:
 
+<center>
+  
 
         <?php 
              $conta_total=($conta_conselho+$conta_apr);
@@ -395,6 +397,7 @@ $linha++;
              }
            ?>
 
+</center>
   </span> </p>
       </td>
  
