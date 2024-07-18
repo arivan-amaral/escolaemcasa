@@ -101,9 +101,11 @@ function boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
                    border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
                    padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
                     MF
-                   </td>                    
+                   </td>        
 
-                   <td  nowrap colspan=10 ne;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+                              
+                   <td  nowrap  style=' border:solid windowtext 1.0pt;
+                   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
                    padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
                     TOTAL DE FALTAS
                    </td> 
