@@ -33,7 +33,7 @@ function boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
                    <td  nowrap colspan=10 style='width:260.6pt;border:solid windowtext 1.0pt;
                    border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
                    padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
-                      ESCOLA:
+                      ESCOLA: <?php echo "$nome_escola"; ?>
                    </td>
               
                  </tr>
@@ -41,7 +41,7 @@ function boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
                    <td  nowrap colspan=10 style='width:260.6pt;border:solid windowtext 1.0pt;
                    border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
                    padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
-                      ALUNO:
+                      ALUNO: <?php echo "$nome_aluno"; ?>
                    </td>
               
                  </tr>
@@ -49,11 +49,11 @@ function boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
                    <td  nowrap colspan=10 style='width:260.6pt;border:solid windowtext 1.0pt;
                    border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
                    padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
-                      TURMA:
+                      TURMA: <?php echo "$nome_turma"; ?>
                    </td>
               
                  </tr>
-                 
+
                  <tr style='mso-yfti-irow:15;mso-yfti-lastrow:yes;height:15.75pt'>
                    
                    <td  nowrap   style='width:260.6pt;border:solid windowtext 1.0pt;
