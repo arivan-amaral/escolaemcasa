@@ -129,7 +129,26 @@ function boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
    line-height:normal'><span style='mso-ascii-font-family:Calibri;mso-fareast-font-family:
    "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
    color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p>
-    flt
+    <?php 
+
+    $res_fre1=$conexao->query("
+    SELECT COUNT(*) as 'quantidade' FROM frequencia WHERE
+    escola_id=$idescola and
+    turma_id=$idturma and
+    disciplina_id=$iddisciplina and
+    presenca=0 and 
+    periodo_id=1 and aluno_id=$idaluno ");
+   
+
+    $quantidade1=0;
+    foreach ($res_fre1 as $key => $value) {
+      $quantidade1=$value['quantidade'];
+    }
+
+    echo "$quantidade1";
+
+
+     ?>
   </o:p>
 </span>
 </p>
@@ -201,7 +220,26 @@ function boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
    line-height:normal'><span style='mso-ascii-font-family:Calibri;mso-fareast-font-family:
    "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
    color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p>
-    flt
+    <?php 
+
+     $res_fre2=$conexao->query("
+ SELECT COUNT(*) as 'quantidade' FROM frequencia WHERE
+ escola_id=$idescola and
+ turma_id=$idturma and
+ disciplina_id=$iddisciplina and
+ presenca=0 and 
+ periodo_id=2 and aluno_id=$idaluno ");
+ 
+
+ $quantidade2=0;
+ foreach ($res_fre2 as $key => $value) {
+   $quantidade2=$value['quantidade'];
+ }
+
+ echo "$quantidade2";
+
+
+  ?>
   </o:p>
 </span>
 </p>
@@ -277,7 +315,26 @@ function boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
    line-height:normal'><span style='mso-ascii-font-family:Calibri;mso-fareast-font-family:
    "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
    color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p>
-    flt
+      <?php 
+
+       $res_fre3=$conexao->query("
+   SELECT COUNT(*) as 'quantidade' FROM frequencia WHERE
+   escola_id=$idescola and
+   turma_id=$idturma and
+   disciplina_id=$iddisciplina and
+   presenca=0 and 
+   periodo_id=3 and aluno_id=$idaluno ");
+   
+
+   $quantidade3=0;
+   foreach ($res_fre3 as $key => $value) {
+     $quantidade3=$value['quantidade'];
+   }
+
+   echo "$quantidade3";
+
+
+    ?>
   </o:p>
 </span>
 </p>
@@ -342,7 +399,9 @@ if ($total <5 ) {
    line-height:normal'><span style='mso-ascii-font-family:Calibri;mso-fareast-font-family:
    "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
    color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p>
-    tot flt
+    <?php 
+      echo($quantidade1+$quantidade2+$quantidade3);
+     ?>
   </o:p>
 </span>
 </p>
