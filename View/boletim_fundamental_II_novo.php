@@ -41,7 +41,7 @@ function boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
                   mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black;
                   mso-fareast-language:PT-BR'><o:p></o:p></span></p>
                 </td>
-                <td width=506 colspan=5 style='width:379.25pt;border:solid windowtext 1.0pt;
+                <td width=506 colspan=6 style='width:379.25pt;border:solid windowtext 1.0pt;
                 border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
                 solid windowtext .5pt;padding:0cm 3.5pt 0cm 3.5pt;height:45.75pt'>
                 <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
@@ -55,7 +55,7 @@ function boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
             </tr>
 
 
-
+            
             <tr style='mso-yfti-irow:1;height:15.0pt'>
               <td width=347 nowrap colspan=5 style='width:260.6pt;border:solid windowtext 1.0pt;
               border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
