@@ -55,7 +55,7 @@ function boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
             </tr>
 
 
-            
+
             <tr style='mso-yfti-irow:1;height:15.0pt'>
               <td width=347 nowrap colspan=5 style='width:260.6pt;border:solid windowtext 1.0pt;
               border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
@@ -399,6 +399,10 @@ if ($conta_parecer==0 && $linha==0) {
 
 <?php
 $linha++;
+}
+
+
+
 }
 ?>
 
