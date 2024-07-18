@@ -23,6 +23,11 @@ function boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
 
           
 
+            <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width=577
+            style='width:432.85pt;border-collapse:collapse;border:none;mso-border-alt:
+            solid windowtext .5pt;mso-yfti-tbllook:1184;mso-padding-alt:0cm 3.5pt 0cm 3.5pt;
+            mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+            <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:45.75pt'>
        
 
 
@@ -436,22 +441,13 @@ color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
       </td>
     </tr>
    
-     <tr height=0>
-      <td width=71 style='border:none'></td>
-      <td width=103 style='border:none'></td>
-      <td width=44 style='border:none'></td>
-      <td width=48 style='border:none'></td>
-      <td width=53 style='border:none'></td>
-      <td width=28 style='border:none'></td>
-      <td width=229 style='border:none'></td>
-      <td width=1 style='border:none'></td>
-    </tr>
+  
     
     </table>
 
 
 <?php 
-//$resultado_final=true;
+ 
 
 }
 ?>
