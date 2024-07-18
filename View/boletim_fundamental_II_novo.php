@@ -29,7 +29,86 @@ function boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
             mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
             <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:45.75pt'>
        
+                 <tr style='mso-yfti-irow:15;mso-yfti-lastrow:yes;height:15.75pt'>
+                   <td  nowrap colspan=10 style='width:260.6pt;border:solid windowtext 1.0pt;
+                   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+                   padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
+                      ESCOLA:
+                   </td>
+              
+                 </tr>
+                 <tr style='mso-yfti-irow:15;mso-yfti-lastrow:yes;height:15.75pt'>
+                   <td  nowrap colspan=10 style='width:260.6pt;border:solid windowtext 1.0pt;
+                   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+                   padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
+                      ALUNO:
+                   </td>
+              
+                 </tr>
+                 <tr style='mso-yfti-irow:15;mso-yfti-lastrow:yes;height:15.75pt'>
+                   <td  nowrap colspan=10 style='width:260.6pt;border:solid windowtext 1.0pt;
+                   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+                   padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
+                      TURMA:
+                   </td>
+              
+                 </tr>
+                 <tr style='mso-yfti-irow:15;mso-yfti-lastrow:yes;height:15.75pt'>
+                   
+                   <td  nowrap colspan=10 style='width:260.6pt;border:solid windowtext 1.0pt;
+                   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+                   padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
+                     COMPONENTE CURRICULAR
+                   </td>                   
+                   <td  nowrap colspan=10 style='width:260.6pt;border:solid windowtext 1.0pt;
+                   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+                   padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
+                    I TRIMESTRE
+                   </td>                    
 
+                   <td  nowrap colspan=10 style='width:260.6pt;border:solid windowtext 1.0pt;
+                   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+                   padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
+                    FALTAS
+                   </td>                   
+                   <td  nowrap colspan=10 style='width:260.6pt;border:solid windowtext 1.0pt;
+                   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+                   padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
+                 II TRIMESTRE
+
+                   </td>                      
+
+                   <td  nowrap colspan=10 style='width:260.6pt;border:solid windowtext 1.0pt;
+                   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+                   padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
+                    FALTAS
+                   </td> 
+
+                    <td  nowrap colspan=10 style='width:260.6pt;border:solid windowtext 1.0pt;
+                   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+                   padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
+                 III TRIMESTRE
+
+                   </td>
+                   <td  nowrap colspan=10 style='width:260.6pt;border:solid windowtext 1.0pt;
+                   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+                   padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
+                    FALTAS
+                   </td> 
+
+                   <td  nowrap colspan=10 style='width:260.6pt;border:solid windowtext 1.0pt;
+                   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+                   padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
+                    MF
+                   </td>                    
+
+                   <td  nowrap colspan=10 style='width:260.6pt;border:solid windowtext 1.0pt;
+                   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+                   padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
+                    TOTAL DE FALTAS
+                   </td> 
+              
+                 </tr>
 
 
   <?php 
