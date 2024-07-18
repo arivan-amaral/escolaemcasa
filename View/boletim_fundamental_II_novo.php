@@ -120,6 +120,24 @@ function boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
        ?>
      </o:p></span></p>
    </td>
+
+   <td width=48 nowrap style='width:36.2pt;border-top:none;border-left:none;
+   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+   mso-border-alt:solid windowtext .5pt;padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
+   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+   line-height:normal'><span style='mso-ascii-font-family:Calibri;mso-fareast-font-family:
+   "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
+   color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p>
+    flt
+  </o:p>
+</span>
+</p>
+</td>
+
+
+
+
    <td width=48 nowrap style='width:36.2pt;border-top:none;border-left:none;
    border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
@@ -172,6 +190,26 @@ function boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
 
    </o:p></span></p>
  </td>
+
+
+
+    <td width=48 nowrap style='width:36.2pt;border-top:none;border-left:none;
+   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+   mso-border-alt:solid windowtext .5pt;padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
+   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+   line-height:normal'><span style='mso-ascii-font-family:Calibri;mso-fareast-font-family:
+   "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
+   color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p>
+    flt
+  </o:p>
+</span>
+</p>
+</td>
+
+
+
+
  <td width=53 nowrap style='width:39.4pt;border-top:none;border-left:none;
  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
@@ -227,6 +265,25 @@ function boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
 
  </o:p></span></p>
 </td>
+
+
+
+
+   <td width=48 nowrap style='width:36.2pt;border-top:none;border-left:none;
+   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+   mso-border-alt:solid windowtext .5pt;padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
+   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+   line-height:normal'><span style='mso-ascii-font-family:Calibri;mso-fareast-font-family:
+   "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
+   color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p>
+    flt
+  </o:p>
+</span>
+</p>
+</td>
+
+
 <td width=28 nowrap style='width:21.05pt;border-top:none;border-left:none;
 border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
 mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
@@ -273,6 +330,22 @@ if ($total <5 ) {
 // }
 
 ?></span></p>
+</td>
+
+
+
+   <td width=48 nowrap style='width:36.2pt;border-top:none;border-left:none;
+   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+   mso-border-alt:solid windowtext .5pt;padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
+   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+   line-height:normal'><span style='mso-ascii-font-family:Calibri;mso-fareast-font-family:
+   "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
+   color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p>
+    tot flt
+  </o:p>
+</span>
+</p>
 </td>
 <?php
 if ($conta_parecer==0 && $linha==0) {

@@ -193,7 +193,7 @@ else if ($idserie >3 && $idserie <8) {
  
         echo "<input type='hidden' name='$numero' value='$numero'><br>";
 
-     echo "$numero";
+     // echo "$numero";
           boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$_SESSION['ano_letivo']);
     
         if ($numero%3==0 ) {
