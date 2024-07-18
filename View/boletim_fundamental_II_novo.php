@@ -28,6 +28,29 @@ function boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
             solid windowtext .5pt;mso-yfti-tbllook:1184;mso-padding-alt:0cm 3.5pt 0cm 3.5pt;
             mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
             <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:45.75pt'>
+
+
+                 <tr style='mso-yfti-irow:15;mso-yfti-lastrow:yes;height:15.75pt'>
+                   <td  nowrap colspan=10 style='width:260.6pt;border:solid windowtext 1.0pt;
+                   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+                   padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
+                   <center>
+                     
+                <img src="imagens/secretariaeducacao.png" alt=""   style="height: 6.7cm;width: 7.9cm;">
+                   </center>
+                  </td>
+                </tr>
+                 <tr style='mso-yfti-irow:15;mso-yfti-lastrow:yes;height:15.75pt'>
+                   <td  nowrap colspan=10 style='width:260.6pt;border:solid windowtext 1.0pt;
+                   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+                   padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
+                    <center>
+                      BOLETIM ESCOLAR - ANO <?php echo "$ano_letivo"; ?>               
+
+                    </center>
+                  </td>
+                </tr>
+
        
                  <tr style='mso-yfti-irow:15;mso-yfti-lastrow:yes;height:15.75pt'>
                    <td  nowrap colspan=10 style='width:260.6pt;border:solid windowtext 1.0pt;
@@ -103,7 +126,7 @@ function boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
                     MF
                    </td>        
 
-                              
+
                    <td  nowrap  style=' border:solid windowtext 1.0pt;
                    border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
                    padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
