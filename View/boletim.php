@@ -11,7 +11,7 @@ session_start();
   include"boletim_maternall_II.php";
   include"boletim_serie_1ano_id_3.php";
   include"boletim_fundamental_II.php";
-  include"boletim_fundamental_II_novo.php.php";
+  include"boletim_fundamental_II_novo.php";
   include"boletim_fundamental_turma.php";
   include"teste_boletim.php";
   include"../Controller/Cauculos_notas.php";
@@ -90,7 +90,7 @@ if ($idserie==3) {
     }
 
 }
-else if ($idserie >3 && $idserie <8) {
+else if ($idserie >3 && $idserie <=8) {
     
   
   if (isset($_GET['tokem_teste'])) {
@@ -171,7 +171,7 @@ else if ($idserie >3 && $idserie <8) {
       echo"<div class='pagebreak'> </div>"; 
     }
 
-}else if ($idserie >= 8) {
+}else if ($idserie > 8) {
     //echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
     $numero=1;
         echo "<input type='hidden' name='$numero' value='$numero'>";
