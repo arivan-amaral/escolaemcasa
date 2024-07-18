@@ -136,8 +136,8 @@ function boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
     escola_id=$idescola and
     turma_id=$idturma and
     disciplina_id=$iddisciplina and
-    presenca=0 and 
-    periodo_id=1 and aluno_id=$idaluno ");
+    presenca=0  
+   and data_frequencia BETWEEN '$data_inicio_trimestre1' and '$data_fim_trimestre1' and aluno_id=$idaluno ");
    
 
     $quantidade1=0;
@@ -227,8 +227,7 @@ function boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
  escola_id=$idescola and
  turma_id=$idturma and
  disciplina_id=$iddisciplina and
- presenca=0 and 
- periodo_id=2 and aluno_id=$idaluno ");
+ presenca=0 and data_frequencia BETWEEN '$data_inicio_trimestre2' and '$data_fim_trimestre2' and aluno_id=$idaluno ");
  
 
  $quantidade2=0;
@@ -322,8 +321,7 @@ function boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
    escola_id=$idescola and
    turma_id=$idturma and
    disciplina_id=$iddisciplina and
-   presenca=0 and 
-   periodo_id=3 and aluno_id=$idaluno ");
+   presenca=0 and data_frequencia BETWEEN '$data_inicio_trimestre3' and '$data_fim_trimestre3' and aluno_id=$idaluno ");
    
 
    $quantidade3=0;
