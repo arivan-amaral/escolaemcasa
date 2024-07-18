@@ -11,6 +11,7 @@ session_start();
   include"boletim_maternall_II.php";
   include"boletim_serie_1ano_id_3.php";
   include"boletim_fundamental_II.php";
+  include"boletim_fundamental_II_novo.php.php";
   include"boletim_fundamental_turma.php";
   include"teste_boletim.php";
   include"../Controller/Cauculos_notas.php";
@@ -189,20 +190,17 @@ else if ($idserie >3 && $idserie <=8) {
         echo "<input type='hidden' name='$numero' value='$numero'><br>";
 
      echo "$numero";
-          boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$_SESSION['ano_letivo']);
+          boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$_SESSION['ano_letivo']);
           //boletim_fund_turma($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$_SESSION['ano_letivo']);
        if ($numero%3==0 ) {
         echo ".<input type='hidden' name='tt$numero' value='$numero'>";
 
             echo "<div class='pagebreak'> </div>";
-            // echo "<br>";
-            // echo "<br>";
-            // echo"<br>";
-            // echo"<br>";
+
             
          
           }
-        // echo"<a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma'>IMPRIMIR - $nome_aluno</a> <br><br>";
+    
         $numero++;
       }
       
