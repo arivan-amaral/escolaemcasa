@@ -46,7 +46,7 @@ function boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
                    border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
                    padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
                     <center>
-                      BOLETIM ESCOLAR - ANO <?php echo "$ano_letivo"; ?>               
+                      <b> BOLETIM ESCOLAR - ANO <?php echo "$ano_letivo"; ?>    </b>           
 
                     </center>
                   </td>
