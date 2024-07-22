@@ -83,55 +83,55 @@ function boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
                    <td  nowrap colspan=2  style=' border:solid windowtext 1.0pt;
                    border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
                    padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
-                     COMPONENTE CURRICULAR
+                      <b>COMPONENTE CURRICULAR</b>
                    </td>                   
                    <td  nowrap   style=' border:solid windowtext 1.0pt;
                    border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
                    padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
-                    I TRIMESTRE
+                    <b>I TRIMESTRE</b>
                    </td>                    
 
                    <td  nowrap  style=' border:solid windowtext 1.0pt;
                    border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
                    padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
-                    FALTAS
+                     <b>FALTAS</b>
                    </td>                   
                    <td  nowrap  style=' border:solid windowtext 1.0pt;
                    border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
                    padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
-                 II TRIMESTRE
+                 <b> II TRIMESTRE</b>
 
                    </td>                      
 
                    <td  nowrap  style=' border:solid windowtext 1.0pt;
                    border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
                    padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
-                    FALTAS
+                    <b> FALTAS</b>
                    </td> 
 
                     <td  nowrap  style='border:solid windowtext 1.0pt;
                    border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
                    padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
-                 III TRIMESTRE
+                 <b> III TRIMESTRE</b>
 
                    </td>
                    <td  nowrap  style=' border:solid windowtext 1.0pt;
                    border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
                    padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
-                    FALTAS
+                    <b> FALTAS</b>
                    </td> 
 
                    <td  nowrap  style=' border:solid windowtext 1.0pt;
                    border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
                    padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
-                    MF
+                    <b> MF</b>
                    </td>        
 
 
                    <td  nowrap  style=' border:solid windowtext 1.0pt;
                    border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
                    padding:0cm 3.5pt 0cm 3.5pt;height:15.75pt'>
-                    TOTAL DE FALTAS
+                     <b>TOTAL DE FALTAS</b>
                    </td> 
               
                  </tr>
