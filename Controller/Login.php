@@ -1,12 +1,7 @@
 <?php
-
-
-  echo "<H1>ESTAMOS EM MANUTENÇÃO E ATUALIZAÇÃO </H1>";
-  echo "<img src='../View/imagens/estamos-em-manutencao.png'>";
-
-
-
-  exit();
+//   echo "<H1>ESTAMOS EM MANUTENÇÃO E ATUALIZAÇÃO </H1>";
+//   echo "<img src='../View/imagens/estamos-em-manutencao.png'>";
+// exit();
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
