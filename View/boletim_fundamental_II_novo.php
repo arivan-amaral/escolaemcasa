@@ -543,6 +543,18 @@ $linha++;
  
 
         <?php 
+            $dataFormatada = new DateTime($data_fim_trimestre3);
+
+        if ($dataFormatada->format('Y') == $_SESSION['ano_letivo_vigente'] && $dataFormatada->format('m') != 12) {
+     
+         
+                echo "<b>Em andamento</b>";
+            
+
+
+
+        }else{
+
              $conta_total=($conta_conselho+$conta_apr);
              if ($conta_dis==$conta_total && $conta_conselho>0) {
                echo " <b>Aprovado(a) pelo concelho</b>";
@@ -553,6 +565,10 @@ $linha++;
                echo " <b>Reprovado(a)</b>";
 
              }
+
+
+
+        }
  
            ?>
    
