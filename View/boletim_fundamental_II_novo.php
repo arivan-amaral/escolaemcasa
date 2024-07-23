@@ -566,7 +566,7 @@ $linha++;
 
              }
 
-
+echo $dataFormatada->format('Y')."---".$dataFormatada->format('m')."--".$_SESSION['ano_letivo_vigente'];
 
         }
  
