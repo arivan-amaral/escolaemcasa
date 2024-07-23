@@ -24,7 +24,7 @@ function boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numer
           
 
             <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width=577
-            style='margin-left: 10px; width:432.85pt;border-collapse:collapse;border:none;mso-border-alt:
+            style='margin-left: 15px; width:432.85pt;border-collapse:collapse;border:none;mso-border-alt:
             solid windowtext .5pt;mso-yfti-tbllook:1184;mso-padding-alt:0cm 3.5pt 0cm 3.5pt;
             mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
             
