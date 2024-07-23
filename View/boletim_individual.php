@@ -13,6 +13,7 @@ session_start();
    include"boletim_serie_1ano_id_3.php";
 
   include"boletim_fundamental_II.php";
+  include"boletim_fundamental_II_novo.php";
   include"../Controller/Cauculos_notas.php";
   
   
@@ -56,7 +57,7 @@ if ($idserie==3) {
 
      boletim_1ano($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno, $nome_escola,$nome_turma,$nome_professor,$ano_letivo);
  
-}else if ($idserie >3 && $idserie <=8) {
+}else if ($idserie >3 && $idserie <8) {
    boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$ano_letivo);
 
 
@@ -80,10 +81,10 @@ if ($idserie==3) {
 
 
 
-}else if ($idserie > 8) {
+}else if ($idserie >= 8) {
     //echo "<H1> <font color='red'>PÁGINA EM MANUTENÇÃO</font> </H1><BR>";
 
-    boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$ano_letivo);
+    boletim_fund2_novo($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$nome_aluno,$nome_escola,$nome_turma,$ano_letivo);
             
 }
 
