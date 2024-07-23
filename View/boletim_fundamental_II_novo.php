@@ -545,7 +545,9 @@ $linha++;
         <?php 
             $dataFormatada = new DateTime($data_fim_trimestre3);
 
-        if ($dataFormatada->format('Y') == $_SESSION['ano_letivo_vigente'] && $dataFormatada->format('m') != 12) {
+            $data_atual = new DateTime(date("Y-m-d"));
+
+        if ($dataFormatada->format('Y') == $_SESSION['ano_letivo_vigente'] && $data_atual->format('m') != 12) {
      
          
                 echo "<b>Em andamento</b>";
@@ -565,9 +567,7 @@ $linha++;
                echo " <b>Reprovado(a)</b>";
 
              }
-
-echo $dataFormatada->format('Y')."---".$dataFormatada->format('m')."--".$_SESSION['ano_letivo_vigente'];
-
+ 
         }
  
            ?>
