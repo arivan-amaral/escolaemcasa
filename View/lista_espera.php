@@ -329,7 +329,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
   </div>
 
   <script type="text/javascript">
-  const inputEle = document.getElementById('pesquisa_aluno');
+  const inputEle = document.getElementById('pesquisa_nome_aluno');
   inputEle.addEventListener('keyup', function(e){
     var key = e.which || e.keyCode;
     if (key == 13) { // codigo da tecla enter
