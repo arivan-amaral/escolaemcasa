@@ -238,7 +238,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
                     </div>
                         <div class="col-sm-2"> 
                           <label><br></label><br>
-                        <a class="btn btn-primary" onclick="limpa_pesquisa_aluno();pesquisa_aluno();">Buscar</a>
+                        <a class="btn btn-primary" onclick="">Buscar</a>
                         </div>
                   </div> 
 
