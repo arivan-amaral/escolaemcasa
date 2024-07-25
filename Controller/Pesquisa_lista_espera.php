@@ -14,7 +14,8 @@ try {
     $idfuncionario=$_SESSION['idfuncionario'];
 
    $pesquisa=$_GET['pesquisa'];
-   $pesquisa_nome_aluno=$_GET['pesquisa_nome_aluno'];
+    $pesquisa_nome_aluno = !empty($_GET['pesquisa_nome_aluno']) ? $_GET['pesquisa_nome_aluno'] : ' ';
+
      
     if ($pesquisa=="Todas") {
          $sql_escolas.=" and escola_id != -1 AND aluno.nome_aluno LIKE %$pesquisa_nome_aluno%";
