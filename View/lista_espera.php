@@ -79,7 +79,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
                       <div class="col-sm-5">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Escola</label>
-                         <select class="form-control"  name="escola_id" id="escola" onchange="lista_turma_cadastrada_escola_por_serie('tabela');" required>
+                         <select class="form-control"  name="escola_associada" id="escola_associada">
                           <!-- <option></option> -->
                        <?php 
                          // $res_escola=lista_escola($conexao);
