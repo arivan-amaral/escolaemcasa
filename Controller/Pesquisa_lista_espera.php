@@ -16,7 +16,7 @@ try {
    $pesquisa=$_GET['pesquisa'];
     $pesquisa_nome_aluno = $_GET['pesquisa_nome_aluno'];
 
-     $pesquisa_nome_aluno=" AND aluno.nome_aluno LIKE %$pesquisa_nome_aluno% ";
+     $pesquisa_nome_aluno=" AND aluno.nome_aluno LIKE '%$pesquisa_nome_aluno%' ";
 
 
 
