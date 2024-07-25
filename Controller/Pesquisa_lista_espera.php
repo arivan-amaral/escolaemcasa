@@ -14,13 +14,14 @@ try {
     $idfuncionario=$_SESSION['idfuncionario'];
 
    $pesquisa=$_GET['pesquisa'];
+   $pesquisa_nome_aluno=$_GET['pesquisa_nome_aluno'];
      
     if ($pesquisa=="Todas") {
-         $sql_escolas.=" and escola_id != -1 ";
+         $sql_escolas.=" and escola_id != -1 AND aluno.nome_aluno LIKE %$pesquisa_nome_aluno%";
       
      
     }else{
-        $sql_escolas.=" and  escola_id = $pesquisa ";
+        $sql_escolas.=" and  escola_id = $pesquisa AND aluno.nome_aluno LIKE %$pesquisa_nome_aluno%";
     }
     
     $res_escola= escola_associada($conexao,$idfuncionario);

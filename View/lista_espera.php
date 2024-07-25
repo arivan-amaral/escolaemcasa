@@ -232,13 +232,13 @@ include_once "../Model/Conexao_".$usuariobd.".php";
                     </div>  
                     <div class="col-sm-6"> 
                         <label for="exampleInputEmail1">Pesquisar aluno</label>
-                          <input type="search" id="pesquisa" class="form-control form-control" 
-                        value="" placeholder="Pesquisar aluno">
+                          <input type="search" id="pesquisa_nome_aluno" class="form-control form-control" 
+                          placeholder="Pesquisar aluno">
                         
                     </div>
                         <div class="col-sm-2"> 
                           <label><br></label><br>
-                        <a class="btn btn-primary" onclick="">Buscar</a>
+                        <a class="btn btn-primary" onclick="lista_espera();">Buscar</a>
                         </div>
                   </div> 
 

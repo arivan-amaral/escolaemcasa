@@ -218,13 +218,15 @@ function limpa_pesquisa_aluno(){
 
 
 function lista_espera(){
-
+ 
 
   var result = document.getElementById('tabela_lista_espera');
   var pesquisa = document.getElementById('escola_associada').value;
+  var pesquisa = document.getElementById('escola_associada').value;
+  var pesquisa_nome_aluno = document.getElementById('pesquisa_nome_aluno').value;
   result.innerHTML = "<img src='imagens/carregando.gif'>";  
   var xmlreq = CriaRequest();
-  xmlreq.open("GET", "../Controller/Pesquisa_lista_espera.php?pesquisa="+pesquisa, true);
+  xmlreq.open("GET", "../Controller/Pesquisa_lista_espera.php?pesquisa="+pesquisa+"&pesquisa_nome_aluno="+pesquisa_nome_aluno, true);
 
       xmlreq.onreadystatechange = function(){
     
