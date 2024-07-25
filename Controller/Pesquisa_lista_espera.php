@@ -14,15 +14,19 @@ try {
     $idfuncionario=$_SESSION['idfuncionario'];
 
    $pesquisa=$_GET['pesquisa'];
-    $pesquisa_nome_aluno = !empty($_GET['pesquisa_nome_aluno']) ? $_GET['pesquisa_nome_aluno'] : ' ';
+    $pesquisa_nome_aluno = $_GET['pesquisa_nome_aluno'];
 
-     
+     $pesquisa_nome_aluno=" AND aluno.nome_aluno LIKE %$pesquisa_nome_aluno%
+ AND aluno.nome_aluno LIKE %$pesquisa_nome_aluno% ";
+
+
+ 
     if ($pesquisa=="Todas") {
-         $sql_escolas.=" and escola_id != -1 AND aluno.nome_aluno LIKE %$pesquisa_nome_aluno%";
+         $sql_escolas.=" and escola_id != -1 ";
       
      
     }else{
-        $sql_escolas.=" and  escola_id = $pesquisa AND aluno.nome_aluno LIKE %$pesquisa_nome_aluno%";
+        $sql_escolas.=" and  escola_id = $pesquisa ";
     }
     
     $res_escola= escola_associada($conexao,$idfuncionario);
@@ -35,7 +39,7 @@ try {
       
 
     $result="";
-   $res = pesquisa_lista_espera($conexao,$sql_escolas,2500);
+   $res = pesquisa_lista_espera($conexao,$sql_escolas,2500,$pesquisa_nome_aluno);
    $conta=1;
    foreach ($res as $key => $value) {
         $id=$value['id'];
