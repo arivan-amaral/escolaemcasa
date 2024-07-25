@@ -23,7 +23,22 @@ include_once "../Model/Conexao_".$usuariobd.".php";
 ?> 
 
   
+<script>
+     document.addEventListener('DOMContentLoaded', (event) => {
+         document.querySelectorAll('input').forEach(input => {
+             input.addEventListener('keydown', function(event) {
+                 if (event.key === 'Enter') {
+                     event.preventDefault();
+                     if (input.id === 'pesquisa_nome_aluno') {
+                         lista_espera();
+                     }
+                 }
+             });
+         });
+     });
 
+ 
+ </script>
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 
 
