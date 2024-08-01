@@ -559,7 +559,7 @@ $linha++;
 
              $conta_total=($conta_conselho+$conta_apr);
              if ($conta_dis==$conta_total && $conta_conselho>0) {
-               echo " <b>Aprovado(a) pelo concelho</b>";
+               echo " <b>Aprovado(a) pelo Conselho</b>";
 
              }elseif ($conta_apr==$conta_dis) {
                echo " <b>Aprovado(a)</b>";
