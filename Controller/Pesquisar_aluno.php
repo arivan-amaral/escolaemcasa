@@ -504,9 +504,9 @@ where
                                 <input type='hidden' name='turma_id' value='$idturma'>
                                 <input type='hidden' name='serie_id' value='$idserie'>
                                 <input type='hidden' name='nome_aluno' value='$nome_aluno'>
-                                <input type='hidden' name='tipo_declaracao' value='Declarações Auxílio Brasil'>
+                                <input type='hidden' name='tipo_declaracao' value='Declarações Bolsa Família'>
                                 
-                                <button type='submit' class='dropdown-item'  >Declarações Auxílio Brasil</button>
+                                <button type='submit' class='dropdown-item'  >Declarações Bolsa Família</button>
                          
                             </form>
                             </li>";         
