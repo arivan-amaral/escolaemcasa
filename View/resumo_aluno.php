@@ -12,7 +12,7 @@
 	<colgroup width="113"></colgroup>
 	<colgroup span="2" width="64"></colgroup>
 	<tr>
-		<td style="border-top: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000" colspan=9 height="22" align="center" valign=bottom><b><font face="Arial" size=3 color="#000000">PREFEITURA MUNICIPAL DE LUÍS EDUARDO MAGALHÃES</font></b></td>
+		<td style="border-top: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000" colspan=9 height="22" align="center" valign=bottom><b><font face="Arial" size=3 color="#000000">PREFEITURA DE LUÍS EDUARDO MAGALHÃES</font></b></td>
 		<td align="left" valign=bottom><font color="#000000"><br></font></td>
 		<td align="left" valign=bottom><font color="#000000"><br></font></td>
 	</tr>
