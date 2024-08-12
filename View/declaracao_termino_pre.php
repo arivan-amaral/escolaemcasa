@@ -203,9 +203,9 @@ $result_ecidade_matricula=$conexao->query("SELECT
                                        } else if ($serie_id==2) {
                                          echo "DA EDUCAÇÃO INFANTIL – ETAPA PRÉ-ESCOLA";
                                        } else if ($serie_id==7) {
-                                         echo "DA EDUCAÇÃO FUNDAMENTAL – ETAPA 5º ANO";
+                                         echo "DO ENSINO FUNDAMENTAL - ANOS INICIAIS – ETAPA 5º ANO";
                                        } else if ($serie_id==11 || $serie_id==15) {
-                                         echo "DA EDUCAÇÃO FUNDAMENTAL – ETAPA 9º ANO";
+                                         echo "DO ENSINO FUNDAMENTAL - ANOS FINAIS – ETAPA 9º ANO";
                                        }  
                                      ?>
                                    </b>
