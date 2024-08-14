@@ -182,6 +182,12 @@ include_once "../Model/Conexao_".$usuariobd.".php";
       </label>
     </div>
     <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="aluno.tamanho_uniforme" id="tamanho_uniforme">
+      <label class="form-check-label" for="tamanho_uniforme">
+        Uniforme
+      </label>
+    </div>
+    <div class="form-check">
       <input class="form-check-input" type="checkbox" value="aluno.whatsapp" id="whatsapp">
       <label class="form-check-label" for="whatsapp">
         Whatsapp
@@ -255,12 +261,6 @@ include_once "../Model/Conexao_".$usuariobd.".php";
       <input class="form-check-input" type="checkbox" value="aluno.cep_endereco" id="cep_endereco">
       <label class="form-check-label" for="cep_endereco">
         CEP
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="aluno.tamanho_uniforme" id="tamanho_uniforme">
-      <label class="form-check-label" for="tamanho_uniforme">
-        Uniforme
       </label>
     </div>
   </div>
