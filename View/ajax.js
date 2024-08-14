@@ -834,6 +834,7 @@ function pesquisa_relatorio_filtros(){
 
   var cep_endereco = document.getElementById('cep_endereco');
   var raca_aluno = document.getElementById('raca_aluno');
+  var tamanho_uniforme = document.getElementById('tamanho_uniforme');
   var numero_nis = document.getElementById('numero_nis');
  
   if(idaluno.checked) {
@@ -1009,6 +1010,21 @@ if(cpf_aluno.checked) {
      }
   }
 
+  if(tamanho_uniforme.checked) {
+    if(contador == 0){
+     texto+=cep_endereco.value;
+     titulo+="tamanho_uniforme";
+     parametro+="tamanho_uniforme";
+     contador++;
+    }else{
+     texto+=","+tamanho_uniforme.value;
+     titulo+="-tamanho_uniforme";
+     parametro+="-tamanho_uniforme";
+     contador++;
+    }
+ }
+
+
   if(nome_escola.checked) {
      if(contador == 0){
       texto+=nome_escola.value;
@@ -1142,6 +1158,7 @@ function pesquisa_relatorio_filtros_aee(){
 
   var cep_endereco = document.getElementById('cep_endereco');
   var raca_aluno = document.getElementById('raca_aluno');
+  var tamanho_uniforme = document.getElementById('tamanho_uniforme');
   
  
   if(idaluno.checked) {
@@ -1301,6 +1318,20 @@ if(cpf_aluno.checked) {
       texto+=","+raca_aluno.value;
       titulo+="-raca_aluno";
       parametro+="-raca_aluno";
+      contador++;
+     }
+  }
+
+  if(tamanho_uniforme.checked) {
+     if(contador == 0){
+      texto+=cep_endereco.value;
+      titulo+="tamanho_uniforme";
+      parametro+="tamanho_uniforme";
+      contador++;
+     }else{
+      texto+=","+tamanho_uniforme.value;
+      titulo+="-tamanho_uniforme";
+      parametro+="-tamanho_uniforme";
       contador++;
      }
   }
