@@ -168,11 +168,25 @@ foreach ($campos as $value) {
                   </div>
 
                   <div class="col-sm-3">
-                      <div class="form-group">
-                          <label for="tamanho_uniforme">Tamanho de Uniforme</label>
-                          <input type="text" class="form-control" id="tamanho_uniforme" name="tamanho_uniforme">
-                      </div>
-                  </div>
+    <div class="form-group">
+        <label for="tamanho_uniforme">Tamanho de Uniforme</label>
+        <select class="form-control" id="tamanho_uniforme" name="tamanho_uniforme">
+            <option value="04">04</option>
+            <option value="06">06</option>
+            <option value="08">08</option>
+            <option value="10">10</option>
+            <option value="12">12</option>
+            <option value="14">14</option>
+            <option value="16">16</option>
+            <option value="P">P</option>
+            <option value="M" selected>M</option>
+            <option value="G">G</option>
+            <option value="GG">GG</option>
+            <option value="XG">XG</option>
+        </select>
+    </div>
+</div>
+
 
                   <div class="col-sm-4">
                   <div class="form-group">
