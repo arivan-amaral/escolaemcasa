@@ -90,9 +90,9 @@ if (in_array($professor_id, $array_liberados) || $_SESSION["cargo"] !="Professor
             if (isset($_POST["descricao$campo_origem_conteudo"])) {
              $descricao=escape_mimic($_POST["descricao$campo_origem_conteudo"]);
             }
-            if (strlen($descricao) < 30 || preg_match('/(.)\1{6,}/', $descricao)) {
+            if (strlen($descricao) < 10 || preg_match('/(.)\1{3,}/', $descricao)) {
                 $_SESSION['status'] = 0;
-                $_SESSION['mensagem'] = 'Conteúdo inválido! Certifique-se de que o texto tenha pelo menos 30 caracteres e não contenha caracteres ou números repetidos em sequência.';
+                $_SESSION['mensagem'] = 'Conteúdo inválido! Certifique-se de que o texto tenha pelo menos 10 caracteres e não contenha caracteres ou números repetidos em sequência.';
                 header("location: ../View/cadastrar_conteudo.php?$url_get");
                 exit();
             }
