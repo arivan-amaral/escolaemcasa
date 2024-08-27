@@ -131,23 +131,23 @@ include_once "../Model/Conexao_".$usuariobd.".php";
 
                       <div class="col-sm-6">
                         <div class="form-group">
-                           <label for="exampleInputEmail1">Nome do aluno</label>
-                           <input type="text" class="form-control" name="nome_aluno" required>
+                           <label class="text-danger" for="exampleInputEmail1">Nome do aluno *</label>
+                           <input type="text" class="form-control" name="nome_aluno" required="">
                              
                         </div>
                       </div>                     
           
                        <div class="col-sm-3">
                         <div class="form-group">
-                           <label for="exampleInputEmail1">Data nasc. do aluno</label>
-                           <input type="date" class="form-control"  name="data_nascimento" required>
+                           <label class="text-danger" for="exampleInputEmail1">Data nasc. aluno *</label>
+                           <input type="date" class="form-control"  name="data_nascimento" required="">
                              
                         </div>
                       </div>                       
 
                       <div class="col-sm-3">
                         <div class="form-group">
-                           <label for="exampleInputEmail1">Cpf do aluno</label>
+                           <label class="text-danger" for="exampleInputEmail1">Cpf do aluno *</label>
 
                            <input type="text" name="cpf_aluno"  id="cpf_aluno" class="form-control" placeholder="Digite seu CPF do aluno" required=""  onkeyup="fMasc( this, mCPF ); ValidaCPF('cpf_aluno');" maxlength="14">
                              
@@ -156,7 +156,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
 
                       <div class="col-sm-6">
                         <div class="form-group">
-                           <label for="exampleInputEmail1">Nome do responsável</label>
+                           <label for="exampleInputEmail1" class="text-danger">Nome do responsável *</label>
                            <input type="text" class="form-control"  name="nome_responsavel" required="">
                              
                         </div>
@@ -164,7 +164,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
 
                       <div class="col-sm-3">
                         <div class="form-group">
-                           <label for="exampleInputEmail1">WhatsApp do responsável</label>
+                           <label class="text-danger" for="exampleInputEmail1">WhatsApp do responsável *</label>
                            <input type="tel" class="form-control" name="telefone"    required="">
                              
                         </div>
@@ -174,7 +174,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
                            <label for="exampleInputEmail1">Cpf do responsável</label>
                            <div id="status_cpf"></div>
                   
-                           <input type="text" name="cpf_responsavel"  id="cpf" class="form-control" placeholder="Digite seu CPF do responsável" required=""  onkeyup="fMasc( this, mCPF ); ValidaCPF('cpf');" maxlength="14">
+                           <input type="text" name="cpf_responsavel"  id="cpf" class="form-control" placeholder="Digite seu CPF do responsável" required  onkeyup="fMasc( this, mCPF ); ValidaCPF('cpf');" maxlength="14">
 
 
                              
@@ -183,24 +183,24 @@ include_once "../Model/Conexao_".$usuariobd.".php";
                       <div class="col-sm-6">
                         <div class="form-group">
                            <label for="exampleInputEmail1">Endereço</label>
-                           <input type="text" class="form-control" name="endereco"    required="">
+                           <input type="text" class="form-control" name="endereco"    required>
                              
                         </div>
                         </div> 
                         <div class="col-sm-3">
                           <div class="form-group">
-                            <label for="exampleInputEmail1">Nec especial</label><br>
-                            <select class="form-control" name="necessidade_especial">
-                              <option value='N'>Não</option>
+                            <label class="text-danger" for="exampleInputEmail1">Nec especial *</label><br>
+                            <select class="form-control" required="" name="necessidade_especial">
                               <option value='S'>Sim</option>
+                              <option value='N' selected>Não</option>
                             </select>
                           </div>
                         </div>
 
                         <div class="col-sm-3">
                           <div class="form-group">
-                            <label for="exampleInputEmail1">Tipo deficiência</label><br>
-                            <select class="form-control" id="tipo_nec" name="tipo_nec" onchange="mostrarCampoOutros()">
+                            <label class="text-danger" for="exampleInputEmail1">Tipo deficiência *</label><br>
+                            <select class="form-control" id="tipo_nec" required="" name="tipo_nec" onchange="mostrarCampoOutros()">
                               <option value="Transtorno do Espectro autista (TEA)">Transtorno do Espectro autista (TEA)</option>
                               <option value="Nenhuma" selected>Nenhuma</option>
                               <option value="Outros">Outros</option>
