@@ -190,7 +190,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
                         <div class="col-sm-3">
                           <div class="form-group">
                             <label class="text-danger" for="exampleInputEmail1">Nec especial *</label><br>
-                            <select class="form-control" required="" name="necessidade_especial">
+                            <select class="form-control" required="" name="nec_especial" id="nec_especial">
                               <option value='S'>Sim</option>
                               <option value='N' selected>Não</option>
                             </select>
