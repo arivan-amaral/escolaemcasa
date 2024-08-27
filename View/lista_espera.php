@@ -214,7 +214,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
                           </div>
                           <script>
                             function mostrarCampoOutros() {
-                              var select = document.getElementById("tipo_deficiencia");
+                              var select = document.getElementById("tipo_nec");
                               var outrosCampo = document.getElementById("outros_campo");
 
                               if (select.value === "Outros") {
