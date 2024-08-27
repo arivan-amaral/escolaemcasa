@@ -91,7 +91,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
                 <form class="mt-12"  method="POST" id="form_lista_espera">
                   <div class="card-body">
                     <div class="row">
-                      <div class="col-sm-5">
+                      <div class="col-sm-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Escola</label>
                          <select class="form-control"  name="escola_associada" id="escola_associada">
@@ -129,7 +129,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
                         </div>
                       </div> 
 
-                      <div class="col-sm-3">
+                      <div class="col-sm-6">
                         <div class="form-group">
                            <label for="exampleInputEmail1">Nome do aluno</label>
                            <input type="text" class="form-control" name="nome_aluno" required>
@@ -154,13 +154,21 @@ include_once "../Model/Conexao_".$usuariobd.".php";
                         </div>
                       </div>
 
-                      <div class="col-sm-3">
+                      <div class="col-sm-6">
                         <div class="form-group">
                            <label for="exampleInputEmail1">Nome do responsável</label>
                            <input type="text" class="form-control"  name="nome_responsavel" required="">
                              
                         </div>
                       </div> 
+
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                           <label for="exampleInputEmail1">WhatsApp do responsável</label>
+                           <input type="tel" class="form-control" name="telefone"    required="">
+                             
+                        </div>
+                      </div>
                       <div class="col-sm-3">
                         <div class="form-group">
                            <label for="exampleInputEmail1">Cpf do responsável</label>
@@ -172,27 +180,60 @@ include_once "../Model/Conexao_".$usuariobd.".php";
                              
                         </div>
                       </div>
-
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                           <label for="exampleInputEmail1">WhatsApp do responsável</label>
-                           <input type="tel" class="form-control" name="telefone"    required="">
-                             
-                        </div>
-                      </div>
-                      <div class="col-sm-5">
+                      <div class="col-sm-6">
                         <div class="form-group">
                            <label for="exampleInputEmail1">Endereço</label>
                            <input type="text" class="form-control" name="endereco"    required="">
                              
                         </div>
-                      </div> 
-                      <div class="col-sm-5">
-                        <div class="form-group">
-                           <label for="exampleInputEmail1">Observação</label>
-                           <textarea class="form-control" name="observacao" rows="5"></textarea>
-                             
+                        </div> 
+                        <div class="col-sm-3">
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Nec especial</label><br>
+                            <select class="form-control" name="necessidade_especial">
+                              <option value='N'>Não</option>
+                              <option value='S'>Sim</option>
+                            </select>
+                          </div>
                         </div>
+
+                        <div class="col-sm-3">
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Tipo deficiência</label><br>
+                            <select class="form-control" id="tipo_nec" name="tipo_nec" onchange="mostrarCampoOutros()">
+                              <option value="Transtorno do Espectro autista (TEA">Transtorno do Espectro autista (TEA)</option>
+                              <option value="Nenhuma" selected>Nenhuma</option>
+                              <option value="Outros">Outros</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-sm-6" id="outros_campo" style="display: none;">
+                          <div class="form-group">
+                            <label for="outrosDeficiencia">Outros tipos de deficiência</label><br>
+                            <input type="text" class="form-control" name="outrosDeficiencia" id="outrosDeficiencia">
+                          </div>
+                          <script>
+                            function mostrarCampoOutros() {
+                              var select = document.getElementById("tipo_deficiencia");
+                              var outrosCampo = document.getElementById("outros_campo");
+
+                              if (select.value === "Outros") {
+                                outrosCampo.style.display = "block";
+                              } else {
+                                outrosCampo.style.display = "none";
+                              }
+                            }
+                          </script>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                             <label for="exampleInputEmail1">Observação</label>
+                             <textarea class="form-control" name="observacao" rows="1"></textarea>
+                               
+                          </div>
+                        </div>
+                        <div class="row">
+
                       </div>
                   </div>
                   <div class="row">
