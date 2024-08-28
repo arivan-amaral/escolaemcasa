@@ -90,7 +90,7 @@ if (in_array($professor_id, $array_liberados) || $_SESSION["cargo"] !="Professor
             if (isset($_POST["descricao$campo_origem_conteudo"])) {
              $descricao=escape_mimic($_POST["descricao$campo_origem_conteudo"]);
             }
-            if (strlen($descricao) < 24) {
+            if (strlen($descricao) < 10) {
                 $_SESSION['status'] = 0;
                 $_SESSION['mensagem'] = 'Conteúdo não atingiu a quantidade mínima de caracteres!';
                 header("location: ../View/cadastrar_conteudo.php?$url_get");
