@@ -201,7 +201,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
                           <div class="form-group">
                             <label class="text-danger" for="exampleInputEmail1">Tipo deficiência *</label><br>
                             <select class="form-control" id="tipo_nec" required="" name="tipo_nec" onchange="mostrarCampoOutros()">
-                              <option value="Transtorno do Espectro autista (TEA)">Transtorno do Espectro autista (TEA)</option>
+                              <option value="tea">Transtorno do Espectro autista (TEA)</option>
                               <option value="Nenhuma" selected>Nenhuma</option>
                               <option value="Outros">Outros</option>
                             </select>
