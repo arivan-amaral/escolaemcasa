@@ -169,32 +169,39 @@ function verificar_cadastro_lista_espera($conexao,$cpf_aluno){
 
 } 
 
-function pesquisa_lista_espera($conexao,$lista_escolas,$limite, $pesquisa_nome_aluno){
-    $sql=$conexao->prepare("SELECT 
-        lista_de_espera.id,
-        nome_aluno,
+function pesquisa_lista_espera($conexao, $lista_escolas, $limite, $pesquisa_nome_aluno) {
+  $sql = $conexao->prepare("SELECT 
+      lista_de_espera.id,
+      nome_aluno,
+      nome_responsavel,
+      funcionario.nome as 'nome_funcionario',
+      serie.nome as 'nome_serie',
+      escola.nome_escola,
+      lista_de_espera.data_hora,
+      lista_de_espera.telefone,
+      lista_de_espera.escola_id,
+      lista_de_espera.observacao,
+      lista_de_espera.data_nascimento,
+      lista_de_espera.status,
+      lista_de_espera.tipo_nec
+  FROM  
+      lista_de_espera, serie, escola, funcionario
+  WHERE
+      lista_de_espera.serie_id = serie.id 
+      AND lista_de_espera.escola_id = escola.idescola
+      AND lista_de_espera.funcionario_id = funcionario.idfuncionario 
+      $lista_escolas 
+      $pesquisa_nome_aluno
+  ORDER BY 
+      CASE WHEN lista_de_espera.tipo_nec = 'TEA' THEN 1 ELSE 2 END ASC, 
+      lista_de_espera.status ASC, 
+      lista_de_espera.id ASC
+  LIMIT $limite");
 
-        nome_responsavel,
-        funcionario.nome as 'nome_funcionario',
-        serie.nome as 'nome_serie',
-        escola.nome_escola,
-        lista_de_espera.data_hora,
-        lista_de_espera.telefone,
-        lista_de_espera.escola_id,
-        lista_de_espera.observacao,
-        lista_de_espera.data_nascimento,
-        lista_de_espera.status
-    FROM  
-    lista_de_espera,serie,escola,funcionario
-    WHERE
-        serie_id=serie.id and escola_id=escola.idescola 
-         and funcionario.idfuncionario=funcionario_id $lista_escolas $pesquisa_nome_aluno ORDER BY status asc, lista_de_espera.id asc
-     LIMIT  $limite");
-
-   $sql->execute();
-   return $sql->fetchAll();
-
+  $sql->execute();
+  return $sql->fetchAll();
 }
+
 
 function pesquisa_editar_lista_espera($conexao,$id){
     $sql=$conexao->prepare("SELECT 
