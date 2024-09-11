@@ -11,6 +11,9 @@ include_once "../Model/Conexao_".$usuariobd.".php";
  include_once 'Conversao.php';
  
 try { 
+ 
+    $sql_escolas = "";
+    
     $idfuncionario=$_SESSION['idfuncionario'];
 
    $pesquisa=$_GET['pesquisa'];
@@ -38,8 +41,14 @@ try {
       
 
     $result="";
+
+
+    // exit("$pesquisa");
+
    $res = pesquisa_lista_espera($conexao,$sql_escolas,2500,$pesquisa_nome_aluno);
    $conta=1;
+   $cor_status="";
+
    foreach ($res as $key => $value) {
         $id=$value['id'];
         $escola_id=$value['escola_id'];

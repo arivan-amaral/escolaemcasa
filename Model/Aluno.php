@@ -167,7 +167,7 @@ function verificar_cadastro_lista_espera($conexao,$cpf_aluno){
    $sql->execute(array($cpf_aluno));
    return $sql->fetchAll();
 
-}
+} 
 
 function pesquisa_lista_espera($conexao,$lista_escolas,$limite, $pesquisa_nome_aluno){
     $sql=$conexao->prepare("SELECT 

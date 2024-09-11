@@ -103,7 +103,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
                          foreach ($res_escola as $key => $value) {
                              $idescola=$value['idescola'];
                              $nome_escola=$value['nome_escola'];
-                             echo "<option value='$idescola'>$nome_escola </option>";
+                             echo "<option value='$idescola'>$nome_escola t</option>";
                          }
                          ?>
                          </select>
