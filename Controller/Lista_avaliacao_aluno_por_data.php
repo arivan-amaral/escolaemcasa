@@ -131,9 +131,14 @@ try {
                                  ";
                              
                             }else{
+
                              $result.="<b class='text-success'>
                                     <b class='text-danger'>Nessa data o aluno não estava na turma. Data matrícula: ".converte_data($data_matricula)."</b>
                                  </b>";
+                                 //essa alteração cancela o bloquei que existia impedindo de cadastrar nota em aluno que n estava na turma no periodo 
+                                 $result.=" <input type='hidden' name='aluno_id[]' value='$id'>
+                                 <br>
+                                 //fim
                             }
 
                           $result.="</div>                      
