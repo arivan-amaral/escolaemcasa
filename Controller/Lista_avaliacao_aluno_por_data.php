@@ -137,7 +137,7 @@ try {
                                  </b>";
                                  //essa alteração cancela o bloquei que existia impedindo de cadastrar nota em aluno que n estava na turma no periodo 
                                  $result.=" <input type='hidden' name='aluno_id[]' value='$id'>
-                                 <br>
+                                 <br>";
                                  //fim
                             }
 
