@@ -87,7 +87,7 @@ function pesquisar_chamado_escola_data($conexao,$chamado_id,$data_inicial,$data_
    $result = $conexao->query("SELECT chamada.id,chamada.funcionario_id,chamada.setor_id,chamada.status,chamada.tipo_solicitacao
 ,chamada.func_respondeu_id, chamada.data_previsao FROM 
 chamada,chat_chamado where chamada.tipo_solicitacao=$chamado_id and chamada.setor_id = '11'and chat_chamado.status = 'inicial'
-and chamada.id = chat_chamado.chamada_id and chat_chamado.data BETWEEN '$data_inicial' AND '$data_final' order by data desc ");
+and chamada.id = chat_chamado.chamada_id and chat_chamado.data BETWEEN '$data_inicial' AND '$data_final' order by chamada.data desc ");
     return $result;
 
 }
