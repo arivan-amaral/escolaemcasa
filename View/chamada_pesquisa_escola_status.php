@@ -123,7 +123,7 @@ setTimeout('dia_doservidor_publico();',3000);
         <div class="col-sm-2">
           <div class="form-group">
            <label for="exampleInputEmail1">DATA INÍCIAL</label>
-           <input type="date" class="form-control" name="data_inicial" id="data_inicial" alue="<?php echo date("Y-m-d"); ?>">
+           <input type="date" class="form-control" name="data_inicial" id="data_inicial" value="<?php echo date("Y-m-d"); ?>">
           </div>
         </div>
          <div class="col-sm-2">
