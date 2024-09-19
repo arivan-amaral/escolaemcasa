@@ -422,4 +422,24 @@ function buscar_escola_por_nome($conexao,$nome_escola){
   
 }
 
+function cadastrar_visita_escola($conexao, $escola_visitada, $situacao_resolvida, $nome_visitante, $objetivo_visita, $data_hora_visita, $relatorio_visita) {
+    $sql = $conexao->prepare("INSERT INTO visitas_escolas (escola_visitada, situacao_resolvida, nome_visitante, objetivo_visita, data_hora_visita, relatorio_visita)
+                             VALUES (:escola_visitada, :situacao_resolvida, :nome_visitante, :objetivo_visita, :data_hora_visita, :relatorio_visita)");
+
+    $sql->bindParam(':escola_visitada', $escola_visitada);
+    $sql->bindParam(':situacao_resolvida', $situacao_resolvida);
+    $sql->bindParam(':nome_visitante', $nome_visitante);
+    $sql->bindParam(':objetivo_visita', $objetivo_visita);
+    $sql->bindParam(':data_hora_visita', $data_hora_visita);
+    $sql->bindParam(':relatorio_visita', $relatorio_visita);
+
+    if ($sql->execute()) {
+        return true;
+    } else {
+        throw new PDOException(implode(", ", $sql->errorInfo()));
+    }
+}
+
+
+
 ?>

@@ -170,7 +170,14 @@
                <i class='far fa-circle nav-icon text-primary'></i>
                <p>Relatório AEE</p>
                </a>
-               </li>        
+               </li>
+               
+                <li class='nav-item'>
+               <a href='relatorio_visita.php' class='nav-link'>
+               <i class='far fa-circle nav-icon text-primary'></i>
+               <p>Relatório de visitas nas escolas</p>
+               </a>
+               </li> 
 
 
                <li class='nav-item'>
