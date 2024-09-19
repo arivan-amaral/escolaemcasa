@@ -23,6 +23,7 @@ if (!isset($_SESSION['idcoordenador'])) {
   include_once "barra_horizontal.php";
   include_once 'menu.php';
   include_once '../Controller/Conversao.php';
+  include_once '../Model/Coordenador.php';
 
   if (!isset($_SESSION['usuariobd'])) {
     // Se não estiver definida, atribui o valor padrão 'educ_lem'
