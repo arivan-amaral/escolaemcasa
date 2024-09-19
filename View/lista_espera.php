@@ -84,7 +84,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
               </div> 
               <div class="container-fluid">
            
-
+ 
                 <div class="row">
                   <div class="col-md-12">
                     <br>
@@ -103,7 +103,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
                          foreach ($res_escola as $key => $value) {
                              $idescola=$value['idescola'];
                              $nome_escola=$value['nome_escola'];
-                             echo "<option value='$idescola'>$nome_escola t</option>";
+                             echo "<option value='$idescola'>$nome_escola </option>";
                          }
                          ?>
                          </select>

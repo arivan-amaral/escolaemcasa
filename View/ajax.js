@@ -644,8 +644,10 @@ function pesquisa_chamado_setor_escola() {
   var pesquisa = document.getElementById("pesquisa").value;
   var data_inicial = document.getElementById("data_inicial").value;
   var data_final = document.getElementById("data_final").value;
-  var obj_filtro = document.getElementById("filtro");
-  var filtro = obj_filtro.options[obj_filtro.selectedIndex].value;
+
+  var escola = document.getElementById("escola").value;
+  // var filtro = escola.options[obj_filtro.selectedIndex].value;
+  
   if (
     (data_inicial != "" && data_final != "") ||
     (data_inicial == "" && data_final == "")
@@ -661,7 +663,59 @@ function pesquisa_chamado_setor_escola() {
         "&data_final=" +
         data_final +
         "&filtro=" +
-        filtro,
+        escola,
+      true
+    );
+
+    xmlreq.onreadystatechange = function () {
+      if (xmlreq.readyState == 4) {
+        if (xmlreq.status == 200) {
+          result.innerHTML = xmlreq.responseText;
+        } else {
+          alert("Erro desconhecido, verifique sua conexão com a internet");
+
+          result.innerHTML = "Erro ao receber mensagens";
+        }
+      }
+    };
+    xmlreq.send(null);
+  } else {
+    Swal.fire({
+      icon: "error",
+      title: "Atenção",
+      text: "Se for utilizar uma consulta com datas, por favor insira nas duas datas inicial e final.",
+    });
+  }
+}
+
+
+
+
+function pesquisa_chamado_setor_escola_teste() {
+  var result = document.getElementById("resultado");
+  var pesquisa = document.getElementById("pesquisa").value;
+  var data_inicial = document.getElementById("data_inicial").value;
+  var data_final = document.getElementById("data_final").value;
+
+  var escola = document.getElementById("escola").value;
+  // var filtro = escola.options[obj_filtro.selectedIndex].value;
+  
+  if (
+    (data_inicial != "" && data_final != "") ||
+    (data_inicial == "" && data_final == "")
+  ) {
+    result.innerHTML = "<img src='imagens/carregando.gif'>";
+    var xmlreq = CriaRequest();
+    xmlreq.open(
+      "GET",
+      "../Controller/Pesquisa_chamado_setor_escola_teste.php?pesquisa=" +
+        pesquisa +
+        "&data_inicial=" +
+        data_inicial +
+        "&data_final=" +
+        data_final +
+        "&escola=" +
+        escola,
       true
     );
 
