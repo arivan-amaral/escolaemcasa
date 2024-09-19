@@ -16,7 +16,7 @@ try {
     $pesquisa = $_GET['pesquisa'];
     $data_inicial = $_GET['data_inicial'];
     $data_final = $_GET['data_final'];
-    $escola = $_GET['escola'];
+    $filtro = $_GET['filtro'];
     
     //arivan chamados
     $idfuncionario = $_SESSION['idfuncionario'];

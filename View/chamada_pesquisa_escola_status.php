@@ -122,15 +122,39 @@ setTimeout('dia_doservidor_publico();',3000);
         <div class="col-sm-2">
           <div class="form-group">
            <label for="exampleInputEmail1">DATA INÍCIAL</label>
-           <input type="date" class="form-control" name="data_inicial" id="data_inicial">
+           <input type="date" class="form-control" name="data_inicial" id="data_inicial" alue="<?php echo date("Y-m-d"); ?>">
           </div>
         </div>
          <div class="col-sm-2">
           <div class="form-group">
            <label for="exampleInputEmail1">DATA FINAL</label>
-           <input type="date" class="form-control" name="data_final" id="data_final">
+           <input type="date" class="form-control" name="data_final" id="data_final" value="<?php echo date("Y-m-d"); ?>">
           </div>
         </div>
+
+
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Escola</label>
+           <select class="form-control"  name="escola_associada"  id="escola">
+            <option value="TODOS">Todas</option>
+         <?php 
+           // $res_escola=lista_escola($conexao);
+
+          $res_escola= escola_associada($conexao,$idcoordenador);
+           foreach ($res_escola as $key => $value) {
+               $idescola=$value['idescola'];
+               $nome_escola=$value['nome_escola'];
+               echo "<option value='$idescola'>$nome_escola </option>";
+           }
+           ?>
+           </select>
+          </div>
+        </div> 
+
+
+<!-- 
         <div class="col-sm-4">
           <div class="form-group">
            <label for="exampleInputEmail1">FILTRO</label>
@@ -139,11 +163,14 @@ setTimeout('dia_doservidor_publico();',3000);
             <option value="ESCOLA">ESCOLA</option>
             <option value="SOLICITANTE">SOLICITANTE</option>
             <option value="SETOR">SETOR</option>
-            <!--option value="RETORNADOR">RETORNADOR</option-->
+         
             <option value="STATUS">STATUS</option>
            </select> 
           </div>
-        </div>
+        </div> -->
+
+
+
       </div>
     <div class="row">
       <div class="col-sm-8">
