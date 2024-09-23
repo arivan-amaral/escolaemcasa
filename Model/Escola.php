@@ -422,9 +422,9 @@ function buscar_escola_por_nome($conexao,$nome_escola){
   
 }
 
-function cadastrar_visita_escola($conexao, $escola_id, $situacao_resolvida, $funcionario_id, $objetivo_visita, $data_hora_visita, $relatorio_visita) {
-    $sql = $conexao->prepare("INSERT INTO visitas_escolas (escola_id, situacao_resolvida, funcionario_id, objetivo_visita, data_hora_visita, relatorio_visita)
-                             VALUES (:escola_id, :situacao_resolvida, :funcionario_id, :objetivo_visita, :data_hora_visita, :relatorio_visita)");
+function cadastrar_visita_escola($conexao, $escola_id, $situacao_resolvida, $funcionario_id, $objetivo_visita, $data_hora_visita, $relatorio_visita, $atendido_por) {
+    $sql = $conexao->prepare("INSERT INTO visitas_escolas (escola_id, situacao_resolvida, funcionario_id, objetivo_visita, data_hora_visita, relatorio_visita, atendido_por)
+                             VALUES (:escola_id, :situacao_resolvida, :funcionario_id, :objetivo_visita, :data_hora_visita, :relatorio_visita, :atendido_por)");
 
     $sql->bindParam(':escola_id', $escola_id);
     $sql->bindParam(':situacao_resolvida', $situacao_resolvida);
@@ -432,6 +432,7 @@ function cadastrar_visita_escola($conexao, $escola_id, $situacao_resolvida, $fun
     $sql->bindParam(':objetivo_visita', $objetivo_visita);
     $sql->bindParam(':data_hora_visita', $data_hora_visita);
     $sql->bindParam(':relatorio_visita', $relatorio_visita);
+    $sql->bindParam(':atendido_por', $atendido_por);
 
     if ($sql->execute()) {
         return true;
@@ -441,5 +442,40 @@ function cadastrar_visita_escola($conexao, $escola_id, $situacao_resolvida, $fun
 }
 
 
+   function buscar_registros_visitas($conexao, $filtro_nome, $filtro_data, $filtro_resolvido) {
+      $sql = "SELECT v.*, f.nome AS nome_funcionario 
+              FROM visitas_escolas v 
+              LEFT JOIN funcionario f ON v.funcionario_id = f.idfuncionario 
+              WHERE 1=1";
+  
+      if (!empty($filtro_nome)) {
+          $sql .= " AND f.nome LIKE :filtro_nome";
+      }
+      if (!empty($filtro_data)) {
+          $sql .= " AND DATE(v.data_hora_visita) = :filtro_data";
+      }
+      if (!empty($filtro_resolvido)) {
+          $sql .= " AND v.situacao_resolvida = :filtro_resolvido";
+      }
+  
+      $sql .= " ORDER BY v.data_hora_visita DESC";
+  
+      $stmt = $conexao->prepare($sql);
+      if (!empty($filtro_nome)) {
+          $stmt->bindValue(':filtro_nome', "%$filtro_nome%");
+      }
+      if (!empty($filtro_data)) {
+          $stmt->bindValue(':filtro_data', $filtro_data);
+      }
+      if (!empty($filtro_resolvido)) {
+          $stmt->bindValue(':filtro_resolvido', $filtro_resolvido);
+      }
+  
+      // Executar a consulta
+      $stmt->execute();
+  
+      // Retornar os resultados
+      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
 
 ?>
