@@ -8,10 +8,8 @@ if (!isset($_SESSION['idfuncionario'])) {
     $idcoordenador = $_SESSION['idfuncionario'];
   }
   
-  include_once "cabecalho.php";
-  include_once "alertas.php";
-  include_once "barra_horizontal.php";
-  include_once 'menu.php';
+  print_r($_SESSION);
+
   include_once '../Controller/Conversao.php';
   
   if (!isset($_SESSION['usuariobd'])) {
@@ -24,20 +22,20 @@ if (!isset($_SESSION['idfuncionario'])) {
   include_once '../Model/Chamada.php';
   include_once '../Model/Escola.php';
 
-$escola_visitada = $_POST['escola_visitada'];
+$escola_id = $_POST['escola_id'];
 $situacao_resolvida = $_POST['situacao_resolvida'];
-$nome_visitante = $_POST['nome_visitante'];
+$funcionario_id = $_POST['funcionario_id'];
 $objetivo_visita = $_POST['objetivo_visita'];
 $data_hora_visita = $_POST['data_hora_visita'];
 $relatorio_visita = $_POST['relatorio_visita'];
 
-if (empty($escola_visitada) || empty($situacao_resolvida) || empty($nome_visitante) || empty($objetivo_visita) || empty($data_hora_visita) || empty($relatorio_visita)) {
+if (empty($escola_id) || empty($situacao_resolvida) || empty($funcionario_id) || empty($objetivo_visita) || empty($data_hora_visita) || empty($relatorio_visita)) {
     $_SESSION['mensagem'] = 'Todos os campos com * são obrigatórios!';
     header("Location: ../View/relatorio_visita.php");
     exit();
 }
 
-cadastrar_visita_escola($conexao, $escola_visitada, $situacao_resolvida, $nome_visitante, $objetivo_visita, $data_hora_visita, $relatorio_visita);
+cadastrar_visita_escola($conexao, $escola_id, $situacao_resolvida, $funcionario_id, $objetivo_visita, $data_hora_visita, $relatorio_visita);
 $_SESSION['mensagem'] = 'Relatório de visita cadastrado com sucesso!';
 
 

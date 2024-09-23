@@ -57,7 +57,7 @@ if (isset($_SESSION['mensagem'])) {
         <div class="col-sm-3">
           <div class="form-group">
             <label class="text-danger" for="escola">Escola Visitada</label>
-            <select class="form-control" id="escola_visitada" name="escola_visitada" required>
+            <select class="form-control" id="escola_id" name="escola_id" required>
               <?php
               $res_escola = escola_associada($conexao, $idcoordenador);
               $lista_escola_associada = "";
@@ -85,8 +85,9 @@ if (isset($_SESSION['mensagem'])) {
 
         <div class="col-sm-3">
           <div class="form-group">
-            <label class="text-danger" for="nome_visitante">Atendido por *</label>
-            <input type="text" class="form-control" id="nome_visitante" name="nome_visitante" required>
+            <label class="text-danger" for="funcionario_id">Atendido por *</label>
+            <input type="text" class="form-control" value="<?php echo $_SESSION['nome']; ?>" readonly>
+            <input type="hidden" id="funcionario_id" name="funcionario_id" value="<?php echo $_SESSION['idfuncionario']; ?>" required>
           </div>
         </div>
 
