@@ -78,12 +78,8 @@ try {
                                     <input type="text" class="form-control" id="nome_usuario" name="nome_usuario" value="<?php echo htmlspecialchars($nome_usuario); ?>">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label for="data_inicio">Data Início</label>
+                                    <label for="data_inicio">Data</label>
                                     <input type="date" class="form-control" id="data_inicio" name="data_inicio" value="<?php echo htmlspecialchars($data_inicio); ?>">
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label for="data_fim">Data Fim</label>
-                                    <input type="date" class="form-control" id="data_fim" name="data_fim" value="<?php echo htmlspecialchars($data_fim); ?>">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>&nbsp;</label>
