@@ -14,8 +14,8 @@ include_once 'menu.php';
 
 // Variáveis para filtros
 $nome_usuario = isset($_POST['nome_usuario']) ? $_POST['nome_usuario'] : '';
-$data_inicio = isset($_POST['data_inicio']) ? $_POST['data_inicio'] : '';
-$data_fim = isset($_POST['data_fim']) ? $_POST['data_fim'] : '';
+$data = isset($_POST['data']) ? $_POST['data'] : ''; // Campo único para data
+$tipo_acao = isset($_POST['tipo_acao']) ? $_POST['tipo_acao'] : ''; // Novo filtro
 
 try {
     // Consulta para obter logs
@@ -28,11 +28,11 @@ try {
     if ($nome_usuario) {
         $filters[] = "f.nome LIKE :nome_usuario";
     }
-    if ($data_inicio) {
-        $filters[] = "l.data_hora >= :data_inicio";
+    if ($data) {
+        $filters[] = "DATE(l.data_hora) = :data"; // Filtro apenas por data
     }
-    if ($data_fim) {
-        $filters[] = "l.data_hora <= :data_fim";
+    if ($tipo_acao) {
+        $filters[] = "l.acao LIKE :tipo_acao"; // Filtro pelo tipo de ação
     }
 
     // Adicionar filtros à consulta
@@ -46,11 +46,11 @@ try {
     if ($nome_usuario) {
         $stmt->bindValue(':nome_usuario', '%' . $nome_usuario . '%');
     }
-    if ($data_inicio) {
-        $stmt->bindValue(':data_inicio', $data_inicio . ' 00:00:00');
+    if ($data) {
+        $stmt->bindValue(':data', $data); // Bind do novo filtro de data
     }
-    if ($data_fim) {
-        $stmt->bindValue(':data_fim', $data_fim . ' 23:59:59');
+    if ($tipo_acao) {
+        $stmt->bindValue(':tipo_acao', '%' . $tipo_acao . '%'); // Bind do novo filtro
     }
 
     $stmt->execute();
@@ -78,8 +78,12 @@ try {
                                     <input type="text" class="form-control" id="nome_usuario" name="nome_usuario" value="<?php echo htmlspecialchars($nome_usuario); ?>">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label for="data_inicio">Data</label>
-                                    <input type="date" class="form-control" id="data_inicio" name="data_inicio" value="<?php echo htmlspecialchars($data_inicio); ?>">
+                                    <label for="data">Data</label>
+                                    <input type="date" class="form-control" id="data" name="data" value="<?php echo htmlspecialchars($data); ?>"> <!-- Campo único para data -->
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="tipo_acao">Tipo de Ação</label>
+                                    <input type="text" class="form-control" id="tipo_acao" name="tipo_acao" value="<?php echo htmlspecialchars($tipo_acao); ?>">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>&nbsp;</label>
@@ -121,7 +125,7 @@ try {
 
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
+    <!-- Control sidebar content goes aqui -->
 </aside>
 <!-- /.control-sidebar -->
 
