@@ -186,6 +186,12 @@
                </a>
                </li>
 
+                  <li class='nav-item'>
+               <a href='visualizar_logs.php' class='nav-link'>
+               <i class='far fa-circle nav-icon text-primary'></i>
+               <p>Relatório de Logs</p>
+               </a>
+               </li> 
 
                </ul>
               </li>
