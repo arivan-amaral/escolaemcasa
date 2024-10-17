@@ -17,11 +17,19 @@ $nome_usuario = isset($_POST['nome_usuario']) ? $_POST['nome_usuario'] : '';
 $data = isset($_POST['data']) ? $_POST['data'] : ''; // Campo único para data
 $tipo_acao = isset($_POST['tipo_acao']) ? $_POST['tipo_acao'] : ''; // Novo filtro
 
+// Definir o número de logs por página (30)
+$logs_por_pagina = 30;
+$pagina_atual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+$offset = ($pagina_atual - 1) * $logs_por_pagina;
+
 try {
-    // Consulta para obter logs
+    // Consulta para contar o número total de logs para a paginação
+    $count_query = "SELECT COUNT(*) FROM logs l 
+                    JOIN funcionario f ON l.funcionario_id = f.idfuncionario";
+
     $query = "SELECT l.data_hora, l.acao, f.nome 
               FROM logs l 
-              JOIN funcionario f ON l.funcionario_id = f.idfuncionario"; // Aqui usamos idfuncionario
+              JOIN funcionario f ON l.funcionario_id = f.idfuncionario"; 
 
     // Filtros
     $filters = [];
@@ -38,21 +46,41 @@ try {
     // Adicionar filtros à consulta
     if (count($filters) > 0) {
         $query .= " WHERE " . implode(" AND ", $filters);
+        $count_query .= " WHERE " . implode(" AND ", $filters);
     }
 
-    $stmt = $conexao->prepare($query);
+    $query .= " LIMIT :limit OFFSET :offset"; // Adicionar limites para paginação
 
-    // Bind dos parâmetros
+    // Preparar e executar consulta de contagem
+    $stmt_count = $conexao->prepare($count_query);
+    if ($nome_usuario) {
+        $stmt_count->bindValue(':nome_usuario', '%' . $nome_usuario . '%');
+    }
+    if ($data) {
+        $stmt_count->bindValue(':data', $data); 
+    }
+    if ($tipo_acao) {
+        $stmt_count->bindValue(':tipo_acao', '%' . $tipo_acao . '%');
+    }
+    $stmt_count->execute();
+    $total_logs = $stmt_count->fetchColumn(); // Total de logs
+
+    // Calcular total de páginas
+    $total_paginas = ceil($total_logs / $logs_por_pagina);
+
+    // Preparar e executar consulta de logs
+    $stmt = $conexao->prepare($query);
     if ($nome_usuario) {
         $stmt->bindValue(':nome_usuario', '%' . $nome_usuario . '%');
     }
     if ($data) {
-        $stmt->bindValue(':data', $data); // Bind do novo filtro de data
+        $stmt->bindValue(':data', $data);
     }
     if ($tipo_acao) {
-        $stmt->bindValue(':tipo_acao', '%' . $tipo_acao . '%'); // Bind do novo filtro
+        $stmt->bindValue(':tipo_acao', '%' . $tipo_acao . '%');
     }
-
+    $stmt->bindValue(':limit', $logs_por_pagina, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
     $stmt->execute();
     $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (Exception $e) {
@@ -116,9 +144,40 @@ try {
                                 <?php endif; ?>
                             </tbody>
                         </table>
+
+                        <!-- Paginação -->
+                        <?php if ($total_paginas > 1): ?>
+                            <nav aria-label="Navegação de página">
+                                <ul class="pagination justify-content-center">
+                                    <?php if ($pagina_atual > 1): ?>
+                                        <li class="page-item">
+                                            <a class="page-link" href="?pagina=<?php echo $pagina_atual - 1; ?>" aria-label="Anterior">
+                                                <span aria-hidden="true">&laquo;</span>
+                                                <span class="sr-only">Anterior</span>
+                                            </a>
+                                        </li>
+                                    <?php endif; ?>
+
+                                    <?php for ($i = 1; $i <= $total_paginas; $i++): ?>
+                                        <li class="page-item <?php echo ($i == $pagina_atual) ? 'active' : ''; ?>">
+                                            <a class="page-link" href="?pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
+                                        </li>
+                                    <?php endfor; ?>
+
+                                    <?php if ($pagina_atual < $total_paginas): ?>
+                                        <li class="page-item">
+                                            <a class="page-link" href="?pagina=<?php echo $pagina_atual + 1; ?>" aria-label="Próximo">
+                                                <span aria-hidden="true">&raquo;</span>
+                                                <span class="sr-only">Próximo</span>
+                                            </a>
+                                        </li>
+                                    <?php endif; ?>
+                                </ul>
+                            </nav>
+                        <?php endif; ?>
                     </div>
-                </div> <!-- </div> class=col- 12 -->
-            </div> <!-- </div> row  -->
+                </div> <!-- </div> class=col-12 -->
+            </div> <!-- </div> row -->
         </div>
     </div> <!-- /.container-fluid -->
 </div> <!-- /.content-wrapper -->
