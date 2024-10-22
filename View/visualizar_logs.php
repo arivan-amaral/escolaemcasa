@@ -161,42 +161,51 @@ try {
                         </table>
 
 
-                       <!-- Paginação -->
-<?php if ($total_paginas > 1): ?>
-    <nav aria-label="Navegação de página">
-        <ul class="pagination justify-content-center">
-            <?php
-            $paginas_a_mostrar = 5; // Número máximo de páginas a serem exibidas na navegação
-            $inicio = max(1, $pagina_atual - floor($paginas_a_mostrar / 2));
-            $fim = min($total_paginas, $inicio + $paginas_a_mostrar - 1);
+                         <!-- Paginação -->
+                         <?php if ($total_paginas > 1): ?>
+                            <nav aria-label="Navegação de página">
+                                <ul class="pagination justify-content-center">
+                                    <?php
+                                    $max_paginas_visiveis = 5;
+                                    $inicio_paginas = max(1, $pagina_atual - $max_paginas_visiveis);
+                                    $fim_paginas = min($total_paginas, $pagina_atual + $max_paginas_visiveis);
+                                    ?>
 
-            if ($pagina_atual > 1): ?>
-                <li class="page-item">
-                    <a class="page-link" href="?pagina=<?php echo $pagina_atual - 1; ?>" aria-label="Anterior">
-                        <span aria-hidden="true">&laquo;</span>
-                        <span class="sr-only">Anterior</span>
-                    </a>
-                </li>
-            <?php endif; ?>
+                                    <?php if ($pagina_atual > 1): ?>
+                                        <li class="page-item">
+                                            <a class="page-link" href="?pagina=1" aria-label="Primeira">
+                                                Primeira
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="?pagina=<?php echo $pagina_atual - 1; ?>" aria-label="Anterior">
+                                                &laquo;
+                                            </a>
+                                        </li>
+                                    <?php endif; ?>
 
-            <?php for ($i = $inicio; $i <= $fim; $i++): ?>
-                <li class="page-item <?php echo ($i == $pagina_atual) ? 'active' : ''; ?>">
-                    <a class="page-link" href="?pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
-                </li>
-            <?php endfor; ?>
+                                    <!-- Páginas ao redor da atual -->
+                                    <?php for ($i = $inicio_paginas; $i <= $fim_paginas; $i++): ?>
+                                        <li class="page-item <?php echo ($i == $pagina_atual) ? 'active' : ''; ?>">
+                                            <a class="page-link" href="?pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
+                                        </li>
+                                    <?php endfor; ?>
 
-            <?php if ($pagina_atual < $total_paginas): ?>
-                <li class="page-item">
-                    <a class="page-link" href="?pagina=<?php echo $pagina_atual + 1; ?>" aria-label="Próximo">
-                        <span aria-hidden="true">&raquo;</span>
-                        <span class="sr-only">Próximo</span>
-                    </a>
-                </li>
-            <?php endif; ?>
-        </ul>
-    </nav>
-<?php endif; ?>
-                    </div>
+                                    <?php if ($pagina_atual < $total_paginas): ?>
+                                        <li class="page-item">
+                                            <a class="page-link" href="?pagina=<?php echo $pagina_atual + 1; ?>" aria-label="Próxima">
+                                                &raquo;
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="?pagina=<?php echo $total_paginas; ?>" aria-label="Última">
+                                                Última
+                                            </a>
+                                        </li>
+                                    <?php endif; ?>
+                                </ul>
+                            </nav>
+                        <?php endif; ?>                    </div>
                 </div> <!-- </div> class=col-12 -->
             </div> <!-- </div> row -->
         </div>
