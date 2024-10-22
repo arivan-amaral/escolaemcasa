@@ -15,7 +15,7 @@ include_once 'menu.php';
 // Variáveis para filtros
 $nome_usuario = isset($_POST['nome_usuario']) ? $_POST['nome_usuario'] : '';
 $data = isset($_POST['data']) ? $_POST['data'] : ''; // Campo único para data
-$tipo_acao = isset($_POST['tipo_acao']) ? $_POST['tipo_acao'] : '';
+$tipo_acao = isset($_POST['tipo_acao']) ? $_POST['tipo_acao'] : ''; // Filtro agora será um select
 
 // Definir o número de logs por página (30)
 $logs_por_pagina = 30;
@@ -37,10 +37,10 @@ try {
         $filters[] = "f.nome LIKE :nome_usuario";
     }
     if ($data) {
-        $filters[] = "DATE(l.data_hora) = :data";
+        $filters[] = "DATE(l.data_hora) = :data"; // Filtro apenas por data
     }
     if ($tipo_acao) {
-        $filters[] = "l.acao LIKE :tipo_acao";
+        $filters[] = "l.acao = :tipo_acao"; // Filtro pelo tipo de ação
     }
 
     // Adicionar filtros à consulta
@@ -49,7 +49,7 @@ try {
         $count_query .= " WHERE " . implode(" AND ", $filters);
     }
 
-    $query .= " LIMIT :limit OFFSET :offset";
+    $query .= " LIMIT :limit OFFSET :offset"; // Adicionar limites para paginação
 
     // Preparar e executar consulta de contagem
     $stmt_count = $conexao->prepare($count_query);
@@ -60,10 +60,10 @@ try {
         $stmt_count->bindValue(':data', $data); 
     }
     if ($tipo_acao) {
-        $stmt_count->bindValue(':tipo_acao', '%' . $tipo_acao . '%');
+        $stmt_count->bindValue(':tipo_acao', $tipo_acao); // Usar o valor do select
     }
     $stmt_count->execute();
-    $total_logs = $stmt_count->fetchColumn();
+    $total_logs = $stmt_count->fetchColumn(); // Total de logs
 
     // Calcular total de páginas
     $total_paginas = ceil($total_logs / $logs_por_pagina);
@@ -77,12 +77,19 @@ try {
         $stmt->bindValue(':data', $data);
     }
     if ($tipo_acao) {
-        $stmt->bindValue(':tipo_acao', '%' . $tipo_acao . '%');
+        $stmt->bindValue(':tipo_acao', $tipo_acao); // Usar o valor do select
     }
     $stmt->bindValue(':limit', $logs_por_pagina, PDO::PARAM_INT);
     $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
     $stmt->execute();
     $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Consulta para buscar ações distintas
+    $acao_query = "SELECT DISTINCT acao FROM logs";
+    $stmt_acoes = $conexao->prepare($acao_query);
+    $stmt_acoes->execute();
+    $acoes = $stmt_acoes->fetchAll(PDO::FETCH_ASSOC);
+    
 } catch (Exception $e) {
     $_SESSION['status'] = 0;
     $_SESSION['mensagem'] = 'Erro ao recuperar os logs!';
@@ -107,11 +114,19 @@ try {
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="data">Data</label>
-                                    <input type="date" class="form-control" id="data" name="data" value="<?php echo htmlspecialchars($data); ?>">
+                                    <input type="date" class="form-control" id="data" name="data" value="<?php echo htmlspecialchars($data); ?>"> <!-- Campo único para data -->
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="tipo_acao">Tipo de Ação</label>
-                                    <input type="text" class="form-control" id="tipo_acao" name="tipo_acao" value="<?php echo htmlspecialchars($tipo_acao); ?>">
+                                    <select class="form-control" id="tipo_acao" name="tipo_acao">
+                                        <option value="">Selecione uma ação</option>
+                                        <?php foreach ($acoes as $acao): ?>
+                                            <option value="<?php echo htmlspecialchars($acao['acao']); ?>" 
+                                                <?php echo ($acao['acao'] == $tipo_acao) ? 'selected' : ''; ?>>
+                                                <?php echo htmlspecialchars($acao['acao']); ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>&nbsp;</label>
@@ -149,27 +164,16 @@ try {
                         <?php if ($total_paginas > 1): ?>
                             <nav aria-label="Navegação de página">
                                 <ul class="pagination justify-content-center">
-                                    <?php
-                                    $max_paginas_visiveis = 5;
-                                    $inicio_paginas = max(1, $pagina_atual - $max_paginas_visiveis);
-                                    $fim_paginas = min($total_paginas, $pagina_atual + $max_paginas_visiveis);
-                                    ?>
-
                                     <?php if ($pagina_atual > 1): ?>
                                         <li class="page-item">
-                                            <a class="page-link" href="?pagina=1" aria-label="Primeira">
-                                                Primeira
-                                            </a>
-                                        </li>
-                                        <li class="page-item">
                                             <a class="page-link" href="?pagina=<?php echo $pagina_atual - 1; ?>" aria-label="Anterior">
-                                                &laquo;
+                                                <span aria-hidden="true">&laquo;</span>
+                                                <span class="sr-only">Anterior</span>
                                             </a>
                                         </li>
                                     <?php endif; ?>
 
-                                    <!-- Páginas ao redor da atual -->
-                                    <?php for ($i = $inicio_paginas; $i <= $fim_paginas; $i++): ?>
+                                    <?php for ($i = 1; $i <= $total_paginas; $i++): ?>
                                         <li class="page-item <?php echo ($i == $pagina_atual) ? 'active' : ''; ?>">
                                             <a class="page-link" href="?pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
                                         </li>
@@ -177,13 +181,9 @@ try {
 
                                     <?php if ($pagina_atual < $total_paginas): ?>
                                         <li class="page-item">
-                                            <a class="page-link" href="?pagina=<?php echo $pagina_atual + 1; ?>" aria-label="Próxima">
-                                                &raquo;
-                                            </a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="?pagina=<?php echo $total_paginas; ?>" aria-label="Última">
-                                                Última
+                                            <a class="page-link" href="?pagina=<?php echo $pagina_atual + 1; ?>" aria-label="Próximo">
+                                                <span aria-hidden="true">&raquo;</span>
+                                                <span class="sr-only">Próximo</span>
                                             </a>
                                         </li>
                                     <?php endif; ?>
@@ -198,9 +198,7 @@ try {
 </div> <!-- /.content-wrapper -->
 
 <!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes aqui -->
-</aside>
+<aside class="control-sidebar control-sidebar-dark"></aside>
 <!-- /.control-sidebar -->
 
 <?php include_once 'rodape.php'; ?>
