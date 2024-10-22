@@ -15,7 +15,7 @@ include_once 'menu.php';
 // Variáveis para filtros
 $nome_usuario = isset($_POST['nome_usuario']) ? $_POST['nome_usuario'] : '';
 $data = isset($_POST['data']) ? $_POST['data'] : ''; // Campo único para data
-$tipo_acao = isset($_POST['tipo_acao']) ? $_POST['tipo_acao'] : ''; // Novo filtro
+$tipo_acao = isset($_POST['tipo_acao']) ? $_POST['tipo_acao'] : '';
 
 // Definir o número de logs por página (30)
 $logs_por_pagina = 30;
@@ -37,10 +37,10 @@ try {
         $filters[] = "f.nome LIKE :nome_usuario";
     }
     if ($data) {
-        $filters[] = "DATE(l.data_hora) = :data"; // Filtro apenas por data
+        $filters[] = "DATE(l.data_hora) = :data";
     }
     if ($tipo_acao) {
-        $filters[] = "l.acao LIKE :tipo_acao"; // Filtro pelo tipo de ação
+        $filters[] = "l.acao LIKE :tipo_acao";
     }
 
     // Adicionar filtros à consulta
@@ -49,7 +49,7 @@ try {
         $count_query .= " WHERE " . implode(" AND ", $filters);
     }
 
-    $query .= " LIMIT :limit OFFSET :offset"; // Adicionar limites para paginação
+    $query .= " LIMIT :limit OFFSET :offset";
 
     // Preparar e executar consulta de contagem
     $stmt_count = $conexao->prepare($count_query);
@@ -63,7 +63,7 @@ try {
         $stmt_count->bindValue(':tipo_acao', '%' . $tipo_acao . '%');
     }
     $stmt_count->execute();
-    $total_logs = $stmt_count->fetchColumn(); // Total de logs
+    $total_logs = $stmt_count->fetchColumn();
 
     // Calcular total de páginas
     $total_paginas = ceil($total_logs / $logs_por_pagina);
@@ -107,7 +107,7 @@ try {
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="data">Data</label>
-                                    <input type="date" class="form-control" id="data" name="data" value="<?php echo htmlspecialchars($data); ?>"> <!-- Campo único para data -->
+                                    <input type="date" class="form-control" id="data" name="data" value="<?php echo htmlspecialchars($data); ?>">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="tipo_acao">Tipo de Ação</label>
@@ -149,16 +149,27 @@ try {
                         <?php if ($total_paginas > 1): ?>
                             <nav aria-label="Navegação de página">
                                 <ul class="pagination justify-content-center">
+                                    <?php
+                                    $max_paginas_visiveis = 5;
+                                    $inicio_paginas = max(1, $pagina_atual - $max_paginas_visiveis);
+                                    $fim_paginas = min($total_paginas, $pagina_atual + $max_paginas_visiveis);
+                                    ?>
+
                                     <?php if ($pagina_atual > 1): ?>
                                         <li class="page-item">
+                                            <a class="page-link" href="?pagina=1" aria-label="Primeira">
+                                                Primeira
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
                                             <a class="page-link" href="?pagina=<?php echo $pagina_atual - 1; ?>" aria-label="Anterior">
-                                                <span aria-hidden="true">&laquo;</span>
-                                                <span class="sr-only">Anterior</span>
+                                                &laquo;
                                             </a>
                                         </li>
                                     <?php endif; ?>
 
-                                    <?php for ($i = 1; $i <= $total_paginas; $i++): ?>
+                                    <!-- Páginas ao redor da atual -->
+                                    <?php for ($i = $inicio_paginas; $i <= $fim_paginas; $i++): ?>
                                         <li class="page-item <?php echo ($i == $pagina_atual) ? 'active' : ''; ?>">
                                             <a class="page-link" href="?pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
                                         </li>
@@ -166,9 +177,13 @@ try {
 
                                     <?php if ($pagina_atual < $total_paginas): ?>
                                         <li class="page-item">
-                                            <a class="page-link" href="?pagina=<?php echo $pagina_atual + 1; ?>" aria-label="Próximo">
-                                                <span aria-hidden="true">&raquo;</span>
-                                                <span class="sr-only">Próximo</span>
+                                            <a class="page-link" href="?pagina=<?php echo $pagina_atual + 1; ?>" aria-label="Próxima">
+                                                &raquo;
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="?pagina=<?php echo $total_paginas; ?>" aria-label="Última">
+                                                Última
                                             </a>
                                         </li>
                                     <?php endif; ?>
