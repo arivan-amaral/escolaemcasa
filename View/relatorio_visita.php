@@ -73,9 +73,9 @@ $registros = buscar_registros_visitas($conexao, $filtro_nome, $filtro_data, $fil
                             <?php
                             $res_escola = escola_associada($conexao, $idcoordenador);
                             foreach ($res_escola as $value) {
-                                $id = $value['idescola'];
+                                $idescola = $value['idescola'];
                                 $nome_escola = $value['nome_escola'];
-                                echo "<option value='$id'>$nome_escola</option>";
+                                echo "<option value='$idescola'>$nome_escola</option>";
                             }
                             ?>
                         </select>
@@ -94,6 +94,7 @@ $registros = buscar_registros_visitas($conexao, $filtro_nome, $filtro_data, $fil
                 </div>
 
                 <div class="col-sm-4">
+                    
                     <div class="form-group">
                         <label for="funcionario_id" class="text-danger">Visitante *</label>
                         <input type="text" class="form-control" value="<?php echo $_SESSION['nome']; ?>" readonly>
@@ -184,17 +185,23 @@ $registros = buscar_registros_visitas($conexao, $filtro_nome, $filtro_data, $fil
                   </tr>
               </thead>
               <tbody>
-                  <?php foreach ($registros as $registro): ?>
-                  <tr>
-                      <td><?php echo $registro['nome_funcionario']; ?></td>
-                      <td><?php echo $registro['data_hora_visita']; ?></td>
-                      <td><?php echo $registro['objetivo_visita']; ?></td>
-                      <td><?php echo $registro['relatorio_visita']; ?></td>
-                      <td><?php echo $registro['situacao_resolvida']; ?></td>
-                      <td><?php echo $registro['atendido_por']; ?></td>
-                  </tr>
-                  <?php endforeach; ?>
-              </tbody>
+    <?php foreach ($registros as $registro): ?>
+    <tr>
+        <td><?php echo $registro['nome_funcionario']; ?></td>
+        <td><?php echo $registro['data_hora_visita']; ?></td>
+        <td><?php echo $registro['objetivo_visita']; ?></td>
+        <td><?php echo $registro['relatorio_visita']; ?></td>
+        <td><?php echo $registro['situacao_resolvida']; ?></td>
+        <td><?php echo $registro['atendido_por']; ?></td>
+        <td>
+        <form action="../Controller/cadastrar_relatorio_visita.php" method="POST">
+            <input type="hidden" name="id" value="<?= $registro['id'] ?>">
+            <button class="btn btn-primary" type="submit" name="excluir" onclick="return confirm('Tem certeza de que deseja excluir esta visita?')">Excluir</button>
+        </form>
+        </td>
+    </tr>
+    <?php endforeach; ?>
+</tbody>
             </table>
         </div>
     </div>

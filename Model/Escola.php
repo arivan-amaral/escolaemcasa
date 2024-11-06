@@ -478,4 +478,17 @@ function cadastrar_visita_escola($conexao, $escola_id, $situacao_resolvida, $fun
       return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
+  function excluir_visita($conexao, $id) {
+   $sql = $conexao->prepare("DELETE FROM visitas_escolas WHERE id = :id");
+   $sql->bindParam(':id', $id, PDO::PARAM_INT);
+   
+   if ($sql->execute()) {
+       return true;
+   } else {
+       throw new PDOException(implode(", ", $sql->errorInfo()));
+   }
+}
+
+
+
 ?>
