@@ -280,7 +280,8 @@ foreach ($result_conteudo as $key => $value) {
               $result_funcionario_conteudo= $conexao->query("SELECT * FROM 
           funcionario,conteudo_aula
          where 
-        ( funcionario_id=idfuncionario or  professor_id=idfuncionario )and  id =$idconteudo  limit 1 ");
+        ( funcionario_id=idfuncionario or  professor_id=idfuncionario )and  id =$idconteudo ORDER BY funcionario_id = idfuncionario limit 1 ");
+              
         foreach ($result_funcionario_conteudo as $key => $value) {
           $nome_funcionario=$value['nome'];
           echo "<b>$nome_funcionario</b>";
