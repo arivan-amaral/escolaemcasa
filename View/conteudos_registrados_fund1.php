@@ -277,11 +277,14 @@ foreach ($result_conteudo as $key => $value) {
       mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
       color:black;mso-fareast-language:PT-BR'>
       <?php 
-              $result_funcionario_conteudo= $conexao->query("SELECT * FROM 
-          funcionario,conteudo_aula
-         where 
-        ( funcionario_id=idfuncionario or  professor_id=idfuncionario )and  id =$idconteudo ORDER BY funcionario_id = idfuncionario limit 1 ");
-              
+              $result_funcionario_conteudo= $conexao->query("SELECT * 
+FROM funcionario AS f
+JOIN conteudo_aula AS ca 
+ON (ca.funcionario_id = f.idfuncionario OR ca.professor_id = f.idfuncionario)
+WHERE ca.id = $idconteudo
+ORDER BY ca.funcionario_id = f.idfuncionario DESC
+LIMIT 1 ");
+
         foreach ($result_funcionario_conteudo as $key => $value) {
           $nome_funcionario=$value['nome'];
           echo "<b>$nome_funcionario</b>";
