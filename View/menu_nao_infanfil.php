@@ -52,7 +52,7 @@
                                                 <div class='icon'>
                                                   <i class='ion ion-stats-bars'></i>
                                                 </div>
-                                                <a href='diario_frequencia.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie' class='small-box-footer'>
+                                                <a href='diario_frequencia.php?disc=$iddisciplina&turm=$idturma&turma=$turma&disciplina=$disciplina&idescola=$idescola&idserie=$idserie'  class='small-box-footer'  target='_blank'>
                                                   Cadastrar frequência <i class='fa fa-calendar'></i>
                                                 </a>
                                               </div>
