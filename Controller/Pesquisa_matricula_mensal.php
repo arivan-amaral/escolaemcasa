@@ -154,8 +154,8 @@ if ($_GET['serie'] == 1 ) {
             }
             //
             $res_matriculas_quant = pesquisa_matricula_mensal_quant($conexao,$data_inicial,$data_final,$escola,$turma);
-                  foreach ($res_matriculas_quant as $key => $value) {
-                      $quant_matriculas = $value['alunos'];
+                  foreach ($res_matriculas_quant as $key => $value_q) {
+                      $quant_matriculas = $value_q['alunos'];
                   }
         
 
