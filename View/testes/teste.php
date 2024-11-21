@@ -1,4 +1,6 @@
 <?php
+set_time_limit(0);
+session_start();
 $url = "https://educalem.com.br/View/impressao_diario_frequencia.php?iddisciplina=1000&idturma=6288&idescola=227&idserie=1&periodo_id=1";
 $arquivo = "teste.html";
 
