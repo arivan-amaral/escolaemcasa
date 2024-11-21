@@ -1,6 +1,6 @@
 <?php
 $url = "https://educalem.com.br/View/impressao_diario_frequencia.php?iddisciplina=1000&idturma=6288&idescola=227&idserie=1&periodo_id=1";
-$arquivo = "https://educalem.com.br/View/testes/impressao_diario_frequencia.php?iddisciplina=1000&idturma=6288&idescola=227&idserie=1&periodo_id=1.html";
+$arquivo = "teste.html";
 
 try {
     // Inicializa o cURL
