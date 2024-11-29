@@ -1,5 +1,15 @@
 <?php 
 date_default_timezone_set('America/Bahia');
+function limparEspacosNome($nome) {
+    // Remove espaços extras no início e fim
+    $nome = trim($nome);
+
+    // Substitui múltiplos espaços por um único espaço
+    $nome = preg_replace('/\s+/', ' ', $nome);
+
+    return $nome;
+}
+
 
 function escape_mimic($inp) { 
     if(is_array($inp)) 

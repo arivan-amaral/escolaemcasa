@@ -13,8 +13,9 @@ include_once 'Conversao.php';
 try {
  
     $nome_identificacao_social=$_POST['nome_identificacao_social'];
+    $nome_identificacao_social=limparEspacosNome($nome_identificacao_social);
 
-    $nome= trim($_POST['nome']);
+    $nome= limparEspacosNome($nome);
     $nome=escape_mimic($nome);
     
     $data_nascimento=$_POST['data_nascimento'];
@@ -27,7 +28,10 @@ try {
     }
 
 
-    $res_aluno_existente=$conexao->query("SELECT * FROM aluno WHERE data_nascimento='$data_nascimento' and nome='$nome'");
+    $res_aluno_existente=$conexao->query("SELECT * FROM aluno WHERE data_nascimento='$data_nascimento' and nome LIKE '$nome'");
+
+
+
     $res_aluno_existente=$res_aluno_existente->fetchAll();
     if (count($res_aluno_existente)==0) {
             $sexo=$_POST['sexo'];
@@ -39,8 +43,8 @@ try {
                 $primeiroNome = explode(" ",$nome);
                  $email=$primeiroNome[0].".".$primeiroNome[1]."".rand(101,199);
             }
-            $filiacao1=$_POST['filiacao1'];
-            $filiacao2=$_POST['filiacao2'];
+            $filiacao1=limparEspacosNome($_POST['filiacao1']);
+            $filiacao2=limparEspacosNome($_POST['filiacao2']);
             $senha='lem12345';
             $whatsapp=converte_telefone($_POST['whatsapp']);
             $whatsapp_responsavel=converte_telefone($_POST['whatsapp_responsavel']);
