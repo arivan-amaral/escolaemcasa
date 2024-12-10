@@ -208,7 +208,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
           2.7pt;margin-bottom:0cm;margin-left:3.35pt;text-align:
           center'><span lang=PT style='font-size:8.0pt'>
         <?php
-        if ($idserie>3 && $_SESSION['nivel_acesso_id']==1010) {
+        if ($idserie>3 && $_SESSION['nivel_acesso_id']==1011) {
           $media=gerar_media_ata($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$ano_letivo,$idserie);
           echo "manutenção:".$media;
 
@@ -317,6 +317,12 @@ if ($media_fora_rede==0) {
 }
  //arivan
   $media=number_format($media, 1, '.', ',');
+
+  if ($_SESSION['nivel_acesso_id']>=1010) {
+  
+   echo "<br>Media: $media | t1: $nota_tri_1 | t2: $nota_tri_2  | t3: $nota_tri_3";
+
+  }
   
   if ($_SESSION['nivel_acesso_id']>=1000) {
 
