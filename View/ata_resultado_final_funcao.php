@@ -209,8 +209,8 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
           center'><span lang=PT style='font-size:8.0pt'>
         <?php
         if ($idserie>3 && $_SESSION['nivel_acesso_id']==1011) {
-          $media=gerar_media_ata($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$ano_letivo,$idserie);
-          echo "manutenção:".$media;
+          // $media=gerar_media_ata($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$ano_letivo,$idserie);
+          // echo "manutenção:".$media;
 
         }elseif ($idserie>3) {
   
