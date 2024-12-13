@@ -364,9 +364,8 @@ line-height:normal'><span style='mso-ascii-font-family:Calibri;mso-fareast-font-
 "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
 color:black;mso-fareast-language:PT-BR'>
 <?php 
-      $total=calculos_media_notas($nota_tri_1,$nota_rp_1,$nota_av3_1);// ADICIONADO POIS ERA O QUE DAVA INCONSISTENCIA NA ATA
 
-// $total=($nota_tri_1+$nota_tri_2+$nota_tri_3)/3;// REMOVIDO POIS ERA O QUE DAVA ERRO NA ATA
+$total=($nota_tri_1+$nota_tri_2+$nota_tri_3)/3;
 $total=number_format($total, 1, '.','') ;
 
 // if (isset($_GET['teste_boletim'])) {
