@@ -346,7 +346,13 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
   // }
       $nota_tri_3=calculos_media_notas($nota_tri_3,$nota_rp_3,$nota_av3_3);
   
+      
 
+
+       if ($_SESSION['nivel_acesso_id']>=1010) {
+echo "{ ( nota_tri_3,$nota_rp_3,$nota_av3_3) } <br>";
+
+  }
           echo number_format($nota_tri_3, 1, '.', ',');
   // echo "$nota_tri_3";
   ?>
