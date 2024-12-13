@@ -60,10 +60,11 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
   <link rel="stylesheet" href="plugins/codemirror/codemirror.css">
   <link rel="stylesheet" href="plugins/codemirror/theme/monokai.css">
   <link rel="stylesheet" href="plugins/simplemde/simplemde.min.css">
-  <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  
   
  
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
