@@ -318,11 +318,6 @@ if ($media_fora_rede==0) {
  //arivan
   $media=number_format($media, 1, '.', ',');
 
-  if ($_SESSION['nivel_acesso_id']>=1010) {
-  
-   echo "<br>Media: $media | t1: $nota_tri_1 | t2: $nota_tri_2  | t3: $nota_tri_3 ($nota_tri_3,$nota_rp_3,$nota_av3_3) <br> ";
-
-  }
   
   if ($_SESSION['nivel_acesso_id']>=1020) {
 
