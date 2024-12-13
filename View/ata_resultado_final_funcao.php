@@ -295,6 +295,12 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
   $nota_tri_3=calculos_media_notas($nota_tri_3,$nota_rp_3,$nota_av3_3);
  
   
+  if ($_SESSION['nivel_acesso_id']>=1010) {
+  
+   echo " <br>{ | t1: $nota_tri_1 | t2: $nota_tri_2  | t3: $nota_tri_3 ($nota_tri_3,$nota_rp_3,$nota_av3_3) }<br> ";
+
+  }
+
 
   $res_fora=pesquisa_nota_fora_rede($conexao,$idescola,$idturma,$iddisciplina,$idaluno,7,$ano_letivo,$idserie);
 
