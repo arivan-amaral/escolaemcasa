@@ -366,6 +366,13 @@ color:black;mso-fareast-language:PT-BR'>
 <?php 
 
 $total=($nota_tri_1+$nota_tri_2+$nota_tri_3)/3;
+
+
+  
+  if ($_SESSION['nivel_acesso_id']>=1010) {
+echo "($nota_tri_1+$nota_tri_2+$nota_tri_3)/3 <br>";
+
+  }
 $total=number_format($total, 1, '.','') ;
 
 // if (isset($_GET['teste_boletim'])) {
