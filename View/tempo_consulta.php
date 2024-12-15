@@ -6,7 +6,7 @@ $username = 'educ_lem';
 $password = 'Ari200120022003_';
 
 // Número de repetições para calcular o tempo médio
-$repeticoes = 10;
+$repeticoes = 500;
 
 try {
     // Conexão com o banco de dados
