@@ -1,7 +1,9 @@
 <?php
 // Configurações do banco de dados
-include_once "../Model/Conexao.php";
-
+$host = 'localhost';
+$dbname = 'educ_lem_producao';
+$username = 'educ_lem';
+$password = 'Ari200120022003_';
 
 // Número de repetições para calcular o tempo médio
 $repeticoes = 10;
