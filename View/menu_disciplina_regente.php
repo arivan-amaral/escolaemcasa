@@ -246,34 +246,34 @@ echo " <a class='btn btn-secondary btn-block btn-flat' href='boletim.php?idescol
                 RESULTADO ANUAL
                 </a>";
 if ($idserie < 8 || ($seguimento != '' && $seguimento < 3) || ($idserie == 16 && $seguimento < 3)) {
-  echo "
-                      <a   href='impressao_diario_frequencia.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat' target='_blank'>
-                      <i class='fa fa-calendar'></i> 
-                      FICHA DE RENDIMENTO TRI I
-                      </a> 
+  // echo "
+  //                     <a   href='impressao_diario_frequencia.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat' target='_blank'>
+  //                     <i class='fa fa-calendar'></i> 
+  //                     FICHA DE RENDIMENTO TRI I
+  //                     </a> 
 
-                      <a   href='impressao_diario_frequencia.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=2' class='btn btn-secondary btn-block btn-flat' target='_blank'>
-                      <i class='fa fa-calendar'></i> 
-                      FICHA DE RENDIMENTO TRI II
-                      </a>   
-                      <a   href='impressao_diario_frequencia.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=3' class='btn btn-secondary btn-block btn-flat' target='_blank'>
-                      <i class='fa fa-calendar'></i> 
-                      FICHA DE RENDIMENTO TRI III
-                      </a>  ";
+  //                     <a   href='impressao_diario_frequencia.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=2' class='btn btn-secondary btn-block btn-flat' target='_blank'>
+  //                     <i class='fa fa-calendar'></i> 
+  //                     FICHA DE RENDIMENTO TRI II
+  //                     </a>   
+  //                     <a   href='impressao_diario_frequencia.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=3' class='btn btn-secondary btn-block btn-flat' target='_blank'>
+  //                     <i class='fa fa-calendar'></i> 
+  //                     FICHA DE RENDIMENTO TRI III
+  //                     </a>  ";
 } else {
-  echo "<a   href='impressao_diario_frequencia.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat'>
-                  <i class='fa fa-calendar'></i> 
-                  FICHA DE RENDIMENTO TRI I
-                  </a> 
+  // echo "<a   href='impressao_diario_frequencia.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=1' class='btn btn-secondary btn-block btn-flat'>
+  //                 <i class='fa fa-calendar'></i> 
+  //                 FICHA DE RENDIMENTO TRI I
+  //                 </a> 
 
-                  <a   href='impressao_diario_frequencia.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=2' class='btn btn-secondary btn-block btn-flat'>
-                  <i class='fa fa-calendar'></i> 
-                  FICHA DE RENDIMENTO TRI II
-                  </a>   
-                  <a   href='impressao_diario_frequencia.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=3' class='btn btn-secondary btn-block btn-flat'>
-                  <i class='fa fa-calendar'></i> 
-                  FICHA DE RENDIMENTO TRI III
-                  </a>";
+  //                 <a   href='impressao_diario_frequencia.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=2' class='btn btn-secondary btn-block btn-flat'>
+  //                 <i class='fa fa-calendar'></i> 
+  //                 FICHA DE RENDIMENTO TRI II
+  //                 </a>   
+  //                 <a   href='impressao_diario_frequencia.php?iddisciplina=$iddisciplina&idturma=$idturma&idescola=$idescola&idserie=$idserie&periodo_id=3' class='btn btn-secondary btn-block btn-flat'>
+  //                 <i class='fa fa-calendar'></i> 
+  //                 FICHA DE RENDIMENTO TRI III
+  //                 </a>";
 }
 echo " </div>
                 <!-- /.card-body -->
