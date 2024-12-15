@@ -7,6 +7,7 @@ $password = 'Ari200120022003_';
 
 // Número de repetições para calcular o tempo médio
 $repeticoes =$_GET['quantidade'];
+$turma =$_GET['turma'];
 
 
 try {
@@ -17,7 +18,7 @@ try {
     // Consulta SQL
     $sql = "SELECT data_frequencia, aula FROM frequencia 
             WHERE escola_id = 15 
-              AND turma_id = 5631 
+              AND turma_id = $turma 
               AND data_frequencia BETWEEN '2024-02-02' AND '2024-05-30' 
             GROUP BY aula, data_frequencia 
             ORDER BY data_frequencia, aula ASC 
