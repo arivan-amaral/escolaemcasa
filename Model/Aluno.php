@@ -1925,40 +1925,39 @@ ORDER BY aluno.nome ASC");
 
 
    return $res;
+} 
 
-//    SELECT
-//     aluno.aluno_transpublico, 
-//     aluno.linha_transporte,
-//     aluno.imagem_carteirinha_transporte ,
 
-//     aluno.nome as 'nome_aluno',
-//     aluno.sexo,
-//     aluno.data_nascimento,
-//     aluno.idaluno,
-//     aluno.email,
-//     aluno.status as 'status_aluno',
-//     aluno.senha,
-//     turma.nome_turma,
+function listar_aluno_da_turma_avaliacao($conexao,$turma_id,$escola_id,$ano_letivo){
+  $res=$conexao->query("
+    SELECT
+    aluno.aluno_transpublico, 
+    aluno.linha_transporte,
+    aluno.imagem_carteirinha_transporte ,
+    aluno.nome AS nome_aluno,
+    aluno.nome_identificacao_social AS nome_identificacao_social,
+    aluno.sexo,
+    aluno.data_nascimento,
+    aluno.idaluno,
+    aluno.email,
+    aluno.status AS status_aluno,
+    aluno.senha,
+    turma.nome_turma,
+    ecidade_matricula.matricula_codigo AS matricula,
+    ecidade_matricula.matricula_datamatricula AS data_matricula,
+    ecidade_matricula.datasaida AS datasaida
+FROM ecidade_matricula
+INNER JOIN aluno ON ecidade_matricula.aluno_id = aluno.idaluno
+INNER JOIN turma ON ecidade_matricula.turma_id = turma.idturma
+INNER JOIN escola ON ecidade_matricula.turma_escola = escola.idescola
+WHERE ecidade_matricula.turma_escola = $escola_id
+  AND ecidade_matricula.turma_id = $turma_id
+  AND ecidade_matricula.calendario_ano = '$ano_letivo'
+  AND ecidade_matricula.matricula_situacao = 'MATRICULADO'
+ORDER BY aluno.nome ASC");
 
-// ecidade_matricula.matricula_codigo as 'matricula',
-// ecidade_matricula.matricula_datamatricula as 'data_matricula',
-// ecidade_matricula.datasaida as 'datasaida'
 
-// FROM
-//  ecidade_matricula,
-// aluno,turma,escola
-
-// where
-
-// ecidade_matricula.aluno_id= aluno.idaluno AND
-// ecidade_matricula.turma_id = turma.idturma and 
-// ecidade_matricula.turma_escola = escola.idescola and 
-// ecidade_matricula.calendario_ano ='$ano_letivo' and 
- 
-
-// ecidade_matricula.turma_escola=$escola_id and
-// ecidade_matricula.matricula_situacao !='CANCELADO' and
-// ecidade_matricula.turma_id=$turma_id  ORDER by aluno.nome ASC
+   return $res;
 } 
 
 
@@ -1998,106 +1997,48 @@ ORDER BY aluno.nome ASC
 
    return $res;
 
-//      SELECT 
-//       aluno.aluno_transpublico, 
-//     aluno.linha_transporte,
-//     aluno.imagem_carteirinha_transporte ,
-
-// aluno.nome as 'nome_aluno',
-// aluno.sexo,
-// aluno.data_nascimento,
-// aluno.idaluno,
-// aluno.email,
-// aluno.status as 'status_aluno',
-// aluno.senha,
-// turma.nome_turma,
-
-// ecidade_matricula.matricula_codigo as 'matricula',
-// ecidade_matricula.matricula_datamatricula as 'data_matricula',
-// ecidade_matricula.datasaida as 'datasaida'
-
-// FROM
-//  ecidade_matricula,
-// aluno,turma,escola
-
-// where
-
-// ecidade_matricula.aluno_id= aluno.idaluno AND
-// ecidade_matricula.turma_id = turma.idturma and 
-// ecidade_matricula.turma_escola = escola.idescola and 
-// ecidade_matricula.calendario_ano ='$ano_letivo' and 
-
-// ecidade_matricula.turma_escola=$escola_id and
-// ecidade_matricula.matricula_situacao !='CANCELADO' and
-// ecidade_matricula.turma_id=$turma_id  ORDER by aluno.nome ASC
-} 
-
-
-//  function pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula){
-//   $res=$conexao->query("
-//     SELECT * FROM
-//         ecidademigrado_matricula
-//     where 
-
-//  ecidademigrado_matricula.matricula_codigo=$matricula_codigo and    
-// ");
-//   return $res;
-// }  
+}
 
 
 
-//function listar_aluno_da_turma_ata_resultado_final($conexao,$aluno_id,$turma_id,$escola_id){
-//   $res=$conexao->query("SELECT 
-// aluno.nome as 'nome_aluno',
-// aluno.idaluno,
-// turma.nome_turma,
-// ecidade_movimentacao_escolar.matriculamov_dataevento AS 'data_evento',
-// ecidade_movimentacao_escolar.matriculamov_descr as 'descricao_procedimento',
-// ecidade_movimentacao_escolar.matriculamov_procedimento as 'procedimento',
-// ecidade_movimentacao_escolar.matricula_codigo as 'matricula'
-// FROM
-// ecidade_movimentacao_escolar,
-// aluno,turma,escola
+function listar_aluno_da_turma_avaliacao_matricula_concluida($conexao,$turma_id,$escola_id,$ano_letivo){
+  $res=$conexao->query("
+    SELECT 
+    aluno.aluno_transpublico, 
+    aluno.linha_transporte,
+    aluno.imagem_carteirinha_transporte,
+    aluno.nome AS nome_aluno,
+    aluno.nome_identificacao_social AS nome_identificacao_social,
 
-// where 
-// ecidade_movimentacao_escolar.aluno_id= aluno.idaluno AND
-// ecidade_movimentacao_escolar.turma_id = turma.idturma and 
-// ecidade_movimentacao_escolar.escola_id = escola.idescola and 
-// ecidade_movimentacao_escolar.calendario_ano ='2021' and 
- 
-// ecidade_movimentacao_escolar.escola_id=$escola_id and
-// ecidade_movimentacao_escolar.turma_id=$turma_id and
-// ecidade_movimentacao_escolar.aluno_id=$aluno_id and
-
-    
-//     (
-   
-//    ecidade_movimentacao_escolar.matriculamov_procedimento 
-//    LIKE 'TRANSFERÊNCIA ENTRE ESCOLAS DA REDE' OR 
-//    ecidade_movimentacao_escolar.matriculamov_procedimento 
-//    LIKE 'TRANSFERÊNCIA PARA OUTRA ESCOLA' OR  
-//    ecidade_movimentacao_escolar.matriculamov_procedimento 
-//    LIKE 'TROCAR ALUNO DE TURMA' OR  
-//    ecidade_movimentacao_escolar.matriculamov_procedimento 
-//    LIKE 'TROCAR ALUNO DE MODALIDADE' )
-
-//     AND 
-
-//    aluno.status like'Ativo' ORDER by aluno.nome ASC");
-//   return $res;
-// } 
+    aluno.sexo,
+    aluno.data_nascimento,
+    aluno.idaluno,
+    aluno.email,
+    aluno.status AS status_aluno,
+    aluno.senha,
+    turma.nome_turma,
+    ecidade_matricula.matricula_codigo AS matricula,
+    ecidade_matricula.matricula_datamatricula AS data_matricula,
+    ecidade_matricula.datasaida AS datasaida
+FROM ecidade_matricula
+INNER JOIN aluno ON ecidade_matricula.aluno_id = aluno.idaluno
+INNER JOIN turma ON ecidade_matricula.turma_id = turma.idturma
+INNER JOIN escola ON ecidade_matricula.turma_escola = escola.idescola
+WHERE ecidade_matricula.turma_escola = $escola_id
+  AND ecidade_matricula.turma_id = $turma_id
+  AND ecidade_matricula.calendario_ano = '$ano_letivo'
+  AND ecidade_matricula.matricula_situacao = 'MATRICULADO'
+ORDER BY aluno.nome ASC
+  ");
 
 
-//  function pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula){
-//   $res=$conexao->query("
-//     SELECT * FROM
-//         ecidademigrado_matricula
-//     where 
+   return $res;
 
-//  ecidademigrado_matricula.matricula_codigo=$matricula_codigo and    
-// ");
-//   return $res;
-// }   
+}
+
+
+
+
 
 function listar_aluno_do_simulado_professor($conexao,$escola_id,$idserie,$indice){
   $res=$conexao->query("SELECT aluno.senha,aluno.email,aluno.nome as 'nome_aluno', aluno.idaluno, aluno.status as 'status_aluno', turma.nome_turma,turma.idturma

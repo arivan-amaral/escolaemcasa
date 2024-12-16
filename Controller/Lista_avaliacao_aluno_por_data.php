@@ -68,9 +68,9 @@ try {
                // $res_alunos= listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
                 
                 if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
-                  $res_alunos=listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+                  $res_alunos=listar_aluno_da_turma_avaliacao($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
                 }else{
-                  $res_alunos=listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+                  $res_alunos=listar_aluno_da_turma_avaliacao_matricula_concluida($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
                  }
 
                $cont=1;
@@ -87,17 +87,17 @@ try {
                     $data_matricula=$value['data_matricula'];
                       $matricula_aluno=$value['matricula'];
 
-                $res_movimentacao=pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula_aluno,$_SESSION['ano_letivo']);
+                // $res_movimentacao=pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula_aluno,$_SESSION['ano_letivo']);
 
-                $procedimento="";
-                 $datasaida="";
-                foreach ($res_movimentacao as $key => $value) {
-                    $datasaida=($value['datasaida']);
-                    $procedimento=$value['procedimento'];
-                    if ($datasaida!="") {
-                      $datasaida=converte_data($datasaida);
-                    }
-                }
+                // $procedimento="";
+                //  $datasaida="";
+                // foreach ($res_movimentacao as $key => $value) {
+                //     $datasaida=($value['datasaida']);
+                //     $procedimento=$value['procedimento'];
+                //     if ($datasaida!="") {
+                //       $datasaida=converte_data($datasaida);
+                //     }
+                // }
 
                     if ($cont%2==0) {
                       $cor_tabela='table-primary';
@@ -115,15 +115,17 @@ try {
                             <b class='text-success'> $nome_aluno </b>
                             <br>";
 
-                            $disabled="";
-                            if($procedimento!=""){
-                                $result.="<b class='text-success'>
-                                    <b class='text-danger'> $procedimento | $datasaida </b>
-                                 </b>";
-                            $disabled=" disabled ";
+                            // $disabled="";
+                            // if($procedimento!=""){
+                            //     $result.="<b class='text-success'>
+                            //         <b class='text-danger'> $procedimento | $datasaida </b>
+                            //      </b>";
+                            // $disabled=" disabled ";
                              
                                 
-                            }else if(  (strtotime($data_matricula) <= strtotime($data_fim_periodo)) ){
+                            // }else 
+
+                            if(  (strtotime($data_matricula) <= strtotime($data_fim_periodo)) ){
                             //06/04/2022
                                  $result.=" <input type='hidden' name='aluno_id[]' value='$id'>
                                  <br>
@@ -172,48 +174,48 @@ try {
                                   $result_n1=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av1',$ano_letivo);
 
                                    $conta_total_nota=0;
-                                   foreach ($result_n1 as $key => $value) {
-                                      $idnota=$value['idnota'];
+                                   // foreach ($result_n1 as $key => $value) {
+                                   //    $idnota=$value['idnota'];
 
-                                      $nota1=$value['nota'];
-                                      $array_nota1[$idnota]=$value['nota']." data: ".$value['data_nota'];;
-                                      $conta_total_nota++;
-                                   }
+                                   //    $nota1=$value['nota'];
+                                   //    $array_nota1[$idnota]=$value['nota']." data: ".$value['data_nota'];;
+                                   //    $conta_total_nota++;
+                                   // }
 
-                                  $result_n2=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av2',$ano_letivo);
-                                   $conta_total_nota=0;
+                                  // $result_n2=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av2',$ano_letivo);
+                                  //  $conta_total_nota=0;
 
-                                   foreach ($result_n2 as $key => $value) {
-                                      $idnota=$value['idnota'];
+                                  //  foreach ($result_n2 as $key => $value) {
+                                  //     $idnota=$value['idnota'];
 
-                                      $nota2=$value['nota'];
-                                      $array_nota2[$idnota]=$value['nota']." data: ".$value['data_nota'];;
-                                      $conta_total_nota++;
-                                   }
+                                  //     $nota2=$value['nota'];
+                                  //     $array_nota2[$idnota]=$value['nota']." data: ".$value['data_nota'];;
+                                  //     $conta_total_nota++;
+                                  //  }
 
-                                  $result_nota3=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av3',$ano_letivo);
-                                   $conta_total_nota=0;
+                                  // $result_nota3=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av3',$ano_letivo);
+                                  //  $conta_total_nota=0;
 
-                                   foreach ($result_nota3 as $key => $value) {
-                                      $idnota=$value['idnota'];
-                                      $nota3=$value['nota'];
-                                     $array_notas3[$idnota]=$value['nota']." data: ".$value['data_nota'];;
-                                      $conta_total_nota++;
-                                   }
+                                  //  foreach ($result_nota3 as $key => $value) {
+                                  //     $idnota=$value['idnota'];
+                                  //     $nota3=$value['nota'];
+                                  //    $array_notas3[$idnota]=$value['nota']." data: ".$value['data_nota'];;
+                                  //     $conta_total_nota++;
+                                  //  }
 
                                    ###################### ARIVAN 03-11-2021
 
-                                  $result_nota_fund1_3=verifica_nota_diario_av3_fund1($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av3',$ano_letivo);
+                                  // $result_nota_fund1_3=verifica_nota_diario_av3_fund1($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av3',$ano_letivo);
 
-                                   $conta_total_nota_fund1=0;
-                                   $nota_fund1_3=0;
-                                   $array_notas_fund1_3=array();
-                                   foreach ($result_nota_fund1_3 as $key => $value) {
-                                      $idnota=$value['idnota'];
-                                      $nota_fund1_3=$value['nota'];
-                                     $array_notas_fund1_3[$idnota]=$value['nota']." data: ".$value['data_nota'];;
-                                      $conta_total_nota_fund1++;
-                                   }
+                                  //  $conta_total_nota_fund1=0;
+                                  //  $nota_fund1_3=0;
+                                  //  $array_notas_fund1_3=array();
+                                  //  foreach ($result_nota_fund1_3 as $key => $value) {
+                                  //     $idnota=$value['idnota'];
+                                  //     $nota_fund1_3=$value['nota'];
+                                  //    $array_notas_fund1_3[$idnota]=$value['nota']." data: ".$value['data_nota'];;
+                                  //     $conta_total_nota_fund1++;
+                                  //  }
 
                                    ######################ARIVAN 03-11-2021
                   
