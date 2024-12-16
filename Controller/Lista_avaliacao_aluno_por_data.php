@@ -221,15 +221,15 @@ try {
                   
 
 
-                                  $result_rp=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'RP',$ano_letivo);
+                                  // $result_rp=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'RP',$ano_letivo);
 
-                                   $conta_total_nota=0;
-                                   foreach ($result_rp as $key => $value) {
-                                      $idnota=$value['idnota'];
-                                      $notarp=$value['nota'];
-                                      $array_notarp[$idnota]=$value['nota']." data: ".$value['data_nota'];;
-                                      $conta_total_nota++;
-                                   }
+                                  //  $conta_total_nota=0;
+                                  //  foreach ($result_rp as $key => $value) {
+                                  //     $idnota=$value['idnota'];
+                                  //     $notarp=$value['nota'];
+                                  //     $array_notarp[$idnota]=$value['nota']." data: ".$value['data_nota'];;
+                                  //     $conta_total_nota++;
+                                  //  }
 
 
 
