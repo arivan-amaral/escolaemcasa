@@ -1,5 +1,6 @@
 <?php
 session_start();
+set_time_limit(0);
 setlocale(LC_ALL,'pt_BR.UTF8');
 mb_internal_encoding('UTF8');
 mb_regex_encoding('UTF8');
