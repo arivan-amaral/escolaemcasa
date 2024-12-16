@@ -1,9 +1,11 @@
 <?php
 session_start();
 set_time_limit(0);
-setlocale(LC_ALL,'pt_BR.UTF8');
-mb_internal_encoding('UTF8');
-mb_regex_encoding('UTF8');
+// setlocale(LC_ALL,'pt_BR.UTF8');
+// mb_internal_encoding('UTF8');
+// mb_regex_encoding('UTF8');
+error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING); // Oculta avisos e notificações
+ini_set('display_errors', '0'); // Desativa a exibição de erros
 
 include_once "../Model/Conexao.php";
 include_once "../Model/Escola.php";
