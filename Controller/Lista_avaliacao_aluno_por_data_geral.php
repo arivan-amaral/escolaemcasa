@@ -1,18 +1,12 @@
 <?php
-set_time_limit(500);
   session_start();
-    if (!isset($_SESSION['usuariobd'])) {
-    // Se não estiver definida, atribui o valor padrão 'educ_lem'
-    $_SESSION['usuariobd'] = 'educ_lem';
-}
-$usuariobd=$_SESSION['usuariobd'];
-include_once "../Model/Conexao_".$usuariobd.".php";
+    include("../Model/Conexao.php");
     include("../Model/Aluno.php");
     include("../Model/Escola.php");
     include("Nota_final_funcao.php");
     include("Conversao.php");
     
- 
+
 try {
 
     $professor_id=$_SESSION['idfuncionario'];
@@ -20,22 +14,19 @@ try {
     $idescola=$_GET['idescola'];
     $idturma=$_GET['idturma'];
     $idaluno=$_GET['idaluno'];
-    //$data=$_GET['data_avaliacao'];
+   
     $idperiodo=$_GET['idperiodo'];
-    //$avaliacao=$_GET['avaliacao'];
     $idserie=$_GET['idserie'];
     $tamanho=4;
     $ano_letivo=$_SESSION['ano_letivo'];
-    $idfuncionario=$_SESSION['idfuncionario'];
 
     $res_seg=$conexao->query("SELECT * FROM turma WHERE idturma=$idturma LIMIT 1");
     $seguimento='';
     foreach ($res_seg as $key => $value) {
       $seguimento=$value['seguimento'];
-      // code...
     }
     
-    $res_periodo=listar_data_por_periodo($conexao,$_SESSION['ano_letivo'], $idperiodo);
+    $res_periodo=listar_data_por_periodo($conexao,$_SESSION['ano_letivo'],$idperiodo);
     $data_inicio_periodo='';
     $data_fim_periodo='';
  
@@ -57,23 +48,25 @@ try {
             </tr>
           </thead>
           <tbody>";
-$res_disciplina= listar_disciplina_para_nota_geral($conexao,$idturma,$idescola,$ano_letivo,$idfuncionario);
+
+         $res_disciplina= listar_disciplina_para_boletim($conexao,$idturma,$idescola,$ano_letivo);
 
 foreach ($res_disciplina as $key_disc => $value_disc) {
 
     $iddisciplina=$value_disc['iddisciplina'];
     $nome_disciplina=$value_disc['nome_disciplina'];
 
-    if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
-      $res_alunos=listar_aluno_da_turma_ata_resultado_final_geral($conexao,$idturma,$idescola,$_SESSION['ano_letivo'], $idaluno);
-    }else{
-      $res_alunos=listar_aluno_da_turma_ata_resultado_final_matricula_concluida_geral($conexao,$idturma,$idescola,$_SESSION['ano_letivo'], $idaluno);
-     }
+                if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
+                  $res_alunos=listar_aluno_da_turma_ata_resultado_final_geral($conexao,$idturma,$idescola,$_SESSION['ano_letivo'], $idaluno);
+                }else{
+                  $res_alunos=listar_aluno_da_turma_ata_resultado_final_matricula_concluida_geral($conexao,$idturma,$idescola,$_SESSION['ano_letivo'], $idaluno);
+                 }
+
                $cont=1;
                $cor_tabela='table-primary';
                foreach ($res_alunos as $key => $value) {
 
-                    $nome_aluno=strtoupper(($value['nome_aluno']));
+                    $nome_aluno=(($value['nome_aluno']));
                     $nome_turma=($value['nome_turma']);
                     $id=$value['idaluno'];
                     $idaluno=$value['idaluno'];
@@ -108,7 +101,8 @@ foreach ($res_disciplina as $key_disc => $value_disc) {
                           <td  colspan='2'>
                   
                           <div class='col-sm-6'>
-                            <b class='text-success'> $nome_aluno </b>
+                           <input type='hidden' name='iddisciplina[]' value='$iddisciplina'>
+                            <b class='text-success'> $nome_aluno  <spam class='text-danger'>DISCIPLINA: $nome_disciplina </spam> </b>
                             <br>";
 
                             $disabled="";
@@ -121,13 +115,14 @@ foreach ($res_disciplina as $key_disc => $value_disc) {
                                 
                             }else if(  (strtotime($data_matricula) <= strtotime($data_fim_periodo)) ){
                             //06/04/2022
-                                 $result.=" <input type='hidden' name='aluno_id[]' value='$id'>
+                                 $result.=" <input type='text' name='aluno_id[]' value='$id'>
                                  <br>
                                  
                                  ";
                              
                             }else{
                              $result.="<b class='text-success'>
+                              <input type='hidden' name='aluno_id[]' value='$id' >
                                     <b class='text-danger'>Nessa data o aluno não estava na turma. Data matrícula: ".converte_data($data_matricula)."</b>
                                  </b>";
                             }
@@ -140,23 +135,23 @@ foreach ($res_disciplina as $key_disc => $value_disc) {
               
                              $result.="<td>
                              <!-- <label for='exampleInputEmail1'>Relatório descritivo</label>
-                              <textarea class='form-control-sm' name='parecer_descritivo$id'>descricao_parecer</textarea><br>
+                              <textarea class='form-control-sm' name='parecer_descritivo$id$iddisciplina'>descricao_parecer</textarea><br>
                                 <B></b> -->
                               </td>
                             
                               <td>";
                                 if ($idserie >=3){
-                                // arivan 
-                                // if ($idserie >=3){
-                                  // code...
+               
                                    $nota1='0';
                                    $nota2='0';
                                    $nota3='0';
+                                   $nota4='0';
                                    $notarp='0'; 
 
                                    $array_nota1=array();
                                    $array_nota2=array();
                                     $array_notas3=array();
+                                    $array_notas4=array();
                                    $array_notarp=array();
 
 
@@ -189,6 +184,16 @@ foreach ($res_disciplina as $key_disc => $value_disc) {
                                       $idnota=$value['idnota'];
                                       $nota3=$value['nota'];
                                      $array_notas3[$idnota]=$value['nota']." data: ".$value['data_nota'];;
+                                      $conta_total_nota++;
+                                   }                         
+
+                                   $result_nota4=verifica_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,'av4',$ano_letivo);
+                                   $conta_total_nota=0;
+
+                                   foreach ($result_nota4 as $key => $value) {
+                                      $idnota=$value['idnota'];
+                                      $nota4=$value['nota'];
+                                     $array_notas4[$idnota]=$value['nota']." data: ".$value['data_nota'];;
                                       $conta_total_nota++;
                                    }
 
@@ -224,33 +229,36 @@ foreach ($res_disciplina as $key_disc => $value_disc) {
 
 
                                    $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>Nota AV1:</label>
-                                  <input type='text' id='nota_av1$id'  name='nota_av1$id' value='$nota1' style='width:50px;' onkeyup='somenteNumeros(this,3);total_notas($id);' $disabled>";
+                                  <input type='text' id='nota_av1$id$iddisciplina'  name='nota_av1$id$iddisciplina' value='$nota1' style='width:50px;' onkeyup='somenteNumeros(this,10);total_notas($id$iddisciplina);' $disabled>";
 
 
                                    $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>Nota AV2:</label>
-                                  <input type='text' id='nota_av2$id' name='nota_av2$id' value='$nota2' style='width:50px;' onkeyup='somenteNumeros(this,3);total_notas($id);' $disabled>";
+                                  <input type='text' id='nota_av2$id$iddisciplina' name='nota_av2$id$iddisciplina' value='$nota2' style='width:50px;' onkeyup='somenteNumeros(this,10);total_notas($id$iddisciplina);' $disabled>";
 
                                    $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>Nota AV3:</label>
-                                  <input type='text' id='nota_av3$id' name='nota_av3$id' value='$nota3' style='width:50px;' onkeyup='somenteNumeros(this,4);total_notas($id);' $disabled>";
+                                  <input type='text' id='nota_av3$id$iddisciplina' name='nota_av3$id$iddisciplina' value='$nota3' style='width:50px;' onkeyup='somenteNumeros(this,10);total_notas($id$iddisciplina);' $disabled>";
+                                  
+                                  $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>Nota AV4:</label>
+                                  <input type='text' id='nota_av4$id$iddisciplina' name='nota_av4$id$iddisciplina' value='$nota4' style='width:50px;' onkeyup='somenteNumeros(this,10);total_notas($id$iddisciplina);' $disabled>";
 
                                    $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>Nota RP:</label>
-                                  <input type='text' id='nota_rp$id'  name='nota_RP$id' value='$notarp' style='width:50px;' onkeyup='somenteNumeros(this,4);total_notas($id);' $disabled>
+                                  <input type='text' id='nota_rp$id'  name='nota_RP$id$iddisciplina' value='$notarp' style='width:50px;' onkeyup='somenteNumeros(this,10);' $disabled>
                                   
                                   ";                     
 
 
-                                  $media= ($nota1+$nota2+$nota3 );
-                                  if ($media<5 && $notarp !='' && $notarp>$nota3) {
-                                    $media=($media-$nota3)+$notarp;
+                                  $media= ($nota1+$nota2+$nota3+$nota4 );
+                                  if ($notarp !='' && $notarp>$media) {
+                                    $media=$notarp;
                                   }
 
                                 
-                                    $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>Total:</label>
+                                    $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>Total.:</label>
                                     <input type='text' id='total$id' value='$media' style='width:50px; background-color: #FFDAB9;'>"; 
                                   
                                   $conta_aprovado=0;
-                                      
-                
+
+                                  
                                     $res_conselho=buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno, $ano_letivo);
                                     $conta_aprovado=count($res_conselho);
                                    
@@ -270,7 +278,7 @@ foreach ($res_disciplina as $key_disc => $value_disc) {
                                          if ($conta_aprovado>0) {
                                             //aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno);
                                             $result.="<label for='exampleInputEmail1' style='margin-left:10px;'>NF:</label>
-                                            <input type='text'  value='5.0' style='width:50px; background-color: #FFDAB9;'>"; 
+                                            <input type='text'  value='6.0' style='width:50px; background-color: #FFDAB9;'>"; 
                                             
                                             $result.="
                                             <a class='btn btn-success'> APC </A>
@@ -292,11 +300,7 @@ foreach ($res_disciplina as $key_disc => $value_disc) {
 
                                   
 
-
                             }
-
-
-        
 
                                 $result.="
                               </td>";
@@ -315,10 +319,10 @@ foreach ($res_disciplina as $key_disc => $value_disc) {
                                  $descricao_parecer_av3=$value22['parecer_descritivo'];
                               }
 
-//teste 2 ano b educacao fisica ok
+
                                 $result.="
                              <label for='exampleInputEmail1'>Relatório descritivo</label>
-                                <textarea  class='form-control' rows='5' name='parecer_descritivo$id'>$descricao_parecer_av3 </textarea>
+                                <textarea  class='form-control' rows='5' name='parecer_descritivo$id$iddisciplina'>$descricao_parecer_av3 </textarea>
 
                               </td>
                               </tr>
@@ -345,7 +349,7 @@ foreach ($res_disciplina as $key_disc => $value_disc) {
                                            </h6>
                                          </div>
                                          <div class='card-body'>
-                                           <textarea  class='form-control' rows='5' name='parecer_descritivo$id'>$descricao_parecer</textarea>
+                                           <textarea  class='form-control' rows='5' name='parecer_descritivo$id$iddisciplina'>$descricao_parecer</textarea>
                                          </div>
                                          <div class='card-footer'>
                                          </div>
@@ -353,11 +357,10 @@ foreach ($res_disciplina as $key_disc => $value_disc) {
                                        </div>
                                        <BR>";
 
-
                                   $result.="    
 
                                 <label for='exampleInputEmail1' style='display: none;'>Nota</label><br>
-                                <input type='hidden'  name='nota$id' value='' style='display: none;' onkeyup='somenteNumeros(this,$tamanho);'>
+                                <input type='hidden'  name='nota$id$iddisciplina' value='' style='display: none;' onkeyup='somenteNumeros(this,$tamanho);'>
                                </td>";
                       }
 
@@ -375,7 +378,9 @@ foreach ($res_disciplina as $key_disc => $value_disc) {
 //segunda comparação , se não for diagnostico inicial
 
             if ($idperiodo!=6) {
-
+       //         $result.="SELECT * FROM parecer_disciplina WHERE
+       // disciplina_id =$iddisciplina  and status=1  and parecer_disciplina.ano=$ano_letivo";
+             
                 $res_par=$conexao->query("SELECT * FROM parecer_disciplina WHERE disciplina_id =$iddisciplina  and status=1  and parecer_disciplina.ano=$ano_letivo ");
                  //$res_par=listar_parecer_disciplina($conexao,$iddisciplina,$idturma,$_SESSION['ano_letivo']);
                   foreach ($res_par as $key => $value) {
@@ -384,19 +389,15 @@ foreach ($res_disciplina as $key_disc => $value_disc) {
                     $serie_id=$value['serie_id'];
 
                     $descricao_parecer=$value['descricao'];
-                    $res_verif_parece=verifica_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,$idparecer,'av3', $ano_letivo);
+                    $res_verif_parece=verifica_parecer_nota_diario($conexao,$idescola,$idturma,$iddisciplina,$id,$idperiodo,$idparecer,'av3');
                     $sigla="";
-                    // $idnota_sigla="";
                     foreach ($res_verif_parece as $key => $value) {
                       $sigla=$value['sigla'];
-                     // $idnota_sigla=$value['idnota'];
                     }
 
 
-                  if ($serie_id == $idserie) {  //pareceres que ja foram prenchidos
-       
 
-                    }else if ( ($serie_id =="" && $idserie <8) || ($idserie==16 && $seguimento <3) ) {//pareceres que NÃO  foram prenchidos
+                    if ( ($serie_id =="" && $idserie <8) || ($idserie==16 && $seguimento <3) ) {//pareceres que NÃO  foram prenchidos
                        $result.="<tr class='$cor_tabela'>
                             <td colspan='2'>
 
@@ -409,9 +410,9 @@ foreach ($res_disciplina as $key_disc => $value_disc) {
                                     
                                     
                                    $result.="                            
-                                      <input type='hidden' name='descricao_parecer".$id."[]' value='$idparecer'>
+                                    <input type='hidden' name='descricao_parecer".$id."".$iddisciplina."[]' value='$idparecer'>
                                   <select  name='parecer_sigla".$id."[]'>
-                                    <option value='$sigla'>$sigla </option>
+                                    <option value='$sigla'>$sigla</option>
                                     <option value='S'>S</option>
                                     <option></option>
                                     <option value='N'>N</option>
@@ -439,10 +440,7 @@ foreach ($res_disciplina as $key_disc => $value_disc) {
             $cont++;
           }
 
-
       }
-
-
 
           $result.="</tbody>
           </table>
