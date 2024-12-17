@@ -112,5 +112,30 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
   
 </head>
+
+
+<?php
+// Define a data atual
+$dataAtual = date('Y-m-d');
+
+// Define a data do aviso
+$dataAviso = '2024-12-16';
+
+// Exibe o aviso somente na data definida
+if ($dataAtual === $dataAviso) {
+  echo "<script>
+
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Manutenção Programada',
+            text: 'O sistema estará em manutenção das 23:00 às 00:00. Durante este período, o site poderá ficar temporariamente indisponível. Agradecemos a sua compreensão!',
+            showConfirmButton: false,
+            timer: 5000,
+          });
+  </script>";
+}
+?>
+
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
