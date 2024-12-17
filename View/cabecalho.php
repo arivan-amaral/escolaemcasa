@@ -113,8 +113,8 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
   
 </head>
 
-
 <?php
+
 // Define a data atual
 $dataAtual = date('Y-m-d');
 
@@ -123,19 +123,41 @@ $dataAviso = '2024-12-16';
 
 // Exibe o aviso somente na data definida
 if ($dataAtual === $dataAviso) {
-  echo "<script>
+    echo "
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Função para mostrar o alerta
+        function exibirAlerta() {
+            var aviso = document.createElement('div');
+            aviso.style.position = 'fixed';
+            aviso.style.top = '20px';
+            aviso.style.left = '50%';
+            aviso.style.transform = 'translateX(-50%)';
+            aviso.style.backgroundColor = '#ff9800';
+            aviso.style.color = 'white';
+            aviso.style.padding = '15px';
+            aviso.style.borderRadius = '5px';
+            aviso.style.fontSize = '16px';
+            aviso.style.zIndex = '1000';
+            aviso.style.boxShadow = '0px 4px 8px rgba(0, 0, 0, 0.2)';
+            aviso.innerHTML = 'Manutenção Programada: O sistema estará em manutenção das 23:00 às 00:00. Durante este período, o site poderá ficar temporariamente indisponível. Agradecemos a sua compreensão!';
+            
+            document.body.appendChild(aviso);
+            
+            // Fechar o aviso após 5 segundos
+            setTimeout(function() {
+                aviso.style.display = 'none';
+            }, 5000);
+        }
 
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Manutenção Programada',
-            text: 'O sistema estará em manutenção das 23:00 às 00:00. Durante este período, o site poderá ficar temporariamente indisponível. Agradecemos a sua compreensão!',
-            showConfirmButton: false,
-            timer: 5000,
-          });
-  </script>";
+        // Chama a função para exibir o alerta após 1 segundos
+        setTimeout(exibirAlerta, 1000); // 10000 ms = 10 segundos
+    });
+    </script>
+    ";
 }
 ?>
+
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
