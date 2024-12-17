@@ -80,6 +80,35 @@ $stmt = $conexao->prepare($sql);
 $stmt->execute([$idprofessor, $idturma]);
 $resultado_disciplina = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+// Função para listar trimestres
+function listar_trimestre($conexao, $ano_letivo) {
+    try {
+        $sql = "SELECT id, descricao FROM periodos WHERE ano_letivo = ? ORDER BY id";
+        $stmt = $conexao->prepare($sql);
+        $stmt->execute([$ano_letivo]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("Erro ao listar trimestres: " . $e->getMessage());
+        return [];
+    }
+}
+
+// Função para buscar avaliações
+function buscar_avaliacoes($conexao, $idturma, $iddisciplina, $periodo) {
+    try {
+        $sql = "SELECT * FROM avaliacoes 
+                WHERE turma_id = ? 
+                AND disciplina_id = ? 
+                AND periodo_id = ?
+                ORDER BY data_avaliacao";
+        $stmt = $conexao->prepare($sql);
+        $stmt->execute([$idturma, $iddisciplina, $periodo]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("Erro ao buscar avaliações: " . $e->getMessage());
+        return [];
+    }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -265,6 +294,38 @@ $resultado_disciplina = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <!-- Scripts -->
 <script>
+function lista_avaliacao_aluno_por_data() {
+    const iddisciplina = document.getElementById('iddisciplina').value;
+    const periodo = document.getElementById('periodo').value;
+    const idturma = document.getElementById('idturma').value;
+    
+    if (!iddisciplina || !periodo || !idturma) {
+        Swal.fire('Atenção', 'Por favor, preencha todos os campos!', 'warning');
+        return;
+    }
+
+    aguardando();
+    
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'buscar_avaliacoes_ajax.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            document.getElementById('listagem_avaliacao').innerHTML = xhr.responseText;
+            Swal.close();
+        } else {
+            Swal.fire('Erro', 'Ocorreu um erro ao buscar as avaliações', 'error');
+        }
+    };
+    
+    xhr.onerror = function() {
+        Swal.fire('Erro', 'Ocorreu um erro na conexão', 'error');
+    };
+    
+    xhr.send(`iddisciplina=${iddisciplina}&periodo=${periodo}&idturma=${idturma}`);
+}
+
 function somenteNumeros(num, tamanho) {
     const er = /[^0-9.]/;
     const campo = num;
@@ -275,13 +336,13 @@ function somenteNumeros(num, tamanho) {
 
     if (er.test(valor)) {
         campo.value = "";
-        Swal.fire('Esse campo aceita apenas números.', '', 'info');
+        Swal.fire('Atenção', 'Esse campo aceita apenas números.', 'info');
         return;
     }
 
     if (parseFloat(valor) > tamanho) {
         campo.value = "";
-        Swal.fire(`A nota não pode ser maior que ${tamanho}.`, '', 'info');
+        Swal.fire('Atenção', `A nota não pode ser maior que ${tamanho}.`, 'info');
     }
 }
 
@@ -302,5 +363,7 @@ function limpa_avaliacao() {
     document.getElementById('botao_continuar').innerHTML = '';
 }
 </script>
+</body>
+</html>
 
 <?php include_once 'rodape.php'; ?>
