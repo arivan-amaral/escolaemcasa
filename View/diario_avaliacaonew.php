@@ -51,7 +51,8 @@ include_once '../Controller/Conversao.php';
 $_SESSION['usuariobd'] = $_SESSION['usuariobd'] ?? DEFAULT_DB;
 $usuariobd = $_SESSION['usuariobd'];
 include_once "../Model/Conexao_".$usuariobd.".php";
-
+include_once '../Model/Aluno.php';
+include_once '../Model/Professor.php';
 // Validação de parâmetros
 $idserie = filter_input(INPUT_GET, 'idserie', FILTER_VALIDATE_INT);
 $idescola = filter_input(INPUT_GET, 'idescola', FILTER_VALIDATE_INT);
