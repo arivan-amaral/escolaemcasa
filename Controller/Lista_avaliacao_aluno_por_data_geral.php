@@ -1,12 +1,18 @@
 <?php
+set_time_limit(500);
   session_start();
-    include("../Model/Conexao.php");
+    if (!isset($_SESSION['usuariobd'])) {
+    // Se não estiver definida, atribui o valor padrão 'educ_lem'
+    $_SESSION['usuariobd'] = 'educ_lem';
+}
+$usuariobd=$_SESSION['usuariobd'];
+include_once "../Model/Conexao_".$usuariobd.".php";
     include("../Model/Aluno.php");
     include("../Model/Escola.php");
     include("Nota_final_funcao.php");
     include("Conversao.php");
     
-
+ 
 try {
 
     $professor_id=$_SESSION['idfuncionario'];
