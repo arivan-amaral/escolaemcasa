@@ -38,7 +38,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
   
   <link rel="shortcut icon" href="imagens/logo.png"/>
 
-  <title><?php echo $_SESSION['NOME_APLICACAO']; ?></title>
+  <title>educalem 01<?php echo $_SESSION['NOME_APLICACAO']; ?></title>
   
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
