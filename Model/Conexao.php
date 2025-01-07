@@ -4,7 +4,7 @@ date_default_timezone_set('America/Sao_Paulo');
     
     $server = "localhost";
     
-    $username = "educ_lem";
+    $username = "educ_lem_producao";
     $dbname = "educ_lem_producao";
      $password = "Ari200120022003_";
     
