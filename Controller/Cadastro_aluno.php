@@ -15,7 +15,7 @@ try {
     $nome_identificacao_social=$_POST['nome_identificacao_social'];
     $nome_identificacao_social=limparEspacosNome($nome_identificacao_social);
 
-    $nome= limparEspacosNome($nome);
+    $nome= limparEspacosNome($_POST['nome']);
     $nome=escape_mimic($nome);
     
     $data_nascimento=$_POST['data_nascimento'];
