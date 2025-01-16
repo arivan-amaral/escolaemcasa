@@ -106,6 +106,7 @@ where
                         <b class='text-success'> Data nascimento: $data_nascimento </b> <br> 
                         <b class='text-success'> Responsável: $nome_responsavel </b> <br>
                         <b class='text-info'> Contato: $whatsapp | $whatsapp_responsavel </b> <br>  
+           
                       ";
      ############################################################
      #
@@ -145,6 +146,7 @@ where
                                             turma.nome_turma,
                                             escola.nome_escola,
                                             escola.idescola,
+                                            ecidade_matricula.matricula_datamatricula AS 'matricula_datamatricula',
                                             ecidade_matricula.matricula_codigo AS 'matricula',
                                             ecidade_matricula.matricula_datamatricula AS 'data_matricula',
                                             ecidade_matricula.matricula_concluida AS 'matricula_concluida',
@@ -191,12 +193,14 @@ where
                       $calendario_ano=$value['calendario_ano'];
                       $matricula_situacao=$value['matricula_situacao'];
                       $datasaida=$value['datasaida'];
+                      $data_matricula=$value['matricula_datamatricula'];
        // $result.="$detectar_ultimo==$conta_ano_cursado || $matricula_situacao==TRANSFERIDO FORA";
                       if ($detectar_ultimo==$conta_ano_cursado) {
                           $result.="
                               <b class='text-primary'> Matr: ($matricula) $nome_escola -</b> 
                               <b class='text-primary'> $nome_turma </b> 
                               <b class='text-danger'> Ano: $calendario_ano </b>
+                              <b class='text-danger'> Data matrícula: $data_matricula </b>
                               <b class='text-danger'> Situação: $matricula_situacao </b>
                               
                               
