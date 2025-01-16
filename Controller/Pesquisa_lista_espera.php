@@ -81,7 +81,7 @@ try {
             <td>
                 $nome_responsavel <br>
                Telefone:  $telefone <br>
-               Data do cadastro: ".converte_data($data_hora)." >br>
+               Data do cadastro: ".converte_data_hora($data_hora)." >br>
             </td>
 
             <td>
