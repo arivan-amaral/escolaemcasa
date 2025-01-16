@@ -200,7 +200,7 @@ where
                               <b class='text-primary'> Matr: ($matricula) $nome_escola -</b> 
                               <b class='text-primary'> $nome_turma </b> 
                               <b class='text-danger'> Ano: $calendario_ano </b>
-                              <b class='text-danger'> Data matrícula: $data_matricula </b>
+                              <b class='text-danger'> Data matrícula: ".data_simples($data_matricula)." </b>
                               <b class='text-danger'> Situação: $matricula_situacao </b>
                               
                               
