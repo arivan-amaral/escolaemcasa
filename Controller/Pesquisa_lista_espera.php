@@ -80,7 +80,8 @@ try {
 
             <td>
                 $nome_responsavel <br>
-               Telefone:  $telefone
+               Telefone:  $telefone <br>
+               Data do cadastro: ".converte_data($data_hora)." >br>
             </td>
 
             <td>
