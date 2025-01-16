@@ -19,7 +19,7 @@ try {
     $cpf_responsavel=converte_telefone($_POST['cpf_responsavel']);
     $telefone=converte_telefone($_POST['telefone']);
     $endereco=$_POST['endereco'];
-    $escola_id=$_POST['escola_id'];
+    $escola_id=$_POST['escola_associada'];
     $serie_id=$_POST['serie_id'];
     $observacao=$_POST['observacao'];
     $nec_especial=$_POST['nec_especial'];
