@@ -75,13 +75,15 @@ try {
             </td> 
             <td>
                 $nome_aluno <br><b>Nascimento: ".
-            converte_data($data_nascimento)."</b><br> <b> Idade na  data de corte: ".converte_idade_data_corte($data_nascimento)."  </b>(31/03/".$_SESSION['ano_letivo_vigente'].")
+            converte_data($data_nascimento)."</b><br> <b> Idade na  data de corte: ".converte_idade_data_corte($data_nascimento)."  </b>(31/03/".$_SESSION['ano_letivo_vigente'].")  <br>
+
+             Data do cadastro: ".converte_data_hora($data_hora)."<br>
             </td>
 
             <td>
                 $nome_responsavel <br>
                Telefone:  $telefone <br>
-               Data do cadastro: ".converte_data_hora($data_hora)." >br>
+
             </td>
 
             <td>
