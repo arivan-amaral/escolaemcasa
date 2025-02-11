@@ -184,16 +184,20 @@
                <i class='far fa-circle nav-icon text-primary'></i>
                <p>Imprimir carterinha</p>
                </a>
-               </li>
+               </li>";
 
-                  <li class='nav-item'>
+              if ($_SESSION['nivel_acesso_id']>=100) {
+
+
+                 echo" <li class='nav-item'>
                <a href='visualizar_logs.php' class='nav-link'>
                <i class='far fa-circle nav-icon text-primary'></i>
                <p>Relatório de Logs</p>
                </a>
-               </li> 
+               </li>"; 
+             }
 
-               </ul>
+             echo "  </ul>
               </li>
 
 
