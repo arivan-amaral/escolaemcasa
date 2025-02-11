@@ -29,8 +29,8 @@ function pesquisar_ordem_proxima_serie($conexao,$idserie){
 }
 
 function lista_ordem_serie_rematricula($conexao,$idserie){
-   $result = $conexao->query("SELECT * FROM associar_serie_rematricula 
-      where 
+   $result = $conexao->query("SELECT serie.id, serie.nome,possivel_destino FROM associar_serie_rematricula, serie
+      where serie.id= associar_serie_rematricula.possivel_destino and 
       associar_serie_rematricula.serie_origem = $idserie");
     return $result;
 
