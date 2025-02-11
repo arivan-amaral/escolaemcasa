@@ -14,11 +14,8 @@ class LoadBalancer {
             'servidor3.educalem.com.br'
         ];
         
-
-
-        $this->jsonFile = __DIR__ . '/connections.json';
-        $this->lockFile = __DIR__ . '/connections.lock';
-
+        $this->jsonFile = _DIR_ . '/connections.json';
+        $this->lockFile = _DIR_ . '/connections.lock';
         $this->initializeConnectionsFile();
     }
 
