@@ -15,7 +15,7 @@ session_start();
   include"boletim_maternall_II.php";
    include"boletim_serie_1ano_id_3.php";
 
-  include"boletim_fundamental_II_teste.php.php";
+  include"boletim_fundamental_II_teste.php";
   // include"boletim_fundamental_II_novo.php";
   include"../Controller/Cauculos_notas.php";
 
