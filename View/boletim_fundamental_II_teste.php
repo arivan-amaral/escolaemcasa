@@ -198,13 +198,9 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
 
         <?php
 
-        $result_nota_aula1=$conexao->query("
-          SELECT avaliacao,periodo_id,nota FROM nota_parecer WHERE
-          escola_id=$idescola and
-          turma_id=$idturma and
-          disciplina_id=$iddisciplina and 
-          ano_nota=$ano_letivo and
-          periodo_id=1 and aluno_id=$idaluno  group by avaliacao,periodo_id,nota,nota ");
+
+
+        $result_nota_aula1=buscar_notas_trimestre_boletim($conexao,$idescola,$idturma,$iddisciplina,$ano_letivo, 1, $idaluno);
 
 
         $nota_tri_1=0;
@@ -236,7 +232,22 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
        // }
       $nota_tri_1=calculos_media_notas($nota_tri_1,$nota_rp_1,$nota_av3_1);
 
-       // echo "$nota_tri_1";
+
+
+
+      $res_fora=pesquisa_nota_fora_rede($conexao,$idescola,$idturma,$iddisciplina,$idaluno,1,$ano_letivo,$idserie);
+
+
+        $media_fora_rede=0;
+        foreach ($res_fora as $key_fora => $value_f) {
+          $media_fora_rede+=$value_f['nota'];
+        }
+
+      if ($media_fora_rede!=0) {
+        $nota_tri_1=$media_fora_rede;
+
+      }
+
       echo number_format($nota_tri_1, 1, '.', ',');
 
        ?>
@@ -252,14 +263,7 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
    color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p>
       <?php
 
-      $result_nota_aula2=$conexao->query("
-        SELECT avaliacao,periodo_id,nota FROM nota_parecer WHERE
-        escola_id=$idescola and
-        turma_id=$idturma and
-        ano_nota=$ano_letivo and
-        disciplina_id=$iddisciplina and 
-        periodo_id=2 and aluno_id=$idaluno  group by avaliacao,periodo_id,nota ");
-
+      $result_nota_aula2=buscar_notas_trimestre_boletim($conexao,$idescola,$idturma,$iddisciplina,$ano_letivo, 2, $idaluno);
 
       $nota_tri_2=0;
       $nota_av3_2='';
@@ -284,15 +288,25 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
         }
 
       }
-
-     //  if ($nota_tri_2<5 && $nota_rp_2!='' && $nota_rp_2>$nota_av3_2) {
-     //   $nota_tri_2=($nota_tri_2-$nota_av3_2)+$nota_rp_2;
-     // }
+ 
       $nota_tri_2=calculos_media_notas($nota_tri_2,$nota_rp_2,$nota_av3_2);
 
-     // echo "$nota_tri_2";
-          echo number_format($nota_tri_2, 1, '.', ',');
-     // 
+    
+    $res_fora=pesquisa_nota_fora_rede($conexao,$idescola,$idturma,$iddisciplina,$idaluno,2,$ano_letivo,$idserie);
+      $media_fora_rede=0;
+      foreach ($res_fora as $key_fora => $value_f) {
+        $media_fora_rede+=$value_f['nota'];
+      }
+
+    if ($media_fora_rede!=0) {
+      $nota_tri_2=$media_fora_rede;
+
+    }
+
+
+
+       echo number_format($nota_tri_2, 1, '.', ',');
+     
      ?>
 
    </o:p></span></p>
@@ -308,14 +322,7 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
 
    <?php
 
-   $result_nota_aula3=$conexao->query("
-     SELECT avaliacao,periodo_id,nota FROM nota_parecer WHERE
-     escola_id=$idescola and
-     turma_id=$idturma and
-     ano_nota=$ano_letivo and
-     disciplina_id=$iddisciplina and 
-     periodo_id=3 and aluno_id=$idaluno  group by avaliacao,periodo_id,nota ");
-
+   $result_nota_aula3=buscar_notas_trimestre_boletim($conexao,$idescola,$idturma,$iddisciplina,$ano_letivo, 3, $idaluno);
 
    $nota_tri_3=0;
    $nota_av3_3='';
@@ -341,9 +348,21 @@ function boletim_fund2($conexao,$idescola,$idturma,$idserie,$idaluno,$numero,$no
 
    }
 
-  //  if ($nota_tri_3<5 && $nota_rp_3!='' && $nota_rp_3>$nota_av3_3) {
-  //   $nota_tri_3=($nota_tri_3-$nota_av3_3)+$nota_rp_3;
-  // }
+
+
+
+   $res_fora=pesquisa_nota_fora_rede($conexao,$idescola,$idturma,$iddisciplina,$idaluno,3,$ano_letivo,$idserie);
+     $media_fora_rede=0;
+     foreach ($res_fora as $key_fora => $value_f) {
+       $media_fora_rede+=$value_f['nota'];
+     }
+
+   if ($media_fora_rede!=0) {
+    $nota_tri_3=$media_fora_rede;
+   }
+
+
+
       $nota_tri_3=calculos_media_notas($nota_tri_3,$nota_rp_3,$nota_av3_3);
   
       

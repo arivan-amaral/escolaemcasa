@@ -2,6 +2,22 @@
 
 
 
+function buscar_notas_trimestre_boletim($conexao,$idescola,$idturma,$iddisciplina,$ano_letivo, $periodo_id, $idaluno){
+
+  $sql=  $conexao->query("
+          SELECT avaliacao,periodo_id,nota FROM nota_parecer WHERE
+          escola_id=$idescola and
+          turma_id=$idturma and
+          disciplina_id=$iddisciplina and 
+          ano_nota=$ano_letivo and
+          periodo_id=$periodo_id and aluno_id=$idaluno  group by avaliacao,periodo_id,nota,nota ");
+
+    return $sql;
+
+}
+
+
+
 function listar_aluno_da_turma_ata_resultado_final_geral($conexao,$turma_id,$escola_id,$ano_letivo,$idaluno){
 
   $res=$conexao->query("
