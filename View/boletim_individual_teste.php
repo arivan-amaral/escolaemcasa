@@ -8,6 +8,7 @@ session_start();
   include"../Controller/Conversao.php";
   include"../Model/Conexao.php";
   include"../Model/Aluno.php";
+  include"../Model/Nota.php";
   include"../Model/Escola.php";
   include"../Model/Turma.php";
   include"../Model/Professor.php";
