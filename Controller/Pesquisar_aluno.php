@@ -113,35 +113,6 @@ where
      #
             
 
-                          // $result_ecidade_matricula=$conexao->query("SELECT
-                          // turma.nome_turma,
-                          // escola.nome_escola,
-                          // escola.idescola,
-
-                          // ecidade_matricula.matricula_concluida as 'matricula_concluida',
-                          // ecidade_matricula.matricula_ativa as 'matricula_ativa',
-                          // ecidade_matricula.matricula_situacao as 'matricula_situacao',
-
-                          // ecidade_matricula.matricula_codigo as 'matricula',
-                          // ecidade_matricula.matricula_datamatricula as 'data_matricula',
-                          // ecidade_matricula.datasaida as 'datasaida',
-                          // ecidade_matricula.turma_escola as 'idescola',
-                          // ecidade_matricula.turma_id as 'idturma',
-                          // turma.serie_id as 'idserie',
-                          // ecidade_matricula.calendario_ano as 'calendario_ano'
-
-                          // FROM
-                          //   ecidade_matricula,
-                          //   turma,escola
-                          // where
-                      
-                          //   ecidade_matricula.aluno_id = $idaluno and 
-                          //   ecidade_matricula.turma_id = turma.idturma and 
-                          //   ecidade_matricula.turma_escola = escola.idescola and 
-                          //   ecidade_matricula.matricula_situacao !='CANCELADO'
-                          //   ORDER by ecidade_matricula.matricula_codigo asc,  ecidade_matricula.calendario_ano asc");
-
-
                           $result_ecidade_matricula=$conexao->query("SELECT 
                                             turma.nome_turma,
                                             escola.nome_escola,
@@ -163,7 +134,7 @@ where
                                             JOIN escola ON ecidade_matricula.turma_escola = escola.idescola
                                           WHERE 
                                             ecidade_matricula.aluno_id = $idaluno 
-                                            AND ecidade_matricula.matricula_situacao not in('CANCELADO')
+                                            AND ecidade_matricula.matricula_situacao not in('CANCELADO')  AND  turma.serie_id !=17
                                           ORDER BY 
                                             ecidade_matricula.matricula_codigo ASC, 
                                             ecidade_matricula.calendario_ano ASC
