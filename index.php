@@ -2,7 +2,6 @@
 // header("location:View/");
 ?>
 
-@ -1,3 +1,225 @@
 <?php
 session_start();
 
