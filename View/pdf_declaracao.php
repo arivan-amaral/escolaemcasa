@@ -39,7 +39,7 @@ $result_ecidade_matricula=$conexao->query("SELECT
              ecidade_matricula.calendario_ano = $ano_letivo and 
              ecidade_matricula.turma_id = turma.idturma and 
              ecidade_matricula.turma_escola = escola.idescola and 
-             ecidade_matricula.matricula_ativa ='S' and turma.serie_id !=17
+             ecidade_matricula.matricula_ativa ='S'
              ORDER by ecidade_matricula.calendario_ano desc");
               $nome_escola="";
               $nome_turma="";
