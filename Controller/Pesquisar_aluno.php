@@ -114,7 +114,8 @@ where
             
 
                           $result_ecidade_matricula=$conexao->query("SELECT 
-                                            turma.nome_turma,
+                                            turma.nome_turma,  
+
                                             escola.nome_escola,
                                             escola.idescola,
                                             ecidade_matricula.matricula_datamatricula AS 'matricula_datamatricula',
@@ -134,7 +135,7 @@ where
                                             JOIN escola ON ecidade_matricula.turma_escola = escola.idescola
                                           WHERE 
                                             ecidade_matricula.aluno_id = $idaluno 
-                                            AND ecidade_matricula.matricula_situacao not in('CANCELADO')  AND  turma.serie_id !=17
+                                            AND ecidade_matricula.matricula_situacao not in('CANCELADO')  
                                           ORDER BY 
                                             ecidade_matricula.matricula_codigo ASC, 
                                             ecidade_matricula.calendario_ano ASC
@@ -166,7 +167,7 @@ where
                       $datasaida=$value['datasaida'];
                       $data_matricula=$value['matricula_datamatricula'];
        // $result.="$detectar_ultimo==$conta_ano_cursado || $matricula_situacao==TRANSFERIDO FORA";
-                      if ($detectar_ultimo==$conta_ano_cursado) {
+                      if ($detectar_ultimo==$conta_ano_cursado && $idserie !=17) {
                           $result.="
                               <b class='text-primary'> Matr: ($matricula) $nome_escola -</b> 
                               <b class='text-primary'> $nome_turma </b> 
