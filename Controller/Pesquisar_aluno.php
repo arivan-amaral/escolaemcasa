@@ -167,7 +167,7 @@ where
                       $datasaida=$value['datasaida'];
                       $data_matricula=$value['matricula_datamatricula'];
        // $result.="$detectar_ultimo==$conta_ano_cursado || $matricula_situacao==TRANSFERIDO FORA";
-                      if ($detectar_ultimo==$conta_ano_cursado && $idserie !=17) {
+                      if ($detectar_ultimo==$conta_ano_cursado) {
                           $result.="
                               <b class='text-primary'> Matr: ($matricula) $nome_escola -</b> 
                               <b class='text-primary'> $nome_turma </b> 
