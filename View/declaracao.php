@@ -113,6 +113,7 @@ $status=1;
                 
                       turma.serie_id = serie.id and 
                       ecidade_matricula.aluno_id = $aluno_id and 
+                      ecidade_matricula.turma_id = $turma_id and 
                       ecidade_matricula.calendario_ano = $ano_letivo and 
                       ecidade_matricula.turma_id = turma.idturma and 
                       ecidade_matricula.turma_escola = escola.idescola and 
