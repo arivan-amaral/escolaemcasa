@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-include_once "pagina_em_manutencao.php";
+// include_once "pagina_em_manutencao.php";
 
 
 if (!isset($_SESSION['usuariobd'])) {
