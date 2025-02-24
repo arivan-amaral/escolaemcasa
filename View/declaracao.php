@@ -59,7 +59,7 @@ $status=1;
 
         <input type="hidden" name="aluno_id" value="<?php echo $aluno_id; ?>" >
         <input type="hidden" name="escola_id" value="<?php echo $escola_id; ?>" >
-        <input type="hidden" name="turma_id" value="<?php echo $turma_id; ?>" >
+        <input type="text" name="turma_id" value="<?php echo $turma_id; ?>" >
      
 <?php 
   $res_aluno= pesquisar_dados_aluno_por_id($conexao,$aluno_id);
@@ -73,12 +73,6 @@ $status=1;
     $nome_aluno=$value['nome'];
     $naturalidade=$value['naturalidade'];
     $estado= $value['uf_endereco'];
-    /*)if (ctype_digit($cidade_municipio)) {
-      $res_nome_cidade = listar_cidade_por_id($conexao,$cidade_municipio);
-      foreach ($res_nome_cidade as $keyC => $valueC) {
-        $nome_cidade = $valueC['nome'];
-      }
-    }*/
 
     
     $localidade_id=$value['localidade'];
