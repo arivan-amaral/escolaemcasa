@@ -17,31 +17,34 @@ $nome_aluno="";
 
 
 $result_ecidade_matricula=$conexao->query("SELECT
-           turma.nome_turma,
-           escola.nome_escola,
-           escola.idescola,
-           serie.nome as 'nome_serie',
-           ecidade_matricula.matricula_codigo as 'matricula',
-           ecidade_matricula.matricula_datamatricula as 'data_matricula',
-           ecidade_matricula.datasaida as 'datasaida',
-           ecidade_matricula.turma_escola as 'idescola',
-           ecidade_matricula.turma_id as 'idturma',
-           turma.serie_id as 'idserie',
-           ecidade_matricula.calendario_ano as 'calendario_ano'
+                    turma.nome_turma,
+                    escola.nome_escola,
+                    escola.idescola,
+                    serie.nome as 'nome_serie',
+                    ecidade_matricula.turno_nome as 'turno_nome',
+                    ecidade_matricula.matricula_codigo as 'matricula',
+                    ecidade_matricula.matricula_datamatricula as 'data_matricula',
+                    ecidade_matricula.datasaida as 'datasaida',
+                    ecidade_matricula.turma_escola as 'idescola',
+                    ecidade_matricula.turma_id as 'idturma',
+                    turma.serie_id as 'idserie',
+                    ecidade_matricula.calendario_ano as 'calendario_ano'
 
-           FROM
-             ecidade_matricula,
-             turma,escola,serie
-           where
-       
-             turma.serie_id = serie.id and 
-             ecidade_matricula.aluno_id = $idaluno and 
-             turma.serie_id !=17 and 
-             ecidade_matricula.calendario_ano = $ano_letivo and 
-             ecidade_matricula.turma_id = turma.idturma and 
-             ecidade_matricula.turma_escola = escola.idescola and 
-             ecidade_matricula.matricula_ativa ='S'
-             ORDER by ecidade_matricula.calendario_ano desc");
+                    FROM
+                      ecidade_matricula,
+                      turma,escola,serie
+                    where
+                
+                      turma.serie_id = serie.id and 
+                      ecidade_matricula.aluno_id = $aluno_id and 
+--                      ecidade_matricula.turma_id = $turma_id and 
+                      ecidade_matricula.calendario_ano = $ano_letivo and 
+                      turma.serie_id !=17 and 
+                      ecidade_matricula.turma_id = turma.idturma and 
+                      ecidade_matricula.turma_escola = escola.idescola and 
+                      ecidade_matricula.turma_escola = $escola_id and 
+                      ecidade_matricula.matricula_situacao !='CANCELADO' 
+                      ORDER by ecidade_matricula.calendario_ano desc");
               $nome_escola="";
               $nome_turma="";
               $nome_serie="";
