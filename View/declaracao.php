@@ -107,7 +107,7 @@ $status=1;
                 
                       turma.serie_id = serie.id and 
                       ecidade_matricula.aluno_id = $aluno_id and 
-                      ecidade_matricula.turma_id = $turma_id and 
+--                      ecidade_matricula.turma_id = $turma_id and 
                       ecidade_matricula.calendario_ano = $ano_letivo and 
                       turma.serie_id !=17 and 
                       ecidade_matricula.turma_id = turma.idturma and 
@@ -130,7 +130,7 @@ $status=1;
 ?>
         <input type="hidden" name="ano_letivo" value="<?php echo $ano_letivo; ?>" >
         <input type="hidden" name="nome_turma" value="<?php echo $nome_turma; ?>" >
-        <input type="hidden" name="nome_escola" value="<?php echo $nome_escola; ?>" >
+        <input type="text" name="nome_escola" value="<?php echo $nome_escola; ?>" >
         <div class="row">
 
                       <div class="col-md-12">
