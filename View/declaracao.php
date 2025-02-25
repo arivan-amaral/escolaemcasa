@@ -60,7 +60,7 @@ $status=1;
 
         <input type="hidden" name="aluno_id" value="<?php echo $aluno_id; ?>" >
         <input type="hidden" name="escola_id" value="<?php echo $escola_id; ?>" >
-        <input type="text" name="turma_id" value="<?php echo $turma_id; ?>" >
+        <input type="hidden" name="turma_id" value="<?php echo $turma_id; ?>" >
      
 <?php 
   $res_aluno= pesquisar_dados_aluno_por_id($conexao,$aluno_id);
@@ -131,7 +131,7 @@ $status=1;
 ?>
         <input type="hidden" name="ano_letivo" value="<?php echo $ano_letivo; ?>" >
         <input type="hidden" name="nome_turma" value="<?php echo $nome_turma; ?>" >
-        <input type="text" name="nome_escola" value="<?php echo $nome_escola; ?>" >
+        <input type="hidden" name="nome_escola" value="<?php echo $nome_escola; ?>" >
         <div class="row">
 
                       <div class="col-md-12">
