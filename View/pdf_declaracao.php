@@ -7,10 +7,10 @@ if (!isset($_SESSION['usuariobd'])) {
 $usuariobd=$_SESSION['usuariobd'];
 include_once "../Model/Conexao_".$usuariobd.".php";
 include_once '../Model/Aluno.php';
-$idaluno=$_POST['aluno_id'];
-$ano_letivo=$_POST['ano_letivo'];
+$idaluno=$_REQUEST['aluno_id'];
+$ano_letivo=$_REQUEST['ano_letivo'];
 
-$texto_declaracao=$_POST['texto_declaracao'];
+$texto_declaracao=$_REQUEST['texto_declaracao'];
 $nome_escola="";
 $nome_turma="";
 $nome_aluno="";
