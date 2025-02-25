@@ -55,7 +55,8 @@ $status=1;
   <section class="content">
     <div class="container-fluid">
       <!-- Info boxes -->
-      <form action="pdf_declaracao.php" method='get' target="_blank">
+      <!-- target="_blank" -->
+      <form action="pdf_declaracao.php" method='get' >
 
         <input type="hidden" name="aluno_id" value="<?php echo $aluno_id; ?>" >
         <input type="hidden" name="escola_id" value="<?php echo $escola_id; ?>" >
