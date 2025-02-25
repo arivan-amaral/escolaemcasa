@@ -36,6 +36,7 @@ $result_ecidade_matricula=$conexao->query("SELECT
        
              turma.serie_id = serie.id and 
              ecidade_matricula.aluno_id = $idaluno and 
+             turma.serie_id !=17 and 
              ecidade_matricula.calendario_ano = $ano_letivo and 
              ecidade_matricula.turma_id = turma.idturma and 
              ecidade_matricula.turma_escola = escola.idescola and 
