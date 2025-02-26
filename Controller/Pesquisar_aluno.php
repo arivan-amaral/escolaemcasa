@@ -561,6 +561,24 @@ where
 
                                   <li>
                                   <a   class='dropdown-item' data-toggle='modal' data-target='#modal_rematricula$idaluno' >Matricular AEE. </a>
+                                  </li>           
+
+                                  <li>
+                          
+                          
+                             <li>
+                             <form name='editar$idaluno' action='editar-aluno.php' method='post' >
+                                 <input type='hidden' name='aluno_id' value='$idaluno'>
+                                 <input type='hidden' name='escola_id' value='$idescola'>
+                                 <input type='hidden' name='turma_id' value='$idturma'>
+                                 <input type='hidden' name='serie_id' value='$idserie'>
+                                 <input type='hidden' name='nome_aluno' value='$nome_aluno'>
+                                 <button type='submit' class='dropdown-item'  >Editar dados</button>
+                           
+                             </form>
+                             </li>
+
+
                                   </li>
                                   ";
 
