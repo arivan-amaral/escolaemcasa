@@ -355,48 +355,43 @@ setTimeout('dia_doservidor_publico();',3000);
                   foreach ($res_quant5 as $key => $value) {
                     $quantidade_atraso = $value['chamada'];
                   }
-                  echo "<div class='col-sm-4'>
-                          <div class='card bg-light mb-3' style='max-width: 20rem;' align='center'>
-                            <div class='card-header'>
-                              <!--h3 class='text-center'>Setor: </h3-->
-                              <h3 class='text-center' style='background-color: #E5E7E9'>
-                              <strong>$nome</strong></h3>
-                              
-                              <h4 class='text-center'>
-                                Total de Chamados: $quantidade_total
-                              </h4>
-                         
-                               </div>
+     echo "<div class='col-sm-4'>
+       <div class='card bg-light mb-3' style='max-width: 20rem;' align='center'>
+         <div class='card-header'>
+           <h3 class='text-center' style='background-color: #E5E7E9'>
+             <strong>$nome</strong>
+           </h3>
+           <h4 class='text-center'>
+             Total de Chamados: $quantidade_total
+           </h4>
+         </div>
+         
+         <a href='lista_chamada.php?setor=$id_setor&status=esperando_resposta' class='btn btn-primary' target='_blank'>
+           $quantidade_pendente &nbsp;&nbsp; Novos Chamados
+         </a>
+         <br>
+         
+         <a href='lista_chamada.php?setor=$id_setor&status=em_andamento' class='btn btn-warning' target='_blank'>
+           $quantidade_andamento &nbsp;&nbsp; Em Andamento
+         </a>
+         <br>
+         
+         <a href='lista_chamada.php?setor=$id_setor&status=atrasado' class='btn btn-danger' target='_blank'>
+           $quantidade_atraso &nbsp;&nbsp; Atrasados
+         </a>
+         <br>
+         
+         <a href='lista_chamada.php?setor=$id_setor&status=finalizado' class='btn btn-success' target='_blank'>
+           $quantidade_resolvidos &nbsp;&nbsp; Chamados Resolvidos
+         </a>
+         <br>
+         
+         <a href='lista_chamada.php?setor=$id_setor' class='btn btn-block btn-light' target='_blank'>
+           Ver Chamados
+         </a>
+       </div>
+     </div>";
 
-                            <a href='lista_chamada.php?setor=$id_setor&status=esperando_resposta' class='btn btn btn-primary' target='_blank' >
-                            $quantidade_pendente
-                              &nbsp;&nbsp; Novos Chamados &nbsp;&nbsp;&nbsp;&nbsp;
-                              &nbsp;&nbsp;&nbsp;&nbsp;</a><br>
-
-                            <a href='lista_chamada.php?setor=$id_setor&status=em_andamento' class='btn btn btn-warning' target='_blank' >
-                              $quantidade_andamento 
-                              &nbsp;&nbsp; Em Andamento &nbsp;&nbsp;&nbsp;&nbsp;
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><br>
-
-     <a href='lista_chamada.php?setor=$id_setor&status=atrasado'  target='_blank' class='btn btn btn-danger'>
-     $quantidade_atraso
-                              &nbsp;&nbsp; Atrasados&nbsp;&nbsp;&nbsp;&nbsp;
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                              &nbsp;&nbsp;</a><br>
-
-     <a href='lista_chamada.php?setor=$id_setor&status=finalizado'  target='_blank' class='btn btn btn-success'>
-     quantidade_resolvidos
-                              &nbsp;&nbsp; Chamados Resolvidos</a> 
-
-
-
-                            </div>
-                            <a href='lista_chamada.php?setor=$id_setor' class='btn btn-block btn-light' target='_blank'>Ver Chamados </a>
-
-                          </div>
-                        </div>";
-                
                 }
               }
             ?>
