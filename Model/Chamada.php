@@ -240,20 +240,12 @@ function buscar_escola($conexao,$id_escola){
 
 }
 
-// function listar_chamados($conexao,$setor_id, $status){
-//    $result = $conexao->query("SELECT * FROM chamada where setor_id=$setor_id and chamada.status ='$status' ORDER BY id asc");
-//     return $result;
+function listar_chamados($conexao,$setor_id, $status){
+   $result = $conexao->query("SELECT * FROM chamada where setor_id=$setor_id and chamada.status LIKE '$status' ORDER BY id asc");
+    return $result;
 
-// }
-
-function listar_chamados($conexao, $setor_id, $status) {
-    $stmt = $conexao->prepare("SELECT * FROM chamada WHERE setor_id = :setor_id AND status = :status ORDER BY id ASC");
-    $stmt->bindParam(':setor_id', $setor_id, PDO::PARAM_INT);
-    $stmt->bindParam(':status', $status, PDO::PARAM_STR);
-    $stmt->execute();
-    
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
 
 function buscar_chamada_finalizada($conexao,$setor_id){
    $result = $conexao->query("SELECT * FROM chamada where setor_id=$setor_id and status ='finalizado' ORDER BY id asc");
