@@ -93,28 +93,28 @@ include_once '../Model/Chamada.php';
 echo "
     <div class='row g-2'>
         <div class='col-md-2 col-sm-6'>
-            <a href='lista_chamada.php?setor=$setor_id&status=esperando_resposta' class='btn btn-primary w-100' target='_blank'>
+            <a class='btn btn-primary w-100' >
                 $quantidade_pendente &nbsp;&nbsp; Novos Chamados
             </a>
         </div>
         <div class='col-md-2 col-sm-6'>
-            <a href='lista_chamada.php?setor=$setor_id&status=em_andamento' class='btn btn-warning w-100' target='_blank'>
+            <a  class='btn btn-warning w-100' >
                 $quantidade_andamento &nbsp;&nbsp; Em Andamento
             </a>
         </div>
         <div class='col-md-2 col-sm-6'>
-            <a href='lista_chamada.php?setor=$setor_id&status=atrasado' class='btn btn-danger w-100' target='_blank'>
+            <a class='btn btn-danger w-100' >
                 $quantidade_atraso &nbsp;&nbsp; Atrasados
             </a>
         </div>
         <div class='col-md-2 col-sm-6'>
-            <a href='lista_chamada.php?setor=$setor_id&status=finalizado' class='btn btn-success w-100' target='_blank'>
+            <a  class='btn btn-success w-100' >
                 $quantidade_resolvidos &nbsp;&nbsp; Chamados Resolvidos
             </a>
         </div>
         <div class='col-md-2 col-sm-6'>
-            <a href='lista_chamada.php?setor=$setor_id' class='btn btn-light w-100' target='_blank'>
-                Ver Chamados
+            <a href='lista_chamada.php?setor=$setor_id' class='btn btn-light w-100' >
+                Ver todos
             </a>
         </div>
     </div>
