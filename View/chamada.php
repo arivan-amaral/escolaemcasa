@@ -366,19 +366,31 @@ setTimeout('dia_doservidor_publico();',3000);
                                 Total de Chamados: $quantidade_total
                               </h4>
                          
-                              <p class='btn btn btn-primary' >$quantidade_pendente
+                               </div>
+
+                            <a href='lista_chamada.php?setor=$id_setor&status=esperando_resposta' class='btn btn btn-primary' target='_blank' >
+                            $quantidade_pendente
                               &nbsp;&nbsp; Novos Chamados &nbsp;&nbsp;&nbsp;&nbsp;
-                              &nbsp;&nbsp;&nbsp;&nbsp;</p><br>
-                              <p class='btn btn btn-warning'>$quantidade_andamento 
+                              &nbsp;&nbsp;&nbsp;&nbsp;</a><br>
+
+                            <a href='lista_chamada.php?setor=$id_setor&status=em_andamento' class='btn btn btn-warning' target='_blank' >
+                              $quantidade_andamento 
                               &nbsp;&nbsp; Em Andamento &nbsp;&nbsp;&nbsp;&nbsp;
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><br>
-                              <p class='btn btn btn-danger'>$quantidade_atraso
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><br>
+
+     <a href='lista_chamada.php?setor=$id_setor&status=atrasado'  target='_blank' class='btn btn btn-danger'>
+     $quantidade_atraso
                               &nbsp;&nbsp; Atrasados&nbsp;&nbsp;&nbsp;&nbsp;
                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                              &nbsp;&nbsp;</p><br>
-                              <p class='btn btn btn-success'>$quantidade_resolvidos
-                              &nbsp;&nbsp; Chamados Resolvidos</p> 
+                              &nbsp;&nbsp;</a><br>
+
+     <a href='lista_chamada.php?setor=$id_setor&status=finalizado'  target='_blank' class='btn btn btn-success
+     quantidade_resolvidos
+                              &nbsp;&nbsp; Chamados Resolvidos</a> 
+
+
+
                             </div>
                             <a href='lista_chamada.php?setor=$id_setor' class='btn btn-block btn-light' target='_blank'>Ver Chamados </a>
 
