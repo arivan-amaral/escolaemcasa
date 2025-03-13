@@ -1824,6 +1824,34 @@ function ver_resolvidos(setor_id) {
   xmlreq.send(null);
 }
 
+
+
+function listar_chamados(setor_id,status) {
+ 
+  var result = document.getElementById("tabela_chamados");
+  var xmlreq = CriaRequest();
+  xmlreq.open(
+    "GET",
+    "../Controller/Listar_chamados.php?setor_id=" + setor_id+"&status="+status,
+    true
+  );
+
+  xmlreq.onreadystatechange = function () {
+    if (xmlreq.readyState == 4) {
+      if (xmlreq.status == 200) {
+        result.innerHTML = xmlreq.responseText;
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: " $mensagem",
+        });
+      }
+    }
+  };
+  xmlreq.send(null);
+}
+
 function licitalem_webhook() {
   var xmlreq = CriaRequest();
   xmlreq.open(

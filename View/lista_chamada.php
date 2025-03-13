@@ -88,7 +88,47 @@ include_once '../Model/Chamada.php';
 
 <div class="container-fluid">
 
+      <?php 
+echo "<div class='col-sm-4 mb-3'>
+        <div class='card bg-light' style='max-width: 20rem;'>
+            <div class='card-header text-center' style='background-color: #E5E7E9'>
+                <h3><strong>$nome</strong></h3>
+                <h4>Total de Chamados: $quantidade_total</h4>
+            </div>
+            <div class='card-body text-center'>
+                <div class='row'>
+                    <div class='col-12 mb-2'>
+                        <a href='lista_chamada.php?setor=$id_setor&status=esperando_resposta' class='btn btn-primary w-100' target='_blank'>
+                            $quantidade_pendente &nbsp;&nbsp; Novos Chamados
+                        </a>
+                    </div>
+                    <div class='col-12 mb-2'>
+                        <a href='lista_chamada.php?setor=$id_setor&status=em_andamento' class='btn btn-warning w-100' target='_blank'>
+                            $quantidade_andamento &nbsp;&nbsp; Em Andamento
+                        </a>
+                    </div>
+                    <div class='col-12 mb-2'>
+                        <a href='lista_chamada.php?setor=$id_setor&status=atrasado' class='btn btn-danger w-100' target='_blank'>
+                            $quantidade_atraso &nbsp;&nbsp; Atrasados
+                        </a>
+                    </div>
+                    <div class='col-12 mb-2'>
+                        <a href='lista_chamada.php?setor=$id_setor&status=finalizado' class='btn btn-success w-100' target='_blank'>
+                            $quantidade_resolvidos &nbsp;&nbsp; Chamados Resolvidos
+                        </a>
+                    </div>
+                    <div class='col-12'>
+                        <a href='lista_chamada.php?setor=$id_setor' class='btn btn-light w-100' target='_blank'>
+                            Ver Chamados
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>";
 
+
+       ?>
 <div class='card-body'>
   <table class='table table-bordered'>
     <thead>
