@@ -98,27 +98,27 @@ echo "<div class='col-sm-4 mb-3'>
             <div class='card-body text-center'>
                 <div class='row'>
                     <div class='col-12 mb-2'>
-                        <a href='lista_chamada.php?setor=$id_setor&status=esperando_resposta' class='btn btn-primary w-100' target='_blank'>
+                        <a href='lista_chamada.php?setor=$setor_id&status=esperando_resposta' class='btn btn-primary w-100' target='_blank'>
                             $quantidade_pendente &nbsp;&nbsp; Novos Chamados
                         </a>
                     </div>
                     <div class='col-12 mb-2'>
-                        <a href='lista_chamada.php?setor=$id_setor&status=em_andamento' class='btn btn-warning w-100' target='_blank'>
+                        <a href='lista_chamada.php?setor=$setor_id&status=em_andamento' class='btn btn-warning w-100' target='_blank'>
                             $quantidade_andamento &nbsp;&nbsp; Em Andamento
                         </a>
                     </div>
                     <div class='col-12 mb-2'>
-                        <a href='lista_chamada.php?setor=$id_setor&status=atrasado' class='btn btn-danger w-100' target='_blank'>
+                        <a href='lista_chamada.php?setor=$setor_id&status=atrasado' class='btn btn-danger w-100' target='_blank'>
                             $quantidade_atraso &nbsp;&nbsp; Atrasados
                         </a>
                     </div>
                     <div class='col-12 mb-2'>
-                        <a href='lista_chamada.php?setor=$id_setor&status=finalizado' class='btn btn-success w-100' target='_blank'>
+                        <a href='lista_chamada.php?setor=$setor_id&status=finalizado' class='btn btn-success w-100' target='_blank'>
                             $quantidade_resolvidos &nbsp;&nbsp; Chamados Resolvidos
                         </a>
                     </div>
                     <div class='col-12'>
-                        <a href='lista_chamada.php?setor=$id_setor' class='btn btn-light w-100' target='_blank'>
+                        <a href='lista_chamada.php?setor=$setor_id' class='btn btn-light w-100' target='_blank'>
                             Ver Chamados
                         </a>
                     </div>
@@ -148,7 +148,7 @@ echo "<div class='col-sm-4 mb-3'>
               $id_chamada = $value['id'];
               $status = $value['status'];
               $id_funcionario = $value['funcionario_id'];
-              $id_setor = $value['setor_id'];
+              $setor_id = $value['setor_id'];
               $id_solicitacao = $value['tipo_solicitacao'];
               $nome_funcionario = '';
               $nome_funcionario_retorno = '';
@@ -255,7 +255,7 @@ echo "<div class='col-sm-4 mb-3'>
                   }
                  
                   if ($id_solicitacao != null) {
-                    if ($id_setor != 11) {
+                    if ($setor_id != 11) {
                      echo"Tipo de Solicitação: $nome_solicitacao <br>";
                       # code...
                     }
@@ -299,7 +299,7 @@ echo "<div class='col-sm-4 mb-3'>
               $id_chamada = $value['id'];
               $status = $value['status'];
               $id_funcionario = $value['funcionario_id'];
-              $id_setor = $value['setor_id'];
+              $setor_id = $value['setor_id'];
               $id_solicitacao = $value['tipo_solicitacao'];
               $nome_funcionario = '';
               $nome_funcionario_retorno = '';
@@ -406,7 +406,7 @@ echo "<div class='col-sm-4 mb-3'>
                   }
                  
                   if ($id_solicitacao != null) {
-                    if ($id_setor != 11) {
+                    if ($setor_id != 11) {
                      echo"Tipo de Solicitação: $nome_solicitacao <br>";
                       # code...
                     }
@@ -450,7 +450,7 @@ echo "<div class='col-sm-4 mb-3'>
               $id_chamada = $value['id'];
               $status = $value['status'];
               $id_funcionario = $value['funcionario_id'];
-              $id_setor = $value['setor_id'];
+              $setor_id = $value['setor_id'];
               $id_solicitacao = $value['tipo_solicitacao'];
               $nome_funcionario = '';
               $nome_funcionario_retorno = '';
@@ -557,7 +557,7 @@ echo "<div class='col-sm-4 mb-3'>
                   }
                  
                   if ($id_solicitacao != null) {
-                    if ($id_setor != 11) {
+                    if ($setor_id != 11) {
                      echo"Tipo de Solicitação: $nome_solicitacao <br>";
                       # code...
                     }
@@ -601,7 +601,7 @@ echo "<div class='col-sm-4 mb-3'>
               $id_chamada = $value['id'];
               $status = $value['status'];
               $id_funcionario = $value['funcionario_id'];
-              $id_setor = $value['setor_id'];
+              $setor_id = $value['setor_id'];
               $id_solicitacao = $value['tipo_solicitacao'];
               $nome_funcionario = '';
               $nome_funcionario_retorno = '';
@@ -708,7 +708,7 @@ echo "<div class='col-sm-4 mb-3'>
                   }
                  
                   if ($id_solicitacao != null) {
-                    if ($id_setor != 11) {
+                    if ($setor_id != 11) {
                      echo"Tipo de Solicitação: $nome_solicitacao <br>";
                       # code...
                     }
@@ -754,7 +754,7 @@ echo "<div class='col-sm-4 mb-3'>
               $id_chamada = $value['id'];
               $status = $value['status'];
               $id_funcionario = $value['funcionario_id'];
-              $id_setor = $value['setor_id'];
+              $setor_id = $value['setor_id'];
               $id_solicitacao = $value['tipo_solicitacao'];
               $nome_funcionario_retorno = '';
               
@@ -843,7 +843,7 @@ echo "<div class='col-sm-4 mb-3'>
                   }
                   
                   if ($id_solicitacao != null) {
-                    if ($id_setor != 11) {
+                    if ($setor_id != 11) {
                      echo"Tipo de Solicitação: $nome_solicitacao <br>";
                    
                     }
@@ -854,7 +854,7 @@ echo "<div class='col-sm-4 mb-3'>
                   foreach ($res_questionado as $key => $value) {
                     $tem_questionamento = $value['id'];
                   }
-                  $res_setor = buscar_setor_id($conexao,$id_setor);
+                  $res_setor = buscar_setor_id($conexao,$setor_id);
                   foreach ($res_setor as $key => $value) {
                     $nome_setor = $value['nome'];
                   }
@@ -904,7 +904,7 @@ echo "<div class='col-sm-4 mb-3'>
               $id_chamada = $value['id'];
               $status = $value['status'];
               $id_funcionario = $value['funcionario_id'];
-              $id_setor = $value['setor_id'];
+              $setor_id = $value['setor_id'];
               $id_solicitacao = $value['tipo_solicitacao'];
               $nome_funcionario_retorno = '';
  
@@ -1012,7 +1012,7 @@ echo "<div class='col-sm-4 mb-3'>
                   }
                   
                   if ($id_solicitacao != null) {
-                    if ($id_setor != 11) {
+                    if ($setor_id != 11) {
                      echo"Tipo de Solicitação: $nome_solicitacao <br>";
                       # code...
                     }
@@ -1056,7 +1056,7 @@ echo "<div class='col-sm-4 mb-3'>
               $id_chamada = $value['id'];
               $status = $value['status'];
               $id_funcionario = $value['funcionario_id'];
-              $id_setor = $value['setor_id'];
+              $setor_id = $value['setor_id'];
               $id_solicitacao = $value['tipo_solicitacao'];
               $nome_funcionario_retorno = '';
  
@@ -1144,7 +1144,7 @@ echo "<div class='col-sm-4 mb-3'>
                   }
                   
                   if ($id_solicitacao != null) {
-                    if ($id_setor != 11) {
+                    if ($setor_id != 11) {
                      echo"Tipo de Solicitação: $nome_solicitacao <br>";
                       # code...
                     }
@@ -1155,7 +1155,7 @@ echo "<div class='col-sm-4 mb-3'>
                   foreach ($res_questionado as $key => $value) {
                     $tem_questionamento = $value['id'];
                   }
-                  $res_setor = buscar_setor_id($conexao,$id_setor);
+                  $res_setor = buscar_setor_id($conexao,$setor_id);
                   foreach ($res_setor as $key => $value) {
                     $nome_setor = $value['nome'];
                   }
@@ -1206,7 +1206,7 @@ echo "<div class='col-sm-4 mb-3'>
               $id_chamada = $value['id'];
               $status = $value['status'];
               $id_funcionario = $value['funcionario_id'];
-              $id_setor = $value['setor_id'];
+              $setor_id = $value['setor_id'];
               $id_solicitacao = $value['tipo_solicitacao'];
               $nome_funcionario_retorno = '';
  
@@ -1298,7 +1298,7 @@ echo "<div class='col-sm-4 mb-3'>
                   }
                   
                   if ($id_solicitacao != null) {
-                    if ($id_setor != 11) {
+                    if ($setor_id != 11) {
                      echo"Tipo de Solicitação: $nome_solicitacao <br>";
                       # code...
                     }
@@ -1309,7 +1309,7 @@ echo "<div class='col-sm-4 mb-3'>
                   foreach ($res_questionado as $key => $value) {
                     $tem_questionamento = $value['id'];
                   }
-                  $res_setor = buscar_setor_id($conexao,$id_setor);
+                  $res_setor = buscar_setor_id($conexao,$setor_id);
                   foreach ($res_setor as $key => $value) {
                     $nome_setor = $value['nome'];
                   }
