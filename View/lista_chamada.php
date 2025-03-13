@@ -112,7 +112,7 @@ echo "
                 $quantidade_resolvidos &nbsp;&nbsp; Chamados Resolvidos
             </a>
         </div>
-        <div class='col-md-2 col-sm-6' onclick=listar_chamados('$setor_id','todos') >
+        <div class='col-md-2 col-sm-6' onclick='location.reload()' >
             <a  class='btn btn-light w-100' >
                 Ver todos
             </a>
