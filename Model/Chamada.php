@@ -305,7 +305,7 @@ function buscar_minhas_chamada_novas($conexao,$idfuncionario){
 }
 
 function buscar_chamada_atraso2($conexao,$setor_id){
-   $result = $conexao->query("SELECT * FROM chamada where setor_id=$setor_id and status = 'atrasado' ORDER BY id asc");
+   $result = $conexao->query("SELECT * FROM chamada where setor_id=$setor_id and status = 'atrasado' or status != '' ORDER BY id asc");
     return $result;
 
 }

@@ -93,27 +93,27 @@ include_once '../Model/Chamada.php';
 echo "
     <div class='row g-2'>
         <div class='col-md-2 col-sm-6'>
-            <a class='btn btn-primary w-100' >
+            <a class='btn btn-primary w-100' onclick=listar_chamados('$setor_id','esperando_resposta') >
                 $quantidade_pendente &nbsp;&nbsp; Novos Chamados
             </a>
         </div>
         <div class='col-md-2 col-sm-6'>
-            <a  class='btn btn-warning w-100' >
+            <a  class='btn btn-warning w-100' onclick=listar_chamados('$setor_id','em_andamento')>
                 $quantidade_andamento &nbsp;&nbsp; Em Andamento
             </a>
         </div>
         <div class='col-md-2 col-sm-6'>
-            <a class='btn btn-danger w-100' >
+            <a class='btn btn-danger w-100' onclick=listar_chamados('$setor_id','atrasado')>
                 $quantidade_atraso &nbsp;&nbsp; Atrasados
             </a>
         </div>
         <div class='col-md-2 col-sm-6'>
-            <a  class='btn btn-success w-100' >
+            <a  class='btn btn-success w-100' onclick=listar_chamados('$setor_id','finalizado')>
                 $quantidade_resolvidos &nbsp;&nbsp; Chamados Resolvidos
             </a>
         </div>
-        <div class='col-md-2 col-sm-6'>
-            <a href='lista_chamada.php?setor=$setor_id' class='btn btn-light w-100' >
+        <div class='col-md-2 col-sm-6' onclick=listar_chamados('$setor_id','todos')>
+            <a  class='btn btn-light w-100' >
                 Ver todos
             </a>
         </div>
