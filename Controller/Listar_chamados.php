@@ -71,60 +71,60 @@ try {
                $descricao = $value['mensagem'];
                
             }
-            echo "
+            $result.= "
             <tr>";
             if ($status == 'esperando_resposta') {
-              echo "<td style='background-color:#2E64FE;  
+               $result.= "<td style='background-color:#2E64FE;  
               text-align: center;color: white;'>
               Novo <br> <b>Protocolo: $id_chamada</b></td>";
             }elseif ($status == 'em_andamento') {
-              echo "<td style=' background-color:#F1C40F; 
+               $result.= "<td style=' background-color:#F1C40F; 
               text-align: center;'>
               Andamento<br> <b>Protocolo: $id_chamada</b></td>";
             }elseif ($status == 'finalizado') {
-              echo "<td style=' background-color:#82FA58;
+               $result.= "<td style=' background-color:#82FA58;
               text-align: center;color: white'>
               Resolvido <br> <b>Protocolo: $id_chamada</b></td>";
             }elseif ($status == 'atrasado') {
-              echo "<td style=' background-color:#FE2E2E; 
+               $result.= "<td style=' background-color:#FE2E2E; 
               text-align: center;color: white'>
               Atrasado <br> <b>Protocolo: $id_chamada</b></td>";
             }
              
 
-               echo "<td>
+                $result.= "<td>
                 <b>Data de Solicitação:</b> $data_solicitado &nbsp;&nbsp;&nbsp; <b>";
                 if ($id_func_respondeu > 0) {
-                  echo "Data de Retorno:</b> $data_retorno     <br>
+                   $result.= "Data de Retorno:</b> $data_retorno     <br>
                 ";
                 }else{
-                  echo "Data de Retorno:</b> Sem Retorno     <br>
+                   $result.= "Data de Retorno:</b> Sem Retorno     <br>
                 ";
                 }
                            
-                echo"
+                 $result.="
                 Escola: $nome_escola - Diretor: $nome_funcionario <br> ";
                 if ($id_solicitacao != null) {
-                   echo"Tipo de Solicitação: $nome_solicitacao <br>";
+                    $result.="Tipo de Solicitação: $nome_solicitacao <br>";
                 }
                             
-                echo"
+                 $result.="
               </td>
               <td>";
               if($status == 'esperando_resposta'){
  
-                echo "<form method='POST' action='responder_chamada.php'>
+                 $result.= "<form method='POST' action='responder_chamada.php'>
                   <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
                   <button class='btn btn-success'>Responder</button>
                 </form>";
               }else{
                 if ($status == 'atrasado') {
-                  echo "<form method='POST' action='responder_chamada.php'>
+                   $result.= "<form method='POST' action='responder_chamada.php'>
                   <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
                   <button class='btn btn-danger'>Visualizar</button>
                 </form>";
                 }else{
-                  echo "<form method='POST' action='responder_chamada.php'>
+                   $result.= "<form method='POST' action='responder_chamada.php'>
                   <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
                   <button class='btn btn-success'>Visualizar</button>
                 </form>";
@@ -132,7 +132,7 @@ try {
                 
               }
                 
-            echo "    
+             $result.= "    
               </td>
             </tr>
             ";
@@ -141,7 +141,7 @@ try {
     echo $result;
 } catch (Exception $exc) {
 
-    echo $exc;
+     echo $exc;
 }
 
 ?>
