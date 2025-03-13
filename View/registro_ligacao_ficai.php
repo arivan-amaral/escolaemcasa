@@ -183,13 +183,13 @@ setTimeout('dia_doservidor_publico();',3000);
             try {
               
            
-            //   if ($_SESSION['nivel_acesso_id']>=100) {
-            // ?>
+              if ($_SESSION['nivel_acesso_id']>=100) {
+            ?>
                 <option value="Todas">TODAS</option>
 
          
             <?php  
-              // }
+              }
               // $res_escola = lista_escola($conexao); 
               $res_escola= escola_associada($conexao,$idcoordenador);
               foreach ($res_escola as $key => $value) {
