@@ -25,8 +25,8 @@ include_once "../Model/Conexao_".$usuariobd.".php";
 include_once '../Model/Setor.php';
 include_once '../Model/Chamada.php';
 
- $setor_id= $_POST['setor'];
- $escola_id= $_POST['escola'];
+ $setor_id= $_GET['setor'];
+ $escola_id= $_GET['escola'];
  $nome_setor = "";
  $quant_total = 0;
  $quant_finalizada = 0;

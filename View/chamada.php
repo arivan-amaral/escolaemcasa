@@ -248,17 +248,20 @@ setTimeout('dia_doservidor_publico();',3000);
                             &nbsp;&nbsp; Chamados Resolvidos</p> 
                           </div>
 
-                          <form method='POST' action='lista_chamada.php'>
-                            <input type='hidden' name='setor' id='setor' value='11'>
-                            <input type='hidden' name='escola' id='escola' value='$id_escola'>
-                            <button class='btn btn-block btn-light'>
-                              Ver Chamadas 
-                            </button>
-                          </form>
+
+                          <a href='lista_chamada.php?setor=$id_setor&escola=$id_escola' class='btn btn-block btn-light' target='_blank'>Ver Chamados </a>
+
+
                         </div>
                       </div>";
                 
-                
+                // <form method='POST' action='lista_chamada.php'> 
+                //   <input type='hidden' name='setor' id='setor' value='11'>
+                //   <input type='hidden' name='escola' id='escola' value='$id_escola'>
+                //   <button class='btn btn-block btn-light'>
+                //     Ver Chamadas 
+                //   </button>
+                // </form>
               
               // setores cadastrados
               $res_setores = buscar_setor_funcionario($conexao,$_SESSION['idfuncionario']);
@@ -377,22 +380,23 @@ setTimeout('dia_doservidor_publico();',3000);
                               <p class='btn btn btn-success'>$quantidade_resolvidos
                               &nbsp;&nbsp; Chamados Resolvidos</p> 
                             </div>
+                            <a href='lista_chamada.php?setor=$id_setor' class='btn btn-block btn-light' target='_blank'>Ver Chamados </a>
 
-                            <form method='POST' action='lista_chamada.php'>
-                              <input type='hidden' name='setor' id='setor' value='$id_setor'>
-                              <button class='btn btn-block btn-light'>
-                                Ver Chamadas 
-                              </button>
-                            </form>
                           </div>
                         </div>";
                 
                 }
               }
             ?>
+                
             
-
-            
+<!--                             <form method='POST' action='lista_chamada.php'>
+                              <input type='hidden' name='setor' id='setor' value='$id_setor'>
+                              <button class='btn btn-block btn-light'>
+                                Ver Chamadas 
+                              </button>
+                            </form>
+ -->
          
        </div>  
 
