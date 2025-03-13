@@ -1830,6 +1830,9 @@ function listar_chamados(setor_id,status) {
  
   var result = document.getElementById("tabela_chamados");
   var xmlreq = CriaRequest();
+
+  result.innerHTML = "<center><img src='imagens/carregando.gif'></center>";
+  
   xmlreq.open(
     "GET",
     "../Controller/Listar_chamados.php?setor_id=" + setor_id+"&status="+status,
