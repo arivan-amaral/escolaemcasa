@@ -241,7 +241,7 @@ function buscar_escola($conexao,$id_escola){
 }
 
 function listar_chamados($conexao,$setor_id, $status){
-   $result = $conexao->query("SELECT * FROM chamada where setor_id=$setor_id and status ='$status' ORDER BY id asc");
+   $result = $conexao->query("SELECT * FROM chamada where setor_id=$setor_id and chamada.status ='$status' ORDER BY id asc");
     return $result;
 
 }
