@@ -385,7 +385,7 @@ setTimeout('dia_doservidor_publico();',3000);
                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                               &nbsp;&nbsp;</a><br>
 
-     <a href='lista_chamada.php?setor=$id_setor&status=finalizado'  target='_blank' class='btn btn btn-success
+     <a href='lista_chamada.php?setor=$id_setor&status=finalizado'  target='_blank' class='btn btn btn-success'>
      quantidade_resolvidos
                               &nbsp;&nbsp; Chamados Resolvidos</a> 
 
