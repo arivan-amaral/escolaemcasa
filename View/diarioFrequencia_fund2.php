@@ -620,7 +620,7 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
         echo "(".$idaluno.") - $nome_aluno"; 
       // code...
     }else{
-      echo "(".$idaluno."s) - $nome_identificacao_social";
+      echo "(".$idaluno."S) - $nome_identificacao_social";
     }
   ?> 
   </td>
