@@ -51,7 +51,7 @@ $data_final=date("Y-m-d");
 $faltas_aluno=0;
 
 if ( ($seguimento!='' && $seguimento <3) || $idserie <8 ) {
-
+ 
 
     // foreach ($array_datas as $key => $datas) {
       
@@ -165,11 +165,13 @@ if ( ($seguimento!='' && $seguimento <3) || $idserie <8 ) {
                 
                       turma.serie_id = serie.id and 
                       ecidade_matricula.aluno_id = $aluno_id and 
+--                      ecidade_matricula.turma_id = $turma_id and 
                       ecidade_matricula.calendario_ano = $ano_letivo and 
+                      turma.serie_id !=17 and 
                       ecidade_matricula.turma_id = turma.idturma and 
                       ecidade_matricula.turma_escola = escola.idescola and 
                       ecidade_matricula.turma_escola = $escola_id and 
-                      ecidade_matricula.matricula_situacao !='CANCELADO'
+                      ecidade_matricula.matricula_situacao !='CANCELADO' 
                       ORDER by ecidade_matricula.calendario_ano desc");
                        $nome_escola="";
                        $nome_turma="";
