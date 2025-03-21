@@ -53,7 +53,7 @@ function pesquisa_relatorio_filtro($conexao,$texto,$sexo,$escola,$ano_letivo,$or
    return $sql->fetchAll();
 }
 function relatorio_pesquisa_relatorio_filtro($conexao,$texto,$sexo,$escola,$ano_letivo,$ordenacao,$necessidade_especial, $data_nascimento){
-   $sql = $conexao->query("SELECT $texto FROM aluno,ecidade_matricula,escola,turma WHERE ecidade_matricula.aluno_id = aluno.idaluno AND ecidade_matricula.turma_escola = escola.idescola AND ecidade_matricula.turma_id = turma.idturma AND ecidade_matricula.calendario_ano='$ano_letivo' AND ecidade_matricula.matricula_ativa='S' AND ecidade_matricula.matricula_concluida='N' AND aluno.sexo = '$sexo'  AND ecidade_matricula.turma_escola $escola $necessidade_especial $data_nascimento ORDER BY $ordenacao ");
+   $sql = $conexao->query("SELECT $texto FROM aluno,ecidade_matricula,escola,turma WHERE ecidade_matricula.aluno_id = aluno.idaluno AND ecidade_matricula.turma_escola = escola.idescola AND ecidade_matricula.turma_id = turma.idturma AND ecidade_matricula.calendario_ano='$ano_letivo' AND ecidade_matricula.matricula_ativa='S' AND ecidade_matricula.matricula_concluida='N' AND turma.serie_id !=17 AND aluno.sexo = '$sexo'  AND ecidade_matricula.turma_escola $escola $necessidade_especial $data_nascimento ORDER BY $ordenacao ");
    
    return $sql->fetchAll();
 }
@@ -64,7 +64,7 @@ function pesquisa_relatorio_filtro_todos($conexao,$texto,$escola,$ano_letivo, $n
 }
 
 function relatorio_pesquisa_relatorio_filtro_todos($conexao,$texto,$escola,$ano_letivo, $necessidade_especial,$data_nascimento,$ordenacao){
-   $sql = $conexao->query("SELECT $texto FROM aluno,ecidade_matricula,escola,turma WHERE ecidade_matricula.aluno_id = aluno.idaluno AND ecidade_matricula.turma_escola = escola.idescola AND ecidade_matricula.turma_id = turma.idturma AND ecidade_matricula.calendario_ano='$ano_letivo' AND ecidade_matricula.matricula_ativa='S' AND ecidade_matricula.matricula_concluida='N'   AND ecidade_matricula.turma_escola $escola $necessidade_especial $data_nascimento ORDER BY $ordenacao");
+   $sql = $conexao->query("SELECT $texto FROM aluno,ecidade_matricula,escola,turma WHERE ecidade_matricula.aluno_id = aluno.idaluno AND ecidade_matricula.turma_escola = escola.idescola AND ecidade_matricula.turma_id = turma.idturma AND ecidade_matricula.calendario_ano='$ano_letivo' AND ecidade_matricula.matricula_ativa='S' AND ecidade_matricula.matricula_concluida='N'  AND turma.serie_id !=17 AND ecidade_matricula.turma_escola $escola $necessidade_especial $data_nascimento ORDER BY $ordenacao");
 
 
    // escola.nome_escola ASC, turma.nome_turma ASC, aluno.nome asc
@@ -78,7 +78,7 @@ function pesquisa_relatorio_filtro_quantidade_sexo($conexao,$escola,$ano_letivo,
 
 
 function relatorio_pesquisa_relatorio_filtro_quantidade_sexo($conexao,$escola,$ano_letivo,$idturma, $necessidade_especial, $data_nascimento){
-   $sql = $conexao->query("SELECT aluno.sexo, count(*) as 'quantidade' FROM aluno,ecidade_matricula,escola,turma WHERE ecidade_matricula.aluno_id = aluno.idaluno AND ecidade_matricula.turma_escola = escola.idescola AND ecidade_matricula.turma_id = turma.idturma AND ecidade_matricula.calendario_ano='$ano_letivo' AND ecidade_matricula.matricula_ativa='S'AND ecidade_matricula.matricula_ativa='S' and ecidade_matricula.turma_id='$idturma'  AND ecidade_matricula.matricula_concluida='N'   AND ecidade_matricula.turma_escola $escola  $necessidade_especial $data_nascimento GROUP BY aluno.sexo ORDER BY  aluno.sexo ASC;");
+   $sql = $conexao->query("SELECT aluno.sexo, count(*) as 'quantidade' FROM aluno,ecidade_matricula,escola,turma WHERE ecidade_matricula.aluno_id = aluno.idaluno AND ecidade_matricula.turma_escola = escola.idescola AND ecidade_matricula.turma_id = turma.idturma AND ecidade_matricula.calendario_ano='$ano_letivo' AND ecidade_matricula.matricula_ativa='S'AND ecidade_matricula.matricula_ativa='S' and ecidade_matricula.turma_id='$idturma'  AND ecidade_matricula.matricula_concluida='N'   AND turma.serie_id !=17   AND ecidade_matricula.turma_escola $escola  $necessidade_especial $data_nascimento GROUP BY aluno.sexo ORDER BY  aluno.sexo ASC;");
    
    // echo "SELECT aluno.sexo, count(*) as 'quantidade' FROM aluno,ecidade_matricula,escola,turma WHERE ecidade_matricula.aluno_id = aluno.idaluno AND ecidade_matricula.turma_escola = escola.idescola AND ecidade_matricula.turma_id = turma.idturma AND ecidade_matricula.calendario_ano='$ano_letivo' AND ecidade_matricula.matricula_ativa='S'AND ecidade_matricula.matricula_ativa='S' and ecidade_matricula.turma_id='$idturma'  AND ecidade_matricula.matricula_concluida='N'   AND ecidade_matricula.turma_escola $escola  $necessidade_especial $data_nascimento GROUP BY aluno.sexo ORDER BY  aluno.sexo ASC;";
    return $sql->fetchAll();
