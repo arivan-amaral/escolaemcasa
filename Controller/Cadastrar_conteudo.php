@@ -56,7 +56,7 @@ try {
 
                 // Verifica se a exclusão ocorreu e registra o log
                 if ($idconteudo) {
-                    $acao = 'Conteúdo excluído';
+                    $acao = "Conteúdo excluído  por usuário de id $idfuncionario";
                     registrarLog($conexao, $idfuncionario, $acao);
                 }
             } else {
@@ -64,7 +64,7 @@ try {
                 editar_conteudo_aula($conexao, $descricao, $idconteudo, $quantidade_aula);
 
                 // Registrar log de edição
-                $acao = 'Tentativa de edição de conteúdo existente';
+                $acao = "Edição de conteúdo existente por usuário de id $idfuncionario";
                 registrarLog($conexao, $idfuncionario, $acao);
                
 
@@ -77,7 +77,7 @@ try {
             $conteudo_aula_id = $conexao->lastInsertId();
 
             // Registrar log de cadastro
-            $acao = 'Cadastro de conteúdo';
+            $acao = "Cadastro de conteúdo por usuário de id $idfuncionario";
             registrarLog($conexao, $idfuncionario, $acao);
         }
     }
