@@ -1,4 +1,14 @@
 <?php 
+// Função para registrar o log de ações
+function registrarLog($conexao, $funcionario_id, $acao) {
+    
+    $sql = "INSERT INTO logs (data_hora, acao, funcionario_id) VALUES (:acao, :funcionario_id)";
+    $stmt = $conexao->prepare($sql);
+    $stmt->execute([
+        ':acao' => $acao,
+        ':funcionario_id' => $funcionario_id,
+    ]);
+}
 function verifica_dia_letivo($conexao,$data){
    $sql = $conexao->query("SELECT * from dia_nao_letivo where data='$data'
       ");

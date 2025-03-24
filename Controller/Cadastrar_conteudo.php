@@ -64,8 +64,10 @@ try {
                 editar_conteudo_aula($conexao, $descricao, $idconteudo, $quantidade_aula);
 
                 // Registrar log de edição
-                $acao = 'Edição de conteúdo existente';
+                $acao = 'Tentativa de edição de conteúdo existente';
                 registrarLog($conexao, $idfuncionario, $acao);
+               
+
             }
         }
 
@@ -89,17 +91,7 @@ try {
     echo $e;
 }
 
-// Função para registrar o log de ações
-function registrarLog($conexao, $funcionario_id, $acao) {
-    $data_hora = date("Y-m-d H:i:s");
-    $sql = "INSERT INTO logs (data_hora, acao, funcionario_id) VALUES (:data_hora, :acao, :funcionario_id)";
-    $stmt = $conexao->prepare($sql);
-    $stmt->execute([
-        ':data_hora' => $data_hora,
-        ':acao' => $acao,
-        ':funcionario_id' => $funcionario_id,
-    ]);
-}
+
 
 // Função para excluir o conteúdo da aula
 function excluir_conteudo_aula($conexao, $idconteudo) {
