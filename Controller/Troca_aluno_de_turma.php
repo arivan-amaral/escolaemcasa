@@ -87,8 +87,6 @@ try {
  					$procedimento="TROCA DE TURMA";
 			 		$data_saida=date("Y-m-d");
 			  		mudar_situacao_transferencia_aluno($conexao,$matricula_aluno,$procedimento,$data_saida);
-
-			
 				 
 				 
 				 $matricula_situacao="MATRICULADO";
@@ -103,6 +101,9 @@ try {
 				 rematricular_aluno($conexao,$aluno_id,$turma_id,$turma_id_anterior,$matricula_situacao,$matricula_concluida,$matricula_datamatricula,$matricula_ativa,$matricula_tipo,$calendario_ano,$turma_escola,$turno_nome,$etapa);
 
 				 $conexao->exec("UPDATE nota_parecer set turma_id=$turma_id WHERE turma_id=$turma_id_anterior and aluno_id=$aluno_id ");
+
+			  $acao="Troca de turma efetuada pelo usuário $idfuncionario dados: $matricula_aluno,$procedimento,$data_saida";
+    			registrarLog($conexao, $idfuncionario, $acao);
 
 				 
 				$quantidade_vagas_restante--;
