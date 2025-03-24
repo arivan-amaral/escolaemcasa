@@ -59,7 +59,7 @@ try {
                     $acao = "Conteúdo excluído  por usuário de id $idfuncionario";
                     registrarLog($conexao, $idfuncionario, $acao);
                 }
-            } else {
+            } else { 
                 // Edição de conteúdo
                 editar_conteudo_aula($conexao, $descricao, $idconteudo, $quantidade_aula);
 
