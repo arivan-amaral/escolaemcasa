@@ -13,6 +13,7 @@ include_once '../Model/Aluno.php';
 try {
 
 	$profissional_solicitante=$_SESSION['idfuncionario'];
+	$idfuncionario=$_SESSION['idfuncionario'];
 
 	$quantidade_vagas_restante=$_POST['quantidade_vagas_restante_troca_turma'];
 	$turma_id=$_POST['lista_de_turmas_troca_turma'];
