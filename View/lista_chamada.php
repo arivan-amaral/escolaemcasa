@@ -36,11 +36,11 @@ include_once '../Model/Chamada.php';
  }
 
 
-  if (isset($_GET['status'])) {
+if (isset($_GET['status'])) {
   $status=$_GET['status'];
- }else{
+}else{
   $status='';
- }
+}
 
  $nome_setor = "";
  $quant_total = 0;
