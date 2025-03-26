@@ -4,6 +4,10 @@ function diario_frequencia_fund2($conexao,$idescola,$idturma,$iddisciplina,$inic
   $tipo_ensino="tttt";
 
 
+if ($idserie==17) {
+    $tipo_ensino="AEE";
+
+}
 if ($idserie==16) {
   if ($seguimento==1) {
     $tipo_ensino="Educação Infantil";
