@@ -249,7 +249,7 @@ setTimeout('dia_doservidor_publico();',3000);
                           </div>
 
 
-                          <a href='lista_chamada.php?setor=$id_setor&escola=$id_escola' class='btn btn-block btn-light' target='_blank'>Ver Chamados </a>
+                 
 
 
                         </div>
@@ -386,9 +386,7 @@ setTimeout('dia_doservidor_publico();',3000);
          </a>
          <br>
          
-         <a href='lista_chamada.php?setor=$id_setor' class='btn btn-block btn-light' target='_blank'>
-           Ver Chamados
-         </a>
+
        </div>
      </div>";
 
