@@ -294,7 +294,7 @@ else{
     //linha 409 508 
     
     if (isset($_GET['coordenacao'])) {
-        // code...
+        echo "AEE";
             $pes=listar_disciplina_da_turma($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
 
             foreach ($pes as $chave => $linha) {
