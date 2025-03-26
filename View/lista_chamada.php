@@ -159,15 +159,16 @@ echo "
 </section>
 
 </div>
-<script type="text/javascript">
-
-    setTimeout(function() {
-      listar_chamados(<?php echo $setor_id; ?>, <?php echo $status; ?>);
-    }, 100);
-
-</script>
-
 <?php 
+
+ echo" <script type='text/javascript'>
+
+    setTimeout('listar_chamados($setor_id,$status)',500);
+
+
+  </script>
+
+";
 
 include_once 'rodape.php';
 
