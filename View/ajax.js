@@ -1844,12 +1844,9 @@ function listar_chamados(setor_id,status) {
       if (xmlreq.status == 200) {
         result.innerHTML = xmlreq.responseText;
       } else {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: " $mensagem",
-        });
-      }
+        result.innerHTML ='Erro ao buscar';
+
+        }
     }
   };
   xmlreq.send(null);
