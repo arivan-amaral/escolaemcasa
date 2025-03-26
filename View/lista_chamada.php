@@ -160,11 +160,11 @@ echo "
 
 </div>
 <script type="text/javascript">
-  window.onload = function() {
+
     setTimeout(function() {
       listar_chamados(<?php echo $setor_id; ?>, <?php echo $status; ?>);
     }, 100);
-  };
+
 </script>
 
 <?php 
