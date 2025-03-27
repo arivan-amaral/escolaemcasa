@@ -1826,8 +1826,9 @@ function ver_resolvidos(setor_id) {
 
 
 
-function listar_chamados(status) {
+function listar_chamados() {
  
+  var status = document.getElementById("status").value;
   var result = document.getElementById("tabela_chamados");
   var setor_id = document.getElementById("setor_id").value;
   var xmlreq = CriaRequest();

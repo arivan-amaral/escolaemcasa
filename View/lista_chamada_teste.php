@@ -138,7 +138,7 @@ if (isset($_GET['status'])) {
      <label for="exampleInputEmail1">Status</label>
           <input type="hidden" class="form-control" name="setor_id" id="setor_id" value="<?php echo $setor_id; ?>" >
 
-     <select class="form-control" name="status" id="status" onchange="listar_chamados(this.value)">
+     <select class="form-control" name="status" id="status" onchange="listar_chamados()">
          <option value="todos">Escolha o status</option>
          <option value="esperando_resposta">Novos Chamados</option>
          <option value="em_andamento">Em Andamento</option>
@@ -153,7 +153,7 @@ if (isset($_GET['status'])) {
     <div class="form-group">
      <label for="exampleInputEmail1">ESCOLA</label>
      <select class="form-control select2"  id="escola" name="escola" >
-      <!-- <option value="Todas">TODAS</option> -->
+      <option value="Todas">TODAS</option>
       <?php  
   
         $res_escola= escola_associada($conexao,$idcoordenador);

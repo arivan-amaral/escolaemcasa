@@ -24,6 +24,7 @@ $usuariobd=$_SESSION['usuariobd'];
 include_once "../Model/Conexao_".$usuariobd.".php";
 include_once '../Model/Setor.php';
 include_once '../Model/Chamada.php';
+include_once '../Model/Coordenador.php';
 
  $escola_id= $_GET['escola'];
 
@@ -104,35 +105,115 @@ if (isset($_GET['status'])) {
 <div class="container-fluid">
 
       <?php 
-echo "
-    <div class='row g-2'>
-        <div class='col-md-2 col-sm-6'>
-            <a href='#' class='btn btn-primary w-100' onclick=listar_chamados('$setor_id','esperando_resposta') >
-                $quantidade_pendente &nbsp;&nbsp; Novos Chamados
-            </a>
-        </div>
-        <div class='col-md-2 col-sm-6'>
-            <a  class='btn btn-warning w-100' onclick=listar_chamados('$setor_id','em_andamento') >
-                $quantidade_andamento &nbsp;&nbsp; Em Andamento
-            </a>
-        </div>
-        <div class='col-md-2 col-sm-6'>
-            <a href='#' class='btn btn-danger w-100' onclick=listar_chamados('$setor_id','atrasado') >
-                $quantidade_atraso &nbsp;&nbsp; Atrasados
-            </a>
-        </div>
-        <div class='col-md-2 col-sm-6'>
-            <a  class='btn btn-success w-100' onclick=listar_chamados('$setor_id','finalizado') >
-                $quantidade_resolvidos &nbsp;&nbsp; Chamados Resolvidos
-            </a>
-        </div>
+// echo "
+//     <div class='row g-2'>
+//         <div class='col-md-2 col-sm-6'>
+//             <a href='#' class='btn btn-primary w-100' onclick=listar_chamados('$setor_id','esperando_resposta') >
+//                 $quantidade_pendente &nbsp;&nbsp; Novos Chamados
+//             </a>
+//         </div>
+//         <div class='col-md-2 col-sm-6'>
+//             <a  class='btn btn-warning w-100' onclick=listar_chamados('$setor_id','em_andamento') >
+//                 $quantidade_andamento &nbsp;&nbsp; Em Andamento
+//             </a>
+//         </div>
+//         <div class='col-md-2 col-sm-6'>
+//             <a href='#' class='btn btn-danger w-100' onclick=listar_chamados('$setor_id','atrasado') >
+//                 $quantidade_atraso &nbsp;&nbsp; Atrasados
+//             </a>
+//         </div>
+//         <div class='col-md-2 col-sm-6'>
+//             <a  class='btn btn-success w-100' onclick=listar_chamados('$setor_id','finalizado') >
+//                 $quantidade_resolvidos &nbsp;&nbsp; Chamados Resolvidos
+//             </a>
+//         </div>
  
+//     </div>
+// ";      ?>
+
+
+<div class="row">
+  <div class="col-sm-2">
+    <div class="form-group">
+     <label for="exampleInputEmail1">Status</label>
+          <input type="hidden" class="form-control" name="setor_id" id="setor_id" value="<?php echo $setor_id; ?>" >
+
+     <select class="form-control" name="status" id="status" onchange="listar_chamados()">
+         <option value="todos">Escolha o status</option>
+         <option value="esperando_resposta">Novos Chamados</option>
+         <option value="em_andamento">Em Andamento</option>
+         <option value="atrasado">Atrasados</option>
+         <option value="finalizado">Chamados Resolvidos</option>
+     </select>
     </div>
-";
+  </div>  
+
+
+  <div class="col-sm-3">
+    <div class="form-group">
+     <label for="exampleInputEmail1">ESCOLA</label>
+     <select class="form-control select2"  id="escola" name="escola" >
+      <option value="Todas">TODAS</option>
+      <?php  
+  
+        $res_escola= escola_associada($conexao,$idcoordenador);
+          $lista_escola_associada=""; 
+        $sql_escolas="AND ( escola_id = -1 ";
+        $sql_escolas_enviada="AND ( escola_id_origem = -1 ";
+        foreach ($res_escola as $key => $value) {
+            $id=$value['idescola'];
+           $nome_escola=($value['nome_escola']);
+            $sql_escolas.=" OR escola_id = $id ";
+            $sql_escolas_enviada.=" OR escola_id_origem = $id ";
+
+            $lista_escola_associada.= "
+                 <option value='$id'>$nome_escola </option>
+
+             ";
+        }
+
+        echo "$lista_escola_associada";
+
+      ?>
+      
+    
+     </select> 
+    </div>
+  </div> 
+  
+ <div class="col-sm-2">
+          <div class="form-group">
+           <label for="exampleInputEmail1">Data inicial</label>
+           <input type="date" class="form-control" name="data_inicial" id="data_inicial" value="<?php echo date("Y"); ?>-01-01">
+          </div>
+        </div>
+         <div class="col-sm-2">
+          <div class="form-group">
+           <label for="exampleInputEmail1">Data final</label>
+           <input type="date" class="form-control" name="data_final" id="data_final" value="<?php echo date("Y-m-d"); ?>">
+          </div>
+
+          </div>
+  </div>
+<div class="row">
+
+      <div class="col-sm-4">
+        <div class="form-group">
+         <label for="exampleInputEmail1">Pesquisa</label>
+         <input type="text" class="form-control" name="pesquisa" id="pesquisa">
+        </div>
+      </div>
+
+
+      <div class="col-sm-2" style="margin-top: 7px;" ><br>
+       <a  class="btn btn-primary" onclick="pesquisa_chamado()">Pesquisar</a>
+      </div>
+    </div>
+</div>
 
 
 
-       ?>
+
 <div class='card-body'>
   <table class='table table-bordered'>
     <thead>
