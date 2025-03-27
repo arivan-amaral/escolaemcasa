@@ -174,73 +174,21 @@ if (isset($_GET['status'])) {
   </div>  
 
 
-  <div class="col-sm-3">
-    <div class="form-group">
-     <label for="exampleInputEmail1">ESCOLA</label>
-     <select class="form-control select2"  id="escola" name="escola" >
-      <option value="Todas">TODAS</option>
-      <?php  
-  
-        $res_escola= escola_associada($conexao,$idcoordenador);
-          $lista_escola_associada=""; 
-        $sql_escolas="AND ( escola_id = -1 ";
-        $sql_escolas_enviada="AND ( escola_id_origem = -1 ";
-        foreach ($res_escola as $key => $value) {
-            $id=$value['idescola'];
-           $nome_escola=($value['nome_escola']);
-            $sql_escolas.=" OR escola_id = $id ";
-            $sql_escolas_enviada.=" OR escola_id_origem = $id ";
 
-            $lista_escola_associada.= "
-                 <option value='$id'>$nome_escola </option>
-
-             ";
-        }
-
-        echo "$lista_escola_associada";
-
-      ?>
-      
-    
-     </select> 
-    </div>
-  </div> 
-  
- <div class="col-sm-2">
-          <div class="form-group">
-           <label for="exampleInputEmail1">Data inicial</label>
-           <input type="date" class="form-control" name="data_inicial" id="data_inicial" value="<?php echo date("Y"); ?>-01-01">
-          </div>
-        </div>
-         <div class="col-sm-2">
-          <div class="form-group">
-           <label for="exampleInputEmail1">Data final</label>
-           <input type="date" class="form-control" name="data_final" id="data_final" value="<?php echo date("Y-m-d"); ?>">
-          </div>
-
-          </div>
-  </div>
-<div class="row">
-
-      <div class="col-sm-4">
+      <div class="col-sm-10">
         <div class="form-group">
          <label for="exampleInputEmail1">Pesquisa</label>
-         <input type="text" class="form-control" name="pesquisa" id="pesquisa">
+         <input type="text" class="form-control" name="pesquisa" id="filtroInput" onkeyup="filtrarTabela()" placeholder="Digite para filtrar...">
         </div>
       </div>
 
-
-      <div class="col-sm-2" style="margin-top: 7px;" ><br>
-       <a  class="btn btn-primary" onclick="pesquisa_chamado()">Pesquisar</a>
-      </div>
-    </div>
 </div>
 
 
 
 
 <div class='card-body'>
-     <input type="text" id="filtroInput" onkeyup="filtrarTabela()" placeholder="Digite para filtrar...">
+
   <table class='table table-bordered' id="minhaTabela">
     <thead>
        <tr>
