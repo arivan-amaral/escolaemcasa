@@ -317,18 +317,9 @@
                <span class='badge bg-warning' id='total_chamados'></span>
                </a>
                </li>
-               <li class='nav-item'>
-               <a href='pesquisa_chamado.php' class='nav-link'>
-               <i class='far fa-circle nav-icon text-primary'></i>
-               <p>Pesquisar chamados</p>
-               </a>
-               </li>
-               <li class='nav-item'>
-               <a href='chamada_pesquisa_escola_status.php' class='nav-link'>
-               <i class='far fa-circle nav-icon text-primary'></i>
-               <p>Pesquisa Geral</p>
-               </a>
-               </li> 
+          
+ 
+
                <li class='nav-item'>
                <a href='chamada_mensagem_usuarios.php' class='nav-link'>
                <i class='far fa-circle nav-icon text-primary'></i>
