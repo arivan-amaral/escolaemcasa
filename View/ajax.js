@@ -1836,6 +1836,7 @@ function listar_chamados() {
   // var data_inicial = document.getElementById("data_inicial").value;
   // var data_final = document.getElementById("data_final").value;
   // var pesquisa = document.getElementById("pesquisa").value;
+   document.getElementById("filtroInput").value='';
 
   var url ="setor_id=" + setor_id+"&status="+status+"";
 
