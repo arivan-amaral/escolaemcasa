@@ -129,12 +129,12 @@ $pesquisa = $_GET['pesquisa'];
                 </form>";
               }else{
                 if ($status == 'atrasado') {
-                   $result.= "<form method='POST' action='responder_chamada.php'   target='_blank'>>
+                   $result.= "<form method='POST' action='responder_chamada.php'   target='_blank'>
                   <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
                   <button class='btn btn-danger'>Visualizar</button>
                 </form>";
                 }else{
-                   $result.= "<form method='POST' action='responder_chamada.php'   target='_blank'>>
+                   $result.= "<form method='POST' action='responder_chamada.php'   target='_blank'>
                   <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
                   <button class='btn btn-success'>Visualizar</button>
                 </form>";
