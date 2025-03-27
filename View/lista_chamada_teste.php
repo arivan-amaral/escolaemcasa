@@ -136,7 +136,7 @@ if (isset($_GET['status'])) {
   <div class="col-sm-2">
     <div class="form-group">
      <label for="exampleInputEmail1">Status</label>
-          <input type="text" class="form-control" name="setor_id" id="setor_id" value="<?php echo $setor_id; ?>">
+          <input type="hidden" class="form-control" name="setor_id" id="setor_id" value="<?php echo $setor_id; ?>">
 
      <select class="form-control" name="status" id="status">
          <option value="todos">Escolha o status</option>
@@ -193,20 +193,24 @@ if (isset($_GET['status'])) {
            <input type="date" class="form-control" name="data_final" id="data_final" value="<?php echo date("Y-m-d"); ?>">
           </div>
 
+          </div>
+  </div>
+<div class="row">
+
+      <div class="col-sm-4">
+        <div class="form-group">
+         <label for="exampleInputEmail1">Pesquisa</label>
+         <input type="text" class="form-control" name="pesquisa" id="pesquisa">
+        </div>
+      </div>
 
 
-  <div class="col-sm-4">
-    <div class="form-group">
-     <label for="exampleInputEmail1">Pesquisa</label>
-     <input type="text" class="form-control" name="pesquisa" id="pesquisa">
+      <div class="col-sm-2" style="margin-top: 7px;" ><br>
+       <a  class="btn btn-primary" onclick="pesquisa_chamado()">Pesquisar</a>
+      </div>
     </div>
-  </div>
-
-
-  <div class="col-sm-2" style="margin-top: 7px;" ><br>
-   <a  class="btn btn-primary" onclick="pesquisa_chamado()">Pesquisar</a>
-  </div>
 </div>
+
 
 
 
