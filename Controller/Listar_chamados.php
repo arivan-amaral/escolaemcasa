@@ -7,10 +7,20 @@ if (!isset($_SESSION['usuariobd'])) {
 $usuariobd=$_SESSION['usuariobd'];
 include_once "../Model/Conexao_".$usuariobd.".php";
 include_once "../Model/Chamada.php";
+include_once "Conversao.php";
 try {
 
     $setor = $_GET['setor_id'];
     $status = $_GET['status'];
+
+$escola = $_GET['escola'];
+$data_inicial = $_GET['data_inicial'];
+$data_final = $_GET['data_final'];
+$pesquisa = $_GET['pesquisa'];
+
+
+
+
 
     $result = "";
       $res_resolvidos =listar_chamados($conexao,$setor, $status); 
@@ -27,7 +37,7 @@ try {
 
             $res_chat_resposta = buscar_pessoa_chat_retorno($conexao,$id_chamada,$id_func_respondeu);
             foreach ($res_chat_resposta as $key => $value) {
-              $data_retorno = $value['data'];
+              $data_retorno = data($value['data']);
             }
             $res_nome_funcionario = nome_funcionario($conexao,$id_funcionario);
               foreach ($res_nome_funcionario as $key => $value) {
@@ -52,7 +62,7 @@ try {
             $data_solicitado = '';
             $res_chat = mostrar_chat_chamada($conexao,$id_chamada,$id_funcionario);
             foreach ($res_chat as $key => $value) {
-              $data_solicitado = $value['data'];
+              $data_solicitado = data($value['data']);
             }
             if($id_solicitacao != null){
               $res_solicitacao = pesquisa_tipo_solicitacao($conexao,$id_solicitacao);
