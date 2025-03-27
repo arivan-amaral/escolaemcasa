@@ -32,6 +32,32 @@ include_once '../Model/Chamada.php';
 
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 
+<script>
+    function filtrarTabela() {
+        const filtro = document.getElementById("filtroInput").value.toLowerCase();
+        const tabela = document.getElementById("minhaTabela");
+        const linhas = tabela.getElementsByTagName("tr");
+
+        for (let i = 1; i < linhas.length; i++) { // começa em 1 para ignorar o cabeçalho
+            let linha = linhas[i];
+            let colunas = linha.getElementsByTagName("td");
+            let linhaVisivel = false;
+
+            for (let j = 0; j < colunas.length; j++) {
+                if (colunas[j].innerText.toLowerCase().includes(filtro)) {
+                    linhaVisivel = true;
+                    break;
+                }
+            }
+
+            if (linhaVisivel) {
+                linha.style.display = ""; // mostra a linha
+            } else {
+                linha.style.display = "none"; // esconde a linha
+            }
+        }
+    }
+</script>
 
 
 <div class="content-wrapper" >
@@ -82,8 +108,23 @@ include_once '../Model/Chamada.php';
 <div class="container-fluid">
 
 
+<div class="row">
+ 
+
+
+      <div class="col-sm-10">
+        <div class="form-group">
+         <label for="exampleInputEmail1">Pesquisa(Escola,Data,Responsável,Tipo de solicitação ou Status)</label> 
+
+         <input type="text" class="form-control" name="pesquisa" id="filtroInput" onkeyup="filtrarTabela()" placeholder="Digite para filtrar...">
+        </div>
+      </div>
+
+</div>
+
+
 <div class='card-body'>
-  <table class='table table-bordered'>
+  <table class='table table-bordered' id="minhaTabela">
     <thead>
        <tr>
          <th style="text-align: center;">Status</th>
@@ -101,7 +142,7 @@ include_once '../Model/Chamada.php';
             $status = $value['status'];
             $id_funcionario = $value['funcionario_id'];
             $id_func_respondeu = $value['func_respondeu_id'];
-            $data_previsão = $value['data_previsao'];
+            $data_previsão = data($value['data_previsao']);
             $id_setor = $value['setor_id'];
             $nome_setor = '';
             $descricao = '';
@@ -117,7 +158,7 @@ include_once '../Model/Chamada.php';
             }
             $res_chat_resposta = mostrar_chat_chamada($conexao,$id_chamada,$id_funcionario);
             foreach ($res_chat_resposta as $key => $value) {
-              $data_emissao = $value['data'];
+              $data_emissao =data($value['data']);
             }
 
             $res_chat= buscar_chat($conexao,$id_chamada);
@@ -175,7 +216,7 @@ include_once '../Model/Chamada.php';
             $status = $value['status'];
             $id_funcionario = $value['funcionario_id'];
             $id_func_respondeu = $value['func_respondeu_id'];
-            $data_previsão = $value['data_previsao'];
+            $data_previsão = data($value['data_previsao']);
             $id_setor = $value['setor_id'];
             $nome_setor = '';
             $res_setor = buscar_setor_id($conexao,$id_setor);
@@ -191,7 +232,7 @@ include_once '../Model/Chamada.php';
             }
             $res_chat_resposta = mostrar_chat_chamada($conexao,$id_chamada,$id_funcionario);
             foreach ($res_chat_resposta as $key => $value) {
-              $data_emissao = $value['data'];
+              $data_emissao = data($value['data']);
             }
 
             $res_chat= buscar_chat($conexao,$id_chamada);
@@ -249,7 +290,7 @@ include_once '../Model/Chamada.php';
             $status = $value['status'];
             $id_funcionario = $value['funcionario_id'];
             $id_func_respondeu = $value['func_respondeu_id'];
-            $data_previsão = $value['data_previsao'];
+            $data_previsão = data($value['data_previsao']);
             $id_setor = $value['setor_id'];
             $nome_setor = '';
             $res_setor = buscar_setor_id($conexao,$id_setor);
@@ -265,7 +306,7 @@ include_once '../Model/Chamada.php';
             }
             $res_chat_resposta = mostrar_chat_chamada($conexao,$id_chamada,$id_funcionario);
             foreach ($res_chat_resposta as $key => $value) {
-              $data_emissao = $value['data'];
+              $data_emissao = data($value['data']);
             }
 
             $res_chat= buscar_chat($conexao,$id_chamada);
@@ -323,7 +364,7 @@ include_once '../Model/Chamada.php';
             $status = $value['status'];
             $id_funcionario = $value['funcionario_id'];
             $id_func_respondeu = $value['func_respondeu_id'];
-            $data_previsão = $value['data_previsao'];
+            $data_previsão = data($value['data_previsao']);
             $id_setor = $value['setor_id'];
             $nome_setor = '';
             $res_setor = buscar_setor_id($conexao,$id_setor);
@@ -339,7 +380,7 @@ include_once '../Model/Chamada.php';
             }
             $res_chat_resposta = mostrar_chat_chamada($conexao,$id_chamada,$id_funcionario);
             foreach ($res_chat_resposta as $key => $value) {
-              $data_emissao = $value['data'];
+              $data_emissao = data($value['data']);
             }
 
             $res_chat= buscar_chat($conexao,$id_chamada);
