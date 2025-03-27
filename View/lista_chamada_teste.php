@@ -136,9 +136,9 @@ if (isset($_GET['status'])) {
   <div class="col-sm-2">
     <div class="form-group">
      <label for="exampleInputEmail1">Status</label>
-          <input type="hidden" class="form-control" name="setor_id" id="setor_id" value="<?php echo $setor_id; ?>">
+          <input type="hidden" class="form-control" name="setor_id" id="setor_id" value="<?php echo $setor_id; ?>" >
 
-     <select class="form-control" name="status" id="status">
+     <select class="form-control" name="status" id="status" onchange="listar_chamados(this.value)">
          <option value="todos">Escolha o status</option>
          <option value="esperando_resposta">Novos Chamados</option>
          <option value="em_andamento">Em Andamento</option>

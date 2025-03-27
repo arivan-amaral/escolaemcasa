@@ -1826,9 +1826,10 @@ function ver_resolvidos(setor_id) {
 
 
 
-function listar_chamados(setor_id,status) {
+function listar_chamados(status) {
  
   var result = document.getElementById("tabela_chamados");
+  var setor_id = document.getElementById("setor_id").value;
   var xmlreq = CriaRequest();
   result.innerHTML="";
   result.innerHTML = "<center><img src='imagens/carregando.gif'></center>";
