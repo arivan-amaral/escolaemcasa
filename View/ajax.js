@@ -1828,16 +1828,26 @@ function ver_resolvidos(setor_id) {
 
 function listar_chamados() {
  
-  var status = document.getElementById("status").value;
   var result = document.getElementById("tabela_chamados");
+ 
+  var status = document.getElementById("status").value;
   var setor_id = document.getElementById("setor_id").value;
+  var escola = document.getElementById("escola").value;
+  var data_inicial = document.getElementById("data_inicial").value;
+  var data_final = document.getElementById("data_final").value;
+  var pesquisa = document.getElementById("pesquisa").value;
+
+var url = "setor_id=" + setor_id + "&status=" + status + 
+          "&escola=" + escola + "&data_inicial=" + data_inicial + 
+          "&data_final=" + data_final + "&pesquisa=" + pesquisa;
+
   var xmlreq = CriaRequest();
   result.innerHTML="";
   result.innerHTML = "<center><img src='imagens/carregando.gif'></center>";
 
   xmlreq.open(
     "GET",
-    "../Controller/Listar_chamados.php?setor_id=" + setor_id+"&status="+status,
+    "../Controller/Listar_chamados.php?"+url,
     true
   );
 

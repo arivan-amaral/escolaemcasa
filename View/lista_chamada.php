@@ -65,7 +65,32 @@ if (isset($_GET['status'])) {
 <script src="ajax.js?<?php echo rand(); ?>"></script>
 
 
+<script>
+    function filtrarTabela() {
+        const filtro = document.getElementById("filtroInput").value.toLowerCase();
+        const tabela = document.getElementById("minhaTabela");
+        const linhas = tabela.getElementsByTagName("tr");
 
+        for (let i = 1; i < linhas.length; i++) { // começa em 1 para ignorar o cabeçalho
+            let linha = linhas[i];
+            let colunas = linha.getElementsByTagName("td");
+            let linhaVisivel = false;
+
+            for (let j = 0; j < colunas.length; j++) {
+                if (colunas[j].innerText.toLowerCase().includes(filtro)) {
+                    linhaVisivel = true;
+                    break;
+                }
+            }
+
+            if (linhaVisivel) {
+                linha.style.display = ""; // mostra a linha
+            } else {
+                linha.style.display = "none"; // esconde a linha
+            }
+        }
+    }
+</script>
 <div class="content-wrapper" >
 
   <!-- Content Header (Page header) -->
@@ -215,7 +240,8 @@ if (isset($_GET['status'])) {
 
 
 <div class='card-body'>
-  <table class='table table-bordered'>
+     <input type="text" id="filtroInput" onkeyup="filtrarTabela()" placeholder="Digite para filtrar...">
+  <table class='table table-bordered' id="minhaTabela">
     <thead>
        <tr>
          <th style="text-align: center;">Status</th>
