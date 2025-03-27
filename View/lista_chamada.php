@@ -177,7 +177,8 @@ if (isset($_GET['status'])) {
 
       <div class="col-sm-10">
         <div class="form-group">
-         <label for="exampleInputEmail1">Pesquisa</label>
+         <label for="exampleInputEmail1">Pesquisa</label> 
+         <p>Escola,Data,Responsável,Tipo de solicitação ou Status</p>
          <input type="text" class="form-control" name="pesquisa" id="filtroInput" onkeyup="filtrarTabela()" placeholder="Digite para filtrar...">
         </div>
       </div>
