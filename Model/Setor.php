@@ -29,7 +29,7 @@ function buscar_setor($conexao){
 }
 
 function buscar_setor_funcionario($conexao,$funcionario_id){
-   $result = $conexao->query("SELECT * FROM relacao_setor_funcionario where funcionario_id = $funcionario_id ");
+   $result = $conexao->query("SELECT * FROM relacao_setor_funcionario where funcionario_id = $funcionario_id ORDER BY setor_id asc");
     return $result;
 
 }
