@@ -139,8 +139,7 @@ include_once "alertas.php";
                           </div>
                           <div class="card-body">
                             <textarea rows="5" style="height: 280px; width: 600px;" name="descricao" id="descricao"
-                           required="">
-                            </textarea>
+                           required=""></textarea>
                           </div>
                         </div>
 
@@ -240,8 +239,9 @@ include_once "alertas.php";
     var descricao =  document.getElementById("descricao").value;
     var setor =  document.getElementById("setor").value;
     var funcionario =  document.getElementById("funcionario").value;
+    var tipo_solicitacao =  document.getElementById("tipo_solicitacao").value;
 
-    if (descricao=="" || setor=="") {
+    if (descricao=="" || setor=="" || tipo_solicitacao=="") {
         Swal.fire('Preencha os campos obrigatorios!', '', 'info');
         
       
