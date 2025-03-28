@@ -276,7 +276,8 @@ setTimeout('dia_doservidor_publico();',3000);
                 foreach ($res_setor as $key => $value) {
                   $id_setor = $value['id'];
                   $nome = $value['nome'];
-                 /*//------------------------Verificar Atrasos-------------------
+                
+                //------------------------Verificar Atrasos-------------------
                   $res_atualizar_chamado = buscar_chamada($conexao,$setor_id);
                   foreach ($res_atualizar_chamado as $key => $value) {
                     $id_chamado = $value['id'];
@@ -306,7 +307,7 @@ setTimeout('dia_doservidor_publico();',3000);
 
                       }
                   }
-                  */
+                  
                   $res_atualizar_chamado = buscar_chamada_em_andamento($conexao,$setor_id);
                   foreach ($res_atualizar_chamado as $key => $value) {
                     $id_chamado = $value['id'];

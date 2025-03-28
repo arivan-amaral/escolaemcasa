@@ -9,7 +9,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
 include_once '../Model/Setor.php';
 
 try {
-    $result="";
+    $result="<option></option>";
     
     $setor_id = $_GET['setor_id'];
     $res_tipos=buscar_tipo_solicitacao($conexao,$setor_id);

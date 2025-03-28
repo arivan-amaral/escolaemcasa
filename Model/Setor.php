@@ -1,5 +1,10 @@
 <?php  
 
+function todos_setores_nao_supervisionado($conexao){
+   $result = $conexao->query("SELECT * FROM setor  where supervisionado =0 ORDER BY nome asc");
+    return $result;
+
+}
 function todos_setores($conexao){
    $result = $conexao->query("SELECT * FROM setor ORDER BY nome asc");
     return $result;
