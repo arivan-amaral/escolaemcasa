@@ -123,7 +123,7 @@ include_once "alertas.php";
                       </div>
                       <div class="form-group">
                        <label for="exampleInputEmail1" id="titulo_solicitacao">Tipo de Socilitação</label>
-                       <select class="form-control"  id="tipo_solicitacao" name="tipo_solicitacao">
+                       <select class="form-control"  id="tipo_solicitacao" name="tipo_solicitacao" required>
                         
                        </select> 
                       </div>
