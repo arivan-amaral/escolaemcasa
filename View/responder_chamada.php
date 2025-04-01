@@ -33,7 +33,8 @@ include_once "../Model/Conexao_".$usuariobd.".php";
   foreach ($res_nome_funcionario as $key => $value) {
     $nome_gerente=$value['nome'];
   }
-  $id_chamada=$_POST['id_chamada'];
+  $id_chamada=$_REQUEST['id_chamada'];
+  $setor_id=$_REQUEST['setor_id'];
 
   
 
@@ -536,7 +537,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
       "<input type='hidden' name='id_chamado' id='id_chamado' value='<?php echo $id_chamada ?>'>"+
       "<textarea type='text' class='form-control' rows='6' name='resposta' id='resposta' required=''></textarea><br>"+
       "<div onclick='carregando();'>"+
-      "<button type='submit' class='btn btn-block btn-primary'>Responder</button>"+
+      "<button type='submit' class='btn btn-block btn-primary'>Responder.</button>"+
       "</div>"+
     "</form>";
   }
