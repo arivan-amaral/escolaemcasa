@@ -276,7 +276,7 @@ if ($setor_id==14) {
 
                        
 
-                          <a href="#" class="btn btn-block btn-warning" >Transferir </button>
+                          <a href="#" class="btn btn-block btn-warning" >Transferir </a>
                         
 <?php 
 }
