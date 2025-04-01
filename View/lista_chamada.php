@@ -331,6 +331,8 @@ if (isset($_GET['status'])) {
                     
                        $result.= "<form method='POST' action='responder_chamada.php'  target='_blank'>
                         <input type='hidden' name='id_chamada' id='id_chamada' value='$id_chamada'>
+                        <input type='hidden' name='setor_id' id=' setor_id' value='$setor_id'>
+
                         <button class='btn btn-success'>Responder</button>
                       </form>";
                     }else{
