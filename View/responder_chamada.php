@@ -239,7 +239,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
 if ($setor_id==14) {
   ?>
           <div class="form-group">
-                       <label for="exampleInputEmail1">Setor a enviar</label>
+                       <label for="exampleInputEmail1">Setor a transferir</label>
                        <select class="form-control"  id="setor" name="setor" onchange="javascript:mostraTipo(this);" required>
                         <option></option>
                         <?php 
@@ -271,6 +271,13 @@ if ($setor_id==14) {
                          ?>
                        </select> 
                       </div>
+
+
+
+                       
+
+                          <a href="#" class="btn btn-block btn-warning" >Transferir </button>
+                        
 <?php 
 }
  ?>
