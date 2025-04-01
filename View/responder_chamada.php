@@ -233,6 +233,51 @@ include_once "../Model/Conexao_".$usuariobd.".php";
                           <button type="submit" class="btn btn-block btn-primary" >Responder</button>
                         </div>
                       </form>
+
+
+<?php 
+if ($setor_id==14) {
+  ?>
+          <div class="form-group">
+                       <label for="exampleInputEmail1">Setor a enviar</label>
+                       <select class="form-control"  id="setor" name="setor" onchange="javascript:mostraTipo(this);" required>
+                        <option></option>
+                        <?php 
+                          $res_setores=todos_setores_nao_supervisionado($conexao);
+                          foreach ($res_setores as $key => $value) {
+                            $setor_id = $value['id'];
+                            $setor_nome = $value['nome'];
+                            echo "<option value='$setor_id'>$setor_nome</option>";
+                          }
+                         ?>
+                       </select> 
+                      </div>
+                      
+
+                      <div class="form-group">
+                       <label for="exampleInputEmail1" id="titulo_solicitacao">Tipo de Socilitação</label>
+                       <select class="form-control"  id="tipo_solicitacao" name="tipo_solicitacao" required>
+                        <?php 
+
+                        
+                        $setor_id = $_REQUEST['setor_id'];
+                        $res_tipos=buscar_tipo_solicitacao($conexao,$setor_id);
+                        foreach ($res_tipos as $key => $value) {
+                        $id = $value['id'];
+                        $tipo_nome = $value['nome'];
+                        echo "<option value='$id'>$tipo_nome</option>";
+                        }
+                        
+                         ?>
+                       </select> 
+                      </div>
+<?php 
+}
+ ?>
+
+
+
+
                     <?php }else{ ?>
                        <div>
                       <h6><b>Mensagem:</b></h6>
