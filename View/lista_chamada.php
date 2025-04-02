@@ -211,7 +211,7 @@ if (isset($_GET['status'])) {
 
         $result = "";
           // $res_resolvidos =listar_chamados($conexao,$setor_id, $status); 
-
+ 
               foreach ($res_resolvidos as $key => $value) {
                 $id_chamada = $value['id'];
                 $status = $value['status'];
