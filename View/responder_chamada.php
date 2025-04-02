@@ -239,10 +239,10 @@ include_once "../Model/Conexao_".$usuariobd.".php";
 if ($setor_id==14) {
   ?>
   <form action="../Controller/Transferir_chamado.php" method="GET">
-  <input type="text" id="id_chamada_transferir" value="<?php echo $id_chamada; ?>">
+  <input type="text" name="id_chamada_transferir" value="<?php echo $id_chamada; ?>">
           <div class="form-group">
                        <label for="exampleInputEmail1">Setor a transferir</label>
-                       <select class="form-control"  id="setor_transferir" name="setor" onchange="javascript:mostraTipo(this);" required>
+                       <select class="form-control"  id="setor_transferir" name="setor_transferir" onchange="javascript:mostraTipo(this);" required>
                         <option></option>
                         <?php 
                           $res_setores=todos_setores($conexao);
