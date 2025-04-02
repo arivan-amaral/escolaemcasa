@@ -15,12 +15,14 @@ try {
  
     $conexao->exec("UPDATE chamada SET setor_id=$setor_id, status='esperando_resposta', tipo_solicitacao= $tipo_solicitacao_transferir where id=$chamada_id");
     $_SESSION['status']=1;
+     header("location:../View/lista_chamada.php?setor=14&status=esperando_resposta");
+
     
 } catch (Exception $exc) {
     $_SESSION['status']=0;
     echo "$ex exec: UPDATE chamada SET setor_id=$setor_id, status='esperando_resposta', tipo_solicitacao= $tipo_solicitacao_transferir where id=$chamada_id";
 
-    // header("location:../View/lista_chamada.php?setor=14&status=esperando_resposta");
+    header("location:../View/lista_chamada.php?setor=14&status=esperando_resposta");
 
 }
 ?>
