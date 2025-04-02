@@ -258,7 +258,7 @@ if ($setor_id==14) {
 
                       <div class="form-group">
                        <label for="exampleInputEmail1" id="titulo_solicitacao">Tipo de Socilitação</label>
-                       <select class="form-control"  id="tipo_solicitacao_transferir" name="tipo_solicitacao" required>
+                       <select class="form-control"  id="tipo_solicitacao_transferir" name="tipo_solicitacao_transferir" required>
                         <?php 
 
                         
