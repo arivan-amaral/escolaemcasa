@@ -260,6 +260,18 @@ tipo_solicitacao_chamada.setor_id= chamada.setor_id AND
 tipo_solicitacao_chamada.funcionario_id =$funcionario_id AND
 chamada.setor_id=$setor_id and chamada.status LIKE 'em_andamento'  GROUP BY chamada.id
 ORDER BY `chamada`.`id` ASC;");
+   echo "SELECT 
+      chamada.id,
+chamada.status,
+chamada.funcionario_id,
+chamada.tipo_solicitacao,
+chamada.func_respondeu_id
+ FROM chamada, relacao_setor_funcionario,tipo_solicitacao_chamada where
+relacao_setor_funcionario.setor_id = chamada.setor_id and 
+tipo_solicitacao_chamada.setor_id= chamada.setor_id AND
+tipo_solicitacao_chamada.funcionario_id =$funcionario_id AND
+chamada.setor_id=$setor_id and chamada.status LIKE 'em_andamento'  GROUP BY chamada.id
+ORDER BY `chamada`.`id` ASC;";
     return $result;
 
 }
