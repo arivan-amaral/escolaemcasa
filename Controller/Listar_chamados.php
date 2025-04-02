@@ -19,11 +19,20 @@ $data_final = $_GET['data_final'];
 $pesquisa = $_GET['pesquisa'];
 
 
+  $idfuncionario=$_SESSION['idfuncionario'];
+
+
+
 
 
 
     $result = "";
-      $res_resolvidos =listar_chamados($conexao,$setor, $status); 
+     if ($setor ==1) {
+          $res_resolvidos =listar_chamados_por_usuario($conexao,$setor_id, $status,$idfuncionario );
+        }else{
+          $res_resolvidos =listar_chamados($conexao,$setor_id, $status); 
+        }
+      // $res_resolvidos =listar_chamados($conexao,$setor, $status); 
 
           foreach ($res_resolvidos as $key => $value) {
             $id_chamada = $value['id'];
