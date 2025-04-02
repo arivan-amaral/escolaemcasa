@@ -18,8 +18,9 @@ try {
     
 } catch (Exception $exc) {
     $_SESSION['status']=0;
+    echo "$exc";
 
-    header("location:../View/lista_chamada.php?setor=14&status=esperando_resposta");
+    // header("location:../View/lista_chamada.php?setor=14&status=esperando_resposta");
 
 }
 ?>
