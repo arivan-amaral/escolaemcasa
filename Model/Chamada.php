@@ -257,7 +257,7 @@ function listar_chamados_por_usuario($conexao,$setor_id, $status,$funcionario_id
 
  FROM chamada, tipo_solicitacao_chamada WHERE 
 chamada.tipo_solicitacao = tipo_solicitacao_chamada.id AND
- chamada.setor_id=$setor_id AND chamada.status='$status'
+ chamada.setor_id=$setor_id AND chamada.status='$status' AND
  
  tipo_solicitacao_chamada.funcionario_id =$funcionario_id");
 
