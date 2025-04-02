@@ -28,7 +28,7 @@ $pesquisa = $_GET['pesquisa'];
 
     $result = "";
      if ($setor ==1) {
-          $res_resolvidos =listar_chamados_por_usuario($conexao,$setor_id, $status,$idfuncionario );
+          $res_resolvidos =listar_chamados_por_usuario($conexao,$setor, $status,$idfuncionario );
         }else{
           $res_resolvidos =listar_chamados($conexao,$setor_id, $status); 
         }
