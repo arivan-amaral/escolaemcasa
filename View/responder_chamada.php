@@ -239,7 +239,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
 if ($setor_id==14) {
   ?>
   <form action="../Controller/Transferir_chamado.php" method="GET">
-  <input type="text" name="id_chamada_transferir" value="<?php echo $id_chamada; ?>">
+  <input type="hidden" name="id_chamada_transferir" value="<?php echo $id_chamada; ?>">
           <div class="form-group">
                        <label for="exampleInputEmail1">Setor a transferir</label>
                        <select class="form-control"  id="setor_transferir" name="setor_transferir" onchange="javascript:mostraTipo(this);" required>
@@ -305,7 +305,7 @@ if ($setor_id==14) {
 if ($setor_id==14) {
   ?>
   <form action="../Controller/Transferir_chamado.php" method="GET">
-  <input type="text" name="id_chamada_transferir" value="<?php echo $id_chamada; ?>">
+  <input type="hidden" name="id_chamada_transferir" value="<?php echo $id_chamada; ?>">
           <div class="form-group">
                        <label for="exampleInputEmail1">Setor a transferir</label>
                        <select class="form-control"  id="setor_transferir" name="setor_transferir" onchange="javascript:mostraTipo(this);" required>
