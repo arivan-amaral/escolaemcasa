@@ -243,7 +243,7 @@ if ($setor_id==14) {
           <div class="form-group">
                        <label for="exampleInputEmail1">Setor a transferir</label>
                        <select class="form-control"  id="setor_transferir" name="setor_transferir" onchange="javascript:mostraTipo(this);" required>
-                        <option></option>
+                        <!-- <option></option> -->
                         <?php 
                           $res_setores=todos_setores($conexao);
                           foreach ($res_setores as $key => $value) {

@@ -10,7 +10,7 @@ include_once '../Model/Setor.php';
 
 try {
     $chamada_id=$_GET['id_chamada_transferir'];
-    $setor_transferir=$_GET['setor_transferir'];
+    $setor_id=$_GET['setor_transferir'];
     $tipo_solicitacao_transferir=$_GET['tipo_solicitacao_transferir'];
  
     $conexao->exec("UPDATE chamada SET setor_id=$setor_id, status='esperando_resposta', tipo_solicitacao= $tipo_solicitacao_transferir where id=$chamada_id");
