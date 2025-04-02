@@ -137,6 +137,36 @@ function pesquisa_registro_ligacao() {
   xmlreq.send(null);
 }
 
+
+function transferir_chamado() {
+  var xmlreq = CriaRequest();
+  // var result = document.getElementById("resultado");
+  var id_chamada_transferir = document.getElementById("id_chamada_transferir").value;
+
+  var setor_transferir = document.getElementById("setor_transferir").value;
+  var tipo_solicitacao_transferir = document.getElementById("tipo_solicitacao_transferir").value;
+
+  var url =
+    "id_chamada_transferir=" + id_chamada_transferir + "&setor_transferir=" + setor_transferir + "&tipo_solicitacao_transferir=" + tipo_solicitacao_transferir;
+  // alert();
+  // result.innerHTML = "<center><img src='imagens/carregando.gif'></center>";
+  xmlreq.open(
+    "GET",
+    "../Controller/Transferir_chamado.php?" + url,
+    true
+  );
+  xmlreq.onreadystatechange = function () {
+    if (xmlreq.readyState == 4) {
+      if (xmlreq.status == 200) {
+       
+      } else {
+        alert("Erro desconhecido, verifique sua conexão com a internet");
+      }
+    }
+  };
+  xmlreq.send(null);
+}
+
 // function aumenta_limite_pag(novolimite){
 //     console.log("teste"+novolimite);
 //      var limite_antigo = document.getElementById('limite_antigo');

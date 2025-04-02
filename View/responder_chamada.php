@@ -238,12 +238,13 @@ include_once "../Model/Conexao_".$usuariobd.".php";
 <?php 
 if ($setor_id==14) {
   ?>
+  <input type="text" id="id_chamada_transferir" value="<?php echo $id_chamada; ?>">
           <div class="form-group">
                        <label for="exampleInputEmail1">Setor a transferir</label>
-                       <select class="form-control"  id="setor" name="setor" onchange="javascript:mostraTipo(this);" required>
+                       <select class="form-control"  id="setor_transferir" name="setor" onchange="javascript:mostraTipo(this);" required>
                         <option></option>
                         <?php 
-                          $res_setores=todos_setores_nao_supervisionado($conexao);
+                          $res_setores=todos_setores($conexao);
                           foreach ($res_setores as $key => $value) {
                             $setor_id = $value['id'];
                             $setor_nome = $value['nome'];
@@ -256,7 +257,7 @@ if ($setor_id==14) {
 
                       <div class="form-group">
                        <label for="exampleInputEmail1" id="titulo_solicitacao">Tipo de Socilitação</label>
-                       <select class="form-control"  id="tipo_solicitacao" name="tipo_solicitacao" required>
+                       <select class="form-control"  id="tipo_solicitacao_transferir" name="tipo_solicitacao" required>
                         <?php 
 
                         
@@ -276,7 +277,7 @@ if ($setor_id==14) {
 
                        
 
-                          <a href="#" class="btn btn-block btn-warning" >Transferir </a>
+                          <a href="#" class="btn btn-block btn-warning" onclick="transferir_chamado();" >Transferir </a>
                         
 <?php 
 }
