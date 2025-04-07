@@ -262,8 +262,8 @@ if ($setor_id==14) {
                         <?php 
 
                         
-                        $setor_id = $_REQUEST['setor_id'];
-                        $res_tipos=buscar_tipo_solicitacao($conexao,$setor_id);
+                        // $setor_id = $_REQUEST['setor_id'];
+                        $res_tipos=buscar_tipo_solicitacao($conexao,1);
                         foreach ($res_tipos as $key => $value) {
                         $id = $value['id'];
                         $tipo_nome = $value['nome'];
