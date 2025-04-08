@@ -43,11 +43,13 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
     }else if ($idserie >= 8 && $idserie <=11) {
        $tipo_ensino="Ensino Fundamental - Anos Finais";
 
-    }else if ($idserie > 11){
-      $tipo_ensino="Educação de Jovens e Adultos";
+    }else if ($idserie > 11 && $idserie < 17){
+  $tipo_ensino="Educação de Jovens e Adultos";
 
-    }
+}else if ($idserie == 17){
+  $tipo_ensino="Atendimento Educacional Especializado";
 
+}
 ?>
 
 
