@@ -628,6 +628,59 @@ if ($setor_id==14) {
                               <button class='btn btn-block btn-warning'onclick='questionar_chamada($id_chamada,$id_funci_respondeu,$id_setor);' >
                                Questionar
                               </button>";
+
+
+
+                              <?php 
+                              if ($setor_id==14) {
+                                ?>
+                                <form action="../Controller/Transferir_chamado.php" method="GET">
+                                <input type="hidden" name="id_chamada_transferir" value="<?php echo $id_chamada; ?>">
+                                        <div class="form-group">
+                                                     <label for="exampleInputEmail1">Setor a transferir</label>
+                                                     <select class="form-control"  id="setor_transferir" name="setor_transferir" onchange="javascript:mostraTipo(this);" required>
+                                                      <!-- <option></option> -->
+                                                      <?php 
+                                                        $res_setores=todos_setores($conexao);
+                                                        foreach ($res_setores as $key => $value) {
+                                                          $setor_id = $value['id'];
+                                                          $setor_nome = $value['nome'];
+                                                          echo "<option value='$setor_id'>$setor_nome</option>";
+                                                        }
+                                                       ?>
+                                                     </select> 
+                                                    </div>
+                                                    
+
+                                                    <div class="form-group">
+                                                     <label for="exampleInputEmail1" id="titulo_solicitacao">Tipo de Socilitação</label>
+                                                     <select class="form-control"  id="tipo_solicitacao_transferir" name="tipo_solicitacao_transferir" required>
+
+                                                      <?php 
+                                                       echo "<option></option>";
+
+                                                      
+                                                      $setor_id = $_REQUEST['setor_id'];
+                                                      $res_tipos=buscar_tipo_solicitacao($conexao,$setor_id);
+                                                      foreach ($res_tipos as $key => $value) {
+                                                      $id = $value['id'];
+                                                      $tipo_nome = $value['nome'];
+                                                      echo "<option value='$id'>$tipo_nome</option>";
+                                                      }
+                                                      
+                                                       ?>
+                                                     </select> 
+                                                    </div>
+
+
+
+                                                     <!-- onclick="transferir_chamado();" -->
+                              <button class="btn btn-block btn-warning"  >Transferir </button>
+                              </form>
+                                                      
+                              <?php 
+                              }
+                               ?>
                           }                     
                         echo"</div>";
                     ?>
