@@ -109,7 +109,7 @@ include_once "alertas.php";
                       <input type="hidden" name="funcionario" id="funcionario" value="<?php echo  $idFuncionario ?>">
                       <div class="form-group">
                        <label for="exampleInputEmail1">Setor a enviar</label>
-                       <select class="form-control"  id="setor" name="setor" onchange="javascript:mostraTipo(this);" required>
+                       <select class="form-control"  id="setor" name="setor" onchange="javascript:mostraTipo(this);">
                         <option></option>
                         <?php 
                           $res_setores=todos_setores_nao_supervisionado($conexao);
