@@ -109,7 +109,7 @@ include_once "alertas.php";
                       <input type="hidden" name="funcionario" id="funcionario" value="<?php echo  $idFuncionario ?>">
                       <div class="form-group">
                        <label for="exampleInputEmail1">Setor a enviar</label>
-                       <select class="form-control"  id="setor" name="setor" onchange="javascript:mostraTipo(this);">
+                       <select class="form-control"  id="setor" name="setor" onchange="javascript:mostraTipo(this);" required>
                         <option></option>
                         <?php 
                           $res_setores=todos_setores_nao_supervisionado($conexao);
@@ -123,7 +123,7 @@ include_once "alertas.php";
                       </div>
                       <div class="form-group">
                        <label for="exampleInputEmail1" id="titulo_solicitacao">Tipo de Socilitação</label>
-                       <select class="form-control"  id="tipo_solicitacao" name="tipo_solicitacao" required>
+                       <select class="form-control"  id="tipo_solicitacao" name="tipo_solicitacao">
                         
                        </select> 
                       </div>
