@@ -1,6 +1,8 @@
 <?php 
-session_start();
 set_time_limit(0);
+session_start();
+session_write_close();
+
 if (!isset($_SESSION['usuariobd'])) {
     // Se não estiver definida, atribui o valor padrão 'educ_lem'
     $_SESSION['usuariobd'] = 'educ_lem';

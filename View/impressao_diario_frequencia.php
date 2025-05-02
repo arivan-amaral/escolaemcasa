@@ -1,6 +1,8 @@
 <?php 
 set_time_limit(0);
 session_start();
+session_write_close();
+
 include_once"../Controller/Conversao.php";
 include_once"../Model/Conexao.php";
 include_once"../Model/Coordenador.php";
