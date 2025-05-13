@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $destino = __DIR__ . '/laudo/' . $novoNome;
 
             if (move_uploaded_file($nomeTemp, $destino)) {
-                salvar_arquivo_laudo($conexao,$idRegistro,$nomeTemp);
+                salvar_arquivo_laudo($conexao,$idRegistro,$novoNome);
 
                 echo "PDF do registro $idRegistro enviado com sucesso!";
             } else {

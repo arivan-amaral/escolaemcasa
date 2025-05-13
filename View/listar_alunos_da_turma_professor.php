@@ -277,7 +277,7 @@ $url_get=$array_url[1];
           
             
           echo"<td> "; 
-if ($laudo !="") {
+if ($nome_laudo !="") {
   echo "<a href='laudo/$nome_laudo'>Ver Arquivo</a>";
 }
 
