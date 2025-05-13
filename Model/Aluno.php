@@ -1,6 +1,14 @@
 <?php
 
 
+function salvar_arquivo_laudo($conexao,$idaluno,$nome_arquivo){
+    $sql=$conexao->prepare("UPDATE aluno  SET laudo=? WHERE idaluno = ?");
+
+   $sql->execute(array($nome_arquivo,$idaluno));
+
+}
+
+
 
 function buscar_notas_trimestre_boletim($conexao,$idescola,$idturma,$iddisciplina,$ano_letivo, $periodo_id, $idaluno){
 
@@ -1914,6 +1922,8 @@ aluno.aluno_transpublico=1 and aluno.idaluno IN($idaluno)  ORDER by aluno.nome A
 function listar_aluno_da_turma_ata_resultado_final($conexao,$turma_id,$escola_id,$ano_letivo){
   $res=$conexao->query("
     SELECT
+    aluno.laudo, 
+    
     aluno.aluno_transpublico, 
     aluno.linha_transporte,
     aluno.imagem_carteirinha_transporte ,
@@ -1983,6 +1993,7 @@ ORDER BY aluno.nome ASC");
 function listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,$turma_id,$escola_id,$ano_letivo){
   $res=$conexao->query("
     SELECT 
+    aluno.laudo, 
     aluno.aluno_transpublico, 
     aluno.linha_transporte,
     aluno.imagem_carteirinha_transporte,

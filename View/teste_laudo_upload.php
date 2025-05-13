@@ -1,4 +1,6 @@
 <?php
+include_once '../Model/Conexao.php';
+include_once '../Model/Aluno.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $idRegistro = $_POST['id_registro'] ?? 'desconhecido';
 
@@ -11,6 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $destino = __DIR__ . '/laudo/' . $novoNome;
 
             if (move_uploaded_file($nomeTemp, $destino)) {
+                salvar_arquivo_laudo($conexao,$idRegistro,$nomeTemp);
+                
                 echo "PDF do registro $idRegistro enviado com sucesso!";
             } else {
                 echo "Erro ao mover o arquivo.";
