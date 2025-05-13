@@ -1,6 +1,8 @@
 <?php
 include_once '../Model/Conexao.php';
 include_once '../Model/Aluno.php';
+try {
+    
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $idRegistro = $_POST['id_registro'] ?? 'desconhecido';
 
@@ -14,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if (move_uploaded_file($nomeTemp, $destino)) {
                 salvar_arquivo_laudo($conexao,$idRegistro,$nomeTemp);
-                
+
                 echo "PDF do registro $idRegistro enviado com sucesso!";
             } else {
                 echo "Erro ao mover o arquivo.";
@@ -27,5 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 } else {
     echo "Requisição inválida.";
+}
+} catch (Exception $e) {
+    echo "$e";
 }
 ?>
