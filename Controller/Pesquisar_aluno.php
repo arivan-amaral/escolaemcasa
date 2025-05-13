@@ -567,6 +567,9 @@ where
                           
                           
                              <li>
+                             <!-- 
+                                  Removendo a opção de edição de dados dos alunos por parte dos professores 13/05/2025
+
                              <form name='editar$idaluno' action='editar-aluno.php' method='post' >
                                  <input type='hidden' name='aluno_id' value='$idaluno'>
                                  <input type='hidden' name='escola_id' value='$idescola'>
@@ -575,7 +578,8 @@ where
                                  <input type='hidden' name='nome_aluno' value='$nome_aluno'>
                                  <button type='submit' class='dropdown-item'  >Editar dados</button>
                            
-                             </form>
+                             </form> -->
+
                              </li>
 
 

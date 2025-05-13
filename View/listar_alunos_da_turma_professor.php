@@ -152,8 +152,8 @@ $url_get=$array_url[1];
 
             <th style="width: 50px">Situação Matrícula</th>
             <th>Dados do Aluno</th>
-            <th>Resultado</th>
-            <th>Opção</th>
+            <th>Arquivo</th>
+            <th>Enviar pdf laudo </th>
           </tr>
         </thead>
 
@@ -275,170 +275,17 @@ $url_get=$array_url[1];
 
           
             
-          echo"<td> ";   
-##############################################################
-            $iddisciplina="";
-            $media_aprovacao=false;
-            $aprovacao_conselho=false;
-            $res_disc=listar_disciplina_para_ata($conexao,$idescola,$idturma,$ano_letivo);
-            foreach ($res_disc as $key => $value) {
-             $media_aprovacao=false;
-             $aprovacao_conselho=false;
-             $iddisciplina=$value['iddisciplina'];
-
-             if ($idserie>3) {
-
-               $result_nota_aula1=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,1,$ano_letivo);
-
-               $nota_tri_1=0;
-               $nota_av3_1='';
-               $nota_rp_1='';
-               foreach ($result_nota_aula1 as $key => $value) {
-                 if ($value['avaliacao']!='RP') {
-                   $nota_tri_1+=$value['nota'];
-                 }
-        // _______________________________
-                 if ($value['avaliacao']=='av3') {
-                   $nota_av3_1=$value['nota'];
-                 }
-                 if ($value['avaliacao']=='RP') {
-                   $nota_rp_1=$value['nota'];
-                 }
-               }
-
-               $nota_tri_1=calculos_media_notas($nota_tri_1,$nota_rp_1,$nota_av3_1);
-
-// ****************************************************
-
-               $result_nota_aula2=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,2,$ano_letivo);
-
-               $nota_tri_2=0;
-               $nota_av3_2='';
-               $nota_rp_2='';
-               foreach ($result_nota_aula2 as $key => $value) {
-
-                if ($value['avaliacao']!='RP') {
-                  $nota_tri_2+=$value['nota'];
+          echo"<td> "; 
 
 
-                }
-
-                if ($value['avaliacao']=='av3') {
-                  $nota_av3_2=$value['nota'];
-
-                }
-
-                if ($value['avaliacao']=='RP') {
-                  $nota_rp_2=$value['nota'];
-
-
-                }
-
-              }
-
-              $nota_tri_2=calculos_media_notas($nota_tri_2,$nota_rp_2,$nota_av3_2);
-
-// ****************************************************
-              $result_nota_aula3=pesquisa_nota_por_periodo($conexao,$idescola,$idturma,$iddisciplina,$idaluno,3,$ano_letivo);
-
-
-              $nota_tri_3=0;
-              $nota_av3_3='';
-              $nota_rp_3='';
-              foreach ($result_nota_aula3 as $key => $value) {
-
-               if ($value['avaliacao']!='RP') {
-                 $nota_tri_3+=$value['nota'];
-               }
-       //______________________________
-
-               if ($value['avaliacao']=='av3') {
-                 $nota_av3_3=$value['nota'];
-               }
-
-               if ($value['avaliacao']=='RP') {
-                 $nota_rp_3=$value['nota'];
-               }
-
-             }
-
-             $nota_tri_3=calculos_media_notas($nota_tri_3,$nota_rp_3,$nota_av3_3);
-
-             $media=($nota_tri_3+$nota_tri_2+$nota_tri_1)/3;
-//arivan
-             $media=number_format($media, 1, '.', ',');
-             if ($media >= 5) {
- // echo number_format($media, 1, '.', ',');
-              $media_aprovacao=true;
-
-            }else{
-              $res_conselho=buscar_aprovar_concelho($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$ano_letivo);
-              $conta_aprovado=count($res_conselho);
-
-              if ($conta_aprovado>0 ) {
-                $media_conselho=number_format('5', 1, '.', ',');
-      //echo "<b>$media_conselho</b>";
-
-                $media_aprovacao=false;
-                $aprovacao_conselho=true;
-              }else{
-     // echo number_format($media, 1, '.', ',');
-                $media_aprovacao=false;
-
-              }
-
-            }
-
-}//se serie for menor que 3
-else{
-  $media_aprovacao=true;
-
-}
-
-}// foreche disciplinas
-
-
-$resultado="";
-if($idserie<3){
-  echo "<b style='color: green;'>Apr</b>";
-  $resultado="Apr";
-
-}elseif ($aprovacao_conselho == true) {
-  echo "<b style='color: blue;'>Apc </b>";
-  $resultado="Apc";
-
-}elseif ($media_aprovacao == true) {
-  echo "<b style='color: green;'>Apr</b>";
-  $resultado="Apr";
-
-}elseif ($media_aprovacao == false){
-  $media_aprovacao=false;
-  echo "<b style='color: red;'>Rep</b>";
-  $resultado="Rep";
-
-}
-
-
-echo "<input type='hidden' name='nome_aluno$idaluno' value='$nome_aluno'>";
-echo "<input type='hidden' name='matricula_aluno$idaluno' value='$matricula_aluno'>";
-echo "<input type='hidden' name='resultado$idaluno' value='$resultado'>";
-echo "<input type='hidden' name='idturma' value='$idturma'>";
-echo "<input type='hidden' name='url_get' value='$url_get'>";
-
-##############################################################
-echo"</td> ";
+          echo"</td> ";
 
 
 
 echo"<td> ";
  
 
-if ($status_aluno =='Ativo') {
-  echo "ATIVO"; 
-}else{
-  echo"DESATIVADO";
-}
-
+ 
 
 echo"</td>
 
