@@ -282,12 +282,13 @@ $url_get=$array_url[1];
 
 
 
-echo"<td> ";
+echo"<td> 
  
 
+        <td><button class='btn btn-primary btn-enviar' data-id='$idaluno' data-nome='$nome_aluno'>Enviar PDF</button></td>
  
 
-echo"</td>
+</td>
 
 </tr>
 ";
@@ -326,7 +327,93 @@ echo"</td>
 
 </div>
 
- 
+
+
+<div class="modal fade" id="uploadModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <form id="formUpload" class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Aluno:</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body">
+        <p id="nome_destinatario" class="fw-bold text-primary"></p> <!-- Nome do destinatário -->
+        <input type="file" name="arquivo_pdf" id="arquivo_pdf" accept="application/pdf" class="form-control mb-2" required>
+        <input type="hidden" id="id_registro" name="id_registro" value="<?php echo $idaluno; ?>">
+        <div id="mensagem" class="text-center text-info small"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success">Enviar</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+ <script>
+   // Função para abrir o modal com os dados do cliente
+   document.querySelectorAll('.btn-enviar').forEach(botao => {
+     botao.addEventListener('click', function () {
+       const id = this.getAttribute('data-id');
+       const nome = this.getAttribute('data-nome');
+
+       document.getElementById('id_registro').value = id;
+       document.getElementById('arquivo_pdf').value = '';
+       document.getElementById('mensagem').textContent = '';
+       document.getElementById('nome_destinatario').textContent = `Enviando laudo do aluno: ${nome}`;
+
+       // Atualiza o título da aba do navegador
+       document.title = `Aluno: ${nome}`;
+
+       // Abre o modal
+       const modal = new bootstrap.Modal(document.getElementById('uploadModal'));
+       modal.show();
+     });
+   });
+
+   // Restaura o título original ao fechar o modal
+   document.getElementById('uploadModal').addEventListener('hidden.bs.modal', function () {
+     document.title = 'Upload PDF por Registro';
+   });
+
+   // Envia o formulário via AJAX
+   document.getElementById('formUpload').addEventListener('submit', async function (e) {
+     e.preventDefault();
+
+     const arquivo = document.getElementById('arquivo_pdf').files[0];
+     const id = document.getElementById('id_registro').value;
+     const mensagem = document.getElementById('mensagem');
+
+     if (!arquivo) {
+       mensagem.textContent = 'Selecione um PDF.';
+       return;
+     }
+
+     const formData = new FormData();
+     formData.append('arquivo_pdf', arquivo);
+     formData.append('id_registro', id);
+
+     mensagem.textContent = 'Enviando...';
+
+     try {
+       const response = await fetch('teste_laudo_upload.php', {
+         method: 'POST',
+         body: formData
+       });
+
+       const texto = await response.text();
+       mensagem.textContent = texto;
+
+       // Fechar o modal após o envio bem-sucedido
+            const modal = bootstrap.Modal.getInstance(document.getElementById('uploadModal'));
+            modal.hide();
+     } catch (error) {
+       mensagem.textContent = 'Erro ao enviar o arquivo.';
+     }
+   });
+ </script>
+
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <?php 
 
