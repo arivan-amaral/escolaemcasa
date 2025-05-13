@@ -408,7 +408,7 @@ echo"<td>
             const modal = bootstrap.Modal.getInstance(document.getElementById('uploadModal'));
             modal.hide();
      } catch (error) {
-       mensagem.textContent = 'Erro ao enviar o arquivo.';
+       mensagem.textContent = 'Erro ao enviar o arquivo.'+ error;
      }
    });
  </script>
