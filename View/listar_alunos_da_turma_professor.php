@@ -405,8 +405,8 @@ echo"<td>
        mensagem.textContent = texto;
 
        // Fechar o modal após o envio bem-sucedido
-            const modal = bootstrap.Modal.getInstance(document.getElementById('uploadModal'));
-            modal.hide();
+           $('#uploadModal').modal('hide');
+
      } catch (error) {
        mensagem.textContent = 'Erro ao enviar o arquivo.'+ error;
      }
