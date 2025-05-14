@@ -13,7 +13,8 @@ try {
     
 $result="";
 $ano_letivo=$_SESSION['ano_letivo'];
- ;
+session_write_close();
+ 
 $escola=$_GET['escola_id'];
 $turma=$_GET['turma_id'];
 $data_inicial=$_GET['data_inicial']." 00:00:00";

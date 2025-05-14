@@ -1,15 +1,17 @@
 <?php
 set_time_limit(500);
 session_start();
-
+ 
 if (!isset($_SESSION['usuariobd'])) {
     $_SESSION['usuariobd'] = 'educ_lem'; // Define um valor padrão se não estiver definido
 }
-
+$ano_letivo = $_SESSION['ano_letivo'];
 $usuariobd = $_SESSION['usuariobd'];
 include_once "../Model/Conexao_" . $usuariobd . ".php";
 include_once '../Model/Aluno.php';
 include_once "Conversao.php";
+
+session_write_close();
 
 function obterDatasEntrePeriodo($dataInicial, $dataFinal) {
     // Converte as datas para o formato do objeto DateTime
@@ -38,7 +40,6 @@ function obterDatasEntrePeriodo($dataInicial, $dataFinal) {
 
 // Parâmetros da URL
 $quantidade_falta = $_GET['falta'];
-$ano_letivo = $_SESSION['ano_letivo'];
 $idturma = $_GET['idturma'];
 $campo_turma = $_GET['idturma'];
 $delimit = ",";
