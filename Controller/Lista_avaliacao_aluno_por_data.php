@@ -14,6 +14,9 @@ include_once "../Model/Conexao_".$usuariobd.".php";
     
  
 try {
+$ano_letivo=$_SESSION['ano_letivo'];
+$ano_letivo_vigente=$_SESSION['ano_letivo_vigente'];
+
 
     $professor_id=$_SESSION['idfuncionario'];
 
@@ -27,6 +30,9 @@ try {
     $tamanho=4;
     $ano_letivo=$_SESSION['ano_letivo'];
 
+    session_write_close();
+
+
     $res_seg=$conexao->query("SELECT * FROM turma WHERE idturma=$idturma LIMIT 1");
     $seguimento='';
     foreach ($res_seg as $key => $value) {
@@ -34,7 +40,7 @@ try {
       // code...
     }
     
-    $res_periodo=listar_data_por_periodo($conexao,$_SESSION['ano_letivo'], $idperiodo);
+    $res_periodo=listar_data_por_periodo($conexao,$ano_letivo, $idperiodo);
     $data_inicio_periodo='';
     $data_fim_periodo='';
  
@@ -42,16 +48,7 @@ try {
        $data_inicio_periodo=$value['inicio'];
         $data_fim_periodo=$value['fim'];
     }
- // if ($avaliacao=='av1') {
- //    $tamanho=3;
- // }elseif ($avaliacao=='av2') {
- //    $tamanho=3;
- // }elseif ($avaliacao=='av3') {
- //    $tamanho=4;
- // }elseif ($avaliacao=='RP') {
- //    $tamanho=4;
- // }
-
+ 
       $result="
 
        <div class='card-body'>
@@ -67,10 +64,10 @@ try {
 
                // $res_alunos= listar_aluno_da_turma_professor($conexao,$idturma,$idescola);
                 
-                if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
-                  $res_alunos=listar_aluno_da_turma_avaliacao($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+                if ($ano_letivo==$ano_letivo_vigente) {
+                  $res_alunos=listar_aluno_da_turma_avaliacao($conexao,$idturma,$idescola,$ano_letivo);
                 }else{
-                  $res_alunos=listar_aluno_da_turma_avaliacao_matricula_concluida($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+                  $res_alunos=listar_aluno_da_turma_avaliacao_matricula_concluida($conexao,$idturma,$idescola,$ano_letivo);
                  }
 
                $cont=1;
@@ -87,18 +84,7 @@ try {
                     $data_matricula=$value['data_matricula'];
                       $matricula_aluno=$value['matricula'];
 
-                // $res_movimentacao=pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula_aluno,$_SESSION['ano_letivo']);
-
-                // $procedimento="";
-                //  $datasaida="";
-                // foreach ($res_movimentacao as $key => $value) {
-                //     $datasaida=($value['datasaida']);
-                //     $procedimento=$value['procedimento'];
-                //     if ($datasaida!="") {
-                //       $datasaida=converte_data($datasaida);
-                //     }
-                // }
-
+        
                     if ($cont%2==0) {
                       $cor_tabela='table-primary';
                     }else {
@@ -454,7 +440,7 @@ try {
        // disciplina_id =$iddisciplina  and status=1  and parecer_disciplina.ano=$ano_letivo";
              
                 $res_par=$conexao->query("SELECT * FROM parecer_disciplina WHERE disciplina_id =$iddisciplina  and status=1  and parecer_disciplina.ano=$ano_letivo ");
-                 //$res_par=listar_parecer_disciplina($conexao,$iddisciplina,$idturma,$_SESSION['ano_letivo']);
+                
                   foreach ($res_par as $key => $value) {
                     
                     $idparecer=$value['id'];

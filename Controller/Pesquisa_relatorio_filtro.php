@@ -5,6 +5,8 @@ if (!isset($_SESSION['usuariobd'])) {
     $_SESSION['usuariobd'] = 'educ_lem';
 }
 $usuariobd=$_SESSION['usuariobd'];
+$ano_letivo = $_SESSION['ano_letivo'];
+
 include_once "../Model/Conexao_".$usuariobd.".php";
 include_once '../Model/Escola.php';
 include_once '../Model/Coordenador.php';
@@ -80,7 +82,6 @@ try {
     $titulo = $_GET['titulo'];
   
     $sexo = $_GET['sexo'];
-    $ano_letivo = $_SESSION['ano_letivo'];
 
     $titulos = explode ("-", $titulo);
     $parametros = explode ("-", $parametro);
@@ -108,7 +109,7 @@ try {
             </thead>
             <tbody>";
             
-               $res=relatorio_turmas_inicial_coordenador($conexao,$escola,$_SESSION['ano_letivo']);
+               $res=relatorio_turmas_inicial_coordenador($conexao,$escola,$ano_letivo);
              
 
         

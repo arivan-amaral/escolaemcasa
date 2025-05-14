@@ -9,12 +9,15 @@ include_once "../Model/Conexao_".$usuariobd.".php";
     include("../Model/Coordenador.php");
     include("../Model/Escola.php");
     
+$idfuncionario = $_SESSION["idfuncionario"];
+$nivel_acesso_id = $_SESSION["nivel_acesso_id"];
+session_write_close();
+
 
 try {
 
 $pesquisa = $_GET["pesquisa"];
 
-$idfuncionario = $_SESSION["idfuncionario"];
 $res_turma=escola_associada($conexao,$idfuncionario); 
 $array_escolas_coordenador=array();
 $conta_escolas=0;
@@ -54,7 +57,7 @@ foreach ($result as $key => $value) {
   $descricao_funcao=$value['descricao_funcao'];
   $senha="";
 
-  if ($_SESSION["nivel_acesso_id"]==100) {
+  if ($nivel_acesso_id==100) {
     $senha=$value['senha'];
   }
   $nome=$value['nome'];
