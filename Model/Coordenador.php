@@ -135,7 +135,7 @@
 		relacionamento_turma_escola.escola_id= escola.idescola and 
 		relacionamento_turma_escola.turma_id = turma.idturma AND
 		turma.serie_id = serie.id AND
-		  turma.serie_id !=17 AND
+		  --turma.serie_id !=17 AND
 		
 		relacionamento_turma_escola.ano='$ano_letivo' AND
 
