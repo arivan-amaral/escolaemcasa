@@ -27,11 +27,11 @@ $pesquisa = $_GET['pesquisa'];
 
 
     $result = "";
-     // if ($setor ==1) {
+     if ($setor ==1) {
           $res_resolvidos =listar_chamados_por_usuario($conexao,$setor, $status,$idfuncionario );
-        // }else if(){
-        //   $res_resolvidos =listar_chamados($conexao,$setor_id, $status); 
-        // }
+        }else{
+          $res_resolvidos =listar_chamados($conexao,$setor, $status); 
+        }
       // $res_resolvidos =listar_chamados($conexao,$setor, $status); 
 
           foreach ($res_resolvidos as $key => $value) {
