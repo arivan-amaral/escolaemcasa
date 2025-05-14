@@ -420,6 +420,15 @@ $conta++;
   <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
   line-height:normal'><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
   mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+  color:black;mso-fareast-language:PT-BR'><b>ASSINATURA DO PROFESSOR</b><o:p></o:p></span></p> <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+  line-height:normal'><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+  mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+  color:black;mso-fareast-language:PT-BR'><b>ASSINATURA DO PROFESSOR</b><o:p></o:p></span></p> <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+  line-height:normal'><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+  mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
+  color:black;mso-fareast-language:PT-BR'><b>ASSINATURA DO PROFESSOR</b><o:p></o:p></span></p> <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
+  line-height:normal'><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
+  mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Calibri;
   color:black;mso-fareast-language:PT-BR'><b>ASSINATURA DO PROFESSOR</b><o:p></o:p></span></p>
   </td>
  </tr>
