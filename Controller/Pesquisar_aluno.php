@@ -465,12 +465,13 @@ where
                             
                  
                           
-                        if (in_array($idescola, $array_escolas_coordenador) ) { 
 
+                        // if (in_array($idescola, $array_escolas_coordenador) ) { //22/05/2025
                      
                 
 
-
+                        if ($idserie <17) {
+                       
                           $result.="
                             <li>
                             <form name='declaracao$idaluno' action='declaracao_auxilio_brasil.php' method='post' target='_blank'>
@@ -520,24 +521,10 @@ where
                                 <button type='submit' class='dropdown-item'  >Declaração Frequência</button>
                          
                             </form>
-                            </li>";                        
-
-                            // $result.="
-                            // <li>
-                            // <form name='declaracao$idaluno' action='declaracao.php' method='post' target='_blank'>
-                            //     <input type='hidden' name='ano_letivo_post' value='$calendario_ano'>
-                            //     <input type='hidden' name='aluno_id' value='$idaluno'>
-                            //     <input type='hidden' name='escola_id' value='$idescola'>
-                            //     <input type='hidden' name='turma_id' value='$idturma'>
-                            //     <input type='hidden' name='serie_id' value='$idserie'>
-                            //     <input type='hidden' name='nome_aluno' value='$nome_aluno'>
-                            //     <button type='submit' class='dropdown-item'  >Declarações Bolsa Família</button>
-                         
-                            // </form>
-                            // </li>";
-                          
+                            </li>";                                              
+                        }
                            
-                          }
+                          // } //22/05/2025
                             
                            $result.="
                         </ul>
