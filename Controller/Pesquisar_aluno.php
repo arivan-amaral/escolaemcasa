@@ -135,6 +135,8 @@ where
                                             JOIN escola ON ecidade_matricula.turma_escola = escola.idescola
                                           WHERE 
                                             ecidade_matricula.aluno_id = $idaluno 
+                                            AND turma.serie_id < 17 
+                                            
                                             AND ecidade_matricula.matricula_situacao not in('CANCELADO')  
                                           ORDER BY 
                                             ecidade_matricula.matricula_codigo ASC, 
@@ -146,6 +148,7 @@ where
       $result_ecidade_matricula=$result_ecidade_matricula->fetchAll();
   
       $detectar_ultimo=count($result_ecidade_matricula);
+
        $nome_turma='';
       $nome_escola='';
       $idescola=1;
@@ -298,14 +301,6 @@ where
                             ";
 
 
-
-
-                            ###############################################################     
-                             
-
-
-
-
                       }else{
                             $result.="
                               <b class='text-black'> Matr.: ($matricula) $nome_escola -</b> 
@@ -318,6 +313,7 @@ where
                           $result.="<a href='boletim_individual.php?idescola=$idescola&idturma=$idturma&idserie=$idserie&idaluno=$idaluno&numero=$numero&nome_aluno=$nome_aluno&nome_escola=$nome_escola&nome_turma=$nome_turma&ano=$calendario_ano'  target='_blank' class='text-primary'  > Boletim  $calendario_ano  </a> <br> ";
 
                       }
+
         $conta_ano_cursado++;
                
       }//final => foreach ($result_ecidade_matricula as $key => $value) {
@@ -520,21 +516,7 @@ where
                                 <button type='submit' class='dropdown-item'  >Declaração Frequência</button>
                          
                             </form>
-                            </li>";                        
-
-                            // $result.="
-                            // <li>
-                            // <form name='declaracao$idaluno' action='declaracao.php' method='post' target='_blank'>
-                            //     <input type='hidden' name='ano_letivo_post' value='$calendario_ano'>
-                            //     <input type='hidden' name='aluno_id' value='$idaluno'>
-                            //     <input type='hidden' name='escola_id' value='$idescola'>
-                            //     <input type='hidden' name='turma_id' value='$idturma'>
-                            //     <input type='hidden' name='serie_id' value='$idserie'>
-                            //     <input type='hidden' name='nome_aluno' value='$nome_aluno'>
-                            //     <button type='submit' class='dropdown-item'  >Declarações Bolsa Família</button>
-                         
-                            // </form>
-                            // </li>";
+                            </li>";                      
                           
                            
                           }

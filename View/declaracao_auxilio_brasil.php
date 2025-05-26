@@ -20,12 +20,12 @@ include_once '../Model/Coordenador.php';
 include_once '../Model/Aluno.php';
 include_once '../Model/Estado.php';
 
-$aluno_id=$_POST['aluno_id'];
-$escola_id=$_POST['escola_id'];
-$turma_id=$_POST['turma_id'];
-$serie_id=$_POST['serie_id'];
-$nome_aluno=$_POST['nome_aluno'];
-$tipo_declaracao=$_POST['tipo_declaracao'];
+$aluno_id=$_REQUEST['aluno_id'];
+$escola_id=$_REQUEST['escola_id'];
+$turma_id=$_REQUEST['turma_id'];
+$serie_id=$_REQUEST['serie_id'];
+$nome_aluno=$_REQUEST['nome_aluno'];
+$tipo_declaracao=$_REQUEST['tipo_declaracao'];
 $idfuncionario=$_SESSION['idfuncionario'];
 // $ano=2021;
 $ano_letivo=$_SESSION['ano_letivo'];
