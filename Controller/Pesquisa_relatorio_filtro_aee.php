@@ -191,13 +191,14 @@ try {
                 if ($parametros[$i]=='laudo') {
                         $laudo = $value[$parametros[$i]];
                         if ($laudo !="") {
-                           $html.="<br> <a href='laudo/$laudo'>Ver laudo</a>";
-                        }else{
-                           $html.="<br> <a href='#'>Sem laudo</a>";
-
+                           $html.="<br> <a href='laudo/$laudo'  target='_blank'>Ver laudo</a>";
                         }
                 }
+                $html.="$dado<td>";
 
+
+                $html.="<td>";
+             
                 $html.="$dado</td>";
 
                 array_push($dados_excel,array($conta,$dado));
@@ -235,19 +236,19 @@ try {
                 $dado = $value[$parametros[$i]];
             }
         
-        $html.="<td> $dado";
+ $html.="<td>";
+                if ($parametros[$i]=='laudo') {
+                        $laudo = $value[$parametros[$i]];
+                        if ($laudo !="") {
+                           $html.="<br> <a href='laudo/$laudo' target='_blank'>Ver laudo</a>";
+                        }
+                }
+                $html.="$dado<td>";
 
-            if ($parametros[$i]=='laudo') {
-                    $laudo = $value[$parametros[$i]];
-                    if ($laudo !="") {
-                       $html.="<br> <a href='laudo/$laudo'>Ver laudo</a>";
-                    }else{
-                       $html.="<br> <a href='#'>Sem laudo</a>";
 
-                    }
-            }
-
-        $html.="</td>";
+                $html.="<td>";
+             
+                $html.="$dado</td>";
 
             array_push($dados_excel,array($conta,$dado));
           }
