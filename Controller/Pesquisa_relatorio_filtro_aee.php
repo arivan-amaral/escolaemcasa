@@ -187,7 +187,18 @@ try {
                 }else{
                     $dado = $value[$parametros[$i]];
                 }
-                $html.="<td>$dado</td>";
+                $html.="<td>";
+                if ($parametros[$i]=='laudo') {
+                        $laudo = $value[$parametros[$i]];
+                        if ($laudo !="") {
+                           $html.="<br> <a href='laudo/$laudo'>Ver laudo</a>";
+                        }else{
+                           $html.="<br> <a href='#'>Sem laudo</a>";
+
+                        }
+                }
+
+                $html.="$dado</td>";
 
                 array_push($dados_excel,array($conta,$dado));
 
