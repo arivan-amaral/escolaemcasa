@@ -181,21 +181,20 @@ try {
                 $html.="<td>$conta</td>";
 
                for ($i=0; $i < $tamanho; $i++) { 
-                if ($parametros[$i]=='data_nascimento') {
-                        $dado = converte_data($value[$parametros[$i]]);
+           
 
-                }else{
-                    $dado = $value[$parametros[$i]];
-                }
-                $html.="<td>";
-                if ($parametros[$i]=='laudo') {
-                        $laudo = $value[$parametros[$i]];
-                        if ($laudo !="") {
-                           $html.="<br> <a href='laudo/$laudo'  target='_blank'>Ver laudo</a>";
-                        }
-                }
-                $html.="</td>";
+           if ($parametros[$i]=='laudo') {
+                   $laudo = $value[$parametros[$i]];
+                   if ($laudo !="") {
+                      $dado.="<a href='laudo/$laudo'  target='_blank'>Ver laudo</a>";
+                   }
+                           
+                   }else if ($parametros[$i]=='data_nascimento') {
+                           $dado = converte_data($value[$parametros[$i]]);
 
+                   }else{
+                       $dado = $value[$parametros[$i]];
+                   }
 
                 $html.="<td>$dado</td>";
 
@@ -224,27 +223,26 @@ try {
 
 
             $html.="<td>$conta</td>";
-            $laudo='';
 
           for ($i=0; $i < $tamanho; $i++) { 
-            if ($parametros[$i]=='data_nascimento') {
+}
+             
+            if ($parametros[$i]=='laudo') {
+                    $laudo = $value[$parametros[$i]];
+                    if ($laudo !="") {
+                       $dado.="<a href='laudo/$laudo'  target='_blank'>Ver laudo</a>";
+                    }
+
+            }else if ($parametros[$i]=='data_nascimento') {
                     $dado = converte_data($value[$parametros[$i]]);
 
             }else{
                 $dado = $value[$parametros[$i]];
             }
-            $html.="<td>";
-            if ($parametros[$i]=='laudo') {
-                    $laudo = $value[$parametros[$i]];
-                    if ($laudo !="") {
-                       $html.="<br> <a href='laudo/$laudo'  target='_blank'>Ver laudo</a>";
-                    }
-            }
-            $html.="</td>";
+
 
 
             $html.="<td>$dado</td>";
-
             array_push($dados_excel,array($conta,$dado));
           }
 
