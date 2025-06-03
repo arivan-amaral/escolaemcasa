@@ -1482,19 +1482,19 @@ if (excel !=1) {
     }
   }
 
-  if (tamanho_uniforme.checked) {
-    if (contador == 0) {
-      texto += cep_endereco.value;
-      titulo += "tamanho_uniforme";
-      parametro += "tamanho_uniforme";
-      contador++;
-    } else {
-      texto += "," + tamanho_uniforme.value;
-      titulo += "-tamanho_uniforme";
-      parametro += "-tamanho_uniforme";
-      contador++;
-    }
-  }
+  // if (tamanho_uniforme.checked) {
+  //   if (contador == 0) {
+  //     texto += cep_endereco.value;
+  //     titulo += "tamanho_uniforme";
+  //     parametro += "tamanho_uniforme";
+  //     contador++;
+  //   } else {
+  //     texto += "," + tamanho_uniforme.value;
+  //     titulo += "-tamanho_uniforme";
+  //     parametro += "-tamanho_uniforme";
+  //     contador++;
+  //   }
+  // }
 
   if (nome_escola.checked) {
     if (contador == 0) {
