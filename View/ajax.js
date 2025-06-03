@@ -1480,6 +1480,19 @@ if (excel !=1) {
       parametro += "-raca_aluno";
       contador++;
     }
+  }  
+  if (laudo.checked) {
+    if (contador == 0) {
+      texto += laudo.value;
+      titulo += "laudo";
+      parametro += "laudo";
+      contador++;
+    } else {
+      texto += "," + laudo.value;
+      titulo += "-laudo";
+      parametro += "-laudo";
+      contador++;
+    }
   }
 
   // if (tamanho_uniforme.checked) {

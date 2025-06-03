@@ -214,6 +214,7 @@ try {
 
 
             $html.="<td>$conta</td>";
+            $laudo='';
 
           for ($i=0; $i < $tamanho; $i++) { 
             if ($parametros[$i]=='data_nascimento') {
@@ -222,7 +223,18 @@ try {
             }else{
                 $dado = $value[$parametros[$i]];
             }
-            $html.="<td>$dado</td>";
+        
+        $html.="<td> $dado";
+
+            if ($parametros[$i]=='laudo') {
+                    $laudo = $value[$parametros[$i]];
+                    if ($laudo !="") {
+                       $html.="<br> <a href='laudo/$laudo'>Ver laudo</a>";
+                    }
+            }
+
+        $html.="</td>";
+
             array_push($dados_excel,array($conta,$dado));
           }
 
