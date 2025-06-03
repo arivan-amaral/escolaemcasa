@@ -1277,6 +1277,17 @@ function pesquisa_relatorio_filtros_aee() {
     var excel = 0;
   }
 
+if (excel !=1) {
+  console.log("excel ==0");
+
+}else if(excel ==1){
+  console.log("excel ==1");
+
+
+}else{
+  console.log("else ultimo");
+}
+
   var contador = 0;
   var texto = "";
   var parametro = "";
@@ -1301,9 +1312,7 @@ function pesquisa_relatorio_filtros_aee() {
   var data_nascimento = document.getElementById("data_nascimento");
   var cpf_aluno = document.getElementById("cpf");
   var ordenacao = document.getElementById("ordenacao");
-  var necessidade_especial = document.getElementById(
-    "necessidade_especial"
-  ).value;
+  var necessidade_especial = document.getElementById("necessidade_especial").value;
 
   var operacao_cond_idade = document.getElementById(
     "operacao_cond_idade"
@@ -1546,7 +1555,7 @@ function pesquisa_relatorio_filtros_aee() {
       title: "ATENÇÃO",
       text: "Marque pelo menos um campo para pesquisar",
     });
-  } else if (excel != 1) {
+  } else if (excel !=1) {
     result.innerHTML = "<img src='imagens/carregando2.gif'>";
     var xmlreq = CriaRequest();
     xmlreq.open(

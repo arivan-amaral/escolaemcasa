@@ -342,7 +342,7 @@ include_once "../Model/Conexao_".$usuariobd.".php";
         <div class="col-sm-4">
           <br>
           <div class="checkbox-btn">
-            <input type="checkbox" id="baixar_excel" name="baixar_excel">
+            <input type="checkbox" id="baixar_excel" name="baixar_excel" value=0>
             <label for="baixar_excel" class="checkbox-btn__label">
               <span class="checkbox-btn__image"></span>
               Baixar em excel?
