@@ -230,6 +230,9 @@ try {
                     $laudo = $value[$parametros[$i]];
                     if ($laudo !="") {
                        $html.="<br> <a href='laudo/$laudo'>Ver laudo</a>";
+                    }else{
+                       $html.="<br> <a href='#'>Sem laudo</a>";
+
                     }
             }
 
