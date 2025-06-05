@@ -4,33 +4,33 @@
     	$conexao->exec("UPDATE funcionario set status=0 WHERE idfuncionario=$idfuncionario ");
     
 	}	
-// 	function listar_nome_professor_turma($conexao,$idaluno,$ano_letivo) {
-//     	        $res=$conexao->query("SELECT 
-//   disciplina.nome_disciplina,
-//   disciplina.iddisciplina,
-//   funcionario.nome as nome_professor,
-//   turma.idturma,
-//   turma.nome_turma
-// FROM ministrada
-// JOIN disciplina ON ministrada.disciplina_id = disciplina.iddisciplina
-// JOIN funcionario ON ministrada.professor_id = funcionario.idfuncionario
-// JOIN turma ON ministrada.turma_id = turma.idturma
-// JOIN ano_letivo ON turma.idturma = ano_letivo.turma_id
-// JOIN aluno ON ano_letivo.aluno_id = aluno.idaluno
-// JOIN escola ON ministrada.escola_id = escola.idescola AND escola.idescola = ano_letivo.escola_id
-// WHERE 
-//   ministrada.ano = $ano_letivo AND
-//   aluno.idaluno = $idaluno AND
-//   ano_letivo.status_letivo = 1
-// GROUP BY 
-//   disciplina.iddisciplina,
-//   disciplina.nome_disciplina,
-//   funcionario.nome,
-//   turma.idturma,
-//   turma.nome_turma
-// ORDER BY 
-//   disciplina.nome_disciplina ASC
-// ");
+	function listar_nome_professor_turma($conexao,$idaluno,$ano_letivo) {
+    	        $res=$conexao->query("SELECT 
+  disciplina.nome_disciplina,
+  disciplina.iddisciplina,
+  funcionario.nome as nome_professor,
+  turma.idturma,
+  turma.nome_turma
+FROM ministrada
+JOIN disciplina ON ministrada.disciplina_id = disciplina.iddisciplina
+JOIN funcionario ON ministrada.professor_id = funcionario.idfuncionario
+JOIN turma ON ministrada.turma_id = turma.idturma
+JOIN ano_letivo ON turma.idturma = ano_letivo.turma_id
+JOIN aluno ON ano_letivo.aluno_id = aluno.idaluno
+JOIN escola ON ministrada.escola_id = escola.idescola AND escola.idescola = ano_letivo.escola_id
+WHERE 
+  ministrada.ano = $ano_letivo AND
+  aluno.idaluno = $idaluno AND
+  ano_letivo.status_letivo = 1
+GROUP BY 
+  disciplina.iddisciplina,
+  disciplina.nome_disciplina,
+  funcionario.nome,
+  turma.idturma,
+  turma.nome_turma
+ORDER BY 
+  disciplina.nome_disciplina ASC
+");
 
     	return $res;  
 
