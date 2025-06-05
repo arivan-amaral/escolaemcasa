@@ -1997,7 +1997,7 @@ function listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,
     aluno.aluno_transpublico, 
     aluno.linha_transporte,
     aluno.imagem_carteirinha_transporte,
-    UPPER(aluno.nome) AS nome_aluno
+    UPPER(aluno.nome) AS nome_aluno,
     UPPER(aluno.nome_identificacao_social) AS nome_identificacao_social,
 
     aluno.sexo,
