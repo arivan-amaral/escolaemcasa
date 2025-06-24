@@ -221,12 +221,12 @@ try {
       ####################### ALUNO ####################################
 
       if ($login_aluno>0){
-          $_SESSION['status']=0;
-          $_SESSION['mensagem']="ACESSO DE ALUNO ESTÁ SUSPENSO TEMPORARIAMENTE!";
+          $_SESSION['status']=1;
+          $_SESSION['mensagem']="Bem vindo";
 
-        // header("Location:../View/aluno.php");
-         unset($_SESSION['cargo']); //não loga se estiver com isso
-          header("Location:../View/");
+         header("Location:../View/aluno.php");
+         // unset($_SESSION['cargo']); //não loga se estiver com isso
+         //  header("Location:../View/");
           exit();
 
       }else if ($login_professor>0){
