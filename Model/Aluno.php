@@ -156,9 +156,9 @@ function excluir_questao($conexao, $idaluno) {
 // return $res->fetchAll();
 // }
 function verificar_aluno_na_turna_rematricula($conexao,$aluno_id,$calendario_ano){
-$res=$conexao->query("SELECT * FROM ecidade_matricula where 
+$res=$conexao->query("SELECT * FROM ecidade_matricula, turma where 
                     calendario_ano='$calendario_ano' and matricula_ativa='S'  
-                     and aluno_id=$aluno_id ");
+                     and aluno_id=57248 and turma.idturma=ecidade_matricula.turma_id and turma.serie_id !=17 and turma.serie_id !=18;");
 return $res->fetchAll();
 }
 
