@@ -1,5 +1,6 @@
 <?php
-session_start();
+session_start(); 
+session_write_close();
 
 if (!isset($_COOKIE['dia_doservidor_publico2'])) {
   setcookie('dia_doservidor_publico2', 1, (time()+(30*24*3600)));
