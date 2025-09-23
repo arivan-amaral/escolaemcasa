@@ -7,6 +7,7 @@ if (!isset($_SESSION['idfuncionario'])) {
 
   $idcoordenador=$_SESSION['idfuncionario'];
   $idfuncionario=$_SESSION['idfuncionario'];
+  $nivel_acesso_id=$_SESSION["nivel_acesso_id"];
 
 }
 include_once "cabecalho.php";
@@ -203,7 +204,7 @@ if (isset($_GET['status'])) {
     <?php 
 
     try {
-      if ($setor_id==1) {
+      if ($setor_id==1 && $nivel_acesso_id <100 ) {
         $res_resolvidos =listar_chamados_por_usuario($conexao,$setor_id, $status,$idfuncionario );
       }else{
         $res_resolvidos =listar_chamados($conexao,$setor_id, $status); 

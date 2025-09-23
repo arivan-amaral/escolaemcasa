@@ -20,6 +20,8 @@ $pesquisa = $_GET['pesquisa'];
 
 
   $idfuncionario=$_SESSION['idfuncionario'];
+  $nivel_acesso_id=$_SESSION["nivel_acesso_id"];
+
 
 
 
@@ -27,7 +29,7 @@ $pesquisa = $_GET['pesquisa'];
 
 
     $result = "";
-     if ($setor ==1) {
+     if ($setor ==1 && $nivel_acesso_id <100 ) {
           $res_resolvidos =listar_chamados_por_usuario($conexao,$setor, $status,$idfuncionario );
         }else{
           $res_resolvidos =listar_chamados($conexao,$setor, $status); 
