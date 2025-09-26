@@ -246,7 +246,7 @@ try {
           header("Location:../View/coordenador.php");
       }else{
           $_SESSION['status']=0;
-          $_SESSION['mensagem']="Tente novamente!";
+          $_SESSION['mensagem']="USUÁRIO OU SENHA INCORRETOS!";
           header("location:../View/index.php"); 
       }
 
