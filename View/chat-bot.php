@@ -192,10 +192,10 @@ try {
     
 
 // *******************************************************************************************************************************
-// $phone="557799323906";
+// $phone="77998228710";
 
 // $mensagem="Olá, clique nesse link e faça seu pedido https://educalem.com.br/escolaemcasa/View/index.php?phone=$phone";
-// if ($phone=="557799323906" || $phone=="558999714032" || $phone=="557799919774") {
+// if ($phone=="77998228710" || $phone=="558999714032" || $phone=="557799919774") {
 //    enviar_mensagem($conexao,$phone,$mensagem);
 // }
 
