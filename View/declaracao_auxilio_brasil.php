@@ -165,7 +165,7 @@ if ( ($seguimento!='' && $seguimento <3) || $idserie <8 ) {
                 
                       turma.serie_id = serie.id and 
                       ecidade_matricula.aluno_id = $aluno_id and 
---                      ecidade_matricula.turma_id = $turma_id and 
+                      ecidade_matricula.turma_id = $turma_id and 
                       ecidade_matricula.calendario_ano = $ano_letivo and 
                       turma.serie_id !=17 and 
                       ecidade_matricula.turma_id = turma.idturma and 
@@ -183,7 +183,7 @@ if ( ($seguimento!='' && $seguimento <3) || $idserie <8 ) {
                          $nome_serie=$value['nome_serie'];
                          $turno=$value['turno_nome'];
                       }
-
+// ecidade_matricula.turma_id = $turma_id and --tava comentada essa no sql acima
 }
 
 
