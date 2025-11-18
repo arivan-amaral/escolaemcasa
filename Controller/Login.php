@@ -230,15 +230,6 @@ try {
           exit();
 
       }else if ($login_professor>0){
-
-
-         $_SESSION['mensagem']="O sistema está em manutenção para usuários do perfil Professor. Em breve, sua conexão será restabelecida.";
-         unset($_SESSION['cargo']); //não loga se estiver com isso
-         header("Location:../View/");
-         exit();
-
-
-         
           $_SESSION['status']=1;
           header("Location:../View/professor.php");
 
