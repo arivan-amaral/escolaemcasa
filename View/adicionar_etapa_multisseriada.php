@@ -175,7 +175,7 @@ try {
     </aside>
 <script type="text/javascript">
     
-    // --- FUNÇÃO JAVASCRIPT/AJAX PARA ATUALIZAR A ETAPA ---
+    // --- FUNÇÃO JAVASCRIPT/AJAX PARA ATUALIZAR A ETAPA (REVISADA) ---
     function atualizarEtapa(selectElement) {
         const novaEtapa = selectElement.value;
         const matriculaCodigo = selectElement.getAttribute('data-matricula');
@@ -188,27 +188,32 @@ try {
 
         statusElement.innerHTML = '<span class="text-info">Atualizando...</span>';
         
+        // 🚨 AJUSTE CRÍTICO: Usando URLSearchParams para codificar os dados corretamente
+        const formData = new URLSearchParams();
+        formData.append('matricula_codigo', matriculaCodigo);
+        formData.append('nova_etapa', novaEtapa);
+        
         // Requisição AJAX usando Fetch API
         fetch('../Controller/Atualizar_etapa.php', {
             method: 'POST',
             headers: {
-                // Indica que os dados estão no formato URL-encoded, que o PHP entende como $_POST
+                // É ESSENCIAL que o Content-Type esteja definido corretamente
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
-            body: `matricula_codigo=${matriculaCodigo}&nova_etapa=${novaEtapa}`
+            // Passa o objeto URLSearchParams como body
+            body: formData 
         })
         .then(response => {
             if (!response.ok) {
                 throw new Error('Falha na resposta do servidor (' + response.status + ').');
             }
-            return response.json(); // Espera JSON do script PHP
+            return response.json(); 
         })
         .then(data => {
             if (data.success) {
                 statusElement.innerHTML = '<span class="text-success">✔ Etapa atualizada!</span>';
                 setTimeout(() => statusElement.innerHTML = '', 3000);
             } else {
-                // Retorno da mensagem de erro do PHP
                 statusElement.innerHTML = `<span class="text-danger">❌ Erro: ${data.message || 'Falha ao atualizar.'}</span>`;
             }
         })
@@ -223,6 +228,10 @@ try {
     function execmascara(){ /* ... código ... */ }
     function mtel(v){ /* ... código ... */ }
 </script>
+
+<?php
+include_once 'rodape.php';
+?>
 
 <?php
 include_once 'rodape.php';
