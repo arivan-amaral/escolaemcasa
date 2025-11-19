@@ -1,10 +1,12 @@
 <?php
-ini_set('display_errors', 0); // Não exibe erros no navegador
+// Configurações de exibição e log de erros
+ini_set('display_errors', 0); // Não exibe erros no navegador (Bom para Produção)
 ini_set('log_errors', 1);     // Garante que os erros sejam registrados em um arquivo de log
 error_reporting(E_ALL);
 
 session_start();
-// Redireciona se a sessão do coordenador não estiver definida
+
+// --- 1. VERIFICAÇÃO DE SESSÃO E VARIÁVEIS INICIAIS ---
 if (!isset($_SESSION['idcoordenador'])) {
     header("location:index.php?status=0");
     exit(); // É importante encerrar a execução após o redirecionamento
@@ -12,26 +14,35 @@ if (!isset($_SESSION['idcoordenador'])) {
     $idcoordenador = $_SESSION['idcoordenador'];
 }
 
+// Inclusões de arquivos do template (Cabeçalho, Menu, etc.)
 include_once "cabecalho.php";
 include_once "alertas.php";
 include_once "barra_horizontal.php";
 include_once 'menu.php';
 include_once '../Controller/Conversao.php'; // Incluindo a classe de conversão
 
-// Define o usuário do banco de dados
+// Define o usuário do banco de dados e inclui a conexão PDO
 $usuariobd = $_SESSION['usuariobd'] ?? 'educ_lem';
 $_SESSION['usuariobd'] = $usuariobd;
 
-include_once "../Model/Conexao_" . $usuariobd . ".php";
-include_once '../Model/Aluno.php'; // Supondo que a função de listagem esteja em Aluno.php ou já foi definida
+// AQUI: Assumimos que este arquivo agora retorna o objeto $pdo
+include_once "../Model/Conexao_" . $usuariobd . ".php"; 
 
-// Pega os parâmetros da URL
-$idturma = $_GET['idturma'] ?? 0;
-$idescola = $_GET['idescola'] ?? 0;
+// Assumindo que a classe Aluno ou a função de listagem está neste arquivo
+// IMPORTANTE: Verifique se as funções listadas abaixo foram atualizadas para PDO!
+include_once '../Model/Aluno.php'; 
 
-// Validação básica para evitar SQL injection se os IDs não forem inteiros (embora o prepared statement seja preferível)
-$idturma = (int)$idturma;
-$idescola = (int)$idescola;
+// Pega e sanitiza os parâmetros da URL
+$idturma = (int)($_GET['idturma'] ?? 0);
+$idescola = (int)($_GET['idescola'] ?? 0);
+
+// Conexão PDO deve estar disponível através da variável $pdo
+// Se o seu arquivo de Conexão não a definir globalmente, você deve ajustá-lo ou passá-la.
+if (!isset($pdo)) {
+    // Tratar erro se a conexão PDO não foi estabelecida
+    error_log("Erro: Conexão PDO não definida após a inclusão.");
+    // Opcional: Redirecionar ou exibir uma mensagem de erro
+}
 
 ?>
 
@@ -73,51 +84,52 @@ $idescola = (int)$idescola;
 
                         <tbody>
                             <?php
-                            // Lógica para determinar qual função de listagem usar (ano letivo vigente ou concluído)
+                            // --- 2. LÓGICA DE EXECUÇÃO DE CONSULTA (AJUSTADA PARA PDO) ---
                             $ano_letivo = $_SESSION['ano_letivo'] ?? date('Y'); // Assume ano atual se não estiver setado
 
+                            // Chama a função de listagem, passando o objeto PDO ($pdo)
                             if (isset($_SESSION['ano_letivo_vigente']) && $ano_letivo == $_SESSION['ano_letivo_vigente']) {
-                                // Assume que esta função é para o ano vigente (e não concluído)
-                                $result = listar_aluno_da_turma_ata_resultado_final($conexao, $idturma, $idescola, $ano_letivo);
+                                // Assume que a função foi atualizada para receber $pdo e retornar um PDOStatement
+                                $stmt = listar_aluno_da_turma_ata_resultado_final($pdo, $idturma, $idescola, $ano_letivo);
                             } else {
-                                // Assume que esta função é para o ano concluído (traz a matrícula concluída)
-                                $result = listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao, $idturma, $idescola, $ano_letivo);
+                                // Assume que a função foi atualizada para receber $pdo e retornar um PDOStatement
+                                $stmt = listar_aluno_da_turma_ata_resultado_final_matricula_concluida($pdo, $idturma, $idescola, $ano_letivo);
                             }
 
-                            // Verifica se há resultados e itera sobre eles
-                            if ($result && $result->num_rows > 0) {
-                                while ($row = $result->fetch_assoc()) {
+                            // Verifica se o resultado é um objeto PDOStatement
+                            if ($stmt && $stmt instanceof PDOStatement) {
+                                // AQUI: Itera sobre os resultados usando PDO::FETCH_ASSOC
+                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                     // Utiliza a classe Conversao para formatar a data
-                                    // Verifique se a classe e método 'data_d_m_a' existem em seu arquivo Conversao.php
                                     $data_nasc_formatada = class_exists('Conversao') && method_exists('Conversao', 'data_d_m_a') 
-                                                           ? Conversao::data_d_m_a($row['data_nascimento']) 
-                                                           : $row['data_nascimento'];
-                            ?>
-                            <tr>
-                                <td style="width: 10px"><?php echo $row['idaluno']; ?></td>
-                                <td>
-                                    <strong><?php echo $row['nome_aluno']; ?></strong>
-                                    <?php 
-                                    // Exibe Nome Social se existir
-                                    if (!empty($row['nome_identificacao_social'])) {
-                                        echo " <br><small>(". $row['nome_identificacao_social'] . ")</small>";
-                                    } 
-                                    ?>
-                                </td>
-                                <td><?php echo $row['matricula']; ?></td>
-                                <td class="d-none d-md-table-cell"><?php echo $data_nasc_formatada; ?></td>
-                                <td><span class="badge bg-primary"><?php echo $row['status_aluno']; ?></span></td>
-                            </tr>
-                            <?php
-                                }
+                                        ? Conversao::data_d_m_a($row['data_nascimento']) 
+                                        : $row['data_nascimento'];
+                                ?>
+                                <tr>
+                                    <td style="width: 10px"><?php echo $row['idaluno']; ?></td>
+                                    <td>
+                                        <strong><?php echo $row['nome_aluno']; ?></strong>
+                                        <?php 
+                                        // Exibe Nome Social se existir
+                                        if (!empty($row['nome_identificacao_social'])) {
+                                            echo " <br><small>(". $row['nome_identificacao_social'] . ")</small>";
+                                        } 
+                                        ?>
+                                    </td>
+                                    <td><?php echo $row['matricula']; ?></td>
+                                    <td class="d-none d-md-table-cell"><?php echo $data_nasc_formatada; ?></td>
+                                    <td><span class="badge bg-primary"><?php echo $row['status_aluno']; ?></span></td>
+                                </tr>
+                                <?php
+                                } // Fim do while
                             } else {
-                                // Mensagem caso não encontre alunos
+                                // Mensagem caso não encontre alunos (ou se a consulta falhar/retornar false)
                             ?>
-                            <tr>
-                                <td colspan="5" class="text-center">Nenhum aluno encontrado para esta turma no ano letivo.</td>
-                            </tr>
+                                <tr>
+                                    <td colspan="5" class="text-center">Nenhum aluno encontrado para esta turma no ano letivo.</td>
+                                </tr>
                             <?php
-                            }
+                            } // Fim do if ($stmt)
                             ?>
                         </tbody>
                     </table>
