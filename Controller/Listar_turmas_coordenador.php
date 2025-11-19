@@ -56,9 +56,9 @@ try {
 
        
 
-      <a   href='coordenador_relatorio_video_aluno.php?idturma=$idturma&nome_turma=$nome_turma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat' target='_blank'>
+      <a   href='adicionar_etapa_multisseriada.php?idturma=$idturma&nome_turma=$nome_turma&idescola=$idescola&idserie=$idserie' class='btn btn-secondary btn-block btn-flat' target='_blank'>
       <i class='fa fa-play'></i> 
-      VER RELATÓRIO DE VÍDEOS DE ALUNO
+      ATUALIZAR ETAPAS
       </a> 
 
 

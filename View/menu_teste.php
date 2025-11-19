@@ -40,7 +40,7 @@
                                             <div class="card text-center">
                                                 <div class="card-body">
                                                     <i class="fas fa-video mb-2"></i>
-                                                    <p>Ver Relatório de Vídeos de Aluno</p>
+                                                    <p>ATUALIZAR ETAPAS</p>
                                                 </div>
                                             </div>
                                         </div>

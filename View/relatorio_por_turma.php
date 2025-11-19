@@ -391,9 +391,9 @@ include_once "../Model/Conexao_".$usuariobd.".php";
                                  </div>
                                 <div id='collapseOne$idturma' class='collapse' data-parent='#accordion' style=''>
                                 <div class='card-body'>
-                                        <a   href='coordenador_relatorio_video_aluno.php?idturma=$idturma&nome_turma=$nome_turma' class='btn btn-outline-warning btn-block btn-flat'>
+                                        <a   href='adicionar_etapa_multisseriada.php?idturma=$idturma&nome_turma=$nome_turma' class='btn btn-outline-warning btn-block btn-flat'>
                                           <i class='fa fa-play'></i> 
-                                            VER RELATÓRIO DE VÍDEOS DE ALUNO
+                                            ATUALIZAR ETAPAS
                                           </a>      
                                     </div>
 
