@@ -1,4 +1,5 @@
 <?php
+include_once"../Model/Conexao.php";
 header('Content-Type: application/json');
 
 // Configuração mínima de erro (pode ser ajustada)
