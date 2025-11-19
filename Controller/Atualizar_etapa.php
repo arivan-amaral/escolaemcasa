@@ -8,6 +8,7 @@ ini_set('log_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
+include_once "../Model/Conexao.php"; // Ajuste o caminho conforme sua estrutura
 
 // Retorna erro se a sessão de BD não puder ser estabelecida
 if (!isset($_SESSION['usuariobd'])) {
@@ -17,7 +18,6 @@ if (!isset($_SESSION['usuariobd'])) {
 
 // Inclui o arquivo de conexão PDO (variável $conexao)
 $usuariobd = $_SESSION['usuariobd'];
-include_once "../../Model/Conexao_" . $usuariobd . ".php"; // Ajuste o caminho conforme sua estrutura
 
 // Verifica a variável $conexao (PDO)
 if (!isset($conexao) || !($conexao instanceof PDO)) {
