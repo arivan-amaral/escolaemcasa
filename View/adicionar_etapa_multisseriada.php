@@ -25,7 +25,7 @@ include_once '../Controller/Conversao.php'; // Incluindo a classe de conversão
 $usuariobd = $_SESSION['usuariobd'] ?? 'educ_lem';
 $_SESSION['usuariobd'] = $usuariobd;
 
-// AQUI: Assumimos que este arquivo agora retorna o objeto $pdo
+// AQUI: Assumimos que este arquivo agora retorna o objeto $conexao
 include_once "../Model/Conexao_" . $usuariobd . ".php"; 
 
 // Assumindo que a classe Aluno ou a função de listagem está neste arquivo
@@ -36,9 +36,9 @@ include_once '../Model/Aluno.php';
 $idturma = (int)($_GET['idturma'] ?? 0);
 $idescola = (int)($_GET['idescola'] ?? 0);
 
-// Conexão PDO deve estar disponível através da variável $pdo
+// Conexão PDO deve estar disponível através da variável $conexao
 // Se o seu arquivo de Conexão não a definir globalmente, você deve ajustá-lo ou passá-la.
-if (!isset($pdo)) {
+if (!isset($conexao)) {
     // Tratar erro se a conexão PDO não foi estabelecida
     error_log("Erro: Conexão PDO não definida após a inclusão.");
     // Opcional: Redirecionar ou exibir uma mensagem de erro
@@ -87,13 +87,13 @@ if (!isset($pdo)) {
                             // --- 2. LÓGICA DE EXECUÇÃO DE CONSULTA (AJUSTADA PARA PDO) ---
                             $ano_letivo = $_SESSION['ano_letivo'] ?? date('Y'); // Assume ano atual se não estiver setado
 
-                            // Chama a função de listagem, passando o objeto PDO ($pdo)
+                            // Chama a função de listagem, passando o objeto PDO ($conexao)
                             if (isset($_SESSION['ano_letivo_vigente']) && $ano_letivo == $_SESSION['ano_letivo_vigente']) {
-                                // Assume que a função foi atualizada para receber $pdo e retornar um PDOStatement
-                                $stmt = listar_aluno_da_turma_ata_resultado_final($pdo, $idturma, $idescola, $ano_letivo);
+                                // Assume que a função foi atualizada para receber $conexao e retornar um PDOStatement
+                                $stmt = listar_aluno_da_turma_ata_resultado_final($conexao, $idturma, $idescola, $ano_letivo);
                             } else {
-                                // Assume que a função foi atualizada para receber $pdo e retornar um PDOStatement
-                                $stmt = listar_aluno_da_turma_ata_resultado_final_matricula_concluida($pdo, $idturma, $idescola, $ano_letivo);
+                                // Assume que a função foi atualizada para receber $conexao e retornar um PDOStatement
+                                $stmt = listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao, $idturma, $idescola, $ano_letivo);
                             }
 
                             // Verifica se o resultado é um objeto PDOStatement
