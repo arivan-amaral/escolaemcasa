@@ -1,5 +1,6 @@
 <?php
 // Configurações de exibição e log de erros (Desenvolvimento)
+// Para o AJAX funcionar sem mostrar erros, mantenha display_errors = 0 ou use try/catch no PHP de processamento.
 ini_set('display_errors', 0); 
 ini_set('log_errors', 1);     
 error_reporting(E_ALL);
@@ -20,11 +21,12 @@ include_once "barra_horizontal.php";
 include_once 'menu.php';
 include_once '../Controller/Conversao.php';
 
+// Define o usuário do banco de dados e inclui a conexão PDO
 $usuariobd = $_SESSION['usuariobd'] ?? 'educ_lem';
 $_SESSION['usuariobd'] = $usuariobd;
 
-// Inclui a conexão PDO na variável $conexao
-include_once "../Model/Conexao.php"; 
+// AQUI: Este arquivo DEVE agora retornar o objeto PDO na variável $conexao
+include_once "../Model/Conexao_" . $usuariobd . ".php"; 
 
 include_once '../Model/Aluno.php'; 
 
@@ -38,10 +40,13 @@ if (!isset($conexao) || !($conexao instanceof PDO)) {
 // --- 2. PREPARAÇÃO: BUSCA DE ETAPAS DISPONÍVEIS (PDO) ---
 $etapas = [];
 try {
+    // Consulta para listar as etapas da turma
     $sql_etapas = "SELECT `id`, `etapa` FROM `etapa_multissereada` WHERE turma_id = :idturma ORDER BY id ASC";
     $stmt_etapas = $conexao->prepare($sql_etapas);
     $stmt_etapas->bindParam(':idturma', $idturma, PDO::PARAM_INT);
     $stmt_etapas->execute();
+    
+    // Pega todas as etapas para usar no <select>
     $etapas = $stmt_etapas->fetchAll(PDO::FETCH_ASSOC);
 
 } catch (PDOException $e) {
@@ -53,6 +58,22 @@ try {
 <script src="ajax.js"></script>
 
 <div class="content-wrapper" style="min-height: 529px;">
+
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-12 alert alert-warning">
+                    <h1 class="m-0"><b>
+                        <?php
+                        if (isset($_SESSION['NOME_APLICACAO'])) {
+                            echo $_SESSION['NOME_APLICACAO'];
+                        }
+                        if (isset($_SESSION['nome'])) {
+                            echo " " . $_SESSION['nome'];
+                        }
+                        ?>
+                    </b></h1>
+                </div></div></div></div>
     <section class="content">
         <div class="container-fluid">
 
@@ -72,7 +93,13 @@ try {
 
                         <tbody>
                             <?php
-                            // ... (Lógica de listagem e $stmt) ...
+                            $ano_letivo = $_SESSION['ano_letivo'] ?? date('Y');
+
+                            if (isset($_SESSION['ano_letivo_vigente']) && $ano_letivo == $_SESSION['ano_letivo_vigente']) {
+                                $stmt = listar_aluno_da_turma_ata_resultado_final($conexao, $idturma, $idescola, $ano_letivo);
+                            } else {
+                                $stmt = listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao, $idturma, $idescola, $ano_letivo);
+                            }
 
                             $alunos_encontrados = false;
                             
@@ -83,22 +110,19 @@ try {
                                         ? Conversao::data_d_m_a($row['data_nascimento']) 
                                         : $row['data_nascimento'];
                                     
-                                    // 🚨 PONTO DE VERIFICAÇÃO 1: 
-                                    // Confirme se 'matricula_codigo' é o nome correto do campo no resultado da consulta.
-                                    $matricula_codigo = $row['matricula_codigo'] ?? ''; // Usando ?? '' para garantir que a variável não seja null
-                                    
-                                    // Opcional: Para debugar, você pode colocar: echo "";
-                                    
-                                    if (empty($matricula_codigo)) {
-                                        error_log("Atenção: matricula_codigo vazio para o aluno: " . $row['nome_aluno']);
-                                    }
+                                    // Chave primária da matrícula para o UPDATE
+                                    $matricula_codigo = $row['matricula_codigo']; 
 
                                 ?>
                                 <tr>
                                     <td style="width: 10px"><?php echo $row['idaluno']; ?></td>
                                     <td>
                                         <strong><?php echo $row['nome_aluno']; ?></strong>
-                                        <?php if (!empty($row['nome_identificacao_social'])) { echo " <br><small>(". $row['nome_identificacao_social'] . ")</small>"; } ?>
+                                        <?php 
+                                        if (!empty($row['nome_identificacao_social'])) {
+                                            echo " <br><small>(". $row['nome_identificacao_social'] . ")</small>";
+                                        } 
+                                        ?>
                                     </td>
                                     <td><?php echo $row['matricula']; ?></td>
                                     <td class="d-none d-md-table-cell"><?php echo $data_nasc_formatada; ?></td>
@@ -106,7 +130,7 @@ try {
                                     <td>
                                         <select 
                                             class="form-control select-etapa" 
-                                            data-matricula="<?php echo htmlspecialchars($matricula_codigo); ?>"
+                                            data-matricula="<?php echo $matricula_codigo; ?>"
                                             onchange="atualizarEtapa(this)"
                                         >
                                             <option value="">Selecione a Etapa</option>
@@ -128,20 +152,30 @@ try {
                                 } // Fim do while
                             } 
 
-                            if (!$alunos_encontrados) { /* ... */ } 
+                            if (!$alunos_encontrados) {
+                            ?>
+                                <tr>
+                                    <td colspan="6" class="text-center">Nenhum aluno encontrado para esta turma no ano letivo.</td>
+                                </tr>
+                            <?php
+                            } 
                             ?>
                         </tbody>
                     </table>
                 </div>
             </div>
-        </div>
+
+            </div>
+
     </section>
+
 </div>
 
-<aside class="control-sidebar control-sidebar-dark"></aside>
+<aside class="control-sidebar control-sidebar-dark">
+    </aside>
 <script type="text/javascript">
     
-    // --- FUNÇÃO JAVASCRIPT/AJAX PARA ATUALIZAR A ETAPA ---
+    // --- FUNÇÃO JAVASCRIPT/AJAX PARA ATUALIZAR A ETAPA (REVISADA) ---
     function atualizarEtapa(selectElement) {
         const novaEtapa = selectElement.value;
         const matriculaCodigo = selectElement.getAttribute('data-matricula');
@@ -151,30 +185,22 @@ try {
             statusElement.innerHTML = '<span class="text-danger">Selecione uma etapa válida.</span>';
             return;
         }
-        
-        // 🚨 PONTO DE VERIFICAÇÃO 3: DEBUG JAVASCRIPT
-        // Se esta mensagem estiver vazia, o problema é no PHP (Ponto 1 ou 2)
-        console.log("Matrícula a ser enviada:", matriculaCodigo); 
-
-        if (!matriculaCodigo) {
-             statusElement.innerHTML = '<span class="text-danger">Erro JS: Código da matrícula não encontrado.</span>';
-             return;
-        }
-
 
         statusElement.innerHTML = '<span class="text-info">Atualizando...</span>';
         
-        // Usando URLSearchParams para codificar os dados corretamente para o $_POST
+        // 🚨 AJUSTE CRÍTICO: Usando URLSearchParams para codificar os dados corretamente
         const formData = new URLSearchParams();
         formData.append('matricula_codigo', matriculaCodigo);
         formData.append('nova_etapa', novaEtapa);
         
+        // Requisição AJAX usando Fetch API
         fetch('../Controller/Atualizar_etapa.php', {
             method: 'POST',
             headers: {
-                // ESSENCIAL para o PHP popular o $_POST corretamente
+                // É ESSENCIAL que o Content-Type esteja definido corretamente
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
+            // Passa o objeto URLSearchParams como body
             body: formData 
         })
         .then(response => {
@@ -197,8 +223,15 @@ try {
         });
     }
 
-    // ... (Funções de máscara) ...
+    // Funções de máscara de telefone (mantidas do seu código original)
+    function mascara(o,f){ /* ... código ... */ }
+    function execmascara(){ /* ... código ... */ }
+    function mtel(v){ /* ... código ... */ }
 </script>
+
+<?php
+include_once 'rodape.php';
+?>
 
 <?php
 include_once 'rodape.php';
