@@ -1,15 +1,15 @@
 <?php
-include_once"../Model/Conexao.php";
+// Crie este arquivo em: ../Controller/Atualizar_etapa.php
 header('Content-Type: application/json');
 
-// Configuração mínima de erro (pode ser ajustada)
+// Configuração mínima de erro 
 ini_set('display_errors', 0);
 ini_set('log_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
 
-// Retorna erro se a conexão não puder ser estabelecida ou dados estiverem faltando
+// Retorna erro se a sessão de BD não puder ser estabelecida
 if (!isset($_SESSION['usuariobd'])) {
     echo json_encode(['success' => false, 'message' => 'Sessão BD não definida.']);
     exit();
@@ -17,27 +17,32 @@ if (!isset($_SESSION['usuariobd'])) {
 
 // Inclui o arquivo de conexão PDO (variável $conexao)
 $usuariobd = $_SESSION['usuariobd'];
-include_once "../Model/Conexao_" . $usuariobd . ".php";
+include_once "../../Model/Conexao_" . $usuariobd . ".php"; // Ajuste o caminho conforme sua estrutura
 
 // Verifica a variável $conexao (PDO)
 if (!isset($conexao) || !($conexao instanceof PDO)) {
-    // Registra o erro antes de retornar
     error_log("Erro no AJAX: Conexão PDO \$conexao não disponível.");
     echo json_encode(['success' => false, 'message' => 'Erro de conexão com o banco de dados.']);
     exit();
 }
 
-// 1. Recebe e sanitiza os dados
+// 1. Recebe e sanitiza os dados (usando $_POST)
 $matricula_codigo = $_POST['matricula_codigo'] ?? null;
 $nova_etapa = $_POST['nova_etapa'] ?? null;
 
-// Validação dos dados
+// 2. Validação dos dados
 if (empty($matricula_codigo) || !is_numeric($nova_etapa)) {
-    echo json_encode(['success' => false, 'message' => 'Dados inválidos ou incompletos.']);
+    // Mensagem dinâmica para o erro de validação (exibida por aluno)
+    $msg_erro = "Dados inválidos. Verifique Matrícula ou Etapa.";
+    
+    error_log("Erro de validação no AJAX: " . $msg_erro . " Dados: M=" . $matricula_codigo . ", E=" . $nova_etapa);
+    
+    // Retorna a mensagem de erro para o AJAX
+    echo json_encode(['success' => false, 'message' => $msg_erro]);
     exit();
 }
 
-// 2. Executa o UPDATE usando Prepared Statement (PDO)
+// 3. Executa o UPDATE usando Prepared Statement (PDO)
 try {
     $sql_update = "UPDATE `ecidade_matricula` SET `etapa` = :nova_etapa WHERE `matricula_codigo` = :matricula_codigo";
     
@@ -45,21 +50,22 @@ try {
     
     // Bind dos parâmetros
     $stmt_update->bindParam(':nova_etapa', $nova_etapa, PDO::PARAM_INT);
-    $stmt_update->bindParam(':matricula_codigo', $matricula_codigo, PDO::PARAM_STR); // Assumindo que matricula_codigo é string
+    // Assumindo que matricula_codigo é a chave primária/código
+    $stmt_update->bindParam(':matricula_codigo', $matricula_codigo, PDO::PARAM_STR); 
     
     $stmt_update->execute();
     
-    // Verifica se alguma linha foi afetada
+    // 4. Retorno de sucesso
     if ($stmt_update->rowCount() > 0) {
         echo json_encode(['success' => true, 'message' => 'Atualização realizada com sucesso!']);
     } else {
-        // Se 0 linhas afetadas, pode ser que já estivesse com aquela etapa ou matrícula não encontrada
-        echo json_encode(['success' => true, 'message' => 'Nenhuma alteração realizada (Etapa já estava definida ou Matrícula não encontrada).']);
+        // Matrícula não encontrada ou etapa não mudou
+        echo json_encode(['success' => true, 'message' => 'Nenhuma alteração realizada (Etapa já estava definida).']);
     }
 
 } catch (PDOException $e) {
-    // Em caso de erro de SQL, registra e retorna uma mensagem genérica para o frontend
-    error_log("Erro SQL ao atualizar etapa: " . $e->getMessage() . " - Dados: Matricula=" . $matricula_codigo . ", Etapa=" . $nova_etapa);
-    echo json_encode(['success' => false, 'message' => 'Erro interno ao tentar salvar a etapa.']);
+    // Em caso de erro de SQL
+    error_log("Erro SQL ao atualizar etapa: " . $e->getMessage() . " - Dados: Matricula=" . $matricula_codigo);
+    echo json_encode(['success' => false, 'message' => 'Erro interno do servidor ao tentar salvar a etapa.']);
 }
 ?>

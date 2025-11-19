@@ -26,7 +26,6 @@ $usuariobd = $_SESSION['usuariobd'] ?? 'educ_lem';
 $_SESSION['usuariobd'] = $usuariobd;
 
 // AQUI: Este arquivo DEVE agora retornar o objeto PDO na variável $conexao
-// Ex: global $conexao; $conexao = new PDO(...);
 include_once "../Model/Conexao_" . $usuariobd . ".php"; 
 
 include_once '../Model/Aluno.php'; 
@@ -38,10 +37,10 @@ if (!isset($conexao) || !($conexao instanceof PDO)) {
     die("Erro Crítico: Conexão PDO não definida como \$conexao.");
 }
 
-// --- 2. PREPARAÇÃO: BUSCA DE ETAPAS DISPONÍVEIS ---
+// --- 2. PREPARAÇÃO: BUSCA DE ETAPAS DISPONÍVEIS (PDO) ---
 $etapas = [];
 try {
-    // A consulta foi adaptada para usar um placeholder seguro, se necessário
+    // Consulta para listar as etapas da turma
     $sql_etapas = "SELECT `id`, `etapa` FROM `etapa_multissereada` WHERE turma_id = :idturma ORDER BY id ASC";
     $stmt_etapas = $conexao->prepare($sql_etapas);
     $stmt_etapas->bindParam(':idturma', $idturma, PDO::PARAM_INT);
@@ -51,10 +50,7 @@ try {
     $etapas = $stmt_etapas->fetchAll(PDO::FETCH_ASSOC);
 
 } catch (PDOException $e) {
-    // Registra o erro em vez de exibi-lo
     error_log("Erro ao buscar etapas: " . $e->getMessage());
-    // Se estiver em modo de desenvolvimento, exiba:
-    // echo "Erro ao buscar etapas: " . $e->getMessage();
 }
 
 ?>
@@ -90,17 +86,16 @@ try {
                                 <th>Nome do Aluno</th>
                                 <th>Matrícula</th>
                                 <th class="d-none d-md-table-cell">Nascimento</th>
-                                <th>Etapa Atual</th> <th style="width: 10%">Status</th>
+                                <th>Etapa Atual</th> 
+                                <th style="width: 10%">Status</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             <?php
-                            // Lógica para determinar qual função de listagem usar
                             $ano_letivo = $_SESSION['ano_letivo'] ?? date('Y');
 
                             if (isset($_SESSION['ano_letivo_vigente']) && $ano_letivo == $_SESSION['ano_letivo_vigente']) {
-                                // Importante: estas funções devem ser atualizadas para PDO e retornar PDOStatement
                                 $stmt = listar_aluno_da_turma_ata_resultado_final($conexao, $idturma, $idescola, $ano_letivo);
                             } else {
                                 $stmt = listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao, $idturma, $idescola, $ano_letivo);
@@ -115,8 +110,8 @@ try {
                                         ? Conversao::data_d_m_a($row['data_nascimento']) 
                                         : $row['data_nascimento'];
                                     
-                                    // A matrícula é a chave para o UPDATE
-                                    $matricula_codigo = $row['matricula_codigo']; // Assumindo que o campo com o código da matricula se chama 'matricula_codigo'
+                                    // Chave primária da matrícula para o UPDATE
+                                    $matricula_codigo = $row['matricula_codigo']; 
 
                                 ?>
                                 <tr>
@@ -142,7 +137,7 @@ try {
                                             <?php foreach ($etapas as $etapa_opt): ?>
                                                 <option 
                                                     value="<?php echo $etapa_opt['id']; ?>"
-                                                    <?php echo ($row['etapa'] == $etapa_opt['id']) ? 'selected' : ''; ?>
+                                                    <?php echo (isset($row['etapa']) && $row['etapa'] == $etapa_opt['id']) ? 'selected' : ''; ?>
                                                 >
                                                     <?php echo $etapa_opt['etapa']; ?>
                                                 </option>
@@ -182,49 +177,44 @@ try {
     
     // --- FUNÇÃO JAVASCRIPT/AJAX PARA ATUALIZAR A ETAPA ---
     function atualizarEtapa(selectElement) {
-        // Pega os valores necessários do elemento <select>
         const novaEtapa = selectElement.value;
         const matriculaCodigo = selectElement.getAttribute('data-matricula');
         const statusElement = document.querySelector(`.status-msg-${matriculaCodigo}`);
         
-        // Verifica se uma etapa foi realmente selecionada (ou se voltou para "Selecione a Etapa")
         if (novaEtapa === "") {
             statusElement.innerHTML = '<span class="text-danger">Selecione uma etapa válida.</span>';
             return;
         }
 
-        // Limpa a mensagem anterior e mostra que está processando
         statusElement.innerHTML = '<span class="text-info">Atualizando...</span>';
         
-        // Requisição AJAX (usando Fetch API, mais moderno que o AJAX antigo)
+        // Requisição AJAX usando Fetch API
         fetch('../Controller/Atualizar_etapa.php', {
             method: 'POST',
             headers: {
+                // Indica que os dados estão no formato URL-encoded, que o PHP entende como $_POST
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
-            // Envia os dados no formato URL-encoded
             body: `matricula_codigo=${matriculaCodigo}&nova_etapa=${novaEtapa}`
         })
         .then(response => {
-            // Verifica se a resposta HTTP foi OK
             if (!response.ok) {
-                throw new Error('Falha na resposta do servidor.');
+                throw new Error('Falha na resposta do servidor (' + response.status + ').');
             }
-            return response.json(); // Assume que o PHP retorna JSON
+            return response.json(); // Espera JSON do script PHP
         })
         .then(data => {
             if (data.success) {
                 statusElement.innerHTML = '<span class="text-success">✔ Etapa atualizada!</span>';
-                // Opcional: Remover a mensagem após alguns segundos
                 setTimeout(() => statusElement.innerHTML = '', 3000);
             } else {
-                // Se a operação falhou (erro de SQL, etc.)
+                // Retorno da mensagem de erro do PHP
                 statusElement.innerHTML = `<span class="text-danger">❌ Erro: ${data.message || 'Falha ao atualizar.'}</span>`;
             }
         })
         .catch(error => {
             console.error('Erro AJAX:', error);
-            statusElement.innerHTML = `<span class="text-danger">❌ Erro de conexão: ${error.message}</span>`;
+            statusElement.innerHTML = `<span class="text-danger">❌ Erro de conexão ou servidor: ${error.message}</span>`;
         });
     }
 
