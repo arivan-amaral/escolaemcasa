@@ -24,7 +24,7 @@ $usuariobd = $_SESSION['usuariobd'] ?? 'educ_lem';
 $_SESSION['usuariobd'] = $usuariobd;
 
 // Inclui a conexão PDO na variável $conexao
-include_once "../Model/Conexao_" . $usuariobd . ".php"; 
+include_once "../Model/Conexao.php"; 
 
 include_once '../Model/Aluno.php'; 
 
