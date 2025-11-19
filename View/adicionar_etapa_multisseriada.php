@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 0); // Não exibe erros no navegador
+ini_set('log_errors', 1);     // Garante que os erros sejam registrados em um arquivo de log
+error_reporting(E_ALL);
 
 session_start();
 // Redireciona se a sessão do coordenador não estiver definida
