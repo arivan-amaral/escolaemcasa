@@ -197,7 +197,7 @@ try {
         statusElement.innerHTML = '<span class="text-info">Atualizando...</span>';
         
         // Requisição AJAX (usando Fetch API, mais moderno que o AJAX antigo)
-        fetch('atualizar_etapa.php', {
+        fetch('../Controller/Atualizar_etapa.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
