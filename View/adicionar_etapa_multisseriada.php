@@ -110,7 +110,7 @@ try {
                     : $row['data_nascimento'];
                  
                   // Chave primária da matrícula para o UPDATE
-                  $matricula_codigo = $row['matricula_codigo'];
+                  $matricula = $row['matricula'];
 
                 ?>
                 <tr>
@@ -129,7 +129,7 @@ try {
                   <td>
                     <select
                       class="form-control select-etapa"
-                      data-matricula="<?php echo $matricula_codigo; ?>"
+                      data-matricula="<?php echo $matricula; ?>"
                       onchange="atualizarEtapa(this)"
                     >
                       <option value="">Selecione a Etapa</option>
@@ -142,7 +142,7 @@ try {
                         </option>
                       <?php endforeach; ?>
                     </select>
-                                        <span class="status-msg-<?php echo $matricula_codigo; ?>"></span>
+                                        <span class="status-msg-<?php echo $matricula; ?>"></span>
                   </td>
                  
                   <td><span class="badge bg-primary"><?php echo $row['status_aluno']; ?></span></td>
@@ -192,7 +192,7 @@ try {
    
     // 2. Prepara os dados para o envio
     const formData = new URLSearchParams();
-    formData.append('matricula_codigo', matriculaCodigo);
+    formData.append('matricula', matriculaCodigo);
     formData.append('nova_etapa', novaEtapa);
    
     // 3. Executa a requisição AJAX usando Fetch API
