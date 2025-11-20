@@ -27,7 +27,7 @@ if (!isset($conexao) || !($conexao instanceof PDO)) {
 }
 
 // 1. Recebe e sanitiza os dados (usando $_POST)
-$matricula_codigo = $_POST['matricula_codigo'] ?? null;
+$matricula_codigo = $_POST['matricula'] ?? null;
 $nova_etapa = $_POST['nova_etapa'] ?? null;
 
 // 2. Validação dos dados
