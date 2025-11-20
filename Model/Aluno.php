@@ -1936,6 +1936,7 @@ function listar_aluno_da_turma_ata_resultado_final($conexao,$turma_id,$escola_id
     aluno.status AS status_aluno,
     aluno.senha,
     turma.nome_turma,
+    ecidade_matricula.etapa,
     ecidade_matricula.matricula_codigo AS matricula,
     ecidade_matricula.matricula_datamatricula AS data_matricula,
     ecidade_matricula.datasaida AS datasaida
@@ -2007,6 +2008,8 @@ function listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,
     aluno.status AS status_aluno,
     aluno.senha,
     turma.nome_turma,
+    ecidade_matricula.etapa,
+    
     ecidade_matricula.matricula_codigo AS matricula,
     ecidade_matricula.matricula_datamatricula AS data_matricula,
     ecidade_matricula.datasaida AS datasaida
