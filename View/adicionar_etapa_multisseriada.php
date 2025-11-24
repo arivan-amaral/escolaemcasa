@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 session_start();
 
 // --- 1. VERIFICAÇÃO DE SESSÃO E VARIÁVEIS INICIAIS ---
-if (!isset($_SESSION['idcoordenador'])) {
+if (!isset($_SESSION['idfuncionario'])) {
   header("location:index.php?status=0");
   exit();
 } else {
