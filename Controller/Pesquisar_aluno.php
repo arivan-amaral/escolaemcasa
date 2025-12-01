@@ -306,6 +306,7 @@ where
                               <b class='text-black'> Matr.: ($matricula) $nome_escola -</b> 
                               <b class='text-black'> $nome_turma </b> 
                               <b class='text-success'> Ano: $calendario_ano</b>  
+                              <b class='text-danger'> Situação: $matricula_situacao </b
                             ";
                       }
 
