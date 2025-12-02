@@ -412,7 +412,7 @@ function diario_frequencia_fund2(
                     <td class="col-data-aula" style='<?php echo $classe_fundo; ?> height: 13.5pt; border: 1px solid black; border-top: none;'>
                         <p style='text-align: center; margin: 0;'>
                             <span style='font-size:9.0pt;'>
-                                **<?php echo $presenca; ?>**
+                                <?php echo $presenca; ?>
                             </span>
                         </p>
                     </td>
