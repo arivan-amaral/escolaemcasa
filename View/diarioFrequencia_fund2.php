@@ -135,20 +135,30 @@ function diario_frequencia_fund2(
     $total_colunas_frequencia = max($num_aulas_reais, $limite_aula);
 
 
+
     // --- 4. Busca de Dados de Alunos (Deixar como estava, assumindo que `listar_aluno_da_turma...` é otimizada) ---
 
     // Assume-se que `listar_aluno_da_turma_ata_resultado_final` é definida externamente
     if (isset($_SESSION['ano_letivo']) && isset($_SESSION['ano_letivo_vigente']) && $_SESSION['ano_letivo'] === $_SESSION['ano_letivo_vigente']) {
-        // Assume-se que esta função retorna um array de alunos.
-        $res_alunos = listar_aluno_da_turma_ata_resultado_final($conexao, $idturma, $idescola, $_SESSION['ano_letivo']);
+        // A função retorna o PDOStatement
+        $stmt_alunos = listar_aluno_da_turma_ata_resultado_final($conexao, $idturma, $idescola, $_SESSION['ano_letivo']);
     } else {
-        // Assume-se que esta função retorna um array de alunos.
-        $res_alunos = listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao, $idturma, $idescola, $_SESSION['ano_letivo']);
+        // A função retorna o PDOStatement
+        $stmt_alunos = listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao, $idturma, $idescola, $_SESSION['ano_letivo']);
     }
+
+    // **ADICIONAR ESTA LINHA:** Busca todos os resultados do PDOStatement
+    $res_alunos = is_a($stmt_alunos, 'PDOStatement') ? $stmt_alunos->fetchAll(PDO::FETCH_ASSOC) : $stmt_alunos;
+
+    // Linha 151 corrigida (agora $res_alunos é um array)
+    $alunos_ids = array_column($res_alunos, 'idaluno'); 
+    //...
+
+
 
     // --- 5. Busca de Dados de Frequência em Massa (Melhoria de Desempenho) ---
 
-    $alunos_ids = array_column($res_alunos, 'idaluno');
+
     $frequencia_mapa = []; // Será [idaluno][data_aula_chave] => presenca
 
     if (!empty($alunos_ids)) {
