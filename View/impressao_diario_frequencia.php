@@ -1,84 +1,26 @@
-<?php
-// Configurações de erro (mantidas)
+<?php 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Aumentar o limite de tempo é comum para relatórios longos (mantido)
 set_time_limit(0);
+session_start();
+session_write_close();
 
-// A sessão deve ser iniciada antes de acessar $_SESSION
-session_start(); 
-// Se a página só lê dados da sessão, session_write_close() é bom para liberar o arquivo de sessão rapidamente.
-session_write_close(); 
+include_once"../Controller/Conversao.php";
+include_once"../Model/Conexao.php";
+include_once"../Model/Coordenador.php";
+include_once"../Model/Aluno.php";
+include_once"../Model/Escola.php";
 
-// Inclusões de arquivos (mantidas)
-include_once "../Controller/Conversao.php";
-include_once "../Model/Conexao.php";
+include_once"diarioFrequencia_infantil.php";
+include_once"diarioFrequencia_fund1.php";
+include_once"diarioFrequencia_fund2.php";
 
-// A variável $conexao é presumida como disponível via inclusão de Conexao.php
-if (!isset($conexao) || !($conexao instanceof PDO)) {
-    die("Erro: Objeto de conexão PDO não encontrado.");
-}
-
-// Inclusões de classes/modelos (mantidas)
-include_once "../Model/Coordenador.php";
-include_once "../Model/Aluno.php";
-include_once "../Model/Escola.php";
-
-// Inclusões de funções de diário (mantidas)
-include_once "diarioFrequencia_infantil.php";
-include_once "diarioFrequencia_fund1.php";
-include_once "diarioFrequencia_fund2.php";
-include_once "diarioFrequenciaPaginaFinal_infantil.php";
-include_once "diarioFrequenciaPaginaFinal_fund1.php";
-include_once "diarioFrequenciaPaginaFinal_fund2.php";
- 
-// --- Busca de Variáveis de Sessão e GET ---
-$ano_letivo = $_SESSION['ano_letivo'] ?? date('Y'); // Use um fallback seguro
-$idescola = $_GET['idescola'] ?? 0;
-$idturma = $_GET['idturma'] ?? 0;
-$iddisciplina = $_GET['iddisciplina'] ?? 0;
-$idserie = $_GET['idserie'] ?? 0;
-$periodo_id = $_GET['periodo_id'] ?? 0;
-
-// --- Otimização: Busca de Seguimento (PDO Otimizado) ---
-$seguimento = 0;
-$nome_turma = "";
-
-$stmt_seg = $conexao->prepare("SELECT nome_turma, seguimento FROM turma WHERE idturma = :idturma LIMIT 1");
-$stmt_seg->execute([':idturma' => $idturma]);
-
-if ($turma_data = $stmt_seg->fetch(PDO::FETCH_ASSOC)) {
-    // Garante que $seguimento é um INT (compatível com PHP 8.3)
-    $nome_turma = $turma_data['nome_turma'];
-    $seguimento = (int)($turma_data['seguimento'] ?? 0); 
-}
-
-// --- Otimização: Busca de Dados do Calendário (PDO Otimizado) ---
-$descricao_trimestre = "";
-$data_inicio_trimestre = "";
-$data_fim_trimestre = "";
-
-// Assumindo que listar_data_por_periodo() é uma função que retorna dados do calendário
-if (function_exists('listar_data_por_periodo')) {
-    $res_calendario = listar_data_por_periodo($conexao, $ano_letivo, $periodo_id);
-    // Presumindo que listar_data_por_periodo retorna um array de resultados
-    if (!empty($res_calendario)) {
-        $value = $res_calendario[0]; // Pega o primeiro resultado
-        $descricao_trimestre = $value['descricao'] ?? '';
-        $data_inicio_trimestre = $value['inicio'] ?? '';
-        $data_fim_trimestre = $value['fim'] ?? '';
-    }
-}
-// -----------------------------------------------------------------
-
-// Definições de paginação
-$inicio = 0;
-$fim = 36;
-$conta_aula = 1;
-$conta_data = 1;
-$limite_data = 36;
-$limite_aula = 36;
+include_once"diarioFrequenciaPaginaFinal_infantil.php";
+include_once"diarioFrequenciaPaginaFinal_fund1.php";
+include_once"diarioFrequenciaPaginaFinal_fund2.php";
+ 
+$ano_letivo=$_SESSION['ano_letivo'];
 ?>
 
 <html xmlns:v="urn:schemas-microsoft-com:vml"
@@ -90,47 +32,85 @@ xmlns="http://www.w3.org/TR/REC-html40">
 
 <head>
 <meta charset="UTF-8">
-<title>Diário de Frequência</title>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 15">
+<meta name=Originator content="Microsoft Word 15">
+<link rel=File-List href="pla_arquivos/filelist.xml">
+<link rel=Edit-Time-Data href="pla_arquivos/editdata.mso">
 
 <style>
-/* Manter a rotação do texto para compatibilidade com o MS Word/Navegadores */
 .Namerotate {
+
     transform: rotate(-90deg);
+
+
+    /* Legacy vendor prefixes that you probably don't need... */
+
+    /* Safari */
     -webkit-transform: rotate(-90deg);
+
+    /* Firefox */
     -moz-transform: rotate(-90deg);
+
+    /* IE */
     -ms-transform: rotate(-90deg);
+
+    /* Opera */
     -o-transform: rotate(-90deg);
-    /* filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); */ /* Mantido para IE */
+
+    /* Internet Explorer */
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+
+ /* display:inline-block;
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  -webkit-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg);*/
+  
 }
- 
+ 
 .tblborder, .tblborder td, .tblborder th{
-    border-collapse: collapse;
-    border: 1px solid #000;
+  border-collapse:collapse;
+  border:1px solid #000;
 }
 
 .tblborder td, .tblborder th{
-    padding: 5px 10px; /* Reduzido padding para algo mais razoável */
+  padding:20px 10px;
 }
 
-/* Removido .positionRi - Não parece ser usado ou é complexo demais para o contexto */
-
-/* Otimização de quebras de página */
-@page {
-    size: A4 portrait; /* Define o tamanho da página para A4 */
-    margin: 1cm; /* Margem padrão para impressão */
+.positionRi {
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  /*right:0; */
+  width: 200px;
+  height: 150px;
+  /*border: 3px solid #73AD21;*/
 }
-table { page-break-inside:auto }
-tr { page-break-inside:avoid; page-break-after:auto }
-thead { display:table-header-group }
-tfoot { display:table-footer-group }
+ 
+</style>
+
+<link rel=dataStoreItem href="pla_arquivos/item0001.xml"
+target="pla_arquivos/props002.xml">
+<link rel=themeData href="pla_arquivos/themedata.thmx">
+<link rel=colorSchemeMapping href="pla_arquivos/colorschememapping.xml">
+
+<style type="text/css">
+    
+        table { page-break-inside:auto }
+        tr    { page-break-inside:avoid; page-break-after:auto }
+        thead { display:table-header-group }
+        tfoot { display:table-footer-group }
 
 
-@media print {
-    .no-print, .no-print * {
-        display: none !important;
-    }
-    .pagebreak { page-break-before: always; }
-}
+    @media print {
+        .no-print, .no-print *
+        {
+            display: none !important;
+        }
+        .pagebreak { page-break-before: always; } /* page-break-after works, as well */
+      }
 </style>
 
 </head>
@@ -138,121 +118,263 @@ tfoot { display:table-footer-group }
 <body lang=PT-BR style='tab-interval:35.4pt;word-wrap:break-word'>
 
     <p class="no-print">
-        <br>
-        <br>
-    <button style="width: 100%; height: 6%; font-size: large; background: #0275d8; color: white; cursor: pointer;" onclick='window.print();'>IMPRIMIR</button> 
+      <br>
+      <br>
+      
+    <button style="width: 100%;height: 6%; font-size: large; background: #0275d8;color: white;" onclick='print();'>IMPRIMIR</button> 
+
     </p>
 
-<?php 
-
-// --- 2. Lógica de Roteamento de Impressão (Mantida e Limpa) ---
-/*
-    A lógica de roteamento é complexa, usando idserie e seguimento para decidir qual função chamar.
-    Não há como otimizar o roteamento sem saber o conteúdo das funções 'diarioFrequencia_...'.
-    A principal melhoria é garantir que os parâmetros de paginação/limite estejam corretos para cada chamada.
-*/
-
-// Funções auxiliares para redefinir parâmetros de paginação
-function reset_params_part2(&$inicio, &$fim, &$conta_aula, &$limite_data, &$limite_aula) {
-    // Redefinição para a Segunda Página (Final)
-    $inicio = 36;
-    $conta_aula = 37; // AULA 37 em diante
-
-    // Esses limites parecem ser para a PARTE 2 da tabela
-    $limite_data = 31; 
-    $limite_aula = 31;
-    $fim = 30; // Diferente do limite, usado no LIMIT da query
+<?php 
+$idescola=$_GET['idescola'];
+$idturma=$_GET['idturma'];
+$iddisciplina=$_GET['iddisciplina'];
+$idserie=$_GET['idserie'];
+$res_seg=$conexao->query("SELECT * FROM turma WHERE idturma=$idturma LIMIT 1");
+  $seguimento=0;
+$nome_turma="";
+foreach ($res_seg as $key => $value) {
+  $nome_turma=$value['nome_turma'];
+  $seguimento=$value['seguimento'];
+  // code...
 }
+$seguimento = $seguimento ?? 0;
 
-function reset_params_inf_fund1_part2(&$inicio, &$fim, &$conta_aula, &$limite_data, &$limite_aula) {
-    // Redefinição para a Segunda Página (Infantil/Fund 1)
-    $inicio = 36;
-    $conta_aula = 36; // AULA 36 em diante (mantendo o valor do código original)
+$inicio=0;
+$fim=36;
 
-    // Esses limites parecem ser para a PARTE 2 da tabela
-    $limite_data = 41;
-    $limite_aula = 30;
-    $fim = 41; // Diferente do limite, usado no LIMIT da query
-}
+$conta_aula=1;
+$conta_data=1;
+
+$limite_data=36;
+$limite_aula=36;
+
+$periodo_id=$_GET['periodo_id'];
+$idserie=$_GET['idserie'];
+
+$descricao_trimestre="";
+$data_inicio_trimestre="";
+$data_fim_trimestre="";
 
 
-if ($idserie < 3 || $seguimento == 1) {
-    // Roteamento: Educação Infantil (idserie < 3 OU seguimento 1)
-    
-    // Parte 1
-    diario_frequencia_infantil($conexao, $idescola, $idturma, $iddisciplina, $inicio, $fim, $conta_aula, $conta_data, $limite_data, $limite_aula, $periodo_id, $idserie, $descricao_trimestre, $data_inicio_trimestre, $data_fim_trimestre, $ano_letivo, $seguimento);
-    echo "<div class='pagebreak'> </div>";
 
-    // Parte 2
-    reset_params_inf_fund1_part2($inicio, $fim, $conta_aula, $limite_data, $limite_aula);
-    diario_frequencia_pagina_final_infantil($conexao, $idescola, $idturma, $iddisciplina, $inicio, $fim, $conta_aula, $conta_data, $limite_data, $limite_aula, $periodo_id, $idserie, $descricao_trimestre, $data_inicio_trimestre, $data_fim_trimestre, $ano_letivo, $seguimento);
-
-} elseif ($idserie >= 3 && $idserie < 8 || $seguimento == 2) {
-    // Roteamento: Ensino Fundamental 1 (idserie 3-7 OU seguimento 2)
-
-    // Parte 1
-    diario_frequencia_fund1($conexao, $idescola, $idturma, $iddisciplina, $inicio, $fim, $conta_aula, $conta_data, $limite_data, $limite_aula, $periodo_id, $idserie, $descricao_trimestre, $data_inicio_trimestre, $data_fim_trimestre, $ano_letivo, $seguimento);
-    echo "<div class='pagebreak'> </div>";
-    
-    // Parte 2
-    reset_params_inf_fund1_part2($inicio, $fim, $conta_aula, $limite_data, $limite_aula);
-    diario_frequencia_pagina_final_fund1($conexao, $idescola, $idturma, $iddisciplina, $inicio, $fim, $conta_aula, $conta_data, $limite_data, $limite_aula, $periodo_id, $idserie, $descricao_trimestre, $data_inicio_trimestre, $data_fim_trimestre, $ano_letivo, $seguimento);
-
-} elseif ($seguimento == 3 || ($idserie >= 8 && $idserie <= 11)) { 
-    // Roteamento: Ensino Fundamental 2 (seguimento 3 OU idserie 8-11, o else abaixo pega o restante)
-
-    // Parte 1
-    diario_frequencia_fund2($conexao, $idescola, $idturma, $iddisciplina, $inicio, $fim, $conta_aula, $conta_data, $limite_data, $limite_aula, $periodo_id, $idserie, $descricao_trimestre, $data_inicio_trimestre, $data_fim_trimestre, $ano_letivo, $seguimento);
-    echo "<div class='pagebreak'> </div>";
-
-    // Parte 2
-    reset_params_part2($inicio, $fim, $conta_aula, $limite_data, $limite_aula);
-    diario_frequencia_pagina_final_fund2($conexao, $idescola, $idturma, $iddisciplina, $inicio, $fim, $conta_aula, $conta_data, $limite_data, $limite_aula, $periodo_id, $idserie, $descricao_trimestre, $data_inicio_trimestre, $data_fim_trimestre, $ano_letivo, $seguimento);
-
-} else {
-    // Roteamento: Qualquer outro caso, incluindo Coordenador (usando Fund 2 como padrão)
-    
-    if (isset($_GET['coordenacao'])) {
-        // Lógica de Coordenador: Itera por todas as disciplinas da turma
+  $res_calendario=listar_data_por_periodo($conexao,$ano_letivo,$periodo_id);
+  foreach ($res_calendario as $key => $value) {
+    $descricao_trimestre=$value['descricao'];
+    $data_inicio_trimestre=$value['inicio'];
+    $data_fim_trimestre=$value['fim'];
         
-        // Assumindo que listar_disciplina_da_turma retorna as disciplinas
-        $pes = listar_disciplina_da_turma($conexao, $idturma, $idescola, $ano_letivo);
+  }
 
-        foreach ($pes as $linha) {
-            $iddisciplina_loop = $linha['iddisciplina'];
-            $nome_disciplina = $linha['nome_disciplina'];
-
-            // Redefinição de parâmetros para cada disciplina
-            $inicio = 0;
-            $fim = 36;
-            $conta_aula = 1;
-            $conta_data = 1;
-            $limite_data = 36;
-            $limite_aula = 36;
-            
-            echo "<br><br><button style='width: 100%; height: 6%; font-size: large; background: #0FDEC2; color: black;' class='no-print'>$nome_disciplina</button>";
-
-            // Parte 1
-            diario_frequencia_fund2($conexao, $idescola, $idturma, $iddisciplina_loop, $inicio, $fim, $conta_aula, $conta_data, $limite_data, $limite_aula, $periodo_id, $idserie, $descricao_trimestre, $data_inicio_trimestre, $data_fim_trimestre, $ano_letivo, $seguimento);
+if ($idserie<3) {
+  
+        //linha 409 508 
+        diario_frequencia_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento); 
             echo "<div class='pagebreak'> </div>";
+     
 
-            // Parte 2
-            reset_params_part2($inicio, $fim, $conta_aula, $limite_data, $limite_aula);
-            diario_frequencia_pagina_final_fund2($conexao, $idescola, $idturma, $iddisciplina_loop, $inicio, $fim, $conta_aula, $conta_data, $limite_data, $limite_aula, $periodo_id, $idserie, $descricao_trimestre, $data_inicio_trimestre, $data_fim_trimestre, $ano_letivo, $seguimento);
-        }
+        $inicio=36;
+        $conta_aula=36;
 
-    } else {
-        // Lógica Padrão (Sem Coordenador) - usa os IDs de $_GET
+        $limite_data=41;//$fim= 34;
+        $limite_aula=30;//23
+
+ 
+        $conta_data=1; //não existia
+        $fim= 41;//$fim= 34;
+ 
+        //linha 428 600 760
+        diario_frequencia_pagina_final_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
+            $conta_aula+0,
+            $conta_data+0,
+            $limite_data+0,
+            $limite_aula+0,
+            $periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento);
         
-        // Parte 1
-        diario_frequencia_fund2($conexao, $idescola, $idturma, $iddisciplina, $inicio, $fim, $conta_aula, $conta_data, $limite_data, $limite_aula, $periodo_id, $idserie, $descricao_trimestre, $data_inicio_trimestre, $data_fim_trimestre, $ano_letivo, $seguimento);
+}elseif ($idserie>=3 && $idserie<8) {
+
+        //linha 409 508 
+        diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento); 
+            echo "<div class='pagebreak'> </div>";
+     
+      $inicio=36;
+        $conta_aula=36;
+
+             $limite_data=41;//$fim= 34;
+        $limite_aula=30;//23
+
+ 
+        $conta_data=1; //não existia
+        $fim= 41;//$fim= 34;
+ 
+
+        //linha 428 600 760
+        diario_frequencia_pagina_final_fund1($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
+            $conta_aula+0,
+            $conta_data+0,
+            $limite_data+0,
+            $limite_aula+0,
+            $periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento);
+        
+}elseif ($seguimento==1) {
+  
+        //linha 409 508 
+        diario_frequencia_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento); 
+            echo "<div class='pagebreak'> </div>";
+     
+
+              $inicio=36;
+        $conta_aula=36;
+
+            $limite_data=41;//$fim= 34;
+        $limite_aula=30;//23
+
+ 
+        $conta_data=1; //não existia
+        $fim= 41;//$fim= 34;
+        
+        //linha 428 600 760
+        diario_frequencia_pagina_final_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento);
+        
+}elseif ($seguimento==2) {
+  
+    
+    //linha 409 508 
+    diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento); 
+        echo "<div class='pagebreak'> </div>";
+    
+
+        $inicio=36;
+        $conta_aula=36;
+
+          $limite_data=41;//$fim= 34;
+        $limite_aula=30;//23
+
+ 
+        $conta_data=1; //não existia
+        $fim= 41;//$fim= 34;
+
+    //linha 428 600 760
+    diario_frequencia_pagina_final_fund1($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
+        $conta_aula+0,
+        $conta_data+0,
+        $limite_data+0,
+        $limite_aula+0,
+        $periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento);
+        
+}elseif ($seguimento==3) {
+
+        diario_frequencia_fund2($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento); 
         echo "<div class='pagebreak'> </div>";
 
-        // Parte 2
-        reset_params_part2($inicio, $fim, $conta_aula, $limite_data, $limite_aula);
-        diario_frequencia_pagina_final_fund2($conexao, $idescola, $idturma, $iddisciplina, $inicio, $fim, $conta_aula, $conta_data, $limite_data, $limite_aula, $periodo_id, $idserie, $descricao_trimestre, $data_inicio_trimestre, $data_fim_trimestre, $ano_letivo, $seguimento);
-    }
+
+        $inicio=36;//36;
+        // $conta_aula=36;
+        $conta_aula=37;
+
+        // $limite_data=26;
+        // $limite_aula=26;    
+         $limite_data=31; //30
+        $limite_aula=31; //30
+
+        $conta_data=1; //não existia
+        $fim= 30; //era 29 tirei para teste
+        
+        // diario_frequencia_pagina_final($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie)
+
+
+        //linha 428 600 760
+        diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
+            $conta_aula+0,
+            $conta_data+0,
+            $limite_data+0,
+            $limite_aula+0,
+
+            $periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento);
 }
-?>
+
+
+
+
+else{
+    //linha 409 508 
+    
+    if (isset($_GET['coordenacao'])) {
+        
+            $pes=listar_disciplina_da_turma($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
+
+            foreach ($pes as $chave => $linha) {
+              $idprofessor=($linha['idprofessor']);
+              $nome_disciplina=($linha['nome_disciplina']);
+              $iddisciplina=$linha['iddisciplina'];
+              // $nome_disciplina=$linha['nome'];
+
+              $inicio=0;
+              $fim=36;
+
+              $conta_aula=1;
+              $conta_data=1;
+
+              $limite_data=36;
+              $limite_aula=36;
+
+              
+                echo "
+                <br>
+                <br>      
+                <button style='width: 100%;height: 6%; font-size: large; background: #0FDEC2;color: black;' class='no-print' >
+                    $nome_disciplina
+                </button> ";
+
+
+                diario_frequencia_fund2($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento); 
+                echo "<div class='pagebreak'> </div>";
+
+                $inicio=36;
+                $conta_aula=37;
+                 $limite_data=31; //30
+                $limite_aula=31; //30
+
+                $conta_data=1; 
+                $fim= 30; 
+                
+
+                //linha 428 600 760
+                diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
+                    $conta_aula+0,
+                    $conta_data+0,
+                    $limite_data+0,
+                    $limite_aula+0,
+
+                    $periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento);
+
+
+            }
+    }else{
+        diario_frequencia_fund2($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento); 
+        echo "<div class='pagebreak'> </div>";
+
+        $inicio=36;
+        $conta_aula=37;
+         $limite_data=31; //30
+        $limite_aula=31; //30
+
+        $conta_data=1; 
+        $fim= 30; 
+        
+
+        //linha 428 600 760
+        diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
+            $conta_aula+0,
+            $conta_data+0,
+            $limite_data+0,
+            $limite_aula+0,
+
+            $periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento);
+    }
+
+}
+
+ ?>
 </body>
 </html>
