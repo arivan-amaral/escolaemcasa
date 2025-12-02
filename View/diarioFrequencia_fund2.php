@@ -9,9 +9,7 @@
  * @param string $data Data no formato 'YYYY-MM-DD'.
  * @return string Data no formato 'DD/MM/YYYY'.
  */
-function converte_data(string $data): string {
-    return date('d/m/Y', strtotime($data));
-}
+
 
 /**
  * Função para gerar o Diário de Frequência.
