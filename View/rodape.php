@@ -9,6 +9,7 @@ if (isset($_SESSION['cargo'])) {
   }
 }
 
+session_write_close();
 
 
 ?>
