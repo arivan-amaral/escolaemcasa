@@ -76,42 +76,52 @@ function gerar_media_ata($conexao,$idescola,$idturma,$iddisciplina,$idaluno,$ano
     }
 
 
-    $res_hist=$conexao->query("
-        SELECT * from historico where 
-        aluno_id =$idaluno and 
-        disciplina_id = $iddisciplina and
-        serie_id= $idserie LIMIT 1
 
-        ");
+  // arivan removeu devido problema de lentidão 02/12/2025  
 
-      $quantidade_hist=0;
-      foreach ($res_hist as $key_h => $value_h) {
-        $quantidade_hist++;
+    // $res_hist=$conexao->query("
+    //     SELECT * from historico where 
+    //     aluno_id =$idaluno and 
+    //     disciplina_id = $iddisciplina and
+    //     serie_id= $idserie LIMIT 1
 
-      }
-      if ($quantidade_hist==0) {
-       $conexao->exec("
-        INSERT INTO historico (aluno_id,ano, nota_final, disciplina_id, serie_id, escola_id)
-        VALUES ($idaluno,$ano_letivo, $media, $iddisciplina, $idserie, $idescola)
-        ");
+    //     ");
 
-     }else{
+    //   $quantidade_hist=0;
+    //   foreach ($res_hist as $key_h => $value_h) {
+    //     $quantidade_hist++;
+
+    //   }
+
+
+
+
+    //   if ($quantidade_hist==0) {
+    //    $conexao->exec("
+    //     INSERT INTO historico (aluno_id,ano, nota_final, disciplina_id, serie_id, escola_id)
+    //     VALUES ($idaluno,$ano_letivo, $media, $iddisciplina, $idserie, $idescola)
+    //     ");
+
+    //  }else{
  
-      $conexao->exec("
-        UPDATE historico SET 
-        aluno_id=$idaluno,
-        ano=$ano_letivo,
-        nota_final=$media,
-        disciplina_id=$iddisciplina,
-        serie_id=$idserie, 
-        escola_id=$idescola
-        where
-        aluno_id =$idaluno and 
+    //   $conexao->exec("
+    //     UPDATE historico SET 
+    //     aluno_id=$idaluno,
+    //     ano=$ano_letivo,
+    //     nota_final=$media,
+    //     disciplina_id=$iddisciplina,
+    //     serie_id=$idserie, 
+    //     escola_id=$idescola
+    //     where
+    //     aluno_id =$idaluno and 
         
-        disciplina_id = $iddisciplina and
-        serie_id= $idserie
-        ");
-    }
+    //     disciplina_id = $iddisciplina and
+    //     serie_id= $idserie
+    //     ");
+    // }
+
+
+  // arivan removeu devido problema de lentidão 02/12/2025  
 
    
 

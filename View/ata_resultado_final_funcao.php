@@ -322,51 +322,56 @@ if ($media_fora_rede==0) {
  //arivan
   $media=number_format($media, 1, '.', ',');
 
-  
-  if ($_SESSION['nivel_acesso_id']>=1020) {
+  // arivan removeu devido problema de lentidão 02/12/2025  
+  // 
+  // 
+  // 
+  // 
+  // 
+  // if ($_SESSION['nivel_acesso_id']>=1020) {
 
-    $res_hist=$conexao->query("
-      SELECT * from historico where 
-      aluno_id =$idaluno and 
-      disciplina_id = $iddisciplina and
-      serie_id= $idserie LIMIT 1
+  //   $res_hist=$conexao->query("
+  //     SELECT * from historico where 
+  //     aluno_id =$idaluno and 
+  //     disciplina_id = $iddisciplina and
+  //     serie_id= $idserie LIMIT 1
    
-    ");
-   // $res_hist->execute();
+  //   ");
+  //  // $res_hist->execute();
 
-   $quantidade_hist=0;
-   foreach ($res_hist as $key_h => $value_h) {
-      $quantidade_hist++;
+  //  $quantidade_hist=0;
+  //  foreach ($res_hist as $key_h => $value_h) {
+  //     $quantidade_hist++;
      
-   }
-    if ($quantidade_hist==0) {
-     //echo "(:". $res_hist->rowCount() .":";
-       $conexao->exec("
-          INSERT INTO historico (aluno_id,ano, nota_final, disciplina_id, serie_id, escola_id)
-        VALUES ($idaluno,$ano_letivo, $media, $iddisciplina, $idserie, $idescola)
-        ");
+  //  }
+  //   if ($quantidade_hist==0) {
+  //    //echo "(:". $res_hist->rowCount() .":";
+  //      $conexao->exec("
+  //         INSERT INTO historico (aluno_id,ano, nota_final, disciplina_id, serie_id, escola_id)
+  //       VALUES ($idaluno,$ano_letivo, $media, $iddisciplina, $idserie, $idescola)
+  //       ");
 
-    }else{
-     //echo "==". $res_hist->rowCount() .":";
+  //   }else{
+  //    //echo "==". $res_hist->rowCount() .":";
 
-      $conexao->exec("
-        UPDATE historico SET 
-        aluno_id=$idaluno,
-        ano=$ano_letivo,
-        nota_final=$media,
-        disciplina_id=$iddisciplina,
-        serie_id=$idserie, 
-        escola_id=$idescola
-        where
-          aluno_id =$idaluno and 
+  //     $conexao->exec("
+  //       UPDATE historico SET 
+  //       aluno_id=$idaluno,
+  //       ano=$ano_letivo,
+  //       nota_final=$media,
+  //       disciplina_id=$iddisciplina,
+  //       serie_id=$idserie, 
+  //       escola_id=$idescola
+  //       where
+  //         aluno_id =$idaluno and 
         
-          disciplina_id = $iddisciplina and
-          serie_id= $idserie
-      ");
-    }
+  //         disciplina_id = $iddisciplina and
+  //         serie_id= $idserie
+  //     ");
+  //   }
 
    
-  }
+  // }
 
 
 
