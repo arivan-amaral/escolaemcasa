@@ -5,17 +5,7 @@
  * OBS: Se esta função já estiver em um arquivo incluso (include/require),
  * você pode removê-la daqui, mas ela é essencial para o relatório funcionar.
 */
-function converte_data(string $data): string {
-    if (empty($data) || $data === '0000-00-00') {
-        return '';
-    }
-    // Garante que a data está no formato correto antes de formatar
-    $timestamp = strtotime($data);
-    if ($timestamp === false) {
-        return $data; // Retorna a string original se for inválida
-    }
-    return date('d/m/Y', $timestamp);
-}
+
 
 /**
  * Função para sanitizar a string da aula, removendo espaços e caracteres invisíveis.
