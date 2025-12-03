@@ -2,14 +2,10 @@
 
 /**
 * Função para converter data do formato YYYY-MM-DD para DD/MM/YYYY.
-*
-* NOTA: Esta função não estava definida no seu código, mas foi usada.
-* É recomendável usar funções nativas de data/hora do PHP (DateTime) para maior robustez.
-* Para fins de manter a funcionalidade, estou simulando uma implementação básica.
-* @param string $data Data no formato 'YYYY-MM-DD'.
-* @return string Data no formato 'DD/MM/YYYY'.
+* (Assumindo que esta função existe no seu projeto, se não, use o código abaixo)
 */
  
+
 
 /**
 * Função para gerar o Diário de Frequência.
@@ -51,15 +47,10 @@ function diario_frequencia_fund2(
   int $ano_letivo,
   int $seguimento
 ): void {
-    // Variáveis que normalmente viriam de sessões ou includes externos:
-    // Supondo que $_SESSION['ORGAO'] e outras variáveis de sessão estejam acessíveis.
-    // Supondo que as funções listar_aluno_da_turma_ata_resultado_final e 
-    // listar_aluno_da_turma_ata_resultado_final_matricula_concluida existam.
-
   $nome_disciplina = '';
   $tipo_ensino = "Tipo Desconhecido";
 
-  // --- 1. Determinação do Tipo de Ensino (Otimizado) ---
+  // --- 1. Determinação do Tipo de Ensino ---
   if ($idserie === 17) {
     $tipo_ensino = "Atendimento Educacional Especializado";
   } elseif ($idserie === 16) {
@@ -80,27 +71,21 @@ function diario_frequencia_fund2(
     $tipo_ensino = "Educação de Jovens e Adultos";
   }
 
-  // --- 2. Busca de Dados de Cabeçalho (Consultas Preparadas) ---
-
-  // 2.1 Nome da Disciplina
+  // --- 2. Busca de Dados de Cabeçalho ---
   $stmt_disc = $conexao->prepare("SELECT nome_disciplina FROM disciplina WHERE iddisciplina = :iddisciplina");
   $stmt_disc->execute([':iddisciplina' => $iddisciplina]);
   $nome_disciplina = $stmt_disc->fetchColumn() ?? 'N/A';
 
-  // 2.2 Nome da Escola
   $stmt_escola = $conexao->prepare("SELECT nome_escola FROM escola WHERE idescola = :idescola");
   $stmt_escola->execute([':idescola' => $idescola]);
   $nome_escola = $stmt_escola->fetchColumn() ?? 'N/A';
 
-  // 2.3 Nome da Turma
   $stmt_turma = $conexao->prepare("SELECT nome_turma FROM turma WHERE idturma = :idturma");
   $stmt_turma->execute([':idturma' => $idturma]);
   $nome_turma_exibicao = $stmt_turma->fetchColumn() ?? 'N/A';
 
 
-  // --- 3. Busca de Aulas e Datas (Consulta Preparada) ---
-  // A query para buscar datas e aulas foi otimizada para ser mais robusta.
-
+  // --- 3. Busca de Aulas e Datas ---
   $sql_aulas = "
     SELECT aula, data_frequencia
     FROM frequencia
@@ -113,7 +98,6 @@ function diario_frequencia_fund2(
     LIMIT :inicio, :limite";
 
   $stmt_data_aula = $conexao->prepare($sql_aulas);
-  // Calcular o limite da cláusula LIMIT
   $limite_offset = $fim - $inicio;
   $stmt_data_aula->bindValue(':idescola', $idescola, PDO::PARAM_INT);
   $stmt_data_aula->bindValue(':idturma', $idturma, PDO::PARAM_INT);
@@ -125,63 +109,50 @@ function diario_frequencia_fund2(
   $stmt_data_aula->execute();
   $aulas_datas = $stmt_data_aula->fetchAll(PDO::FETCH_ASSOC);
 
-  $array_data_aula = []; // Guarda 'YYYY-MM-DD'
-  $array_aula = [];   // Guarda 'aula'
-  $num_aulas_reais = 0; // Número real de aulas no período (até $limite_aula)
+  $array_data_aula = []; 
+  $array_aula = [];   
+  $num_aulas_reais = 0; 
  
   foreach ($aulas_datas as $item) {
     $array_data_aula[] = $item['data_frequencia'];
-    $array_aula[] = $item['aula'];
+        // ATENÇÃO: $item['aula'] AQUI PODE SER 'AULA-3' (se o campo for VARCHAR) ou '3' (se for INT)
+    $array_aula[] = $item['aula']; 
     $num_aulas_reais++;
   }
 
-  // O total de colunas de frequência (datas/aulas) será o maior entre o real e o limite
   $total_colunas_frequencia = max($num_aulas_reais, $limite_aula);
 
 
-
   // --- 4. Busca de Dados de Alunos ---
-
-  // Assume-se que `listar_aluno_da_turma_ata_resultado_final` é definida externamente
-    // (Mantido como estava, usando variáveis globais de sessão)
-    if (isset($_SESSION['ano_letivo']) && isset($_SESSION['ano_letivo_vigente']) && $_SESSION['ano_letivo'] === $_SESSION['ano_letivo_vigente']) {
-    // A função retorna o PDOStatement
-        // ATENÇÃO: Essas funções precisam estar definidas no seu escopo
+  if (isset($_SESSION['ano_letivo']) && isset($_SESSION['ano_letivo_vigente']) && $_SESSION['ano_letivo'] === $_SESSION['ano_letivo_vigente']) {
     $stmt_alunos = listar_aluno_da_turma_ata_resultado_final($conexao, $idturma, $idescola, $_SESSION['ano_letivo']);
   } else {
-    // A função retorna o PDOStatement
-        // ATENÇÃO: Essas funções precisam estar definidas no seu escopo
     $stmt_alunos = listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao, $idturma, $idescola, $_SESSION['ano_letivo']);
   }
-
-  // Busca todos os resultados do PDOStatement
   $res_alunos = is_a($stmt_alunos, 'PDOStatement') ? $stmt_alunos->fetchAll(PDO::FETCH_ASSOC) : $stmt_alunos;
-
   $alunos_ids = array_column($res_alunos, 'idaluno');
 
 
 
   // --------------------------------------------------------------------------------
-  // --- 5. Busca de Dados de Frequência em Massa (MODIFICADO) ---
-    // A consulta foi restrita aos pares (data_frequencia, aula) exibidos no cabeçalho.
+  // --- 5. Busca de Dados de Frequência em Massa (CORREÇÃO 1) ---
+    // Consulta restrita apenas aos pares (data_frequencia, aula) exibidos no cabeçalho.
   // --------------------------------------------------------------------------------
 
-
-  $frequencia_mapa = []; // Será [idaluno][data_aula_chave] => presenca
+  $frequencia_mapa = []; 
     $restricoes_aulas = [];
 
     foreach ($aulas_datas as $item) {
         // Cria a lista de pares (data, aula) para o IN clause da SQL
-        // Garantindo que a data seja tratada como string (entre aspas) e a aula como inteiro
         $data_formatada = $conexao->quote($item['data_frequencia']);
-        $restricoes_aulas[] = "({$data_formatada}, " . (int)$item['aula'] . ")";
+        // Usamos quote para a aula também, pois ela pode conter 'AULA-'
+        $aula_formatada = $conexao->quote($item['aula']);
+        $restricoes_aulas[] = "({$data_formatada}, {$aula_formatada})";
     }
     $restricao_aulas_str = implode(', ', $restricoes_aulas);
 
 
-
   if (!empty($alunos_ids) && !empty($restricoes_aulas)) {
-    // Cria placeholders para o IN clause dos IDs dos alunos
     $placeholders = implode(',', array_fill(0, count($alunos_ids), '?'));
    
     $sql_frequencia = "
@@ -191,10 +162,10 @@ function diario_frequencia_fund2(
        AND turma_id = ?
        AND disciplina_id = ?
        AND aluno_id IN ({$placeholders})
-               AND (data_frequencia, aula) IN ({$restricao_aulas_str})"; // NOVO FILTRO
+               AND (data_frequencia, aula) IN ({$restricao_aulas_str})"; 
 
     $params = array_merge(
-      [$idescola, $idturma, $iddisciplina], // Parâmetros básicos
+      [$idescola, $idturma, $iddisciplina],
       $alunos_ids
     );
 
@@ -202,96 +173,27 @@ function diario_frequencia_fund2(
     $stmt_frequencia->execute($params);
     $res_frequencia = $stmt_frequencia->fetchAll(PDO::FETCH_ASSOC);
 
-  //   foreach ($res_frequencia as $registro) {
-  //     $chave = $registro['data_frequencia'] . '_' . $registro['aula'];
-  //     $frequencia_mapa[$registro['aluno_id']][$chave] = $registro['presenca'];
-  //   }
-  // }
-
-
-
-
-  // --- Continuação da Seção 5 ---
-      foreach ($res_frequencia as $registro) {
-          $chave = $registro['data_frequencia'] . '_' . $registro['aula'];
-          $frequencia_mapa[$registro['aluno_id']][$chave] = $registro['presenca'];
-      }
-
-      // DEBUG TEMPORÁRIO: Verifique a estrutura da chave para um aluno específico
-      $idaluno_teste = 30839; // <-- COLOQUE O ID DE UM ALUNO QUE DEVERIA TER DADOS
-      if (isset($frequencia_mapa[$idaluno_teste])) {
-          echo "<pre style='font-size:10pt;'>DEBUG MAPA FREQUENCIA (Aluno $idaluno_teste):<br>";
-          print_r($frequencia_mapa[$idaluno_teste]);
-          echo "</pre>";
-      }
-      // FIM DO DEBUG
+    foreach ($res_frequencia as $registro) {
+            // Monta a chave usando o valor exato que veio do banco, como no debug: 2025-02-12_AULA-3
+      $chave = $registro['data_frequencia'] . '_' . $registro['aula'];
+      $frequencia_mapa[$registro['aluno_id']][$chave] = $registro['presenca'];
+    }
   }
 
-  // ... continua com a definição de $colspan_aulas
-
-
-
-
-
-
-  // O colspan final para as datas/aulas será o número de colunas necessário
   $colspan_aulas = $limite_aula;
 
   ?>
 
 <style>
-/* Estilos CSS para simetria e aparência */
-.MsoNormalTable {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-.MsoNormalTable td, .MsoNormalTable th {
-    padding: 0;
-    border: 1px solid black; 
-    vertical-align: top;
-    box-sizing: border-box; 
-}
-
-/* Classes específicas para colunas */
-.col-index {
-    width: 30pt;
-    text-align: center;
-}
-
-.col-aluno {
-    width: 250pt;
-    padding: 0cm 3.5pt 0cm 3.5pt;
-}
-
-.col-data-aula {
-    width: calc((100% - 280pt) / <?php echo $colspan_aulas; ?>);
-    min-width: 18pt; 
-    max-width: 18pt;
-    text-align: center;
-    height: 60pt;
-}
-
-/* Ajuste para o texto rotacionado */
-.rotate-text {
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    white-space: nowrap;
-    display: block;
-    margin: auto;
-    text-align: center;
-}
-
-/* Altura das linhas de dados */
-.row-data {
-    height: 14pt;
-}
-
-/* Estilo para cabeçalhos (para remover margens/paddings problemáticos) */
-.header-cell {
-    padding: 0cm 3.5pt;
-    height: 18pt;
-}
+/* Estilos CSS mantidos */
+.MsoNormalTable { border-collapse: collapse; width: 100%; }
+.MsoNormalTable td, .MsoNormalTable th { padding: 0; border: 1px solid black; vertical-align: top; box-sizing: border-box; }
+.col-index { width: 30pt; text-align: center; }
+.col-aluno { width: 250pt; padding: 0cm 3.5pt 0cm 3.5pt; }
+.col-data-aula { width: calc((100% - 280pt) / <?php echo $colspan_aulas; ?>); min-width: 18pt; max-width: 18pt; text-align: center; height: 60pt; }
+.rotate-text { writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; display: block; margin: auto; text-align: center; }
+.row-data { height: 14pt; }
+.header-cell { padding: 0cm 3.5pt; height: 18pt; }
 </style>
 
   <div class="WordSection1">
@@ -392,10 +294,13 @@ function diario_frequencia_fund2(
         <?php
         $aula_num = $array_aula[$i] ?? null;
         $classe_fundo = ($i % 2 === 0) ? 'background:#D9D9D9;' : '';
+                
+                // Extrai apenas o número da aula para exibição no cabeçalho (ex: 'AULA-3' vira '3')
+                $aula_somente_num = $aula_num ? str_replace('AULA-', '', $aula_num) : '&nbsp;';
         ?>
         <td class="col-data-aula" style='<?php echo $classe_fundo; ?> border: 1px solid black; border-top: none;'>
           <span class='rotate-text' style='font-size:7.0pt;'>
-            <?php echo $aula_num ? "Aula $aula_num" : '&nbsp;'; ?>
+            <?php echo $aula_num ? "Aula $aula_somente_num" : '&nbsp;'; ?>
           </span>
         </td>
       <?php endfor; ?>
@@ -427,10 +332,11 @@ function diario_frequencia_fund2(
         <?php for ($i = 0; $i < $colspan_aulas; $i++): ?>
           <?php
           $data_frequencia = $array_data_aula[$i] ?? null;
-          $aula = $array_aula[$i] ?? null;
-          $presenca = '&nbsp;'; // Valor padrão: Coluna de aula não preenchida ou inválida
+          $aula = $array_aula[$i] ?? null; // Ex: 'AULA-3'
+          $presenca = '&nbsp;'; // Valor padrão: Branco
 
           if ($data_frequencia && $aula) {
+            // CORREÇÃO AQUI: Usa o valor exato da coluna 'aula' (Ex: 'AULA-3') para a chave
             $chave_frequencia = $data_frequencia . '_' . $aula;
 
             // Verifica se o aluno já estava matriculado na data da aula
@@ -443,13 +349,11 @@ function diario_frequencia_fund2(
                   $presenca = 'F'; // Falta
                 }
               } else {
-                // Aula no cabeçalho, mas sem registro no banco
-                $presenca = '-'; // Sem registro do dia (hífen)
+                $presenca = '-'; // Sem registro do dia
               }
             }
           }
 
-          // Aplica estilo de fundo para simetria (alternando cores)
           $classe_fundo = ($i % 2 === 0) ? 'background:white;' : 'background:white;';
           ?>
         
