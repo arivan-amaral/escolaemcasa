@@ -21,7 +21,7 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
     $stmt_turma = $conexao->query("SELECT nome_turma FROM turma WHERE idturma = $idturma");
     $nome_turma = $stmt_turma->fetch(PDO::FETCH_ASSOC)['nome_turma'] ?? '';
 
-    // 1.2 Determinação do Tipo de Ensino (Mantido)
+    // 1.2 Determinação do Tipo de Ensino
     $tipo_ensino = "";
     if ($idserie == 16) {
         if ($seguimento == 1) {
@@ -78,12 +78,10 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
 
     // 1.4 Buscar Dados dos Alunos (Com Tratamento de Erro de Tipo/Retorno)
     
-    // Armazena o retorno da função que lista os alunos.
     $res_alunos_raw = ($_SESSION['ano_letivo'] == $_SESSION['ano_letivo_vigente']) 
         ? listar_aluno_da_turma_ata_resultado_final($conexao, $idturma, $idescola, $_SESSION['ano_letivo'])
         : listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao, $idturma, $idescola, $_SESSION['ano_letivo']);
     
-    // VARIÁVEL QUE VAI CONTER O ARRAY FINAL DE ALUNOS
     $res_alunos = [];
 
     // Verificação de tipo e conversão para array (CORREÇÃO DO FATAL ERROR)
@@ -168,6 +166,14 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
             return date('d/m/Y', strtotime($data));
         }
     }
+
+    // CÁLCULO DE LAYOUT: Determina a largura total disponível para a seção de frequência (em WordML/pt)
+    $LARGURA_TOTAL_FREQUENCIA_PT = 548; // Largura em pontos (pt) para a seção de Aulas/Datas
+    $NUM_COLUNAS_EXIBIDAS = $limite_aula - $inicio;
+    
+    // Calcula a largura de cada coluna individualmente para que todas tenham o mesmo tamanho
+    $LARGURA_COLUNA_PT = ($NUM_COLUNAS_EXIBIDAS > 0) ? round($LARGURA_TOTAL_FREQUENCIA_PT / $NUM_COLUNAS_EXIBIDAS, 2) : 20;
+
 ?>
 
 
@@ -374,7 +380,7 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
                     color:black;mso-fareast-language:PT-BR'>ALUNO(A)<o:p></o:p></span></b></p>
             </td>
 
-            <td width=548 nowrap colspan='<?php echo $limite_aula - $inicio; ?>' style='width:150.7pt;border:none;border-bottom:
+            <td width='<?php echo $LARGURA_TOTAL_FREQUENCIA_PT; ?>' nowrap colspan='<?php echo $NUM_COLUNAS_EXIBIDAS; ?>' style='width:<?php echo $LARGURA_TOTAL_FREQUENCIA_PT; ?>pt;border:none;border-bottom:
                 solid windowtext 1.0pt;border-top:solid windowtext 1.0pt;mso-border-left-alt:solid windowtext 1.0pt;height:12.0pt'>
                 <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
                     line-height:normal'><b><span style='font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
@@ -399,7 +405,7 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
                 $data_frequencia = $array_data_aula[$i];
                 $is_even = ($i % 2 == 0); 
                 ?>
-                <td style='border:solid windowtext 1.0pt;
+                <td width='<?php echo $LARGURA_COLUNA_PT; ?>' style='width:<?php echo $LARGURA_COLUNA_PT; ?>pt;border:solid windowtext 1.0pt;
                     border-left:none;<?php echo $is_even ? 'background:#D9D9D9;' : ''; ?>mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
                     solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
                     <span style='writing-mode: vertical-lr;font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
@@ -414,7 +420,7 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
             for ($i = $limite_loop_data_aula; $i < $limite_aula; $i++) {
                 $is_even = ($i % 2 == 0);
                 ?>
-                <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
+                <td width='<?php echo $LARGURA_COLUNA_PT; ?>' nowrap style='width:<?php echo $LARGURA_COLUNA_PT; ?>pt;border:solid windowtext 1.0pt;
                     border-left:none;<?php echo $is_even ? 'background:#D9D9D9;' : ''; ?>mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
                     solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
                     <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
@@ -434,7 +440,7 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
             for ($i = $inicio; $i < $limite_loop_data_aula; $i++) {
                 $is_even = ($i % 2 == 0); 
                 ?>
-                <td style='border:solid windowtext 1.0pt;
+                <td width='<?php echo $LARGURA_COLUNA_PT; ?>' style='width:<?php echo $LARGURA_COLUNA_PT; ?>pt;border:solid windowtext 1.0pt;
                     border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
                     solid windowtext 1.0pt;<?php echo $is_even ? 'background:#D9D9D9;' : ''; ?>mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
                     <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
@@ -449,7 +455,7 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
             for ($i = $limite_loop_data_aula; $i < $limite_aula; $i++) {
                 $is_even = ($i % 2 == 0);
                 ?>
-                <td width=41 nowrap style='width:18.8pt;border:solid windowtext 1.0pt;
+                <td width='<?php echo $LARGURA_COLUNA_PT; ?>' nowrap style='width:<?php echo $LARGURA_COLUNA_PT; ?>pt;border:solid windowtext 1.0pt;
                     border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
                     solid windowtext 1.0pt;<?php echo $is_even ? 'background:#D9D9D9;' : ''; ?>mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:.25pt'>
                     <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
@@ -516,7 +522,7 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
                     }
                     
                     ?>
-                    <td width=10 nowrap valign=top style='border:solid windowtext 1.0pt;
+                    <td width='<?php echo $LARGURA_COLUNA_PT; ?>' nowrap valign=top style='width:<?php echo $LARGURA_COLUNA_PT; ?>pt;border:solid windowtext 1.0pt;
                         border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
                         solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
                         white;height:13.5pt'>
@@ -531,7 +537,7 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
                 // Preenchimento de células vazias de frequência (após as aulas lançadas)
                 for ($i = $limite_loop_data_aula; $i < $limite_aula; $i++) {
                     ?>
-                    <td width=10 nowrap valign=top style='border:solid windowtext 1.0pt;
+                    <td width='<?php echo $LARGURA_COLUNA_PT; ?>' nowrap valign=top style='width:<?php echo $LARGURA_COLUNA_PT; ?>pt;border:solid windowtext 1.0pt;
                         border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
                         solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
                         white;height:13.5pt'>
