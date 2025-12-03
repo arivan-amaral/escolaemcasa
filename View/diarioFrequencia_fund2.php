@@ -3,12 +3,7 @@
 /**
 * Função para converter data do formato YYYY-MM-DD para DD/MM/YYYY.
 */
-function converte_data(string $data): string {
-    if (empty($data) || $data === '0000-00-00') {
-        return '';
-    }
-    return date('d/m/Y', strtotime($data));
-}
+
 
 /**
  * Função para sanitizar a string da aula, removendo espaços e caracteres invisíveis.
