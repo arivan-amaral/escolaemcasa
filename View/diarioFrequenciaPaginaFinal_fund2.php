@@ -52,6 +52,7 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
     }
     
     // 1.3 Buscar Datas/Aulas de Frequência lançadas no período (Limitado por $inicio e $fim)
+    // ATENÇÃO: $inicio é o offset, $fim é a quantidade de registros
     $query_frequencia = "
         SELECT data_frequencia, aula
         FROM frequencia
@@ -67,6 +68,7 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
     
     $array_data_aula = [];
     $array_aula = [];
+    // O contador deve começar no $inicio para mapear corretamente o índice (coluna)
     $conta_data_offset = $inicio;
     foreach ($result_data_aula as $row) {
         $array_data_aula[$conta_data_offset] = $row['data_frequencia'];
@@ -74,7 +76,8 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
         $conta_data_offset++;
     }
     $num_aulas_carregadas = count($result_data_aula);
-    $limite_loop_data_aula = $inicio + $num_aulas_carregadas;
+    // Este limite marca a última coluna preenchida
+    $limite_loop_data_aula = $inicio + $num_aulas_carregadas; 
 
     // 1.4 Buscar Dados dos Alunos (Com Tratamento de Erro de Tipo/Retorno)
     
@@ -84,7 +87,7 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
     
     $res_alunos = [];
 
-    // Verificação de tipo e conversão para array (CORREÇÃO DO FATAL ERROR)
+    // Verificação de tipo e conversão para array
     if (is_array($res_alunos_raw)) {
         $res_alunos = $res_alunos_raw;
     } elseif ($res_alunos_raw instanceof PDOStatement) {
@@ -95,10 +98,11 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
         }
     } 
     
-    $alunos_ids = array_column($res_alunos, 'idaluno'); // Agora é garantido ser um array
+    $alunos_ids = array_column($res_alunos, 'idaluno'); 
 
     // 1.5 OTIMIZAÇÃO CRÍTICA: Pré-busca de todas as frequências da página
     $frequencia_chaves = [];
+    // A busca deve ir até o final dos dados carregados (limite_loop_data_aula)
     for ($i = $inicio; $i < $limite_loop_data_aula; $i++) {
         $data = $array_data_aula[$i];
         $aula = $array_aula[$i];
@@ -169,7 +173,8 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
 
     // CÁLCULO DE LAYOUT: Determina a largura total disponível para a seção de frequência (em WordML/pt)
     $LARGURA_TOTAL_FREQUENCIA_PT = 548; // Largura em pontos (pt) para a seção de Aulas/Datas
-    $NUM_COLUNAS_EXIBIDAS = $limite_aula - $inicio;
+    // O número de colunas a exibir é o $limite_aula total que a página deve ter.
+    $NUM_COLUNAS_EXIBIDAS = $limite_aula; 
     
     // Calcula a largura de cada coluna individualmente para que todas tenham o mesmo tamanho
     $LARGURA_COLUNA_PT = ($NUM_COLUNAS_EXIBIDAS > 0) ? round($LARGURA_TOTAL_FREQUENCIA_PT / $NUM_COLUNAS_EXIBIDAS, 2) : 20;
@@ -400,9 +405,11 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
 
         <tr style='mso-yfti-irow:11;height:58.75pt'>
             <?php
-            // Aulas carregadas (com data)
-            for ($i = $inicio; $i < $limite_loop_data_aula; $i++) {
-                $data_frequencia = $array_data_aula[$i];
+            // O loop agora vai de 0 até $limite_aula, garantindo que todas as colunas sejam preenchidas.
+            for ($i = $inicio; $i < ($inicio + $limite_aula); $i++) {
+                
+                // Verifica se esta coluna tem dados reais (i.e., se i < $limite_loop_data_aula)
+                $data_frequencia = $array_data_aula[$i] ?? null; 
                 $is_even = ($i % 2 == 0); 
                 ?>
                 <td width='<?php echo $LARGURA_COLUNA_PT; ?>' style='width:<?php echo $LARGURA_COLUNA_PT; ?>pt;border:solid windowtext 1.0pt;
@@ -410,35 +417,23 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
                     solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
                     <span style='writing-mode: vertical-lr;font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
                     mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-                    color:black;mso-fareast-language:PT-BR'><?php echo converte_data($data_frequencia); ?>
+                    color:black;mso-fareast-language:PT-BR'>
+                    <?php 
+                        // Se houver dado real para esta coluna, exibe a data
+                        echo ($data_frequencia) ? converte_data($data_frequencia) : '&nbsp;'; 
+                    ?>
                     </span>
                 </td>
             <?php
-            }
-
-            // Preenchimento de células vazias para datas (até $limite_data)
-            for ($i = $limite_loop_data_aula; $i < $limite_aula; $i++) {
-                $is_even = ($i % 2 == 0);
-                ?>
-                <td width='<?php echo $LARGURA_COLUNA_PT; ?>' nowrap style='width:<?php echo $LARGURA_COLUNA_PT; ?>pt;border:solid windowtext 1.0pt;
-                    border-left:none;<?php echo $is_even ? 'background:#D9D9D9;' : ''; ?>mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
-                    solid windowtext 1.0pt;mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
-                    <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-                    line-height:normal'><div class="Namerotate">
-                        <span style='font-size:6.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-                        mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-                        color:black;mso-fareast-language:PT-BR'>&nbsp;</span></div></p>
-                </td>
-                <?php
             }
             ?>
         </tr>
 
         <tr style='mso-yfti-irow:12;height:72.25pt'>
             <?php
-            // Aulas carregadas (com número da aula)
-            for ($i = $inicio; $i < $limite_loop_data_aula; $i++) {
-                $is_even = ($i % 2 == 0); 
+            // O loop agora vai de 0 até $limite_aula, garantindo que todas as colunas sejam preenchidas.
+            for ($i = $inicio; $i < ($inicio + $limite_aula); $i++) {
+                $is_even = ($i % 2 == 0);
                 ?>
                 <td width='<?php echo $LARGURA_COLUNA_PT; ?>' style='width:<?php echo $LARGURA_COLUNA_PT; ?>pt;border:solid windowtext 1.0pt;
                     border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
@@ -446,22 +441,9 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
                     <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
                     line-height:normal'><div class="Namerotate"><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
                     mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-                    color:black;mso-fareast-language:PT-BR'> <?php echo "Aula " . ($i + 1); ?> </div></span></p>
-                </td>
-                <?php
-            }
-
-            // Preenchimento de células vazias para aulas (até $limite_aula)
-            for ($i = $limite_loop_data_aula; $i < $limite_aula; $i++) {
-                $is_even = ($i % 2 == 0);
-                ?>
-                <td width='<?php echo $LARGURA_COLUNA_PT; ?>' nowrap style='width:<?php echo $LARGURA_COLUNA_PT; ?>pt;border:solid windowtext 1.0pt;
-                    border-left:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-alt:
-                    solid windowtext 1.0pt;<?php echo $is_even ? 'background:#D9D9D9;' : ''; ?>mso-border-right-alt:solid windowtext .5pt;padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:.25pt'>
-                    <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-                    line-height:normal'><div class="Namerotate"><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-                    mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-                    color:black;mso-fareast-language:PT-BR'><?php echo "Aula " . ($i + 1); ?> </div></span></p>
+                    color:black;mso-fareast-language:PT-BR'> 
+                    <?php echo "Aula " . ($i + 1); ?> 
+                    </div></span></p>
                 </td>
                 <?php
             }
@@ -502,21 +484,27 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
 
                 <?php
                 // Loop de preenchimento das presenças (células de frequência)
-                for ($i = $inicio; $i < $limite_loop_data_aula; $i++) {
-                    $data_frequencia = $array_data_aula[$i];
-                    $aula = $array_aula[$i];
-                    $presenca = "<span style='font-size: 18px;'>-</span>"; // Valor padrão (não lançada)
+                // O loop agora vai de 0 até $limite_aula, garantindo que todas as colunas sejam preenchidas.
+                for ($i = $inicio; $i < ($inicio + $limite_aula); $i++) {
+                    
+                    $presenca = "<span style='font-size: 18px;'>-</span>"; // Valor padrão (não lançada ou vazia)
 
-                    // Acessar o array de pré-busca
-                    $is_present = $frequencias_aluno[$idaluno][$data_frequencia][$aula] ?? null;
+                    // Só tenta buscar dados se a coluna $i estiver dentro do intervalo de dados carregados
+                    if ($i < $limite_loop_data_aula) {
+                        $data_frequencia = $array_data_aula[$i];
+                        $aula = $array_aula[$i];
 
-                    if ($is_present !== null) {
-                        // Checa se a data da frequência é posterior ou igual à data de matrícula
-                        if (strtotime($data_frequencia) >= strtotime($data_matricula)) {
-                            if ($is_present == 1) {
-                                $presenca = "."; // Presente
-                            } elseif ($is_present == 0) {
-                                $presenca = "F"; // Falta
+                        // Acessar o array de pré-busca
+                        $is_present = $frequencias_aluno[$idaluno][$data_frequencia][$aula] ?? null;
+
+                        if ($is_present !== null) {
+                            // Checa se a data da frequência é posterior ou igual à data de matrícula
+                            if (strtotime($data_frequencia) >= strtotime($data_matricula)) {
+                                if ($is_present == 1) {
+                                    $presenca = "."; // Presente
+                                } elseif ($is_present == 0) {
+                                    $presenca = "F"; // Falta
+                                }
                             }
                         }
                     }
@@ -530,21 +518,6 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
                             line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
                             mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
                             color:black;mso-fareast-language:PT-BR'><?php echo $presenca; ?></span></b></p>
-                    </td>
-                    <?php
-                }
-
-                // Preenchimento de células vazias de frequência (após as aulas lançadas)
-                for ($i = $limite_loop_data_aula; $i < $limite_aula; $i++) {
-                    ?>
-                    <td width='<?php echo $LARGURA_COLUNA_PT; ?>' nowrap valign=top style='width:<?php echo $LARGURA_COLUNA_PT; ?>pt;border:solid windowtext 1.0pt;
-                        border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
-                        solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;background:
-                        white;height:13.5pt'>
-                        <p class=MsoNormal align=center style='margin-bottom:0cm;
-                            line-height:normal'><b><span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-                            mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-                            color:black;mso-fareast-language:PT-BR'>&nbsp;</span></b></p>
                     </td>
                     <?php
                 }
