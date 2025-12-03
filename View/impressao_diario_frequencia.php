@@ -120,7 +120,8 @@ target="pla_arquivos/props002.xml">
 
 
 
-
+<center>
+    
     
    
  <div class="box">
@@ -129,6 +130,7 @@ target="pla_arquivos/props002.xml">
  </div>
 
 
+</center>
 
 
 

@@ -409,12 +409,12 @@ function diario_frequencia_fund2(
                     // Aplica estilo de fundo para simetria (alternando cores)
                     $classe_fundo = ($i % 2 === 0) ? 'background:white;' : 'background:white;'; // Usando branco para remover o cinza das linhas de dados
                     ?>
-                    <td class="col-data-aula" style='<?php echo $classe_fundo; ?> height: 13.5pt; border: 1px solid black; border-top: none;'>
-                        <p style='text-align: center; margin: 0;'>
-                            <span style='font-size:9.0pt;'>
-                                <?php echo $presenca; ?>
-                            </span>
-                        </p>
+                  
+                    <td class="col-data-aula" style='<?php echo $classe_fundo; ?> height: 13.5pt; border: 1px solid black; border-top: none; text-align: center; font-size:9.0pt;'>
+                        <?php
+                        // Aqui garantimos que o valor da presença seja exibido diretamente na célula
+                        echo $presenca;
+                        ?>
                     </td>
                 <?php endfor; ?>
             </tr>
