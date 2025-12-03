@@ -479,7 +479,7 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
                     mso-border-left-alt:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext 1.0pt;
                     mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
                     padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt;font-size:9.0pt; text-transform: uppercase;'>
-                    **<?php echo $nome_exibido; ?>**
+                    <?php echo $nome_exibido; ?>
                 </td>
 
                 <?php
@@ -487,7 +487,7 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
                 // O loop agora vai de 0 até $limite_aula, garantindo que todas as colunas sejam preenchidas.
                 for ($i = $inicio; $i < ($inicio + $limite_aula); $i++) {
                     
-                    $presenca = "<span style='font-size: 18px;'>-</span>"; // Valor padrão (não lançada ou vazia)
+                    $presenca = "<span style='font-size: 18px;'>&nbsp;</span>"; // Valor padrão (não lançada ou vazia)
 
                     // Só tenta buscar dados se a coluna $i estiver dentro do intervalo de dados carregados
                     if ($i < $limite_loop_data_aula) {
