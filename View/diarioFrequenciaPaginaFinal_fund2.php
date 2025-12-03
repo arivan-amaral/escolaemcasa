@@ -1,14 +1,17 @@
 <?php
 
+// A função exige que $conexao seja um objeto PDO válido e que as funções
+// listar_aluno_da_turma_ata_resultado_final, listar_aluno_da_turma_ata_resultado_final_matricula_concluida
+// e converte_data (incluída abaixo) estejam definidas ou acessíveis.
+
 function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
      $conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento){
     
     // =====================================================================
-    // BLOCO DE PROCESSAMENTO (LÓGICA)
+    // I. BLOCO DE PROCESSAMENTO (LÓGICA)
     // =====================================================================
 
     // 1.1 Buscar Nome da Disciplina, Escola e Turma
-    // Usando fetch() para consultas que retornam um único resultado
     $stmt_disc = $conexao->query("SELECT nome_disciplina FROM disciplina WHERE iddisciplina = $iddisciplina");
     $nome_disciplina = $stmt_disc->fetch(PDO::FETCH_ASSOC)['nome_disciplina'] ?? '';
 
@@ -18,7 +21,7 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
     $stmt_turma = $conexao->query("SELECT nome_turma FROM turma WHERE idturma = $idturma");
     $nome_turma = $stmt_turma->fetch(PDO::FETCH_ASSOC)['nome_turma'] ?? '';
 
-    // 1.2 Determinação do Tipo de Ensino (Usando switch para clareza)
+    // 1.2 Determinação do Tipo de Ensino (Mantido)
     $tipo_ensino = "";
     if ($idserie == 16) {
         if ($seguimento == 1) {
@@ -73,13 +76,29 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
     $num_aulas_carregadas = count($result_data_aula);
     $limite_loop_data_aula = $inicio + $num_aulas_carregadas;
 
-    // 1.4 Buscar Dados dos Alunos
-    $res_alunos = ($_SESSION['ano_letivo'] == $_SESSION['ano_letivo_vigente']) 
+    // 1.4 Buscar Dados dos Alunos (Com Tratamento de Erro de Tipo/Retorno)
+    
+    // Armazena o retorno da função que lista os alunos.
+    $res_alunos_raw = ($_SESSION['ano_letivo'] == $_SESSION['ano_letivo_vigente']) 
         ? listar_aluno_da_turma_ata_resultado_final($conexao, $idturma, $idescola, $_SESSION['ano_letivo'])
         : listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao, $idturma, $idescola, $_SESSION['ano_letivo']);
     
-    $alunos_ids = array_column($res_alunos, 'idaluno');
+    // VARIÁVEL QUE VAI CONTER O ARRAY FINAL DE ALUNOS
+    $res_alunos = [];
+
+    // Verificação de tipo e conversão para array (CORREÇÃO DO FATAL ERROR)
+    if (is_array($res_alunos_raw)) {
+        $res_alunos = $res_alunos_raw;
+    } elseif ($res_alunos_raw instanceof PDOStatement) {
+        try {
+            $res_alunos = $res_alunos_raw->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            $res_alunos = [];
+        }
+    } 
     
+    $alunos_ids = array_column($res_alunos, 'idaluno'); // Agora é garantido ser um array
+
     // 1.5 OTIMIZAÇÃO CRÍTICA: Pré-busca de todas as frequências da página
     $frequencia_chaves = [];
     for ($i = $inicio; $i < $limite_loop_data_aula; $i++) {
@@ -90,7 +109,7 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
     $frequencia_chaves_str = implode(', ', $frequencia_chaves);
     
     $frequencias_aluno = [];
-    $total_faltas_aluno = []; // Array para armazenar o total de faltas por aluno
+    $total_faltas_aluno = []; 
     
     if (!empty($alunos_ids)) {
         $alunos_ids_str = implode(',', $alunos_ids);
@@ -142,7 +161,7 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
         }
     }
     
-    // 1.6 Função auxiliar (necessária se não estiver definida em outro local)
+    // 1.6 Função auxiliar
     if (!function_exists('converte_data')) {
         function converte_data($data) {
             if (empty($data) || $data == '0000-00-00') return '';
