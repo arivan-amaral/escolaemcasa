@@ -3,11 +3,27 @@
 /**
 * Função para converter data do formato YYYY-MM-DD para DD/MM/YYYY.
 */
- 
+function converte_data(string $data): string {
+    if (empty($data) || $data === '0000-00-00') {
+        return '';
+    }
+    return date('d/m/Y', strtotime($data));
+}
+
+/**
+ * Função para sanitizar a string da aula, removendo espaços e caracteres invisíveis.
+ */
+function sanitizar_aula(string $aula): string {
+    // 1. Remove espaços no início e fim
+    $aula_limpa = trim($aula);
+    // 2. Remove todos os caracteres que não são letras, números ou hífen (regex)
+    return preg_replace('/[^\w-]/', '', $aula_limpa);
+}
+
 
 /**
 * Função para gerar o Diário de Frequência.
-* (Versão Final com sanitização da chave da aula)
+* (Com código de DEBUG GLOBAL para chaves)
 */
 function diario_frequencia_fund2(
   PDO $conexao,
@@ -66,7 +82,7 @@ function diario_frequencia_fund2(
   $nome_turma_exibicao = $stmt_turma->fetchColumn() ?? 'N/A';
 
 
-  // --- 3. Busca de Aulas e Datas (Mantido) ---
+  // --- 3. Busca de Aulas e Datas (Sanitiza a Aula ao carregar) ---
   $sql_aulas = "
     SELECT aula, data_frequencia
     FROM frequencia
@@ -96,8 +112,8 @@ function diario_frequencia_fund2(
  
   foreach ($aulas_datas as $item) {
     $array_data_aula[] = $item['data_frequencia'];
-        // Sanitiza a aula removendo espaços/caracteres invisíveis
-    $array_aula[] = trim($item['aula']); 
+        // **Aplica sanitização extrema**
+    $array_aula[] = sanitizar_aula($item['aula']); 
     $num_aulas_reais++;
   }
 
@@ -116,7 +132,7 @@ function diario_frequencia_fund2(
 
 
   // --------------------------------------------------------------------------------
-  // --- 5. Busca de Dados de Frequência em Massa (Chaves sincronizadas e sanitizadas) ---
+  // --- 5. Busca de Dados de Frequência em Massa (Sanitização para Consulta SQL e Mapa) ---
   // --------------------------------------------------------------------------------
 
   $frequencia_mapa = []; 
@@ -124,8 +140,8 @@ function diario_frequencia_fund2(
 
     foreach ($aulas_datas as $item) {
         $data_formatada = $conexao->quote($item['data_frequencia']);
-        // Sanitiza a aula para a consulta SQL em massa também
-        $aula_sanitizada = trim($item['aula']);
+        // Sanitiza para a consulta SQL em massa
+        $aula_sanitizada = sanitizar_aula($item['aula']);
         $aula_formatada = $conexao->quote($aula_sanitizada);
         $restricoes_aulas[] = "({$data_formatada}, {$aula_formatada})";
     }
@@ -154,8 +170,8 @@ function diario_frequencia_fund2(
     $res_frequencia = $stmt_frequencia->fetchAll(PDO::FETCH_ASSOC);
 
     foreach ($res_frequencia as $registro) {
-            // Sanitiza a aula novamente para criar a chave do mapa de forma limpa
-            $aula_limpa = trim($registro['aula']);
+            // Sanitiza a aula para criar a chave do mapa de forma limpa e idêntica à usada na exibição
+            $aula_limpa = sanitizar_aula($registro['aula']);
       $chave = $registro['data_frequencia'] . '_' . $aula_limpa;
       $frequencia_mapa[$registro['aluno_id']][$chave] = $registro['presenca'];
     }
@@ -166,7 +182,7 @@ function diario_frequencia_fund2(
   ?>
 
 <style>
-/* Estilos CSS (Mantidos) */
+/* Estilos CSS */
 .MsoNormalTable { border-collapse: collapse; width: 100%; }
 .MsoNormalTable td, .MsoNormalTable th { padding: 0; border: 1px solid black; vertical-align: top; box-sizing: border-box; }
 .col-index { width: 30pt; text-align: center; }
@@ -175,6 +191,8 @@ function diario_frequencia_fund2(
 .rotate-text { writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; display: block; margin: auto; text-align: center; }
 .row-data { height: 14pt; }
 .header-cell { padding: 0cm 3.5pt; height: 18pt; }
+.debug-key { background-color: #ffc; font-size: 7pt; display: block; border-bottom: 1px dashed #ccc; }
+.debug-content { display: block; font-size: 11pt; padding-top: 2px; }
 </style>
 
   <div class="WordSection1">
@@ -269,7 +287,7 @@ function diario_frequencia_fund2(
     <tr style='height: 72.25pt;'>
       <?php for ($i = 0; $i < $colspan_aulas; $i++): ?>
         <?php
-        $aula_num = $array_aula[$i] ?? null; // Ex: 'AULA-3'
+        $aula_num = $array_aula[$i] ?? null; // Ex: 'AULA-3' (sanitizado)
         $classe_fundo = ($i % 2 === 0) ? 'background:#D9D9D9;' : '';
                 
                 // Extrai apenas o número da aula para exibição (ex: 'AULA-3' vira '3')
@@ -311,6 +329,7 @@ function diario_frequencia_fund2(
           $data_frequencia = $array_data_aula[$i] ?? null;
           $aula = $array_aula[$i] ?? null; // Ex: 'AULA-3' (já sanitizado)
           $presenca = '&nbsp;'; 
+                        $status_busca = ""; // Variável para o debug
 
           if ($data_frequencia && $aula) {
             // Cria a chave de busca usando o valor limpo
@@ -325,17 +344,24 @@ function diario_frequencia_fund2(
                 } elseif ($status === '0') {
                   $presenca = 'F'; // Falta
                 }
+                                // Debug: Se achou, mostra o valor
+                                $status_busca = "ACHOU (Valor: $status)";
               } else {
                 $presenca = '-'; // Sem registro do dia
+                                // Debug: Se não achou, mostra que não achou
+                                $status_busca = "NÃO ACHOU (Setado: -)";
               }
-            }
+            } else {
+                             $status_busca = "PRÉ-MATRÍCULA";
+                        }
           }
 
           $classe_fundo = ($i % 2 === 0) ? 'background:white;' : 'background:white;';
           ?>
         
-                    <td class="col-data-aula" style='<?php echo $classe_fundo; ?> height: 13.5pt; border: 1px solid black; border-top: none; text-align: center; font-size:9.0pt;'>
-            <?php echo $presenca; ?>
+                    <td class="col-data-aula" style='<?php echo $classe_fundo; ?> height: 13.5pt; border: 1px solid black; border-top: none; text-align: center;'>
+                        <span class="debug-key" title="<?php echo $chave_frequencia ?? ''; ?>"><?php echo $status_busca; ?></span>
+                        <span class="debug-content"><?php echo $presenca; ?></span>
           </td>
         <?php endfor; ?>
       </tr>
