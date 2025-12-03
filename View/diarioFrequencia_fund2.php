@@ -386,7 +386,7 @@ function diario_frequencia_fund2(
                     <?php
                     $data_frequencia = $array_data_aula[$i] ?? null;
                     $aula = $array_aula[$i] ?? null;
-                    $presenca = '&nbsp;'; // Valor padrão para ausência de dado ou aula futura/vazia
+                    $presenca = '&nbsp;-'; // Valor padrão para ausência de dado ou aula futura/vazia
 
                     if ($data_frequencia && $aula) {
                         $chave_frequencia = $data_frequencia . '_' . $aula;
