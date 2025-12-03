@@ -334,20 +334,21 @@ function diario_frequencia_fund2(
             if ($data_frequencia >= $data_matricula) {
               if (isset($frequencia_mapa[$idaluno][$chave_frequencia])) {
                 $status = $frequencia_mapa[$idaluno][$chave_frequencia];
-                if ($status === '1') {
+                
+                if ($status == 1) {
                   $presenca = '.'; // Presente
-                } elseif ($status === '0') {
+                } elseif ($status ==0) {
                   $presenca = 'F'; // Falta
                 }
                                 // Debug: Se achou, mostra o valor
-                                $status_busca = "ACHOU (Valor: $status)";
+                                // $status_busca = "ACHOU (Valor: $status)";
               } else {
                 $presenca = '-'; // Sem registro do dia
                                 // Debug: Se não achou, mostra que não achou
-                                $status_busca = "NÃO ACHOU (Setado: -)";
+                                // $status_busca = "NÃO ACHOU (Setado: -)";
               }
             } else {
-                             $status_busca = "PRÉ-MATRÍCULA";
+                             // $status_busca = "PRÉ-MATRÍCULA";
                         }
           }
 
