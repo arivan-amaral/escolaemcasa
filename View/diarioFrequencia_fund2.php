@@ -8,12 +8,12 @@
 /**
  * Função para sanitizar a string da aula, removendo espaços e caracteres invisíveis.
  */
-function sanitizar_aula(string $aula): string {
-    // 1. Remove espaços no início e fim
-    $aula_limpa = trim($aula);
-    // 2. Remove todos os caracteres que não são letras, números ou hífen (regex)
-    return preg_replace('/[^\w-]/', '', $aula_limpa);
-}
+// function sanitizar_aula(string $aula): string {
+//     // 1. Remove espaços no início e fim
+//     $aula_limpa = trim($aula);
+//     // 2. Remove todos os caracteres que não são letras, números ou hífen (regex)
+//     return preg_replace('/[^\w-]/', '', $aula_limpa);
+// }
 
 
 /**

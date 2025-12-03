@@ -1,5 +1,18 @@
 <?php 
 date_default_timezone_set('America/Bahia');
+
+
+function sanitizar_aula(string $aula): string {
+    // 1. Remove espaços no início e fim
+    $aula_limpa = trim($aula);
+    // 2. Remove todos os caracteres que não são letras, números ou hífen (regex)
+    // Isso é crucial para evitar problemas de matching no banco de dados
+    return preg_replace('/[^\w-]/', '', $aula_limpa);
+}
+
+
+
+
 function limparEspacosNome($nome) {
     // Remove espaços extras no início e fim
     $nome = trim($nome);
