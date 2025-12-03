@@ -384,8 +384,8 @@ else{
         
 
         //linha 428 600 760
-        //diario_frequencia_pagina_final_fund2
-        diario_frequencia_fund2($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
+        //
+        diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
             $conta_aula+0,
             $conta_data+0,
             $limite_data+0,
