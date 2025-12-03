@@ -117,6 +117,52 @@ target="pla_arquivos/props002.xml">
 
 <body lang=PT-BR style='tab-interval:35.4pt;word-wrap:break-word'>
 
+
+
+
+
+    <style>
+    body{
+    margin:0;
+    padding:0;
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:Arial, sans-serif;
+    /*background:#fff7cc; /* amarelo claro */*/
+    }
+    .box{
+    background:#ffe680; /* amarelo mais forte */
+    border:2px solid #e6b800;
+    padding:20px 30px;
+    border-radius:8px;
+    text-align:center;
+    max-width:400px;
+    }
+    h1{
+    margin:0 0 10px;
+    font-size:20px;
+    color:#b36b00;
+    }
+    p{
+    margin:0;
+    font-size:15px;
+    color:#734d00;
+    }
+    </style>
+   
+    <div class="box">
+    <h1>Página em manutenção</h1>
+    <p>Estamos melhorando a velocidade e o desempenho da exibição dos dados. Seus dados seguem seguros e não serão afetados.</p>
+    </div>
+
+
+
+
+
+
+
     <p class="no-print">
       <br>
       <br>
