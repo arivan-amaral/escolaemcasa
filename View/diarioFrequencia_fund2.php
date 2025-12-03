@@ -2,31 +2,12 @@
 
 /**
 * Função para converter data do formato YYYY-MM-DD para DD/MM/YYYY.
-* (Assumindo que esta função existe no seu projeto, se não, use o código abaixo)
 */
- 
 
 
 /**
 * Função para gerar o Diário de Frequência.
-*
-* @param PDO $conexao Objeto de conexão PDO.
-* @param int $idescola ID da Escola.
-* @param int $idturma ID da Turma.
-* @param int $iddisciplina ID da Disciplina.
-* @param int $inicio Início da paginação para aulas.
-* @param int $fim Fim da paginação para aulas.
-* @param int $conta_aula Contador inicial de aula.
-* @param int $conta_data Contador inicial de data.
-* @param int $limite_data Limite de colunas de data.
-* @param int $limite_aula Limite de colunas de aula.
-* @param int $periodo_id ID do Período.
-* @param int $idserie ID da Série.
-* @param string $descricao_trimestre Descrição do Trimestre.
-* @param string $data_inicio_trimestre Data de Início do Trimestre ('YYYY-MM-DD').
-* @param string $data_fim_trimestre Data de Fim do Trimestre ('YYYY-MM-DD').
-* @param int $ano_letivo Ano Letivo.
-* @param int $seguimento Seguimento.
+* (Com correção para chaves 'DATA_AULA-N')
 */
 function diario_frequencia_fund2(
   PDO $conexao,
@@ -115,8 +96,7 @@ function diario_frequencia_fund2(
  
   foreach ($aulas_datas as $item) {
     $array_data_aula[] = $item['data_frequencia'];
-        // ATENÇÃO: $item['aula'] AQUI PODE SER 'AULA-3' (se o campo for VARCHAR) ou '3' (se for INT)
-    $array_aula[] = $item['aula']; 
+        $array_aula[] = $item['aula']; // Contém o valor exato do banco, ex: 'AULA-3'
     $num_aulas_reais++;
   }
 
@@ -124,6 +104,7 @@ function diario_frequencia_fund2(
 
 
   // --- 4. Busca de Dados de Alunos ---
+    // (Mantido o código para `listar_aluno_da_turma_ata_resultado_final` e variantes)
   if (isset($_SESSION['ano_letivo']) && isset($_SESSION['ano_letivo_vigente']) && $_SESSION['ano_letivo'] === $_SESSION['ano_letivo_vigente']) {
     $stmt_alunos = listar_aluno_da_turma_ata_resultado_final($conexao, $idturma, $idescola, $_SESSION['ano_letivo']);
   } else {
@@ -135,17 +116,15 @@ function diario_frequencia_fund2(
 
 
   // --------------------------------------------------------------------------------
-  // --- 5. Busca de Dados de Frequência em Massa (CORREÇÃO 1) ---
-    // Consulta restrita apenas aos pares (data_frequencia, aula) exibidos no cabeçalho.
+  // --- 5. Busca de Dados de Frequência em Massa (Chaves sincronizadas) ---
   // --------------------------------------------------------------------------------
 
   $frequencia_mapa = []; 
     $restricoes_aulas = [];
 
     foreach ($aulas_datas as $item) {
-        // Cria a lista de pares (data, aula) para o IN clause da SQL
         $data_formatada = $conexao->quote($item['data_frequencia']);
-        // Usamos quote para a aula também, pois ela pode conter 'AULA-'
+        // Citação da aula como string para segurança e precisão (ex: 'AULA-3')
         $aula_formatada = $conexao->quote($item['aula']);
         $restricoes_aulas[] = "({$data_formatada}, {$aula_formatada})";
     }
@@ -174,7 +153,7 @@ function diario_frequencia_fund2(
     $res_frequencia = $stmt_frequencia->fetchAll(PDO::FETCH_ASSOC);
 
     foreach ($res_frequencia as $registro) {
-            // Monta a chave usando o valor exato que veio do banco, como no debug: 2025-02-12_AULA-3
+            // Cria a chave no formato exato: 2025-02-12_AULA-3
       $chave = $registro['data_frequencia'] . '_' . $registro['aula'];
       $frequencia_mapa[$registro['aluno_id']][$chave] = $registro['presenca'];
     }
@@ -185,7 +164,7 @@ function diario_frequencia_fund2(
   ?>
 
 <style>
-/* Estilos CSS mantidos */
+/* Estilos CSS (mantidos) */
 .MsoNormalTable { border-collapse: collapse; width: 100%; }
 .MsoNormalTable td, .MsoNormalTable th { padding: 0; border: 1px solid black; vertical-align: top; box-sizing: border-box; }
 .col-index { width: 30pt; text-align: center; }
@@ -199,8 +178,7 @@ function diario_frequencia_fund2(
   <div class="WordSection1">
 
   <table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style='width: 100%;'>
-
-    <tr style='height: 15.0pt;'>
+        <tr style='height: 15.0pt;'>
       <td colspan="<?php echo 2 + $colspan_aulas; ?>" style='border: none; padding: 0;'>
         <table style='width: 100%; border-collapse: collapse;'>
           <tr>
@@ -262,9 +240,7 @@ function diario_frequencia_fund2(
         <b>UNIDADE:</b> <?php echo "$descricao_trimestre " . converte_data($data_inicio_trimestre) . " a " . converte_data($data_fim_trimestre); ?>
       </td>
     </tr>
-
-
-    <tr>
+            <tr>
       <td class="col-index" rowspan="3" style="border-right: none;">&nbsp;</td>
       <td class="col-aluno" rowspan="3" style="border-left: none; border-bottom: 1px solid black;">
         <p style='text-align: center; margin: 0;'><b>ALUNO(A)</b></p>
@@ -292,10 +268,10 @@ function diario_frequencia_fund2(
     <tr style='height: 72.25pt;'>
       <?php for ($i = 0; $i < $colspan_aulas; $i++): ?>
         <?php
-        $aula_num = $array_aula[$i] ?? null;
+        $aula_num = $array_aula[$i] ?? null; // Ex: 'AULA-3'
         $classe_fundo = ($i % 2 === 0) ? 'background:#D9D9D9;' : '';
                 
-                // Extrai apenas o número da aula para exibição no cabeçalho (ex: 'AULA-3' vira '3')
+                // Extrai apenas o número da aula para exibição (ex: 'AULA-3' vira '3')
                 $aula_somente_num = $aula_num ? str_replace('AULA-', '', $aula_num) : '&nbsp;';
         ?>
         <td class="col-data-aula" style='<?php echo $classe_fundo; ?> border: 1px solid black; border-top: none;'>
@@ -333,10 +309,11 @@ function diario_frequencia_fund2(
           <?php
           $data_frequencia = $array_data_aula[$i] ?? null;
           $aula = $array_aula[$i] ?? null; // Ex: 'AULA-3'
-          $presenca = '&nbsp;'; // Valor padrão: Branco
+          $presenca = '&nbsp;'; 
 
           if ($data_frequencia && $aula) {
-            // CORREÇÃO AQUI: Usa o valor exato da coluna 'aula' (Ex: 'AULA-3') para a chave
+            // Usa o valor de $aula (ex: 'AULA-3') para a chave de busca, 
+                        // garantindo que ele corresponde à chave criada na Seção 5
             $chave_frequencia = $data_frequencia . '_' . $aula;
 
             // Verifica se o aluno já estava matriculado na data da aula
@@ -357,7 +334,7 @@ function diario_frequencia_fund2(
           $classe_fundo = ($i % 2 === 0) ? 'background:white;' : 'background:white;';
           ?>
         
-                              <td class="col-data-aula" style='<?php echo $classe_fundo; ?> height: 13.5pt; border: 1px solid black; border-top: none; text-align: center; font-size:9.0pt;'>
+                    <td class="col-data-aula" style='<?php echo $classe_fundo; ?> height: 13.5pt; border: 1px solid black; border-top: none; text-align: center; font-size:9.0pt;'>
             <?php echo $presenca; ?>
           </td>
         <?php endfor; ?>
