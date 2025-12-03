@@ -343,7 +343,7 @@ function diario_frequencia_fund2(
                                 // Debug: Se achou, mostra o valor
                                 // $status_busca = "ACHOU (Valor: $status)";
               } else {
-                $presenca = '-'; // Sem registro do dia
+                $presenca = '<b>-</b>'; // Sem registro do dia
                                 // Debug: Se não achou, mostra que não achou
                                 // $status_busca = "NÃO ACHOU (Setado: -)";
               }
