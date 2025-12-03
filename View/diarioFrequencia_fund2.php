@@ -3,11 +3,11 @@
 /**
 * Função para converter data do formato YYYY-MM-DD para DD/MM/YYYY.
 */
-
+ 
 
 /**
 * Função para gerar o Diário de Frequência.
-* (Com código de DEBUG TEMPORÁRIO para chaves)
+* (Versão Final com sanitização da chave da aula)
 */
 function diario_frequencia_fund2(
   PDO $conexao,
@@ -30,9 +30,6 @@ function diario_frequencia_fund2(
 ): void {
   $nome_disciplina = '';
   $tipo_ensino = "Tipo Desconhecido";
-
-    // VARIÁVEL DE TESTE PARA O DEBUG: Coloque o ID do aluno que você sabe que tem frequência
-    $idaluno_teste = 30839; // <-- USE SEU ID DE TESTE
 
   // --- 1. Determinação do Tipo de Ensino (Mantido) ---
   if ($idserie === 17) {
@@ -99,7 +96,8 @@ function diario_frequencia_fund2(
  
   foreach ($aulas_datas as $item) {
     $array_data_aula[] = $item['data_frequencia'];
-        $array_aula[] = $item['aula']; // Contém o valor exato do banco, ex: 'AULA-3'
+        // Sanitiza a aula removendo espaços/caracteres invisíveis
+    $array_aula[] = trim($item['aula']); 
     $num_aulas_reais++;
   }
 
@@ -118,7 +116,7 @@ function diario_frequencia_fund2(
 
 
   // --------------------------------------------------------------------------------
-  // --- 5. Busca de Dados de Frequência em Massa (Chaves sincronizadas) ---
+  // --- 5. Busca de Dados de Frequência em Massa (Chaves sincronizadas e sanitizadas) ---
   // --------------------------------------------------------------------------------
 
   $frequencia_mapa = []; 
@@ -126,7 +124,9 @@ function diario_frequencia_fund2(
 
     foreach ($aulas_datas as $item) {
         $data_formatada = $conexao->quote($item['data_frequencia']);
-        $aula_formatada = $conexao->quote($item['aula']);
+        // Sanitiza a aula para a consulta SQL em massa também
+        $aula_sanitizada = trim($item['aula']);
+        $aula_formatada = $conexao->quote($aula_sanitizada);
         $restricoes_aulas[] = "({$data_formatada}, {$aula_formatada})";
     }
     $restricao_aulas_str = implode(', ', $restricoes_aulas);
@@ -152,25 +152,13 @@ function diario_frequencia_fund2(
     $stmt_frequencia = $conexao->prepare($sql_frequencia);
     $stmt_frequencia->execute($params);
     $res_frequencia = $stmt_frequencia->fetchAll(PDO::FETCH_ASSOC);
-        
-        // DEBUG 1: EXIBE O MAPA DE FREQUÊNCIA PARA O ALUNO DE TESTE
-        $debug_mapa = [];
-    foreach ($res_frequencia as $registro) {
-            // Cria a chave no formato exato: 2025-02-12_AULA-3
-      $chave = $registro['data_frequencia'] . '_' . $registro['aula'];
-      $frequencia_mapa[$registro['aluno_id']][$chave] = $registro['presenca'];
-            if ($registro['aluno_id'] == $idaluno_teste) {
-                $debug_mapa[$chave] = $registro['presenca'];
-            }
-    }
 
-        if (!empty($debug_mapa)) {
-            echo "<pre style='background: #fee; border: 1px solid red; padding: 5px;'>";
-            echo "--- DEBUG MAPA DE FREQUÊNCIA (Aluno $idaluno_teste) ---\n";
-            print_r($debug_mapa);
-            echo "------------------------------------------------------\n";
-            echo "</pre>";
-        }
+    foreach ($res_frequencia as $registro) {
+            // Sanitiza a aula novamente para criar a chave do mapa de forma limpa
+            $aula_limpa = trim($registro['aula']);
+      $chave = $registro['data_frequencia'] . '_' . $aula_limpa;
+      $frequencia_mapa[$registro['aluno_id']][$chave] = $registro['presenca'];
+    }
   }
 
   $colspan_aulas = $limite_aula;
@@ -178,7 +166,7 @@ function diario_frequencia_fund2(
   ?>
 
 <style>
-/* Estilos CSS (mantidos) */
+/* Estilos CSS (Mantidos) */
 .MsoNormalTable { border-collapse: collapse; width: 100%; }
 .MsoNormalTable td, .MsoNormalTable th { padding: 0; border: 1px solid black; vertical-align: top; box-sizing: border-box; }
 .col-index { width: 30pt; text-align: center; }
@@ -187,7 +175,6 @@ function diario_frequencia_fund2(
 .rotate-text { writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; display: block; margin: auto; text-align: center; }
 .row-data { height: 14pt; }
 .header-cell { padding: 0cm 3.5pt; height: 18pt; }
-.debug-key { background-color: #ffc; font-size: 7pt; display: block; }
 </style>
 
   <div class="WordSection1">
@@ -216,7 +203,7 @@ function diario_frequencia_fund2(
         </table>
       </td>
     </tr>
-            <tr class="row-data">
+    <tr class="row-data">
       <td colspan="<?php echo 2 + $colspan_aulas; ?>" class="header-cell">
         <b>ESCOLA MUNICIPAL: <?php echo $nome_escola; ?> - INEP 29001269</b>
       </td>
@@ -254,9 +241,7 @@ function diario_frequencia_fund2(
         <b>UNIDADE:</b> <?php echo "$descricao_trimestre " . converte_data($data_inicio_trimestre) . " a " . converte_data($data_fim_trimestre); ?>
       </td>
     </tr>
-
-
-    <tr>
+            <tr>
       <td class="col-index" rowspan="3" style="border-right: none;">&nbsp;</td>
       <td class="col-aluno" rowspan="3" style="border-left: none; border-bottom: 1px solid black;">
         <p style='text-align: center; margin: 0;'><b>ALUNO(A)</b></p>
@@ -324,19 +309,13 @@ function diario_frequencia_fund2(
         <?php for ($i = 0; $i < $colspan_aulas; $i++): ?>
           <?php
           $data_frequencia = $array_data_aula[$i] ?? null;
-          $aula = $array_aula[$i] ?? null; // Ex: 'AULA-3'
+          $aula = $array_aula[$i] ?? null; // Ex: 'AULA-3' (já sanitizado)
           $presenca = '&nbsp;'; 
 
           if ($data_frequencia && $aula) {
-            // Chave de busca: usa o valor exato da coluna 'aula' (Ex: 'AULA-3')
+            // Cria a chave de busca usando o valor limpo
             $chave_frequencia = $data_frequencia . '_' . $aula;
-                        $status_busca = "";
-                        
-                        // DEBUG 2: INFORMAÇÃO DA CHAVE DE BUSCA
-                        if ($idaluno == $idaluno_teste) {
-                            $status_busca = isset($frequencia_mapa[$idaluno][$chave_frequencia]) ? 'ACHOU' : 'NÃO ACHOU';
-                        }
-                        
+
             // Verifica se o aluno já estava matriculado na data da aula
             if ($data_frequencia >= $data_matricula) {
               if (isset($frequencia_mapa[$idaluno][$chave_frequencia])) {
@@ -346,16 +325,8 @@ function diario_frequencia_fund2(
                 } elseif ($status === '0') {
                   $presenca = 'F'; // Falta
                 }
-                                // DEBUG: Se achou, mostra o valor
-                                if ($idaluno == $idaluno_teste) {
-                                    $status_busca = "ACHOU (Valor: $status)";
-                                }
               } else {
                 $presenca = '-'; // Sem registro do dia
-                                // DEBUG: Se não achou, mostra que não achou
-                                if ($idaluno == $idaluno_teste) {
-                                    $status_busca = "NÃO ACHOU (Setado: -)";
-                                }
               }
             }
           }
@@ -364,12 +335,7 @@ function diario_frequencia_fund2(
           ?>
         
                     <td class="col-data-aula" style='<?php echo $classe_fundo; ?> height: 13.5pt; border: 1px solid black; border-top: none; text-align: center; font-size:9.0pt;'>
-                        <?php if ($idaluno == $idaluno_teste): ?>
-                            <span class="debug-key" title="<?php echo $chave_frequencia; ?>"><?php echo $status_busca; ?></span>
-                            <span style="display: block; font-size: 11pt;"><?php echo $presenca; ?></span>
-                        <?php else: ?>
-                            <?php echo $presenca; ?>
-                        <?php endif; ?>
+            <?php echo $presenca; ?>
           </td>
         <?php endfor; ?>
       </tr>
