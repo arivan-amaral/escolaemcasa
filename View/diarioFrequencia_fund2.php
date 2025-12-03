@@ -179,6 +179,7 @@ function diario_frequencia_fund2(
     $restricao_aulas_str = implode(', ', $restricoes_aulas);
 
 
+
   if (!empty($alunos_ids) && !empty($restricoes_aulas)) {
     // Cria placeholders para o IN clause dos IDs dos alunos
     $placeholders = implode(',', array_fill(0, count($alunos_ids), '?'));
@@ -201,11 +202,37 @@ function diario_frequencia_fund2(
     $stmt_frequencia->execute($params);
     $res_frequencia = $stmt_frequencia->fetchAll(PDO::FETCH_ASSOC);
 
-    foreach ($res_frequencia as $registro) {
-      $chave = $registro['data_frequencia'] . '_' . $registro['aula'];
-      $frequencia_mapa[$registro['aluno_id']][$chave] = $registro['presenca'];
-    }
+  //   foreach ($res_frequencia as $registro) {
+  //     $chave = $registro['data_frequencia'] . '_' . $registro['aula'];
+  //     $frequencia_mapa[$registro['aluno_id']][$chave] = $registro['presenca'];
+  //   }
+  // }
+
+
+
+
+  // --- Continuação da Seção 5 ---
+      foreach ($res_frequencia as $registro) {
+          $chave = $registro['data_frequencia'] . '_' . $registro['aula'];
+          $frequencia_mapa[$registro['aluno_id']][$chave] = $registro['presenca'];
+      }
+
+      // DEBUG TEMPORÁRIO: Verifique a estrutura da chave para um aluno específico
+      $idaluno_teste = 30839; // <-- COLOQUE O ID DE UM ALUNO QUE DEVERIA TER DADOS
+      if (isset($frequencia_mapa[$idaluno_teste])) {
+          echo "<pre style='font-size:10pt;'>DEBUG MAPA FREQUENCIA (Aluno $idaluno_teste):<br>";
+          print_r($frequencia_mapa[$idaluno_teste]);
+          echo "</pre>";
+      }
+      // FIM DO DEBUG
   }
+
+  // ... continua com a definição de $colspan_aulas
+
+
+
+
+
 
   // O colspan final para as datas/aulas será o número de colunas necessário
   $colspan_aulas = $limite_aula;
