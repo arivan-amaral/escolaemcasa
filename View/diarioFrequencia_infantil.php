@@ -290,9 +290,9 @@ function diario_frequencia_infantil($conexao, $idescola, $idturma, $iddisciplina
                     $status = $mapa_presenca[$chave_busca];
                     if ($status == '0') {
                         echo "<td class='celula-presenca' style='font-weight:bold;'>F</td>";
-                        $total_faltas++;
+                        // $total_faltas++;
                         $mapa_total_faltas[$aluno['idaluno']]+= 1;
-                        mapa_total_faltas
+                    
 
                     } else {
                         echo "<td class='celula-presenca'>.</td>";
