@@ -249,7 +249,7 @@ function diario_frequencia_fund1($conexao, $idescola, $idturma, $iddisciplina, $
                     
                     if ($status == 0) {
                         echo "<td class='celula-presenca' style='font-weight:bold;'>F</td>";
-                        $mapa_total_faltas[$aluno['idaluno']]+1;
+                        $mapa_total_faltas[$aluno['idaluno']]+=1;
                     } else {
                         // Presença normal (1)
                         echo "<td class='celula-presenca'>.</td>";
