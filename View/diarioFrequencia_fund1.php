@@ -220,7 +220,8 @@ function diario_frequencia_fund1($conexao, $idescola, $idturma, $iddisciplina, $
 
         <?php
         $conta = 1;
-        $mapa_total_faltas[];
+        $mapa_total_faltas=[];
+
         foreach ($res_alunos as $aluno) {
             $idaluno = $aluno['idaluno'];
             $nome_mostra = ($aluno['nome_identificacao_social'] != '') ? $aluno['nome_identificacao_social'] : $aluno['nome_aluno'];
