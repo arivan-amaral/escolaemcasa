@@ -1,5 +1,5 @@
 <?php 
-function diario_frequencia_infantil($conexao, $idescola, $idturma, $iddisciplina, $inicio, $fim, $conta_aula, $conta_data, $limite_data, $limite_aula, $periodo_id, $idserie, $descricao_trimestre, $data_inicio_trimestre, $data_fim_trimestre, $ano_letivo, $seguimento) {
+function diario_frequencia_pagina_final_infantil($conexao, $idescola, $idturma, $iddisciplina, $inicio, $fim, $conta_aula, $conta_data, $limite_data, $limite_aula, $periodo_id, $idserie, $descricao_trimestre, $data_inicio_trimestre, $data_fim_trimestre, $ano_letivo, $seguimento) {
 
     // --- 1. DEFINIÇÕES INICIAIS E QUERY DE DISCIPLINA ---
     $nome_disciplina = '';
