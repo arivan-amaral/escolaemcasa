@@ -3,7 +3,7 @@
 /**
  * Função completa do Diário de Classe para Ensino Fundamental 1 e outros.
  * Otimizada para velocidade através da redução de consultas SQL (N+1 Queries).
- * Corrigida para garantir o alinhamento da tabela usando CSS e table-layout: fixed.
+ * Corrigida para garantir o alinhamento da tabela usando CSS (Layout) e revisão de lógica de filtro de disciplina.
  */
 function diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento){
 
@@ -11,7 +11,6 @@ function diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inic
     $nome_disciplina = '';
     $tipo_ensino = "";
     $colspan_header_data = $limite_aula;
-    // Colspan para as linhas de informação (Nº + Aluno + todas as colunas de Frequência)
     $colspan_info = $limite_aula + 1; 
 
     ## 1. Lógica de Tipo de Ensino
@@ -36,13 +35,13 @@ function diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inic
     ## 2. Otimização: Obter Nomes das Disciplinas (Consulta Única)
     $disciplina_ids = [];
     if ($idserie > 2 && $iddisciplina == 1000) {
-        $disciplina_ids = [1, 5, 6, 7, 14, 35, 47];
+        $disciplina_ids = [1, 5, 6, 7, 14, 35, 47]; // Fundamental II (disciplinas separadas)
     } elseif ($idserie == 1 && $iddisciplina == 1000) {
-        $disciplina_ids = [40, 42, 43, 44];
+        $disciplina_ids = [40, 42, 43, 44]; // Ed. Infantil N1
     } elseif ($idserie == 2 && $iddisciplina == 1000) {
-        $disciplina_ids = [40, 42, 44];
+        $disciplina_ids = [40, 42, 44]; // Ed. Infantil N2
     } else {
-        $disciplina_ids = [$iddisciplina];
+        $disciplina_ids = [$iddisciplina]; // Disciplina única
     }
 
     $disciplina_list = implode(",", $disciplina_ids);
@@ -57,14 +56,18 @@ function diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inic
 
     ## 3. Otimização: Pré-busca de Dados de Frequência (N+1 Queries corrigido)
 
-    // 3.1. Determina a cláusula WHERE para a disciplina
+    // 3.1. Determina a cláusula WHERE para a disciplina (CORRIGIDA)
     $where_disciplina = "";
     if ($iddisciplina != 1000) {
+        // Se for uma disciplina específica, filtra por ela
         $where_disciplina = "disciplina_id = $iddisciplina";
-    } elseif ($idserie > 2 && $iddisciplina == 1000) {
+    } elseif ($idserie > 7 && $iddisciplina == 1000) {
+        // Se for Fundamental II (Anos Finais) com ID 1000, filtra pelo conjunto de disciplinas
         $where_disciplina = "disciplina_id IN (1, 5, 6, 7, 14, 35, 47)";
     } else {
-        $where_disciplina = "1=1";
+        // Para Fundamental I (Anos Iniciais) ou Educação Infantil, a frequência é geralmente única (1=1).
+        // ATENÇÃO: Se isso estiver puxando dados incorretos, substitua '1=1' pelo ID da disciplina de Frequência Geral (ex: 'disciplina_id = 40').
+        $where_disciplina = "1=1"; 
     }
 
     // 3.2. Consulta ÚNICA para obter todas as datas/aulas do período
@@ -91,13 +94,14 @@ function diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inic
 
 
     // 3.3. Consulta ÚNICA para obter TODAS as presenças/faltas dos alunos para essas datas/aulas
-    $data_aula_conditions = [];
-    foreach ($array_data_aula as $key => $data) {
-        $data_aula_conditions[] = "(data_frequencia = '{$data}' AND aula = {$array_aula[$key]})";
-    }
-
     $frequencia_lookup = [];
-    if (!empty($data_aula_conditions)) {
+    if (!empty($array_data_aula)) {
+        
+        // Criar a lista de condições (data E aula) para a cláusula IN / OR
+        $data_aula_conditions = [];
+        foreach ($array_data_aula as $key => $data) {
+            $data_aula_conditions[] = "(data_frequencia = '{$data}' AND aula = {$array_aula[$key]})";
+        }
         $data_aula_where = implode(" OR ", $data_aula_conditions);
 
         $query_frequencia_geral = "
@@ -134,27 +138,27 @@ function diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inic
     /* Estilos para evitar desconfiguração da tabela e garantir alinhamento */
     .MsoNormalTable {
         width: 100%;
-        table-layout: fixed; /* ESSENCIAL: Garante que o navegador respeite as larguras definidas abaixo */
+        table-layout: fixed; /* Força o navegador a respeitar as larguras */
         border-collapse: collapse; 
         font-family: "Tw Cen MT Condensed", sans-serif;
     }
 
     /* Colunas fixas para alinhamento */
     .col-num {
-        width: 20pt !important; /* Coluna do número do aluno (Mais estreito) */
+        width: 20pt !important;
         text-align: center;
         vertical-align: middle;
     }
     .col-aluno {
-        width: 150pt !important; /* Ajuste Crítico: Largura reduzida para forçar a quebra do nome em várias linhas, como no seu modelo */
+        width: 180pt !important; /* Aumento para melhor visualização */
         text-align: left;
         padding-left: 5pt !important;
-        white-space: normal; /* Permite a quebra de linha (diferente da versão anterior) */
+        white-space: normal; 
     }
 
     /* Largura fixa para TODAS as colunas de data/aula e frequência */
     .celula-data-aula, .frequencia-celula {
-        width: 25pt !important; /* Largura ligeiramente maior para melhor espaçamento e alinhamento */
+        width: 20pt !important; 
         padding: 0;
         text-align: center;
         vertical-align: middle;
@@ -170,13 +174,12 @@ function diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inic
         font-family: "Tw Cen MT Condensed", sans-serif;
         font-size: 8.0pt;
         
-        /* Centralização e Rotação */
         position: relative;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%) rotate(90deg);
         transform-origin: 50% 50%;
-        width: 100px; /* Largura auxiliar para o texto rotacionado se encaixar */
+        width: 100px;
         line-height: 100%;
     }
     
@@ -391,17 +394,18 @@ function diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inic
             $data_frequencia_timestamp = strtotime($data_frequencia);
 
             // 1. Busca no array pré-carregado (Lookup)
+            // Acesso seguro: verifica se o aluno_id, a data e a aula existem no lookup
             $presenca_valor = $frequencia_lookup[$idaluno][$data_frequencia][$aula] ?? null;
 
             $presenca = "<span style='font-size: 18px;'>-</span>"; // Padrão: Não registrado
 
-            if ($presenca_valor == 1) {
+            if ($presenca_valor ==1) {
                 $presenca = "."; // Presente
             } else if ($presenca_valor ==0) {
                 $presenca = "F"; // Falta
             }
 
-            // 2. Verifica a data de matrícula
+            // 2. Verifica a data de matrícula (alunos que entraram depois)
             if ($data_frequencia_timestamp < $data_matricula_timestamp) {
                 $presenca = "<span style='font-size: 18px;'>-</span>"; // Não matriculado na data
             }
