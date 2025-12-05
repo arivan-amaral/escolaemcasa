@@ -272,8 +272,8 @@ function diario_frequencia_pagina_final_fund1($conexao, $idescola, $idturma, $id
             
             // Pega o total de faltas do array pré-carregado (se não tiver, é 0)
             $total_faltas=0;
-              if (!isset($mapa_total_faltas[$idaluno])) {
-                  $mapa_total_faltas[$idaluno] = 0;
+              if (!isset($mapa_total_faltas_pagina1[$idaluno])) {
+                  $mapa_total_faltas_pagina1[$idaluno] = 0;
               }
             
             // $total_faltas = isset($mapa_total_faltas[$idaluno]) ? $mapa_total_faltas[$idaluno] : 0;
@@ -295,7 +295,7 @@ function diario_frequencia_pagina_final_fund1($conexao, $idescola, $idturma, $id
                     $status = $mapa_presenca[$chave_busca];
                     if ($status == 0) {
                         $total_faltas++;
-                        $mapa_total_faltas[$idaluno]+=1;
+                        $mapa_total_faltas_pagina1[$idaluno]+=1;
                         echo "<td class='celula-presenca' style='font-weight:bold;'>F</td>";
                     } else {
                         echo "<td class='celula-presenca'>.</td>";
@@ -312,7 +312,7 @@ function diario_frequencia_pagina_final_fund1($conexao, $idescola, $idturma, $id
 
                         // COLUNA FINAL: TOTAL DE FALTAS por equanto
 
-            echo "<td class='celula-total'>".$mapa_total_faltas[$idaluno]."</td>";
+            echo "<td class='celula-total'>".$mapa_total_faltas_pagina1[$idaluno]."</td>";
 
             echo "</tr>";
             $conta++;
