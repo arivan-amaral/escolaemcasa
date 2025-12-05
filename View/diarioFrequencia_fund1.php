@@ -1,22 +1,14 @@
-<?php
-// Certifique-se de que a função converte_data() e as funções de listagem estejam definidas antes de usar este código.
-
-function diario_frequencia_fund1($conexao, $idescola, $idturma, $iddisciplina, $inicio, $fim, $conta_aula, $conta_data, $limite_data, $limite_aula, $periodo_id, $idserie, $descricao_trimestre, $data_inicio_trimestre, $data_fim_trimestre, $ano_letivo, $seguimento){
-
-    // --- 1. CONFIGURAÇÃO INICIAL E DEFINIÇÃO DE VARIÁVEIS ---
+<?php 
+function diario_frequencia_fund1($conexao, $idescola, $idturma, $iddisciplina, $inicio, $fim, $conta_aula, $conta_data, $limite_data, $limite_aula, $periodo_id, $idserie, $descricao_trimestre, $data_inicio_trimestre, $data_fim_trimestre, $ano_letivo, $seguimento) {
+    
+    // --- LÓGICA DE DEFINIÇÃO DE TIPO DE ENSINO E DISCIPLINA ---
     $nome_disciplina = '';
     $tipo_ensino = "";
-    $disciplinas_query = ""; 
 
-    // Define o tipo de ensino
     if ($idserie == 16) {
-        if ($seguimento == 1) {
-            $tipo_ensino = "Educação Infantil";
-        } elseif ($seguimento == 2) {
-            $tipo_ensino = "Ensino Fundamental - Anos Iniciais";
-        } elseif ($seguimento == 3) {
-            $tipo_ensino = "Ensino Fundamental - Anos Finais";
-        }
+        if ($seguimento == 1) $tipo_ensino = "Educação Infantil";
+        elseif ($seguimento == 2) $tipo_ensino = "Ensino Fundamental - Anos Iniciais";
+        elseif ($seguimento == 3) $tipo_ensino = "Ensino Fundamental - Anos Finais";
     } elseif ($idserie < 3) {
         $tipo_ensino = "Educação Infantil";
     } elseif ($idserie >= 3 && $idserie < 8) {
@@ -27,332 +19,279 @@ function diario_frequencia_fund1($conexao, $idescola, $idturma, $iddisciplina, $
         $tipo_ensino = "Educação de Jovens e Adultos";
     }
 
-    // Define as IDs das disciplinas para a consulta
+    // Definição da Query de Disciplina
     if ($idserie > 2 && $iddisciplina == 1000) {
-        $disciplinas = [1, 5, 6, 7, 14, 35, 47];
+        $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina in (1,5, 6,7,14, 35,47)");
     } elseif ($idserie == 1 && $iddisciplina == 1000) {
-        $disciplinas = [40, 42, 43, 44];
+        $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina in (40,42,43,44)");
     } elseif ($idserie == 2 && $iddisciplina == 1000) {
-        $disciplinas = [40, 42, 44];
+        $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina in (40,42,44)");
     } else {
-        $disciplinas = [$iddisciplina];
+        $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina=$iddisciplina");
     }
-
-    $disciplinas_query = implode(',', $disciplinas);
-    $result_disc = $conexao->query("SELECT nome_disciplina FROM disciplina WHERE iddisciplina IN ($disciplinas_query)");
 
     foreach ($result_disc as $value) {
         $nome_disciplina .= $value['nome_disciplina'] . ", ";
     }
-    $nome_disciplina = rtrim($nome_disciplina, ', ');
+    $nome_disciplina = rtrim($nome_disciplina, ", "); // Remove a última vírgula
 
-    // --- 2. BUSCA E ARMAZENA AS DATAS/AULAS ---
-    $query_data_aula = "
-        SELECT data_frequencia, aula FROM frequencia 
-        WHERE escola_id=$idescola 
-        AND turma_id=$idturma 
-        AND data_frequencia BETWEEN '$data_inicio_trimestre' AND '$data_fim_trimestre'
-        AND disciplina_id IN ($disciplinas_query)
-        GROUP BY data_frequencia, aula 
-        ORDER BY data_frequencia, aula ASC 
-        LIMIT $inicio, $fim
-    ";
+    // Recupera nome da escola e turma
+    $nome_escola = "";
+    $res_esc = $conexao->query("SELECT nome_escola FROM escola WHERE idescola = $idescola LIMIT 1");
+    foreach($res_esc as $r) { $nome_escola = $r['nome_escola']; }
+
+    $nome_turma_txt = "";
+    $res_turma = $conexao->query("SELECT nome_turma FROM turma WHERE idturma = $idturma LIMIT 1");
+    foreach($res_turma as $r) { $nome_turma_txt = $r['nome_turma']; }
+
+
+    // --- OTIMIZAÇÃO DE PERFORMANCE: RECUPERAR AULAS E PRESENÇAS ANTES DO HTML ---
     
-    // Condição especial para Educação Infantil (idserie < 3) com iddisciplina=1000, 
-    // onde a restrição de disciplina pode ser removida (baseado no código original)
-    if ($idserie < 3 && $iddisciplina == 1000) {
-         $query_data_aula = "
-            SELECT data_frequencia, aula FROM frequencia 
-            WHERE escola_id=$idescola 
-            AND turma_id=$idturma 
-            AND data_frequencia BETWEEN '$data_inicio_trimestre' AND '$data_fim_trimestre'
-            GROUP BY data_frequencia, aula 
-            ORDER BY data_frequencia, aula ASC 
-            LIMIT $inicio, $fim
-        ";
+    // 1. Recuperar Datas e Aulas (Cabeçalho)
+    $filtro_disciplina = "";
+    if ($iddisciplina == 1000) {
+        if ($idserie > 2) $filtro_disciplina = "AND disciplina_id in (1,5, 6,7,14, 35,47)";
+        // Para < 3 sem filtro específico além do else abaixo se necessário
+    } else {
+        $filtro_disciplina = "AND disciplina_id=$iddisciplina";
     }
 
-    $result_data_aula = $conexao->query($query_data_aula);
+    $sql_datas = "SELECT data_frequencia, aula 
+                  FROM frequencia 
+                  WHERE escola_id=$idescola 
+                  AND turma_id=$idturma 
+                  $filtro_disciplina
+                  AND data_frequencia BETWEEN '$data_inicio_trimestre' AND '$data_fim_trimestre' 
+                  GROUP BY aula, data_frequencia 
+                  ORDER BY data_frequencia, aula ASC 
+                  LIMIT $inicio, $fim";
 
-    $array_data_aula = [];
-    $array_aula = [];
-    $conta_data_real = 0;
-    foreach ($result_data_aula as $value) {
-        $array_data_aula[$conta_data_real] = $value['data_frequencia'];
-        $array_aula[$conta_data_real] = $value['aula'];
-        $conta_data_real++;
+    $result_data_aula = $conexao->query($sql_datas);
+    
+    $array_cabecalho = [];
+    foreach ($result_data_aula as $row) {
+        $array_cabecalho[] = ['data' => $row['data_frequencia'], 'aula' => $row['aula']];
     }
+    
+    $total_colunas_aulas = count($array_cabecalho);
+    // Se não preencher o limite, precisamos saber quantos espaços vazios restam
+    $colunas_vazias = $limite_data - $total_colunas_aulas;
+    if($colunas_vazias < 0) $colunas_vazias = 0;
 
-    // --- 3. BUSCA DE ALUNOS ---
-    $alunos_ids = [];
+
+    // 2. Recuperar Lista de Alunos
     if ($_SESSION['ano_letivo'] == $_SESSION['ano_letivo_vigente']) {
         $res_alunos = listar_aluno_da_turma_ata_resultado_final($conexao, $idturma, $idescola, $_SESSION['ano_letivo']);
     } else {
         $res_alunos = listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao, $idturma, $idescola, $_SESSION['ano_letivo']);
     }
-    foreach ($res_alunos as $aluno) {
-        $alunos_ids[] = $aluno['idaluno'];
+
+    // 3. OTIMIZAÇÃO SUPREMA: Carregar TODAS as presenças desta turma em um Array Associativo
+    // Evita fazer query dentro do loop de alunos
+    $mapa_presenca = [];
+    
+    $sql_presencas = "SELECT aluno_id, data_frequencia, aula, presenca 
+                      FROM frequencia 
+                      WHERE escola_id=$idescola 
+                      AND turma_id=$idturma 
+                      $filtro_disciplina
+                      AND data_frequencia BETWEEN '$data_inicio_trimestre' AND '$data_fim_trimestre'";
+    
+    $busca_presenca = $conexao->query($sql_presencas);
+    foreach($busca_presenca as $p) {
+        // Chave única: ID_ALUNO + DATA + AULA
+        $chave = $p['aluno_id'] . '_' . $p['data_frequencia'] . '_' . $p['aula'];
+        $mapa_presenca[$chave] = $p['presenca'];
     }
 
-    // --- 4. PRÉ-CARREGAMENTO DA FREQUÊNCIA (OTIMIZAÇÃO DE DESEMPENHO) ---
-    $frequencia_alunos = [];
-    if (!empty($alunos_ids)) {
-        $alunos_in = implode(',', $alunos_ids);
-        $frequencia_datas = array_unique($array_data_aula); 
-        $datas_in = implode("','", $frequencia_datas);
-
-        $frequencia_query = "
-            SELECT aluno_id, data_frequencia, aula, presenca 
-            FROM frequencia 
-            WHERE escola_id=$idescola 
-            AND turma_id=$idturma 
-            AND aluno_id IN ($alunos_in) 
-            AND data_frequencia IN ('$datas_in')
-        ";
-
-        // Aplica filtro de disciplina se não for Educação Infantil (idserie < 3) e iddisciplina=1000
-        if (!($idserie < 3 && $iddisciplina == 1000)) {
-             $frequencia_query .= " AND disciplina_id IN ($disciplinas_query)";
-        }
-        
-        $result_frequencia = $conexao->query($frequencia_query);
-        
-        foreach ($result_frequencia as $frequencia) {
-            $aluno_id = $frequencia['aluno_id'];
-            $data = $frequencia['data_frequencia'];
-            $aula = $frequencia['aula'];
-            
-            // Armazena a presença: [aluno_id][data_frequencia][aula] = presenca
-            $frequencia_alunos[$aluno_id][$data][$aula] = $frequencia['presenca'];
-        }
-    }
-
-
-    // --- 5. CONFIGURAÇÃO DE LAYOUT/COLSPAN ---
-    $colspan_cabecalho_info = 37; 
-    $colspan_turma_info = 29; 
-    $colspan_disciplina = 10; 
-    $colspan_aluno = 2; // Coluna do nome do aluno terá 2 colunas de largura.
-    $colspan_data_aula_header = $limite_aula; // O cabeçalho 'Aula/Data' irá sobrepor todas as colunas de data/aula
 ?>
 
 <style>
-    /* Estilos CSS para garantir que o nome do aluno não seja espremido */
-    .aluno-nome {
-        width: 250pt; 
-        max-width: 250pt;
-        min-width: 250pt;
-        text-align: left;
-        padding-left: 5px !important; 
+    .tabela-diario {
+        width: 100%;
+        border-collapse: collapse; /* Isso remove as bordas duplas e falhas */
+        font-family: "Arial", sans-serif;
+        font-size: 11px;
+        table-layout: fixed; /* Ajuda a respeitar as larguras definidas */
     }
-    .col-data {
-        width: 10pt;
-        min-width: 10pt;
-        max-width: 10pt;
-        text-align: center;
-        /* Estilos para rotação (se necessário) */
-        font-size: 8.0pt;
-        font-family:"Tw Cen MT Condensed",sans-serif;
+
+    .tabela-diario th, .tabela-diario td {
+        border: 1px solid #000;
+        padding: 2px 4px;
     }
-    .col-ordem {
-        width: 15.4pt;
+
+    /* Cabeçalho Geral */
+    .header-logo { text-align: center; border: none; }
+    .header-title { font-size: 16px; font-weight: bold; text-align: center; text-transform: uppercase; background-color: #f0f0f0; }
+    .header-info { text-align: left; font-size: 10px; text-transform: uppercase; }
+    
+    /* Colunas Específicas */
+    .col-num { width: 25px; text-align: center; }
+    .col-nome { width: auto; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } 
+    /* width: auto fará ela ocupar o espaço restante, mas definimos min-width no HTML */
+
+    .col-data-header {
+        height: 100px;
+        vertical-align: bottom;
+        padding-bottom: 5px;
+        width: 22px; /* Largura fina para as datas */
+        background-color: #f9f9f9;
     }
-    .rotate {
-        /* Garante que o texto de data esteja de lado */
-        writing-mode: vertical-lr;
+
+    .vertical-text {
+        writing-mode: vertical-rl;
         transform: rotate(180deg);
         white-space: nowrap;
-        height: 58.75pt;
-        vertical-align: bottom;
-        display: block; /* Garante que o div ocupe o espaço */
+        font-size: 10px;
+        margin: 0 auto;
+    }
+
+    .celula-presenca { text-align: center; font-weight: bold; font-size: 11px; }
+    .zebra:nth-child(even) { background-color: #f2f2f2; } /* Linhas zebradas para facilitar leitura */
+    
+    .text-center { text-align: center; }
+    .text-bold { font-weight: bold; }
+    
+    /* Garante que a tabela não quebre em impressão se possível */
+    @media print {
+        .tabela-diario { page-break-inside: auto; }
+        tr { page-break-inside: avoid; page-break-after: auto; }
     }
 </style>
 
-<div class=WordSection1>
+<div class="WordSection1">
 
-<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 style='width: 100%; border-collapse:collapse;'>
+    <table class="tabela-diario">
+        <tr>
+            <td colspan="<?php echo (2 + $limite_data); ?>" style="border: 2px solid #000; padding: 10px;">
+                <table style="width: 100%; border: none;">
+                    <tr>
+                        <td style="width: 80px; border: none;"><img src="imagens/logo.png" width="60"></td>
+                        <td style="border: none; text-align: center;">
+                            <span style="font-size: 18px; font-weight: bold; font-family: 'Arial Narrow', sans-serif;">
+                                <?php echo $_SESSION['ORGAO']; ?>
+                            </span>
+                            <br>
+                            <span style="font-size: 14px; font-weight: bold;">DIÁRIO DE CLASSE</span>
+                        </td>
+                        <td style="width: 80px; border: none;"></td> </tr>
+                </table>
+            </td>
+        </tr>
 
-<tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:15.0pt'>
-    <td width=11 nowrap valign=bottom style='width:15.4pt;border-top:solid windowtext 1.0pt;border-left:solid windowtext 1.0pt;border-bottom:none;border-right:none;padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt;'>&nbsp;</td>
-    <td nowrap colspan=<?php echo $colspan_cabecalho_info; ?> valign=bottom style='padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt;'>
-        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;'>
-             <b><span style='font-size:20.0pt;'>PREFEITURA DE LUÍS EDUARDO MAGALHÃES<o:p></o:p></span></b>
-        </p>
-    </td>
-</tr>
+        <tr>
+            <td colspan="<?php echo (2 + $limite_data); ?>" class="header-info">
+                <b>ESCOLA MUNICIPAL:</b> <?php echo $nome_escola; ?>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="<?php echo (2 + $limite_data); ?>" class="header-info">
+                <b>ENDEREÇO:</b>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="<?php echo (2 + $limite_data); ?>" class="header-info">
+                <table style="width: 100%; border: none; margin: 0; padding: 0;">
+                    <tr>
+                        <td style="border: none; width: 60%;"><b>TIPO DE ENSINO:</b> <?php echo $tipo_ensino; ?></td>
+                        <td style="border: none;"><b>CODIGO U.E.:</b> </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="<?php echo (2 + $limite_data); ?>" class="header-info">
+                <table style="width: 100%; border: none; margin: 0; padding: 0;">
+                    <tr>
+                        <td style="border: none; width: 60%;"><b>TURMA:</b> <?php echo $nome_turma_txt; ?></td>
+                        <td style="border: none;"><b>PERÍODO LETIVO:</b> <?php echo $ano_letivo; ?></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="<?php echo (2 + $limite_data); ?>" class="header-info">
+                <b>COMPONENTE CURRICULAR:</b> <?php echo $nome_disciplina; ?>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="<?php echo (2 + $limite_data); ?>" class="header-info">
+                <b>UNIDADE:</b> <?php echo "$descricao_trimestre (" . converte_data($data_inicio_trimestre) . " a " . converte_data($data_fim_trimestre) . ")"; ?>
+            </td>
+        </tr>
 
-<tr style='mso-yfti-irow:2;height:18.0pt'>
-    <td nowrap colspan=<?php echo $colspan_cabecalho_info; ?> valign=bottom style='padding:0cm 3.5pt 0cm 3.5pt;height:18.0pt'>
-        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;'>
-            <b><span style='font-size:16.0pt;'>DIÁRIO DE CLASSE<o:p></o:p></span></b>
-        </p>
-    </td>
-</tr>
+        <tr>
+            <td rowspan="2" class="col-num text-bold">Nº</td>
+            <td rowspan="2" class="text-center text-bold" style="min-width: 250px;">ALUNO(A)</td>
+            <td colspan="<?php echo $limite_data; ?>" class="text-center text-bold">AULA / DATA</td>
+        </tr>
 
-<tr style='mso-yfti-irow:4;height:12.0pt'>
-    <td width=21 nowrap style='width:15.4pt;border:none;border-left:solid windowtext 1.0pt;padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>&nbsp;</td>
-    <td nowrap colspan=<?php echo $colspan_cabecalho_info; ?> style='padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-        <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'>
-            <b><span>ESCOLA MUNICIPAL: 
+        <tr>
             <?php 
-                $result_escola = $conexao->query("SELECT nome_escola FROM escola WHERE idescola =$idescola");
-                foreach ($result_escola as $value) { echo $value['nome_escola']; }
-            ?>
-            <o:p></o:p></span></b>
-        </p>
-    </td>
-</tr>
-
-<tr style='mso-yfti-irow:8;height:15.0pt'>
-    <td width=21 nowrap style='width:15.4pt;border:none;border-left:solid windowtext 1.0pt;padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>&nbsp;</td>
-    <td nowrap colspan=<?php echo $colspan_disciplina; ?> style='padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
-        <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-        style='font-size:9.0pt;'>COMPONENTE CURRICULAR: <b> <?php echo $nome_disciplina; ?></b> </span></p>
-    </td>
-</tr>
-
-<tr style='mso-yfti-irow:9;height:16.5pt'>
-    <td width=21 nowrap style='width:15.4pt;border-top:none;border-left:solid windowtext 1.0pt;border-bottom:solid windowtext 1.0pt;border-right:none;padding:0cm 3.5pt 0cm 3.5pt;height:16.5pt'>&nbsp;</td>
-    <td nowrap colspan=<?php echo $colspan_disciplina; ?> style='border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 3.5pt 0cm 3.5pt;height:16.5pt'>
-        <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-        style='font-size:9.0pt;'>UNIDADE: <?php echo " $descricao_trimestre " . converte_data($data_inicio_trimestre) . " " . converte_data($data_fim_trimestre); ?>
-        <o:p></o:p></span></p>
-    </td>
-</tr>
-
-
-<tr style='mso-yfti-irow:10;height:12.0pt'>
-    <td class="col-ordem" nowrap rowspan=2 style='border-top:none;border-left:solid windowtext 1.0pt;
-        border-bottom:solid black 1.0pt;border-right:solid windowtext 1.0pt;
-        padding:0cm 3.5pt 0cm 3.5pt;mso-rotate:90;height:12.0pt'>
-        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;line-height:normal'>
-            <div class="Namerotate" ><span style='font-size:12.0pt;'>&nbsp;</span></div>
-        </p>
-    </td>
-
-    <td nowrap rowspan=2 colspan="<?php echo $colspan_aluno; ?>" class="aluno-nome" style='border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-        padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-        line-height:normal'><b><span style='font-size:12.0pt;'>ALUNO(A)<o:p></o:p></span></b></p>
-    </td>
-
-    <td nowrap colspan="<?php echo $colspan_data_aula_header; ?>" style='border:none;border-bottom:solid windowtext 1.0pt;border-top:solid windowtext 1.0pt;
-        padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-        line-height:normal'><b><span style='font-size:8.0pt;'>Aula/Data<o:p></o:p></span></b></p>
-    </td>
-</tr>
-
-<tr style='mso-yfti-irow:11;height:58.75pt'>
-
-<?php
-// --- Impressão das Datas/Aulas Reais ---
-$conta_data_header = 0;
-for ($i = 0; $i < $conta_data_real; $i++) {
-    $data_frequencia = $array_data_aula[$i];
-    $class_data = ($i % 2 == 0) ? 'background:#D9D9D9;' : '';
-    ?>
-    <td class="col-data" style='border:solid windowtext 1.0pt;
-        border-left:none;<?php echo $class_data; ?> padding:0cm 0pt 0cm 0pt; vertical-align: top;'>
-        <div class="rotate" >
-            <span style='font-size:8.0pt;'>
-            <?php echo "" . converte_data($data_frequencia); ?>
-            </span>
-        </div>
-    </td>
-    <?php
-    $conta_data_header++;
-}
-
-// --- Impressão das Datas/Aulas Vazias (Preenchimento) ---
-for ($i = $conta_data_header; $i < $limite_data; $i++) {
-    $class_data = ($i % 2 == 0) ? 'background:#D9D9D9;' : '';
-    ?>
-    <td class="col-data" style='border:solid windowtext 1.0pt;
-        border-left:none;<?php echo $class_data; ?> padding:0cm 0pt 0cm 0pt;'>
-        <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;line-height:normal'>
-            <div class="rotate"><span style='font-size:6.0pt;'>&nbsp;</span></div>
-        </p>
-    </td>
-    <?php
-}
-?>
-</tr>
-
-<?php
-$conta = 1;
-if (empty($res_alunos)) {
-    // Caso não haja alunos na turma
-    echo "<tr><td colspan='100%' style='text-align:center; padding:10px;'>Nenhum aluno encontrado para a turma selecionada.</td></tr>";
-} else {
-    foreach ($res_alunos as $value) {
-        $idaluno = $value['idaluno'];
-        $nome_aluno = ($value['nome_aluno']);
-        $nome_identificacao_social = ($value['nome_identificacao_social']);
-
-        $nome_a_exibir = (trim($nome_identificacao_social) != '') ? $nome_identificacao_social : $nome_aluno;
-        ?>
-
-        <tr style='mso-yfti-irow:<?php echo 12 + $conta; ?>;height:13.5pt'>
-            <td class="col-ordem" style='border:solid windowtext 1.0pt;border-top:none;
-                background:white;height:13.5pt; text-align: center;'>
-                <span style='font-size:8.0pt;'><?php echo "$conta"; ?></span>
-            </td>
-
-            <td nowrap colspan="<?php echo $colspan_aluno; ?>" class="aluno-nome" valign=bottom style='border-left:none; border-right:solid windowtext 1.0pt; border-bottom:solid windowtext 1.0pt;
-                height:13.5pt;font-size:9.0pt; text-transform: uppercase;'>
-                <?php echo $nome_a_exibir; ?>
-            </td>
-
-
-            <?php
-            // --- Impressão das Presenças/Faltas (OTIMIZADA) ---
-            $conta_presenca = 0; // Começa em 0 para corresponder ao array
-            for ($i = 0; $i < $conta_data_real; $i++) {
-                $data_frequencia = $array_data_aula[$i];
-                $aula = $array_aula[$i];
-
-                // Busca no array pré-carregado
-                $presenca_valor = $frequencia_alunos[$idaluno][$data_frequencia][$aula] ?? null;
-
-                $presenca = "<span style='font-size: 18px;'>-</span>"; // Padrão: Não houve registro
-                if ($presenca_valor !== null) {
-                    if ($presenca_valor == 1) {
-                        $presenca = "."; // Presença
-                    } else if ($presenca_valor == 0) {
-                        $presenca = "F"; // Falta
-                    }
-                }
-                ?>
-                <td class="col-data" nowrap valign=top style='border:solid windowtext 1.0pt;border-top:none;
-                    border-left: none; background:white;height:13.5pt; text-align: center;'>
-                    <b><span style='font-size:9.0pt;'><?php echo $presenca; ?></span></b>
-                </td>
-                <?php
-                $conta_presenca++;
+            // Loop para desenhar as datas que existem
+            $contador_cols = 0;
+            foreach ($array_cabecalho as $cab) {
+                echo '<td class="col-data-header">';
+                echo '<div class="vertical-text">' . converte_data($cab['data']) . '</div>';
+                echo '</td>';
+                $contador_cols++;
             }
 
-            // --- Células de Frequência Vazias (Preenchimento) ---
-            for ($i = $conta_presenca; $i < $limite_data; $i++) {
-                ?>
-                <td class="col-data" nowrap valign=top style='border:solid windowtext 1.0pt;border-top:none;
-                    border-left: none; background:white;height:13.5pt; text-align: center;'>
-                    <b><span style='font-size:9.0pt;'>&nbsp;</span></b>
-                </td>
-                <?php
+            // Loop para preencher o restante das colunas vazias até o limite da folha
+            for ($i = 0; $i < $colunas_vazias; $i++) {
+                 echo '<td class="col-data-header"><div class="vertical-text">&nbsp;</div></td>';
+                 $contador_cols++;
             }
             ?>
         </tr>
 
         <?php
-        $conta++;
-    }
-}
-?>
+        $conta = 1;
+        foreach ($res_alunos as $aluno) {
+            $idaluno = $aluno['idaluno'];
+            $nome_mostra = ($aluno['nome_identificacao_social'] != '') ? $aluno['nome_identificacao_social'] : $aluno['nome_aluno'];
+            $data_mat = $aluno['data_matricula'];
+            
+            echo "<tr class='zebra'>";
+            echo "<td class='text-center'>$conta</td>";
+            echo "<td class='col-nome' style='padding-left: 5px;'> " . strtoupper($nome_mostra) . "</td>";
 
-</table>
+            // Loop de Presenças (Usando o Array em memória, super rápido)
+            // 1. Preenche as colunas que têm data registrada
+            foreach ($array_cabecalho as $cab) {
+                $data_aula = $cab['data'];
+                $num_aula = $cab['aula'];
+                
+                // Se a matrícula for posterior à data da aula, deixa traço ou bloqueado
+                if ($data_mat > $data_aula) {
+                     echo "<td class='celula-presenca' style='background-color:#eee;'>-</td>";
+                } else {
+                    // Busca no mapa de memória
+                    $chave_busca = $idaluno . '_' . $data_aula . '_' . $num_aula;
+                    $status = $mapa_presenca[$chave_busca] ?? null; // Null se não achar
+                    
+                    $simbolo = "";
+                    if ($status === 1) $simbolo = ".";
+                    elseif ($status == 0) $simbolo = "F";
+                    else $simbolo = ""; // Sem registro ainda
+
+                    echo "<td class='celula-presenca'>$simbolo</td>";
+                }
+            }
+
+            // 2. Preenche colunas vazias restantes no layout
+            for ($i = 0; $i < $colunas_vazias; $i++) {
+                 echo "<td class='celula-presenca'>&nbsp;</td>";
+            }
+
+            echo "</tr>";
+            $conta++;
+        }
+        ?>
+
+    </table>
 </div>
 
-<?php
-}
+<?php 
+} 
 ?>
