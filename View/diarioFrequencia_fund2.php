@@ -21,24 +21,24 @@
 * (Com código de DEBUG GLOBAL para chaves)
 */
 function diario_frequencia_fund2(
-  PDO $conexao,
-  int $idescola,
-  int $idturma,
-  int $iddisciplina,
-  int $inicio,
-  int $fim,
-  int $conta_aula,
-  int $conta_data,
-  int $limite_data,
-  int $limite_aula,
-  int $periodo_id,
-  int $idserie,
-  string $descricao_trimestre,
-  string $data_inicio_trimestre,
-  string $data_fim_trimestre,
-  int $ano_letivo,
-  int $seguimento
-): void {
+   $conexao,
+   $idescola,
+   $idturma,
+   $iddisciplina,
+   $inicio,
+   $fim,
+   $conta_aula,
+   $conta_data,
+   $limite_data,
+   $limite_aula,
+   $periodo_id,
+   $idserie,
+   $descricao_trimestre,
+   $data_inicio_trimestre,
+   $data_fim_trimestre,
+   $ano_letivo,
+   $seguimento
+){
   $nome_disciplina = '';
   $tipo_ensino = "Tipo Desconhecido";
 
@@ -297,13 +297,22 @@ function diario_frequencia_fund2(
     </tr>
 
 
-    <?php $conta = 1; ?>
+    <?php
+     $conta = 1;
+      
+     $mapa_total_faltas=[];
+
+
+    ?>
     <?php foreach ($res_alunos as $value): ?>
       <?php
       $idaluno = $value['idaluno'];
       $nome_aluno_completo = $value['nome_aluno'];
       $nome_identificacao_social = $value['nome_identificacao_social'];
       $data_matricula = $value['data_matricula'];
+      
+      $mapa_total_faltas[$idaluno]=0;
+
 
       $nome_exibicao = ($nome_identificacao_social !== '')
         ? "($idaluno) - $nome_identificacao_social"
@@ -339,6 +348,7 @@ function diario_frequencia_fund2(
                   $presenca = '.'; // Presente
                 } elseif ($status ==0) {
                   $presenca = 'F'; // Falta
+                   $mapa_total_faltas[$idaluno]+=1;
                 }
                                 // Debug: Se achou, mostra o valor
                                 // $status_busca = "ACHOU (Valor: $status)";
@@ -370,4 +380,6 @@ function diario_frequencia_fund2(
   </div>
 
   <?php
+
+  return  $mapa_total_faltas;
 }
