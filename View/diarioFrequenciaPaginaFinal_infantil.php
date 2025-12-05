@@ -1,5 +1,5 @@
 <?php 
-function diario_frequencia_pagina_final_infantil($conexao, $idescola, $idturma, $iddisciplina, $inicio, $fim, $conta_aula, $conta_data, $limite_data, $limite_aula, $periodo_id, $idserie, $descricao_trimestre, $data_inicio_trimestre, $data_fim_trimestre, $ano_letivo, $seguimento, $mapa_total_faltas) {
+function diario_frequencia_pagina_final_infantil($conexao, $idescola, $idturma, $iddisciplina, $inicio, $fim, $conta_aula, $conta_data, $limite_data, $limite_aula, $periodo_id, $idserie, $descricao_trimestre, $data_inicio_trimestre, $data_fim_trimestre, $ano_letivo, $seguimento, $mapa_total_faltas_pagina1) {
 
     // --- 1. DEFINIÇÕES INICIAIS E QUERY DE DISCIPLINA ---
     $nome_disciplina = '';
@@ -245,9 +245,9 @@ function diario_frequencia_pagina_final_infantil($conexao, $idescola, $idturma, 
             <td rowspan="2" class="col-num text-bold">Nº</td>
             <td rowspan="2" class="col-nome text-center text-bold">ALUNO(A)</td>
             <td colspan="<?php echo $limite_data; ?>" class="text-center text-bold">AULA / DATA</td>
-            <!-- <td rowspan="2" class="col-faltas-header">
+             <td rowspan="2" class="col-faltas-header">
                 <div class="vertical-text-center">FALTAS</div>
-            </td> -->
+            </td>  
         </tr>
 
         <tr>
@@ -273,6 +273,7 @@ function diario_frequencia_pagina_final_infantil($conexao, $idescola, $idturma, 
             // Pega o total de faltas do array pré-carregado (se não tiver, é 0)
             $total_faltas=0;
             // $total_faltas = isset($mapa_total_faltas[$idaluno]) ? $mapa_total_faltas[$idaluno] : 0;
+            $mapa_total_faltas[$idaluno]=0;
 
             echo "<tr class='zebra'>";
             echo "<td class='text-center'>$conta</td>";
@@ -291,6 +292,8 @@ function diario_frequencia_pagina_final_infantil($conexao, $idescola, $idturma, 
                     $status = $mapa_presenca[$chave_busca];
                     if ($status == 0) {
                       $total_faltas++;
+                      $mapa_total_faltas_pagina1[$idaluno]+=1;
+
                         echo "<td class='celula-presenca' style='font-weight:bold;'>F</td>";
                     } else {
                         echo "<td class='celula-presenca'>.</td>";
@@ -306,7 +309,7 @@ function diario_frequencia_pagina_final_infantil($conexao, $idescola, $idturma, 
             }
 
             // COLUNA FINAL: TOTAL DE FALTAS por equanto
-             // echo "<td class='celula-total'>$total_faltas</td>";
+              echo "<td class='celula-total'>". $mapa_total_faltas_pagina1[$idaluno]."</td>";
 
             echo "</tr>";
             $conta++;
