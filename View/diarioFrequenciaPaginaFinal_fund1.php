@@ -272,8 +272,9 @@ function diario_frequencia_pagina_final_fund1($conexao, $idescola, $idturma, $id
             
             // Pega o total de faltas do array pré-carregado (se não tiver, é 0)
             $total_faltas=0;
-            // $mapa_total_faltas[$idaluno]=0;
-
+              if (!isset($mapa_total_faltas[$idaluno])) {
+                  $mapa_total_faltas[$idaluno] = 0;
+              }
             
             // $total_faltas = isset($mapa_total_faltas[$idaluno]) ? $mapa_total_faltas[$idaluno] : 0;
 
