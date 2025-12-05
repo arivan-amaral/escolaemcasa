@@ -220,6 +220,7 @@ function diario_frequencia_fund1($conexao, $idescola, $idturma, $iddisciplina, $
 
         <?php
         $conta = 1;
+        $mapa_total_faltas[];
         foreach ($res_alunos as $aluno) {
             $idaluno = $aluno['idaluno'];
             $nome_mostra = ($aluno['nome_identificacao_social'] != '') ? $aluno['nome_identificacao_social'] : $aluno['nome_aluno'];
@@ -232,6 +233,8 @@ function diario_frequencia_fund1($conexao, $idescola, $idturma, $iddisciplina, $
             echo "<td class='col-nome' style='width:350px; min-width:350px; white-space:nowrap;'> " . strtoupper($nome_mostra) . "</td>";
 
             // LOOP PRESENÇAS
+            $mapa_total_faltas[$aluno['idaluno']]=0;
+
             foreach ($array_cabecalho as $cab) {
                 $data_aula = $cab['data'];
                 $num_aula = $cab['aula'];
@@ -243,8 +246,9 @@ function diario_frequencia_fund1($conexao, $idescola, $idturma, $iddisciplina, $
                     // Existe registro (0 ou 1)
                     $status = $mapa_presenca[$chave_busca];
                     
-                    if ($status == '0') {
+                    if ($status == 0) {
                         echo "<td class='celula-presenca' style='font-weight:bold;'>F</td>";
+                        $mapa_total_faltas[$aluno['idaluno']]+1;
                     } else {
                         // Presença normal (1)
                         echo "<td class='celula-presenca'>.</td>";
@@ -268,6 +272,8 @@ function diario_frequencia_fund1($conexao, $idescola, $idturma, $iddisciplina, $
     </table>
 </div>
 
-<?php 
+<?php
+
+return $mapa_total_faltas;
 } 
 ?>
