@@ -1,13 +1,36 @@
 <?php
+
+/**
+ * Função completa do Diário de Classe para Ensino Fundamental 1 e outros.
+ * Otimizada para velocidade através da redução de consultas SQL (N+1 Queries).
+ * Corrigida para garantir o alinhamento da tabela usando CSS e table-layout: fixed.
+ *
+ * @param object $conexao Conexão ativa com o banco de dados.
+ * @param int $idescola ID da Escola.
+ * @param int $idturma ID da Turma.
+ * @param int $iddisciplina ID da Disciplina (ou 1000 para todas).
+ * @param int $inicio Limite inicial para a paginação de datas/aulas.
+ * @param int $fim Limite final para a paginação de datas/aulas.
+ * @param int $limite_data Limite total de colunas de data (para preenchimento).
+ * @param int $limite_aula Limite total de colunas de aula (para preenchimento).
+ * // Outros parâmetros:
+ * @param string $descricao_trimestre Descrição do período (Ex: 1º Trimestre).
+ * @param string $data_inicio_trimestre Data de início do período (formato YYYY-MM-DD).
+ * @param string $data_fim_trimestre Data final do período (formato YYYY-MM-DD).
+ * @param int $ano_letivo Ano letivo.
+ * @param int $seguimento Seguimento de ensino.
+ * @return void Imprime o HTML do diário.
+ */
 function diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento){
 
     // Variáveis iniciais
     $nome_disciplina = '';
     $tipo_ensino = "";
     $colspan_header_data = $limite_aula;
-    $colspan_info = $limite_aula + 1; // Colspan para as linhas de informação (Escola, Turma, etc.)
+    // Colspan para as linhas de informação (Nº + Aluno + todas as colunas de Frequência)
+    $colspan_info = $limite_aula + 1; 
 
-    ## 1. Lógica de Tipo de Ensino (Manter)
+    ## 1. Lógica de Tipo de Ensino
     if ($idserie == 16) {
         if ($seguimento == 1) {
             $tipo_ensino = "Educação Infantil";
@@ -53,13 +76,10 @@ function diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inic
     // 3.1. Determina a cláusula WHERE para a disciplina
     $where_disciplina = "";
     if ($iddisciplina != 1000) {
-        // Se for uma disciplina específica
         $where_disciplina = "disciplina_id = $iddisciplina";
     } elseif ($idserie > 2 && $iddisciplina == 1000) {
-        // Se for Fundamental II, com o ID de todas as disciplinas
         $where_disciplina = "disciplina_id IN (1, 5, 6, 7, 14, 35, 47)";
     } else {
-        // Para Fundamental I ou Educação Infantil (ID 1000), a frequência é geral
         $where_disciplina = "1=1";
     }
 
@@ -127,57 +147,65 @@ function diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inic
 ?>
 
 <style>
-    /* Estilos para evitar desconfiguração da tabela, especialmente em impressão */
+    /* Estilos para evitar desconfiguração da tabela e garantir alinhamento */
     .MsoNormalTable {
-        width: 100%; /* Garante que a tabela ocupe toda a largura */
-        table-layout: fixed; /* Força o navegador a respeitar as larguras definidas */
-    }
-    .rotaciona {
-        -webkit-transform: rotate(90deg);
-        -moz-transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
-        -o-transform: rotate(90deg);
-        transform: rotate(90deg);
-        white-space: nowrap;
-        height: 100%; /* Ajusta a altura para o texto rotacionado */
-        display: block; /* Garante que o span ocupe o espaço */
-        font-size: 8.0pt;
+        width: 100%;
+        table-layout: fixed; /* ESSENCIAL: Garante que o navegador respeite as larguras definidas abaixo */
+        border-collapse: collapse; /* Para evitar espaçamento duplo nas bordas */
         font-family: "Tw Cen MT Condensed", sans-serif;
-        padding: 0;
-        margin: 0;
-        position: relative;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%) rotate(90deg);
-        transform-origin: 50% 50%;
     }
-    .celula-data-aula {
-        width: 15pt !important; /* Largura estreita para datas */
-        padding: 0cm 0pt 0cm 0pt;
-        height: 58.75pt; /* Altura suficiente para o texto rotacionado */
-        text-align: center;
-        vertical-align: middle;
-        overflow: hidden; /* Esconde qualquer transbordo */
-    }
-    .frequencia-celula {
-        width: 15pt !important; /* Largura estreita para as marcações de frequência */
-        padding: 0cm 0pt 0cm 0pt;
-        text-align: center;
-        vertical-align: middle;
-        font-size: 9.0pt;
-    }
+
+    /* Colunas fixas para alinhamento */
     .col-num {
-        width: 15pt !important; /* Coluna do número do aluno */
+        width: 25pt !important; /* Coluna do número do aluno */
+        text-align: center;
+        vertical-align: middle;
     }
     .col-aluno {
         width: 200pt !important; /* Coluna do nome do aluno */
         text-align: left;
+        padding-left: 5pt !important;
+        white-space: nowrap; /* Evita quebra de linha no nome do aluno */
+    }
+
+    /* Largura fixa para TODAS as colunas de data/aula e frequência */
+    .celula-data-aula, .frequencia-celula {
+        width: 18pt !important; /* Largura uniforme e estreita para cada dia/aula */
+        padding: 0;
+        text-align: center;
+        vertical-align: middle;
+        overflow: hidden; 
+        font-size: 8.0pt;
+    }
+
+    /* Estilo de rotação mais robusto para cabeçalho de data/aula */
+    .rotaciona {
+        white-space: nowrap;
+        height: 100%;
+        display: block; 
+        font-family: "Tw Cen MT Condensed", sans-serif;
+        font-size: 8.0pt;
+        
+        /* Centralização e Rotação */
+        position: relative;
+        left: 50%;
+        top: 50%;
+        /* O translate(-50%, -50%) centraliza o elemento na célula */
+        transform: translate(-50%, -50%) rotate(90deg);
+        transform-origin: 50% 50%;
+        width: 100px; /* Largura auxiliar para o texto rotacionado se encaixar */
+        line-height: 100%;
+    }
+    
+    .frequencia-celula p {
+        margin: 0;
+        line-height: 100%;
     }
 </style>
 
 <div class=WordSection1>
 
-<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 style='width: 100%;'>
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 style='width: 100%; table-layout: fixed;'>
 
     <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:15.0pt'>
         <td width=11 nowrap valign=bottom style='width:15.4pt; border:solid windowtext 1.0pt; border-bottom:none; border-right:none; padding:0cm 3.5pt 0cm 3.5pt; height:15.0pt;'>
@@ -220,6 +248,14 @@ function diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inic
             ?></span><o:p></o:p></b></p>
         </td>
     </tr>
+    
+    <tr style='mso-yfti-irow:5;height:12.0pt'>
+        <td nowrap colspan=<?php echo $colspan_info; ?> style='padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt; border-left:solid windowtext 1.0pt; border-right:solid windowtext 1.0pt;'>
+            <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
+            style='font-family:"Tw Cen MT Condensed",sans-serif;'>ENDEREÇO:<span style='mso-spacerun:yes'> </span><o:p></o:p></span></b></p>
+        </td>
+    </tr>
+
 
     <tr style='mso-yfti-irow:6;height:12.0pt'>
         <td width=15pt nowrap style='width:15.4pt; border-left:solid windowtext 1.0pt; padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
@@ -275,11 +311,11 @@ function diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inic
 
 
     <tr style='mso-yfti-irow:10;height:12.0pt'>
-        <td class="col-num" nowrap rowspan=2 style='border: solid windowtext 1.0pt; border-bottom:solid black 1.0pt; padding:0cm 3.5pt 0cm 3.5pt; height:12.0pt; text-align:center;'>
+        <td class="col-num" nowrap rowspan=2 style='border: solid windowtext 1.0pt; border-bottom:solid black 1.0pt; height:12.0pt;'>
             <p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;'>Nº</span></b></p>
         </td>
 
-        <td class="col-aluno" nowrap rowspan=2 style='border: solid windowtext 1.0pt; border-left:none; border-bottom:solid windowtext 1.0pt; padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt; text-align:center;'>
+        <td class="col-aluno" nowrap rowspan=2 style='border: solid windowtext 1.0pt; border-left:none; border-bottom:solid windowtext 1.0pt; height:12.0pt; text-align:center;'>
             <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;line-height:normal'>
                 <b><span style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;'>ALUNO(A)<o:p></o:p></span></b>
             </p>
@@ -300,7 +336,7 @@ function diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inic
         $data_frequencia = $array_data_aula[$i];
         $aula = $array_aula[$i];
         $is_even = ($i % 2 == 0);
-        $background_style = $is_even ? 'background:#D9D9D9;' : '';
+        $background_style = $is_even ? 'background:#D9D9D9;' : 'background:white;';
     ?>
 
         <td class="celula-data-aula" style='border:solid windowtext 1.0pt; border-top:none; border-left:none; <?php echo $background_style; ?>'>
@@ -316,7 +352,7 @@ function diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inic
     // Preenche as células vazias até o limite
     for ($i = $data_count; $i < $limite_aula; $i++) {
         $is_even = ($i % 2 == 0);
-        $background_style = $is_even ? 'background:#D9D9D9;' : '';
+        $background_style = $is_even ? 'background:#D9D9D9;' : 'background:white;';
     ?>
         <td class="celula-data-aula" style='border:solid windowtext 1.0pt; border-top:none; border-left:none; <?php echo $background_style; ?>'>
             <span class="rotaciona">&nbsp;</span>
@@ -329,8 +365,10 @@ function diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inic
 
     <?php
     if ($_SESSION['ano_letivo'] == $_SESSION['ano_letivo_vigente']) {
+        // Função externa: listar_aluno_da_turma_ata_resultado_final
         $res_alunos = listar_aluno_da_turma_ata_resultado_final($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
     } else {
+        // Função externa: listar_aluno_da_turma_ata_resultado_final_matricula_concluida
         $res_alunos = listar_aluno_da_turma_ata_resultado_final_matricula_concluida($conexao,$idturma,$idescola,$_SESSION['ano_letivo']);
     }
 
@@ -344,15 +382,16 @@ function diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inic
         $data_matricula_timestamp = strtotime($data_matricula);
     ?>
 
-    <tr style='mso-yfti-irow:13;height:13.5pt'>
-        <td class="col-num" style='border:solid windowtext 1.0pt; border-top:none; background:white; height:13.5pt; text-align:center;'>
+    <tr style='mso-yfti-irow:<?php echo $conta + 13; ?>;height:13.5pt'>
+        <td class="col-num" style='border:solid windowtext 1.0pt; border-top:none; background:white; height:13.5pt;'>
             <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;line-height:normal'>
-                <span style='font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;'><?php echo "$conta"; ?></span>
+                <span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;'><?php echo "$conta"; ?></span>
             </p>
         </td>
 
-        <td class="col-aluno" nowrap valign=bottom style='border:solid windowtext 1.0pt; border-left:none; border-top:none; padding:0cm 3.5pt 0cm 3.5pt; height:13.5pt; font-size:9.0pt; text-transform: uppercase;'>
+        <td class="col-aluno" nowrap valign=bottom style='border:solid windowtext 1.0pt; border-left:none; border-top:none; height:13.5pt; font-size:9.0pt; text-transform: uppercase;'>
             <?php
+            // Decide qual nome exibir (social ou regular)
             if ($nome_identificacao_social == '') {
                 echo "$nome_aluno";
             } else {
@@ -395,7 +434,7 @@ function diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inic
             $data_count++;
         }
 
-        // Preencher as colunas vazias até o limite
+        // Preencher as colunas vazias até o limite (células não usadas no período)
         for ($i = $data_count; $i < $limite_aula; $i++) {
         ?>
         <td class="frequencia-celula" nowrap valign=top style='border:solid windowtext 1.0pt; border-top:none; border-left:none; background:white; height:13.5pt;'>
