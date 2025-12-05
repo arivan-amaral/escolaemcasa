@@ -271,8 +271,8 @@ function diario_frequencia_pagina_final_fund1($conexao, $idescola, $idturma, $id
             $nome_mostra = ($aluno['nome_identificacao_social'] != '') ? $aluno['nome_identificacao_social'] : $aluno['nome_aluno'];
             
             // Pega o total de faltas do array pré-carregado (se não tiver, é 0)
-            $total_faltas = isset($mapa_total_faltas[$idaluno]) ? $mapa_total_faltas[$idaluno] : 0;
-
+            $total_faltas=0;
+            // $total_faltas = isset($mapa_total_faltas[$idaluno]) ? $mapa_total_faltas[$idaluno] : 0;
             echo "<tr class='zebra'>";
             echo "<td class='text-center'>$conta</td>";
             
@@ -288,7 +288,8 @@ function diario_frequencia_pagina_final_fund1($conexao, $idescola, $idturma, $id
                 
                 if (array_key_exists($chave_busca, $mapa_presenca)) {
                     $status = $mapa_presenca[$chave_busca];
-                    if ($status == '0') {
+                    if ($status == 0) {
+                        $total_faltas++;
                         echo "<td class='celula-presenca' style='font-weight:bold;'>F</td>";
                     } else {
                         echo "<td class='celula-presenca'>.</td>";
