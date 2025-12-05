@@ -304,8 +304,9 @@ function diario_frequencia_pagina_final_fund1($conexao, $idescola, $idturma, $id
                  echo "<td class='celula-presenca'>&nbsp;</td>";
             }
 
-            // COLUNA FINAL: TOTAL DE FALTAS
-            echo "<td class='celula-total'>$total_faltas</td>";
+                        // COLUNA FINAL: TOTAL DE FALTAS por equanto
+
+            // echo "<td class='celula-total'>$total_faltas</td>";
 
             echo "</tr>";
             $conta++;
