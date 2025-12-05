@@ -273,6 +273,8 @@ function diario_frequencia_infantil($conexao, $idescola, $idturma, $iddisciplina
             // Pega o total de faltas do array pré-carregado (se não tiver, é 0)
             // $total_faltas = isset($mapa_total_faltas[$idaluno]) ? $mapa_total_faltas[$idaluno] : 0;
             $total_faltas=0;
+            $mapa_total_faltas[$aluno['idaluno']]=0;
+            
             echo "<tr class='zebra'>";
             echo "<td class='text-center'>$conta</td>";
             
