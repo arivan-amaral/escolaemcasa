@@ -442,7 +442,7 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
                     line-height:normal'><div class="Namerotate"><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
                     mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
                     color:black;mso-fareast-language:PT-BR'> 
-                    <?php echo "Aula " . ($i + 1); ?> 
+                    <?php echo "Aula " . ($inicio + 1); ?> 
                     </div></span></p>
                 </td>
                 <?php

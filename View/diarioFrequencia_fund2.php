@@ -290,7 +290,7 @@ function diario_frequencia_fund2(
         ?>
         <td class="col-data-aula" style='<?php echo $classe_fundo; ?> border: 1px solid black; border-top: none;'>
           <span class='rotate-text' style='font-size:7.0pt;'>
-            <?php echo $aula_num ? "Aula $aula_somente_num" : '&nbsp;'; ?>
+            <?php echo $aula_num ? "Aula ". $inicio+1. " : '&nbsp;'; ?>
           </span>
         </td>
       <?php endfor; ?>
