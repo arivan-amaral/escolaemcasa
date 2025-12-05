@@ -271,8 +271,8 @@ function diario_frequencia_infantil($conexao, $idescola, $idturma, $iddisciplina
             $nome_mostra = ($aluno['nome_identificacao_social'] != '') ? $aluno['nome_identificacao_social'] : $aluno['nome_aluno'];
             
             // Pega o total de faltas do array pré-carregado (se não tiver, é 0)
-            $total_faltas = isset($mapa_total_faltas[$idaluno]) ? $mapa_total_faltas[$idaluno] : 0;
-
+            // $total_faltas = isset($mapa_total_faltas[$idaluno]) ? $mapa_total_faltas[$idaluno] : 0;
+            $total_faltas=0;
             echo "<tr class='zebra'>";
             echo "<td class='text-center'>$conta</td>";
             
@@ -290,6 +290,10 @@ function diario_frequencia_infantil($conexao, $idescola, $idturma, $iddisciplina
                     $status = $mapa_presenca[$chave_busca];
                     if ($status == '0') {
                         echo "<td class='celula-presenca' style='font-weight:bold;'>F</td>";
+                        $total_faltas++;
+                        $mapa_total_faltas[$aluno['idaluno']]+= 1;
+                        mapa_total_faltas
+
                     } else {
                         echo "<td class='celula-presenca'>.</td>";
                     }
@@ -315,5 +319,6 @@ function diario_frequencia_infantil($conexao, $idescola, $idturma, $iddisciplina
 </div>
 
 <?php 
+return $mapa_total_faltas;
 } 
 ?>

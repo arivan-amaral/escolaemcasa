@@ -189,7 +189,7 @@ $data_fim_trimestre="";
 if ($idserie<3) {
   
         //linha 409 508 
-        diario_frequencia_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento); 
+    $mapa_total_faltas = diario_frequencia_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento); 
             echo "<div class='pagebreak'> </div>";
      
 
@@ -209,7 +209,7 @@ if ($idserie<3) {
             $conta_data+0,
             $limite_data+0,
             $limite_aula+0,
-            $periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento);
+            $periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento, $mapa_total_faltas);
         
 }elseif ($idserie>=3 && $idserie<8) {
 
@@ -239,9 +239,13 @@ if ($idserie<3) {
 }elseif ($seguimento==1) {
   
         //linha 409 508 
-        diario_frequencia_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento); 
+        $mapa_total_faltas = diario_frequencia_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento); 
             echo "<div class='pagebreak'> </div>";
      
+var_dump($mapa_total_faltas);
+
+
+
 
               $inicio=36;
         $conta_aula=36;
@@ -254,7 +258,7 @@ if ($idserie<3) {
         $fim= 41;//$fim= 34;
         
         //linha 428 600 760
-        diario_frequencia_pagina_final_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento);
+        diario_frequencia_pagina_final_infantil($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento, $mapa_total_faltas);
         
 }elseif ($seguimento==2) {
   
