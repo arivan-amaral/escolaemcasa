@@ -5,7 +5,7 @@
 // e converte_data (incluída abaixo) estejam definidas ou acessíveis.
 
 function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,
-$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento){
+$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento,$mapa_total_faltas_pagina1){
 
 // =====================================================================
 // I. BLOCO DE PROCESSAMENTO (LÓGICA) - MANTIDO INALTERADO
@@ -710,7 +710,7 @@ text-align: center;
    line-height:normal'><span style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
    mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
    color:black;mso-fareast-language:PT-BR'>
-   <?php echo $total_faltas; ?>
+   <?php echo $total_faltas_aluno[$idaluno]; ?>
    <o:p></o:p></span></p>
   </td>
 
