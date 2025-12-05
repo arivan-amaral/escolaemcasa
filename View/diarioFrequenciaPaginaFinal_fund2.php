@@ -399,7 +399,7 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
                 <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
                     line-height:normal'><div class="Namerotate" ><span style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
                     mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-                    color:black;mso-fareast-language:PT-BR'>TRIM I<o:p></o:p></span></div></p>
+                    color:black;mso-fareast-language:PT-BR'>AV1<o:p></o:p></span></div></p>
             </td>  
 
 
@@ -409,18 +409,18 @@ function diario_frequencia_pagina_final_fund2($conexao,$idescola,$idturma,$iddis
                 <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
                     line-height:normal'><div class="Namerotate" ><span style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
                     mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-                    color:black;mso-fareast-language:PT-BR'>TRIM II<o:p></o:p></span></div></p>
-            </td>   
-
-            
+                    color:black;mso-fareast-language:PT-BR'>AV2<o:p></o:p></span></div></p>
+            </td>  
             <td width=60 nowrap rowspan=2 style='width:12.0pt; border-top::solid windowtext 1.0pt; border-left:
                 solid windowtext 1.0pt;border-bottom:solid black 1.0pt;border-right:solid windowtext 1.0pt;
                 mso-rotate:90;height:12.0pt'>
                 <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
                     line-height:normal'><div class="Namerotate" ><span style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
                     mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-                    color:black;mso-fareast-language:PT-BR'>TRIM III<o:p></o:p></span></div></p>
+                    color:black;mso-fareast-language:PT-BR'>AV3<o:p></o:p></span></div></p>
             </td>   
+
+ 
 
 
 
