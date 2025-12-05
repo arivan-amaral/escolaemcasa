@@ -4,22 +4,6 @@
  * Função completa do Diário de Classe para Ensino Fundamental 1 e outros.
  * Otimizada para velocidade através da redução de consultas SQL (N+1 Queries).
  * Corrigida para garantir o alinhamento da tabela usando CSS e table-layout: fixed.
- *
- * @param object $conexao Conexão ativa com o banco de dados.
- * @param int $idescola ID da Escola.
- * @param int $idturma ID da Turma.
- * @param int $iddisciplina ID da Disciplina (ou 1000 para todas).
- * @param int $inicio Limite inicial para a paginação de datas/aulas.
- * @param int $fim Limite final para a paginação de datas/aulas.
- * @param int $limite_data Limite total de colunas de data (para preenchimento).
- * @param int $limite_aula Limite total de colunas de aula (para preenchimento).
- * // Outros parâmetros:
- * @param string $descricao_trimestre Descrição do período (Ex: 1º Trimestre).
- * @param string $data_inicio_trimestre Data de início do período (formato YYYY-MM-DD).
- * @param string $data_fim_trimestre Data final do período (formato YYYY-MM-DD).
- * @param int $ano_letivo Ano letivo.
- * @param int $seguimento Seguimento de ensino.
- * @return void Imprime o HTML do diário.
  */
 function diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inicio,$fim,$conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descricao_trimestre,$data_inicio_trimestre,$data_fim_trimestre,$ano_letivo,$seguimento){
 
@@ -151,26 +135,26 @@ function diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inic
     .MsoNormalTable {
         width: 100%;
         table-layout: fixed; /* ESSENCIAL: Garante que o navegador respeite as larguras definidas abaixo */
-        border-collapse: collapse; /* Para evitar espaçamento duplo nas bordas */
+        border-collapse: collapse; 
         font-family: "Tw Cen MT Condensed", sans-serif;
     }
 
     /* Colunas fixas para alinhamento */
     .col-num {
-        width: 25pt !important; /* Coluna do número do aluno */
+        width: 20pt !important; /* Coluna do número do aluno (Mais estreito) */
         text-align: center;
         vertical-align: middle;
     }
     .col-aluno {
-        width: 200pt !important; /* Coluna do nome do aluno */
+        width: 150pt !important; /* Ajuste Crítico: Largura reduzida para forçar a quebra do nome em várias linhas, como no seu modelo */
         text-align: left;
         padding-left: 5pt !important;
-        white-space: nowrap; /* Evita quebra de linha no nome do aluno */
+        white-space: normal; /* Permite a quebra de linha (diferente da versão anterior) */
     }
 
     /* Largura fixa para TODAS as colunas de data/aula e frequência */
     .celula-data-aula, .frequencia-celula {
-        width: 18pt !important; /* Largura uniforme e estreita para cada dia/aula */
+        width: 25pt !important; /* Largura ligeiramente maior para melhor espaçamento e alinhamento */
         padding: 0;
         text-align: center;
         vertical-align: middle;
@@ -190,7 +174,6 @@ function diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inic
         position: relative;
         left: 50%;
         top: 50%;
-        /* O translate(-50%, -50%) centraliza o elemento na célula */
         transform: translate(-50%, -50%) rotate(90deg);
         transform-origin: 50% 50%;
         width: 100px; /* Largura auxiliar para o texto rotacionado se encaixar */
@@ -341,7 +324,7 @@ function diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inic
 
         <td class="celula-data-aula" style='border:solid windowtext 1.0pt; border-top:none; border-left:none; <?php echo $background_style; ?>'>
             <span class="rotaciona">
-                <?php echo "".converte_data($data_frequencia); ?> (A<?php echo $aula; ?>)
+                <?php echo "".converte_data($data_frequencia); ?> 
             </span>
         </td>
 
@@ -384,7 +367,7 @@ function diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inic
 
     <tr style='mso-yfti-irow:<?php echo $conta + 13; ?>;height:13.5pt'>
         <td class="col-num" style='border:solid windowtext 1.0pt; border-top:none; background:white; height:13.5pt;'>
-            <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;line-height:normal'>
+            <p class=MsoNormal align=center style='margin-bottom:0cm;line-height:normal'>
                 <span style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;'><?php echo "$conta"; ?></span>
             </p>
         </td>
@@ -412,9 +395,9 @@ function diario_frequencia_fund1($conexao,$idescola,$idturma,$iddisciplina,$inic
 
             $presenca = "<span style='font-size: 18px;'>-</span>"; // Padrão: Não registrado
 
-            if ($presenca_valor === "1") {
+            if ($presenca_valor == 1) {
                 $presenca = "."; // Presente
-            } else if ($presenca_valor === "0") {
+            } else if ($presenca_valor ==0) {
                 $presenca = "F"; // Falta
             }
 
