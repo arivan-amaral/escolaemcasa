@@ -396,7 +396,7 @@ td, th {
     </tr>
 
 
-<tr style='height:12.0pt'>
+<tr style='height:18.0pt'>
     <td class="contagem-cell" style='border-top:none;'>&nbsp;</td>
 
     <td style='border-left:none; border-top:none;'>&nbsp;</td>
