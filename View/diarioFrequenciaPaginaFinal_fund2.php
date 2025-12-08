@@ -284,27 +284,27 @@ td, th {
     <td colspan=2 style='width:15.4pt; border:solid windowtext 1.0pt; border-bottom:none;'>
         <img width=68 height=75 src="imagens/logo.png" style="float: left; margin-right: 10pt;">
     </td>
-    <td colspan=<?php echo $NUM_COLUNAS_EXIBIDAS + 6; ?> class="header-cell" style='font-size:20.0pt; border:solid windowtext 1.0pt; border-left:none; border-bottom:none;'>
+    <td colspan=<?php echo $NUM_COLUNAS_EXIBIDAS + 14; ?> class="header-cell" style='font-size:20.0pt; border:solid windowtext 1.0pt; border-left:none; border-bottom:none;'>
         <?php echo $_SESSION['ORGAO']; ?>
     </td>
 </tr>
 
 <tr style='height:18.0pt'>
     <td colspan=2 style='width:15.4pt; border:solid windowtext 1.0pt; border-top:none; border-bottom:none;'>&nbsp;</td>
-    <td colspan=<?php echo $NUM_COLUNAS_EXIBIDAS + 6; ?> class="header-cell" style='font-size:16.0pt; border:solid windowtext 1.0pt; border-left:none; border-top:none;'>
+    <td colspan=<?php echo $NUM_COLUNAS_EXIBIDAS + 14; ?> class="header-cell" style='font-size:16.0pt; border:solid windowtext 1.0pt; border-left:none; border-top:none;'>
         DIÁRIO DE CLASSE
     </td>
 </tr>
 
 <tr class="table-header-info">
     <td class="contagem-cell" style="width:15.4pt; border-top:solid windowtext 1.0pt;">&nbsp;</td>
-    <td colspan=<?php echo $NUM_COLUNAS_EXIBIDAS + 7; ?> style='width: 100%;'>
+    <td colspan=<?php echo $NUM_COLUNAS_EXIBIDAS + 14; ?> style='width: 100%;'>
         <b>ESCOLA MUNICIPAL:</b> <?php echo $nome_escola; ?>
     </td>
 </tr>
 <tr class="table-header-info">
     <td class="contagem-cell">&nbsp;</td>
-    <td colspan=<?php echo $NUM_COLUNAS_EXIBIDAS + 7; ?>>
+    <td colspan=<?php echo $NUM_COLUNAS_EXIBIDAS + 14; ?>>
         <b>ENDEREÇO:</b>
     </td>
 </tr>
@@ -319,22 +319,22 @@ td, th {
 </tr>
 <tr class="table-header-info">
     <td class="contagem-cell">&nbsp;</td>
-    <td colspan=<?php echo floor(($NUM_COLUNAS_EXIBIDAS + 7) / 2); ?>>
+    <td colspan=<?php echo floor(($NUM_COLUNAS_EXIBIDAS + 14) / 2); ?>>
         <b>TURMA:</b> <?php echo $nome_turma; ?>
     </td>
-    <td colspan=<?php echo ceil(($NUM_COLUNAS_EXIBIDAS + 7) / 2); ?>>
+    <td colspan=<?php echo ceil(($NUM_COLUNAS_EXIBIDAS + 14) / 2); ?>>
         <b>PERIODO LETIVO</b> <?php echo "$ano_letivo"; ?>
     </td>
 </tr>
 <tr class="table-header-info">
     <td class="contagem-cell">&nbsp;</td>
-    <td colspan=<?php echo $NUM_COLUNAS_EXIBIDAS + 7; ?>>
+    <td colspan=<?php echo $NUM_COLUNAS_EXIBIDAS + 14; ?>>
         COMPONENTE CURRICULAR: <b><?php echo $nome_disciplina; ?></b>
     </td>
 </tr>
 <tr class="table-header-info">
     <td class="contagem-cell" style="border-bottom:solid windowtext 1.0pt;">&nbsp;</td>
-    <td colspan=<?php echo $NUM_COLUNAS_EXIBIDAS + 7; ?> style='border-bottom:solid windowtext 1.0pt;'>
+    <td colspan=<?php echo $NUM_COLUNAS_EXIBIDAS + 14; ?> style='border-bottom:solid windowtext 1.0pt;'>
         UNIDADE: <?php echo "$descricao_trimestre " . converte_data($data_inicio_trimestre) . " a " . converte_data($data_fim_trimestre); ?>
     </td>
 </tr>
