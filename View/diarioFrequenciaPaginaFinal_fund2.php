@@ -720,7 +720,10 @@ if (isset($total_faltas_aluno[$idaluno])) {
  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
  line-height:normal'><span class="nota-cell">
  <?php
+
+ if (isset($total_faltas)) {
   echo ($total_faltas > 0) ? $total_faltas : '0';
+ }
 
    ?>
  <o:p></o:p></span></p>
