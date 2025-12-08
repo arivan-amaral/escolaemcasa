@@ -12,7 +12,7 @@ $conta_aula,$conta_data,$limite_data,$limite_aula,$periodo_id,$idserie,$descrica
 // ... (Lógica de processamento original) ...
 // =====================================================================
 
-// 1.1 Buscar Nome da Disciplina, Escola e Turma (Lgica existente)
+// 1.1 Buscar Nome da Disciplina, Escola e Turma (Lógica existente)
 $stmt_disc = $conexao->query("SELECT nome_disciplina FROM disciplina WHERE iddisciplina = $iddisciplina");
 $nome_disciplina = $stmt_disc->fetch(PDO::FETCH_ASSOC)['nome_disciplina'] ?? '';
 
@@ -192,398 +192,237 @@ return date('d/m/Y', strtotime($data));
 // CÁLCULO DE LAYOUT: Largura em pontos (pt) para a seção de Aulas/Datas (Lógica existente)
 $LARGURA_TOTAL_FREQUENCIA_PT = 548;
 $NUM_COLUNAS_EXIBIDAS = $limite_aula;
+// A largura de cada coluna de aula é crucial para a simetria.
 $LARGURA_COLUNA_PT = ($NUM_COLUNAS_EXIBIDAS > 0) ? round($LARGURA_TOTAL_FREQUENCIA_PT / $NUM_COLUNAS_EXIBIDAS, 2) : 20;
 
 // NOVAS CONSTANTES DE LAYOUT OTIMIZADAS
 // Redução da largura para AV1, AV2, AV3, RP e MÉDIA
 $LARGURA_COLUNA_NOTA_PT = 25;
 $LARGURA_COLUNA_FALTAS_PT = 30; // Largura para a coluna Faltas
-
-// Definindo o Colspan total para as linhas de metadados (exceto a primeira coluna)
-// 1 (Nome Aluno) + $NUM_COLUNAS_EXIBIDAS (Frequência) + 5 (Notas/Média/Faltas) = 1 + $limite_aula + 5
-// Assumindo um máximo de 24 aulas, o total de colunas de dados é 30 (1+24+5), então o colspan é 29 para desconsiderar a primeira coluna de índice.
-$COLSPAN_METADADOS_TOTAL = 1 + $limite_aula + 5; 
-// Como a primeira coluna (width=11) não tem colspan, as demais devem somar o total de colunas de dados.
-// No Word/HTML, é comum ter 31 colunas no total se contarmos a de índice. Usaremos 30 para o colspan da primeira linha.
-$COLSPAN_DADOS_RESTANTES = 30; // Usado para linhas de metadados que cobrem toda a largura.
 ?>
 
 <style>
-/* Estilo para rotação de texto, se não estiver definido */
+/* ** CSS OTIMIZADO **
+Removendo a maioria dos mso- específicos, mantendo apenas o necessário para rotação no Word. 
+*/
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    /* Estilos globais para células */
+    vertical-align: middle;
+    padding: 0cm 3.5pt 0cm 3.5pt;
+    border: solid windowtext 1.0pt;
+    font-family: "Tw Cen MT Condensed", sans-serif;
+    color: black;
+}
+
+.header-cell {
+    text-align: center;
+    font-weight: bold;
+}
+
+.table-header-info td {
+    border: none;
+    border-left: solid windowtext 1.0pt; /* Mantém a borda esquerda para a primeira célula */
+    padding: 0.5pt 3.5pt;
+    font-size: 10.0pt;
+    height: 12.0pt;
+}
+
+.table-header-info td:last-child {
+    border-right: solid windowtext 1.0pt; /* Garante a borda direita na última célula */
+}
+
+/* Estilo para a rotação de texto (simulação para HTML, mas o mso-rotate:90 é o que funciona no Word) */
 .Namerotate {
-/* Padrão para Word/impressão - o 'mso-rotate:90' na TD é o principal */
-display: block;
-text-align: center;
-/* Adicionado: V-Align central para o texto rotacionado */
-line-height: 0.8; 
+    display: block;
+    text-align: center;
+    /* Ajusta o padding/margin para melhor centralização no modo rotacionado */
+    line-height: 0.8;
 }
-/* Alinhamento da tabela para melhor visualização */
-table.MsoNormalTable {
-border-collapse: collapse;
+
+/* Estilos específicos para células rotacionadas */
+.rotated-cell {
+    /* Mantém a tag mso-rotate na TD, que é o que o Word usa */
+    /* text-align: center; não é necessário aqui, pois a rotação inverte as dimensões */
+    padding: 0cm 0pt 0cm 0pt !important; /* Remove padding interno para maximizar espaço */
+    height: 0.25pt; /* Minimiza a altura inicial para layout vertical */
+    overflow: hidden;
 }
-td {
-vertical-align: middle;
-}
-/* Estilos para as novas colunas de Notas/Média */
+
+/* Estilos para as colunas de Notas/Média */
 .nota-cell {
-font-size: 9.0pt;
-font-family:"Tw Cen MT Condensed",sans-serif;
-text-align: center;
+    font-size: 9.0pt;
+    text-align: center;
+}
+
+/* Estilo para as células de frequência (o ponto/F) */
+.frequencia-cell {
+    font-size: 10.0pt;
+    text-align: center;
+}
+
+/* Estilo para a coluna de contagem (primeira coluna) */
+.contagem-cell {
+    width: 15.4pt;
+    font-size: 8.0pt;
+    text-align: center;
+    padding: 0cm 3.5pt;
 }
 </style>
 
 
 <div class=WordSection1>
 
-<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 style='width: 100%;'>
+<table border=1 cellspacing=0 cellpadding=0 style='width: 100%;'>
 
-<tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:15.0pt'>
-<td width=11 nowrap valign=bottom style='width:15.4pt;border-top:solid windowtext 1.0pt;
-border-left:solid windowtext 1.0pt;border-bottom:none;
-border-right:solid windowtext 1.0pt; 
-padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt;'>
-<p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
-</td>
-
-<td width=824 nowrap **colspan="<?php echo $COLSPAN_DADOS_RESTANTES; ?>"** valign=bottom style='width:618.25pt;
-border-top:solid windowtext 1.0pt; 
-**border-right:solid windowtext 1.0pt;** border-bottom:none; 
-padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt;'>
-<p style='margin-bottom:0cm;line-height:normal'>
-<span style='mso-ignore:vglayout;
-position:absolute;z-index:251659264;margin-top:0px;
-width:68px;height:75px'><img width=68 height=75
-src="imagens/logo.png" v:shapes="Imagem_x0020_6"></span><span
-style='font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
-"Times New Roman";color:black;mso-fareast-language:PT-BR'><o:p></o:p></span></p><br>
-
-<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 style='width: 100%;'>
-<tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes;'>
-<p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-line-height:normal'><b><span style='font-size:20.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-color:black;mso-fareast-language:PT-BR;margin-left: 100px;'>
-<?php echo $_SESSION['ORGAO']; ?> <o:p></o:p></span></b>
-</p>
-</tr>
-</table>
-</td>
+<tr style='height:30.0pt'>
+    <td colspan=2 style='width:15.4pt; border:solid windowtext 1.0pt; border-bottom:none;'>
+        <img width=68 height=75 src="imagens/logo.png" style="float: left; margin-right: 10pt;">
+    </td>
+    <td colspan=<?php echo $NUM_COLUNAS_EXIBIDAS + 14; ?> class="header-cell" style='font-size:20.0pt; border:solid windowtext 1.0pt; border-left:none; border-bottom:none;'>
+        <?php echo $_SESSION['ORGAO']; ?>
+    </td>
 </tr>
 
-<tr style='mso-yfti-irow:2;height:18.0pt'>
-<td width=11 nowrap valign=bottom style='width:15.4pt;border-top:solid windowtext 1.0pt;
-border-left:solid windowtext 1.0pt;border-bottom:none;border-right:solid windowtext 1.0pt;
-padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt;'>
-<p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
-</td>
-<td width=824 nowrap **colspan="<?php echo $COLSPAN_DADOS_RESTANTES; ?>"** valign=bottom style='width:618.25pt;
-border-top:solid windowtext 1.0pt; 
-**border-right:solid windowtext 1.0pt;** border-bottom:solid windowtext 1.0pt; 
-padding:0cm 3.5pt 0cm 3.5pt;height:18.0pt'>
-<p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-line-height:normal'><b><span style='font-size:16.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-color:black;mso-fareast-language:PT-BR; margin-left: 300px;'>DIÁRIO DE CLASSE <o:p></o:p></span></b></p>
-</td>
+<tr style='height:18.0pt'>
+    <td colspan=2 style='width:15.4pt; border:solid windowtext 1.0pt; border-top:none; border-bottom:none;'>&nbsp;</td>
+    <td colspan=<?php echo $NUM_COLUNAS_EXIBIDAS + 14; ?> class="header-cell" style='font-size:16.0pt; border:solid windowtext 1.0pt; border-left:none; border-top:none;'>
+        DIÁRIO DE CLASSE
+    </td>
 </tr>
 
-<tr style='mso-yfti-irow:4;height:12.0pt'>
-<td width=21 nowrap style='width:15.4pt;border:none;border-left:solid windowtext 1.0pt;
-padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-<p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-style='font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
-</td>
-<td width='100%' **colspan="<?php echo $COLSPAN_DADOS_RESTANTES; ?>"** style='width:606.25pt; border:solid windowtext 1.0pt;border-left:none;border-top:
-none;background:white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt' >
-<p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
-style='font-family:"Tw Cen MT Condensed",sans-serif;mso-fareast-font-family:
-"Times New Roman";mso-bidi-font-family:Arial;color:black;mso-fareast-language:
-PT-BR'>ESCOLA MUNICIPAL:<span style='mso-spacerun:yes'>
- <?php echo $nome_escola; ?>
-</span><o:p></o:p></span></b></p>
-</td>
+<tr class="table-header-info">
+    <td class="contagem-cell" style="width:15.4pt; border-top:solid windowtext 1.0pt;">&nbsp;</td>
+    <td colspan=<?php echo $NUM_COLUNAS_EXIBIDAS + 14; ?> style='width: 100%;'>
+        <b>ESCOLA MUNICIPAL:</b> <?php echo $nome_escola; ?>
+    </td>
+</tr>
+<tr class="table-header-info">
+    <td class="contagem-cell">&nbsp;</td>
+    <td colspan=<?php echo $NUM_COLUNAS_EXIBIDAS + 14; ?>>
+        <b>ENDEREÇO:</b>
+    </td>
+</tr>
+<tr class="table-header-info">
+    <td class="contagem-cell">&nbsp;</td>
+    <td colspan=<?php echo floor(($NUM_COLUNAS_EXIBIDAS + 7) / 2); ?>>
+        <b>TIPO DE ENSINO:</b> <?php echo $tipo_ensino; ?>
+    </td>
+    <td colspan=<?php echo ceil(($NUM_COLUNAS_EXIBIDAS + 7) / 2); ?>>
+        Codigo U.E.
+    </td>
+</tr>
+<tr class="table-header-info">
+    <td class="contagem-cell">&nbsp;</td>
+    <td colspan=<?php echo floor(($NUM_COLUNAS_EXIBIDAS + 14) / 2); ?>>
+        <b>TURMA:</b> <?php echo $nome_turma; ?>
+    </td>
+    <td colspan=<?php echo ceil(($NUM_COLUNAS_EXIBIDAS + 14) / 2); ?>>
+        <b>PERIODO LETIVO</b> <?php echo "$ano_letivo"; ?>
+    </td>
+</tr>
+<tr class="table-header-info">
+    <td class="contagem-cell">&nbsp;</td>
+    <td colspan=<?php echo $NUM_COLUNAS_EXIBIDAS + 14; ?>>
+        COMPONENTE CURRICULAR: <b><?php echo $nome_disciplina; ?></b>
+    </td>
+</tr>
+<tr class="table-header-info">
+    <td class="contagem-cell" style="border-bottom:solid windowtext 1.0pt;">&nbsp;</td>
+    <td colspan=<?php echo $NUM_COLUNAS_EXIBIDAS + 14; ?> style='border-bottom:solid windowtext 1.0pt;'>
+        UNIDADE: <?php echo "$descricao_trimestre " . converte_data($data_inicio_trimestre) . " a " . converte_data($data_fim_trimestre); ?>
+    </td>
 </tr>
 
-<tr style='mso-yfti-irow:5;height:12.0pt'>
-<td width=21 nowrap style='width:15.4pt;border:none;border-left:solid windowtext 1.0pt;
-padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-<p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-style='font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
-</td>
-<td width='100%' nowrap **colspan="<?php echo $COLSPAN_DADOS_RESTANTES; ?>"** style='width:606.25pt;
-border-right:solid windowtext 1.0pt; 
-padding:0cm 3.5pt 0cm 3.5pt;
-height:12.0pt'>
-<p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
-style='font-family:"Tw Cen MT Condensed",sans-serif;mso-fareast-font-family:
-"Times New Roman";mso-bidi-font-family:Arial;color:black;mso-fareast-language:
-PT-BR'>ENDEREÇO:<span style='mso-spacerun:yes'> </span><o:p></o:p></span></b></p>
-</td>
-</tr>
 
-<tr style='mso-yfti-irow:6;height:12.0pt'>
-<td width=21 nowrap style='width:15.4pt;border:none;border-left:solid windowtext 1.0pt;
-padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-<p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-style='font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
-</td>
-<td width=457 nowrap **colspan=11** style='width:342.65pt;padding:0cm 3.5pt 0cm 3.5pt;
-height:12.0pt'>
-<p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
-style='font-family:"Tw Cen MT Condensed",sans-serif;mso-fareast-font-family:
-"Times New Roman";mso-bidi-font-family:Arial;color:black;mso-fareast-language:
-PT-BR'>TIPO DE ENSINO: <?php echo $tipo_ensino; ?> <o:p></o:p></span></b></p>
-</td>
-<td width=351 nowrap **colspan=19** style='width:263.6pt; 
-border-right:solid windowtext 1.0pt; 
-padding:0cm 3.5pt 0cm 3.5pt;
-height:12.0pt'>
-<p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-class=SpellE><span style='font-family:"Tw Cen MT Condensed",sans-serif;
-mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-color:black;mso-fareast-language:PT-BR'>Codigo</span></span><span
-style='font-family:"Tw Cen MT Condensed",sans-serif;mso-fareast-font-family:
-"Times New Roman";mso-bidi-font-family:Arial;color:black;mso-fareast-language:
-PT-BR'> U.E.<span style='mso-spacerun:yes'> </span><o:p></o:p></span></p>
-</td>
-</tr>
+<tr style='height:12.0pt'>
 
-<tr style='mso-yfti-irow:7;height:12.0pt'>
-<td width=21 nowrap style='width:15.4pt;border:none;border-left:solid windowtext 1.0pt;
-padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-<p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-style='font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
-</td>
-<td width=457 nowrap **colspan=11** style='width:342.65pt;padding:0cm 3.5pt 0cm 3.5pt;
-height:12.0pt'>
-<p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
-style='font-family:"Tw Cen MT Condensed",sans-serif;mso-fareast-font-family:
-"Times New Roman";mso-bidi-font-family:Arial;color:black;mso-fareast-language:
-PT-BR'>TURMA: <o:p>
- <?php echo $nome_turma; ?>
-</o:p></span></b></p>
-</td>
-<td width=351 nowrap **colspan=19** style='width:263.6pt;
-border-right:solid windowtext 1.0pt; 
-padding:0cm 3.5pt 0cm 3.5pt;
-height:12.0pt'>
-<p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><b><span
-style='font-family:"Tw Cen MT Condensed",sans-serif;mso-fareast-font-family:
-"Times New Roman";mso-bidi-font-family:Arial;color:black;mso-fareast-language:
-PT-BR'>PERIODO LETIVO <?php echo "$ano_letivo"; ?><o:p></o:p></span></b></p>
-</td>
-</tr>
+    <td rowspan=2 class="contagem-cell" style='mso-rotate:90; padding:0cm 0pt;'>
+        <div class="Namerotate" style='font-size:12.0pt;'>&nbsp;&nbsp;</div>
+    </td>
 
-<tr style='mso-yfti-irow:8;height:15.0pt'>
-<td width=21 nowrap style='width:15.4pt;border:none;border-left:solid windowtext 1.0pt;
-padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
-<p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
-</td>
-<td width=808 **colspan="<?php echo $COLSPAN_DADOS_RESTANTES; ?>"** style='width:606.25pt;
-border-right:solid windowtext 1.0pt; 
-padding:0cm 3.5pt 0cm 3.5pt;
-height:15.0pt'>
-<p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-color:black;mso-fareast-language:PT-BR'>COMPONENTE CURRICULAR: <b> <?php echo $nome_disciplina; ?></b> </span></p>
-</td>
-</tr>
+    <td rowspan=2 style='width:195.55pt; border-left:none;' class="header-cell">
+        ALUNO(A)
+    </td>
 
-<tr style='mso-yfti-irow:9;height:16.5pt'>
-<td width=21 nowrap style='width:15.4pt;border-top:none;border-left:solid windowtext 1.0pt;
-border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; 
-padding:0cm 3.5pt 0cm 3.5pt;
-height:16.5pt'>
-<p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
-</td>
-<td width=261 nowrap **colspan="10"** style='width:195.55pt;border:none;border-bottom:solid windowtext 1.0pt;
-padding:0cm 3.5pt 0cm 3.5pt;height:16.5pt'>
-<p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-color:black;mso-fareast-language:PT-BR'>UNIDADE:
-<?php echo "$descricao_trimestre " . converte_data($data_inicio_trimestre) . " a " . converte_data($data_fim_trimestre); ?>
-<o:p></o:p></span></p>
-</td>
-<td width=547 nowrap **colspan="19"** style='width:410.7pt;
-border-right:solid windowtext 1.0pt; 
-border-bottom:solid windowtext 1.0pt;
-padding:0cm 3.5pt 0cm 3.5pt;height:16.5pt'>
-<p class=MsoNormal style='margin-bottom:0cm;line-height:normal'><span
-style='font-size:9.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
-</td>
-</tr>
- <tr style='mso-yfti-irow:10;height:12.0pt'>
+    <td colspan='<?php echo $NUM_COLUNAS_EXIBIDAS; ?>' style='width:<?php echo $LARGURA_TOTAL_FREQUENCIA_PT; ?>pt;' class="header-cell">
+        Aula/Data
+    </td>
 
-<td width=21 nowrap rowspan=2 style='width:15.4pt; border:solid windowtext 1.0pt;
-padding:0cm 3.5pt 0cm 3.5pt;mso-rotate:90;height:12.0pt'>
-<p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;line-height:normal'>
-<div class="Namerotate" ><span style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-color:black;mso-fareast-language:PT-BR'>&nbsp;&nbsp;</span></div>
-</p>
-</td>
+    <td rowspan=2 style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt;' class="rotated-cell" mso-rotate:90;>
+        <div class="Namerotate"><span class="nota-cell">AV1</span></div>
+    </td>
+    <td rowspan=2 style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt;' class="rotated-cell" mso-rotate:90;>
+        <div class="Namerotate"><span class="nota-cell">AV2</span></div>
+    </td>
+    <td rowspan=2 style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt;' class="rotated-cell" mso-rotate:90;>
+        <div class="Namerotate"><span class="nota-cell">AV3</span></div>
+    </td>
+    <td rowspan=2 style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt;' class="rotated-cell" mso-rotate:90;>
+        <div class="Namerotate"><span class="nota-cell">RP</span></div>
+    </td>
+    <td rowspan=2 style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt;' class="rotated-cell" mso-rotate:90;>
+        <div class="Namerotate"><span class="nota-cell">MÉDIA</span></div>
+    </td>
 
-<td width=261 nowrap rowspan=2 style='width:195.55pt; border:solid windowtext 1.0pt;
-border-left:none;
-padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-<p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-line-height:normal'><b><span style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-color:black;mso-fareast-language:PT-BR'>ALUNO(A)<o:p></o:p></span></b></p>
-</td>
-
-<td width='<?php echo $LARGURA_TOTAL_FREQUENCIA_PT; ?>' nowrap **colspan='<?php echo $NUM_COLUNAS_EXIBIDAS; ?>'** style='width:<?php echo $LARGURA_TOTAL_FREQUENCIA_PT; ?>pt;border:solid windowtext 1.0pt;border-left:none;
-height:12.0pt'>
-<p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-line-height:normal'><b><span style='font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-color:black;mso-fareast-language:PT-BR'>Aula/Data<o:p></o:p></span></b></p>
-</td>
-
-<td width='<?php echo $LARGURA_COLUNA_NOTA_PT; ?>' nowrap rowspan=2 style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt; border:solid windowtext 1.0pt; border-left:
-solid windowtext 1.0pt;
-mso-rotate:90;height:12.0pt'>
-<p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-line-height:normal'><div class="Namerotate" ><span class="nota-cell">AV1<o:p></o:p></span></div></p>
-</td>
-
-<td width='<?php echo $LARGURA_COLUNA_NOTA_PT; ?>' nowrap rowspan=2 style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt; border:solid windowtext 1.0pt; border-left:
-solid windowtext 1.0pt;
-mso-rotate:90;height:12.0pt'>
-<p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-line-height:normal'><div class="Namerotate" ><span class="nota-cell">AV2<o:p></o:p></span></div></p>
-</td>
-
-<td width='<?php echo $LARGURA_COLUNA_NOTA_PT; ?>' nowrap rowspan=2 style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt; border:solid windowtext 1.0pt; border-left:
-solid windowtext 1.0pt;
-mso-rotate:90;height:12.0pt'>
-<p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-line-height:normal'><div class="Namerotate" ><span class="nota-cell">AV3<o:p></o:p></span></div></p>
-</td>
-
-<td width='<?php echo $LARGURA_COLUNA_NOTA_PT; ?>' nowrap rowspan=2 style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt; border:solid windowtext 1.0pt; border-left:
-solid windowtext 1.0pt;
-mso-rotate:90;height:12.0pt'>
-<p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-line-height:normal'><div class="Namerotate" ><span class="nota-cell">RP<o:p></o:p></span></div></p>
-</td>
-
-<td width='<?php echo $LARGURA_COLUNA_NOTA_PT; ?>' nowrap rowspan=2 style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt; border:solid windowtext 1.0pt; border-left:
-solid windowtext 1.0pt;
-mso-rotate:90;height:12.0pt'>
-<p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-line-height:normal'><div class="Namerotate" ><span class="nota-cell">MÉDIA<o:p></o:p></span></div></p>
-</td>
-
-<td width='<?php echo $LARGURA_COLUNA_FALTAS_PT; ?>' nowrap rowspan=2 style='width:<?php echo $LARGURA_COLUNA_FALTAS_PT; ?>pt; border:solid windowtext 1.0pt; border-left:
-solid windowtext 1.0pt;
-/* CORREÇÃO AQUI: Garante que a borda direita da tabela seja definida */
-border-right:solid windowtext 1.0pt;
-mso-rotate:90;height:12.0pt'>
-<p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-line-height:normal'><div class="Namerotate" ><span style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-color:black;mso-fareast-language:PT-BR'>FALTAS<o:p></o:p></span></div></p>
-</td>
+    <td rowspan=2 style='width:<?php echo $LARGURA_COLUNA_FALTAS_PT; ?>pt;' class="rotated-cell" mso-rotate:90;>
+        <div class="Namerotate"><span style='font-size:10.0pt;'>FALTAS</span></div>
+    </td>
 
 </tr>
 
-<tr style='mso-yfti-irow:11;height:58.75pt'>
-<?php
-for ($i = $inicio; $i < ($inicio + $limite_aula); $i++) {
-$data_frequencia = $array_data_aula[$i] ?? null;
-$is_even = ($i % 2 == 0);
-?>
-<td width='<?php echo $LARGURA_COLUNA_PT; ?>' style='width:<?php echo $LARGURA_COLUNA_PT; ?>pt;border:solid windowtext 1.0pt;
-border-left:none;<?php echo $is_even ? 'background:#D9D9D9;' : ''; ?>padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
-<p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;line-height:normal'>
-<div class="Namerotate" >
-<span style='font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-color:black;mso-fareast-language:PT-BR'>
-<?php
-echo ($data_frequencia) ? converte_data($data_frequencia) : '&nbsp;';
-?>
-</span>
-</div>
-</p>
-</td>
-<?php
-}
-?>
-</tr>
+<tr style='height:58.75pt'>
+    <?php
+    for ($i = $inicio; $i < ($inicio + $limite_aula); $i++) {
+        $data_frequencia = $array_data_aula[$i] ?? null;
+        $is_even = (($i - $inicio) % 2 == 0); // Ímpar/Par baseado no loop atual, não no offset
+    ?>
+        <td width='<?php echo $LARGURA_COLUNA_PT; ?>' style='width:<?php echo $LARGURA_COLUNA_PT; ?>pt; border-left:none; <?php echo $is_even ? 'background:#D9D9D9;' : ''; ?>' 
+            class="rotated-cell" mso-rotate:90;>
+            <div class="Namerotate">
+                <span style='font-size:8.0pt;'>
+                    <?php echo ($data_frequencia) ? converte_data($data_frequencia) : '&nbsp;'; ?>
+                </span>
+            </div>
+        </td>
+    <?php
+    }
+    ?>
+    </tr>
 
-<tr style='mso-yfti-irow:12;height:72.25pt'>
-<td width=21 nowrap style='width:15.4pt; border:solid windowtext 1.0pt; border-top:none;
-padding:0cm 3.5pt 0cm 3.5pt;mso-rotate:90;height:12.0pt'>
-<p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;line-height:normal'>
-<div class="Namerotate" ><span style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-color:black;mso-fareast-language:PT-BR'>&nbsp;&nbsp;</span></div>
-</p>
-</td>
 
-<td width=261 nowrap style='width:195.55pt; border:solid windowtext 1.0pt; border-left:none; border-top:none;
-padding:0cm 3.5pt 0cm 3.5pt;height:12.0pt'>
-<p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-line-height:normal'><b><span style='font-size:12.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></b></p>
-</td>
-<?php
-for ($i = $inicio; $i < ($inicio + $limite_aula); $i++) {
-$is_even = ($i % 2 == 0);
-?>
-<td width='<?php echo $LARGURA_COLUNA_PT; ?>' style='width:<?php echo $LARGURA_COLUNA_PT; ?>pt;border:solid windowtext 1.0pt;
-border-left:none;border-top:none;<?php echo $is_even ? 'background:#D9D9D9;' : ''; ?>padding:0cm 0pt 0cm 0pt;mso-rotate:90;height:0.25pt'>
-<p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-line-height:normal'><div class="Namerotate"><span style='font-size:7.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-color:black;mso-fareast-language:PT-BR'>
-<?php echo "Aula " . ($i + 1); ?>
-</span></div></p>
-</td>
-<?php
-}
-?>
-<td width='<?php echo $LARGURA_COLUNA_NOTA_PT; ?>' nowrap style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt; border:solid windowtext 1.0pt; border-left:solid windowtext 1.0pt; border-top:none;
-mso-rotate:90;height:12.0pt'>&nbsp;</td>
-<td width='<?php echo $LARGURA_COLUNA_NOTA_PT; ?>' nowrap style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt; border:solid windowtext 1.0pt; border-left:none; border-top:none;
-mso-rotate:90;height:12.0pt'>&nbsp;</td>
-<td width='<?php echo $LARGURA_COLUNA_NOTA_PT; ?>' nowrap style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt; border:solid windowtext 1.0pt; border-left:none; border-top:none;
-mso-rotate:90;height:12.0pt'>&nbsp;</td>
-<td width='<?php echo $LARGURA_COLUNA_NOTA_PT; ?>' nowrap style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt; border:solid windowtext 1.0pt; border-left:none; border-top:none;
-mso-rotate:90;height:12.0pt'>&nbsp;</td>
-<td width='<?php echo $LARGURA_COLUNA_NOTA_PT; ?>' nowrap style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt; border:solid windowtext 1.0pt; border-left:none; border-top:none;
-mso-rotate:90;height:12.0pt'>&nbsp;</td>
-<td width='<?php echo $LARGURA_COLUNA_FALTAS_PT; ?>' nowrap style='width:<?php echo $LARGURA_COLUNA_FALTAS_PT; ?>pt; border:solid windowtext 1.0pt; border-left:none; border-top:none;
-/* CORREÇÃO AQUI: Garante que a borda direita da tabela seja definida */
-border-right:solid windowtext 1.0pt;
-mso-rotate:90;height:12.0pt'>&nbsp;</td>
+<tr style='height:18.0pt'>
+    <td class="contagem-cell" style='border-top:none;'>&nbsp;</td>
+
+    <td style='border-left:none; border-top:none;'>&nbsp;</td>
+
+    <?php
+    for ($i = $inicio; $i < ($inicio + $limite_aula); $i++) {
+        $is_even = (($i - $inicio) % 2 == 0);
+    ?>
+        <td width='<?php echo $LARGURA_COLUNA_PT; ?>' style='width:<?php echo $LARGURA_COLUNA_PT; ?>pt; border-left:none; border-top:none; <?php echo $is_even ? 'background:#D9D9D9;' : ''; ?>'
+            class="rotated-cell" mso-rotate:90;>
+            <div class="Namerotate">
+                <span style='font-size:7.0pt;'>
+                    <?php echo "Aula " . ($i + 1); ?>
+                </span>
+            </div>
+        </td>
+    <?php
+    }
+    ?>
+
+    <td style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt; border-left:solid windowtext 1.0pt; border-top:none;'>&nbsp;</td>
+    <td style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt; border-left:none; border-top:none;'>&nbsp;</td>
+    <td style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt; border-left:none; border-top:none;'>&nbsp;</td>
+    <td style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt; border-left:none; border-top:none;'>&nbsp;</td>
+    <td style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt; border-left:none; border-top:none;'>&nbsp;</td>
+    <td style='width:<?php echo $LARGURA_COLUNA_FALTAS_PT; ?>pt; border-left:none; border-top:none;'>&nbsp;</td>
 </tr>
 
 
@@ -593,71 +432,41 @@ foreach ($res_alunos as $value) {
 $idaluno = $value['idaluno'];
 $nome_aluno = ($value['nome_aluno']);
 $nome_identificacao_social = ($value['nome_identificacao_social']);
-$data_matricula = $value['data_matricula'];
 $nome_exibido = (!empty($nome_identificacao_social)) ? $nome_identificacao_social : $nome_aluno;
 
-// =================================================================
-// CÁLCULO DAS NOTAS E MÉDIA PARA ESTE ALUNO - MANTIDO INALTERADO
-// =================================================================
+// CÁLCULO DAS NOTAS E FALTAS (MANTIDO)
 $nota_av1 = $notas_aluno[$idaluno]['av1'] ?? 0;
 $nota_av2 = $notas_aluno[$idaluno]['av2'] ?? 0;
 $nota_av3 = $notas_aluno[$idaluno]['av3'] ?? 0;
 $nota_rp = $notas_aluno[$idaluno]['rp'] ?? 0;
-
-// Lgica de substituição: RP substitui AV3 se for maior
 $nota_final_av3 = max($nota_av3, $nota_rp);
 
-// Cálculo da Média
 $media_aritmetica = 0;
 if (($nota_av1 + $nota_av2 + $nota_final_av3) > 0) {
 $media_aritmetica = ($nota_av1 + $nota_av2 + $nota_final_av3) / 3;
 }
-// Formatar média para 1 casa decimal (ou o padrão desejado)
 $media_formatada = ($media_aritmetica > 0) ? number_format($media_aritmetica, 1, ',', '') : '';
 
-// Total de Faltas
-if (isset($total_faltas_aluno[$idaluno])) {
-    $faltas_do_aluno = $total_faltas_aluno[$idaluno];
-}else{
- $faltas_do_aluno = 0;
-}
-
+$faltas_do_aluno = $total_faltas_aluno[$idaluno] ?? 0;
 
 ?>
-<tr style='mso-yfti-irow:<?php echo 12 + $conta; ?>;height:13.5pt'>
+<tr style='height:13.5pt'>
 
-<td width=21 style='width:15.4pt;border:solid windowtext 1.0pt;border-top:
-none;background:white;padding:0cm 3.5pt 0cm 3.5pt;
-height:13.5pt'>
-<p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-line-height:normal'><span style='font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-color:black;mso-fareast-language:PT-BR'>
+<td class="contagem-cell" style='border-top:none;'>
 <?php echo $conta; ?>
-<o:p></o:p></span></p>
 </td>
 
-<td width=261 nowrap valign=bottom style='width:235.55pt;border:solid windowtext 1.0pt;
-border-left:none; border-top:none;
-padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt;font-size:9.0pt; text-transform: uppercase;'>
+<td style='width:195.55pt; border-left:none; border-top:none; font-size:9.0pt; text-transform: uppercase; padding:0cm 3.5pt;'>
 <?php echo $nome_exibido; ?>
 </td>
 
-
-
-
 <?php
-// Loop de preenchimento das presenças (células de frequência) - Mantido
 for ($i = $inicio; $i < ($inicio + $limite_aula); $i++) {
 
-$presenca = "<span style='font-size: 18px;'>&nbsp;</span>"; // Valor padrão (não lançada ou vazia)
-
-// Só tenta buscar dados se a coluna $i estiver dentro do intervalo de dados carregados
+$presenca = "&nbsp;"; 
 if ($i < $limite_loop_data_aula) {
 $data_frequencia = $array_data_aula[$i];
 $aula = $array_aula[$i];
-
-// Acessar o array de pré-busca
 $is_present = $frequencias_aluno[$idaluno][$data_frequencia][$aula] ?? null;
 
 if ($is_present == 1) {
@@ -667,81 +476,77 @@ $presenca = "F";
 }
 }
 
-$is_even = (($i) % 2 == 0);
+$is_even = (($i - $inicio) % 2 == 0);
 ?>
-<td width='<?php echo $LARGURA_COLUNA_PT; ?>' style='width:<?php echo $LARGURA_COLUNA_PT; ?>pt;border:solid windowtext 1.0pt;
-border-left:none;border-top:none;<?php echo $is_even ? 'background:#D9D9D9;' : ''; ?>padding:0cm 0pt 0cm 0pt;height:13.5pt'>
-<p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-line-height:normal'>
-<span style='font-size:10.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
-mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
-color:black;mso-fareast-language:PT-BR'>
- <?php echo $presenca; ?>
-<o:p></o:p></span>
-</p>
+<td width='<?php echo $LARGURA_COLUNA_PT; ?>' style='width:<?php echo $LARGURA_COLUNA_PT; ?>pt; border-left:none; border-top:none; <?php echo $is_even ? 'background:#D9D9D9;' : ''; ?>'
+    class="frequencia-cell">
+ <?php echo $presenca; ?>
 </td>
 <?php
 }
 ?>
 
- <td width='<?php echo $LARGURA_COLUNA_NOTA_PT; ?>' style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt;border:solid windowtext 1.0pt;border-left:solid windowtext 1.0pt;border-top:
-none;background:white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
-<p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-line-height:normal'><span class="nota-cell">
+ <td style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt; border-left:solid windowtext 1.0pt; border-top:none;' class="nota-cell">
 <?php echo ($nota_av1 > 0) ? number_format($nota_av1, 1, ',', '') : ''; ?>
-<o:p></o:p></span></p>
 </td>
-
-<td width='<?php echo $LARGURA_COLUNA_NOTA_PT; ?>' style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt;border:solid windowtext 1.0pt;border-left:none;border-top:
-none;background:white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
-<p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-line-height:normal'><span class="nota-cell">
+<td style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt; border-left:none; border-top:none;' class="nota-cell">
 <?php echo ($nota_av2 > 0) ? number_format($nota_av2, 1, ',', '') : ''; ?>
-<o:p></o:p></span></p>
 </td>
-
-<td width='<?php echo $LARGURA_COLUNA_NOTA_PT; ?>' style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt;border:solid windowtext 1.0pt;border-left:none;border-top:
-none;background:white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
-<p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-line-height:normal'><span class="nota-cell">
+<td style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt; border-left:none; border-top:none;' class="nota-cell">
 <?php echo ($nota_av3 > 0) ? number_format($nota_av3, 1, ',', '') : ''; ?>
-<o:p></o:p></span></p>
 </td>
-
-<td width='<?php echo $LARGURA_COLUNA_NOTA_PT; ?>' style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt;border:solid windowtext 1.0pt;border-left:none;border-top:
-none;background:white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
-<p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-line-height:normal'><span class="nota-cell">
+<td style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt; border-left:none; border-top:none;' class="nota-cell">
 <?php echo ($nota_rp > 0) ? number_format($nota_rp, 1, ',', '') : ''; ?>
-<o:p></o:p></span></p>
 </td>
-
-<td width='<?php echo $LARGURA_COLUNA_NOTA_PT; ?>' style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt;border:solid windowtext 1.0pt;border-left:none;border-top:
-none;background:white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
-<p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-line-height:normal'><span class="nota-cell">
+<td style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt; border-left:none; border-top:none;' class="nota-cell">
 <?php echo $media_formatada; ?>
-<o:p></o:p></span></p>
 </td>
 
-<td width='<?php echo $LARGURA_COLUNA_FALTAS_PT; ?>' style='width:<?php echo $LARGURA_COLUNA_FALTAS_PT; ?>pt;border:solid windowtext 1.0pt;border-left:none;border-top:
-none;border-right:solid windowtext 1.0pt; /* Importante: Borda direita final */
-background:white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
-<p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
-line-height:normal'><span class="nota-cell">
-<?php echo ($faltas_do_aluno > 0) ? $faltas_do_aluno : ''; ?>
-<o:p></o:p></span></p>
+<td style='width:<?php echo $LARGURA_COLUNA_FALTAS_PT; ?>pt; border-left:none; border-top:none; text-align: center;'>
+ <span class="frequencia-cell">
+ <?php echo $faltas_do_aluno; ?>
+ </span>
 </td>
+
 </tr>
 <?php
 $conta++;
 }
 ?>
+<?php 
+// Adiciona linhas vazias até, digamos, 30 alunos. Ajuste este limite conforme necessário.
+$MAX_ALUNOS = 30; 
+while ($conta <= $MAX_ALUNOS) { 
+?>
+<tr style='height:13.5pt'>
+<td class="contagem-cell" style='border-top:none;'>
+<?php echo $conta; ?>
+</td>
+<td style='width:195.55pt; border-left:none; border-top:none; padding:0cm 3.5pt;'>&nbsp;</td>
+<?php
+for ($i = $inicio; $i < ($inicio + $limite_aula); $i++) {
+$is_even = (($i - $inicio) % 2 == 0);
+?>
+<td width='<?php echo $LARGURA_COLUNA_PT; ?>' style='width:<?php echo $LARGURA_COLUNA_PT; ?>pt; border-left:none; border-top:none; <?php echo $is_even ? 'background:#D9D9D9;' : ''; ?>'>&nbsp;</td>
+<?php
+}
+?>
+<td style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt; border-left:solid windowtext 1.0pt; border-top:none;'>&nbsp;</td>
+<td style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt; border-left:none; border-top:none;'>&nbsp;</td>
+<td style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt; border-left:none; border-top:none;'>&nbsp;</td>
+<td style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt; border-left:none; border-top:none;'>&nbsp;</td>
+<td style='width:<?php echo $LARGURA_COLUNA_NOTA_PT; ?>pt; border-left:none; border-top:none;'>&nbsp;</td>
+<td style='width:<?php echo $LARGURA_COLUNA_FALTAS_PT; ?>pt; border-left:none; border-top:none;'>&nbsp;</td>
+</tr>
+<?php 
+$conta++;
+} 
+?>
 
 </table>
+
 </div>
 
 <?php
-return true; // Retorna true ou o valor de sucesso que a função original usava
+// Fim da função
 }
-?>
