@@ -22,7 +22,14 @@ function diario_frequencia_infantil($conexao, $idescola, $idturma, $iddisciplina
 
     // Filtro de Disciplina (para uso nas queries posteriores)
     $filtro_disciplina = "";
-    if ($idserie > 2 && $iddisciplina == 1000) {
+
+    if ($idserie == 16 && $iddisciplina == 1000 && $seguimento==1) {
+           $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina in (40,42,43,44)");
+           //$filtro_disciplina = "AND disciplina_id in (40,42,44)";
+    }else if ($idserie == 16 && $iddisciplina == 1000 && $seguimento==2) {
+           $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina in (40,42,44)");
+           //$filtro_disciplina = "AND disciplina_id in (40,42,44)";
+    }else if ($idserie > 2 && $iddisciplina == 1000) {
         $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina in (1,5, 6,7,14, 35,47)");
         $filtro_disciplina = "AND disciplina_id in (1,5, 6,7,14, 35,47)";
     } elseif ($idserie == 1 && $iddisciplina == 1000) {
