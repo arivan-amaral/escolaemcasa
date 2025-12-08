@@ -605,7 +605,12 @@ if (($nota_av1 + $nota_av2 + $nota_final_av3) > 0) {
 $media_formatada = ($media_aritmetica > 0) ? number_format($media_aritmetica, 1, ',', '') : '';
 
 // Total de Faltas
-$total_faltas = $total_faltas_aluno[$idaluno] ?? 0;
+if (isset($total_faltas_aluno[$idaluno])) {
+        $faltas_do_aluno = $total_faltas_aluno[$idaluno];
+}else{
+  $faltas_do_aluno = 0;
+}
+
 
 ?>
 <tr style='mso-yfti-irow:<?php echo 12 + $conta; ?>;height:13.5pt'>
@@ -715,7 +720,7 @@ $total_faltas = $total_faltas_aluno[$idaluno] ?? 0;
  <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
  line-height:normal'><span class="nota-cell">
  <?php
-  // echo ($total_faltas > 0) ? $total_faltas : '0';
+  echo ($total_faltas > 0) ? $total_faltas : '0';
 
    ?>
  <o:p></o:p></span></p>
