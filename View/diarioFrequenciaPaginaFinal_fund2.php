@@ -316,7 +316,7 @@ style='font-size:8.0pt;font-family:"Tw Cen MT Condensed",sans-serif;
 mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
 color:black;mso-fareast-language:PT-BR'>&nbsp;<o:p></o:p></span></p>
 </td>
-<td width=808 nowrap colspan=29 style='width:606.25pt;
+<td width='100%' nowrap colspan=29 style='width:606.25pt;
 border-right:solid windowtext 1.0pt; /* CORRIGIDO: Adicionado border-right */
 padding:0cm 3.5pt 0cm 3.5pt;
 height:12.0pt'>
