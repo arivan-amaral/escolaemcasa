@@ -64,9 +64,40 @@ function diario_frequencia_fund2(
   }
 
   // --- 2. Busca de Dados de Cabeçalho (Mantido) ---
-  $stmt_disc = $conexao->prepare("SELECT nome_disciplina FROM disciplina WHERE iddisciplina = :iddisciplina");
-  $stmt_disc->execute([':iddisciplina' => $iddisciplina]);
-  $nome_disciplina = $stmt_disc->fetchColumn() ?? 'N/A';
+  // Filtro de Disciplina (para uso nas queries posteriores)
+  $filtro_disciplina = "";
+
+  if ($idserie == 16 && $iddisciplina == 1000 && $seguimento==1) {
+         $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina in (40,42,43,44)");
+         //$filtro_disciplina = "AND disciplina_id in (40,42,44)";
+  }else if ($idserie == 16 && $iddisciplina == 1000 && $seguimento==2) {
+         $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina in (40,42,44)");
+         //$filtro_disciplina = "AND disciplina_id in (40,42,44)";
+  }else if ($idserie > 2 && $iddisciplina == 1000) {
+      $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina in (1,5, 6,7,14, 35,47)");
+      $filtro_disciplina = "AND disciplina_id in (1,5, 6,7,14, 35,47)";
+  } elseif ($idserie == 1 && $iddisciplina == 1000) {
+      $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina in (40,42,43,44)");
+      // Ajuste o filtro SQL conforme necessidade para serie 1
+      //$filtro_disciplina = "AND disciplina_id in (40,42,43,44)"; 
+  } elseif ($idserie == 2 && $iddisciplina == 1000) {
+      $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina in (40,42,44)");
+      //$filtro_disciplina = "AND disciplina_id in (40,42,44)";
+  } else {
+      $result_disc = $conexao->query("SELECT * FROM disciplina where iddisciplina=$iddisciplina");
+      $filtro_disciplina = "AND disciplina_id=$iddisciplina";
+  }
+
+  // Se série < 3 e disciplina 1000, o código original não aplicava filtro de disciplina na query de frequencia, mantemos essa lógica abaixo
+  if ($idserie < 3 && $iddisciplina == 1000) {
+      $filtro_disciplina = ""; 
+  }
+
+  foreach ($result_disc as $value) {
+      $nome_disciplina .= $value['nome_disciplina'] . ", ";
+  }
+  $nome_disciplina = rtrim($nome_disciplina, ", ");
+
 
   $stmt_escola = $conexao->prepare("SELECT nome_escola FROM escola WHERE idescola = :idescola");
   $stmt_escola->execute([':idescola' => $idescola]);
