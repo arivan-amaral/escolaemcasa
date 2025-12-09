@@ -446,9 +446,18 @@ if ($_SESSION['idfuncionario']==176) {
 
 
 
-inserirAluno($conn_migra, $cpf, $nome_aluno, $data_nascimento, $idescola, 8, $nome_turma, $idturma, $turno_id, $idaluno);
+// inserirAluno($conn_migra, $cpf, $nome_aluno, $data_nascimento, $idescola, 8, $nome_turma, $idturma, $turno_id, $idaluno);
+        echo "<b>CPF:</b> $cpf<br>
+        <b>Nome:</b> $nome_aluno<br>
+        <b>Data Nascimento:</b> $data_nascimento<br>
+        <b>Escola Atual:</b> $idescola<br>
+        <b>Turma Atual:</b> 8<br>
+        <b>Nome Turma Anterior:</b> $nome_turma<br>
+        <b>ID Turma Anterior:</b> $idturma<br>
+        <b>Turno ID:</b> $turno_id<br>
+        <b>Aluno ID:</b> $idaluno<br>";
 
-exit()
+exit();
 
 
     }elseif ($media_aprovacao == "Não"){
