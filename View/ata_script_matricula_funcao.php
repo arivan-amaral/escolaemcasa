@@ -21,7 +21,7 @@ function ata_resultados_finais($conexao,$idescola,$idturma,$idserie,$ano_letivo)
   right'><b><span lang=PT style='font-size:7.0pt;font-family:"Arial",sans-serif'>Carga
   Horária</span></b></p>
   </td>
-
+ 
  <?php 
   $res_disc=listar_disciplina_para_ata($conexao,$idescola,$idturma,$ano_letivo);
   $conta_disciplina=0;
@@ -57,17 +57,7 @@ function ata_resultados_finais($conexao,$idescola,$idturma,$idserie,$ano_letivo)
   style='font-size:7.0pt;font-family:"Arial",sans-serif'><?php echo $carga_horaria; ?></span></b></p>
   </td>
 
-  <!--  <td width=42 valign=top style='width:31.15pt;border:solid black 1.0pt;
-  border-left:none;padding:0cm 0cm 0cm 0cm;height:21.9pt'>
-  <p class=TableParagraph style='margin-top:.8pt;margin-right:0cm;margin-bottom:
-  0cm;margin-left:5.75pt;margin-bottom:.0001pt'><b><span lang=PT
-  style='font-size:7.0pt;font-family:"Arial",sans-serif'>mnbnbh<?php echo strtoupper($abreviacao); ?></span></b></p>
-  <p class=TableParagraph style='margin-top:3.3pt;margin-right:0cm;margin-bottom:
-  0cm;margin-left:9.65pt;margin-bottom:.0001pt'><b><span lang=PT
 
-  style='font-size:7.0pt;font-family:"Arial",sans-serif'>160</span></b></p>
-  </td>
-   -->
 <?php 
 
 }
@@ -408,6 +398,8 @@ else{
   $media_aprovacao="Apr";
 
 
+
+
 }
 ?>
       </span></p>
@@ -429,20 +421,35 @@ if ($_SESSION['idfuncionario']==176) {
 
     if($idserie<=3){
         echo "<b style='color: green;'>Apr</b>";
+        
+
+        echo "<br> 1 - idescola=&idturma=&nome_escola=&nome_turma=";
+
 
    }
     elseif (  $total_conta_apc==count($array_disciplina) && $conta_apc>0) {
          echo "<b style='color: blue;'>Apc </b> ";
+
+        echo "<br> 2 - idescola=&idturma=&nome_escola=&nome_turma=";
+
     }
     elseif ($media_aprovacao == "Apr" && $total_conta_apc==count($array_disciplina)  ) {
          echo "<b style='color: green;'>Apr</b>";
+
+        echo "<br> 3 - idescola=&idturma=&nome_escola=&nome_turma=";
+
     }elseif ($media_aprovacao == "Não"){
       $media_aprovacao="Não";
          echo "<b style='color: red;'>Rep</b>";
 
+        echo "<br> 4 -reprovado idescola=&idturma=&nome_escola=&nome_turma=";
+
+
     }elseif ($aprovacao_conselho == "Não"){
       $media_aprovacao="Não";
          echo "<b style='color: red;'>Rep</b>";
+        echo "<br> 5 -reprovado idescola=&idturma=&nome_escola=&nome_turma=";
+
 
     }
 ?>
