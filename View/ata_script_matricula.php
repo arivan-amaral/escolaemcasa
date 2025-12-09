@@ -234,7 +234,7 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
 
 
   //capa_turma($conexao,$idescola,$idturma);
- ata_resultados_finais($conexao,$idescola,$idturma,$idserie,$_SESSION['ano_letivo'], $turno_id, $nome_escola, $nome_turma);
+ ata_resultados_finais($conexao,$conn_migra,$idescola,$idturma,$idserie,$_SESSION['ano_letivo'], $turno_id, $nome_escola, $nome_turma);
 ?>
 </table>
 

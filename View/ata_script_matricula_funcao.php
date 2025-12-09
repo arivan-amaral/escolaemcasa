@@ -1,5 +1,5 @@
 <?php 
-function ata_resultados_finais($conexao,$idescola,$idturma,$idserie,$ano_letivo,$turno_id,$nome_escola, $nome_turma){
+function ata_resultados_finais($conexao,$conn_migra,$idescola,$idturma,$idserie,$ano_letivo,$turno_id,$nome_escola, $nome_turma){
 
 ?>
 
