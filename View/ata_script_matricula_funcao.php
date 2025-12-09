@@ -1,5 +1,5 @@
 <?php 
-function ata_resultados_finais($conexao,$idescola,$idturma,$idserie,$ano_letivo){
+function ata_resultados_finais($conexao,$idescola,$idturma,$idserie,$ano_letivo,$turno_id,$nome_escola, $nome_turma){
 
 ?>
 
@@ -104,6 +104,8 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
 
   $idaluno=$value['idaluno'];
   $nome_aluno=($value['nome_aluno']);
+  $data_nascimento=($value['data_nascimento']);
+  $cpf=($value['cpf']);
   $matricula_aluno=$value['matricula'];
 
   if ($conta_aluno%2==0) {
@@ -112,6 +114,10 @@ if ($_SESSION['ano_letivo']==$_SESSION['ano_letivo_vigente']) {
     $cor_linha="white";
 
   }
+
+
+
+
 
 // pesquisar_aluno_da_turma_ata_resultado_final
   $res_movimentacao=pesquisar_aluno_da_turma_ata_resultado_final($conexao,$matricula_aluno,$_SESSION['ano_letivo']);
@@ -438,6 +444,13 @@ if ($_SESSION['idfuncionario']==176) {
 
         echo "<br> 3 - idescola=&idturma=&nome_escola=&nome_turma=";
 
+
+
+inserirAluno($conn_migra, $cpf, $nome_aluno, $data_nascimento, $idescola, 8, $nome_turma, $idturma, $turno_id, $idaluno);
+
+exit()
+
+
     }elseif ($media_aprovacao == "Não"){
       $media_aprovacao="Não";
          echo "<b style='color: red;'>Rep</b>";
@@ -448,7 +461,7 @@ if ($_SESSION['idfuncionario']==176) {
     }elseif ($aprovacao_conselho == "Não"){
       $media_aprovacao="Não";
          echo "<b style='color: red;'>Rep</b>";
-        echo "<br> 5 -reprovado idescola=&idturma=&nome_escola=&nome_turma=";
+        echo "<br> 5 -reprovado idescola=$idescola&idturma=$idturma&nome_escola=$no&nome_turma=";
 
 
     }

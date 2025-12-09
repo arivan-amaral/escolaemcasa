@@ -1,9 +1,11 @@
 <?php 
 session_start();
 
-
 $usuariobd=$_SESSION['usuariobd'];
 include_once "../Model/Conexao.php";
+include_once "../Model/Conexao-matricula-anos-finais.php";
+
+
 include_once '../Controller/Conversao.php';
 include_once '../Model/Aluno.php';
 include_once '../Model/Turma.php';
@@ -22,7 +24,41 @@ $nome_escola=$_GET['nome_escola'];
 $nome_turma=$_GET['nome_turma'];
 
 $idserie=$_GET['idserie'];
+$turno_id=$_GET['turno_id'];
  
+
+<?php
+
+function inserirAluno($conn_migra, $cpf, $nome, $data_nascimento, $id_escola_atual, $turma_atual, $nome_turma_anterior, $id_turma_anterior, $turno_id, $aluno_id)
+{
+    $sql = "INSERT INTO aluno 
+    (cpf, nome, data_nascimento, id_escola_atual, turma_atual, nome_turma_anterior, id_turma_anterior, turno_id, aluno_id)
+    VALUES 
+    (:cpf, :nome, :data_nascimento, :id_escola_atual, :turma_atual, :nome_turma_anterior, :id_turma_anterior, :turno_id, :aluno_id)";
+
+    $stmt = $conn_migra->prepare($sql);
+
+    $stmt->bindParam(':cpf', $cpf);
+    $stmt->bindParam(':nome', $nome);
+    $stmt->bindParam(':data_nascimento', $data_nascimento);
+    $stmt->bindParam(':id_escola_atual', $id_escola_atual);
+    $stmt->bindParam(':turma_atual', $turma_atual);
+    $stmt->bindParam(':nome_turma_anterior', $nome_turma_anterior);
+    $stmt->bindParam(':id_turma_anterior', $id_turma_anterior);
+    $stmt->bindParam(':turno_id', $turno_id);
+    $stmt->bindParam(':aluno_id', $aluno_id);
+
+    return $stmt->execute();
+
+
+    echo "inserido ";
+}
+
+
+?>
+
+
+
 
 ?>
 <html xmlns:v="urn:schemas-microsoft-com:vml"
@@ -198,7 +234,7 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
 
 
   //capa_turma($conexao,$idescola,$idturma);
- ata_resultados_finais($conexao,$idescola,$idturma,$idserie,$_SESSION['ano_letivo']);
+ ata_resultados_finais($conexao,$idescola,$idturma,$idserie,$_SESSION['ano_letivo'], $turno_id, $nome_escola, $nome_turma);
 ?>
 </table>
 

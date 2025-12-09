@@ -1919,6 +1919,7 @@ aluno.aluno_transpublico=1 and aluno.idaluno IN($idaluno)  ORDER by aluno.nome A
    return $res;
 } 
 
+
 function listar_aluno_da_turma_ata_resultado_final($conexao,$turma_id,$escola_id,$ano_letivo){
   $res=$conexao->query("
     SELECT
@@ -1935,6 +1936,7 @@ function listar_aluno_da_turma_ata_resultado_final($conexao,$turma_id,$escola_id
     aluno.email,
     aluno.status AS status_aluno,
     aluno.senha,
+    aluno.cpf,
     turma.nome_turma,
     ecidade_matricula.etapa,
     ecidade_matricula.matricula_codigo AS matricula,
