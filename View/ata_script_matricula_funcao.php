@@ -429,24 +429,8 @@ if ($_SESSION['idfuncionario']==176) {
         echo "<b style='color: green;'>Apr</b>";
         
 
-        echo "<br> 1 - idescola=&idturma=&nome_escola=&nome_turma=";
-
-
-   }
-    elseif (  $total_conta_apc==count($array_disciplina) && $conta_apc>0) {
-         echo "<b style='color: blue;'>Apc </b> ";
-
-        echo "<br> 2 - idescola=&idturma=&nome_escola=&nome_turma=";
-
-    }
-    elseif ($media_aprovacao == "Apr" && $total_conta_apc==count($array_disciplina)  ) {
-         echo "<b style='color: green;'>Apr</b>";
-
-        echo "<br> 3 - idescola=&idturma=&nome_escola=&nome_turma=";
-
-
-
-// inserirAluno($conn_migra, $cpf, $nome_aluno, $data_nascimento, $idescola, 8, $nome_turma, $idturma, $turno_id, $idaluno);
+        echo "<br> 1 -";
+        inserirAluno($conn_migra, $cpf, $nome_aluno, $data_nascimento, $idescola, 8, $nome_turma, $idturma, $turno_id, $idaluno);
         echo "<b>CPF:</b> $cpf<br>
         <b>Nome:</b> $nome_aluno<br>
         <b>Data Nascimento:</b> $data_nascimento<br>
@@ -457,20 +441,74 @@ if ($_SESSION['idfuncionario']==176) {
         <b>Turno ID:</b> $turno_id<br>
         <b>Aluno ID:</b> $idaluno<br>";
 
-// exit();
+
+   }
+    elseif (  $total_conta_apc==count($array_disciplina) && $conta_apc>0) {
+         echo "<b style='color: blue;'>Apc </b> ";
+
+
+         echo "<br> 2 -";
+         inserirAluno($conn_migra, $cpf, $nome_aluno, $data_nascimento, $idescola, 8, $nome_turma, $idturma, $turno_id, $idaluno);
+         echo "<b>CPF:</b> $cpf<br>
+         <b>Nome:</b> $nome_aluno<br>
+         <b>Data Nascimento:</b> $data_nascimento<br>
+         <b>Escola Atual:</b> $idescola<br>
+         <b>Turma Atual:</b> 8<br>
+         <b>Nome Turma Anterior:</b> $nome_turma<br>
+         <b>ID Turma Anterior:</b> $idturma<br>
+         <b>Turno ID:</b> $turno_id<br>
+         <b>Aluno ID:</b> $idaluno<br>";
+
+    }
+    elseif ($media_aprovacao == "Apr" && $total_conta_apc==count($array_disciplina)  ) {
+         echo "<b style='color: green;'>Apr</b>";
+
+        echo "<br> 3 -";
+        inserirAluno($conn_migra, $cpf, $nome_aluno, $data_nascimento, $idescola, 8, $nome_turma, $idturma, $turno_id, $idaluno);
+        echo "<b>CPF:</b> $cpf<br>
+        <b>Nome:</b> $nome_aluno<br>
+        <b>Data Nascimento:</b> $data_nascimento<br>
+        <b>Escola Atual:</b> $idescola<br>
+        <b>Turma Atual:</b> 8<br>
+        <b>Nome Turma Anterior:</b> $nome_turma<br>
+        <b>ID Turma Anterior:</b> $idturma<br>
+        <b>Turno ID:</b> $turno_id<br>
+        <b>Aluno ID:</b> $idaluno<br>";
+
+
 
 
     }elseif ($media_aprovacao == "Não"){
       $media_aprovacao="Não";
          echo "<b style='color: red;'>Rep</b>";
 
-        echo "<br> 4 -reprovado idescola=&idturma=&nome_escola=&nome_turma=";
-
+         echo "<br> 4 -";
+         inserirAluno($conn_migra, $cpf, $nome_aluno, $data_nascimento, $idescola, 7, $nome_turma, $idturma, $turno_id, $idaluno);
+         echo "<b>CPF:</b> $cpf<br>
+         <b>Nome:</b> $nome_aluno<br>
+         <b>Data Nascimento:</b> $data_nascimento<br>
+         <b>Escola Atual:</b> $idescola<br>
+         <b>Turma Atual:</b> 8<br>
+         <b>Nome Turma Anterior:</b> $nome_turma<br>
+         <b>ID Turma Anterior:</b> $idturma<br>
+         <b>Turno ID:</b> $turno_id<br>
+         <b>Aluno ID:</b> $idaluno<br>";
 
     }elseif ($aprovacao_conselho == "Não"){
       $media_aprovacao="Não";
          echo "<b style='color: red;'>Rep</b>";
-        echo "<br> 5 -reprovado idescola=$idescola&idturma=$idturma&nome_escola=$no&nome_turma=";
+    
+          echo "<br> 5 -";
+          inserirAluno($conn_migra, $cpf, $nome_aluno, $data_nascimento, $idescola, 7, $nome_turma, $idturma, $turno_id, $idaluno);
+          echo "<b>CPF:</b> $cpf<br>
+          <b>Nome:</b> $nome_aluno<br>
+          <b>Data Nascimento:</b> $data_nascimento<br>
+          <b>Escola Atual:</b> $idescola<br>
+          <b>Turma Atual:</b> 8<br>
+          <b>Nome Turma Anterior:</b> $nome_turma<br>
+          <b>ID Turma Anterior:</b> $idturma<br>
+          <b>Turno ID:</b> $turno_id<br>
+          <b>Aluno ID:</b> $idaluno<br>";
 
 
     }
