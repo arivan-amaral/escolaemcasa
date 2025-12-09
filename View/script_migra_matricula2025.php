@@ -39,7 +39,9 @@ $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <h3>Listagem</h3>
 
-<?php foreach($resultados as $linha): ?>
+<?php 
+$conta=1;
+foreach($resultados as $linha): ?>
 
     <?php
         $idserie = $linha['idserie'];
@@ -50,6 +52,8 @@ $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $turno_id = $linha['turno_id'];
 
         $link = "https://teste.educalem.com.br/View/ata_script_matricula.php?idserie={$idserie}&idescola={$idescola}&idturma={$idturma}&nome_escola={$nome_escola}&nome_turma={$nome_turma}&turno_id={$turno_id}";
+
+        echo "$conta - ";
     ?>
 
     <div style="margin-bottom:10px;">
@@ -57,8 +61,15 @@ $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?= $linha['nome_escola'] ?> — <?= $linha['nome_turma'] ?> (Turno <?= $turno_id ?>)
         </a>
     </div>
+    <br>
+    <br>
 
-<?php endforeach; ?>
+<?php 
+$conta++;
+
+
+endforeach; 
+?>
 
 </body>
 </html>
