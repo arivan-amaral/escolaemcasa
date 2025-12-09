@@ -14,8 +14,14 @@ include_once '../Controller/Cauculos_notas.php';
  
 $idescola=$_GET['idescola'];
 $idturma=$_GET['idturma'];
+
+
+
+
 $nome_escola=$_GET['nome_escola'];
 $nome_turma=$_GET['nome_turma'];
+
+$idserie=$_GET['idserie'];
  
 
 ?>
@@ -189,9 +195,7 @@ href="regitro_conteudo_arquivos/colorschememapping.xml">
 
 <?php 
                                       
-$idescola=$_GET['idescola'];
-$idturma=$_GET['idturma'];
-$idserie=$_GET['idserie'];
+
 
   //capa_turma($conexao,$idescola,$idturma);
  ata_resultados_finais($conexao,$idescola,$idturma,$idserie,$_SESSION['ano_letivo']);
