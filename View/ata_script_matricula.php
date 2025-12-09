@@ -27,7 +27,7 @@ $idserie=$_GET['idserie'];
 $turno_id=$_GET['turno_id'];
  
 
-<?php
+
 
 function inserirAluno($conn_migra, $cpf, $nome, $data_nascimento, $id_escola_atual, $turma_atual, $nome_turma_anterior, $id_turma_anterior, $turno_id, $aluno_id)
 {
@@ -55,7 +55,6 @@ function inserirAluno($conn_migra, $cpf, $nome, $data_nascimento, $id_escola_atu
 }
 
 
-?>
 
 
 

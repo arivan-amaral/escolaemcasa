@@ -457,7 +457,7 @@ if ($_SESSION['idfuncionario']==176) {
         <b>Turno ID:</b> $turno_id<br>
         <b>Aluno ID:</b> $idaluno<br>";
 
-exit();
+// exit();
 
 
     }elseif ($media_aprovacao == "Não"){
