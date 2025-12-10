@@ -84,7 +84,7 @@ FROM
 aluno 
 
 where
-  aluno.nome LIKE '%$pesquisa%'   OR idaluno='$pesquisa'
+  aluno.nome LIKE '%$pesquisa%'   OR idaluno='$pesquisa'  OR cpf='$pesquisa'
   ORDER by  aluno.nome asc limit $limite_antigo , $limite_novo");
 
 
