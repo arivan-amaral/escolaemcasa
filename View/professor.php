@@ -22,7 +22,320 @@ if (!isset($_COOKIE['aviso_nota'])) {
 
 if (!isset($_SESSION['idprofessor'])) {
 
-       header("location:index.php?status=0");
+       header("location:index.php?status=0");<?php
+// =========================================================================
+// 1. CONFIGURAÇÃO INICIAL, SESSÃO E COOKIES
+// =========================================================================
+
+session_start();
+session_write_close(); // Fecha a sessão para evitar bloqueios de I/O em requisições paralelas
+
+// --- Funções de Manipulação de Cookies ---
+
+/**
+ * Gerencia o cookie de contagem para o aviso do Dia do Servidor Público.
+ */
+function handle_servidor_publico_cookie() {
+    $cookie_name = 'dia_doservidor_publico2';
+    $expiry_time = time() + (30 * 24 * 3600); // 30 dias
+
+    if (!isset($_COOKIE[$cookie_name])) {
+        setcookie($cookie_name, 1, $expiry_time, '/');
+    } else {
+        $current_value = (int)($_COOKIE[$cookie_name] ?? 0);
+        // O código original tinha uma lógica estranha de definir para 0 e depois incrementar.
+        // Simplificado para apenas incrementar a contagem.
+        setcookie($cookie_name, $current_value + 1, $expiry_time, '/');
+    }
+}
+
+/**
+ * Gerencia o cookie de contagem para o aviso de nota.
+ */
+function handle_aviso_nota_cookie() {
+    $cookie_name = 'aviso_nota';
+    $expiry_time = time() + (300 * 24 * 3600); // 300 dias
+
+    if (!isset($_COOKIE[$cookie_name])) {
+        setcookie($cookie_name, 1, $expiry_time, '/');
+    } else {
+        $current_value = (int)($_COOKIE[$cookie_name] ?? 0);
+        setcookie($cookie_name, $current_value + 1, $expiry_time, '/');
+    }
+}
+
+// Executa a lógica dos cookies
+handle_servidor_publico_cookie();
+handle_aviso_nota_cookie();
+
+// Variável para controlar a exibição do popup de Servidor Público
+$servidor_publico_cookie_value = (int)($_COOKIE['dia_doservidor_publico2'] ?? 0);
+$show_servidor_publico_popup = ($servidor_publico_cookie_value < 2 && date("m-d") == "10-28");
+$aviso_nota_cookie_value = (int)($_COOKIE['aviso_nota'] ?? 0);
+
+// =========================================================================
+// 2. AUTENTICAÇÃO E INCLUDES ESSENCIAIS
+// =========================================================================
+
+if (!isset($_SESSION['idprofessor'])) {
+    header("Location: index.php?status=0");
+    exit(); // É crucial parar a execução após um redirecionamento
+}
+
+$idprofessor = $_SESSION['idprofessor'];
+
+// Define o usuário do BD (garante que está definido)
+if (!isset($_SESSION['usuariobd'])) {
+    $_SESSION['usuariobd'] = 'educ_lem';
+}
+$usuariobd = $_SESSION['usuariobd'];
+
+// --- Includes ---
+// Usar require_once para garantir que arquivos críticos estejam disponíveis
+require_once "cabecalho.php";
+require_once "alertas.php";
+require_once "barra_horizontal.php";
+require_once 'menu.php';
+require_once '../Controller/Conversao.php';
+require_once "../Model/Conexao_" . $usuariobd . ".php"; // Cuidado com a sanitização de $usuariobd
+require_once '../Model/Professor.php';
+require_once '../Model/Coordenador.php';
+
+// Assumindo que $conexao é definido em Conexao_*.php
+// global $conexao; 
+
+// =========================================================================
+// 3. HTML E RENDERIZAÇÃO
+// =========================================================================
+?>
+
+<?php if ($show_servidor_publico_popup): ?>
+    <script>
+        function dia_doservidor_publico() {
+            Swal.fire({
+                title: "Parabéns!",
+                imageUrl: 'dia_doservidor_publico.png',
+                imageAlt: 'dia_doservidor_publico',
+            });
+        }
+        setTimeout(dia_doservidor_publico, 3000);
+    </script>
+<?php endif; ?>
+
+<script src="ajax.js?v=<?php echo rand(); ?>"></script>
+
+<div class="content-wrapper" style="min-height: 529px;">
+
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-12 alert alert-warning">
+                    <h1 class="m-0"><b>
+                        <?php
+                        // Prioriza NOME_APLICACAO, se definida
+                        if (isset($nome_escola_global)) { // Variável global do cabeçalho?
+                            echo htmlspecialchars($_SESSION['NOME_APLICACAO'] ?? '');
+                        }
+                        // Dados do professor logado
+                        if (isset($_SESSION['nome'])) {
+                            echo htmlspecialchars($_SESSION['idfuncionario'] ?? '') . " - " . htmlspecialchars($_SESSION['nome']);
+                        }
+                        ?>
+                    </b></h1>
+                </div></div></div></div>
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <?php
+                    // --- Renderização do Cartão do Professor ---
+                    $res_dados_professor = dados_professor($conexao, $idprofessor);
+                    $professor_encontrado = false;
+                    $nome = htmlspecialchars($_SESSION['nome'] ?? 'Usuário');
+                    $imagem = 'user.png';
+
+                    // 1. Tenta obter dados do BD
+                    foreach ($res_dados_professor as $value) {
+                        $nome = htmlspecialchars($value['nome']);
+                        $imagem = htmlspecialchars($value['foto']);
+                        $professor_encontrado = true;
+                        break; // Apenas um professor
+                    }
+                    
+                    // Estrutura HTML/CSS do Cartão do Professor (com HEREDOC para limpeza)
+                    echo <<<HTML
+                    <style>
+                        .quadro {
+                            background-image: url(imagens/logo_educalem_natal.png);
+                            background-repeat: no-repeat;
+                            background-position: center;
+                            background-size: 100% 100%;
+                        }
+                    </style>
+                    <div class='card card-widget widget-user shadow-lg quadro'>
+                        <div class='widget-user-header text-white'>
+                            <h3 class='widget-user-username text-right'>$nome</h3>
+                            <h5 class='widget-user-desc text-right'>Professor(a)</h5>
+                        </div>
+                        <div class='widget-user-image'>
+                            <img class='img-circle' src='fotos/$imagem' alt='Avatar do Usuário'>
+                        </div>
+                        <div class='card-footer'>
+                            </div>
+                    </div>
+                    HTML;
+                    ?>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Clique na disciplina desejada</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="accordion">
+
+                                <a href='cadastrar_questionario.php' class='btn btn-danger btn-block btn-flat mb-3'>
+                                    <i class='fa fa-edit'></i> Provas
+                                </a>
+
+                                <?php
+                                // --- Lógica de Disciplinas ---
+                                $array_disciplina_regente_creche = [40, 42, 43, 44];
+                                $array_disciplina_regente_pre_escola = [40, 42, 44];
+                                $array_turma_regente_creche = [];
+                                $array_turma_regente_pre_escola = [];
+
+                                $result_disciplinas = listar_disciplina_professor($conexao, $idprofessor, $_SESSION['ano_letivo'] ?? date('Y'));
+
+                                foreach ($result_disciplinas as $value) {
+                                    // Atribuição e sanitização (embora os includes usem as variáveis)
+                                    $iddisciplina = (int)$value['iddisciplina'];
+                                    $idturma = (int)$value['idturma'];
+                                    $idserie = (int)$value['serie_id'];
+                                    $idescola = (int)$value['idescola'];
+                                    
+                                    // Prevenção de duplicação para Regentes (Creche e Pré-escola)
+                                    $is_regente_creche = (($idserie == 1 || $idserie == 16) && $iddisciplina == 40 && !in_array($idturma, $array_turma_regente_creche));
+                                    $is_regente_pre_escola = ($idserie == 2 && $iddisciplina == 40 && !in_array($idturma, $array_turma_regente_pre_escola));
+                                    
+                                    // 1. Regente (Creche ou Pré-escola)
+                                    if ($is_regente_creche || $is_regente_pre_escola) {
+                                        include "menu_disciplina_regente.php";
+                                        if ($is_regente_creche) {
+                                            $array_turma_regente_creche[] = $idturma;
+                                        } else {
+                                            $array_turma_regente_pre_escola[] = $idturma;
+                                        }
+                                    }
+                                    // 2. Não Regente (Educação Infantil - Lógica complexa mantida)
+                                    elseif (
+                                        (($idserie == 2 || $idserie == 16) && $iddisciplina == 43) ||
+                                        (($idserie == 1 || $idserie == 16) && ($iddisciplina == 41 || ($iddisciplina == 43 && $idescola == 20)))
+                                    ) {
+                                        include "menu_disciplina_nao_regente.php";
+                                    }
+                                    // 3. Demais Disciplinas (Não Infantil Regente)
+                                    elseif (!in_array($iddisciplina, $array_disciplina_regente_creche) && !in_array($iddisciplina, $array_disciplina_regente_pre_escola)) {
+                                        include "menu_nao_infanfil.php";
+                                    }
+
+                                    // Lógica original de preenchimento dos arrays (Embora não usados na lógica principal acima, são mantidos por contexto)
+                                    if ($idserie == 1 && in_array($iddisciplina, $array_disciplina_regente_creche)) {
+                                        // $array_turma_regente_creche[$turma] = $idturma;
+                                    } elseif ($idserie == 2 && in_array($iddisciplina, $array_disciplina_regente_pre_escola)) {
+                                        // $array_turma_regente_pre_escola[$conta] = $idturma;
+                                    }
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </section>
+</div>
+
+<aside class="control-sidebar control-sidebar-dark">
+    </aside>
+
+<style>
+    /* Estilos para o botão flutuante de WhatsApp */
+    #imagem_whats, #imagem_whats2 {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        cursor: pointer;
+        z-index: 9999999;
+        float: right;
+    }
+    #imagem_whats2 { 
+        display: none; 
+    }
+    @media only screen and (max-width: 999px) and (min-width: 100px) {
+        #imagem_whats { 
+            display: none; 
+        }
+        #imagem_whats2 { 
+            display: block; 
+        }
+    }
+</style>
+
+<img id="imagem_whats" src="https://www.ellodigital.com.br/images/whatsapp.png" 
+    onclick="window.open('https://web.whatsapp.com/send?phone=+5577998228710&amp;text=OLÁ, PODE ME AJUDAR COM A PLATAFORMA EDUCA LEM?!', '_blank');" alt="Whatsapp Desktop">
+
+<img id="imagem_whats2" src="https://www.ellodigital.com.br/images/whatsapp.png" 
+    onclick="window.open('https://api.whatsapp.com/send?phone=+77998228710&amp;text=OLÁ, PODE ME AJUDAR COM A PLATAFORMA EDUCA LEM?!', '_blank');" alt="Whatsapp Mobile">
+
+<div class="preloader"> <div class="preloaderimg"></div></div>
+
+<div class="modal fade" id="modal-conteudo">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">AVISO! (Visualizações: <?php echo htmlspecialchars($_COOKIE['conteudo'] ?? 0); ?>)</h4> 
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card card-default">
+                            <div class="card-header callout callout-danger">
+                                <h3 class="card-title">
+                                    <i class="fas fa-bullhorn"></i>
+                                    ATENÇÃO, Melhorias na forma de registro dos conteúdos das aulas, assista o vídeo!
+                                </h3>
+                            </div>
+                            <div class='card-body'>
+                                <center>
+                                    <iframe width="380" height="315" src="https://www.youtube.com/embed/ub_1CMDrb8Q" 
+                                        title="YouTube video player" frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php
+// --- Rodapé ---
+include_once 'rodape.php';
+?>
 
 }else{
 
