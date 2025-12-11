@@ -606,7 +606,7 @@ $nota_final_av3 = max($nota_av3, $nota_rp);
 // Cálculo da Média
 $media_aritmetica = 0;
 if (($nota_av1 + $nota_av2 + $nota_final_av3) > 0) {
-$media_aritmetica = ($nota_av1 + $nota_av2 + $nota_final_av3) / 3;
+$media_aritmetica = ($nota_av1 + $nota_av2 + $nota_final_av3) ;
 }
 // Formatar média para 1 casa decimal (ou o padrão desejado)
 $media_formatada = ($media_aritmetica > 0) ? number_format($media_aritmetica, 1, ',', '') : '';
