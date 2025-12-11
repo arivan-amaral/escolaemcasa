@@ -341,17 +341,8 @@ setTimeout('dia_doservidor_publico();',3000);
 
                           <?php 
      
-                  $res=$conexao->query("SELECT *
-FROM ministrada
-INNER JOIN turma ON ministrada.turma_id = turma.idturma
-INNER JOIN escola ON ministrada.escola_id = escola.idescola
-INNER JOIN disciplina ON ministrada.disciplina_id = disciplina.iddisciplina
-INNER JOIN funcionario ON ministrada.professor_id = funcionario.idfuncionario
-WHERE funcionario.idfuncionario = $idprofessor
-AND ministrada.ano = $ano_letivo
-AND funcionario.status = 1
-ORDER BY escola.nome_escola ASC, turma.nome_turma ASC
-");
+                          $result=listar_disciplina_professor($conexao,$idprofessor,$_SESSION['ano_letivo']);
+
 
                           $conta=0;
                           $array_disciplina_regente_creche = array('0' => 40,'1' => 42,'2' => 43,'3' => 44);
