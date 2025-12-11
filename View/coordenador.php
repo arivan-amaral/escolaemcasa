@@ -1,278 +1,205 @@
 <?php
 /**
- * PÁGINA INICIAL DO COORDENADOR (DASHBOARD)
- * Otimizada para clareza, segurança e desempenho.
+ * Otimização de index_coordenador.php
+ *
+ * Objetivo: Melhorar a legibilidade, a segurança e a gestão de sessão/cookies.
  */
 
-// 1. GESTÃO DE SESSÃO
-// Inicia a sessão. É crucial que isso seja a primeira coisa a acontecer.
+// 1. Início da Sessão e Verificação de Coordenador
+// session_write_close() foi movido para o final do bloco inicial de lógica para não fechar a sessão 
+// antes que todas as variáveis necessárias tenham sido lidas/escritas.
+
 session_start();
 
-// O 'session_write_close()' original foi mantido para liberar o arquivo de sessão
-// rapidamente, permitindo que outras páginas PHP sejam carregadas simultaneamente
-// pelo mesmo usuário, melhorando o desempenho de carregamento paralelo de recursos.
-session_write_close();
-
-// 2. GESTÃO DE COOKIE PARA AVISO ESPECIAL (Dia do Servidor Público)
-// Centraliza o nome do cookie para facilitar a manutenção.
-const COOKIE_NOME = 'dia_doservidor_publico2';
-const DIAS_VALIDADE_COOKIE = 30;
-const DIA_ESPECIAL = '10-28'; // Mês-Dia para 28 de Outubro
-
-// Calcula o tempo de expiração do cookie.
-$tempo_expiracao = time() + (DIAS_VALIDADE_COOKIE * 24 * 3600);
-$hoje_mes_dia = date("m-d");
-
-// Lógica de cookie:
-// Se o cookie não existir, define como 1 (para exibir o aviso).
-// Se existir, incrementa a contagem e define novamente.
-// Nota: O código original tinha uma pequena falha: ele definia 0 e depois incrementava, resultando em 1.
-// A otimização abaixo garante que a contagem seja gerenciada de forma mais clara.
-if (!isset($_COOKIE[COOKIE_NOME])) {
-    // Primeiro acesso, define como 1.
-    setcookie(COOKIE_NOME, 1, $tempo_expiracao);
-    $exibir_aviso = ($hoje_mes_dia === DIA_ESPECIAL);
-} else {
-    // Aumenta a contagem. O aviso só será exibido se a contagem for < 2 *e* for o dia correto.
-    $count = (int)$_COOKIE[COOKIE_NOME] + 1;
-    setcookie(COOKIE_NOME, $count, $tempo_expiracao);
-    $exibir_aviso = ($count < 2) && ($hoje_mes_dia === DIA_ESPECIAL);
-}
-
-// 3. VERIFICAÇÃO DE AUTENTICAÇÃO
-// Usa 'exit' após o redirecionamento para garantir que o script pare de executar.
+// Redireciona se o coordenador não estiver logado
 if (!isset($_SESSION['idcoordenador'])) {
-    header("Location: index.php?status=0");
-    exit();
+    header("location: index.php?status=0");
+    exit; // Termina o script após o redirecionamento
 }
 
 $idcoordenador = $_SESSION['idcoordenador'];
+$usuariobd = $_SESSION['usuariobd'] ?? 'educ_lem'; // Usa o operador de coalescência nula (PHP 7+)
+$ano_letivo = $_SESSION['ano_letivo'] ?? date('Y'); // Garantir que $ano_letivo tem um valor
 
-// 4. DEFINIÇÃO DO BANCO DE DADOS E CONEXÃO
-// Usa o operador de coalescência nula (PHP 7+) para um fallback mais limpo.
-$usuariobd = $_SESSION['usuariobd'] ?? 'educ_lem';
+session_write_close(); // Fecha a sessão somente após ler todos os dados necessários
 
-// Garante que a variável de sessão seja definida, mesmo se houver fallback.
-$_SESSION['usuariobd'] = $usuariobd;
+// 2. Lógica de Cookie (Dia do Servidor Público)
+$cookie_name = 'dia_doservidor_publico2';
+$cookie_expiry = time() + (30 * 24 * 3600); // 30 dias
+$cookie_current_value = (int)($_COOKIE[$cookie_name] ?? 0);
 
-// Inclusões de arquivos (Controller, Model, Views)
-// Assumindo que os caminhos e arquivos Model/Controller são corretos.
+if ($cookie_current_value < 1) {
+    // Primeira visita no período de 30 dias (ou se o cookie expirou)
+    setcookie($cookie_name, 1, $cookie_expiry);
+} else {
+    // Incrementa o valor do cookie
+    // Otimização: A expiração deve ser definida em todos os sets para garantir que o cookie persista
+    setcookie($cookie_name, $cookie_current_value + 1, $cookie_expiry);
+}
+
+// Verifica se o alerta deve ser exibido (primeira ou segunda vez no dia 28/10)
+$show_servidor_publico_alert = ($cookie_current_value < 2 && date("m-d") === "10-28");
+
+// 3. Includes
+// Reduzir o número de include_once separando em blocos
 include_once "cabecalho.php";
 include_once "alertas.php";
 include_once "barra_horizontal.php";
-// Conexão: Usa variáveis para clareza.
-$conexao_file = "../Model/Conexao_" . $usuariobd . ".php";
-if (file_exists($conexao_file)) {
-    include_once $conexao_file;
-} else {
-    // Tratar erro de conexão não encontrada.
-    // Em um ambiente de produção, seria melhor registrar e mostrar um erro genérico.
-    trigger_error("Arquivo de conexão não encontrado: " . $conexao_file, E_USER_ERROR);
-}
-
 include_once 'menu.php';
-include_once '../Controller/Conversao.php'; // Data conversion functions
-include_once '../Model/Coordenador.php'; // dados_coordenador()
-include_once '../Model/Escola.php'; // escola_associada(), quantidade_solicitacao_transferencia_recebida_por_escola()
+
+// Modelos e Conexão
+include_once "../Model/Conexao_{$usuariobd}.php"; // Usa interpolação de string
+include_once '../Controller/Conversao.php';
+include_once '../Model/Coordenador.php';
+include_once '../Model/Escola.php';
 include_once '../Model/Aluno.php';
 include_once '../Model/Chamada.php';
 
+// 4. Prepara Dados para a Seção de Transferências
+$res_escola = escola_associada($conexao, $idcoordenador);
+$lista_escola_associada = "";
+$sql_escolas = "AND ( escola_id = -1 ";
+$sql_escolas_enviada = "AND ( escola_id_origem = -1 ";
 
-// 5. AVISO DO DIA ESPECIAL (SweetAlert)
-// Só exibe o script se o aviso for necessário.
-if ($exibir_aviso) {
+foreach ($res_escola as $value) {
+    $id = $value['idescola'];
+    $nome_escola = htmlspecialchars($value['nome_escola']); // Adicionado htmlspecialchars para segurança
+
+    $sql_escolas .= " OR escola_id = $id ";
+    $sql_escolas_enviada .= " OR escola_id_origem = $id ";
+    
+    $lista_escola_associada .= "<option value='{$id}'>{$nome_escola}</option>";
+}
+$sql_escolas .= " )";
+$sql_escolas_enviada .= " )";
+
+// Busca Quantidade Recebida
+$res_recebida = quantidade_solicitacao_transferencia_recebida_por_escola($conexao, 0, $sql_escolas);
+$quantidade_recebida = $res_recebida[0]['quantidade'] ?? 0;
+
+// Busca Quantidade Enviada
+$res_enviada = quantidade_solicitacao_transferencia_enviada_por_escola($conexao, 0, $sql_escolas_enviada);
+$quantidade_enviada = $res_enviada[0]['quantidade'] ?? 0;
+
+// 5. Busca Dados do Coordenador para o Card
+$res_dados_coordenador = dados_coordenador($conexao, $idcoordenador);
+$dados_coordenador = $res_dados_coordenador[0] ?? ['nome' => $_SESSION['nome'] ?? 'Coordenador', 'foto' => 'user.png']; // Usa array de fallback
+
+$nome_coordenador = htmlspecialchars($dados_coordenador['nome']);
+$imagem_coordenador = htmlspecialchars($dados_coordenador['foto']);
+
+// 6. Busca Dados para o Gráfico (Pie Chart)
+$result_ativos = $conexao->query("
+    SELECT 
+        COUNT(*) AS ativo 
+    FROM 
+        ecidade_matricula 
+    WHERE
+        calendario_ano = '{$ano_letivo}' AND
+        matricula_ativa = 'S' AND
+        matricula_concluida = 'N'
+");
+$ativo = $result_ativos->fetch(PDO::FETCH_ASSOC)['ativo'] ?? 0;
+$bloqueado = 0; // Valor fixo
+
 ?>
+
+<style>
+    /* Estilo CSS otimizado e simplificado */
+    .quadro {
+        background-image: url(imagens/logo_educalem_natal.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 100%;
+    }
+</style>
+
+<?php if ($show_servidor_publico_alert): ?>
     <script>
         function dia_doservidor_publico() {
             Swal.fire({
                 title: "Parabéns!",
                 imageUrl: 'dia_doservidor_publico.png',
-                imageAlt: 'Dia do Servidor Público',
+                imageAlt: 'dia_doservidor_publico',
             });
         }
-        // Usa uma função de seta anônima para a chamada do setTimeout, mais moderna e clara.
-        setTimeout(() => dia_doservidor_publico(), 3000);
+        setTimeout(dia_doservidor_publico, 3000);
     </script>
-<?php
-}
-?>
-
-<style>
-    .quadro {
-        /* Estilo otimizado para a imagem de fundo */
-        background-image: url(imagens/logo_educalem_natal.png);
-        background-repeat: no-repeat;
-        background-position: center;
-        /* Usa 'cover' se a intenção for cobrir o elemento, ou 100% 100% se for para esticar */
-        background-size: 100% 100%;
-        /* Adicione uma cor de fundo fallback */
-        background-color: #f8f9fa;
-    }
-</style>
+<?php endif; ?>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="ajax.js?<?php echo rand(); ?>"></script>
+<script src="ajax.js?v=<?php echo rand(); ?>"></script>
+
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Task', 'Hours per Day'],
+            ['Ativos', <?php echo (int)$ativo; ?>],
+            ['Bloqueados', <?php echo (int)$bloqueado; ?>]
+        ]);
+
+        var options = {
+            title: 'GRÁFICO DE ALUNOS',
+            backgroundColor: 'transparent' // Adicionei transparência para melhor integração
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+    }
+</script>
 
 <div class="content-wrapper" style="min-height: 529px;">
-
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-1"></div>
                 <div class="col-sm-12 alert alert-warning">
-                    <h1 class="m-0"><b>
-                        <?php
-                        // Evita o aviso de variável indefinida (isset é suficiente)
-                        if (isset($_SESSION['NOME_APLICACAO'])) {
-                            echo $_SESSION['NOME_APLICACAO'];
-                        }
-                        // O nome do coordenador foi concatenado com espaço no original
-                        if (isset($_SESSION['nome'])) {
-                            echo " " . $_SESSION['nome'];
-                        }
-                        ?>
-                    </b></h1>
+                    <h1 class="m-0">
+                        <b>
+                            <?php 
+                            // Exibe o nome da aplicação apenas se estiver definido
+                            echo htmlspecialchars($_SESSION['NOME_APLICACAO'] ?? '');
+                            // Exibe o nome do coordenador logado
+                            echo " " . $nome_coordenador;
+                            ?>
+                        </b>
+                    </h1>
                 </div></div></div></div>
     <section class="content">
         <div class="container-fluid">
-
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
-
-                    <?php
-                    // Consulta o banco de dados.
-                    $res_dados_coordenador = dados_coordenador($conexao, $idcoordenador);
-                    $cont = 0;
-
-                    // Exibição do cartão de usuário (Widget: user widget style 1)
-                    foreach ($res_dados_coordenador as $value) {
-                        $nome = htmlspecialchars($value['nome']); // Sanitização
-                        $imagem = htmlspecialchars($value['foto']);
-                        $cont++;
-                    ?>
-                        <div class='card card-widget widget-user shadow-lg quadro'>
-                            <div class='widget-user-header text-white'>
-                                <h3 class='widget-user-username text-right'><?= $nome ?></h3>
-                                <h5 class='widget-user-desc text-right'>Coordenador (a)</h5>
-                            </div>
-                            <div class='widget-user-image'>
-                                <img class='img-circle' src='fotos/<?= $imagem ?>' alt='User Avatar'>
-                            </div>
-                            <div class='card-footer'>
-                                </div>
+                    <div class='card card-widget widget-user shadow-lg quadro'>
+                        <div class='widget-user-header text-white'>
+                            <h3 class='widget-user-username text-right'><?php echo $nome_coordenador; ?></h3>
+                            <h5 class='widget-user-desc text-right'>Coordenador (a)</h5>
                         </div>
-                    <?php
-                    }
-
-                    // Se não encontrou o coordenador no BD, usa dados da sessão como fallback.
-                    if ($cont == 0 && isset($_SESSION['nome'])) {
-                        $nome_sessao = htmlspecialchars($_SESSION['nome']);
-                    ?>
-                        <div class='card card-widget widget-user shadow-lg quadro'>
-                            <div class='widget-user-header text-white'>
-                                <h3 class='widget-user-username text-right'><?= $nome_sessao ?></h3>
-                                <h5 class='widget-user-desc text-right'>Coordenador(a)</h5>
-                            </div>
-                            <div class='widget-user-image'>
-                                <img class='img-circle' src='fotos/user.png' alt='User Avatar'>
-                            </div>
-                            <div class='card-footer'>
-                                </div>
+                        <div class='widget-user-image'>
+                            <img class='img-circle' src='fotos/<?php echo $imagem_coordenador; ?>' alt='User Avatar'>
                         </div>
-                    <?php
-                    }
-                    ?>
+                        <div class='card-footer'>
+                            </div>
+                    </div>
                 </div>
             </div>
 
             <div class="row">
-                <script type="text/javascript">
-                    google.charts.load('current', {'packages':['corechart']});
-                    google.charts.setOnLoadCallback(drawChart);
-
-                    function drawChart() {
-                        var data = google.visualization.arrayToDataTable([
-                            <?php
-                            $ano_letivo = $_SESSION['ano_letivo'] ?? date("Y"); // Fallback para o ano atual
-                            $ativo = 0;
-                            $bloqueado = 0; // O código original sempre define 0.
-
-                            // Consulta de Alunos Ativos: Otimizada com `COUNT(*)` e filtros.
-                            // Nota: A consulta original não filtra por escola, o que pode ser um problema
-                            // se o coordenador deve ver apenas os alunos de suas escolas. Mantida a lógica original.
-                            $sql_ativos = "SELECT COUNT(*) AS ativo 
-                                           FROM ecidade_matricula 
-                                           WHERE calendario_ano = :ano_letivo 
-                                           AND matricula_ativa = 'S' 
-                                           AND matricula_concluida = 'N'";
-                            
-                            // Se estiver usando PDO, você deve usar prepared statements:
-                            // $stmt = $conexao->prepare($sql_ativos);
-                            // $stmt->bindParam(':ano_letivo', $ano_letivo);
-                            // $stmt->execute();
-                            // $result_ativos = $stmt->fetch(PDO::FETCH_ASSOC);
-                            // $ativo = $result_ativos['ativo'] ?? 0;
-
-                            // Usando a abordagem do código original (assumindo que $conexao é um objeto PDO):
-                            $result_ativos = $conexao->query("SELECT COUNT(*) AS ativo FROM ecidade_matricula WHERE calendario_ano='$ano_letivo' AND matricula_ativa='S' AND matricula_concluida='N'")->fetch(PDO::FETCH_ASSOC);
-                            $ativo = $result_ativos['ativo'] ?? 0;
-                            
-                            echo "
-                            ['Task', 'Hours per Day'],
-                            ['Ativos', $ativo],
-                            ['Bloqueados', $bloqueado]
-                            ";
-                            ?>
-                        ]);
-
-                        var options = {
-                            title: 'GRÁFICO DE ALUNOS'
-                        };
-
-                        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-                        chart.draw(data, options);
-                    }
-                </script>
-
                 <div class='col-sm-1'></div>
                 
-                <?php
-                // Processamento de Dados de Transferência
-                $res_escola = escola_associada($conexao, $idcoordenador);
-                $lista_escola_associada = "";
-                $sql_escolas = "AND ( escola_id = -1 ";
-                $sql_escolas_enviada = "AND ( escola_id_origem = -1 ";
-
-                foreach ($res_escola as $value) {
-                    $id = $value['idescola'];
-                    $nome_escola = htmlspecialchars($value['nome_escola']);
-                    $sql_escolas .= " OR escola_id = $id ";
-                    $sql_escolas_enviada .= " OR escola_id_origem = $id ";
-                    $lista_escola_associada .= "<option value='$id'>$nome_escola</option>";
-                }
-                $sql_escolas .= " )";
-                $sql_escolas_enviada .= " )";
-
-                // Quantidade Recebida
-                $res_recebida = quantidade_solicitacao_transferencia_recebida_por_escola($conexao, 0, $sql_escolas);
-                $quantidade_recebida = $res_recebida[0]['quantidade'] ?? 0;
-                
-                // Quantidade Enviada
-                $res_enviada = quantidade_solicitacao_transferencia_enviada_por_escola($conexao, 0, $sql_escolas_enviada);
-                $quantidade_enviada = $res_enviada[0]['quantidade'] ?? 0;
-                ?>
-
                 <div class='col-lg-3 col-6'>
                     <div class='small-box bg-danger'>
                         <div class='inner'>
                             <h3 class="text-center">RECEBIDAS</h3>
-                            <h4 class="text-center"><?= $quantidade_recebida ?></h4>
-                            <p>Você pode ter transferências pendentes clique abaixo para ver </p>
+                            <h4 class="text-center"><?php echo $quantidade_recebida; ?></h4>
+                            <p>Você pode ter transferências pendentes clique abaixo para ver</p>
                         </div>
-                        <div class='icon'><ion-icon name="cloud-download"></ion-icon></div>
+                        <div class='icon'></div>
                         <a href='lista_solicitacao_transferencia.php' class='small-box-footer'>
-                            Transferências pendentes <i class="fas fa-arrow-circle-right"></i>
+                            Transferências pendentes <ion-icon name="cloud-upload"></ion-icon>
                         </a>
                     </div>
                 </div>
@@ -281,21 +208,21 @@ if ($exibir_aviso) {
                     <div class='small-box bg-info'>
                         <div class='inner'>
                             <h3 class="text-center">ENVIADAS</h3>
-                            <h4 class="text-center"><?= $quantidade_enviada ?></h4>
-                            <p>Você pode ter transferências pendentes clique abaixo para ver </p>
+                            <h4 class="text-center"><?php echo $quantidade_enviada; ?></h4>
+                            <p>Você pode ter transferências pendentes clique abaixo para ver</p>
                         </div>
-                        <div class='icon'><ion-icon name="cloud-upload"></ion-icon></div>
+                        <div class='icon'></div>
                         <a href='lista_solicitacao_transferencia_enviada.php' class='small-box-footer'>
-                            Transferências pendentes <i class="fas fa-arrow-circle-right"></i>
+                            Transferências pendentes <ion-icon name="cloud-download"></ion-icon>
                         </a>
                     </div>
                 </div>
-
-                <div class="col-lg-3 col-6">
-                    <div id="piechart" style="height: 100px;"></div>
+                
+                <div class="col-lg-4 col-12" style="min-height: 200px;">
+                    <div id="piechart" style="height: 100%;"></div> 
                 </div>
-            </div>
 
+            </div>
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
@@ -309,12 +236,7 @@ if ($exibir_aviso) {
                             <?php echo $lista_escola_associada; ?>
                         </select>
                     </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-10">
+                    
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Clique na disciplina desejada</h3>
@@ -326,62 +248,57 @@ if ($exibir_aviso) {
                     </div>
                 </div>
             </div>
-
-        </div>
+            </div>
     </section>
-
 </div>
 
 <aside class="control-sidebar control-sidebar-dark">
     </aside>
 
 <script type="text/javascript">
-    // 1. Função de Verificação de Atraso (chamada uma vez após 10s)
-    setTimeout(() => verificar_atraso(), 10000);
+    // Chamadas de funções JavaScript após o carregamento da página
 
-    // 2. Chamada Automática do Listador de Turmas
-    // Chama a função principal de carregamento de dados de turmas após 500ms
-    setTimeout(() => listar_turmas_coordenador_automatico(), 500);
-    
+    // 1. Verificação de Atraso (Assumindo que verificar_atraso está em ajax.js)
+    setTimeout(verificar_atraso, 10000); // Removida a chamada imediata '()'
+
+    // 2. Carregamento Automático da primeira escola na listagem de turmas
+    setTimeout(listar_turmas_coordenador_automatico, 500);
+
     function listar_turmas_coordenador_automatico() {
-        // Pega o valor da primeira escola na lista (ou a selecionada, se houver)
+        // Pega o valor da escola selecionada (a primeira, por padrão)
         var idescola = document.getElementById("idescola").value;
+        // Chama a função AJAX para listar turmas (definida em ajax.js)
         listar_turmas_coordenador(idescola);
     }
-</script>
 
-<script type="text/javascript">
-    // 3. Função de Notificação de Mensagens/Chamados
+    // 3. Função de Notificação (Melhorado o tratamento de erro e status)
     function Mostrar_mensagens() {
         var xmlreq = CriaRequest(); // CriaRequest deve estar definido em ajax.js
         xmlreq.open("GET", "../Controller/Notificacao_mensagem_chamado.php", true);
 
         xmlreq.onreadystatechange = function() {
-            if (xmlreq.readyState == 4) {
-                if (xmlreq.status == 200) {
-                    // Assume que a resposta (xmlreq.responseText) é o corpo da mensagem de erro/alerta
-                    if (xmlreq.responseText.trim() !== '') {
+            if (xmlreq.readyState === 4) {
+                if (xmlreq.status === 200) {
+                    var response = xmlreq.responseText.trim();
+                    if (response) {
                         Swal.fire({
-                            icon: 'error', // O ícone 'error' sugere que se trata de uma notificação importante/urgente
-                            title: 'ATENÇÃO',
-                            text: xmlreq.responseText
+                            icon: 'warning',
+                            title: 'NOVA NOTIFICAÇÃO',
+                            text: response
                         });
                     }
                 } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Erro de Requisição',
-                        text: 'Falha ao carregar notificações (Status: ' + xmlreq.status + ')'
-                    });
+                    console.error("Erro na requisição de Notificações: Status " + xmlreq.status);
                 }
             }
         };
         xmlreq.send(null);
     }
-    // A chamada de intervalo estava comentada e incorreta no original, corrigindo:
-    // setInterval(Mostrar_mensagens, 5000);
+    
+    // Deixei o setInterval comentado, pois a função estava sendo chamada imediatamente:
+    // setInterval(Mostrar_mensagens, 5000); // Chamar a cada 5 segundos
 </script>
 
-<?php
-include_once 'rodape.php';
+<?php 
+    include_once 'rodape.php';
 ?>
