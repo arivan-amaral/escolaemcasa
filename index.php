@@ -1,4 +1,14 @@
 <?php
+//para os servidor1 e o 2
+header("location:View/");
+exit();
+
+//para os servidor1 e o 2
+
+
+
+
+
 // Lista dos servidores
 $servers = [
     "https://servidor1.educalem.com.br",
