@@ -13,7 +13,7 @@ try {
 		$matricula = $_GET['matricula'];
 		
 		
-	$conexao->exec("UPDATE ecidade_matricula SET matricula_situacao='MATRICULADO',matricula_ativa='S',matricula_concluida='N' WHERE matricula_codigo = $matricula and aluno_id = $idaluno LIMIT 1");	
+	$conexao->exec("UPDATE ecidade_matricula SET data_saida='', matricula_situacao='MATRICULADO',matricula_ativa='S',matricula_concluida='N' WHERE matricula_codigo = $matricula and aluno_id = $idaluno LIMIT 1");	
 	$conexao->exec("DELETE FROM solicitacao_transferencia where aluno_id=$idaluno  and aceita=0 order by id desc LIMIT 1");
 
 		echo "Ação concluída";
