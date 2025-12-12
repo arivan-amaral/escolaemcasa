@@ -1,7 +1,7 @@
 <?php
 //para os servidor1 e o 2
-// header("location:View/");
-// exit();
+header("location:View/");
+exit();
 
 //para os servidor1 e o 2
 
