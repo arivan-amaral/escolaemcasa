@@ -708,7 +708,10 @@ line-height:normal'><span class="nota-cell">
 none;background:white;padding:0cm 3.5pt 0cm 3.5pt;height:13.5pt'>
 <p class=MsoNormal align=center style='margin-bottom:0cm;text-align:center;
 line-height:normal'><span class="nota-cell">
-<?php echo  number_format($nota_rp, 1, ',', '') ; ?>
+<?php
+echo ($nota_rp > 0) ? number_format($nota_rp, 1, ',', '') : '-'; 
+
+ ?>
 
 <o:p></o:p></span></p>
 </td>
