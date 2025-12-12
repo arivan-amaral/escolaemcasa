@@ -598,7 +598,7 @@ $nome_exibido = (!empty($nome_identificacao_social)) ? $nome_identificacao_socia
 $nota_av1 = $notas_aluno[$idaluno]['av1'] ?? 0;
 $nota_av2 = $notas_aluno[$idaluno]['av2'] ?? 0;
 $nota_av3 = $notas_aluno[$idaluno]['av3'] ?? 0;
-$nota_rp = $notas_aluno[$idaluno]['rp'] ?? 0;
+$nota_rp = $notas_aluno[$idaluno]['RP'] ?? 0;
 
 // Lgica de substituição: RP substitui AV3 se for maior
 $nota_final_av3 = max($nota_av3, $nota_rp);
