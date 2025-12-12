@@ -1,7 +1,7 @@
 <?php
 //para os servidor1 e o 2
-header("location:View/");
-exit();
+// header("location:View/");
+// exit();
 
 //para os servidor1 e o 2
 
@@ -13,7 +13,7 @@ exit();
 $servers = [
     "https://servidor1.educalem.com.br",
     "https://servidor2.educalem.com.br",
-    "https://educalem.com.br"
+    "https://educalem.com.br/View"
 ];
 
 // Arquivo que guarda o índice do próximo servidor
